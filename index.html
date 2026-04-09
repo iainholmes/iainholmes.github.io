@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | M.S. Economics — NC State University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1a18;
+      --ink-mid:   #4a4a44;
+      --ink-light: #8a8a80;
+      --rule:      #d8d5cc;
+      --cream:     #f7f5f0;
+      --paper:     #fdfcf9;
+      --accent:    #4a3f2f;
+      --red:       #8b2e2e;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(253,252,249,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 4vw;
+      height: 58px;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 58px;
+    }
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6vw 6vw 6vw 8vw;
+      border-right: 1px solid var(--rule);
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 1.2rem;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1.08;
+      margin-bottom: 1.4rem;
+      color: var(--ink);
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--ink-mid);
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      max-width: 420px;
+      line-height: 1.75;
+      margin-bottom: 2.4rem;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.8rem; }
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      color: var(--ink-mid);
+      background: var(--cream);
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.6rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+    }
+    .btn-primary:hover { background: var(--ink); border-color: var(--ink); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink-mid);
+      border: 1px solid var(--rule);
+    }
+    .btn-secondary:hover { border-color: var(--ink-mid); color: var(--ink); }
+
+    .hero-panel {
+      background: var(--cream);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4vw;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-photo-placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .photo-circle {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: var(--rule);
+      border: 3px dashed #c0bdb4;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .photo-circle span { font-size: 0.7rem; color: var(--ink-light); letter-spacing: 0.06em; text-align: center; padding: 0 1rem; }
+    .hero-quote {
+      position: relative; z-index: 2;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ink-mid);
+      border-left: 2px solid var(--accent);
+      padding-left: 1.2rem;
+      line-height: 1.6;
+    }
+    .hero-affil {
+      position: relative; z-index: 2;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 6rem 8vw; }
+    section + section { border-top: 1px solid var(--rule); }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 3rem;
+      color: var(--ink);
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-body p { color: var(--ink-mid); margin-bottom: 1.2rem; font-size: 1rem; }
+    .about-sidebar h3 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+    .interest-list { list-style: none; }
+    .interest-list li {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .interest-list li::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+    .edu-block {
+      margin-top: 2rem;
+      padding: 1.2rem;
+      background: var(--cream);
+      border-left: 3px solid var(--accent);
+    }
+    .edu-block .degree {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .edu-block .institution { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.2rem; }
+    .edu-block .year { font-size: 0.75rem; color: var(--ink-light); margin-top: 0.15rem; }
+
+    /* ─── RESEARCH ─── */
+    #research { background: var(--cream); }
+    .research-list { display: flex; flex-direction: column; gap: 2rem; }
+    .research-item {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 2rem;
+      border-radius: 2px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .research-item:hover {
+      border-color: var(--accent);
+      box-shadow: 3px 3px 0 var(--cream);
+    }
+    .research-type {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+    .research-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+      line-height: 1.3;
+    }
+    .research-abstract { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.7; margin-bottom: 1rem; }
+    .research-meta { font-size: 0.75rem; color: var(--ink-light); }
+    .research-link {
+      display: inline-block; margin-top: 1rem;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px; transition: opacity 0.2s;
+    }
+    .research-link:hover { opacity: 0.6; }
+
+    /* ─── CV ─── */
+    .cv-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; }
+    .cv-section-head {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .cv-entry { margin-bottom: 1.4rem; }
+    .cv-entry-title { font-weight: 500; font-size: 0.95rem; color: var(--ink); }
+    .cv-entry-sub { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.15rem; }
+    .cv-entry-date { font-size: 0.75rem; color: var(--ink-light); margin-top: 0.1rem; }
+    .cv-skills h3 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.8rem 0 0.8rem;
+      color: var(--ink);
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-pill {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em;
+      padding: 0.3rem 0.7rem;
+      background: var(--cream); border: 1px solid var(--rule);
+      border-radius: 2px; color: var(--ink-mid);
+    }
+    .cv-download {
+      margin-top: 2.5rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+      border: 1px solid var(--accent); padding: 0.7rem 1.4rem; border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .cv-download:hover { background: var(--accent); color: #fff; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--ink); }
+    #contact .section-label { color: rgba(255,255,255,0.4); }
+    #contact .section-title { color: #fff; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .contact-intro { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.75; }
+    .contact-links { display: flex; flex-direction: column; gap: 1.2rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 2px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-link:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.04); }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-link-icon svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.7); }
+    .contact-link-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .contact-link-value { font-size: 0.88rem; color: rgba(255,255,255,0.8); margin-top: 0.1rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 1.8rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-panel { display: none; }
+      .hero-text { padding: 3rem 6vw; border-right: none; }
+      .about-grid, .cv-layout, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#top">Your Name</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Graduate Researcher · NC State University</p>
+    <h1 class="hero-name">Your<br><em>Full Name</em></h1>
+    <p class="hero-desc">
+      M.S. candidate in Economics with concentrations in Data Analytics and
+      Natural Resource &amp; Environmental Economics. I apply quantitative methods
+      to study questions at the intersection of environmental policy, resource
+      allocation, and human well-being.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Environmental Economics</span>
+      <span class="tag">Natural Resource Policy</span>
+      <span class="tag">Data Analytics</span>
+      <span class="tag">Econometrics</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#research">View Research</a>
+      <a class="btn btn-secondary" href="#cv">Download CV</a>
+    </div>
+  </div>
+  <div class="hero-panel">
+    <div class="hero-photo-placeholder">
+      <div class="photo-circle">
+        <span>Add your photo here</span>
+      </div>
+    </div>
+    <blockquote class="hero-quote">
+      "Economics is the study of how societies allocate scarce resources —
+      I focus on the ones we cannot afford to waste."
+    </blockquote>
+    <p class="hero-affil">Department of Economics · Raleigh, NC</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">Background</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-body">
+      <p>
+        I am a graduate student in the Department of Economics at North Carolina State University,
+        pursuing a Master of Science with dual concentrations in <strong>Data Analytics</strong> and
+        <strong>Natural Resource &amp; Environmental Economics</strong>. My academic work sits at the
+        intersection of environmental science and rigorous economic analysis.
+      </p>
+      <p>
+        <!-- REPLACE with your own bio. A few sentences about your background,
+             what drew you to this field, and what you hope to contribute. -->
+        [Add 2–3 sentences about your academic background and what originally drew you to
+        environmental economics. What questions motivate you? What do you hope your work achieves?]
+      </p>
+      <p>
+        Prior to graduate school, [add undergraduate institution, degree, and any relevant
+        experience such as internships, fieldwork, or research assistantships].
+      </p>
+    </div>
+    <div class="about-sidebar">
+      <h3>Research Interests</h3>
+      <ul class="interest-list">
+        <li>Natural Resource Management</li>
+        <li>Environmental Policy &amp; Regulation</li>
+        <li>Applied Econometrics</li>
+        <li>Climate &amp; Energy Economics</li>
+        <li>Data Analytics &amp; Causal Inference</li>
+        <!-- Add or remove interests as needed -->
+      </ul>
+      <div class="edu-block">
+        <p class="degree">M.S. Economics</p>
+        <p class="institution">NC State University<br>Concentrations: Data Analytics · Natural Resource &amp; Environmental Economics</p>
+        <p class="year">Expected [Year]</p>
+      </div>
+      <div class="edu-block" style="margin-top:1rem;">
+        <p class="degree">[Your Undergraduate Degree]</p>
+        <p class="institution">[Your Undergraduate Institution]</p>
+        <p class="year">[Year]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <p class="section-label">Scholarship</p>
+  <h2 class="section-title">Research &amp; Publications</h2>
+  <div class="research-list">
+
+    <!-- PAPER 1 — replace with your actual work -->
+    <div class="research-item">
+      <p class="research-type">Working Paper</p>
+      <h3 class="research-title">[Title of Your Paper or Thesis]</h3>
+      <p class="research-abstract">
+        [Paste a 2–4 sentence abstract or plain-language summary of your research here.
+        What question does it ask? What data or methods do you use? What are the key findings
+        or expected contributions?]
+      </p>
+      <p class="research-meta">with [Advisor / Co-authors if any] · [Year]</p>
+      <a class="research-link" href="#">Read Paper →</a>
+    </div>
+
+    <!-- PAPER 2 — add more blocks like this as needed -->
+    <div class="research-item">
+      <p class="research-type">Research in Progress</p>
+      <h3 class="research-title">[Second Project Title]</h3>
+      <p class="research-abstract">
+        [Brief description of a second project, seminar paper, or ongoing research question
+        you are investigating. Even preliminary work is worth listing — it signals active scholarship.]
+      </p>
+      <p class="research-meta">[Year]</p>
+    </div>
+
+    <!-- PAPER 3 — optional, remove if not needed -->
+    <div class="research-item">
+      <p class="research-type">Policy Brief · Coursework</p>
+      <h3 class="research-title">[Policy Report or Seminar Paper Title]</h3>
+      <p class="research-abstract">
+        [A strong seminar paper or policy brief counts. Describe the topic and any
+        notable findings. You can link to a PDF if you have one.]
+      </p>
+      <p class="research-meta">[Course or Context] · [Year]</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <p class="section-label">Curriculum Vitae</p>
+  <h2 class="section-title">Experience &amp; Qualifications</h2>
+  <div class="cv-layout">
+    <div class="cv-main">
+
+      <p class="cv-section-head">Education</p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">M.S. Economics</p>
+        <p class="cv-entry-sub">North Carolina State University<br>Concentrations: Data Analytics &amp; Natural Resource and Environmental Economics</p>
+        <p class="cv-entry-date">Expected [Month Year] · GPA: [X.XX]</p>
+      </div>
+      <div class="cv-entry">
+        <p class="cv-entry-title">[Undergraduate Degree, Major]</p>
+        <p class="cv-entry-sub">[Institution Name]</p>
+        <p class="cv-entry-date">[Year] · GPA: [X.XX]</p>
+      </div>
+
+      <p class="cv-section-head">Research Experience</p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">[Research Assistant / Graduate RA]</p>
+        <p class="cv-entry-sub">[Advisor's Name], Department of Economics, NC State</p>
+        <p class="cv-entry-date">[Start] – [End or Present]</p>
+      </div>
+      <!-- Add more entries as needed -->
+
+      <p class="cv-section-head">Teaching Experience</p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">[Teaching Assistant — Course Name]</p>
+        <p class="cv-entry-sub">NC State University, Department of Economics</p>
+        <p class="cv-entry-date">[Semester Year]</p>
+      </div>
+
+      <p class="cv-section-head">Presentations &amp; Awards</p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">[Award, Fellowship, or Conference Presentation]</p>
+        <p class="cv-entry-sub">[Awarding organization or venue]</p>
+        <p class="cv-entry-date">[Year]</p>
+      </div>
+
+      <a class="cv-download" href="cv.pdf" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Full CV (PDF)
+      </a>
+    </div>
+
+    <div class="cv-skills">
+      <h3>Methods &amp; Tools</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Stata</span>
+        <span class="skill-pill">R</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">ArcGIS / QGIS</span>
+        <span class="skill-pill">Regression Analysis</span>
+        <span class="skill-pill">Difference-in-Differences</span>
+        <span class="skill-pill">Panel Data</span>
+        <span class="skill-pill">Cost-Benefit Analysis</span>
+        <span class="skill-pill">Environmental Valuation</span>
+        <!-- Add or remove skills as needed -->
+      </div>
+
+      <h3>Coursework</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Econometrics</span>
+        <span class="skill-pill">Environmental Economics</span>
+        <span class="skill-pill">Natural Resource Economics</span>
+        <span class="skill-pill">Microeconomic Theory</span>
+        <span class="skill-pill">Data Analytics</span>
+        <span class="skill-pill">Environmental Policy</span>
+        <!-- Add your actual courses -->
+      </div>
+
+      <h3>Affiliations</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">AERE</span>
+        <span class="skill-pill">SEA</span>
+        <span class="skill-pill">NC State Econ Dept.</span>
+        <!-- Add any professional memberships -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">
+        I welcome inquiries from collaborators, prospective advisors, and anyone
+        interested in my research on environmental and natural resource economics.
+        The best way to reach me is by email.
+      </p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:youremail@ncsu.edu">
+        <div class="contact-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div>
+          <p class="contact-link-label">Email</p>
+          <p class="contact-link-value">youremail@ncsu.edu</p>
+        </div>
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/yourprofile" target="_blank">
+        <div class="contact-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div>
+          <p class="contact-link-label">LinkedIn</p>
+          <p class="contact-link-value">linkedin.com/in/yourprofile</p>
+        </div>
+      </a>
+      <a class="contact-link" href="https://github.com/yourusername" target="_blank">
+        <div class="contact-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+        </div>
+        <div>
+          <p class="contact-link-label">GitHub</p>
+          <p class="contact-link-value">github.com/yourusername</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; <span id="yr"></span> Your Name · NC State University · Department of Economics
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
