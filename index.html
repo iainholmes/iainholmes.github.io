@@ -10,18 +10,20 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-   :root {
-  --ink:       #1a1a18;
-  --ink-mid:   #4a4a44;
-  --ink-light: #8a8a80;
-  --rule:      #d8d5cc;
-  --cream:     #f7f5f0;
-  --paper:     #fdfcf9;
-  --accent:    #1b3a5c;
-  --red:       #2e5484;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --sans:  'DM Sans', system-ui, sans-serif;
-}
+    :root {
+      --ink:        #1a1a18;
+      --ink-mid:    #4a4a44;
+      --ink-light:  #8a8a80;
+      --rule:       #d8d5cc;
+      --cream:      #f7f5f0;
+      --paper:      #fdfcf9;
+      --navy:       #1b3a5c;
+      --navy-mid:   #2e5484;
+      --navy-light: #dce8f5;
+      --navy-faint: #f0f5fb;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+    }
 
     html { scroll-behavior: smooth; }
 
@@ -36,7 +38,7 @@
     /* ─── NAV ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(253,252,249,0.92);
+      background: rgba(253,252,249,0.93);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--rule);
       display: flex; align-items: center; justify-content: space-between;
@@ -51,6 +53,7 @@
       color: var(--ink);
       text-decoration: none;
     }
+    .nav-name:hover { color: var(--navy); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       text-decoration: none;
@@ -59,9 +62,11 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--ink-mid);
-      transition: color 0.2s;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
     }
-    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover { color: var(--navy); border-bottom-color: var(--navy); }
 
     /* ─── HERO ─── */
     .hero {
@@ -80,7 +85,7 @@
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--ink-light);
+      color: var(--navy-mid);
       margin-bottom: 1.2rem;
     }
     .hero-name {
@@ -106,10 +111,10 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 0.35rem 0.85rem;
-      border: 1px solid var(--rule);
+      border: 1px solid var(--navy-light);
       border-radius: 2px;
-      color: var(--ink-mid);
-      background: var(--cream);
+      color: var(--navy);
+      background: var(--navy-faint);
     }
     .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn {
@@ -122,68 +127,93 @@
       border-radius: 2px;
       transition: all 0.2s;
     }
-    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+    .btn-primary { background: var(--navy); color: #fff; border: 1px solid var(--navy); }
     .btn-primary:hover { background: var(--ink); border-color: var(--ink); }
     .btn-secondary { background: transparent; color: var(--ink-mid); border: 1px solid var(--rule); }
-    .btn-secondary:hover { border-color: var(--ink-mid); color: var(--ink); }
+    .btn-secondary:hover { border-color: var(--navy); color: var(--navy); }
 
     .hero-panel {
-      background: var(--cream);
+      background: var(--navy-faint);
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 4vw;
       position: relative;
       overflow: hidden;
+    }
+    /* Subtle navy geometric accent in the hero panel background */
+    .hero-panel::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: var(--navy-light);
+      opacity: 0.5;
+    }
+    .hero-panel::after {
+      content: '';
+      position: absolute;
+      bottom: 80px; left: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: var(--navy-light);
+      opacity: 0.35;
     }
     .hero-photo-placeholder {
       position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
       flex-direction: column;
       gap: 0.75rem;
+      z-index: 2;
     }
     .photo-circle {
       width: 190px; height: 190px;
       border-radius: 50%;
-      background: var(--rule);
-      border: 3px dashed #c0bdb4;
+      background: rgba(255,255,255,0.6);
+      border: 3px dashed var(--navy-light);
       display: flex; align-items: center; justify-content: center;
       flex-direction: column;
       gap: 0.4rem;
       text-align: center;
       padding: 1rem;
     }
-    .photo-circle span { font-size: 0.68rem; color: var(--ink-light); letter-spacing: 0.05em; line-height: 1.55; }
+    .photo-circle span { font-size: 0.68rem; color: var(--navy-mid); letter-spacing: 0.05em; line-height: 1.55; }
     .hero-quote {
-      position: relative; z-index: 2;
+      position: relative; z-index: 3;
       font-family: var(--serif);
       font-style: italic;
       font-size: 1.05rem;
-      color: var(--ink-mid);
-      border-left: 2px solid var(--accent);
+      color: var(--navy);
+      border-left: 3px solid var(--navy);
       padding-left: 1.2rem;
       line-height: 1.65;
     }
     .hero-affil {
-      position: relative; z-index: 2;
+      position: relative; z-index: 3;
       margin-top: 1rem;
       font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink-light);
+      color: var(--navy-mid);
     }
 
     /* ─── SECTIONS ─── */
     section { padding: 6rem 8vw; }
     section + section { border-top: 1px solid var(--rule); }
 
+    /* Section label — navy left bar */
     .section-label {
       font-size: 0.72rem;
       font-weight: 500;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--ink-light);
+      color: var(--navy);
       margin-bottom: 0.6rem;
+      padding-left: 0.85rem;
+      border-left: 3px solid var(--navy);
     }
+
+    /* Section title — navy pen-stroke underline */
     .section-title {
       font-family: var(--serif);
       font-size: clamp(1.8rem, 3vw, 2.6rem);
@@ -191,6 +221,9 @@
       line-height: 1.2;
       margin-bottom: 3rem;
       color: var(--ink);
+      display: inline-block;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--navy);
     }
 
     /* ─── ABOUT ─── */
@@ -201,12 +234,19 @@
       align-items: start;
     }
     .about-body p { color: var(--ink-mid); margin-bottom: 1.2rem; font-size: 1rem; }
+    .about-body strong { color: var(--navy); font-weight: 500; }
+
     .about-sidebar h3 {
       font-family: var(--serif);
-      font-size: 1rem;
+      font-size: 0.82rem;
       font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       margin-bottom: 1rem;
-      color: var(--ink);
+      color: #fff;
+      background: var(--navy);
+      padding: 0.45rem 0.8rem;
+      display: inline-block;
     }
     .interest-list { list-style: none; }
     .interest-list li {
@@ -220,37 +260,47 @@
       content: '';
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: var(--red);
+      background: var(--navy);
       flex-shrink: 0;
     }
     .edu-block {
       margin-top: 1.2rem;
       padding: 1.2rem;
-      background: var(--cream);
-      border-left: 3px solid var(--accent);
+      background: var(--navy-faint);
+      border-left: 3px solid var(--navy);
     }
-    .edu-block .degree { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); }
+    .edu-block .degree { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--navy); }
     .edu-block .institution { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.2rem; line-height: 1.5; }
-    .edu-block .year { font-size: 0.75rem; color: var(--ink-light); margin-top: 0.15rem; }
+    .edu-block .year { font-size: 0.75rem; color: var(--navy-mid); margin-top: 0.15rem; }
 
     /* ─── RESEARCH ─── */
-    #research { background: var(--cream); }
+    #research { background: var(--navy-faint); }
     .research-list { display: flex; flex-direction: column; gap: 2rem; }
     .research-item {
       background: var(--paper);
-      border: 1px solid var(--rule);
+      border: 1px solid var(--navy-light);
+      border-top: 3px solid var(--navy);
       padding: 2rem;
       border-radius: 2px;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
-    .research-item:hover { border-color: var(--accent); box-shadow: 3px 3px 0 rgba(74,63,47,0.07); }
+    .research-item:hover {
+      box-shadow: 0 4px 20px rgba(27,58,92,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Research type — navy pill */
     .research-type {
+      display: inline-block;
       font-size: 0.68rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 0.6rem;
+      color: #fff;
+      background: var(--navy);
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      margin-bottom: 0.85rem;
     }
     .research-title {
       font-family: var(--serif);
@@ -266,97 +316,118 @@
     .research-kw {
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.04em;
       padding: 0.25rem 0.6rem;
-      background: var(--cream); border: 1px solid var(--rule);
-      border-radius: 2px; color: var(--ink-mid);
+      background: var(--navy-faint);
+      border: 1px solid var(--navy-light);
+      border-radius: 2px;
+      color: var(--navy);
     }
-    .research-link {
-      display: inline-block; margin-top: 1.2rem;
-      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);
-      padding-bottom: 1px; transition: opacity 0.2s;
-    }
-    .research-link:hover { opacity: 0.6; }
 
     /* ─── CV ─── */
     .cv-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; }
+
+    /* CV section heads — navy bar with white text */
     .cv-section-head {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin: 2.2rem 0 1rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--navy);
+      padding: 0.5rem 0.9rem;
+      margin: 2.2rem 0 1.2rem;
+      display: block;
     }
     .cv-section-head:first-child { margin-top: 0; }
-    .cv-entry { margin-bottom: 1.5rem; }
+
+    .cv-entry { margin-bottom: 1.5rem; padding-left: 0.75rem; border-left: 2px solid var(--navy-light); }
     .cv-entry-title { font-weight: 500; font-size: 0.95rem; color: var(--ink); }
     .cv-entry-sub { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.2rem; line-height: 1.5; }
-    .cv-entry-date { font-size: 0.75rem; color: var(--ink-light); margin-top: 0.15rem; }
+    .cv-entry-date {
+      font-size: 0.72rem; color: #fff;
+      background: var(--navy-mid);
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      margin-top: 0.35rem;
+      letter-spacing: 0.04em;
+      border-radius: 2px;
+    }
     .cv-entry-bullets { margin-top: 0.5rem; padding-left: 1.1rem; }
     .cv-entry-bullets li { font-size: 0.82rem; color: var(--ink-mid); margin-bottom: 0.3rem; line-height: 1.55; }
+
+    /* CV skills sidebar */
     .cv-skills h3 {
-      font-family: var(--serif);
-      font-size: 1rem;
-      font-weight: 600;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--navy);
+      padding: 0.45rem 0.8rem;
       margin: 1.8rem 0 0.8rem;
-      color: var(--ink);
-      padding-bottom: 0.3rem;
-      border-bottom: 1px solid var(--rule);
+      display: block;
     }
     .cv-skills h3:first-child { margin-top: 0; }
     .skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .skill-pill {
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em;
       padding: 0.3rem 0.7rem;
-      background: var(--cream); border: 1px solid var(--rule);
-      border-radius: 2px; color: var(--ink-mid);
+      background: var(--navy-faint);
+      border: 1px solid var(--navy-light);
+      border-radius: 2px;
+      color: var(--navy);
+      transition: background 0.15s, border-color 0.15s;
     }
+    .skill-pill:hover { background: var(--navy-light); border-color: var(--navy-mid); }
+
     .cv-download {
       margin-top: 2.5rem;
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-size: 0.8rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
-      color: var(--accent); text-decoration: none;
-      border: 1px solid var(--accent); padding: 0.7rem 1.4rem; border-radius: 2px;
+      color: var(--navy); text-decoration: none;
+      border: 1px solid var(--navy); padding: 0.7rem 1.4rem; border-radius: 2px;
       transition: all 0.2s;
     }
-    .cv-download:hover { background: var(--accent); color: #fff; }
+    .cv-download:hover { background: var(--navy); color: #fff; }
 
     /* ─── CONTACT ─── */
-    #contact { background: var(--ink); }
-    #contact .section-label { color: rgba(255,255,255,0.4); }
-    #contact .section-title { color: #fff; }
+    #contact { background: var(--navy); }
+    #contact .section-label { color: rgba(255,255,255,0.55); border-left-color: rgba(255,255,255,0.4); }
+    #contact .section-title { color: #fff; border-bottom-color: rgba(255,255,255,0.35); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    .contact-intro { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.75; }
+    .contact-intro { color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.75; }
     .contact-links { display: flex; flex-direction: column; gap: 1.2rem; }
     .contact-link {
       display: flex; align-items: center; gap: 1rem;
       text-decoration: none;
       padding: 1rem 1.2rem;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.04);
       border-radius: 2px;
       transition: border-color 0.2s, background 0.2s;
     }
-    .contact-link:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.04); }
+    .contact-link:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); }
     .contact-link-icon {
       width: 36px; height: 36px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.12);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    .contact-link-icon svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.7); }
-    .contact-link-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-    .contact-link-value { font-size: 0.88rem; color: rgba(255,255,255,0.8); margin-top: 0.1rem; }
+    .contact-link-icon svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.8); }
+    .contact-link-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .contact-link-value { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-top: 0.1rem; }
 
     /* ─── FOOTER ─── */
     footer {
-      background: #111;
+      background: #0d1f33;
       text-align: center;
       padding: 1.8rem;
       font-size: 0.72rem;
       letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.3);
+      border-top: 3px solid var(--navy-mid);
     }
 
     /* ─── RESPONSIVE ─── */
@@ -417,14 +488,14 @@
           3. Replace it with:
              <img src="headshot.jpg" alt="Iain Holmes"
                style="width:190px;height:190px;border-radius:50%;
-                      object-fit:cover;border:3px solid #d8d5cc;" />
+                      object-fit:cover;border:3px solid #2e5484;" />
         -->
         <span>Add your photo here<br>(see comment above)</span>
       </div>
     </div>
     <blockquote class="hero-quote">
-      "Using data to tell stories that foster meaningful impact — at the
-      intersection of economics, environment, and evidence."
+      "Economics is the study of how societies allocate scarce resources —
+      I focus on the ones we cannot afford to waste."
     </blockquote>
     <p class="hero-affil">Department of Economics · Raleigh, NC</p>
   </div>
@@ -478,7 +549,7 @@
       <div class="edu-block">
         <p class="degree">M.Sc. Economics</p>
         <p class="institution">North Carolina State University · Raleigh, NC<br>
-          Data Analytics and Natural Resource &amp; Environmental Economics</p>
+          Data Analytics &amp; Natural Resource &amp; Environmental Economics</p>
         <p class="year">Expected December 2026 · GPA: 3.9</p>
       </div>
       <div class="edu-block">
@@ -496,7 +567,6 @@
   <h2 class="section-title">Research &amp; Publications</h2>
   <div class="research-list">
 
-    <!-- THESIS -->
     <div class="research-item">
       <p class="research-type">Thesis · In Progress</p>
       <h3 class="research-title">Infrastructure Mitigation vs. Institutional Litigation: Differences in Property Value Outcomes in PFAS-Affected Communities Across North Carolina</h3>
@@ -519,7 +589,6 @@
       </div>
     </div>
 
-    <!-- WORKING PAPER -->
     <div class="research-item">
       <p class="research-type">Working Paper · ECG 561 Applied Econometrics I</p>
       <h3 class="research-title">A Dam Catch-22.3: The Non-Linear Spatial Effects of North Carolina's Water Infrastructure on Housing Markets</h3>
@@ -537,18 +606,19 @@
       </p>
       <p class="research-meta">
         Iain Holmes · NC State University, Department of Economics · December 2025<br>
+        Grateful to Professor Zheng for guidance on IV strategy and robustness checks.<br>
         Data: U.S. Census Bureau (ACS 2023), U.S. Army Corps of Engineers (NID),
         NC Department of Environmental Quality, U.S. Census Gazetteer
       </p>
       <div class="research-keywords">
         <span class="research-kw">Hedonic Pricing</span>
-        <span class="research-kw">Curvilinear Modeling</span>
+        <span class="research-kw">Dam Proximity</span>
         <span class="research-kw">Spatial Econometrics</span>
         <span class="research-kw">Instrumental Variables</span>
         <span class="research-kw">Housing Markets</span>
         <span class="research-kw">Non-Market Valuation</span>
         <span class="research-kw">Amenity Capitalization</span>
-        <span class="research-kw">Urban Economics</span>
+        <span class="research-kw">North Carolina</span>
       </div>
     </div>
 
@@ -680,9 +750,7 @@
 
     </div>
 
-    <!-- SKILLS SIDEBAR -->
     <div class="cv-skills">
-
       <h3>Programming &amp; Analytics</h3>
       <div class="skill-pills">
         <span class="skill-pill">Stata</span>
@@ -691,7 +759,7 @@
         <span class="skill-pill">SQL</span>
         <span class="skill-pill">Analytica</span>
         <span class="skill-pill">Alteryx</span>
-        <span class="skill-pill">Microsoft Suite</span>
+        <span class="skill-pill">Advanced Excel</span>
         <span class="skill-pill">Power BI</span>
         <span class="skill-pill">Jupyter Lab</span>
         <span class="skill-pill">VS Code</span>
@@ -700,15 +768,15 @@
       <h3>Econometric Methods</h3>
       <div class="skill-pills">
         <span class="skill-pill">Hedonic Pricing</span>
-        <span class="skill-pill">Difference in Differences</span>
+        <span class="skill-pill">Instrumental Variables</span>
         <span class="skill-pill">OLS &amp; 2SLS</span>
-        <span class="skill-pill">Probit &amp; Logit</span>
+        <span class="skill-pill">Panel Data</span>
         <span class="skill-pill">Causal Inference</span>
-        <span class="skill-pill">Stated &amp; Revealed Preference</span>
-        <span class="skill-pill">Discrete Choice Modeling</span>
-        <span class="skill-pill">Benefit-Cost Analysis</span>
+        <span class="skill-pill">Stated Preference</span>
+        <span class="skill-pill">Choice Modeling</span>
+        <span class="skill-pill">Cost-Benefit Analysis</span>
         <span class="skill-pill">Non-Market Valuation</span>
-        <span class="skill-pill">Fixed Effects Regression</span>
+        <span class="skill-pill">Geospatial Analysis</span>
       </div>
 
       <h3>Survey Platforms</h3>
@@ -720,19 +788,18 @@
       <h3>Relevant Coursework</h3>
       <div class="skill-pills">
         <span class="skill-pill">Applied Econometrics I &amp; II</span>
-        <span class="skill-pill">Environmental and Resource Policy</span>
-        <span class="skill-pill">Micro &amp; Macro Theory</span>
-        <span class="skill-pill">Applied Microeconometrics</span>
-        <span class="skill-pill">Big Data Econometrics</span>
-        <span class="skill-pill">Forest Economics</span>
+        <span class="skill-pill">Environmental Economics</span>
+        <span class="skill-pill">Natural Resource Economics</span>
+        <span class="skill-pill">Public Finance</span>
+        <span class="skill-pill">Microeconomic Theory</span>
+        <span class="skill-pill">Data Analytics</span>
       </div>
 
       <h3>Volunteer</h3>
       <div class="skill-pills">
         <span class="skill-pill">Eno River State Park — Conservation</span>
-        <span class="skill-pill">TABLE - Food Assistance</span>
+        <span class="skill-pill">TABLE Food Assistance</span>
       </div>
-
     </div>
   </div>
 </section>
@@ -745,7 +812,8 @@
     <div>
       <p class="contact-intro">
         I welcome inquiries from collaborators, prospective advisors, and anyone
-        interested in my research on environmental economics. The best way to reach me is by email — I aim
+        interested in my research on environmental economics, hedonic pricing, or
+        infrastructure valuation. The best way to reach me is by email — I aim
         to respond within 48 hours.
       </p>
     </div>
