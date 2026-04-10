@@ -6,8 +6,8 @@ permalink: /publication/2025-12-dam-housing-markets
 excerpt: "This paper estimates the capitalization of dam proximity into housing values across 747 Zip Code Tabulation Areas in North Carolina. Using a hedonic pricing model with an instrumental variable approach to correct for residential sorting bias, I identify a statistically significant non-linear \"Amenity Zone\" extending approximately 22.3 miles from dam infrastructure."
 date: 2025-12-01
 venue: "NC State University, ECG 561: Applied Econometrics I"
-paperurl: "/files/dam_catch_22.pdf"
 ---
+**[Download Paper (PDF)](https://iainholmes.github.io/files/dam_catch_22.pdf)**
 
 Infrastructure projects generate complex spatial externalities that ripple through local housing markets. In this paper, I utilize cross-sectional data variation in dam locations across 747 Zip Code Tabulation Areas (ZCTAs) in North Carolina to estimate the capitalization of dam proximity into housing values.
 
