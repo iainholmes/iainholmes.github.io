@@ -53,6 +53,7 @@
       color: var(--ink);
       text-decoration: none;
     }
+    .nav-name:hover { color: var(--navy); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       text-decoration: none;
@@ -63,7 +64,9 @@
       color: var(--ink-mid);
       padding-bottom: 2px;
       border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
     }
+    .nav-links a:hover { color: var(--navy); border-bottom-color: var(--navy); }
 
     /* ─── HERO ─── */
     .hero {
@@ -122,9 +125,12 @@
       text-transform: uppercase;
       padding: 0.75rem 1.6rem;
       border-radius: 2px;
+      transition: all 0.2s;
     }
     .btn-primary { background: var(--navy); color: #fff; border: 1px solid var(--navy); }
+    .btn-primary:hover { background: var(--ink); border-color: var(--ink); }
     .btn-secondary { background: transparent; color: var(--ink-mid); border: 1px solid var(--rule); }
+    .btn-secondary:hover { border-color: var(--navy); color: var(--navy); }
 
     .hero-panel {
       background: var(--navy-faint);
@@ -154,16 +160,16 @@
     .hero-photo-wrap {
       position: absolute; inset: 0;
       display: flex; align-items: flex-start;
-      padding-top: 12vh; /* Increased from 2vh to move the image lower */
+      padding-top: 12vh; /* Positioning update preserved */
       justify-content: center;
       z-index: 2;
     }
     .hero-photo-wrap img {
-      width: 475px;
+      width: 475px; /* Size update preserved */
       height: 475px;
       border-radius: 50%;
       object-fit: cover;
-      object-position: center; /* Changed to center for better balance when lowered */
+      object-position: center;
       border: 4px solid #fff;
       box-shadow: 0 8px 32px rgba(27,58,92,0.18);
     }
@@ -185,6 +191,243 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--navy-mid);
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 6rem 8vw; }
+    section + section { border-top: 1px solid var(--rule); }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      padding-left: 0.85rem;
+      border-left: 3px solid var(--navy);
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 3rem;
+      color: var(--ink);
+      display: inline-block;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--navy);
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-body p { color: var(--ink-mid); margin-bottom: 1.2rem; font-size: 1rem; }
+    .about-body strong { color: var(--navy); font-weight: 500; }
+
+    .about-sidebar h3 {
+      font-family: var(--serif);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: #fff;
+      background: var(--navy);
+      padding: 0.45rem 0.8rem;
+      display: inline-block;
+    }
+    .interest-list { list-style: none; }
+    .interest-list li {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .interest-list li::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--navy);
+      flex-shrink: 0;
+    }
+    .edu-block {
+      margin-top: 1.2rem;
+      padding: 1.2rem;
+      background: var(--navy-faint);
+      border-left: 3px solid var(--navy);
+    }
+    .edu-block .degree { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--navy); }
+    .edu-block .institution { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.2rem; line-height: 1.5; }
+    .edu-block .year { font-size: 0.75rem; color: var(--navy-mid); margin-top: 0.15rem; }
+
+    /* ─── RESEARCH ─── */
+    #research { background: var(--navy-faint); }
+    .research-list { display: flex; flex-direction: column; gap: 2rem; }
+    .research-item {
+      background: var(--paper);
+      border: 1px solid var(--navy-light);
+      border-top: 3px solid var(--navy);
+      padding: 2rem;
+      border-radius: 2px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .research-item:hover {
+      box-shadow: 0 4px 20px rgba(27,58,92,0.1);
+      transform: translateY(-2px);
+    }
+    .research-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--navy);
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      margin-bottom: 0.85rem;
+    }
+    .research-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+      line-height: 1.3;
+    }
+    .research-abstract { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.75; margin-bottom: 1rem; }
+    .research-meta { font-size: 0.75rem; color: var(--ink-light); line-height: 1.6; }
+    .research-keywords { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .research-kw {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.04em;
+      padding: 0.25rem 0.6rem;
+      background: var(--navy-faint);
+      border: 1px solid var(--navy-light);
+      border-radius: 2px;
+      color: var(--navy);
+    }
+
+    /* ─── CV ─── */
+    .cv-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; }
+
+    .cv-section-head {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--navy);
+      padding: 0.5rem 0.9rem;
+      margin: 2.2rem 0 1.2rem;
+      display: block;
+    }
+    .cv-section-head:first-child { margin-top: 0; }
+
+    .cv-entry { margin-bottom: 1.5rem; padding-left: 0.75rem; border-left: 2px solid var(--navy-light); }
+    .cv-entry-title { font-weight: 500; font-size: 0.95rem; color: var(--ink); }
+    .cv-entry-sub { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.2rem; line-height: 1.5; }
+    .cv-entry-date {
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      margin-top: 0.35rem;
+      letter-spacing: 0.04em;
+      display: block;
+    }
+    .cv-entry-bullets { margin-top: 0.5rem; padding-left: 1.1rem; }
+    .cv-entry-bullets li { font-size: 0.82rem; color: var(--ink-mid); margin-bottom: 0.3rem; line-height: 1.55; }
+
+    .cv-skills h3 {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--navy);
+      padding: 0.45rem 0.8rem;
+      margin: 1.8rem 0 0.8rem;
+      display: block;
+    }
+    .cv-skills h3:first-child { margin-top: 0; }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-pill {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em;
+      padding: 0.3rem 0.7rem;
+      background: var(--navy-faint);
+      border: 1px solid var(--navy-light);
+      border-radius: 2px;
+      color: var(--navy);
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .skill-pill:hover { background: var(--navy-light); border-color: var(--navy-mid); }
+
+    .cv-download {
+      margin-top: 2.5rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--navy); text-decoration: none;
+      border: 1px solid var(--navy); padding: 0.7rem 1.4rem; border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .cv-download:hover { background: var(--navy); color: #fff; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--navy); }
+    #contact .section-label { color: rgba(255,255,255,0.55); border-left-color: rgba(255,255,255,0.4); }
+    #contact .section-title { color: #fff; border-bottom-color: rgba(255,255,255,0.35); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .contact-intro { color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.75; }
+    .contact-links { display: flex; flex-direction: column; gap: 1.2rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.04);
+      border-radius: 2px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-link:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-link-icon svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.8); }
+    .contact-link-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .contact-link-value { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-top: 0.1rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0d1f33;
+      text-align: center;
+      padding: 1.8rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.3);
+      border-top: 3px solid var(--navy-mid);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-grid, .cv-layout, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-panel { display: none; }
+      .hero-text { padding: 3rem 6vw; border-right: none; }
+      .nav-links { gap: 1.2rem; }
+      section { padding: 4rem 6vw; }
     }
   </style>
 </head>
@@ -233,5 +476,129 @@
   </div>
 </section>
 
+<section id="about">
+  <p class="section-label">Background</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-body">
+      <p>
+        I am a second-year graduate student at North Carolina State University pursuing a Master of
+        Science in Economics with a dual concentration in <strong>Data Analytics</strong> and
+        <strong>Natural Resource &amp; Environmental Economics</strong>. My work sits at the
+        intersection of rigorous quantitative analysis and real-world environmental challenges —
+        examining how infrastructure, contamination, and policy shape economic behavior and
+        housing markets across North Carolina.
+      </p>
+      <p>
+        Alongside my coursework, I serve as a Research Assistant at Veritas Economic Consulting
+        in Cary, NC, where I develop econometric models, design stated-preference surveys eliciting
+        willingness-to-pay for environmental programs, and contribute analysis to expert witness
+        proceedings on EPA compliance matters. I have also contributed to a Natural Resource Damages
+        textbook while working with Dr. Rick Dunford at Environmental Economics Services, LLC.
+      </p>
+      <p>
+        Prior to graduate school, I earned a B.A. in Economics with a Minor in Philosophy from the
+        University of Virginia and built a career in financial services. That applied, analytical 
+        background informs the precision and rigor I bring to every research question I pursue.
+      </p>
+      <p>
+        I am passionate about leveraging econometric and statistical tools to inform policy, with a
+        particular focus on the non-market valuation of environmental goods, spatial econometrics,
+        and the economic consequences of environmental contamination on communities.
+      </p>
+    </div>
+    <div class="about-sidebar">
+      <h3>Research Interests</h3>
+      <ul class="interest-list">
+        <li>Environmental &amp; Natural Resource Economics</li>
+        <li>Non-Market Valuation &amp; Hedonic Pricing</li>
+        <li>Applied Econometrics &amp; Causal Inference</li>
+        <li>Environmental Policy &amp; Regulation</li>
+      </ul>
+      <div class="edu-block">
+        <p class="degree">M.Sc. Economics</p>
+        <p class="institution">North Carolina State University · Raleigh, NC</p>
+        <p class="year">Expected December 2026 · GPA: 3.9</p>
+      </div>
+      <div class="edu-block">
+        <p class="degree">B.A. Economics · Minor: Philosophy</p>
+        <p class="institution">University of Virginia · Charlottesville, VA</p>
+        <p class="year">2018 · GPA: 3.5</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <p class="section-label">Scholarship</p>
+  <h2 class="section-title">Research &amp; Publications</h2>
+  <div class="research-list">
+    <div class="research-item">
+      <p class="research-type">Thesis · In Progress</p>
+      <h3 class="research-title">Infrastructure Mitigation vs. Institutional Litigation: Differences in Property Value Outcomes in PFAS-Affected Communities Across North Carolina</h3>
+      <p class="research-abstract">
+        This thesis investigates differences in residential property value outcomes resulting from two
+        distinct policy responses to PFAS contamination — infrastructure-based remediation versus
+        institutional litigation — across affected communities in North Carolina.
+      </p>
+      <p class="research-meta">NC State University, Department of Economics · 2026</p>
+    </div>
+    <div class="research-item">
+      <p class="research-type">Working Paper · ECG 561 Applied Econometrics I</p>
+      <h3 class="research-title">A Dam Catch-22.3: The Non-Linear Spatial Effects of North Carolina's Water Infrastructure on Housing Markets</h3>
+      <p class="research-abstract">
+        Infrastructure projects generate complex spatial externalities that ripple through local housing
+        markets in ways traditional methods often fail to capture.
+      </p>
+      <p class="research-meta">Iain Holmes · December 2025</p>
+    </div>
+  </div>
+</section>
+
+<section id="cv">
+  <p class="section-label">Curriculum Vitae</p>
+  <h2 class="section-title">Experience &amp; Qualifications</h2>
+  <div class="cv-layout">
+    <div class="cv-main">
+      <p class="cv-section-head">Research Experience</p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">Research Assistant (Part Time)</p>
+        <p class="cv-entry-sub">Veritas Economic Consulting · Cary, NC</p>
+        <p class="cv-entry-date">September 2025 – Present</p>
+      </div>
+      <div class="cv-entry">
+        <p class="cv-entry-title">Research Assistant (Contract)</p>
+        <p class="cv-entry-sub">Environmental Economics Services, LLC · Raleigh, NC</p>
+        <p class="cv-entry-date">September 2025 – February 2026</p>
+      </div>
+      <a class="cv-download" href="iholmes_resume.pdf" target="_blank">Download Full CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:itholmes@ncsu.edu">
+        <div class="contact-link-label">University Email</div>
+        <div class="contact-link-value">itholmes@ncsu.edu</div>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/iaintholmes/" target="_blank">
+        <div class="contact-link-label">LinkedIn</div>
+        <div class="contact-link-value">linkedin.com/in/iaintholmes</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; <span id="yr"></span> Iain Holmes · NC State University · Department of Economics · Raleigh, NC
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
