@@ -160,13 +160,13 @@
     .hero-photo-wrap {
       position: absolute; inset: 0;
       display: flex; align-items: flex-start;
-      padding-top: 12vh; /* Positioning update preserved */
+      padding-top: 15vh; /* Lowered positioning */
       justify-content: center;
       z-index: 2;
     }
     .hero-photo-wrap img {
-      width: 475px; /* Size update preserved */
-      height: 475px;
+      width: 600px; /* Double size */
+      height: 600px; /* Double size */
       border-radius: 50%;
       object-fit: cover;
       object-position: center;
@@ -494,7 +494,8 @@
         in Cary, NC, where I develop econometric models, design stated-preference surveys eliciting
         willingness-to-pay for environmental programs, and contribute analysis to expert witness
         proceedings on EPA compliance matters. I have also contributed to a Natural Resource Damages
-        textbook while working with Dr. Rick Dunford at Environmental Economics Services, LLC.
+        textbook while working with Dr. Rick Dunford at Environmental Economics Services, LLC. I assisted in validating empirical
+        frameworks and ensuring statistical model accuracy across numerous prior cases regarding hazardous substance release and damages.
       </p>
       <p>
         Prior to graduate school, I earned a B.A. in Economics with a Minor in Philosophy from the
@@ -512,12 +513,15 @@
       <ul class="interest-list">
         <li>Environmental &amp; Natural Resource Economics</li>
         <li>Non-Market Valuation &amp; Hedonic Pricing</li>
+        <li>Identity Economics &amp; Agricultural/Resource Markets</li>
+        <li>Industrial Economics &amp; Housing Markets</li>
         <li>Applied Econometrics &amp; Causal Inference</li>
         <li>Environmental Policy &amp; Regulation</li>
       </ul>
       <div class="edu-block">
         <p class="degree">M.Sc. Economics</p>
-        <p class="institution">North Carolina State University · Raleigh, NC</p>
+        <p class="institution">North Carolina State University · Raleigh, NC<br>
+          Data Analytics and Natural Resource &amp; Environmental Economics</p>
         <p class="year">Expected December 2026 · GPA: 3.9</p>
       </div>
       <div class="edu-block">
@@ -539,18 +543,60 @@
       <p class="research-abstract">
         This thesis investigates differences in residential property value outcomes resulting from two
         distinct policy responses to PFAS contamination — infrastructure-based remediation versus
-        institutional litigation — across affected communities in North Carolina.
+        institutional litigation — across affected communities in North Carolina. Drawing on hedonic
+        pricing methodology and spatial econometric tools, the study aims to quantify how alternative
+        environmental remediation pathways capitalize into local housing markets, with implications
+        for cost-benefit analysis and the design of environmental liability frameworks.
       </p>
       <p class="research-meta">NC State University, Department of Economics · 2026</p>
+      <div class="research-keywords">
+        <span class="research-kw">PFAS Contamination</span>
+        <span class="research-kw">Hedonic Pricing</span>
+        <span class="research-kw">Environmental Remediation</span>
+        <span class="research-kw">Housing Markets</span>
+        <span class="research-kw">Environmental Litigation</span>
+        <span class="research-kw">North Carolina</span>
+      </div>
     </div>
+    <a class="cv-download" href="files/dam_catch_22.pdf" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Download Paper (PDF)
+    </a>
     <div class="research-item">
       <p class="research-type">Working Paper · ECG 561 Applied Econometrics I</p>
       <h3 class="research-title">A Dam Catch-22.3: The Non-Linear Spatial Effects of North Carolina's Water Infrastructure on Housing Markets</h3>
       <p class="research-abstract">
         Infrastructure projects generate complex spatial externalities that ripple through local housing
-        markets in ways traditional methods often fail to capture.
+        markets in ways traditional methods often fail to capture. Using cross-sectional data across
+        747 Zip Code Tabulation Areas (ZCTAs) in North Carolina and geolocated data for over 3,600
+        dams, I employ a hedonic pricing model with quadratic functional forms to estimate the
+        capitalization of dam proximity into residential property values. Standard OLS estimates yield
+        modest relationships, but after correcting for the endogeneity of residential sorting via an
+        Instrumental Variable (IV) strategy, I identify a statistically significant non-linear amenity
+        gradient (p < 0.05). Dams act as a net amenity for approximately <strong>22.3 miles</strong>
+        before the price effect dissipates — a finding that challenges the arbitrary fixed-radius
+        assumptions common in infrastructure policy analysis and cost-benefit assessment.
       </p>
-      <p class="research-meta">Iain Holmes · December 2025</p>
+      <p class="research-meta">
+        Iain Holmes · NC State University, Department of Economics · December 2025<br>
+        Grateful to Professor Zheng for guidance on IV strategy and robustness checks.<br>
+        Data: U.S. Census Bureau (ACS 2023), U.S. Army Corps of Engineers (NID),
+        NC Department of Environmental Quality, U.S. Census Gazetteer
+      </p>
+      <div class="research-keywords">
+        <span class="research-kw">Hedonic Pricing</span>
+        <span class="research-kw">Dam Proximity</span>
+        <span class="research-kw">Spatial Econometrics</span>
+        <span class="research-kw">Instrumental Variables</span>
+        <span class="research-kw">Housing Markets</span>
+        <span class="research-kw">Non-Market Valuation</span>
+        <span class="research-kw">Amenity Capitalization</span>
+        <span class="research-kw">North Carolina</span>
+      </div>
     </div>
   </div>
 </section>
@@ -560,18 +606,44 @@
   <h2 class="section-title">Experience &amp; Qualifications</h2>
   <div class="cv-layout">
     <div class="cv-main">
+      <p class="cv-section-head">Education</p>
+      <div class="cv-entry">
+        <p class="cv-entry-title">M.Sc. Economics</p>
+        <p class="cv-entry-sub">North Carolina State University · Raleigh, NC<br>
+          Dual Concentration: Data Analytics &amp; Natural Resource and Environmental Economics</p>
+        <p class="cv-entry-date">Expected December 2026 · GPA: 3.9</p>
+        <ul class="cv-entry-bullets">
+          <li>Thesis (In Progress): Property value outcomes of PFAS remediation vs. litigation in NC communities</li>
+          <li>Prior Research: Non-linear spatial effects of dam proximity on NC housing markets —
+            identified a statistically significant 22.3-mile amenity zone via IV hedonic model (ECG 561, Dec 2025)</li>
+        </ul>
+      </div>
+      <div class="cv-entry">
+        <p class="cv-entry-title">B.A. Economics · Minor: Philosophy</p>
+        <p class="cv-entry-sub">University of Virginia · Charlottesville, VA</p>
+        <p class="cv-entry-date">2018 · GPA: 3.5</p>
+      </div>
       <p class="cv-section-head">Research Experience</p>
       <div class="cv-entry">
         <p class="cv-entry-title">Research Assistant (Part Time)</p>
         <p class="cv-entry-sub">Veritas Economic Consulting · Cary, NC</p>
         <p class="cv-entry-date">September 2025 – Present</p>
-      </div>
-      <div class="cv-entry">
-        <p class="cv-entry-title">Research Assistant (Contract)</p>
-        <p class="cv-entry-sub">Environmental Economics Services, LLC · Raleigh, NC</p>
-        <p class="cv-entry-date">September 2025 – February 2026</p>
+        <ul class="cv-entry-bullets">
+          <li>Authored cost-benefit analysis for a Chicago high-rise allocating $13M in EPA Clean Water Act
+            compliance costs using Cost-Cost and Cost-Revenue Tests</li>
+          <li>Developed econometric simulations in Analytica and Stata to model power plant water usage</li>
+        </ul>
       </div>
       <a class="cv-download" href="iholmes_resume.pdf" target="_blank">Download Full CV (PDF)</a>
+    </div>
+    <div class="cv-skills">
+      <h3>Programming &amp; Analytics</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Stata</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">R</span>
+        <span class="skill-pill">SQL</span>
+      </div>
     </div>
   </div>
 </section>
@@ -580,14 +652,24 @@
   <p class="section-label">Get in Touch</p>
   <h2 class="section-title">Contact</h2>
   <div class="contact-grid">
+    <div>
+      <p class="contact-intro">
+        I welcome inquiries from prospective collaborators, advisors, students, and anyone
+        interested in my research.
+      </p>
+    </div>
     <div class="contact-links">
       <a class="contact-link" href="mailto:itholmes@ncsu.edu">
-        <div class="contact-link-label">University Email</div>
-        <div class="contact-link-value">itholmes@ncsu.edu</div>
+        <div>
+          <p class="contact-link-label">University Email</p>
+          <p class="contact-link-value">itholmes@ncsu.edu</p>
+        </div>
       </a>
       <a class="contact-link" href="https://www.linkedin.com/in/iaintholmes/" target="_blank">
-        <div class="contact-link-label">LinkedIn</div>
-        <div class="contact-link-value">linkedin.com/in/iaintholmes</div>
+        <div>
+          <p class="contact-link-label">LinkedIn</p>
+          <p class="contact-link-value">linkedin.com/in/iaintholmes</p>
+        </div>
       </a>
     </div>
   </div>
