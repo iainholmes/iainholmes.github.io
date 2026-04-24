@@ -160,13 +160,15 @@
     .hero-photo-wrap {
       position: absolute; inset: 0;
       display: flex; align-items: flex-start;
-      padding-top: 8vh;
+      /* Adjusted padding-top from 8vh to 4vh to move the larger photo up */
+      padding-top: 4vh; 
       justify-content: center;
       z-index: 2;
     }
     .hero-photo-wrap img {
-      width: 300px;
-      height: 300px;
+      /* Increased from 300px to 420px */
+      width: 420px;
+      height: 420px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center top;
@@ -433,7 +435,6 @@
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
 <nav>
   <a class="nav-name" href="#top">Iain Holmes</a>
   <ul class="nav-links">
@@ -444,7 +445,6 @@
   </ul>
 </nav>
 
-<!-- ─── HERO ─── -->
 <section class="hero" id="top">
   <div class="hero-text">
     <p class="hero-eyebrow">Graduate Researcher · NC State University</p>
@@ -478,7 +478,6 @@
   </div>
 </section>
 
-<!-- ─── ABOUT ─── -->
 <section id="about">
   <p class="section-label">Background</p>
   <h2 class="section-title">About Me</h2>
@@ -538,7 +537,6 @@
   </div>
 </section>
 
-<!-- ─── RESEARCH ─── -->
 <section id="research">
   <p class="section-label">Scholarship</p>
   <h2 class="section-title">Research &amp; Publications</h2>
@@ -584,7 +582,7 @@
         capitalization of dam proximity into residential property values. Standard OLS estimates yield
         modest relationships, but after correcting for the endogeneity of residential sorting via an
         Instrumental Variable (IV) strategy, I identify a statistically significant non-linear amenity
-        gradient (p &lt; 0.05). Dams act as a net amenity for approximately <strong>22.3 miles</strong>
+        gradient (p < 0.05). Dams act as a net amenity for approximately <strong>22.3 miles</strong>
         before the price effect dissipates — a finding that challenges the arbitrary fixed-radius
         assumptions common in infrastructure policy analysis and cost-benefit assessment.
       </p>
@@ -609,7 +607,6 @@
   </div>
 </section>
 
-<!-- ─── CV ─── -->
 <section id="cv">
   <p class="section-label">Curriculum Vitae</p>
   <h2 class="section-title">Experience &amp; Qualifications</h2>
@@ -788,7 +785,6 @@
   </div>
 </section>
 
-<!-- ─── CONTACT ─── -->
 <section id="contact">
   <p class="section-label">Get in Touch</p>
   <h2 class="section-title">Contact</h2>
