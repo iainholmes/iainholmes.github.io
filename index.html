@@ -395,6 +395,7 @@
       align-items: center;
       gap: 14px;
     }
+    .affil-text-block { position: relative; }
     .affil-text-block .affil-name {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1rem;
@@ -710,7 +711,6 @@
     <div class="research-item">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem;gap:1.5rem">
         <div style="display:flex;align-items:center;gap:1rem;flex:1">
-          <!-- EA logo: compass-style SVG matching the app favicon -->
           <svg width="52" height="52" viewBox="0 0 512 512" style="flex-shrink:0;border-radius:10px">
             <rect width="512" height="512" rx="112" fill="#0a0f1e"/>
             <circle cx="256" cy="256" r="192" fill="none" stroke="#2d5fd6" stroke-width="6" opacity=".5"/>
@@ -883,7 +883,7 @@
         <ul class="cv-entry-bullets">
           <li>Promoted to Client Associate to direct a 4-person research team, implementing strategic
             research frameworks across 4–6 simultaneous due diligence projects for clients including
-            Bain Capital, Astorg, and Boston Consulting Group</li>
+            bain Capital, Astorg, and Boston Consulting Group</li>
         </ul>
       </div>
 
@@ -962,18 +962,14 @@
       <h3>Affiliations</h3>
       <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
 
-        <!-- CEnREP: bracket width matches wordmark exactly -->
         <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
           <svg width="96" height="34" viewBox="0 0 96 34" style="flex-shrink:0;display:block">
-            <!-- Left bracket: serif at x=10, spine at x=2, gap of 4px to C at x=14 -->
             <line x1="10" y1="2"  x2="2"  y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
             <line x1="2"  y1="2"  x2="2"  y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
             <line x1="2"  y1="32" x2="10" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
-            <!-- Right bracket: spine at x=94, serif at x=86, 4px gap from EP end ~x=82 -->
             <line x1="86" y1="2"  x2="94" y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
             <line x1="94" y1="2"  x2="94" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
             <line x1="94" y1="32" x2="86" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
-            <!-- Wordmark: C at 14, En at 27, R at 53, EP at 67 — ends ~82 -->
             <text x="14"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">C</text>
             <text x="27"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">En</text>
             <line x1="27" y1="26" x2="52" y2="26" stroke="#C9A96E" stroke-width="1.8"/>
@@ -987,7 +983,6 @@
           </div>
         </div>
 
-        <!-- TREE: dendrochronology tree-ring design -->
         <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
           <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
             <defs>
@@ -997,12 +992,9 @@
                 <text x="36" y="44" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="21" font-weight="700" letter-spacing="1.5" fill="black">TREE</text>
               </mask>
             </defs>
-            <!-- Bark -->
             <circle cx="36" cy="36" r="35.5" fill="#2a1505"/>
             <g clip-path="url(#cv-circ)">
-              <!-- Wood base fill -->
               <ellipse cx="36" cy="36" rx="34" ry="34" fill="#8a6820"/>
-              <!-- Base rings — deeper, more contrast -->
               <ellipse cx="36.3" cy="35.8" rx="31"   ry="30.5" fill="none" stroke="#7a5a18" stroke-width="2.4"/>
               <ellipse cx="35.8" cy="36.2" rx="27.5" ry="27"   fill="none" stroke="#664a10" stroke-width="2.0"/>
               <ellipse cx="36.2" cy="35.7" rx="23.5" ry="23"   fill="none" stroke="#58380c" stroke-width="2.2"/>
@@ -1011,7 +1003,6 @@
               <ellipse cx="35.9" cy="36.1" rx="11.5" ry="11"   fill="none" stroke="#301604" stroke-width="1.7"/>
               <ellipse cx="36"   cy="36"   rx="8"    ry="7.5"  fill="none" stroke="#240e02" stroke-width="1.6"/>
               <ellipse cx="36"   cy="36"   rx="5"    ry="4.5"  fill="#180800"/>
-              <!-- TREE letters — bright gold highlight through mask -->
               <g mask="url(#cv-tmask)">
                 <ellipse cx="36.3" cy="35.8" rx="31"   ry="30.5" fill="none" stroke="#ffe090" stroke-width="2.4"/>
                 <ellipse cx="35.8" cy="36.2" rx="27.5" ry="27"   fill="none" stroke="#f5cc68" stroke-width="2.0"/>
@@ -1042,7 +1033,6 @@
   <h2 class="section-title">Contact</h2>
   <div class="contact-grid">
 
-    <!-- Col 1: Intro -->
     <div>
       <p class="contact-col-label">About</p>
       <p class="contact-intro">
@@ -1051,7 +1041,6 @@
       </p>
     </div>
 
-    <!-- Col 2: Direct contact links -->
     <div>
       <p class="contact-col-label">Direct Contact</p>
       <div class="contact-links">
@@ -1108,12 +1097,10 @@
       </div>
     </div>
 
-    <!-- Col 3: Affiliated organizations -->
     <div>
       <p class="contact-col-label">Affiliated Organizations</p>
       <div class="contact-affil-cards">
 
-        <!-- CEnREP — links to their website -->
         <a class="contact-affil-card" href="https://cenrep.ncsu.edu/" target="_blank" rel="noreferrer">
           <svg width="90" height="38" viewBox="0 0 96 38" style="flex-shrink:0;display:block">
             <line x1="10" y1="2"  x2="2"  y2="2"  stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
@@ -1136,8 +1123,7 @@
           </div>
         </a>
 
-        <!-- TREE -->
-        <div class="contact-affil-card">
+        <a class="contact-affil-card" href="https://cenrep.ncsu.edu/events/tree/" target="_blank" rel="noreferrer">
           <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
             <defs>
               <clipPath id="ct-circ"><circle cx="30" cy="30" r="28.5"/></clipPath>
@@ -1174,8 +1160,9 @@
             <p class="ca-label">Regular Attendee</p>
             <p class="ca-name">Triangle Resources &amp; Environmental Economics Seminar</p>
             <p class="ca-sub">Research Triangle &middot; Spring 2025</p>
+            <p class="ca-link">cenrep.ncsu.edu/events/tree &rarr;</p>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>
@@ -1185,7 +1172,6 @@
 
 <footer>
   &copy; <span id="yr"></span> Iain Holmes &middot; NC State University &middot; Department of Economics &middot; Raleigh, NC</span>
-
 </footer>
 
 <script>
