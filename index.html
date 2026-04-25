@@ -13,7 +13,7 @@
     :root {
       --ink:        #1a1a18;
       --ink-mid:    #4a4a44;
-      --ink-light:  #8a8a80;
+      --ink-light:  #88909a;
       --rule:       #d8d5cc;
       --cream:      #f7f5f0;
       --paper:      #fdfcf9;
@@ -37,8 +37,6 @@
 
     /* ============================================
        MODE TOGGLE — Research vs. Industry
-       Default state = Research. Industry hidden.
-       When body has .is-industry, swap visibility.
        ============================================ */
     .mode-industry { display: none !important; }
     body.is-industry .mode-research { display: none !important; }
@@ -57,7 +55,6 @@
       padding: 0 4vw;
       height: 64px;
     }
-    /* Boxed name */
     .nav-name {
       font-family: var(--serif);
       font-size: 1.1rem;
@@ -72,10 +69,8 @@
     }
     .nav-name:hover { background: var(--ink); color: var(--paper); }
 
-    /* Left cluster: name + toggle */
     .nav-left { display: flex; align-items: center; gap: 1rem; }
 
-    /* Mode toggle pill */
     .mode-toggle {
       display: flex;
       background: var(--cream);
@@ -235,7 +230,8 @@
       border: 4px solid #fff;
       box-shadow: 0 8px 32px rgba(27,58,92,0.18);
     }
-    .hero-quote {
+    /* Capability tagline used in both modes — italic Cormorant pull-quote feel. */
+    .hero-tagline {
       position: relative;
       z-index: 3;
       font-family: var(--serif);
@@ -324,7 +320,6 @@
       flex-shrink: 0;
     }
 
-    /* Education box with watermark logo */
     .edu-block {
       margin-top: 1.2rem;
       padding: 1.2rem;
@@ -425,27 +420,51 @@
       z-index: 1;
     }
 
-    /* Econometric Advisor — large logo on left, description on right */
-    .advisor-layout {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 2rem;
-      align-items: stretch;
-      margin-bottom: 1.25rem;
+    /* Advisor screenshot — appears below the description */
+    .advisor-screenshot-wrap {
+      margin: 1.4rem 0 1rem;
+      border: 1px solid var(--navy-light);
+      border-radius: 3px;
+      overflow: hidden;
+      background: #020e1f;
+      box-shadow: 0 6px 24px rgba(27,58,92,0.18);
     }
-    .advisor-logo-wrap {
+    .advisor-screenshot-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .advisor-screenshot-caption {
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-light);
+      padding: 0.55rem 0.9rem;
+      background: var(--navy-faint);
+      border-top: 1px solid var(--navy-light);
+      font-style: italic;
+    }
+    /* Placeholder shown until you drop in a real screenshot */
+    .advisor-screenshot-placeholder {
+      aspect-ratio: 16 / 9;
       display: flex;
-      align-items: stretch;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      gap: 0.5rem;
+      color: rgba(220, 232, 245, 0.55);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #020e1f 0%, #0a1d33 100%);
     }
-    .advisor-logo-wrap svg {
-      width: 200px;
-      height: 200px;
-      border-radius: 14px;
-      flex-shrink: 0;
+    .advisor-screenshot-placeholder span:first-child {
+      font-size: 1.2rem;
+      letter-spacing: 0;
+      text-transform: none;
+      font-family: var(--serif);
+      font-style: italic;
+      color: rgba(220, 232, 245, 0.85);
     }
-    .advisor-content { display: flex; flex-direction: column; justify-content: flex-start; }
-    .advisor-content .research-type { align-self: flex-start; }
 
     /* ============================================
        CV / EXPERIENCE LAYOUT
@@ -533,7 +552,6 @@
     }
     .cv-download:hover { background: var(--navy); color: #fff; }
 
-    /* Affiliation cards (sidebar in CV) */
     .affil-card {
       display: flex;
       align-items: center;
@@ -657,14 +675,60 @@
       letter-spacing: .03em;
     }
 
+    /* Contact-section closing manifesto line — research mode only.
+       Sits above the affiliated organizations column at full grid width. */
+    .contact-manifesto {
+      grid-column: 1 / -1;
+      max-width: 880px;
+      margin: 0 auto 2.5rem;
+      padding: 0 1.5rem;
+      text-align: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.92);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .contact-manifesto::before,
+    .contact-manifesto::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: rgba(201,169,110,0.5);
+      margin: 0 auto 1.2rem;
+    }
+    .contact-manifesto::after { margin: 1.2rem auto 0; }
+
+    /* Footer — minimal, balanced. Last-updated stamp on the right when there's room. */
     footer {
       background: #0d1f33;
-      text-align: center;
-      padding: 1.5rem 4vw;
+      padding: 1.4rem 4vw;
       font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.42);
       border-top: 3px solid var(--navy-mid);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+    footer .footer-sep {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.22);
+      flex-shrink: 0;
+    }
+    footer .footer-stamp {
+      font-style: italic;
+      color: rgba(255,255,255,0.32);
+      letter-spacing: 0.04em;
     }
 
     @media (max-width: 1100px) {
@@ -673,8 +737,7 @@
     }
     @media (max-width: 900px) {
       .about-grid, .cv-layout, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .advisor-layout { grid-template-columns: 1fr; }
-      .advisor-logo-wrap svg { width: 140px; height: 140px; }
+      .contact-manifesto { font-size: 1.1rem; padding: 1.5rem 1rem; }
     }
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -754,10 +817,15 @@
     <div class="hero-photo-wrap">
       <img src="files/headshot.jpeg" alt="Iain Holmes" />
     </div>
-    <blockquote class="hero-quote mode-research">
-      "Economics is the study of how societies allocate scarce resources &mdash;
-      It's about time we shift our focus toward the ones we cannot afford to waste."
-    </blockquote>
+    <p class="hero-tagline mode-research">
+      Applied environmental econometrician &mdash; studying how infrastructure,
+      contamination, and policy capitalize into housing markets and household welfare
+      across North Carolina.
+    </p>
+    <p class="hero-tagline mode-industry">
+      Five years across $9B+ AUM platforms &mdash; venture capital, private equity,
+      alternative credit, and life settlements.
+    </p>
     <p class="hero-affil mode-research">NC State &middot; Department of Economics &middot; Raleigh, NC</p>
     <p class="hero-affil mode-industry">Raleigh &middot; Durham &middot; Chapel Hill</p>
   </div>
@@ -988,7 +1056,7 @@
       </div>
     </div>
 
-    <!-- Econometric Advisor — compass logo as full-card watermark -->
+    <!-- Econometric Advisor — UPDATED card -->
     <div class="research-item advisor-card">
       <svg class="advisor-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <circle cx="256" cy="256" r="192" fill="none" stroke="#2d5fd6" stroke-width="6"/>
@@ -1006,27 +1074,55 @@
       <h3 class="research-title">Econometric Advisor &mdash; An AI-Powered Research Design Tool for Applied Economics</h3>
       <p class="research-abstract">
         The Econometric Advisor is a browser-based companion that helps applied researchers move from
-        a research question to a defensible identification strategy. Through a structured twelve-question
-        intake covering treatment assignment, data structure, sources of variation, and threats to
-        inference, the tool returns a tailored econometric playbook: a recommended estimator, functional
-        form considerations, spatial diagnostic suggestions, and an inference checklist calibrated to
-        the user's specific design. With an Anthropic API key supplied, the Advisor extends its output
-        with a plain-language summary of the identification logic and a curated mini-review of
-        related applied work. The full app is implemented in vanilla HTML and JavaScript with no
-        backend &mdash; a deliberate choice meant to make rigorous econometric thinking accessible to
-        any graduate student with a browser.
+        a research question to a defensible identification strategy. Through an
+        <strong>adaptive twelve-to-thirteen question intake</strong> that conditionally branches on
+        whether a study has an explicit treatment, the tool returns a tailored econometric playbook:
+        a recommended estimator, functional form considerations, spatial diagnostic suggestions,
+        and an inference checklist calibrated to the user's specific design.
+        Two distinctive features extend the tool beyond conventional method recommendation. An
+        <strong>interactive knowledge graph</strong> maps the architecture of applied econometrics
+        &mdash; Problems, Strategic Logic, Tools, and Diagnostics &mdash; with category filters,
+        hover-dim interaction, and an expand mode that lets users trace exactly where their study
+        sits in the wider methodological landscape. A built-in <strong>reference library</strong>
+        covers nine method families and roughly fifty estimators, each accompanied by a one-line
+        tagline, key assumption, estimation procedure, common pitfalls, and an applied example.
+        With an Anthropic API key supplied, the Advisor layers on AI-driven personalization:
+        <strong>per-section tailored rationales</strong> explaining how each recommended method
+        connects to the user's specific design, a curated literature review with
+        <strong>paper-by-paper analysis</strong> on demand, and a <strong>Claude.ai handoff</strong>
+        that pre-loads the user's full research context for deeper follow-up conversation including
+        file uploads. The full app is implemented in vanilla HTML and JavaScript with no backend
+        &mdash; a deliberate choice meant to make rigorous econometric thinking accessible to any
+        graduate student with a browser.
       </p>
+
+      <!-- Screenshot — replace placeholder by saving an image at files/advisor-screenshot.png -->
+      <div class="advisor-screenshot-wrap">
+        <!-- When you have the screenshot, replace this placeholder with:
+             <img src="files/advisor-screenshot.png" alt="Econometric Advisor — architecture knowledge graph view" />
+        -->
+        <div class="advisor-screenshot-placeholder">
+          <span>Architecture knowledge graph &amp; methodological specifications</span>
+          <span>Replace with files/advisor-screenshot.png</span>
+        </div>
+        <div class="advisor-screenshot-caption">
+          Knowledge graph linking Problems &rarr; Strategic Logic &rarr; Tools &rarr; Diagnostics, with
+          per-section AI-generated rationales appearing inline.
+        </div>
+      </div>
+
       <p class="research-meta">
         Iain Holmes &middot; NC State University, Department of Economics &middot; 2025<br>
-        Stack: HTML &middot; JavaScript &middot; Anthropic Claude API &middot; GitHub Pages
+        Stack: HTML &middot; JavaScript &middot; D3.js &middot; KaTeX &middot; Anthropic Claude API &middot; GitHub Pages
       </p>
       <div class="research-keywords">
         <span class="research-kw">Causal Inference</span>
-        <span class="research-kw">Econometric Methods</span>
         <span class="research-kw">Research Design</span>
         <span class="research-kw">Identification Strategy</span>
+        <span class="research-kw">Knowledge Graph</span>
+        <span class="research-kw">Reference Library</span>
         <span class="research-kw">AI-Assisted Toolkit</span>
-        <span class="research-kw">Open Source</span>
+        <span class="research-kw">Adaptive Intake</span>
       </div>
       <div style="display:flex;gap:.75rem;align-items:center;padding-top:1rem;margin-top:1rem;border-top:1px solid var(--rule);flex-wrap:wrap">
         <a href="https://iainholmes.github.io/econometric-advisor/" target="_blank" class="btn btn-primary"
@@ -1285,10 +1381,10 @@
           <span class="cv-entry-date">May 2023 &ndash; Aug 2025</span>
         </div>
         <ul class="cv-entry-bullets">
-          <li>Supported investor relations across 15+ VC and PE funds totaling over $9B in AUM, including TrueBridge Capital ($9.57B), as the primary touchpoint for capital activity, performance, and reporting questions.</li>
+          <li>Owned IR for 15+ VC and PE funds totaling $9B+ in AUM &mdash; including TrueBridge Capital ($9.57B AUM) &mdash; as the primary touchpoint for capital activity, performance, and reporting questions.</li>
           <li>Built financial models and performance analytics in Alteryx that fed directly into quarterly investor reporting deliverables.</li>
-          <li>Ran full fund administration support &mdash; onboarding, documentation, performance tracking &mdash; through Allvue and Dynamo CRM.</li>
-          <li>Operated as an embedded extension of clients' in-house IR teams, keeping investor communications consistent across firms with very different operating styles.</li>
+          <li>Ran full-cycle fund administration through Allvue and Dynamo CRM &mdash; investor onboarding, performance tracking, and documentation management.</li>
+          <li>Operated as an embedded extension of clients' in-house IR teams, holding investor communications consistent across firms with different operating styles.</li>
           <li>Conducted AML background investigations on prospective and existing investors as part of the firm's compliance team.</li>
         </ul>
       </div>
@@ -1321,7 +1417,7 @@
         </div>
         <ul class="cv-entry-bullets">
           <li>Promoted from Research Associate as the only member of my cohort to advance to Client Associate.</li>
-          <li>Directed a 4-person research team across 4&ndash;6 simultaneous due diligence projects for private equity and management consulting clients including Bain Capital, Astorg, and BCG &mdash; running on 3&ndash;5 week cycles.</li>
+          <li>Directed a 4-person research team across 4&ndash;6 simultaneous due diligence projects on 3&ndash;5 week cycles for clients including Bain Capital, Astorg, and BCG.</li>
           <li>Owned multi-client communication under tight diligence timelines, delivering market forecasts and value-chain analysis directly to investment teams.</li>
         </ul>
       </div>
@@ -1336,8 +1432,8 @@
         </div>
         <ul class="cv-entry-bullets">
           <li>Connected hedge funds, PE firms, and management consultancies with subject-matter experts across global value chains for time-sensitive market intelligence.</li>
-          <li>Mapped industry value chains and screened expert pools against client briefs to ensure relevance, accuracy, and depth of insight.</li>
-          <li>Worked across multiple sectors and client types, building the project-management instincts that drove promotion to Client Associate within the first year.</li>
+          <li>Mapped industry value chains and screened expert pools against client briefs to ensure relevance, accuracy, and depth of insight delivered.</li>
+          <li>Built the project-management instincts across multiple sectors and client types that drove promotion to Client Associate within the first year on the desk.</li>
         </ul>
       </div>
 
@@ -1459,10 +1555,19 @@
 
 <!-- ================================================
      CONTACT — mode-aware copy + affiliations
+     Research mode now hosts the relocated manifesto quote,
+     positioned above the contact grid.
      ================================================ -->
 <section id="contact">
   <p class="section-label">Get in Touch</p>
   <h2 class="section-title">Contact</h2>
+
+  <!-- Manifesto — research mode only, full grid width -->
+  <blockquote class="contact-manifesto mode-research">
+    Economics is the study of how societies allocate scarce resources &mdash;
+    it's about time we shift our focus toward the ones we cannot afford to waste.
+  </blockquote>
+
   <div class="contact-grid">
 
     <!-- Col 1: Intro -->
@@ -1617,14 +1722,13 @@
 </section>
 
 <footer>
-  &copy; <span id="yr"></span> Iain Holmes &middot; NC State University &middot; Department of Economics &middot; Raleigh, NC
+  <span>&copy; Iain Holmes</span>
+  <span class="footer-sep" aria-hidden="true"></span>
+  <span class="footer-stamp">Last updated April 2026</span>
 </footer>
 
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // Mode toggle: persist across reloads with localStorage replacement via in-memory only
-  // (keeping it session-fresh so the default Research view always greets new visitors).
+  // Mode toggle: keeps default Research view fresh on every visit.
   function setMode(mode) {
     const body = document.body;
     const btnR = document.getElementById('btn-research');
