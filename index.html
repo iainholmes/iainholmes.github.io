@@ -383,7 +383,6 @@
     .affil-card {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 16px;
       padding: 14px 16px;
       background: var(--navy-faint);
@@ -425,75 +424,84 @@
     #contact { background: var(--navy); }
     #contact .section-label { color: rgba(255,255,255,0.55); border-left-color: rgba(255,255,255,0.4); }
     #contact .section-title { color: #fff; border-bottom-color: rgba(255,255,255,0.35); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    .contact-intro { color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.75; }
-    .contact-links { display: flex; flex-direction: column; gap: 1.2rem; }
-    .contact-link {
-      display: flex; align-items: center; gap: 1rem;
-      text-decoration: none;
-      padding: 1rem 1.2rem;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.04);
-      border-radius: 2px;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .contact-link:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); }
-    .contact-link-icon {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .contact-link-icon svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.8); }
-    .contact-link-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
-    .contact-link-value { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-top: 0.1rem; }
 
-    /* contact affiliated orgs */
-    .contact-affil-row {
-      margin-top: 3rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid rgba(255,255,255,0.15);
+    /* Three-column contact layout: intro | links | affiliations */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1.4fr;
+      gap: 3.5rem;
+      align-items: start;
     }
-    .contact-affil-label {
+    .contact-col-label {
       font-size: .72rem;
       font-weight: 500;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.45);
-      margin-bottom: 1.25rem;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 1.1rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
     }
-    .contact-affil-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+    .contact-intro { color: rgba(255,255,255,0.7); font-size: .9rem; line-height: 1.8; }
+    .contact-links { display: flex; flex-direction: column; gap: .75rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none;
+      padding: .85rem 1rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.04);
+      border-radius: 2px;
+      transition: border-color 0.2s, background 0.2s;
     }
+    .contact-link:hover { border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.09); }
+    .contact-link-icon {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-link-icon svg { width: 15px; height: 15px; fill: rgba(255,255,255,0.75); }
+    .contact-link-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .contact-link-value { font-size: 0.85rem; color: rgba(255,255,255,0.88); margin-top: 0.1rem; }
+
+    /* Affiliation cards in contact */
+    .contact-affil-cards { display: flex; flex-direction: column; gap: .75rem; }
     .contact-affil-card {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.2rem;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.05);
+      gap: 1.1rem;
+      padding: .9rem 1rem;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.04);
       border-radius: 2px;
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
     }
+    .contact-affil-card:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.08); }
     .contact-affil-card .ca-label {
-      font-size: .72rem;
+      font-size: .68rem;
       font-weight: 500;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.45);
+      color: rgba(255,255,255,.4);
     }
     .contact-affil-card .ca-name {
-      font-size: .9rem;
-      color: rgba(255,255,255,.92);
+      font-size: .85rem;
+      color: rgba(255,255,255,.88);
       margin-top: .15rem;
-      line-height: 1.4;
+      line-height: 1.35;
     }
     .contact-affil-card .ca-sub {
-      font-size: .72rem;
-      color: rgba(255,255,255,.35);
+      font-size: .7rem;
+      color: rgba(255,255,255,.3);
       margin-top: 3px;
+    }
+    .contact-affil-card .ca-link {
+      font-size: .7rem;
+      color: rgba(201,169,110,.75);
+      margin-top: 3px;
+      letter-spacing: .03em;
     }
 
     footer {
@@ -521,7 +529,6 @@
 
     @media (max-width: 900px) {
       .about-grid, .cv-layout, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .contact-affil-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -668,15 +675,6 @@
       </div>
     </div>
 
-    <a class="cv-download" href="files/dam_catch_22.pdf" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      Download Paper (PDF)
-    </a>
-
     <div class="research-item">
       <p class="research-type">Working Paper · ECG 561 Applied Econometrics I</p>
       <h3 class="research-title">A Dam Catch-22.3: The Non-Linear Spatial Effects of North Carolina's Water Infrastructure on Housing Markets</h3>
@@ -707,6 +705,18 @@
         <span class="research-kw">Non-Market Valuation</span>
         <span class="research-kw">Amenity Capitalization</span>
         <span class="research-kw">North Carolina</span>
+      </div>
+      <div style="display:flex;gap:.75rem;align-items:center;padding-top:1rem;margin-top:1rem;border-top:1px solid var(--rule)">
+        <a href="files/dam_catch_22.pdf" target="_blank" class="btn btn-primary"
+           style="display:inline-flex;align-items:center;gap:.45rem">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Paper (PDF)
+        </a>
       </div>
     </div>
 
@@ -945,44 +955,40 @@
       <h3>Affiliations</h3>
       <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
 
-        <!-- CEnREP — logo centered within card -->
-        <div class="affil-card">
-          <div class="affil-card-inner">
-            <svg width="72" height="40" viewBox="0 0 144 40" style="flex-shrink:0;display:block">
-              <polyline points="10,3 2,3 2,37 10,37"     fill="none" stroke="#1b3a5c" stroke-width="2.2"/>
-              <polyline points="134,3 142,3 142,37 134,37" fill="none" stroke="#1b3a5c" stroke-width="2.2"/>
-              <text x="14"  y="28" font-family="Cormorant Garamond,Georgia,serif" font-size="26" font-weight="600" fill="#1a1a18">C</text>
-              <text x="32"  y="28" font-family="Cormorant Garamond,Georgia,serif" font-size="21" font-weight="400" fill="#4a4a44">En</text>
-              <line x1="32" y1="32" x2="63" y2="32" stroke="#C9A96E" stroke-width="2"/>
-              <text x="63"  y="28" font-family="Cormorant Garamond,Georgia,serif" font-size="26" font-weight="600" fill="#1a1a18">R</text>
-              <text x="81"  y="28" font-family="Cormorant Garamond,Georgia,serif" font-size="21" font-weight="400" fill="#4a4a44">EP</text>
-            </svg>
-            <div class="affil-text-block">
-              <div class="affil-name">CEnREP</div>
-              <div class="affil-sub">Center for Environmental &amp;<br>Resource Economic Policy</div>
-              <span class="affil-badge">Graduate Affiliate &middot; NC State</span>
-            </div>
+        <!-- CEnREP — larger, centered -->
+        <div class="affil-card" style="flex-direction:column;align-items:center;text-align:center;padding:20px 16px">
+          <svg width="160" height="48" viewBox="0 0 200 48" style="display:block;margin-bottom:12px">
+            <polyline points="12,4 2,4 2,44 12,44"     fill="none" stroke="#1b3a5c" stroke-width="2.5"/>
+            <polyline points="188,4 198,4 198,44 188,44" fill="none" stroke="#1b3a5c" stroke-width="2.5"/>
+            <text x="17"  y="33" font-family="Cormorant Garamond,Georgia,serif" font-size="32" font-weight="600" fill="#1a1a18">C</text>
+            <text x="38"  y="33" font-family="Cormorant Garamond,Georgia,serif" font-size="26" font-weight="400" fill="#4a4a44">En</text>
+            <line x1="38" y1="38" x2="77" y2="38" stroke="#C9A96E" stroke-width="2.2"/>
+            <text x="77"  y="33" font-family="Cormorant Garamond,Georgia,serif" font-size="32" font-weight="600" fill="#1a1a18">R</text>
+            <text x="100" y="33" font-family="Cormorant Garamond,Georgia,serif" font-size="26" font-weight="400" fill="#4a4a44">EP</text>
+          </svg>
+          <div class="affil-text-block" style="text-align:center">
+            <div class="affil-name">CEnREP</div>
+            <div class="affil-sub">Center for Environmental &amp;<br>Resource Economic Policy</div>
+            <span class="affil-badge">Graduate Affiliate &middot; NC State</span>
           </div>
         </div>
 
-        <!-- TREE — logo centered within card -->
-        <div class="affil-card">
-          <div class="affil-card-inner">
-            <svg width="52" height="52" viewBox="0 0 52 52" style="flex-shrink:0;display:block">
-              <circle cx="26" cy="26" r="23" fill="none" stroke="#5C7C89" stroke-width="1"/>
-              <circle cx="26" cy="26" r="17" fill="none" stroke="#1b3a5c" stroke-width="1.3"/>
-              <circle cx="26" cy="26" r="11" fill="none" stroke="#2D5016" stroke-width="1.9"/>
-              <line x1="26" y1="1"  x2="26" y2="6"  stroke="#5C7C89" stroke-width="1"/>
-              <line x1="26" y1="46" x2="26" y2="51" stroke="#5C7C89" stroke-width="1"/>
-              <line x1="1"  y1="26" x2="6"  y2="26" stroke="#5C7C89" stroke-width="1"/>
-              <line x1="46" y1="26" x2="51" y2="26" stroke="#5C7C89" stroke-width="1"/>
-              <text x="26" y="30" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="10" font-weight="600" fill="#1a1a18">TREE</text>
-            </svg>
-            <div class="affil-text-block">
-              <div class="affil-name">TREE Seminar</div>
-              <div class="affil-sub">Triangle Resources &amp;<br>Environmental Economics</div>
-              <span class="affil-badge">Attendee &middot; Spring 2025</span>
-            </div>
+        <!-- TREE — larger, centered -->
+        <div class="affil-card" style="flex-direction:column;align-items:center;text-align:center;padding:20px 16px">
+          <svg width="80" height="80" viewBox="0 0 80 80" style="display:block;margin-bottom:12px">
+            <circle cx="40" cy="40" r="36" fill="none" stroke="#5C7C89" stroke-width="1.2"/>
+            <circle cx="40" cy="40" r="27" fill="none" stroke="#1b3a5c" stroke-width="1.6"/>
+            <circle cx="40" cy="40" r="17" fill="none" stroke="#2D5016" stroke-width="2.4"/>
+            <line x1="40" y1="1"  x2="40" y2="8"  stroke="#5C7C89" stroke-width="1.2"/>
+            <line x1="40" y1="72" x2="40" y2="79" stroke="#5C7C89" stroke-width="1.2"/>
+            <line x1="1"  y1="40" x2="8"  y2="40" stroke="#5C7C89" stroke-width="1.2"/>
+            <line x1="72" y1="40" x2="79" y2="40" stroke="#5C7C89" stroke-width="1.2"/>
+            <text x="40" y="45" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="14" font-weight="600" fill="#1a1a18">TREE</text>
+          </svg>
+          <div class="affil-text-block" style="text-align:center">
+            <div class="affil-name">TREE Seminar</div>
+            <div class="affil-sub">Triangle Resources &amp;<br>Environmental Economics</div>
+            <span class="affil-badge">Attendee &middot; Spring 2025</span>
           </div>
         </div>
 
@@ -995,109 +1001,119 @@
   <p class="section-label">Get in Touch</p>
   <h2 class="section-title">Contact</h2>
   <div class="contact-grid">
+
+    <!-- Col 1: Intro -->
     <div>
+      <p class="contact-col-label">About</p>
       <p class="contact-intro">
         I welcome inquiries from prospective collaborators, advisors, students, and anyone
         interested in my research. I aim to respond to all messages within 48 hours.
       </p>
     </div>
-    <div class="contact-links">
 
-      <a class="contact-link" href="mailto:itholmes@ncsu.edu">
-        <div class="contact-link-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-        </div>
-        <div>
-          <p class="contact-link-label">University Email</p>
-          <p class="contact-link-value">itholmes@ncsu.edu</p>
-        </div>
-      </a>
+    <!-- Col 2: Direct contact links -->
+    <div>
+      <p class="contact-col-label">Direct Contact</p>
+      <div class="contact-links">
 
-      <a class="contact-link" href="mailto:iain.t.holmes@gmail.com">
-        <div class="contact-link-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-        </div>
-        <div>
-          <p class="contact-link-label">Personal Email</p>
-          <p class="contact-link-value">iain.t.holmes@gmail.com</p>
-        </div>
-      </a>
+        <a class="contact-link" href="mailto:itholmes@ncsu.edu">
+          <div class="contact-link-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-link-label">University Email</p>
+            <p class="contact-link-value">itholmes@ncsu.edu</p>
+          </div>
+        </a>
 
-      <a class="contact-link" href="https://www.linkedin.com/in/iaintholmes/" target="_blank">
-        <div class="contact-link-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-        </div>
-        <div>
-          <p class="contact-link-label">LinkedIn</p>
-          <p class="contact-link-value">linkedin.com/in/iaintholmes</p>
-        </div>
-      </a>
+        <a class="contact-link" href="mailto:iain.t.holmes@gmail.com">
+          <div class="contact-link-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-link-label">Personal Email</p>
+            <p class="contact-link-value">iain.t.holmes@gmail.com</p>
+          </div>
+        </a>
 
-      <a class="contact-link" href="https://github.com/iainholmes" target="_blank">
-        <div class="contact-link-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
-          </svg>
-        </div>
-        <div>
-          <p class="contact-link-label">GitHub</p>
-          <p class="contact-link-value">github.com/iainholmes</p>
-        </div>
-      </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/iaintholmes/" target="_blank">
+          <div class="contact-link-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-link-label">LinkedIn</p>
+            <p class="contact-link-value">linkedin.com/in/iaintholmes</p>
+          </div>
+        </a>
 
-    </div>
-  </div>
+        <a class="contact-link" href="https://github.com/iainholmes" target="_blank">
+          <div class="contact-link-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-link-label">GitHub</p>
+            <p class="contact-link-value">github.com/iainholmes</p>
+          </div>
+        </a>
 
-  <!-- Affiliated Organizations -->
-  <div class="contact-affil-row">
-    <p class="contact-affil-label">Affiliated Organizations</p>
-    <div class="contact-affil-grid">
-
-      <!-- CEnREP -->
-      <div class="contact-affil-card">
-        <svg width="88" height="38" viewBox="0 0 144 38" style="flex-shrink:0;display:block">
-          <polyline points="9,3 2,3 2,35 9,35"      fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8"/>
-          <polyline points="135,3 142,3 142,35 135,35" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8"/>
-          <text x="12"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="23" font-weight="600" fill="rgba(255,255,255,0.92)">C</text>
-          <text x="28"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="19" font-weight="400" fill="rgba(255,255,255,0.6)">En</text>
-          <line x1="28" y1="29" x2="56" y2="29" stroke="rgba(201,169,110,0.85)" stroke-width="1.6"/>
-          <text x="56"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="23" font-weight="600" fill="rgba(255,255,255,0.92)">R</text>
-          <text x="72"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="19" font-weight="400" fill="rgba(255,255,255,0.6)">EP</text>
-        </svg>
-        <div>
-          <p class="ca-label">Graduate Affiliate</p>
-          <p class="ca-name">Center for Environmental &amp; Resource Economic Policy</p>
-          <p class="ca-sub">NC State University &middot; cenrep.ncsu.edu</p>
-        </div>
       </div>
-
-      <!-- TREE -->
-      <div class="contact-affil-card">
-        <svg width="52" height="52" viewBox="0 0 52 52" style="flex-shrink:0;display:block">
-          <circle cx="26" cy="26" r="23" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.9"/>
-          <circle cx="26" cy="26" r="17" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.1"/>
-          <circle cx="26" cy="26" r="11" fill="none" stroke="rgba(45,80,22,0.85)"    stroke-width="1.7"/>
-          <line x1="26" y1="1"  x2="26" y2="5"  stroke="rgba(255,255,255,0.3)" stroke-width="0.9"/>
-          <line x1="26" y1="47" x2="26" y2="51" stroke="rgba(255,255,255,0.3)" stroke-width="0.9"/>
-          <line x1="1"  y1="26" x2="5"  y2="26" stroke="rgba(255,255,255,0.3)" stroke-width="0.9"/>
-          <line x1="47" y1="26" x2="51" y2="26" stroke="rgba(255,255,255,0.3)" stroke-width="0.9"/>
-          <text x="26" y="30" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="9" font-weight="600" fill="rgba(255,255,255,0.75)">TREE</text>
-        </svg>
-        <div>
-          <p class="ca-label">Regular Attendee</p>
-          <p class="ca-name">Triangle Resources &amp; Environmental Economics Seminar</p>
-          <p class="ca-sub">Research Triangle &middot; Spring 2025</p>
-        </div>
-      </div>
-
     </div>
+
+    <!-- Col 3: Affiliated organizations -->
+    <div>
+      <p class="contact-col-label">Affiliated Organizations</p>
+      <div class="contact-affil-cards">
+
+        <!-- CEnREP — links to their website -->
+        <a class="contact-affil-card" href="https://cenrep.ncsu.edu/" target="_blank" rel="noreferrer">
+          <svg width="80" height="36" viewBox="0 0 160 36" style="flex-shrink:0;display:block">
+            <polyline points="10,3 2,3 2,33 10,33"     fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.8"/>
+            <polyline points="150,3 158,3 158,33 150,33" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.8"/>
+            <text x="14"  y="24" font-family="Cormorant Garamond,Georgia,serif" font-size="22" font-weight="600" fill="rgba(255,255,255,0.92)">C</text>
+            <text x="29"  y="24" font-family="Cormorant Garamond,Georgia,serif" font-size="18" font-weight="400" fill="rgba(255,255,255,0.58)">En</text>
+            <line x1="29" y1="27" x2="57" y2="27" stroke="rgba(201,169,110,0.9)" stroke-width="1.5"/>
+            <text x="57"  y="24" font-family="Cormorant Garamond,Georgia,serif" font-size="22" font-weight="600" fill="rgba(255,255,255,0.92)">R</text>
+            <text x="73"  y="24" font-family="Cormorant Garamond,Georgia,serif" font-size="18" font-weight="400" fill="rgba(255,255,255,0.58)">EP</text>
+          </svg>
+          <div>
+            <p class="ca-label">Graduate Affiliate</p>
+            <p class="ca-name">Center for Environmental &amp; Resource Economic Policy</p>
+            <p class="ca-sub">NC State University</p>
+            <p class="ca-link">cenrep.ncsu.edu &rarr;</p>
+          </div>
+        </a>
+
+        <!-- TREE -->
+        <div class="contact-affil-card">
+          <svg width="52" height="52" viewBox="0 0 52 52" style="flex-shrink:0;display:block">
+            <circle cx="26" cy="26" r="23" fill="none" stroke="rgba(255,255,255,0.3)"  stroke-width="0.9"/>
+            <circle cx="26" cy="26" r="17" fill="none" stroke="rgba(255,255,255,0.2)"  stroke-width="1.1"/>
+            <circle cx="26" cy="26" r="11" fill="none" stroke="rgba(45,80,22,0.9)"     stroke-width="1.8"/>
+            <line x1="26" y1="1"  x2="26" y2="5"  stroke="rgba(255,255,255,0.28)" stroke-width="0.9"/>
+            <line x1="26" y1="47" x2="26" y2="51" stroke="rgba(255,255,255,0.28)" stroke-width="0.9"/>
+            <line x1="1"  y1="26" x2="5"  y2="26" stroke="rgba(255,255,255,0.28)" stroke-width="0.9"/>
+            <line x1="47" y1="26" x2="51" y2="26" stroke="rgba(255,255,255,0.28)" stroke-width="0.9"/>
+            <text x="26" y="30" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="9" font-weight="600" fill="rgba(255,255,255,0.72)">TREE</text>
+          </svg>
+          <div>
+            <p class="ca-label">Regular Attendee</p>
+            <p class="ca-name">Triangle Resources &amp; Environmental Economics Seminar</p>
+            <p class="ca-sub">Research Triangle &middot; Spring 2025</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
