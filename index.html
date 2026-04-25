@@ -160,16 +160,16 @@
     .hero-photo-wrap {
       position: absolute; inset: 0;
       display: flex; align-items: flex-start;
-      padding-top: 15vh;
+      padding-top: 10vh; /* ADJUSTED POSITION */
       justify-content: center;
       z-index: 2;
     }
     .hero-photo-wrap img {
-      width: 600px;
+      width: 600px; /* DOUBLE SIZE */
       height: 600px;
       border-radius: 50%;
       object-fit: cover;
-      object-position: center;
+      object-position: center top; /* RE-FIXED FRAMING */
       border: 4px solid #fff;
       box-shadow: 0 8px 32px rgba(27,58,92,0.18);
     }
@@ -586,7 +586,7 @@
         capitalization of dam proximity into residential property values. Standard OLS estimates yield
         modest relationships, but after correcting for the endogeneity of residential sorting via an
         Instrumental Variable (IV) strategy, I identify a statistically significant non-linear amenity
-        gradient (p < 0.05). Dams act as a net amenity for approximately <strong>22.3 miles</strong>
+        gradient (p < 0.05). Dams act as a net amenity for approximately 22.3 miles
         before the price effect dissipates — a finding that challenges the arbitrary fixed-radius
         assumptions common in infrastructure policy analysis and cost-benefit assessment.
       </p>
