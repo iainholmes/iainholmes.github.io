@@ -35,16 +35,19 @@
       line-height: 1.7;
     }
 
-    /* ============================================================
-       MODE TOGGLE — Research vs Industry visibility
-       ============================================================ */
-    .mode-industry { display: none; }
-    body.is-industry .mode-research { display: none; }
-    body.is-industry .mode-industry { display: revert; }
+    /* ============================================
+       MODE TOGGLE — Research vs. Industry
+       Default state = Research. Industry hidden.
+       When body has .is-industry, swap visibility.
+       ============================================ */
+    .mode-industry { display: none !important; }
+    body.is-industry .mode-research { display: none !important; }
+    body.is-industry .mode-industry { display: block !important; }
+    body.is-industry .mode-industry.is-flex { display: flex !important; }
+    body.is-industry .mode-industry.is-grid { display: grid !important; }
+    body.is-industry .mode-industry.is-inline { display: inline !important; }
+    body.is-industry .mode-industry.is-inline-block { display: inline-block !important; }
 
-    /* ============================================================
-       NAVIGATION
-       ============================================================ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(253,252,249,0.93);
@@ -54,27 +57,29 @@
       padding: 0 4vw;
       height: 64px;
     }
-    .nav-left { display: flex; align-items: center; gap: 1rem; }
-
+    /* Boxed name */
     .nav-name {
       font-family: var(--serif);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: 0.01em;
       color: var(--ink);
       text-decoration: none;
       border: 1.5px solid var(--ink);
-      padding: 6px 14px;
+      padding: 5px 14px;
       border-radius: 2px;
-      transition: all 0.2s;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .nav-name:hover { border-color: var(--navy); color: var(--navy); }
+    .nav-name:hover { background: var(--ink); color: var(--paper); }
 
-    /* The Pro Switch */
+    /* Left cluster: name + toggle */
+    .nav-left { display: flex; align-items: center; gap: 1rem; }
+
+    /* Mode toggle pill */
     .mode-toggle {
       display: flex;
-      background: var(--navy-faint);
-      border: 1px solid var(--navy-light);
+      background: var(--cream);
+      border: 1px solid var(--rule);
       border-radius: 3px;
       padding: 3px;
     }
@@ -82,41 +87,47 @@
       font-family: var(--sans);
       font-size: 0.68rem;
       font-weight: 500;
-      text-transform: uppercase;
       letter-spacing: 0.08em;
-      padding: 7px 14px;
+      text-transform: uppercase;
+      padding: 5px 12px;
       border: none;
       cursor: pointer;
       background: transparent;
-      color: var(--ink-mid);
+      color: var(--ink-light);
       border-radius: 2px;
       transition: all 0.2s;
     }
-    .toggle-btn:hover { color: var(--navy); }
+    .toggle-btn:hover { color: var(--ink-mid); }
     .toggle-btn.active {
       background: var(--navy);
       color: #fff;
+      box-shadow: 0 1px 3px rgba(27,58,92,0.2);
     }
 
-    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
     .nav-links a {
-      font-size: 0.82rem;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: var(--rule);
+      font-size: 0.78rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--ink-mid);
-      text-decoration: underline;
-      text-decoration-color: var(--rule);
-      text-underline-offset: 5px;
-      text-decoration-thickness: 1.5px;
-      padding-bottom: 2px;
       transition: color 0.2s, text-decoration-color 0.2s;
     }
     .nav-links a:hover { color: var(--navy); text-decoration-color: var(--navy); }
+    .nav-links a.nav-app {
+      color: var(--navy);
+      text-decoration-color: var(--navy-light);
+      font-weight: 500;
+    }
+    .nav-links a.nav-app:hover { text-decoration-color: var(--navy); }
 
-    /* ============================================================
+    /* ============================================
        HERO
-       ============================================================ */
+       ============================================ */
     .hero {
       min-height: 80vh;
       display: grid;
@@ -247,9 +258,6 @@
       color: var(--navy-mid);
     }
 
-    /* ============================================================
-       SECTIONS
-       ============================================================ */
     section { padding: 6rem 8vw; }
     section + section { border-top: 1px solid var(--rule); }
 
@@ -276,9 +284,9 @@
       border-bottom: 3px solid var(--navy);
     }
 
-    /* ============================================================
+    /* ============================================
        ABOUT
-       ============================================================ */
+       ============================================ */
     .about-grid {
       display: grid;
       grid-template-columns: 3fr 2fr;
@@ -316,7 +324,7 @@
       flex-shrink: 0;
     }
 
-    /* Education blocks with watermark logos */
+    /* Education box with watermark logo */
     .edu-block {
       margin-top: 1.2rem;
       padding: 1.2rem;
@@ -325,32 +333,33 @@
       position: relative;
       overflow: hidden;
     }
-    .edu-block::after {
-      content: '';
+    .edu-block .edu-content { position: relative; z-index: 2; }
+    .edu-block .edu-watermark {
       position: absolute;
+      right: -10px;
       top: 50%;
-      right: 14px;
       transform: translateY(-50%);
-      width: 90px;
-      height: 90px;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
+      width: 130px;
+      height: 130px;
       opacity: 0.10;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
+      object-fit: contain;
     }
-    .edu-block.edu-ncstate::after { background-image: url('files/ncstate_logo.png'); }
-    .edu-block.edu-uva::after     { background-image: url('files/uva_logo.png'); }
-    .edu-block > * { position: relative; z-index: 1; }
+    .edu-block.edu-ncstate .edu-watermark {
+      width: 160px;
+      right: -15px;
+    }
     .edu-block .degree { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--navy); }
     .edu-block .institution { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.2rem; line-height: 1.5; }
     .edu-block .year { font-size: 0.75rem; color: var(--navy-mid); margin-top: 0.15rem; }
 
-    /* ============================================================
-       RESEARCH / WORK SECTION
-       ============================================================ */
-    #research { background: var(--navy-faint); }
+    /* ============================================
+       RESEARCH SECTION
+       ============================================ */
+    #research, #experience-research { background: var(--navy-faint); }
+    #experience-industry { background: var(--navy-faint); }
+
     .research-list { display: flex; flex-direction: column; gap: 2rem; }
     .research-item {
       background: var(--paper);
@@ -396,13 +405,13 @@
       color: var(--navy);
     }
 
-    /* Advisor item — large logo on left, description on right */
-    .advisor-item { padding: 2rem; }
+    /* Econometric Advisor — large logo on left, description on right */
     .advisor-layout {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 2rem;
       align-items: stretch;
+      margin-bottom: 1.25rem;
     }
     .advisor-logo-wrap {
       display: flex;
@@ -410,34 +419,17 @@
       justify-content: center;
     }
     .advisor-logo-wrap svg {
-      width: 180px;
-      height: auto;
-      max-height: 100%;
-      align-self: stretch;
+      width: 200px;
+      height: 200px;
       border-radius: 14px;
       flex-shrink: 0;
     }
-    .advisor-text { display: flex; flex-direction: column; }
-    .advisor-launch-link {
-      font-size: .75rem;
-      font-weight: 500;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--navy);
-      text-decoration: none;
-      border-bottom: 1px solid var(--navy-light);
-      padding-bottom: 1px;
-      flex-shrink: 0;
-      white-space: nowrap;
-      align-self: flex-start;
-      margin-top: 0.4rem;
-      margin-bottom: 1rem;
-    }
-    .advisor-launch-link:hover { color: var(--ink); border-bottom-color: var(--navy); }
+    .advisor-content { display: flex; flex-direction: column; justify-content: flex-start; }
+    .advisor-content .research-type { align-self: flex-start; }
 
-    /* ============================================================
-       CV LAYOUT
-       ============================================================ */
+    /* ============================================
+       CV / EXPERIENCE LAYOUT
+       ============================================ */
     .cv-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; }
 
     .cv-section-head {
@@ -454,34 +446,37 @@
     }
     .cv-section-head:first-child { margin-top: 0; }
 
-    .cv-entry { margin-bottom: 1.5rem; padding-left: 0.75rem; border-left: 2px solid var(--navy-light); }
-    .cv-entry-title {
-      font-weight: 500; font-size: 0.95rem; color: var(--ink);
-      display: inline-flex; align-items: center; gap: 0.5rem;
+    .cv-entry {
+      margin-bottom: 1.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--navy-light);
+      background: var(--paper);
+      padding: 1rem 1.25rem;
+      border-radius: 2px;
+      border: 1px solid var(--navy-light);
+      border-left: 3px solid var(--navy);
     }
-    .cv-entry-title a {
+    .cv-entry-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+    .cv-entry-title { font-weight: 600; font-size: 0.98rem; color: var(--ink); }
+    .cv-entry-sub { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.2rem; line-height: 1.5; }
+    .cv-entry-sub a {
       color: var(--navy);
       text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      border: 1px solid var(--navy-light);
-      background: var(--navy-faint);
-      padding: 1px 7px;
-      border-radius: 2px;
-      transition: all 0.15s;
+      border-bottom: 1px dotted var(--navy-light);
+      transition: border-color 0.15s;
     }
-    .cv-entry-title a:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
-    .cv-entry-sub { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.2rem; line-height: 1.5; }
+    .cv-entry-sub a:hover { border-bottom-color: var(--navy); }
     .cv-entry-date {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--ink-light);
-      margin-top: 0.35rem;
       letter-spacing: 0.04em;
-      display: block;
+      white-space: nowrap;
+      font-weight: 500;
+      text-transform: uppercase;
+      flex-shrink: 0;
     }
-    .cv-entry-bullets { margin-top: 0.5rem; padding-left: 1.1rem; }
-    .cv-entry-bullets li { font-size: 0.82rem; color: var(--ink-mid); margin-bottom: 0.3rem; line-height: 1.55; }
+    .cv-entry-bullets { margin-top: 0.6rem; padding-left: 1.1rem; }
+    .cv-entry-bullets li { font-size: 0.83rem; color: var(--ink-mid); margin-bottom: 0.35rem; line-height: 1.6; }
 
     .cv-skills h3 {
       font-family: var(--sans);
@@ -518,7 +513,7 @@
     }
     .cv-download:hover { background: var(--navy); color: #fff; }
 
-    /* affiliation cards (CV sidebar) */
+    /* Affiliation cards (sidebar in CV) */
     .affil-card {
       display: flex;
       align-items: center;
@@ -555,9 +550,9 @@
       border-radius: 2px;
     }
 
-    /* ============================================================
+    /* ============================================
        CONTACT
-       ============================================================ */
+       ============================================ */
     #contact { background: var(--navy); }
     #contact .section-label { color: rgba(255,255,255,0.55); border-left-color: rgba(255,255,255,0.4); }
     #contact .section-title { color: #fff; border-bottom-color: rgba(255,255,255,0.35); }
@@ -615,19 +610,28 @@
     }
     .contact-affil-card:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.08); }
     .contact-affil-card .ca-label {
-      font-size: .68rem; font-weight: 500; letter-spacing: .1em;
-      text-transform: uppercase; color: rgba(255,255,255,.4);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
     }
     .contact-affil-card .ca-name {
-      font-size: .85rem; color: rgba(255,255,255,.88);
-      margin-top: .15rem; line-height: 1.35;
+      font-size: .85rem;
+      color: rgba(255,255,255,.88);
+      margin-top: .15rem;
+      line-height: 1.35;
     }
     .contact-affil-card .ca-sub {
-      font-size: .7rem; color: rgba(255,255,255,.3); margin-top: 3px;
+      font-size: .7rem;
+      color: rgba(255,255,255,.3);
+      margin-top: 3px;
     }
     .contact-affil-card .ca-link {
-      font-size: .7rem; color: rgba(201,169,110,.75);
-      margin-top: 3px; letter-spacing: .03em;
+      font-size: .7rem;
+      color: rgba(201,169,110,.75);
+      margin-top: 3px;
+      letter-spacing: .03em;
     }
 
     footer {
@@ -640,24 +644,21 @@
       border-top: 3px solid var(--navy-mid);
     }
 
-    /* ============================================================
-       RESPONSIVE
-       ============================================================ */
     @media (max-width: 1100px) {
       .nav-links { gap: 1.2rem; }
-      .nav-links a { font-size: 0.74rem; }
+      .nav-links a { font-size: 0.72rem; }
     }
     @media (max-width: 900px) {
       .about-grid, .cv-layout, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .advisor-layout { grid-template-columns: 1fr; }
-      .advisor-logo-wrap svg { width: 140px; }
+      .advisor-logo-wrap svg { width: 140px; height: 140px; }
     }
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-panel { padding: 3rem 6vw; }
       .hero-text { padding: 3rem 6vw; border-right: none; }
-      nav { flex-wrap: wrap; height: auto; padding: 8px 4vw; }
-      .nav-links { gap: 0.9rem; flex-wrap: wrap; }
+      nav { flex-wrap: wrap; height: auto; padding: 0.5rem 4vw; gap: 0.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; }
       section { padding: 4rem 6vw; }
     }
   </style>
@@ -667,59 +668,62 @@
 <nav>
   <div class="nav-left">
     <a class="nav-name" href="#top">Iain Holmes</a>
-    <div class="mode-toggle" role="tablist" aria-label="View mode">
-      <button class="toggle-btn active" id="btn-research" type="button" onclick="toggleMode('research')" role="tab" aria-selected="true">Research</button>
-      <button class="toggle-btn" id="btn-industry" type="button" onclick="toggleMode('industry')" role="tab" aria-selected="false">Industry</button>
+    <div class="mode-toggle" role="tablist" aria-label="Site mode">
+      <button class="toggle-btn active" id="btn-research" type="button" onclick="setMode('research')" aria-pressed="true">Research</button>
+      <button class="toggle-btn" id="btn-industry" type="button" onclick="setMode('industry')" aria-pressed="false">Industry</button>
     </div>
   </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#research">Research</a></li>
+    <li><a href="#research" class="mode-research">Research</a></li>
+    <li><a href="#experience-industry" class="mode-industry is-inline-block">Experience</a></li>
     <li><a href="#cv">CV</a></li>
+    <li><a href="https://iainholmes.github.io/econometric-advisor/" target="_blank" rel="noreferrer" class="nav-app">Advisor App &rarr;</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://iainholmes.github.io/econometric-advisor/" target="_blank" rel="noreferrer">Advisor App</a></li>
   </ul>
 </nav>
 
-<!-- ==========================================================
-     HERO
-     ========================================================== -->
 <section class="hero" id="top">
   <div class="hero-text">
-    <p class="hero-eyebrow mode-research">Graduate Researcher · NC State University</p>
-    <p class="hero-eyebrow mode-industry">Investor Relations · Financial Analytics</p>
+    <p class="hero-eyebrow mode-research">Graduate Researcher &middot; NC State University</p>
+    <p class="hero-eyebrow mode-industry">Investor Relations &middot; Financial Analytics</p>
 
     <h1 class="hero-name">Iain<br><em>Holmes</em></h1>
 
-    <p class="hero-desc mode-research">
-      M.S. candidate in Economics with dual concentration in Data Analytics and
-      Natural Resource &amp; Environmental Economics — applying rigorous quantitative
-      methods to environmental policy, infrastructure valuation, and hedonic frameworks.
-    </p>
-    <p class="hero-desc mode-industry">
-      Investor Relations and analytics professional with five years across alternative
-      investments, due diligence research, and government — supporting institutional
-      capital partners, private equity clients, and federal stakeholders.
-    </p>
-
-    <div class="hero-tags mode-research">
-      <span class="tag">Environmental Economics</span>
-      <span class="tag">Natural Resource Policy</span>
-      <span class="tag">Hedonic Pricing</span>
-      <span class="tag">Applied Econometrics</span>
-      <span class="tag">Data Analytics</span>
+    <div class="mode-research">
+      <p class="hero-desc">
+        M.S. candidate in Economics with dual concentration in Data Analytics and
+        Natural Resource &amp; Environmental Economics &mdash; applying rigorous quantitative
+        methods to environmental policy, infrastructure valuation, and hedonic frameworks.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">Environmental Economics</span>
+        <span class="tag">Natural Resource Policy</span>
+        <span class="tag">Hedonic Pricing</span>
+        <span class="tag">Applied Econometrics</span>
+        <span class="tag">Data Analytics</span>
+      </div>
     </div>
-    <div class="hero-tags mode-industry">
-      <span class="tag">Investor Relations</span>
-      <span class="tag">Fund Administration</span>
-      <span class="tag">Due Diligence</span>
-      <span class="tag">Financial Modeling</span>
-      <span class="tag">Data Analytics</span>
+
+    <div class="mode-industry">
+      <p class="hero-desc">
+        Investor relations and financial analytics professional with experience supporting
+        $9B+ AUM platforms across venture capital, private equity, and alternative
+        credit &mdash; bringing the same precision to economic research that institutional
+        capital demands of fund operations.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">Investor Relations</span>
+        <span class="tag">Fund Administration</span>
+        <span class="tag">Financial Modeling</span>
+        <span class="tag">Due Diligence</span>
+        <span class="tag">Stakeholder Management</span>
+      </div>
     </div>
 
     <div class="hero-cta">
       <a class="btn btn-primary mode-research" href="#research">View Research</a>
-      <a class="btn btn-primary mode-industry" href="#cv">View Experience</a>
+      <a class="btn btn-primary mode-industry" href="#experience-industry">View Experience</a>
       <a class="btn btn-secondary" href="#cv">View CV</a>
     </div>
   </div>
@@ -728,153 +732,171 @@
       <img src="files/headshot.jpeg" alt="Iain Holmes" />
     </div>
     <blockquote class="hero-quote mode-research">
-      "Economics is the study of how societies allocate scarce resources —
+      "Economics is the study of how societies allocate scarce resources &mdash;
       It's about time we shift our focus toward the ones we cannot afford to waste."
     </blockquote>
     <blockquote class="hero-quote mode-industry">
-      "Behind every allocation decision is a stakeholder who needs the numbers
-      to be both accurate and intelligible — that's the work."
+      "Capital allocation, like resource allocation, rewards rigor, transparency,
+      and the discipline to model what matters before acting on it."
     </blockquote>
-    <p class="hero-affil mode-research">NC State · Department of Economics · Raleigh, NC</p>
-    <p class="hero-affil mode-industry">Chapel Hill, NC · Open to Roles &amp; Collaboration</p>
+    <p class="hero-affil mode-research">NC State &middot; Department of Economics &middot; Raleigh, NC</p>
+    <p class="hero-affil mode-industry">Chapel Hill, NC &middot; Available for consulting &amp; analytical engagements</p>
   </div>
 </section>
 
-<!-- ==========================================================
-     ABOUT
-     ========================================================== -->
+<!-- ================================================
+     ABOUT — two parallel versions
+     ================================================ -->
 <section id="about">
-  <p class="section-label">Background</p>
+  <p class="section-label mode-research">Background</p>
+  <p class="section-label mode-industry">Background</p>
   <h2 class="section-title">About Me</h2>
-  <div class="about-grid">
 
-    <!-- RESEARCH ABOUT -->
-    <div class="about-body mode-research">
+  <!-- RESEARCH ABOUT -->
+  <div class="about-grid mode-research">
+    <div class="about-body">
       <p>
         I am a second-year graduate student at North Carolina State University pursuing a Master of
         Science in Economics with a dual concentration in <strong>Data Analytics</strong> and
-        <strong>Natural Resource &amp; Environmental Economics</strong>. My work sits at the
-        intersection of rigorous quantitative analysis and real-world environmental challenges —
-        examining how infrastructure, contamination, and policy shape economic behavior and
+        <strong>Natural Resource &amp; Environmental Economics</strong>. My academic work sits at
+        the intersection of rigorous quantitative analysis and real-world environmental challenges
+        &mdash; examining how infrastructure, contamination, and policy shape economic behavior and
         housing markets across North Carolina.
       </p>
       <p>
-        Alongside my coursework, I serve as a Research Assistant at <strong>Veritas Economic
-        Consulting</strong> in Cary, NC, where I develop econometric models, design
-        stated-preference surveys eliciting willingness-to-pay for environmental programs, and
-        contribute analysis to expert witness proceedings on EPA compliance matters. I also
-        contributed to a Natural Resource Damages textbook with Dr. Rick Dunford at
-        <strong>Environmental Economics Services, LLC</strong>, validating empirical frameworks
-        and statistical model accuracy across hazardous-substance damages cases.
+        Coursework spans Applied Econometrics I &amp; II, Environmental Resource &amp; Policy,
+        Big Data Econometrics, and Applied Microeconometrics. In Spring 2026 I served as a
+        <strong>Graduate Teaching Assistant</strong> for EC 490 (Senior Seminar) and EC 410
+        (Public Finance), grading assignments and mentoring undergraduates developing capstone
+        research papers on market strategy, externalities, and regulation.
       </p>
       <p>
-        On campus, I serve as a Graduate Teaching Assistant for EC 490 (Senior Seminar) and EC 410
-        (Public Finance), and I am a graduate affiliate of the <strong>Center for Environmental
-        and Resource Economic Policy (CEnREP)</strong>. Through CEnREP I participate in the
-        <strong>Triangle Resources and Environmental Economics (TREE)</strong> seminar — a joint
-        Duke–NC State forum convening leading scholars in environmental valuation, natural
-        resource economics, and energy policy.
+        Alongside coursework I serve as a Research Assistant at <strong>Veritas Economic Consulting</strong>
+        in Cary, NC, where I develop econometric models in Stata and Analytica, design stated-preference
+        surveys eliciting willingness-to-pay for environmental programs, and contribute analysis
+        supporting expert witness testimony on EPA Clean Water Act compliance matters. I also recently
+        completed a contract role at <strong>Environmental Economics Services, LLC</strong>, working with
+        Dr. Rick Dunford on a Natural Resource Damages textbook &mdash; validating empirical frameworks
+        and updating regression models for prior NRD case studies.
       </p>
       <p>
-        My research interests center on the non-market valuation of environmental goods, spatial
-        econometrics, and the economic consequences of environmental contamination on
-        communities — with my thesis examining the marginal cost threshold at which proposed PFAS
-        surface water regulations become welfare-improving for the North Carolina public.
+        My current thesis examines the Public's Willingness-to-Pay for proposed PFAS surface water
+        regulations in North Carolina, using contingent valuation cross-validated with revealed-preference
+        evidence from residential property markets. Broader interests include non-market valuation,
+        spatial econometrics, identity economics, and the economic consequences of environmental
+        contamination on communities.
       </p>
     </div>
-
-    <!-- INDUSTRY ABOUT -->
-    <div class="about-body mode-industry">
-      <p>
-        Before returning to graduate school, I built a five-year career across alternative
-        investments, expert-network research, data analytics, and federal policy — beginning with
-        a <strong>Legislative Research Internship</strong> in the Washington office of
-        Congressman Seth Moulton, where I tracked utility-recovery data following the 2018
-        Merrimack Valley gas explosions and shaped constituent communications across the 6th
-        District of Massachusetts.
-      </p>
-      <p>
-        Out of college I joined <strong>Procession Systems</strong>, a three-year-old
-        government-contracting startup in Reston, VA, where I built and ran the firm's data
-        analytics function — surfacing recruiter performance trends, forecasting hiring demand,
-        and supporting cleared-talent placement across federal contractors.
-      </p>
-      <p>
-        I subsequently moved to <strong>Third Bridge</strong> in New York, where I was promoted
-        from Research Associate to Client Associate to lead a four-person team running 4–6
-        simultaneous due diligence engagements (3–5 week cycles) for private equity and
-        management consulting clients including <strong>Bain Capital, Astorg, and Boston
-        Consulting Group</strong>. I then joined <strong>Obra Capital</strong> in Austin to
-        support investor relations across a $6.9B platform spanning Special Situations,
-        Longevity, and Real Estate Credit products.
-      </p>
-      <p>
-        Most recently at <strong>Standish Management</strong>, I served as Client Associate in
-        Investor Relations, leveraging Alteryx for financial modeling and performance analytics
-        across 15+ investment funds — including <strong>TrueBridge Capital ($9.57B AUM)</strong>
-        — and contributing to the firm's Anti-Money-Laundering team for investor background
-        diligence. That applied, analytical foundation now informs the precision and rigor I
-        bring to every research question I pursue in graduate school.
-      </p>
-    </div>
-
-    <!-- SIDEBAR -->
     <div class="about-sidebar">
+      <h3>Research Interests</h3>
+      <ul class="interest-list">
+        <li>Environmental &amp; Natural Resource Economics</li>
+        <li>Non-Market Valuation &amp; Hedonic Pricing</li>
+        <li>Identity Economics &amp; Resource Markets</li>
+        <li>Industrial Economics &amp; Housing Markets</li>
+        <li>Applied Econometrics &amp; Causal Inference</li>
+        <li>Environmental Policy &amp; Regulation</li>
+      </ul>
 
-      <!-- Research interests -->
-      <div class="mode-research">
-        <h3>Research Interests</h3>
-        <ul class="interest-list">
-          <li>Environmental &amp; Natural Resource Economics</li>
-          <li>Non-Market Valuation &amp; Hedonic Pricing</li>
-          <li>Identity Economics &amp; Agricultural/Resource Markets</li>
-          <li>Industrial Economics &amp; Housing Markets</li>
-          <li>Applied Econometrics &amp; Causal Inference</li>
-          <li>Environmental Policy &amp; Regulation</li>
-        </ul>
-      </div>
-
-      <!-- Industry domains -->
-      <div class="mode-industry">
-        <h3>Industry Domains</h3>
-        <ul class="interest-list">
-          <li>Alternative Investments &amp; Private Capital</li>
-          <li>Investor Relations &amp; Fund Administration</li>
-          <li>Due Diligence &amp; Expert-Network Research</li>
-          <li>AML &amp; Investor Background Diligence</li>
-          <li>Financial Modeling &amp; Performance Analytics</li>
-          <li>Federal Policy &amp; Legislative Research</li>
-        </ul>
-      </div>
-
-      <!-- Education with watermark logos -->
       <div class="edu-block edu-ncstate">
-        <p class="degree">M.Sc. Economics</p>
-        <p class="institution">North Carolina State University · Raleigh, NC<br>
-          Data Analytics and Natural Resource &amp; Environmental Economics</p>
-        <p class="year">Expected December 2026 · GPA: 3.9</p>
+        <img class="edu-watermark" src="files/ncstate-logo.png" alt="" aria-hidden="true" />
+        <div class="edu-content">
+          <p class="degree">M.Sc. Economics</p>
+          <p class="institution">North Carolina State University &middot; Raleigh, NC<br>
+            Data Analytics and Natural Resource &amp; Environmental Economics</p>
+          <p class="year">Expected December 2026 &middot; GPA: 3.9</p>
+        </div>
       </div>
+
       <div class="edu-block edu-uva">
-        <p class="degree">B.A. Economics · Minor: Philosophy</p>
-        <p class="institution">University of Virginia · Charlottesville, VA</p>
-        <p class="year">2018 · GPA: 3.5</p>
+        <img class="edu-watermark" src="files/uva-logo.png" alt="" aria-hidden="true" />
+        <div class="edu-content">
+          <p class="degree">B.A. Economics &middot; Minor: Philosophy</p>
+          <p class="institution">University of Virginia &middot; Charlottesville, VA</p>
+          <p class="year">2018 &middot; GPA: 3.5</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDUSTRY ABOUT -->
+  <div class="about-grid mode-industry is-grid">
+    <div class="about-body">
+      <p>
+        I bring over five years of professional experience across <strong>investor relations</strong>,
+        <strong>fund administration</strong>, and <strong>institutional research</strong> &mdash; spanning
+        venture capital, private equity, alternative credit, and life settlements. My career began on
+        Capitol Hill and has carried me through New York, Austin, and now the Research Triangle.
+      </p>
+      <p>
+        Most recently, as a Client Associate at <strong>Standish Management</strong>, I served as the primary
+        point of contact for investor inquiries across VC and PE firms, providing fund administration,
+        performance analytics, and AML support for funds totaling over $9B in AUM. Prior to that, I supported
+        the flagship life settlements platform at <strong>Obra Capital</strong>, producing NAV/redemption
+        reporting, drafting Due Diligence Questionnaires, and interfacing across product, operations,
+        and marketing teams.
+      </p>
+      <p>
+        My early career at <strong>Third Bridge</strong> in New York focused on facilitating expert
+        consultations for hedge funds, PE firms, and management consultancies &mdash; managing 4&ndash;6
+        simultaneous due diligence projects for clients including Bain Capital, Astorg, and BCG. I was
+        the only member of my direct cohort to be promoted to Client Associate, where I directed a
+        4-person research team. Earlier still, I built and led the data analytics function at
+        <strong>Procession Systems</strong>, a Reston-based startup, after starting there as a
+        Technical Recruiter sourcing security-cleared talent for federal contractors.
+      </p>
+      <p>
+        My professional foundation began with a legislative research internship in the office of
+        <strong>U.S. Rep. Seth Moulton</strong>, where I conducted constituent research and
+        coordinated with utility executives tracking infrastructure recovery after the 2018 Merrimack
+        Valley gas explosions. That blend of policy, data, and stakeholder management is exactly what
+        I bring to applied economics today.
+      </p>
+    </div>
+    <div class="about-sidebar">
+      <h3>Core Competencies</h3>
+      <ul class="interest-list">
+        <li>Investor Relations &amp; Communications</li>
+        <li>Fund Administration &amp; Reporting</li>
+        <li>Due Diligence &amp; DDQ Authoring</li>
+        <li>Performance Analytics &amp; NAV Modeling</li>
+        <li>AML &amp; Investor Onboarding</li>
+        <li>Cross-Functional Stakeholder Management</li>
+      </ul>
+
+      <div class="edu-block edu-ncstate">
+        <img class="edu-watermark" src="files/ncstate-logo.png" alt="" aria-hidden="true" />
+        <div class="edu-content">
+          <p class="degree">M.Sc. Economics</p>
+          <p class="institution">North Carolina State University &middot; Raleigh, NC<br>
+            Data Analytics and Natural Resource &amp; Environmental Economics</p>
+          <p class="year">Expected December 2026 &middot; GPA: 3.9</p>
+        </div>
+      </div>
+
+      <div class="edu-block edu-uva">
+        <img class="edu-watermark" src="files/uva-logo.png" alt="" aria-hidden="true" />
+        <div class="edu-content">
+          <p class="degree">B.A. Economics &middot; Minor: Philosophy</p>
+          <p class="institution">University of Virginia &middot; Charlottesville, VA</p>
+          <p class="year">2018 &middot; GPA: 3.5</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==========================================================
-     RESEARCH MODE: Thesis & Research
-     INDUSTRY MODE: (this section is hidden, content lives in CV)
-     ========================================================== -->
+<!-- ================================================
+     RESEARCH-MODE: Thesis & Research
+     ================================================ -->
 <section id="research" class="mode-research">
   <p class="section-label">Scholarship</p>
   <h2 class="section-title">Thesis &amp; Research</h2>
   <div class="research-list">
 
-    <!-- THESIS -->
+    <!-- Thesis -->
     <div class="research-item">
-      <p class="research-type">Thesis · In Progress</p>
+      <p class="research-type">Thesis &middot; In Progress</p>
       <h3 class="research-title">Valuing Regulatory Justification: A Tipping Point Analysis of PFAS Surface Water Quality Standards in North Carolina</h3>
       <p class="research-abstract">
         This research moves beyond aggregate cost-benefit metrics to identify the marginal cost per household
@@ -889,7 +911,7 @@
         actionable for the North Carolina Department of Environmental Quality (DEQ) in regulatory
         proceedings and public engagement.
       </p>
-      <p class="research-meta">NC State University, Department of Economics · 2026</p>
+      <p class="research-meta">NC State University, Department of Economics &middot; 2026</p>
       <div class="research-keywords">
         <span class="research-kw">Willingness to Pay (WTP)</span>
         <span class="research-kw">Regulatory Economics</span>
@@ -901,9 +923,9 @@
       </div>
     </div>
 
-    <!-- DAM PAPER -->
+    <!-- Dam paper -->
     <div class="research-item">
-      <p class="research-type">Working Paper · ECG 561 Applied Econometrics I</p>
+      <p class="research-type">Working Paper &middot; ECG 561 Applied Econometrics I</p>
       <h3 class="research-title">A Dam Catch-22.3: The Non-Linear Spatial Effects of North Carolina's Water Infrastructure on Housing Markets</h3>
       <p class="research-abstract">
         Infrastructure projects generate complex spatial externalities that ripple through local housing
@@ -914,11 +936,11 @@
         modest relationships, but after correcting for the endogeneity of residential sorting via an
         Instrumental Variable (IV) strategy, I identify a statistically significant non-linear amenity
         gradient (p &lt; 0.05). Dams act as a net amenity for approximately 22.3 miles
-        before the price effect dissipates — a finding that challenges the arbitrary fixed-radius
+        before the price effect dissipates &mdash; a finding that challenges the arbitrary fixed-radius
         assumptions common in infrastructure policy analysis and cost-benefit assessment.
       </p>
       <p class="research-meta">
-        Iain Holmes · NC State University, Department of Economics · December 2025<br>
+        Iain Holmes &middot; NC State University, Department of Economics &middot; December 2025<br>
         Grateful to Professor Zheng for guidance on IV strategy and robustness checks.<br>
         Data: U.S. Census Bureau (ACS 2023), U.S. Army Corps of Engineers (NID),
         NC Department of Environmental Quality, U.S. Census Gazetteer
@@ -947,11 +969,11 @@
       </div>
     </div>
 
-    <!-- ECONOMETRIC ADVISOR -->
-    <div class="research-item advisor-item">
+    <!-- Econometric Advisor — large logo on left, content on right -->
+    <div class="research-item">
       <div class="advisor-layout">
         <div class="advisor-logo-wrap">
-          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-label="Econometric Advisor logo">
             <rect width="512" height="512" rx="112" fill="#0a0f1e"/>
             <circle cx="256" cy="256" r="192" fill="none" stroke="#2d5fd6" stroke-width="6" opacity=".5"/>
             <circle cx="256" cy="256" r="110" fill="none" stroke="#60a5fa" stroke-width="18"/>
@@ -967,489 +989,467 @@
             <circle cx="256" cy="256" r="7" fill="#fff"/>
           </svg>
         </div>
-        <div class="advisor-text">
-          <p class="research-type" style="margin-bottom:4px">Research Tool · Open Access</p>
-          <h3 class="research-title">Econometric Advisor — An AI-Powered Research Design Tool for Applied Economics</h3>
-          <a href="https://iainholmes.github.io/econometric-advisor/" target="_blank" rel="noreferrer" class="advisor-launch-link">
-            Launch app &rarr;
-          </a>
+        <div class="advisor-content">
+          <p class="research-type">Research Tool &middot; Open Access</p>
+          <h3 class="research-title">Econometric Advisor &mdash; An AI-Powered Research Design Tool for Applied Economics</h3>
           <p class="research-abstract">
-            Building a defensible identification strategy is one of the earliest — and most consequential —
-            decisions in any applied research project, yet many graduate students arrive at it without a
-            structured way to think it through. The Econometric Advisor walks the researcher through a
-            twelve-question diagnostic of their study design and, on the other side, returns a tailored
-            toolkit: a recommended identification approach, a defensible estimator, functional-form
-            guidance, spatial-dependence diagnostics, and an inference checklist calibrated to the project
-            at hand. With an Anthropic API key supplied, the tool also generates a plain-English narrative
-            of the research design alongside a curated review of relevant applied economics literature.
-            The Advisor runs entirely in the browser as a static site — pure HTML and JavaScript on
-            GitHub Pages — and reflects my interest in lowering the barrier to rigorous econometric
-            thinking for first-time researchers navigating the identification landscape.
+            The Econometric Advisor is a browser-based companion that helps applied researchers move from
+            a research question to a defensible identification strategy. Through a structured twelve-question
+            intake covering treatment assignment, data structure, sources of variation, and threats to
+            inference, the tool returns a tailored econometric playbook: a recommended estimator, functional
+            form considerations, spatial diagnostic suggestions, and an inference checklist calibrated to
+            the user's specific design. With an Anthropic API key supplied, the Advisor extends its output
+            with a plain-language summary of the identification logic and a curated mini-review of
+            related applied work. The full app is implemented in vanilla HTML and JavaScript with no
+            backend &mdash; a deliberate choice meant to make rigorous econometric thinking accessible to
+            any graduate student with a browser.
           </p>
           <p class="research-meta">
-            Iain Holmes · NC State University, Department of Economics · 2025<br>
-            Stack: HTML · JavaScript · Anthropic Claude API · GitHub Pages
+            Iain Holmes &middot; NC State University, Department of Economics &middot; 2025<br>
+            Stack: HTML &middot; JavaScript &middot; Anthropic Claude API &middot; GitHub Pages
           </p>
-          <div class="research-keywords">
-            <span class="research-kw">Causal Inference</span>
-            <span class="research-kw">Econometric Methods</span>
-            <span class="research-kw">Research Design</span>
-            <span class="research-kw">Identification Strategy</span>
-            <span class="research-kw">AI-Assisted Toolkit</span>
-            <span class="research-kw">Open Source</span>
-          </div>
-          <div style="display:flex;gap:.75rem;align-items:center;padding-top:1rem;margin-top:1rem;border-top:1px solid var(--rule);flex-wrap:wrap">
-            <a href="https://iainholmes.github.io/econometric-advisor/" target="_blank" class="btn btn-primary"
-               style="display:inline-flex;align-items:center;gap:.45rem">
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
-                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-              </svg>
-              Open Econometric Advisor
-            </a>
-            <a href="https://github.com/iainholmes/econometric-advisor" target="_blank" class="btn btn-secondary"
-               style="display:inline-flex;align-items:center;gap:.45rem">
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
-              </svg>
-              View Source
-            </a>
-          </div>
         </div>
+      </div>
+      <div class="research-keywords">
+        <span class="research-kw">Causal Inference</span>
+        <span class="research-kw">Econometric Methods</span>
+        <span class="research-kw">Research Design</span>
+        <span class="research-kw">Identification Strategy</span>
+        <span class="research-kw">AI-Assisted Toolkit</span>
+        <span class="research-kw">Open Source</span>
+      </div>
+      <div style="display:flex;gap:.75rem;align-items:center;padding-top:1rem;margin-top:1rem;border-top:1px solid var(--rule);flex-wrap:wrap">
+        <a href="https://iainholmes.github.io/econometric-advisor/" target="_blank" class="btn btn-primary"
+           style="display:inline-flex;align-items:center;gap:.45rem">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          Open Econometric Advisor
+        </a>
+        <a href="https://github.com/iainholmes/econometric-advisor" target="_blank" class="btn btn-secondary"
+           style="display:inline-flex;align-items:center;gap:.45rem">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+          </svg>
+          View Source
+        </a>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ==========================================================
-     CV — split into research vs industry
-     ========================================================== -->
-<section id="cv">
-  <p class="section-label">Curriculum Vitae</p>
-  <h2 class="section-title">
-    <span class="mode-research">Experience &amp; Qualifications</span>
-    <span class="mode-industry">Professional Experience</span>
-  </h2>
+<!-- ================================================
+     RESEARCH-MODE: Professional Experience
+     (Grad TA, Veritas, EES, CEnREP, TREE)
+     ================================================ -->
+<section id="experience-research" class="mode-research">
+  <p class="section-label">Affiliations &amp; Roles</p>
+  <h2 class="section-title">Academic &amp; Research Experience</h2>
   <div class="cv-layout">
     <div class="cv-main">
 
-      <!-- ============= RESEARCH-MODE CV ============= -->
-      <div class="mode-research">
+      <p class="cv-section-head">Research &amp; Teaching</p>
 
-        <p class="cv-section-head">Education</p>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">M.Sc. Economics</p>
-          <p class="cv-entry-sub">North Carolina State University · Raleigh, NC<br>
-            Dual Concentration: Data Analytics &amp; Natural Resource and Environmental Economics</p>
-          <p class="cv-entry-date">Expected December 2026 · GPA: 3.9</p>
-          <ul class="cv-entry-bullets">
-            <li>Thesis (In Progress): Valuing Regulatory Justification: A Tipping Point Analysis of PFAS Surface Water Quality Standards in NC</li>
-            <li>Prior Research: Non-linear spatial effects of dam proximity on NC housing markets —
-              identified a statistically significant 22.3-mile amenity zone via IV hedonic model (ECG 561, Dec 2025)</li>
-          </ul>
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Research Assistant (Part Time)</p>
+            <p class="cv-entry-sub"><a href="https://www.veritaseconomics.com/" target="_blank" rel="noreferrer">Veritas Economic Consulting</a> &middot; Cary, NC</p>
+          </div>
+          <span class="cv-entry-date">Sept 2025 &ndash; Present</span>
         </div>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">B.A. Economics · Minor: Philosophy</p>
-          <p class="cv-entry-sub">University of Virginia · Charlottesville, VA</p>
-          <p class="cv-entry-date">2018 · GPA: 3.5</p>
-        </div>
-
-        <p class="cv-section-head">Research &amp; Academic Experience</p>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">
-            Research Assistant (Part Time)
-            <a href="https://www.veritaseconomics.com/" target="_blank" rel="noreferrer">veritaseconomics.com &rarr;</a>
-          </p>
-          <p class="cv-entry-sub">Veritas Economic Consulting · Cary, NC</p>
-          <p class="cv-entry-date">September 2025 – Present</p>
-          <ul class="cv-entry-bullets">
-            <li>Authored a cost-benefit analysis for a prominent Chicago high-rise, applying Cost-Cost
-              and Cost-Revenue Tests to allocate $13M in EPA Clean Water Act compliance costs across
-              residential and commercial stakeholders; findings adopted by the client in their argument
-              against the proposed technology</li>
-            <li>Developed econometric simulations in Analytica and Stata to model power plant water usage
-              and forecast ecological impacts on fish populations</li>
-            <li>Engineered choice modeling and branching logic for a stated-preference survey eliciting
-              willingness-to-pay across seven environmental programs; captured 1,123 responses (72/day,
-              58% completion rate) — findings subsequently communicated by the firm's principal economist
-              in expert witness testimony</li>
-            <li>Refined survey instruments via pilot testing and qualitative user interviews, optimizing
-              information treatments to improve response validity for non-use demand quantification</li>
-          </ul>
-        </div>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">Graduate Teaching Assistant · EC 490 &amp; EC 410</p>
-          <p class="cv-entry-sub">NC State University, Department of Economics · Raleigh, NC</p>
-          <p class="cv-entry-date">Spring 2026</p>
-          <ul class="cv-entry-bullets">
-            <li>Supported instruction in Senior Seminar (EC 490) and Public Finance (EC 410); graded
-              assignments and mentored undergraduates developing capstone research papers on market
-              strategy, externalities, and regulation</li>
-            <li>Held weekly office hours and provided written feedback on draft research designs,
-              focusing on clarity of identification and appropriate use of empirical evidence</li>
-          </ul>
-        </div>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">
-            Research Assistant (Contract)
-            <a href="https://www.environmentaleconservices.com/" target="_blank" rel="noreferrer">environmentaleconservices.com &rarr;</a>
-          </p>
-          <p class="cv-entry-sub">Environmental Economics Services, LLC · Raleigh, NC</p>
-          <p class="cv-entry-date">September 2025 – February 2026</p>
-          <ul class="cv-entry-bullets">
-            <li>Contributed to Dr. Rick Dunford's Natural Resource Damages textbook in preparation for
-              publisher submission, validating economic accuracy across chapters covering oil spills,
-              wildfires, and hazardous releases</li>
-            <li>Updated regression models for past NRD case studies, ensuring the empirical foundations
-              underlying expert witness testimony and damages assessments held up for inclusion in the
-              published volume</li>
-          </ul>
-        </div>
-
-        <p class="cv-section-head">Affiliations &amp; Seminars</p>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">
-            Graduate Affiliate
-            <a href="https://cenrep.ncsu.edu/" target="_blank" rel="noreferrer">cenrep.ncsu.edu &rarr;</a>
-          </p>
-          <p class="cv-entry-sub">Center for Environmental and Resource Economic Policy (CEnREP) · NC State</p>
-          <p class="cv-entry-date">2025 – Present</p>
-          <ul class="cv-entry-bullets">
-            <li>Affiliated with NC State's interdisciplinary research center supporting environmental,
-              resource, and energy economics research across the College of Agriculture and Life Sciences
-              and the Poole College of Management</li>
-            <li>Engaged with CEnREP-supported workshops and the broader Triangle research community
-              connecting environmental economists across NC State, Duke, RTI, and EPA</li>
-          </ul>
-        </div>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">
-            Regular Attendee
-            <a href="https://cenrep.ncsu.edu/events/tree/" target="_blank" rel="noreferrer">cenrep.ncsu.edu/events/tree &rarr;</a>
-          </p>
-          <p class="cv-entry-sub">Triangle Resources &amp; Environmental Economics (TREE) Seminar · Research Triangle</p>
-          <p class="cv-entry-date">Spring 2025 – Present</p>
-          <ul class="cv-entry-bullets">
-            <li>Active participant in the joint Duke–NC State seminar series convening leading scholars
-              in environmental valuation, natural resource economics, and energy policy</li>
-            <li>Engaged with presented working papers on non-market valuation, spatial econometrics, and
-              regulatory analysis directly relevant to ongoing thesis work</li>
-          </ul>
-        </div>
-
-        <a class="cv-download" href="iholmes_resume.pdf" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-          Download Full CV (PDF)
-        </a>
+        <ul class="cv-entry-bullets">
+          <li>Authored cost-benefit analysis for a Chicago high-rise allocating $13M in EPA Clean Water Act compliance costs using Cost-Cost and Cost-Revenue Tests; findings adopted by the client in regulatory proceedings against the proposed technology.</li>
+          <li>Developed econometric simulations in Analytica and Stata to model power plant water usage and forecast ecological impacts on fish populations.</li>
+          <li>Engineered choice modeling and branching logic for a stated-preference survey eliciting WTP across seven environmental programs; captured 1,123 responses (72/day, 58% completion rate) supporting expert witness testimony delivered by the firm's principal economist.</li>
+          <li>Refined survey instruments via pilot testing and qualitative user interviews to optimize information treatments and improve response validity for non-use demand quantification.</li>
+        </ul>
       </div>
 
-      <!-- ============= INDUSTRY-MODE CV ============= -->
-      <div class="mode-industry">
-
-        <p class="cv-section-head">Education</p>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">M.Sc. Economics</p>
-          <p class="cv-entry-sub">North Carolina State University · Raleigh, NC<br>
-            Dual Concentration: Data Analytics &amp; Natural Resource and Environmental Economics</p>
-          <p class="cv-entry-date">Expected December 2026 · GPA: 3.9</p>
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Graduate Teaching Assistant &middot; EC 490 &amp; EC 410</p>
+            <p class="cv-entry-sub"><a href="https://economics.chass.ncsu.edu/" target="_blank" rel="noreferrer">NC State University, Department of Economics</a> &middot; Raleigh, NC</p>
+          </div>
+          <span class="cv-entry-date">Spring 2026</span>
         </div>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">B.A. Economics · Minor: Philosophy</p>
-          <p class="cv-entry-sub">University of Virginia · Charlottesville, VA</p>
-          <p class="cv-entry-date">2018 · GPA: 3.5</p>
-        </div>
-
-        <p class="cv-section-head">Professional Experience</p>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">Client Associate, Investor Relations</p>
-          <p class="cv-entry-sub">Standish Management · Raleigh, NC</p>
-          <p class="cv-entry-date">May 2023 – August 2025</p>
-          <ul class="cv-entry-bullets">
-            <li>Served as primary point of contact for investor inquiries across venture capital and
-              private equity client funds, including TrueBridge Capital ($9.57B AUM)</li>
-            <li>Leveraged Alteryx for financial modeling and performance analytics across 15+ investment
-              funds, incorporating findings into quarterly financial reporting deliverables</li>
-            <li>Operated as an extension of clients' in-house IR teams — handling onboarding,
-              documentation, performance analytics, and ongoing investor servicing within Allvue and
-              Dynamo CRM environments</li>
-            <li>Contributed to the firm's Anti-Money-Laundering team conducting investor background
-              diligence and supporting AML/KYC compliance reviews</li>
-          </ul>
-        </div>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">Associate, Investor Relations</p>
-          <p class="cv-entry-sub">Obra Capital (formerly Vida Capital) · Austin, TX</p>
-          <p class="cv-entry-date">June 2022 – November 2022</p>
-          <ul class="cv-entry-bullets">
-            <li>Supported investor relations across a $6.9B platform spanning Special Situations,
-              Longevity, and Real Estate Credit products, including the firm's flagship life
-              settlements fund</li>
-            <li>Synthesized fund data into Due Diligence Questionnaires (DDQs) for institutional
-              investors — including sovereign wealth funds, insurance companies, pension funds, and
-              university endowments</li>
-            <li>Developed Excel reporting for investors, including periodic NAV/redemption summaries
-              and quarterly fund performance packages</li>
-            <li>Partnered with cross-functional internal teams to provide IR-side perspective on
-              marketing collateral, pitch decks, and stakeholder communications</li>
-          </ul>
-        </div>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">Client Associate / Research Associate</p>
-          <p class="cv-entry-sub">Third Bridge · New York, NY</p>
-          <p class="cv-entry-date">December 2020 – May 2022</p>
-          <ul class="cv-entry-bullets">
-            <li>Promoted to Client Associate to lead a 4-person research team — the only member of my
-              direct cohort to be promoted into the role — implementing strategic research frameworks
-              across simultaneous engagements</li>
-            <li>Continuously managed 4–6 simultaneous due diligence research projects (3–5 week cycles)
-              for private equity and management consulting clients including Bain Capital, Astorg, and
-              Boston Consulting Group (BCG)</li>
-            <li>As Research Associate, facilitated expert consultations for hedge funds, PE firms, and
-              consultancies — matching industry experts to client questions across complex value chains</li>
-            <li>Provided market forecasts and value-chain analysis to support client investment theses
-              across consumer, healthcare, industrials, and technology coverage</li>
-          </ul>
-        </div>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">Data Analyst &middot; Technical Recruiter</p>
-          <p class="cv-entry-sub">Procession Systems (3-year-old startup) · Reston, VA</p>
-          <p class="cv-entry-date">March 2019 – March 2020</p>
-          <ul class="cv-entry-bullets">
-            <li>Built and led the firm's Data Analytics function from inception, surfacing recruiter
-              performance trends and forecasting hiring demand for a fast-growing federal-contracting
-              business</li>
-            <li>Modeled historic recruiting data to project internal staffing needs and quantify
-              short- and long-term performance trajectories at the recruiter level</li>
-            <li>Sourced, screened, and vetted security-cleared candidates for federal contractors;
-              advised contractor partners on improvements to their hiring funnels and intake protocols</li>
-          </ul>
-        </div>
-
-        <div class="cv-entry">
-          <p class="cv-entry-title">Legislative Research Intern</p>
-          <p class="cv-entry-sub">U.S. House of Representatives — Office of Rep. Seth Moulton (MA-6) · Washington, D.C.</p>
-          <p class="cv-entry-date">August – December 2018</p>
-          <ul class="cv-entry-bullets">
-            <li>Coordinated with Columbia Gas executives to track infrastructure recovery following the
-              2018 Merrimack Valley gas explosions, developing data-driven restoration forecasts that
-              informed Rep. Moulton's talking points for constituent town halls across the district</li>
-            <li>Authored a briefing presentation that successfully persuaded the Congressman and senior
-              staff to cosponsor pending legislation</li>
-            <li>Conducted policy research, drafted constituent correspondence, and produced summary
-              reports of meetings attended alongside the Congressman and senior staff</li>
-          </ul>
-        </div>
-
-        <a class="cv-download" href="iholmes_resume.pdf" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-          Download Full CV (PDF)
-        </a>
+        <ul class="cv-entry-bullets">
+          <li>Supported instruction in Senior Seminar (EC 490) and Public Finance (EC 410); graded assignments and mentored undergraduates developing capstone research papers on market strategy, externalities, and regulation.</li>
+          <li>Held weekly office hours guiding students through empirical research design, data sourcing, and the interpretation of regression output in policy contexts.</li>
+        </ul>
       </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Research Assistant (Contract)</p>
+            <p class="cv-entry-sub"><a href="https://www.environmentaleconomicsservices.com/" target="_blank" rel="noreferrer">Environmental Economics Services, LLC</a> &middot; Raleigh, NC</p>
+          </div>
+          <span class="cv-entry-date">Sept 2025 &ndash; Feb 2026</span>
+        </div>
+        <ul class="cv-entry-bullets">
+          <li>Contributed to Dr. Rick Dunford's <em>Natural Resource Damages</em> textbook in preparation for publisher submission, validating economic accuracy across chapters covering oil spills, wildfires, and hazardous releases.</li>
+          <li>Updated regression models for past NRD case studies, ensuring the empirical foundations underlying expert witness testimony and damages assessments in litigation proceedings remained reproducible for textbook readers.</li>
+        </ul>
+      </div>
+
+      <p class="cv-section-head">Affiliations</p>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Graduate Affiliate</p>
+            <p class="cv-entry-sub"><a href="https://cenrep.ncsu.edu/" target="_blank" rel="noreferrer">CEnREP &mdash; Center for Environmental &amp; Resource Economic Policy</a> &middot; NC State University</p>
+          </div>
+          <span class="cv-entry-date">2025 &ndash; Present</span>
+        </div>
+        <ul class="cv-entry-bullets">
+          <li>Affiliated with NC State's primary research center for environmental and natural resource economics, gaining exposure to faculty research programs spanning energy, water quality, and ecosystem services valuation.</li>
+          <li>Engaged with the Center's working paper series and policy briefings as a touchpoint for thesis development on PFAS regulatory economics.</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Regular Attendee</p>
+            <p class="cv-entry-sub"><a href="https://cenrep.ncsu.edu/events/tree/" target="_blank" rel="noreferrer">TREE &mdash; Triangle Resources &amp; Environmental Economics Seminar</a> &middot; Research Triangle</p>
+          </div>
+          <span class="cv-entry-date">Spring 2025 &ndash; Present</span>
+        </div>
+        <ul class="cv-entry-bullets">
+          <li>Active attendee of the joint Duke&ndash;NC State seminar series convening leading scholars in environmental valuation, natural resource economics, and energy policy.</li>
+          <li>Engaged with externally-presented working papers across non-market valuation, climate adaptation, and applied IO &mdash; informing methodological choices in my own research design.</li>
+        </ul>
+      </div>
+
+      <a class="cv-download" href="iholmes_resume.pdf" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download Full CV (PDF)
+      </a>
 
     </div>
 
-    <!-- ============= SIDEBAR: research vs industry skill stacks ============= -->
     <div class="cv-skills">
+      <h3>Affiliated Centers</h3>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
 
-      <!-- RESEARCH SKILLS -->
-      <div class="mode-research">
-        <h3>Programming &amp; Analytics</h3>
-        <div class="skill-pills">
-          <span class="skill-pill">Stata</span>
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">R</span>
-          <span class="skill-pill">SQL</span>
-          <span class="skill-pill">Analytica</span>
-          <span class="skill-pill">Alteryx</span>
-          <span class="skill-pill">Microsoft Excel &amp; Office</span>
-          <span class="skill-pill">Power BI</span>
-          <span class="skill-pill">Jupyter Lab</span>
-          <span class="skill-pill">VS Code</span>
-        </div>
-
-        <h3>Econometric Methods</h3>
-        <div class="skill-pills">
-          <span class="skill-pill">Hedonic Pricing</span>
-          <span class="skill-pill">Probit &amp; Logit Modeling</span>
-          <span class="skill-pill">OLS &amp; 2SLS</span>
-          <span class="skill-pill">Difference in Differences (DiD)</span>
-          <span class="skill-pill">Causal Inference</span>
-          <span class="skill-pill">Stated &amp; Revealed Preference</span>
-          <span class="skill-pill">Discrete Choice Modeling</span>
-          <span class="skill-pill">Cost-Benefit Analysis</span>
-          <span class="skill-pill">Non-Market Valuation</span>
-          <span class="skill-pill">Geospatial Analysis</span>
-        </div>
-
-        <h3>Survey Platforms</h3>
-        <div class="skill-pills">
-          <span class="skill-pill">Alchemer</span>
-          <span class="skill-pill">User Interviews</span>
-        </div>
-
-        <h3>Relevant Coursework</h3>
-        <div class="skill-pills">
-          <span class="skill-pill">Applied Econometrics I &amp; II</span>
-          <span class="skill-pill">Environmental Resource &amp; Policy</span>
-          <span class="skill-pill">Health Economics &amp; Policy</span>
-          <span class="skill-pill">Big Data Econometrics</span>
-          <span class="skill-pill">Micro &amp; Macro Theory</span>
-          <span class="skill-pill">Applied Microeconometrics</span>
-        </div>
-
-        <h3>Volunteer</h3>
-        <div class="skill-pills">
-          <span class="skill-pill">Eno River State Park — Nature Conservation</span>
-          <span class="skill-pill">TABLE — Food Assistance</span>
-        </div>
-
-        <h3>Affiliations</h3>
-        <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
-
-          <!-- CEnREP -->
-          <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
-            <svg width="96" height="34" viewBox="0 0 96 34" style="flex-shrink:0;display:block">
-              <line x1="10" y1="2"  x2="2"  y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
-              <line x1="2"  y1="2"  x2="2"  y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
-              <line x1="2"  y1="32" x2="10" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
-              <line x1="86" y1="2"  x2="94" y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
-              <line x1="94" y1="2"  x2="94" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
-              <line x1="94" y1="32" x2="86" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
-              <text x="14"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">C</text>
-              <text x="27"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">En</text>
-              <line x1="27" y1="26" x2="52" y2="26" stroke="#C9A96E" stroke-width="1.8"/>
-              <text x="52"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">R</text>
-              <text x="66"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">EP</text>
-            </svg>
-            <div class="affil-text-block">
-              <div class="affil-name">CEnREP</div>
-              <div class="affil-sub">Center for Environmental &amp; Resource Economic Policy</div>
-              <span class="affil-badge">Graduate Affiliate &middot; NC State</span>
-            </div>
+        <!-- CEnREP -->
+        <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
+          <svg width="96" height="34" viewBox="0 0 96 34" style="flex-shrink:0;display:block">
+            <line x1="10" y1="2"  x2="2"  y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
+            <line x1="2"  y1="2"  x2="2"  y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
+            <line x1="2"  y1="32" x2="10" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
+            <line x1="86" y1="2"  x2="94" y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
+            <line x1="94" y1="2"  x2="94" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
+            <line x1="94" y1="32" x2="86" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
+            <text x="14"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">C</text>
+            <text x="27"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">En</text>
+            <line x1="27" y1="26" x2="52" y2="26" stroke="#C9A96E" stroke-width="1.8"/>
+            <text x="52"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">R</text>
+            <text x="66"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">EP</text>
+          </svg>
+          <div class="affil-text-block">
+            <div class="affil-name">CEnREP</div>
+            <div class="affil-sub">Center for Environmental &amp; Resource Economic Policy</div>
+            <span class="affil-badge">Graduate Affiliate &middot; NC State</span>
           </div>
+        </div>
 
-          <!-- TREE Seminar -->
-          <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
-            <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
-              <defs>
-                <clipPath id="cv-circ"><circle cx="36" cy="36" r="34"/></clipPath>
-                <mask id="cv-tmask">
-                  <rect width="72" height="72" fill="white"/>
-                  <text x="36" y="44" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="21" font-weight="700" letter-spacing="1.5" fill="black">TREE</text>
-                </mask>
-              </defs>
-              <circle cx="36" cy="36" r="35.5" fill="#2a1505"/>
-              <g clip-path="url(#cv-circ)">
-                <ellipse cx="36" cy="36" rx="34" ry="34" fill="#8a6820"/>
-                <ellipse cx="36.3" cy="35.8" rx="31"   ry="30.5" fill="none" stroke="#7a5a18" stroke-width="2.4"/>
-                <ellipse cx="35.8" cy="36.2" rx="27.5" ry="27"   fill="none" stroke="#664a10" stroke-width="2.0"/>
-                <ellipse cx="36.2" cy="35.7" rx="23.5" ry="23"   fill="none" stroke="#58380c" stroke-width="2.2"/>
-                <ellipse cx="35.7" cy="36.3" rx="19.5" ry="19"   fill="none" stroke="#4a2c08" stroke-width="1.8"/>
-                <ellipse cx="36.1" cy="35.9" rx="15.5" ry="15"   fill="none" stroke="#3c2006" stroke-width="2.0"/>
-                <ellipse cx="35.9" cy="36.1" rx="11.5" ry="11"   fill="none" stroke="#301604" stroke-width="1.7"/>
-                <ellipse cx="36"   cy="36"   rx="8"    ry="7.5"  fill="none" stroke="#240e02" stroke-width="1.6"/>
-                <ellipse cx="36"   cy="36"   rx="5"    ry="4.5"  fill="#180800"/>
-                <g mask="url(#cv-tmask)">
-                  <ellipse cx="36.3" cy="35.8" rx="31"   ry="30.5" fill="none" stroke="#ffe090" stroke-width="2.4"/>
-                  <ellipse cx="35.8" cy="36.2" rx="27.5" ry="27"   fill="none" stroke="#f5cc68" stroke-width="2.0"/>
-                  <ellipse cx="36.2" cy="35.7" rx="23.5" ry="23"   fill="none" stroke="#e8b848" stroke-width="2.2"/>
-                  <ellipse cx="35.7" cy="36.3" rx="19.5" ry="19"   fill="none" stroke="#d8a030" stroke-width="1.8"/>
-                  <ellipse cx="36.1" cy="35.9" rx="15.5" ry="15"   fill="none" stroke="#c08820" stroke-width="2.0"/>
-                  <ellipse cx="35.9" cy="36.1" rx="11.5" ry="11"   fill="none" stroke="#a87018" stroke-width="1.7"/>
-                  <ellipse cx="36"   cy="36"   rx="8"    ry="7.5"  fill="none" stroke="#885010" stroke-width="1.6"/>
-                  <rect width="72" height="72" fill="rgba(255,225,110,0.55)"/>
-                </g>
+        <!-- TREE -->
+        <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
+          <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
+            <defs>
+              <clipPath id="cv-circ"><circle cx="36" cy="36" r="34"/></clipPath>
+              <mask id="cv-tmask">
+                <rect width="72" height="72" fill="white"/>
+                <text x="36" y="44" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="21" font-weight="700" letter-spacing="1.5" fill="black">TREE</text>
+              </mask>
+            </defs>
+            <circle cx="36" cy="36" r="35.5" fill="#2a1505"/>
+            <g clip-path="url(#cv-circ)">
+              <ellipse cx="36" cy="36" rx="34" ry="34" fill="#8a6820"/>
+              <ellipse cx="36.3" cy="35.8" rx="31"   ry="30.5" fill="none" stroke="#7a5a18" stroke-width="2.4"/>
+              <ellipse cx="35.8" cy="36.2" rx="27.5" ry="27"   fill="none" stroke="#664a10" stroke-width="2.0"/>
+              <ellipse cx="36.2" cy="35.7" rx="23.5" ry="23"   fill="none" stroke="#58380c" stroke-width="2.2"/>
+              <ellipse cx="35.7" cy="36.3" rx="19.5" ry="19"   fill="none" stroke="#4a2c08" stroke-width="1.8"/>
+              <ellipse cx="36.1" cy="35.9" rx="15.5" ry="15"   fill="none" stroke="#3c2006" stroke-width="2.0"/>
+              <ellipse cx="35.9" cy="36.1" rx="11.5" ry="11"   fill="none" stroke="#301604" stroke-width="1.7"/>
+              <ellipse cx="36"   cy="36"   rx="8"    ry="7.5"  fill="none" stroke="#240e02" stroke-width="1.6"/>
+              <ellipse cx="36"   cy="36"   rx="5"    ry="4.5"  fill="#180800"/>
+              <g mask="url(#cv-tmask)">
+                <ellipse cx="36.3" cy="35.8" rx="31"   ry="30.5" fill="none" stroke="#ffe090" stroke-width="2.4"/>
+                <ellipse cx="35.8" cy="36.2" rx="27.5" ry="27"   fill="none" stroke="#f5cc68" stroke-width="2.0"/>
+                <ellipse cx="36.2" cy="35.7" rx="23.5" ry="23"   fill="none" stroke="#e8b848" stroke-width="2.2"/>
+                <ellipse cx="35.7" cy="36.3" rx="19.5" ry="19"   fill="none" stroke="#d8a030" stroke-width="1.8"/>
+                <ellipse cx="36.1" cy="35.9" rx="15.5" ry="15"   fill="none" stroke="#c08820" stroke-width="2.0"/>
+                <ellipse cx="35.9" cy="36.1" rx="11.5" ry="11"   fill="none" stroke="#a87018" stroke-width="1.7"/>
+                <ellipse cx="36"   cy="36"   rx="8"    ry="7.5"  fill="none" stroke="#885010" stroke-width="1.6"/>
+                <rect width="72" height="72" fill="rgba(255,225,110,0.55)"/>
               </g>
-              <circle cx="36" cy="36" r="34.5" fill="none" stroke="#1a0a02" stroke-width="1"/>
-            </svg>
-            <div class="affil-text-block">
-              <div class="affil-name" style="color:#2d6b1a">TREE Seminar</div>
-              <div class="affil-sub">Triangle Resources &amp; Environmental Economics</div>
-              <span class="affil-badge">Attendee &middot; Spring 2025</span>
-            </div>
+            </g>
+            <circle cx="36" cy="36" r="34.5" fill="none" stroke="#1a0a02" stroke-width="1"/>
+          </svg>
+          <div class="affil-text-block">
+            <div class="affil-name" style="color:#2d6b1a">TREE Seminar</div>
+            <div class="affil-sub">Triangle Resources &amp; Environmental Economics</div>
+            <span class="affil-badge">Attendee &middot; Spring 2025</span>
           </div>
-
         </div>
+
       </div>
 
-      <!-- INDUSTRY SKILLS -->
-      <div class="mode-industry">
-        <h3>Programming &amp; Analytics</h3>
-        <div class="skill-pills">
-          <span class="skill-pill">Alteryx</span>
-          <span class="skill-pill">SQL</span>
-          <span class="skill-pill">Stata</span>
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">Power BI</span>
-          <span class="skill-pill">Advanced Excel</span>
-          <span class="skill-pill">Microsoft Office</span>
-        </div>
+      <h3>Programming &amp; Analytics</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Stata</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">R</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Analytica</span>
+        <span class="skill-pill">Alteryx</span>
+        <span class="skill-pill">Power BI</span>
+        <span class="skill-pill">Jupyter Lab</span>
+        <span class="skill-pill">VS Code</span>
+      </div>
 
-        <h3>CRM &amp; Alternative Investments</h3>
-        <div class="skill-pills">
-          <span class="skill-pill">Salesforce</span>
-          <span class="skill-pill">Dynamo</span>
-          <span class="skill-pill">Allvue</span>
-          <span class="skill-pill">SS&amp;C</span>
-          <span class="skill-pill">Anduin</span>
-          <span class="skill-pill">Canoe Intelligence</span>
-          <span class="skill-pill">Carta</span>
-          <span class="skill-pill">iSquared</span>
-          <span class="skill-pill">Fund Panel</span>
-          <span class="skill-pill">Ark</span>
-        </div>
+      <h3>Econometric Methods</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Hedonic Pricing</span>
+        <span class="skill-pill">Probit &amp; Logit</span>
+        <span class="skill-pill">OLS &amp; 2SLS</span>
+        <span class="skill-pill">Difference-in-Differences</span>
+        <span class="skill-pill">Causal Inference</span>
+        <span class="skill-pill">Stated &amp; Revealed Preference</span>
+        <span class="skill-pill">Discrete Choice</span>
+        <span class="skill-pill">Cost-Benefit Analysis</span>
+        <span class="skill-pill">Non-Market Valuation</span>
+        <span class="skill-pill">Geospatial Analysis</span>
+      </div>
 
-        <h3>Functional Expertise</h3>
-        <div class="skill-pills">
-          <span class="skill-pill">Investor Relations</span>
-          <span class="skill-pill">Fund Administration</span>
-          <span class="skill-pill">DDQ Drafting</span>
-          <span class="skill-pill">AML / KYC Diligence</span>
-          <span class="skill-pill">Performance Reporting</span>
-          <span class="skill-pill">Due Diligence Research</span>
-          <span class="skill-pill">Stakeholder Management</span>
-        </div>
+      <h3>Survey Platforms</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Alchemer</span>
+        <span class="skill-pill">User Interviews</span>
+      </div>
 
-        <h3>Volunteer</h3>
-        <div class="skill-pills">
-          <span class="skill-pill">Arlington Food Assistance Center</span>
-          <span class="skill-pill">TABLE — Food Assistance</span>
-          <span class="skill-pill">Eno River State Park</span>
-          <span class="skill-pill">Madison House — Coaching</span>
-          <span class="skill-pill">Tom Perriello Campaign</span>
-        </div>
+      <h3>Relevant Coursework</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Applied Econometrics I &amp; II</span>
+        <span class="skill-pill">Environmental Resource &amp; Policy</span>
+        <span class="skill-pill">Health Economics &amp; Policy</span>
+        <span class="skill-pill">Big Data Econometrics</span>
+        <span class="skill-pill">Micro &amp; Macro Theory</span>
+        <span class="skill-pill">Applied Microeconometrics</span>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ==========================================================
-     CONTACT — mode-aware
-     ========================================================== -->
+<!-- ================================================
+     INDUSTRY-MODE: Professional Experience
+     (Standish, Obra, Third Bridge, Procession, Moulton)
+     ================================================ -->
+<section id="experience-industry" class="mode-industry">
+  <p class="section-label">Curriculum Vitae</p>
+  <h2 class="section-title">Professional Experience</h2>
+  <div class="cv-layout">
+    <div class="cv-main">
+
+      <p class="cv-section-head">Investor Relations &amp; Fund Administration</p>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Client Associate, Investor Relations</p>
+            <p class="cv-entry-sub"><a href="https://www.standishmanagement.com/" target="_blank" rel="noreferrer">Standish Management</a> &middot; Raleigh, NC</p>
+          </div>
+          <span class="cv-entry-date">May 2023 &ndash; Aug 2025</span>
+        </div>
+        <ul class="cv-entry-bullets">
+          <li>Served as the primary point of contact for investor inquiries across a portfolio of venture capital and private equity firms, delivering institutional-grade responsiveness on capital activity, performance, and reporting questions.</li>
+          <li>Provided full-spectrum fund administration services &mdash; performance analytics, investor onboarding, and documentation management &mdash; using Allvue and Dynamo CRM.</li>
+          <li>Leveraged Alteryx for financial modeling and performance analytics across 15+ investment funds including TrueBridge Capital ($9.57B AUM), with output integrated into quarterly investor reporting deliverables.</li>
+          <li>Operated as an extension of clients' in-house IR teams, coordinating directly with internal staff to maintain consistent investor communications across firms.</li>
+          <li>Member of the Anti-Money Laundering team conducting background investigations on prospective and existing investors in alternative investment vehicles.</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Associate, Investor Relations</p>
+            <p class="cv-entry-sub"><a href="https://www.obra.com/" target="_blank" rel="noreferrer">Obra Capital</a> (formerly Vida Capital) &middot; Austin, TX</p>
+          </div>
+          <span class="cv-entry-date">June 2022 &ndash; Nov 2022</span>
+        </div>
+        <ul class="cv-entry-bullets">
+          <li>Supported the IR team overseeing the firm's flagship life settlements fund alongside developed financial forecasts and reporting for a $6.9B platform spanning Special Situations, Longevity, and Real Estate Credit products.</li>
+          <li>Produced periodic NAV, redemption, and performance reporting in Excel and authored Due Diligence Questionnaires (DDQs) for sovereign wealth funds, insurance companies, pension funds, and university endowments.</li>
+          <li>Managed daily investor communications across Salesforce, phone, and email; authored marketing decks and supporting collateral for prospective wealth-management clients.</li>
+          <li>Operated cross-functionally across investment, operations, and marketing teams &mdash; translating fund-level dynamics into investor-ready narrative.</li>
+        </ul>
+      </div>
+
+      <p class="cv-section-head">Institutional Research &amp; Due Diligence</p>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Client Associate</p>
+            <p class="cv-entry-sub"><a href="https://thirdbridge.com/" target="_blank" rel="noreferrer">Third Bridge</a> &middot; New York, NY</p>
+          </div>
+          <span class="cv-entry-date">Oct 2021 &ndash; May 2022</span>
+        </div>
+        <ul class="cv-entry-bullets">
+          <li>Promoted to Client Associate from Research Associate &mdash; the only member of the direct cohort to advance &mdash; directing a 4-person research team across 4&ndash;6 simultaneous due diligence projects (3&ndash;5 week cycles) for private equity and management consulting clients including Bain Capital, Astorg, and Boston Consulting Group.</li>
+          <li>Managed multi-client communication streams, providing market forecasts and value-chain analysis to investment teams under tight diligence timelines.</li>
+          <li>Built proficiency in DDQ workflows and end-to-end due diligence cycle structure for institutional capital allocators.</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Research Associate</p>
+            <p class="cv-entry-sub"><a href="https://thirdbridge.com/" target="_blank" rel="noreferrer">Third Bridge</a> &middot; New York, NY</p>
+          </div>
+          <span class="cv-entry-date">Dec 2020 &ndash; Oct 2021</span>
+        </div>
+        <ul class="cv-entry-bullets">
+          <li>Facilitated expert consultations between hedge funds, private equity firms, and management consultancies and subject-matter specialists across global value chains.</li>
+          <li>Mapped industry value chains and screened expert pools to ensure relevance, accuracy, and depth of insight delivered to clients.</li>
+          <li>Onboarded remotely under a 9-month COVID-related start delay, then ramped to peak project throughput within the first quarter on the desk.</li>
+        </ul>
+      </div>
+
+      <p class="cv-section-head">Data Analytics &amp; Recruiting</p>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Data Analyst</p>
+            <p class="cv-entry-sub">Procession Systems &middot; Reston, VA</p>
+          </div>
+          <span class="cv-entry-date">Aug 2019 &ndash; Mar 2020</span>
+        </div>
+        <ul class="cv-entry-bullets">
+          <li>Built and led the Data Analytics function from the ground up at a 3-year-old federal-contracting startup, defining the firm's first internal performance reporting pipeline.</li>
+          <li>Analyzed recruiter performance trends across short and long horizons, identifying which sourcing channels and screening behaviors converted to placement.</li>
+          <li>Forecast internal recruiter demand from historical hiring data to support the firm's growth trajectory and headcount planning.</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Technical Recruiter</p>
+            <p class="cv-entry-sub">Procession Systems &middot; Reston, VA</p>
+          </div>
+          <span class="cv-entry-date">Mar 2019 &ndash; Aug 2019</span>
+        </div>
+        <ul class="cv-entry-bullets">
+          <li>Sourced and screened candidates for security-cleared roles supporting federal contractors in the intelligence and defense sectors.</li>
+          <li>Conducted phone interviews and technical screenings to vet candidates against requisition-specific cleared-talent requirements.</li>
+          <li>Collaborated with government contractors to design and refine recruiting processes tailored to cleared-talent acquisition.</li>
+        </ul>
+      </div>
+
+      <p class="cv-section-head">Public Sector &amp; Policy</p>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div>
+            <p class="cv-entry-title">Legislative Research Intern</p>
+            <p class="cv-entry-sub">Office of U.S. Rep. Seth Moulton (MA-6) &middot; Washington, D.C.</p>
+          </div>
+          <span class="cv-entry-date">Aug &ndash; Dec 2018</span>
+        </div>
+        <ul class="cv-entry-bullets">
+          <li>Coordinated with Columbia Gas executives in the wake of the 2018 Merrimack Valley gas explosions to track home-testing progress and develop data-driven completion forecasts informing constituent communications.</li>
+          <li>Drafted constituent correspondence, briefing memos, and bill language at the request of senior staff; authored a presentation that secured the Congressman's co-sponsorship of new legislation.</li>
+          <li>Attended meetings with the Congressman and senior staff, producing concise summary reports to brief the broader office team.</li>
+        </ul>
+      </div>
+
+      <a class="cv-download" href="iholmes_resume.pdf" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download Full CV (PDF)
+      </a>
+
+    </div>
+
+    <div class="cv-skills">
+
+      <h3>Investor Relations</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Salesforce</span>
+        <span class="skill-pill">Allvue</span>
+        <span class="skill-pill">Dynamo CRM</span>
+        <span class="skill-pill">SS&amp;C</span>
+        <span class="skill-pill">Anduin</span>
+        <span class="skill-pill">Canoe Intelligence</span>
+        <span class="skill-pill">Carta</span>
+        <span class="skill-pill">iSquared</span>
+        <span class="skill-pill">Fund Panel</span>
+        <span class="skill-pill">Ark</span>
+      </div>
+
+      <h3>Analytics &amp; Reporting</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Alteryx</span>
+        <span class="skill-pill">Power BI</span>
+        <span class="skill-pill">Advanced Excel</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Stata</span>
+        <span class="skill-pill">Python</span>
+      </div>
+
+      <h3>Functional Expertise</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">DDQ Authoring</span>
+        <span class="skill-pill">NAV Reporting</span>
+        <span class="skill-pill">AML &amp; KYC</span>
+        <span class="skill-pill">Investor Onboarding</span>
+        <span class="skill-pill">Performance Analytics</span>
+        <span class="skill-pill">Quarterly Reporting</span>
+      </div>
+
+      <h3>Asset Class Exposure</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Venture Capital</span>
+        <span class="skill-pill">Private Equity</span>
+        <span class="skill-pill">Life Settlements</span>
+        <span class="skill-pill">Real Estate Credit</span>
+        <span class="skill-pill">Special Situations</span>
+        <span class="skill-pill">Longevity Products</span>
+      </div>
+
+      <h3>Volunteer</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Eno River State Park</span>
+        <span class="skill-pill">TABLE Food Assistance</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     CONTACT — mode-aware copy + affiliations
+     ================================================ -->
 <section id="contact">
   <p class="section-label">Get in Touch</p>
   <h2 class="section-title">Contact</h2>
@@ -1459,129 +1459,88 @@
     <div>
       <p class="contact-col-label">About</p>
       <p class="contact-intro mode-research">
-        I welcome inquiries from prospective collaborators, advisors, students, and anyone
-        interested in my research. I aim to respond to all messages within 48 hours.
+        I welcome inquiries from prospective collaborators, faculty advisors, fellow graduate
+        students, and anyone interested in environmental economics, non-market valuation,
+        or the Econometric Advisor. I aim to respond to all messages within 48 hours.
       </p>
       <p class="contact-intro mode-industry">
-        I welcome inquiries from recruiters, hiring managers, and former colleagues — and from
-        anyone interested in alternative investments, IR, or environmental policy work. I aim
-        to respond to all messages within 48 hours.
+        I welcome inquiries from former colleagues, industry contacts, recruiters, and any
+        organization seeking analytical, IR, or applied-research support. I aim to respond
+        to all messages within 48 hours.
       </p>
     </div>
 
-    <!-- Col 2: Direct contact -->
+    <!-- Col 2: Direct contact links -->
     <div>
       <p class="contact-col-label">Direct Contact</p>
       <div class="contact-links">
 
-        <!-- Research mode emphasizes university email first -->
-        <div class="mode-research">
-          <a class="contact-link" href="mailto:itholmes@ncsu.edu" style="margin-bottom:.75rem">
-            <div class="contact-link-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="contact-link-label">University Email</p>
-              <p class="contact-link-value">itholmes@ncsu.edu</p>
-            </div>
-          </a>
+        <a class="contact-link mode-research" href="mailto:itholmes@ncsu.edu">
+          <div class="contact-link-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-link-label">University Email</p>
+            <p class="contact-link-value">itholmes@ncsu.edu</p>
+          </div>
+        </a>
 
-          <a class="contact-link" href="mailto:iain.t.holmes@gmail.com" style="margin-bottom:.75rem">
-            <div class="contact-link-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="contact-link-label">Personal Email</p>
-              <p class="contact-link-value">iain.t.holmes@gmail.com</p>
-            </div>
-          </a>
+        <a class="contact-link" href="mailto:iain.t.holmes@gmail.com">
+          <div class="contact-link-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-link-label">Personal Email</p>
+            <p class="contact-link-value">iain.t.holmes@gmail.com</p>
+          </div>
+        </a>
 
-          <a class="contact-link" href="https://github.com/iainholmes" target="_blank" style="margin-bottom:.75rem">
-            <div class="contact-link-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="contact-link-label">GitHub</p>
-              <p class="contact-link-value">github.com/iainholmes</p>
-            </div>
-          </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/iaintholmes/" target="_blank" rel="noreferrer">
+          <div class="contact-link-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-link-label">LinkedIn</p>
+            <p class="contact-link-value">linkedin.com/in/iaintholmes</p>
+          </div>
+        </a>
 
-          <a class="contact-link" href="https://www.linkedin.com/in/iaintholmes/" target="_blank">
-            <div class="contact-link-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                <circle cx="4" cy="4" r="2"/>
-              </svg>
-            </div>
-            <div>
-              <p class="contact-link-label">LinkedIn</p>
-              <p class="contact-link-value">linkedin.com/in/iaintholmes</p>
-            </div>
-          </a>
-        </div>
+        <a class="contact-link mode-research" href="https://github.com/iainholmes" target="_blank" rel="noreferrer">
+          <div class="contact-link-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-link-label">GitHub</p>
+            <p class="contact-link-value">github.com/iainholmes</p>
+          </div>
+        </a>
 
-        <!-- Industry mode emphasizes personal email + LinkedIn first -->
-        <div class="mode-industry">
-          <a class="contact-link" href="mailto:iain.t.holmes@gmail.com" style="margin-bottom:.75rem">
-            <div class="contact-link-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="contact-link-label">Personal Email</p>
-              <p class="contact-link-value">iain.t.holmes@gmail.com</p>
-            </div>
-          </a>
-
-          <a class="contact-link" href="https://www.linkedin.com/in/iaintholmes/" target="_blank" style="margin-bottom:.75rem">
-            <div class="contact-link-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                <circle cx="4" cy="4" r="2"/>
-              </svg>
-            </div>
-            <div>
-              <p class="contact-link-label">LinkedIn</p>
-              <p class="contact-link-value">linkedin.com/in/iaintholmes</p>
-            </div>
-          </a>
-
-          <a class="contact-link" href="tel:+17032546914" style="margin-bottom:.75rem">
-            <div class="contact-link-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="contact-link-label">Phone</p>
-              <p class="contact-link-value">703.254.6914</p>
-            </div>
-          </a>
-
-          <a class="contact-link" href="mailto:itholmes@ncsu.edu">
-            <div class="contact-link-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="contact-link-label">University Email</p>
-              <p class="contact-link-value">itholmes@ncsu.edu</p>
-            </div>
-          </a>
+        <!-- Industry-only: location card -->
+        <div class="contact-link mode-industry" style="cursor:default">
+          <div class="contact-link-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-link-label">Location</p>
+            <p class="contact-link-value">Chapel Hill, NC &middot; Research Triangle</p>
+          </div>
         </div>
 
       </div>
     </div>
 
-    <!-- Col 3: Affiliated organizations / Past Experience -->
+    <!-- Col 3: Affiliated organizations (mode-aware) -->
     <div>
       <!-- RESEARCH affiliations -->
       <div class="mode-research">
@@ -1654,46 +1613,34 @@
         </div>
       </div>
 
-      <!-- INDUSTRY: Past Firms -->
+      <!-- INDUSTRY contacts -->
       <div class="mode-industry">
-        <p class="contact-col-label">Past Firms</p>
+        <p class="contact-col-label">Available For</p>
         <div class="contact-affil-cards">
 
-          <a class="contact-affil-card" href="https://www.standishmgmt.com/" target="_blank" rel="noreferrer">
+          <div class="contact-affil-card" style="cursor:default">
             <div>
-              <p class="ca-label">Investor Relations</p>
-              <p class="ca-name">Standish Management</p>
-              <p class="ca-sub">Raleigh, NC &middot; 2023 – 2025</p>
-              <p class="ca-link">standishmgmt.com &rarr;</p>
+              <p class="ca-label">Engagement</p>
+              <p class="ca-name">Investor Relations &amp; Fund Administration Consulting</p>
+              <p class="ca-sub">VC, PE, Alternative Credit</p>
             </div>
-          </a>
+          </div>
 
-          <a class="contact-affil-card" href="https://obra.com/" target="_blank" rel="noreferrer">
+          <div class="contact-affil-card" style="cursor:default">
             <div>
-              <p class="ca-label">Investor Relations</p>
-              <p class="ca-name">Obra Capital</p>
-              <p class="ca-sub">Austin, TX &middot; 2022</p>
-              <p class="ca-link">obra.com &rarr;</p>
+              <p class="ca-label">Engagement</p>
+              <p class="ca-name">Applied Economic &amp; Policy Research</p>
+              <p class="ca-sub">Environmental, Regulatory, Real Estate</p>
             </div>
-          </a>
+          </div>
 
-          <a class="contact-affil-card" href="https://thirdbridge.com/" target="_blank" rel="noreferrer">
+          <div class="contact-affil-card" style="cursor:default">
             <div>
-              <p class="ca-label">Due Diligence Research</p>
-              <p class="ca-name">Third Bridge</p>
-              <p class="ca-sub">New York, NY &middot; 2020 – 2022</p>
-              <p class="ca-link">thirdbridge.com &rarr;</p>
+              <p class="ca-label">Engagement</p>
+              <p class="ca-name">Due Diligence &amp; DDQ Authoring</p>
+              <p class="ca-sub">Institutional Capital Partners</p>
             </div>
-          </a>
-
-          <a class="contact-affil-card" href="https://www.house.gov/" target="_blank" rel="noreferrer">
-            <div>
-              <p class="ca-label">Legislative Research</p>
-              <p class="ca-name">U.S. House of Representatives</p>
-              <p class="ca-sub">Office of Rep. Seth Moulton &middot; 2018</p>
-              <p class="ca-link">house.gov &rarr;</p>
-            </div>
-          </a>
+          </div>
 
         </div>
       </div>
@@ -1707,22 +1654,22 @@
 </footer>
 
 <script>
-  // Year stamp
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // Pro Switch — toggles between Research and Industry views
-  function toggleMode(mode) {
+  // Mode toggle: persist across reloads with localStorage replacement via in-memory only
+  // (keeping it session-fresh so the default Research view always greets new visitors).
+  function setMode(mode) {
     const body = document.body;
     const btnR = document.getElementById('btn-research');
     const btnI = document.getElementById('btn-industry');
     if (mode === 'industry') {
       body.classList.add('is-industry');
-      btnI.classList.add('active');  btnI.setAttribute('aria-selected', 'true');
-      btnR.classList.remove('active'); btnR.setAttribute('aria-selected', 'false');
+      btnI.classList.add('active'); btnI.setAttribute('aria-pressed', 'true');
+      btnR.classList.remove('active'); btnR.setAttribute('aria-pressed', 'false');
     } else {
       body.classList.remove('is-industry');
-      btnR.classList.add('active');  btnR.setAttribute('aria-selected', 'true');
-      btnI.classList.remove('active'); btnI.setAttribute('aria-selected', 'false');
+      btnR.classList.add('active'); btnR.setAttribute('aria-pressed', 'true');
+      btnI.classList.remove('active'); btnI.setAttribute('aria-pressed', 'false');
     }
   }
 </script>
