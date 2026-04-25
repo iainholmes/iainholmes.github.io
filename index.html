@@ -989,30 +989,41 @@
 
         <!-- TREE: dendrochronology tree-ring design -->
         <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
-          <svg width="72" height="72" viewBox="0 0 72 72" style="flex-shrink:0;display:block">
-            <!-- Heartwood center — filled, slightly off-center like real wood -->
-            <ellipse cx="36" cy="37" rx="5" ry="4.5" fill="#3d2008"/>
-            <!-- Ring 1: tight early rings, irregular -->
-            <ellipse cx="36" cy="37" rx="9" ry="8" fill="none" stroke="#5a3010" stroke-width="2.2" stroke-opacity="0.95"/>
-            <!-- Ring 2: slightly different center offset -->
-            <ellipse cx="36.5" cy="36.5" rx="14" ry="12.5" fill="none" stroke="#6b4515" stroke-width="1.8" stroke-opacity="0.9"/>
-            <!-- Ring 3: good growth year, wider spacing -->
-            <ellipse cx="35.5" cy="37" rx="20" ry="18" fill="none" stroke="#7a5520" stroke-width="1.5" stroke-opacity="0.85"/>
-            <!-- Ring 4: stress year, narrower -->
-            <ellipse cx="36" cy="36" rx="24.5" ry="22.5" fill="none" stroke="#8a6828" stroke-width="1.2" stroke-opacity="0.8"/>
-            <!-- Ring 5: recovery, slight offset -->
-            <ellipse cx="36.5" cy="35.5" rx="28.5" ry="27" fill="none" stroke="#9a7a32" stroke-width="1.4" stroke-opacity="0.75"/>
-            <!-- Ring 6: sapwood, outermost -->
-            <ellipse cx="36" cy="36" rx="33" ry="32" fill="none" stroke="#b09045" stroke-width="1.0" stroke-opacity="0.65"/>
-            <!-- Bark edge suggestion -->
-            <ellipse cx="36" cy="36" rx="35" ry="34.5" fill="none" stroke="#6b4010" stroke-width="0.6" stroke-opacity="0.4"/>
-            <!-- Cardinal ticks — subtle -->
-            <line x1="36" y1="0.5" x2="36" y2="4.5" stroke="#8a6828" stroke-width="1.1" stroke-opacity="0.7"/>
-            <line x1="36" y1="67.5" x2="36" y2="71.5" stroke="#8a6828" stroke-width="1.1" stroke-opacity="0.7"/>
-            <line x1="0.5" y1="36" x2="4.5" y2="36" stroke="#8a6828" stroke-width="1.1" stroke-opacity="0.7"/>
-            <line x1="67.5" y1="36" x2="71.5" y2="36" stroke="#8a6828" stroke-width="1.1" stroke-opacity="0.7"/>
-            <!-- TREE label -->
-            <text x="36" y="40.5" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="7.5" font-weight="600" fill="#f5ddb0" letter-spacing="0.8">TREE</text>
+          <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
+            <defs>
+              <clipPath id="cv-circ"><circle cx="36" cy="36" r="34"/></clipPath>
+              <mask id="cv-tmask">
+                <rect width="72" height="72" fill="white"/>
+                <text x="36" y="44" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="21" font-weight="700" letter-spacing="1.5" fill="black">TREE</text>
+              </mask>
+            </defs>
+            <!-- Bark -->
+            <circle cx="36" cy="36" r="35.5" fill="#2a1505"/>
+            <g clip-path="url(#cv-circ)">
+              <!-- Wood base fill -->
+              <ellipse cx="36" cy="36" rx="34" ry="34" fill="#c49a3c"/>
+              <!-- Dark rings -->
+              <ellipse cx="36.3" cy="35.8" rx="31"   ry="30.5" fill="none" stroke="#a07828" stroke-width="2.2"/>
+              <ellipse cx="35.8" cy="36.2" rx="27.5" ry="27"   fill="none" stroke="#8a6018" stroke-width="1.8"/>
+              <ellipse cx="36.2" cy="35.7" rx="23.5" ry="23"   fill="none" stroke="#7a5010" stroke-width="2.0"/>
+              <ellipse cx="35.7" cy="36.3" rx="19.5" ry="19"   fill="none" stroke="#6a400c" stroke-width="1.6"/>
+              <ellipse cx="36.1" cy="35.9" rx="15.5" ry="15"   fill="none" stroke="#5a3008" stroke-width="1.8"/>
+              <ellipse cx="35.9" cy="36.1" rx="11.5" ry="11"   fill="none" stroke="#4a2206" stroke-width="1.5"/>
+              <ellipse cx="36"   cy="36"   rx="8"    ry="7.5"  fill="none" stroke="#3a1804" stroke-width="1.4"/>
+              <ellipse cx="36"   cy="36"   rx="5"    ry="4.5"  fill="#2a1002"/>
+              <!-- TREE letters — lighter rings through the mask -->
+              <g mask="url(#cv-tmask)">
+                <ellipse cx="36.3" cy="35.8" rx="31"   ry="30.5" fill="none" stroke="#f0d080" stroke-width="2.2"/>
+                <ellipse cx="35.8" cy="36.2" rx="27.5" ry="27"   fill="none" stroke="#dab860" stroke-width="1.8"/>
+                <ellipse cx="36.2" cy="35.7" rx="23.5" ry="23"   fill="none" stroke="#c8a048" stroke-width="2.0"/>
+                <ellipse cx="35.7" cy="36.3" rx="19.5" ry="19"   fill="none" stroke="#b48830" stroke-width="1.6"/>
+                <ellipse cx="36.1" cy="35.9" rx="15.5" ry="15"   fill="none" stroke="#a07020" stroke-width="1.8"/>
+                <ellipse cx="35.9" cy="36.1" rx="11.5" ry="11"   fill="none" stroke="#8a5818" stroke-width="1.5"/>
+                <ellipse cx="36"   cy="36"   rx="8"    ry="7.5"  fill="none" stroke="#703808" stroke-width="1.4"/>
+                <rect width="72" height="72" fill="rgba(245,210,130,0.22)"/>
+              </g>
+            </g>
+            <circle cx="36" cy="36" r="34.5" fill="none" stroke="#1a0a02" stroke-width="1"/>
           </svg>
           <div class="affil-text-block">
             <div class="affil-name" style="color:#2d6b1a">TREE Seminar</div>
@@ -1127,19 +1138,37 @@
 
         <!-- TREE -->
         <div class="contact-affil-card">
-          <svg width="60" height="60" viewBox="0 0 60 60" style="flex-shrink:0;display:block">
-            <ellipse cx="30" cy="31" rx="4" ry="3.8" fill="#3d2008"/>
-            <ellipse cx="30" cy="31" rx="8" ry="7"   fill="none" stroke="#5a3010" stroke-width="2" stroke-opacity="0.95"/>
-            <ellipse cx="30.5" cy="30.5" rx="12" ry="10.5" fill="none" stroke="#6b4515" stroke-width="1.6" stroke-opacity="0.9"/>
-            <ellipse cx="29.5" cy="31" rx="17" ry="15.5" fill="none" stroke="#7a5520" stroke-width="1.3" stroke-opacity="0.85"/>
-            <ellipse cx="30" cy="30" rx="21" ry="19.5" fill="none" stroke="#8a6828" stroke-width="1.1" stroke-opacity="0.8"/>
-            <ellipse cx="30.5" cy="29.5" rx="24.5" ry="23" fill="none" stroke="#9a7a32" stroke-width="1.2" stroke-opacity="0.75"/>
-            <ellipse cx="30" cy="30" rx="28" ry="27.5" fill="none" stroke="#b09045" stroke-width="0.9" stroke-opacity="0.6"/>
-            <line x1="30" y1="0.5" x2="30" y2="4" stroke="#8a6828" stroke-width="1" stroke-opacity="0.65"/>
-            <line x1="30" y1="56" x2="30" y2="59.5" stroke="#8a6828" stroke-width="1" stroke-opacity="0.65"/>
-            <line x1="0.5" y1="30" x2="4" y2="30" stroke="#8a6828" stroke-width="1" stroke-opacity="0.65"/>
-            <line x1="56" y1="30" x2="59.5" y2="30" stroke="#8a6828" stroke-width="1" stroke-opacity="0.65"/>
-            <text x="30" y="34" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="6.5" font-weight="600" fill="rgba(245,221,176,0.88)" letter-spacing="0.6">TREE</text>
+          <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
+            <defs>
+              <clipPath id="ct-circ"><circle cx="30" cy="30" r="28.5"/></clipPath>
+              <mask id="ct-tmask">
+                <rect width="60" height="60" fill="white"/>
+                <text x="30" y="37" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="18" font-weight="700" letter-spacing="1.2" fill="black">TREE</text>
+              </mask>
+            </defs>
+            <circle cx="30" cy="30" r="29.5" fill="#2a1505"/>
+            <g clip-path="url(#ct-circ)">
+              <ellipse cx="30" cy="30" rx="28.5" ry="28.5" fill="#c49a3c"/>
+              <ellipse cx="30.3" cy="29.8" rx="26"   ry="25.5" fill="none" stroke="#a07828" stroke-width="1.9"/>
+              <ellipse cx="29.8" cy="30.2" rx="22.5" ry="22"   fill="none" stroke="#8a6018" stroke-width="1.5"/>
+              <ellipse cx="30.2" cy="29.7" rx="19"   ry="18.5" fill="none" stroke="#7a5010" stroke-width="1.7"/>
+              <ellipse cx="29.7" cy="30.3" rx="15.5" ry="15"   fill="none" stroke="#6a400c" stroke-width="1.4"/>
+              <ellipse cx="30.1" cy="29.9" rx="12"   ry="11.5" fill="none" stroke="#5a3008" stroke-width="1.5"/>
+              <ellipse cx="29.9" cy="30.1" rx="8.5"  ry="8"    fill="none" stroke="#4a2206" stroke-width="1.3"/>
+              <ellipse cx="30"   cy="30"   rx="5.5"  ry="5"    fill="none" stroke="#3a1804" stroke-width="1.2"/>
+              <ellipse cx="30"   cy="30"   rx="3"    ry="2.8"  fill="#2a1002"/>
+              <g mask="url(#ct-tmask)">
+                <ellipse cx="30.3" cy="29.8" rx="26"   ry="25.5" fill="none" stroke="#f0d080" stroke-width="1.9"/>
+                <ellipse cx="29.8" cy="30.2" rx="22.5" ry="22"   fill="none" stroke="#dab860" stroke-width="1.5"/>
+                <ellipse cx="30.2" cy="29.7" rx="19"   ry="18.5" fill="none" stroke="#c8a048" stroke-width="1.7"/>
+                <ellipse cx="29.7" cy="30.3" rx="15.5" ry="15"   fill="none" stroke="#b48830" stroke-width="1.4"/>
+                <ellipse cx="30.1" cy="29.9" rx="12"   ry="11.5" fill="none" stroke="#a07020" stroke-width="1.5"/>
+                <ellipse cx="29.9" cy="30.1" rx="8.5"  ry="8"    fill="none" stroke="#8a5818" stroke-width="1.3"/>
+                <ellipse cx="30"   cy="30"   rx="5.5"  ry="5"    fill="none" stroke="#703808" stroke-width="1.2"/>
+                <rect width="60" height="60" fill="rgba(245,210,130,0.22)"/>
+              </g>
+            </g>
+            <circle cx="30" cy="30" r="29" fill="none" stroke="#1a0a02" stroke-width="0.8"/>
           </svg>
           <div>
             <p class="ca-label">Regular Attendee</p>
