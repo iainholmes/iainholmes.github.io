@@ -6,7 +6,7 @@
   <title>Iain Holmes | M.S. Economics — NC State University</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -23,7 +23,6 @@
       --navy-faint: #f0f5fb;
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans:  'DM Sans', system-ui, sans-serif;
-      --mono: 'JetBrains Mono', monospace;
     }
 
     html { scroll-behavior: smooth; }
@@ -36,11 +35,9 @@
       line-height: 1.7;
     }
 
-    /* Professional vs Research Mode Visibility */
-    .mode-professional { display: none !important; }
-    body.is-professional .mode-professional { display: block !important; }
-    body.is-professional .mode-professional.flex { display: flex !important; }
-    body.is-professional .mode-research { display: none !important; }
+    /* Toggle System */
+    body.industry-mode .research-content { display: none !important; }
+    body:not(.industry-mode) .industry-content { display: none !important; }
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -49,31 +46,23 @@
       border-bottom: 1px solid var(--rule);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 4vw;
-      height: 65px;
+      height: 62px;
     }
+
+    .nav-left { display: flex; align-items: center; gap: 1.5rem; }
+
     .nav-name {
       font-family: var(--serif);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: 0.01em;
       color: var(--ink);
       text-decoration: none;
-      border: 2px solid var(--ink); /* Boxed Name Request */
+      border: 2px solid var(--ink);
       padding: 4px 12px;
+      transition: all 0.2s;
     }
-    .nav-name:hover { border-color: var(--navy); color: var(--navy); }
-    
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
-    .nav-links a {
-      text-decoration: underline; /* Underlined Tabs Request */
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-mid);
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--navy); }
+    .nav-name:hover { background: var(--ink); color: #fff; }
 
     /* The Switch */
     .mode-toggle {
@@ -82,14 +71,13 @@
       border: 1px solid var(--rule);
       border-radius: 4px;
       padding: 2px;
-      margin-left: 1rem;
     }
     .toggle-btn {
       font-size: 0.65rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 6px 10px;
+      letter-spacing: 0.08em;
+      padding: 6px 12px;
       border: none;
       cursor: pointer;
       background: transparent;
@@ -97,382 +85,253 @@
       border-radius: 2px;
       transition: all 0.2s;
     }
-    .toggle-btn.active {
-      background: var(--navy);
-      color: #fff;
-    }
+    .toggle-btn.active { background: var(--navy); color: #fff; }
 
-    .hero {
-      min-height: 80vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 65px;
-    }
-    .hero-text {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 4rem 6vw 4rem 8vw;
-      border-right: 1px solid var(--rule);
-    }
-    .hero-eyebrow {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--navy-mid);
-      margin-bottom: 1.2rem;
-    }
-    .hero-name {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      font-weight: 500;
-      line-height: 1.08;
-      margin-bottom: 1.4rem;
-      color: var(--ink);
-    }
-    .hero-name em { font-style: italic; color: var(--ink-mid); }
-    .hero-desc {
-      font-size: 1rem;
-      color: var(--ink-mid);
-      max-width: 420px;
-      line-height: 1.75;
-      margin-bottom: 2.4rem;
-    }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.8rem; }
-    .tag {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.35rem 0.85rem;
-      border: 1px solid var(--navy-light);
-      border-radius: 2px;
-      color: var(--navy);
-      background: var(--navy-faint);
-    }
-    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn {
-      text-decoration: none;
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: underline;
       font-size: 0.8rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 0.75rem 1.6rem;
-      border-radius: 2px;
-      transition: all 0.2s;
+      color: var(--ink-mid);
+      transition: color 0.2s;
     }
-    .btn-primary { background: var(--navy); color: #fff; border: 1px solid var(--navy); }
-    .btn-primary:hover { background: var(--ink); border-color: var(--ink); }
-    .btn-secondary { background: transparent; color: var(--ink-mid); border: 1px solid var(--rule); }
-    .btn-secondary:hover { border-color: var(--navy); color: var(--navy); }
+    .nav-links a:hover { color: var(--navy); }
 
-    .hero-panel {
-      background: var(--navy-faint);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 4rem 4vw;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-photo-wrap {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2.5rem;
-      z-index: 2;
-    }
-    .hero-photo-wrap img {
-      width: 450px; height: 450px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      border: 4px solid #fff;
-      box-shadow: 0 8px 32px rgba(27,58,92,0.18);
-    }
-    .hero-quote {
-      position: relative; z-index: 3;
-      font-family: var(--serif);
-      font-style: italic; font-size: 1.05rem;
-      color: var(--navy); border-left: 3px solid var(--navy);
-      padding-left: 1.2rem; line-height: 1.65;
-      max-width: 420px; margin-bottom: 1rem;
-    }
+    .hero { min-height: 75vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 62px; }
+    .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 4rem 6vw 4rem 8vw; border-right: 1px solid var(--rule); }
+    .hero-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy-mid); margin-bottom: 1.2rem; }
+    .hero-name { font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 500; line-height: 1.08; margin-bottom: 1.4rem; color: var(--ink); }
+    .hero-name em { font-style: italic; color: var(--ink-mid); }
+    .hero-desc { font-size: 1rem; color: var(--ink-mid); max-width: 420px; line-height: 1.75; margin-bottom: 2.4rem; }
+    
+    .hero-panel { background: var(--navy-faint); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 4vw; position: relative; overflow: hidden; }
+    .hero-photo-wrap img { width: 420px; height: 420px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 8px 32px rgba(27,58,92,0.18); z-index: 2; position: relative; }
 
     section { padding: 6rem 8vw; }
     section + section { border-top: 1px solid var(--rule); }
+    .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.6rem; padding-left: 0.85rem; border-left: 3px solid var(--navy); }
+    .section-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 500; line-height: 1.2; margin-bottom: 3rem; color: var(--ink); display: inline-block; padding-bottom: 0.5rem; border-bottom: 3px solid var(--navy); }
 
-    .section-label {
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--navy);
-      margin-bottom: 0.6rem; padding-left: 0.85rem; border-left: 3px solid var(--navy);
-    }
+    .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 5rem; align-items: start; }
+    
+    /* Education Watermark Styling */
+    .edu-block { position: relative; margin-top: 1.2rem; padding: 1.5rem; background: var(--navy-faint); border-left: 3px solid var(--navy); overflow: hidden; z-index: 1; }
+    .edu-logo-watermark { position: absolute; right: -10px; bottom: -10px; height: 100px; opacity: 0.08; z-index: -1; filter: grayscale(1); }
+    .edu-block .degree { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--navy); }
+    .edu-block .institution { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.3rem; }
 
-    .section-title {
-      font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 500; line-height: 1.2; margin-bottom: 3rem;
-      color: var(--ink); display: inline-block; padding-bottom: 0.5rem;
-      border-bottom: 3px solid var(--navy);
-    }
+    /* Cards & Research Reversion */
+    .research-list { display: flex; flex-direction: column; gap: 2rem; }
+    .research-item { background: var(--paper); border: 1px solid var(--navy-light); border-top: 3px solid var(--navy); padding: 2.5rem; border-radius: 2px; transition: all 0.2s; }
+    .research-item:hover { box-shadow: 0 4px 20px rgba(27,58,92,0.1); transform: translateY(-2px); }
+    .research-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: 1rem; }
 
-    /* Hub Design Suggestions */
-    .advisor-hub {
-      background: #0a0f1e;
-      color: #fff;
-      padding: 3rem;
-      border-radius: 4px;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 3rem;
-      margin: 3rem 0;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .hub-visual { display: flex; flex-direction: column; gap: 1rem; }
-    .tech-spec-label {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      color: #60a5fa;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .hub-content h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; color: #60a5fa; }
-    .hub-content p { font-size: 0.95rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
+    /* Revised Advisor Box */
+    .advisor-flex-card { display: flex; gap: 2.5rem; align-items: center; }
+    .advisor-logo-large { width: 140px; height: 140px; flex-shrink: 0; }
 
+    /* CV Styling */
     .cv-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; }
-    .cv-section-head {
-      font-family: var(--sans); font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: #fff; background: var(--navy); padding: 0.5rem 0.9rem;
-      margin: 2.2rem 0 1.2rem; display: block;
-    }
+    .cv-section-head { font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; background: var(--navy); padding: 0.5rem 0.9rem; margin: 2.2rem 0 1.2rem; display: block; }
     .cv-entry { margin-bottom: 2rem; padding-left: 0.75rem; border-left: 2px solid var(--navy-light); }
     .cv-entry-title { font-weight: 600; font-size: 1rem; color: var(--ink); }
     .cv-entry-sub { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.2rem; }
-    .cv-entry-date { font-size: 0.75rem; color: var(--ink-light); margin-top: 0.35rem; display: block; }
-    .cv-entry-bullets { margin-top: 0.6rem; padding-left: 1.1rem; }
-    .cv-entry-bullets li { font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 0.4rem; }
+    .cv-entry-bullets { margin-top: 0.6rem; padding-left: 1.1rem; list-style-type: circle; }
+    .cv-entry-bullets li { font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 0.4rem; line-height: 1.5; }
 
-    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .skill-pill {
-      font-size: 0.72rem; font-weight: 500; padding: 0.3rem 0.7rem;
-      background: var(--navy-faint); border: 1px solid var(--navy-light);
-      border-radius: 2px; color: var(--navy);
-    }
-
-    #contact { background: var(--navy); color: #fff; }
+    /* Affiliation Cards (Bottom Section) */
     .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr 1.4fr; gap: 3.5rem; }
-    .contact-affil-card {
-      display: flex; align-items: center; gap: 1.1rem; padding: .9rem 1rem;
-      border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.04);
-      border-radius: 2px; text-decoration: none; transition: all .2s;
-    }
-    .contact-affil-card:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.08); }
+    .contact-affil-card { display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); border-radius: 2px; text-decoration: none; transition: all 0.2s; }
+    .contact-affil-card:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); }
+    #contact { background: var(--navy); color: #fff; }
 
-    footer {
-      background: #0d1f33; text-align: center; padding: 1.5rem 4vw;
-      font-size: 0.72rem; color: rgba(255,255,255,0.3); border-top: 3px solid var(--navy-mid);
-    }
-
-    @media (max-width: 900px) {
-      .hero, .cv-layout, .contact-grid, .advisor-hub { grid-template-columns: 1fr; }
-    }
+    footer { background: #0d1f33; text-align: center; padding: 1.5rem 4vw; font-size: 0.72rem; color: rgba(255,255,255,0.3); border-top: 3px solid var(--navy-mid); }
   </style>
 </head>
-<body id="body">
+<body id="main-body">
 
 <nav>
-  <a class="nav-name" href="#top">Iain Holmes</a>
+  <div class="nav-left">
+    <a class="nav-name" href="#top">Iain Holmes</a>
+    <div class="mode-toggle">
+      <button class="toggle-btn active" id="btn-research" onclick="setMode('research')">Research</button>
+      <button class="toggle-btn" id="btn-industry" onclick="setMode('industry')">Industry</button>
+    </div>
+  </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#research">Research</a></li>
+    <li class="research-content"><a href="#research">Thesis</a></li>
+    <li class="industry-content"><a href="#experience">Experience</a></li>
     <li><a href="#cv">CV</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://iainholmes.github.io/econometric-advisor/" style="color:var(--navy); font-weight:600;">Advisor App</a></li> <div class="mode-toggle">
-      <button class="toggle-btn active" id="btn-research" onclick="toggleMode('research')">Research</button>
-      <button class="toggle-btn" id="btn-pro" onclick="toggleMode('pro')">Industry</button>
-    </div>
+    <li><a href="https://iainholmes.github.io/econometric-advisor/" target="_blank" style="color:var(--navy); font-weight:600;">App</a></li>
   </ul>
 </nav>
 
 <section class="hero" id="top">
   <div class="hero-text">
-    <p class="hero-eyebrow mode-research">Graduate Researcher · NC State University [cite: 9, 80]</p>
-    <p class="hero-eyebrow mode-professional">Economic Analyst · Environmental Consultant [cite: 17, 25]</p>
+    <p class="hero-eyebrow research-content">Graduate Researcher · NC State University</p>
+    <p class="hero-eyebrow industry-content">Economic Consultant · Data Strategist</p>
     <h1 class="hero-name">Iain<br><em>Holmes</em></h1>
-    
-    <div class="mode-research">
-      <p class="hero-desc">
-        M.Sc. candidate in Economics with dual concentration in Data Analytics and
-        Natural Resource &amp; Environmental Economics [cite: 81] — applying rigorous quantitative
-        methods to environmental policy and non-market valuation[cite: 6, 77].
-      </p>
-      <div class="hero-tags">
-        <span class="tag">Hedonic Pricing [cite: 11]</span>
-        <span class="tag">Applied Econometrics [cite: 11, 82]</span>
-        <span class="tag">Data Analytics [cite: 81]</span>
-      </div>
-    </div>
-
-    <div class="mode-professional">
-      <p class="hero-desc">
-        Leveraging a deep background in investor relations and financial analytics [cite: 5, 76] to solve
-        complex environmental compliance and resource allocation challenges for corporate and government clients[cite: 17, 20].
-      </p>
-      <div class="hero-tags">
-        <span class="tag">Investor Relations [cite: 34, 38]</span>
-        <span class="tag">Financial Modeling [cite: 5, 39]</span>
-        <span class="tag">Regulatory Compliance [cite: 20, 90]</span>
-      </div>
-    </div>
-
+    <p class="hero-desc research-content">
+      M.Sc. Economics candidate focusing on Data Analytics and Natural Resource &amp; Environmental Economics. 
+      Bridging the gap between high-level econometrics and actionable policy.
+    </p>
+    <p class="hero-desc industry-content">
+      Leveraging five years of finance and legislative experience to deliver rigorous 
+      economic valuation and data-driven insights for institutional stakeholders.
+    </p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#research">View Work</a>
-      <a class="btn btn-secondary" href="#cv">View CV</a>
+      <a class="btn btn-primary research-content" href="#research">View Research</a>
+      <a class="btn btn-primary industry-content" href="#experience">View History</a>
+      <a class="btn btn-secondary" href="#cv">Download CV</a>
     </div>
   </div>
   <div class="hero-panel">
-    <div class="hero-photo-wrap">
-      <img src="files/headshot.jpeg" alt="Iain Holmes" />
-    </div>
-    <blockquote class="hero-quote">
-      "Economics is the study of how societies allocate scarce resources [cite: 6, 77] —
-      It's about time we shift our focus toward the ones we cannot afford to waste."
-    </blockquote>
+    <div class="hero-photo-wrap"><img src="files/headshot.jpeg" alt="Iain Holmes" /></div>
   </div>
 </section>
 
 <section id="about">
   <p class="section-label">Background</p>
   <h2 class="section-title">About Me</h2>
-  <div class="cv-layout">
+  <div class="about-grid">
     <div class="about-body">
-      <p>
-        I am an M.S. Economics student at NC State University [cite: 9, 80] specializing in <strong>Data Analytics</strong> and 
-        <strong>Environmental Economics</strong>[cite: 10, 81]. My work bridges the gap between high-finance analytical rigor and 
-        on-the-ground environmental policy[cite: 5, 6].
-      </p>
-      <div class="mode-research">
-        <p>
-          Currently, I serve as a Research Assistant for <strong>Veritas Economic Consulting</strong> [cite: 17] and 
-          <strong>Environmental Economics Services</strong>[cite: 25], focusing on water infrastructure valuation and 
-          Natural Resource Damage (NRD) assessments[cite: 20, 26].
-        </p>
+      <div class="research-content">
+        <p>I am a second-year graduate student at North Carolina State University, where I apply microeconometric frameworks to environmental challenges. My primary focus is on **non-market valuation** and **spatial econometrics**, specifically identifying how environmental externalities are capitalized into residential property markets.</p>
+        <p style="margin-top:1rem;">As a Research Assistant for <strong>Veritas Economic Consulting</strong> and <strong>Environmental Economics Services</strong>, I support high-stakes litigation and regulatory proceedings regarding CWA compliance and Natural Resource Damages (NRD). My work involves building simulation models in Analytica and managing large-scale contingent valuation surveys.</p>
       </div>
-      <div class="mode-professional">
-        <p>
-          With over five years of experience in New York and Austin's financial sectors[cite: 38, 41], I bring a level of 
-          operational efficiency and stakeholder management—handling $9B+ AUM portfolios [cite: 34]—to every technical 
-          research project I lead.
-        </p>
+      <div class="industry-content">
+        <p>Prior to my graduate studies in Economics, I developed a career in the financial services sector, specializing in **Investor Relations** and **Institutional Reporting**. I have managed portfolios exceeding $9B AUM, ensuring operational accuracy and complex stakeholder communication for firms like Standish Management and Obra Capital.</p>
+        <p style="margin-top:1rem;">My professional foundation is built on an ability to synthesize complex data into executive-level narratives—a skill I first honed as a Legislative Research Intern in the **U.S. House of Representatives**, tracking infrastructure recovery following environmental catastrophes.</p>
       </div>
     </div>
+    
     <div class="about-sidebar">
       <div class="edu-block">
-        <p class="degree">M.Sc. Economics [cite: 81]</p>
-        <p class="institution">NC State University [cite: 80]</p>
-        <p class="year">Expected Dec 2026 [cite: 80]</p>
+        <img src="image_d29a5b.png" class="edu-logo-watermark" alt="NC State Logo">
+        <p class="degree">M.Sc. Economics</p>
+        <p class="institution">North Carolina State University [cite: 140, 143]</p>
+        <p class="year">Expected Dec 2026 · GPA: 3.9 [cite: 142, 144]</p>
       </div>
-      <div class="edu-block" style="margin-top:1.5rem">
-        <p class="degree">B.A. Economics [cite: 84]</p>
-        <p class="institution">University of Virginia [cite: 83]</p>
-        <p class="year">Graduated 2018 [cite: 83]</p>
+      <div class="edu-block">
+        <img src="image_d29d24.png" class="edu-logo-watermark" alt="UVA Logo">
+        <p class="degree">B.A. Economics · Minor: Philosophy</p>
+        <p class="institution">University of Virginia [cite: 146, 147]</p>
+        <p class="year">Graduated 2018 · GPA: 3.5 [cite: 147, 151]</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="research">
-  <p class="section-label">Products & Tools</p>
-  <h2 class="section-title">The Advisor Hub</h2>
-  <div class="advisor-hub">
-    <div class="hub-visual">
-      <div style="background:rgba(255,255,255,0.05); padding:1.5rem; border-radius:4px; border:1px dashed #60a5fa;">
-        <p class="tech-spec-label">Internal Logic</p>
-        <p style="font-family:var(--mono); font-size:0.7rem; color:#93c5fd; line-height:1.4">
-          IF (endogeneity == true) { <br>
-          &nbsp;&nbsp;return identification_strategy('2SLS'); <br>
-          } ELSE { <br>
-          &nbsp;&nbsp;recommend('OLS_Robust'); <br>
-          }
-        </p>
-      </div>
-      <div style="display:flex; gap:0.5rem">
-        <span class="skill-pill" style="background:#1e293b; border-color:#334155; color:#60a5fa">v1.0.4</span>
-        <span class="skill-pill" style="background:#1e293b; border-color:#334155; color:#60a5fa">Open Source</span>
-      </div>
+<section id="research" class="research-content">
+  <p class="section-label">Scholarship</p>
+  <h2 class="section-title">Thesis &amp; Research</h2>
+  <div class="research-list">
+    <div class="research-item">
+      <p class="hero-eyebrow">Working Paper · Dec 2025 [cite: 144]</p>
+      <h3 class="research-title">Spatial Effects of Water Infrastructure on Housing Markets</h3>
+      <p>Examined the capitalization of dam proximity into housing prices across 747 NC ZCTAs via a quadratic hedonic pricing model, identifying a statistically significant **22.3-mile amenity zone**. [cite: 144]</p>
     </div>
-    <div class="hub-content">
-      <h3>Econometric Advisor</h3>
-      <p>An AI-powered research design tool built to guide graduate researchers through the 
-         identification landscape. It generates personalized econometric toolkits, spatial 
-         diagnostics, and causal inference checklists.</p>
-      <a class="btn btn-primary" href="https://iainholmes.github.io/econometric-advisor/" target="_blank">Launch Tool &rarr;</a>
+
+    <div class="research-item">
+      <div class="advisor-flex-card">
+        <svg class="advisor-logo-large" viewBox="0 0 512 512">
+          <rect width="512" height="512" rx="112" fill="#0a0f1e"/>
+          <circle cx="256" cy="256" r="192" fill="none" stroke="#2d5fd6" stroke-width="6" opacity=".5"/>
+          <circle cx="256" cy="256" r="110" fill="none" stroke="#60a5fa" stroke-width="18"/>
+          <circle cx="256" cy="256" r="88" fill="#080e1c"/>
+          <line x1="256" y1="252" x2="256" y2="148" stroke="#60a5fa" stroke-width="16" stroke-linecap="round"/>
+          <circle cx="256" cy="256" r="24" fill="#1e40af"/>
+          <circle cx="256" cy="256" r="7" fill="#fff"/>
+        </svg>
+        <div>
+          <h3 class="research-title">Econometric Advisor Tool</h3>
+          <p>Navigating the "identification landscape" in modern econometrics is a primary barrier for researchers. This open-source interface transforms the initial research design phase into a structured assessment, generating tailored identification strategies and estimator recommendations based on structural data constraints and endogeneity risks.</p>
+          <a href="https://iainholmes.github.io/econometric-advisor/" target="_blank" style="display:inline-block; margin-top:1rem; color:var(--navy); font-weight:600; text-decoration:none;">Open Application &rarr;</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="cv">
-  <p class="section-label">Experience</p>
-  <h2 class="section-title">Professional Narrative</h2>
+  <p class="section-label">Narrative</p>
+  <h2 class="section-title">Experience</h2>
+  
   <div class="cv-layout">
     <div class="cv-main">
       
-      <p class="cv-section-head">Economic Research</p>
-      <div class="cv-entry">
-        <p class="cv-entry-title">Research Assistant [cite: 17, 88]</p>
-        <p class="cv-entry-sub">Veritas Economic Consulting · Cary, NC [cite: 87]</p>
-        <p class="cv-entry-date">2025 – Present [cite: 88]</p>
-        <ul class="cv-entry-bullets">
-          <li>Analyzed power plant water usage data to ensure compliance with CWA regulations and ecological safety[cite: 20, 90].</li>
-          <li>Constructed stated-preference surveys to quantify non-use demand for environmental goods[cite: 22, 92].</li>
-          <li>Deployed Python and Stata for high-resolution econometric simulations and forecasting[cite: 24, 93].</li>
-        </ul>
-      </div>
-
-      <div class="mode-professional">
-        <p class="cv-section-head">Finance & Investor Relations</p>
+      <div class="research-content">
+        <p class="cv-section-head">Economic Consulting &amp; Academia</p>
         
         <div class="cv-entry">
-          <p class="cv-entry-title">Client Associate, Investor Relations [cite: 34, 101]</p>
-          <p class="cv-entry-sub">Standish Management · Raleigh, NC [cite: 33, 100]</p>
-          <p class="cv-entry-date">2023 – 2025 [cite: 34, 101]</p>
+          <p class="cv-entry-title">Research Assistant</p>
+          <p class="cv-entry-sub">Veritas Economic Consulting [cite: 149]</p>
           <ul class="cv-entry-bullets">
-            <li>Directed investor operations and performance analytics for VC/PE funds exceeding $9B in AUM[cite: 34, 35].</li>
-            <li>Managed the end-to-end LP lifecycle, including technical onboarding and tax audit compliance[cite: 36, 103].</li>
-            <li>Engineered AML vetting protocols for high-net-worth investors in alternative asset markets[cite: 37, 104].</li>
+            <li>Authored cost-benefit analysis for a Chicago high-rise using Cost-Cost and Cost-Revenue Tests to allocate **$13M in EPA Clean Water Act compliance costs**. [cite: 153]</li>
+            <li>Engineered choice modeling for a stated-preference survey capturing 1,123 responses to elicit **Willingness-to-Pay (WTP)** for environmental programs. [cite: 155]</li>
+            <li>Developed econometric simulations in Analytica and Stata to forecast ecological impacts on fish populations. [cite: 154]</li>
           </ul>
         </div>
 
         <div class="cv-entry">
-          <p class="cv-entry-title">Associate, Investor Relations [cite: 38, 105]</p>
-          <p class="cv-entry-sub">Obra Capital · Austin, TX [cite: 38, 105]</p>
-          <p class="cv-entry-date">2022 [cite: 38, 105]</p>
+          <p class="cv-entry-title">Research Assistant (Contract)</p>
+          <p class="cv-entry-sub">Environmental Economics Services, LLC [cite: 164]</p>
           <ul class="cv-entry-bullets">
-            <li>Synthesized quarterly performance reports (NAV, IRR, redemptions) for institutional capital partners[cite: 39, 106].</li>
-            <li>Authored Due Diligence Questionnaires (DDQs) and pitch materials for sovereign wealth funds and university endowments[cite: 40, 107].</li>
+            <li>Validated economic accuracy for a **Natural Resource Damages (NRD)** textbook covering oil spills, wildfires, and hazardous releases. [cite: 165]</li>
+            <li>Updated regression models for litigation case studies, ensuring empirical foundations for expert witness testimony. [cite: 166]</li>
           </ul>
         </div>
 
         <div class="cv-entry">
-          <p class="cv-entry-title">Client Associate [cite: 42, 109]</p>
-          <p class="cv-entry-sub">Third Bridge · New York, NY [cite: 41, 108]</p>
-          <p class="cv-entry-date">2020 – 2022 [cite: 42, 113]</p>
+          <p class="cv-entry-title">Graduate Teaching Assistant</p>
+          <p class="cv-entry-sub">NC State University · EC 490 &amp; EC 410 [cite: 157, 158]</p>
           <ul class="cv-entry-bullets">
-            <li>Led a 4-person team delivering rapid due diligence research for Bain Capital and BCG[cite: 44, 111].</li>
-            <li>Interfaced with PE clients to communicate expert analysis and market-shifting trends[cite: 45, 112].</li>
+            <li>Mentored undergraduates on capstone papers regarding market strategy, externalities, and regulation. [cite: 161]</li>
+            <li>Graded advanced coursework for Senior Seminar and Public Finance sections. [cite: 161]</li>
           </ul>
         </div>
       </div>
 
-      <div class="mode-research">
-        <p class="cv-section-head">Academic & Technical Projects</p>
+      <div class="industry-content">
+        <p class="cv-section-head">Finance &amp; Investor Relations</p>
+
         <div class="cv-entry">
-          <p class="cv-entry-title">Research Assistant [cite: 25, 94]</p>
-          <p class="cv-entry-sub">Environmental Economics Services · Raleigh, NC [cite: 25, 94]</p>
-          <p class="cv-entry-date">2025 – 2026 [cite: 25, 94]</p>
+          <p class="cv-entry-title">Client Associate, Investor Relations</p>
+          <p class="cv-entry-sub">Standish Management [cite: 168]</p>
           <ul class="cv-entry-bullets">
-            <li>Validated economic modeling for a Natural Resource Damage (NRD) textbook covering oil spills and wildfires[cite: 26, 95].</li>
-            <li>Assisted in developing regression frameworks for high-profile environmental litigation[cite: 29, 97].</li>
+            <li>Directed financial modeling and analytics for 15+ investment funds, including a **$9.57B AUM portfolio** for TrueBridge Capital. [cite: 171]</li>
+            <li>Architected quarterly reporting deliverables using Alteryx to streamline data flow across alternative asset classes. [cite: 171]</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Associate, Investor Relations</p>
+          <p class="cv-entry-sub">Obra Capital [cite: 172]</p>
+          <ul class="cv-entry-bullets">
+            <li>Managed reporting for a **$6.9B investment platform** spanning Real Estate Credit and Special Situations. [cite: 176]</li>
+            <li>Produced Due Diligence Questionnaires (DDQs) for sovereign wealth funds, pension funds, and university endowments. [cite: 177]</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Client Associate</p>
+          <p class="cv-entry-sub">Third Bridge · New York, NY [cite: 178]</p>
+          <ul class="cv-entry-bullets">
+            <li>Promoted to direct a 4-person research team implementing strategic frameworks for Private Equity due diligence. [cite: 179, 180]</li>
+            <li>Managed high-stakes projects for top-tier clients including **Bain Capital and Boston Consulting Group (BCG)**. [cite: 183]</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Legislative Research Intern</p>
+          <p class="cv-entry-sub">U.S. House of Representatives · Rep. Seth Moulton [cite: 184]</p>
+          <ul class="cv-entry-bullets">
+            <li>Tracked infrastructure recovery post-gas explosion, developing data-driven restoration forecasts for constituent town halls. [cite: 188]</li>
+            <li>Coordinated with utility executives to maintain accurate recovery timelines for the district. [cite: 188]</li>
           </ul>
         </div>
       </div>
@@ -480,62 +339,88 @@
     </div>
 
     <div class="cv-sidebar">
-      <h3>Stack</h3>
-      <div class="skill-pills">
-        <span class="skill-pill">Stata [cite: 60, 127]</span>
-        <span class="skill-pill">Python [cite: 60, 127]</span>
-        <span class="skill-pill">R [cite: 60, 127]</span>
-        <span class="skill-pill">Analytica [cite: 60, 127]</span>
-        <span class="skill-pill">Power BI [cite: 61, 128]</span>
-        <span class="skill-pill">Salesforce [cite: 61, 128]</span>
+      <h3>Technical Stack</h3>
+      <div class="skill-pills" style="margin-top:1rem;">
+        <span class="skill-pill">STATA</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">R</span>
+        <span class="skill-pill">Alteryx</span>
+        <span class="skill-pill">Analytica</span>
+        <span class="skill-pill">Power BI</span>
+        <span class="skill-pill">Salesforce</span>
       </div>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <p class="section-label">Contact</p>
-  <h2 class="section-title">Connect</h2>
+  <p class="section-label">Connect</p>
+  <h2 class="section-title">Contact</h2>
   <div class="contact-grid">
     <div>
-      <p class="contact-intro">Open to discussions regarding economic policy, PFAS research, or institutional IR[cite: 7, 78].</p>
+      <p style="opacity:0.8;">I am always open to discussing new research opportunities, econometric challenges, or professional collaborations.</p>
     </div>
-    <div>
-      <a class="contact-affil-card" href="mailto:itholmes@ncsu.edu">itholmes@ncsu.edu [cite: 2, 73]</a>
-      <a class="contact-affil-card" href="https://linkedin.com/in/iaintholmes/" style="margin-top:1rem">LinkedIn</a>
-    </div>
-    <div>
-      <div class="contact-affil-card">
+    
+    <div class="research-content">
+      <a class="contact-affil-card" href="mailto:itholmes@ncsu.edu">
         <div>
-          <p class="ca-label">Affiliation</p>
-          <p class="ca-name">CEnREP [cite: 10, 81]</p>
-          <p class="ca-sub">NC State University [cite: 9, 80]</p>
+          <p style="font-size:0.7rem; text-transform:uppercase; opacity:0.6;">University</p>
+          <p>itholmes@ncsu.edu [cite: 138]</p>
         </div>
-      </div>
+      </a>
+      <a class="contact-affil-card" href="https://cenrep.ncsu.edu/" target="_blank" style="margin-top:1rem;">
+        <div>
+          <p style="font-size:0.7rem; text-transform:uppercase; opacity:0.6;">Affiliation</p>
+          <p>CEnREP Graduate Affiliate [cite: 145]</p>
+        </div>
+      </a>
     </div>
+
+    <div class="industry-content">
+      <a class="contact-affil-card" href="mailto:iain.t.holmes@gmail.com">
+        <div>
+          <p style="font-size:0.7rem; text-transform:uppercase; opacity:0.6;">Personal Email</p>
+          <p>iain.t.holmes@gmail.com [cite: 138]</p>
+        </div>
+      </a>
+      <a class="contact-affil-card" href="https://www.linkedin.com/in/iaintholmes/" target="_blank" style="margin-top:1rem;">
+        <div>
+          <p style="font-size:0.7rem; text-transform:uppercase; opacity:0.6;">Networking</p>
+          <p>LinkedIn Profile &rarr;</p>
+        </div>
+      </a>
+    </div>
+
+    <a class="contact-affil-card" href="https://cenrep.ncsu.edu/events/tree/" target="_blank">
+      <div>
+        <p style="font-size:0.7rem; text-transform:uppercase; opacity:0.6;">Forum</p>
+        <p>TREE Seminar Attendee [cite: 145]</p>
+      </div>
+    </a>
   </div>
 </section>
 
 <footer>
-  &copy; <span id="yr"></span> Iain Holmes · Economics [cite: 1, 72] · NC State [cite: 9, 80]
+  &copy; <span id="year"></span> Iain Holmes · Raleigh, NC · NC State Department of Economics
 </footer>
 
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  function toggleMode(mode) {
-    const body = document.getElementById('body');
-    const btnResearch = document.getElementById('btn-research');
-    const btnPro = document.getElementById('btn-pro');
-
-    if (mode === 'pro') {
-      body.classList.add('is-professional');
-      btnPro.classList.add('active');
-      btnResearch.classList.remove('active');
+  function setMode(mode) {
+    const body = document.getElementById('main-body');
+    const btnRes = document.getElementById('btn-research');
+    const btnInd = document.getElementById('btn-industry');
+    
+    if (mode === 'industry') {
+      body.classList.add('industry-mode');
+      btnInd.classList.add('active');
+      btnRes.classList.remove('active');
     } else {
-      body.classList.remove('is-professional');
-      btnResearch.classList.add('active');
-      btnPro.classList.remove('active');
+      body.classList.remove('industry-mode');
+      btnRes.classList.add('active');
+      btnInd.classList.remove('active');
     }
   }
 </script>
