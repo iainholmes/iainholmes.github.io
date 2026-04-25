@@ -405,6 +405,30 @@
       color: var(--navy);
     }
 
+    /* Econometric Advisor — watermark version */
+    .research-item.advisor-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .advisor-watermark {
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 380px;
+      height: 380px;
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .advisor-card > *:not(.advisor-watermark) {
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 900px) {
+      .advisor-watermark { width: 260px; height: 260px; right: -80px; opacity: 0.05; }
+    }
+
     /* Econometric Advisor — large logo on left, description on right */
     .advisor-layout {
       display: grid;
@@ -562,6 +586,9 @@
       grid-template-columns: 1fr 1.4fr 1.4fr;
       gap: 3.5rem;
       align-items: start;
+    }
+    body.is-industry .contact-grid {
+      grid-template-columns: 1fr 1.4fr;
     }
     .contact-col-label {
       font-size: .72rem;
@@ -735,12 +762,8 @@
       "Economics is the study of how societies allocate scarce resources &mdash;
       It's about time we shift our focus toward the ones we cannot afford to waste."
     </blockquote>
-    <blockquote class="hero-quote mode-industry">
-      "Capital allocation, like resource allocation, rewards rigor, transparency,
-      and the discipline to model what matters before acting on it."
-    </blockquote>
     <p class="hero-affil mode-research">NC State &middot; Department of Economics &middot; Raleigh, NC</p>
-    <p class="hero-affil mode-industry">Chapel Hill, NC &middot; Available for consulting &amp; analytical engagements</p>
+    <p class="hero-affil mode-industry">Raleigh &middot; Durham &middot; Chapel Hill</p>
   </div>
 </section>
 
@@ -969,47 +992,41 @@
       </div>
     </div>
 
-    <!-- Econometric Advisor — large logo on left, content on right -->
-    <div class="research-item">
-      <div class="advisor-layout">
-        <div class="advisor-logo-wrap">
-          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-label="Econometric Advisor logo">
-            <rect width="512" height="512" rx="112" fill="#0a0f1e"/>
-            <circle cx="256" cy="256" r="192" fill="none" stroke="#2d5fd6" stroke-width="6" opacity=".5"/>
-            <circle cx="256" cy="256" r="110" fill="none" stroke="#60a5fa" stroke-width="18"/>
-            <circle cx="256" cy="256" r="88" fill="#080e1c"/>
-            <line x1="256" y1="252" x2="256" y2="148" stroke="#60a5fa" stroke-width="16" stroke-linecap="round"/>
-            <circle cx="256" cy="140" r="20" fill="#3b82f6"/><circle cx="256" cy="140" r="10" fill="#bfdbfe"/>
-            <line x1="249" y1="262" x2="174" y2="338" stroke="#c084fc" stroke-width="16" stroke-linecap="round"/>
-            <circle cx="169" cy="343" r="20" fill="#a855f7"/><circle cx="169" cy="343" r="10" fill="#e9d5ff"/>
-            <line x1="263" y1="262" x2="338" y2="338" stroke="#34d399" stroke-width="16" stroke-linecap="round"/>
-            <circle cx="343" cy="343" r="20" fill="#10b981"/><circle cx="343" cy="343" r="10" fill="#a7f3d0"/>
-            <circle cx="256" cy="256" r="24" fill="#1e40af"/>
-            <circle cx="256" cy="256" r="16" fill="#93c5fd"/>
-            <circle cx="256" cy="256" r="7" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="advisor-content">
-          <p class="research-type">Research Tool &middot; Open Access</p>
-          <h3 class="research-title">Econometric Advisor &mdash; An AI-Powered Research Design Tool for Applied Economics</h3>
-          <p class="research-abstract">
-            The Econometric Advisor is a browser-based companion that helps applied researchers move from
-            a research question to a defensible identification strategy. Through a structured twelve-question
-            intake covering treatment assignment, data structure, sources of variation, and threats to
-            inference, the tool returns a tailored econometric playbook: a recommended estimator, functional
-            form considerations, spatial diagnostic suggestions, and an inference checklist calibrated to
-            the user's specific design. With an Anthropic API key supplied, the Advisor extends its output
-            with a plain-language summary of the identification logic and a curated mini-review of
-            related applied work. The full app is implemented in vanilla HTML and JavaScript with no
-            backend &mdash; a deliberate choice meant to make rigorous econometric thinking accessible to
-            any graduate student with a browser.
-          </p>
-          <p class="research-meta">
-            Iain Holmes &middot; NC State University, Department of Economics &middot; 2025<br>
-            Stack: HTML &middot; JavaScript &middot; Anthropic Claude API &middot; GitHub Pages
-          </p>
-        </div>
-      </div>
+    <!-- Econometric Advisor — compass logo as full-card watermark -->
+    <div class="research-item advisor-card">
+      <svg class="advisor-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="512" height="512" rx="112" fill="#0a0f1e"/>
+        <circle cx="256" cy="256" r="192" fill="none" stroke="#2d5fd6" stroke-width="6" opacity=".5"/>
+        <circle cx="256" cy="256" r="110" fill="none" stroke="#60a5fa" stroke-width="18"/>
+        <circle cx="256" cy="256" r="88" fill="#080e1c"/>
+        <line x1="256" y1="252" x2="256" y2="148" stroke="#60a5fa" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="256" cy="140" r="20" fill="#3b82f6"/><circle cx="256" cy="140" r="10" fill="#bfdbfe"/>
+        <line x1="249" y1="262" x2="174" y2="338" stroke="#c084fc" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="169" cy="343" r="20" fill="#a855f7"/><circle cx="169" cy="343" r="10" fill="#e9d5ff"/>
+        <line x1="263" y1="262" x2="338" y2="338" stroke="#34d399" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="343" cy="343" r="20" fill="#10b981"/><circle cx="343" cy="343" r="10" fill="#a7f3d0"/>
+        <circle cx="256" cy="256" r="24" fill="#1e40af"/>
+        <circle cx="256" cy="256" r="16" fill="#93c5fd"/>
+        <circle cx="256" cy="256" r="7" fill="#fff"/>
+      </svg>
+      <p class="research-type">Research Tool &middot; Open Access</p>
+      <h3 class="research-title">Econometric Advisor &mdash; An AI-Powered Research Design Tool for Applied Economics</h3>
+      <p class="research-abstract">
+        The Econometric Advisor is a browser-based companion that helps applied researchers move from
+        a research question to a defensible identification strategy. Through a structured twelve-question
+        intake covering treatment assignment, data structure, sources of variation, and threats to
+        inference, the tool returns a tailored econometric playbook: a recommended estimator, functional
+        form considerations, spatial diagnostic suggestions, and an inference checklist calibrated to
+        the user's specific design. With an Anthropic API key supplied, the Advisor extends its output
+        with a plain-language summary of the identification logic and a curated mini-review of
+        related applied work. The full app is implemented in vanilla HTML and JavaScript with no
+        backend &mdash; a deliberate choice meant to make rigorous econometric thinking accessible to
+        any graduate student with a browser.
+      </p>
+      <p class="research-meta">
+        Iain Holmes &middot; NC State University, Department of Economics &middot; 2025<br>
+        Stack: HTML &middot; JavaScript &middot; Anthropic Claude API &middot; GitHub Pages
+      </p>
       <div class="research-keywords">
         <span class="research-kw">Causal Inference</span>
         <span class="research-kw">Econometric Methods</span>
@@ -1143,8 +1160,8 @@
       <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
 
         <!-- CEnREP -->
-        <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
-          <svg width="96" height="34" viewBox="0 0 96 34" style="flex-shrink:0;display:block">
+        <div class="affil-card" style="flex-direction:row;align-items:center;padding:8px 11px;gap:11px">
+          <svg width="76" height="27" viewBox="0 0 96 34" style="flex-shrink:0;display:block">
             <line x1="10" y1="2"  x2="2"  y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
             <line x1="2"  y1="2"  x2="2"  y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
             <line x1="2"  y1="32" x2="10" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
@@ -1157,16 +1174,16 @@
             <text x="52"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">R</text>
             <text x="66"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">EP</text>
           </svg>
-          <div class="affil-text-block">
-            <div class="affil-name">CEnREP</div>
-            <div class="affil-sub">Center for Environmental &amp; Resource Economic Policy</div>
-            <span class="affil-badge">Graduate Affiliate &middot; NC State</span>
+          <div class="affil-text-block" style="font-size: 0.88em">
+            <div class="affil-name" style="font-size:0.92rem">CEnREP</div>
+            <div class="affil-sub" style="font-size:0.7rem">Center for Environmental &amp; Resource Economic Policy</div>
+            <span class="affil-badge" style="font-size:0.6rem;margin-top:4px">Graduate Affiliate &middot; NC State</span>
           </div>
         </div>
 
         <!-- TREE -->
-        <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
-          <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
+        <div class="affil-card" style="flex-direction:row;align-items:center;padding:8px 11px;gap:11px">
+          <svg width="54" height="54" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
             <defs>
               <clipPath id="cv-circ"><circle cx="36" cy="36" r="34"/></clipPath>
               <mask id="cv-tmask">
@@ -1198,10 +1215,10 @@
             </g>
             <circle cx="36" cy="36" r="34.5" fill="none" stroke="#1a0a02" stroke-width="1"/>
           </svg>
-          <div class="affil-text-block">
-            <div class="affil-name" style="color:#2d6b1a">TREE Seminar</div>
-            <div class="affil-sub">Triangle Resources &amp; Environmental Economics</div>
-            <span class="affil-badge">Attendee &middot; Spring 2025</span>
+          <div class="affil-text-block" style="font-size: 0.88em">
+            <div class="affil-name" style="color:#2d6b1a;font-size:0.92rem">TREE Seminar</div>
+            <div class="affil-sub" style="font-size:0.7rem">Triangle Resources &amp; Environmental Economics</div>
+            <span class="affil-badge" style="font-size:0.6rem;margin-top:4px">Attendee &middot; Spring 2025</span>
           </div>
         </div>
 
@@ -1524,19 +1541,6 @@
           </div>
         </a>
 
-        <!-- Industry-only: location card -->
-        <div class="contact-link mode-industry" style="cursor:default">
-          <div class="contact-link-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="contact-link-label">Location</p>
-            <p class="contact-link-value">Chapel Hill, NC &middot; Research Triangle</p>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -1613,37 +1617,7 @@
         </div>
       </div>
 
-      <!-- INDUSTRY contacts -->
-      <div class="mode-industry">
-        <p class="contact-col-label">Available For</p>
-        <div class="contact-affil-cards">
-
-          <div class="contact-affil-card" style="cursor:default">
-            <div>
-              <p class="ca-label">Engagement</p>
-              <p class="ca-name">Investor Relations &amp; Fund Administration Consulting</p>
-              <p class="ca-sub">VC, PE, Alternative Credit</p>
-            </div>
-          </div>
-
-          <div class="contact-affil-card" style="cursor:default">
-            <div>
-              <p class="ca-label">Engagement</p>
-              <p class="ca-name">Applied Economic &amp; Policy Research</p>
-              <p class="ca-sub">Environmental, Regulatory, Real Estate</p>
-            </div>
-          </div>
-
-          <div class="contact-affil-card" style="cursor:default">
-            <div>
-              <p class="ca-label">Engagement</p>
-              <p class="ca-name">Due Diligence &amp; DDQ Authoring</p>
-              <p class="ca-sub">Institutional Capital Partners</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <!-- INDUSTRY mode: column 3 is intentionally empty -->
     </div>
 
   </div>
