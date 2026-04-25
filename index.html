@@ -412,21 +412,17 @@
     }
     .advisor-watermark {
       position: absolute;
-      right: -60px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 380px;
-      height: 380px;
-      opacity: 0.07;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.06;
       pointer-events: none;
       z-index: 0;
+      display: block;
     }
     .advisor-card > *:not(.advisor-watermark) {
       position: relative;
       z-index: 1;
-    }
-    @media (max-width: 900px) {
-      .advisor-watermark { width: 260px; height: 260px; right: -80px; opacity: 0.05; }
     }
 
     /* Econometric Advisor — large logo on left, description on right */
@@ -994,20 +990,17 @@
 
     <!-- Econometric Advisor — compass logo as full-card watermark -->
     <div class="research-item advisor-card">
-      <svg class="advisor-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="512" height="512" rx="112" fill="#0a0f1e"/>
-        <circle cx="256" cy="256" r="192" fill="none" stroke="#2d5fd6" stroke-width="6" opacity=".5"/>
-        <circle cx="256" cy="256" r="110" fill="none" stroke="#60a5fa" stroke-width="18"/>
-        <circle cx="256" cy="256" r="88" fill="#080e1c"/>
-        <line x1="256" y1="252" x2="256" y2="148" stroke="#60a5fa" stroke-width="16" stroke-linecap="round"/>
-        <circle cx="256" cy="140" r="20" fill="#3b82f6"/><circle cx="256" cy="140" r="10" fill="#bfdbfe"/>
-        <line x1="249" y1="262" x2="174" y2="338" stroke="#c084fc" stroke-width="16" stroke-linecap="round"/>
-        <circle cx="169" cy="343" r="20" fill="#a855f7"/><circle cx="169" cy="343" r="10" fill="#e9d5ff"/>
-        <line x1="263" y1="262" x2="338" y2="338" stroke="#34d399" stroke-width="16" stroke-linecap="round"/>
-        <circle cx="343" cy="343" r="20" fill="#10b981"/><circle cx="343" cy="343" r="10" fill="#a7f3d0"/>
-        <circle cx="256" cy="256" r="24" fill="#1e40af"/>
-        <circle cx="256" cy="256" r="16" fill="#93c5fd"/>
-        <circle cx="256" cy="256" r="7" fill="#fff"/>
+      <svg class="advisor-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <circle cx="256" cy="256" r="192" fill="none" stroke="#1b3a5c" stroke-width="6"/>
+        <circle cx="256" cy="256" r="110" fill="none" stroke="#1b3a5c" stroke-width="18"/>
+        <circle cx="256" cy="256" r="88" fill="none" stroke="#1b3a5c" stroke-width="2"/>
+        <line x1="256" y1="252" x2="256" y2="148" stroke="#1b3a5c" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="256" cy="140" r="20" fill="#1b3a5c"/>
+        <line x1="249" y1="262" x2="174" y2="338" stroke="#1b3a5c" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="169" cy="343" r="20" fill="#1b3a5c"/>
+        <line x1="263" y1="262" x2="338" y2="338" stroke="#1b3a5c" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="343" cy="343" r="20" fill="#1b3a5c"/>
+        <circle cx="256" cy="256" r="24" fill="#1b3a5c"/>
       </svg>
       <p class="research-type">Research Tool &middot; Open Access</p>
       <h3 class="research-title">Econometric Advisor &mdash; An AI-Powered Research Design Tool for Applied Economics</h3>
@@ -1160,8 +1153,8 @@
       <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
 
         <!-- CEnREP -->
-        <div class="affil-card" style="flex-direction:row;align-items:center;padding:8px 11px;gap:11px">
-          <svg width="76" height="27" viewBox="0 0 96 34" style="flex-shrink:0;display:block">
+        <div class="affil-card" style="flex-direction:row;align-items:center;padding:6px 9px;gap:9px">
+          <svg width="58" height="20" viewBox="0 0 96 34" style="flex-shrink:0;display:block">
             <line x1="10" y1="2"  x2="2"  y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
             <line x1="2"  y1="2"  x2="2"  y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
             <line x1="2"  y1="32" x2="10" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
@@ -1174,16 +1167,16 @@
             <text x="52"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">R</text>
             <text x="66"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">EP</text>
           </svg>
-          <div class="affil-text-block" style="font-size: 0.88em">
-            <div class="affil-name" style="font-size:0.92rem">CEnREP</div>
-            <div class="affil-sub" style="font-size:0.7rem">Center for Environmental &amp; Resource Economic Policy</div>
-            <span class="affil-badge" style="font-size:0.6rem;margin-top:4px">Graduate Affiliate &middot; NC State</span>
+          <div class="affil-text-block">
+            <div class="affil-name" style="font-size:0.82rem;line-height:1.15">CEnREP</div>
+            <div class="affil-sub" style="font-size:0.65rem;margin-top:1px;line-height:1.3">Center for Environmental &amp; Resource Economic Policy</div>
+            <span class="affil-badge" style="font-size:0.55rem;margin-top:3px;padding:0.15rem 0.5rem">Graduate Affiliate &middot; NC State</span>
           </div>
         </div>
 
         <!-- TREE -->
-        <div class="affil-card" style="flex-direction:row;align-items:center;padding:8px 11px;gap:11px">
-          <svg width="54" height="54" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
+        <div class="affil-card" style="flex-direction:row;align-items:center;padding:6px 9px;gap:9px">
+          <svg width="40" height="40" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
             <defs>
               <clipPath id="cv-circ"><circle cx="36" cy="36" r="34"/></clipPath>
               <mask id="cv-tmask">
@@ -1215,10 +1208,10 @@
             </g>
             <circle cx="36" cy="36" r="34.5" fill="none" stroke="#1a0a02" stroke-width="1"/>
           </svg>
-          <div class="affil-text-block" style="font-size: 0.88em">
-            <div class="affil-name" style="color:#2d6b1a;font-size:0.92rem">TREE Seminar</div>
-            <div class="affil-sub" style="font-size:0.7rem">Triangle Resources &amp; Environmental Economics</div>
-            <span class="affil-badge" style="font-size:0.6rem;margin-top:4px">Attendee &middot; Spring 2025</span>
+          <div class="affil-text-block">
+            <div class="affil-name" style="color:#2d6b1a;font-size:0.82rem;line-height:1.15">TREE Seminar</div>
+            <div class="affil-sub" style="font-size:0.65rem;margin-top:1px;line-height:1.3">Triangle Resources &amp; Environmental Economics</div>
+            <span class="affil-badge" style="font-size:0.55rem;margin-top:3px;padding:0.15rem 0.5rem">Attendee &middot; Spring 2025</span>
           </div>
         </div>
 
