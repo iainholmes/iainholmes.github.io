@@ -70,14 +70,14 @@
 
     /* ─── HERO ─── */
     .hero {
-      min-height: 100vh;
+      min-height: 80vh; /* Condensed from 100vh */
       display: grid;
       grid-template-columns: 1fr 1fr;
       padding-top: 58px;
     }
     .hero-text {
       display: flex; flex-direction: column; justify-content: center;
-      padding: 6vw 6vw 6vw 8vw;
+      padding: 4rem 6vw 4rem 8vw; /* Reduced vertical padding */
       border-right: 1px solid var(--rule);
     }
     .hero-eyebrow {
@@ -134,8 +134,11 @@
 
     .hero-panel {
       background: var(--navy-faint);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 4vw;
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; /* Centers all content vertically */
+      align-items: center; 
+      padding: 4rem 4vw;
       position: relative;
       overflow: hidden;
     }
@@ -158,23 +161,24 @@
       opacity: 0.35;
     }
     .hero-photo-wrap {
-      position: absolute; inset: 0;
-      display: flex; align-items: flex-start;
-      padding-top: 10vh; /* ADJUSTED POSITION */
+      position: relative; 
+      display: flex; 
       justify-content: center;
+      margin-bottom: 2.5rem; /* Space between photo and quote */
       z-index: 2;
     }
     .hero-photo-wrap img {
-      width: 400px; /* DOUBLE SIZE */
-      height: 400px;
+      width: 450px; /* Your updated preferred size */
+      height: 450px;
       border-radius: 50%;
       object-fit: cover;
-      object-position: center top; /* RE-FIXED FRAMING */
+      object-position: center top;
       border: 4px solid #fff;
       box-shadow: 0 8px 32px rgba(27,58,92,0.18);
     }
     .hero-quote {
-      position: relative; z-index: 3;
+      position: relative; 
+      z-index: 3;
       font-family: var(--serif);
       font-style: italic;
       font-size: 1.05rem;
@@ -182,10 +186,12 @@
       border-left: 3px solid var(--navy);
       padding-left: 1.2rem;
       line-height: 1.65;
+      max-width: 420px;
+      margin-bottom: 1rem;
     }
     .hero-affil {
-      position: relative; z-index: 3;
-      margin-top: 1rem;
+      position: relative; 
+      z-index: 3;
       font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -423,8 +429,8 @@
       .about-grid, .cv-layout, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     }
     @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-panel { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-panel { padding: 3rem 6vw; }
       .hero-text { padding: 3rem 6vw; border-right: none; }
       .nav-links { gap: 1.2rem; }
       section { padding: 4rem 6vw; }
