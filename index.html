@@ -506,25 +506,12 @@
 
     footer {
       background: #0d1f33;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      text-align: center;
       padding: 1.5rem 4vw;
       font-size: 0.72rem;
       letter-spacing: 0.08em;
       color: rgba(255,255,255,0.3);
       border-top: 3px solid var(--navy-mid);
-    }
-    .footer-affil {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .footer-affil-label {
-      font-size: .65rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.2);
     }
 
     @media (max-width: 900px) {
@@ -977,18 +964,21 @@
 
         <!-- CEnREP: bracket width matches wordmark exactly -->
         <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
-          <svg width="106" height="34" viewBox="0 0 106 34" style="flex-shrink:0;display:block">
-            <line x1="12" y1="2"  x2="2"  y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
+          <svg width="96" height="34" viewBox="0 0 96 34" style="flex-shrink:0;display:block">
+            <!-- Left bracket: serif at x=10, spine at x=2, gap of 4px to C at x=14 -->
+            <line x1="10" y1="2"  x2="2"  y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
             <line x1="2"  y1="2"  x2="2"  y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
-            <line x1="2"  y1="32" x2="12" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
-            <line x1="94" y1="2"  x2="104" y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
-            <line x1="104" y1="2"  x2="104" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
-            <line x1="104" y1="32" x2="94" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
-            <text x="16"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">C</text>
-            <text x="29"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">En</text>
-            <line x1="29" y1="26" x2="55" y2="26" stroke="#C9A96E" stroke-width="1.8"/>
-            <text x="55"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">R</text>
-            <text x="69"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">EP</text>
+            <line x1="2"  y1="32" x2="10" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
+            <!-- Right bracket: spine at x=94, serif at x=86, 4px gap from EP end ~x=82 -->
+            <line x1="86" y1="2"  x2="94" y2="2"  stroke="#1b3a5c" stroke-width="2.2"/>
+            <line x1="94" y1="2"  x2="94" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
+            <line x1="94" y1="32" x2="86" y2="32" stroke="#1b3a5c" stroke-width="2.2"/>
+            <!-- Wordmark: C at 14, En at 27, R at 53, EP at 67 — ends ~82 -->
+            <text x="14"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">C</text>
+            <text x="27"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">En</text>
+            <line x1="27" y1="26" x2="52" y2="26" stroke="#C9A96E" stroke-width="1.8"/>
+            <text x="52"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="20" font-weight="600" fill="#1a1a18">R</text>
+            <text x="66"  y="23" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="400" fill="#4a4a44">EP</text>
           </svg>
           <div class="affil-text-block">
             <div class="affil-name">CEnREP</div>
@@ -1000,26 +990,29 @@
         <!-- TREE: dendrochronology tree-ring design -->
         <div class="affil-card" style="flex-direction:row;align-items:center;padding:12px 14px;gap:14px">
           <svg width="72" height="72" viewBox="0 0 72 72" style="flex-shrink:0;display:block">
-            <!-- Tree rings: heartwood to sapwood, center darkest -->
-            <!-- Ring 1: heartwood — darkest, narrowest -->
-            <circle cx="36" cy="36" r="7"  fill="#1a3a1a" stroke="#2d5a1b" stroke-width="2.5"/>
-            <!-- Ring 2 -->
-            <circle cx="36" cy="36" r="13" fill="none" stroke="#2d6b1a" stroke-width="2.8"/>
-            <!-- Ring 3: wider growth year -->
-            <circle cx="36" cy="36" r="20" fill="none" stroke="#3a7d22" stroke-width="2.2"/>
-            <!-- Ring 4: narrow growth year — stress -->
-            <circle cx="36" cy="36" r="25" fill="none" stroke="#4a8f2a" stroke-width="1.4"/>
-            <!-- Ring 5: good growth year — wider gap -->
-            <circle cx="36" cy="36" r="31" fill="none" stroke="#5a9e30" stroke-width="1.8"/>
-            <!-- Ring 6: sapwood — outermost, lightest -->
-            <circle cx="36" cy="36" r="34" fill="none" stroke="#7db84a" stroke-width="1.2"/>
-            <!-- Compass ticks at cardinal points -->
-            <line x1="36" y1="0"  x2="36" y2="6"  stroke="#4a8f2a" stroke-width="1.3"/>
-            <line x1="36" y1="66" x2="36" y2="72" stroke="#4a8f2a" stroke-width="1.3"/>
-            <line x1="0"  y1="36" x2="6"  y2="36" stroke="#4a8f2a" stroke-width="1.3"/>
-            <line x1="66" y1="36" x2="72" y2="36" stroke="#4a8f2a" stroke-width="1.3"/>
-            <!-- TREE label in center -->
-            <text x="36" y="40" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="8" font-weight="600" fill="#c8e6a0" letter-spacing="0.5">TREE</text>
+            <!-- Heartwood center — filled, slightly off-center like real wood -->
+            <ellipse cx="36" cy="37" rx="5" ry="4.5" fill="#3d2008"/>
+            <!-- Ring 1: tight early rings, irregular -->
+            <ellipse cx="36" cy="37" rx="9" ry="8" fill="none" stroke="#5a3010" stroke-width="2.2" stroke-opacity="0.95"/>
+            <!-- Ring 2: slightly different center offset -->
+            <ellipse cx="36.5" cy="36.5" rx="14" ry="12.5" fill="none" stroke="#6b4515" stroke-width="1.8" stroke-opacity="0.9"/>
+            <!-- Ring 3: good growth year, wider spacing -->
+            <ellipse cx="35.5" cy="37" rx="20" ry="18" fill="none" stroke="#7a5520" stroke-width="1.5" stroke-opacity="0.85"/>
+            <!-- Ring 4: stress year, narrower -->
+            <ellipse cx="36" cy="36" rx="24.5" ry="22.5" fill="none" stroke="#8a6828" stroke-width="1.2" stroke-opacity="0.8"/>
+            <!-- Ring 5: recovery, slight offset -->
+            <ellipse cx="36.5" cy="35.5" rx="28.5" ry="27" fill="none" stroke="#9a7a32" stroke-width="1.4" stroke-opacity="0.75"/>
+            <!-- Ring 6: sapwood, outermost -->
+            <ellipse cx="36" cy="36" rx="33" ry="32" fill="none" stroke="#b09045" stroke-width="1.0" stroke-opacity="0.65"/>
+            <!-- Bark edge suggestion -->
+            <ellipse cx="36" cy="36" rx="35" ry="34.5" fill="none" stroke="#6b4010" stroke-width="0.6" stroke-opacity="0.4"/>
+            <!-- Cardinal ticks — subtle -->
+            <line x1="36" y1="0.5" x2="36" y2="4.5" stroke="#8a6828" stroke-width="1.1" stroke-opacity="0.7"/>
+            <line x1="36" y1="67.5" x2="36" y2="71.5" stroke="#8a6828" stroke-width="1.1" stroke-opacity="0.7"/>
+            <line x1="0.5" y1="36" x2="4.5" y2="36" stroke="#8a6828" stroke-width="1.1" stroke-opacity="0.7"/>
+            <line x1="67.5" y1="36" x2="71.5" y2="36" stroke="#8a6828" stroke-width="1.1" stroke-opacity="0.7"/>
+            <!-- TREE label -->
+            <text x="36" y="40.5" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="7.5" font-weight="600" fill="#f5ddb0" letter-spacing="0.8">TREE</text>
           </svg>
           <div class="affil-text-block">
             <div class="affil-name" style="color:#2d6b1a">TREE Seminar</div>
@@ -1111,18 +1104,18 @@
 
         <!-- CEnREP — links to their website -->
         <a class="contact-affil-card" href="https://cenrep.ncsu.edu/" target="_blank" rel="noreferrer">
-          <svg width="90" height="38" viewBox="0 0 106 38" style="flex-shrink:0;display:block">
-            <line x1="12" y1="2"  x2="2"  y2="2"  stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+          <svg width="90" height="38" viewBox="0 0 96 38" style="flex-shrink:0;display:block">
+            <line x1="10" y1="2"  x2="2"  y2="2"  stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
             <line x1="2"  y1="2"  x2="2"  y2="36" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
-            <line x1="2"  y1="36" x2="12" y2="36" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
-            <line x1="94" y1="2"  x2="104" y2="2"  stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
-            <line x1="104" y1="2"  x2="104" y2="36" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
-            <line x1="104" y1="36" x2="94" y2="36" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
-            <text x="16"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="22" font-weight="600" fill="rgba(255,255,255,0.92)">C</text>
-            <text x="31"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="18" font-weight="400" fill="rgba(255,255,255,0.58)">En</text>
-            <line x1="31" y1="29" x2="57" y2="29" stroke="rgba(201,169,110,0.95)" stroke-width="1.8"/>
-            <text x="57"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="22" font-weight="600" fill="rgba(255,255,255,0.92)">R</text>
-            <text x="73"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="18" font-weight="400" fill="rgba(255,255,255,0.58)">EP</text>
+            <line x1="2"  y1="36" x2="10" y2="36" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+            <line x1="86" y1="2"  x2="94" y2="2"  stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+            <line x1="94" y1="2"  x2="94" y2="36" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+            <line x1="94" y1="36" x2="86" y2="36" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+            <text x="14"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="22" font-weight="600" fill="rgba(255,255,255,0.92)">C</text>
+            <text x="29"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="18" font-weight="400" fill="rgba(255,255,255,0.58)">En</text>
+            <line x1="29" y1="29" x2="55" y2="29" stroke="rgba(201,169,110,0.95)" stroke-width="1.8"/>
+            <text x="55"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="22" font-weight="600" fill="rgba(255,255,255,0.92)">R</text>
+            <text x="71"  y="26" font-family="Cormorant Garamond,Georgia,serif" font-size="18" font-weight="400" fill="rgba(255,255,255,0.58)">EP</text>
           </svg>
           <div>
             <p class="ca-label">Graduate Affiliate</p>
@@ -1134,18 +1127,19 @@
 
         <!-- TREE -->
         <div class="contact-affil-card">
-          <svg width="64" height="64" viewBox="0 0 64 64" style="flex-shrink:0;display:block">
-            <circle cx="32" cy="32" r="6"  fill="#1a3a1a" stroke="#2d5a1b" stroke-width="2.2"/>
-            <circle cx="32" cy="32" r="12" fill="none" stroke="#2d6b1a" stroke-width="2.5"/>
-            <circle cx="32" cy="32" r="18" fill="none" stroke="#3a7d22" stroke-width="2"/>
-            <circle cx="32" cy="32" r="23" fill="none" stroke="#4a8f2a" stroke-width="1.3"/>
-            <circle cx="32" cy="32" r="27" fill="none" stroke="#5a9e30" stroke-width="1.6"/>
-            <circle cx="32" cy="32" r="30" fill="none" stroke="#7db84a" stroke-width="1.1"/>
-            <line x1="32" y1="0"  x2="32" y2="6"  stroke="#4a8f2a" stroke-width="1.2"/>
-            <line x1="32" y1="58" x2="32" y2="64" stroke="#4a8f2a" stroke-width="1.2"/>
-            <line x1="0"  y1="32" x2="6"  y2="32" stroke="#4a8f2a" stroke-width="1.2"/>
-            <line x1="58" y1="32" x2="64" y2="32" stroke="#4a8f2a" stroke-width="1.2"/>
-            <text x="32" y="36" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="7" font-weight="600" fill="rgba(200,230,160,0.85)" letter-spacing="0.5">TREE</text>
+          <svg width="60" height="60" viewBox="0 0 60 60" style="flex-shrink:0;display:block">
+            <ellipse cx="30" cy="31" rx="4" ry="3.8" fill="#3d2008"/>
+            <ellipse cx="30" cy="31" rx="8" ry="7"   fill="none" stroke="#5a3010" stroke-width="2" stroke-opacity="0.95"/>
+            <ellipse cx="30.5" cy="30.5" rx="12" ry="10.5" fill="none" stroke="#6b4515" stroke-width="1.6" stroke-opacity="0.9"/>
+            <ellipse cx="29.5" cy="31" rx="17" ry="15.5" fill="none" stroke="#7a5520" stroke-width="1.3" stroke-opacity="0.85"/>
+            <ellipse cx="30" cy="30" rx="21" ry="19.5" fill="none" stroke="#8a6828" stroke-width="1.1" stroke-opacity="0.8"/>
+            <ellipse cx="30.5" cy="29.5" rx="24.5" ry="23" fill="none" stroke="#9a7a32" stroke-width="1.2" stroke-opacity="0.75"/>
+            <ellipse cx="30" cy="30" rx="28" ry="27.5" fill="none" stroke="#b09045" stroke-width="0.9" stroke-opacity="0.6"/>
+            <line x1="30" y1="0.5" x2="30" y2="4" stroke="#8a6828" stroke-width="1" stroke-opacity="0.65"/>
+            <line x1="30" y1="56" x2="30" y2="59.5" stroke="#8a6828" stroke-width="1" stroke-opacity="0.65"/>
+            <line x1="0.5" y1="30" x2="4" y2="30" stroke="#8a6828" stroke-width="1" stroke-opacity="0.65"/>
+            <line x1="56" y1="30" x2="59.5" y2="30" stroke="#8a6828" stroke-width="1" stroke-opacity="0.65"/>
+            <text x="30" y="34" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="6.5" font-weight="600" fill="rgba(245,221,176,0.88)" letter-spacing="0.6">TREE</text>
           </svg>
           <div>
             <p class="ca-label">Regular Attendee</p>
@@ -1161,19 +1155,8 @@
 </section>
 
 <footer>
-  <span>&copy; <span id="yr"></span> Iain Holmes &middot; NC State University &middot; Department of Economics &middot; Raleigh, NC</span>
-  <div class="footer-affil">
-    <span class="footer-affil-label">Affiliated with</span>
-    <svg width="80" height="18" viewBox="0 0 144 18">
-      <polyline points="8,2 1,2 1,16 8,16"       fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
-      <polyline points="136,2 143,2 143,16 136,16" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
-      <text x="11"  y="13" font-family="Cormorant Garamond,Georgia,serif" font-size="12" font-weight="600" fill="rgba(255,255,255,0.45)">C</text>
-      <text x="21"  y="13" font-family="Cormorant Garamond,Georgia,serif" font-size="10" font-weight="400" fill="rgba(255,255,255,0.28)">En</text>
-      <line x1="21" y1="15" x2="43" y2="15" stroke="rgba(201,169,110,0.45)" stroke-width="0.9"/>
-      <text x="43"  y="13" font-family="Cormorant Garamond,Georgia,serif" font-size="12" font-weight="600" fill="rgba(255,255,255,0.45)">R</text>
-      <text x="54"  y="13" font-family="Cormorant Garamond,Georgia,serif" font-size="10" font-weight="400" fill="rgba(255,255,255,0.28)">EP</text>
-    </svg>
-  </div>
+  &copy; <span id="yr"></span> Iain Holmes &middot; NC State University &middot; Department of Economics &middot; Raleigh, NC</span>
+
 </footer>
 
 <script>
