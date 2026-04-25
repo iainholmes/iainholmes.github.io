@@ -352,8 +352,11 @@
     /* ============================================
        RESEARCH SECTION
        ============================================ */
-    #research, #experience-research { background: var(--navy-faint); }
+    #research { background: var(--navy-faint); }
+    #experience-research { background: var(--navy-faint); }
     #experience-industry { background: var(--navy-faint); }
+    /* #tools intentionally inherits paper background to alternate
+       between #research (faint) above and #experience-research (faint) below. */
 
     .research-list { display: flex; flex-direction: column; gap: 2rem; }
     .research-item {
@@ -420,50 +423,150 @@
       z-index: 1;
     }
 
-    /* Advisor screenshot — appears below the description */
-    .advisor-screenshot-wrap {
-      margin: 1.4rem 0 1rem;
-      border: 1px solid var(--navy-light);
-      border-radius: 3px;
-      overflow: hidden;
-      background: #020e1f;
-      box-shadow: 0 6px 24px rgba(27,58,92,0.18);
+    /* Advisor screenshot gallery — App Store-style horizontal row of thumbnails.
+       Each .advisor-shot opens a lightbox on click. */
+    .advisor-gallery {
+      margin: 1.4rem 0 0.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
     }
-    .advisor-screenshot-wrap img {
+    .advisor-shot {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      border: 1px solid var(--navy-light);
+      border-radius: 4px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #020e1f 0%, #0a1d33 100%);
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      display: block;
+      text-decoration: none;
+    }
+    .advisor-shot:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(27,58,92,0.28);
+      border-color: var(--navy-mid);
+    }
+    .advisor-shot img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
     }
-    .advisor-screenshot-caption {
-      font-size: 0.7rem;
-      letter-spacing: 0.04em;
-      color: var(--ink-light);
-      padding: 0.55rem 0.9rem;
-      background: var(--navy-faint);
-      border-top: 1px solid var(--navy-light);
-      font-style: italic;
+    .advisor-shot-label {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 0.4rem 0.6rem 0.45rem;
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(220, 232, 245, 0.92);
+      background: linear-gradient(transparent, rgba(2,14,31,0.85));
+      pointer-events: none;
+      line-height: 1.3;
     }
-    /* Placeholder shown until you drop in a real screenshot */
-    .advisor-screenshot-placeholder {
-      aspect-ratio: 16 / 9;
+    /* Placeholder shown until you drop in real screenshots */
+    .advisor-shot-placeholder {
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      color: rgba(220, 232, 245, 0.55);
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: linear-gradient(135deg, #020e1f 0%, #0a1d33 100%);
-    }
-    .advisor-screenshot-placeholder span:first-child {
-      font-size: 1.2rem;
-      letter-spacing: 0;
-      text-transform: none;
+      gap: 0.3rem;
+      color: rgba(220, 232, 245, 0.6);
       font-family: var(--serif);
       font-style: italic;
-      color: rgba(220, 232, 245, 0.85);
+      font-size: 0.85rem;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .advisor-shot-placeholder .ph-num {
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(220, 232, 245, 0.4);
+    }
+    .advisor-gallery-caption {
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-light);
+      font-style: italic;
+      margin: 0.4rem 0 1rem;
+    }
+
+    /* Lightbox modal */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 14, 31, 0.92);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 4vh 4vw;
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img-wrap {
+      max-width: 92vw;
+      max-height: 92vh;
+      cursor: default;
+      position: relative;
+    }
+    .lightbox-img-wrap img {
+      max-width: 92vw;
+      max-height: 82vh;
+      display: block;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .lightbox-caption {
+      color: rgba(220, 232, 245, 0.92);
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 1rem;
+      letter-spacing: 0.02em;
+      font-family: var(--serif);
+      font-style: italic;
+    }
+    .lightbox-close,
+    .lightbox-nav {
+      position: absolute;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+      font-family: inherit;
+    }
+    .lightbox-close:hover,
+    .lightbox-nav:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.4);
+    }
+    .lightbox-close { top: 2vh; right: 2vh; }
+    .lightbox-nav.prev { left: 2vw; top: 50%; transform: translateY(-50%); }
+    .lightbox-nav.next { right: 2vw; top: 50%; transform: translateY(-50%); }
+    .lightbox-counter {
+      position: absolute;
+      top: 2vh; left: 2vh;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     /* ============================================
@@ -675,34 +778,32 @@
       letter-spacing: .03em;
     }
 
-    /* Contact-section closing manifesto line — research mode only.
-       Sits above the affiliated organizations column at full grid width. */
-    .contact-manifesto {
-      grid-column: 1 / -1;
-      max-width: 880px;
-      margin: 0 auto 2.5rem;
-      padding: 0 1.5rem;
-      text-align: center;
+    /* Compact epigraph in the About sidebar, slotted between the
+       "Research Interests" header and the list of interests. */
+    .sidebar-epigraph {
+      margin: 0 0 1.4rem;
+      padding: 0.75rem 0 0.85rem;
+      border-bottom: 1px solid var(--rule);
       font-family: var(--serif);
       font-style: italic;
-      font-size: 1.25rem;
+      font-size: 0.92rem;
       line-height: 1.55;
-      color: rgba(255,255,255,0.92);
-      border-top: 1px solid rgba(255,255,255,0.12);
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+      color: var(--ink-mid);
     }
-    .contact-manifesto::before,
-    .contact-manifesto::after {
-      content: '';
+    .sidebar-epigraph .epi-attr {
       display: block;
-      width: 32px;
-      height: 1px;
-      background: rgba(201,169,110,0.5);
-      margin: 0 auto 1.2rem;
+      margin-top: 0.45rem;
+      font-style: normal;
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      font-family: var(--sans);
     }
-    .contact-manifesto::after { margin: 1.2rem auto 0; }
+    .sidebar-epigraph .epi-attr::before {
+      content: '— ';
+      color: var(--navy);
+    }
 
     /* Footer — minimal, balanced. Last-updated stamp on the right when there's room. */
     footer {
@@ -737,7 +838,7 @@
     }
     @media (max-width: 900px) {
       .about-grid, .cv-layout, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .contact-manifesto { font-size: 1.1rem; padding: 1.5rem 1rem; }
+      .advisor-gallery { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -876,6 +977,12 @@
     </div>
     <div class="about-sidebar">
       <h3>Research Interests</h3>
+      <blockquote class="sidebar-epigraph">
+        Economics is the study of how societies allocate scarce resources
+        &mdash; it's about time we shift our focus toward the ones we cannot
+        afford to waste.
+        <span class="epi-attr">Anonymous</span>
+      </blockquote>
       <ul class="interest-list">
         <li>Environmental &amp; Natural Resource Economics</li>
         <li>Non-Market Valuation &amp; Hedonic Pricing</li>
@@ -1056,7 +1163,20 @@
       </div>
     </div>
 
-    <!-- Econometric Advisor — UPDATED card -->
+  </div>
+</section>
+
+<!-- ================================================
+     RESEARCH-MODE: Open-Source Tools
+     The Econometric Advisor lives here, separated from
+     scholarship in the Research section above.
+     ================================================ -->
+<section id="tools" class="mode-research">
+  <p class="section-label">Open Source</p>
+  <h2 class="section-title">Research Tools</h2>
+  <div class="research-list">
+
+    <!-- Econometric Advisor — its own section now, with App Store-style screenshot gallery -->
     <div class="research-item advisor-card">
       <svg class="advisor-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <circle cx="256" cy="256" r="192" fill="none" stroke="#2d5fd6" stroke-width="6"/>
@@ -1096,20 +1216,51 @@
         graduate student with a browser.
       </p>
 
-      <!-- Screenshot — replace placeholder by saving an image at files/advisor-screenshot.png -->
-      <div class="advisor-screenshot-wrap">
-        <!-- When you have the screenshot, replace this placeholder with:
-             <img src="files/advisor-screenshot.png" alt="Econometric Advisor — architecture knowledge graph view" />
-        -->
-        <div class="advisor-screenshot-placeholder">
-          <span>Architecture knowledge graph &amp; methodological specifications</span>
-          <span>Replace with files/advisor-screenshot.png</span>
-        </div>
-        <div class="advisor-screenshot-caption">
-          Knowledge graph linking Problems &rarr; Strategic Logic &rarr; Tools &rarr; Diagnostics, with
-          per-section AI-generated rationales appearing inline.
-        </div>
+      <!-- App Store-style screenshot gallery — 4 thumbnails, click to lightbox.
+           Drop your real screenshots into files/ at these paths and the gallery
+           will start showing them automatically. Each .advisor-shot has a
+           data-src attribute for the lightbox to read. Replace the inner
+           <div class="advisor-shot-placeholder"> blocks with <img> tags
+           when screenshots are ready. -->
+      <div class="advisor-gallery">
+        <a class="advisor-shot" data-src="files/advisor-1.png"
+           data-caption="Architecture knowledge graph — Problems, Strategic Logic, Tools, and Diagnostics"
+           onclick="openLightbox(0); return false;">
+          <div class="advisor-shot-placeholder">
+            <span class="ph-num">Screenshot 1</span>
+            <span>Knowledge graph view</span>
+          </div>
+          <div class="advisor-shot-label">Architecture graph</div>
+        </a>
+        <a class="advisor-shot" data-src="files/advisor-2.png"
+           data-caption="Methodological specifications panel with KaTeX-rendered estimating equations"
+           onclick="openLightbox(1); return false;">
+          <div class="advisor-shot-placeholder">
+            <span class="ph-num">Screenshot 2</span>
+            <span>Equations panel</span>
+          </div>
+          <div class="advisor-shot-label">Estimating equations</div>
+        </a>
+        <a class="advisor-shot" data-src="files/advisor-3.png"
+           data-caption="Reference library — nine method families and roughly fifty estimators"
+           onclick="openLightbox(2); return false;">
+          <div class="advisor-shot-placeholder">
+            <span class="ph-num">Screenshot 3</span>
+            <span>Reference library</span>
+          </div>
+          <div class="advisor-shot-label">Reference library</div>
+        </a>
+        <a class="advisor-shot" data-src="files/advisor-4.png"
+           data-caption="Results screen — AI-generated narrative, recommended toolkit, and curated literature"
+           onclick="openLightbox(3); return false;">
+          <div class="advisor-shot-placeholder">
+            <span class="ph-num">Screenshot 4</span>
+            <span>Results overview</span>
+          </div>
+          <div class="advisor-shot-label">Results &amp; literature</div>
+        </a>
       </div>
+      <p class="advisor-gallery-caption">Click any thumbnail to expand. Replace placeholders by saving images at <code>files/advisor-1.png</code> through <code>files/advisor-4.png</code>.</p>
 
       <p class="research-meta">
         Iain Holmes &middot; NC State University, Department of Economics &middot; 2025<br>
@@ -1562,12 +1713,6 @@
   <p class="section-label">Get in Touch</p>
   <h2 class="section-title">Contact</h2>
 
-  <!-- Manifesto — research mode only, full grid width -->
-  <blockquote class="contact-manifesto mode-research">
-    Economics is the study of how societies allocate scarce resources &mdash;
-    it's about time we shift our focus toward the ones we cannot afford to waste.
-  </blockquote>
-
   <div class="contact-grid">
 
     <!-- Col 1: Intro -->
@@ -1721,6 +1866,18 @@
   </div>
 </section>
 
+<!-- Lightbox modal — reads data-src from .advisor-shot anchors -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+  <button class="lightbox-close" onclick="closeLightbox(); event.stopPropagation();" aria-label="Close">&#x2715;</button>
+  <button class="lightbox-nav prev" onclick="navLightbox(-1); event.stopPropagation();" aria-label="Previous">&#x2039;</button>
+  <button class="lightbox-nav next" onclick="navLightbox(1); event.stopPropagation();" aria-label="Next">&#x203A;</button>
+  <div class="lightbox-img-wrap" onclick="event.stopPropagation();">
+    <img id="lightbox-img" src="" alt="" />
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
 <footer>
   <span>&copy; Iain Holmes</span>
   <span class="footer-sep" aria-hidden="true"></span>
@@ -1743,6 +1900,75 @@
       btnI.classList.remove('active'); btnI.setAttribute('aria-pressed', 'false');
     }
   }
+
+  // ── Lightbox for the Advisor screenshot gallery ───────────────────
+  // Reads data-src and data-caption from each .advisor-shot.
+  let lightboxIndex = 0;
+  function _shots() { return Array.from(document.querySelectorAll('.advisor-shot')); }
+
+  function openLightbox(i) {
+    const shots = _shots();
+    if (!shots.length) return;
+    lightboxIndex = ((i % shots.length) + shots.length) % shots.length;
+    const shot = shots[lightboxIndex];
+    const src = shot.getAttribute('data-src') || '';
+    const cap = shot.getAttribute('data-caption') || '';
+    const img = document.getElementById('lightbox-img');
+    // Test whether the image actually exists; show a placeholder caption if not.
+    const probe = new Image();
+    probe.onload = function() { img.src = src; img.alt = cap; img.style.display = 'block'; };
+    probe.onerror = function() {
+      img.removeAttribute('src');
+      img.style.display = 'none';
+    };
+    probe.src = src;
+    document.getElementById('lightbox-caption').textContent = cap || '';
+    document.getElementById('lightbox-counter').textContent = (lightboxIndex + 1) + ' / ' + shots.length;
+    const lb = document.getElementById('lightbox');
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    const lb = document.getElementById('lightbox');
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function navLightbox(delta) {
+    openLightbox(lightboxIndex + delta);
+  }
+  // Keyboard support: Escape closes, arrows navigate
+  document.addEventListener('keydown', function(e) {
+    const lb = document.getElementById('lightbox');
+    if (!lb || !lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') navLightbox(-1);
+    else if (e.key === 'ArrowRight') navLightbox(1);
+  });
+
+  // On load, probe each gallery thumbnail's data-src. If a real image exists,
+  // swap the placeholder for the actual <img>. This means you can drop a single
+  // screenshot into files/ and only that thumbnail updates — no code changes.
+  (function initGalleryThumbs() {
+    document.querySelectorAll('.advisor-shot').forEach(function(shot) {
+      const src = shot.getAttribute('data-src');
+      if (!src) return;
+      const probe = new Image();
+      probe.onload = function() {
+        // Real image exists — replace the placeholder
+        const placeholder = shot.querySelector('.advisor-shot-placeholder');
+        if (placeholder) {
+          const realImg = document.createElement('img');
+          realImg.src = src;
+          realImg.alt = shot.getAttribute('data-caption') || '';
+          placeholder.replaceWith(realImg);
+        }
+      };
+      // No onerror handler — placeholder simply remains visible if image is missing.
+      probe.src = src;
+    });
+  })();
 </script>
 </body>
 </html>
