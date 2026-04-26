@@ -99,7 +99,15 @@
       box-shadow: 0 1px 3px rgba(27,58,92,0.2);
     }
 
-    .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      flex: 1;
+      justify-content: space-evenly;
+      max-width: 720px;
+      margin-left: 2.5rem;
+    }
     .nav-links a {
       text-decoration: underline;
       text-underline-offset: 5px;
@@ -351,10 +359,14 @@
       pointer-events: none;
       z-index: 1;
     }
-    /* NC State's red wordmark fights the navy palette more than UVA's blue.
-       Slightly lower opacity softens it. */
+    /* NC State's red wordmark fills its source file edge-to-edge, so when
+       object-fit: contain stretches it to the box, it appears much larger
+       than UVA's logo which has built-in padding. Scaling NC State down
+       brings the visual weight in line. */
     .edu-block.edu-ncstate .edu-watermark {
       opacity: 0.10;
+      transform: scale(0.78);
+      transform-origin: right center;
     }
     .edu-block .degree { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--navy); }
     .edu-block .institution { font-size: 0.85rem; color: var(--ink-mid); margin-top: 0.2rem; line-height: 1.5; }
@@ -844,7 +856,7 @@
     }
 
     @media (max-width: 1100px) {
-      .nav-links { gap: 1.4rem; }
+      .nav-links { max-width: none; margin-left: 1.5rem; }
       .nav-links a { font-size: 0.72rem; }
     }
     @media (max-width: 900px) {
@@ -856,7 +868,7 @@
       .hero-panel { padding: 3rem 6vw; }
       .hero-text { padding: 3rem 6vw; border-right: none; }
       nav { flex-wrap: wrap; height: auto; padding: 0.5rem 4vw; gap: 0.5rem; }
-      .nav-links { gap: 1rem; flex-wrap: wrap; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; flex: none; margin-left: 0; max-width: none; justify-content: flex-start; }
       section { padding: 4rem 6vw; }
     }
   </style>
@@ -873,9 +885,10 @@
   </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#research" class="mode-research">Research</a></li>
-    <li><a href="#experience-industry" class="mode-industry is-inline-block">Experience</a></li>
-    <li><a href="#cv">CV</a></li>
+    <li class="mode-research"><a href="#research">Research</a></li>
+    <li class="mode-research"><a href="#tools">Tools</a></li>
+    <li class="mode-research"><a href="#experience-research">CV</a></li>
+    <li class="mode-industry"><a href="#experience-industry">CV</a></li>
     <li><a href="https://iainholmes.github.io/econometric-advisor/" target="_blank" rel="noreferrer" class="nav-app">Advisor App &rarr;</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -922,7 +935,7 @@
     <div class="hero-cta">
       <a class="btn btn-primary mode-research" href="#research">View Research</a>
       <a class="btn btn-primary mode-industry" href="#experience-industry">View Experience</a>
-      <a class="btn btn-secondary" href="#cv">View CV</a>
+      <a class="btn btn-secondary mode-research" href="#experience-research">View CV</a>
     </div>
   </div>
   <div class="hero-panel">
@@ -1275,7 +1288,6 @@
       <p class="advisor-gallery-caption">Click any thumbnail to expand. Use arrow keys or on-screen controls to navigate.</p>
 
       <p class="research-meta">
-        Iain Holmes &middot; NC State University, Department of Economics &middot; 2025<br>
         Stack: HTML &middot; JavaScript &middot; D3.js &middot; KaTeX &middot; Anthropic Claude API &middot; GitHub Pages
       </p>
       <div class="research-keywords">
