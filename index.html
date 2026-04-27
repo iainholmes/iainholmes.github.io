@@ -521,7 +521,8 @@
       margin: 0.4rem 0 1rem;
     }
 
-    /* Lightbox modal */
+    /* Lightbox modal — side-panel layout: image on left, detail text on right.
+       Stacks vertically on narrow viewports. */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -535,27 +536,63 @@
       cursor: zoom-out;
     }
     .lightbox.open { display: flex; }
-    .lightbox-img-wrap {
-      max-width: 92vw;
+    .lightbox-content {
+      max-width: 1280px;
+      width: 100%;
       max-height: 92vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+      gap: 2rem;
+      align-items: stretch;
       cursor: default;
+    }
+    .lightbox-img-wrap {
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+      min-width: 0;
     }
     .lightbox-img-wrap img {
-      max-width: 92vw;
+      max-width: 100%;
       max-height: 82vh;
       display: block;
       border-radius: 4px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
-    .lightbox-caption {
-      color: rgba(220, 232, 245, 0.92);
-      font-size: 0.85rem;
-      text-align: center;
-      margin-top: 1rem;
-      letter-spacing: 0.02em;
+    .lightbox-detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      color: rgba(220, 232, 245, 0.9);
+      padding: 1rem 0;
+      overflow-y: auto;
+      max-height: 82vh;
+    }
+    .lightbox-detail-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(96, 165, 250, 0.85);
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    }
+    .lightbox-headline {
       font-family: var(--serif);
-      font-style: italic;
+      font-size: 1.55rem;
+      font-weight: 500;
+      line-height: 1.25;
+      color: #fff;
+      margin-bottom: 1.1rem;
+    }
+    .lightbox-detail-text {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: rgba(220, 232, 245, 0.78);
+      letter-spacing: 0.005em;
     }
     .lightbox-close,
     .lightbox-nav {
@@ -574,6 +611,7 @@
       justify-content: center;
       transition: background 0.15s, border-color 0.15s;
       font-family: inherit;
+      z-index: 2;
     }
     .lightbox-close:hover,
     .lightbox-nav:hover {
@@ -590,6 +628,20 @@
       font-size: 0.75rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      z-index: 2;
+    }
+    /* On narrower viewports, stack the image above the detail panel.
+       Detail text becomes a brief block below rather than a full sidebar. */
+    @media (max-width: 900px) {
+      .lightbox-content {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        max-height: 88vh;
+        overflow-y: auto;
+      }
+      .lightbox-img-wrap img { max-height: 55vh; }
+      .lightbox-detail { padding: 0; max-height: none; }
+      .lightbox-headline { font-size: 1.3rem; }
     }
 
     /* ============================================
@@ -1217,28 +1269,15 @@
       <p class="research-type">Research Tool &middot; Open Access</p>
       <h3 class="research-title">Econometric Advisor &mdash; An AI-Powered Research Design Tool for Applied Econometrics</h3>
       <p class="research-abstract">
-        The Econometric Advisor is a browser-based companion that helps applied researchers move from
-        a research question to a defensible identification strategy. Through an
-        <strong>adaptive twelve-to-thirteen question intake</strong> that conditionally branches on
-        whether a study has an explicit treatment, the tool returns a tailored econometric playbook:
-        a recommended estimator, functional form considerations, spatial diagnostic suggestions,
-        and an inference checklist calibrated to the user's specific design.
-        Two distinctive features extend the tool beyond conventional method recommendation. An
-        <strong>interactive knowledge graph</strong> maps the architecture of applied econometrics
-        &mdash; Problems, Strategic Logic, Tools, and Diagnostics &mdash; with category filters,
-        hover-dim interaction, and an expand mode that lets users trace exactly where their study
-        sits in the wider methodological landscape. A built-in <strong>reference library</strong>
-        covers nine method families and roughly fifty estimators, each accompanied by a one-line
-        tagline, key assumption, estimation procedure, common pitfalls, and an applied example.
-        With an Anthropic API key supplied, the Advisor layers on AI-driven personalization:
-        <strong>per-section tailored rationales</strong> explaining how each recommended method
-        connects to the user's specific design, a curated literature review with
-        <strong>paper-by-paper analysis</strong> on demand, and a parallel
-        <strong>open-access data sources panel</strong> that surfaces the public datasets best
-        suited to the user's research design &mdash; each entry annotated with coverage, geographic
-        scope, and methodological fit. The full app is implemented in vanilla HTML and JavaScript with no backend
-        &mdash; a deliberate choice meant to make rigorous econometric thinking accessible to any
-        graduate student with a browser.
+        The Econometric Advisor is a browser-based companion that helps applied researchers move
+        from a research question to a defensible identification strategy. A short adaptive intake
+        produces a tailored econometric playbook &mdash; recommended estimator, functional-form
+        considerations, spatial diagnostics where relevant, and an inference checklist calibrated
+        to the user's specific design. The full app is built in vanilla HTML and JavaScript with
+        no backend, no build step, and no infrastructure dependencies. The intent is portability
+        over polish &mdash; anyone with a browser and an idea for a study can use it, and anyone
+        who wants to fork it has the entire system in a single file. Click through the screenshots
+        below to see how each piece works.
       </p>
 
       <!-- App Store-style screenshot gallery — 4 thumbnails, click to lightbox.
@@ -1249,7 +1288,8 @@
            when screenshots are ready. -->
       <div class="advisor-gallery">
         <a class="advisor-shot" data-src="files/advisor-1.jpg"
-           data-caption="Architecture knowledge graph — Problems, Strategic Logic, Tools, and Diagnostics"
+           data-caption="Architecture knowledge graph"
+           data-detail="An interactive knowledge graph maps the architecture of applied econometrics across four categories &mdash; Problems, Strategic Logic, Tools, and Diagnostics &mdash; with category filters, an expand mode for tracing methodological connections, and a per-node drawer that opens to a working definition plus a concrete applied example. Together the 33 nodes and their relationships let users see exactly where their study sits in the wider methodological landscape, and which problems, identification strategies, estimators, and diagnostic tests connect to one another in their design."
            onclick="openLightbox(0); return false;">
           <div class="advisor-shot-placeholder">
             <span class="ph-num">Screenshot 1</span>
@@ -1258,7 +1298,8 @@
           <div class="advisor-shot-label">Architecture graph</div>
         </a>
         <a class="advisor-shot" data-src="files/advisor-2.jpg"
-           data-caption="Adaptive screening intake — questions branch on prior answers; some skip when not relevant"
+           data-caption="Adaptive screening intake"
+           data-detail="A short adaptive intake of twelve to thirteen questions branches conditionally on whether the study has an explicit treatment, asking only what's relevant to the user's design. Each question carries an expandable &lsquo;Why this matters&rsquo; panel that explains what the question is actually asking, how the user's answer concretely shapes the resulting toolkit downstream, and where the choice fits within the broader research-design architecture &mdash; built so users learn the conceptual scaffolding rather than just clicking through. Users can navigate freely backward to revise prior answers without losing state."
            onclick="openLightbox(1); return false;">
           <div class="advisor-shot-placeholder">
             <span class="ph-num">Screenshot 2</span>
@@ -1267,7 +1308,8 @@
           <div class="advisor-shot-label">Adaptive intake</div>
         </a>
         <a class="advisor-shot" data-src="files/advisor-3.jpg"
-           data-caption="Reference library — nine method families and roughly fifty estimators"
+           data-caption="Reference library"
+           data-detail="A built-in reference library covers nine method families and roughly fifty estimators, each accompanied by a tagline, key assumption, estimation procedure, watch-outs from applied practice, and a concrete applied example. A color-coded legend on the welcome screen explains what each color signals across every entry &mdash; what the method does, its identifying assumption, how to estimate it, what to watch out for, and where it has been applied &mdash; so users can scan the structure of any method family at a glance and find what they need without losing context."
            onclick="openLightbox(2); return false;">
           <div class="advisor-shot-placeholder">
             <span class="ph-num">Screenshot 3</span>
@@ -1276,7 +1318,8 @@
           <div class="advisor-shot-label">Reference library</div>
         </a>
         <a class="advisor-shot" data-src="files/advisor-4.jpg"
-           data-caption="Results screen — AI-generated narrative, recommended toolkit, and curated literature"
+           data-caption="Results &amp; literature panel"
+           data-detail="The results screen returns the full toolkit: a recommended estimator, methodological-spec sections, an inference checklist, and a literature panel that surfaces a curated foundational reading list drawn from a hand-built archetype-tagged corpus &mdash; visible regardless of API access &mdash; sitting above an AI-curated section with five lenses (Recent, Foundational, Methodological, Applied, Adjacent fields) and a refresh mechanic that excludes already-shown papers. With an Anthropic API key supplied, the Advisor extends into per-section tailored rationales, paper-by-paper research-design analysis on demand, and a parallel open-access data sources panel surfacing public datasets matched to the user's design. Without one, the toolkit still produces the full local recommendation, foundational reading, and reference library &mdash; AI is enhancement, not a gate."
            onclick="openLightbox(3); return false;">
           <div class="advisor-shot-placeholder">
             <span class="ph-num">Screenshot 4</span>
@@ -1285,7 +1328,7 @@
           <div class="advisor-shot-label">Results &amp; literature</div>
         </a>
       </div>
-      <p class="advisor-gallery-caption">Click any thumbnail to expand. Use arrow keys or on-screen controls to navigate.</p>
+      <p class="advisor-gallery-caption">Click any thumbnail to see how that piece works in detail. Use arrow keys or on-screen controls to navigate.</p>
 
       <p class="research-meta">
         Stack: HTML &middot; JavaScript &middot; D3.js &middot; KaTeX &middot; Anthropic Claude API &middot; GitHub Pages
@@ -1883,15 +1926,22 @@
   </div>
 </section>
 
-<!-- Lightbox modal — reads data-src from .advisor-shot anchors -->
+<!-- Lightbox modal — side-panel layout. Reads data-src, data-caption (headline),
+     and data-detail (long-form description) from each .advisor-shot anchor. -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="lightbox-counter" id="lightbox-counter"></div>
   <button class="lightbox-close" onclick="closeLightbox(); event.stopPropagation();" aria-label="Close">&#x2715;</button>
   <button class="lightbox-nav prev" onclick="navLightbox(-1); event.stopPropagation();" aria-label="Previous">&#x2039;</button>
   <button class="lightbox-nav next" onclick="navLightbox(1); event.stopPropagation();" aria-label="Next">&#x203A;</button>
-  <div class="lightbox-img-wrap" onclick="event.stopPropagation();">
-    <img id="lightbox-img" src="" alt="" />
-    <div class="lightbox-caption" id="lightbox-caption"></div>
+  <div class="lightbox-content" onclick="event.stopPropagation();">
+    <div class="lightbox-img-wrap">
+      <img id="lightbox-img" src="" alt="" />
+    </div>
+    <div class="lightbox-detail">
+      <p class="lightbox-detail-eyebrow">Feature</p>
+      <h3 class="lightbox-headline" id="lightbox-headline"></h3>
+      <p class="lightbox-detail-text" id="lightbox-detail-text"></p>
+    </div>
   </div>
 </div>
 
@@ -1929,17 +1979,20 @@
     lightboxIndex = ((i % shots.length) + shots.length) % shots.length;
     const shot = shots[lightboxIndex];
     const src = shot.getAttribute('data-src') || '';
-    const cap = shot.getAttribute('data-caption') || '';
+    const headline = shot.getAttribute('data-caption') || '';
+    const detail = shot.getAttribute('data-detail') || '';
     const img = document.getElementById('lightbox-img');
-    // Test whether the image actually exists; show a placeholder caption if not.
+    // Test whether the image actually exists; hide image gracefully if not
+    // (the side-panel detail text still reads cleanly on its own).
     const probe = new Image();
-    probe.onload = function() { img.src = src; img.alt = cap; img.style.display = 'block'; };
+    probe.onload = function() { img.src = src; img.alt = headline; img.style.display = 'block'; };
     probe.onerror = function() {
       img.removeAttribute('src');
       img.style.display = 'none';
     };
     probe.src = src;
-    document.getElementById('lightbox-caption').textContent = cap || '';
+    document.getElementById('lightbox-headline').textContent = headline;
+    document.getElementById('lightbox-detail-text').textContent = detail;
     document.getElementById('lightbox-counter').textContent = (lightboxIndex + 1) + ' / ' + shots.length;
     const lb = document.getElementById('lightbox');
     lb.classList.add('open');
