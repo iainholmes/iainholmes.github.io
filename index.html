@@ -427,15 +427,26 @@
     }
 
     /* Econometric Advisor — watermark version */
-   .advisor-card {
+   /* The base class for your tool cards */
+.advisor-card {
   position: relative;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='logoPattern' x='0' y='0' width='25' height='25' patternUnits='userSpaceOnUse'%3E%3Cg transform='scale(0.05) translate(50, 50)'%3E%3Crect width='32' height='32' rx='7' fill='%231a1916'/%3E%3Ccircle cx='10' cy='16' r='3.5' fill='%232e7d32'/%3E%3Ccircle cx='19' cy='10' r='3.5' fill='%232e52c2'/%3E%3Ccircle cx='19' cy='22' r='3.5' fill='%235b8fb9'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='url(%23logoPattern)'/%3E%3C/svg%3E");
-  background-size: 80px; /* Adjust this to change logo density */
-  background-repeat: repeat;
-  background-position: center;
+  overflow: hidden; /* Ensures the background doesn't bleed out */
 }
-/* Ensure the card content sits on top */
-.advisor-card > * {
+
+/* This creates the watermark without cluttering your HTML */
+.advisor-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231a1916' fill-opacity='1'%3E%3Crect width='8' height='8' rx='2'/%3E%3Ccircle cx='2.5' cy='4' r='0.8' fill='%232e7d32'/%3E%3Ccircle cx='4.75' cy='2.5' r='0.8' fill='%232e52c2'/%3E%3Ccircle cx='4.75' cy='5.5' r='0.8' fill='%235b8fb9'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 40px 40px;
+}
+
+/* Ensures content stays above the watermark */
+.advisor-card > *:not(.advisor-watermark) {
   position: relative;
   z-index: 1;
 }
