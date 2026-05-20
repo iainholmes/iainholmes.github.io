@@ -1358,9 +1358,7 @@
       <svg class="advisor-watermark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <polyline points="80,432 80,80" fill="none" stroke="#1b3a5c" stroke-width="8" stroke-linecap="round"/>
         <polyline points="80,432 432,432" fill="none" stroke="#1b3a5c" stroke-width="8" stroke-linecap="round"/>
-        
         <path d="M 100 380 Q 256 60 412 380" fill="none" stroke="#1b3a5c" stroke-width="12" stroke-linecap="round" stroke-dasharray="24 16"/>
-        
         <circle cx="130" cy="310" r="16" fill="#2e52c2"/>
         <circle cx="180" cy="210" r="16" fill="#5b8fb9"/>
         <circle cx="240" cy="160" r="16" fill="#2e7d32"/>
@@ -1368,18 +1366,37 @@
         <circle cx="330" cy="240" r="16" fill="#5b8fb9"/>
         <circle cx="380" cy="330" r="16" fill="#2e7d32"/>
       </svg>
-      <p class="research-type">Quantitative Practice Tool &middot; Open Access</p>
+      <p class="research-type">Research Tool &middot; Open Access</p>
       <h3 class="research-title">Quant Skills Trainer &mdash; A Multi-Language Curriculum for Applied Econometrics</h3>
       <p class="research-abstract">
-        The Quant Skills Trainer is an interactive, browser-based curriculum designed to bridge the gap between econometric theory and applied coding. It provides a structured sequence of modules&mdash;from foundational data cleaning to advanced causal inference (Difference-in-Differences, Regression Discontinuity, Double ML)&mdash;enforcing strict methodological parity across Python, R, and Stata. The application features an integrated practice environment where users can submit their local code to receive instantaneous, AI-driven architectural feedback evaluated against a custom econometric system prompt. Like the Advisor, it is built entirely in vanilla HTML/JS and relies on no backend infrastructure.
+        The Quant Skills Trainer is an interactive, browser-based curriculum designed to bridge the gap between econometric theory and applied coding. It provides a structured sequence of modules&mdash;from foundational data cleaning to advanced causal inference (Difference-in-Differences, Regression Discontinuity, Double ML)&mdash;enforcing strict methodological parity across Python, R, and Stata. The application features an integrated practice environment where users can submit their local code to receive instantaneous, AI-driven architectural feedback evaluated against a custom econometric system prompt.
       </p>
+
+      <div class="advisor-gallery">
+        <a class="advisor-shot" data-src="files/quant-1.jpg" data-caption="Curriculum Dashboard" data-detail="The main dashboard organizes 40+ modules across Python, R, and Stata, with persistent progress tracking and clear visual indicators for each lesson, practice exercise, and review phase." onclick="openLightbox(4); return false;">
+          <div class="advisor-shot-placeholder"><span class="ph-num">Screenshot 1</span><span>Curriculum View</span></div>
+          <div class="advisor-shot-label">Curriculum View</div>
+        </a>
+        <a class="advisor-shot" data-src="files/quant-2.jpg" data-caption="Interactive Practice" data-detail="The practice environment features a focused code editor for your local workflow and seamless AI integration. Built-in hotkeys (Cmd+Enter) and direct script downloads prioritize a frictionless, native developer experience." onclick="openLightbox(5); return false;">
+          <div class="advisor-shot-placeholder"><span class="ph-num">Screenshot 2</span><span>Practice Interface</span></div>
+          <div class="advisor-shot-label">Practice Interface</div>
+        </a>
+        <a class="advisor-shot" data-src="files/quant-3.jpg" data-caption="AI Feedback Loop" data-detail="The feedback tab provides architectural critiques of your code submissions. By exposing the system prompts and evaluation criteria, the trainer acts as both a grader and a pedagogical transparent tutor." onclick="openLightbox(6); return false;">
+          <div class="advisor-shot-placeholder"><span class="ph-num">Screenshot 3</span><span>AI Evaluation</span></div>
+          <div class="advisor-shot-label">AI Evaluation</div>
+        </a>
+        <a class="advisor-shot" data-src="files/quant-4.jpg" data-caption="Evaluation Methodology" data-detail="The system prompt transparency feature allows users to inspect the underlying econometric rubrics used by Claude, ensuring trust and demonstrating the rigor behind the automated feedback architecture." onclick="openLightbox(7); return false;">
+          <div class="advisor-shot-placeholder"><span class="ph-num">Screenshot 4</span><span>Evaluation Criteria</span></div>
+          <div class="advisor-shot-label">Criteria Transparency</div>
+        </a>
+      </div>
+      <p class="advisor-gallery-caption">Click any thumbnail to see how that piece works in detail. Use arrow keys or on-screen controls to navigate.</p>
 
       <p class="research-meta">
         Stack: HTML &middot; JavaScript &middot; CSS &middot; Anthropic API &middot; GitHub Pages
       </p>
       <div class="research-keywords">
         <span class="research-kw">Causal Inference</span>
-        <span class="research-kw">Curriculum Design</span>
         <span class="research-kw">Python</span>
         <span class="research-kw">R</span>
         <span class="research-kw">Stata</span>
@@ -1388,8 +1405,7 @@
       <div style="display:flex;gap:.75rem;align-items:center;padding-top:1rem;margin-top:1rem;border-top:1px solid var(--rule);flex-wrap:wrap">
         <a href="https://iainholmes.github.io/quant-skills-trainer/" target="_blank" class="btn btn-primary"
            style="display:inline-flex;align-items:center;gap:.45rem">
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
             <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
           </svg>
@@ -1397,7 +1413,6 @@
         </a>
       </div>
     </div>
-  </div>
 </section>
 
 <!-- ================================================
