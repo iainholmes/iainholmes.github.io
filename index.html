@@ -925,7 +925,99 @@
       .nav-links { gap: 1rem; flex-wrap: wrap; flex: none; margin-left: 0; max-width: none; justify-content: flex-start; }
       section { padding: 4rem 6vw; }
     }
-    /* advisor-card styles defined above — see .advisor-card-econometric and .advisor-card-quant */
+
+    .toolkit-suite-intro {
+      margin-bottom: 2.5rem;
+      padding: 2rem 2.5rem;
+      background: linear-gradient(135deg, var(--navy-faint) 0%, #eaf2ff 100%);
+      border: 1px solid var(--navy-light);
+      border-left: 4px solid var(--navy);
+      border-radius: 2px;
+    }
+    .toolkit-suite-intro h3 {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .toolkit-suite-intro p {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      max-width: 780px;
+      margin-bottom: 1.25rem;
+    }
+    .toolkit-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .toolkit-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+    }
+    .toolkit-feature-icon {
+      color: var(--navy);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .toolkit-feature-text {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      line-height: 1.55;
+    }
+    .toolkit-feature-text strong {
+      color: var(--navy);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+    .toolkit-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      padding: 1.25rem 2rem;
+      background: var(--navy-faint);
+      border-left: 1px solid var(--navy-light);
+      border-right: 1px solid var(--navy-light);
+    }
+    .toolkit-connector-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--navy-light), transparent);
+    }
+    .toolkit-connector-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1rem;
+      background: #fff;
+      border: 1px solid var(--navy-light);
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .toolkit-connector-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--navy);
+    }
+    @media (max-width: 900px) {
+      .toolkit-features { grid-template-columns: 1fr; gap: 0.75rem; }
+    }
+
+    /* advisor-card styles defined above */
   </style>
 </head>
 <body>
@@ -1251,8 +1343,36 @@
      ================================================ -->
 <section id="tools" class="mode-research">
   <p class="section-label">Open Source</p>
-  <h2 class="section-title">Quantitative Practice & Research Tools</h2>
+  <h2 class="section-title">Research Toolkit</h2>
   <div class="research-list">
+
+  <div class="toolkit-suite-intro">
+      <h3>A connected system for applied econometrics research</h3>
+      <p>The Econometric Advisor and the Quant Skills Trainer are designed to work together. The Advisor helps you move from a research question to a defensible identification strategy — the Trainer teaches you to execute that strategy in code. Together they close the gap between knowing what method to use and being able to implement, interpret, and defend it in your own research.</p>
+      <div class="toolkit-features">
+        <div class="toolkit-feature">
+          <span class="toolkit-feature-icon">→</span>
+          <div class="toolkit-feature-text">
+            <strong>Design your study</strong>
+            The Advisor maps your identification strategy and generates a personalized toolkit with working code in R, Stata, and Python.
+          </div>
+        </div>
+        <div class="toolkit-feature">
+          <span class="toolkit-feature-icon">→</span>
+          <div class="toolkit-feature-text">
+            <strong>Build the skills</strong>
+            The Trainer's modules map directly to the Advisor's recommended methods — opening the exact relevant lesson with your research context loaded into the AI feedback.
+          </div>
+        </div>
+        <div class="toolkit-feature">
+          <span class="toolkit-feature-icon">→</span>
+          <div class="toolkit-feature-text">
+            <strong>Shared session context</strong>
+            Arriving from the Advisor pre-loads your research design so AI code feedback is calibrated to your specific identification strategy, not a generic exercise.
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Econometric Advisor — its own section now, with App Store-style screenshot gallery -->
     <div class="research-item advisor-card-econometric">
@@ -1344,6 +1464,15 @@
           Open Econometric Advisor
         </a>
       </div>
+    </div>
+    <div class="toolkit-connector">
+      <div class="toolkit-connector-line"></div>
+      <div class="toolkit-connector-badge">
+        <div class="toolkit-connector-dot"></div>
+        Integrated — Advisor feeds into Trainer
+        <div class="toolkit-connector-dot"></div>
+      </div>
+      <div class="toolkit-connector-line"></div>
     </div>
 <div class="research-item advisor-card-quant">
   <img class="tool-logo" src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='16' r='3.5' fill='%232e7d32'/%3E%3Ccircle cx='19' cy='10' r='3.5' fill='%232e52c2'/%3E%3Ccircle cx='19' cy='22' r='3.5' fill='%235b8fb9'/%3E%3Cline x1='13.4' y1='14.3' x2='15.7' y2='11.4' stroke='%23555' stroke-width='1.2'/%3E%3Cline x1='13.4' y1='17.7' x2='15.7' y2='20.6' stroke='%23555' stroke-width='1.2'/%3E%3C/svg%3E" alt="" aria-hidden="true" />
