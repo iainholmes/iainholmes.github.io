@@ -1380,15 +1380,16 @@
       <p class="research-type">Research Tool &middot; Open Access</p>
       <h3 class="research-title">Econometric Advisor &mdash; A Research Design Tool for Applied Econometrics</h3>
       <p class="research-abstract">
-        The Econometric Advisor is a browser-based companion that helps applied researchers move
-        from a research question to a defensible identification strategy. A short adaptive intake
-        produces a tailored econometric playbook &mdash; recommended estimator, functional-form
-        considerations, spatial diagnostics where relevant, and an inference checklist calibrated
-        to the user's specific design. The full app is built in vanilla HTML and JavaScript with
-        no backend, no build step, and no infrastructure dependencies. The intent is portability
-        over polish &mdash; anyone with a browser and an idea for a study can use it, and anyone
-        who wants to fork it has the entire system in a single file. Click through the screenshots
-        below to see how each piece works.
+        The Econometric Advisor helps applied researchers move from a research question to a
+        defensible identification strategy. A short adaptive intake produces a personalised toolkit
+        &mdash; recommended estimator, functional-form considerations, spatial diagnostics, and an
+        inference checklist calibrated to the user's specific design. Results are organised across
+        five tabs: Overview, Methods, Data sources, Literature, and an interactive Knowledge Graph
+        mapping 33 nodes across the architecture of applied econometrics. A built-in code audit tool
+        scans uploaded scripts for implemented methods, flags gaps relative to the recommended toolkit,
+        and &mdash; with an optional API key &mdash; provides study-specific feedback on misspecifications.
+        The Advisor feeds directly into the Quant Skills Trainer, routing researchers to the exact
+        module relevant to their design with session context carried across.
       </p>
 
       <!-- App Store-style screenshot gallery — 4 thumbnails, click to lightbox.
@@ -1479,17 +1480,15 @@
       <p class="research-type">Quantitative Practice Tool &middot; Open Access</p>
       <h3 class="research-title">Quant Skills Trainer &mdash; A Multi-Language Curriculum for Applied Econometrics</h3>
       <p class="research-abstract">
-        The Quant Skills Trainer is a structured, browser-based practice environment
-for building applied econometric fluency across Python, R, and Stata. The
-curriculum moves from core data-handling tasks through panel methods,
-instrumental variables, and frontier causal-inference techniques &mdash;
-Difference-in-Differences, Regression Discontinuity, and Double Machine
-Learning &mdash; with identical module coverage across all three languages so
-users can learn new syntax against methods they already understand. Each module
-pairs a written lesson with a hands-on exercise designed to be completed in the
-user&rsquo;s own local environment (Jupyter, RStudio, or Stata&rsquo;s do-file
-editor), then submitted for structured code review against a transparent,
-domain-specific evaluation rubric.
+        The Quant Skills Trainer is a structured practice environment for building applied
+        econometric fluency across Python, R, and Stata &mdash; 42 modules from data handling
+        through Difference-in-Differences, Regression Discontinuity, Instrumental Variables,
+        and a GLM Bridge covering Logit, Poisson, and Tobit. Each module opens with a scannable
+        key concepts summary, followed by a full lesson and a hands-on exercise completed in the
+        user's own local environment. When arriving from the Econometric Advisor, exercises are
+        automatically rewritten to match the researcher's specific study &mdash; replacing generic
+        variable names with the actual treatment, outcome, and instrument from their design. Code
+        review feedback is similarly calibrated to the research context, not a generic rubric.
       </p>
       <div class="advisor-gallery">
         <a class="advisor-shot" data-src="files/quant-1.jpg" data-caption="Curriculum Dashboard" data-detail="The landing page presents all available modules grouped by language, each showing lesson, practice, and completion status at a glance. Progress persists in the browser, so users can work through the curriculum over multiple sessions and immediately see which modules remain." onclick="openLightbox(4); return false;">
@@ -2124,7 +2123,7 @@ domain-specific evaluation rubric.
 <footer>
   <span>&copy; Iain Holmes</span>
   <span class="footer-sep" aria-hidden="true"></span>
-  <span class="footer-stamp">Last updated April 2026</span>
+  <span class="footer-stamp">Last updated May 2026</span>
 </footer>
 
 <script>
