@@ -14,6 +14,49 @@
   <meta name="twitter:title" content="Iain Holmes | M.S. Economics — NC State University" />
   <meta name="twitter:description" content="M.S. candidate in Economics at NC State University, applying quantitative methods to environmental policy, infrastructure valuation, and hedonic frameworks." />
   <meta name="twitter:image" content="https://iainholmes.github.io/files/headshot.jpeg" />
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/images/favicon-32x32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-180x180.png" />
+  <link rel="manifest" href="/images/manifest.json" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": "https://iainholmes.github.io/#profilepage",
+        "url": "https://iainholmes.github.io/",
+        "name": "Iain Holmes",
+        "mainEntity": {
+          "@id": "https://iainholmes.github.io/#person"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://iainholmes.github.io/#person",
+        "name": "Iain Holmes",
+        "url": "https://iainholmes.github.io/",
+        "image": "https://iainholmes.github.io/files/headshot.jpeg",
+        "jobTitle": "M.S. Candidate in Economics",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "North Carolina State University",
+          "sameAs": "https://www.ncsu.edu/"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Virginia",
+          "sameAs": "https://www.virginia.edu/"
+        },
+        "sameAs": [
+          "https://github.com/iainholmes",
+          "https://www.linkedin.com/in/iaintholmes/"
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -23,7 +66,7 @@
     :root {
       --ink:        #1a1a18;
       --ink-mid:    #4a4a44;
-      --ink-light:  #88909a;
+      --ink-light:  #68717b;
       --rule:       #d8d5cc;
       --cream:      #f7f5f0;
       --paper:      #fdfcf9;
@@ -963,7 +1006,7 @@
     }
     footer .footer-stamp {
       font-style: italic;
-      color: rgba(255,255,255,0.32);
+      color: rgba(255,255,255,0.72);
       letter-spacing: 0.04em;
     }
 
@@ -1510,40 +1553,28 @@
            data-caption="Knowledge graph — all four layers"
            data-detail="An interactive knowledge graph maps the architecture of applied econometrics across four categories &mdash; Problems, Strategic Logic, Tools, and Diagnostics &mdash; with category filters, an expand mode for tracing methodological connections, and a per-node drawer that opens to a working definition plus a concrete applied example. Together the 35 nodes and their relationships let users see exactly where their study sits in the wider methodological landscape, and which problems, identification strategies, estimators, and diagnostic tests connect to one another in their design."
            onclick="openLightbox(0); return false;">
-          <div class="advisor-shot-placeholder">
-            <span class="ph-num">Screenshot 1</span>
-            <span>Knowledge graph view</span>
-          </div>
+          <img src="files/advisor-1.jpg" alt="Knowledge graph — all four layers" loading="lazy" />
           <div class="advisor-shot-label">Knowledge graph</div>
         </a>
         <a class="advisor-shot" data-src="files/advisor-2.jpg"
            data-caption="Adaptive intake — guided questionnaire"
            data-detail="A short adaptive intake of twelve to thirteen questions branches conditionally on the study's design, asking only what's relevant to the user's setup. Each question carries an expandable &lsquo;Why this matters&rsquo; panel &mdash; shown open here &mdash; that explains what the question is actually asking, how the answer concretely shapes the resulting toolkit downstream, and where the choice fits within the broader research-design architecture, so users learn the conceptual scaffolding rather than just clicking through. Users can navigate freely backward to revise prior answers without losing state."
            onclick="openLightbox(1); return false;">
-          <div class="advisor-shot-placeholder">
-            <span class="ph-num">Screenshot 2</span>
-            <span>Adaptive intake</span>
-          </div>
+          <img src="files/advisor-2.jpg" alt="Adaptive intake — guided questionnaire" loading="lazy" />
           <div class="advisor-shot-label">Adaptive intake</div>
         </a>
         <a class="advisor-shot" data-src="files/advisor-3.jpg"
            data-caption="Code audit — SE diagnostics &amp; design check"
            data-detail="Users upload a research script and the code audit tool automatically detects which econometric methods are implemented &mdash; in this example, IV/2SLS, panel fixed effects, logit/probit, and OLS &mdash; then flags gaps against the toolkit the Advisor recommended, such as missing spatial diagnostics. A three-panel review summarizes what the code gets right, the single most consequential gap, and a specific watch-out, alongside severity-tagged standard-error diagnostics (critical, warning, and suggestion-level flags) tailored to the study's data structure."
            onclick="openLightbox(2); return false;">
-          <div class="advisor-shot-placeholder">
-            <span class="ph-num">Screenshot 3</span>
-            <span>Code audit</span>
-          </div>
+          <img src="files/advisor-3.jpg" alt="Code audit — SE diagnostics &amp; design check" loading="lazy" />
           <div class="advisor-shot-label">Code audit</div>
         </a>
         <a class="advisor-shot" data-src="files/advisor-4.jpg"
            data-caption="Audit trail — recommended toolkit"
            data-detail="The full analysis can be exported as a shareable, dated audit-trail document combining an AI-calibrated narrative of the study's identification challenge with concrete methodological recommendations &mdash; control-function alternatives to two-stage least squares, spatial standard-error corrections, and nonlinearity checks &mdash; plus explicit watch-outs for compounding threats like weak-instrument bias in nonlinear models. This gives users, or their advisors, a standalone written record of the design guidance rather than just an in-app session."
            onclick="openLightbox(3); return false;">
-          <div class="advisor-shot-placeholder">
-            <span class="ph-num">Screenshot 4</span>
-            <span>Audit trail</span>
-          </div>
+          <img src="files/advisor-4.jpg" alt="Audit trail — recommended toolkit" loading="lazy" />
           <div class="advisor-shot-label">Audit trail PDF</div>
         </a>
       </div>
@@ -1599,19 +1630,19 @@
       </p>
       <div class="advisor-gallery">
         <a class="advisor-shot" data-src="files/quant-1.jpg" data-caption="Curriculum — 44 modules across Python, R &amp; Stata" data-detail="The landing page presents all available modules grouped by language, each showing lesson, practice, and completion status at a glance. Progress persists in the browser, so users can work through the curriculum over multiple sessions and immediately see which modules remain." onclick="openLightbox(4); return false;">
-          <div class="advisor-shot-placeholder"><span class="ph-num">Screenshot 1</span><span>Curriculum View</span></div>
+          <img src="files/quant-1.jpg" alt="Curriculum — 44 modules across Python, R &amp; Stata" loading="lazy" />
           <div class="advisor-shot-label">Curriculum</div>
         </a>
         <a class="advisor-shot" data-src="files/quant-2.jpg" data-caption="Lesson view — key concepts &amp; econometric intuition" data-detail="Each module opens with a structured lesson: key concepts as a scannable bullet list, an overview explaining the econometric intuition, and worked code examples with annotations. The Watch Out panel flags the single most important misspecification risk for that method &mdash; visible while reading, not just after submitting." onclick="openLightbox(5); return false;">
-          <div class="advisor-shot-placeholder"><span class="ph-num">Screenshot 2</span><span>Lesson view</span></div>
+          <img src="files/quant-2.jpg" alt="Lesson view — key concepts &amp; econometric intuition" loading="lazy" />
           <div class="advisor-shot-label">Lesson view</div>
         </a>
         <a class="advisor-shot" data-src="files/quant-3.jpg" data-caption="Module list — Core &amp; Advanced econometrics" data-detail="The sidebar organizes all modules into three tiers: Foundations, Core Econometrics, and Advanced Methods. Each entry shows the method name and its key commands as a subtitle &mdash; so users know exactly what they&rsquo;re practicing before clicking in. Progress rings track completion across the full curriculum." onclick="openLightbox(6); return false;">
-          <div class="advisor-shot-placeholder"><span class="ph-num">Screenshot 3</span><span>Module list</span></div>
+          <img src="files/quant-3.jpg" alt="Module list — Core &amp; Advanced econometrics" loading="lazy" />
           <div class="advisor-shot-label">Module list</div>
         </a>
         <a class="advisor-shot" data-src="files/quant-4.jpg" data-caption="Practice interface — write locally, submit for review" data-detail="The practice tab provides a code-input area where users paste work completed in their local editor &mdash; Jupyter, RStudio, or Stata. A starter script is available to download directly. The Watch Out sidebar panel surfaces the most consequential misspecification risk for the active method, visible while writing code." onclick="openLightbox(7); return false;">
-          <div class="advisor-shot-placeholder"><span class="ph-num">Screenshot 4</span><span>Practice interface</span></div>
+          <img src="files/quant-4.jpg" alt="Practice interface — write locally, submit for review" loading="lazy" />
           <div class="advisor-shot-label">Practice</div>
         </a>
       </div>
@@ -1741,7 +1772,7 @@
         </ul>
       </div>
 
-      <a class="cv-download" href="iholmes_resume.pdf" target="_blank">
+      <a class="cv-download" href="files/iholmes_resume.pdf" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
@@ -1994,7 +2025,7 @@
         </ul>
       </div>
 
-      <a class="cv-download" href="iholmes_resume.pdf" target="_blank">
+      <a class="cv-download" href="files/iholmes_resume.pdf" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
@@ -2245,16 +2276,18 @@
 <footer>
   <span>&copy; Iain Holmes</span>
   <span class="footer-sep" aria-hidden="true"></span>
-  <span class="footer-stamp">Last updated August 2026</span>
+  <span class="footer-stamp">Last updated <span id="last-updated">August 2026</span></span>
 </footer>
 
 <script>
-  // Mode toggle: keeps default Research view fresh on every visit.
-  function setMode(mode) {
+  // Mode toggle: supports deep links such as ?mode=industry and ?mode=research.
+  function setMode(mode, updateUrl = true) {
     const body = document.body;
     const btnR = document.getElementById('btn-research');
     const btnI = document.getElementById('btn-industry');
-    if (mode === 'industry') {
+    const normalizedMode = mode === 'industry' ? 'industry' : 'research';
+
+    if (normalizedMode === 'industry') {
       body.classList.add('is-industry');
       btnI.classList.add('active'); btnI.setAttribute('aria-pressed', 'true');
       btnR.classList.remove('active'); btnR.setAttribute('aria-pressed', 'false');
@@ -2263,7 +2296,31 @@
       btnR.classList.add('active'); btnR.setAttribute('aria-pressed', 'true');
       btnI.classList.remove('active'); btnI.setAttribute('aria-pressed', 'false');
     }
+
+    if (updateUrl) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('mode', normalizedMode);
+      window.history.replaceState(null, '', url);
+    }
   }
+
+  // Read an explicit mode from the URL on first load; otherwise default to Research.
+  (function initPageState() {
+    const params = new URLSearchParams(window.location.search);
+    setMode(params.get('mode') === 'industry' ? 'industry' : 'research', false);
+
+    // Populate the footer date from the document's reported last-modified date.
+    const stamp = document.getElementById('last-updated');
+    if (stamp) {
+      const modified = new Date(document.lastModified);
+      if (!Number.isNaN(modified.getTime())) {
+        stamp.textContent = new Intl.DateTimeFormat('en-US', {
+          month: 'long',
+          year: 'numeric'
+        }).format(modified);
+      }
+    }
+  })();
 
   // ── Lightbox for the Advisor screenshot gallery ───────────────────
   // Reads data-src and data-caption from each .advisor-shot.
@@ -2314,28 +2371,6 @@
     else if (e.key === 'ArrowRight') navLightbox(1);
   });
 
-  // On load, probe each gallery thumbnail's data-src. If a real image exists,
-  // swap the placeholder for the actual <img>. This means you can drop a single
-  // screenshot into files/ and only that thumbnail updates — no code changes.
-  (function initGalleryThumbs() {
-    document.querySelectorAll('.advisor-shot').forEach(function(shot) {
-      const src = shot.getAttribute('data-src');
-      if (!src) return;
-      const probe = new Image();
-      probe.onload = function() {
-        // Real image exists — replace the placeholder
-        const placeholder = shot.querySelector('.advisor-shot-placeholder');
-        if (placeholder) {
-          const realImg = document.createElement('img');
-          realImg.src = src;
-          realImg.alt = shot.getAttribute('data-caption') || '';
-          placeholder.replaceWith(realImg);
-        }
-      };
-      // No onerror handler — placeholder simply remains visible if image is missing.
-      probe.src = src;
-    });
-  })();
 </script>
 </body>
 </html>
