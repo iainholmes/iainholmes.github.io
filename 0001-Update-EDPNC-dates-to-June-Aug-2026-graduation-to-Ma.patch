@@ -1,0 +1,57 @@
+From 9cb09bc2daa51b780b9b1c1307400f8e415dea14 Mon Sep 17 00:00:00 2001
+From: Iain Holmes <iain.t.holmes@gmail.com>
+Date: Wed, 26 Aug 2026 05:11:44 +0000
+Subject: [PATCH] Update EDPNC dates to June-Aug 2026, graduation to May 2027,
+ and tighten clean-energy supply chain phrasing
+
+---
+ index.html | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/index.html b/index.html
+index 831402d..2e41812 100644
+--- a/index.html
++++ b/index.html
+@@ -1148,7 +1148,7 @@
+         Dr. Rick Dunford on a Natural Resource Damages textbook &mdash; validating empirical frameworks
+         and updating regression models for prior NRD case studies. Most recently, I joined the
+         <strong>Economic Development Partnership of North Carolina (EDPNC)</strong> as a Research Intern,
+-        co-authoring a clean-energy white paper benchmarking North Carolina's alternative-industry supply
++        co-authoring a clean-energy white paper benchmarking North Carolina's clean-energy supply
+         chain against Southeastern peers using BLS employment data and Python.
+       </p>
+       <p>
+@@ -1182,7 +1182,7 @@
+           <p class="degree">M.Sc. Economics</p>
+           <p class="institution">North Carolina State University &middot; Raleigh, NC<br>
+             Data Analytics and Natural Resource &amp; Environmental Economics</p>
+-          <p class="year">Expected December 2026 &middot; GPA: 3.9</p>
++          <p class="year">Expected May 2027 &middot; GPA: 3.9</p>
+         </div>
+       </div>
+ 
+@@ -1248,7 +1248,7 @@
+           <p class="degree">M.Sc. Economics</p>
+           <p class="institution">North Carolina State University &middot; Raleigh, NC<br>
+             Data Analytics and Natural Resource &amp; Environmental Economics</p>
+-          <p class="year">Expected December 2026 &middot; GPA: 3.9</p>
++          <p class="year">Expected May 2027 &middot; GPA: 3.9</p>
+         </div>
+       </div>
+ 
+@@ -1609,10 +1609,10 @@
+             <p class="cv-entry-title">Research Intern</p>
+             <p class="cv-entry-sub"><a href="https://www.edpnc.com/" target="_blank" rel="noreferrer">Economic Development Partnership of North Carolina (EDPNC)</a> &middot; Raleigh, NC</p>
+           </div>
+-          <span class="cv-entry-date">June 2026 &ndash; Present</span>
++          <span class="cv-entry-date">June 2026 &ndash; Aug 2026</span>
+         </div>
+         <ul class="cv-entry-bullets">
+-          <li>Co-authored a clean-energy white paper on North Carolina's alternative-industry supply chain, benchmarking the state's employment specialization against four Southeastern peers using BLS QCEW data and Python.</li>
++          <li>Co-authored a clean-energy white paper benchmarking North Carolina's clean-energy supply chain against four Southeastern peers using BLS QCEW data and Python.</li>
+           <li>Compiled labor market, tax-incentive, and infrastructure data across the Southeast to support EDPNC recruitment materials and RFP responses.</li>
+         </ul>
+       </div>
+-- 
+2.43.0
+
