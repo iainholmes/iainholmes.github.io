@@ -1119,7 +1119,175 @@
     }
 
     /* advisor-card styles defined above */
-  </style>
+  
+    /* ============================================
+       RESEARCH AGENDA — visual storytelling
+       ============================================ */
+    .agenda-flow {
+      margin: 1.35rem 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+      align-items: stretch;
+    }
+    .agenda-flow-step {
+      position: relative;
+      padding: 0.95rem 1rem 0.9rem;
+      background: linear-gradient(180deg, var(--navy-faint), var(--paper));
+      border: 1px solid var(--navy-light);
+      border-radius: 3px;
+      text-align: center;
+      min-height: 88px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .agenda-flow-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -0.67rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: var(--navy-mid);
+      background: var(--navy-faint);
+      width: 1.25rem;
+      height: 1.25rem;
+      line-height: 1.18rem;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .agenda-flow-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .agenda-flow-sub {
+      margin-top: 0.3rem;
+      font-size: 0.72rem;
+      color: var(--ink-light);
+      line-height: 1.4;
+    }
+
+    .agenda-applications {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.35rem 0 1.35rem;
+    }
+    .agenda-app-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--navy-light);
+      border-left: 3px solid var(--navy);
+      padding: 1.15rem 1.2rem 1.05rem;
+      border-radius: 3px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .agenda-app-card::after {
+      content: '';
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      right: -28px;
+      bottom: -34px;
+      background: var(--navy-light);
+      opacity: 0.28;
+      pointer-events: none;
+    }
+    .agenda-app-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 18px rgba(27,58,92,0.10);
+      border-color: var(--navy-mid);
+    }
+    .agenda-app-kicker {
+      font-size: 0.64rem;
+      font-weight: 500;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--navy-mid);
+      margin-bottom: 0.35rem;
+    }
+    .agenda-app-title {
+      font-family: var(--serif);
+      font-size: 1.04rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.45rem;
+    }
+    .agenda-app-text {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      max-width: 92%;
+    }
+
+    .agenda-methods-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0.2rem 0 1.2rem;
+      padding: 0.85rem 0 0.25rem;
+      border-top: 1px solid var(--rule);
+    }
+    .agenda-method {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .agenda-method-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--navy);
+      box-shadow: 0 0 0 3px var(--navy-faint);
+    }
+
+    .research-item.agenda-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .research-item.agenda-card::before {
+      content: '';
+      position: absolute;
+      inset: auto -8% -26% auto;
+      width: 360px;
+      height: 260px;
+      opacity: 0.055;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 25%, var(--navy) 0 2px, transparent 2.5px),
+        radial-gradient(circle at 41% 46%, var(--navy) 0 2px, transparent 2.5px),
+        radial-gradient(circle at 69% 24%, var(--navy) 0 2px, transparent 2.5px),
+        radial-gradient(circle at 81% 63%, var(--navy) 0 2px, transparent 2.5px),
+        linear-gradient(26deg, transparent 48%, var(--navy) 49% 50%, transparent 51%),
+        linear-gradient(-18deg, transparent 48%, var(--navy) 49% 50%, transparent 51%);
+      background-size: 90px 90px, 100px 100px, 110px 110px, 120px 120px, 120px 120px, 150px 150px;
+    }
+    .research-item.agenda-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 900px) {
+      .agenda-flow { grid-template-columns: 1fr 1fr; }
+      .agenda-flow-step::after { display: none; }
+      .agenda-applications { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .agenda-flow { grid-template-columns: 1fr; }
+    }
+
+</style>
 </head>
 <body>
 
@@ -1367,7 +1535,7 @@
   <div class="research-list">
 
     <!-- Thesis -->
-    <div class="research-item">
+    <div class="research-item agenda-card">
       <p class="research-type">Research Agenda &middot; In Development</p>
       <h3 class="research-title">Environmental Risk, Information, and Household Welfare</h3>
       <p class="research-abstract">
@@ -1380,6 +1548,54 @@
         interested in environmental and natural resource economics, spatial econometrics, recreation
         demand, and the distributional consequences of environmental policy.
       </p>
+
+      <div class="agenda-flow" aria-label="Research pathway from environmental risk to welfare">
+        <div class="agenda-flow-step">
+          <div class="agenda-flow-title">Environmental Risk</div>
+          <div class="agenda-flow-sub">PFAS exposure, contamination, and environmental change</div>
+        </div>
+        <div class="agenda-flow-step">
+          <div class="agenda-flow-title">Information</div>
+          <div class="agenda-flow-sub">Advisories, disclosure, testing, and public salience</div>
+        </div>
+        <div class="agenda-flow-step">
+          <div class="agenda-flow-title">Behavior</div>
+          <div class="agenda-flow-sub">Property markets, recreation, and household choices</div>
+        </div>
+        <div class="agenda-flow-step">
+          <div class="agenda-flow-title">Welfare</div>
+          <div class="agenda-flow-sub">Capitalization, recreation value, and distributional effects</div>
+        </div>
+      </div>
+
+      <div class="agenda-applications">
+        <div class="agenda-app-card">
+          <p class="agenda-app-kicker">Current Application</p>
+          <h4 class="agenda-app-title">PFAS &amp; Property Markets</h4>
+          <p class="agenda-app-text">
+            Studying how proximity to documented PFAS-contaminated biosolids land-application sites
+            may capitalize into nearby property values and transactions.
+          </p>
+        </div>
+
+        <div class="agenda-app-card">
+          <p class="agenda-app-kicker">Current Application</p>
+          <h4 class="agenda-app-title">PFAS Fish Advisories &amp; Recreation</h4>
+          <p class="agenda-app-text">
+            Studying how North Carolina's 2023 Cape Fear River fish-consumption advisory may have
+            shifted angling effort, recreation demand, and welfare across affected communities.
+          </p>
+        </div>
+      </div>
+
+      <div class="agenda-methods-strip" aria-label="Methods used across the research agenda">
+        <span class="agenda-method"><span class="agenda-method-dot"></span>Spatial Data</span>
+        <span class="agenda-method"><span class="agenda-method-dot"></span>Causal Inference</span>
+        <span class="agenda-method"><span class="agenda-method-dot"></span>Hedonic Methods</span>
+        <span class="agenda-method"><span class="agenda-method-dot"></span>Recreation Demand</span>
+        <span class="agenda-method"><span class="agenda-method-dot"></span>Non-Market Valuation</span>
+      </div>
+
       <p class="research-meta">
         NC State University, Department of Economics &middot; M.S. Economics &middot; Expected Defense: Spring 2027
       </p>
@@ -1394,8 +1610,7 @@
         <span class="research-kw">North Carolina</span>
       </div>
     </div>
-
-           <!-- EDPNC Executive Summary -->
+<!-- EDPNC Executive Summary -->
     <div class="research-item">
       <p class="research-type">White Paper Contribution &middot; EDPNC Research Internship</p>
       <h3 class="research-title">Supply Chain Specialization: Quantifying North Carolina's Readiness for Clean Energy Investment &mdash; An Economic Base Analysis</h3>
