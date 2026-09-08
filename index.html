@@ -1187,22 +1187,79 @@
       border-radius: 3px;
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
-    .agenda-app-card::after {
-      content: '';
-      position: absolute;
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      right: -28px;
-      bottom: -34px;
-      background: var(--navy-light);
-      opacity: 0.28;
-      pointer-events: none;
-    }
     .agenda-app-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 5px 18px rgba(27,58,92,0.10);
       border-color: var(--navy-mid);
+    }
+
+    .agenda-app-card::before,
+    .agenda-app-card::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+    }
+
+    /* Property-markets watermark: parcel grid + small home outline */
+    .agenda-app-card.property-card::before {
+      right: -8px;
+      bottom: -6px;
+      width: 185px;
+      height: 125px;
+      opacity: 0.11;
+      background:
+        linear-gradient(var(--navy) 0 0) 0 18% / 100% 1.5px no-repeat,
+        linear-gradient(var(--navy) 0 0) 0 50% / 100% 1.5px no-repeat,
+        linear-gradient(var(--navy) 0 0) 0 82% / 100% 1.5px no-repeat,
+        linear-gradient(90deg, var(--navy) 0 0) 18% 0 / 1.5px 100% no-repeat,
+        linear-gradient(90deg, var(--navy) 0 0) 50% 0 / 1.5px 100% no-repeat,
+        linear-gradient(90deg, var(--navy) 0 0) 82% 0 / 1.5px 100% no-repeat;
+    }
+
+    .agenda-app-card.property-card::after {
+      right: 18px;
+      bottom: 16px;
+      width: 62px;
+      height: 52px;
+      opacity: 0.12;
+      background:
+        linear-gradient(135deg, transparent 48%, var(--navy) 49% 51%, transparent 52%) 0 0 / 50% 42% no-repeat,
+        linear-gradient(225deg, transparent 48%, var(--navy) 49% 51%, transparent 52%) 100% 0 / 50% 42% no-repeat,
+        linear-gradient(var(--navy) 0 0) 50% 75% / 68% 1.5px no-repeat,
+        linear-gradient(90deg, var(--navy) 0 0) 24% 77% / 1.5px 26% no-repeat,
+        linear-gradient(90deg, var(--navy) 0 0) 76% 77% / 1.5px 26% no-repeat,
+        linear-gradient(var(--navy) 0 0) 50% 100% / 68% 1.5px no-repeat,
+        linear-gradient(var(--navy) 0 0) 50% 85% / 12px 1.5px no-repeat,
+        linear-gradient(90deg, var(--navy) 0 0) 50% 88% / 1.5px 12px no-repeat;
+    }
+
+    /* Recreation watermark: river line + fish + access points */
+    .agenda-app-card.recreation-card::before {
+      right: -12px;
+      bottom: 8px;
+      width: 200px;
+      height: 112px;
+      opacity: 0.12;
+      background:
+        radial-gradient(circle at 16% 58%, var(--navy) 0 3px, transparent 3.5px),
+        radial-gradient(circle at 49% 38%, var(--navy) 0 3px, transparent 3.5px),
+        radial-gradient(circle at 82% 62%, var(--navy) 0 3px, transparent 3.5px),
+        linear-gradient(160deg, transparent 46%, var(--navy) 47% 49%, transparent 50%) 0 0 / 70px 90px no-repeat,
+        linear-gradient(20deg, transparent 46%, var(--navy) 47% 49%, transparent 50%) 44px 16px / 78px 84px no-repeat,
+        linear-gradient(155deg, transparent 46%, var(--navy) 47% 49%, transparent 50%) 102px 10px / 78px 94px no-repeat;
+    }
+
+    .agenda-app-card.recreation-card::after {
+      right: 18px;
+      bottom: 18px;
+      width: 70px;
+      height: 38px;
+      opacity: 0.12;
+      background:
+        radial-gradient(ellipse at 40% 50%, var(--navy) 0 48%, transparent 50%) 0 0 / 58px 28px no-repeat,
+        linear-gradient(135deg, transparent 48%, var(--navy) 49% 51%, transparent 52%) 53px 4px / 16px 12px no-repeat,
+        linear-gradient(225deg, transparent 48%, var(--navy) 49% 51%, transparent 52%) 53px 20px / 16px 12px no-repeat,
+        radial-gradient(circle at 19px 14px, var(--navy) 0 1.5px, transparent 2px) 0 0 / 100% 100% no-repeat;
     }
     .agenda-app-kicker {
       font-size: 0.64rem;
@@ -1257,51 +1314,7 @@
       overflow: hidden;
     }
     .research-item.agenda-card::before {
-      content: '';
-      position: absolute;
-      right: 2%;
-      bottom: 2%;
-      width: 820px;
-      height: 420px;
-      opacity: 0.14;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 10% 20%, var(--navy) 0 2.5px, transparent 3px),
-        radial-gradient(circle at 22% 34%, var(--navy) 0 2.5px, transparent 3px),
-        radial-gradient(circle at 36% 48%, var(--navy) 0 2.5px, transparent 3px),
-        radial-gradient(circle at 52% 30%, var(--navy) 0 2.5px, transparent 3px),
-        radial-gradient(circle at 68% 56%, var(--navy) 0 2.5px, transparent 3px),
-        radial-gradient(circle at 82% 38%, var(--navy) 0 2.5px, transparent 3px),
-        radial-gradient(circle at 92% 62%, var(--navy) 0 2.5px, transparent 3px),
-        linear-gradient(18deg, transparent 49%, var(--navy) 49.5% 50.5%, transparent 51%),
-        linear-gradient(-16deg, transparent 49%, var(--navy) 49.5% 50.5%, transparent 51%),
-        linear-gradient(33deg, transparent 49%, var(--navy) 49.5% 50.5%, transparent 51%),
-        linear-gradient(-33deg, transparent 49%, var(--navy) 49.5% 50.5%, transparent 51%);
-      background-size:
-        170px 170px,
-        190px 190px,
-        210px 210px,
-        230px 230px,
-        250px 250px,
-        270px 270px,
-        290px 290px,
-        320px 320px,
-        380px 380px,
-        430px 430px,
-        520px 520px;
-      background-repeat: no-repeat;
-      background-position:
-        0% 8%,
-        10% 18%,
-        20% 34%,
-        34% 12%,
-        50% 42%,
-        70% 22%,
-        86% 48%,
-        8% 18%,
-        22% 8%,
-        42% 14%,
-        58% 6%;
+      content: none;
     }
     .research-item.agenda-card > * {
       position: relative;
@@ -1599,7 +1612,7 @@
       </div>
 
       <div class="agenda-applications">
-        <div class="agenda-app-card">
+        <div class="agenda-app-card property-card">
           <p class="agenda-app-kicker">Current Application</p>
           <h4 class="agenda-app-title">PFAS &amp; Property Markets</h4>
           <p class="agenda-app-text">
@@ -1608,7 +1621,7 @@
           </p>
         </div>
 
-        <div class="agenda-app-card">
+        <div class="agenda-app-card recreation-card">
           <p class="agenda-app-kicker">Current Application</p>
           <h4 class="agenda-app-title">PFAS Fish Advisories &amp; Recreation</h4>
           <p class="agenda-app-text">
