@@ -56,7 +56,75 @@
       }
     ]
   }
-  </script>
+  
+  // ── Current application modal ────────────────────────────────────
+  const agendaApplications = {
+    property: {
+      title: "PFAS & Property Markets",
+      sections: [
+        ["Research Question", "How does proximity to documented PFAS-contaminated biosolids land-application sites affect nearby property values and transactions?"],
+        ["Why It Matters", "Property markets can reveal how households capitalize environmental risk and public information into economic decisions, providing a revealed-preference measure of welfare effects."],
+        ["Empirical Design", "Spatial hedonic analysis using geolocated PFAS land-application fields, alternative treatment radii, and parcel-level transaction data once available."],
+        ["Data Available", "NC DEQ field-level PFAS sampling results, geolocated land-application sites, canonical field records, and treatment-buffer layers."],
+        ["Current Status", "Spatial treatment definitions are built and validated. The next major step is linking the exposure geography to parcel-level sales data for estimation."]
+      ]
+    },
+    recreation: {
+      title: "PFAS Fish Advisories & Recreation",
+      sections: [
+        ["Research Question", "Did North Carolina's July 13, 2023 Cape Fear River PFAS fish-consumption advisory change angling effort, recreation demand, and welfare?"],
+        ["Why It Matters", "Fish advisories can alter recreation, subsistence behavior, and welfare even when environmental exposure itself has not changed, making public information part of the economic treatment."],
+        ["Empirical Design", "Event-study / difference-in-differences framework comparing advisory-area angling outcomes with candidate control segments, with recreation-demand modeling as a complementary approach."],
+        ["Data Available", "Advisory and control river geographies, access-point networks, ACS demographic overlays, and a documented 2022 NCWRC Lumber River creel-survey access-site network."],
+        ["Current Status", "Upper Cape Fear and Lumber River controls have been built and compared demographically. Final control selection will depend heavily on pre-advisory outcome trends once angler-effort data are obtained."]
+      ]
+    }
+  };
+
+  function openAgendaModal(key) {
+    const app = agendaApplications[key];
+    if (!app) return;
+
+    document.getElementById('agenda-modal-title').textContent = app.title;
+    const content = document.getElementById('agenda-modal-content');
+    content.innerHTML = '';
+
+    app.sections.forEach((section, i) => {
+      const box = document.createElement('div');
+      box.className = 'agenda-modal-section' + (i === app.sections.length - 1 ? ' wide' : '');
+
+      const heading = document.createElement('h4');
+      heading.textContent = section[0];
+
+      const body = document.createElement('p');
+      body.textContent = section[1];
+
+      box.appendChild(heading);
+      box.appendChild(body);
+      content.appendChild(box);
+    });
+
+    const modal = document.getElementById('agenda-modal');
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeAgendaModal() {
+    const modal = document.getElementById('agenda-modal');
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('agenda-modal');
+    if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
+      closeAgendaModal();
+    }
+  });
+
+</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -1337,6 +1405,105 @@
       .agenda-flow { grid-template-columns: 1fr; }
     }
 
+
+    /* ============================================
+       CURRENT APPLICATION DETAIL MODAL
+       ============================================ */
+    .agenda-app-card {
+      cursor: pointer;
+    }
+    .agenda-app-card:focus-visible {
+      outline: 2px solid var(--navy-mid);
+      outline-offset: 3px;
+    }
+    .agenda-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 5vh 5vw;
+      background: rgba(13,31,51,0.72);
+      backdrop-filter: blur(5px);
+    }
+    .agenda-modal.open { display: flex; }
+    .agenda-modal-panel {
+      width: min(760px, 100%);
+      max-height: 86vh;
+      overflow-y: auto;
+      background: var(--paper);
+      border: 1px solid var(--navy-light);
+      border-top: 4px solid var(--navy);
+      border-radius: 4px;
+      box-shadow: 0 24px 70px rgba(13,31,51,0.28);
+      padding: 2rem 2.2rem 2.1rem;
+      position: relative;
+    }
+    .agenda-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      color: var(--ink-mid);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .agenda-modal-close:hover {
+      border-color: var(--navy-mid);
+      color: var(--navy);
+    }
+    .agenda-modal-kicker {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy-mid);
+      margin-bottom: 0.45rem;
+    }
+    .agenda-modal-title {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      line-height: 1.2;
+      color: var(--ink);
+      margin: 0 2.5rem 1.4rem 0;
+    }
+    .agenda-modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .agenda-modal-section {
+      padding: 1rem 1.05rem;
+      background: var(--navy-faint);
+      border: 1px solid var(--navy-light);
+      border-radius: 3px;
+    }
+    .agenda-modal-section.wide {
+      grid-column: 1 / -1;
+    }
+    .agenda-modal-section h4 {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+    .agenda-modal-section p {
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+    @media (max-width: 700px) {
+      .agenda-modal-grid { grid-template-columns: 1fr; }
+      .agenda-modal-section.wide { grid-column: auto; }
+    }
+
 </style>
 </head>
 <body>
@@ -1619,7 +1786,7 @@
       </div>
 
       <div class="agenda-applications">
-        <div class="agenda-app-card property-card">
+        <div class="agenda-app-card property-card" role="button" tabindex="0" onclick="openAgendaModal('property')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openAgendaModal('property');}">
           <p class="agenda-app-kicker">Current Application</p>
           <h4 class="agenda-app-title">PFAS &amp; Property Markets</h4>
           <p class="agenda-app-text">
@@ -1628,7 +1795,7 @@
           </p>
         </div>
 
-        <div class="agenda-app-card recreation-card">
+        <div class="agenda-app-card recreation-card" role="button" tabindex="0" onclick="openAgendaModal('recreation')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openAgendaModal('recreation');}">
           <p class="agenda-app-kicker">Current Application</p>
           <h4 class="agenda-app-title">PFAS Fish Advisories &amp; Recreation</h4>
           <p class="agenda-app-text">
@@ -2521,6 +2688,17 @@
   </div>
 </section>
 
+
+<!-- Current application detail modal -->
+<div class="agenda-modal" id="agenda-modal" onclick="closeAgendaModal()" aria-hidden="true">
+  <div class="agenda-modal-panel" onclick="event.stopPropagation();" role="dialog" aria-modal="true" aria-labelledby="agenda-modal-title">
+    <button class="agenda-modal-close" onclick="closeAgendaModal()" aria-label="Close">&times;</button>
+    <p class="agenda-modal-kicker" id="agenda-modal-kicker">Current Application</p>
+    <h3 class="agenda-modal-title" id="agenda-modal-title"></h3>
+    <div class="agenda-modal-grid" id="agenda-modal-content"></div>
+  </div>
+</div>
+
 <!-- Lightbox modal — side-panel layout. Reads data-src, data-caption (headline),
      and data-detail (long-form description) from each .advisor-shot anchor. -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-hidden="true">
@@ -2636,6 +2814,74 @@
     if (e.key === 'Escape') closeLightbox();
     else if (e.key === 'ArrowLeft') navLightbox(-1);
     else if (e.key === 'ArrowRight') navLightbox(1);
+  });
+
+
+  // ── Current application modal ────────────────────────────────────
+  const agendaApplications = {
+    property: {
+      title: "PFAS & Property Markets",
+      sections: [
+        ["Research Question", "How does proximity to documented PFAS-contaminated biosolids land-application sites affect nearby property values and transactions?"],
+        ["Why It Matters", "Property markets can reveal how households capitalize environmental risk and public information into economic decisions, providing a revealed-preference measure of welfare effects."],
+        ["Empirical Design", "Spatial hedonic analysis using geolocated PFAS land-application fields, alternative treatment radii, and parcel-level transaction data once available."],
+        ["Data Available", "NC DEQ field-level PFAS sampling results, geolocated land-application sites, canonical field records, and treatment-buffer layers."],
+        ["Current Status", "Spatial treatment definitions are built and validated. The next major step is linking the exposure geography to parcel-level sales data for estimation."]
+      ]
+    },
+    recreation: {
+      title: "PFAS Fish Advisories & Recreation",
+      sections: [
+        ["Research Question", "Did North Carolina's July 13, 2023 Cape Fear River PFAS fish-consumption advisory change angling effort, recreation demand, and welfare?"],
+        ["Why It Matters", "Fish advisories can alter recreation, subsistence behavior, and welfare even when environmental exposure itself has not changed, making public information part of the economic treatment."],
+        ["Empirical Design", "Event-study / difference-in-differences framework comparing advisory-area angling outcomes with candidate control segments, with recreation-demand modeling as a complementary approach."],
+        ["Data Available", "Advisory and control river geographies, access-point networks, ACS demographic overlays, and a documented 2022 NCWRC Lumber River creel-survey access-site network."],
+        ["Current Status", "Upper Cape Fear and Lumber River controls have been built and compared demographically. Final control selection will depend heavily on pre-advisory outcome trends once angler-effort data are obtained."]
+      ]
+    }
+  };
+
+  function openAgendaModal(key) {
+    const app = agendaApplications[key];
+    if (!app) return;
+
+    document.getElementById('agenda-modal-title').textContent = app.title;
+    const content = document.getElementById('agenda-modal-content');
+    content.innerHTML = '';
+
+    app.sections.forEach((section, i) => {
+      const box = document.createElement('div');
+      box.className = 'agenda-modal-section' + (i === app.sections.length - 1 ? ' wide' : '');
+
+      const heading = document.createElement('h4');
+      heading.textContent = section[0];
+
+      const body = document.createElement('p');
+      body.textContent = section[1];
+
+      box.appendChild(heading);
+      box.appendChild(body);
+      content.appendChild(box);
+    });
+
+    const modal = document.getElementById('agenda-modal');
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeAgendaModal() {
+    const modal = document.getElementById('agenda-modal');
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('agenda-modal');
+    if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
+      closeAgendaModal();
+    }
   });
 
 </script>
