@@ -92,6 +92,7 @@
     app.sections.forEach((section, i) => {
       const box = document.createElement('div');
       box.className = 'agenda-modal-section' + (i === app.sections.length - 1 ? ' wide' : '');
+      box.setAttribute('data-num', String(i + 1).padStart(2, '0'));
 
       const heading = document.createElement('h4');
       heading.textContent = section[0];
@@ -103,6 +104,11 @@
       box.appendChild(body);
       content.appendChild(box);
     });
+
+    const footer = document.createElement('div');
+    footer.className = 'agenda-modal-footer-note';
+    footer.innerHTML = '<span>NC State University · Department of Economics</span><span>Research agenda in development</span>';
+    content.appendChild(footer);
 
     const modal = document.getElementById('agenda-modal');
     modal.classList.add('open');
@@ -1409,13 +1415,12 @@
     /* ============================================
        CURRENT APPLICATION DETAIL MODAL
        ============================================ */
-    .agenda-app-card {
-      cursor: pointer;
-    }
+    .agenda-app-card { cursor: pointer; }
     .agenda-app-card:focus-visible {
       outline: 2px solid var(--navy-mid);
       outline-offset: 3px;
     }
+
     .agenda-modal {
       position: fixed;
       inset: 0;
@@ -1423,85 +1428,204 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 5vh 5vw;
-      background: rgba(13,31,51,0.72);
-      backdrop-filter: blur(5px);
+      padding: 4vh 4vw;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(220,232,245,.16), transparent 30%),
+        radial-gradient(circle at 80% 75%, rgba(46,84,132,.14), transparent 32%),
+        rgba(13,31,51,0.80);
+      backdrop-filter: blur(8px);
     }
     .agenda-modal.open { display: flex; }
+
     .agenda-modal-panel {
-      width: min(760px, 100%);
-      max-height: 86vh;
+      width: min(980px, 100%);
+      max-height: 90vh;
       overflow-y: auto;
       background: var(--paper);
-      border: 1px solid var(--navy-light);
-      border-top: 4px solid var(--navy);
-      border-radius: 4px;
-      box-shadow: 0 24px 70px rgba(13,31,51,0.28);
-      padding: 2rem 2.2rem 2.1rem;
+      border: 1px solid rgba(255,255,255,.5);
+      border-top: 5px solid var(--navy);
+      border-radius: 8px;
+      box-shadow: 0 30px 90px rgba(5,20,36,.35);
       position: relative;
+      overflow-x: hidden;
     }
-    .agenda-modal-close {
+
+    .agenda-modal-panel::before {
+      content: '';
       position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 34px;
-      height: 34px;
+      right: -120px;
+      top: -120px;
+      width: 340px;
+      height: 340px;
       border-radius: 50%;
-      border: 1px solid var(--rule);
-      background: var(--paper);
-      color: var(--ink-mid);
-      cursor: pointer;
-      font-size: 1rem;
+      background: var(--navy-faint);
+      opacity: .8;
+      pointer-events: none;
     }
-    .agenda-modal-close:hover {
-      border-color: var(--navy-mid);
-      color: var(--navy);
+
+    .agenda-modal-header {
+      position: relative;
+      padding: 2.3rem 2.6rem 1.7rem;
+      border-bottom: 1px solid var(--rule);
+      background: linear-gradient(180deg, #fff, var(--paper));
+      z-index: 1;
     }
+
     .agenda-modal-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
       font-size: 0.68rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--navy-mid);
-      margin-bottom: 0.45rem;
+      color: var(--navy);
+      margin-bottom: .7rem;
     }
+    .agenda-modal-kicker::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--navy);
+    }
+
     .agenda-modal-title {
       font-family: var(--serif);
-      font-size: 1.75rem;
-      line-height: 1.2;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
       color: var(--ink);
-      margin: 0 2.5rem 1.4rem 0;
+      margin: 0 4.5rem 0 0;
+      font-weight: 500;
     }
+
+    .agenda-modal-close {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.5rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      background: rgba(253,252,249,.9);
+      color: var(--ink-mid);
+      cursor: pointer;
+      font-size: 1.15rem;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      z-index: 4;
+    }
+    .agenda-modal-close:hover {
+      transform: rotate(90deg);
+      border-color: var(--navy-mid);
+      background: var(--navy-faint);
+      color: var(--navy);
+    }
+
     .agenda-modal-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
+      padding: 1.5rem 2rem 2rem;
+      position: relative;
+      z-index: 1;
     }
+
     .agenda-modal-section {
-      padding: 1rem 1.05rem;
-      background: var(--navy-faint);
+      position: relative;
+      padding: 1.3rem 1.35rem 1.25rem 1.45rem;
+      background: linear-gradient(145deg, var(--navy-faint), #f8fbff 70%);
       border: 1px solid var(--navy-light);
-      border-radius: 3px;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      min-height: 150px;
     }
+    .agenda-modal-section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(27,58,92,.08);
+      border-color: var(--navy-mid);
+    }
+    .agenda-modal-section::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--navy);
+      opacity: .9;
+    }
+    .agenda-modal-section::after {
+      content: attr(data-num);
+      position: absolute;
+      right: .9rem;
+      top: .45rem;
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--navy);
+      opacity: .06;
+      pointer-events: none;
+    }
+
     .agenda-modal-section.wide {
       grid-column: 1 / -1;
+      min-height: auto;
+      background: linear-gradient(90deg, #edf4fb, #f7fbff);
     }
+
     .agenda-modal-section h4 {
-      font-size: 0.68rem;
+      display: inline-block;
+      font-size: 0.69rem;
       font-weight: 500;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
       color: var(--navy);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.55rem;
+      padding-bottom: .28rem;
+      border-bottom: 2px solid var(--navy-light);
     }
+
     .agenda-modal-section p {
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       color: var(--ink-mid);
-      line-height: 1.65;
+      line-height: 1.68;
+      max-width: 96%;
     }
+
+    .agenda-modal-footer-note {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: .9rem 1.05rem;
+      border-top: 1px solid var(--rule);
+      color: var(--ink-light);
+      font-size: .72rem;
+      letter-spacing: .03em;
+    }
+
     @media (max-width: 700px) {
-      .agenda-modal-grid { grid-template-columns: 1fr; }
+      .agenda-modal {
+        padding: 2vh 3vw;
+      }
+      .agenda-modal-header {
+        padding: 1.8rem 1.5rem 1.3rem;
+      }
+      .agenda-modal-title {
+        font-size: 2rem;
+      }
+      .agenda-modal-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem 1rem 1.4rem;
+      }
       .agenda-modal-section.wide { grid-column: auto; }
+      .agenda-modal-section { min-height: auto; }
+      .agenda-modal-footer-note {
+        grid-column: auto;
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
 </style>
@@ -2693,8 +2817,12 @@
 <div class="agenda-modal" id="agenda-modal" onclick="closeAgendaModal()" aria-hidden="true">
   <div class="agenda-modal-panel" onclick="event.stopPropagation();" role="dialog" aria-modal="true" aria-labelledby="agenda-modal-title">
     <button class="agenda-modal-close" onclick="closeAgendaModal()" aria-label="Close">&times;</button>
-    <p class="agenda-modal-kicker" id="agenda-modal-kicker">Current Application</p>
-    <h3 class="agenda-modal-title" id="agenda-modal-title"></h3>
+
+    <div class="agenda-modal-header">
+      <p class="agenda-modal-kicker" id="agenda-modal-kicker">Current Application</p>
+      <h3 class="agenda-modal-title" id="agenda-modal-title"></h3>
+    </div>
+
     <div class="agenda-modal-grid" id="agenda-modal-content"></div>
   </div>
 </div>
@@ -2852,6 +2980,7 @@
     app.sections.forEach((section, i) => {
       const box = document.createElement('div');
       box.className = 'agenda-modal-section' + (i === app.sections.length - 1 ? ' wide' : '');
+      box.setAttribute('data-num', String(i + 1).padStart(2, '0'));
 
       const heading = document.createElement('h4');
       heading.textContent = section[0];
@@ -2863,6 +2992,11 @@
       box.appendChild(body);
       content.appendChild(box);
     });
+
+    const footer = document.createElement('div');
+    footer.className = 'agenda-modal-footer-note';
+    footer.innerHTML = '<span>NC State University · Department of Economics</span><span>Research agenda in development</span>';
+    content.appendChild(footer);
 
     const modal = document.getElementById('agenda-modal');
     modal.classList.add('open');
