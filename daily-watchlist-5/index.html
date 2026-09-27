@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f3e7d2">
+<title>Daily Watchlist 5</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2258%22%20height%3D%2258%22%20rx%3D%2213%22%20fill%3D%22%23F3E7D2%22%20stroke%3D%22%237C5A3E%22%20stroke-width%3D%224%22%2F%3E%3Cpath%20d%3D%22M18%2039a14%2014%200%200%201%2028%200%22%20fill%3D%22%23B35F46%22%20stroke%3D%22%2329231D%22%20stroke-width%3D%223.2%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M32%2013v8M17.5%2019.5l5.7%205.7M46.5%2019.5l-5.7%205.7M11%2033h8M45%2033h8%22%20fill%3D%22none%22%20stroke%3D%22%23A47B55%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M13%2042h38M17%2049h30%22%20fill%3D%22none%22%20stroke%3D%22%2329231D%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="shortcut icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2258%22%20height%3D%2258%22%20rx%3D%2213%22%20fill%3D%22%23F3E7D2%22%20stroke%3D%22%237C5A3E%22%20stroke-width%3D%224%22%2F%3E%3Cpath%20d%3D%22M18%2039a14%2014%200%200%201%2028%200%22%20fill%3D%22%23B35F46%22%20stroke%3D%22%2329231D%22%20stroke-width%3D%223.2%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M32%2013v8M17.5%2019.5l5.7%205.7M46.5%2019.5l-5.7%205.7M11%2033h8M45%2033h8%22%20fill%3D%22none%22%20stroke%3D%22%23A47B55%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M13%2042h38M17%2049h30%22%20fill%3D%22none%22%20stroke%3D%22%2329231D%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --paper:#f3e7d2;
+  --paper-2:#ead8ba;
+  --card:#f8f0e2;
+  --ink:#29231d;
+  --muted:#716454;
+  --line:#cdb897;
+  --camel:#a47b55;
+  --brown:#7c5a3e;
+  --rust:#b35f46;
+  --sage:#73806d;
+  --slate:#53666a;
+  --gold:#c59a55;
+  --display:"Bodoni Moda",Georgia,serif;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --shadow:0 24px 70px rgba(72,52,34,.13);
+  --rail:272px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;background:
+ radial-gradient(circle at 20% -10%,rgba(255,255,255,.72),transparent 35%),
+ linear-gradient(180deg,var(--paper) 0%,#f5ecdc 52%,#eee0c9 100%);
+ color:var(--ink);font:15px/1.72 var(--sans);min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.20;z-index:100;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");mix-blend-mode:multiply}
+a{color:inherit}.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--paper);padding:10px 14px;z-index:200}.skip:focus{left:8px}
+.topbar{position:sticky;top:0;z-index:80;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid color-mix(in srgb,var(--line) 78%, transparent);background:color-mix(in srgb,var(--paper) 88%, transparent);backdrop-filter:blur(16px)}
+.brand{display:flex;align-items:baseline;gap:12px;text-decoration:none}.brand strong{font:600 24px/1 var(--display);letter-spacing:-.02em}.brand span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.top-actions{display:flex;gap:8px;align-items:center}.btn{border:1px solid var(--line);background:rgba(255,255,255,.18);color:var(--ink);font:700 10px/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;border-radius:999px;padding:10px 13px;cursor:pointer}.btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.shell{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);min-height:calc(100vh - 64px)}
+.rail{border-right:1px solid var(--line);padding:34px 24px 50px;position:sticky;top:64px;height:calc(100vh - 64px);overflow:auto;background:rgba(242,230,210,.42)}
+.rail h2{font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 22px}.year{font:600 38px/1 var(--display);margin:0 0 14px;color:var(--brown)}
+.edition-btn{display:block;width:100%;text-align:left;background:transparent;border:0;border-top:1px solid var(--line);padding:15px 0 17px;cursor:pointer;color:var(--ink)}.edition-btn:last-of-type{border-bottom:1px solid var(--line)}.edition-btn .date{font:600 13px/1.3 var(--sans);display:block}.edition-btn .dek{font-size:11px;line-height:1.45;color:var(--muted);margin-top:5px;display:block}.edition-btn[aria-current="true"] .date{color:var(--rust)}
+.rail-note{margin:28px 0 0;font-size:11.5px;color:var(--muted);line-height:1.55}.rail-note b{color:var(--ink)}
+.main{min-width:0}.edition{max-width:1160px;margin:0 auto;padding:72px clamp(22px,5vw,72px) 110px}
+.issue-kicker{display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;font-weight:700;color:var(--brown)}.issue-kicker:before{content:"";width:44px;height:1px;background:var(--rust)}
+.issue-head{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:54px;align-items:end;border-bottom:1px solid var(--line);padding:22px 0 34px;margin-bottom:42px}.issue-head h1{font:500 clamp(58px,8vw,112px)/.86 var(--display);letter-spacing:-.055em;margin:0;max-width:760px}.issue-head h1 i{font-weight:500;color:var(--rust)}
+.issue-side{padding-bottom:4px}.issue-side p{margin:0 0 18px;color:var(--muted);font-size:13px}.issue-meta{display:flex;gap:9px;flex-wrap:wrap}.pill{border:1px solid var(--line);padding:7px 10px;border-radius:999px;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--muted);background:rgba(255,255,255,.18)}
+.lede{font:500 clamp(22px,3vw,34px)/1.3 var(--display);max-width:860px;margin:0 0 58px;color:#3a3027}.lede strong{color:var(--rust);font-weight:600}
+.story{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(340px,.93fr);gap:clamp(28px,5vw,64px);align-items:start;padding:46px 0 64px;border-top:1px solid var(--line)}.story:nth-of-type(even){grid-template-columns:minmax(340px,.93fr) minmax(0,1.07fr)}.story:nth-of-type(even) .art{order:2}.story:nth-of-type(even) .copy{order:1}
+.art{position:sticky;top:94px}.art-frame{position:relative;overflow:hidden;border:1px solid #8f7257;background:var(--paper-2);box-shadow:var(--shadow);aspect-ratio:5/4}.art-frame:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2),inset 0 0 80px rgba(71,49,31,.09);pointer-events:none}.art svg{width:100%;height:100%;display:block}.art figcaption{display:flex;justify-content:space-between;gap:16px;padding:10px 1px 0;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.story-number{font:500 58px/.8 var(--display);color:var(--camel);margin-bottom:18px}.story-tag{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--rust);margin-bottom:10px}.story h2{font:500 clamp(34px,4.4vw,54px)/1.02 var(--display);letter-spacing:-.025em;margin:0 0 20px}.summary{font-size:16px;color:#41372d}.summary p{margin:0 0 15px}.why{margin:26px 0;padding:20px 22px;background:rgba(255,255,255,.24);border-left:3px solid var(--camel)}.why b{font-size:10px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:7px;color:var(--brown)}.why p{margin:0;font-size:14px}
+.implications{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}.imp{border:1px solid var(--line);padding:14px;background:rgba(255,255,255,.14)}.imp small{display:block;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px}.imp span{font-size:12.5px;line-height:1.45;display:block}
+.sources{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:9px;flex-wrap:wrap}.source{font-size:10px;text-decoration:none;border-bottom:1px solid var(--brown);color:var(--brown);font-weight:700;letter-spacing:.04em}.source:hover{color:var(--rust);border-color:var(--rust)}
+.signal{margin-top:28px;padding:56px clamp(24px,5vw,64px);background:var(--brown);color:#fbf4e7;position:relative;overflow:hidden;box-shadow:var(--shadow)}.signal:before{content:"05";position:absolute;right:-12px;top:-48px;font:600 260px/1 var(--display);color:rgba(255,255,255,.055)}.signal .k{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#e9cbaa;margin-bottom:18px}.signal h2{font:500 clamp(38px,5vw,66px)/1.03 var(--display);max-width:850px;margin:0 0 24px}.signal p{max-width:780px;margin:0 0 16px;color:#f0e2d0}.signal strong{color:white}
+.footer{display:flex;justify-content:space-between;gap:30px;border-top:1px solid var(--line);margin-top:58px;padding-top:24px;color:var(--muted);font-size:11px}.footer strong{color:var(--ink)}
+.empty{padding:80px 24px;text-align:center;color:var(--muted)}
+.drawer-backdrop{display:none}.mobile-only{display:none}
+@media(max-width:900px){
+  :root{--rail:0px}.shell{display:block}.rail{position:fixed;z-index:110;left:0;top:0;height:100vh;width:min(84vw,330px);transform:translateX(-105%);transition:.25s ease;background:#f0e0c8;box-shadow:20px 0 60px rgba(40,30,20,.24);padding-top:80px}.rail.open{transform:translateX(0)}.drawer-backdrop{position:fixed;inset:0;background:rgba(32,25,18,.36);z-index:105}.drawer-backdrop.show{display:block}.mobile-only{display:inline-flex}.edition{padding-top:48px}.issue-head{grid-template-columns:1fr;gap:24px}.issue-side{max-width:560px}.story,.story:nth-of-type(even){grid-template-columns:1fr;gap:28px}.story:nth-of-type(even) .art,.story:nth-of-type(even) .copy{order:initial}.art{position:relative;top:auto}.art-frame{aspect-ratio:16/11}.footer{flex-direction:column}}
+@media(max-width:560px){.topbar{padding:0 14px}.brand span{display:none}.edition{padding-inline:18px;padding-bottom:72px}.issue-head{padding-bottom:26px}.issue-head h1{font-size:clamp(52px,19vw,78px)}.lede{font-size:24px;margin-bottom:38px}.story{padding:36px 0 46px}.story h2{font-size:38px}.implications{grid-template-columns:1fr}.signal{margin-inline:-18px;padding:42px 22px}.art figcaption{font-size:8.5px}.top-actions .theme-label{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rail{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#briefing">Skip to briefing</a>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="Daily Briefing home"><strong>Field Brief</strong><span>Five signals worth your attention</span></a>
+  <div class="top-actions"><button class="btn mobile-only" id="archiveOpen" type="button">Archive</button><button class="btn" id="themeToggle" type="button"><span class="theme-label">View </span>Night</button></div>
+</header>
+<div class="drawer-backdrop" id="backdrop"></div>
+<div class="shell">
+  <aside class="rail" id="archiveRail" aria-label="Briefing archive">
+    <h2>Archive</h2>
+    <div id="archiveList"></div>
+    <p class="rail-note"><b>How this works.</b> The newest edition opens automatically. Older briefs remain here by date; each edition also has a hash-link you can bookmark.</p>
+  </aside>
+  <main class="main" id="briefing"><div id="editionMount"></div></main>
+</div>
+
+<script type="application/json" id="briefing-data">
+{
+  "editions": [
+    {
+      "date": "2026-09-26",
+      "displayDate": "Saturday, September 26, 2026",
+      "shortDate": "Sep 26",
+      "title": "Daily Briefing",
+      "deck": "The dominant thread is the collision between AI expansion and public policy. Three of today's five developments concern governments deciding who bears the electricity, water, security, and fiscal costs associated with rapidly changing technologies and federal policy.",
+      "readTime": "11 min read",
+      "stories": [
+        {
+          "number": "01",
+          "category": "U.S. policy · fiscal authority",
+          "title": "White House moves to cancel nearly $1 billion already appropriated by Congress",
+          "art": "capitol",
+          "summary": [
+            "The White House announced on September 25 that President Donald Trump is using a “pocket rescission” to cancel nearly $1 billion in congressionally appropriated spending, including $567 million for HHS services involving refugees, asylees, unaccompanied children, and other non-citizens.",
+            "The administration describes the affected spending as wasteful and argues that the Impoundment Control Act permits the maneuver. Reuters reported the targeted amount as more than $800 million; the White House characterized the package as nearly $1 billion. The dispute turns on presidential authority to withhold money Congress has already appropriated."
+          ],
+          "why": "The dollar amount is secondary to the separation-of-powers question. A pocket rescission is timed so close to the fiscal-year deadline that funds can expire before Congress acts, testing the practical boundary between Congress's appropriations power and executive implementation.",
+          "implications": [
+            [
+              "Institutional",
+              "Could reshape the balance of fiscal authority between Congress and the executive branch if sustained."
+            ],
+            [
+              "Budget policy",
+              "Raises uncertainty over how durable enacted appropriations are when an administration seeks late-year rescissions."
+            ]
+          ],
+          "sources": [
+            [
+              "White House",
+              "https://www.whitehouse.gov/briefings-statements/2026/09/president-trump-takes-historic-action-to-eliminate-wasteful-and-harmful-spending/"
+            ],
+            [
+              "Reuters",
+              "https://www.reuters.com/legal/government/trump-seeks-withhold-800-million-congress-approved-funds-2026-09-26/"
+            ]
+          ]
+        },
+        {
+          "number": "02",
+          "category": "AI governance · international security",
+          "title": "U.S. and Russia press for a narrower framework on autonomous weapons",
+          "art": "weapons",
+          "summary": [
+            "At U.N.-hosted talks in Geneva that concluded September 4, the United States and Russia pushed against several stronger safeguards in a draft framework for lethal autonomous weapons systems. The United States has favored non-binding guidelines grounded in existing international humanitarian law, while other states have advocated a legally binding instrument with stricter limits and clearer human-control requirements.",
+            "The negotiations sit within the Convention on Certain Conventional Weapons. The 2026 expert group was tasked with formulating, by consensus, elements of an instrument or other measures addressing emerging technologies in lethal autonomous weapons systems."
+          ],
+          "why": "This is AI governance at its highest-stakes edge. The argument is not simply about model safety; it is about how much human judgment and accountability must remain in systems capable of selecting or engaging targets.",
+          "implications": [
+            [
+              "Security",
+              "Any consensus language could influence military procurement, doctrine, legal review, and future treaty negotiations."
+            ],
+            [
+              "Governance",
+              "The divide between binding rules and voluntary standards mirrors a broader international split over how prescriptive AI regulation should be."
+            ]
+          ],
+          "sources": [
+            [
+              "UNODA",
+              "https://meetings.unoda.org/meeting/79329"
+            ],
+            [
+              "Reuters",
+              "https://www.reuters.com/world/opposition-by-us-russia-raises-doubts-over-autonomous-weapons-talks-outcome-2026-09-04/"
+            ]
+          ]
+        },
+        {
+          "number": "03",
+          "category": "Climate · energy regulation",
+          "title": "EPA dismantles most federal greenhouse-gas requirements for power plants",
+          "art": "power",
+          "summary": [
+            "On September 14, EPA finalized a partial repeal of the 2024 carbon-pollution standards for fossil-fuel power plants and proposed eliminating the remaining federal greenhouse-gas standards for the sector.",
+            "EPA estimates the finalized repeal will reduce compliance costs by roughly $310 billion. That is the agency's compliance-cost estimate rather than a complete social-welfare calculation; climate damages, conventional pollution, reliability, electricity prices, investment, and technology substitution all matter for a fuller economic assessment."
+          ],
+          "why": "Federal power-sector climate policy is shifting sharply toward deregulation. That increases the relative importance of state rules, market incentives, technology costs, corporate procurement, and litigation in determining future emissions and generation investment.",
+          "implications": [
+            [
+              "Environmental economics",
+              "The policy change shifts which institutions and price signals are likely to drive decarbonization."
+            ],
+            [
+              "Power markets",
+              "Utilities and generators face a materially different federal compliance path, with effects likely to vary by state and generation mix."
+            ]
+          ],
+          "sources": [
+            [
+              "U.S. EPA",
+              "https://www.epa.gov/newsreleases/epa-finalizes-repeal-2024-power-plant-regulations-delivering-300-billion-savings"
+            ],
+            [
+              "EPA rule history",
+              "https://www.epa.gov/stationary-sources-air-pollution/greenhouse-gas-standards-and-guidelines-fossil-fuel-fired-power"
+            ]
+          ]
+        },
+        {
+          "number": "04",
+          "category": "AI infrastructure · Texas",
+          "title": "Texas freezes data-center permits as AI demand collides with grid and water constraints",
+          "art": "texas",
+          "summary": [
+            "Governor Greg Abbott directed Texas regulators to halt state permits sought by data centers until ERCOT and state water authorities complete audits of their effects on the electric grid and water resources.",
+            "Reuters reported more than 470 GW of proposed data-center projects seeking grid connections in Texas — far above existing peak demand. That queue should not be read as a demand forecast because many speculative projects will never be built, but it captures the extraordinary scale of proposed load growth."
+          ],
+          "why": "AI compute is turning electricity, transmission capacity, and water into binding inputs to digital production. Texas is explicitly moving toward a cost-incidence principle: large loads should bear the infrastructure costs they create rather than shifting them to other ratepayers.",
+          "implications": [
+            [
+              "Natural resources",
+              "Water reporting and scarcity are becoming part of data-center permitting, not a secondary environmental issue."
+            ],
+            [
+              "Rate design",
+              "The fight over who pays for generation and transmission upgrades is becoming central to AI-infrastructure policy."
+            ]
+          ],
+          "sources": [
+            [
+              "Texas Governor",
+              "https://gov.texas.gov/news/post/governor-abbott-directs-tceq-to-halt-data-center-permits"
+            ],
+            [
+              "Reuters",
+              "https://www.reuters.com/business/energy/texas-gov-abbott-halts-all-state-issued-permits-data-centers-until-grid-audit-is-2026-09-21/"
+            ]
+          ]
+        },
+        {
+          "number": "05",
+          "category": "AI infrastructure · California",
+          "title": "California adopts the country's broadest data-center resource rules",
+          "art": "california",
+          "summary": [
+            "Governor Gavin Newsom signed seven bills on September 21 governing data centers, including requirements involving electricity and water-use disclosure, utility rate treatment, environmental review, and infrastructure costs.",
+            "The package is designed to give communities more information about proposed projects while requiring data centers to absorb certain grid and water-system upgrade costs. California also tied some streamlined environmental review to conditions involving energy, water, and fuel use."
+          ],
+          "why": "California and Texas are approaching the AI-infrastructure boom from different regulatory traditions yet converging on a similar economic question: how much of the marginal infrastructure and resource cost created by large new loads should be internalized by the facilities themselves?",
+          "implications": [
+            [
+              "Regulatory competition",
+              "States may increasingly differentiate themselves through the terms — not simply the availability — of data-center development."
+            ],
+            [
+              "Cost incidence",
+              "Electricity and water rules are becoming a core part of AI policy because they determine who ultimately pays for physical capacity expansion."
+            ]
+          ],
+          "sources": [
+            [
+              "California Governor",
+              "https://www.gov.ca.gov/2026/09/21/governor-newsom-signs-most-comprehensive-data-center-laws-in-the-nation-providing-communities-more-control-on-water-electricity-and-land-use/"
+            ],
+            [
+              "Reuters",
+              "https://www.reuters.com/legal/litigation/california-governor-signs-broad-data-center-oversight-bill-package-2026-09-21/"
+            ]
+          ]
+        }
+      ],
+      "signalTitle": "AI policy is rapidly expanding beyond algorithms into the physical economy that supports them.",
+      "signal": [
+        "Texas and California are both wrestling with electricity capacity, water scarcity, and cost allocation; EPA is simultaneously changing the federal regulatory environment governing the generators that may supply some of that incremental electricity; and governments internationally are negotiating rules for AI's highest-risk military applications.",
+        "For environmental economics, the data-center story is especially revealing: it is becoming a real-world case study in externalities, congestion, incidence, infrastructure cost allocation, resource scarcity, and state-level regulatory competition — all generated by a very large positive demand shock for electricity and water."
+      ]
+    },
+    {
+      "date": "2026-09-27",
+      "displayDate": "Sunday, September 27, 2026",
+      "shortDate": "Sep 27",
+      "title": "Daily Briefing",
+      "deck": "Institutional credibility is the common variable: courts, regulators, lawmakers, and local governments are setting the rules that determine how durable public policy, subsidies, safety standards, and market safeguards really are.",
+      "readTime": "10 min read",
+      "stories": [
+        {
+          "number": "01",
+          "category": "U.S. policy · elections",
+          "title": "Supreme Court restores the administration’s expanded voter-verification system",
+          "art": "policy",
+          "summary": [
+            "On September 25, the Supreme Court allowed the Department of Homeland Security to resume the expanded SAVE voter-verification system while litigation continues. The modified system incorporates Social Security Administration records and allows state and local authorities to run bulk citizenship checks for registered voters and people registering to vote.",
+            "The Court’s stay does not resolve the merits of the challenge. The dispute concerns statutory authority, privacy, due process, and the risk that database matching could either identify ineligible registrations or incorrectly flag eligible citizens."
+          ],
+          "why": "The immediate effect is administrative, but the longer-run issue is institutional: the ruling shapes how far federal databases can be used in election administration while lower-court litigation continues.",
+          "implications": [
+            [
+              "Election administration",
+              "States using SAVE can resume the expanded verification workflow during the ongoing litigation."
+            ],
+            [
+              "Institutional design",
+              "The case tests how courts balance election-integrity objectives against privacy, data quality, and due-process concerns."
+            ]
+          ],
+          "sources": [
+            [
+              "U.S. Supreme Court",
+              "https://www.supremecourt.gov/opinions/25pdf/26a308_pok0.pdf"
+            ]
+          ]
+        },
+        {
+          "number": "02",
+          "category": "Climate · clean-energy policy",
+          "title": "A second federal judge rejects EPA’s cancellation rationale for Solar for All",
+          "art": "solar",
+          "summary": [
+            "A second federal judge ruled that EPA could not rely on the 2025 spending law to justify terminating already-obligated Solar for All awards. In the Harris County case, U.S. District Judge Tanya Chutkan vacated EPA’s termination decision after concluding that Congress rescinded unobligated balances rather than funds already committed to grant recipients.",
+            "The ruling follows a separate September 18 decision in Rhode Island that also found EPA’s termination of the $7 billion program unlawful. The decisions do not necessarily resolve every grant-payment dispute, but they materially weaken EPA’s legal basis for blanket termination."
+          ],
+          "why": "This is a test of policy durability. If obligated grants can be reversed easily after an administration change, political risk becomes part of project finance; if courts enforce the distinction between obligated and unobligated funds, previously awarded projects gain greater contractual and regulatory certainty.",
+          "implications": [
+            [
+              "Environmental economics",
+              "Policy credibility affects expected returns, financing costs, and investment timing for subsidized clean-energy projects."
+            ],
+            [
+              "Administrative law",
+              "Two courts have now rejected EPA’s broad termination rationale, increasing pressure on the agency’s implementation strategy."
+            ]
+          ],
+          "sources": [
+            [
+              "Harris County ruling coverage",
+              "https://news.bloomberglaw.com/us-law-week/epa-unlawfully-cancelled-billions-in-solar-funds-judge-rules"
+            ],
+            [
+              "Rhode Island order",
+              "https://docs.justia.com/cases/federal/district-courts/rhode-island/ridce/1%3A2025cv00510/60578/48"
+            ]
+          ]
+        },
+        {
+          "number": "03",
+          "category": "U.S. policy · health markets",
+          "title": "CMS cancels 315,000 unauthorized Marketplace enrollments covering more than 760,000 people",
+          "art": "health",
+          "summary": [
+            "CMS says it canceled approximately 315,000 Marketplace enrollments covering more than 760,000 people after reviews with insurers confirmed that the enrollments were unauthorized. The agency expects roughly $2.2 billion in advance premium-tax-credit payments to be returned.",
+            "CMS has also stepped up agent and broker enforcement, including termination actions and additional controls intended to prevent unauthorized plan changes and fraudulent applications."
+          ],
+          "why": "The policy challenge is to reduce improper subsidy payments without raising legitimate enrollment costs. Effective enforcement lowers fiscal leakage; overbroad controls can increase search, documentation, and access costs for eligible households.",
+          "implications": [
+            [
+              "Public finance",
+              "CMS expects significant recovery of improperly paid premium subsidies."
+            ],
+            [
+              "Insurance markets",
+              "Stricter verification and broker oversight can improve program integrity but may also alter enrollment frictions and participation."
+            ]
+          ],
+          "sources": [
+            [
+              "CMS fact sheet",
+              "https://www.cms.gov/newsroom/fact-sheets/federal-marketplace-ffe-and-sbe-fp-anti-fraud-actions"
+            ],
+            [
+              "CMS release",
+              "https://www.cms.gov/newsroom/press-releases/cms-cracks-down-fraud-waste-abuse-federal-health-insurance-marketplacer"
+            ]
+          ]
+        },
+        {
+          "number": "04",
+          "category": "AI governance · federal regulation",
+          "title": "Frontier-AI safety is moving from voluntary practice toward enforceable federal rules",
+          "art": "ai",
+          "summary": [
+            "Congressional proposals this month would impose enforceable safety and security obligations on frontier AI developers. Senate negotiators have considered a duty-of-care framework requiring firms to mitigate known major risks, while separate proposals would create pre-release review or mandatory security standards for the most advanced models.",
+            "The proposals remain legislative initiatives rather than enacted law, and their scopes differ. Together they show a shift in the federal debate from voluntary laboratory safety practices toward questions of testing authority, mandatory safeguards, liability, and release controls."
+          ],
+          "why": "The core economic design problem is balancing safety externalities against entry and innovation costs. Rules strict enough to reduce catastrophic-risk exposure can also create fixed compliance costs that favor the largest incumbent labs unless standards are carefully structured.",
+          "implications": [
+            [
+              "AI governance",
+              "Independent testing, incident reporting, and pre-release safeguards are becoming central legislative design questions."
+            ],
+            [
+              "Competition",
+              "Compliance architecture may affect market concentration as much as model safety if smaller developers face disproportionately high fixed costs."
+            ]
+          ],
+          "sources": [
+            [
+              "Sen. Schatz & Warner",
+              "https://www.schatz.senate.gov/news/press-releases/schatz-warner-to-take-to-senate-floor-to-demand-passage-of-new-ai-security-legislation"
+            ],
+            [
+              "Sen. Bennet & Welch",
+              "https://www.bennet.senate.gov/2026/09/23/bennet-welch-release-proposal-to-establish-new-federal-agency-to-prevent-catastrophic-ai-risk-regulate-big-tech/"
+            ]
+          ]
+        },
+        {
+          "number": "05",
+          "category": "North Carolina · health-care markets",
+          "title": "Wake County approves WakeMed–Atrium combination; additional review remains",
+          "art": "hospital",
+          "summary": [
+            "Wake County commissioners approved amendments allowing the proposed WakeMed–Atrium Health combination to advance. The revised transaction includes a five-year cap on certain WakeMed price increases, a $150 million community-benefit fund, increased charity-care commitments, and a $2 billion capital-investment commitment funded by Atrium.",
+            "The transaction still faces additional review, including scrutiny of its competitive and affordability effects. Supporters emphasize investment capacity and operating scale; critics of hospital consolidation generally focus on bargaining power, prices, and the durability of contractual safeguards."
+          ],
+          "why": "For the Triangle, this is a major industrial-organization and health-policy event. The explicit price cap creates a real-world test of whether contractual restrictions can meaningfully offset some of the pricing risks associated with greater hospital concentration.",
+          "implications": [
+            [
+              "Triangle economy",
+              "The combination would reshape one of the region’s largest health-care systems and capital-investment pipelines."
+            ],
+            [
+              "Industrial organization",
+              "Future evidence on prices, quality, charity care, and investment will help reveal how effective negotiated merger safeguards are in practice."
+            ]
+          ],
+          "sources": [
+            [
+              "WakeMed",
+              "https://www.wakemed.org/atrium-health-and-wakemed-announce-planned-strategic-combination"
+            ],
+            [
+              "NC Governor",
+              "https://governor.nc.gov/news/press-releases/2026/09/20/wakemed-and-atrium-meet-demands-cap-prices-increase-charity-care-and-fully-invest-2b-new-dollars"
+            ]
+          ]
+        }
+      ],
+      "signalTitle": "Institutional credibility is becoming an economic variable, not merely a legal backdrop.",
+      "signal": [
+        "Across elections, clean-energy grants, health-insurance enforcement, AI safety, and hospital consolidation, the recurring question is whether rules, subsidies, safeguards, and commitments will actually survive political, legal, and administrative change.",
+        "That matters economically because uncertainty itself has a price. Firms and households respond to the expected durability of policy before final legal outcomes arrive; credibility therefore affects investment, financing, participation, and bargaining behavior in real time."
+      ]
+    }
+  ]
+}
+</script>
+<script>
+(function(){
+  const data=JSON.parse(document.getElementById('briefing-data').textContent);
+  const mount=document.getElementById('editionMount');
+  const archive=document.getElementById('archiveList');
+  const rail=document.getElementById('archiveRail');
+  const backdrop=document.getElementById('backdrop');
+  const openBtn=document.getElementById('archiveOpen');
+  const toggle=document.getElementById('themeToggle');
+  let dark=false;
+
+  function esc(s){return String(s).replace(/[&<>\"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#039;'}[m]))}
+  function noiseDefs(id){return `<defs><filter id="${id}" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018 .11" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/></filter><pattern id="hatch-${id}" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><line x1="0" y1="0" x2="0" y2="10" stroke="#f3e7d2" stroke-width="2.2" opacity=".75"/></pattern></defs>`}
+  function art(kind){
+    const id='rough-'+kind;
+    const defs=noiseDefs(id);
+    if(kind==='capitol') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of the U.S. Capitol and appropriations papers">${defs}<rect width="800" height="640" fill="#d9c09d"/><circle cx="650" cy="112" r="90" fill="#b35f46" opacity=".9"/><g filter="url(#${id})" fill="#2c241d"><rect x="95" y="452" width="610" height="75"/><rect x="142" y="378" width="516" height="80"/><path d="M188 378h424l-72-62H260z"/><path d="M307 316h186v-42c0-70-41-122-93-122s-93 52-93 122z"/><rect x="382" y="96" width="36" height="63"/><circle cx="400" cy="84" r="17"/><g fill="url(#hatch-${id})"><path d="M324 308h152v-35c0-55-33-94-76-94s-76 39-76 94z"/><rect x="170" y="400" width="30" height="128"/><rect x="245" y="400" width="30" height="128"/><rect x="525" y="400" width="30" height="128"/><rect x="600" y="400" width="30" height="128"/></g></g><g transform="rotate(-8 120 120)"><rect x="55" y="70" width="235" height="122" fill="#f4ead7" stroke="#7c5a3e" stroke-width="6"/><path d="M78 103h150M78 128h180M78 153h116" stroke="#7c5a3e" stroke-width="9" stroke-linecap="square"/><path d="M236 69l54 48-54 7z" fill="#b35f46"/></g><path d="M0 568c185-40 308 42 439 4 128-37 223-6 361 18v50H0z" fill="#7c5a3e"/></svg>`;
+    if(kind==='weapons') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of a globe, circuitry, and targeting reticle">${defs}<rect width="800" height="640" fill="#dbc39f"/><g filter="url(#${id})"><circle cx="402" cy="315" r="208" fill="#53666a"/><circle cx="402" cy="315" r="165" fill="none" stroke="#f3e7d2" stroke-width="18"/><path d="M240 315h324M402 150c-77 70-77 260 0 330M402 150c77 70 77 260 0 330" fill="none" stroke="#f3e7d2" stroke-width="13"/><path d="M212 241h380M212 390h380" stroke="#f3e7d2" stroke-width="10"/><circle cx="402" cy="315" r="72" fill="#b35f46"/><circle cx="402" cy="315" r="25" fill="#2c241d"/><path d="M402 50v145M402 435v155M138 315h145M521 315h145" stroke="#2c241d" stroke-width="24"/><path d="M75 86h95v68h74M725 548h-95v-68h-74M708 110h-100v72h-58M93 544h98v-68h65" fill="none" stroke="#7c5a3e" stroke-width="20"/><g fill="#2c241d"><circle cx="75" cy="86" r="17"/><circle cx="725" cy="548" r="17"/><circle cx="708" cy="110" r="17"/><circle cx="93" cy="544" r="17"/></g></g></svg>`;
+    if(kind==='power') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of power plant smokestacks, grid lines, and a leaf">${defs}<rect width="800" height="640" fill="#d9c09d"/><circle cx="647" cy="115" r="77" fill="#c59a55"/><g filter="url(#${id})"><path d="M0 510L160 445l130 53 150-74 145 55 215-85v246H0z" fill="#73806d"/><rect x="126" y="312" width="340" height="214" fill="#2c241d"/><rect x="198" y="194" width="64" height="160" fill="#7c5a3e"/><rect x="336" y="135" width="70" height="219" fill="#b35f46"/><path d="M204 194h52l-13-55h-27zM342 135h58l-15-60h-27z" fill="#2c241d"/><path d="M230 127c-63-42-25-95 25-64 32-77 123-26 90 29 66-18 97 55 50 90" fill="none" stroke="#f4ead7" stroke-width="26" stroke-linecap="round"/><path d="M530 388c92-129 185-112 210-37-42 88-114 137-217 143 17-37 35-71 58-104-29 21-54 46-78 74-12-22-9-48 27-76z" fill="#f4ead7"/><path d="M529 492c58-56 110-98 166-124" stroke="#7c5a3e" stroke-width="12"/><path d="M0 552h800" stroke="#2c241d" stroke-width="15"/><path d="M530 205h250M530 235h250M530 265h250" stroke="#7c5a3e" stroke-width="8"/></g></svg>`;
+    if(kind==='texas') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of server racks, transmission lines, and water in Texas">${defs}<rect width="800" height="640" fill="#dec6a2"/><g filter="url(#${id})"><circle cx="115" cy="105" r="77" fill="#b35f46"/><path d="M86 512V220h168v292M318 512V170h168v342M550 512V255h160v257" fill="#2c241d"/><g fill="#f4ead7"><rect x="112" y="255" width="115" height="28"/><rect x="112" y="315" width="115" height="28"/><rect x="112" y="375" width="115" height="28"/><rect x="344" y="210" width="115" height="28"/><rect x="344" y="270" width="115" height="28"/><rect x="344" y="330" width="115" height="28"/><rect x="344" y="390" width="115" height="28"/><rect x="576" y="295" width="108" height="28"/><rect x="576" y="355" width="108" height="28"/></g><path d="M40 512h720" stroke="#7c5a3e" stroke-width="18"/><path d="M37 188h726M88 118l-48 70M713 118l48 70M165 80l-77 108M636 80l77 108" stroke="#7c5a3e" stroke-width="9"/><path d="M623 112c0 0-70 88-70 143 0 48 31 81 70 81s70-33 70-81c0-55-70-143-70-143z" fill="#53666a"/><path d="M0 568c120-45 234 36 346 1 126-39 284-4 454 28v43H0z" fill="#73806d"/></g></svg>`;
+    if(kind==='policy') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of a courthouse, ballot, and verification mark">${defs}<rect width="800" height="640" fill="#dcc39e"/><circle cx="656" cy="112" r="82" fill="#c59a55"/><g filter="url(#${id})"><path d="M118 500h564v64H118z" fill="#2c241d"/><path d="M168 295h464l-232-138z" fill="#7c5a3e"/><rect x="188" y="312" width="424" height="188" fill="#f4ead7"/><g fill="#2c241d"><rect x="224" y="326" width="44" height="174"/><rect x="316" y="326" width="44" height="174"/><rect x="440" y="326" width="44" height="174"/><rect x="532" y="326" width="44" height="174"/></g><rect x="68" y="92" width="220" height="150" rx="8" fill="#f4ead7" stroke="#2c241d" stroke-width="9"/><path d="M108 165l37 36 91-91" fill="none" stroke="#b35f46" stroke-width="23" stroke-linecap="round" stroke-linejoin="round"/><path d="M0 580c153-35 259 24 397 2 135-22 254-8 403 24v34H0z" fill="#73806d"/></g></svg>`;
+    if(kind==='solar') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of rooftop solar panels and sunlight">${defs}<rect width="800" height="640" fill="#dfc7a3"/><circle cx="647" cy="120" r="93" fill="#c59a55"/><g filter="url(#${id})"><path d="M48 455l285-230 286 230v118H48z" fill="#7c5a3e"/><path d="M188 435l122-154 240 0 104 154z" fill="#2c241d"/><g stroke="#f4ead7" stroke-width="9"><path d="M226 310h300M199 350h354M171 393h412M282 285l-73 150M366 285l-46 150M452 285l-18 150M530 285l20 150"/></g><path d="M0 573c147-39 255 35 399 2 131-30 259-3 401 26v39H0z" fill="#73806d"/><g stroke="#7c5a3e" stroke-width="12" stroke-linecap="round"><path d="M647 8v45M560 37l28 38M734 37l-28 38M531 120h46M717 120h46"/></g></g></svg>`;
+    if(kind==='health') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of a health-insurance card and medical cross">${defs}<rect width="800" height="640" fill="#ddc39f"/><g filter="url(#${id})"><rect x="93" y="132" width="614" height="360" rx="28" fill="#f4ead7" stroke="#2c241d" stroke-width="14"/><rect x="93" y="132" width="614" height="82" rx="20" fill="#53666a"/><rect x="150" y="264" width="250" height="24" fill="#7c5a3e"/><rect x="150" y="318" width="335" height="20" fill="#a47b55"/><rect x="150" y="365" width="290" height="20" fill="#a47b55"/><circle cx="591" cy="336" r="87" fill="#b35f46"/><path d="M567 274h48v39h39v48h-39v39h-48v-39h-39v-48h39z" fill="#f4ead7"/><path d="M0 557c152-43 267 35 403 1 137-34 257-2 397 30v52H0z" fill="#73806d"/></g></svg>`;
+    if(kind==='ai') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of an AI chip protected by a shield">${defs}<rect width="800" height="640" fill="#d9c09d"/><g filter="url(#${id})"><rect x="175" y="138" width="360" height="360" rx="42" fill="#2c241d"/><rect x="236" y="199" width="238" height="238" rx="22" fill="#53666a"/><g stroke="#7c5a3e" stroke-width="16"><path d="M215 96v42M290 96v42M365 96v42M440 96v42M215 498v46M290 498v46M365 498v46M440 498v46M133 205h42M133 280h42M133 355h42M133 430h42M535 205h45M535 280h45M535 355h45M535 430h45"/></g><path d="M600 188l124 45v112c0 112-55 178-124 214-69-36-124-102-124-214V233z" fill="#b35f46" stroke="#2c241d" stroke-width="12"/><path d="M543 356l42 42 78-92" fill="none" stroke="#f4ead7" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/><circle cx="354" cy="318" r="55" fill="#c59a55"/><path d="M354 260v116M296 318h116" stroke="#2c241d" stroke-width="17"/></g></svg>`;
+    if(kind==='hospital') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of connected hospital buildings and a community skyline">${defs}<rect width="800" height="640" fill="#dec5a1"/><circle cx="119" cy="112" r="78" fill="#c59a55"/><g filter="url(#${id})"><rect x="135" y="215" width="255" height="320" fill="#2c241d"/><rect x="405" y="287" width="255" height="248" fill="#53666a"/><g fill="#f4ead7"><rect x="175" y="260" width="44" height="44"/><rect x="244" y="260" width="44" height="44"/><rect x="313" y="260" width="44" height="44"/><rect x="175" y="333" width="44" height="44"/><rect x="313" y="333" width="44" height="44"/><rect x="445" y="329" width="44" height="44"/><rect x="514" y="329" width="44" height="44"/><rect x="583" y="329" width="44" height="44"/><rect x="445" y="402" width="44" height="44"/><rect x="583" y="402" width="44" height="44"/></g><path d="M242 185h42v50h50v42h-50v50h-42v-50h-50v-42h50z" fill="#b35f46"/><path d="M367 386c41-43 88-44 132-3" fill="none" stroke="#c59a55" stroke-width="23" stroke-linecap="round"/><path d="M0 553c157-40 270 38 405 2 136-36 259 0 395 29v56H0z" fill="#73806d"/></g></svg>`;
+    return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of California data-center infrastructure, water, and sunlight">${defs}<rect width="800" height="640" fill="#dfc7a3"/><g filter="url(#${id})"><circle cx="652" cy="116" r="85" fill="#c59a55"/><path d="M0 465c126-46 252 44 390 3 149-45 256-12 410 28v144H0z" fill="#53666a"/><path d="M0 510c180 43 330-24 476 16 123 34 210-9 324 9v105H0z" fill="#73806d"/><path d="M166 140l76 25 36 72-24 62 41 67-36 105-76 61-42-79 23-91-39-92 45-61z" fill="#b35f46"/><path d="M343 218h278v281H343z" fill="#2c241d"/><g fill="#f4ead7"><rect x="374" y="250" width="92" height="32"/><rect x="496" y="250" width="92" height="32"/><rect x="374" y="316" width="92" height="32"/><rect x="496" y="316" width="92" height="32"/><rect x="374" y="382" width="92" height="32"/><rect x="496" y="382" width="92" height="32"/></g><path d="M624 80v72M588 93l20 35M660 93l-20 35M570 130h42M636 130h42" stroke="#7c5a3e" stroke-width="11"/><path d="M93 557c69-43 111-41 178 0M303 567c92-44 184-43 268 0M604 557c56-33 102-31 153 0" fill="none" stroke="#f4ead7" stroke-width="11"/></g></svg>`;
+  }
+
+  function storyHTML(s){
+    return `<section class="story" aria-labelledby="story-${s.number}"><figure class="art"><div class="art-frame">${art(s.art)}</div><figcaption><span>Editorial illustration</span><span>Block-print study</span></figcaption></figure><div class="copy"><div class="story-number">${esc(s.number)}</div><div class="story-tag">${esc(s.category)}</div><h2 id="story-${s.number}">${esc(s.title)}</h2><div class="summary">${s.summary.map(p=>`<p>${esc(p)}</p>`).join('')}</div><div class="why"><b>Why it matters</b><p>${esc(s.why)}</p></div><div class="implications">${s.implications.map(x=>`<div class="imp"><small>${esc(x[0])}</small><span>${esc(x[1])}</span></div>`).join('')}</div><div class="sources" aria-label="Sources">${s.sources.map(x=>`<a class="source" href="${esc(x[1])}" target="_blank" rel="noopener">${esc(x[0])} ↗</a>`).join('')}</div></div></section>`
+  }
+  function render(ed){
+    document.title=`Daily Watchlist 5 — ${ed.displayDate}`;
+    mount.innerHTML=`<article class="edition"><div class="issue-kicker">Issue ${esc(ed.shortDate)} · Policy-weighted</div><div class="issue-head"><h1>Daily <i>Briefing</i></h1><div class="issue-side"><p>${esc(ed.displayDate)}</p><div class="issue-meta"><span class="pill">5 developments</span><span class="pill">${esc(ed.readTime)}</span><span class="pill">Major moves only</span></div></div></div><p class="lede"><strong>The signal:</strong> ${esc(ed.deck)}</p>${ed.stories.map(storyHTML).join('')}<section class="signal"><div class="k">The signal across today's five</div><h2>${esc(ed.signalTitle)}</h2>${ed.signal.map(p=>`<p>${esc(p)}</p>`).join('')}</section><footer class="footer"><div><strong>Field Brief</strong><br>AI · climate & energy · U.S. policy · North Carolina & Triangle</div><div>Current edition opens by default.<br>Archive links preserve older briefing dates.</div></footer></article>`;
+    [...document.querySelectorAll('.edition-btn')].forEach(b=>b.setAttribute('aria-current',b.dataset.date===ed.date?'true':'false'));
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+  function buildArchive(){
+    const byYear={}; data.editions.forEach(e=>(byYear[e.date.slice(0,4)]??=[]).push(e));
+    archive.innerHTML=Object.keys(byYear).sort().reverse().map(y=>`<section><div class="year">${y}</div>${byYear[y].sort((a,b)=>b.date.localeCompare(a.date)).map(e=>`<button class="edition-btn" type="button" data-date="${e.date}"><span class="date">${esc(e.displayDate.replace(/^[A-Za-z]+, /,''))}</span><span class="dek">Five consequential developments · ${esc(e.readTime)}</span></button>`).join('')}</section>`).join('');
+    archive.querySelectorAll('.edition-btn').forEach(btn=>btn.addEventListener('click',()=>{location.hash=btn.dataset.date;closeRail()}));
+  }
+  function load(){
+    const key=location.hash.replace('#','');
+    const ed=data.editions.find(e=>e.date===key)||[...data.editions].sort((a,b)=>b.date.localeCompare(a.date))[0];
+    if(!ed){mount.innerHTML='<div class="empty">No briefings archived yet.</div>';return}
+    render(ed);
+  }
+  function closeRail(){rail.classList.remove('open');backdrop.classList.remove('show')}
+  openBtn.addEventListener('click',()=>{rail.classList.add('open');backdrop.classList.add('show')});backdrop.addEventListener('click',closeRail);
+  toggle.addEventListener('click',()=>{dark=!dark;document.documentElement.style.filter=dark?'invert(.90) hue-rotate(175deg) saturate(.72)':'';document.querySelectorAll('img,svg').forEach(el=>el.style.filter=dark?'invert(1) hue-rotate(185deg) saturate(1.15)':'');toggle.innerHTML=`<span class="theme-label">View </span>${dark?'Day':'Night'}`});
+  buildArchive();window.addEventListener('hashchange',load);load();
+})();
+</script>
+</body>
+</html>
