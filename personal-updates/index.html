@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ede6d8">
+<title>Personal Updates</title>
+<meta name="description" content="A personal hub for briefings, research tools, and study systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2258%22%20height%3D%2258%22%20rx%3D%2214%22%20fill%3D%22%23EDE6D8%22%20stroke%3D%22%232B332C%22%20stroke-width%3D%224%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2215%22%20width%3D%2214%22%20height%3D%2214%22%20rx%3D%223%22%20fill%3D%22%23AF684D%22%2F%3E%3Crect%20x%3D%2235%22%20y%3D%2215%22%20width%3D%2214%22%20height%3D%2214%22%20rx%3D%223%22%20fill%3D%22%237D8B78%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2235%22%20width%3D%2214%22%20height%3D%2214%22%20rx%3D%223%22%20fill%3D%22%23C6A56B%22%2F%3E%3Cpath%20d%3D%22M35%2038h14M35%2044h10%22%20stroke%3D%22%232B332C%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<style>
+:root{
+  --paper:#ede6d8;
+  --paper-2:#f6f0e5;
+  --ink:#252923;
+  --muted:#6f7269;
+  --line:#cfc4b1;
+  --olive:#596659;
+  --olive-soft:#dbe0d5;
+  --rust:#aa6248;
+  --rust-soft:#ead6cc;
+  --ochre:#b18d4f;
+  --ochre-soft:#eee1c6;
+  --slate:#62727c;
+  --slate-soft:#dbe1e3;
+  --shadow:0 22px 60px rgba(55,44,29,.10);
+  --serif:"Newsreader",Georgia,serif;
+  --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--paper);scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 82% 2%,rgba(177,141,79,.12),transparent 28rem),
+    radial-gradient(circle at 0% 70%,rgba(89,102,89,.09),transparent 32rem),
+    var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.shell{width:min(1180px,calc(100% - 40px));margin:0 auto}
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:74px;
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{
+  width:28px;height:28px;border:1.5px solid var(--ink);border-radius:8px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:3px;padding:5px;background:var(--paper-2)
+}
+.mark i{display:block;border-radius:2px}
+.mark i:nth-child(1){background:var(--rust)}
+.mark i:nth-child(2){background:#819080}
+.mark i:nth-child(3){background:#c29a57}
+.mark i:nth-child(4){background:var(--ink)}
+.brand strong{font:500 20px/1 var(--serif);letter-spacing:-.01em}
+.topmeta{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero{padding:94px 0 66px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:70px;align-items:end}
+.eyebrow{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-bottom:22px}
+h1{font:500 clamp(58px,8vw,106px)/.86 var(--serif);letter-spacing:-.055em;margin:0;max-width:760px}
+h1 em{font-weight:400;color:var(--rust)}
+.intro{font:400 18px/1.65 var(--sans);color:#555a51;max-width:42ch;margin:0 0 4px}
+.rule{height:1px;background:var(--line)}
+.section-head{padding:34px 0 24px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.section-head h2{font:500 30px/1 var(--serif);letter-spacing:-.02em;margin:0}
+.section-head span{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;padding-bottom:82px}
+.card{
+  position:relative;
+  min-height:330px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(246,240,229,.72);
+  padding:28px;
+  overflow:hidden;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  display:flex;flex-direction:column
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#b9aa93}
+.card:focus-visible{outline:3px solid rgba(170,98,72,.35);outline-offset:4px}
+.card.primary{grid-column:span 7;min-height:430px;background:linear-gradient(145deg,#f7f0e4 0%,#e8dcc7 100%)}
+.card.advisor{grid-column:span 5;background:linear-gradient(145deg,#f4eee4 0%,var(--olive-soft) 100%)}
+.card.trainer{grid-column:span 5;background:linear-gradient(145deg,#f5eee2 0%,var(--ochre-soft) 100%)}
+.card.future{grid-column:span 7;background:linear-gradient(145deg,#f4eee5 0%,#e6e0d5 100%);border-style:dashed;cursor:default}
+.card.future:hover{transform:none;box-shadow:none;border-color:var(--line)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.badge{display:inline-flex;align-items:center;gap:7px;font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--rust)}
+.advisor .dot{background:var(--olive)}
+.trainer .dot{background:var(--ochre)}
+.future .dot{background:#99968c}
+.arrow{
+  width:38px;height:38px;border-radius:50%;border:1px solid rgba(37,41,35,.22);
+  display:grid;place-items:center;font-size:17px;transition:background .2s ease,color .2s ease,transform .2s ease
+}
+.card:not(.future):hover .arrow{background:var(--ink);color:var(--paper-2);transform:translate(2px,-2px)}
+.art{height:150px;margin:32px 0 28px;position:relative}
+.card.primary .art{height:210px}
+.art svg{width:100%;height:100%;display:block}
+.card h3{font:500 clamp(31px,3.3vw,50px)/.96 var(--serif);letter-spacing:-.035em;margin:auto 0 12px;max-width:13ch}
+.card.primary h3{font-size:clamp(42px,5vw,66px);max-width:11ch}
+.card p{font-size:14px;line-height:1.65;color:#5f635b;margin:0;max-width:50ch}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.pill{border:1px solid rgba(37,41,35,.16);border-radius:999px;padding:7px 10px;font:500 9px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#61645c;background:rgba(255,255,255,.22)}
+.about{border-top:1px solid var(--line);padding:44px 0 74px;display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.about h2{font:500 34px/1.05 var(--serif);margin:0}
+.about p{color:var(--muted);font-size:14px;line-height:1.75;margin:0;max-width:58ch}
+footer{border-top:1px solid var(--line);padding:24px 0 32px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font:400 10px/1.5 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+footer a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:800px){
+  .shell{width:min(100% - 28px,680px)}
+  .topmeta{display:none}
+  .hero{grid-template-columns:1fr;padding:70px 0 48px;gap:30px}
+  h1{font-size:clamp(58px,18vw,96px)}
+  .intro{font-size:16px}
+  .grid{grid-template-columns:1fr;gap:16px}
+  .card,.card.primary,.card.advisor,.card.trainer,.card.future{grid-column:1;min-height:360px}
+  .card.primary{min-height:420px}
+  .about{grid-template-columns:1fr;gap:20px}
+}
+@media(max-width:480px){
+  .topbar{min-height:64px}
+  .brand strong{font-size:18px}
+  .hero{padding-top:54px}
+  .card{padding:22px;border-radius:15px}
+  .art{margin:24px 0 20px;height:130px}
+  .card.primary .art{height:170px}
+  .section-head{padding-top:28px}
+  footer{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Personal Updates home">
+      <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <strong>Personal Updates</strong>
+    </a>
+    <div class="topmeta">Briefings · Research · Practice</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Personal command center</div>
+        <h1>Your useful things, <em>in one place.</em></h1>
+      </div>
+      <p class="intro">A single launch point for the briefings, research tools, and learning systems built around the subjects you follow and the work you do.</p>
+    </section>
+
+    <div class="rule"></div>
+
+    <section class="section-head">
+      <h2>Live tools</h2>
+      <span>3 destinations</span>
+    </section>
+
+    <section class="grid" aria-label="Personal tools">
+      <a class="card primary" href="../daily-watchlist-5/" aria-label="Open Daily Watchlist 5">
+        <div class="card-top">
+          <span class="badge"><i class="dot"></i> Updates daily</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 660 220" fill="none">
+            <path d="M24 174C115 135 183 143 246 108C320 67 372 40 468 58C541 72 585 103 636 82" stroke="#2B332C" stroke-width="3"/>
+            <path d="M24 189C112 160 194 170 269 133C355 91 392 79 487 93C548 102 587 128 636 117" stroke="#AA6248" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="123" cy="143" r="25" fill="#C29A57"/>
+            <circle cx="244" cy="109" r="14" fill="#596659"/>
+            <circle cx="468" cy="58" r="19" fill="#AA6248"/>
+            <path d="M95 45h190M95 63h126M411 157h150M411 176h103" stroke="#2B332C" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+            <path d="M34 37h37v37H34z" fill="#2B332C"/>
+            <path d="M45 48h15M45 57h15M45 66h10" stroke="#EDE6D8" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Daily Watchlist 5</h3>
+        <p>Five consequential developments across AI, technology, climate and environmental economics, U.S. policy, and the Triangle — with a growing daily archive.</p>
+        <div class="meta-row">
+          <span class="pill">Daily briefing</span>
+          <span class="pill">Archive</span>
+          <span class="pill">Policy weighted</span>
+        </div>
+      </a>
+
+      <a class="card advisor" href="../econometric-advisor/" aria-label="Open Econometric Research Advisor">
+        <div class="card-top">
+          <span class="badge"><i class="dot"></i> Research design</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 480 180" fill="none">
+            <circle cx="240" cy="90" r="27" fill="#596659"/>
+            <circle cx="78" cy="49" r="14" fill="#AA6248"/>
+            <circle cx="79" cy="137" r="14" fill="#C29A57"/>
+            <circle cx="401" cy="48" r="14" fill="#62727C"/>
+            <circle cx="401" cy="137" r="14" fill="#AA6248"/>
+            <circle cx="145" cy="90" r="10" fill="#2B332C"/>
+            <circle cx="335" cy="90" r="10" fill="#2B332C"/>
+            <path d="M92 53l125 30M93 133l124-34M264 82l123-30M264 99l123 34M155 90h58M267 90h58" stroke="#2B332C" stroke-width="2.5"/>
+            <path d="M228 89l8 8 17-19" stroke="#EDE6D8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Econometric Research Advisor</h3>
+        <p>Map a research design to identification strategies, estimating equations, data sources, methods, literature, and an interactive econometric knowledge graph.</p>
+        <div class="meta-row">
+          <span class="pill">Methods</span>
+          <span class="pill">Identification</span>
+          <span class="pill">Research design</span>
+        </div>
+      </a>
+
+      <a class="card trainer" href="../quant-skills-trainer/" aria-label="Open Quant Skills Trainer">
+        <div class="card-top">
+          <span class="badge"><i class="dot"></i> Skills practice</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 480 180" fill="none">
+            <rect x="57" y="31" width="366" height="118" rx="13" stroke="#2B332C" stroke-width="3"/>
+            <path d="M57 66h366" stroke="#2B332C" stroke-width="3"/>
+            <circle cx="80" cy="49" r="5" fill="#AA6248"/>
+            <circle cx="98" cy="49" r="5" fill="#C29A57"/>
+            <circle cx="116" cy="49" r="5" fill="#596659"/>
+            <path d="M87 91l25 17-25 17M127 126h38" stroke="#596659" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M211 90h143M211 109h105M211 128h126" stroke="#2B332C" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+          </svg>
+        </div>
+        <h3>Quant Skills Trainer</h3>
+        <p>Structured econometrics practice across R, Python, and Stata with lessons, exercises, progress tracking, and optional AI feedback on submitted code.</p>
+        <div class="meta-row">
+          <span class="pill">R</span>
+          <span class="pill">Python</span>
+          <span class="pill">Stata</span>
+        </div>
+      </a>
+
+      <div class="card future" aria-label="Future tools will appear here">
+        <div class="card-top">
+          <span class="badge"><i class="dot"></i> Next addition</span>
+        </div>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 660 180" fill="none">
+            <path d="M70 91h520" stroke="#8F8C83" stroke-width="2" stroke-dasharray="8 10"/>
+            <circle cx="154" cy="91" r="26" fill="#DDD4C5" stroke="#8F8C83" stroke-width="2"/>
+            <circle cx="330" cy="91" r="26" fill="#DDD4C5" stroke="#8F8C83" stroke-width="2"/>
+            <circle cx="506" cy="91" r="26" fill="#DDD4C5" stroke="#8F8C83" stroke-width="2"/>
+            <path d="M330 78v26M317 91h26" stroke="#6F7269" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>More systems, same address.</h3>
+        <p>New ChatGPT-created sites can be added here as they go live. The weekly Economics &amp; Environmental Economics product is the natural next candidate once its hosted archive is published.</p>
+        <div class="meta-row">
+          <span class="pill">Expandable</span>
+          <span class="pill">One bookmark</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2>One bookmark instead of another folder.</h2>
+      <p>Bookmark this page as <strong>Personal Updates</strong> and remove the Chrome folder if you like. The hub itself has a custom four-tile favicon, so it behaves like a single recognizable destination on your bookmarks bar while the individual tools remain one click away.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>Personal Updates · Iain Holmes</span>
+    <a href="../">Main site</a>
+  </footer>
+</div>
+</body>
+</html>
