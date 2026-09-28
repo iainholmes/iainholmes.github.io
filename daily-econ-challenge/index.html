@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f7f3">
+<meta name="description" content="A weekday graduate-level economics and econometrics problem set with worked solutions and a cumulative archive.">
+<title>Daily Econ Challenge</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2260%22%20height%3D%2260%22%20rx%3D%224%22%20fill%3D%22%23f7f7f3%22%20stroke%3D%22%231c2f4a%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20d%3D%22M2%2022h60M2%2042h60M22%202v60M42%202v60%22%20stroke%3D%22%23c9d3d6%22%20stroke-width%3D%221.2%22%2F%3E%3Cpath%20d%3D%22M12%2050L26%2034l10%208%2016-24%22%20fill%3D%22none%22%20stroke%3D%22%230e5360%22%20stroke-width%3D%224.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2252%22%20cy%3D%2218%22%20r%3D%224%22%20fill%3D%22%231c2f4a%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=STIX+Two+Text:ital,wght@0,400;0,500;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --paper:#f7f7f3;
+  --sheet:#fdfdfb;
+  --grid:rgba(28,47,74,.055);
+  --grid-major:rgba(28,47,74,.085);
+  --ink:#1d2126;
+  --text:#2b3036;
+  --muted:#5f666e;
+  --rule:#d3d8dc;
+  --rule-strong:#1d2126;
+  --teal:#0e5360;
+  --teal-wash:#e3eef0;
+  --navy:#1c2f4a;
+  --right:#17624a;
+  --right-wash:#e4f0ea;
+  --wrong:#9a3b2e;
+  --wrong-wash:#f6e6e2;
+  --ui:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --math:"STIX Two Text","STIX Two Math","Cambria",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{
+  margin:0;min-height:100vh;color:var(--text);font:15px/1.6 var(--ui);-webkit-font-smoothing:antialiased;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(var(--grid-major) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-major) 1px,transparent 1px),
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+  background-position:-1px -1px;
+}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--paper);padding:8px 12px;z-index:50}.skip:focus{left:8px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[hidden]{display:none!important}
+
+/* ---------- running header ---------- */
+.runhead{border-bottom:1px solid var(--rule-strong);background:color-mix(in srgb,var(--paper) 92%,transparent);position:sticky;top:0;z-index:20;backdrop-filter:blur(6px)}
+.runhead-inner{max-width:1180px;margin:0 auto;padding:0 28px;height:56px;display:flex;align-items:center;gap:24px}
+.wordmark{font:600 17px/1 var(--ui);letter-spacing:-.01em;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:10px}
+.wordmark svg{width:22px;height:22px;flex:none}
+.runhead nav{margin-left:auto;display:flex;gap:4px;align-items:center}
+.runhead nav a,.runhead nav button{font:500 12px/1 var(--mono);text-decoration:none;color:var(--muted);background:none;border:1px solid transparent;padding:9px 10px;letter-spacing:.02em}
+.runhead nav a:hover,.runhead nav button:hover,.runhead nav [aria-current="page"]{color:var(--ink);border-color:var(--rule)}
+
+/* ---------- problem-set header ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.ps-head{padding-top:40px}
+.ps-title{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px;padding-bottom:18px;border-bottom:2px solid var(--rule-strong)}
+.ps-title h1{margin:0;font:500 clamp(34px,4.6vw,56px)/1 var(--ui);letter-spacing:-.035em;color:var(--ink)}
+.ps-title h1 span{font-family:var(--mono);font-weight:500;color:var(--teal);letter-spacing:-.04em;margin-left:.1em}
+.ps-no{font:500 13px/1.3 var(--mono);color:var(--muted);text-align:right}
+.ps-no b{display:block;font:500 34px/1 var(--mono);color:var(--navy);letter-spacing:-.02em;margin-top:6px}
+.ps-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--rule)}
+.ps-facts>div{padding:12px 16px 13px;border-left:1px solid var(--rule)}
+.ps-facts>div:first-child{border-left:0;padding-left:0}
+.ps-facts dt{font:500 10px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.ps-facts dd{margin:5px 0 0;font:500 15px/1.35 var(--ui);color:var(--ink)}
+
+/* ---------- workbench ---------- */
+.bench{display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;padding-top:34px;padding-bottom:90px;align-items:start}
+.side{position:sticky;top:84px}
+.side h2{font:500 10px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 12px}
+.navgrid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule-strong);border-left:1px solid var(--rule-strong)}
+.navgrid button{position:relative;aspect-ratio:1;border:0;border-right:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);background:var(--sheet);font:500 15px/1 var(--mono);color:var(--muted);display:grid;place-items:center}
+.navgrid button[data-state="answered"]{color:var(--ink);background:var(--teal-wash)}
+.navgrid button[data-state="answered"]::after{content:"";position:absolute;right:6px;top:6px;width:6px;height:6px;background:var(--teal)}
+.navgrid button[data-state="right"]{background:var(--right-wash);color:var(--right)}
+.navgrid button[data-state="wrong"]{background:var(--wrong-wash);color:var(--wrong)}
+.navgrid button[aria-current="step"]{outline:2px solid var(--navy);outline-offset:-3px;color:var(--ink)}
+.meter{margin:16px 0 0;font:500 12px/1.4 var(--mono);color:var(--muted);display:flex;justify-content:space-between}
+.meter-bar{height:4px;background:var(--rule);margin-top:8px}
+.meter-bar i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s ease}
+.keys{margin:26px 0 0;padding:14px 0 0;border-top:1px solid var(--rule);font:12px/1.9 var(--mono);color:var(--muted)}
+.keys kbd{font:500 11px/1 var(--mono);border:1px solid var(--rule);border-bottom-width:2px;padding:2px 5px;background:var(--sheet);color:var(--ink)}
+
+.sheet{background:var(--sheet);border:1px solid var(--rule-strong);box-shadow:6px 6px 0 rgba(28,47,74,.07);min-width:0}
+
+/* ---------- question ---------- */
+.q{padding:34px 40px 30px}
+.q-head{display:flex;align-items:baseline;gap:18px;padding-bottom:16px;border-bottom:1px solid var(--rule)}
+.q-num{font:500 44px/.9 var(--mono);color:var(--navy);letter-spacing:-.04em}
+.q-field{font:500 11px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--teal)}
+.q-kind{margin-left:auto;font:500 11px/1.4 var(--mono);color:var(--muted);white-space:nowrap}
+.stem{font:400 20px/1.6 var(--math);color:var(--ink);margin:24px 0 0;max-width:68ch}
+.stem p{margin:0 0 14px}
+.stem i,.opt-text i,.expl i{font-style:italic}
+.exhibit{margin:18px 0 6px}
+.exhibit-cap{font:500 10px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:6px}
+table.data{border-collapse:collapse;font:14px/1.4 var(--mono);min-width:min(100%,460px)}
+table.data th,table.data td{padding:7px 14px 7px 0;text-align:right;border-bottom:1px solid var(--rule)}
+table.data th:first-child,table.data td:first-child{text-align:left}
+table.data thead th{font-weight:500;color:var(--muted);border-bottom:1.5px solid var(--ink);font-size:12px}
+.console{background:#1b2027;color:#dfe5ea;font:13px/1.65 var(--mono);padding:14px 16px;overflow-x:auto;white-space:pre;border-left:3px solid var(--teal)}
+.console .p{color:#7fb7c2}.console .c{color:#8b949e}
+.eq{font:400 21px/1.5 var(--math);text-align:center;padding:12px 0;color:var(--ink)}
+.eq sub,.eq sup{font-size:.7em}
+
+.prompt{margin:22px 0 10px;font:500 11px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.opts{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.opt{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;align-items:start;width:100%;text-align:left;border:0;border-bottom:1px solid var(--rule);background:transparent;padding:14px 10px 14px 4px;transition:background .12s}
+.opt:hover{background:rgba(14,83,96,.045)}
+.opt .key{width:28px;height:28px;display:grid;place-items:center;border:1.5px solid var(--ink);font:500 13px/1 var(--mono);color:var(--ink);background:var(--sheet)}
+.opts[data-kind="single"] .key,.opts[data-kind="tf"] .key{border-radius:50%}
+.opt-text{font:400 17px/1.55 var(--math);color:var(--text);padding-top:1px}
+.opt[aria-checked="true"]{background:var(--teal-wash)}
+.opt[aria-checked="true"] .key{background:var(--teal);border-color:var(--teal);color:#fff}
+.opt[aria-checked="true"] .opt-text{color:var(--ink)}
+
+.q-foot{display:flex;align-items:center;gap:12px;margin-top:26px;flex-wrap:wrap}
+.btn{border:1.5px solid var(--ink);background:var(--sheet);padding:11px 16px;font:500 13px/1 var(--ui);letter-spacing:.01em;color:var(--ink)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.primary:hover{background:var(--teal);border-color:var(--teal)}
+.btn:disabled{opacity:.38;cursor:not-allowed;background:var(--sheet);color:var(--ink)}
+.btn.primary:disabled{background:var(--navy);color:#fff}
+.q-foot .spacer{flex:1}
+.hint{font:12px/1.4 var(--mono);color:var(--muted)}
+
+/* ---------- results ---------- */
+.results{padding:34px 40px 40px}
+.res-top{display:grid;grid-template-columns:auto minmax(0,1fr);gap:40px;align-items:end;padding-bottom:22px;border-bottom:2px solid var(--rule-strong)}
+.score{font:500 84px/.85 var(--mono);color:var(--navy);letter-spacing:-.06em}
+.score small{font-size:.42em;color:var(--muted);letter-spacing:-.02em}
+.res-top h2{margin:0 0 6px;font:500 28px/1.15 var(--ui);letter-spacing:-.02em;color:var(--ink)}
+.res-top p{margin:0;color:var(--muted);font-size:14px}
+.res-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin:26px 0 8px}
+.res-cols h3,.solutions>h3{font:500 10px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 10px}
+table.tally{width:100%;border-collapse:collapse;font:13px/1.4 var(--mono)}
+table.tally td{padding:8px 0;border-bottom:1px solid var(--rule)}
+table.tally td:last-child{text-align:right;white-space:nowrap}
+table.tally .miss{color:var(--wrong)}
+.review{list-style:none;margin:0;padding:0}
+.review li{padding:10px 0;border-bottom:1px solid var(--rule)}
+.review b{display:block;font:500 15px/1.3 var(--ui);color:var(--ink)}
+.review span{display:block;font:14px/1.5 var(--math);color:var(--text);margin-top:3px}
+.review .src{display:block;font:11px/1.5 var(--mono);color:var(--muted);margin-top:4px}.review a.src{color:var(--teal)}
+.clean{font:16px/1.55 var(--math);color:var(--text);margin:0}
+.solutions{margin-top:34px}
+.sol{border-top:1px solid var(--rule-strong);padding:24px 0 8px;scroll-margin-top:72px}
+.sol-head{display:flex;gap:14px;align-items:baseline}
+.sol-head .q-num{font-size:28px}
+.mark{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.1em;padding:5px 0}
+.mark.right{color:var(--right)}.mark.wrong{color:var(--wrong)}
+.sol .stem{font-size:17px;margin-top:12px}
+.sol .opts{margin-top:10px}
+.sol .opt{cursor:default;padding:10px 8px 10px 4px}
+.sol .opt:hover{background:transparent}
+.sol .opt .key{width:24px;height:24px;font-size:12px}
+.sol .opt-text{font-size:15.5px}
+.sol .opt.is-correct{background:var(--right-wash)}
+.sol .opt.is-correct .key{background:var(--right);border-color:var(--right);color:#fff}
+.sol .opt.is-picked-wrong{background:var(--wrong-wash)}
+.sol .opt.is-picked-wrong .key{background:var(--wrong);border-color:var(--wrong);color:#fff}
+.sol .opt .tag{display:block;font:500 10px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-top:4px;color:var(--muted)}
+.expl{margin:16px 0 10px;padding:14px 0 0 18px;border-left:2px solid var(--teal);font:16px/1.65 var(--math);color:var(--text);max-width:70ch}
+.expl p{margin:0 0 10px}
+.expl .expl-h{font:500 10px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--teal);margin-bottom:8px}
+.refs{font:12px/1.6 var(--mono);color:var(--muted);margin:0 0 14px 20px}
+.res-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;padding-top:20px;border-top:2px solid var(--rule-strong)}
+
+/* ---------- archive ---------- */
+.archive{padding:34px 40px 40px}
+.archive h2{margin:0;font:500 30px/1.1 var(--ui);letter-spacing:-.025em;color:var(--ink)}
+.archive > p{margin:8px 0 22px;color:var(--muted);font-size:14px}
+table.index{width:100%;border-collapse:collapse}
+table.index th{font:500 10px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);text-align:left;padding:0 16px 8px 0;border-bottom:1.5px solid var(--ink)}
+table.index td{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+table.index td.no{font:500 22px/1 var(--mono);color:var(--navy);white-space:nowrap}
+table.index td.date{white-space:nowrap}table.index td.date a{font:500 16px/1.3 var(--ui);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+table.index td.date a:hover{border-color:var(--teal);color:var(--teal)}
+table.index td.date small{display:block;font:12px/1.4 var(--mono);color:var(--muted);margin-top:4px}
+table.index td.fields{font:14px/1.5 var(--math);color:var(--text)}
+table.index td.mine{font:500 14px/1 var(--mono);white-space:nowrap;text-align:right}
+table.index th:last-child{text-align:right}
+table.index tr[aria-current="true"] td.no{color:var(--teal)}
+
+.foot{max-width:1180px;margin:0 auto;padding:18px 28px 40px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:20px;font:12px/1.6 var(--mono);color:var(--muted)}
+.foot a{color:var(--muted)}
+
+@media (max-width:900px){
+  .bench{grid-template-columns:1fr;gap:18px;padding-top:22px}
+  .side{position:static}
+  .navgrid{grid-template-columns:repeat(8,1fr)}
+  .navgrid button{aspect-ratio:auto;height:44px}
+  .keys{display:none}
+  .ps-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ps-facts>div:nth-child(3){border-left:0;padding-left:0}
+  .ps-facts>div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .res-cols{grid-template-columns:1fr;gap:26px}
+}
+@media (max-width:600px){
+  .wrap,.runhead-inner{padding-left:16px;padding-right:16px}
+  .runhead-inner{gap:10px}
+  .wordmark span.full{display:none}
+  .runhead nav a,.runhead nav button{padding:8px 6px;font-size:11px}
+  .ps-head{padding-top:26px}
+  .ps-title{grid-template-columns:1fr;gap:10px}
+  .ps-no{text-align:left;display:flex;align-items:baseline;gap:10px}
+  .ps-no b{font-size:24px;margin:0}
+  .sheet{box-shadow:none;margin:0 -16px;border-left:0;border-right:0}
+  .q,.results,.archive{padding:24px 16px 26px}
+  .q-num{font-size:34px}
+  .q-head{flex-wrap:wrap;gap:6px 14px}
+  .q-kind{margin-left:0;width:100%}
+  .stem{font-size:18px}
+  .opt-text{font-size:16px}
+  .opt{grid-template-columns:30px minmax(0,1fr);gap:10px}
+  .console{font-size:12px}
+  .q-foot .btn{flex:1}
+  .q-foot .spacer{display:none}
+  .hint{width:100%;order:-1}
+  .res-top{grid-template-columns:1fr;gap:14px}
+  .score{font-size:64px}
+  table.index td.fields{display:none}
+  table.index th:nth-child(3){display:none}
+  .foot{flex-direction:column;padding-left:16px;padding-right:16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{
+  body{background:#fff}
+  .runhead,.side,.q-foot,.res-actions,.foot{display:none}
+  .bench{display:block;padding:0}
+  .sheet{border:0;box-shadow:none}
+  .sol{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#bench">Skip to the problem set</a>
+<header class="runhead">
+  <div class="runhead-inner">
+    <a class="wordmark" href="#" id="homeLink" aria-label="Daily Econ Challenge, latest problem set">
+      <svg viewBox="0 0 22 22" aria-hidden="true"><rect x=".75" y=".75" width="20.5" height="20.5" fill="none" stroke="#1c2f4a" stroke-width="1.5"/><path d="M1 7.7h20M1 14.3h20M7.7 1v20M14.3 1v20" stroke="#c9d3d6" stroke-width=".8"/><path d="M4 17l5-5.5 3.5 2.7L18 6" fill="none" stroke="#0e5360" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Daily Econ <span class="full">Challenge</span></span>
+    </a>
+    <nav aria-label="Site">
+      <a href="#archive" id="archiveLink">Archive</a>
+      <a href="../personal-updates/">Periodicals ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer class="foot">
+  <span>Daily Econ Challenge · Problem sets Monday–Friday · Progress is saved in this browser only</span>
+  <a href="../personal-updates/">Back to Periodicals</a>
+</footer>
+
+<!--
+EDITION MAINTENANCE — read before every update.
+Canonical file: daily-econ-challenge/index.html in iainholmes/iainholmes.github.io. Fetch the
+current GitHub version immediately before editing; preserve unfamiliar changes (another
+collaborator may have made them). Append one new object to "editions" per weekday; never delete,
+rewrite or renumber an existing edition. "no" is the published issue number: it increments by one
+per published set, and skipped days do not skip numbers. Dates are YYYY-MM-DD (America/New_York).
+Each set: ~8 questions; applied reasoning over trivia; mix single / multi / tf only where the format
+fits the question. Every question needs: id unique within the set, field, concepts (short
+review-able names), a precise explanation that argues why each distractor fails, and "correct" as
+zero-based option indexes. Before writing, list the concepts used in the previous ~20 sets and avoid
+repeating a concept unless the new question tests a genuinely different facet. Exhibits: "table",
+"console" (R / fixest style, must be syntactically valid), or "eq" (HTML math only). Keep numbers
+internally consistent and hand-verified.
+Identity: graduate problem set x quantitative lab notebook. Off-white graph paper, charcoal, deep
+teal/navy, fine rules, mono numerals, STIX serif question text, Space Grotesk interface. Not
+Field Brief's broadsheet, not the weekly research folio. No pills, badges, slogans, streaks,
+confetti or gamified copy. Verify desktop and ~390px mobile before one coherent commit.
+-->
+<script type="application/json" id="challenge-data">
+{
+  "editions": [
+    {
+      "no": 1,
+      "date": "2026-09-28",
+      "minutes": 15,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "single",
+          "stem": "<p>You regress log hourly wages on years of schooling in a cross-section. Unobserved ability raises wages and is positively correlated with schooling. In addition, schooling is self-reported with classical measurement error (noise uncorrelated with true schooling, ability, and the wage error).</p><p>Relative to the true return to schooling <i>β</i>, the OLS coefficient is:</p>",
+          "options": [
+            "Biased upward, because omitted ability and measurement error both push the estimate up.",
+            "Biased toward zero, because classical measurement error dominates omitted-variable bias.",
+            "Of ambiguous sign relative to <i>β</i>: omitted ability pushes it up, while measurement error attenuates it.",
+            "Consistent, because classical measurement error averages out in large samples."
+          ],
+          "correct": [2],
+          "concepts": ["Omitted-variable bias", "Attenuation bias"],
+          "explanation": "<p>Write measured schooling as <i>S</i> = <i>S</i>* + <i>e</i>. With reliability ratio <i>λ</i> = Var(<i>S</i>*)/Var(<i>S</i>) &lt; 1 and <i>δ</i> the coefficient from projecting ability on true schooling, the probability limit is approximately <i>λ</i>(<i>β</i> + <i>γδ</i>), where <i>γ</i> &gt; 0 is ability's effect on wages. Ability inflates the term in parentheses; the reliability ratio shrinks everything toward zero. Which force wins depends on <i>λ</i>, <i>γ</i> and <i>δ</i>, so the net sign is an empirical question.</p><p>Measurement error attenuates rather than inflates, so (A) is wrong. Nothing guarantees attenuation dominates, so (B) is wrong. Measurement error does not average out: it enters Var(<i>S</i>) in the denominator at every sample size, so (D) is wrong. This tension is why the returns-to-schooling literature leans on twins, instruments and repeated reports.</p>",
+          "refs": "Griliches (1977), Econometrica; Ashenfelter & Krueger (1994), AER"
+        },
+        {
+          "id": "q2",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>States adopt a policy in different years (staggered adoption), and the treatment effect grows the longer a state has been treated. You estimate a two-way fixed-effects regression, <i>y<sub>st</sub></i> = <i>α<sub>s</sub></i> + <i>λ<sub>t</sub></i> + <i>τ D<sub>st</sub></i> + <i>ε<sub>st</sub></i>.</p><p>Which statements are correct?</p>",
+          "options": [
+            "The TWFE estimate of <i>τ</i> is a weighted average of all 2×2 difference-in-differences comparisons, including comparisons that use already-treated states as controls.",
+            "With effects that change over time, some group-time treatment effects can receive negative weight in the TWFE estimate.",
+            "If the pre-period event-study coefficients are statistically indistinguishable from zero, the TWFE estimate of <i>τ</i> is unbiased for the average treatment effect on the treated.",
+            "Callaway–Sant’Anna estimate group-time average treatment effects using never-treated or not-yet-treated units as controls, avoiding already-treated comparisons."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Staggered difference-in-differences", "TWFE negative weights"],
+          "explanation": "<p>Goodman-Bacon shows the TWFE coefficient decomposes into every 2×2 DiD in the data, including “late vs. early” comparisons in which already-treated states serve as controls (A). When effects grow with time since treatment, those comparisons subtract the early group's still-evolving effect, and de Chaisemartin & D’Haultfœuille show some group-time effects can enter with negative weights (B). Callaway & Sant’Anna, like other heterogeneity-robust estimators, build group-time ATTs only from clean comparisons (D).</p><p>(C) fails for two reasons. First, the bias above comes from heterogeneous effects and remains even when parallel trends holds exactly. Second, an insignificant pre-trend test is not evidence of no pre-trend: these tests often have low power, and conditioning on passing them distorts inference (Roth 2022).</p>",
+          "refs": "Goodman-Bacon (2021); de Chaisemartin & D’Haultfœuille (2020); Callaway & Sant’Anna (2021); Roth (2022), all J. Econometrics / AER / AER: Insights"
+        },
+        {
+          "id": "q3",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>A regulator must commit to an emissions tax or a tradable cap before learning firms' marginal abatement cost (MAC), which is uncertain. Over the regulatory period the marginal damage (MD) curve is nearly flat, as for a long-lived stock pollutant, while the MAC curve is steep. Uncertainty affects only costs, and both curves are linear.</p><p>Which instrument minimises expected deadweight loss?</p>",
+          "options": [
+            "The cap, because it guarantees the environmental outcome.",
+            "The tax, because a flat marginal-damage curve means a fixed price closely tracks the optimum whatever costs turn out to be.",
+            "They are equivalent, because a cap and a tax are dual instruments.",
+            "It cannot be determined without knowing the correlation between cost and damage shocks."
+          ],
+          "correct": [1],
+          "concepts": ["Prices vs. quantities (Weitzman)"],
+          "explanation": "<p>Weitzman's result: with linear curves and cost uncertainty alone, the expected welfare advantage of prices over quantities is proportional to the variance of the cost shock times (|MAC slope| − |MD slope|). Prices win when marginal damages are flatter than marginal abatement costs. Intuitively, if MD is flat the efficient abatement level is wherever MAC crosses a roughly constant price, and a tax delivers exactly that. A cap fixes quantity and, with a steep MAC, produces large errors in abatement cost.</p><p>(A) treats certainty over quantity as valuable in itself; with flat damages it is not. (C) holds only without uncertainty. (D) matters only when damage shocks are also uncertain and correlated with cost shocks (Stavins 1996). The stem rules that out. This is the standard economic argument for carbon taxes or price-collared trading over pure short-run caps.</p>",
+          "refs": "Weitzman (1974), Review of Economic Studies; Stavins (1996), JEEM; Pizer (2002), J. Public Econ."
+        },
+        {
+          "id": "q4",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A small per-unit excise tax is levied on <i>sellers</i> in a competitive market. At the pre-tax equilibrium, the price elasticity of demand is −0.5 and the price elasticity of supply is 1.5.</p><p>Approximately what share of the tax is borne by consumers?</p>",
+          "options": [
+            "25%",
+            "50%",
+            "75%",
+            "100%, because the tax is collected from sellers, who pass it on in full."
+          ],
+          "correct": [2],
+          "concepts": ["Tax incidence"],
+          "explanation": "<p>For a small tax, the consumer share of the burden is <i>ε<sub>S</sub></i> / (<i>ε<sub>S</sub></i> − <i>ε<sub>D</sub></i>) = 1.5 / (1.5 + 0.5) = 0.75. The less elastic side of the market bears more of the tax. Here demand is three times less elastic than supply, so consumers bear three-quarters.</p><p>Statutory incidence (who remits the tax) is irrelevant in a competitive market, so (D) is wrong. The 25% in (A) inverts the formula and is the producer share. Beyond this benchmark, pass-through can exceed 100% under imperfect competition with sufficiently convex demand (Weyl & Fabinger 2013).</p>",
+          "refs": "Weyl & Fabinger (2013), JPE; Fullerton & Metcalf (2002), Handbook of Public Economics"
+        },
+        {
+          "id": "q5",
+          "field": "Macroeconomics",
+          "kind": "tf",
+          "stem": "<p>In the standard three-equation New Keynesian model, the central bank sets</p><div class=\"eq\"><i>i<sub>t</sub></i> = <i>ρ</i> + <i>φ<sub>π</sub></i> <i>π<sub>t</sub></i> + <i>φ<sub>y</sub></i> <i>ỹ<sub>t</sub></i></div><p>True or false: with <i>φ<sub>y</sub></i> ≥ 0, choosing <i>φ<sub>π</sub></i> &gt; 1 raises the real interest rate when inflation rises and is sufficient for a determinate (locally unique) rational-expectations equilibrium.</p>",
+          "options": ["True", "False"],
+          "correct": [0],
+          "concepts": ["Taylor principle & determinacy"],
+          "explanation": "<p>True. With <i>φ<sub>π</sub></i> &gt; 1 the nominal rate moves more than one-for-one with inflation, so the real rate rises and demand cools, ruling out self-fulfilling inflation paths. The exact determinacy condition (Bullard & Mitra 2002) is <i>κ</i>(<i>φ<sub>π</sub></i> − 1) + (1 − <i>β</i>)<i>φ<sub>y</sub></i> &gt; 0. With <i>κ</i> &gt; 0, <i>β</i> &lt; 1 and <i>φ<sub>y</sub></i> ≥ 0, it holds whenever <i>φ<sub>π</sub></i> &gt; 1.</p><p>Two caveats matter in practice. A large enough output response can deliver determinacy even with <i>φ<sub>π</sub></i> slightly below 1. The result is local, so the zero lower bound and global dynamics are separate questions (Benhabib, Schmitt-Grohé & Uribe 2001). Clarida, Galí & Gertler's estimate that pre-1979 Fed policy violated the principle is the classic empirical application.</p>",
+          "refs": "Bullard & Mitra (2002), JME; Clarida, Galí & Gertler (2000), QJE; Galí (2015), ch. 4"
+        },
+        {
+          "id": "q6",
+          "field": "Causal inference",
+          "kind": "single",
+          "stem": "<p>An oversubscribed charter school admits applicants by lottery. Some winners decline, and some losers enrol later from the waitlist.</p>",
+          "exhibit": {"type":"table","caption":"Exhibit 6 · Lottery applicants","head":["","Won lottery","Lost lottery","Difference"],"rows":[["Share attending charter","0.72","0.42","0.30"],["Mean test score (SD units)","0.11","0.05","0.06"]]},
+          "after": "<p>Using winning the lottery as an instrument for attendance, which statement is correct?</p>",
+          "options": [
+            "The effect of attending is 0.06 SD, the difference in mean scores.",
+            "The effect of attending is 0.018 SD, the score difference times the attendance difference.",
+            "The IV estimate is 0.20 SD: the average effect of attendance for students who attend because they won the lottery.",
+            "The IV estimate is 0.20 SD: the average treatment effect of charter attendance for all applicants."
+          ],
+          "correct": [2],
+          "concepts": ["LATE / Wald estimator", "Intent-to-treat"],
+          "explanation": "<p>The Wald estimator divides the reduced form by the first stage: 0.06 / 0.30 = 0.20 SD. Under independence, exclusion, relevance and monotonicity (no one attends <i>because</i> they lost), this is the local average treatment effect for <i>compliers</i>: applicants whose attendance is switched on by winning (Imbens & Angrist 1994).</p><p>0.06 SD is the intent-to-treat effect of an offer, a policy-relevant number in its own right but not the effect of attending, so (A) is wrong. (B) multiplies where it should divide. (D) overreaches: always-takers and never-takers contribute nothing to the estimate, and their effects may differ. Extrapolating to all applicants requires assumptions about effect heterogeneity.</p>",
+          "refs": "Imbens & Angrist (1994), Econometrica; Abdulkadiroğlu et al. (2011), QJE"
+        },
+        {
+          "id": "q7",
+          "field": "Statistics & inference",
+          "kind": "multi",
+          "stem": "<p>Six of fifty states adopt a policy. You have 20 years of individual-level data and estimate:</p>",
+          "exhibit": {"type":"console","caption":"Exhibit 7 · R","code":"<span class=\"p\">&gt;</span> library(fixest)\n<span class=\"p\">&gt;</span> m &lt;- feols(y ~ treat | state + year,\n+            data = df, cluster = ~state)\n<span class=\"p\">&gt;</span> etable(m)   <span class=\"c\"># 6 treated clusters of 50</span>"},
+          "after": "<p>Which statements are correct?</p>",
+          "options": [
+            "Heteroskedasticity-robust standard errors that ignore clustering are likely too small if outcomes are correlated within states over time.",
+            "Clustering by state changes the point estimate of the coefficient on <span style=\"font-family:var(--mono);font-size:.9em\">treat</span>.",
+            "With only six treated clusters, conventional cluster-robust t-tests can over-reject; wild cluster bootstrap or randomization inference are common responses.",
+            "Because the model includes state fixed effects, clustering by state is unnecessary."
+          ],
+          "correct": [0, 2],
+          "concepts": ["Cluster-robust inference", "Few treated clusters"],
+          "explanation": "<p>(A) is the Bertrand, Duflo & Mullainathan lesson. Serially correlated state-level shocks make individual observations far less informative than their count suggests, and unclustered standard errors badly over-reject. (C) is correct because cluster-robust variance estimators rely on asymptotics in the number of clusters, and with few <i>treated</i> clusters they are unreliable. Wild cluster bootstrap and randomization inference are standard responses, though MacKinnon & Webb show even these can struggle when treated clusters are very few.</p><p>(B) is wrong: clustering changes only the variance estimate, never the point estimate. (D) is wrong: state fixed effects absorb time-invariant state differences but not serial correlation in state-year shocks, which is what causes the problem.</p>",
+          "refs": "Bertrand, Duflo & Mullainathan (2004), QJE; Cameron & Miller (2015), JHR; MacKinnon & Webb (2017), J. Applied Econometrics"
+        },
+        {
+          "id": "q8",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A competitive industry extracts a known, finite stock of a nonrenewable resource at zero marginal extraction cost. Demand is stationary and there is no backstop technology. The market interest rate rises unexpectedly and permanently.</p><p>What happens to the equilibrium path?</p>",
+          "options": [
+            "Nothing changes, because the total stock is fixed.",
+            "The initial price rises and extraction is delayed, because future revenue is discounted more heavily.",
+            "The initial price falls and extraction shifts toward the present; the price then rises faster than before.",
+            "The price grows at the same rate as before, but from a lower starting level."
+          ],
+          "correct": [2],
+          "concepts": ["Hotelling rule"],
+          "explanation": "<p>With zero extraction cost, Hotelling's rule makes the price (the scarcity rent) grow at the interest rate: <i>p<sub>t</sub></i> = <i>p</i><sub>0</sub><i>e<sup>rt</sup></i>. A higher <i>r</i> makes the path steeper. The same total stock must still be exhausted, so a steeper path must start lower and cross the old path from below. The result is more extraction today, less later, and earlier exhaustion. Intuitively, a higher return on financial assets makes resources in the ground a worse store of value, so owners extract and sell sooner.</p><p>(A) ignores the timing margin. (B) reverses the logic: heavier discounting makes owners want revenue <i>sooner</i>. (D) contradicts the rule itself, since the growth rate equals <i>r</i>.</p>",
+          "refs": "Hotelling (1931), JPE; Dasgupta & Heal (1979), ch. 6"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script>
+(function(){
+  'use strict';
+  var DATA = JSON.parse(document.getElementById('challenge-data').textContent);
+  var EDITIONS = DATA.editions.slice().sort(function(a,b){return b.date.localeCompare(a.date)});
+  var LETTERS = 'ABCDEFGH';
+  var app = document.getElementById('app');
+  var KEY = 'dec:v1:';
+  var ed = null, st = null;
+
+  function load(date){try{var r=localStorage.getItem(KEY+date);return r?JSON.parse(r):null}catch(e){return null}}
+  function save(){try{localStorage.setItem(KEY+ed.date,JSON.stringify(st))}catch(e){}}
+  function fresh(){return {answers:{},current:0,submitted:false}}
+  function pad(n){return String(n).padStart(3,'0')}
+  function dateObj(d){return new Date(d+'T12:00:00')}
+  function longDate(d){return dateObj(d).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}
+  function shortDate(d){return dateObj(d).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'})}
+  function kindLabel(k){return k==='multi'?'Select all that apply':k==='tf'?'True or false':'Select one'}
+  function kindShort(k){return k==='multi'?'multi-select':k==='tf'?'true / false':'single-select'}
+  function same(a,b){a=(a||[]).slice().sort();b=b.slice().sort();return a.length===b.length&&a.every(function(v,i){return v===b[i]})}
+  function isRight(q){return same(st.answers[q.id],q.correct)}
+  function answered(q){return (st.answers[q.id]||[]).length>0}
+  function nAnswered(){return ed.questions.filter(answered).length}
+  function fields(e){var s=[];e.questions.forEach(function(q){if(s.indexOf(q.field)<0)s.push(q.field)});return s}
+  function scoreOf(e,s){return e.questions.filter(function(q){return same((s.answers||{})[q.id],q.correct)}).length}
+
+  function exhibitHTML(x){
+    if(!x)return '';
+    var cap='<div class="exhibit-cap">'+x.caption+'</div>';
+    if(x.type==='table'){
+      return '<div class="exhibit">'+cap+'<div style="overflow-x:auto"><table class="data"><thead><tr>'+x.head.map(function(h){return '<th scope="col">'+h+'</th>'}).join('')+'</tr></thead><tbody>'+x.rows.map(function(r){return '<tr>'+r.map(function(c,i){return i?'<td>'+c+'</td>':'<th scope="row" style="font-weight:400">'+c+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div></div>';
+    }
+    if(x.type==='console')return '<div class="exhibit">'+cap+'<div class="console" role="figure" aria-label="R console input">'+x.code+'</div></div>';
+    if(x.type==='eq')return '<div class="exhibit">'+cap+'<div class="eq">'+x.html+'</div></div>';
+    return '';
+  }
+
+  function headHTML(){
+    var f=fields(ed), latest=EDITIONS[0]===ed;
+    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><h1 id="psTitle">Problem set <span>'+pad(ed.no)+'</span></h1></div>'+
+      '<dl class="ps-facts"><div><dt>'+(latest?'Latest set':'From the archive')+'</dt><dd><time datetime="'+ed.date+'">'+longDate(ed.date)+'</time></dd></div><div><dt>Questions</dt><dd>'+ed.questions.length+' · about '+ed.minutes+' min</dd></div><div><dt>Fields</dt><dd>'+f.length+' areas</dd></div><div><dt>Status</dt><dd id="statusFact">'+(st.submitted?'Completed · '+scoreOf(ed,st)+' / '+ed.questions.length:nAnswered()+' of '+ed.questions.length+' answered')+'</dd></div></dl></section>';
+  }
+
+  function sideHTML(){
+    return '<aside class="side" aria-label="Question navigator"><h2>Questions</h2><div class="navgrid" role="list">'+
+      ed.questions.map(function(q,i){
+        var s=st.submitted?(isRight(q)?'right':'wrong'):(answered(q)?'answered':'open');
+        var lab='Question '+(i+1)+(st.submitted?(s==='right'?', correct':', incorrect'):(answered(q)?', answered':', not answered'));
+        return '<button type="button" role="listitem" data-go="'+i+'" data-state="'+s+'" aria-label="'+lab+'"'+(!st.submitted&&i===st.current?' aria-current="step"':'')+'>'+(i+1)+'</button>'
+      }).join('')+'</div>'+
+      '<div class="meter"><span>'+(st.submitted?'Score':'Answered')+'</span><span>'+(st.submitted?scoreOf(ed,st):nAnswered())+' / '+ed.questions.length+'</span></div><div class="meter-bar"><i style="width:'+(100*(st.submitted?scoreOf(ed,st):nAnswered())/ed.questions.length)+'%"></i></div>'+
+      '<div class="keys"><kbd>A</kbd>–<kbd>D</kbd> choose<br><kbd>←</kbd> <kbd>→</kbd> previous / next<br><kbd>Enter</kbd> next or submit</div></aside>';
+  }
+
+  function optsHTML(q,review){
+    var picked=st.answers[q.id]||[];
+    return '<ul class="opts" data-kind="'+q.kind+'" role="'+(q.kind==='multi'?'group':'radiogroup')+'" aria-label="'+kindLabel(q.kind)+'">'+q.options.map(function(o,i){
+      var on=picked.indexOf(i)>=0, cls='opt', tag='';
+      if(review){
+        var c=q.correct.indexOf(i)>=0;
+        if(c)cls+=' is-correct';
+        if(on&&!c)cls+=' is-picked-wrong';
+        tag=on&&c?'Your answer · correct':on?'Your answer':c?'Correct answer':'';
+      }
+      var inner='<span class="key" aria-hidden="true">'+(q.kind==='tf'?o.charAt(0):LETTERS[i])+'</span><span class="opt-text">'+o+(tag?'<span class="tag">'+tag+'</span>':'')+'</span>';
+      if(review)return '<li class="'+cls+'">'+inner+'</li>';
+      return '<li><button type="button" class="'+cls+'" role="'+(q.kind==='multi'?'checkbox':'radio')+'" aria-checked="'+on+'" data-opt="'+i+'">'+inner+'</button></li>';
+    }).join('')+'</ul>';
+  }
+
+  function questionHTML(){
+    var i=st.current,q=ed.questions[i],last=i===ed.questions.length-1,remaining=ed.questions.length-nAnswered();
+    return '<article class="sheet q" aria-labelledby="qlabel"><header class="q-head"><span class="q-num" id="qlabel" aria-label="Question '+(i+1)+'">Q'+(i+1)+'</span><span class="q-field">'+q.field+'</span><span class="q-kind">'+(i+1)+' / '+ed.questions.length+' · '+kindShort(q.kind)+'</span></header>'+
+      '<div class="stem">'+q.stem+'</div>'+exhibitHTML(q.exhibit)+(q.after?'<div class="stem" style="margin-top:14px">'+q.after+'</div>':'')+
+      '<div class="prompt">'+kindLabel(q.kind)+'</div>'+optsHTML(q,false)+
+      '<div class="q-foot"><button type="button" class="btn" data-act="prev"'+(i===0?' disabled':'')+'>← Previous</button><span class="spacer"></span>'+
+      (last?'<span class="hint">'+(remaining?remaining+' unanswered':'All questions answered')+'</span><button type="button" class="btn primary" data-act="submit"'+(remaining?' disabled':'')+'>Submit for solutions</button>':'<button type="button" class="btn primary" data-act="next">Next →</button>')+
+      '</div></article>';
+  }
+
+  function resultsHTML(){
+    var n=ed.questions.length,sc=scoreOf(ed,st),byField={},missed=[];
+    ed.questions.forEach(function(q,i){
+      var f=byField[q.field]||(byField[q.field]={r:0,t:0});f.t++;
+      if(isRight(q))f.r++;else q.concepts.forEach(function(c){missed.push({c:c,q:i+1,refs:q.refs})});
+    });
+    var seen={};missed=missed.filter(function(m){if(seen[m.c])return false;seen[m.c]=1;return true});
+    var verdict=sc===n?'Every question correct.':sc>=n-2?'A strong set; review the misses below.':'Worth a second pass through the solutions below.';
+    return '<article class="sheet results" aria-labelledby="resTitle"><div class="res-top"><div class="score" aria-label="Score '+sc+' of '+n+'">'+sc+'<small>/'+n+'</small></div><div><h2 id="resTitle">Problem set '+pad(ed.no)+' · solutions</h2><p>'+verdict+' Multi-select questions count as correct only when every correct option, and nothing else, is selected.</p></div></div>'+
+      '<div class="res-cols"><div><h3>By field</h3><table class="tally"><tbody>'+Object.keys(byField).map(function(k){var f=byField[k];return '<tr><td>'+k+'</td><td'+(f.r<f.t?' class="miss"':'')+'>'+f.r+' / '+f.t+'</td></tr>'}).join('')+'</tbody></table></div>'+
+      '<div><h3>Concepts to review</h3>'+(missed.length?'<ul class="review">'+missed.map(function(m){return '<li><b>'+m.c+'</b><a class="src" href="#sol-'+m.q+'" data-sol="'+m.q+'">Question '+m.q+' solution ↓</a><span class="src">'+m.refs+'</span></li>'}).join('')+'</ul>':'<p class="clean">Nothing flagged this time. The references under each solution are the natural next reading.</p>')+'</div></div>'+
+      '<section class="solutions" aria-label="Worked solutions"><h3>Worked solutions</h3>'+ed.questions.map(function(q,i){
+        var r=isRight(q);
+        return '<div class="sol" id="sol-'+(i+1)+'"><div class="sol-head"><span class="q-num">Q'+(i+1)+'</span><span class="q-field">'+q.field+'</span><span class="mark '+(r?'right':'wrong')+'" style="margin-left:auto">'+(r?'Correct':'Incorrect')+'</span></div><div class="stem">'+q.stem+'</div>'+exhibitHTML(q.exhibit)+(q.after?'<div class="stem">'+q.after+'</div>':'')+optsHTML(q,true)+'<div class="expl"><div class="expl-h">Reasoning</div>'+q.explanation+'</div><p class="refs">'+q.refs+'</p></div>';
+      }).join('')+'</section>'+
+      '<div class="res-actions"><button type="button" class="btn" data-act="retake">Retake this set</button><a class="btn" href="#archive" style="text-decoration:none">Archive</a></div></article>';
+  }
+
+  function archiveHTML(){
+    return '<section class="wrap ps-head"><div class="ps-title"><h1 id="psTitle">Archive</h1><div class="ps-no">'+EDITIONS.length+' problem '+(EDITIONS.length===1?'set':'sets')+'</div></div></section>'+
+      '<div class="wrap" style="padding-top:28px;padding-bottom:80px"><article class="sheet archive" aria-labelledby="arcTitle"><h2 id="arcTitle">Problem sets</h2><p>Every set stays here, newest first. Scores reflect attempts made in this browser.</p>'+
+      '<table class="index"><thead><tr><th scope="col">No.</th><th scope="col">Date</th><th scope="col">Fields</th><th scope="col">Your score</th></tr></thead><tbody>'+
+      EDITIONS.map(function(e,i){var s=load(e.date),mine=s&&s.submitted?scoreOf(e,s)+' / '+e.questions.length:s&&Object.keys(s.answers||{}).length?'in progress':'—';
+        return '<tr'+(i===0?' aria-current="true"':'')+'><td class="no">'+pad(e.no)+'</td><td class="date"><a href="#'+e.date+'">'+shortDate(e.date)+'</a><small>'+e.questions.length+' questions'+(i===0?' · latest':'')+'</small></td><td class="fields">'+fields(e).join(', ')+'</td><td class="mine">'+mine+'</td></tr>'}).join('')+
+      '</tbody></table></article></div>';
+  }
+
+  function render(focusMain){
+    document.getElementById('archiveLink').setAttribute('aria-current',location.hash==='#archive'?'page':'false');
+    if(location.hash==='#archive'){
+      document.title='Archive · Daily Econ Challenge';
+      app.innerHTML=archiveHTML();
+      return;
+    }
+    document.title='No. '+pad(ed.no)+' · Daily Econ Challenge';
+    app.innerHTML=headHTML()+'<div class="wrap bench" id="bench">'+sideHTML()+'<div class="main-col" id="mainCol">'+(st.submitted?resultsHTML():questionHTML())+'</div></div>';
+    if(focusMain){var h=app.querySelector('.q-num,.score');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
+  }
+
+  function go(i,focus){st.current=Math.max(0,Math.min(ed.questions.length-1,i));save();render(focus);
+    var b=document.getElementById('bench');if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView({block:'start'})}
+
+  function pick(i){
+    var q=ed.questions[st.current],cur=(st.answers[q.id]||[]).slice();
+    if(q.kind==='multi'){var k=cur.indexOf(i);if(k>=0)cur.splice(k,1);else cur.push(i);cur.sort()}
+    else cur=[i];
+    st.answers[q.id]=cur;save();render();
+    var btn=app.querySelector('[data-opt="'+i+'"]');if(btn)btn.focus({preventScroll:true});
+  }
+
+  function submit(){if(nAnswered()<ed.questions.length)return;st.submitted=true;save();render(true);window.scrollTo(0,0)}
+
+  app.addEventListener('click',function(e){
+    var sl=e.target.closest('[data-sol]');if(sl){e.preventDefault();var el=document.getElementById('sol-'+sl.dataset.sol);if(el)el.scrollIntoView({block:'start'});return}
+    var t=e.target.closest('[data-opt],[data-act],[data-go]');if(!t)return;
+    if(t.dataset.opt!=null)return pick(+t.dataset.opt);
+    if(t.dataset.go!=null){if(st.submitted){var s=document.getElementById('sol-'+(+t.dataset.go+1));if(s)s.scrollIntoView({block:'start'});return}return go(+t.dataset.go,true)}
+    var a=t.dataset.act;
+    if(a==='prev')go(st.current-1,true);
+    if(a==='next')go(st.current+1,true);
+    if(a==='submit')submit();
+    if(a==='retake'){st=fresh();save();render(true);window.scrollTo(0,0)}
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(location.hash==='#archive'||st.submitted||e.metaKey||e.ctrlKey||e.altKey)return;
+    if(/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||'')))return;
+    var q=ed.questions[st.current],k=e.key.toUpperCase();
+    if(q.kind==='tf'&&(k==='T'||k==='F')){e.preventDefault();return pick(k==='T'?0:1)}
+    var idx=LETTERS.indexOf(k);
+    if(k.length===1&&idx>=0&&idx<q.options.length){e.preventDefault();return pick(idx)}
+    if(e.key==='ArrowRight'){e.preventDefault();go(st.current+1,true)}
+    else if(e.key==='ArrowLeft'){e.preventDefault();go(st.current-1,true)}
+    else if(e.key==='Enter'&&(e.target===document.body||e.target.classList.contains('q-num'))){
+      if(!answered(q))return;e.preventDefault();
+      if(st.current===ed.questions.length-1)submit();else go(st.current+1,true);
+    }
+  });
+
+  function route(){
+    var h=decodeURIComponent(location.hash.slice(1));
+    if(h!=='archive'){
+      var m=EDITIONS.filter(function(e){return e.date===h})[0]||EDITIONS[0];
+      if(!ed||m!==ed){ed=m;st=load(ed.date)||fresh()}
+    } else if(!ed){ed=EDITIONS[0];st=load(ed.date)||fresh()}
+    render();window.scrollTo(0,0);
+  }
+  document.getElementById('homeLink').addEventListener('click',function(e){e.preventDefault();location.hash=EDITIONS[0].date});
+  window.addEventListener('hashchange',route);
+  route();
+})();
+</script>
+</body>
+</html>
