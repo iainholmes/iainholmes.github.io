@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f7f7f3">
-<meta name="description" content="A weekday graduate-level economics and econometrics problem set with worked solutions and a cumulative archive.">
-<title>Daily Econ Challenge</title>
+<meta name="description" content="Ceteris Paribus: a weekday graduate-level economics and econometrics problem set.">
+<title>Ceteris Paribus</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2260%22%20height%3D%2260%22%20rx%3D%224%22%20fill%3D%22%23f7f7f3%22%20stroke%3D%22%231c2f4a%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20d%3D%22M2%2022h60M2%2042h60M22%202v60M42%202v60%22%20stroke%3D%22%23c9d3d6%22%20stroke-width%3D%221.2%22%2F%3E%3Cpath%20d%3D%22M12%2050L26%2034l10%208%2016-24%22%20fill%3D%22none%22%20stroke%3D%22%230e5360%22%20stroke-width%3D%224.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2252%22%20cy%3D%2218%22%20r%3D%224%22%20fill%3D%22%231c2f4a%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,11 +56,13 @@ button{font:inherit;color:inherit;cursor:pointer}
 /* ---------- running header ---------- */
 .runhead{border-bottom:1px solid var(--rule-strong);background:color-mix(in srgb,var(--paper) 92%,transparent);position:sticky;top:0;z-index:20;backdrop-filter:blur(6px)}
 .runhead-inner{max-width:1180px;margin:0 auto;padding:0 28px;height:56px;display:flex;align-items:center;gap:24px}
-.wordmark{font:600 17px/1 var(--ui);letter-spacing:-.01em;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:10px}
-.wordmark svg{width:22px;height:22px;flex:none}
-.runhead nav{margin-left:auto;display:flex;gap:4px;align-items:center}
-.runhead nav a,.runhead nav button{font:500 12px/1 var(--mono);text-decoration:none;color:var(--muted);background:none;border:1px solid transparent;padding:9px 10px;letter-spacing:.02em}
-.runhead nav a:hover,.runhead nav button:hover,.runhead nav [aria-current="page"]{color:var(--ink);border-color:var(--rule)}
+.wordmark{position:absolute;left:50%;transform:translateX(-50%);font:italic 400 19px/1 var(--math);text-decoration:none;color:var(--ink);opacity:0;transition:opacity .2s}
+body.scrolled .wordmark,body.ledger .wordmark{opacity:1}
+.wordmark i{color:var(--teal)}
+.runhead-inner{position:relative}
+.runhead nav.site{margin-left:auto;display:flex;gap:4px;align-items:center}
+.runhead nav.site a{font:500 12px/1 var(--mono);text-decoration:none;color:var(--muted);background:none;border:1px solid transparent;padding:9px 10px;letter-spacing:.02em}
+.runhead nav.site a:hover,.runhead nav.site [aria-current="page"]{color:var(--ink);border-color:var(--rule)}
 
 /* ---------- problem-set header ---------- */
 .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
@@ -211,8 +213,11 @@ table.index tr[aria-current="true"] td.no{color:var(--teal)}
 @media (max-width:600px){
   .wrap,.runhead-inner{padding-left:16px;padding-right:16px}
   .runhead-inner{gap:10px}
-  .wordmark span.full{display:none}
-  .runhead nav a,.runhead nav button{padding:8px 6px;font-size:11px}
+  .wordmark{font-size:17px}
+  .pd-imprint .lbl{display:none}
+  .pd-row{padding:16px 16px 0;overflow-x:auto}
+  .pd-note{display:none}
+  .runhead nav.site a{padding:8px 4px;font-size:11px}
   .ps-head{padding-top:26px}
   .ps-title{grid-template-columns:1fr;gap:10px}
   .ps-no{text-align:left;display:flex;align-items:baseline;gap:10px}
@@ -243,19 +248,61 @@ table.index tr[aria-current="true"] td.no{color:var(--teal)}
   .sheet{border:0;box-shadow:none}
   .sol{break-inside:avoid}
 }
+
+/* masthead */
+.ps-title h1{font:italic 400 clamp(46px,6.4vw,84px)/.92 var(--math)!important;letter-spacing:-.02em!important}
+.ps-title h1 i{color:var(--teal)}
+.ps-no{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.ps-no span{font:500 10px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.ps-no b{font:500 clamp(30px,3.6vw,46px)/1 var(--mono)!important;color:var(--navy);letter-spacing:-.04em;margin:0!important}
+/* record strips */
+.record{display:inline-flex;gap:3px;vertical-align:-2px;margin-left:8px}
+.record i{width:11px;height:11px;border:1.5px solid var(--ink);background:var(--sheet)}
+.record i.a{background:var(--teal-wash)}
+.record i.r{background:var(--right);border-color:var(--right)}
+.record i.w{background:var(--sheet);border-color:var(--wrong);background-image:linear-gradient(45deg,transparent 45%,var(--wrong) 45% 55%,transparent 55%)}
+.record.big{display:flex;margin:10px 0 12px;gap:5px}
+.record.big i{width:22px;height:22px}
+td.mine .record{margin:0 10px 0 0}
+td.mine b{font-weight:500}
+.ledger-note{margin:14px 0 0;font:12px/1.5 var(--mono);color:var(--muted)}
+/* Periodicals shelf (Ceteris Paribus dress) */
+.pd-imprint{display:flex;align-items:center;gap:8px;background:none;border:0;padding:8px 0;font:500 12px/1 var(--mono);color:var(--muted);letter-spacing:.02em}
+.pd-imprint svg{width:16px;height:14px}
+.pd-imprint:hover,.pd-imprint[aria-expanded="true"]{color:var(--ink)}
+.pd-drawer{position:absolute;left:0;right:0;top:100%;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;border-bottom:1.5px solid var(--ink);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .18s,transform .18s,visibility 0s .18s}
+.pd-drawer[data-open="true"]{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s}
+.pd-row{max-width:1180px;margin:0 auto;padding:22px 28px 0;display:flex;align-items:flex-end;gap:8px;border-bottom:4px solid var(--ink)}
+.pd-spine{--w:58px;--h:168px;width:var(--w);height:var(--h);background:var(--c);color:var(--on);text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:10px 0;border:1.5px solid var(--ink);border-bottom:0;transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+.pd-spine span{writing-mode:vertical-rl;transform:rotate(180deg);font:italic 400 19px/1 var(--math);white-space:nowrap}
+.pd-spine small{font:500 9px/1 var(--mono);opacity:.85}
+.pd-spine:hover{transform:translateY(-8px)}
+.pd-spine[aria-current="page"]{transform:translateY(-16px)}
+.pd-spine.hub{--c:#131210;--on:#efe9dc;--w:40px;--h:136px}
+.pd-spine.fb{--c:#7a1f33;--on:#f5e9d2;--h:160px}
+.pd-spine.sp{--c:#1f4a3b;--on:#f3f1ea;--w:68px;--h:180px}
+.pd-spine.cp{--c:#1c2f4a;--on:#f7f7f3;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:10px 10px}
+.pd-note{margin-left:14px;padding-bottom:12px;font:italic 400 18px/1.3 var(--math);color:var(--ink)}
+.pd-note span{display:block;font:500 10px/1.4 var(--mono);font-style:normal;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
 </style>
 </head>
 <body>
 <a class="skip" href="#bench">Skip to the problem set</a>
 <header class="runhead">
   <div class="runhead-inner">
-    <a class="wordmark" href="#" id="homeLink" aria-label="Daily Econ Challenge, latest problem set">
-      <svg viewBox="0 0 22 22" aria-hidden="true"><rect x=".75" y=".75" width="20.5" height="20.5" fill="none" stroke="#1c2f4a" stroke-width="1.5"/><path d="M1 7.7h20M1 14.3h20M7.7 1v20M14.3 1v20" stroke="#c9d3d6" stroke-width=".8"/><path d="M4 17l5-5.5 3.5 2.7L18 6" fill="none" stroke="#0e5360" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Daily Econ <span class="full">Challenge</span></span>
-    </a>
-    <nav aria-label="Site">
-      <a href="#archive" id="archiveLink">Archive</a>
-      <a href="../personal-updates/">Periodicals ↗</a>
+    <nav class="pd-shelf" aria-label="Periodicals">
+      <button class="pd-imprint" type="button" aria-expanded="false" aria-controls="pdDrawer"><svg viewBox="0 0 16 14" aria-hidden="true"><rect x=".5" y="2.5" width="2.5" height="11" fill="none" stroke="currentColor"/><rect x="4.5" y=".5" width="2.5" height="13" fill="none" stroke="currentColor"/><rect x="8.5" y="3.5" width="2.5" height="10" fill="none" stroke="currentColor"/><rect x="12.5" y="1.5" width="3" height="12" fill="#0e5360" stroke="#0e5360"/></svg><span class="lbl">Periodicals</span></button>
+      <div class="pd-drawer" id="pdDrawer" data-open="false"><div class="pd-row">
+        <a class="pd-spine hub" href="../personal-updates/"><small>all</small><span>Periodicals</span></a>
+        <a class="pd-spine fb" href="../daily-watchlist-5/"><small>daily</small><span>Field Brief</span></a>
+        <a class="pd-spine sp" href="../weekly-economics-environment/"><small>fri</small><span>Shadow Price</span></a>
+        <a class="pd-spine cp" href="../daily-econ-challenge/" aria-current="page"><small>mon–fri</small><span>Ceteris Paribus</span></a>
+        <div class="pd-note"><span>you are here</span>Ceteris Paribus</div>
+      </div></div>
+    </nav>
+    <a class="wordmark" href="#" id="homeLink" aria-label="Ceteris Paribus, latest problem set">Ceteris <i>Paribus</i></a>
+    <nav class="site" aria-label="Site">
+      <a href="#archive" id="archiveLink">Ledger</a>
     </nav>
   </div>
 </header>
@@ -263,12 +310,13 @@ table.index tr[aria-current="true"] td.no{color:var(--teal)}
 <main id="app"></main>
 
 <footer class="foot">
-  <span>Daily Econ Challenge · Problem sets Monday–Friday · Progress is saved in this browser only</span>
-  <a href="../personal-updates/">Back to Periodicals</a>
+  <span><i style="font:italic 400 15px var(--math);color:var(--ink)">Ceteris Paribus</i> · a problem set each weekday, 10:00 ET</span>
+  <a href="../personal-updates/">Periodicals</a>
 </footer>
 
 <!--
 EDITION MAINTENANCE — read before every update.
+Publication name: Ceteris Paribus (renamed Sept 2026; path daily-econ-challenge/ unchanged, localStorage key dec:v1: unchanged).
 Canonical file: daily-econ-challenge/index.html in iainholmes/iainholmes.github.io. Fetch the
 current GitHub version immediately before editing; preserve unfamiliar changes (another
 collaborator may have made them). Append one new object to "editions" per weekday; never delete,
@@ -463,10 +511,24 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     return '';
   }
 
+  function recordHTML(e,sv,cls){
+    return '<span class="'+(cls||'record')+'" aria-hidden="true">'+e.questions.map(function(q){var a=sv&&sv.answers&&sv.answers[q.id];var c='';
+      if(sv&&sv.submitted)c=same(a,q.correct)?'r':'w';else if(a&&a.length)c='a';return '<i class="'+c+'"></i>'}).join('')+'</span>';
+  }
+  var DOWN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function nextSet(){
+    var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});
+    var dow=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),mins=(+p.hour%24)*60+(+p.minute);
+    for(var k=0;k<8;k++){var d=(dow+k)%7;if(d===0||d===6)continue;var until=k*1440+600-mins;if(until<=0)continue;
+      if(until<=720){var h=Math.floor(until/60),m=until%60;return (h?h+' h ':'')+String(m).padStart(h?2:1,'0')+' min'}
+      return (k===1?'Tomorrow':DOWN[d])+', 10:00'}
+    return '';
+  }
   function headHTML(){
-    var f=fields(ed), latest=EDITIONS[0]===ed;
-    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><h1 id="psTitle">Problem set <span>'+pad(ed.no)+'</span></h1></div>'+
-      '<dl class="ps-facts"><div><dt>'+(latest?'Latest set':'From the archive')+'</dt><dd><time datetime="'+ed.date+'">'+longDate(ed.date)+'</time></dd></div><div><dt>Questions</dt><dd>'+ed.questions.length+' · about '+ed.minutes+' min</dd></div><div><dt>Fields</dt><dd>'+f.length+' areas</dd></div><div><dt>Status</dt><dd id="statusFact">'+(st.submitted?'Completed · '+scoreOf(ed,st)+' / '+ed.questions.length:nAnswered()+' of '+ed.questions.length+' answered')+'</dd></div></dl></section>';
+    var latest=EDITIONS[0]===ed,n=ed.questions.length,sc=scoreOf(ed,st);
+    var rec=st.submitted?sc+' / '+n+' '+recordHTML(ed,st):nAnswered()?nAnswered()+' of '+n+' answered':'Not started';
+    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><h1 id="psTitle">Ceteris <i>Paribus</i></h1><div class="ps-no"><span>'+(latest?'Today’s set':'From the ledger')+'</span><b>No.&thinsp;'+pad(ed.no)+'</b></div></div>'+
+      '<dl class="ps-facts"><div><dt>Set</dt><dd><time datetime="'+ed.date+'">'+longDate(ed.date)+'</time></dd></div><div><dt>Questions</dt><dd>'+n+' · about '+ed.minutes+' min</dd></div><div><dt>Your record</dt><dd id="statusFact">'+rec+'</dd></div><div><dt>Next set</dt><dd id="nextSet">'+nextSet()+'</dd></div></dl></section>';
   }
 
   function sideHTML(){
@@ -514,33 +576,36 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     });
     var seen={};missed=missed.filter(function(m){if(seen[m.c])return false;seen[m.c]=1;return true});
     var verdict=sc===n?'Every question correct.':sc>=n-2?'A strong set; review the misses below.':'Worth a second pass through the solutions below.';
-    return '<article class="sheet results" aria-labelledby="resTitle"><div class="res-top"><div class="score" aria-label="Score '+sc+' of '+n+'">'+sc+'<small>/'+n+'</small></div><div><h2 id="resTitle">Problem set '+pad(ed.no)+' · solutions</h2><p>'+verdict+' Multi-select questions count as correct only when every correct option, and nothing else, is selected.</p></div></div>'+
+    return '<article class="sheet results" aria-labelledby="resTitle"><div class="res-top"><div class="score" aria-label="Score '+sc+' of '+n+'">'+sc+'<small>/'+n+'</small></div><div><h2 id="resTitle">No.&thinsp;'+pad(ed.no)+' · solutions</h2>'+recordHTML(ed,st,'record big')+'<p>'+verdict+' A multi-select question counts only when exactly the correct options are chosen.</p></div></div>'+
       '<div class="res-cols"><div><h3>By field</h3><table class="tally"><tbody>'+Object.keys(byField).map(function(k){var f=byField[k];return '<tr><td>'+k+'</td><td'+(f.r<f.t?' class="miss"':'')+'>'+f.r+' / '+f.t+'</td></tr>'}).join('')+'</tbody></table></div>'+
       '<div><h3>Concepts to review</h3>'+(missed.length?'<ul class="review">'+missed.map(function(m){return '<li><b>'+m.c+'</b><a class="src" href="#sol-'+m.q+'" data-sol="'+m.q+'">Question '+m.q+' solution ↓</a><span class="src">'+m.refs+'</span></li>'}).join('')+'</ul>':'<p class="clean">Nothing flagged this time. The references under each solution are the natural next reading.</p>')+'</div></div>'+
       '<section class="solutions" aria-label="Worked solutions"><h3>Worked solutions</h3>'+ed.questions.map(function(q,i){
         var r=isRight(q);
         return '<div class="sol" id="sol-'+(i+1)+'"><div class="sol-head"><span class="q-num">Q'+(i+1)+'</span><span class="q-field">'+q.field+'</span><span class="mark '+(r?'right':'wrong')+'" style="margin-left:auto">'+(r?'Correct':'Incorrect')+'</span></div><div class="stem">'+q.stem+'</div>'+exhibitHTML(q.exhibit)+(q.after?'<div class="stem">'+q.after+'</div>':'')+optsHTML(q,true)+'<div class="expl"><div class="expl-h">Reasoning</div>'+q.explanation+'</div><p class="refs">'+q.refs+'</p></div>';
       }).join('')+'</section>'+
-      '<div class="res-actions"><button type="button" class="btn" data-act="retake">Retake this set</button><a class="btn" href="#archive" style="text-decoration:none">Archive</a></div></article>';
+      '<div class="res-actions"><button type="button" class="btn primary" data-act="copy">Copy result</button><button type="button" class="btn" data-act="retake">Retake this set</button><a class="btn" href="#archive" style="text-decoration:none">Ledger</a><span class="hint" id="copyNote" aria-live="polite"></span></div></article>';
   }
 
   function archiveHTML(){
-    return '<section class="wrap ps-head"><div class="ps-title"><h1 id="psTitle">Archive</h1><div class="ps-no">'+EDITIONS.length+' problem '+(EDITIONS.length===1?'set':'sets')+'</div></div></section>'+
-      '<div class="wrap" style="padding-top:28px;padding-bottom:80px"><article class="sheet archive" aria-labelledby="arcTitle"><h2 id="arcTitle">Problem sets</h2><p>Every set stays here, newest first. Scores reflect attempts made in this browser.</p>'+
-      '<table class="index"><thead><tr><th scope="col">No.</th><th scope="col">Date</th><th scope="col">Fields</th><th scope="col">Your score</th></tr></thead><tbody>'+
-      EDITIONS.map(function(e,i){var s=load(e.date),mine=s&&s.submitted?scoreOf(e,s)+' / '+e.questions.length:s&&Object.keys(s.answers||{}).length?'in progress':'—';
-        return '<tr'+(i===0?' aria-current="true"':'')+'><td class="no">'+pad(e.no)+'</td><td class="date"><a href="#'+e.date+'">'+shortDate(e.date)+'</a><small>'+e.questions.length+' questions'+(i===0?' · latest':'')+'</small></td><td class="fields">'+fields(e).join(', ')+'</td><td class="mine">'+mine+'</td></tr>'}).join('')+
-      '</tbody></table></article></div>';
+    var done=0,right=0,tot=0;EDITIONS.forEach(function(e){var v=load(e.date);if(v&&v.submitted){done++;right+=scoreOf(e,v);tot+=e.questions.length}});
+    return '<section class="wrap ps-head"><div class="ps-title"><h1 id="psTitle">The <i>Ledger</i></h1><div class="ps-no"><span>Sets worked</span><b>'+done+'&thinsp;/&thinsp;'+EDITIONS.length+'</b></div></div>'+
+      '<dl class="ps-facts"><div><dt>Published</dt><dd>'+EDITIONS.length+' '+(EDITIONS.length===1?'set':'sets')+'</dd></div><div><dt>Questions right</dt><dd>'+(tot?right+' of '+tot:'—')+'</dd></div><div><dt>Accuracy</dt><dd>'+(tot?Math.round(100*right/tot)+'%':'—')+'</dd></div><div><dt>Next set</dt><dd id="nextSet">'+nextSet()+'</dd></div></dl></section>'+
+      '<div class="wrap" style="padding-top:28px;padding-bottom:80px"><article class="sheet archive" aria-labelledby="arcTitle"><h2 id="arcTitle" class="sr-only">Problem sets</h2>'+
+      '<table class="index"><thead><tr><th scope="col">No.</th><th scope="col">Set</th><th scope="col">Fields</th><th scope="col">Record</th></tr></thead><tbody>'+
+      EDITIONS.map(function(e,i){var v=load(e.date),mine=v&&v.submitted?'<b>'+scoreOf(e,v)+'/'+e.questions.length+'</b>':v&&Object.keys(v.answers||{}).length?'<b>…</b>':'<b>—</b>';
+        return '<tr'+(i===0?' aria-current="true"':'')+'><td class="no">'+pad(e.no)+'</td><td class="date"><a href="#'+e.date+'">'+shortDate(e.date)+'</a><small>'+e.questions.length+' questions'+(i===0?' · today':'')+'</small></td><td class="fields">'+fields(e).join(', ')+'</td><td class="mine">'+recordHTML(e,v)+mine+'</td></tr>'}).join('')+
+      '</tbody></table><p class="ledger-note">Records live in this browser.</p></article></div>';
   }
 
   function render(focusMain){
     document.getElementById('archiveLink').setAttribute('aria-current',location.hash==='#archive'?'page':'false');
     if(location.hash==='#archive'){
-      document.title='Archive · Daily Econ Challenge';
+      document.title='Ledger · Ceteris Paribus';
+      document.body.classList.add('ledger');
       app.innerHTML=archiveHTML();
       return;
     }
-    document.title='No. '+pad(ed.no)+' · Daily Econ Challenge';
+    document.title='Ceteris Paribus No. '+pad(ed.no);document.body.classList.remove('ledger');
     app.innerHTML=headHTML()+'<div class="wrap bench" id="bench">'+sideHTML()+'<div class="main-col" id="mainCol">'+(st.submitted?resultsHTML():questionHTML())+'</div></div>';
     if(focusMain){var h=app.querySelector('.q-num,.score');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
   }
@@ -568,6 +633,9 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     if(a==='next')go(st.current+1,true);
     if(a==='submit')submit();
     if(a==='retake'){st=fresh();save();render(true);window.scrollTo(0,0)}
+    if(a==='copy'){var txt='Ceteris Paribus No. '+pad(ed.no)+' · '+scoreOf(ed,st)+'/'+ed.questions.length+'\n'+ed.questions.map(function(q){return isRight(q)?'■':'□'}).join('')+'\n'+location.href.split('#')[0]+'#'+ed.date;
+      var note=document.getElementById('copyNote');
+      (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){note.textContent='Copied'},function(){note.textContent=txt.split('\n').slice(0,2).join('  ')});}
   });
 
   document.addEventListener('keydown',function(e){
@@ -596,6 +664,13 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   document.getElementById('homeLink').addEventListener('click',function(e){e.preventDefault();location.hash=EDITIONS[0].date});
   window.addEventListener('hashchange',route);
   route();
+  setInterval(function(){var n=document.getElementById('nextSet');if(n)n.textContent=nextSet()},30000);
+  window.addEventListener('scroll',function(){document.body.classList.toggle('scrolled',scrollY>140)},{passive:true});
+  var imp=document.querySelector('.pd-imprint'),dr=document.getElementById('pdDrawer');
+  function shelf(o){dr.dataset.open=String(o);imp.setAttribute('aria-expanded',String(o));if(o)dr.querySelector('[aria-current]').focus({preventScroll:true})}
+  imp.addEventListener('click',function(e){e.stopPropagation();shelf(dr.dataset.open!=='true')});
+  document.addEventListener('click',function(e){if(dr.dataset.open==='true'&&!e.target.closest('.pd-shelf'))shelf(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&dr.dataset.open==='true'){shelf(false);imp.focus()}});
 })();
 </script>
 </body>

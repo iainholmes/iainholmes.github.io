@@ -3,277 +3,262 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#ede6d8">
+<meta name="theme-color" content="#131210">
 <title>Periodicals</title>
-<meta name="description" content="A personal hub for briefings, research tools, and study systems.">
+<meta name="description" content="Field Brief, Shadow Price and Ceteris Paribus.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23131210%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%2212%22%20width%3D%228%22%20height%3D%2240%22%20fill%3D%22%238a2a36%22%2F%3E%3Crect%20x%3D%2225%22%20y%3D%2216%22%20width%3D%228%22%20height%3D%2236%22%20fill%3D%22%231f4a3b%22%2F%3E%3Crect%20x%3D%2237%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%2242%22%20fill%3D%22%231c2f4a%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%2220%22%20width%3D%224%22%20height%3D%2232%22%20fill%3D%22%23efe9dc%22%2F%3E%3Cpath%20d%3D%22M8%2054h48%22%20stroke%3D%22%23efe9dc%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2258%22%20height%3D%2258%22%20rx%3D%2214%22%20fill%3D%22%23EDE6D8%22%20stroke%3D%22%232B332C%22%20stroke-width%3D%224%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2215%22%20width%3D%2214%22%20height%3D%2214%22%20rx%3D%223%22%20fill%3D%22%23AF684D%22%2F%3E%3Crect%20x%3D%2235%22%20y%3D%2215%22%20width%3D%2214%22%20height%3D%2214%22%20rx%3D%223%22%20fill%3D%22%237D8B78%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2235%22%20width%3D%2214%22%20height%3D%2214%22%20rx%3D%223%22%20fill%3D%22%23C6A56B%22%2F%3E%3Cpath%20d%3D%22M35%2038h14M35%2044h10%22%20stroke%3D%22%232B332C%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400&family=Bodoni+Moda:opsz,wght@6..96,500&family=Instrument+Serif&family=Instrument+Sans:wght@500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans+Condensed:wght@500&family=STIX+Two+Text:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#ede6d8;
-  --paper-2:#f6f0e5;
-  --ink:#252923;
-  --muted:#6f7269;
-  --line:#cfc4b1;
-  --olive:#596659;
-  --olive-soft:#dbe0d5;
-  --rust:#aa6248;
-  --rust-soft:#ead6cc;
-  --ochre:#b18d4f;
-  --ochre-soft:#eee1c6;
-  --slate:#62727c;
-  --slate-soft:#dbe1e3;
-  --shadow:0 22px 60px rgba(55,44,29,.10);
-  --serif:"Newsreader",Georgia,serif;
-  --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --night:#131210;
+  --night-2:#1c1a17;
+  --bone:#efe9dc;
+  --bone-dim:#a9a397;
+  --rule:#35322c;
+  --house:"Fraunces",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  /* sibling house colours: each title owns its own */
+  --fb:#8a2a36;--fb-paper:#f1e6d0;--fb-ink:#221a14;
+  --sp:#1f4a3b;--sp-paper:#f4f2ea;--sp-ink:#15302a;--sp-clay:#b4532e;
+  --cp:#1c2f4a;--cp-paper:#f7f7f3;--cp-teal:#0e5360;
 }
 *{box-sizing:border-box}
-html{background:var(--paper);scroll-behavior:smooth}
-body{
-  margin:0;
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 82% 2%,rgba(177,141,79,.12),transparent 28rem),
-    radial-gradient(circle at 0% 70%,rgba(89,102,89,.09),transparent 32rem),
-    var(--paper);
-  color:var(--ink);
-  font-family:var(--sans);
-  -webkit-font-smoothing:antialiased;
+html{background:var(--night);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background:var(--night);color:var(--bone);font:15px/1.55 var(--house);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--bone);outline-offset:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--bone);color:var(--night);padding:8px 12px;z-index:9}.skip:focus{left:8px}
+.page{width:min(1240px,calc(100% - 64px));margin:0 auto}
+
+/* imprint line */
+.imprint{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:52px;border-bottom:1px solid var(--rule);font:12px/1 var(--mono);color:var(--bone-dim);letter-spacing:.02em}
+.imprint .date{text-align:center;color:var(--bone)}
+.imprint a{justify-self:end;text-decoration:none}
+.imprint a:hover{color:var(--bone)}
+
+/* masthead */
+.mast{display:block;padding:56px 0 34px;border-bottom:1px solid var(--bone)}
+.mast h1{margin:0;font:300 clamp(72px,13.5vw,196px)/.82 var(--house);font-variation-settings:"opsz" 144;letter-spacing:-.045em;color:var(--bone)}
+.mast h1 i{font-weight:300;font-style:italic;letter-spacing:-.055em}
+
+/* shelf of covers */
+.shelf{display:grid;grid-template-columns:1.12fr 1fr .92fr;gap:28px;align-items:end;padding:54px 0 0}
+.vol{display:block;text-decoration:none;color:inherit;outline-offset:8px}
+.cover{position:relative;overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 2px 0 rgba(255,255,255,.04) inset;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.vol:hover .cover,.vol:focus-visible .cover{transform:translateY(-10px)}
+.shelf .vol:nth-child(2) .cover{aspect-ratio:3/3.85}
+.shelf .vol:nth-child(3) .cover{aspect-ratio:3/3.7}
+.label{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:18px 0 0;border-top:3px solid var(--c);margin-top:22px}
+.label .n{font:400 13px/1.4 var(--mono);color:var(--bone-dim);grid-row:1/3}
+.label h2{margin:0;font:400 30px/1.05 var(--house);letter-spacing:-.02em}
+.label p{margin:0;font:13px/1.5 var(--mono);color:var(--bone-dim)}
+.vol:hover h2{font-style:italic}
+
+/* --- Field Brief cover --- */
+.c-fb{background:var(--fb-paper);color:var(--fb-ink);padding:7% 7% 0;display:flex;flex-direction:column}
+.c-fb .top{display:flex;justify-content:space-between;font:600 9px/1 "Instrument Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--fb-ink);padding-bottom:6px}
+.c-fb .mh{font:500 clamp(34px,4.4vw,58px)/.9 "Bodoni Moda",Didot,serif;letter-spacing:-.055em;margin:14px 0 10px;white-space:nowrap}
+.c-fb .mh i{color:var(--fb)}
+.c-fb .mh sup{font:500 .26em/1 "Bodoni Moda",serif;letter-spacing:0;vertical-align:1.9em;margin-left:.15em;color:var(--fb);border-bottom:1.5px solid var(--fb)}
+.c-fb .meta{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--fb-ink);border-bottom:1px solid var(--fb-ink);font:600 9px/1.3 "Instrument Sans",sans-serif;letter-spacing:.06em}
+.c-fb .meta span{padding:6px 0}.c-fb .meta span+span{border-left:1px solid #b9a483;padding-left:8px}
+.c-fb .head{font:400 clamp(17px,1.7vw,23px)/1.1 "Instrument Serif",serif;margin:12px 0 10px}
+.c-fb .more{list-style:none;margin:0;padding:0;counter-reset:m 1}.c-fb .more li{counter-increment:m;display:grid;grid-template-columns:18px 1fr;font:500 10px/1.35 "Instrument Sans",sans-serif;padding:4px 0;border-top:1px solid #cdb893}.c-fb .more li::before{content:counter(m,decimal-leading-zero);font:500 11px/1.2 "Bodoni Moda",serif;color:var(--fb)}
+.c-fb .plate{margin-top:auto;height:34%;margin-inline:-8%}
+.c-fb .plate svg{width:100%;height:100%;display:block}
+
+/* --- Shadow Price cover --- */
+.c-sp{background:var(--sp-paper);color:var(--sp-ink);padding:8% 8% 6%;display:grid;grid-template-rows:auto auto 1fr auto}
+.c-sp .vl{font:500 9.5px/1.4 "IBM Plex Sans Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:.5px solid var(--sp-ink);padding-bottom:6px}
+.c-sp .ttl{font:400 clamp(30px,3.6vw,48px)/.95 "Source Serif 4",Georgia,serif;letter-spacing:-.03em;margin:16px 0 4px}
+.c-sp .ttl i{color:var(--sp)}
+.c-sp .toc{list-style:none;margin:14px 0 0;padding:0;counter-reset:t;border-top:2px solid var(--sp-ink)}
+.c-sp .toc li{display:grid;grid-template-columns:18px 1fr;gap:6px;font:400 11px/1.3 "Source Serif 4",serif;padding:5px 0;border-bottom:.5px solid #c7c8bd}
+.c-sp .toc li::before{counter-increment:t;content:counter(t,decimal-leading-zero);font:500 9px/1.5 "IBM Plex Sans Condensed",sans-serif;color:var(--sp-clay)}
+.c-sp .fig{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:end;border-top:.5px solid var(--sp-ink);padding-top:8px;font:500 8.5px/1.3 "IBM Plex Sans Condensed",sans-serif;letter-spacing:.05em;text-transform:uppercase}
+.c-sp .fig svg{width:100%;height:42px}
+
+/* --- Ceteris Paribus cover --- */
+.c-cp{background-color:var(--cp-paper);background-image:linear-gradient(rgba(28,47,74,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(28,47,74,.09) 1px,transparent 1px);background-size:14px 14px;color:#1d2126;padding:9% 9% 8%;display:flex;flex-direction:column}
+.c-cp .no{font:500 11px/1 "JetBrains Mono",monospace;display:flex;justify-content:space-between;color:var(--cp)}
+.c-cp .ttl{font:italic 400 clamp(28px,3.2vw,42px)/.98 "STIX Two Text",serif;margin:18px 0 6px;letter-spacing:-.01em}
+.c-cp .eq{font:italic 400 17px/1.4 "STIX Two Text",serif;color:var(--cp-teal);margin:0 0 16px}
+.c-cp .q1{font:400 12.5px/1.5 "STIX Two Text",serif;margin:0 0 14px;max-width:30ch}.c-cp .q1 b{font:500 11px "JetBrains Mono",monospace;color:var(--cp)}
+.c-cp .grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid #1d2126;border-left:1.5px solid #1d2126;margin-top:auto}
+.c-cp .grid span{aspect-ratio:1.5;border-right:1.5px solid #1d2126;border-bottom:1.5px solid #1d2126;display:grid;place-items:center;font:500 12px/1 "JetBrains Mono",monospace;background:#fdfdfb}
+.c-cp .grid span.f{background:var(--cp);color:#fff}
+.c-cp .grid span.t{background:#dde9ec}
+
+/* catalogue */
+.cat{margin:84px 0 0;border-top:1px solid var(--bone)}
+.cat-h{display:grid;grid-template-columns:52px minmax(0,1.2fr) minmax(0,.8fr) minmax(0,1.6fr) 150px;gap:24px;font:11px/1 var(--mono);color:var(--bone-dim);text-transform:uppercase;letter-spacing:.1em;padding:14px 0;border-bottom:1px solid var(--rule)}
+.row{display:grid;grid-template-columns:52px minmax(0,1.2fr) minmax(0,.8fr) minmax(0,1.6fr) 150px;gap:24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--rule);text-decoration:none;position:relative}
+.row::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--c);transition:width .4s ease}
+.row:hover::before,.row:focus-visible::before{width:100%}
+.row .i{font:13px/1 var(--mono);color:var(--bone-dim)}
+.row .t{font:400 26px/1.1 var(--house);letter-spacing:-.015em}
+.row:hover .t{font-style:italic}
+.row .f,.row .x{font:13px/1.45 var(--mono);color:var(--bone-dim)}
+.row .l{font:italic 300 19px/1.35 var(--house)}
+.row .l small{display:block;font:normal 400 12px/1.5 var(--mono);color:var(--bone-dim);margin-bottom:4px}
+.row .x{text-align:right}
+.row .x b{display:block;font-weight:400;color:var(--bone)}
+
+.colophon{display:flex;justify-content:space-between;gap:20px;margin:70px 0 0;padding:20px 0 44px;border-top:1px solid var(--rule);font:12px/1.6 var(--mono);color:var(--bone-dim)}
+.colophon a{text-decoration:none}.colophon a:hover{color:var(--bone)}
+
+@media (max-width:1000px){
+  .mast{grid-template-columns:1fr;gap:26px}
+  .shelf{grid-template-columns:repeat(3,minmax(250px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;margin-right:-32px;padding-right:32px;padding-bottom:10px;gap:20px}
+  .vol{scroll-snap-align:start}
+  .cat-h{display:none}
+  .row{grid-template-columns:40px 1fr;gap:6px 14px}
+  .row .f,.row .l,.row .x{grid-column:2}
+  .row .x{text-align:left}
+  .row .x b{display:inline;margin-right:8px}
 }
-a{color:inherit;text-decoration:none}
-.shell{width:min(1180px,calc(100% - 40px));margin:0 auto}
-.topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  min-height:74px;
-  border-bottom:1px solid var(--line);
+@media (max-width:600px){
+  .page{width:calc(100% - 32px)}
+  .imprint{grid-template-columns:1fr auto;font-size:11px}
+  .imprint .date{display:none}
+  .mast{padding:34px 0 22px}
+  .mast h1{font-size:clamp(58px,19vw,96px)}
+  .shelf{grid-template-columns:repeat(3,78%);margin-right:-16px;padding-right:16px;padding-top:34px}
+  .shelf .vol .cover{aspect-ratio:3/4!important}
+  .c-fb .more li:nth-child(n+3){display:none}
+  .c-fb .mh{font-size:40px}.c-sp .ttl{font-size:36px}.c-cp .ttl{font-size:34px}
+  .label h2{font-size:26px}
+  .cat{margin-top:56px}
+  .row .t{font-size:23px}
+  .colophon{flex-direction:column;gap:6px}
 }
-.brand{display:flex;align-items:center;gap:12px}
-.mark{
-  width:28px;height:28px;border:1.5px solid var(--ink);border-radius:8px;
-  display:grid;grid-template-columns:repeat(2,1fr);gap:3px;padding:5px;background:var(--paper-2)
-}
-.mark i{display:block;border-radius:2px}
-.mark i:nth-child(1){background:var(--rust)}
-.mark i:nth-child(2){background:#819080}
-.mark i:nth-child(3){background:#c29a57}
-.mark i:nth-child(4){background:var(--ink)}
-.brand strong{font:500 20px/1 var(--serif);letter-spacing:-.01em}
-.topmeta{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.hero{padding:94px 0 66px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:70px;align-items:end}
-.eyebrow{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-bottom:22px}
-h1{font:500 clamp(58px,8vw,106px)/.86 var(--serif);letter-spacing:-.055em;margin:0;max-width:760px}
-h1 em{font-weight:400;color:var(--rust)}
-.intro{font:400 18px/1.65 var(--sans);color:#555a51;max-width:42ch;margin:0 0 4px}
-.rule{height:1px;background:var(--line)}
-.section-head{padding:34px 0 24px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
-.section-head h2{font:500 30px/1 var(--serif);letter-spacing:-.02em;margin:0}
-.section-head span{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;padding-bottom:82px}
-.card{
-  position:relative;
-  min-height:330px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:rgba(246,240,229,.72);
-  padding:28px;
-  overflow:hidden;
-  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
-  display:flex;flex-direction:column
-}
-.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#b9aa93}
-.card:focus-visible{outline:3px solid rgba(170,98,72,.35);outline-offset:4px}
-.card.primary{grid-column:span 7;min-height:430px;background:linear-gradient(145deg,#f7f0e4 0%,#e8dcc7 100%)}
-.card.advisor{grid-column:span 5;background:linear-gradient(145deg,#f4eee4 0%,var(--olive-soft) 100%)}
-.card.trainer{grid-column:span 5;background:linear-gradient(145deg,#f5eee2 0%,var(--ochre-soft) 100%)}
-.card.future{grid-column:span 7;background:linear-gradient(145deg,#f4eee5 0%,#e6e0d5 100%);border-style:dashed;cursor:default}
-.card.future:hover{transform:none;box-shadow:none;border-color:var(--line)}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
-.badge{display:inline-flex;align-items:center;gap:7px;font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--rust)}
-.advisor .dot{background:var(--olive)}
-.trainer .dot{background:var(--ochre)}
-.future .dot{background:#99968c}
-.arrow{
-  width:38px;height:38px;border-radius:50%;border:1px solid rgba(37,41,35,.22);
-  display:grid;place-items:center;font-size:17px;transition:background .2s ease,color .2s ease,transform .2s ease
-}
-.card:not(.future):hover .arrow{background:var(--ink);color:var(--paper-2);transform:translate(2px,-2px)}
-.art{height:150px;margin:32px 0 28px;position:relative}
-.card.primary .art{height:210px}
-.art svg{width:100%;height:100%;display:block}
-.card h3{font:500 clamp(31px,3.3vw,50px)/.96 var(--serif);letter-spacing:-.035em;margin:auto 0 12px;max-width:13ch}
-.card.primary h3{font-size:clamp(42px,5vw,66px);max-width:11ch}
-.card p{font-size:14px;line-height:1.65;color:#5f635b;margin:0;max-width:50ch}
-.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.pill{border:1px solid rgba(37,41,35,.16);border-radius:999px;padding:7px 10px;font:500 9px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#61645c;background:rgba(255,255,255,.22)}
-.about{border-top:1px solid var(--line);padding:44px 0 74px;display:grid;grid-template-columns:1fr 1fr;gap:60px}
-.about h2{font:500 34px/1.05 var(--serif);margin:0}
-.about p{color:var(--muted);font-size:14px;line-height:1.75;margin:0;max-width:58ch}
-footer{border-top:1px solid var(--line);padding:24px 0 32px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font:400 10px/1.5 var(--mono);letter-spacing:.07em;text-transform:uppercase}
-footer a{text-decoration:underline;text-underline-offset:3px}
-@media(max-width:800px){
-  .shell{width:min(100% - 28px,680px)}
-  .topmeta{display:none}
-  .hero{grid-template-columns:1fr;padding:70px 0 48px;gap:30px}
-  h1{font-size:clamp(58px,18vw,96px)}
-  .intro{font-size:16px}
-  .grid{grid-template-columns:1fr;gap:16px}
-  .card,.card.primary,.card.advisor,.card.trainer,.card.future{grid-column:1;min-height:360px}
-  .card.primary{min-height:420px}
-  .about{grid-template-columns:1fr;gap:20px}
-}
-@media(max-width:480px){
-  .topbar{min-height:64px}
-  .brand strong{font-size:18px}
-  .hero{padding-top:54px}
-  .card{padding:22px;border-radius:15px}
-  .art{margin:24px 0 20px;height:130px}
-  .card.primary .art{height:170px}
-  .section-head{padding-top:28px}
-  footer{flex-direction:column}
-}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<div class="shell">
-  <header class="topbar">
-    <a class="brand" href="./" aria-label="Periodicals home">
-      <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <strong>Periodicals</strong>
-    </a>
-    <div class="topmeta">Briefings · Research · Practice</div>
+<a class="skip" href="#shelf">Skip to the titles</a>
+<div class="page">
+  <header class="imprint">
+    <span>Periodicals</span>
+    <span class="date" id="today"></span>
+    <a href="../">Iain Holmes ↗</a>
+  </header>
+
+  <header class="mast">
+    <h1>Period<i>icals</i></h1>
   </header>
 
   <main>
-    <section class="hero">
-      <div>
-        <h1>Your useful things, <em>in one place.</em></h1>
-      </div>
-      <p class="intro">A single launch point for the briefings, research tools, and learning systems built around the subjects you follow and the work you do.</p>
-    </section>
-
-    <div class="rule"></div>
-
-    <section class="section-head">
-      <h2>Live tools</h2>
-      <span>3 destinations</span>
-    </section>
-
-    <section class="grid" aria-label="Personal tools">
-      <a class="card primary" href="../daily-watchlist-5/" aria-label="Open Daily Watchlist 5">
-        <div class="card-top">
-          <span class="badge"><i class="dot"></i> Updates daily</span>
-          <span class="arrow" aria-hidden="true">↗</span>
+    <section class="shelf" id="shelf" aria-label="Titles">
+      <a class="vol" href="../daily-watchlist-5/" style="--c:var(--fb)">
+        <div class="cover c-fb" aria-hidden="true">
+          <div class="top"><span>Field Brief</span><span data-fb="dow">Sunday</span></div>
+          <div class="mh">Daily <i>Briefing</i><sup data-fb="no">002</sup></div>
+          <div class="meta"><span data-fb="date">September 27, 2026</span><span data-fb="read">10 min read</span></div>
+          <div class="head" data-fb="head">Supreme Court restores the administration’s expanded voter-verification system</div><ol class="more" data-fb="more"><li>A second federal judge rejects EPA’s cancellation rationale for Solar for All</li><li>CMS cancels 315,000 unauthorized Marketplace enrollments</li><li>Frontier-AI safety is moving toward enforceable federal rules</li><li>Wake County approves WakeMed–Atrium combination</li></ol>
+          <div class="plate"><svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMax slice"><rect width="400" height="220" fill="#dcc6a0"/><circle cx="318" cy="62" r="40" fill="#8a2a36"/><path d="M0 160c70-30 130 14 200-4s120-40 200-10v74H0z" fill="#1f4e6e"/><path d="M0 188c90-22 150 16 230 0s110-14 170 0v32H0z" fill="#221a14"/><path d="M60 170V96h54v74M136 170V70h60v100" fill="#221a14"/><g fill="#f1e6d0"><rect x="72" y="108" width="30" height="8"/><rect x="72" y="126" width="30" height="8"/><rect x="148" y="84" width="36" height="8"/><rect x="148" y="102" width="36" height="8"/><rect x="148" y="120" width="36" height="8"/></g><path d="M250 150l30-58 30 58z" fill="#c28b1e"/></svg></div>
         </div>
-        <div class="art" aria-hidden="true">
-          <svg viewBox="0 0 660 220" fill="none">
-            <path d="M24 174C115 135 183 143 246 108C320 67 372 40 468 58C541 72 585 103 636 82" stroke="#2B332C" stroke-width="3"/>
-            <path d="M24 189C112 160 194 170 269 133C355 91 392 79 487 93C548 102 587 128 636 117" stroke="#AA6248" stroke-width="8" stroke-linecap="round"/>
-            <circle cx="123" cy="143" r="25" fill="#C29A57"/>
-            <circle cx="244" cy="109" r="14" fill="#596659"/>
-            <circle cx="468" cy="58" r="19" fill="#AA6248"/>
-            <path d="M95 45h190M95 63h126M411 157h150M411 176h103" stroke="#2B332C" stroke-width="5" stroke-linecap="round" opacity=".75"/>
-            <path d="M34 37h37v37H34z" fill="#2B332C"/>
-            <path d="M45 48h15M45 57h15M45 66h10" stroke="#EDE6D8" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Daily Watchlist 5</h3>
-        <p>Five consequential developments across AI, technology, climate and environmental economics, U.S. policy, and the Triangle — with a growing daily archive.</p>
-        <div class="meta-row">
-          <span class="pill">Daily briefing</span>
-          <span class="pill">Archive</span>
-          <span class="pill">Policy weighted</span>
-        </div>
+        <div class="label"><span class="n">01</span><h2>Field Brief</h2><p>Daily at 8:00</p></div>
       </a>
 
-      <a class="card advisor" href="../weekly-economics-environment/" aria-label="Open Weekly Economics and Environmental Economics">
-        <div class="card-top">
-          <span class="badge"><i class="dot"></i> Updates Fridays</span>
-          <span class="arrow" aria-hidden="true">↗</span>
+      <a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)">
+        <div class="cover c-sp" aria-hidden="true">
+          <div class="vl"><span data-sp="vol">Vol. 1 · No. 1</span><span data-sp="date">25 Sep 2026</span></div>
+          <div><div class="ttl">Shadow <i>Price</i></div></div>
+          <ol class="toc" data-sp="toc"><li>Electrification’s opportunity is larger than its current market share</li><li>The grid gets a $5.25 billion investment test</li><li>Carbon-border policy enters a new institutional test</li><li>Insurance stress has an urban geography of its own</li><li>Glyphosate review makes the value of information concrete</li></ol>
+          <div class="fig"><span>Fig. 1</span><svg viewBox="0 0 120 42" preserveAspectRatio="none"><path d="M0 41.5H120" stroke="#15302a" stroke-width="1"/><rect x="8" y="18" width="22" height="23" fill="#15302a"/><rect x="48" y="8" width="22" height="33" fill="#8aa08f"/><rect x="88" y="6" width="22" height="35" fill="#b4532e"/></svg></div>
         </div>
-        <div class="art" aria-hidden="true">
-          <svg viewBox="0 0 480 180" fill="none">
-            <path d="M63 137C126 112 164 120 214 91C265 62 302 45 360 53C391 58 414 70 430 83" stroke="#2B332C" stroke-width="3"/>
-            <path d="M74 121l42-42 43 23 56-54 50 30 64-43" stroke="#596659" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="116" cy="79" r="10" fill="#AA6248"/>
-            <circle cx="215" cy="48" r="10" fill="#C29A57"/>
-            <circle cx="329" cy="35" r="10" fill="#62727C"/>
-            <path d="M342 129c0-29 15-52 45-67-1 32-15 55-45 67Z" fill="#77836D"/>
-            <path d="M342 129c-8-24-25-39-51-45 6 27 23 42 51 45Z" fill="#A4593E" opacity=".85"/>
-            <path d="M342 130V86" stroke="#2B332C" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Weekly Economics &amp; Environment</h3>
-        <p>A Friday research and policy review spanning economics, environmental and resource economics, energy, climate, regulation, data, methods, and research-relevant developments.</p>
-        <div class="meta-row">
-          <span class="pill">Weekly briefing</span>
-          <span class="pill">Research</span>
-          <span class="pill">Environmental econ</span>
-        </div>
+        <div class="label"><span class="n">02</span><h2>Shadow Price</h2><p>Fridays at 15:00</p></div>
       </a>
 
-      <a class="card trainer" href="../daily-econ-challenge/" aria-label="Open Daily Econ Challenge">
-        <div class="card-top">
-          <span class="badge"><i class="dot"></i> Weekdays</span>
-          <span class="arrow" aria-hidden="true">↗</span>
+      <a class="vol" href="../daily-econ-challenge/" style="--c:var(--cp-teal)">
+        <div class="cover c-cp" aria-hidden="true">
+          <div class="no"><span data-cp="no">No. 001</span><span data-cp="date">28.IX.26</span></div>
+          <div class="ttl">Ceteris<br>Paribus</div>
+          <div class="eq">∂y / ∂x |<sub>z = z̄</sub></div><p class="q1" data-cp="q1"><b>1.</b> You regress log hourly wages on years of schooling in a cross-section. Unobserved ability raises wages and is positively correlated with schooling…</p>
+          <div class="grid" data-cp="grid"><span class="f">1</span><span class="t">2</span><span>3</span><span class="t">4</span><span>5</span><span class="f">6</span><span>7</span><span class="t">8</span></div>
         </div>
-        <div class="art" aria-hidden="true">
-          <svg viewBox="0 0 480 180" fill="none">
-            <rect x="57" y="31" width="366" height="118" rx="13" stroke="#2B332C" stroke-width="3"/>
-            <path d="M57 66h366" stroke="#2B332C" stroke-width="3"/>
-            <circle cx="80" cy="49" r="5" fill="#AA6248"/>
-            <circle cx="98" cy="49" r="5" fill="#C29A57"/>
-            <circle cx="116" cy="49" r="5" fill="#596659"/>
-            <path d="M87 91l25 17-25 17M127 126h38" stroke="#596659" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M211 90h143M211 109h105M211 128h126" stroke="#2B332C" stroke-width="4" stroke-linecap="round" opacity=".7"/>
-          </svg>
-        </div>
-        <h3>Daily Econ Challenge</h3>
-        <p>A weekday problem set of about eight graduate-level questions across micro, macro, environmental economics, causal inference, and econometrics, with worked solutions and a cumulative archive.</p>
-        <div class="meta-row">
-          <span class="pill">Problem sets</span>
-          <span class="pill">Solutions</span>
-          <span class="pill">Archive</span>
-        </div>
+        <div class="label"><span class="n">03</span><h2>Ceteris Paribus</h2><p>Weekdays at 10:00</p></div>
       </a>
-
-      <div class="card future" aria-label="Future tools will appear here">
-        <div class="card-top">
-          <span class="badge"><i class="dot"></i> Next addition</span>
-        </div>
-        <div class="art" aria-hidden="true">
-          <svg viewBox="0 0 660 180" fill="none">
-            <path d="M70 91h520" stroke="#8F8C83" stroke-width="2" stroke-dasharray="8 10"/>
-            <circle cx="154" cy="91" r="26" fill="#DDD4C5" stroke="#8F8C83" stroke-width="2"/>
-            <circle cx="330" cy="91" r="26" fill="#DDD4C5" stroke="#8F8C83" stroke-width="2"/>
-            <circle cx="506" cy="91" r="26" fill="#DDD4C5" stroke="#8F8C83" stroke-width="2"/>
-            <path d="M330 78v26M317 91h26" stroke="#6F7269" stroke-width="4" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>More systems, same address.</h3>
-        <p>New ChatGPT-created sites can be added here as they go live. This hub is designed to grow without changing the bookmark you use to reach it.</p>
-        <div class="meta-row">
-          <span class="pill">Expandable</span>
-          <span class="pill">One bookmark</span>
-        </div>
-      </div>
     </section>
 
-    <section class="about">
-      <h2>One bookmark instead of another folder.</h2>
-      <p>Bookmark this page as <strong>Periodicals</strong> and remove the Chrome folder if you like. The hub itself has a custom four-tile favicon, so it behaves like a single recognizable destination on your bookmarks bar while the individual tools remain one click away.</p>
+    <section class="cat" aria-label="Catalogue">
+      <div class="cat-h" aria-hidden="true"><span></span><span>Title</span><span>Appears</span><span>Latest issue</span><span style="text-align:right">Next</span></div>
+      <a class="row" href="../daily-watchlist-5/" style="--c:var(--fb)"><span class="i">01</span><span class="t">Field Brief</span><span class="f">Five developments a day</span><span class="l"><small data-fb="line">No. 002 · 27 Sep 2026</small><span data-fb="title">Voting rules, health coverage and AI safety</span></span><span class="x" data-next="fb"></span></a>
+      <a class="row" href="../weekly-economics-environment/" style="--c:var(--sp)"><span class="i">02</span><span class="t">Shadow Price</span><span class="f">Economics &amp; the environment</span><span class="l"><small data-sp="line">No. 1 · 25 Sep 2026</small><span data-sp="title">The price of a resilient economy</span></span><span class="x" data-next="sp"></span></a>
+      <a class="row" href="../daily-econ-challenge/" style="--c:var(--cp-teal)"><span class="i">03</span><span class="t">Ceteris Paribus</span><span class="f">Eight questions a weekday</span><span class="l"><small data-cp="line">No. 001 · 28 Sep 2026</small><span data-cp="title">8 questions · 7 fields</span></span><span class="x" data-next="cp"></span></a>
     </section>
   </main>
 
-  <footer>
-    <span>Periodicals · Iain Holmes</span>
-    <a href="../">Main site</a>
-  </footer>
+  <footer class="colophon"><span>Periodicals · Iain Holmes</span><a href="../">iainholmes.github.io ↗</a></footer>
 </div>
+
+<script>
+(function(){
+  'use strict';
+  var TZ='America/New_York';
+  function nyParts(d){var o={};new Intl.DateTimeFormat('en-US',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',weekday:'short',hour12:false}).formatToParts(d).forEach(function(p){o[p.type]=p.value});return o}
+  var now=new Date();
+  document.getElementById('today').textContent=now.toLocaleDateString('en-GB',{timeZone:TZ,weekday:'long',day:'numeric',month:'long',year:'numeric'});
+
+  /* next scheduled issue, computed in New York time */
+  var DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  function nextRun(days,h){
+    var p=nyParts(now),dow=DOW.indexOf(p.weekday),mins=(+p.hour%24)*60+(+p.minute);
+    for(var k=0;k<8;k++){var d=(dow+k)%7;if(days.indexOf(d)<0)continue;if(k===0&&mins>=h*60)continue;
+      var label=k===0?'Today':k===1?'Tomorrow':['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d];
+      return '<b>'+label+'</b>'+String(h).padStart(2,'0')+':00 ET'}
+    return '';
+  }
+  var sched={fb:[[0,1,2,3,4,5,6],8],sp:[[5],15],cp:[[1,2,3,4,5],10]};
+  Object.keys(sched).forEach(function(k){var el=document.querySelector('[data-next="'+k+'"]');if(el)el.innerHTML=nextRun(sched[k][0],sched[k][1])});
+
+  /* read each title's own canonical page for its latest issue */
+  function set(sel,val,html){document.querySelectorAll(sel).forEach(function(el){if(html)el.innerHTML=val;else el.textContent=val})}
+  function fmt(d,o){return new Date(d+'T12:00:00').toLocaleDateString('en-GB',o)}
+  function get(url){return fetch(url,{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){return new DOMParser().parseFromString(t,'text/html')})}
+
+  get('../daily-watchlist-5/').then(function(doc){
+    var data=JSON.parse(doc.getElementById('briefing-data').textContent);
+    var eds=data.editions.slice().sort(function(a,b){return a.date.localeCompare(b.date)});
+    var ed=eds[eds.length-1],no=String(eds.length).padStart(3,'0');
+    set('[data-fb="no"]',no);set('[data-fb="dow"]',fmt(ed.date,{weekday:'long'}));
+    set('[data-fb="date"]',fmt(ed.date,{month:'long',day:'numeric',year:'numeric'}));
+    set('[data-fb="read"]',ed.readTime);set('[data-fb="head"]',ed.stories[0].title);
+    set('[data-fb="line"]','No. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}));
+    set('[data-fb="title"]',ed.issueTitle||ed.stories[0].title);
+    set('[data-fb="more"]',ed.stories.slice(1,5).map(function(x){return '<li>'+x.title.replace(/[<>&]/g,'')+'</li>'}).join(''),true);
+  }).catch(function(){});
+
+  get('../weekly-economics-environment/').then(function(doc){
+    var eds=[].slice.call(doc.querySelectorAll('[data-edition]')).sort(function(a,b){return a.dataset.edition.localeCompare(b.dataset.edition)});
+    var ed=eds[eds.length-1];if(!ed)return;var n=eds.length;
+    set('[data-sp="vol"]','Vol. 1 · No. '+n);set('[data-sp="date"]',fmt(ed.dataset.edition,{day:'numeric',month:'short',year:'numeric'}));
+    set('[data-sp="line"]','No. '+n+' · '+fmt(ed.dataset.edition,{day:'numeric',month:'short',year:'numeric'}));
+    set('[data-sp="title"]',ed.dataset.title);
+    var heads=[].slice.call(ed.querySelectorAll('.entry h2')).slice(0,5);
+    if(heads.length)set('[data-sp="toc"]',heads.map(function(h){return '<li>'+h.textContent.replace(/[<>&]/g,'')+'</li>'}).join(''),true);
+  }).catch(function(){});
+
+  get('../daily-econ-challenge/').then(function(doc){
+    var data=JSON.parse(doc.getElementById('challenge-data').textContent);
+    var ed=data.editions.slice().sort(function(a,b){return b.date.localeCompare(a.date)})[0];
+    var fields=[];ed.questions.forEach(function(q){if(fields.indexOf(q.field)<0)fields.push(q.field)});
+    var no=String(ed.no).padStart(3,'0'),d=new Date(ed.date+'T12:00:00');
+    set('[data-cp="no"]','No. '+no);
+    set('[data-cp="date"]',d.getDate()+'.'+['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'][d.getMonth()]+'.'+String(d.getFullYear()).slice(2));
+    set('[data-cp="line"]','No. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}));
+    var q1=document.createElement('div');q1.innerHTML=ed.questions[0].stem;var t=q1.textContent.trim();set('[data-cp="q1"]','<b>1.</b> '+(t.length>150?t.slice(0,t.lastIndexOf(' ',150))+'…':t).replace(/[<>&]/g,''),true);
+    set('[data-cp="title"]',ed.questions.length+' questions · '+fields.length+' fields');
+    /* the cover grid shows the reader's own record for the latest set, if any */
+    try{var s=JSON.parse(localStorage.getItem('dec:v1:'+ed.date)||'null');
+      set('[data-cp="grid"]',ed.questions.map(function(q,i){var a=s&&s.answers&&s.answers[q.id];var cls='';
+        if(s&&s.submitted){var ok=a&&a.slice().sort().join()===q.correct.slice().sort().join();cls=ok?'f':'t'}else if(a&&a.length)cls='t';
+        return '<span class="'+cls+'">'+(i+1)+'</span>'}).join(''),true)}catch(e){}
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>
