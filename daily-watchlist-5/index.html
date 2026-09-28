@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>/* Periodicals: one reading mode shared by every title (localStorage periodicals:mode = day|night) */(function(){var K='periodicals:mode',m=null;try{m=localStorage.getItem(K);if(m!=='day'&&m!=='night'){var o=localStorage.getItem('fieldbrief:mode');m=(o==='day'||o==='night')?o:null;if(m)localStorage.setItem(K,m)}}catch(e){}if(!m)m=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'night':'day';document.documentElement.setAttribute('data-mode',m)})();</script>
 <style>
 /* ---------- inks ---------- */
 :root{
@@ -55,7 +56,7 @@ a{color:inherit}
 .pd-drawer{position:absolute;left:0;right:0;top:100%;background:var(--sheet);border-bottom:1px solid var(--rule);box-shadow:0 30px 60px -30px rgba(40,25,10,.45);transform-origin:top;transform:scaleY(.96);opacity:0;visibility:hidden;transition:opacity .22s ease,transform .22s ease,visibility 0s .22s}
 .pd-drawer[data-open="true"]{opacity:1;transform:none;visibility:visible;transition:opacity .22s ease,transform .22s ease}
 .pd-row{max-width:1280px;margin:0 auto;padding:26px 32px 0;display:flex;align-items:flex-end;gap:10px;border-bottom:6px solid var(--ink)}
-.pd-spine{--w:66px;--h:190px;position:relative;width:var(--w);height:var(--h);display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:12px 0 10px;text-decoration:none;background:var(--c);color:var(--on);transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.pd-spine{--w:66px;--h:196px;position:relative;width:var(--w);height:var(--h);display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:12px 0 10px;text-decoration:none;background:var(--c);color:var(--on);transition:transform .25s cubic-bezier(.2,.7,.2,1)}
 .pd-spine span{writing-mode:vertical-rl;transform:rotate(180deg);font:500 21px/1 var(--display);letter-spacing:-.01em;white-space:nowrap}
 .pd-spine small{font:600 8.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.8}
 .pd-spine::before{content:"";position:absolute;left:0;right:0;top:34px;height:1px;background:currentColor;opacity:.35}
@@ -63,8 +64,9 @@ a{color:inherit}
 .pd-spine[aria-current="page"]{transform:translateY(-18px);height:calc(var(--h) + 8px)}
 .pd-spine.hub{--c:#131210;--on:#efe9dc;--w:44px;--h:150px}
 .pd-spine.fb{--c:#7a1f33;--on:#f5e9d2}
-.pd-spine.sp{--c:#1f4a3b;--on:#f4f2ea;--w:72px;--h:176px}
-.pd-spine.cp{--c:#1c2f4a;--on:#f7f7f3;--w:60px;--h:168px;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:10px 10px}
+.pd-spine.sp{--c:#1f4a3b;--on:#f4f2ea;--w:72px;--h:214px}
+.pd-spine.sp span{font-size:17px}
+.pd-spine.cp{--c:#1c2f4a;--on:#f7f7f3;--w:60px;--h:196px;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:10px 10px}
 .pd-note{flex:1;align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 14px 18px;font:italic 400 22px/1.2 var(--head);color:var(--muted)}
 .pd-note b{font:600 10px/1.4 var(--sans);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:6px}
 
@@ -85,9 +87,9 @@ html.index-open .main{transform:translateX(56px) scale(.985);filter:saturate(.6)
 .ix-body{overflow:auto;flex:1;padding:6px 28px 40px;overscroll-behavior:contain}
 .ix-month{position:sticky;top:0;z-index:1;background:var(--sheet);font:600 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:18px 0 10px;border-bottom:1px solid var(--line)}
 .ix-item{border-bottom:1px solid var(--line)}
-.ix-row{width:100%;display:grid;grid-template-columns:62px minmax(0,1fr) 18px;gap:14px;align-items:start;text-align:left;background:none;border:0;padding:16px 0;color:var(--ink)}
+.ix-row{width:100%;display:grid;grid-template-columns:78px minmax(0,1fr) 18px;gap:14px;align-items:start;text-align:left;background:none;border:0;padding:16px 0;color:var(--ink)}
 .ix-no{font:500 26px/1 var(--display);color:var(--muted);font-variant-numeric:lining-nums;letter-spacing:-.02em;transition:color .2s}
-.ix-no sup{font-size:.42em;vertical-align:1.1em;margin-right:1px}
+.ix-no .no{font:italic 400 .5em/1 var(--display);letter-spacing:.03em;margin-right:.16em;vertical-align:.6em}
 .ix-date{display:block;font:600 10px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .ix-title{display:block;font:400 21px/1.15 var(--head);margin-top:3px}
 .ix-caret{font:400 16px/1.4 var(--display);color:var(--muted);transition:transform .25s ease;margin-top:14px}
@@ -96,7 +98,7 @@ html.index-open .main{transform:translateX(56px) scale(.985);filter:saturate(.6)
 .ix-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
 .ix-item[data-expanded="true"] .ix-more{grid-template-rows:1fr}
 .ix-more>div{overflow:hidden}
-.ix-more ol{list-style:none;margin:0 0 0 76px;padding:0 0 16px}
+.ix-more ol{list-style:none;margin:0 0 0 92px;padding:0 0 16px}
 .ix-more li a{display:grid;grid-template-columns:22px 1fr;gap:6px;text-decoration:none;font:500 12.5px/1.4 var(--sans);padding:5px 0;color:var(--text)}
 .ix-more li a span{font:500 12px/1.4 var(--display);color:var(--muted)}
 .ix-more li a:hover{color:var(--oxblood)}
@@ -107,9 +109,8 @@ html.index-open .main{transform:translateX(56px) scale(.985);filter:saturate(.6)
 .mast{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
 .mast h1{margin:0;font:500 clamp(54px,7.2vw,104px)/.86 var(--display);letter-spacing:-.055em;color:var(--ink);white-space:nowrap}
 .mast h1 i{color:var(--oxblood);font-style:italic}
-.folio{display:inline-block;vertical-align:top;margin:.08em 0 0 .12em;font:500 .3em/1 var(--display);letter-spacing:0;color:var(--oxblood);font-style:normal;padding-top:.3em;border-top:2px solid var(--oxblood)}
-.folio{display:inline-flex;align-items:flex-start;gap:.12em}
-.folio .sl{writing-mode:vertical-rl;transform:rotate(180deg);font:700 max(.36em,7.5px)/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:.15em 0 0}
+.folio{display:inline-block;vertical-align:top;margin:.02em 0 0 .16em;font:500 .37em/1 var(--display);letter-spacing:-.01em;color:var(--oxblood);font-style:normal;white-space:nowrap;font-variant-numeric:lining-nums}
+.folio .no{font:italic 400 .46em/1 var(--display);letter-spacing:.03em;margin-right:.18em;vertical-align:.78em;color:var(--muted)}
 .mast-side{font:500 10.5px/1.6 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right;padding-bottom:10px}
 .meta{display:grid;grid-template-columns:1.2fr 1fr .8fr 1fr;border-bottom:3px double var(--rule)}
 .meta>div{padding:10px 18px 11px;border-left:1px solid var(--line);min-width:0}
@@ -178,7 +179,7 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
   .pd-note{display:none}
   .mast{grid-template-columns:1fr}
   .mast-side{display:none}
-  .mast h1{font-size:clamp(46px,14.5vw,84px)}
+  .mast h1{font-size:clamp(40px,12.2vw,84px)}
   .meta{grid-template-columns:1fr 1fr}
   .meta>div:nth-child(3){border-left:0;padding-left:0}
   .meta>div:nth-child(n+3){border-top:1px solid var(--line)}
@@ -206,8 +207,8 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
         <div class="pd-row">
           <a class="pd-spine hub" href="../personal-updates/"><small>All</small><span>Periodicals</span></a>
           <a class="pd-spine fb" href="../daily-watchlist-5/" aria-current="page"><small>Daily</small><span>Field Brief</span></a>
-          <a class="pd-spine sp" href="../weekly-economics-environment/"><small>Fri</small><span>Shadow Price</span></a>
-          <a class="pd-spine cp" href="../daily-econ-challenge/"><small>Wkdy</small><span>Ceteris Paribus</span></a>
+          <a class="pd-spine sp" href="../weekly-economics-environment/"><small>Fri</small><span>Economics &amp; Environment</span></a>
+          <a class="pd-spine cp" href="../daily-econ-challenge/"><small>Wkdy</small><span>Daily Problem Set</span></a>
           <div class="pd-note"><b>You are reading</b>Field Brief</div>
         </div>
       </div>
@@ -234,10 +235,13 @@ are derived from date order (skipped days do not skip numbers). Every story need
 art, summary, why, implications, sources; "category" is retained in data but deliberately NOT
 rendered. Optional issueTitle must be factual and restrained; omit when no natural title exists.
 Illustration kinds are drawn in art(); add a new kind there when needed, in the same linocut
-language and inks. Identity (Sept 2026 redesign): Daily Briefing Bodoni masthead with the
-typeset N-o superscript folio; Instrument Serif headlines; Instrument Sans text; parchment and
+language and inks. Identity (Sept 2026 redesign + refinement): Daily Briefing Bodoni masthead
+with the raised single-line folio "No. 002" (small light italic "No.", prominent Bodoni numerals,
+no box, no rule, no stock numero sign; same grammar in the Index); Instrument Serif headlines; Instrument Sans text; parchment and
 espresso structure; vermilion, Prussian blue, viridian, ochre and oxblood inks by story position
-(never by subject). Day/Night is part of the metadata strip, not a floating button. The Index is a
+(never by subject). Day/Night is part of the metadata strip, not a floating button; it reads and
+writes the shared Periodicals key localStorage periodicals:mode (day|night), set in <head> before
+paint and synced across tabs; the old fieldbrief:mode is migrated once. The Index is a
 slide-in contents panel with expandable issues. No pills, chips, slogans, category labels above
 headlines or explanatory UI copy. Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
 <script type="application/json" id="briefing-data">
@@ -611,7 +615,7 @@ headlines or explanatory UI copy. Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (s
 
   function issueNumber(ed){return ordered.findIndex(e=>e.date===ed.date)+1}
   function issueLabel(ed){return String(issueNumber(ed)).padStart(3,'0')}
-  function folio(ed){return `<span class="folio" aria-label="Number ${issueNumber(ed)}"><span class="sl" aria-hidden="true">No.</span><span aria-hidden="true">${issueLabel(ed)}</span></span>`}
+  function folio(ed){return `<span class="folio" aria-label="Number ${issueNumber(ed)}"><span class="no" aria-hidden="true">No.</span><span aria-hidden="true">${issueLabel(ed)}</span></span>`}
   function dayName(ed){return ed.displayDate.split(',')[0]}
   function dateOnly(ed){return ed.displayDate.replace(/^[A-Za-z]+, /,'')}
   const INKS=['--prussian','--vermilion','--viridian','--ochre','--oxblood'];
@@ -652,10 +656,12 @@ headlines or explanatory UI copy. Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (s
   }
 
   /* ---- day / night: part of the edition's metadata ---- */
-  function setMode(m){root.dataset.mode=m;document.querySelector('meta[name="theme-color"]').content=m==='night'?'#16120e':'#f1e6d0';
-    try{localStorage.setItem('fieldbrief:mode',m)}catch(e){}
+  /* shared Periodicals preference: periodicals:mode (migrated from fieldbrief:mode in <head>) */
+  function setMode(m,fromOtherTab){root.dataset.mode=m;document.querySelector('meta[name="theme-color"]').content=m==='night'?'#16120e':'#f1e6d0';
+    if(!fromOtherTab){try{localStorage.setItem('periodicals:mode',m)}catch(e){}}
     document.querySelectorAll('.mode button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===m)))}
-  try{const m=localStorage.getItem('fieldbrief:mode');if(m==='night'||m==='day')setMode(m)}catch(e){}
+  setMode(root.dataset.mode==='night'?'night':'day',true);
+  window.addEventListener('storage',e=>{if(e.key==='periodicals:mode'&&(e.newValue==='day'||e.newValue==='night'))setMode(e.newValue,true)});
 
   /* ---- index ---- */
   const panel=document.getElementById('indexPanel'),veil=document.getElementById('veil'),openBtn=document.getElementById('indexOpen'),body=document.getElementById('ixBody');
@@ -666,7 +672,7 @@ headlines or explanatory UI copy. Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (s
     newest.forEach(e=>{
       const m=new Date(e.date+'T12:00:00').toLocaleDateString('en-US',{month:'long',year:'numeric'});
       if(m!==month){html+=`<div class="ix-month">${m}</div>`;month=m}
-      html+=`<div class="ix-item" data-date="${esc(e.date)}" data-expanded="false"><button class="ix-row" type="button" aria-expanded="false"><span class="ix-no">${issueLabel(e)}</span><span><span class="ix-date">${esc(e.displayDate)}</span><span class="ix-title">${esc(e.issueTitle||e.stories[0].title)}</span></span><span class="ix-caret" aria-hidden="true">›</span></button><div class="ix-more"><div><ol>${e.stories.map(s=>`<li><a href="#${esc(e.date)}/${esc(s.number)}"><span>${esc(s.number)}</span>${esc(s.title)}</a></li>`).join('')}<li><a class="ix-open" href="#${esc(e.date)}">Open No. ${issueLabel(e)}</a></li></ol></div></div></div>`;
+      html+=`<div class="ix-item" data-date="${esc(e.date)}" data-expanded="false"><button class="ix-row" type="button" aria-expanded="false"><span class="ix-no"><span class="no">No.</span>${issueLabel(e)}</span><span><span class="ix-date">${esc(e.displayDate)}</span><span class="ix-title">${esc(e.issueTitle||e.stories[0].title)}</span></span><span class="ix-caret" aria-hidden="true">›</span></button><div class="ix-more"><div><ol>${e.stories.map(s=>`<li><a href="#${esc(e.date)}/${esc(s.number)}"><span>${esc(s.number)}</span>${esc(s.title)}</a></li>`).join('')}<li><a class="ix-open" href="#${esc(e.date)}">Open No. ${issueLabel(e)}</a></li></ol></div></div></div>`;
     });
     body.innerHTML=html;
     body.querySelectorAll('.ix-row').forEach(btn=>btn.addEventListener('click',()=>{const it=btn.parentElement,x=it.dataset.expanded!=='true';it.dataset.expanded=String(x);btn.setAttribute('aria-expanded',String(x))}));
