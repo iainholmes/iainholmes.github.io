@@ -313,9 +313,9 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
 </header>
 
 <div class="veil" id="veil" data-open="false"></div>
-<aside class="index" id="indexPanel" data-open="false" aria-label="Index of issues" aria-hidden="true">
+<aside class="index" id="indexPanel" data-open="false" aria-label="Index of editions" aria-hidden="true">
   <button class="ix-close" id="indexClose" type="button" aria-label="Close index">×</button>
-  <div class="ix-head"><h2>In<i>dex</i></h2><div class="ix-count"><b id="ixTotal"></b>issues</div></div>
+  <div class="ix-head"><h2>In<i>dex</i></h2><div class="ix-count"><b id="ixTotal"></b>editions</div></div>
   <div class="ix-body" id="ixBody"></div>
 </aside>
 
@@ -887,7 +887,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
     const latest=ordered[ordered.length-1];
     if(ed!==latest)return `<span class="k">Latest</span><a class="v" href="#${esc(latest.date)}" style="text-decoration:none">N<sup>o</sup>. ${issueLabel(latest)} →</a>`;
     const h=+new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',hour12:false}).format(new Date())%24;
-    return `<span class="k">Next issue</span><span class="v">${h<8?'Today':'Tomorrow'}, 8:00</span>`;
+    return `<span class="k">Next edition</span><span class="v">${h<8?'Today':'Tomorrow'}, 8:00</span>`;
   }
   function modeHTML(){const n=root.dataset.mode==='night';return `<div class="mode" role="group" aria-label="Edition"><button type="button" data-mode="day" aria-pressed="${!n}">Day</button><span class="sl" aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="${n}">Night</button></div>`}
   function render(ed,storyNo){
@@ -900,11 +900,11 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
       </header>
       <section class="front">
         <div>${ed.issueTitle?`<h2 class="issue-title">${esc(ed.issueTitle)}</h2>`:''}<p class="deck">${esc(ed.deck)}</p></div>
-        <ol class="front-list" aria-label="In this issue">${ed.stories.map((s,k)=>`<li style="--k:var(${INKS[k%5]})"><a href="#${esc(ed.date)}/${esc(s.number)}"><span>${esc(s.number)}</span><b>${esc(s.title)}</b></a></li>`).join('')}</ol>
+        <ol class="front-list" aria-label="In this edition">${ed.stories.map((s,k)=>`<li style="--k:var(${INKS[k%5]})"><a href="#${esc(ed.date)}/${esc(s.number)}"><span>${esc(s.number)}</span><b>${esc(s.title)}</b></a></li>`).join('')}</ol>
       </section>
       ${ed.stories.map((s,k)=>storyHTML(ed,s,k)).join('')}
       ${ed.signalTitle?`<section class="signal"><div><div class="k">Across today's five</div><h2>${esc(ed.signalTitle)}</h2></div><div>${(ed.signal||[]).map(p=>`<p>${esc(p)}</p>`).join('')}</div></section>`:''}
-      <nav class="turn" aria-label="Adjacent issues">${prev?`<a class="prev" href="#${esc(prev.date)}"><small>← Nᵒ. ${issueLabel(prev)} · ${esc(prev.shortDate||prev.date)}</small><span>${esc(prev.issueTitle||prev.stories[0].title)}</span></a>`:'<span></span>'}<span class="mid">Field Brief</span>${next?`<a class="next" href="#${esc(next.date)}"><small>Nᵒ. ${issueLabel(next)} · ${esc(next.shortDate||next.date)} →</small><span>${esc(next.issueTitle||next.stories[0].title)}</span></a>`:'<span></span>'}</nav>
+      <nav class="turn" aria-label="Adjacent editions">${prev?`<a class="prev" href="#${esc(prev.date)}"><small>← Nᵒ. ${issueLabel(prev)} · ${esc(prev.shortDate||prev.date)}</small><span>${esc(prev.issueTitle||prev.stories[0].title)}</span></a>`:'<span></span>'}<span class="mid">Field Brief</span>${next?`<a class="next" href="#${esc(next.date)}"><small>Nᵒ. ${issueLabel(next)} · ${esc(next.shortDate||next.date)} →</small><span>${esc(next.issueTitle||next.stories[0].title)}</span></a>`:'<span></span>'}</nav>
     </article>`;
     mount.querySelectorAll('.mode button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
     document.querySelectorAll('.ix-item').forEach(it=>it.dataset.current=String(it.dataset.date===ed.date));
@@ -929,7 +929,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
     newest.forEach(e=>{
       const m=new Date(e.date+'T12:00:00').toLocaleDateString('en-US',{month:'long',year:'numeric'});
       if(m!==month){html+=`<div class="ix-month">${m}</div>`;month=m}
-      html+=`<div class="ix-item" data-date="${esc(e.date)}" data-expanded="false"><button class="ix-row" type="button" aria-expanded="false"><span class="ix-no"><span class="no">N<sup>o</sup>.</span>${issueLabel(e)}</span><span><span class="ix-date">${esc(e.displayDate)}</span><span class="ix-title">${esc(e.issueTitle||e.stories[0].title)}</span></span><span class="ix-caret" aria-hidden="true">›</span></button><div class="ix-more"><div><ol>${e.stories.map(s=>`<li><a href="#${esc(e.date)}/${esc(s.number)}"><span>${esc(s.number)}</span>${esc(s.title)}</a></li>`).join('')}<li><a class="ix-open" href="#${esc(e.date)}">Open issue ${issueLabel(e)}</a></li></ol></div></div></div>`;
+      html+=`<div class="ix-item" data-date="${esc(e.date)}" data-expanded="false"><button class="ix-row" type="button" aria-expanded="false"><span class="ix-no"><span class="no">N<sup>o</sup>.</span>${issueLabel(e)}</span><span><span class="ix-date">${esc(e.displayDate)}</span><span class="ix-title">${esc(e.issueTitle||e.stories[0].title)}</span></span><span class="ix-caret" aria-hidden="true">›</span></button><div class="ix-more"><div><ol>${e.stories.map(s=>`<li><a href="#${esc(e.date)}/${esc(s.number)}"><span>${esc(s.number)}</span>${esc(s.title)}</a></li>`).join('')}<li><a class="ix-open" href="#${esc(e.date)}">Open edition ${issueLabel(e)}</a></li></ol></div></div></div>`;
     });
     body.innerHTML=html;
     body.querySelectorAll('.ix-row').forEach(btn=>btn.addEventListener('click',()=>{const it=btn.parentElement,x=it.dataset.expanded!=='true';it.dataset.expanded=String(x);btn.setAttribute('aria-expanded',String(x))}));

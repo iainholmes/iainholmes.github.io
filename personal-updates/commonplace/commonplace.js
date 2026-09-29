@@ -180,7 +180,9 @@ function renderPage(){
   var items=Object.keys(STATE.items).map(function(k){return STATE.items[k]}).sort(function(a,b){return Date.parse(b.modifiedAt)-Date.parse(a.modifiedAt)});
   var q=(document.getElementById('cpSearch').value||'').toLowerCase(),pub=document.getElementById('cpSource').value,thread=document.getElementById('cpThread').value,rating=+document.getElementById('cpImportance').value||0;
   var show=items.filter(function(x){var hay=(x.title+' '+x.excerpt+' '+x.note+' '+(x.threads||[]).join(' ')+' '+x.publication).toLowerCase();return (!q||hay.indexOf(q)>=0)&&(!pub||x.publicationKey===pub)&&(!thread||(x.threads||[]).indexOf(thread)>=0)&&(!rating||(x.rating||0)>=rating)});
-  host.innerHTML=show.length?show.map(itemHTML).join(''):'<p class="cp-empty">Nothing here matches this view.</p>';
+  host.innerHTML=show.length?show.map(itemHTML).join(''):(items.length?
+    '<div class="cp-empty"><p class="empty-kicker">In this view</p><h2>No passages found.</h2><p>Try another search, or widen the thread, origin or importance selections in your index. Your kept material is still here.</p></div>':
+    '<div class="cp-empty"><p class="empty-kicker">Your commonplace book</p><h2>A place for what stays with you.</h2><p>Keep a passage, question or figure from any of the three titles. It will gather here, ready for a note, a thread or another reading.</p><a href="../">Browse the Periodicals ↗</a></div>');
   var ts=threadList(items),sel=document.getElementById('cpThread'),old=sel.value;sel.innerHTML='<option value="">All threads</option>'+ts.map(function(t){return '<option>'+esc(t)+'</option>'}).join('');sel.value=ts.indexOf(old)>=0?old:'';
   document.getElementById('backupState').textContent=backupText(items);
   var lc=document.getElementById('localCount'),tc=document.getElementById('threadCount'),vc=document.getElementById('viewCount'),ls=document.getElementById('localState');
