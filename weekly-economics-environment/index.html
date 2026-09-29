@@ -412,6 +412,8 @@ html[data-mode="night"] .pd-drawer{background:var(--paper-2)}
 .entry:nth-of-type(3n+2)::before{border-top-color:var(--river)!important}
 .entry:nth-of-type(3n)::before{border-top-color:var(--clay)!important}
 .entry::before{width:96px!important;border-top-width:6px!important}
+/* The first article accent sits inside the reading field, separated from the Field Notes band. */
+.reading-column>.entry:first-child::before{top:14px}
 .entry-number{color:var(--river)!important}
 .entry:nth-of-type(3n) .entry-number{color:var(--clay)!important}
 .entry:nth-of-type(3n+1) .entry-number{color:var(--spruce)!important}
