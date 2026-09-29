@@ -1,0 +1,484 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "edition.schema.json",
+  "title": "Rupert Atlas edition",
+  "description": "One of two independent choices (Tuesday, Thursday) for the same coming weekend.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "slot",
+    "status",
+    "published_at",
+    "weekend",
+    "flagship",
+    "local_trail",
+    "away_mission",
+    "wildcard",
+    "mission",
+    "memory_prompt",
+    "conditions",
+    "practical"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^\\d{4}-W\\d{2}-(tue|thu)$"
+    },
+    "slot": {
+      "enum": [
+        "tuesday",
+        "thursday"
+      ]
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "published",
+        "withdrawn"
+      ]
+    },
+    "published_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2})?[+-]\\d{2}:\\d{2}$"
+    },
+    "weekend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/date"
+        },
+        "end": {
+          "$ref": "#/$defs/date"
+        }
+      }
+    },
+    "flagship": {
+      "$ref": "#/$defs/flagship"
+    },
+    "local_trail": {
+      "$ref": "#/$defs/outing"
+    },
+    "away_mission": {
+      "$ref": "#/$defs/outing"
+    },
+    "wildcard": {
+      "$ref": "#/$defs/outing"
+    },
+    "mission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "tone"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 4
+        },
+        "tone": {
+          "enum": [
+            "play",
+            "explore",
+            "training"
+          ]
+        }
+      }
+    },
+    "memory_prompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "text"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "photo",
+            "video",
+            "observation",
+            "object",
+            "note"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 4
+        }
+      }
+    },
+    "conditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "as_of"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "as_of": {
+          "type": "string"
+        },
+        "pivot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "if",
+            "note"
+          ],
+          "properties": {
+            "if": {
+              "type": "string"
+            },
+            "then": {
+              "enum": [
+                "local_trail",
+                "away_mission",
+                "wildcard"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "practical": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "best_window": {
+          "type": "string"
+        },
+        "fees": {
+          "type": "string"
+        },
+        "bring": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "closures_checked": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "closures_note": {
+          "type": "string"
+        }
+      }
+    },
+    "interlude": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "photo_id"
+      ],
+      "description": "A full-bleed photograph that breaks the sheet on This Week. Caption defaults to the photo's place and date.",
+      "properties": {
+        "photo_id": {
+          "type": "string"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        }
+      }
+    },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "at",
+          "note"
+        ],
+        "properties": {
+          "at": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "photoRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "alt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "alt": {
+          "type": "string",
+          "minLength": 8
+        },
+        "focal": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "snapshot": {
+      "description": "Place and route facts frozen at publication. Never rewritten; later changes go in corrections[].",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "as_of"
+      ],
+      "properties": {
+        "as_of": {
+          "$ref": "#/$defs/date"
+        },
+        "route": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "route_id": {
+              "type": "string",
+              "pattern": "@\\d+$"
+            },
+            "distance_mi": {
+              "type": "number",
+              "minimum": 0
+            },
+            "shape": {
+              "enum": [
+                "loop",
+                "out and back",
+                "point to point",
+                "lollipop"
+              ]
+            },
+            "gain_ft": {
+              "type": "number"
+            },
+            "climb_ft_approx": {
+              "type": "number"
+            },
+            "difficulty": {
+              "enum": [
+                "easy",
+                "moderate",
+                "strenuous"
+              ]
+            },
+            "surface": {
+              "type": "string"
+            }
+          }
+        },
+        "access": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "parking": {
+              "type": "string"
+            }
+          }
+        },
+        "drive": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "from",
+            "minutes"
+          ],
+          "properties": {
+            "from": {
+              "const": "chapel-hill-public"
+            },
+            "minutes": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          }
+        },
+        "duration_h": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "dog": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "leash": {
+              "type": "string"
+            },
+            "water": {
+              "type": "string"
+            },
+            "shade": {
+              "type": "string"
+            },
+            "watch_for": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "label",
+        "url",
+        "retrieved"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "alltrails",
+            "park",
+            "guide",
+            "forecast",
+            "visit"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "retrieved": {
+          "$ref": "#/$defs/date"
+        }
+      }
+    },
+    "flagship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "place_id",
+        "title",
+        "standfirst",
+        "why_this_week",
+        "snapshot",
+        "photo",
+        "sources"
+      ],
+      "properties": {
+        "place_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 80
+        },
+        "standfirst": {
+          "type": "string",
+          "maxLength": 220
+        },
+        "why_this_week": {
+          "type": "string"
+        },
+        "headline_condition": {
+          "type": "string",
+          "maxLength": 48
+        },
+        "snapshot": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "photo": {
+          "$ref": "#/$defs/photoRef"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "outing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "place_id",
+        "title",
+        "line",
+        "snapshot"
+      ],
+      "properties": {
+        "place_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 70
+        },
+        "line": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "commitment": {
+          "type": "string"
+        },
+        "snapshot": {
+          "$ref": "#/$defs/snapshot"
+        }
+      }
+    }
+  }
+}

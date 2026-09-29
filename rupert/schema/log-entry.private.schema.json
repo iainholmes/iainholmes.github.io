@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "log-entry.private.schema.json",
+  "title": "Field Log entry — private (browser only)",
+  "description": "Lives in IndexedDB and in ZIP backups. Never written to the repository. Publication reads only publication.approved_fields and publication.approved_media.",
+  "type": "object",
+  "required": ["id", "date", "place_id", "created", "updated"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^fl_[0-9A-HJKMNP-TV-Z]{26}$" },
+    "date": { "type": "string" },
+    "place_id": { "type": "string" },
+    "edition_ref": { "type": "object" },
+    "title": { "type": "string" },
+    "actual": { "type": "object", "properties": { "distance_mi": { "type": "number" }, "duration_min": { "type": "number" }, "start": { "type": "string" } } },
+    "notes_private": { "type": "string" },
+    "rupert_highlight": { "type": "string" },
+    "human_highlight": { "type": "string" },
+    "return_interest": { "enum": ["soon", "seasonal", "someday", "once-was-enough", "not-for-rupert"] },
+    "memory": { "type": "object", "properties": { "kind": { "type": "string" }, "text": { "type": "string" }, "media_ids": { "type": "array" } } },
+    "photos": { "type": "array", "items": { "type": "object", "required": ["media_id"] } },
+    "publication": {
+      "type": "object",
+      "properties": {
+        "approved_fields": { "type": "array", "items": { "enum": ["title", "edition_ref", "public_note", "rupert_highlight", "human_highlight", "return_interest"] } },
+        "public_note": { "type": "string" },
+        "approved_media": { "type": "array", "items": { "type": "string" } },
+        "approved_at": { "type": "string" }
+      }
+    },
+    "created": { "type": "string" },
+    "updated": { "type": "string" }
+  }
+}

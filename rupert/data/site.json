@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "review_clock": "2026-10-01T08:00:00-04:00",
+  "review_clock_note": "Prototype only. Pins the clock so both W40 choices show. Must be null before merge; the build tool warns while it is set.",
+  "noindex": true
+}

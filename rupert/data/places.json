@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "reference_points": {
+    "chapel-hill-public": {
+      "label": "Chapel Hill (Franklin St.)",
+      "lat": 35.913,
+      "lng": -79.056,
+      "note": "Public reference for all published drive times. Never a residence."
+    }
+  },
+  "places": [
+    {
+      "id": "eno-cox-mountain",
+      "name": "Eno River State Park — Cox Mountain Trail",
+      "short_name": "Cox Mountain",
+      "kind": "trail",
+      "region": "Durham County",
+      "access": { "name": "Fews Ford access", "lat": 36.074, "lng": -79.006, "coords_verified": false },
+      "dog_policy": "Leashed, 6 ft maximum (N.C. State Parks)",
+      "routes": [
+        { "id": "eno-cox-mountain-loop@1", "distance_mi": 3.75, "shape": "loop", "climb_ft_approx": 300, "difficulty": "moderate" }
+      ],
+      "links": [ { "label": "N.C. State Parks — Eno River", "url": "https://www.ncparks.gov/state-parks/eno-river-state-park" } ],
+      "tags": ["river", "suspension bridge", "ridge"]
+    },
+    {
+      "id": "umstead-company-mill",
+      "name": "William B. Umstead State Park — Company Mill Trail",
+      "short_name": "Company Mill",
+      "kind": "trail",
+      "region": "Wake County",
+      "access": { "name": "Harrison Ave. entrance (Reedy Creek)", "lat": 35.836, "lng": -78.758, "coords_verified": false },
+      "dog_policy": "Leashed, 6 ft maximum (N.C. State Parks)",
+      "routes": [
+        { "id": "umstead-company-mill-loop@1", "distance_mi": 5.8, "shape": "loop", "gain_ft": 636, "difficulty": "moderate" }
+      ],
+      "links": [ { "label": "N.C. State Parks — Umstead", "url": "https://www.ncparks.gov/state-parks/william-b-umstead-state-park" } ],
+      "tags": ["creek", "mill ruins", "bridge"]
+    },
+    {
+      "id": "carolina-north-forest",
+      "name": "Carolina North Forest",
+      "short_name": "Carolina North",
+      "kind": "trail",
+      "region": "Orange County",
+      "access": { "name": "Estes Dr. Extension lot", "lat": 35.936, "lng": -79.061, "coords_verified": false },
+      "dog_policy": "Leashed",
+      "routes": [],
+      "tags": ["close to town", "soft trail"]
+    },
+    {
+      "id": "hanging-rock-moores-wall",
+      "name": "Hanging Rock State Park — Moore's Wall Loop",
+      "short_name": "Moore's Wall",
+      "kind": "trail",
+      "region": "Stokes County",
+      "access": { "name": "Visitor center lot", "lat": 36.394, "lng": -80.265, "coords_verified": false },
+      "dog_policy": "Leashed, 6 ft maximum (N.C. State Parks)",
+      "routes": [
+        { "id": "hanging-rock-moores-wall-loop@1", "distance_mi": 4.2, "shape": "loop", "difficulty": "strenuous" }
+      ],
+      "links": [ { "label": "N.C. State Parks — Hanging Rock", "url": "https://www.ncparks.gov/state-parks/hanging-rock-state-park" } ],
+      "tags": ["mountain", "tower", "full day"]
+    },
+    {
+      "id": "occoneechee-mountain",
+      "name": "Occoneechee Mountain State Natural Area",
+      "short_name": "Occoneechee Mountain",
+      "kind": "trail",
+      "region": "Orange County",
+      "access": { "name": "Virginia Cates Rd. lot", "lat": 36.061, "lng": -79.117, "coords_verified": false },
+      "dog_policy": "Leashed, 6 ft maximum (N.C. State Parks)",
+      "routes": [
+        { "id": "occoneechee-mountain-loop@1", "distance_mi": 2.2, "shape": "loop", "difficulty": "moderate" }
+      ],
+      "tags": ["quarry overlook", "Hillsborough"]
+    },
+    {
+      "id": "hillsborough-riverwalk",
+      "name": "Hillsborough Riverwalk",
+      "short_name": "Riverwalk",
+      "kind": "town",
+      "region": "Orange County",
+      "access": { "name": "Gold Park", "lat": 36.071, "lng": -79.094, "coords_verified": false },
+      "dog_policy": "Leashed",
+      "routes": [],
+      "tags": ["paved", "Eno", "town"]
+    },
+    {
+      "id": "duke-forest-korstian",
+      "name": "Duke Forest — Korstian Division",
+      "short_name": "Korstian Division",
+      "kind": "trail",
+      "region": "Orange County",
+      "access": { "name": "Gate 26, Mount Sinai Rd.", "lat": 35.990, "lng": -79.020, "coords_verified": false },
+      "dog_policy": "Leashed",
+      "routes": [],
+      "tags": ["New Hope Creek", "fire roads"]
+    },
+    {
+      "id": "raven-rock",
+      "name": "Raven Rock State Park — Raven Rock Loop",
+      "short_name": "Raven Rock",
+      "kind": "trail",
+      "region": "Harnett County",
+      "access": { "name": "Main lot", "lat": 35.463, "lng": -78.912, "coords_verified": false },
+      "dog_policy": "Leashed, 6 ft maximum (N.C. State Parks)",
+      "routes": [
+        { "id": "raven-rock-loop@1", "distance_mi": 2.6, "shape": "loop", "difficulty": "moderate" }
+      ],
+      "links": [ { "label": "N.C. State Parks — Raven Rock", "url": "https://www.ncparks.gov/state-parks/raven-rock-state-park" } ],
+      "tags": ["Cape Fear River", "stairs", "cliff"]
+    },
+    {
+      "id": "brumley-forest",
+      "name": "Brumley Forest Nature Preserve",
+      "short_name": "Brumley Forest",
+      "kind": "trail",
+      "region": "Orange County",
+      "access": { "name": "South lot, Old NC 86", "lat": 35.969, "lng": -79.109, "coords_verified": false },
+      "dog_policy": "Leashed",
+      "routes": [],
+      "tags": ["fields", "quiet early"]
+    }
+  ]
+}
