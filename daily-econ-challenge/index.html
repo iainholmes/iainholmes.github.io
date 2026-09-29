@@ -101,7 +101,7 @@ body.scrolled .wordmark,body.ledger .wordmark{opacity:1}
 /* ---------- question ---------- */
 .q{padding:34px 40px 30px}
 .q-head{display:flex;align-items:baseline;gap:18px;padding-bottom:16px;border-bottom:1px solid var(--rule)}
-.q-num{font:500 44px/.9 var(--mono);color:var(--navy);letter-spacing:-.04em}
+.q-num{font:500 36px/.95 var(--mono);color:var(--navy);letter-spacing:-.04em}
 .q-field{font:500 11px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--teal)}
 .q-kind{margin-left:auto;font:500 11px/1.4 var(--mono);color:var(--muted);white-space:nowrap}
 .stem{font:400 20px/1.6 var(--math);color:var(--ink);margin:24px 0 0;max-width:68ch}
@@ -329,6 +329,22 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 @media (max-width:600px){.pd-row{flex-wrap:wrap;overflow-x:visible!important;row-gap:0}.pd-hb{flex-basis:100%;margin:0;padding:10px 0 10px!important;order:9}}
 .wordmark{pointer-events:none}body.scrolled .wordmark,body.ledger .wordmark{pointer-events:auto}
 @media (max-width:600px){.wordmark{display:none}}
+
+/* ===== 2026-09-28 folio correction ===== */
+.ps-title{align-items:start}
+.ps-title h1{align-self:end}
+.ps-no{display:grid;justify-items:end;gap:4px;min-width:210px;padding-top:5px;font-size:11px;letter-spacing:.07em;text-transform:uppercase}
+.ps-no .ps-folio{display:block;margin:0 0 5px;font:500 21px/1 var(--mono);color:var(--navy);letter-spacing:-.01em;text-transform:none}
+.ps-no .ps-folio .no,#resTitle .no{font:400 .7em/1 var(--math);font-style:normal;color:var(--muted);margin-right:.25em;letter-spacing:0}
+.ps-no .ps-folio .no sup,#resTitle .no sup{font-size:.58em;vertical-align:.58em;line-height:0;font-style:italic}
+.ps-no .sub{font-size:15px;text-transform:none;letter-spacing:0}
+.ps-title h1 .fo{display:none!important}
+/* Handbook is a small manual object inside the Periodicals shelf. */
+.pd-hb{display:flex!important;align-items:center;gap:9px;margin-left:auto!important;padding:8px 11px!important;border:1px solid var(--rule)!important;background:var(--paper)!important;text-decoration:none!important;opacity:.9}
+.pd-hb::before{content:"H";display:grid;place-items:center;width:23px;height:29px;border:1px solid currentColor;font:600 9px/1 var(--mono);letter-spacing:0}
+.pd-hb:hover{border-color:var(--teal)!important;color:var(--teal)!important;opacity:1}
+@media (max-width:700px){.ps-title{grid-template-columns:1fr;gap:12px}.ps-no{justify-items:start;min-width:0}.ps-no .sub{text-align:left}}
+@media (max-width:600px){.pd-hb{flex-basis:100%;margin:8px 0 0!important;order:9}}
 </style>
 </head>
 <body>
@@ -580,7 +596,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   function headHTML(){
     var latest=EDITIONS[0]===ed,n=ed.questions.length,sc=scoreOf(ed,st);
     var rec=st.submitted?sc+' / '+n+' '+recordHTML(ed,st):nAnswered()?nAnswered()+' of '+n+' answered':'Not started';
-    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><h1 id="psTitle">The <i>Workbook</i><sup class="fo"><span class="no">No.</span>'+pad(ed.no)+'</sup></h1><div class="ps-no"><span>'+(latest?'Today’s set':'From the ledger')+'</span><em class="sub">Economics &amp; econometrics · weekdays</em></div></div>'+
+    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><h1 id="psTitle">The <i>Workbook</i></h1><div class="ps-no"><b class="ps-folio"><span class="no">N<sup>o</sup>.</span>'+pad(ed.no)+'</b><span>'+(latest?'Today’s set':'From the ledger')+'</span><em class="sub">Economics &amp; econometrics · weekdays</em></div></div>'+
       '<dl class="ps-facts"><div><dt>Set</dt><dd><time datetime="'+ed.date+'">'+longDate(ed.date)+'</time></dd></div><div><dt>Questions</dt><dd>'+n+' · about '+ed.minutes+' min</dd></div><div><dt>Your record</dt><dd id="statusFact">'+rec+'</dd></div><div><dt>Next set</dt><dd id="nextSet">'+nextSet()+'</dd></div></dl></section>';
   }
 
@@ -629,7 +645,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     });
     var seen={};missed=missed.filter(function(m){if(seen[m.c])return false;seen[m.c]=1;return true});
     var verdict=sc===n?'Every question correct.':sc>=n-2?'A strong set; review the misses below.':'Worth a second pass through the solutions below.';
-    return '<article class="sheet results" aria-labelledby="resTitle"><div class="res-top"><div class="score" aria-label="Score '+sc+' of '+n+'">'+sc+'<small>/'+n+'</small></div><div><h2 id="resTitle"><span class="no">No.</span>'+pad(ed.no)+' · solutions</h2>'+recordHTML(ed,st,'record big')+'<p>'+verdict+' A multi-select question counts only when exactly the correct options are chosen.</p></div></div>'+
+    return '<article class="sheet results" aria-labelledby="resTitle"><div class="res-top"><div class="score" aria-label="Score '+sc+' of '+n+'">'+sc+'<small>/'+n+'</small></div><div><h2 id="resTitle"><span class="no">N<sup>o</sup>.</span>'+pad(ed.no)+' · solutions</h2>'+recordHTML(ed,st,'record big')+'<p>'+verdict+' A multi-select question counts only when exactly the correct options are chosen.</p></div></div>'+
       '<div class="res-cols"><div><h3>By field</h3><table class="tally"><tbody>'+Object.keys(byField).map(function(k){var f=byField[k];return '<tr><td>'+k+'</td><td'+(f.r<f.t?' class="miss"':'')+'>'+f.r+' / '+f.t+'</td></tr>'}).join('')+'</tbody></table></div>'+
       '<div><h3>Concepts to review</h3>'+(missed.length?'<ul class="review">'+missed.map(function(m){return '<li><b>'+m.c+'</b><a class="src" href="#sol-'+m.q+'" data-sol="'+m.q+'">Question '+m.q+' solution ↓</a><span class="src">'+m.refs+'</span></li>'}).join('')+'</ul>':'<p class="clean">Nothing flagged this time. The references under each solution are the natural next reading.</p>')+'</div></div>'+
       '<section class="solutions" aria-label="Worked solutions"><h3>Worked solutions</h3>'+ed.questions.map(function(q,i){

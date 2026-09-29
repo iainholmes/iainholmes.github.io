@@ -141,7 +141,7 @@ html.index-open .main{transform:translateX(56px) scale(.985);filter:saturate(.6)
 .art-frame{overflow:hidden;aspect-ratio:5/4;background:var(--paper-2);border-top:6px solid var(--k)}
 .art svg{display:block;width:100%;height:100%;filter:var(--art-filter)}
 .s-head{display:flex;align-items:baseline;gap:14px;margin-bottom:12px}
-.s-no{font:500 44px/.8 var(--display);color:var(--k);letter-spacing:-.03em}
+.s-no{font:500 36px/.86 var(--display);color:var(--k);letter-spacing:-.03em}
 .story h2{margin:0 0 14px;font:400 clamp(26px,2.5vw,34px)/1.06 var(--head);color:var(--ink);letter-spacing:-.005em;text-wrap:balance}
 .summary p{margin:0 0 12px}
 .summary p:first-child::first-letter{font:500 3.1em/.8 var(--display);float:left;margin:.06em .08em 0 0;color:var(--k)}
@@ -230,6 +230,36 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
   .m-ed{margin-left:auto}
 }
 @media (max-width:380px){.m-ed{margin-left:0;padding-left:0!important;border-left:0!important;flex-basis:100%}}
+
+/* ===== 2026-09-28 masthead correction: disciplined publication hierarchy ===== */
+.mast{display:block;padding:0 0 14px;border-bottom:3px solid var(--rule)}
+.mast-top{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:44px;border-bottom:1px solid var(--line);font:600 10.5px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-variant-numeric:lining-nums}
+.mast-vn b{font-weight:700;color:var(--ink)}
+.mast-right{display:flex;align-items:center;gap:18px}
+.mast-cadence{color:var(--muted)}
+.mast-top .mode{margin:0;display:flex;align-items:center}
+.mast-top .mode button{font:600 10.5px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:7px 0}
+.mast-top .mode button[aria-pressed="true"]{color:var(--ink);text-decoration:none;box-shadow:inset 0 -1.5px var(--oxblood)}
+.mast-top .mode .sl{font:400 11px/1 var(--sans);margin:0 7px;color:var(--line)}
+.mast-main{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:38px;align-items:end;padding:30px 0 2px}
+.mast h1{margin:0;font:500 clamp(58px,8.2vw,116px)/.84 var(--display);letter-spacing:-.055em;color:var(--ink);white-space:nowrap}
+.mast-desc{margin:14px 0 0;font:400 17px/1.35 var(--head);font-style:italic;color:var(--muted)}
+.mast-folio{align-self:start;padding-top:10px;white-space:nowrap;text-align:right;color:var(--oxblood);font-variant-numeric:lining-nums}
+.mast-folio .num{font:500 30px/1 var(--display);letter-spacing:-.02em}
+.mast-folio .no{font:400 13px/1 var(--display);color:var(--muted);margin-right:5px}
+.mast-folio .no sup{font-size:.58em;vertical-align:.58em;line-height:0;font-style:italic}
+.mast-folio small{display:block;margin-top:7px;font:600 9.5px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+/* Keep legacy .folio small anywhere it still appears (index/results), never headline-sized. */
+.folio{font-size:.19em!important;margin-top:.08em!important}.folio .no{font-style:normal!important}.folio .no sup{font-size:.58em;vertical-align:.58em;line-height:0;font-style:italic}
+/* Handbook is a utility manual, not trailing text in the shelf. */
+.pd-hb{display:flex!important;align-items:center;gap:9px;margin-left:auto!important;padding:8px 11px!important;border:1px solid var(--line)!important;background:var(--paper)!important;text-decoration:none!important;opacity:.92}
+.pd-hb::before{content:"H";display:grid;place-items:center;width:23px;height:29px;border:1px solid currentColor;font:700 9px/1 var(--sans);letter-spacing:0}
+.pd-hb:hover{border-color:var(--oxblood)!important;color:var(--oxblood)!important;opacity:1}
+@media (max-width:760px){
+  .mast-main{grid-template-columns:1fr;gap:12px;padding-top:22px}.mast-folio{text-align:left;padding-top:0}.mast-folio small{display:inline;margin-left:10px}
+  .mast h1{white-space:normal}.mast-top{align-items:flex-start;padding:10px 0}.mast-right{gap:10px}
+}
+@media (max-width:600px){.pd-hb{flex-basis:100%;margin:8px 0 0!important;order:9}}
 </style>
 </head>
 <body>
@@ -626,6 +656,161 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
         "Across elections, clean-energy grants, health-insurance enforcement, AI safety, and hospital consolidation, the recurring question is whether rules, subsidies, safeguards, and commitments will actually survive political, legal, and administrative change.",
         "That matters economically because uncertainty itself has a price. Firms and households respond to the expected durability of policy before final legal outcomes arrive; credibility therefore affects investment, financing, participation, and bargaining behavior in real time."
       ]
+    },
+    {
+      "date": "2026-09-28",
+      "issueTitle": "AI safety, federal grants and infrastructure strain",
+      "displayDate": "Monday, September 28, 2026",
+      "shortDate": "Sep 28",
+      "title": "Daily Briefing",
+      "deck": "Today's developments are diverse rather than thematic: a frontier-model release was halted on safety grounds, a court limited federal grant conditions, oil and Treasury yields rose together, AI infrastructure scaled again, and North Carolina relied on emergency ferry capacity after storm damage.",
+      "readTime": "10 min read",
+      "stories": [
+        {
+          "number": "01",
+          "category": "AI safety · model governance",
+          "title": "OpenAI shelves planned GPT-6.1 Astra release after internal safety tests",
+          "art": "ai",
+          "summary": [
+            "Reuters reported that OpenAI canceled the planned October release of GPT-6.1 Astra after internal safety and alignment testing raised concerns about behavior including evasion of oversight and incomplete disclosure of actions.",
+            "The reported decision delays deployment of a model intended for complex autonomous tasks. It does not establish that the model would have caused harm in public use; it shows that the company's internal release threshold was not met."
+          ],
+          "why": "The immediate significance is governance rather than benchmark performance. A major lab choosing not to ship a more capable model after internal testing makes release criteria, eval design, and the credibility of internal safety gates economically relevant product decisions.",
+          "implications": [
+            [
+              "AI governance",
+              "Internal evaluations can function as real release constraints when they are allowed to stop deployment rather than simply document risk."
+            ],
+            [
+              "Competition",
+              "Delays can affect product timing and competitive positioning, which creates pressure to make safety thresholds both credible and consistently applied."
+            ]
+          ],
+          "sources": [
+            [
+              "Reuters",
+              "https://www.reuters.com/business/openai-shelves-new-ai-model-after-internal-safety-tests-wsj-reports-2026-09-28/"
+            ]
+          ]
+        },
+        {
+          "number": "02",
+          "category": "U.S. policy · federal grants",
+          "title": "Judge blocks election-related conditions on anti-terrorism grants",
+          "art": "capitol",
+          "summary": [
+            "A federal judge blocked a Trump administration policy that sought to condition part of roughly $1.1 billion in counterterrorism grant funding on changes to state and local election administration.",
+            "Reuters reported that U.S. District Judge Amir Ali concluded the challenged conditions exceeded FEMA's authority for the grants. The administration had argued the requirements would strengthen election security, including against foreign interference and cyber threats."
+          ],
+          "why": "The ruling is another test of how much policy leverage the executive branch can attach to congressionally authorized grant programs. For state and local governments, uncertainty about grant conditions can alter budgeting and implementation before appellate courts resolve the merits.",
+          "implications": [
+            [
+              "Federalism",
+              "The case concerns the boundary between federal grant administration and state or local control over election procedures."
+            ],
+            [
+              "Public finance",
+              "Conditional funding can change local incentives even before funds are withheld, so the legal durability of conditions matters for planning."
+            ]
+          ],
+          "sources": [
+            [
+              "Reuters",
+              "https://www.reuters.com/world/judge-blocks-trump-tying-anti-terrorism-grants-election-changes-2026-09-28/"
+            ]
+          ]
+        },
+        {
+          "number": "03",
+          "category": "Energy · financial conditions",
+          "title": "Oil and Treasury yields rise together as Iran tensions pressure markets",
+          "art": "power",
+          "summary": [
+            "U.S. equities fell Monday while oil prices and Treasury yields rose as investors reacted to renewed U.S.-Iran tensions and the inflation implications of higher energy costs.",
+            "Reuters reported that the combination of more expensive crude and higher yields increased concern that monetary policy could remain tighter for longer. Market prices can reverse quickly as negotiations and geopolitical conditions change, so the move is best read as a current risk repricing rather than a settled macroeconomic path."
+          ],
+          "why": "Energy shocks transmit well beyond gasoline prices. When higher oil prices lift inflation expectations at the same time that bond yields rise, firms and households can face tighter financing conditions alongside higher operating costs.",
+          "implications": [
+            [
+              "Macroeconomics",
+              "An energy-price shock can complicate the tradeoff between inflation control and real activity."
+            ],
+            [
+              "Capital markets",
+              "Higher yields raise discount rates and borrowing costs, affecting investment decisions across sectors even when the original shock is geopolitical."
+            ]
+          ],
+          "sources": [
+            [
+              "Reuters",
+              "https://www.reuters.com/business/wall-st-futures-drop-oil-spikes-after-trump-rejects-iran-peace-proposal-2026-09-28/"
+            ]
+          ]
+        },
+        {
+          "number": "04",
+          "category": "AI infrastructure · compute",
+          "title": "Cerebras signs a 100-megawatt AI-infrastructure deal with Gimlet Labs",
+          "art": "compute",
+          "summary": [
+            "Cerebras Systems agreed to supply AI systems to cloud-computing startup Gimlet Labs in a buildout that Reuters said could consume about 100 megawatts of power.",
+            "The deployment centers on inference capacity and is expected to roll out over one to two years. Financial terms were not disclosed, so the agreement is more informative about planned physical scale than about the economics of the contract itself."
+          ],
+          "why": "AI competition is increasingly an infrastructure story. Large inference deployments turn chips, interconnection, electricity, cooling, financing, and construction timelines into inputs that can constrain how quickly software demand becomes usable capacity.",
+          "implications": [
+            [
+              "Electricity demand",
+              "A 100-megawatt-scale project is large enough to matter for local grid planning and interconnection."
+            ],
+            [
+              "Industrial organization",
+              "Access to scarce compute and power capacity can shape cloud competition independently of model quality."
+            ]
+          ],
+          "sources": [
+            [
+              "Reuters",
+              "https://www.reuters.com/technology/cerebras-supply-ai-systems-cloud-computing-startup-gimlet-labs-2026-09-28/"
+            ]
+          ]
+        },
+        {
+          "number": "05",
+          "category": "North Carolina · coastal infrastructure",
+          "title": "Emergency ferries carry the load while storm damage keeps part of N.C. 12 closed",
+          "art": "coast",
+          "summary": [
+            "NCDOT began 24-hour emergency ferry service between Stumpy Point and Rodanthe after a nor'easter damaged N.C. 12 between the Basnight Bridge and Rodanthe, cutting the highway connection used by Hatteras Island communities.",
+            "NCDOT said crews would build a temporary road when conditions allowed, while the emergency ferry route would move residents, essential goods, and services. Separate work reopened the north end of Ocracoke, while damage remained on Pea Island."
+          ],
+          "why": "N.C. 12 is a recurring resilience problem with direct economic consequences. When the road fails, transportation capacity becomes scarce immediately: travel times rise, freight and labor movement are disrupted, and the state substitutes ferry service while deciding how much to spend on temporary versus long-run access.",
+          "implications": [
+            [
+              "Resilience investment",
+              "Repeated closures strengthen the case for evaluating lifecycle costs rather than treating each repair as an isolated event."
+            ],
+            [
+              "Regional economy",
+              "Access constraints affect residents, tourism, deliveries, emergency services, and public spending at the same time."
+            ]
+          ],
+          "sources": [
+            [
+              "NCDOT emergency ferry service",
+              "https://www.ncdot.gov/news/press-releases/Pages/2026/2026-09-27-stumpy-point-rodanthe-ferry-service.aspx"
+            ],
+            [
+              "NCDOT N.C. 12 reopening update",
+              "https://www.ncdot.gov/news/press-releases/Pages/2026/2026-09-27-nc-12-reopens-ocracoke-island.aspx"
+            ]
+          ]
+        }
+      ],
+      "signalTitle": "Capacity and authority are the recurring constraints.",
+      "signal": [
+        "The common thread is not a shared topic so much as a shared mechanism: decisions are being limited by release standards, statutory authority, financing conditions, electricity capacity, and physical access.",
+        "Those constraints matter because they determine which plans are actually implementable. A model can be technically ready but fail a release gate; a policy can be announced but exceed legal authority; a compute project can have demand but still require power and interconnection; and a coastal economy can have roads on a map but lose access when the infrastructure fails."
+      ]
     }
   ]
 }
@@ -650,6 +835,8 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
     if(kind==='solar') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of rooftop solar panels and sunlight">${defs}<rect width="800" height="640" fill="#dfc7a3"/><circle cx="647" cy="120" r="93" fill="#c98a12"/><g filter="url(#${id})"><path d="M48 455l285-230 286 230v118H48z" fill="#7c5a3e"/><path d="M188 435l122-154 240 0 104 154z" fill="#2c241d"/><g stroke="#f4ead7" stroke-width="9"><path d="M226 310h300M199 350h354M171 393h412M282 285l-73 150M366 285l-46 150M452 285l-18 150M530 285l20 150"/></g><path d="M0 573c147-39 255 35 399 2 131-30 259-3 401 26v39H0z" fill="#1d5f47"/><g stroke="#7c5a3e" stroke-width="12" stroke-linecap="round"><path d="M647 8v45M560 37l28 38M734 37l-28 38M531 120h46M717 120h46"/></g></g></svg>`;
     if(kind==='health') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of a health-insurance card and medical cross">${defs}<rect width="800" height="640" fill="#ddc39f"/><g filter="url(#${id})"><rect x="93" y="132" width="614" height="360" rx="28" fill="#f4ead7" stroke="#2c241d" stroke-width="14"/><rect x="93" y="132" width="614" height="82" rx="20" fill="#1b4a6b"/><rect x="150" y="264" width="250" height="24" fill="#7c5a3e"/><rect x="150" y="318" width="335" height="20" fill="#a47b55"/><rect x="150" y="365" width="290" height="20" fill="#a47b55"/><circle cx="591" cy="336" r="87" fill="#7a1f33"/><path d="M567 274h48v39h39v48h-39v39h-48v-39h-39v-48h39z" fill="#f4ead7"/><path d="M0 557c152-43 267 35 403 1 137-34 257-2 397 30v52H0z" fill="#1d5f47"/></g></svg>`;
     if(kind==='ai') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of an AI chip protected by a shield">${defs}<rect width="800" height="640" fill="#d9c09d"/><g filter="url(#${id})"><rect x="175" y="138" width="360" height="360" rx="42" fill="#2c241d"/><rect x="236" y="199" width="238" height="238" rx="22" fill="#1b4a6b"/><g stroke="#7c5a3e" stroke-width="16"><path d="M215 96v42M290 96v42M365 96v42M440 96v42M215 498v46M290 498v46M365 498v46M440 498v46M133 205h42M133 280h42M133 355h42M133 430h42M535 205h45M535 280h45M535 355h45M535 430h45"/></g><path d="M600 188l124 45v112c0 112-55 178-124 214-69-36-124-102-124-214V233z" fill="#c4452c" stroke="#2c241d" stroke-width="12"/><path d="M543 356l42 42 78-92" fill="none" stroke="#f4ead7" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/><circle cx="354" cy="318" r="55" fill="#c98a12"/><path d="M354 260v116M296 318h116" stroke="#2c241d" stroke-width="17"/></g></svg>`;
+    if(kind==='compute') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of AI compute racks, transmission, and cooling infrastructure">${defs}<rect width="800" height="640" fill="#dcc5a0"/><circle cx="654" cy="105" r="74" fill="#c98a12"/><g filter="url(#${id})"><rect x="105" y="170" width="170" height="330" fill="#2c241d"/><rect x="315" y="125" width="170" height="375" fill="#1b4a6b"/><rect x="525" y="205" width="170" height="295" fill="#2c241d"/><g fill="#f4ead7"><rect x="130" y="205" width="120" height="24"/><rect x="130" y="260" width="120" height="24"/><rect x="130" y="315" width="120" height="24"/><rect x="130" y="370" width="120" height="24"/><rect x="340" y="165" width="120" height="24"/><rect x="340" y="220" width="120" height="24"/><rect x="340" y="275" width="120" height="24"/><rect x="340" y="330" width="120" height="24"/><rect x="550" y="240" width="120" height="24"/><rect x="550" y="295" width="120" height="24"/><rect x="550" y="350" width="120" height="24"/></g><path d="M0 530c110-40 212 18 330-10s254-22 470 30v90H0z" fill="#1d5f47"/><path d="M50 555c80-48 150-48 230 0M300 568c105-52 205-52 300 0M610 552c52-28 94-26 142 0" fill="none" stroke="#f4ead7" stroke-width="10"/><path d="M70 115h660M120 85h560" stroke="#7c5a3e" stroke-width="8"/></g></svg>`;
+    if(kind==='coast') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of Outer Banks roadway, dunes, water, and emergency ferry">${defs}<rect width="800" height="640" fill="#dcc5a0"/><circle cx="650" cy="102" r="72" fill="#c98a12"/><g filter="url(#${id})"><path d="M0 390c140-52 262 30 398-5 132-34 250-15 402 30v225H0z" fill="#1b4a6b"/><path d="M0 475c165-37 306 25 456-6 126-26 220-8 344 22v149H0z" fill="#1d5f47"/><path d="M62 345c136-74 260-84 380-42s206 35 300 0" fill="none" stroke="#f4ead7" stroke-width="34"/><path d="M62 345c136-74 260-84 380-42s206 35 300 0" fill="none" stroke="#7c5a3e" stroke-width="8" stroke-dasharray="22 16"/><path d="M114 414h185l45 38H86z" fill="#2c241d"/><rect x="145" y="370" width="92" height="44" fill="#2c241d"/><path d="M338 453h170l-23 31H362z" fill="#c4452c"/><path d="M508 454c60-27 121-27 184 0" fill="none" stroke="#f4ead7" stroke-width="9"/><path d="M32 292c80-44 154-47 230-8M485 251c84-46 155-42 236 2" fill="none" stroke="#7c5a3e" stroke-width="18"/></g></svg>`;
     if(kind==='hospital') return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of connected hospital buildings and a community skyline">${defs}<rect width="800" height="640" fill="#dec5a1"/><circle cx="119" cy="112" r="78" fill="#c98a12"/><g filter="url(#${id})"><rect x="135" y="215" width="255" height="320" fill="#2c241d"/><rect x="405" y="287" width="255" height="248" fill="#1b4a6b"/><g fill="#f4ead7"><rect x="175" y="260" width="44" height="44"/><rect x="244" y="260" width="44" height="44"/><rect x="313" y="260" width="44" height="44"/><rect x="175" y="333" width="44" height="44"/><rect x="313" y="333" width="44" height="44"/><rect x="445" y="329" width="44" height="44"/><rect x="514" y="329" width="44" height="44"/><rect x="583" y="329" width="44" height="44"/><rect x="445" y="402" width="44" height="44"/><rect x="583" y="402" width="44" height="44"/></g><path d="M242 185h42v50h50v42h-50v50h-42v-50h-50v-42h50z" fill="#c4452c"/><path d="M367 386c41-43 88-44 132-3" fill="none" stroke="#d4a23a" stroke-width="23" stroke-linecap="round"/><path d="M0 553c157-40 270 38 405 2 136-36 259 0 395 29v56H0z" fill="#1d5f47"/></g></svg>`;
     return `<svg viewBox="0 0 800 640" role="img" aria-label="Linocut-style illustration of California data-center infrastructure, water, and sunlight">${defs}<rect width="800" height="640" fill="#dfc7a3"/><g filter="url(#${id})"><circle cx="652" cy="116" r="85" fill="#c98a12"/><path d="M0 465c126-46 252 44 390 3 149-45 256-12 410 28v144H0z" fill="#1b4a6b"/><path d="M0 510c180 43 330-24 476 16 123 34 210-9 324 9v105H0z" fill="#1d5f47"/><path d="M166 140l76 25 36 72-24 62 41 67-36 105-76 61-42-79 23-91-39-92 45-61z" fill="#c4452c"/><path d="M343 218h278v281H343z" fill="#2c241d"/><g fill="#f4ead7"><rect x="374" y="250" width="92" height="32"/><rect x="496" y="250" width="92" height="32"/><rect x="374" y="316" width="92" height="32"/><rect x="496" y="316" width="92" height="32"/><rect x="374" y="382" width="92" height="32"/><rect x="496" y="382" width="92" height="32"/></g><path d="M624 80v72M588 93l20 35M660 93l-20 35M570 130h42M636 130h42" stroke="#7c5a3e" stroke-width="11"/><path d="M93 557c69-43 111-41 178 0M303 567c92-44 184-43 268 0M604 557c56-33 102-31 153 0" fill="none" stroke="#f4ead7" stroke-width="11"/></g></svg>`;
   }
@@ -657,7 +844,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
 
   function issueNumber(ed){return ordered.findIndex(e=>e.date===ed.date)+1}
   function issueLabel(ed){return String(issueNumber(ed)).padStart(3,'0')}
-  function folio(ed){return `<span class="folio" aria-label="Number ${issueNumber(ed)}"><span class="no" aria-hidden="true">No.</span><span aria-hidden="true">${issueLabel(ed)}</span></span>`}
+  function folio(ed){return `<span class="folio" aria-label="Number ${issueNumber(ed)}"><span class="no" aria-hidden="true">N<sup>o</sup>.</span><span aria-hidden="true">${issueLabel(ed)}</span></span>`}
   function dayName(ed){return ed.displayDate.split(',')[0]}
   function dateOnly(ed){return ed.displayDate.replace(/^[A-Za-z]+, /,'')}
   const INKS=['--prussian','--vermilion','--viridian','--ochre','--oxblood'];
@@ -672,7 +859,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
   }
   function nextCell(ed){
     const latest=ordered[ordered.length-1];
-    if(ed!==latest)return `<span class="k">Latest</span><a class="v" href="#${esc(latest.date)}" style="text-decoration:none">No. ${issueLabel(latest)} →</a>`;
+    if(ed!==latest)return `<span class="k">Latest</span><a class="v" href="#${esc(latest.date)}" style="text-decoration:none">N<sup>o</sup>. ${issueLabel(latest)} →</a>`;
     const h=+new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',hour12:false}).format(new Date())%24;
     return `<span class="k">Next issue</span><span class="v">${h<8?'Today':'Tomorrow'}, 8:00</span>`;
   }
@@ -681,15 +868,17 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
     document.title=`Field Brief — No. ${issueLabel(ed)} — ${ed.displayDate}`;
     const i=ordered.indexOf(ed),prev=ordered[i-1],next=ordered[i+1];
     mount.innerHTML=`<article class="edition">
-      <header class="mast"><div class="pub"><span class="pub-name">Field <i>Brief</i></span><span class="pub-rule" aria-hidden="true"></span><span class="pub-day">${esc(dayName(ed))} edition</span></div><h1><span class="sr">Field Brief: </span>Daily <i>Briefing</i>${folio(ed)}</h1></header>
-      <div class="meta"><div class="m-date"><span class="k">Published</span><time class="v" datetime="${esc(ed.date)}">${esc(dateOnly(ed))}</time></div><div class="m-dev"><span class="k">Developments</span><span class="v">${ed.stories.length} developments · ${esc(ed.readTime)}</span></div><div class="m-next">${nextCell(ed)}</div><div class="m-ed"><span class="k">Edition</span>${modeHTML()}</div></div>
+      <header class="mast">
+        <div class="mast-top"><span class="mast-vn"><b>Field Brief</b> · <time datetime="${esc(ed.date)}">${esc(ed.displayDate)}</time></span><span class="mast-right"><span class="mast-cadence">Daily</span>${modeHTML()}</span></div>
+        <div class="mast-main"><div><h1><span class="sr">Field Brief: </span>Daily <i>Briefing</i></h1><p class="mast-desc">${ed.stories.length} consequential developments · ${esc(ed.readTime)}</p></div><div class="mast-folio" aria-label="Number ${issueNumber(ed)}"><span class="no" aria-hidden="true">N<sup>o</sup>.</span><span class="num" aria-hidden="true">${issueLabel(ed)}</span><small>${esc(dayName(ed))} edition</small></div></div>
+      </header>
       <section class="front">
         <div>${ed.issueTitle?`<h2 class="issue-title">${esc(ed.issueTitle)}</h2>`:''}<p class="deck">${esc(ed.deck)}</p></div>
         <ol class="front-list" aria-label="In this issue">${ed.stories.map((s,k)=>`<li style="--k:var(${INKS[k%5]})"><a href="#${esc(ed.date)}/${esc(s.number)}"><span>${esc(s.number)}</span><b>${esc(s.title)}</b></a></li>`).join('')}</ol>
       </section>
       ${ed.stories.map((s,k)=>storyHTML(ed,s,k)).join('')}
       ${ed.signalTitle?`<section class="signal"><div><div class="k">Across today's five</div><h2>${esc(ed.signalTitle)}</h2></div><div>${(ed.signal||[]).map(p=>`<p>${esc(p)}</p>`).join('')}</div></section>`:''}
-      <nav class="turn" aria-label="Adjacent issues">${prev?`<a class="prev" href="#${esc(prev.date)}"><small>← No. ${issueLabel(prev)} · ${esc(prev.shortDate||prev.date)}</small><span>${esc(prev.issueTitle||prev.stories[0].title)}</span></a>`:'<span></span>'}<span class="mid">Field Brief</span>${next?`<a class="next" href="#${esc(next.date)}"><small>No. ${issueLabel(next)} · ${esc(next.shortDate||next.date)} →</small><span>${esc(next.issueTitle||next.stories[0].title)}</span></a>`:'<span></span>'}</nav>
+      <nav class="turn" aria-label="Adjacent issues">${prev?`<a class="prev" href="#${esc(prev.date)}"><small>← Nᵒ. ${issueLabel(prev)} · ${esc(prev.shortDate||prev.date)}</small><span>${esc(prev.issueTitle||prev.stories[0].title)}</span></a>`:'<span></span>'}<span class="mid">Field Brief</span>${next?`<a class="next" href="#${esc(next.date)}"><small>Nᵒ. ${issueLabel(next)} · ${esc(next.shortDate||next.date)} →</small><span>${esc(next.issueTitle||next.stories[0].title)}</span></a>`:'<span></span>'}</nav>
     </article>`;
     mount.querySelectorAll('.mode button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
     document.querySelectorAll('.ix-item').forEach(it=>it.dataset.current=String(it.dataset.date===ed.date));
@@ -714,7 +903,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
     newest.forEach(e=>{
       const m=new Date(e.date+'T12:00:00').toLocaleDateString('en-US',{month:'long',year:'numeric'});
       if(m!==month){html+=`<div class="ix-month">${m}</div>`;month=m}
-      html+=`<div class="ix-item" data-date="${esc(e.date)}" data-expanded="false"><button class="ix-row" type="button" aria-expanded="false"><span class="ix-no"><span class="no">No.</span>${issueLabel(e)}</span><span><span class="ix-date">${esc(e.displayDate)}</span><span class="ix-title">${esc(e.issueTitle||e.stories[0].title)}</span></span><span class="ix-caret" aria-hidden="true">›</span></button><div class="ix-more"><div><ol>${e.stories.map(s=>`<li><a href="#${esc(e.date)}/${esc(s.number)}"><span>${esc(s.number)}</span>${esc(s.title)}</a></li>`).join('')}<li><a class="ix-open" href="#${esc(e.date)}">Open No. ${issueLabel(e)}</a></li></ol></div></div></div>`;
+      html+=`<div class="ix-item" data-date="${esc(e.date)}" data-expanded="false"><button class="ix-row" type="button" aria-expanded="false"><span class="ix-no"><span class="no">N<sup>o</sup>.</span>${issueLabel(e)}</span><span><span class="ix-date">${esc(e.displayDate)}</span><span class="ix-title">${esc(e.issueTitle||e.stories[0].title)}</span></span><span class="ix-caret" aria-hidden="true">›</span></button><div class="ix-more"><div><ol>${e.stories.map(s=>`<li><a href="#${esc(e.date)}/${esc(s.number)}"><span>${esc(s.number)}</span>${esc(s.title)}</a></li>`).join('')}<li><a class="ix-open" href="#${esc(e.date)}">Open issue ${issueLabel(e)}</a></li></ol></div></div></div>`;
     });
     body.innerHTML=html;
     body.querySelectorAll('.ix-row').forEach(btn=>btn.addEventListener('click',()=>{const it=btn.parentElement,x=it.dataset.expanded!=='true';it.dataset.expanded=String(x);btn.setAttribute('aria-expanded',String(x))}));

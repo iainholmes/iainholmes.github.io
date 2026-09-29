@@ -115,51 +115,23 @@ a{color:inherit}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 /* ---------- refinement: folios, names, day reading room ---------- */
-.c-fb .fo{display:inline-block;vertical-align:top;margin:.1em 0 0 .14em;font:500 .28em/1 "Bodoni Moda",serif;letter-spacing:-.01em;color:var(--fb)}
+.c-fb .fo{display:inline-block;vertical-align:top;margin:.08em 0 0 .14em;font:500 .21em/1 "Bodoni Moda",serif;letter-spacing:-.01em;color:var(--fb)}
 .c-fb .fo .no{color:#8a7a66}
 .c-fb .mh sup{display:none}
 .c-sp .ttl{font-size:clamp(26px,3vw,40px)!important;line-height:.98!important}
 .c-sp .ttl .amp{font-style:italic;color:var(--sp-clay)}
-.c-sp .spfo{display:inline-block;vertical-align:top;margin:.2em 0 0 .3em;font:400 .34em/1 "Source Serif 4",serif;color:var(--sp-clay);letter-spacing:0;font-style:normal}
+.c-sp .spfo{display:inline-block;vertical-align:top;margin:.14em 0 0 .28em;font:400 .26em/1 "Source Serif 4",serif;color:var(--sp-clay);letter-spacing:0;font-style:normal}
 .c-sp .spfo i{font-style:italic;color:#6b746d}
 .c-sp .spno i{font:italic 400 1.1em "Source Serif 4",serif;text-transform:none;letter-spacing:0;color:var(--sp-clay)}
 .c-cp .ttl{font-style:normal!important}
 .c-cp .ttl i{color:var(--cp-teal)}
-.c-cp .cpno{font:italic 400 13px "STIX Two Text",serif;margin-right:4px;color:#5f666e}
+.c-cp .cpno{font:italic 400 10px "STIX Two Text",serif;margin-right:4px;color:#5f666e}
+.c-fb .fo .no sup,.c-sp .spfo sup,.c-cp .cpno sup{font-size:.56em;vertical-align:.58em;line-height:0}
 .im-r{justify-self:end;display:flex;align-items:center;gap:22px}
 .im-r a{justify-self:auto}
 @media (max-width:600px){.im-r{gap:12px}}
-/* ---------- press rail: the shelf edge the covers stand on ---------- */
-.shelf{padding-bottom:0!important}
-.rail{display:grid;grid-template-columns:1.12fr 1fr .92fr;column-gap:28px;border-top:5px solid var(--bone);border-bottom:3px solid var(--bone);background:linear-gradient(var(--rule),var(--rule)) 0 8px/100% 1px no-repeat,linear-gradient(var(--rule),var(--rule)) 0 calc(100% - 6px)/100% 1px no-repeat;padding:8px 0 6px;font-variant-numeric:tabular-nums lining-nums}
-.rc{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-areas:"f d" "c c" "s x";align-items:baseline;column-gap:18px;text-decoration:none;color:inherit;padding:18px 0 0}
-.rc+.rc::before{content:"";position:absolute;left:-14px;top:-8px;bottom:-6px;width:1px;background:var(--rule)}
-.rc::after{content:"";position:absolute;left:0;top:-13px;width:64px;height:5px;background:var(--c)}
-.rc-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.rc-f{grid-area:f;font:300 44px/1 var(--house);font-variation-settings:"opsz" 96;letter-spacing:-.02em;white-space:nowrap}
-.rc-f .no{font:italic 300 .36em/1 var(--house);vertical-align:1.25em;margin-right:.16em;color:var(--bone-dim);letter-spacing:0}
-.rc-d{grid-area:d;justify-self:end;font:13px/1 var(--mono);color:var(--bone-dim)}
-.rc-c{grid-area:c;font:italic 300 20px/1.3 var(--house);padding:12px 0 18px;min-height:3.9em}
-.rc-s,.rc-x{font:12.5px/1.45 var(--mono);color:var(--bone);padding:10px 0 12px;border-top:1px solid var(--rule)}
-.rc-s{grid-area:s;padding-right:14px}
-.rc-x{grid-area:x;text-align:right;border-left:1px solid var(--rule);padding-left:14px}
-.rc-x b{font-weight:500;margin-right:6px}
-.rc .k{display:block;font:10px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--bone-dim);margin-bottom:3px}
-.rc:hover .rc-c,.rc:focus-visible .rc-c{color:#fff}
-.rc:hover::after{width:100%;transition:width .45s ease}
-.rc::after{transition:width .3s ease}
-@media (max-width:1000px){
-  .rail{grid-template-columns:1fr;border-top:0;border-bottom:0;background:none;padding:0;margin-top:26px}
-  .rc{border-top:4px solid var(--bone);border-bottom:1px solid var(--rule);padding:14px 0 0;margin-bottom:14px}
-  .rc+.rc::before{display:none}
-  .rc::after{top:-4px}
-  .rc-t{position:static;width:auto;height:auto;clip:auto;grid-column:1/-1;font:400 22px/1.1 var(--house);margin-bottom:8px;white-space:normal}
-  .rc{grid-template-areas:"t t" "f d" "c c" "s x"}
-  .rc-t{grid-area:t}
-  .rc-f{font-size:36px}
-  .rc-c{min-height:0;padding:8px 0 12px}
-}
-@media (prefers-reduced-motion:reduce){.rc::after{transition:none}}
+/* Covers are the organization: no ledger, table, or ruled press rail. */
+.shelf{padding-bottom:24px!important}
 .sig{color:var(--bone-dim)}
 .im-r a{text-decoration:none}.im-r a:hover{color:var(--bone)}
 
@@ -168,8 +140,6 @@ a{color:inherit}
 .sr{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .vol.recent .cover{transform:translateY(-14px);box-shadow:0 44px 70px -26px rgba(0,0,0,.85),0 2px 0 rgba(255,255,255,.05) inset}
 .vol.recent:hover .cover{transform:translateY(-20px)}
-.rc.recent::after{width:38%}
-.rc.recent .rc-f{color:#fff}
 @media (max-width:1000px){.vol.recent .cover{transform:translateY(-8px)}}
 @media (prefers-reduced-motion:reduce){.vol.recent .cover{transition:none}}
 </style>
@@ -177,9 +147,7 @@ a{color:inherit}
 <body>
 <!-- PERIODICALS HUB — /personal-updates/ (display name Periodicals). Permanently dark: no Day/Night
 control and it ignores localStorage periodicals:mode (the three publications still share that key).
-Three covers stand on the press rail (.rail): one compartment per title, aligned to the cover above,
-with folio, latest date, latest title, cadence and next due, read live from each title's canonical page.
-Shared hub folios are always three-digit ("No. 002", "No. 001"). The Register table is retired.
+The three covers are the organizing surface. Do not add a secondary ledger, table, ruled rail, or card grid beneath them. Each cover reads the latest issue from its title's canonical page. Shared hub folios stay three-digit.
 Navigation memory: each title writes localStorage periodicals:last = {t:"fb"|"sp"|"cp", at}; the hub
 lifts that cover (.vol.recent) and lengthens its rail accent (.rc.recent) for 45 days; order never changes.
 The "Iain Holmes" signature becomes a link to ../ only when that page answers (no dead links).
@@ -201,7 +169,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
       <a class="vol" href="../daily-watchlist-5/" style="--c:var(--fb)" aria-label="Field Brief, Daily Briefing">
         <div class="cover c-fb" aria-hidden="true">
           <div class="top"><span>Field Brief</span><span data-fb="dow">Sunday</span></div>
-          <div class="mh">Daily <i>Briefing</i><span class="fo"><span class="no">No.</span><span data-fb="no">002</span></span></div>
+          <div class="mh">Daily <i>Briefing</i><span class="fo"><span class="no">N<sup>o</sup>.</span><span data-fb="no">002</span></span></div>
           <div class="meta"><span data-fb="date">September 27, 2026</span><span data-fb="read">10 min read</span></div>
           <div class="head" data-fb="head">Supreme Court restores the administration’s expanded voter-verification system</div><ol class="more" data-fb="more"><li>A second federal judge rejects EPA’s cancellation rationale for Solar for All</li><li>CMS cancels 315,000 unauthorized Marketplace enrollments</li><li>Frontier-AI safety is moving toward enforceable federal rules</li><li>Wake County approves WakeMed–Atrium combination</li></ol>
           <div class="plate"><svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMax slice"><rect width="400" height="220" fill="#dcc6a0"/><circle cx="318" cy="62" r="40" fill="#8a2a36"/><path d="M0 160c70-30 130 14 200-4s120-40 200-10v74H0z" fill="#1f4e6e"/><path d="M0 188c90-22 150 16 230 0s110-14 170 0v32H0z" fill="#221a14"/><path d="M60 170V96h54v74M136 170V70h60v100" fill="#221a14"/><g fill="#f1e6d0"><rect x="72" y="108" width="30" height="8"/><rect x="72" y="126" width="30" height="8"/><rect x="148" y="84" width="36" height="8"/><rect x="148" y="102" width="36" height="8"/><rect x="148" y="120" width="36" height="8"/></g><path d="M250 150l30-58 30 58z" fill="#c28b1e"/></svg></div>
@@ -211,7 +179,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
       <a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)" aria-label="Logit &amp; Loblolly">
         <div class="cover c-sp" aria-hidden="true">
           <div class="vl"><span>Vol. 1</span><span data-sp="date">25 Sep 2026</span></div>
-          <div><div class="ttl">Logit <span class="amp">&amp;</span><br><i>Loblolly</i><span class="spfo"><i>No.</i> <span data-sp="no">001</span></span></div></div>
+          <div><div class="ttl">Logit <span class="amp">&amp;</span><br><i>Loblolly</i><span class="spfo"><i>N<sup>o</sup>.</i> <span data-sp="no">001</span></span></div></div>
           <ol class="toc" data-sp="toc"><li>Electrification’s opportunity is larger than its current market share</li><li>The grid gets a $5.25 billion investment test</li><li>Carbon-border policy enters a new institutional test</li><li>Insurance stress has an urban geography of its own</li><li>Glyphosate review makes the value of information concrete</li></ol>
           <div class="fig"><span>Fig. 1</span><svg viewBox="0 0 120 42" preserveAspectRatio="none"><path d="M0 41.5H120" stroke="#15302a" stroke-width="1"/><rect x="8" y="18" width="22" height="23" fill="#15302a"/><rect x="48" y="8" width="22" height="33" fill="#8aa08f"/><rect x="88" y="6" width="22" height="35" fill="#b4532e"/></svg></div>
         </div>
@@ -219,7 +187,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
 
       <a class="vol" href="../daily-econ-challenge/" style="--c:var(--cp-teal)" aria-label="The Workbook">
         <div class="cover c-cp" aria-hidden="true">
-          <div class="no"><span><i class="cpno">No.</i><span data-cp="no">001</span></span><span data-cp="date">28.IX.26</span></div>
+          <div class="no"><span><i class="cpno">N<sup>o</sup>.</i><span data-cp="no">001</span></span><span data-cp="date">28.IX.26</span></div>
           <div class="ttl">The<br><i>Workbook</i></div>
           <div class="eq">∂y / ∂x |<sub>z = z̄</sub></div><p class="q1" data-cp="q1"><b>1.</b> You regress log hourly wages on years of schooling in a cross-section. Unobserved ability raises wages and is positively correlated with schooling…</p>
           <div class="grid" data-cp="grid"><span class="f">1</span><span class="t">2</span><span>3</span><span class="t">4</span><span>5</span><span class="f">6</span><span>7</span><span class="t">8</span></div>
@@ -227,11 +195,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
       </a>
     </section>
 
-    <section class="rail" aria-label="Latest issues">
-      <a class="rc" href="../daily-watchlist-5/" style="--c:var(--fb)"><span class="rc-t">Field Brief</span><span class="rc-f"><span class="no">No.</span><span data-fb="no">002</span></span><span class="rc-d" data-fb="dated">27.09.2026</span><span class="rc-c" data-fb="title">Voting rules, health coverage and AI safety</span><span class="rc-s"><span class="k">Cadence</span>Daily · 08:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="fb"></span></span></a>
-      <a class="rc" href="../weekly-economics-environment/" style="--c:var(--sp)"><span class="rc-t">Logit &amp; Loblolly</span><span class="rc-f"><span class="no">No.</span><span data-sp="no">001</span></span><span class="rc-d" data-sp="dated">25.09.2026</span><span class="rc-c" data-sp="title">The price of a resilient economy</span><span class="rc-s"><span class="k">Cadence</span>Fridays · 15:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="sp"></span></span></a>
-      <a class="rc" href="../daily-econ-challenge/" style="--c:var(--cp-teal)"><span class="rc-t">The Workbook</span><span class="rc-f"><span class="no">No.</span><span data-cp="no">001</span></span><span class="rc-d" data-cp="dated">28.09.2026</span><span class="rc-c" data-cp="title">8 questions · 7 fields</span><span class="rc-s"><span class="k">Cadence</span>Weekdays · 10:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="cp"></span></span></a>
-    </section>
+
   </main>
 
   <footer class="colophon"><span>Periodicals · <a href="handbook/">Handbook</a></span><span class="sig" id="sig2">Iain Holmes</span></footer>
@@ -254,7 +218,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
   try{var last=JSON.parse(localStorage.getItem('periodicals:last')||'null');
     if(last&&/^(fb|sp|cp)$/.test(last.t)&&Date.now()-last.at<1000*60*60*24*45){
       var href={fb:'../daily-watchlist-5/',sp:'../weekly-economics-environment/',cp:'../daily-econ-challenge/'}[last.t];
-      document.querySelectorAll('.vol[href="'+href+'"],.rc[href="'+href+'"]').forEach(function(el){el.classList.add('recent');
+      document.querySelectorAll('.vol[href="'+href+'"]').forEach(function(el){el.classList.add('recent');
         var t=document.createElement('span');t.className='sr';t.textContent=' (last visited)';el.append(t)})}}catch(e){}
   /* next scheduled issue, computed in New York time */
   var DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
