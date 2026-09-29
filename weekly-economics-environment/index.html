@@ -486,6 +486,21 @@ body.no-companion .perch,body.no-companion .heron-flyer{display:none!important}
 @keyframes perchIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.heron-perch.arrive{animation:none}}
 @media (max-width:1180px){.margin{position:static}}
+/* home perch on the contents spine; margin perch keeps its label when the heron has gone home */
+.contents .heron-home{position:absolute;left:-11px;top:43px;width:27px;height:45px;color:var(--muted);pointer-events:none;transition:opacity .45s ease}
+.heron-home svg{display:block;width:100%;height:100%;overflow:visible}
+.heron-home.away{opacity:0}
+body.no-companion .heron-home{display:none}
+.heron-perch.vacant svg{visibility:hidden}
+@media (prefers-reduced-motion:reduce){.contents .heron-home{transition:opacity .2s linear}}
+/* heron visual toolkit: margin sketches and marks on existing figures */
+.heron-panel svg.hv{max-width:230px}
+.heron-panel .hv-ref{margin:0 0 10px;font:italic 400 13.5px/1.5 var(--serif);color:var(--muted)}
+.heron-panel .hv-goto{background:none;border:0;padding:0;font:600 11px/1.4 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--river);cursor:pointer}
+.heron-panel .hv-goto:hover{color:var(--clay)}
+.bar-row.hv-marked{position:relative}
+.bar-row.hv-marked::before{content:"";position:absolute;left:-10px;top:-4px;bottom:-4px;border-left:2px solid var(--clay)}
+.hv-annot{margin:-4px 0 10px;font:italic 400 12.5px/1.4 var(--serif);color:var(--clay)}
 
 /* ---------- night: estuary at night ---------- */
 html[data-mode="night"]{
@@ -684,17 +699,30 @@ image null the page draws an engraved specimen plate from the name.
 </script>
 <!--
 READER COMPANION (the Heron) — edition-specific, keyed by data-edition date. Silence is part of its
-behaviour: 0–4 appearances per issue, never one per article by default. The Heron flies in from the
-right page edge (or its previous perch) along a short arc inside the right margin, perches in the
-article's margin column beside the target, and opens a compact note when the reader clicks/taps/focuses
-it. It departs when the reader moves well past the section (never while a note is open). Schema:
+behaviour: 0–4 appearances per issue, never one per article by default. Home: the Heron rests on the
+top of the contents spine beside "In this edition" (.heron-home, decorative, aria-hidden). When an
+appearance's anchor reaches the reading zone it flies from home (or its previous perch; from the right
+page edge if home is off screen) along the same short arc, perches in the article's margin column, and
+opens a compact note when the reader clicks/taps/focuses it. Closing the note sends it home (the label
+stays in the margin so the note can be reopened, which brings it back); it also returns home when the
+reader moves well past the section (never while a note is open). Flights only above 1180px and without
+prefers-reduced-motion; otherwise home and margin perch simply fade. It never speaks: no first person,
+no speech bubbles, no chat. Schema:
   "YYYY-MM-DD": { "enabled": true, "appearances": [
     { "id": "unique, stable",            "target": "<article id in this issue>",
       "anchor": "CSS selector inside the article that triggers arrival (default .finding)",
       "perch": "after-note" | "before-note"   (position relative to the research note),
       "type": "question" | "definition" | "intuition" | "method" | "caution" | "figure",
       "title": "one line, shown on the perch", "text": "2–4 sentences, plain economic reasoning",
-      "diagram": null | "tax-wedge" | "counterfactual"   (drawn by companionDiagram()),
+      "diagram": null | "tax-wedge" | "counterfactual"   (legacy presets, drawn by companionDiagram()),
+      "visual": optional object or array rendered by HV (Heron visual toolkit); prefer marking an existing
+        figure over drawing a new sketch. Every sketch needs "alt". Types:
+        figure {ref:".figure", rows:[i…] (.bar-row indexes), label, note, annotation}  marks the figure while open
+        counterfactual {policy, observed, baseline, effect} · did {treated, control, policy, effect}
+        wedge {buyers, sellers, label} · shift {curve:"supply"|"demand", dir:"in"|"out", from, to}
+        dag {nodes:[{id,label,x,y (0–1),unobserved,absorbed,accent}], edges:[{from,to,style:"dashed"|"accent",label,at}]}
+        timeline {events:[{at,label,accent}]} · matrix {rows:[2], cols:[2], cells:[[..],[..]], mark:[r,c]}
+        compare {labels:[before,after], items:[{label,before,after,accent}]}
       "see": null | { "href": "#anchor", "label": "" },
       "delay": optional ms before flight (default 900) } ] }
 State (localStorage): economics-environment:companion = on|off (toolbar switch);
@@ -712,6 +740,7 @@ Reduced motion or layouts ≤1180px: no flight; the Heron appears statically at 
         "title": "What is the counterfactual here?",
         "text": "The 33% competitive potential is not what happens without policy; it is what today’s prices would justify if every barrier vanished. To credit a subsidy with adoption you need the households who would have switched anyway: a baseline trajectory, not an engineering ceiling.",
         "diagram": "counterfactual",
+        "visual": { "type": "figure", "ref": ".figure", "rows": [1, 2], "label": "Figure 01", "note": "The potential and scenario bars are marked on Figure 01: conditional values, not forecasts.", "annotation": "Conditional values, not forecasts of realised adoption" },
         "see": { "href": "#notebook", "label": "Methods A.1" }
       },
       {
@@ -726,6 +755,9 @@ Reduced motion or layouts ≤1180px: no flight; the Heron appears statically at 
         "title": "Fixed effects are not a research design",
         "text": "Metro × year fixed effects compare ZIP codes within the same metro and year. They remove shocks common to the metro; they do not make insurance strain as good as randomly assigned across neighbourhoods. The coefficient is still an association.",
         "diagram": null,
+        "visual": { "type": "dag", "alt": "Causal sketch: metro-by-year fixed effects absorb metro-wide shocks, but unobserved neighbourhood quality still affects both insurance strain and home prices",
+          "nodes": [ { "id": "m", "label": "metro × year", "x": 0.12, "y": 0.02, "absorbed": true }, { "id": "u", "label": "neighbourhood quality", "x": 0.72, "y": 0.02, "unobserved": true }, { "id": "s", "label": "insurance strain", "x": 0.16, "y": 0.96 }, { "id": "y", "label": "home prices", "x": 0.86, "y": 0.96 } ],
+          "edges": [ { "from": "m", "to": "s", "style": "dashed" }, { "from": "m", "to": "y", "style": "dashed", "label": "absorbed", "at": 0.22 }, { "from": "u", "to": "s", "style": "accent" }, { "from": "u", "to": "y", "style": "accent" }, { "from": "s", "to": "y", "label": "?" } ] },
         "see": { "href": "#notebook", "label": "Methods A.3" }
       }
     ]
@@ -901,6 +933,62 @@ function companionDiagram(k){
   if(k==='counterfactual')return '<svg viewBox="0 0 170 104" role="img" aria-label="Observed adoption rising after a policy, compared with a counterfactual baseline that was already rising"><g fill="none" stroke="currentColor" stroke-width="1"><path d="M14 6V88H162"/><path d="M74 8V88" stroke-dasharray="2 3" opacity=".5"/><path d="M16 74L74 62L156 28" stroke-width="1.6"/><path d="M74 62L156 44" stroke-dasharray="4 3"/></g><path d="M158 28V44" style="stroke:var(--clay)" stroke-width="2"/><g style="fill:currentColor;font-family:var(--sans)" font-size="9"><text x="78" y="16">policy</text><text x="112" y="24">observed</text><text x="92" y="74">counterfactual</text><text x="140" y="100">time</text></g><text x="163" y="58" text-anchor="end" style="fill:var(--clay);font-family:var(--sans)" font-size="9">effect</text></svg>';
   return '';
 }
+
+/* ===== Heron visual toolkit: small analytical margin sketches, data-driven =====
+   An appearance may carry "visual": one object or an array. Each object names a primitive by "type";
+   the renderer owns the drawing, so future notes supply data only. Prefer {"type":"figure"} (mark an
+   existing L&L figure) over drawing a new sketch. Vocabulary: thin currentColor rules, muted secondary
+   lines, one clay accent. Primitives: figure · counterfactual · did · wedge · shift · dag · timeline ·
+   matrix · compare. Every visual needs "alt". */
+var HV=(function(){
+  var W=170,H=104;
+  function t(x,y,s,o){o=o||{};return '<text x="'+x+'" y="'+y+'"'+(o.anchor?' text-anchor="'+o.anchor+'"':'')+' style="fill:'+(o.accent?'var(--clay)':'currentColor')+';font-family:var(--sans)'+(o.italic?';font-style:italic':'')+'" font-size="'+(o.size||9)+'"'+(o.dim?' opacity=".7"':'')+'>'+esc(s)+'</text>'}
+  function svg(alt,body){return '<svg class="hv" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(alt||'Analytical sketch')+'">'+body+'</svg>'}
+  function g(body,o){o=o||{};return '<g fill="none" stroke="'+(o.accent?'var(--clay)':'currentColor')+'" stroke-width="'+(o.w||1)+'"'+(o.dash?' stroke-dasharray="'+o.dash+'"':'')+(o.dim?' opacity=".55"':'')+' stroke-linecap="round" stroke-linejoin="round">'+body+'</g>'}
+  function axes(x0,y1){return g('<path d="M'+x0+' 6V'+y1+'H162"/>')}
+  function arrow(x1,y1,x2,y2,o){o=o||{};var a=Math.atan2(y2-y1,x2-x1),h=5,s=.45,
+    p='M'+x1.toFixed(1)+' '+y1.toFixed(1)+'L'+x2.toFixed(1)+' '+y2.toFixed(1)+'M'+(x2-h*Math.cos(a-s)).toFixed(1)+' '+(y2-h*Math.sin(a-s)).toFixed(1)+'L'+x2.toFixed(1)+' '+y2.toFixed(1)+'L'+(x2-h*Math.cos(a+s)).toFixed(1)+' '+(y2-h*Math.sin(a+s)).toFixed(1);
+    return g('<path d="'+p+'"/>',o)}
+  var P={
+    counterfactual:function(v){return svg(v.alt,axes(14,88)+g('<path d="M74 8V88"/>',{dash:'2 3',dim:1})+g('<path d="M16 74L74 62L156 28"/>',{w:1.6})+g('<path d="M74 62L156 44"/>',{dash:'4 3'})+'<path d="M158 28V44" style="stroke:var(--clay)" stroke-width="2"/>'+
+      t(78,16,v.policy||'policy')+t(112,24,v.observed||'observed')+t(92,74,v.baseline||'counterfactual')+t(140,100,v.x||'time')+t(163,58,v.effect||'effect',{anchor:'end',accent:1}))},
+    did:function(v){return svg(v.alt,axes(14,88)+g('<path d="M78 8V88"/>',{dash:'2 3',dim:1})+g('<path d="M16 70L78 58L156 42"/>',{dim:1})+g('<path d="M16 50L78 38L156 14"/>',{w:1.6})+g('<path d="M78 38L156 22"/>',{dash:'4 3'})+'<path d="M158 14V22" style="stroke:var(--clay)" stroke-width="2"/>'+
+      t(82,16,v.policy||'policy')+t(18,44,v.treated||'treated')+t(18,82,v.control||'control',{dim:1})+t(140,100,v.x||'time')+t(163,34,v.effect||'effect',{anchor:'end',accent:1}))},
+    wedge:function(v){return svg(v.alt,axes(22,88)+g('<path d="M30 14L150 84"/><path d="M30 82L150 16"/>')+g('<path d="M22 36.6H70M22 60.2H70"/>',{dash:'2 3',dim:1})+'<path d="M70 36.6V60.2L90 48.4Z" style="fill:var(--clay)" opacity=".28"/><path d="M70 36.6V60.2" style="stroke:var(--clay)" stroke-width="2"/>'+
+      t(152,86,'D')+t(152,18,'S')+t(2,39,v.buyers||'buyers')+t(2,63,v.sellers||'sellers')+t(74,30,v.label||'wedge',{accent:1})+t(130,100,'Q'))},
+    shift:function(v){var sup=(v.curve||'supply')==='supply',out=(v.dir||'out')==='out',d=(sup?(out?1:-1):(out?-1:1))*14;
+      var S='M30 82L150 16',D='M30 14L150 84',sh=function(pth){return pth.replace(/(\d+) (\d+)/g,function(m,x,y){return x+' '+(+y+d)})};
+      var fixed=sup?D:S,old=sup?S:D,nw=sh(old),ay=sup?49:49;
+      return svg(v.alt,axes(22,88)+g('<path d="'+fixed+'"/>')+g('<path d="'+old+'"/>',{dash:'4 3',dim:1})+g('<path d="'+nw+'"/>',{w:1.6})+arrow(90,ay,90,ay+d*.8,{accent:1,w:1.2})+
+        t(152,sup?86:18,sup?'D':'S')+t(156,sup?14:88,v.from||(sup?'S':'D'),{dim:1})+t(126,Math.max(9,Math.min(96,(sup?82-66*92/120:14+70*92/120)+d+(d<0?-4:10))).toFixed(1),v.to||(sup?'S′':'D′'),{accent:1})+t(130,100,'Q')+t(10,10,'P'))},
+    dag:function(v){var N={},b='';(v.nodes||[]).forEach(function(n){N[n.id]={x:10+n.x*150,y:12+n.y*78,hw:String(n.label).length*2.3+4,n:n}});
+      function edge(a,c,dx,dy){var ta=Math.min(a.hw/Math.abs(dx||1e-6),9/Math.abs(dy||1e-6)),tc=Math.min(c.hw/Math.abs(dx||1e-6),9/Math.abs(dy||1e-6));return [a.x+dx*ta,a.y+dy*ta,c.x-dx*tc,c.y-dy*tc]}
+      (v.edges||[]).forEach(function(e){var a=N[e.from],c=N[e.to];if(!a||!c)return;var dx=c.x-a.x,dy=c.y-a.y,L=Math.sqrt(dx*dx+dy*dy)||1;dx/=L;dy/=L;var q=edge(a,c,dx,dy);
+        b+=arrow(q[0],q[1],q[2],q[3],{accent:e.style==='accent',dash:e.style==='dashed'?'3 3':'',dim:e.style==='dashed'});
+        if(e.label){var fr=e.at||.42,mx=q[0]+(q[2]-q[0])*fr,my=q[1]+(q[3]-q[1])*fr,nx=-dy,ny=dx;if(ny>0){nx=-nx;ny=-ny}b+=t((mx+nx*7).toFixed(1),(my+ny*7+3).toFixed(1),e.label,{anchor:'middle',accent:e.style==='accent',italic:1,dim:e.style==='dashed',size:8})}});
+      Object.keys(N).forEach(function(k){var o=N[k];b+=t(o.x.toFixed(1),(o.y+3).toFixed(1),o.n.label,{anchor:'middle',italic:o.n.unobserved,dim:o.n.absorbed,accent:o.n.accent})});
+      return svg(v.alt,b)},
+    timeline:function(v){var ev=v.events||[],n=Math.max(1,ev.length-1),b=g('<path d="M8 52H162"/>');
+      ev.forEach(function(e,i){var x=14+i*142/n,up=i%2===0,an=i===0&&ev.length>1?'start':i===ev.length-1&&ev.length>1?'end':'middle',tx=an==='start'?x-4:an==='end'?x+4:x;
+        b+=g('<path d="M'+x+' 47V57"/>',{accent:e.accent,w:e.accent?1.6:1})+t(tx,up?40:72,e.at,{anchor:an,accent:e.accent})+t(tx,up?29:84,e.label,{anchor:an,dim:!e.accent,size:8})});
+      return svg(v.alt,b)},
+    matrix:function(v){var r=v.rows||['',''],c=v.cols||['',''],cl=v.cells||[['',''],['','']],m=v.mark,b=g('<path d="M50 18H162M50 58H162M50 98H162M50 18V98M106 18V98M162 18V98"/>',{dim:1});
+      if(m)b+='<rect x="'+(51+m[1]*56)+'" y="'+(19+m[0]*40)+'" width="54" height="38" style="fill:var(--clay)" opacity=".16"/>';
+      c.forEach(function(s,j){b+=t(78+j*56,12,s,{anchor:'middle',dim:1})});r.forEach(function(s,i){b+=t(46,41+i*40,s,{anchor:'end',dim:1})});
+      cl.forEach(function(row,i){row.forEach(function(s,j){b+=t(78+j*56,41+i*40,s,{anchor:'middle',accent:m&&m[0]===i&&m[1]===j})})});return svg(v.alt,b)},
+    compare:function(v){var it=v.items||[],max=0,b='';it.forEach(function(x){max=Math.max(max,+x.before||0,+x.after||0)});max=max||1;var lb=v.labels||['before','after'];
+      it.slice(0,3).forEach(function(x,i){var y=14+i*30;b+=t(2,y+6,x.label,{size:8})+g('<path d="M62 '+(y-2)+'H'+(62+96*(+x.before||0)/max).toFixed(1)+'"/>',{w:5,dim:1})+g('<path d="M62 '+(y+7)+'H'+(62+96*(+x.after||0)/max).toFixed(1)+'"/>',{w:5,accent:x.accent})});
+      b+=t(62,100,lb[0],{dim:1,size:8})+t(110,100,lb[1],{size:8});return svg(v.alt,b)},
+    figure:function(v){return '<p class="hv-ref">'+esc(v.note||'Marked on the figure above.')+' <button type="button" class="hv-goto">'+esc(v.label||'See the figure')+' ↑</button></p>'}
+  };
+  function render(v){if(!v)return '';if(Array.isArray(v))return v.map(render).join('');var f=P[v.type];return f?f(v):''}
+  function mark(scope,v,on){(Array.isArray(v)?v:[v]).forEach(function(x){if(!x||x.type!=='figure')return;var fig=scope.querySelector(x.ref||'.figure');if(!fig)return;
+    var rows=fig.querySelectorAll('.bar-row'),last=null;(x.rows||[]).forEach(function(i){var r=rows[i];if(r){r.classList.toggle('hv-marked',on);last=r}});
+    var an=fig.querySelector('.hv-annot');if(an)an.remove();fig.classList.toggle('hv-marking',on);
+    if(on&&last&&x.annotation){an=document.createElement('p');an.className='hv-annot';an.setAttribute('aria-hidden','true');an.textContent=x.annotation;last.after(an)}})}
+  function figureOf(scope,v){var x=(Array.isArray(v)?v:[v]).find(function(y){return y&&y.type==='figure'});return x?scope.querySelector(x.ref||'.figure'):null}
+  return {render:render,mark:mark,figureOf:figureOf};
+})();
 var KIND={question:'The heron asks',definition:'The heron defines',intuition:'In plain terms',method:'On method',caution:'A caution',figure:'A sketch'};
 var LS={get:function(k,d){try{var v=localStorage.getItem(k);return v==null?d:v}catch(e){return d}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 function companionOn(){return LS.get('economics-environment:companion','on')!=='off'}
@@ -909,7 +997,16 @@ function addTo(k,id){var l=listKey(k);if(l.indexOf(id)<0){l.push(id);LS.set(k,JS
 var reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
 var HERON={edition:null,items:[],io:null,current:null,flyer:null,flown:{},busy:false,timer:0};
 function heronWide(){return innerWidth>1180}
-function teardownHeron(){if(HERON.io)HERON.io.disconnect();clearTimeout(HERON.timer);if(HERON.flyer)HERON.flyer.remove();HERON.flyer=null;HERON.current=null;HERON.busy=false}
+function motionOK(){return !reduceMotion.matches&&heronWide()}
+/* Home perch: the heron rests on the top of the contents spine, beside "In this edition", and returns there
+   whenever no intervention is active. Same perched line-art as the margin perch; decorative only. */
+var HOME=null;
+function heronHome(){if(HOME&&HOME.isConnected)return HOME;var c=document.querySelector('.contents');if(!c)return null;
+  HOME=document.createElement('span');HOME.className='heron-home';HOME.setAttribute('aria-hidden','true');HOME.innerHTML=HERON_POSE.perched;c.insertBefore(HOME,c.querySelector('nav'));return HOME}
+function homeRect(){var h=heronHome();if(!h||!h.offsetParent)return null;var r=h.getBoundingClientRect();return (r.width&&r.bottom>0&&r.top<innerHeight)?r:null}
+function homePoint(){var r=homeRect()||(HOME?HOME.getBoundingClientRect():{left:0,top:0,width:0,height:0});return {x:r.left+r.width*.5,y:r.top+r.height*.42}}
+function setHome(present){var h=heronHome();if(h)h.classList.toggle('away',!present)}
+function teardownHeron(){if(HERON.io)HERON.io.disconnect();clearTimeout(HERON.timer);if(HERON.flyer)HERON.flyer.remove();HERON.flyer=null;HERON.current=null;HERON.busy=false;setHome(true)}
 function renderCompanion(active){
   teardownHeron();HERON.edition=active;HERON.items=[];
   var date=active.dataset.edition,all=readJSON('companion-data')||{},cfg=all[date];
@@ -926,14 +1023,16 @@ function renderCompanion(active){
       slot=document.createElement('div');slot.className='perch';slot.dataset.id=a.id;slot.dataset.heronId=a.id;slot.id='heron-'+a.id;
       var pid='hp-'+a.id;
       slot.innerHTML='<button type="button" class="heron-perch" hidden aria-expanded="false" aria-controls="'+pid+'" aria-label="The heron, '+esc((KIND[a.type]||'a note').toLowerCase())+': '+esc(a.title)+'. Open note.">'+HERON_POSE.perched+HERON_POSE.inspect+'<span><span class="hp-k">'+esc(KIND[a.type]||'The heron')+'</span><span class="hp-t">'+esc(a.title)+'</span></span></button>'+
-        '<div class="heron-panel" id="'+pid+'" role="region" aria-label="Heron note: '+esc(a.title)+'" hidden tabindex="-1"><h4>'+esc(a.title)+'</h4><p>'+esc(a.text)+'</p>'+companionDiagram(a.diagram)+
+        '<div class="heron-panel" id="'+pid+'" role="region" aria-label="Heron note: '+esc(a.title)+'" hidden tabindex="-1"><h4>'+esc(a.title)+'</h4><p>'+esc(a.text)+'</p>'+companionDiagram(a.diagram)+HV.render(a.visual)+
         '<div class="hp-actions">'+(a.see?'<a href="'+esc(a.see.href)+'">'+esc(a.see.label)+' ↓</a>':'')+'<button type="button" class="hp-close">Close</button><button type="button" class="hp-dismiss">Don’t show this again</button></div></div>';
       if(a.perch==='before-note'&&note)note.before(slot);else col.append(slot);
       var btn=slot.querySelector('.heron-perch'),panel=slot.querySelector('.heron-panel');
-      function openP(o){panel.hidden=!o;btn.setAttribute('aria-expanded',String(o));if(o){addTo(seenKey,a.id);panel.focus({preventScroll:true})}else btn.focus({preventScroll:true})}
+      var itemOf=function(){return HERON.items.find(function(x){return x.slot===slot})};
+      function openP(o){panel.hidden=!o;btn.setAttribute('aria-expanded',String(o));HV.mark(art,a.visual,o);var it=itemOf();if(o){addTo(seenKey,a.id);if(it)summon(it);panel.focus({preventScroll:true})}else{btn.focus({preventScroll:true});if(it)release(it)}}
+      var go=panel.querySelector('.hv-goto');if(go)go.addEventListener('click',function(){var f=HV.figureOf(art,a.visual);if(f)f.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'center'})});
       btn.addEventListener('click',function(){openP(panel.hidden)});
       slot.querySelector('.hp-close').addEventListener('click',function(){openP(false)});
-      slot.querySelector('.hp-dismiss').addEventListener('click',function(){addTo('economics-environment:companion:dismissed',a.id);panel.hidden=true;btn.hidden=true;if(HERON.current&&HERON.current.a===a)HERON.current=null;slot.remove()});
+      slot.querySelector('.hp-dismiss').addEventListener('click',function(){addTo('economics-environment:companion:dismissed',a.id);var it=itemOf(),p=null;if(it&&HERON.current===it){p=slotPoint(it);HERON.current=null}HV.mark(art,a.visual,false);panel.hidden=true;btn.hidden=true;slot.remove();if(p)flyHome(p);else setHome(!HERON.current)});
       panel.addEventListener('keydown',function(e){if(e.key==='Escape'){e.stopPropagation();openP(false)}});
     }
     var anchor=(a.anchor&&art.querySelector(a.anchor))||art.querySelector('.finding')||art;
@@ -944,12 +1043,15 @@ function renderCompanion(active){
   HERON.items.forEach(function(it){HERON.io.observe(it.anchor)});
   addEventListener('scroll',heronScroll,{passive:true});
 }
-function heronScroll(){if(!HERON.items.length||HERON.busy)return;var c=HERON.current;
+function heronScroll(){if(!HERON.items.length)return;
+  /* a closed note keeps its label until its article has left the screen; then the slot resets */
+  HERON.items.forEach(function(it){if(!it.closed||HERON.current===it)return;var r=it.art.getBoundingClientRect();if((r.bottom<0||r.top>innerHeight)&&document.activeElement!==it.btn){it.closed=false;it.btn.hidden=true;it.btn.classList.remove('vacant')}});
+  if(HERON.busy)return;var c=HERON.current;
   if(c&&c.panel.hidden){var r=c.art.getBoundingClientRect();if(r.bottom<innerHeight*.15||r.top>innerHeight*.95)depart(c)}
 }
 function heronTick(){
   if(!companionOn()||HERON.busy||!HERON.edition||HERON.edition.hidden||document.body.classList.contains('glance'))return;
-  var next=HERON.items.find(function(it){return it.inZone&&it.slot.isConnected});
+  var next=HERON.items.find(function(it){return it.inZone&&!it.closed&&it.slot.isConnected});
   if(!next||next===HERON.current)return;
   if(HERON.current&&!HERON.current.panel.hidden)return;   /* never leave while a note is open */
   clearTimeout(HERON.timer);
@@ -960,17 +1062,32 @@ function arrive(it){
   var from=HERON.current;HERON.current=it;
   var quiet=reduceMotion.matches||!heronWide()||HERON.flown[it.a.id]||it.seen;
   if(from&&from!==it){from.btn.hidden=true;from.panel.hidden=true;from.btn.setAttribute('aria-expanded','false')}
-  if(quiet){it.btn.hidden=false;it.btn.classList.add('arrive');return}
-  var sp=slotPoint(it),start=from&&from.btn.offsetParent?slotPoint(from):{x:innerWidth+50,y:Math.max(70,sp.y+24)};
-  HERON.flown[it.a.id]=true;
+  it.btn.classList.remove('vacant');
+  if(quiet){it.btn.hidden=false;it.btn.classList.add('arrive');if(!from)setHome(false);return}
+  var sp=slotPoint(it),start=from&&from.btn.offsetParent?slotPoint(from):homeRect()?homePoint():{x:innerWidth+50,y:Math.max(70,sp.y+24)};
+  HERON.flown[it.a.id]=true;if(!from)setHome(false);
   fly(start,function(){return slotPoint(it)},1900,function(){it.btn.hidden=false;it.btn.classList.add('arrive')});
 }
+/* Leaving an intervention: back to the home perch when it is on screen, otherwise off the page as before. */
 function depart(it){
   if(HERON.current!==it)return;HERON.current=null;
-  if(reduceMotion.matches||!heronWide()){it.btn.hidden=true;return}
+  it.btn.classList.remove('vacant');
+  if(!motionOK()){it.btn.hidden=true;setHome(true);return}
   var p=slotPoint(it);it.btn.hidden=true;
-  fly(p,function(){return {x:innerWidth+70,y:Math.max(-40,p.y-120)}},1400,function(){heronTick()});
+  if(homeRect())fly(p,homePoint,1900,function(){setHome(true);heronTick()});
+  else fly(p,function(){return {x:innerWidth+70,y:Math.max(-40,p.y-120)}},1400,function(){setHome(true);heronTick()});
 }
+function flyHome(p){if(!motionOK()||HERON.busy||!homeRect()){setHome(true);heronTick();return}fly(p,homePoint,1900,function(){setHome(true);heronTick()})}
+/* A reader opens a note whose perch is vacant: the heron comes over from home (or from its current perch). */
+function summon(it){
+  if(HERON.current===it)return;var from=HERON.current;HERON.current=it;it.closed=false;clearTimeout(HERON.timer);
+  if(from){from.btn.classList.add('vacant')}else setHome(false);
+  var start=from&&from.btn.offsetParent?slotPoint(from):homeRect()?homePoint():null;
+  if(!motionOK()||HERON.busy||!start){it.btn.classList.remove('vacant');return}
+  it.btn.classList.add('vacant');fly(start,function(){return slotPoint(it)},1900,function(){it.btn.classList.remove('vacant')});
+}
+/* The note is closed: the label stays in the margin (so it can be reopened), the heron flies home. */
+function release(it){if(HERON.current!==it)return;HERON.current=null;it.closed=true;it.btn.classList.add('vacant');flyHome(slotPoint(it))}
 function fly(start,endFn,dur,done){
   HERON.busy=true;
   var f=HERON.flyer;if(!f){f=document.createElement('div');f.className='heron-flyer';f.setAttribute('aria-hidden','true');f.innerHTML=HERON_POSE.flight;document.body.append(f);HERON.flyer=f}
@@ -990,7 +1107,8 @@ function fly(start,endFn,dur,done){
 function initCompanion(){
   var btn=document.querySelector('.heron-toggle');
   function apply(on){document.body.classList.toggle('no-companion',!on);if(btn){btn.setAttribute('aria-pressed',String(on));btn.setAttribute('aria-label',on?'Heron on. Turn the heron off':'Heron off. Turn the heron on')}
-    if(!on){HERON.current=null;if(HERON.flyer)HERON.flyer.style.display='none';HERON.items.forEach(function(it){it.btn.hidden=true;it.panel.hidden=true})}else heronTick()}
+    if(!on){HERON.current=null;if(HERON.flyer)HERON.flyer.style.display='none';HERON.items.forEach(function(it){it.btn.hidden=true;it.panel.hidden=true;it.btn.classList.remove('vacant');HV.mark(it.art,it.a.visual,false)});setHome(true)}else heronTick()}
+  heronHome();
   apply(companionOn());
   if(btn)btn.addEventListener('click',function(){var on=btn.getAttribute('aria-pressed')!=='true';LS.set('economics-environment:companion',on?'on':'off');apply(on)});
   addEventListener('resize',function(){if(!heronWide()&&HERON.flyer)HERON.flyer.style.display='none'});
