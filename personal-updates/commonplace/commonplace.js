@@ -182,7 +182,8 @@ function renderPage(){
   host.innerHTML=show.length?show.map(itemHTML).join(''):'<p class="cp-empty">Nothing here matches this view.</p>';
   var ts=threadList(items),sel=document.getElementById('cpThread'),old=sel.value;sel.innerHTML='<option value="">All threads</option>'+ts.map(function(t){return '<option>'+esc(t)+'</option>'}).join('');sel.value=ts.indexOf(old)>=0?old:'';
   document.getElementById('backupState').textContent=backupText(items);
-  document.getElementById('localState').textContent=items.length?'Stored in this browser · '+items.length+' kept item'+(items.length===1?'':'s'):'Stored in this browser';
+  var lc=document.getElementById('localCount'),tc=document.getElementById('threadCount'),vc=document.getElementById('viewCount'),ls=document.getElementById('localState');
+  if(lc)lc.textContent=items.length;if(tc)tc.textContent=threadList(items).length;if(vc)vc.textContent=show.length+' shown';if(ls)ls.textContent='local · this browser';
   var ret=document.getElementById('cpReturn');if(ret&&!ret.dataset.chosen){var r=chooseReturn();ret.dataset.chosen='1';if(r){ret.hidden=false;ret.innerHTML='<span class="return-k">Return</span><div><b>'+esc(r.item.title)+'</b><p>'+(r.reason==='thread'?'Another item in '+esc(r.thread||'this thread')+' brought it back into view.':'You marked this as important; it has been quiet for a while.')+'</p></div><a href="'+esc(r.item.sourceUrl)+'">Return to passage ↗</a>'}}
 }
 function download(name,type,body){var b=new Blob([body],{type:type}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},1000);try{localStorage.setItem(BACKUP_KEY,now())}catch(e){};renderPage()}
@@ -207,9 +208,16 @@ function mergeImported(x){
     ['publication','publicationKey','kind','kindLabel','issue','title','excerpt','sourceUrl','sourceAnchor','sourceLabel'].forEach(function(k){if(!loc[k]&&inc[k])loc[k]=inc[k]});
   });save();return {added:added,merged:merged};
 }
+function clearCommonplace(){
+  if(!confirm('Clear every kept item, thread, rating and annotation from this browser? This cannot be undone unless you exported a backup.'))return;
+  STATE=blank();
+  try{localStorage.removeItem(KEY);localStorage.removeItem(BACKUP_KEY);localStorage.removeItem(RETURN_KEY)}catch(e){}
+  document.dispatchEvent(new CustomEvent('periodicals:commonplace-change'));
+  renderPage();
+}
 function initPage(){
   ['cpSearch','cpSource','cpThread','cpImportance'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener(id==='cpSearch'?'input':'change',renderPage)});
-  document.getElementById('exportJson').addEventListener('click',exportJSON);document.getElementById('exportMd').addEventListener('click',exportMD);document.getElementById('exportHtml').addEventListener('click',exportHTML);
+  document.getElementById('exportJson').addEventListener('click',exportJSON);document.getElementById('exportMd').addEventListener('click',exportMD);document.getElementById('exportHtml').addEventListener('click',exportHTML);document.getElementById('clearCommonplace').addEventListener('click',clearCommonplace);
   var input=document.getElementById('importFile');document.getElementById('importBtn').addEventListener('click',function(){input.click()});input.addEventListener('change',function(){var f=this.files&&this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var st=document.getElementById('importState');try{var x=JSON.parse(r.result),m=mergeImported(x);st.textContent='Imported '+m.added+' new item'+(m.added===1?'':'s')+'; merged '+m.merged+'. Existing items were not deleted.';renderPage()}catch(e){st.textContent=e.message||'Import failed.'}};r.readAsText(f);this.value=''});
   document.getElementById('commonplaceEntries').addEventListener('click',function(e){var rel=e.target.closest('[data-related]');if(rel){var rx=get(rel.dataset.related),thr=rx&&rx.threads&&rx.threads[0];if(thr){document.getElementById('cpThread').value=thr;renderPage()}return}var b=e.target.closest('[data-edit]');if(b){var x=get(b.dataset.edit);if(x)openEditor({id:x.id,publication:x.publication,kind:x.kind,kindLabel:x.kindLabel,title:x.title})}});
   document.addEventListener('periodicals:commonplace-change',renderPage);renderPage();
