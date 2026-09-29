@@ -543,6 +543,182 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Hotelling (1931), JPE; Dasgupta & Heal (1979), ch. 6"
         }
       ]
+    },
+    {
+      "no": 2,
+      "date": "2026-09-29",
+      "minutes": 18,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Research design",
+          "kind": "multi",
+          "stem": "<p>A city randomly offers an energy audit to eligible households. Take-up is voluntary. You observe offer assignment, audit completion and subsequent electricity use for every household. Which analyses retain a credible interpretation under the stated random assignment?</p>",
+          "options": [
+            "Compare electricity use by random offer assignment to estimate the intention-to-treat effect of the offer.",
+            "Compare audit completers with non-completers to identify the causal effect of completion without further assumptions.",
+            "Condition the main offer-effect estimate on insulation installed after assignment to remove confounding.",
+            "Report take-up by assignment and keep the offer effect distinct from the effect of receiving an audit."
+          ],
+          "correct": [
+            0,
+            3
+          ],
+          "concepts": [
+            "Randomized encouragement",
+            "Post-treatment conditioning"
+          ],
+          "explanation": "<p>(A) is correct: random assignment identifies the effect of the offer, assuming complete outcome measurement and no interference. (D) is correct because assignment and receipt are different treatments. (B) fails because completion is a choice; households that complete may differ in motivation or costs. (C) conditions on a possible mediator affected by the offer and can remove part of the effect or induce selection bias. A receipt-effect interpretation needs additional assumptions; randomizing the offer does not randomize completion.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A monopolist can separate two markets and prevent resale. Demand elasticities at the interior optimum are −2 in market A and −4 in market B. Marginal cost is constant at $12. What prices satisfy the segment-specific Lerner conditions?</p>",
+          "options": [
+            "$24 in A and $16 in B.",
+            "$16 in A and $24 in B.",
+            "$18 in both markets.",
+            "$6 in A and $3 in B."
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Third-degree price discrimination",
+            "Lerner index"
+          ],
+          "explanation": "<p>In each segment, (P − MC)/P = 1/|ε|, so P = MC/(1 − 1/|ε|). Thus P<sub>A</sub> = 12/(1 − 1/2) = 24 and P<sub>B</sub> = 12/(1 − 1/4) = 16. (B) reverses the relationship: the less elastic market supports the larger markup. (C) ignores the different elasticities. (D) divides marginal cost by elasticity instead of solving the markup equation and gives prices below marginal cost. These are local optimum conditions, conditional on the stated elasticities and market separation.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "single",
+          "stem": "<p>In a one-period New Keynesian IS relation, <i>x</i> = E<i>x</i>′ − (1/σ)(<i>i</i> − E<i>π</i>′ − <i>r</i><sup>n</sup>), the nominal interest rate is fixed at its effective lower bound. Expected future inflation and the future output gap remain unchanged. The natural real rate falls by one percentage point. What happens to today’s output gap when σ = 2?</p>",
+          "options": [
+            "It rises by 0.5 percentage point.",
+            "It falls by 0.5 percentage point.",
+            "It falls by 2 percentage points.",
+            "It is unchanged because the nominal rate cannot fall."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Natural real interest rate",
+            "Effective lower bound"
+          ],
+          "explanation": "<p>The gap changes by Δx = Δr<sup>n</sup>/σ = −1/2 = −0.5 percentage point. The unchanged actual real rate becomes more restrictive relative to the lower natural rate. (A) reverses this sign. (C) multiplies by σ rather than its inverse. (D) confuses a fixed policy instrument with fixed economic activity. This calculation holds expectations fixed; changes in expected inflation or future policy could alter the total response.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q4",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>You observe workers in multiple years and estimate log wages on completed schooling with worker and year fixed effects. For every worker in the estimation sample, completed schooling is constant over time. Which statements are correct?</p>",
+          "options": [
+            "The schooling coefficient is not identified separately from worker fixed effects.",
+            "Adding more observations of the same workers necessarily solves the identification problem.",
+            "A pooled regression can use between-worker schooling differences, but needs stronger assumptions to interpret that variation causally.",
+            "Dropping one year dummy makes the schooling coefficient identified."
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "concepts": [
+            "Within transformation",
+            "Perfect collinearity"
+          ],
+          "explanation": "<p>(A) is correct because subtracting each worker’s time mean makes the schooling regressor zero. (C) is correct: a pooled regression retains between-worker variation, but unobserved worker characteristics may confound it. (B) fails because additional periods do not create within-worker variation when schooling never changes. (D) changes the normalization of time effects, not the collinearity between schooling and worker indicators. Software dropping schooling is a property of the design, not evidence that its economic effect is zero.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q5",
+          "field": "Environmental economics",
+          "kind": "tf",
+          "stem": "<p>A price-taking plant receives a fixed allocation of tradable emissions permits for free. Permits can be sold for $40 each, each unit of emissions requires one permit, and the allocation is independent of current output and emissions. True or false: emitting one additional unit has zero marginal permit cost until the free allocation is exhausted.</p>",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Permit opportunity cost",
+            "Allocation versus incentives"
+          ],
+          "explanation": "<p>False. Using a permit sacrifices the $40 the plant could receive by selling it, so the marginal opportunity cost is $40 even for a freely allocated permit. “True” confuses an accounting acquisition cost with an economic opportunity cost. A fixed free allocation transfers wealth but, under the stated competitive and frictionless conditions, does not eliminate the marginal emissions incentive. Output-based allocation, transaction frictions or market power would require a different analysis.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "single",
+          "stem": "<p>A pre-specified family contains 20 null hypotheses. The smallest unadjusted p-value is 0.003. You apply Bonferroni to control the family-wise error rate at 5%. What is the correct conclusion?</p>",
+          "options": [
+            "Reject at least one null because 0.003 is below 0.05.",
+            "Reject none because every p-value exceeds 0.05/20 = 0.0025.",
+            "Reject all nulls because the minimum p-value is small.",
+            "The procedure cannot be used unless the tests are independent."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Multiple testing",
+            "Family-wise error rate"
+          ],
+          "explanation": "<p>The per-test threshold is 0.0025. Since even the minimum is 0.003, no test crosses it: (B). Equivalently the smallest Bonferroni-adjusted p-value is 20 × 0.003 = 0.06. (A) ignores multiplicity. (C) wrongly transfers evidence from one hypothesis to all others. (D) is false: the union bound controls the family-wise error rate without independence, although Bonferroni can be conservative. Failure to reject does not establish that every null is true.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q7",
+          "field": "Causal inference",
+          "kind": "single",
+          "stem": "<p>A grant is awarded deterministically when a municipality’s pre-policy score is at least 70. There is no precise manipulation of the score. Near the cutoff, potential outcomes and other determinants vary continuously. A local regression estimates an outcome jump of 4 units at 70. Which interpretation is justified?</p>",
+          "options": [
+            "The average grant effect for every municipality is 4 units.",
+            "The grant effect for municipalities at the cutoff is 4 units, under the stated continuity and treatment-assignment assumptions.",
+            "A before–after comparison for recipients would identify the same causal effect without assumptions.",
+            "The estimate proves that scores have no direct relationship with outcomes."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Sharp regression discontinuity",
+            "Local treatment effects"
+          ],
+          "explanation": "<p>(B) is the sharp regression-discontinuity interpretation. Continuity supplies the counterfactual at the threshold, where treatment status jumps. (A) extrapolates a local effect to municipalities far from the cutoff. (C) ignores time shocks and the absence of a counterfactual in a simple before–after comparison. (D) is unnecessary: scores may predict outcomes smoothly; the design attributes the discontinuous jump to treatment. Bandwidth choice, functional form and uncertainty still need to be reported in an actual study.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q8",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A fish population follows logistic growth G(X) = rX(1 − X/K), with r = 0.4 per year and carrying capacity K = 1,000 tonnes. Harvest equals natural growth in a steady state. Which statement is correct?</p>",
+          "options": [
+            "Maximum sustainable yield is 400 tonnes per year at X = 1,000 tonnes.",
+            "Maximum sustainable yield is 100 tonnes per year at X = 500 tonnes, but this need not maximize economic profit.",
+            "Maximum sustainable yield is 200 tonnes per year at X = 500 tonnes and always maximizes profit.",
+            "Open access necessarily produces the stock that maximizes sustainable yield."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Logistic growth",
+            "Maximum sustainable yield",
+            "Bioeconomic optimum"
+          ],
+          "explanation": "<p>G′(X) = r(1 − 2X/K) is zero at X = K/2 = 500. Growth there is rK/4 = 100 tonnes per year, so (B) is correct. At carrying capacity growth is zero, rejecting (A). (C) both doubles the yield and confuses a biological maximum with a profit maximum. (D) ignores the entry incentives of open access: equilibrium depends on prices, harvesting costs and technology, and is not generally the maximum-yield stock. An economic optimum additionally values costs and, in a dynamic setting, future stocks.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        }
+      ]
     }
   ]
 }
