@@ -103,6 +103,29 @@ html.index-open .main{transform:translateX(56px) scale(.985);filter:saturate(.6)
 .ix-more li a:hover{color:var(--oxblood)}
 .ix-more li a.ix-open{display:inline-block;margin-top:8px;font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
 
+
+/* Index as a clipped newspaper register rather than a generic accordion menu. */
+.index{width:min(520px,100%)}
+.ix-head{position:relative;padding:32px 72px 26px 36px;border-bottom:0;grid-template-columns:1fr 86px}
+.ix-head::after{content:"";position:absolute;left:36px;bottom:0;width:138px;height:5px;background:var(--oxblood)}
+.ix-head h2{font-size:58px}.ix-count b{font-size:30px}
+.ix-body{padding:10px 36px 48px}
+.ix-month{padding:22px 0 14px;border-bottom:0;display:flex;align-items:center;gap:10px}
+.ix-month::before{content:"";width:9px;height:9px;background:var(--oxblood);transform:rotate(45deg);flex:none}
+.ix-item{border-bottom:0;position:relative}
+.ix-item::after{content:"";display:block;width:72px;border-bottom:1px solid var(--line);margin-left:82px}
+.ix-row{grid-template-columns:68px minmax(0,1fr) 18px;gap:14px;padding:18px 0 20px;position:relative}
+.ix-row::before{content:"";position:absolute;left:68px;top:18px;bottom:20px;width:1px;background:var(--line)}
+.ix-no{font-size:22px;padding-top:2px}.ix-no .no{font-size:.52em}
+.ix-date{font-size:9px;letter-spacing:.15em;padding-left:14px}
+.ix-title{font-size:22px;line-height:1.12;margin-top:5px;padding-left:14px}
+.ix-caret{margin-top:15px}
+.ix-item[data-current="true"] .ix-row::before,.ix-item[data-expanded="true"] .ix-row::before{width:4px;background:var(--oxblood)}
+.ix-more ol{margin:0 0 0 82px;padding:0 0 18px 15px;border-left:1px solid var(--line)}
+.ix-more li a{grid-template-columns:24px 1fr;gap:8px;padding:6px 0 6px 10px;font-size:12.5px}
+.ix-more li a span{color:var(--oxblood)}
+.ix-more li a.ix-open{margin:11px 0 2px 10px}
+@media(max-width:560px){.ix-head{padding-left:24px}.ix-head::after{left:24px}.ix-body{padding-left:24px;padding-right:24px}.ix-row{grid-template-columns:58px minmax(0,1fr) 16px}.ix-row::before{left:58px}.ix-item::after{margin-left:72px}.ix-more ol{margin-left:72px}}
 /* ---------- edition ---------- */
 .edition{max-width:1280px;margin:0 auto;padding:30px 32px 90px}
 .mast{display:block;padding-bottom:12px;border-bottom:1px solid var(--rule)}
