@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#131210">
 <title>Periodicals</title>
-<meta name="description" content="Periodicals: Field Brief, Logit &amp; Loblolly and The Workbook.">
+<meta name="description" content="Periodicals: Field Brief, Loblolly &amp; Logit and The Workbook.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23131210%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%2212%22%20width%3D%228%22%20height%3D%2240%22%20fill%3D%22%238a2a36%22%2F%3E%3Crect%20x%3D%2225%22%20y%3D%2216%22%20width%3D%228%22%20height%3D%2236%22%20fill%3D%22%231f4a3b%22%2F%3E%3Crect%20x%3D%2237%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%2242%22%20fill%3D%22%231c2f4a%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%2220%22%20width%3D%224%22%20height%3D%2232%22%20fill%3D%22%23efe9dc%22%2F%3E%3Cpath%20d%3D%22M8%2054h48%22%20stroke%3D%22%23efe9dc%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +69,7 @@ a{color:inherit}
 .c-fb .plate{margin-top:auto;height:34%;margin-inline:-8%}
 .c-fb .plate svg{width:100%;height:100%;display:block}
 
-/* --- Logit & Loblolly cover --- */
+/* --- Loblolly & Logit cover --- */
 .c-sp{background:var(--sp-paper);color:var(--sp-ink);padding:8% 8% 6%;display:grid;grid-template-rows:auto auto 1fr auto}
 .c-sp .vl{font:500 9.5px/1.4 "IBM Plex Sans Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:.5px solid var(--sp-ink);padding-bottom:6px}
 .c-sp .ttl{font:400 clamp(30px,3.6vw,48px)/.95 "Source Serif 4",Georgia,serif;letter-spacing:-.03em;margin:16px 0 4px}
@@ -155,6 +155,9 @@ a{color:inherit}
 .press-note .facts b{font-weight:600;color:var(--bone)}
 .press-note .facts [data-next] b{margin-right:.45em}
 @media(max-width:760px){.press-notes{grid-template-columns:1fr;gap:34px;padding-bottom:54px}.press-note{max-width:34rem}.press-note .measure strong{font-size:48px}}
+
+/* House apparatus: publishing rhythm and metrics without a table. */
+.mast{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(250px,330px)!important;gap:clamp(42px,7vw,96px)!important;align-items:end!important}.press-clock{padding:0 0 12px;font-family:var(--mono);color:var(--bone-dim)}.press-clock .pc-k{display:block;margin-bottom:12px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bone)}.press-clock p{display:grid;grid-template-columns:1fr auto;gap:18px;margin:6px 0;font-size:11px;line-height:1.5}.press-clock p>b{font-weight:500;color:var(--bone)}.press-clock [data-next-clock] b{font-weight:500;color:var(--bone);margin-right:.45em}.press-note{position:relative;padding-top:20px}.press-note::before{content:"";position:absolute;left:0;top:0;width:min(150px,52%);height:6px;background:var(--c)}.press-note .metrics{display:flex;flex-wrap:wrap;gap:5px 16px;margin:0 0 10px;font:500 10px/1.45 var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--bone-dim)}.press-note .metrics span+span{position:relative;padding-left:15px}.press-note .metrics span+span::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;background:var(--c)}.press-note .metrics b{font-weight:600;color:var(--bone)}.press-note .facts sup{font-size:.56em;vertical-align:.58em;line-height:0;font-style:italic;text-transform:none}@media(max-width:1000px){.mast{grid-template-columns:1fr!important}.press-clock{max-width:420px}}@media(max-width:600px){.press-clock{display:none}}
 </style>
 </head>
 <body>
@@ -163,18 +166,24 @@ control and it ignores localStorage periodicals:mode (the three publications sti
 The three covers remain the organizing surface. Beneath them, an unboxed three-part press note may show useful live publication information (archive depth, latest issue and next release), but never as a ledger, table, ruled rail or card grid. Each cover reads the latest issue from its title's canonical page. Shared hub folios stay three-digit.
 Navigation memory: each title writes localStorage periodicals:last = {t:"fb"|"sp"|"cp", at}; the hub
 lifts that cover (.vol.recent) and lengthens its rail accent (.rc.recent) for 45 days; order never changes.
-The "Iain Holmes" signature becomes a link to ../ only when that page answers (no dead links).
+The root personal-site route lives quietly in the footer.
 Handbook: /personal-updates/handbook/ (documentation, not a publication, no spine). -->
 <a class="skip" href="#shelf">Skip to the titles</a>
 <div class="page">
   <header class="imprint">
     <span>Periodicals</span>
     <span class="date" id="today"></span>
-    <span class="im-r"><a href="commonplace/">Commonplace</a><a href="handbook/">Handbook</a><span class="sig" id="sig">Iain Holmes</span></span>
+    <span class="im-r"><a href="commonplace/">Commonplace</a><a href="handbook/">Handbook</a></span>
   </header>
 
   <header class="mast">
     <h1>Period<i>icals</i></h1>
+    <aside class="press-clock" aria-label="Publishing schedule">
+      <span class="pc-k">Next off the press</span>
+      <p><b>Field Brief</b><span data-next-clock="fb"></span></p>
+      <p><b>The Workbook</b><span data-next-clock="cp"></span></p>
+      <p><b>Loblolly &amp; Logit</b><span data-next-clock="sp"></span></p>
+    </aside>
   </header>
 
   <main>
@@ -189,10 +198,10 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
         </div>
       </a>
 
-      <a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)" aria-label="Logit &amp; Loblolly">
+      <a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)" aria-label="Loblolly &amp; Logit">
         <div class="cover c-sp" aria-hidden="true">
           <div class="vl"><span>Vol. 1</span><span data-sp="date">25 Sep 2026</span></div>
-          <div><div class="ttl">Logit <span class="amp">&amp;</span><br><i>Loblolly</i><span class="spfo"><i>N<sup>o</sup>.</i> <span data-sp="no">001</span></span></div></div>
+          <div><div class="ttl">Loblolly <span class="amp">&amp;</span><br><i>Logit</i><span class="spfo"><i>N<sup>o</sup>.</i> <span data-sp="no">001</span></span></div></div>
           <ol class="toc" data-sp="toc"><li>Electrification’s opportunity is larger than its current market share</li><li>The grid gets a $5.25 billion investment test</li><li>Carbon-border policy enters a new institutional test</li><li>Insurance stress has an urban geography of its own</li><li>Glyphosate review makes the value of information concrete</li></ol>
           <div class="fig"><span>Fig. 1</span><svg viewBox="0 0 120 42" preserveAspectRatio="none"><path d="M0 41.5H120" stroke="#15302a" stroke-width="1"/><rect x="8" y="18" width="22" height="23" fill="#15302a"/><rect x="48" y="8" width="22" height="33" fill="#8aa08f"/><rect x="88" y="6" width="22" height="35" fill="#b4532e"/></svg></div>
         </div>
@@ -213,25 +222,28 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
         <h2>Field Brief</h2>
         <div class="measure"><strong data-fb="count">2</strong><span>issues archived</span></div>
         <p class="latest" data-fb="title">Voting rules, health coverage and AI safety</p>
-        <p class="facts"><span data-fb="line">No. 002 · 27 Sep 2026</span><br>Daily · 08:00 ET · next <span data-next="fb"></span></p>
+        <p class="metrics"><span data-fb-depth></span><span>Kept <b data-kept="fb">0</b></span></p>
+        <p class="facts"><span data-fb="line">N<sup>o</sup>. 002 · 27 Sep 2026</span><br>Daily · 08:00 ET · next <span data-next="fb"></span></p>
       </article>
       <article class="press-note" style="--c:var(--sp)">
-        <h2>Logit &amp; Loblolly</h2>
+        <h2>Loblolly &amp; Logit</h2>
         <div class="measure"><strong data-sp="count">1</strong><span>issue archived</span></div>
         <p class="latest" data-sp="title">The price of a resilient economy.</p>
-        <p class="facts"><span data-sp="line">No. 001 · 25 Sep 2026</span><br>Fridays · 15:00 ET · next <span data-next="sp"></span></p>
+        <p class="metrics"><span data-sp-depth></span><span>Kept <b data-kept="sp">0</b></span></p>
+        <p class="facts"><span data-sp="line">N<sup>o</sup>. 001 · 25 Sep 2026</span><br>Fridays · 15:00 ET · next <span data-next="sp"></span></p>
       </article>
       <article class="press-note" style="--c:var(--cp-teal)">
         <h2>The Workbook</h2>
         <div class="measure"><strong data-cp="count">1</strong><span>set archived</span></div>
         <p class="latest" data-cp="title">8 questions · current set</p>
-        <p class="facts"><span data-cp="line">No. 001 · 28 Sep 2026</span><br>Weekdays · 10:00 ET · next <span data-next="cp"></span></p>
+        <p class="metrics"><span data-cp-depth></span><span>Kept <b data-kept="cp">0</b></span></p>
+        <p class="facts"><span data-cp="line">N<sup>o</sup>. 001 · 28 Sep 2026</span><br>Weekdays · 10:00 ET · next <span data-next="cp"></span></p>
       </article>
     </section>
 
   </main>
 
-  <footer class="colophon"><span>Periodicals · <a href="commonplace/">Commonplace</a> · <a href="handbook/">Handbook</a></span><span class="sig" id="sig2">Iain Holmes</span></footer>
+  <footer class="colophon"><span>Periodicals · <a href="commonplace/">Commonplace</a> · <a href="handbook/">Handbook</a></span><span><a href="../">iainholmes.github.io ↗</a></span></footer>
 </div>
 
 <script>
@@ -244,9 +256,6 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
 
   function dotted(d){var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
   function total(){}
-  /* the signature links to the personal site only if that page actually exists (never a dead link) */
-  fetch('../',{method:'HEAD',cache:'no-cache'}).then(function(r){if(!r.ok)return;
-    ['sig','sig2'].forEach(function(id){var el=document.getElementById(id);if(!el)return;var a=document.createElement('a');a.href='../';a.className='sig';a.textContent=id==='sig'?'Iain Holmes ↗':'iainholmes.github.io ↗';el.replaceWith(a)})}).catch(function(){});
   /* navigation memory: lift the title visited most recently (order never changes) */
   try{var last=JSON.parse(localStorage.getItem('periodicals:last')||'null');
     if(last&&/^(fb|sp|cp)$/.test(last.t)&&Date.now()-last.at<1000*60*60*24*45){
@@ -263,12 +272,14 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
     return '';
   }
   var sched={fb:[[0,1,2,3,4,5,6],8],sp:[[5],15],cp:[[1,2,3,4,5],10]};
-  Object.keys(sched).forEach(function(k){var el=document.querySelector('[data-next="'+k+'"]');if(el)el.innerHTML=nextRun(sched[k][0],sched[k][1])});
+  Object.keys(sched).forEach(function(k){var v=nextRun(sched[k][0],sched[k][1]);document.querySelectorAll('[data-next="'+k+'"]').forEach(function(el){el.innerHTML=v});document.querySelectorAll('[data-next-clock="'+k+'"]').forEach(function(el){el.innerHTML=v})});
 
   /* read each title's own canonical page for its latest issue */
   function set(sel,val,html){document.querySelectorAll(sel).forEach(function(el){if(html)el.innerHTML=val;else el.textContent=val})}
   function fmt(d,o){return new Date(d+'T12:00:00').toLocaleDateString('en-GB',o)}
   function get(url){return fetch(url,{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){return new DOMParser().parseFromString(t,'text/html')})}
+  function paintKept(){var counts={fb:0,sp:0,cp:0};try{var book=JSON.parse(localStorage.getItem('periodicals:commonplace:v1')||'null');Object.keys(book&&book.items||{}).forEach(function(id){var x=book.items[id],k=x&&x.publicationKey;if(k==='ll')k='sp';if(counts[k]!=null)counts[k]++})}catch(e){}Object.keys(counts).forEach(function(k){set('[data-kept="'+k+'"]',counts[k])})}
+  paintKept();addEventListener('pageshow',paintKept);addEventListener('storage',function(e){if(e.key==='periodicals:commonplace:v1')paintKept()});
 
   get('../daily-watchlist-5/').then(function(doc){
     var data=JSON.parse(doc.getElementById('briefing-data').textContent);
@@ -277,7 +288,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
     set('[data-fb="no"]',no);set('[data-fb="count"]',eds.length);set('[data-fb="dated"]',dotted(ed.date));total('fb',eds.length);set('[data-fb="dow"]',fmt(ed.date,{weekday:'long'}));
     set('[data-fb="date"]',fmt(ed.date,{month:'long',day:'numeric',year:'numeric'}));
     set('[data-fb="read"]',ed.readTime);set('[data-fb="head"]',ed.stories[0].title);
-    set('[data-fb="line"]','No. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}));
+    set('[data-fb="line"]','N<sup>o</sup>. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}),true);set('[data-fb-depth]',eds.reduce(function(a,x){return a+(x.stories||[]).length},0)+' stories');
     set('[data-fb="title"]',ed.issueTitle||ed.stories[0].title);
     set('[data-fb="more"]',ed.stories.slice(1,5).map(function(x){return '<li>'+x.title.replace(/[<>&]/g,'')+'</li>'}).join(''),true);
   }).catch(function(){});
@@ -286,7 +297,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
     var eds=[].slice.call(doc.querySelectorAll('[data-edition]')).sort(function(a,b){return a.dataset.edition.localeCompare(b.dataset.edition)});
     var ed=eds[eds.length-1];if(!ed)return;var n=eds.length;
     set('[data-sp="no"]',String(n).padStart(3,'0'));set('[data-sp="count"]',n);set('[data-sp="dated"]',dotted(ed.dataset.edition));total('sp',n);set('[data-sp="date"]',fmt(ed.dataset.edition,{day:'numeric',month:'short',year:'numeric'}));
-    set('[data-sp="line"]','No. '+n+' · '+fmt(ed.dataset.edition,{day:'numeric',month:'short',year:'numeric'}));
+    set('[data-sp="line"]','N<sup>o</sup>. '+String(n).padStart(3,'0')+' · '+fmt(ed.dataset.edition,{day:'numeric',month:'short',year:'numeric'}),true);var rc=eds.reduce(function(a,x){return a+x.querySelectorAll('.entry').length},0),fr=0;try{fr=JSON.parse(doc.getElementById('field-register').textContent).entries.length}catch(e){}set('[data-sp-depth]',rc+' readings'+(fr?' · '+fr+' register':''));
     set('[data-sp="title"]',ed.dataset.title);
     var heads=[].slice.call(ed.querySelectorAll('.entry h2')).slice(0,5);
     if(heads.length)set('[data-sp="toc"]',heads.map(function(h){return '<li>'+h.textContent.replace(/[<>&]/g,'')+'</li>'}).join(''),true);
@@ -299,7 +310,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
     var no=String(ed.no).padStart(3,'0'),d=new Date(ed.date+'T12:00:00');
     set('[data-cp="no"]',no);set('[data-cp="count"]',data.editions.length);set('[data-cp="dated"]',dotted(ed.date));total('cp',data.editions.length);
     set('[data-cp="date"]',d.getDate()+'.'+['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'][d.getMonth()]+'.'+String(d.getFullYear()).slice(2));
-    set('[data-cp="line"]','No. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}));
+    set('[data-cp="line"]','N<sup>o</sup>. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}),true);set('[data-cp-depth]',data.editions.reduce(function(a,x){return a+(x.questions||[]).length},0)+' questions');
     var q1=document.createElement('div');q1.innerHTML=ed.questions[0].stem;var t=q1.textContent.trim();set('[data-cp="q1"]','<b>1.</b> '+(t.length>150?t.slice(0,t.lastIndexOf(' ',150))+'…':t).replace(/[<>&]/g,''),true);
     set('[data-cp="title"]',ed.questions.length+' questions · '+fields.length+' fields');
     /* the cover grid shows the reader's own record for the latest set, if any */
