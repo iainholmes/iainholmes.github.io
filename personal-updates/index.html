@@ -142,12 +142,25 @@ a{color:inherit}
 .vol.recent:hover .cover{transform:translateY(-20px)}
 @media (max-width:1000px){.vol.recent .cover{transform:translateY(-8px)}}
 @media (prefers-reduced-motion:reduce){.vol.recent .cover{transition:none}}
+
+/* Publication notes: useful metrics without a table, rail, grid of cards or divider lines. */
+.press-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(34px,5vw,72px);padding:8px 0 78px}
+.press-note{min-width:0;color:var(--bone-dim)}
+.press-note h2{margin:0 0 16px;font:500 11px/1.2 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--c)}
+.press-note .measure{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.press-note .measure strong{font:400 clamp(42px,5vw,64px)/.85 var(--serif);letter-spacing:-.04em;color:var(--bone)}
+.press-note .measure span{font:500 10px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase}
+.press-note .latest{margin:0 0 12px;font:400 18px/1.28 var(--serif);color:var(--bone);text-wrap:balance}
+.press-note .facts{margin:0;font:500 10px/1.65 var(--sans);letter-spacing:.05em;text-transform:uppercase}
+.press-note .facts b{font-weight:600;color:var(--bone)}
+.press-note .facts [data-next] b{margin-right:.45em}
+@media(max-width:760px){.press-notes{grid-template-columns:1fr;gap:34px;padding-bottom:54px}.press-note{max-width:34rem}.press-note .measure strong{font-size:48px}}
 </style>
 </head>
 <body>
 <!-- PERIODICALS HUB — /personal-updates/ (display name Periodicals). Permanently dark: no Day/Night
 control and it ignores localStorage periodicals:mode (the three publications still share that key).
-The three covers are the organizing surface. Do not add a secondary ledger, table, ruled rail, or card grid beneath them. Each cover reads the latest issue from its title's canonical page. Shared hub folios stay three-digit.
+The three covers remain the organizing surface. Beneath them, an unboxed three-part press note may show useful live publication information (archive depth, latest issue and next release), but never as a ledger, table, ruled rail or card grid. Each cover reads the latest issue from its title's canonical page. Shared hub folios stay three-digit.
 Navigation memory: each title writes localStorage periodicals:last = {t:"fb"|"sp"|"cp", at}; the hub
 lifts that cover (.vol.recent) and lengthens its rail accent (.rc.recent) for 45 days; order never changes.
 The "Iain Holmes" signature becomes a link to ../ only when that page answers (no dead links).
@@ -157,7 +170,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
   <header class="imprint">
     <span>Periodicals</span>
     <span class="date" id="today"></span>
-    <span class="im-r"><a href="handbook/">Handbook</a><span class="sig" id="sig">Iain Holmes</span></span>
+    <span class="im-r"><a href="commonplace/">Commonplace</a><a href="handbook/">Handbook</a><span class="sig" id="sig">Iain Holmes</span></span>
   </header>
 
   <header class="mast">
@@ -195,10 +208,30 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
       </a>
     </section>
 
+    <section class="press-notes" aria-label="Publication notes">
+      <article class="press-note" style="--c:var(--fb)">
+        <h2>Field Brief</h2>
+        <div class="measure"><strong data-fb="count">2</strong><span>issues archived</span></div>
+        <p class="latest" data-fb="title">Voting rules, health coverage and AI safety</p>
+        <p class="facts"><span data-fb="line">No. 002 · 27 Sep 2026</span><br>Daily · 08:00 ET · next <span data-next="fb"></span></p>
+      </article>
+      <article class="press-note" style="--c:var(--sp)">
+        <h2>Logit &amp; Loblolly</h2>
+        <div class="measure"><strong data-sp="count">1</strong><span>issue archived</span></div>
+        <p class="latest" data-sp="title">The price of a resilient economy.</p>
+        <p class="facts"><span data-sp="line">No. 001 · 25 Sep 2026</span><br>Fridays · 15:00 ET · next <span data-next="sp"></span></p>
+      </article>
+      <article class="press-note" style="--c:var(--cp-teal)">
+        <h2>The Workbook</h2>
+        <div class="measure"><strong data-cp="count">1</strong><span>set archived</span></div>
+        <p class="latest" data-cp="title">8 questions · current set</p>
+        <p class="facts"><span data-cp="line">No. 001 · 28 Sep 2026</span><br>Weekdays · 10:00 ET · next <span data-next="cp"></span></p>
+      </article>
+    </section>
 
   </main>
 
-  <footer class="colophon"><span>Periodicals · <a href="handbook/">Handbook</a></span><span class="sig" id="sig2">Iain Holmes</span></footer>
+  <footer class="colophon"><span>Periodicals · <a href="commonplace/">Commonplace</a> · <a href="handbook/">Handbook</a></span><span class="sig" id="sig2">Iain Holmes</span></footer>
 </div>
 
 <script>

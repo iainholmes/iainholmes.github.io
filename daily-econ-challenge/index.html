@@ -345,6 +345,9 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 .pd-hb:hover{border-color:var(--teal)!important;color:var(--teal)!important;opacity:1}
 @media (max-width:700px){.ps-title{grid-template-columns:1fr;gap:12px}.ps-no{justify-items:start;min-width:0}.ps-no .sub{text-align:left}}
 @media (max-width:600px){.pd-hb{flex-basis:100%;margin:8px 0 0!important;order:9}}
+
+.pd-cm::before{content:"C"!important}
+.pd-cm{margin-left:auto!important}.pd-cm + .pd-hb{margin-left:0!important}
 </style>
 </head>
 <body>
@@ -359,7 +362,7 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
         <a class="pd-spine sp" href="../weekly-economics-environment/"><small>fri</small><span>Logit &amp; Loblolly</span></a>
         <a class="pd-spine cp" href="../daily-econ-challenge/" aria-current="page"><small>mon–fri</small><span>The Workbook</span></a>
         <div class="pd-note"><span>you are here</span>The Workbook</div>
-          <a class="pd-hb" href="../personal-updates/handbook/" style="font:500 11px/1.4 var(--mono);color:var(--ink)">Periodicals Handbook</a>
+          <a class="pd-hb pd-cm" href="../personal-updates/commonplace/" style="font:500 11px/1.4 var(--mono);color:var(--ink)">Commonplace</a><a class="pd-hb" href="../personal-updates/handbook/" style="font:500 11px/1.4 var(--mono);color:var(--ink)">Periodicals Handbook</a>
       </div></div>
     </nav>
     <a class="wordmark" href="#" id="homeLink" aria-label="The Workbook, latest set">The <i>Workbook</i></a>
@@ -373,7 +376,7 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 <main id="app"></main>
 
 <footer class="foot">
-  <span><i style="font:italic 400 15px var(--math);color:var(--ink)">The Workbook</i> · economics &amp; econometrics · weekdays, 10:00 ET · <a href="../personal-updates/handbook/">Handbook</a></span>
+  <span><i style="font:italic 400 15px var(--math);color:var(--ink)">The Workbook</i> · economics &amp; econometrics · weekdays, 10:00 ET · <a href="../personal-updates/commonplace/">Commonplace</a> · <a href="../personal-updates/handbook/">Handbook</a></span>
   <a href="../personal-updates/">Periodicals</a>
 </footer>
 
@@ -391,6 +394,7 @@ current GitHub version immediately before editing; preserve unfamiliar changes (
 collaborator may have made them). Append one new object to "editions" per weekday; never delete,
 rewrite or renumber an existing edition. "no" is the published issue number: it increments by one
 per published set, and skipped days do not skip numbers. Dates are YYYY-MM-DD (America/New_York).
+Commonplace maintenance: each question id is permanent once published. Deep keepable routes are #YYYY-MM-DD/<question-id> and #YYYY-MM-DD/<question-id>/solution; never recycle or silently change a published question id. Whole sets, questions and worked solutions are keepable.
 Each set: ~8 questions; applied reasoning over trivia; mix single / multi / tf only where the format
 fits the question. Every question needs: id unique within the set, field, concepts (short
 review-able names), a precise explanation that argues why each distractor fails, and "correct" as
@@ -723,12 +727,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   });
 
   function route(){
-    var h=decodeURIComponent(location.hash.slice(1));
+    var h=decodeURIComponent(location.hash.slice(1)),parts=h.split('/');
     if(h!=='archive'){
-      var m=EDITIONS.filter(function(e){return e.date===h})[0]||EDITIONS[0];
+      var m=EDITIONS.filter(function(e){return e.date===parts[0]})[0]||EDITIONS[0];
       if(!ed||m!==ed){ed=m;st=load(ed.date)||fresh()}
+      if(parts[1]){var qi=ed.questions.findIndex(function(q){return q.id===parts[1]});if(qi>=0)st.current=qi}
     } else if(!ed){ed=EDITIONS[0];st=load(ed.date)||fresh()}
     render();window.scrollTo(0,0);
+    if(parts[1])setTimeout(function(){var target=parts[2]==='solution'&&st.submitted?document.getElementById('sol-'+(st.current+1)):document.querySelector('.q');if(target)target.scrollIntoView({block:'start'})},0);
   }
   document.getElementById('homeLink').addEventListener('click',function(e){e.preventDefault();location.hash=EDITIONS[0].date});
   window.addEventListener('hashchange',route);
@@ -749,5 +755,6 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&dr.dataset.open==='true'){shelf(false);imp.focus()}});
 })();
 </script>
+<script src="../personal-updates/commonplace/commonplace.js"></script>
 </body>
 </html>

@@ -567,6 +567,14 @@ body{overflow-x:clip}
   #register-dialog{width:calc(100% - 18px)}.rg-row{grid-template-columns:34px 46px minmax(0,1fr);gap:10px}.rg-row svg,.rg-row img{width:46px;height:46px}
 }
 @media (max-width:600px){.pd-hb{flex-basis:100%;margin:8px 0 0!important;order:9}}
+
+/* Final palette restraint: the wordmark is neutral ink with one clay ampersand; Field Notes stay deep spruce. */
+.mh-title h1 .r1,.mh-title h1 i{color:var(--ink)!important}
+.mh-title h1 .amp{color:var(--clay)!important}
+.register{background:#17372e!important}
+html[data-mode="night"] .register{background:#10231d!important}
+.pd-cm::before{content:"C"!important}
+.pd-cm{margin-left:auto!important}.pd-cm + .pd-hb{margin-left:0!important}
 </style></head><body><a class="skip" href="#edition">Skip to the issue</a>
 <header class="masthead" id="top">
   <div class="mh-top"><span class="vn" id="volno"><b>Vol. 1</b> · 25 September 2026</span><span class="right"><span class="fri">Fridays</span><span class="dn" role="group" aria-label="Reading mode, shared by all Periodicals"><button type="button" data-mode="day" aria-pressed="true">Day</button><span class="sl" aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="false">Night</button></span></span></div>
@@ -581,7 +589,7 @@ body{overflow-x:clip}
       <a class="pd-spine sp" href="../weekly-economics-environment/" aria-current="page"><small>Fri</small><span>Logit &amp; Loblolly</span></a>
       <a class="pd-spine cp" href="../daily-econ-challenge/"><small>Wkdy</small><span>The Workbook</span></a>
       <div class="pd-note"><b>You are reading</b>Logit &amp; Loblolly</div>
-          <a class="pd-hb" href="../personal-updates/handbook/" style="font:600 10px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)">Periodicals Handbook</a>
+          <a class="pd-hb pd-cm" href="../personal-updates/commonplace/" style="font:600 10px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)">Commonplace</a><a class="pd-hb" href="../personal-updates/handbook/" style="font:600 10px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)">Periodicals Handbook</a>
     </div></div>
   </nav>
   <a class="tb-name" href="#top">Logit &amp; Loblolly</a>
@@ -726,7 +734,7 @@ so ids stay unique; use .reading-time (not a repeated id). Preserve issue 1's ti
 resilient economy."
 Each issue ALSO: (1) appends 3–5 entries to #field-register (schema above it; numbers continue; real,
 sourced people/institutions only; "related" = article id; mark 2–3 of them "fieldNote": true for Field Notes); (2) adds a #companion-data key for its date
-with 0–4 Heron appearances (schema above it; silence is intended).
+with 0–4 Heron appearances (schema above it; silence is intended). Commonplace maintenance: article ids are permanent once published; every figure and research note must receive a stable data-keep-id (or keep the deterministic issue/article anchor already published); Field Register numbers and Heron appearance ids are permanent and must never be recycled.
 Visiting writes localStorage periodicals:last (hub navigation memory).
 Reading mode: shared Periodicals key localStorage periodicals:mode (day|night), applied in <head>,
 synced across tabs; night = estuary-at-night palette via html[data-mode="night"] variables.
@@ -760,7 +768,11 @@ function selectEdition(date){
   if(READY)afterSelect(active);
 }
 function route(){let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return}
-  if(!id)return;const t=document.getElementById(id);if(!t)return;const ed=t.closest('[data-edition]');if(ed&&ed.hidden)selectEdition(ed.dataset.edition);
+  if(!id)return;
+  if(id.indexOf('cp-ll-')===0){var md=id.match(/^cp-ll-(\d{4}-\d{2}-\d{2})-/);if(md){selectEdition(md[1]);mode(false)}return}
+  if(id.indexOf('heron-')===0){var hid=id.slice(6),cd;try{cd=JSON.parse(document.getElementById('companion-data').textContent)}catch(e){cd={}};var d=Object.keys(cd).find(function(k){return (cd[k].appearances||[]).some(function(a){return a.id===hid})});if(d){selectEdition(d);mode(false)}return}
+  if(id.indexOf('field-register-')===0){openRegister();setTimeout(function(){var r=document.getElementById(id);if(r)r.scrollIntoView({block:'center'})},0);return}
+  const t=document.getElementById(id);if(!t)return;const ed=t.closest('[data-edition]');if(ed&&ed.hidden)selectEdition(ed.dataset.edition);
   if(t.closest('.entry,.knowledge,.synthesis'))mode(false)}
 editions.forEach((e,n)=>{
   const a=document.createElement('a');a.className='archive-entry';a.href='#'+e.id;a.dataset.date=e.dataset.edition;
@@ -849,13 +861,13 @@ function renderRegister(active){
         '<div class="fr-kind">'+(e.kind==='person'?'Economist · researcher':'Institution')+(e.place?' · '+esc(e.place):'')+'</div><h3 class="fr-name">'+esc(e.name)+'</h3><p class="fr-role">'+esc(e.role)+(e.org&&e.org!==e.name?', '+esc(e.org):'')+'</p>'+
         '<p class="fr-does">'+esc(e.does)+'</p><div class="fr-econ"><h4>Where economics enters</h4><p>'+esc(e.economics)+'</p><a href="'+esc(e.source.url)+'" target="_blank" rel="noopener">'+esc(e.source.label)+' ↗</a>'+(relEl?'<a class="fr-rel" href="#'+esc(e.related)+'">In this issue: '+esc(relEl.textContent)+' ↓</a>':'')+'</div></article>'}).join('')+'</div>';
 }
-function registerRoute(){if(location.hash==='#field-register'){openRegister();history.replaceState(null,'',location.pathname+location.search)}}
+function registerRoute(){if(location.hash==='#field-register'){openRegister();return}if(/^#field-register-\d{3}$/.test(location.hash)){openRegister();setTimeout(function(){var r=document.querySelector(location.hash);if(r)r.scrollIntoView({block:'center'})},0)}}
 function openRegister(){
   var dlg=document.getElementById('register-dialog'),all=regData(),list=dlg.querySelector('.rg-list');
   var byIssue={};all.forEach(function(e){(byIssue[e.issue]=byIssue[e.issue]||[]).push(e)});
   list.innerHTML=Object.keys(byIssue).sort().reverse().map(function(d){var no=chron.findIndex(function(x){return x.dataset.edition===d})+1;
     return '<div class="rg-issue">'+(no?'<span class="issue-no">N<sup>o</sup>. '+pad3(no)+'</span> · ':'')+fmt(d,{day:'numeric',month:'long',year:'numeric'})+'</div>'+byIssue[d].map(function(e){
-      return '<div class="rg-row" data-q="'+esc((e.name+' '+e.org+' '+e.role+' '+e.place+' '+e.economics).toLowerCase())+'"><span class="fr-no"><span class="no">N<sup>o</sup>.</span>'+pad3(e.no)+'</span>'+notePlate(e,0)+'<div><h3>'+esc(e.name)+'</h3><p class="fr-role">'+esc(e.role)+(e.org&&e.org!==e.name?', '+esc(e.org):'')+'</p><p>'+esc(e.does)+'</p><p><b>Economics</b>'+esc(e.economics)+'</p><a href="'+esc(e.source.url)+'" target="_blank" rel="noopener">'+esc(e.source.label)+' ↗</a></div></div>'}).join('')}).join('');
+      return '<div class="rg-row" id="field-register-'+pad3(e.no)+'" data-reg-no="'+e.no+'" data-q="'+esc((e.name+' '+e.org+' '+e.role+' '+e.place+' '+e.economics).toLowerCase())+'"><span class="fr-no"><span class="no">N<sup>o</sup>.</span>'+pad3(e.no)+'</span>'+notePlate(e,0)+'<div><h3>'+esc(e.name)+'</h3><p class="fr-role">'+esc(e.role)+(e.org&&e.org!==e.name?', '+esc(e.org):'')+'</p><p>'+esc(e.does)+'</p><p><b>Economics</b>'+esc(e.economics)+'</p><a href="'+esc(e.source.url)+'" target="_blank" rel="noopener">'+esc(e.source.label)+' ↗</a></div></div>'}).join('')}).join('');
   dlg.querySelector('.rg-count').textContent='Logit & Loblolly · '+all.length+' '+(all.length===1?'entry':'entries')+' · '+Object.keys(byIssue).length+' '+(Object.keys(byIssue).length===1?'issue':'issues');
   dlg.showModal();dlg.querySelector('input').focus();
 }
@@ -900,7 +912,7 @@ function renderCompanion(active){
     if(!col){col=document.createElement('div');col.className='margin';if(note){note.before(col);col.append(note)}else grid.append(col)}
     var slot=col.querySelector('.perch[data-id="'+a.id+'"]');
     if(!slot){
-      slot=document.createElement('div');slot.className='perch';slot.dataset.id=a.id;
+      slot=document.createElement('div');slot.className='perch';slot.dataset.id=a.id;slot.dataset.heronId=a.id;slot.id='heron-'+a.id;
       var pid='hp-'+a.id;
       slot.innerHTML='<button type="button" class="heron-perch" hidden aria-expanded="false" aria-controls="'+pid+'" aria-label="The heron, '+esc((KIND[a.type]||'a note').toLowerCase())+': '+esc(a.title)+'. Open note.">'+HERON_POSE.perched+HERON_POSE.inspect+'<span><span class="hp-k">'+esc(KIND[a.type]||'The heron')+'</span><span class="hp-t">'+esc(a.title)+'</span></span></button>'+
         '<div class="heron-panel" id="'+pid+'" role="region" aria-label="Heron note: '+esc(a.title)+'" hidden tabindex="-1"><h4>'+esc(a.title)+'</h4><p>'+esc(a.text)+'</p>'+companionDiagram(a.diagram)+
@@ -977,4 +989,5 @@ initMode();initRegisterDialog();initCompanion();registerRoute();addEventListener
 var cur=editions.find(function(e){return !e.hidden});if(cur)afterSelect(cur);
 var READY=true;
 })();
-</script></body></html>
+</script><script src="../personal-updates/commonplace/commonplace.js"></script>
+</body></html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#131210">
 <title>Periodicals Handbook</title>
-<meta name="description" content="How Periodicals works: the three titles, navigation, issue folios, Day/Night, the Field Register and the Heron.">
+<meta name="description" content="How Periodicals works: the three titles, navigation, issue folios, Day/Night, Field Notes and Register, the Heron, and the Commonplace.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23131210%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%2212%22%20width%3D%228%22%20height%3D%2240%22%20fill%3D%22%238a2a36%22%2F%3E%3Crect%20x%3D%2225%22%20y%3D%2216%22%20width%3D%228%22%20height%3D%2236%22%20fill%3D%22%231f4a3b%22%2F%3E%3Crect%20x%3D%2237%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%2242%22%20fill%3D%22%231c2f4a%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%2220%22%20width%3D%224%22%20height%3D%2232%22%20fill%3D%22%23efe9dc%22%2F%3E%3Cpath%20d%3D%22M8%2054h48%22%20stroke%3D%22%23efe9dc%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,18 +96,28 @@ table.modes td:first-child{padding-left:14px;font-weight:500}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toc a{transition:none}}
 @media print{.toc{display:none}.body{display:block}.mast{min-height:0}body{background:#fff;color:#000}.page{width:auto}}
+
+.mast-side{align-self:end;display:flex;flex-direction:column;align-items:flex-end;gap:26px;padding-bottom:10px}
+.mast-side p{margin:0!important;text-align:right;max-width:260px}
+.hb-no{display:flex;align-items:flex-start;gap:8px;color:var(--paper);font-variant-numeric:lining-nums}
+.hb-no .no{font:italic 400 20px/1 var(--display);color:var(--gold);padding-top:11px}
+.hb-no .no sup{font-size:.56em;vertical-align:.6em;line-height:0}
+.hb-no .num{font:500 74px/.8 var(--display);letter-spacing:-.05em}
+#commonplace h2 .n{color:var(--gold)}
+#commonplace>a,#commonplace p>a{font:500 11px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--paper);text-decoration-color:var(--gold)}
+@media(max-width:900px){.mast-side{align-items:flex-start;padding-left:24px}.mast-side p{text-align:left}.hb-no .num{font-size:62px}}
 </style>
 </head>
 <body>
 <!-- PERIODICALS HANDBOOK — /personal-updates/handbook/. Documentation for the publishing system only:
-not a publication, not scheduled, no issue numbers, no shelf spine. Permanently dark like the hub.
+not a publication, not scheduled, and no shelf spine. The large Nᵒ. 21 in the masthead is a personal catalogue/colophon mark, not a publication issue number. Permanently dark like the hub.
 Update it by hand when a title's behaviour changes (names, navigation, modes, Field Register, Heron). -->
 <a class="skip" href="#content">Skip to the handbook</a>
 <div class="page">
-  <header class="imprint"><a href="../">← Periodicals</a><span>Handbook</span></header>
+  <header class="imprint"><a href="../">← Periodicals</a><span><a href="../commonplace/">Commonplace</a> · Handbook</span></header>
   <header class="mast">
     <h1>Periodicals <i>Handbook</i></h1>
-    <p>Field Brief · Logit &amp; Loblolly · The Workbook</p>
+    <div class="mast-side"><div class="hb-no" aria-label="Number 21"><span class="no">N<sup>o</sup>.</span><span class="num">21</span></div><p>Field Brief · Logit &amp; Loblolly · The Workbook</p></div>
   </header>
   <div class="body">
     <nav class="toc" aria-label="Contents"><ol>
@@ -118,7 +128,8 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
       <li><a href="#daynight"><span>E</span>Day / Night</a></li>
       <li><a href="#register"><span>F</span>Field Notes &amp; Register</a></li>
       <li><a href="#heron"><span>G</span>The Heron</a></li>
-      <li><a href="#start"><span>H</span>Where to start</a></li>
+      <li><a href="#commonplace"><span>H</span>The Commonplace</a></li>
+      <li><a href="#start"><span>I</span>Where to start</a></li>
     </ol></nav>
     <main id="content">
 
@@ -281,8 +292,22 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
   <p>They are related but do different jobs. Field Notes and the Field Register introduce <i>who</i> does environmental economics, the people and institutions behind the week’s evidence, and accumulate into a directory. The Heron works on <i>how</i> to read the evidence, one passage at a time, and keeps nothing but your preferences.</p>
 </section>
 
+
+<section id="commonplace">
+  <h2><span class="n">H</span>The Commonplace</h2>
+  <p class="lede">The publication stays permanent; your relationship to it is allowed to change.</p>
+  <p>The Commonplace is the private keeping layer shared by all three titles. A whole issue, Field Brief story, Logit &amp; Loblolly article, figure, research note, Field Register entry, Heron note, Workbook question or worked solution can be kept without changing its source.</p>
+  <p><b>Keeping while reading.</b> On desktop, a small <i>keep</i> action appears only when a keepable object is hovered or focused. On touch, press and hold the object. Keyboard users can reach the same action in reading order. The first action keeps the item; returning to it opens the quiet editor for your own thread names, an importance value from 0–5, and a short annotation.</p>
+  <p><b>Threads cross publications.</b> Threads are names you invent, not categories imposed by Periodicals. A Field Brief story, a Logit &amp; Loblolly article and a Workbook solution can therefore live together in one thread. The Commonplace uses those shared threads to show related material and, rarely, to bring an older item back into view.</p>
+  <p><b>Stable addresses.</b> Every keepable object has a durable source address. Existing story, article and question IDs remain permanent; figures, research notes, Register entries and Heron interventions receive their own stable anchors. Future issue maintenance must never recycle or silently change a published keepable ID.</p>
+  <p><b>Private and local.</b> The Commonplace lives in <span class="mono">periodicals:commonplace:v1</span> in this browser. It does not sync to another device and nothing is sent to an account or outside service. To move it, use the Commonplace’s JSON export on one device and import it on another.</p>
+  <p><b>Backups and exports.</b> The Commonplace exports a clean readable HTML document, plain Markdown, and structured JSON. JSON is the re-importable backup; imports merge with what is already present and do not silently delete existing kept items. The Commonplace quietly states when the last export is old, but does not interrupt reading to ask for one.</p>
+  <p><b>Returning.</b> Every entry retains its exact source link, source documents and related methods/Register/Heron links when available. At most occasionally, the Commonplace may surface one highly rated older item or an older item from a thread you have just returned to. Silence is the default.</p>
+  <p><a href="../commonplace/">Open the Commonplace ↗</a></p>
+</section>
+
 <section id="start">
-  <h2><span class="n">H</span>Where to start</h2>
+  <h2><span class="n">I</span>Where to start</h2>
   <ul class="start">
     <li><span>Today’s consequential developments</span><a href="../../daily-watchlist-5/">Field Brief</a></li>
     <li><span>Deeper environmental-economics research</span><a href="../../weekly-economics-environment/">Logit &amp; Loblolly</a></li>

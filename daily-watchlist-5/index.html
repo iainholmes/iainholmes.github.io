@@ -260,6 +260,9 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
   .mast h1{white-space:normal}.mast-top{align-items:flex-start;padding:10px 0}.mast-right{gap:10px}
 }
 @media (max-width:600px){.pd-hb{flex-basis:100%;margin:8px 0 0!important;order:9}}
+
+.pd-cm::before{content:"C"!important}
+.pd-cm{margin-left:auto!important}.pd-cm + .pd-hb{margin-left:0!important}
 </style>
 </head>
 <body>
@@ -275,7 +278,7 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
           <a class="pd-spine sp" href="../weekly-economics-environment/"><small>Fri</small><span>Logit &amp; Loblolly</span></a>
           <a class="pd-spine cp" href="../daily-econ-challenge/"><small>Wkdy</small><span>The Workbook</span></a>
           <div class="pd-note"><b>You are reading</b>Field Brief</div>
-          <a class="pd-hb" href="../personal-updates/handbook/" style="font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)">Periodicals Handbook</a>
+          <a class="pd-hb pd-cm" href="../personal-updates/commonplace/" style="font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)">Commonplace</a><a class="pd-hb" href="../personal-updates/handbook/" style="font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)">Periodicals Handbook</a>
         </div>
       </div>
     </nav>
@@ -315,7 +318,7 @@ periodicals:mode (day|night), set in <head> before paint, synced across tabs (fi
 migrated once). The Index is a slide-in contents panel with expandable issues. The Periodicals shelf
 lists Periodicals, Field Brief, Logit & Loblolly, The Workbook, plus a Handbook utility link.
 No pills, chips, slogans, category labels above headlines or explanatory UI copy.
-Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
+Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepable addresses for the Commonplace; never recycle or change a published story number within an issue. Whole issues and stories are keepable. -->
 <script type="application/json" id="briefing-data">
 {
   "editions": [
@@ -937,5 +940,6 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
   buildIndex();window.addEventListener('hashchange',load);load();
 })();
 </script>
+<script src="../personal-updates/commonplace/commonplace.js"></script>
 </body>
 </html>
