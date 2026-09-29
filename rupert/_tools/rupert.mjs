@@ -2,6 +2,10 @@
 // The Rupert Atlas build tool. No dependencies. Run from anywhere:
 //   node rupert/_tools/rupert.mjs build     validate everything, write the manifest, render all pages
 //   node rupert/_tools/rupert.mjs check     validate only (exit 1 on any error)
+//   node rupert/_tools/rupert.mjs test      run the edition-selection tests
+//   node rupert/_tools/rupert.mjs photo SOURCE --id … --provenance … --alt "…" [print options]
+//                                           prepare an image (Python helper: _tools/prep_photos.py,
+//                                           dependencies in _tools/requirements.txt), then build
 //
 // Lives in _tools/ so Jekyll never publishes it.
 
@@ -9,10 +13,12 @@ import { readFile, writeFile, readdir, mkdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
 import { validate } from './validate.mjs';
 import { selectCurrentPair, archiveGroups } from '../assets/js/core/editions.js';
 import { parseDate, nyDateString } from '../assets/js/core/dates.js';
-import { chrome, renderWeek, renderEdition, renderArchive, renderAtlasRegister, renderComing, weekLabelFor, esc } from '../assets/js/core/render.js';
+import { chrome, renderWeek, renderEdition, renderArchive, renderAtlas, renderComing, weekLabelFor, esc } from '../assets/js/core/render.js';
+import { placeStatuses, markerFeatures, boundsOf, registerGroups, counts } from '../assets/js/core/atlas.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
@@ -27,10 +33,11 @@ async function load() {
   const places = await readJSON(P('data/places.json'));
   const photos = await readJSON(P('data/photos.json'));
   const schema = await readJSON(P('schema/edition.schema.json'));
+  const photoSchema = await readJSON(P('schema/photo.schema.json'));
   const files = (await readdir(P('data/editions'))).filter(f => /^\d{4}-W\d{2}-(tue|thu)\.json$/.test(f)).sort();
   const editions = {};
   for (const f of files) editions[f.replace(/\.json$/, '')] = await readJSON(P('data/editions', f));
-  return { site, places, photos, schema, editions };
+  return { site, places, photos, schema, photoSchema, editions };
 }
 
 /* ---------- checks ---------- */
@@ -54,6 +61,9 @@ function checkEditions({ editions, schema, places, photos }) {
     }
     const ph = ed.flagship?.photo?.id;
     if (ph && !photoIds.has(ph)) warn(id, `flagship photo "${ph}" is not in photos.json yet (a stand-in will render)`);
+    const rec = photos.photos.find(p => p.id === ph);
+    if (rec?.provenance === 'documentary' && rec.place_id !== ed.flagship.place_id)
+      err(id, `flagship image "${ph}" is documentary at "${rec.place_id}", which is not this edition's place — mark it archive or editorial, or choose another`);
     if (ed.interlude && !photoIds.has(ed.interlude.photo_id)) warn(id, `interlude photo "${ed.interlude.photo_id}" missing`);
     if (ed.mission?.tone === 'training') warn(id, 'training mission — fine occasionally, not as the default');
   }
@@ -85,7 +95,28 @@ function jpegMetadata(buf) {
   return found;
 }
 
-async function checkPhotos({ photos }) {
+function checkPlaces(places) {
+  for (const p of places.places) {
+    const a = p.access;
+    if (!a) { err(`places.json#${p.id}`, 'missing access point'); continue; }
+    if (typeof a.coords_verified !== 'boolean') err(`places.json#${p.id}`, 'access.coords_verified must be true or false');
+    if (!a.coords_source) err(`places.json#${p.id}`, 'access.coords_source must say where the point came from');
+    if (!a.coords_verified) warn(`places.json#${p.id}`, 'access point not yet verified (shown as "pin approximate")');
+  }
+}
+
+async function checkPhotos({ photos, photoSchema, places }) {
+  checkPlaces(places);
+  const placeIds = new Set(places.places.map(p => p.id));
+  for (const p of photos.photos) {
+    for (const e of validate(p, photoSchema)) err(`photos.json#${p.id}`, e);
+    if (p.provenance === 'documentary' && !(p.place_id && p.taken_at)) err(`photos.json#${p.id}`, 'documentary needs place_id and taken_at');
+    if (p.provenance !== 'documentary' && p.place_id) err(`photos.json#${p.id}`, 'place_id is only for documentary images');
+    if (p.kind === 'plate' && p.provenance !== 'editorial') err(`photos.json#${p.id}`, 'plates are illustrations and must be editorial');
+    if (p.place_id && !placeIds.has(p.place_id)) err(`photos.json#${p.id}`, `unknown place_id "${p.place_id}"`);
+  }
+  const gi = existsSync(P('.gitignore')) ? await readFile(P('.gitignore'), 'utf8') : '';
+  if (!/^_private\/$/m.test(gi)) err('.gitignore', 'must contain "_private/" so original-photo context never enters the repository');
   const dir = P('photos');
   const onDisk = existsSync(dir) ? (await readdir(dir)).filter(f => !f.startsWith('.')) : [];
   const expected = new Set();
@@ -99,7 +130,7 @@ async function checkPhotos({ photos }) {
       const buf = await readFile(join(dir, f));
       const meta = jpegMetadata(buf);
       if (meta.length) err(`photos/${f}`, `carries metadata (${meta.join(', ')}). Re-run _tools/prep_photos.py.`);
-      if (buf.length > 600 * 1024) warn(`photos/${f}`, `${Math.round(buf.length / 1024)} KB — over the 600 KB budget`);
+      if (buf.length > 900 * 1024) warn(`photos/${f}`, `${Math.round(buf.length / 1024)} KB — over the 900 KB budget`);
     }
   }
   for (const f of onDisk) if (!expected.has(f)) err(`photos/${f}`, 'on disk but not in photos.json (unapproved photos must not be in the repo)');
@@ -117,12 +148,14 @@ function manifestFrom(editions) {
         id: e.id, slot: e.slot, status: e.status, published_at: e.published_at, weekend: e.weekend,
         title: e.flagship.title, place_id: e.flagship.place_id,
         place_ids: ['flagship', 'local_trail', 'away_mission', 'wildcard'].map(r => e[r]?.place_id).filter(Boolean),
+        place_roles: ['flagship', 'local_trail', 'away_mission', 'wildcard'].filter(r => e[r]?.place_id).map(r => ({ place_id: e[r].place_id, role: r })),
+        photo_id: e.flagship.photo?.id || null,
         path: `data/editions/${e.id}.json`,
       })),
   };
 }
 
-function page({ title, description, depth, active, body, site, weekLabel, pageClass, scripts = true }) {
+function page({ title, description, depth, active, body, site, weekLabel, pageClass, scripts = true, extra = [] }) {
   const base = '../'.repeat(depth);
   return `<!doctype html>
 <html lang="en-US">
@@ -137,7 +170,7 @@ ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta
 <link rel="preload" href="${base}assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${base}assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${base}assets/css/atlas.css">
-${scripts ? `<script type="module" src="${base}assets/js/site.js"></script>\n` : ''}</head>
+${scripts ? `<script type="module" src="${base}assets/js/site.js"></script>\n` : ''}${extra.map(x => `<script type="module" src="${base}${x}"></script>\n`).join('')}</head>
 <body data-base="${base}" data-section="${active}">
 ${chrome({ active, base, weekLabel, site, body, pageClass })}
 </body>
@@ -194,12 +227,15 @@ async function build({ writeFiles }) {
     await w('archive/index.html', page({
       title: 'Archive · The Rupert Atlas', description: 'Every edition, by weekend.',
       depth: 1, active: 'archive', site: data.site, weekLabel,
-      body: renderArchive(archiveGroups(manifest, now, pair), { base: '../' }),
+      body: renderArchive(archiveGroups(manifest, now, pair), { ...ctx0, base: '../' }),
     }));
+    const statuses = placeStatuses(data.places, manifest, { now });
+    const atlasModel = { statuses, groups: registerGroups(data.places, statuses), counts: counts(statuses),
+      features: markerFeatures(data.places, statuses), bounds: boundsOf(data.places) };
     await w('atlas/index.html', page({
-      title: 'Atlas · The Rupert Atlas', description: 'Register of places.',
-      depth: 1, active: 'atlas', site: data.site, weekLabel,
-      body: renderAtlasRegister(data.places, manifest, { base: '../' }),
+      title: 'Atlas · The Rupert Atlas', description: 'Places recommended, walked and planned, on a map and in a register.',
+      depth: 1, active: 'atlas', site: data.site, weekLabel, pageClass: 'page-atlas', extra: ['assets/js/atlas-view.js'],
+      body: renderAtlas(atlasModel, { base: '../' }),
     }));
     for (const k of ['travel', 'log']) {
       await w(`${k}/index.html`, page({
@@ -216,7 +252,95 @@ async function build({ writeFiles }) {
   if (errors.length) { console.error(`${errors.length} error(s); nothing written.`); process.exit(1); }
 }
 
+/* ---------- audit: what would be published, and what history would push ---------- */
+
+async function walk(dir, rel = '') {
+  const out = [];
+  for (const e of await readdir(dir, { withFileTypes: true })) {
+    if (e.name.startsWith('_') || e.name.startsWith('.')) continue; // Jekyll never publishes these
+    const r = rel ? `${rel}/${e.name}` : e.name;
+    if (e.isDirectory()) out.push(...await walk(join(dir, e.name), r)); else out.push(r);
+  }
+  return out;
+}
+
+async function audit({ history }) {
+  const problems = [], notes = [];
+  const bad = (f, m) => problems.push(`${f}: ${m}`);
+  await build({ writeFiles: false, quietExit: true });
+  const places = await readJSON(P('data/places.json'));
+  const allowed = new Set();
+  const key = (la, lo) => `${Number(la).toFixed(3)},${Number(lo).toFixed(3)}`;
+  for (const p of places.places) if (p.access) allowed.add(key(p.access.lat, p.access.lng));
+  for (const r of Object.values(places.reference_points || {})) allowed.add(key(r.lat, r.lng));
+  for (const [lo, la] of boundsOf(places)) allowed.add(key(la, lo)); // the Atlas's padded default view
+
+  const files = await walk(ROOT);
+  const FORBIDDEN_KEYS = ['gps', 'origin', 'home', 'residence', 'notes_private', 'source_file', 'camera', 'approved_media', 'exact'];
+  const COORD = /(3[3-7]\.\d{3,})\s*,\s*(-(?:7[5-9]|8[0-4])\.\d{3,})|\[\s*(-(?:7[5-9]|8[0-4])\.\d{3,})\s*,\s*(3[3-7]\.\d{3,})\s*\]/g;
+  let bytes = 0;
+  for (const f of files) {
+    const buf = await readFile(join(ROOT, f)); bytes += buf.length;
+    if (/\.(jpe?g)$/i.test(f)) { const m = jpegMetadata(buf); if (m.length) bad(f, `image metadata: ${m.join(', ')}`); continue; }
+    if (/\.(png|gif|webp|heic|tiff?)$/i.test(f)) { bad(f, 'raster image outside the JPEG pipeline (metadata not checked)'); continue; }
+    if (!/\.(html|js|json|css|svg|md|txt)$/i.test(f)) continue;
+    if (f.startsWith('vendor/')) continue; // third-party library code
+    const text = buf.toString('utf8');
+    const isSchema = f.startsWith('schema/'); // schemas describe fields; they hold no data
+    if (/_private/.test(text) && !f.endsWith('.md') && !isSchema) bad(f, 'mentions _private');
+    if (/\.heic\b|IMG_\d{4}|DSC_\d{4}/i.test(text)) bad(f, 'mentions an original camera filename');
+    for (const m of text.matchAll(COORD)) {
+      const [la, lo] = m[1] ? [m[1], m[2]] : [m[4], m[3]];
+      if (!allowed.has(key(la, lo))) bad(f, `coordinate ${la}, ${lo} is not a public access point or the town reference`);
+    }
+    if (f.endsWith('.json') && !isSchema) {
+      const walkKeys = (o, path) => { if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) {
+        if (FORBIDDEN_KEYS.includes(k.toLowerCase())) bad(f, `forbidden key "${path}${k}"`); walkKeys(v, `${path}${k}.`); } };
+      try { walkKeys(JSON.parse(text), ''); } catch { bad(f, 'invalid JSON'); }
+    }
+  }
+  notes.push(`${files.length} public files, ${(bytes / 1048576).toFixed(1)} MB`);
+
+  // Git: _private must be ignored and untracked; optionally, every photo blob the branch would push must be clean.
+  const git = (...a) => spawnSync('git', a, { cwd: ROOT, encoding: 'utf8' });
+  const tracked = git('ls-files', '_private');
+  if (tracked.status === 0) {
+    if (tracked.stdout.trim()) bad('_private', 'is tracked by git');
+    const ign = git('check-ignore', '-q', '_private/originals.json');
+    if (ign.status !== 0) bad('_private', 'is not git-ignored');
+    if (history) {
+      const base = git('merge-base', 'HEAD', 'origin/master').stdout.trim();
+      const revs = git('rev-list', base ? `${base}..HEAD` : 'HEAD').stdout.trim().split('\n').filter(Boolean);
+      const seen = new Map();
+      for (const rev of revs) {
+        for (const line of git('ls-tree', '-r', rev, '--', 'photos').stdout.trim().split('\n').filter(Boolean)) {
+          const [, , sha, path] = line.split(/\s+/);
+          if (!seen.has(sha)) seen.set(sha, { path, rev: rev.slice(0, 7) });
+        }
+      }
+      const reg = await readJSON(P('data/photos.json'));
+      const current = new Set(reg.photos.flatMap(p => p.widths.map(w => `photos/${p.file}-${w}.jpg`)));
+      for (const [sha, { path, rev }] of seen) {
+        const blob = spawnSync('git', ['cat-file', 'blob', sha], { cwd: ROOT, maxBuffer: 64 * 1048576 }).stdout;
+        const m = jpegMetadata(blob);
+        if (m.length) bad(`${path} @${rev}`, `historical blob carries metadata (${m.join(', ')})`);
+        if (!current.has(path.replace(/^rupert\//, ''))) bad(`${path} @${rev}`, 'historical image not in the current registry (would be pushed)');
+      }
+      notes.push(`history: ${revs.length} commit(s) since ${base.slice(0, 7) || 'root'}, ${seen.size} distinct photo blob(s) checked`);
+    }
+  } else notes.push('git not available: skipped tracking and history checks');
+
+  for (const n of notes) console.log(`note  ${n}`);
+  for (const p of problems) console.error(`AUDIT ${p}`);
+  if (problems.length) { console.error(`${problems.length} audit problem(s).`); process.exit(1); }
+  console.log('audit passed');
+}
+
 const cmd = process.argv[2] || 'build';
+const run = (bin, args) => { const r = spawnSync(bin, args, { stdio: 'inherit' }); if (r.status !== 0) process.exit(r.status ?? 1); };
 if (cmd === 'build') await build({ writeFiles: true });
 else if (cmd === 'check') await build({ writeFiles: false });
-else { console.error('usage: rupert.mjs build|check'); process.exit(2); }
+else if (cmd === 'test') run(process.execPath, [P('_tools/test.mjs')]);
+else if (cmd === 'audit') await audit({ history: process.argv.includes('--history') });
+else if (cmd === 'photo') { run('python3', [P('_tools/prep_photos.py'), ...process.argv.slice(3)]); await build({ writeFiles: true }); }
+else { console.error('usage: rupert.mjs build | check | test | audit [--history] | photo SOURCE --id … --provenance … --alt "…"'); process.exit(2); }

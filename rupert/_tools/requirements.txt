@@ -1,0 +1,6 @@
+# Python helpers for rupert/_tools (the site itself has no dependencies).
+# Install: python3 -m pip install -r rupert/_tools/requirements.txt
+Pillow>=10
+numpy>=1.24
+pillow-heif>=0.16      # HEIC originals from iPhone
+rembg[cpu]>=2.0        # subject cut-out for prints; first use downloads a ~180 MB model to ~/.rembg

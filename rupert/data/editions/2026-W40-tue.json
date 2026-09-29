@@ -11,6 +11,7 @@
     "standfirst": "A 3.75-mile loop that crosses the Eno on a suspension bridge, climbs about 300 feet to the ridge, and comes back down to the water.",
     "why_this_week": "Saturday morning is the better half of the weekend. Friday runs near 90°F; Saturday drops to a high near 78 with a 30% chance of showers, and Sunday is wetter. Go early Saturday and the climb happens in the cool.",
     "headline_condition": "Showers possible Sat–Sun, 30–40%",
+    "condition_level": "normal",
     "snapshot": {
       "as_of": "2026-09-28",
       "route": { "route_id": "eno-cox-mountain-loop@1", "distance_mi": 3.75, "shape": "loop", "climb_ft_approx": 300, "difficulty": "moderate", "surface": "Dirt, rocks and roots; good traction needed on the ridge" },
@@ -19,7 +20,7 @@
       "duration_h": [1.75, 2.5],
       "dog": { "leash": "Leashed, 6 ft maximum", "water": "River access on both sides of the bridge", "shade": "Mostly wooded", "watch_for": ["Slick rock at the water's edge", "Other dogs at the bridge on busy mornings"] }
     },
-    "photo": { "id": "flagship-tue", "alt": "Rupert, a chocolate Labrador, standing in shallow water." },
+    "photo": { "id": "rupert-creek-2023-04", "alt": "Field print of Rupert beside a creek, wet, in his mustard collar, looking up and to the left; the water behind him printed in pale streaks." },
     "sources": [
       { "kind": "guide", "label": "NC Tripping — Eno River trails", "url": "https://www.nctripping.com/eno-river-state-park-trails/", "retrieved": "2026-09-29" },
       { "kind": "guide", "label": "Fleet Feet Raleigh — Fews Ford trails", "url": "https://www.fleetfeet.com/s/raleigh/community/eno-river-state-park-fews-ford-trails", "retrieved": "2026-09-29" },

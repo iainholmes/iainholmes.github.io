@@ -19,6 +19,25 @@
         "hanging-rock-moores-wall",
         "occoneechee-mountain"
       ],
+      "place_roles": [
+        {
+          "place_id": "eno-cox-mountain",
+          "role": "flagship"
+        },
+        {
+          "place_id": "carolina-north-forest",
+          "role": "local_trail"
+        },
+        {
+          "place_id": "hanging-rock-moores-wall",
+          "role": "away_mission"
+        },
+        {
+          "place_id": "occoneechee-mountain",
+          "role": "wildcard"
+        }
+      ],
+      "photo_id": "rupert-creek-2023-04",
       "path": "data/editions/2026-W40-tue.json"
     },
     {
@@ -38,6 +57,25 @@
         "raven-rock",
         "brumley-forest"
       ],
+      "place_roles": [
+        {
+          "place_id": "umstead-company-mill",
+          "role": "flagship"
+        },
+        {
+          "place_id": "duke-forest-korstian",
+          "role": "local_trail"
+        },
+        {
+          "place_id": "raven-rock",
+          "role": "away_mission"
+        },
+        {
+          "place_id": "brumley-forest",
+          "role": "wildcard"
+        }
+      ],
+      "photo_id": "rupert-lawn-2023-01",
       "path": "data/editions/2026-W40-thu.json"
     }
   ]

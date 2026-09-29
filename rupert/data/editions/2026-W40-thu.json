@@ -10,7 +10,8 @@
     "title": "Company Mill and the old dam on Crabtree Creek",
     "standfirst": "A longer, steadier morning: a 5.8-mile loop through Umstead's oaks to the stone remains of a mill dam built in 1810.",
     "why_this_week": "This is the choice for a slower day with more miles. The creek is crossed on a bridge, not a ford, so a wet Sunday doesn't close the route, and the canopy takes the edge off light rain.",
-    "headline_condition": "Works in light rain; Sun 40% showers",
+    "headline_condition": "Fine in light rain; Sun 40% showers",
+    "condition_level": "normal",
     "snapshot": {
       "as_of": "2026-09-28",
       "route": { "route_id": "umstead-company-mill-loop@1", "distance_mi": 5.8, "shape": "loop", "gain_ft": 636, "difficulty": "moderate", "surface": "Rocky in places, roots, several small footbridges, a few short steep pitches" },
@@ -19,7 +20,7 @@
       "duration_h": [2.5, 3],
       "dog": { "leash": "Leashed, 6 ft maximum", "water": "Crabtree Creek at the old dam, about a mile in", "shade": "Wooded throughout", "watch_for": ["Bikes near the Reedy Creek lot", "Roots on the descents"] }
     },
-    "photo": { "id": "flagship-thu", "alt": "Rupert on a wooded trail, looking back toward the camera." },
+    "photo": { "id": "rupert-lawn-2023-01", "alt": "Field print of Rupert in his mustard collar, grinning up at the camera, with two friends on a winter lawn." },
     "sources": [
       { "kind": "guide", "label": "This Is Raleigh — Company Mill Trail", "url": "https://thisisraleigh.com/?p=54244", "retrieved": "2026-09-29" },
       { "kind": "forecast", "label": "NWS Raleigh forecast, issued 6:49 a.m. 28 Sep", "url": "https://forecast.weather.gov/MapClick.php?lat=35.9149&lon=-79.0568", "retrieved": "2026-09-29" }
@@ -58,6 +59,5 @@
     "closures_checked": null,
     "closures_note": "Check the park's alerts page before leaving."
   },
-  "interlude": { "photo_id": "interlude-w40" },
   "corrections": []
 }

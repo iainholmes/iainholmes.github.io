@@ -9,6 +9,24 @@ const root = document.documentElement;
 root.classList.add('js');
 const base = document.body.dataset.base || '';
 
+/* ---------- review-only masthead option (only present while review_clock is set) ---------- */
+const mastOpt = document.querySelector('.rb-mast');
+if (mastOpt) {
+  const wide = window.matchMedia('(min-width: 1024px)');
+  const buttons = [...mastOpt.querySelectorAll('button')];
+  const apply = v => {
+    root.dataset.mast = v;
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mast === v)));
+    try { localStorage.setItem('rupert-mast-v2', v); } catch {}
+  };
+  let saved = 'b';
+  try { saved = localStorage.getItem('rupert-mast-v2') || 'b'; } catch {}
+  apply(saved);
+  buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.mast)));
+  const show = () => { mastOpt.hidden = !wide.matches; };
+  wide.addEventListener('change', show); show();
+}
+
 /* ---------- compact bar ---------- */
 const mast = document.getElementById('masthead');
 if (mast && 'IntersectionObserver' in window) {
@@ -96,6 +114,7 @@ function setupTabs() {
 }
 
 phone.addEventListener('change', setupTabs);
+window.addEventListener('hashchange', () => { if (/^#(tuesday|thursday)$/.test(location.hash)) setupTabs(); });
 setupTabs();
 
 /* ---------- manifest re-check ---------- */

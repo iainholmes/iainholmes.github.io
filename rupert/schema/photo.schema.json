@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "photo.schema.json",
+  "title": "Public image record (data/photos.json)",
+  "description": "Public copies carry no metadata. Original capture time, GPS and camera stay in _private/originals.json, which is git-ignored.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "file",
+    "kind",
+    "provenance",
+    "width",
+    "height",
+    "widths",
+    "alt",
+    "focal"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "file": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "kind": {
+      "enum": [
+        "photograph",
+        "print",
+        "plate"
+      ],
+      "description": "Three layers. photograph: documentary record (preferred for Field Log and memories). print: the Atlas's signature field print made from a photograph (This Week, edition covers, archive, seasonal). plate: an occasional illustrative/editorial graphic (landscape, water, ridge, sun); always provenance editorial."
+    },
+    "provenance": {
+      "enum": [
+        "documentary",
+        "archive",
+        "editorial"
+      ],
+      "description": "documentary: taken at place_id on taken_at. archive: real, place unknown or unrelated. editorial: chosen or made for mood; implies no place."
+    },
+    "taken_at": {
+      "type": "string",
+      "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+    },
+    "place_id": {
+      "type": "string",
+      "description": "Only for documentary images: where it was actually taken."
+    },
+    "caption": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "source_note": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "widths": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "minItems": 1
+    },
+    "alt": {
+      "type": "string",
+      "minLength": 8
+    },
+    "focal": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "minItems": 2,
+      "maxItems": 2
+    }
+  }
+}

@@ -1,4 +1,64 @@
 {
   "schema_version": 1,
-  "photos": []
+  "photos": [
+    {
+      "id": "rupert-lawn-2023-01",
+      "file": "rupert-lawn-2023-01",
+      "kind": "print",
+      "provenance": "archive",
+      "width": 2000,
+      "height": 1500,
+      "widths": [
+        800,
+        1400,
+        2000
+      ],
+      "alt": "Field print of Rupert in his mustard collar, grinning up at the camera, with two friends on a winter lawn.",
+      "focal": [
+        0.22,
+        0.4
+      ],
+      "taken_at": "2023-01"
+    },
+    {
+      "id": "rupert-creek-2023-04",
+      "file": "rupert-creek-2023-04",
+      "kind": "print",
+      "provenance": "archive",
+      "width": 1500,
+      "height": 2000,
+      "widths": [
+        800,
+        1400,
+        1500
+      ],
+      "alt": "Field print of Rupert beside a creek, wet, in his mustard collar, looking up and to the left; the water behind him printed in pale streaks.",
+      "focal": [
+        0.4,
+        0.6
+      ],
+      "taken_at": "2023-04",
+      "source_note": "iPhone photograph; location not recorded"
+    },
+    {
+      "id": "rupert-portrait-2023-10",
+      "file": "rupert-portrait-2023-10",
+      "kind": "print",
+      "provenance": "editorial",
+      "width": 1637,
+      "height": 2000,
+      "widths": [
+        800,
+        1400,
+        1637
+      ],
+      "alt": "Field print of Rupert's head and shoulders, looking straight at the viewer, against slate blue with pale water lines.",
+      "focal": [
+        0.5,
+        0.35
+      ],
+      "taken_at": "2023-10",
+      "caption": "Field print · Rupert, October 2023"
+    }
+  ]
 }

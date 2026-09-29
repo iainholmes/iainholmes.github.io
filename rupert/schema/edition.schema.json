@@ -414,7 +414,8 @@
         "why_this_week",
         "snapshot",
         "photo",
-        "sources"
+        "sources",
+        "condition_level"
       ],
       "properties": {
         "place_id": {
@@ -448,6 +449,13 @@
             "$ref": "#/$defs/source"
           },
           "minItems": 1
+        },
+        "condition_level": {
+          "enum": [
+            "normal",
+            "adverse"
+          ],
+          "description": "adverse = storms, dangerous heat, flooding, closures, ice. Only adverse gets the Field Red warning treatment."
         }
       }
     },
