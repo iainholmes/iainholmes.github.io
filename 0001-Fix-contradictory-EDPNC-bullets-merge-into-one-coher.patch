@@ -1,0 +1,39 @@
+From 0223cec3a96747ef3819f09fd5d85486579fdeb3 Mon Sep 17 00:00:00 2001
+From: Iain Holmes <iain.t.holmes@gmail.com>
+Date: Wed, 26 Aug 2026 05:40:03 +0000
+Subject: [PATCH] Fix contradictory EDPNC bullets - merge into one coherent
+ statement about the white paper contribution
+
+---
+ index.html | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/index.html b/index.html
+index 9de3685..630d45a 100644
+--- a/index.html
++++ b/index.html
+@@ -1148,8 +1148,9 @@
+         Dr. Rick Dunford on a Natural Resource Damages textbook &mdash; validating empirical frameworks
+         and updating regression models for prior NRD case studies. Most recently, I joined the
+         <strong>Economic Development Partnership of North Carolina (EDPNC)</strong> as a Research Intern,
+-        co-authoring a clean-energy white paper benchmarking North Carolina's clean-energy supply
+-        chain against Southeastern peers using BLS employment data and Python.
++        authoring the empirical analysis and executive summary benchmarking North Carolina's clean-energy
++        supply chain against Southeastern peers using BLS employment data and Python &mdash; adopted as
++        source material for EDPNC's forthcoming clean-energy white paper.
+       </p>
+       <p>
+         My current thesis examines the Public's Willingness-to-Pay for proposed PFAS surface water
+@@ -1612,8 +1613,7 @@
+           <span class="cv-entry-date">June 2026 &ndash; Aug 2026</span>
+         </div>
+         <ul class="cv-entry-bullets">
+-          <li>Co-authored a clean-energy white paper benchmarking North Carolina's clean-energy supply chain against four Southeastern peers using BLS QCEW data and Python.</li>
+-          <li>Empirical analysis and executive summary were adopted as source material for EDPNC's forthcoming clean-energy white paper.</li>
++          <li>Authored the empirical analysis and executive summary benchmarking North Carolina's clean-energy supply chain against four Southeastern peers using BLS QCEW data and Python &mdash; adopted as source material for EDPNC's forthcoming clean-energy white paper.</li>
+           <li>Compiled labor market, tax-incentive, and infrastructure data across the Southeast to support EDPNC recruitment materials and RFP responses.</li>
+         </ul>
+       </div>
+-- 
+2.43.0
+
