@@ -217,8 +217,8 @@ function sourceObject(doc,x){
   var parts=x.id.split(':'),kind=x.kind,ed,node,html='';
   if(x.publicationKey==='ll'){
     ed=[].slice.call(doc.querySelectorAll('[data-edition]')).filter(function(n){return n.dataset.edition===x.issue})[0];
-    if(kind==='register'){var reg=sourceJSON(doc,'field-register');var r=reg&&(reg.entries||[]).filter(function(e){return String(e.no)===parts[2]})[0];if(r)html=paragraphs([r.does,r.economics])+(r.source?sourceLinks([[r.source.label,r.source.url]]):'')}
-    else if(kind==='heron-note'){var cd=sourceJSON(doc,'companion-data')||{},a=((cd[x.issue]||{}).appearances||[]).filter(function(a){return a.id===parts.slice(3).join(':')})[0];if(a)html=paragraphs([a.text])+readerDiagram(a.diagram)}
+    if(kind==='register'){var reg=sourceJSON(doc,'field-register');var r=reg&&(reg.entries||[]).filter(function(e){return String(e.no)===parts[2]})[0];if(r)html=paragraphs([r.role,r.org,r.place])+(r.image&&r.image.src?'<figure><img src="'+esc(r.image.src)+'" alt="'+esc(r.image.alt||r.name)+'"><figcaption>'+esc([r.image.credit,r.image.license].filter(Boolean).join(' · '))+'</figcaption></figure>':'')+paragraphs([r.does])+'<h3>Where economics enters</h3>'+paragraphs([r.economics])+(r.source?sourceLinks([[r.source.label,r.source.url]]):'')+(r.related?sourceLinks([['Related article',canonical('/weekly-economics-environment/','#'+r.related)]]):'')}
+    else if(kind==='heron-note'){var cd=sourceJSON(doc,'companion-data')||{},a=((cd[x.issue]||{}).appearances||[]).filter(function(a){return a.id===parts.slice(3).join(':')})[0];if(a)html=paragraphs([a.text])+readerDiagram(a.diagram)+(a.see?sourceLinks([[a.see.label||'Methods',canonical('/weekly-economics-environment/',a.see.href)]]):'')}
     else if(ed){
       if(kind==='issue')node=ed;
       else {var article=[].slice.call(ed.querySelectorAll('.entry')).filter(function(n){return n.id===parts[3]})[0];if(article){if(kind==='article')node=article;else if(kind==='research-note'||kind==='figure')node=article.querySelectorAll(kind==='figure'?'figure.figure':'.research-note')[+parts[4]-1]}}
