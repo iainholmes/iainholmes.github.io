@@ -106,12 +106,25 @@ Editions live in `data/editions/<ISO week>-<tue|thu>.json`, validated against `s
 - `"adverse"`: storms, dangerous heat, flooding, closures or ice. Shows Field Red plus the word "Warning" and a triangle.
 - `"normal"`: everything else. Shows in ink.
 
+### Publishing a new weekend
+
+This path was proved end to end with W41; see `_tools/PUBLISHING-TEST-W41.md`.
+
+1. Write `data/editions/<week>-tue.json`, with `published_at` set to Tuesday 07:00 New York time. Copying the previous week's file is the quickest start. Every `place_id` must already be in `data/places.json`.
+2. Add the cover image with `rupert.mjs photo … --kind print|plate`, unless an image already in `data/photos.json` fits.
+3. Set `conditions.as_of` to a full timestamp (for example `2026-10-05T15:00:00-04:00`). Refresh the forecast and `headline_condition` on the morning of publication.
+4. Run `rupert.mjs build`, `check` and `audit`. This Week, the Archive, the edition page and the Atlas statuses all update from the data.
+5. Commit and push. Repeat for Thursday.
+
+The build writes an edition's page as soon as its `status` is `published`, even before its `published_at`. This Week and the Archive wait for the publication time; the page's own URL does not.
+
 ## Before merging
 
-- `data/site.json` → set `review_clock` to `null`. `check` warns while it's set.
+- Build and browser rendering use the real clock in America/New_York. No prototype clock override remains.
 - Nothing here is private once merged. `noindex` and staying out of the site's navigation are not privacy controls.
 
 ## QA records
 
 - `_tools/MAP-TESTS.md`: desktop map tests (passed), tap-target tests, and access-point verification.
-- `_tools/IPHONE-QA.md`: real-iPhone checklist and how to serve the branch to a phone over Wi-Fi. **Pending.**
+- `_tools/IPHONE-QA.md`: real-iPhone checklist and how to serve the branch to a phone over Wi-Fi. Build 2 passed on a real iPhone.
+- `_tools/PUBLISHING-TEST-W41.md`: the end-to-end publishing test, and every step that needed a person.

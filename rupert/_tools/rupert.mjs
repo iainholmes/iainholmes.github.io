@@ -55,6 +55,9 @@ function checkEditions({ editions, schema, places, photos }) {
     }
     if (ed.published_at && ed.weekend && nyDateString(new Date(ed.published_at)) >= ed.weekend.start)
       err(id, 'published_at must fall before the weekend it is for');
+    // Found by the W41 publishing test: a date-only as_of is read as UTC midnight and prints as the evening before.
+    if (ed.conditions?.as_of && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?[+-]\d{2}:\d{2}$/.test(ed.conditions.as_of))
+      err(id, `conditions.as_of "${ed.conditions.as_of}" needs a time and offset, e.g. 2026-09-28T15:00:00-04:00`);
     for (const role of ['flagship', 'local_trail', 'away_mission', 'wildcard']) {
       const pid = ed[role]?.place_id;
       if (pid && !placeIds.has(pid)) err(id, `${role}.place_id "${pid}" is not in places.json`);
@@ -191,16 +194,15 @@ async function build({ writeFiles }) {
   const data = await load();
   checkEditions(data);
   await checkPhotos(data);
-  if (data.site.review_clock) warn('data/site.json', `review_clock is set (${data.site.review_clock}). Set it to null before merging.`);
 
   const manifest = manifestFrom(data.editions);
-  const now = data.site.review_clock ? new Date(data.site.review_clock) : new Date();
+  const now = new Date();
   const pair = selectCurrentPair(manifest, now);
   const weekLabel = weekLabelFor(nyDateString(now));
 
   if (writeFiles && !errors.length) {
     const changed = [];
-    const ctx0 = { photos: data.photos, places: data.places };
+    const ctx0 = { photos: data.photos, places: data.places, now };
     const w = async (rel, html) => { if (await write(rel, html)) changed.push(rel); };
 
     await w('data/editions/index.json', JSON.stringify(manifest, null, 2) + '\n');

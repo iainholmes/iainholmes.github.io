@@ -2,6 +2,8 @@
 // Every value from data passes through esc(). No DOM access here.
 import { weekendRange, publishedLabel, shortDate, longDate, minutesRange, hoursRange, isoWeek, nyDateString, nyTime } from './dates.js';
 
+import { expectedPublish } from './editions.js';
+
 export const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 export const SLOT_LABEL = { tuesday: "Tuesday's choice", thursday: "Thursday's choice" };
@@ -107,10 +109,7 @@ function supportLine(o) {
 export function chrome({ active, base, weekLabel, site, body, pageClass = '', now }) {
   const navItems = (cls) => NAV.map(n =>
     `<li><a class="${cls}" href="${base}${n.href}"${n.key === active ? ' aria-current="page"' : ''}>${esc(n.label)}</a></li>`).join('');
-  const clock = site?.review_clock
-    ? `<div class="review-band" role="note"><span class="rb-long">Prototype · clock set to ${esc(shortDate(nyDateString(new Date(site.review_clock))))}, ${esc(nyTime(new Date(site.review_clock)))} ET so both choices show</span><span class="rb-short">Prototype · clock set to ${esc(shortDate(nyDateString(new Date(site.review_clock))))}</span><span class="rb-mast" hidden> · Masthead <button type="button" data-mast="b" aria-pressed="true">B · single line (default)</button> <button type="button" data-mast="a" aria-pressed="false">A · two lines</button></span></div>`
-    : '';
-  return `${clock}<a class="skip" href="#main">Skip to content</a>
+  return `<a class="skip" href="#main">Skip to content</a>
 <header class="masthead" id="masthead">
   <div class="wrap">
     <div class="dateline"><span>Chapel Hill, N.C. · Est. 2026</span><span>${esc(weekLabel)}</span></div>
@@ -307,7 +306,9 @@ export function renderArchive(groups, ctx) {
   const placeName = id => (places?.places || []).find(p => p.id === id)?.short_name || '';
   const ed = (g, slot) => {
     const e = g.editions.find(x => x.slot === slot);
-    if (!e) return `<li class="arch-ed is-missing"><span class="arch-thumb" aria-hidden="true"></span><div><span class="p-day">${SLOT_LABEL[slot]}</span><h4>Not published</h4></div></li>`;
+    const publish = expectedPublish(slot, g.weekend.start);
+    const pending = publish > (ctx.now || new Date()) ? `Publishes ${publishedLabel(publish.toISOString())}` : 'Not published';
+    if (!e) return `<li class="arch-ed is-missing"><span class="arch-thumb" aria-hidden="true"></span><div><span class="p-day">${SLOT_LABEL[slot]}</span><h4>${esc(pending)}</h4></div></li>`;
     const img = photo(e.photo_id ? { id: e.photo_id, alt: '' } : null, photos, base, { sizes: '132px' });
     return `<li class="arch-ed"><a class="arch-thumb" href="${base}edition/${esc(e.id)}/" tabindex="-1" aria-hidden="true">${img}</a>
       <div><span class="p-day">${SLOT_LABEL[slot]}</span><h4><a href="${base}edition/${esc(e.id)}/">${esc(e.title)}</a></h4>
@@ -319,7 +320,7 @@ export function renderArchive(groups, ctx) {
     if (y !== year) { out += `<h2 class="arch-year">${esc(y)}</h2>`; year = y; }
     const now = g.editions.some(e => e.current);
     out += `<article class="arch-week" aria-labelledby="w-${esc(g.weekend.start)}">
-      <div class="arch-when"><h3 id="w-${esc(g.weekend.start)}">${esc(weekendRange(g.weekend.start, g.weekend.end))}</h3>${now ? '<span class="arch-now">On This Week now</span>' : ''}</div>
+      <div class="arch-when"><h3 id="w-${esc(g.weekend.start)}">${esc(weekendRange(g.weekend.start, g.weekend.end))}</h3>${now ? '<span class="arch-now">This Week</span>' : ''}</div>
       <ul class="arch-pair">${ed(g, 'tuesday')}${ed(g, 'thursday')}</ul></article>`;
   }
   return `<div class="archive wrap"><header class="page-head"><p class="wb-eyebrow">Every edition, by weekend</p><h1>Archive</h1>

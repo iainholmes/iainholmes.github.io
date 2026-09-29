@@ -2,30 +2,12 @@
 //  - the compact bar on desktop once the masthead scrolls away
 //  - Tuesday/Thursday tabs (and swipe) on phones
 //  - a manifest re-check, so a Thursday edition or Monday rollover appears without a rebuild
-import { selectCurrentPair, pairKey } from './core/editions.js';
-import { renderWeek } from './core/render.js';
+import { selectCurrentPair, pairKey, archiveGroups } from './core/editions.js';
+import { renderWeek, renderArchive } from './core/render.js';
 
 const root = document.documentElement;
 root.classList.add('js');
 const base = document.body.dataset.base || '';
-
-/* ---------- review-only masthead option (only present while review_clock is set) ---------- */
-const mastOpt = document.querySelector('.rb-mast');
-if (mastOpt) {
-  const wide = window.matchMedia('(min-width: 1024px)');
-  const buttons = [...mastOpt.querySelectorAll('button')];
-  const apply = v => {
-    root.dataset.mast = v;
-    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mast === v)));
-    try { localStorage.setItem('rupert-mast-v2', v); } catch {}
-  };
-  let saved = 'b';
-  try { saved = localStorage.getItem('rupert-mast-v2') || 'b'; } catch {}
-  apply(saved);
-  buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.mast)));
-  const show = () => { mastOpt.hidden = !wide.matches; };
-  wide.addEventListener('change', show); show();
-}
 
 /* ---------- compact bar ---------- */
 const mast = document.getElementById('masthead');
@@ -120,12 +102,20 @@ setupTabs();
 /* ---------- manifest re-check ---------- */
 async function recheck() {
   const week = document.querySelector('.week');
-  if (!week) return;
+  const archive = document.querySelector('.archive');
+  if (!week && !archive) return;
   const get = p => fetch(base + p, { cache: 'no-cache' }).then(r => { if (!r.ok) throw new Error(p); return r.json(); });
   try {
-    const [site, manifest] = await Promise.all([get('data/site.json'), get('data/editions/index.json')]);
-    const now = site.review_clock ? new Date(site.review_clock) : new Date();
+    const manifest = await get('data/editions/index.json');
+    const now = new Date();
     const pair = selectCurrentPair(manifest, now);
+    if (archive) {
+      const [places, photos] = await Promise.all([get('data/places.json'), get('data/photos.json')]);
+      const tpl = document.createElement('template');
+      tpl.innerHTML = renderArchive(archiveGroups(manifest, now, pair), { base, places, photos, now });
+      archive.replaceWith(tpl.content);
+      return;
+    }
     if (pairKey(pair) === week.dataset.pair) return;
     const ids = [pair?.tuesday?.id, pair?.thursday?.id].filter(Boolean);
     const [places, photos, ...eds] = await Promise.all([get('data/places.json'), get('data/photos.json'), ...ids.map(id => get(`data/editions/${id}.json`))]);

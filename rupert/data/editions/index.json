@@ -77,6 +77,82 @@
       ],
       "photo_id": "rupert-lawn-2023-01",
       "path": "data/editions/2026-W40-thu.json"
+    },
+    {
+      "id": "2026-W41-tue",
+      "slot": "tuesday",
+      "status": "published",
+      "published_at": "2026-10-06T07:00:00-04:00",
+      "weekend": {
+        "start": "2026-10-10",
+        "end": "2026-10-11"
+      },
+      "title": "Occoneechee Mountain and the quarry overlook",
+      "place_id": "occoneechee-mountain",
+      "place_ids": [
+        "occoneechee-mountain",
+        "brumley-forest",
+        "hanging-rock-moores-wall",
+        "hillsborough-riverwalk"
+      ],
+      "place_roles": [
+        {
+          "place_id": "occoneechee-mountain",
+          "role": "flagship"
+        },
+        {
+          "place_id": "brumley-forest",
+          "role": "local_trail"
+        },
+        {
+          "place_id": "hanging-rock-moores-wall",
+          "role": "away_mission"
+        },
+        {
+          "place_id": "hillsborough-riverwalk",
+          "role": "wildcard"
+        }
+      ],
+      "photo_id": "rupert-plate-eno-ledge",
+      "path": "data/editions/2026-W41-tue.json"
+    },
+    {
+      "id": "2026-W41-thu",
+      "slot": "thursday",
+      "status": "published",
+      "published_at": "2026-10-08T07:00:00-04:00",
+      "weekend": {
+        "start": "2026-10-10",
+        "end": "2026-10-11"
+      },
+      "title": "Raven Rock and the stairs down to the Cape Fear",
+      "place_id": "raven-rock",
+      "place_ids": [
+        "raven-rock",
+        "carolina-north-forest",
+        "umstead-company-mill",
+        "duke-forest-korstian"
+      ],
+      "place_roles": [
+        {
+          "place_id": "raven-rock",
+          "role": "flagship"
+        },
+        {
+          "place_id": "carolina-north-forest",
+          "role": "local_trail"
+        },
+        {
+          "place_id": "umstead-company-mill",
+          "role": "away_mission"
+        },
+        {
+          "place_id": "duke-forest-korstian",
+          "role": "wildcard"
+        }
+      ],
+      "photo_id": "rupert-plate-bank-trail",
+      "path": "data/editions/2026-W41-thu.json"
     }
   ]
 }

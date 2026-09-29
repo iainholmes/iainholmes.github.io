@@ -4,7 +4,7 @@
 
 **Browser:** the Claude desktop app's built-in Chromium 152 on Iain's Mac (DPR 2), on the live origin `https://iainholmes.github.io`. The tile and relief hosts can't be reached from the build sandbox, so the real-network tests ran there. The failure paths also ran headless in the sandbox, where every tile host is blocked.
 
-**Real iPhone:** build 1 failed (blank map; see the end of this file). Build 2 awaits retest.
+**Real iPhone:** build 1 failed (blank map; see the end of this file). Build 2 passed on a real iPhone: map, pins, controls, attribution, place cards, register sync, scrolling and touch.
 
 **Previously not tested:** a real iPhone. These numbers come from Mac hardware, including the 390×844 run. Checking Safari on an actual phone is still open.
 
@@ -133,4 +133,4 @@ Every pin is a public trailhead, parking area or public land. None is residentia
 | `notiles`, `nowebgl` | Unchanged, both pass |
 | A tap on the Raven Rock pin | Card opens |
 
-The real-tile, real-Safari confirmation is IPHONE-QA build 2.
+Build 2 then passed real-iPhone QA with real tiles in Safari.

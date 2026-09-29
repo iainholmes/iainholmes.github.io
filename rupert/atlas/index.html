@@ -16,7 +16,7 @@
 <script type="module" src="../assets/js/atlas-view.js"></script>
 </head>
 <body data-base="../" data-section="atlas">
-<div class="review-band" role="note"><span class="rb-long">Prototype · clock set to Thu 1 Oct, 08:00 ET so both choices show</span><span class="rb-short">Prototype · clock set to Thu 1 Oct</span><span class="rb-mast" hidden> · Masthead <button type="button" data-mast="b" aria-pressed="true">B · single line (default)</button> <button type="button" data-mast="a" aria-pressed="false">A · two lines</button></span></div><a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 <header class="masthead" id="masthead">
   <div class="wrap">
     <div class="dateline"><span>Chapel Hill, N.C. · Est. 2026</span><span>Week 40 · 2026</span></div>
@@ -48,19 +48,11 @@
       <div class="reg-head"><h2 id="reg-h">Register</h2>
         <div class="reg-filter" role="group" aria-label="Show places" hidden>
           <button type="button" data-filter="all" aria-pressed="true">All <span>9</span></button>
-          <button type="button" data-filter="recommended" aria-pressed="false">Recommended <span>8</span></button>
+          <button type="button" data-filter="recommended" aria-pressed="false">Recommended <span>4</span></button>
           <button type="button" data-filter="walked" aria-pressed="false" disabled>Walked <span>0</span></button>
         </div></div>
       <section class="reg-group" data-region="Orange County">
-      <h3 class="reg-region">Orange County</h3><ul class="reg"><li class="reg-row" id="place-brumley-forest" data-place="brumley-forest" data-status="recommended">
-      <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
-      <div class="reg-main">
-        <h4>Brumley Forest Nature Preserve</h4>
-        <p class="reg-meta">Leashed, 6 ft maximum (Triangle Land Conservancy)</p><p class="reg-start">Start: Brumley South lot, 3055 New Hope Church Rd.</p>
-        <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-thu/">Thursday&#39;s choice · Wildcard, 3–4 Oct</a></p>
-      </div>
-      <button type="button" class="reg-show" data-show="brumley-forest" hidden>Show on map</button>
-    </li><li class="reg-row" id="place-carolina-north-forest" data-place="carolina-north-forest" data-status="recommended">
+      <h3 class="reg-region">Orange County</h3><ul class="reg"><li class="reg-row" id="place-carolina-north-forest" data-place="carolina-north-forest" data-status="recommended">
       <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
       <div class="reg-main">
         <h4>Carolina North Forest</h4>
@@ -68,14 +60,6 @@
         <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-tue/">Tuesday&#39;s choice · Local Trail, 3–4 Oct</a></p>
       </div>
       <button type="button" class="reg-show" data-show="carolina-north-forest" hidden>Show on map</button>
-    </li><li class="reg-row" id="place-duke-forest-korstian" data-place="duke-forest-korstian" data-status="recommended">
-      <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
-      <div class="reg-main">
-        <h4>Duke Forest — Korstian Division</h4>
-        <p class="reg-meta">Leashed at all times (Duke Forest)</p><p class="reg-start">Start: Whitfield Rd. access by the New Hope fire station <span class="reg-approx">· pin approximate</span></p>
-        <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-thu/">Thursday&#39;s choice · Local Trail, 3–4 Oct</a></p>
-      </div>
-      <button type="button" class="reg-show" data-show="duke-forest-korstian" hidden>Show on map</button>
     </li><li class="reg-row" id="place-occoneechee-mountain" data-place="occoneechee-mountain" data-status="recommended">
       <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
       <div class="reg-main">
@@ -84,6 +68,22 @@
         <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-tue/">Tuesday&#39;s choice · Wildcard, 3–4 Oct</a></p>
       </div>
       <button type="button" class="reg-show" data-show="occoneechee-mountain" hidden>Show on map</button>
+    </li><li class="reg-row" id="place-brumley-forest" data-place="brumley-forest" data-status="register">
+      <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
+      <div class="reg-main">
+        <h4>Brumley Forest Nature Preserve</h4>
+        <p class="reg-meta">Leashed, 6 ft maximum (Triangle Land Conservancy)</p><p class="reg-start">Start: Brumley South lot, 3055 New Hope Church Rd.</p>
+        <p class="reg-status"><span class="reg-word">In the register</span></p>
+      </div>
+      <button type="button" class="reg-show" data-show="brumley-forest" hidden>Show on map</button>
+    </li><li class="reg-row" id="place-duke-forest-korstian" data-place="duke-forest-korstian" data-status="register">
+      <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
+      <div class="reg-main">
+        <h4>Duke Forest — Korstian Division</h4>
+        <p class="reg-meta">Leashed at all times (Duke Forest)</p><p class="reg-start">Start: Whitfield Rd. access by the New Hope fire station <span class="reg-approx">· pin approximate</span></p>
+        <p class="reg-status"><span class="reg-word">In the register</span></p>
+      </div>
+      <button type="button" class="reg-show" data-show="duke-forest-korstian" hidden>Show on map</button>
     </li><li class="reg-row" id="place-hillsborough-riverwalk" data-place="hillsborough-riverwalk" data-status="register">
       <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
       <div class="reg-main">
@@ -101,15 +101,6 @@
         <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-tue/">Tuesday&#39;s choice, 3–4 Oct</a></p>
       </div>
       <button type="button" class="reg-show" data-show="eno-cox-mountain" hidden>Show on map</button>
-    </li></ul></section><section class="reg-group" data-region="Harnett County">
-      <h3 class="reg-region">Harnett County</h3><ul class="reg"><li class="reg-row" id="place-raven-rock" data-place="raven-rock" data-status="recommended">
-      <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
-      <div class="reg-main">
-        <h4>Raven Rock State Park — Raven Rock Loop</h4>
-        <p class="reg-meta">2.6 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Main lot by the visitor center, 3009 Raven Rock Rd.</p>
-        <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-thu/">Thursday&#39;s choice · Away Mission, 3–4 Oct</a></p>
-      </div>
-      <button type="button" class="reg-show" data-show="raven-rock" hidden>Show on map</button>
     </li></ul></section><section class="reg-group" data-region="Stokes County">
       <h3 class="reg-region">Stokes County</h3><ul class="reg"><li class="reg-row" id="place-hanging-rock-moores-wall" data-place="hanging-rock-moores-wall" data-status="recommended">
       <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
@@ -119,19 +110,28 @@
         <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-tue/">Tuesday&#39;s choice · Away Mission, 3–4 Oct</a></p>
       </div>
       <button type="button" class="reg-show" data-show="hanging-rock-moores-wall" hidden>Show on map</button>
+    </li></ul></section><section class="reg-group" data-region="Harnett County">
+      <h3 class="reg-region">Harnett County</h3><ul class="reg"><li class="reg-row" id="place-raven-rock" data-place="raven-rock" data-status="register">
+      <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
+      <div class="reg-main">
+        <h4>Raven Rock State Park — Raven Rock Loop</h4>
+        <p class="reg-meta">2.6 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Main lot by the visitor center, 3009 Raven Rock Rd.</p>
+        <p class="reg-status"><span class="reg-word">In the register</span></p>
+      </div>
+      <button type="button" class="reg-show" data-show="raven-rock" hidden>Show on map</button>
     </li></ul></section><section class="reg-group" data-region="Wake County">
-      <h3 class="reg-region">Wake County</h3><ul class="reg"><li class="reg-row" id="place-umstead-company-mill" data-place="umstead-company-mill" data-status="recommended">
-      <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
+      <h3 class="reg-region">Wake County</h3><ul class="reg"><li class="reg-row" id="place-umstead-company-mill" data-place="umstead-company-mill" data-status="register">
+      <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
       <div class="reg-main">
         <h4>William B. Umstead State Park — Company Mill Trail</h4>
         <p class="reg-meta">5.8 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Reedy Creek entrance, 2100 N. Harrison Ave.</p>
-        <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-thu/">Thursday&#39;s choice, 3–4 Oct</a></p>
+        <p class="reg-status"><span class="reg-word">In the register</span></p>
       </div>
       <button type="button" class="reg-show" data-show="umstead-company-mill" hidden>Show on map</button>
     </li></ul></section>
     </section>
   </div>
-  <script type="application/json" id="atlas-data">{"features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.006,36.0737]},"properties":{"id":"eno-cox-mountain","name":"Cox Mountain","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.7598,35.836]},"properties":{"id":"umstead-company-mill","name":"Company Mill","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0665,35.9407]},"properties":{"id":"carolina-north-forest","name":"Carolina North","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-80.266,36.3947]},"properties":{"id":"hanging-rock-moores-wall","name":"Moore's Wall","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.117,36.0606]},"properties":{"id":"occoneechee-mountain","name":"Occoneechee Mountain","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.1105,36.0708]},"properties":{"id":"hillsborough-riverwalk","name":"Riverwalk","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0294,35.9781]},"properties":{"id":"duke-forest-korstian","name":"Korstian Division","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.9142,35.4639]},"properties":{"id":"raven-rock","name":"Raven Rock","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0589,36.0314]},"properties":{"id":"brumley-forest","name":"Brumley Forest","status":"recommended"}}],"bounds":[[-80.346,35.383900000000004],[-78.6798,36.4747]]}</script>
+  <script type="application/json" id="atlas-data">{"features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.006,36.0737]},"properties":{"id":"eno-cox-mountain","name":"Cox Mountain","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.7598,35.836]},"properties":{"id":"umstead-company-mill","name":"Company Mill","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0665,35.9407]},"properties":{"id":"carolina-north-forest","name":"Carolina North","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-80.266,36.3947]},"properties":{"id":"hanging-rock-moores-wall","name":"Moore's Wall","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.117,36.0606]},"properties":{"id":"occoneechee-mountain","name":"Occoneechee Mountain","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.1105,36.0708]},"properties":{"id":"hillsborough-riverwalk","name":"Riverwalk","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0294,35.9781]},"properties":{"id":"duke-forest-korstian","name":"Korstian Division","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.9142,35.4639]},"properties":{"id":"raven-rock","name":"Raven Rock","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0589,36.0314]},"properties":{"id":"brumley-forest","name":"Brumley Forest","status":"register"}}],"bounds":[[-80.346,35.383900000000004],[-78.6798,36.4747]]}</script>
 </div>
 </main>
 <footer class="colophon">

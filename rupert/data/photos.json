@@ -59,6 +59,43 @@
       ],
       "taken_at": "2023-10",
       "caption": "Field print · Rupert, October 2023"
+    },
+    {
+      "id": "rupert-plate-eno-ledge",
+      "file": "rupert-plate-eno-ledge",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1400,
+      "height": 1750,
+      "widths": [
+        800,
+        1400
+      ],
+      "alt": "Block-print plate: Rupert in his mustard collar sits on a hatched rock ledge above a blue river, wooded ridges behind and a low ochre sun.",
+      "focal": [
+        0.7,
+        0.62
+      ],
+      "caption": "Plate · Rupert above the river",
+      "source_note": "Drawn for the Atlas: a block-print scene with Rupert from Iain's illustration. No photograph."
+    },
+    {
+      "id": "rupert-plate-bank-trail",
+      "file": "rupert-plate-bank-trail",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 700,
+      "height": 875,
+      "widths": [
+        700
+      ],
+      "alt": "Block-print plate: Rupert walks on a bank trail with a tennis ball and a red leash, beside a dark river beneath a full moon and wooded cliffs.",
+      "focal": [
+        0.5,
+        0.7
+      ],
+      "caption": "Plate · Rupert on the bank trail",
+      "source_note": "Editorial block-print illustration; no documentary location claim."
     }
   ]
 }
