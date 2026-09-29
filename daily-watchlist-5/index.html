@@ -65,7 +65,6 @@ a{color:inherit}
 .pd-spine.hub{--c:#131210;--on:#efe9dc;--w:44px;--h:150px}
 .pd-spine.fb{--c:#7a1f33;--on:#f5e9d2}
 .pd-spine.sp{--c:#1f4a3b;--on:#f4f2ea;--w:72px;--h:214px}
-.pd-spine.sp span{font-size:17px}
 .pd-spine.cp{--c:#1c2f4a;--on:#f7f7f3;--w:60px;--h:196px;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:10px 10px}
 .pd-note{flex:1;align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 14px 18px;font:italic 400 22px/1.2 var(--head);color:var(--muted)}
 .pd-note b{font:600 10px/1.4 var(--sans);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:6px}
@@ -106,11 +105,16 @@ html.index-open .main{transform:translateX(56px) scale(.985);filter:saturate(.6)
 
 /* ---------- edition ---------- */
 .edition{max-width:1280px;margin:0 auto;padding:30px 32px 90px}
-.mast{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.mast{display:block;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.pub{display:flex;align-items:baseline;gap:14px;margin:0 0 14px}
+.pub-name{font:500 23px/1 var(--display);letter-spacing:-.015em;color:var(--ink);white-space:nowrap}
+.pub-name i{color:var(--oxblood)}
+.pub-rule{flex:1;height:1px;background:var(--rule);transform:translateY(-4px)}
+.pub-day{font:600 10px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .mast h1{margin:0;font:500 clamp(54px,7.2vw,104px)/.86 var(--display);letter-spacing:-.055em;color:var(--ink);white-space:nowrap}
 .mast h1 i{color:var(--oxblood);font-style:italic}
-.folio{display:inline-block;vertical-align:top;margin:.02em 0 0 .16em;font:500 .37em/1 var(--display);letter-spacing:-.01em;color:var(--oxblood);font-style:normal;white-space:nowrap;font-variant-numeric:lining-nums}
-.folio .no{font:italic 400 .46em/1 var(--display);letter-spacing:.03em;margin-right:.18em;vertical-align:.78em;color:var(--muted)}
+.folio{display:inline-block;vertical-align:top;margin:.12em 0 0 .1em;font:500 .26em/1 var(--display);letter-spacing:.01em;color:var(--oxblood);font-style:normal;white-space:nowrap;font-variant-numeric:lining-nums}
+.folio .no{font-style:italic;font-weight:400;color:var(--muted);margin-right:.22em}
 .mast-side{font:500 10.5px/1.6 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right;padding-bottom:10px}
 .meta{display:grid;grid-template-columns:1.2fr 1fr .8fr 1fr;border-bottom:3px double var(--rule)}
 .meta>div{padding:10px 18px 11px;border-left:1px solid var(--line);min-width:0}
@@ -177,12 +181,8 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
   .edition{padding:20px 18px 70px}
   .pd-row{padding:20px 18px 0;overflow-x:auto}
   .pd-note{display:none}
-  .mast{grid-template-columns:1fr}
-  .mast-side{display:none}
+  .pub-name{font-size:19px}
   .mast h1{font-size:clamp(40px,12.2vw,84px)}
-  .meta{grid-template-columns:1fr 1fr}
-  .meta>div:nth-child(3){border-left:0;padding-left:0}
-  .meta>div:nth-child(n+3){border-top:1px solid var(--line)}
   .front{grid-template-columns:1fr;gap:20px}
   .story,.story.flip{display:block;padding:28px 0}
   .art{position:relative;top:auto;margin-bottom:18px}
@@ -195,6 +195,41 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
 @media (max-width:420px){.run .title{font-size:17px}.pd-imprint .lbl{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media print{.run,.index,.veil{display:none}.art{position:static}body::before{display:none}}
+
+/* shelf refinement: spines size to their titles (no fixed heights, no distortion) */
+.pd-spine{height:auto!important;min-height:var(--h);flex:none;gap:14px;padding-bottom:14px!important}
+.pd-spine span{font-size:18px!important;line-height:1.1!important;letter-spacing:0}
+.pd-spine.sp{--w:64px;--h:150px}
+.pd-spine.cp{--h:150px}
+.pd-spine.fb{--h:140px}
+.pd-spine.hub{--h:120px}
+.pd-hb{margin-left:auto;align-self:flex-end;padding:0 0 14px 18px;white-space:nowrap;text-decoration:none;opacity:.8}
+.pd-hb:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:600px){.pd-row{flex-wrap:wrap;overflow-x:visible!important;row-gap:0}.pd-hb{flex-basis:100%;margin:0;padding:10px 0 10px!important;order:9}}
+
+/* publication rail: the edition's metadata set as one typographic line under the masthead */
+.meta{display:flex!important;align-items:baseline;flex-wrap:wrap;gap:8px 0;padding:12px 0 13px;border-bottom:1px solid var(--rule)!important;position:relative}
+.meta::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:var(--line)}
+.meta>div{border:0!important;padding:0!important;min-width:0}
+.meta .k{display:inline;font:600 9.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:9px}
+.meta .v{display:inline;margin:0;white-space:nowrap;overflow:visible}
+.m-date .k{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.m-date .v{display:inline-block;font:500 22px/1.1 var(--display);letter-spacing:-.01em;color:var(--ink);padding-bottom:10px;box-shadow:inset 0 -3px 0 -1px var(--oxblood)}
+.m-dev{margin-left:26px}
+.m-dev .k{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.m-dev .v{font:600 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.m-next{margin-left:auto}
+.m-next .v{font:italic 400 18px/1 var(--head);color:var(--ink)}
+.m-ed{margin-left:26px;padding-left:22px!important;border-left:1px solid var(--line)!important;display:flex;align-items:baseline}
+.m-ed .mode{display:inline-flex;margin:0}
+.m-ed .mode button,.m-ed .mode .sl{font-size:16px}
+@media (max-width:820px){
+  .m-date{flex-basis:100%}
+  .m-dev{margin-left:0;flex-basis:100%;padding-top:6px!important}
+  .m-next{margin-left:0}
+  .m-ed{margin-left:auto}
+}
+@media (max-width:380px){.m-ed{margin-left:0;padding-left:0!important;border-left:0!important;flex-basis:100%}}
 </style>
 </head>
 <body>
@@ -207,9 +242,10 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
         <div class="pd-row">
           <a class="pd-spine hub" href="../personal-updates/"><small>All</small><span>Periodicals</span></a>
           <a class="pd-spine fb" href="../daily-watchlist-5/" aria-current="page"><small>Daily</small><span>Field Brief</span></a>
-          <a class="pd-spine sp" href="../weekly-economics-environment/"><small>Fri</small><span>Economics &amp; Environment</span></a>
-          <a class="pd-spine cp" href="../daily-econ-challenge/"><small>Wkdy</small><span>Daily Problem Set</span></a>
+          <a class="pd-spine sp" href="../weekly-economics-environment/"><small>Fri</small><span>Rivers &amp; Regressions</span></a>
+          <a class="pd-spine cp" href="../daily-econ-challenge/"><small>Wkdy</small><span>Problem Book</span></a>
           <div class="pd-note"><b>You are reading</b>Field Brief</div>
+          <a class="pd-hb" href="../personal-updates/handbook/" style="font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)">Periodicals Handbook</a>
         </div>
       </div>
     </nav>
@@ -235,15 +271,21 @@ are derived from date order (skipped days do not skip numbers). Every story need
 art, summary, why, implications, sources; "category" is retained in data but deliberately NOT
 rendered. Optional issueTitle must be factual and restrained; omit when no natural title exists.
 Illustration kinds are drawn in art(); add a new kind there when needed, in the same linocut
-language and inks. Identity (Sept 2026 redesign + refinement): Daily Briefing Bodoni masthead
-with the raised single-line folio "No. 002" (small light italic "No.", prominent Bodoni numerals,
-no box, no rule, no stock numero sign; same grammar in the Index); Instrument Serif headlines; Instrument Sans text; parchment and
-espresso structure; vermilion, Prussian blue, viridian, ochre and oxblood inks by story position
-(never by subject). Day/Night is part of the metadata strip, not a floating button; it reads and
-writes the shared Periodicals key localStorage periodicals:mode (day|night), set in <head> before
-paint and synced across tabs; the old fieldbrief:mode is migrated once. The Index is a
-slide-in contents panel with expandable issues. No pills, chips, slogans, category labels above
-headlines or explanatory UI copy. Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
+language and inks.
+Naming hierarchy: "Field Brief" is the publication (small Bodoni line above the masthead and in
+the running head); "Daily Briefing" is the recurring edition masthead. Do not rename either.
+Folio: superscript "No. 002" beside the masthead (.folio: small light italic "No." + Bodoni
+numerals, three-digit, no box/rule/numero sign); same grammar in the Index.
+Identity: Instrument Serif headlines; Instrument Sans text; parchment and espresso structure;
+vermilion, Prussian blue, viridian, ochre and oxblood inks by story position (never by subject).
+The metadata sits on a typographic publication rail under the masthead (.meta: Bodoni date with an
+oxblood underline, developments/read time in small caps, italic next issue at right, Edition Day/Night);
+not an equal-cell table. Day/Night lives in that rail and uses the shared Periodicals key localStorage
+periodicals:mode (day|night), set in <head> before paint, synced across tabs (fieldbrief:mode is
+migrated once). The Index is a slide-in contents panel with expandable issues. The Periodicals shelf
+lists Periodicals, Field Brief, Rivers & Regressions, Problem Book, plus a Handbook utility link.
+No pills, chips, slogans, category labels above headlines or explanatory UI copy.
+Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
 <script type="application/json" id="briefing-data">
 {
   "editions": [
@@ -639,8 +681,8 @@ headlines or explanatory UI copy. Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (s
     document.title=`Field Brief — No. ${issueLabel(ed)} — ${ed.displayDate}`;
     const i=ordered.indexOf(ed),prev=ordered[i-1],next=ordered[i+1];
     mount.innerHTML=`<article class="edition">
-      <header class="mast"><h1>Daily <i>Briefing</i>${folio(ed)}</h1><div class="mast-side">Field Brief<br>${esc(dayName(ed))}</div></header>
-      <div class="meta"><div><span class="k">Published</span><time class="v" datetime="${esc(ed.date)}">${esc(dateOnly(ed))}</time></div><div><span class="k">Developments</span><span class="v">${ed.stories.length} · ${esc(ed.readTime)}</span></div><div>${nextCell(ed)}</div><div><span class="k">Edition</span>${modeHTML()}</div></div>
+      <header class="mast"><div class="pub"><span class="pub-name">Field <i>Brief</i></span><span class="pub-rule" aria-hidden="true"></span><span class="pub-day">${esc(dayName(ed))} edition</span></div><h1><span class="sr">Field Brief: </span>Daily <i>Briefing</i>${folio(ed)}</h1></header>
+      <div class="meta"><div class="m-date"><span class="k">Published</span><time class="v" datetime="${esc(ed.date)}">${esc(dateOnly(ed))}</time></div><div class="m-dev"><span class="k">Developments</span><span class="v">${ed.stories.length} developments · ${esc(ed.readTime)}</span></div><div class="m-next">${nextCell(ed)}</div><div class="m-ed"><span class="k">Edition</span>${modeHTML()}</div></div>
       <section class="front">
         <div>${ed.issueTitle?`<h2 class="issue-title">${esc(ed.issueTitle)}</h2>`:''}<p class="deck">${esc(ed.deck)}</p></div>
         <ol class="front-list" aria-label="In this issue">${ed.stories.map((s,k)=>`<li style="--k:var(${INKS[k%5]})"><a href="#${esc(ed.date)}/${esc(s.number)}"><span>${esc(s.number)}</span><b>${esc(s.title)}</b></a></li>`).join('')}</ol>

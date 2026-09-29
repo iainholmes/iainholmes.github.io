@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#131210">
 <title>Periodicals</title>
-<meta name="description" content="Field Brief, Economics &amp; Environment and Daily Problem Set."><script>/* Periodicals: one reading mode shared by every title (localStorage periodicals:mode = day|night) */(function(){var K='periodicals:mode',m=null;try{m=localStorage.getItem(K);if(m!=='day'&&m!=='night'){var o=localStorage.getItem('fieldbrief:mode');m=(o==='day'||o==='night')?o:null;if(m)localStorage.setItem(K,m)}}catch(e){}if(!m)m=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'night':'day';document.documentElement.setAttribute('data-mode',m)})();</script>
+<meta name="description" content="Periodicals: Field Brief, Rivers &amp; Regressions and Problem Book.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23131210%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%2212%22%20width%3D%228%22%20height%3D%2240%22%20fill%3D%22%238a2a36%22%2F%3E%3Crect%20x%3D%2225%22%20y%3D%2216%22%20width%3D%228%22%20height%3D%2236%22%20fill%3D%22%231f4a3b%22%2F%3E%3Crect%20x%3D%2237%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%2242%22%20fill%3D%22%231c2f4a%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%2220%22%20width%3D%224%22%20height%3D%2232%22%20fill%3D%22%23efe9dc%22%2F%3E%3Cpath%20d%3D%22M8%2054h48%22%20stroke%3D%22%23efe9dc%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +69,7 @@ a{color:inherit}
 .c-fb .plate{margin-top:auto;height:34%;margin-inline:-8%}
 .c-fb .plate svg{width:100%;height:100%;display:block}
 
-/* --- Economics & Environment cover --- */
+/* --- Rivers & Regressions cover --- */
 .c-sp{background:var(--sp-paper);color:var(--sp-ink);padding:8% 8% 6%;display:grid;grid-template-rows:auto auto 1fr auto}
 .c-sp .vl{font:500 9.5px/1.4 "IBM Plex Sans Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:.5px solid var(--sp-ink);padding-bottom:6px}
 .c-sp .ttl{font:400 clamp(30px,3.6vw,48px)/.95 "Source Serif 4",Georgia,serif;letter-spacing:-.03em;margin:16px 0 4px}
@@ -80,7 +80,7 @@ a{color:inherit}
 .c-sp .fig{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:end;border-top:.5px solid var(--sp-ink);padding-top:8px;font:500 8.5px/1.3 "IBM Plex Sans Condensed",sans-serif;letter-spacing:.05em;text-transform:uppercase}
 .c-sp .fig svg{width:100%;height:42px}
 
-/* --- Daily Problem Set cover --- */
+/* --- Problem Book cover --- */
 .c-cp{background-color:var(--cp-paper);background-image:linear-gradient(rgba(28,47,74,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(28,47,74,.09) 1px,transparent 1px);background-size:14px 14px;color:#1d2126;padding:9% 9% 8%;display:flex;flex-direction:column}
 .c-cp .no{font:500 11px/1 "JetBrains Mono",monospace;display:flex;justify-content:space-between;color:var(--cp)}
 .c-cp .ttl{font:italic 400 clamp(28px,3.2vw,42px)/.98 "STIX Two Text",serif;margin:18px 0 6px;letter-spacing:-.01em}
@@ -108,96 +108,76 @@ a{color:inherit}
   .shelf{grid-template-columns:repeat(3,78%);margin-right:-16px;padding-right:16px;padding-top:34px}
   .shelf .vol .cover{aspect-ratio:3/4!important}
   .c-fb .more li:nth-child(n+3){display:none}
-  .c-fb .mh{font-size:40px}.c-sp .ttl{font-size:36px}.c-cp .ttl{font-size:34px}
+  .c-fb .mh{font-size:33px}.c-sp .ttl{font-size:36px}.c-cp .ttl{font-size:34px}
   .label h2{font-size:26px}
   .reg{margin-top:56px}
   .colophon{flex-direction:column;gap:6px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* ---------- register of titles: a production ledger ---------- */
-.reg{margin:88px 0 0}
-.reg-cap{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding-bottom:10px}
-.reg-cap h2{margin:0;font:italic 300 30px/1 var(--house);letter-spacing:-.015em}
-.reg-cap span{font:12px/1 var(--mono);color:var(--bone-dim)}
-.ledger{--cols:64px minmax(0,1.25fr) 108px 78px 118px 112px minmax(0,1.6fr) 132px;border-top:2px solid var(--bone);border-bottom:2px solid var(--bone);font-variant-numeric:tabular-nums lining-nums}
-.lr{display:grid;grid-template-columns:var(--cols);text-decoration:none;color:inherit;position:relative;border-top:1px solid var(--rule)}
-.lr>span{padding:18px 14px 17px;border-left:1px solid var(--rule);min-width:0}
-.lr>span:first-child{border-left:0}
-.lr>span:nth-child(2){border-left:2px solid var(--bone-dim)}
-.lh{border-top:0;border-bottom:3px double var(--bone)}
-.lh>span{padding:12px 14px 10px;font:11px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--bone-dim)}
-.num{text-align:right}
-.c-i{background:var(--night-2);font:13px/1 var(--mono);color:var(--bone-dim);position:relative}
-a.lr .c-i::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c)}
-.c-i{padding-left:18px!important}
-.c-t{font:400 25px/1.08 var(--house);letter-spacing:-.015em}
-.c-s{font:12.5px/1.45 var(--mono);color:var(--bone-dim)}
-.c-n{font:500 26px/1 var(--mono);letter-spacing:-.03em}
-.c-f{font:400 28px/1 var(--house);font-variation-settings:"opsz" 72;white-space:nowrap}
-.c-f .no,.fo .no{font-style:italic;font-weight:300;font-size:.5em;vertical-align:.62em;margin-right:.14em;color:var(--bone-dim)}
-.c-d{font:13px/1.4 var(--mono);color:var(--bone)}
-.c-c{font:italic 300 19px/1.3 var(--house)}
-.c-x{font:12.5px/1.45 var(--mono);color:var(--bone-dim)}
-.c-x b{display:block;font-weight:400;color:var(--bone);font-size:13px}
-a.lr{transition:background-color .25s ease}
-a.lr:hover,a.lr:focus-visible{background:color-mix(in srgb,var(--c) 12%,transparent);outline-offset:-2px}
-a.lr:hover .c-t{font-style:italic}
-.lt{border-top:1.5px solid var(--bone)}
-.lt .c-t{font:italic 300 19px/1 var(--house);color:var(--bone-dim);align-self:center}
-.lt .c-n{color:var(--bone)}
-.void{background-image:repeating-linear-gradient(-45deg,transparent 0 6px,var(--rule) 6px 7px)}
-@media (max-width:1100px){
-  .ledger{--cols:52px minmax(0,1.3fr) 96px 64px 104px 100px minmax(0,1.4fr) 116px}
-  .c-t{font-size:21px}.c-c{font-size:16px}.lr>span{padding-left:10px;padding-right:10px}
-}
-@media (max-width:860px){
-  .lh{display:none}
-  .ledger{border-bottom:0}
-  .lr{grid-template-columns:52px 1fr 1fr;border-top:2px solid var(--bone)}
-  .lr>span{border-left:1px solid var(--rule);border-top:1px solid var(--rule);padding:10px 12px}
-  .lr>span:nth-child(2){border-left:1px solid var(--rule)}
-  .lr .c-i{grid-row:1/span 5;border-top:0}
-  .lr .c-t{grid-column:2/4;border-top:0;font-size:24px}
-  .lr .c-c,.lr .c-x{grid-column:2/4}
-  .lr .c-x{text-align:left}
-  .lr>span[data-k]::before{content:attr(data-k);display:block;font:10px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--bone-dim);font-style:normal;margin-bottom:4px}
-  .lr .num{text-align:left}
-  .lt{grid-template-columns:52px 1fr 1fr}
-  .lt .void{display:none}
-  .lt .c-t{grid-column:2}
-  .lt .c-i{grid-row:auto}
-}
-
 /* ---------- refinement: folios, names, day reading room ---------- */
 .c-fb .fo{display:inline-block;vertical-align:top;margin:.1em 0 0 .14em;font:500 .28em/1 "Bodoni Moda",serif;letter-spacing:-.01em;color:var(--fb)}
 .c-fb .fo .no{color:#8a7a66}
 .c-fb .mh sup{display:none}
 .c-sp .ttl{font-size:clamp(26px,3vw,40px)!important;line-height:.98!important}
 .c-sp .ttl .amp{font-style:italic;color:var(--sp-clay)}
+.c-sp .spfo{display:inline-block;vertical-align:top;margin:.2em 0 0 .3em;font:400 .34em/1 "Source Serif 4",serif;color:var(--sp-clay);letter-spacing:0;font-style:normal}
+.c-sp .spfo i{font-style:italic;color:#6b746d}
 .c-sp .spno i{font:italic 400 1.1em "Source Serif 4",serif;text-transform:none;letter-spacing:0;color:var(--sp-clay)}
 .c-cp .ttl{font-style:normal!important}
 .c-cp .ttl i{color:var(--cp-teal)}
 .c-cp .cpno{font:italic 400 13px "STIX Two Text",serif;margin-right:4px;color:#5f666e}
 .im-r{justify-self:end;display:flex;align-items:center;gap:22px}
 .im-r a{justify-self:auto}
-.dn{display:flex;align-items:center;gap:6px;font:italic 300 15px/1 var(--house);color:var(--bone-dim)}
-.dn button{background:none;border:0;padding:6px 0;font:inherit;color:var(--bone-dim);cursor:pointer}
-.dn button[aria-pressed="true"]{color:var(--bone);font-style:normal;font-weight:400}
-.dn button:hover{color:var(--bone)}
-html[data-mode="day"]{--night:#ebe6dc;--night-2:#e1dace;--bone:#1d1b17;--bone-dim:#6a655b;--rule:#cbc2b1}
-html[data-mode="day"] body{background:var(--night)}
-html[data-mode="day"] .cover{box-shadow:0 26px 50px -24px rgba(60,45,25,.45),0 0 0 1px rgba(60,45,25,.08)}
-html[data-mode="day"] :focus-visible{outline-color:var(--bone)}
-@media (max-width:600px){.im-r{gap:12px}.dn{font-size:13px}}
+@media (max-width:600px){.im-r{gap:12px}}
+/* ---------- press rail: the shelf edge the covers stand on ---------- */
+.shelf{padding-bottom:0!important}
+.rail{display:grid;grid-template-columns:1.12fr 1fr .92fr;column-gap:28px;border-top:5px solid var(--bone);border-bottom:3px solid var(--bone);background:linear-gradient(var(--rule),var(--rule)) 0 8px/100% 1px no-repeat,linear-gradient(var(--rule),var(--rule)) 0 calc(100% - 6px)/100% 1px no-repeat;padding:8px 0 6px;font-variant-numeric:tabular-nums lining-nums}
+.rc{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-areas:"f d" "c c" "s x";align-items:baseline;column-gap:18px;text-decoration:none;color:inherit;padding:18px 0 0}
+.rc+.rc::before{content:"";position:absolute;left:-14px;top:-8px;bottom:-6px;width:1px;background:var(--rule)}
+.rc::after{content:"";position:absolute;left:0;top:-13px;width:64px;height:5px;background:var(--c)}
+.rc-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.rc-f{grid-area:f;font:300 44px/1 var(--house);font-variation-settings:"opsz" 96;letter-spacing:-.02em;white-space:nowrap}
+.rc-f .no{font:italic 300 .36em/1 var(--house);vertical-align:1.25em;margin-right:.16em;color:var(--bone-dim);letter-spacing:0}
+.rc-d{grid-area:d;justify-self:end;font:13px/1 var(--mono);color:var(--bone-dim)}
+.rc-c{grid-area:c;font:italic 300 20px/1.3 var(--house);padding:12px 0 18px;min-height:3.9em}
+.rc-s,.rc-x{font:12.5px/1.45 var(--mono);color:var(--bone);padding:10px 0 12px;border-top:1px solid var(--rule)}
+.rc-s{grid-area:s;padding-right:14px}
+.rc-x{grid-area:x;text-align:right;border-left:1px solid var(--rule);padding-left:14px}
+.rc-x b{font-weight:500;margin-right:6px}
+.rc .k{display:block;font:10px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--bone-dim);margin-bottom:3px}
+.rc:hover .rc-c,.rc:focus-visible .rc-c{color:#fff}
+.rc:hover::after{width:100%;transition:width .45s ease}
+.rc::after{transition:width .3s ease}
+@media (max-width:1000px){
+  .rail{grid-template-columns:1fr;border-top:0;border-bottom:0;background:none;padding:0;margin-top:26px}
+  .rc{border-top:4px solid var(--bone);border-bottom:1px solid var(--rule);padding:14px 0 0;margin-bottom:14px}
+  .rc+.rc::before{display:none}
+  .rc::after{top:-4px}
+  .rc-t{position:static;width:auto;height:auto;clip:auto;grid-column:1/-1;font:400 22px/1.1 var(--house);margin-bottom:8px;white-space:normal}
+  .rc{grid-template-areas:"t t" "f d" "c c" "s x"}
+  .rc-t{grid-area:t}
+  .rc-f{font-size:36px}
+  .rc-c{min-height:0;padding:8px 0 12px}
+}
+@media (prefers-reduced-motion:reduce){.rc::after{transition:none}}
+.sig{color:var(--bone-dim)}
+.im-r a{text-decoration:none}.im-r a:hover{color:var(--bone)}
 </style>
 </head>
 <body>
+<!-- PERIODICALS HUB — /personal-updates/ (display name Periodicals). Permanently dark: no Day/Night
+control and it ignores localStorage periodicals:mode (the three publications still share that key).
+Three covers stand on the press rail (.rail): one compartment per title, aligned to the cover above,
+with folio, latest date, latest title, cadence and next due, read live from each title's canonical page.
+Shared hub folios are always three-digit ("No. 002", "No. 001"). The Register table is retired.
+The "Iain Holmes" signature becomes a link to ../ only when that page answers (no dead links).
+Handbook: /personal-updates/handbook/ (documentation, not a publication, no spine). -->
 <a class="skip" href="#shelf">Skip to the titles</a>
 <div class="page">
   <header class="imprint">
     <span>Periodicals</span>
     <span class="date" id="today"></span>
-    <span class="im-r"><span class="dn" role="group" aria-label="Reading mode, shared by all Periodicals"><button type="button" data-mode="day" aria-pressed="false">Day</button><span aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="true">Night</button></span><a href="../">Iain Holmes ↗</a></span>
+    <span class="im-r"><a href="handbook/">Handbook</a><span class="sig" id="sig">Iain Holmes</span></span>
   </header>
 
   <header class="mast">
@@ -206,7 +186,7 @@ html[data-mode="day"] :focus-visible{outline-color:var(--bone)}
 
   <main>
     <section class="shelf" id="shelf" aria-label="Titles">
-      <a class="vol" href="../daily-watchlist-5/" style="--c:var(--fb)">
+      <a class="vol" href="../daily-watchlist-5/" style="--c:var(--fb)" aria-label="Field Brief, Daily Briefing">
         <div class="cover c-fb" aria-hidden="true">
           <div class="top"><span>Field Brief</span><span data-fb="dow">Sunday</span></div>
           <div class="mh">Daily <i>Briefing</i><span class="fo"><span class="no">No.</span><span data-fb="no">002</span></span></div>
@@ -214,43 +194,35 @@ html[data-mode="day"] :focus-visible{outline-color:var(--bone)}
           <div class="head" data-fb="head">Supreme Court restores the administration’s expanded voter-verification system</div><ol class="more" data-fb="more"><li>A second federal judge rejects EPA’s cancellation rationale for Solar for All</li><li>CMS cancels 315,000 unauthorized Marketplace enrollments</li><li>Frontier-AI safety is moving toward enforceable federal rules</li><li>Wake County approves WakeMed–Atrium combination</li></ol>
           <div class="plate"><svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMax slice"><rect width="400" height="220" fill="#dcc6a0"/><circle cx="318" cy="62" r="40" fill="#8a2a36"/><path d="M0 160c70-30 130 14 200-4s120-40 200-10v74H0z" fill="#1f4e6e"/><path d="M0 188c90-22 150 16 230 0s110-14 170 0v32H0z" fill="#221a14"/><path d="M60 170V96h54v74M136 170V70h60v100" fill="#221a14"/><g fill="#f1e6d0"><rect x="72" y="108" width="30" height="8"/><rect x="72" y="126" width="30" height="8"/><rect x="148" y="84" width="36" height="8"/><rect x="148" y="102" width="36" height="8"/><rect x="148" y="120" width="36" height="8"/></g><path d="M250 150l30-58 30 58z" fill="#c28b1e"/></svg></div>
         </div>
-        <div class="label"><span class="n">01</span><h2>Field Brief</h2><p>Daily at 8:00</p></div>
       </a>
 
-      <a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)">
+      <a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)" aria-label="Rivers &amp; Regressions">
         <div class="cover c-sp" aria-hidden="true">
-          <div class="vl"><span>Vol. 1 · <span class="spno"><i>No.</i> <span data-sp="no">1</span></span></span><span data-sp="date">25 Sep 2026</span></div>
-          <div><div class="ttl">Economics <span class="amp">&amp;</span><br><i>Environment</i></div></div>
+          <div class="vl"><span>Vol. 1</span><span data-sp="date">25 Sep 2026</span></div>
+          <div><div class="ttl">Rivers <span class="amp">&amp;</span><br><i>Regressions</i><span class="spfo"><i>No.</i> <span data-sp="no">001</span></span></div></div>
           <ol class="toc" data-sp="toc"><li>Electrification’s opportunity is larger than its current market share</li><li>The grid gets a $5.25 billion investment test</li><li>Carbon-border policy enters a new institutional test</li><li>Insurance stress has an urban geography of its own</li><li>Glyphosate review makes the value of information concrete</li></ol>
           <div class="fig"><span>Fig. 1</span><svg viewBox="0 0 120 42" preserveAspectRatio="none"><path d="M0 41.5H120" stroke="#15302a" stroke-width="1"/><rect x="8" y="18" width="22" height="23" fill="#15302a"/><rect x="48" y="8" width="22" height="33" fill="#8aa08f"/><rect x="88" y="6" width="22" height="35" fill="#b4532e"/></svg></div>
         </div>
-        <div class="label"><span class="n">02</span><h2>Economics &amp; Environment</h2><p>Fridays at 15:00</p></div>
       </a>
 
-      <a class="vol" href="../daily-econ-challenge/" style="--c:var(--cp-teal)">
+      <a class="vol" href="../daily-econ-challenge/" style="--c:var(--cp-teal)" aria-label="Problem Book">
         <div class="cover c-cp" aria-hidden="true">
           <div class="no"><span><i class="cpno">No.</i><span data-cp="no">001</span></span><span data-cp="date">28.IX.26</span></div>
-          <div class="ttl">Daily<br><i>Problem Set</i></div>
+          <div class="ttl">Problem<br><i>Book</i></div>
           <div class="eq">∂y / ∂x |<sub>z = z̄</sub></div><p class="q1" data-cp="q1"><b>1.</b> You regress log hourly wages on years of schooling in a cross-section. Unobserved ability raises wages and is positively correlated with schooling…</p>
           <div class="grid" data-cp="grid"><span class="f">1</span><span class="t">2</span><span>3</span><span class="t">4</span><span>5</span><span class="f">6</span><span>7</span><span class="t">8</span></div>
         </div>
-        <div class="label"><span class="n">03</span><h2>Daily Problem Set</h2><p>Weekdays at 10:00</p></div>
       </a>
     </section>
 
-    <section class="reg" aria-labelledby="regTitle">
-      <header class="reg-cap"><h2 id="regTitle">Register of titles</h2><span>Compiled <time id="compiled"></time></span></header>
-      <div class="ledger" role="table" aria-labelledby="regTitle">
-        <div class="lr lh" role="row"><span role="columnheader" class="c-i">Reg.</span><span role="columnheader">Title</span><span role="columnheader">Schedule</span><span role="columnheader" class="num">Issues</span><span role="columnheader">Latest</span><span role="columnheader">Dated</span><span role="columnheader">Contents of latest issue</span><span role="columnheader" class="num">Next due</span></div>
-        <a class="lr" role="row" href="../daily-watchlist-5/" style="--c:var(--fb)"><span role="cell" class="c-i">01</span><span role="cell" class="c-t">Field Brief</span><span role="cell" class="c-s" data-k="Schedule">Daily<br>08:00 ET</span><span role="cell" class="num c-n" data-k="Issues" data-fb="count">2</span><span role="cell" class="c-f" data-k="Latest"><span class="no">No.</span><span data-fb="no">002</span></span><span role="cell" class="c-d" data-k="Dated" data-fb="dated">27.09.2026</span><span role="cell" class="c-c" data-k="Contents" data-fb="title">Voting rules, health coverage and AI safety</span><span role="cell" class="num c-x" data-k="Next due" data-next="fb"></span></a>
-        <a class="lr" role="row" href="../weekly-economics-environment/" style="--c:var(--sp)"><span role="cell" class="c-i">02</span><span role="cell" class="c-t">Economics &amp; Environment</span><span role="cell" class="c-s" data-k="Schedule">Fridays<br>15:00 ET</span><span role="cell" class="num c-n" data-k="Issues" data-sp="count">1</span><span role="cell" class="c-f" data-k="Latest"><span class="no">No.</span><span data-sp="no">1</span></span><span role="cell" class="c-d" data-k="Dated" data-sp="dated">25.09.2026</span><span role="cell" class="c-c" data-k="Contents" data-sp="title">The price of a resilient economy</span><span role="cell" class="num c-x" data-k="Next due" data-next="sp"></span></a>
-        <a class="lr" role="row" href="../daily-econ-challenge/" style="--c:var(--cp-teal)"><span role="cell" class="c-i">03</span><span role="cell" class="c-t">Daily Problem Set</span><span role="cell" class="c-s" data-k="Schedule">Weekdays<br>10:00 ET</span><span role="cell" class="num c-n" data-k="Issues" data-cp="count">1</span><span role="cell" class="c-f" data-k="Latest"><span class="no">No.</span><span data-cp="no">001</span></span><span role="cell" class="c-d" data-k="Dated" data-cp="dated">28.09.2026</span><span role="cell" class="c-c" data-k="Contents" data-cp="title">8 questions · 7 fields</span><span role="cell" class="num c-x" data-k="Next due" data-next="cp"></span></a>
-        <div class="lr lt" role="row"><span role="cell" class="c-i"></span><span role="cell" class="c-t">Total</span><span role="cell" class="void" aria-hidden="true"></span><span role="cell" class="num c-n" data-k="Issues" id="total">4</span><span role="cell" class="void" aria-hidden="true"></span><span role="cell" class="void" aria-hidden="true"></span><span role="cell" class="void" aria-hidden="true"></span><span role="cell" class="void" aria-hidden="true"></span></div>
-      </div>
+    <section class="rail" aria-label="Latest issues">
+      <a class="rc" href="../daily-watchlist-5/" style="--c:var(--fb)"><span class="rc-t">Field Brief</span><span class="rc-f"><span class="no">No.</span><span data-fb="no">002</span></span><span class="rc-d" data-fb="dated">27.09.2026</span><span class="rc-c" data-fb="title">Voting rules, health coverage and AI safety</span><span class="rc-s"><span class="k">Cadence</span>Daily · 08:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="fb"></span></span></a>
+      <a class="rc" href="../weekly-economics-environment/" style="--c:var(--sp)"><span class="rc-t">Rivers &amp; Regressions</span><span class="rc-f"><span class="no">No.</span><span data-sp="no">001</span></span><span class="rc-d" data-sp="dated">25.09.2026</span><span class="rc-c" data-sp="title">The price of a resilient economy</span><span class="rc-s"><span class="k">Cadence</span>Fridays · 15:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="sp"></span></span></a>
+      <a class="rc" href="../daily-econ-challenge/" style="--c:var(--cp-teal)"><span class="rc-t">Problem Book</span><span class="rc-f"><span class="no">No.</span><span data-cp="no">001</span></span><span class="rc-d" data-cp="dated">28.09.2026</span><span class="rc-c" data-cp="title">8 questions · 7 fields</span><span class="rc-s"><span class="k">Cadence</span>Weekdays · 10:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="cp"></span></span></a>
     </section>
   </main>
 
-  <footer class="colophon"><span>Periodicals · Iain Holmes</span><a href="../">iainholmes.github.io ↗</a></footer>
+  <footer class="colophon"><span>Periodicals · <a href="handbook/">Handbook</a></span><span class="sig" id="sig2">Iain Holmes</span></footer>
 </div>
 
 <script>
@@ -262,15 +234,10 @@ html[data-mode="day"] :focus-visible{outline-color:var(--bone)}
   document.getElementById('today').textContent=now.toLocaleDateString('en-GB',{timeZone:TZ,weekday:'long',day:'numeric',month:'long',year:'numeric'});
 
   function dotted(d){var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
-  var TOT={fb:2,sp:1,cp:1};function total(k,n){TOT[k]=n;var t=document.getElementById('total');if(t)t.textContent=TOT.fb+TOT.sp+TOT.cp}
-  document.getElementById('compiled').textContent=now.toLocaleString('en-GB',{timeZone:TZ,weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})+' ET';
-  /* shared Periodicals reading mode */
-  function setMode(m,quiet){document.documentElement.setAttribute('data-mode',m);if(!quiet){try{localStorage.setItem('periodicals:mode',m)}catch(e){}}
-    document.querySelectorAll('.dn button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===m))});
-    document.querySelector('meta[name="theme-color"]').content=m==='night'?'#131210':'#ebe6dc'}
-  document.querySelectorAll('.dn button').forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.mode)})});
-  setMode(document.documentElement.getAttribute('data-mode')==='day'?'day':'night',true);
-  window.addEventListener('storage',function(e){if(e.key==='periodicals:mode'&&(e.newValue==='day'||e.newValue==='night'))setMode(e.newValue,true)});
+  function total(){}
+  /* the signature links to the personal site only if that page actually exists (never a dead link) */
+  fetch('../',{method:'HEAD',cache:'no-cache'}).then(function(r){if(!r.ok)return;
+    ['sig','sig2'].forEach(function(id){var el=document.getElementById(id);if(!el)return;var a=document.createElement('a');a.href='../';a.className='sig';a.textContent=id==='sig'?'Iain Holmes ↗':'iainholmes.github.io ↗';el.replaceWith(a)})}).catch(function(){});
   /* next scheduled issue, computed in New York time */
   var DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   function nextRun(days,h){
@@ -303,7 +270,7 @@ html[data-mode="day"] :focus-visible{outline-color:var(--bone)}
   get('../weekly-economics-environment/').then(function(doc){
     var eds=[].slice.call(doc.querySelectorAll('[data-edition]')).sort(function(a,b){return a.dataset.edition.localeCompare(b.dataset.edition)});
     var ed=eds[eds.length-1];if(!ed)return;var n=eds.length;
-    set('[data-sp="no"]',n);set('[data-sp="count"]',n);set('[data-sp="dated"]',dotted(ed.dataset.edition));total('sp',n);set('[data-sp="date"]',fmt(ed.dataset.edition,{day:'numeric',month:'short',year:'numeric'}));
+    set('[data-sp="no"]',String(n).padStart(3,'0'));set('[data-sp="count"]',n);set('[data-sp="dated"]',dotted(ed.dataset.edition));total('sp',n);set('[data-sp="date"]',fmt(ed.dataset.edition,{day:'numeric',month:'short',year:'numeric'}));
     set('[data-sp="line"]','No. '+n+' · '+fmt(ed.dataset.edition,{day:'numeric',month:'short',year:'numeric'}));
     set('[data-sp="title"]',ed.dataset.title);
     var heads=[].slice.call(ed.querySelectorAll('.entry h2')).slice(0,5);
