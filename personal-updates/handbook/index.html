@@ -58,6 +58,7 @@ h2 .n{flex:0 0 auto;margin-top:8px;font:500 23px/1 var(--display);font-style:ita
 h3{margin:34px 0 10px;font:500 28px/1.08 var(--display);font-style:italic;letter-spacing:-.015em}
 p{margin:0 0 17px}
 .lede{font-size:23px;line-height:1.55;max-width:42ch}
+#periodicals .lede{max-width:none}
 .mono{font-family:var(--mono);font-size:.8em}
 dl.titles{margin:12px 0 0}
 .title{position:relative;padding:20px 0 24px 28px;margin:0 0 24px}
@@ -115,6 +116,20 @@ table.modes td:first-child{padding-left:14px;font-weight:500}
 #commonplace .lede{font-style:italic;font-size:21px;line-height:1.52;max-width:46ch}
 #commonplace>a,#commonplace p>a{font:500 11px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--paper);text-decoration-color:var(--gold)}
 @media(max-width:900px){.mast-side{align-items:flex-start;padding-left:24px}.mast-side p{text-align:left}.hb-no .num{font-size:62px}}
+
+/* Navigation plate: labels and return path each have their own space. */
+#moving .nav-map{width:100%;margin:30px 0;padding:28px 24px 22px;border-top:1px solid var(--hair);background:var(--ground-2)}
+.nav-route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;list-style:none;margin:0;padding:0}
+.nav-route li{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-width:0;min-height:164px;padding:0 0 14px;border-bottom:1px solid var(--hair)}
+.nav-route li+li::before{content:"→";position:absolute;left:-23px;bottom:65px;color:var(--soft);font:400 18px/1 var(--mono)}
+.nav-route .route-step{margin-bottom:auto;font:500 10px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.nav-route strong{display:block;font:500 26px/1.05 var(--display);letter-spacing:-.02em;color:var(--paper)}
+.nav-route small{display:block;min-height:3em;margin-top:9px;font:400 12px/1.5 var(--mono);color:var(--dim)}
+.shelf-mini{display:flex;gap:4px;align-items:flex-end;width:70px;height:40px;margin:10px 0 12px;padding:0 5px 4px;border-bottom:2px solid var(--paper)}
+.shelf-mini i{width:11px;height:24px;border:1px solid var(--soft)}.shelf-mini i:nth-child(2){height:29px;background:var(--fb);border:0}.shelf-mini i:nth-child(3){height:34px;background:var(--ll);border:0}.shelf-mini i:nth-child(4){height:27px;background:var(--wb);border:0}
+.nav-return{display:flex;align-items:baseline;gap:10px;margin:20px 0 0;color:var(--soft);font:400 12px/1.6 var(--mono)}.nav-return>span{color:var(--wb);font-size:20px}
+#moving figcaption{margin-top:16px;max-width:60ch}
+@media(max-width:600px){#moving .nav-map{padding:22px 18px}.nav-route{grid-template-columns:1fr;gap:18px}.nav-route li{min-height:0;padding:0 0 18px 34px}.nav-route li+li::before{content:"↓";left:0;top:2px;bottom:auto}.nav-route .route-step{margin-bottom:8px}.nav-route small{min-height:0}.shelf-mini{position:absolute;right:0;bottom:28px}.route-shelf strong,.route-shelf small{padding-right:82px}.nav-return{font-size:11px}}
 </style>
 </head>
 <body>
@@ -187,17 +202,15 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
 
 <section id="moving">
   <h2><span class="n">C</span>Moving around</h2>
-  <figure>
-    <svg viewBox="0 0 700 170" role="img" aria-labelledby="navT navD"><title id="navT">Navigation between the titles</title><desc id="navD">From Periodicals open a title. Inside any title the shelf lists every title, so you can move to a sibling or back to Periodicals.</desc>
-      <g font-family="JetBrains Mono,monospace" font-size="12" fill="#efe9dc">
-        <rect x="10" y="60" width="120" height="50" fill="none" stroke="#efe9dc"/><text x="70" y="90" text-anchor="middle">Periodicals</text>
-        <rect x="200" y="60" width="130" height="50" fill="none" stroke="#efe9dc"/><text x="265" y="84" text-anchor="middle">a title</text><text x="265" y="100" text-anchor="middle" fill="#a9a397" font-size="10">Field Brief …</text>
-        <g transform="translate(400 38)"><rect x="0" y="22" width="14" height="72" fill="#131210" stroke="#efe9dc"/><rect x="18" y="12" width="20" height="82" fill="#8a2a36"/><rect x="42" y="4" width="22" height="90" fill="#1f4a3b"/><rect x="68" y="14" width="20" height="80" fill="#1c2f4a"/><path d="M-8 96H100" stroke="#efe9dc" stroke-width="3"/><text x="46" y="118" text-anchor="middle">shelf</text></g>
-        <rect x="560" y="60" width="130" height="50" fill="none" stroke="#efe9dc"/><text x="625" y="84" text-anchor="middle">a sibling</text><text x="625" y="100" text-anchor="middle" fill="#a9a397" font-size="10">The Workbook …</text>
-        <g stroke="#efe9dc" fill="none"><path d="M130 85H196"/><path d="M190 80l6 5-6 5"/><path d="M330 85H392"/><path d="M386 80l6 5-6 5"/><path d="M500 85H556"/><path d="M550 80l6 5-6 5"/><path d="M625 110V150H70V114" stroke-dasharray="3 4"/><path d="M65 120l5-6 5 6"/></g>
-        <text x="350" y="164" text-anchor="middle" fill="#a9a397" font-size="10">the shelf always includes Periodicals</text>
-      </g></svg>
-    <figcaption>Periodicals → a title → the shelf → a sibling → back to Periodicals.</figcaption>
+  <figure class="nav-map" aria-labelledby="nav-caption">
+    <ol class="nav-route" role="list" aria-label="Navigation between the titles">
+      <li><span class="route-step">01 · Begin</span><strong>Periodicals</strong><small>The front page</small></li>
+      <li><span class="route-step">02 · Read</span><strong>A title</strong><small>Field Brief, for example</small></li>
+      <li class="route-shelf"><span class="route-step">03 · Explore</span><span class="shelf-mini" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>The shelf</strong><small>Inside every title</small></li>
+      <li><span class="route-step">04 · Continue</span><strong>Another title</strong><small>The Workbook, for example</small></li>
+    </ol>
+    <p class="nav-return"><span aria-hidden="true">↶</span> Back to Periodicals from any title’s shelf</p>
+    <figcaption id="nav-caption">Open a title, then use its shelf to move between publications or return to the front page.</figcaption>
   </figure>
   <p><b>The shelf.</b> Every title has a small Periodicals mark at the top left. It opens a row of book spines, one per title, with the one you are reading raised. Choose a spine to move; <span class="mono">Esc</span> or a click elsewhere closes it. The same row carries a link to this handbook.</p>
   <p><b>The front page remembers.</b> The title you visited most recently stands slightly raised on the Periodicals shelf, so returning is one glance. The order of the titles never changes.</p>
