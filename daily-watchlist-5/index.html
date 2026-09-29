@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>/* Periodicals: one reading mode shared by every title (localStorage periodicals:mode = day|night) */(function(){var K='periodicals:mode',m=null;try{m=localStorage.getItem(K);if(m!=='day'&&m!=='night'){var o=localStorage.getItem('fieldbrief:mode');m=(o==='day'||o==='night')?o:null;if(m)localStorage.setItem(K,m)}}catch(e){}if(!m)m=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'night':'day';document.documentElement.setAttribute('data-mode',m)})();</script>
+<script>/* Periodicals: one reading mode shared by every title (localStorage periodicals:mode = day|night) */(function(){var K='periodicals:mode',m=null;try{m=localStorage.getItem(K);if(m!=='day'&&m!=='night'){var o=localStorage.getItem('fieldbrief:mode');m=(o==='day'||o==='night')?o:null;if(m)localStorage.setItem(K,m)}}catch(e){}if(!m)m=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'night':'day';document.documentElement.setAttribute('data-mode',m)})();</script><script>/* Periodicals navigation memory: the hub lifts the most recently visited title */try{localStorage.setItem('periodicals:last',JSON.stringify({t:'fb',at:Date.now()}))}catch(e){}</script>
 <style>
 /* ---------- inks ---------- */
 :root{
@@ -242,8 +242,8 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
         <div class="pd-row">
           <a class="pd-spine hub" href="../personal-updates/"><small>All</small><span>Periodicals</span></a>
           <a class="pd-spine fb" href="../daily-watchlist-5/" aria-current="page"><small>Daily</small><span>Field Brief</span></a>
-          <a class="pd-spine sp" href="../weekly-economics-environment/"><small>Fri</small><span>Rivers &amp; Regressions</span></a>
-          <a class="pd-spine cp" href="../daily-econ-challenge/"><small>Wkdy</small><span>Problem Book</span></a>
+          <a class="pd-spine sp" href="../weekly-economics-environment/"><small>Fri</small><span>Logit &amp; Loblolly</span></a>
+          <a class="pd-spine cp" href="../daily-econ-challenge/"><small>Wkdy</small><span>The Workbook</span></a>
           <div class="pd-note"><b>You are reading</b>Field Brief</div>
           <a class="pd-hb" href="../personal-updates/handbook/" style="font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)">Periodicals Handbook</a>
         </div>
@@ -283,7 +283,7 @@ oxblood underline, developments/read time in small caps, italic next issue at ri
 not an equal-cell table. Day/Night lives in that rail and uses the shared Periodicals key localStorage
 periodicals:mode (day|night), set in <head> before paint, synced across tabs (fieldbrief:mode is
 migrated once). The Index is a slide-in contents panel with expandable issues. The Periodicals shelf
-lists Periodicals, Field Brief, Rivers & Regressions, Problem Book, plus a Handbook utility link.
+lists Periodicals, Field Brief, Logit & Loblolly, The Workbook, plus a Handbook utility link.
 No pills, chips, slogans, category labels above headlines or explanatory UI copy.
 Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). -->
 <script type="application/json" id="briefing-data">

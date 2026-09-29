@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#131210">
 <title>Periodicals</title>
-<meta name="description" content="Periodicals: Field Brief, Rivers &amp; Regressions and Problem Book.">
+<meta name="description" content="Periodicals: Field Brief, Logit &amp; Loblolly and The Workbook.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23131210%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%2212%22%20width%3D%228%22%20height%3D%2240%22%20fill%3D%22%238a2a36%22%2F%3E%3Crect%20x%3D%2225%22%20y%3D%2216%22%20width%3D%228%22%20height%3D%2236%22%20fill%3D%22%231f4a3b%22%2F%3E%3Crect%20x%3D%2237%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%2242%22%20fill%3D%22%231c2f4a%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%2220%22%20width%3D%224%22%20height%3D%2232%22%20fill%3D%22%23efe9dc%22%2F%3E%3Cpath%20d%3D%22M8%2054h48%22%20stroke%3D%22%23efe9dc%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +69,7 @@ a{color:inherit}
 .c-fb .plate{margin-top:auto;height:34%;margin-inline:-8%}
 .c-fb .plate svg{width:100%;height:100%;display:block}
 
-/* --- Rivers & Regressions cover --- */
+/* --- Logit & Loblolly cover --- */
 .c-sp{background:var(--sp-paper);color:var(--sp-ink);padding:8% 8% 6%;display:grid;grid-template-rows:auto auto 1fr auto}
 .c-sp .vl{font:500 9.5px/1.4 "IBM Plex Sans Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:.5px solid var(--sp-ink);padding-bottom:6px}
 .c-sp .ttl{font:400 clamp(30px,3.6vw,48px)/.95 "Source Serif 4",Georgia,serif;letter-spacing:-.03em;margin:16px 0 4px}
@@ -80,7 +80,7 @@ a{color:inherit}
 .c-sp .fig{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:end;border-top:.5px solid var(--sp-ink);padding-top:8px;font:500 8.5px/1.3 "IBM Plex Sans Condensed",sans-serif;letter-spacing:.05em;text-transform:uppercase}
 .c-sp .fig svg{width:100%;height:42px}
 
-/* --- Problem Book cover --- */
+/* --- The Workbook cover --- */
 .c-cp{background-color:var(--cp-paper);background-image:linear-gradient(rgba(28,47,74,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(28,47,74,.09) 1px,transparent 1px);background-size:14px 14px;color:#1d2126;padding:9% 9% 8%;display:flex;flex-direction:column}
 .c-cp .no{font:500 11px/1 "JetBrains Mono",monospace;display:flex;justify-content:space-between;color:var(--cp)}
 .c-cp .ttl{font:italic 400 clamp(28px,3.2vw,42px)/.98 "STIX Two Text",serif;margin:18px 0 6px;letter-spacing:-.01em}
@@ -162,6 +162,16 @@ a{color:inherit}
 @media (prefers-reduced-motion:reduce){.rc::after{transition:none}}
 .sig{color:var(--bone-dim)}
 .im-r a{text-decoration:none}.im-r a:hover{color:var(--bone)}
+
+/* navigation memory: the most recently visited title stands slightly proud of the shelf */
+.vol{position:relative}
+.sr{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.vol.recent .cover{transform:translateY(-14px);box-shadow:0 44px 70px -26px rgba(0,0,0,.85),0 2px 0 rgba(255,255,255,.05) inset}
+.vol.recent:hover .cover{transform:translateY(-20px)}
+.rc.recent::after{width:38%}
+.rc.recent .rc-f{color:#fff}
+@media (max-width:1000px){.vol.recent .cover{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){.vol.recent .cover{transition:none}}
 </style>
 </head>
 <body>
@@ -170,6 +180,8 @@ control and it ignores localStorage periodicals:mode (the three publications sti
 Three covers stand on the press rail (.rail): one compartment per title, aligned to the cover above,
 with folio, latest date, latest title, cadence and next due, read live from each title's canonical page.
 Shared hub folios are always three-digit ("No. 002", "No. 001"). The Register table is retired.
+Navigation memory: each title writes localStorage periodicals:last = {t:"fb"|"sp"|"cp", at}; the hub
+lifts that cover (.vol.recent) and lengthens its rail accent (.rc.recent) for 45 days; order never changes.
 The "Iain Holmes" signature becomes a link to ../ only when that page answers (no dead links).
 Handbook: /personal-updates/handbook/ (documentation, not a publication, no spine). -->
 <a class="skip" href="#shelf">Skip to the titles</a>
@@ -196,19 +208,19 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
         </div>
       </a>
 
-      <a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)" aria-label="Rivers &amp; Regressions">
+      <a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)" aria-label="Logit &amp; Loblolly">
         <div class="cover c-sp" aria-hidden="true">
           <div class="vl"><span>Vol. 1</span><span data-sp="date">25 Sep 2026</span></div>
-          <div><div class="ttl">Rivers <span class="amp">&amp;</span><br><i>Regressions</i><span class="spfo"><i>No.</i> <span data-sp="no">001</span></span></div></div>
+          <div><div class="ttl">Logit <span class="amp">&amp;</span><br><i>Loblolly</i><span class="spfo"><i>No.</i> <span data-sp="no">001</span></span></div></div>
           <ol class="toc" data-sp="toc"><li>Electrification’s opportunity is larger than its current market share</li><li>The grid gets a $5.25 billion investment test</li><li>Carbon-border policy enters a new institutional test</li><li>Insurance stress has an urban geography of its own</li><li>Glyphosate review makes the value of information concrete</li></ol>
           <div class="fig"><span>Fig. 1</span><svg viewBox="0 0 120 42" preserveAspectRatio="none"><path d="M0 41.5H120" stroke="#15302a" stroke-width="1"/><rect x="8" y="18" width="22" height="23" fill="#15302a"/><rect x="48" y="8" width="22" height="33" fill="#8aa08f"/><rect x="88" y="6" width="22" height="35" fill="#b4532e"/></svg></div>
         </div>
       </a>
 
-      <a class="vol" href="../daily-econ-challenge/" style="--c:var(--cp-teal)" aria-label="Problem Book">
+      <a class="vol" href="../daily-econ-challenge/" style="--c:var(--cp-teal)" aria-label="The Workbook">
         <div class="cover c-cp" aria-hidden="true">
           <div class="no"><span><i class="cpno">No.</i><span data-cp="no">001</span></span><span data-cp="date">28.IX.26</span></div>
-          <div class="ttl">Problem<br><i>Book</i></div>
+          <div class="ttl">The<br><i>Workbook</i></div>
           <div class="eq">∂y / ∂x |<sub>z = z̄</sub></div><p class="q1" data-cp="q1"><b>1.</b> You regress log hourly wages on years of schooling in a cross-section. Unobserved ability raises wages and is positively correlated with schooling…</p>
           <div class="grid" data-cp="grid"><span class="f">1</span><span class="t">2</span><span>3</span><span class="t">4</span><span>5</span><span class="f">6</span><span>7</span><span class="t">8</span></div>
         </div>
@@ -217,8 +229,8 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
 
     <section class="rail" aria-label="Latest issues">
       <a class="rc" href="../daily-watchlist-5/" style="--c:var(--fb)"><span class="rc-t">Field Brief</span><span class="rc-f"><span class="no">No.</span><span data-fb="no">002</span></span><span class="rc-d" data-fb="dated">27.09.2026</span><span class="rc-c" data-fb="title">Voting rules, health coverage and AI safety</span><span class="rc-s"><span class="k">Cadence</span>Daily · 08:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="fb"></span></span></a>
-      <a class="rc" href="../weekly-economics-environment/" style="--c:var(--sp)"><span class="rc-t">Rivers &amp; Regressions</span><span class="rc-f"><span class="no">No.</span><span data-sp="no">001</span></span><span class="rc-d" data-sp="dated">25.09.2026</span><span class="rc-c" data-sp="title">The price of a resilient economy</span><span class="rc-s"><span class="k">Cadence</span>Fridays · 15:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="sp"></span></span></a>
-      <a class="rc" href="../daily-econ-challenge/" style="--c:var(--cp-teal)"><span class="rc-t">Problem Book</span><span class="rc-f"><span class="no">No.</span><span data-cp="no">001</span></span><span class="rc-d" data-cp="dated">28.09.2026</span><span class="rc-c" data-cp="title">8 questions · 7 fields</span><span class="rc-s"><span class="k">Cadence</span>Weekdays · 10:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="cp"></span></span></a>
+      <a class="rc" href="../weekly-economics-environment/" style="--c:var(--sp)"><span class="rc-t">Logit &amp; Loblolly</span><span class="rc-f"><span class="no">No.</span><span data-sp="no">001</span></span><span class="rc-d" data-sp="dated">25.09.2026</span><span class="rc-c" data-sp="title">The price of a resilient economy</span><span class="rc-s"><span class="k">Cadence</span>Fridays · 15:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="sp"></span></span></a>
+      <a class="rc" href="../daily-econ-challenge/" style="--c:var(--cp-teal)"><span class="rc-t">The Workbook</span><span class="rc-f"><span class="no">No.</span><span data-cp="no">001</span></span><span class="rc-d" data-cp="dated">28.09.2026</span><span class="rc-c" data-cp="title">8 questions · 7 fields</span><span class="rc-s"><span class="k">Cadence</span>Weekdays · 10:00</span><span class="rc-x"><span class="k">Next due</span><span data-next="cp"></span></span></a>
     </section>
   </main>
 
@@ -238,6 +250,12 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
   /* the signature links to the personal site only if that page actually exists (never a dead link) */
   fetch('../',{method:'HEAD',cache:'no-cache'}).then(function(r){if(!r.ok)return;
     ['sig','sig2'].forEach(function(id){var el=document.getElementById(id);if(!el)return;var a=document.createElement('a');a.href='../';a.className='sig';a.textContent=id==='sig'?'Iain Holmes ↗':'iainholmes.github.io ↗';el.replaceWith(a)})}).catch(function(){});
+  /* navigation memory: lift the title visited most recently (order never changes) */
+  try{var last=JSON.parse(localStorage.getItem('periodicals:last')||'null');
+    if(last&&/^(fb|sp|cp)$/.test(last.t)&&Date.now()-last.at<1000*60*60*24*45){
+      var href={fb:'../daily-watchlist-5/',sp:'../weekly-economics-environment/',cp:'../daily-econ-challenge/'}[last.t];
+      document.querySelectorAll('.vol[href="'+href+'"],.rc[href="'+href+'"]').forEach(function(el){el.classList.add('recent');
+        var t=document.createElement('span');t.className='sr';t.textContent=' (last visited)';el.append(t)})}}catch(e){}
   /* next scheduled issue, computed in New York time */
   var DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   function nextRun(days,h){
