@@ -10,28 +10,54 @@ const msg = document.getElementById('map-msg');
 const card = document.getElementById('map-card');
 const phone = window.matchMedia('(max-width: 759.98px)');
 const params = new URLSearchParams(location.search);
-const test = params.get('maptest'); // notiles | nowebgl | offline | slow : failure drills
+const test = params.get('maptest'); // notiles | nowebgl | offline | nosize : failure drills
+// ?theme=light|dark forces a palette for testing (page and map), whatever the device setting.
+const forcedTheme = ['light', 'dark'].includes(params.get('theme')) ? params.get('theme') : null;
+if (forcedTheme) document.documentElement.dataset.theme = forcedTheme;
 const perf = (window.__atlasPerf = { start: performance.now() });
 
 let map = null;
 let filter = 'all';
 
 /* ---------- QA panel (?qa=1): what a tester on a phone needs to see ---------- */
-const qa = { on: params.get('qa') === '1', last: '—' };
+// "ready" now means drawn: MapLibre's 'load' is reported separately, with the evidence that pixels reached
+// the screen (sizes, WebGL, sources, rendered features). Tap the panel to shrink or expand it.
+const qa = { on: params.get('qa') === '1', last: '—', diag: null };
 let qaEl = null;
 function qaRender() {
   if (!qa.on) return;
-  if (!qaEl) { qaEl = document.createElement('pre'); qaEl.className = 'qa-panel'; qaEl.setAttribute('aria-live', 'polite'); document.body.append(qaEl); }
+  if (!qaEl) {
+    qaEl = document.createElement('pre'); qaEl.className = 'qa-panel'; qaEl.setAttribute('aria-live', 'off');
+    qaEl.addEventListener('click', () => qaEl.classList.toggle('is-compact'));
+    document.body.append(qaEl);
+  }
   const st = document.getElementById('map-state')?.dataset.state;
   const rel = document.getElementById('relief')?.getAttribute('aria-pressed');
-  qaEl.textContent = [
-    `map: ${st}${perf.failed ? ' (' + perf.failed + ')' : ''}${perf.ready ? ' · ready ' + perf.ready + ' ms' : ''}`,
-    `relief: ${rel ?? 'n/a'} · filter: ${filter}`,
+  const d = map?.diagnostics?.() || qa.diag;
+  const lines = [
+    `map: ${st}${perf.failed ? ' (' + perf.failed + ')' : ''}${perf.ready ? ' · drawn ' + perf.ready + ' ms' : ''}`,
+    `relief: ${rel ?? 'n/a'} · filter: ${filter} · theme: ${d?.theme ?? pageTheme()}${forcedTheme ? ' (forced)' : ''}`,
     `viewport: ${innerWidth}×${innerHeight} @${devicePixelRatio}x · touch: ${matchMedia('(pointer: coarse)').matches}`,
     `last tap: ${qa.last}`,
-  ].join('\n');
+  ];
+  if (d) lines.push(
+    `— map diagnostics —`,
+    `load event: ${d.loadMs ?? '—'} ms · drawn: ${d.drawnMs ?? '—'} ms · frames ${d.frames} (${d.framesAfterLoad} after load)`,
+    `container: ${d.container} · canvas css ${d.canvasCss} · backing ${d.canvasBacking} · ${d.canvasStyle}`,
+    `webgl: ${d.webgl} · lost×${d.contextLost} restored×${d.contextRestored}`,
+    `source omt loaded: ${d.omtLoaded} · all tiles loaded: ${d.tilesLoaded} · zoom ${d.zoom}`,
+    `features drawn: ${d.features} · ${Object.entries(d.perLayer || {}).map(([k, v]) => k + ' ' + v).join(', ') || 'none'}`,
+    `controls: ${d.controls} · attribution: ${d.attribution}`,
+    `errors: ${d.errors.length ? '\n  ' + d.errors.join('\n  ') : 'none'}`,
+  );
+  qaEl.textContent = lines.join('\n');
 }
-window.addEventListener('resize', () => qaRender());
+if (qa.on) { window.addEventListener('resize', () => qaRender()); setInterval(qaRender, 1000); }
+function pageTheme() {
+  const t = document.documentElement.dataset.theme;
+  if (t === 'dark' || t === 'light') return t;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
 
 /* ---------- register: filters and selection ---------- */
 const filterBox = document.querySelector('.reg-filter');
@@ -86,12 +112,15 @@ const MESSAGES = {
   timeout: "The map tiles didn't arrive in time. The register lists every place.",
   tiles: "The map tiles couldn't be loaded. The register lists every place.",
   style: "The map couldn't be drawn. The register lists every place.",
+  size: "The map couldn't be drawn on this screen. The register lists every place.",
+  blank: "The map loaded but nothing could be drawn. The register lists every place.",
+  lost: "The map stopped drawing (the browser released its graphics). Reload to try again; the register lists every place.",
 };
 
 async function start() {
   stateEl.dataset.state = 'loading';
   msg.textContent = 'Loading the map…';
-  const theme = window.matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.dataset.theme !== 'light' ? 'dark' : 'light';
+  const theme = pageTheme();
   // Relief: on by default on wide screens (measured: ~40 KB of terrain per view, no frame-rate cost on desktop),
   // off by default on phones to save data. The viewer's own choice wins.
   let relief = window.matchMedia('(min-width: 1024px)').matches;
@@ -99,6 +128,8 @@ async function start() {
   try {
     if (test === 'offline') { const e = new Error('offline'); e.reason = 'offline'; throw e; }
     if (test === 'nowebgl') { const e = new Error('nowebgl'); e.reason = 'nowebgl'; throw e; }
+    // Drill for the first-RC iPhone bug: a map box with no height must fail visibly, never report "ready".
+    if (test === 'nosize') Object.assign(document.getElementById('map').style, { bottom: 'auto', height: '0px' });
     map = await createMap(document.getElementById('map'), {
       base, theme, bounds: data.bounds, relief, touch: window.matchMedia('(pointer: coarse)').matches,
       tileUrlOverride: test === 'notiles' ? 'https://tiles.openfreemap.org/planet-does-not-exist' : null,
@@ -107,6 +138,12 @@ async function start() {
     map.setMarkers(data.features.filter(visible));
     map.on('select', id => select(id, { from: 'map' }));
     map.on('trouble', t => { stateEl.dataset.state = 'notice'; msg.textContent = t; });
+    map.on('lost', () => {
+      // Safari can drop a WebGL context (memory pressure, backgrounding). Say so rather than leave a frozen or empty box.
+      perf.failed = 'lost'; qa.diag = map.diagnostics(); stateEl.dataset.state = 'failed'; msg.textContent = MESSAGES.lost;
+      rows.forEach(r => { r.querySelector('.reg-show').hidden = true; }); document.querySelector('.map-tools').hidden = true;
+      card.hidden = true; map.destroy(); map = null; qaRender();
+    });
     stateEl.dataset.state = 'ready'; qaRender();
     msg.textContent = '';
     rows.forEach(r => { r.querySelector('.reg-show').hidden = false; });
@@ -121,9 +158,10 @@ async function start() {
     if (pre) { select(pre); map.focus(pre); }
   } catch (e) {
     perf.failed = e.reason || 'unknown';
+    qa.diag = e.diagnostics || null;
     stateEl.dataset.state = 'failed'; qaRender();
     msg.textContent = MESSAGES[e.reason] || MESSAGES.tiles;
-    console.warn('Rupert Atlas map:', e.reason || e);
+    console.warn('Rupert Atlas map:', e.reason || e, e.message || '');
   }
 }
 

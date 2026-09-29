@@ -4,7 +4,9 @@
 
 **Browser:** the Claude desktop app's built-in Chromium 152 on Iain's Mac (DPR 2), on the live origin `https://iainholmes.github.io`. The tile and relief hosts can't be reached from the build sandbox, so the real-network tests ran there. The failure paths also ran headless in the sandbox, where every tile host is blocked.
 
-**Not yet tested:** a real iPhone. These numbers come from Mac hardware, including the 390×844 run. Checking Safari on an actual phone is still open.
+**Real iPhone:** build 1 failed (blank map; see the end of this file). Build 2 awaits retest.
+
+**Previously not tested:** a real iPhone. These numbers come from Mac hardware, including the 390×844 run. Checking Safari on an actual phone is still open.
 
 ## CORS and hosts, from the real origin
 
@@ -99,3 +101,36 @@ Each point was checked against the owner's published address or access listing (
 | Carolina North Forest | Not verified. The trailhead lot off Municipal Dr. isn't mapped, so the pin marks the forest's centre and is shown as "pin approximate". |
 
 Every pin is a public trailhead, parking area or public land. None is residential. `rupert.mjs audit` fails if any public file contains a coordinate other than these access points, the public Chapel Hill reference point, or the Atlas's padded default view.
+
+## Blocker from real-iPhone QA, build 1 (29 Sep 2026)
+
+**Symptom.** In iPhone Safari, on the branch served from the Mac, the QA panel said `map: ready`, but the map area was empty. There was no basemap, pins, controls or attribution. The register worked.
+
+**Cause.** The page's CSS, not Safari.
+- MapLibre's stylesheet gives its container `position: relative`. The provider loaded that stylesheet after the Atlas's own, so it beat `.map-canvas { position: absolute; inset: 0 }`.
+- The map box then had no height (390×0). MapLibre still loaded, fired `load`, and drew into a box nothing could see. The controls and attribution sit inside that box, so they vanished too.
+- The same thing happens in Chromium and in both themes. It isn't specific to iPhone or to dark mode.
+
+**Why the desktop tests missed it.** They ran MapLibre in a test container styled inline on the live origin. The inline style outranked MapLibre's rule, so the real page's CSS was never exercised with live tiles.
+
+**Fixes.**
+- A higher-specificity rule (`.atlas-map > .map-canvas`) keeps the box absolute whatever order the stylesheets load in.
+- MapLibre's stylesheet is now awaited and inserted before the Atlas stylesheet.
+- The map box falls back to `vh` where `svh` isn't supported.
+- "Ready" now requires proof of drawing: the container and canvas have a size, WebGL isn't lost, a frame has drawn since `load`, and basemap features are on screen. Otherwise the page fails with `size` or `blank`, and a WebGL context loss after start fails with `lost`. Each shows a plain message, and the register stays usable.
+- New drills: `?maptest=nosize` and `?theme=light|dark`. The `?qa=1` panel now reports load against drawn, sizes, WebGL, source and tile state, features per layer, control visibility and errors.
+
+**Verified (headless Chromium, 390×844 at 3x, touch, synthetic OpenMapTiles-shaped vector tiles served in place of OpenFreeMap).** The sandbox can't reach the real tile host.
+
+| Case | Result |
+|---|---|
+| Build 1 code | Reproduced: `ready`, container 390×0 |
+| Build 2, light | `ready`, container 390×471, canvas 390×471 (backing 1170×1413), 15 features, controls and attribution visible |
+| Build 2, dark, and both `?theme=` overrides | Same result |
+| Build 2, 1280×900 | `ready`, container 696×814 |
+| Tiles with no features | `failed (blank)` with a message. Never `ready`. |
+| `?maptest=nosize` | `failed (size)` with a message |
+| `notiles`, `nowebgl` | Unchanged, both pass |
+| A tap on the Raven Rock pin | Card opens |
+
+The real-tile, real-Safari confirmation is IPHONE-QA build 2.

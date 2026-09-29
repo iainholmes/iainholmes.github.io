@@ -90,8 +90,12 @@ Failure drills:
 | `?maptest=notiles` | Tile host failure |
 | `?maptest=nowebgl` | No WebGL |
 | `?maptest=offline` | Offline |
+| `?maptest=nosize` | A map box with no height (the first iPhone RC bug) |
+| `?theme=light` or `?theme=dark` | Forces a palette, to compare themes on one device |
 
-A real stall shows a timeout message after 12 seconds. In every case the register stays usable.
+The map counts as ready only once it has **drawn**: the box and canvas have a real size, WebGL is alive, and basemap features are on screen. MapLibre's `load` event alone isn't enough. If it loads but can't draw, the page says so (`size`, `blank` or `lost`) instead of leaving an empty box.
+
+A real stall shows a timeout message after 12 seconds. In every case the register stays usable. `?qa=1` adds a diagnostics panel (see `_tools/IPHONE-QA.md`).
 
 ## Editions
 

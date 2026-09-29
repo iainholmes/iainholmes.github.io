@@ -405,13 +405,16 @@ main:focus { outline: none; }
 /* ---------- atlas: map + register ---------- */
 .atlas { padding-bottom: 72px; }
 .atlas-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 36px; }
-.atlas-map { position: relative; margin-top: 18px; height: 58svh; min-height: 340px; background: var(--paper-2); border: 1px solid var(--rule-strong); overflow: hidden; }
-@media (max-width: 759.98px) { .atlas-map { margin-inline: calc(-1 * var(--gutter)); border-inline: 0; height: 56svh; } }
+.atlas-map { position: relative; margin-top: 18px; height: 58vh; height: 58svh; min-height: 340px; background: var(--paper-2); border: 1px solid var(--rule-strong); overflow: hidden; }
+@media (max-width: 759.98px) { .atlas-map { margin-inline: calc(-1 * var(--gutter)); border-inline: 0; height: 56vh; height: 56svh; } }
 @media (min-width: 1024px) {
   .atlas-body { grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr); align-items: start; }
   .atlas-map { position: sticky; top: calc(var(--bar-h) + 16px); height: calc(100vh - var(--bar-h) - 32px); min-height: 520px; }
 }
 .map-canvas { position: absolute; inset: 0; }
+/* MapLibre's stylesheet gives its container `position: relative`, which collapses this box to 0 px high
+   (the blank iPhone map in the first RC). This rule outranks it whatever order the stylesheets load in. */
+.atlas-map > .map-canvas, .atlas-map > .map-canvas.maplibregl-map { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
 .map-state { position: absolute; inset: 0; display: grid; place-content: center; gap: 14px; padding: 24px; text-align: center; pointer-events: none;
   background: var(--paper-2); }
 .map-state .ridge { width: min(320px, 70%); margin-inline: auto; }
@@ -483,6 +486,8 @@ main:focus { outline: none; }
 .mc-link { display: inline-block; padding-block: 10px; font: 650 12.5px var(--f-display); font-stretch: 80%; letter-spacing: .1em; text-transform: uppercase; color: #221F1C; }
 .map-card { padding-right: 60px; }
 .qa-panel { position: fixed; z-index: 60; left: 8px; right: 8px; top: calc(var(--bar-h) + env(safe-area-inset-top, 0px) + 6px); margin: 0; padding: 8px 10px;
-  background: rgba(34, 31, 28, .9); color: #EFE2C8; font: 11.5px/1.45 var(--f-data); white-space: pre-wrap; pointer-events: none; }
+  background: rgba(34, 31, 28, .9); color: #EFE2C8; font: 11px/1.4 var(--f-data); white-space: pre-wrap; overflow-wrap: anywhere;
+  max-height: 46vh; overflow: auto; cursor: pointer; -webkit-user-select: text; user-select: text; }
+.qa-panel.is-compact { max-height: 3.2em; overflow: hidden; }
 .reg-start { margin: 3px 0 0; font-size: 14px; color: var(--text-2); }
 .reg-approx { font-style: italic; }
