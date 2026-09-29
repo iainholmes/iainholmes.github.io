@@ -162,7 +162,22 @@ a{color:inherit}
 @media(max-width:760px){.press-notes{grid-template-columns:repeat(3,78%);margin-right:-16px;padding-right:16px;gap:20px}.note-head{align-items:flex-start;flex-direction:column;gap:5px}.issue-line{display:block}.issue-line>span{display:block;margin-top:4px;text-align:left!important}}
 
 /* House apparatus: publishing rhythm and metrics without a table. */
-.mast{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(250px,330px)!important;gap:clamp(42px,7vw,96px)!important;align-items:end!important}.press-clock{padding:0 0 12px;font-family:var(--mono);color:var(--bone-dim)}.press-clock .pc-k{display:block;margin-bottom:12px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bone)}.press-clock p{display:grid;grid-template-columns:1fr auto;gap:18px;margin:6px 0;font-size:11px;line-height:1.5}.press-clock p>b{font-weight:500;color:var(--bone)}.press-clock [data-next-clock] b{font-weight:500;color:var(--bone);margin-right:.45em}@media(max-width:1000px){.mast{grid-template-columns:1fr!important}.press-clock{max-width:420px}}@media(max-width:600px){.press-clock{display:none}}
+.mast{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(270px,350px)!important;gap:clamp(42px,7vw,96px)!important;align-items:end!important}
+.press-clock{display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:stretch;padding:0 0 10px;color:var(--bone-dim)}
+.press-clock .pc-k{position:relative;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:5px 0 7px;border-left:6px solid var(--bone);border-right:1px solid var(--hair)}
+.press-clock .pc-k::before,.press-clock .pc-k::after{content:"";position:absolute;right:-5px;width:9px;height:1px;background:var(--bone-dim)}.press-clock .pc-k::before{top:14px}.press-clock .pc-k::after{bottom:14px}
+.press-clock .pc-k span{writing-mode:vertical-rl;transform:rotate(180deg);font:500 9px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--bone)}
+.press-clock .pc-k small{font:500 7px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--bone-dim)}
+.pc-seq{display:grid;gap:4px}
+.press-clock p{position:relative;display:grid;grid-template-columns:38px minmax(0,1fr);gap:10px;align-items:center;margin:0;padding:7px 0 7px 10px}
+.press-clock p::before{content:"";position:absolute;left:0;top:50%;width:6px;height:6px;background:var(--pc);transform:translate(-3px,-50%) rotate(45deg)}
+.press-clock p i{font:italic 400 22px/.9 var(--serif);color:var(--pc)}
+.press-clock p>span{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline}
+.press-clock p b{font:500 9px/1.25 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--bone)}
+.press-clock p em{font:400 15px/1.15 var(--serif);font-style:italic;color:var(--bone);white-space:nowrap}
+.press-clock [data-next-clock] b{font-weight:600;color:var(--bone);margin-right:.35em}
+@media(max-width:1000px){.mast{grid-template-columns:1fr!important}.press-clock{max-width:460px}}
+@media(max-width:600px){.press-clock{display:none}}
 </style>
 </head>
 <body>
@@ -184,10 +199,12 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
   <header class="mast">
     <h1>Period<i>icals</i></h1>
     <aside class="press-clock" aria-label="Publishing schedule">
-      <span class="pc-k">Next off the press</span>
-      <p><b>Field Brief</b><span data-next-clock="fb"></span></p>
-      <p><b>The Workbook</b><span data-next-clock="cp"></span></p>
-      <p><b>Loblolly &amp; Logit</b><span data-next-clock="sp"></span></p>
+      <div class="pc-k"><span>Press Run</span><small>Eastern</small></div>
+      <div class="pc-seq">
+        <p style="--pc:var(--fb)"><i>I</i><span><b>Field Brief</b><em data-next-clock="fb"></em></span></p>
+        <p style="--pc:var(--cp-teal)"><i>II</i><span><b>The Workbook</b><em data-next-clock="cp"></em></span></p>
+        <p style="--pc:var(--sp)"><i>III</i><span><b>Loblolly &amp; Logit</b><em data-next-clock="sp"></em></span></p>
+      </div>
     </aside>
   </header>
 
