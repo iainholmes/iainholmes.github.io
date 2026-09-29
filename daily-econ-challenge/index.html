@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f7f7f3">
-<meta name="description" content="Daily Problem Set: a weekday graduate-level economics and econometrics problem set.">
-<title>Daily Problem Set</title>
+<meta name="description" content="Problem Book: economics and econometrics problems, weekdays.">
+<title>Problem Book</title>
 <script>/* Periodicals: one reading mode shared by every title (localStorage periodicals:mode = day|night) */(function(){var K='periodicals:mode',m=null;try{m=localStorage.getItem(K);if(m!=='day'&&m!=='night'){var o=localStorage.getItem('fieldbrief:mode');m=(o==='day'||o==='night')?o:null;if(m)localStorage.setItem(K,m)}}catch(e){}if(!m)m=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'night':'day';document.documentElement.setAttribute('data-mode',m)})();</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2260%22%20height%3D%2260%22%20rx%3D%224%22%20fill%3D%22%23f7f7f3%22%20stroke%3D%22%231c2f4a%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20d%3D%22M2%2022h60M2%2042h60M22%202v60M42%202v60%22%20stroke%3D%22%23c9d3d6%22%20stroke-width%3D%221.2%22%2F%3E%3Cpath%20d%3D%22M12%2050L26%2034l10%208%2016-24%22%20fill%3D%22none%22%20stroke%3D%22%230e5360%22%20stroke-width%3D%224.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2252%22%20cy%3D%2218%22%20r%3D%224%22%20fill%3D%22%231c2f4a%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -267,7 +267,7 @@ table.index tr[aria-current="true"] td.no{color:var(--teal)}
 td.mine .record{margin:0 10px 0 0}
 td.mine b{font-weight:500}
 .ledger-note{margin:14px 0 0;font:12px/1.5 var(--mono);color:var(--muted)}
-/* Periodicals shelf (Daily Problem Set dress) */
+/* Periodicals shelf (Problem Book dress) */
 .pd-imprint{display:flex;align-items:center;gap:8px;background:none;border:0;padding:8px 0;font:500 12px/1 var(--mono);color:var(--muted);letter-spacing:.02em}
 .pd-imprint svg{width:16px;height:14px}
 .pd-imprint:hover,.pd-imprint[aria-expanded="true"]{color:var(--ink)}
@@ -282,7 +282,6 @@ td.mine b{font-weight:500}
 .pd-spine.hub{--c:#131210;--on:#efe9dc;--w:40px;--h:136px}
 .pd-spine.fb{--c:#7a1f33;--on:#f5e9d2;--h:160px}
 .pd-spine.sp{--c:#1f4a3b;--on:#f3f1ea;--w:68px;--h:212px}
-.pd-spine.sp span{font-size:16px}
 .pd-spine.cp{--c:#1c2f4a;--on:#f7f7f3;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:10px 10px}
 .pd-note{margin-left:14px;padding-bottom:12px;font:italic 400 18px/1.3 var(--math);color:var(--ink)}
 .pd-note span{display:block;font:500 10px/1.4 var(--mono);font-style:normal;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
@@ -311,6 +310,25 @@ html[data-mode="night"] .sheet{box-shadow:6px 6px 0 rgba(0,0,0,.35)}
 html[data-mode="night"] .console{background:#0b1016}
 html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 @media (max-width:600px){.dn{margin-right:4px;font-size:11px}}
+
+/* shelf refinement: spines size to their titles (no fixed heights, no distortion) */
+.pd-spine{height:auto!important;min-height:var(--h);flex:none;gap:14px;padding-bottom:14px!important}
+.pd-spine span{font-size:18px!important;line-height:1.1!important;letter-spacing:0}
+.pd-spine.sp{--w:64px;--h:150px}
+.pd-spine.cp{--h:150px}
+.pd-spine.fb{--h:140px}
+.pd-spine.hub{--h:120px}
+.pd-hb{margin-left:auto;align-self:flex-end;padding:0 0 14px 18px;white-space:nowrap;text-decoration:none;opacity:.8}
+.pd-hb:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+
+/* superscript folio + subline (Problem Book) */
+.ps-title h1 .fo{display:inline-block;vertical-align:top;margin:.1em 0 0 .12em;font:500 .3em/1 var(--mono);font-style:normal;color:var(--navy);letter-spacing:-.02em;white-space:nowrap}
+.ps-title h1 .fo .no{font:italic 400 1.02em/1 var(--math);color:var(--muted);margin-right:.2em;letter-spacing:0}
+.ps-no .sub{font:italic 400 17px/1.3 var(--math);color:var(--text);text-align:right}
+@media (max-width:600px){.ps-no{flex-direction:column;align-items:flex-start;gap:4px}.ps-no .sub{text-align:left}}
+@media (max-width:600px){.pd-row{flex-wrap:wrap;overflow-x:visible!important;row-gap:0}.pd-hb{flex-basis:100%;margin:0;padding:10px 0 10px!important;order:9}}
+.wordmark{pointer-events:none}body.scrolled .wordmark,body.ledger .wordmark{pointer-events:auto}
+@media (max-width:600px){.wordmark{display:none}}
 </style>
 </head>
 <body>
@@ -322,12 +340,13 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
       <div class="pd-drawer" id="pdDrawer" data-open="false"><div class="pd-row">
         <a class="pd-spine hub" href="../personal-updates/"><small>all</small><span>Periodicals</span></a>
         <a class="pd-spine fb" href="../daily-watchlist-5/"><small>daily</small><span>Field Brief</span></a>
-        <a class="pd-spine sp" href="../weekly-economics-environment/"><small>fri</small><span>Economics &amp; Environment</span></a>
-        <a class="pd-spine cp" href="../daily-econ-challenge/" aria-current="page"><small>mon–fri</small><span>Daily Problem Set</span></a>
-        <div class="pd-note"><span>you are here</span>Daily Problem Set</div>
+        <a class="pd-spine sp" href="../weekly-economics-environment/"><small>fri</small><span>Rivers &amp; Regressions</span></a>
+        <a class="pd-spine cp" href="../daily-econ-challenge/" aria-current="page"><small>mon–fri</small><span>Problem Book</span></a>
+        <div class="pd-note"><span>you are here</span>Problem Book</div>
+          <a class="pd-hb" href="../personal-updates/handbook/" style="font:500 11px/1.4 var(--mono);color:var(--ink)">Periodicals Handbook</a>
       </div></div>
     </nav>
-    <a class="wordmark" href="#" id="homeLink" aria-label="Daily Problem Set, latest set">Daily <i>Problem Set</i></a>
+    <a class="wordmark" href="#" id="homeLink" aria-label="Problem Book, latest set">Problem <i>Book</i></a>
     <nav class="site" aria-label="Site">
       <span class="dn" role="group" aria-label="Reading mode, shared by all Periodicals"><button type="button" data-mode="day" aria-pressed="true">day</button><span aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="false">night</button></span>
       <a href="#archive" id="archiveLink">Ledger</a>
@@ -338,17 +357,19 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 <main id="app"></main>
 
 <footer class="foot">
-  <span><i style="font:italic 400 15px var(--math);color:var(--ink)">Daily Problem Set</i> · weekdays, 10:00 ET</span>
+  <span><i style="font:italic 400 15px var(--math);color:var(--ink)">Problem Book</i> · economics &amp; econometrics · weekdays, 10:00 ET · <a href="../personal-updates/handbook/">Handbook</a></span>
   <a href="../personal-updates/">Periodicals</a>
 </footer>
 
 <!--
 EDITION MAINTENANCE — read before every update.
-Publication name: Daily Problem Set (formerly Daily Econ Challenge / Ceteris Paribus; path daily-econ-challenge/
+Publication name: Problem Book (formerly Daily Econ Challenge / Ceteris Paribus / Daily Problem Set; path daily-econ-challenge/
 unchanged; localStorage key dec:v1:<date> unchanged). Archive view (#archive) is titled "The Ledger".
 Reading mode: shared Periodicals key localStorage periodicals:mode (day|night), applied in <head> and
 synced across tabs; night is a dark drafting surface defined by the html[data-mode="night"] variables.
-Issue folio grammar: "No." small STIX italic, numerals JetBrains Mono (see .ps-no .no).
+Issue folio grammar: superscript "No. 001" on the masthead (.fo: STIX italic "No." + JetBrains Mono
+three-digit numerals); same grammar on the results heading. Subline: "Economics & econometrics · weekdays".
+Shelf lists Periodicals, Field Brief, Rivers & Regressions, Problem Book + Handbook utility link.
 Canonical file: daily-econ-challenge/index.html in iainholmes/iainholmes.github.io. Fetch the
 current GitHub version immediately before editing; preserve unfamiliar changes (another
 collaborator may have made them). Append one new object to "editions" per weekday; never delete,
@@ -559,7 +580,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   function headHTML(){
     var latest=EDITIONS[0]===ed,n=ed.questions.length,sc=scoreOf(ed,st);
     var rec=st.submitted?sc+' / '+n+' '+recordHTML(ed,st):nAnswered()?nAnswered()+' of '+n+' answered':'Not started';
-    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><h1 id="psTitle">Daily <i>Problem Set</i></h1><div class="ps-no"><span>'+(latest?'Today’s set':'From the ledger')+'</span><b><span class="no">No.</span>'+pad(ed.no)+'</b></div></div>'+
+    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><h1 id="psTitle">Problem <i>Book</i><sup class="fo"><span class="no">No.</span>'+pad(ed.no)+'</sup></h1><div class="ps-no"><span>'+(latest?'Today’s set':'From the ledger')+'</span><em class="sub">Economics &amp; econometrics · weekdays</em></div></div>'+
       '<dl class="ps-facts"><div><dt>Set</dt><dd><time datetime="'+ed.date+'">'+longDate(ed.date)+'</time></dd></div><div><dt>Questions</dt><dd>'+n+' · about '+ed.minutes+' min</dd></div><div><dt>Your record</dt><dd id="statusFact">'+rec+'</dd></div><div><dt>Next set</dt><dd id="nextSet">'+nextSet()+'</dd></div></dl></section>';
   }
 
@@ -632,12 +653,12 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   function render(focusMain){
     document.getElementById('archiveLink').setAttribute('aria-current',location.hash==='#archive'?'page':'false');
     if(location.hash==='#archive'){
-      document.title='The Ledger · Daily Problem Set';
+      document.title='The Ledger · Problem Book';
       document.body.classList.add('ledger');
       app.innerHTML=archiveHTML();
       return;
     }
-    document.title='Daily Problem Set No. '+pad(ed.no);document.body.classList.remove('ledger');
+    document.title='Problem Book No. '+pad(ed.no);document.body.classList.remove('ledger');
     app.innerHTML=headHTML()+'<div class="wrap bench" id="bench">'+sideHTML()+'<div class="main-col" id="mainCol">'+(st.submitted?resultsHTML():questionHTML())+'</div></div>';
     if(focusMain){var h=app.querySelector('.q-num,.score');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
   }
@@ -665,7 +686,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     if(a==='next')go(st.current+1,true);
     if(a==='submit')submit();
     if(a==='retake'){st=fresh();save();render(true);window.scrollTo(0,0)}
-    if(a==='copy'){var txt='Daily Problem Set No. '+pad(ed.no)+' · '+scoreOf(ed,st)+'/'+ed.questions.length+'\n'+ed.questions.map(function(q){return isRight(q)?'■':'□'}).join('')+'\n'+location.href.split('#')[0]+'#'+ed.date;
+    if(a==='copy'){var txt='Problem Book No. '+pad(ed.no)+' · '+scoreOf(ed,st)+'/'+ed.questions.length+'\n'+ed.questions.map(function(q){return isRight(q)?'■':'□'}).join('')+'\n'+location.href.split('#')[0]+'#'+ed.date;
       var note=document.getElementById('copyNote');
       (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){note.textContent='Copied'},function(){note.textContent=txt.split('\n').slice(0,2).join('  ')});}
   });

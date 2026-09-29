@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#131210">
+<title>Periodicals Handbook</title>
+<meta name="description" content="How Periodicals works: the three titles, navigation, issue folios, Day/Night, the Field Register and the Heron.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23131210%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%2212%22%20width%3D%228%22%20height%3D%2240%22%20fill%3D%22%238a2a36%22%2F%3E%3Crect%20x%3D%2225%22%20y%3D%2216%22%20width%3D%228%22%20height%3D%2236%22%20fill%3D%22%231f4a3b%22%2F%3E%3Crect%20x%3D%2237%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%2242%22%20fill%3D%22%231c2f4a%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%2220%22%20width%3D%224%22%20height%3D%2232%22%20fill%3D%22%23efe9dc%22%2F%3E%3Cpath%20d%3D%22M8%2054h48%22%20stroke%3D%22%23efe9dc%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--night:#131210;--night-2:#1c1a17;--bone:#efe9dc;--dim:#a9a397;--rule:#35322c;--fb:#b0435a;--rr:#6fb095;--rr-clay:#e0915f;--pb:#7fb2c9;
+  --house:"Fraunces",Georgia,serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+html{background:var(--night);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--bone);font:300 18px/1.62 var(--house);font-variation-settings:"opsz" 14;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-color:var(--dim);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--bone)}
+:focus-visible{outline:2px solid var(--bone);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--bone);color:var(--night);padding:8px 12px}.skip:focus{left:8px}
+.page{width:min(1080px,calc(100% - 64px));margin:0 auto}
+.imprint{display:flex;justify-content:space-between;align-items:center;height:52px;border-bottom:1px solid var(--rule);font:12px/1 var(--mono);color:var(--dim)}
+.imprint a{text-decoration:none}.imprint a:hover{color:var(--bone)}
+.mast{padding:52px 0 26px;border-bottom:1px solid var(--bone);display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:40px;align-items:end}
+.mast h1{margin:0;font:300 clamp(52px,8vw,108px)/.9 var(--house);font-variation-settings:"opsz" 144;letter-spacing:-.04em}
+.mast h1 i{font-style:italic}
+.mast p{margin:0 0 10px;font:13px/1.6 var(--mono);color:var(--dim)}
+.body{display:grid;grid-template-columns:210px minmax(0,1fr);gap:56px;padding:40px 0 60px}
+.toc{position:sticky;top:24px;align-self:start;font:12.5px/1.5 var(--mono)}
+.toc ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.toc a{display:grid;grid-template-columns:26px 1fr;padding:7px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--dim)}
+.toc a span{color:var(--bone)}
+.toc a:hover{color:var(--bone)}
+main{min-width:0;max-width:700px}
+section{padding:0 0 38px;margin:0 0 38px;border-bottom:1px solid var(--rule);scroll-margin-top:20px}
+section:last-child{border-bottom:0}
+h2{margin:0 0 16px;font:400 34px/1.1 var(--house);font-variation-settings:"opsz" 72;letter-spacing:-.015em;display:grid;grid-template-columns:44px 1fr;align-items:baseline}
+h2 .n{font:400 14px/1 var(--mono);color:var(--dim)}
+h3{margin:26px 0 8px;font:italic 400 22px/1.25 var(--house)}
+p{margin:0 0 14px}
+.lede{font-size:21px;line-height:1.5}
+dl.titles{margin:0}
+.title{display:grid;grid-template-columns:8px minmax(0,1fr);gap:18px;padding:18px 0;border-top:1px solid var(--rule)}
+.title::before{content:"";background:var(--c)}
+.title h3{margin:0 0 4px;font-style:normal;font-size:26px}
+.title .meta{font:12.5px/1.5 var(--mono);color:var(--dim);margin:0 0 10px}
+.title ul{margin:0;padding:0 0 0 18px}
+.title li{margin:0 0 6px}
+.mono{font-family:var(--mono);font-size:.82em}
+figure{margin:22px 0;padding:18px 0 12px;border-top:3px solid var(--bone);border-bottom:1px solid var(--rule)}
+figure svg{display:block;width:100%;height:auto}
+figcaption{font:12px/1.55 var(--mono);color:var(--dim);margin-top:10px}
+.folio{font:300 1.35em/1 var(--house);white-space:nowrap}
+.folio .no{font-style:italic;font-size:.5em;vertical-align:.8em;margin-right:.14em;color:var(--dim)}
+table.modes{width:100%;border-collapse:collapse;font-size:16px;margin:14px 0}
+table.modes th,table.modes td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+table.modes th{font:11px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--dim);font-weight:400}
+.can,.cannot{margin:10px 0 14px;padding:0 0 0 18px}
+.can li,.cannot li{margin:0 0 6px}
+.cannot li::marker{content:"— "}
+.start{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.start li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)}
+.start a{font:400 22px/1.2 var(--house);text-decoration:none;white-space:nowrap}
+.start a::after{content:" →";color:var(--dim)}
+.start a:hover{font-style:italic}
+.colophon{display:flex;justify-content:space-between;gap:20px;padding:20px 0 44px;border-top:1px solid var(--rule);font:12px/1.6 var(--mono);color:var(--dim)}
+.colophon a{text-decoration:none}
+@media (max-width:860px){
+  .page{width:calc(100% - 32px)}
+  .mast{grid-template-columns:1fr;gap:12px;padding-top:34px}
+  .body{grid-template-columns:1fr;gap:20px;padding-top:24px}
+  .toc{position:static}
+  .toc ol{columns:2;column-gap:18px}
+  body{font-size:17px}
+  h2{font-size:28px;grid-template-columns:34px 1fr}
+  .start li{grid-template-columns:1fr;gap:4px}
+}
+@media print{.toc{display:none}.body{display:block}}
+</style>
+</head>
+<body>
+<!-- PERIODICALS HANDBOOK — /personal-updates/handbook/. Documentation for the publishing system only:
+not a publication, not scheduled, no issue numbers, no shelf spine. Permanently dark like the hub.
+Update it by hand when a title's behaviour changes (names, navigation, modes, Field Register, Heron). -->
+<a class="skip" href="#content">Skip to the handbook</a>
+<div class="page">
+  <header class="imprint"><a href="../">← Periodicals</a><span>Handbook</span></header>
+  <header class="mast">
+    <h1>Periodicals <i>Handbook</i></h1>
+    <p>Field Brief · Rivers &amp; Regressions · Problem Book</p>
+  </header>
+  <div class="body">
+    <nav class="toc" aria-label="Contents"><ol>
+      <li><a href="#periodicals"><span>A</span>Periodicals</a></li>
+      <li><a href="#titles"><span>B</span>The three titles</a></li>
+      <li><a href="#moving"><span>C</span>Moving around</a></li>
+      <li><a href="#folios"><span>D</span>Issue folios</a></li>
+      <li><a href="#daynight"><span>E</span>Day / Night</a></li>
+      <li><a href="#register"><span>F</span>Field Register</a></li>
+      <li><a href="#heron"><span>G</span>The Heron</a></li>
+      <li><a href="#start"><span>H</span>Where to start</a></li>
+    </ol></nav>
+    <main id="content">
+
+<section id="periodicals">
+  <h2><span class="n">A</span>Periodicals</h2>
+  <p class="lede">Periodicals is a small set of recurring publications made for one reader. Each has its own subject, schedule and design; they share a front page, a navigation shelf and a few conventions described here.</p>
+  <p>Every issue is kept. Nothing is replaced by the newest edition: each title keeps a cumulative archive in its own page, so past issues remain readable at stable addresses.</p>
+</section>
+
+<section id="titles">
+  <h2><span class="n">B</span>The three titles</h2>
+  <dl class="titles">
+    <div class="title" style="--c:var(--fb)"><div>
+      <h3>Field Brief</h3>
+      <p class="meta">Daily · 08:00 ET · <a href="../../daily-watchlist-5/">/daily-watchlist-5/</a></p>
+      <p>Five consequential developments each morning across AI and technology, climate and energy, U.S. policy, and North Carolina and the Triangle, chosen by consequence rather than quota. Each story gives what happened, why it matters and its implications, with sources.</p>
+      <ul>
+        <li><b>Field Brief</b> is the publication; <b>Daily Briefing</b> is the masthead of each day’s edition.</li>
+        <li><b>Index</b> (top right) slides in the full archive by month; open an issue to see its five headlines and jump straight to any story.</li>
+        <li>Links such as <span class="mono">#2026-09-27</span> open an issue; <span class="mono">#2026-09-27/03</span> opens its third story.</li>
+      </ul>
+    </div></div>
+    <div class="title" style="--c:var(--rr)"><div>
+      <h3>Rivers &amp; Regressions</h3>
+      <p class="meta">Fridays · 15:00 ET · <a href="../../weekly-economics-environment/">/weekly-economics-environment/</a></p>
+      <p>A Friday journal of environmental economics and applied research: about five developments in environmental, resource, energy and climate economics, policy, working papers, methods and data, treated at graduate level: identification, limitations, incidence and welfare.</p>
+      <ul>
+        <li><b>Full edition</b> reads every article; <b>At a glance</b> shows only the title page, contents and Field Register.</li>
+        <li><b>Issues</b> opens the searchable archive of past Fridays.</li>
+        <li>Each article carries a research note in the margin and an explicit statement of what the evidence does and does not show; the <b>methods notebook</b> at the end collects the concepts used.</li>
+        <li>The <b>Field Register</b> and the <b>Heron</b> are described in sections F and G.</li>
+      </ul>
+    </div></div>
+    <div class="title" style="--c:var(--pb)"><div>
+      <h3>Problem Book</h3>
+      <p class="meta">Weekdays · 10:00 ET · <a href="../../daily-econ-challenge/">/daily-econ-challenge/</a></p>
+      <p>Economics and econometrics practice: about eight questions per set across micro, macro, environmental economics, causal inference, econometrics and statistics, as single-select, multi-select or true/false.</p>
+      <ul>
+        <li>Answer with the mouse or keyboard: <span class="mono">A–D</span> choose, <span class="mono">T</span>/<span class="mono">F</span> for true/false, <span class="mono">← →</span> move, <span class="mono">Enter</span> advances or submits.</li>
+        <li>After submitting you get a score, a tally by field, concepts to review and a worked solution for every question, including why each wrong option fails. <b>Copy result</b> gives a one-line record.</li>
+        <li><b>The Ledger</b> lists every set with your record for each. Progress is saved in this browser only.</li>
+      </ul>
+    </div></div>
+  </dl>
+</section>
+
+<section id="moving">
+  <h2><span class="n">C</span>Moving around</h2>
+  <figure>
+    <svg viewBox="0 0 700 170" role="img" aria-labelledby="navT navD"><title id="navT">Navigation between the titles</title><desc id="navD">From Periodicals open a title. Inside any title the shelf lists every title, so you can move to a sibling or back to Periodicals.</desc>
+      <g font-family="JetBrains Mono,monospace" font-size="12" fill="#efe9dc">
+        <rect x="10" y="60" width="120" height="50" fill="none" stroke="#efe9dc"/><text x="70" y="90" text-anchor="middle">Periodicals</text>
+        <rect x="200" y="60" width="130" height="50" fill="none" stroke="#efe9dc"/><text x="265" y="84" text-anchor="middle">a title</text><text x="265" y="100" text-anchor="middle" fill="#a9a397" font-size="10">Field Brief …</text>
+        <g transform="translate(400 38)"><rect x="0" y="22" width="14" height="72" fill="#131210" stroke="#efe9dc"/><rect x="18" y="12" width="20" height="82" fill="#8a2a36"/><rect x="42" y="4" width="22" height="90" fill="#1f4a3b"/><rect x="68" y="14" width="20" height="80" fill="#1c2f4a"/><path d="M-8 96H100" stroke="#efe9dc" stroke-width="3"/><text x="46" y="118" text-anchor="middle">shelf</text></g>
+        <rect x="560" y="60" width="130" height="50" fill="none" stroke="#efe9dc"/><text x="625" y="84" text-anchor="middle">a sibling</text><text x="625" y="100" text-anchor="middle" fill="#a9a397" font-size="10">Problem Book …</text>
+        <g stroke="#efe9dc" fill="none"><path d="M130 85H196"/><path d="M190 80l6 5-6 5"/><path d="M330 85H392"/><path d="M386 80l6 5-6 5"/><path d="M500 85H556"/><path d="M550 80l6 5-6 5"/><path d="M625 110V150H70V114" stroke-dasharray="3 4"/><path d="M65 120l5-6 5 6"/></g>
+        <text x="350" y="164" text-anchor="middle" fill="#a9a397" font-size="10">the shelf always includes Periodicals</text>
+      </g></svg>
+    <figcaption>Periodicals → a title → the shelf → a sibling → back to Periodicals.</figcaption>
+  </figure>
+  <p><b>The shelf.</b> Every title has a small Periodicals mark at the top left. It opens a row of book spines, one per title, with the one you are reading raised. Choose a spine to move; <span class="mono">Esc</span> or a click elsewhere closes it. The same row carries a link to this handbook.</p>
+  <p><b>Each title’s own archive</b> sits in its top bar: <b>Index</b> in Field Brief, <b>Issues</b> in Rivers &amp; Regressions, <b>Ledger</b> in Problem Book. Each opens with the latest issue; older issues are one choice away and every issue has its own link.</p>
+</section>
+
+<section id="folios">
+  <h2><span class="n">D</span>Issue folios</h2>
+  <p>Issues are numbered in publication order: <span class="folio"><span class="no">No.</span>001</span>, <span class="folio"><span class="no">No.</span>002</span>, and so on. The number counts published issues, not calendar days, so a skipped day or week never leaves a gap, and published numbers are never changed.</p>
+  <p>On the Periodicals front page folios always have three digits. Inside a title the same superscript “No.” convention is set in that title’s own type; Rivers &amp; Regressions also keeps a journal-style volume line.</p>
+</section>
+
+<section id="daynight">
+  <h2><span class="n">E</span>Day / Night</h2>
+  <p>The three titles share one reading preference. Choose Day or Night in any of them and the others open the same way, including tabs already open. Each interprets Night in its own materials rather than inverting colors:</p>
+  <table class="modes"><thead><tr><th>Title</th><th>Where the switch is</th><th>Night looks like</th></tr></thead><tbody>
+    <tr><td>Field Brief</td><td>“Edition: Day / Night” in the metadata strip</td><td>Espresso paper, lifted inks</td></tr>
+    <tr><td>Rivers &amp; Regressions</td><td>Top right of the masthead</td><td>An estuary at night: deep spruce and river blue</td></tr>
+    <tr><td>Problem Book</td><td><span class="mono">[day] / night</span> in the top bar</td><td>A dark drafting surface with a faint grid</td></tr>
+  </tbody></table>
+  <p>The Periodicals front page and this handbook are always dark and have no switch.</p>
+</section>
+
+<section id="register">
+  <h2><span class="n">F</span>Field Register</h2>
+  <p>A growing directory, inside Rivers &amp; Regressions, of the real people and institutions behind environmental economics: economists and researchers, labs, agencies, nonprofits and others whose work that week’s issue touches.</p>
+  <p>Each Friday adds a few entries. An entry says what the person or institution does and, specifically, where economics enters their work, with a source and a link to the related article. The current issue shows one entry at a time in a band below the contents; it turns slowly (every two and a half minutes, pausing while you hover or read it, never under reduced motion) and has manual arrows. <b>Browse the register</b> opens the whole accumulated directory, searchable and grouped by issue.</p>
+  <p>Entries are factual and sourced. Pictures are used only when they are openly licensed or an organization’s own identifying mark; otherwise an engraved monogram plate stands in.</p>
+</section>
+
+<section id="heron">
+  <h2><span class="n">G</span>The Heron</h2>
+  <p class="lede">The Heron is a reader companion that lives in the margins of Rivers &amp; Regressions. On a few passages each week it flies in, lands beside the text, and waits. If you ask, it tells you something useful about what you are reading.</p>
+
+  <h3>Why a heron, and why a body at all</h3>
+  <p>Help text usually arrives as a tooltip or a bubble: easy to ignore when it is everywhere, and easy to resent when it interrupts. The Heron is embodied so that its presence carries information: when it has landed, a passage has been judged worth a second look. A heron fits the journal’s subject and its margins: a patient wading bird, narrow and upright, that watches before it acts.</p>
+
+  <figure>
+    <svg viewBox="0 0 700 190" role="img" aria-labelledby="hT hD"><title id="hT">The Heron’s cycle</title><desc id="hD">Observe, fly, perch, explain or question, leave.</desc>
+      <g fill="none" stroke="#efe9dc" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="translate(30 36) scale(1.05)"><path d="M27.2 45 L26.6 60.5 L26.2 77 M30.2 45 L31 60.5 L32 77" stroke-width="1.1"/><path d="M20.6 77 H28.2 M26.6 77 H35.6" stroke-width="1"/><path d="M19 29.4 C26.4 27.4 34.6 34.4 41.4 46.4 L36 46.2 C29.6 46 21.8 43.8 18.2 38.2 C16.9 35.4 17.2 31.4 19 29.4 Z" fill="#131210" stroke-width="1.3"/><path d="M19.2 30.4 C12.2 26.6 20.4 18.6 15.4 12.4 C13.9 10.4 14 8.8 15.4 7.8" stroke-width="2.2"/><ellipse cx="16.6" cy="7.2" rx="2.6" ry="1.8" fill="#131210" stroke-width="1.1"/><path d="M14.4 6.7 L.8 8.9 L14.4 7.9 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/></g>
+        <g transform="translate(150 70)"><path d="M68 25.2 L94 28.4 M68 26.4 L93 31" stroke-width="1"/><path d="M47 21.5 C53 7 67 1.5 85 4 C75 9 65 15 59 22.5 Z" fill="#131210" stroke-width="1.2"/><path d="M34 22 C44 17 62 18 72.5 24.2 C64 28.6 46 29.4 36 27 C33.4 26 32.6 23.4 34 22 Z" fill="#131210" stroke-width="1.3"/><path d="M35.6 23.2 C30 21.4 28.6 16.4 24.6 16.8 C21.4 17.2 20.4 20.6 22.2 22.6" stroke-width="2.2"/><ellipse cx="20.6" cy="22.2" rx="2.6" ry="1.8" fill="#131210" stroke-width="1.1"/><path d="M18.6 21.8 L4 24.2 L18.6 23 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/></g>
+        <g transform="translate(300 36) scale(1.05)"><path d="M27.2 45 L26.6 60.5 L26.2 77 M30.2 45 L31 60.5 L32 77" stroke-width="1.1"/><path d="M20.6 77 H28.2 M26.6 77 H35.6" stroke-width="1"/><path d="M19 29.4 C26.4 27.4 34.6 34.4 41.4 46.4 L36 46.2 C29.6 46 21.8 43.8 18.2 38.2 C16.9 35.4 17.2 31.4 19 29.4 Z" fill="#131210" stroke-width="1.3"/><path d="M19.2 30.4 C12.2 26.6 20.4 18.6 15.4 12.4 C13.9 10.4 14 8.8 15.4 7.8" stroke-width="2.2"/><ellipse cx="16.6" cy="7.2" rx="2.6" ry="1.8" fill="#131210" stroke-width="1.1"/><path d="M14.4 6.7 L.8 8.9 L14.4 7.9 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/><path d="M-6 80H56" stroke-width="2"/></g>
+        <g transform="translate(420 36) scale(1.05)"><path d="M27.2 45 L26.6 60.5 L26.2 77 M30.2 45 L31 60.5 L32 77" stroke-width="1.1"/><path d="M20.6 77 H28.2 M26.6 77 H35.6" stroke-width="1"/><path d="M19 29.4 C26.4 27.4 34.6 34.4 41.4 46.4 L36 46.2 C29.6 46 21.8 43.8 18.2 38.2 C16.9 35.4 17.2 31.4 19 29.4 Z" fill="#131210" stroke-width="1.3"/><path d="M19.4 30.6 C14.4 27.2 10.6 27.4 7.6 30.6" stroke-width="2.2"/><ellipse cx="6.2" cy="31.8" rx="2.6" ry="1.8" transform="rotate(28 6.2 31.8)" fill="#131210" stroke-width="1.1"/><path d="M5.2 33 L-5.6 40.6 L6 34 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/><path d="M-10 80H56" stroke-width="2"/></g>
+        <rect x="486" y="46" width="72" height="44" stroke="#a9a397"/><path d="M494 60h52M494 70h40M494 80h46" stroke="#a9a397"/>
+        <g transform="translate(578 40) scale(-1 1) translate(-96 0)"><path d="M68 25.2 L94 28.4 M68 26.4 L93 31" stroke-width="1"/><path d="M47 25 C53 36 65 44.5 82 46.5 C73 40 64 33 59 25.6 Z" fill="#131210" stroke-width="1.2"/><path d="M34 22 C44 17 62 18 72.5 24.2 C64 28.6 46 29.4 36 27 C33.4 26 32.6 23.4 34 22 Z" fill="#131210" stroke-width="1.3"/><path d="M35.6 23.2 C30 21.4 28.6 16.4 24.6 16.8 C21.4 17.2 20.4 20.6 22.2 22.6" stroke-width="2.2"/><ellipse cx="20.6" cy="22.2" rx="2.6" ry="1.8" fill="#131210" stroke-width="1.1"/><path d="M18.6 21.8 L4 24.2 L18.6 23 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/></g>
+      </g>
+      <g font-family="JetBrains Mono,monospace" font-size="12" fill="#efe9dc" text-anchor="middle"><text x="58" y="160">observe</text><text x="198" y="160">fly</text><text x="326" y="160">perch</text><text x="480" y="160">explain / question</text><text x="630" y="160">leave</text></g>
+      <g font-family="JetBrains Mono,monospace" font-size="10" fill="#a9a397" text-anchor="middle"><text x="58" y="176">passage nears</text><text x="198" y="176">~2 s, in the margin</text><text x="326" y="176">waits, silent</text><text x="480" y="176">only when you open it</text><text x="630" y="176">once you move on</text></g>
+    </svg>
+    <figcaption>Poses carry meaning: upright and still means waiting; leaning forward with the bill lowered means it is looking at the passage with you (on hover, focus, or while its note is open); wings out means arriving or leaving.</figcaption>
+  </figure>
+
+  <h3>How it behaves</h3>
+  <p>Each Friday issue programs a few appearances, usually between none and four, each tied to a specific passage: a figure, a finding, an identification caveat. When that passage reaches the middle of your screen the Heron waits a moment, then flies in for about two seconds along a short arc from the page edge, keeping to the margin, and lands beside the passage below its research note. It then stays still. Its perch is labelled with the kind of intervention and a one-line title, so what it has to say is visible without any motion.</p>
+  <p>Choose the Heron (click, tap, or <span class="mono">Tab</span> to it and press <span class="mono">Enter</span>) and a compact note opens directly beneath it in the margin: a few sentences, sometimes a small diagram, and often a link to the relevant entry in the methods notebook. <span class="mono">Esc</span> or <b>Close</b> returns you to where you were. When you read well past that section the Heron leaves, and it may reappear later at the next programmed passage. It never leaves while its note is open.</p>
+
+  <h3>What it can do</h3>
+  <ul class="can">
+    <li>Ask the question a good referee would ask: <i>What is the counterfactual here?</i></li>
+    <li>Define a term precisely: incidence, additionality, a shadow price.</li>
+    <li>Restate a paragraph as economic intuition.</li>
+    <li>Separate correlation from identification, or flag an exclusion restriction.</li>
+    <li>Sketch a tiny diagram, such as a tax wedge or a counterfactual path.</li>
+    <li>Point to the methods notebook entry that explains the tool being used.</li>
+  </ul>
+
+  <h3>What it deliberately does not do</h3>
+  <ul class="cannot">
+    <li>It is not a chatbot. It does not converse, generate answers on demand or pretend to be a person; every note is written and checked with the issue.</li>
+    <li>It does not follow the cursor, animate while idle, or appear beside every article.</li>
+    <li>It never covers body text, blocks navigation, or opens anything you did not ask for.</li>
+    <li>It does not repeat itself: once you have opened a note, later visits show it perched quietly without a flight.</li>
+  </ul>
+
+  <h3>Why silence is part of the design</h3>
+  <p>A companion that speaks about everything teaches you to ignore it. Most passages in a good issue do not need commentary, so the Heron’s default is to say nothing, and some weeks it may not appear at all. Its scarcity is what makes an appearance worth your attention.</p>
+
+  <h3>How appearances are chosen</h3>
+  <p>The Heron does not guess. Each week the editor marks the few places where readers most often go wrong or where a concept carries the argument: a causal claim resting on fixed effects, a burden whose incidence is not what it seems, a scenario mistaken for a forecast. The intervention is written for that exact passage, which is why it can be short.</p>
+
+  <h3>Why it helps learning</h3>
+  <p>The notes are timed to the moment of difficulty, when a question is most useful, and they usually ask before they tell, so you have a chance to reason first. Links into the methods notebook connect a single example to a reusable idea. Over many issues the same few questions (the counterfactual, the identifying variation, who ultimately pays) become habits.</p>
+
+  <h3>How each issue programs it</h3>
+  <p>The appearances live as structured data inside each issue (<span class="mono">#companion-data</span>, keyed by the issue’s date). Each entry names the target article and the passage that should trigger it, the kind of intervention (<i>question, definition, intuition, method, caution, figure</i>), a title, the note text, an optional diagram and an optional link. An issue with no entries is a silent issue.</p>
+
+  <h3>You stay in control</h3>
+  <ul class="can">
+    <li><b>Off:</b> the Heron switch in the top bar turns it off everywhere in Rivers &amp; Regressions until you turn it back on.</li>
+    <li><b>Dismiss:</b> “Don’t show this again” in any note retires that one appearance permanently.</li>
+    <li><b>Seen:</b> notes you have opened are remembered for that issue, so it will not fly in to show them again.</li>
+  </ul>
+  <p>These choices are stored in this browser only.</p>
+
+  <h3>Accessibility and reduced motion</h3>
+  <p>The perched Heron is an ordinary button with a full spoken label (for example, “The heron asks: What is the counterfactual here? Open note”), reachable by keyboard in reading order beside its article. Notes are regions that receive focus when opened and return focus on close. If your system asks for reduced motion, or the screen is too narrow for a margin, the Heron never flies: it simply appears at its perch beside the passage. Nothing it offers depends on seeing it move.</p>
+
+  <h3>Heron and Field Register</h3>
+  <p>They are related but do different jobs. The Field Register introduces <i>who</i> does environmental economics, the people and institutions behind the week’s evidence, and accumulates into a directory. The Heron works on <i>how</i> to read the evidence, one passage at a time, and keeps nothing but your preferences.</p>
+</section>
+
+<section id="start">
+  <h2><span class="n">H</span>Where to start</h2>
+  <ul class="start">
+    <li><span>Today’s consequential developments</span><a href="../../daily-watchlist-5/">Field Brief</a></li>
+    <li><span>Deeper environmental-economics research</span><a href="../../weekly-economics-environment/">Rivers &amp; Regressions</a></li>
+    <li><span>Practice economics and econometrics</span><a href="../../daily-econ-challenge/">Problem Book</a></li>
+  </ul>
+</section>
+
+    </main>
+  </div>
+  <footer class="colophon"><a href="../">Periodicals</a><span>Handbook</span></footer>
+</div>
+</body>
+</html>
