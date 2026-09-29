@@ -24,6 +24,25 @@ a{color:inherit;text-decoration-color:var(--dim);text-underline-offset:3px}butto
 @media(max-width:560px){.imprint nav{gap:12px}.mast{min-height:260px}.body{padding-bottom:60px}.rail{grid-template-columns:1fr}.rail h2,.backup,.tools,#importState{grid-column:auto}.kept-meta{display:block}.kept-meta span{display:block}.kept-entry h2{font-size:36px}.kept-entry::before{left:-18px}.colophon{display:block}.colophon span{display:block;margin-top:8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{body{background:#fff;color:#111}.imprint,.rail,.return,.colophon{display:none}.page{width:auto}.body{display:block}.kept-entry{break-inside:avoid}.kept-entry::before{background:#777}.kept-excerpt,.kept-entry blockquote{color:#222}}
+
+/* 2026-09-29 — Commonplace as an editorial index, not a generic settings panel. */
+.mast-state{align-self:end;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px;padding-bottom:8px;font:500 10px/1.45 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.mast-state b{display:block;margin-bottom:4px;font:400 34px/.9 var(--display);letter-spacing:-.035em;text-transform:none;color:var(--paper)}
+.mast-state #localState{grid-column:1/-1;color:var(--soft);text-transform:none;letter-spacing:.03em}
+.rail-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0 0 22px;padding-left:12px;border-left:4px solid var(--gold)}
+.rail-title>span{font:400 32px/1 var(--display)}.rail-title small{font:500 9px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.search-line{display:block!important;margin:0 0 22px!important}.search-line>span{display:block;margin:0 0 5px;font:500 9px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.search-line input{font-size:14px!important;padding:7px 0 9px!important}
+.index-line{display:grid;grid-template-columns:84px minmax(0,1fr);gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--rule)}
+.index-line label{margin:0!important;font-size:9px!important}.index-line label span{display:inline-block;width:23px;color:var(--gold)}
+.index-line select{border:0!important;padding:0 18px 0 0!important;text-align:left;font-size:11px!important}
+.carry{margin-top:28px;padding-top:10px;border-top:3px solid var(--rule)}
+.carry summary{list-style:none;cursor:pointer;font:500 10px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--soft)}
+.carry summary::-webkit-details-marker{display:none}.carry summary::after{content:" +";color:var(--gold)}.carry[open] summary::after{content:" −"}
+.carry .backup{margin:16px 0 0}.carry .tools{margin-top:14px}
+.clear-book{margin-top:22px;background:none;border:0;border-bottom:1px solid #7e5b55;padding:2px 0;color:#b9948b;font:500 9px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}.clear-book:hover{color:var(--paper);border-color:var(--paper)}
+@media(max-width:900px){.mast-state{max-width:360px}.rail-title,.search-line,.carry{grid-column:1/-1}.index-line{grid-template-columns:84px 1fr}}
+@media(max-width:560px){.mast-state{grid-template-columns:1fr 1fr}.rail{display:block!important}.index-line{grid-template-columns:82px 1fr}}
 </style>
 </head>
 <body data-commonplace-page>
@@ -31,25 +50,33 @@ a{color:inherit;text-decoration-color:var(--dim);text-underline-offset:3px}butto
 <header class="imprint"><a href="../">← Periodicals</a><nav><a href="../handbook/">Handbook</a><span>Commonplace</span></nav></header>
 <header class="mast">
   <h1>Commonplace</h1>
-  <div><p>Kept from Field Brief, Logit &amp; Loblolly and The Workbook. Threads, importance and annotations belong to you; the publications remain unchanged.</p><p class="private" id="localState">Stored in this browser</p></div>
+  <div class="mast-state" aria-label="Commonplace state">
+    <span><b id="localCount">0</b> kept</span>
+    <span><b id="threadCount">0</b> threads</span>
+    <span id="localState">local · this browser</span>
+  </div>
 </header>
 <section class="return" id="cpReturn" hidden aria-label="Something to return to"></section>
 <div class="body">
-  <aside class="rail" aria-label="Commonplace controls">
-    <h2>Find what you kept</h2>
-    <label for="cpSearch">Search</label><input id="cpSearch" type="search" placeholder="Title, note, thread, source">
-    <label for="cpThread">Thread</label><select id="cpThread"><option value="">All threads</option></select>
-    <label for="cpSource">Publication</label><select id="cpSource"><option value="">All publications</option><option value="fb">Field Brief</option><option value="ll">Logit &amp; Loblolly</option><option value="wb">The Workbook</option></select>
-    <label for="cpImportance">Importance</label><select id="cpImportance"><option value="0">Any</option><option value="3">3 or higher</option><option value="4">4 or higher</option><option value="5">5 only</option></select>
-    <p class="backup" id="backupState"></p>
-    <div class="tools" aria-label="Backup and export">
-      <button type="button" id="exportHtml">Readable HTML</button>
-      <button type="button" id="exportMd">Markdown</button>
-      <button type="button" id="exportJson">JSON backup</button>
-      <button type="button" id="importBtn">Import JSON</button>
-      <input type="file" id="importFile" accept="application/json,.json">
-    </div>
-    <p id="importState" role="status"></p>
+  <aside class="rail" aria-label="Commonplace index">
+    <div class="rail-title"><span>Index</span><small id="viewCount">0 shown</small></div>
+    <label class="search-line" for="cpSearch"><span>Search</span><input id="cpSearch" type="search" placeholder="Search the book"></label>
+    <div class="index-line"><label for="cpThread"><span>01</span> Thread</label><select id="cpThread"><option value="">All threads</option></select></div>
+    <div class="index-line"><label for="cpSource"><span>02</span> Origin</label><select id="cpSource"><option value="">All publications</option><option value="fb">Field Brief</option><option value="ll">Logit &amp; Loblolly</option><option value="wb">The Workbook</option></select></div>
+    <div class="index-line"><label for="cpImportance"><span>03</span> Weight</label><select id="cpImportance"><option value="0">Any importance</option><option value="3">3 or higher</option><option value="4">4 or higher</option><option value="5">5 only</option></select></div>
+    <details class="carry">
+      <summary>Carry / restore</summary>
+      <p class="backup" id="backupState"></p>
+      <div class="tools" aria-label="Backup and export">
+        <button type="button" id="exportHtml">Readable HTML</button>
+        <button type="button" id="exportMd">Markdown</button>
+        <button type="button" id="exportJson">JSON backup</button>
+        <button type="button" id="importBtn">Import JSON</button>
+        <input type="file" id="importFile" accept="application/json,.json">
+      </div>
+      <button class="clear-book" type="button" id="clearCommonplace">Clear Commonplace…</button>
+      <p id="importState" role="status"></p>
+    </details>
   </aside>
   <main class="entries" id="commonplaceEntries" aria-live="polite"></main>
 </div>
