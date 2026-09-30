@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {accessProblem} from '../assets/js/core/publication.js';
+import {selectCurrentPair,archiveGroups} from '../assets/js/core/editions.js';
+import {placeStatuses} from '../assets/js/core/atlas.js';
+const edition={id:'2026-W40-tue',status:'published',slot:'tuesday',published_at:'2026-09-29T07:00:00-04:00',weekend:{start:'2026-10-03',end:'2026-10-04'},flagship:{place_id:'trail'}};
+const check={place_id:'trail',checked:'2026-09-29',official_url:'https://www.ncparks.gov/trails',status:'open',discrepancy:false};
+assert.equal(accessProblem(edition,[check],['www.ncparks.gov']),null);
+assert.match(accessProblem(edition,[],['www.ncparks.gov']),/Missing/);
+assert.match(accessProblem(edition,[{...check,status:'closed'}],['www.ncparks.gov']),/closed/);
+assert.match(accessProblem(edition,[{...check,discrepancy:true}],['www.ncparks.gov']),/disagreement/);
+assert.match(accessProblem(edition,[{...check,checked:'2026-09-01'}],['www.ncparks.gov']),/Refresh/);
+assert.match(accessProblem(edition,[{...check,official_url:'https://www.alltrails.com/trail'}],['www.ncparks.gov']),/secondary/);
+const withdrawn={...edition,status:'withdrawn',place_roles:[{place_id:'trail',role:'flagship'}]};
+const manifest={editions:[withdrawn]},now=new Date('2026-09-30T12:00:00-04:00');
+assert.equal(selectCurrentPair(manifest,now).tuesday.status,'withdrawn');
+assert.equal(archiveGroups(manifest,now)[0].editions[0].status,'withdrawn');
+assert.equal(placeStatuses({places:[{id:'trail'}]},manifest,{now}).get('trail').status,'register');
+console.log('9 corrective publication and withdrawal assertions passed');

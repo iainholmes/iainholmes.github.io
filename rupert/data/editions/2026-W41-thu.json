@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": "2026-W41-thu",
   "slot": "thursday",
-  "status": "published",
+  "status": "draft",
   "published_at": "2026-10-08T07:00:00-04:00",
   "weekend": { "start": "2026-10-10", "end": "2026-10-11" },
   "flagship": {

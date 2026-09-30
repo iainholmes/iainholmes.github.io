@@ -6,6 +6,6 @@
   "scripts": {
     "build": "node _tools/rupert.mjs build",
     "check": "node _tools/rupert.mjs check",
-    "test": "node _tools/test.mjs"
+    "test": "node _tools/test.mjs && node _tools/corrective-test.mjs"
   }
 }

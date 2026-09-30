@@ -1,43 +1,35 @@
-.field-log #log-editor,.memory-card,.rupert-day-card { padding:24px; margin-block:24px; border:1px solid var(--rule); background:var(--paper-2); }
+/* Field Log integration: editorial headings, browser-local memories and real photos. */
+.field-log #log-editor,.rupert-day-card { padding:28px; margin-block:24px; border:1px solid var(--rule); border-top:2px solid var(--band); background:var(--paper-2); max-width:860px; }
 .field-log form { display:grid; gap:16px; max-width:650px; }
 .field-log label { display:grid; gap:6px; }
-.field-log input,.field-log select,.field-log textarea { box-sizing:border-box; max-width:100%; width:100%; padding:10px; color:var(--text); background:var(--paper); border:1px solid var(--rule); font:inherit; }
-.field-log button,.log-completed,.rupert-day-card button { padding:10px 16px; border:1px solid var(--rule); background:var(--paper); color:var(--text); font:inherit; cursor:pointer; }
-.field-log .log-secondary { padding:0; border:0; text-decoration:underline; background:transparent; }
+.field-log input,.field-log select,.field-log textarea { max-width:100%; width:100%; padding:10px; color:var(--text); background:var(--paper); border:1px solid var(--rule); font:inherit; }
+.field-log button,.log-completed,.rupert-day-card button { min-height:44px; padding:10px 16px; border:1px solid var(--rule); background:var(--paper); color:var(--text); font:400 13px var(--f-data); cursor:pointer; }
+.field-log .page-head { display:grid; }
+.field-log .log-actions { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:22px 24px; background:var(--paper-2); border-top:2px solid var(--band); margin-block:24px 38px; }
+.field-log .log-actions #unplanned,.log-completed { background:var(--band); color:var(--on-band); border-color:var(--band); text-decoration:none; }
+.field-log #header-open-memory { background:none; color:var(--on-band); border:0; padding:8px 0; text-align:left; }
+.field-log #memories { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px; }
+.field-log #memories > p { grid-column:1/-1; padding:28px 24px; border-block:1px solid var(--rule); margin:0; font-size:14px; }
+.memory-card { margin:0; padding:24px 0; background:var(--paper); border-top:2px solid var(--band); scroll-margin-top:calc(var(--bar-h) + 20px); }
+.memory-card h3 { font:400 32px/1.12 var(--f-editorial); letter-spacing:-.02em; font-synthesis:none; }
+.log-year { grid-column:1/-1; margin:12px 0 0; padding:10px 14px; font:400 42px/1 var(--f-editorial); background:var(--band); color:var(--on-band); }
 .memory-notes { white-space:pre-wrap; }
 .memory-photos { display:flex; flex-wrap:wrap; gap:12px; }
-.memory-photos img { width:180px; max-width:100%; height:auto; object-fit:contain; }
+.memory-photos img { width:100%; max-width:100%; height:auto; object-fit:contain; }
+.memory-actions { display:flex; gap:12px; margin-top:20px; }
+.field-log .delete-memory { color:var(--band); border-color:var(--band); }
+.field-log .season-note { font:400 13px/1.4 var(--f-data); color:var(--text-2); }
+.field-log .sec-h { font:400 30px/1.12 var(--f-editorial); }
+.delete-confirm { padding:14px; margin-top:16px; border:1px solid var(--band); background:var(--paper-2); }
+.delete-confirm p { margin-top:0; }
+.delete-confirm button { margin-right:12px; }
+.delete-confirm button[data-confirm-delete] { background:var(--band); color:var(--on-band); }
 .rupert-day { --gold:#AD864A; }
-.rupert-day-note { display:flex; align-items:center; gap:16px; padding:14px 0; color:var(--gold); font:500 13px/1.6 var(--f-data); }
+.rupert-day-note { display:flex; align-items:center; gap:16px; padding:14px 0; color:var(--gold); font:400 13px/1.6 var(--f-data); }
 .rupert-day-note svg { width:90px; flex-shrink:0; }
-.rupert-day-card { border-top:2px solid var(--gold); }
+.rupert-day-card { border-top-color:var(--gold); }
 .log-completed { margin-block:24px; }
-
-.field-log #memories {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px;}
-.memory-card {margin:0;padding:24px;background:none;border:0;border-top:1px solid var(--rule);}
-.field-log #log-editor {max-width:860px;padding:28px;background:var(--paper-2);}
-.field-log .page-head {display:block;}
-.field-log .sec-h {font-size:24px;}
-@media(max-width:759.98px){.field-log #memories {grid-template-columns:1fr;}.field-log #log-editor {padding:20px;}}
-
-/* Existing outing workflow, with a visible action area and structured empty state. */
-.field-log .log-actions { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:22px 24px; background:var(--paper-2); border-top:2px solid var(--accent); margin-block:24px 38px; }
-.field-log .log-actions #unplanned { padding:10px 16px; border:1px solid var(--accent); color:var(--accent); text-decoration:none; background:var(--paper); }
-.field-log #memories > p { grid-column:1/-1; padding:28px 24px; border-block:1px solid var(--rule); margin:0; font-size:14px; background:color-mix(in srgb,var(--paper-2) 40%,var(--paper)); }
-.memory-card { background:color-mix(in srgb,var(--paper-2) 40%,var(--paper)); border-top-color:var(--pine); }
-.memory-card h3 { font:400 29px/1.12 var(--f-editorial); font-synthesis:none; }
-.field-log #log-editor { border-top:2px solid var(--lake); }
-@media(max-width:759.98px) { .field-log .log-actions { padding:20px; } }
-.field-log .page-head {display:grid;}
-.field-log .memory-card {background:var(--paper);border-top:2px solid var(--accent);padding:24px 0;}
-.memory-card h3 {font:600 32px/1.12 var(--f-editorial);letter-spacing:-.02em;}
-.log-year {grid-column:1/-1;margin:12px 0 0;font:600 42px/1 var(--f-editorial);color:var(--accent);}
-.memory-actions {display:flex;gap:12px;margin-top:20px;}
-.field-log .delete-memory {color:var(--accent);border-color:var(--accent);}
-.memory-photos img {width:100%;max-width:280px;}
-.field-log .season-note {font:500 16px var(--f-editorial);color:var(--accent);}
-.field-log .sec-h {font-family:var(--f-editorial);}
-.delete-confirm {padding:14px;margin-top:16px;border:1px solid var(--accent);background:var(--paper-2);}
-.delete-confirm p {margin-top:0;}
-.delete-confirm button {margin-right:12px;}
-.delete-confirm button[data-confirm-delete] {background:var(--accent);color:var(--paper);}
+@media(max-width:759.98px) {
+ .field-log #memories { grid-template-columns:1fr; }
+ .field-log #log-editor,.field-log .log-actions { padding:20px; }
+}

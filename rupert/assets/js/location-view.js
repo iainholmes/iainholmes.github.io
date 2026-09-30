@@ -4,7 +4,8 @@ export function setupLocation({ getMap, features, onClear }) {
   let point=null, selected=null, controller=null;
   const esc=s=>String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function dossier(name, message, result, feature) {
-    const selection=document.getElementById('atlas-selection'); if(selection) selection.textContent=name || 'Select a Place on the Map';
+    const selection=document.getElementById('atlas-selection'); if(selection) selection.textContent=name || 'Choose a Place';
+    const context=document.getElementById('atlas-context'); if(context) context.textContent=name ? [document.querySelector('.reg-row.is-selected .reg-meta')?.textContent,document.querySelector('.reg-row.is-selected .reg-word')?.textContent].filter(Boolean).join(' · ') : 'Select a directory entry or map marker.';
     drive.innerHTML=`<span class="dossier-label"><i aria-hidden="true"></i>Driving Route</span><strong class="dossier-destination">${name ? 'Home → '+esc(name) : 'Select a Place'}</strong>${result ? `<div class="dossier-values"><span>${esc(result.minutes)}<small> min</small></span><b>${esc(result.miles)} mi</b></div><p class="dossier-context">${esc(feature?.properties.status === 'recommended' ? 'This Week’s Recommendation' : 'Selected Destination')}</p><small class="dossier-provider">OSRM Estimate · No Live Traffic</small>` : `<p class="dossier-message">${esc(message)}</p>`}`;
   }
   dossier('', 'Choose a directory entry or map marker.');

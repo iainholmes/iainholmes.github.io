@@ -5,7 +5,7 @@
     {
       "id": "2026-W40-tue",
       "slot": "tuesday",
-      "status": "published",
+      "status": "withdrawn",
       "published_at": "2026-09-29T07:00:00-04:00",
       "weekend": {
         "start": "2026-10-03",
@@ -154,7 +154,7 @@
     {
       "id": "2026-W41-thu",
       "slot": "thursday",
-      "status": "published",
+      "status": "draft",
       "published_at": "2026-10-08T07:00:00-04:00",
       "weekend": {
         "start": "2026-10-10",

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": "2026-W40-tue",
   "slot": "tuesday",
-  "status": "published",
+  "status": "withdrawn",
   "published_at": "2026-09-29T07:00:00-04:00",
   "weekend": {
     "start": "2026-10-03",
@@ -12,8 +12,8 @@
     "place_id": "eno-cox-mountain",
     "title": "Cox Mountain and the Fews Ford crossing",
     "standfirst": "A 3.75-mile loop that crosses the Eno on a suspension bridge, climbs about 300 feet to the ridge, and comes back down to the water.",
-    "why_this_week": "Saturday morning is the better half of the weekend. Friday runs near 90°F; Saturday drops to a high near 78 with a 30% chance of showers, and Sunday is wetter. Go early Saturday and the climb happens in the cool.",
-    "headline_condition": "Showers possible Sat–Sun, 30–40%",
+    "why_this_week": "Saturday morning is the better half of the weekend. Friday runs near 90\u00b0F; Saturday drops to a high near 78 with a 30% chance of showers, and Sunday is wetter. Go early Saturday and the climb happens in the cool.",
+    "headline_condition": "Showers possible Sat\u2013Sun, 30\u201340%",
     "condition_level": "normal",
     "snapshot": {
       "as_of": "2026-09-28",
@@ -63,13 +63,13 @@
     "sources": [
       {
         "kind": "guide",
-        "label": "NC Tripping — Eno River trails",
+        "label": "NC Tripping \u2014 Eno River trails",
         "url": "https://www.nctripping.com/eno-river-state-park-trails/",
         "retrieved": "2026-09-29"
       },
       {
         "kind": "guide",
-        "label": "Fleet Feet Raleigh — Fews Ford trails",
+        "label": "Fleet Feet Raleigh \u2014 Fews Ford trails",
         "url": "https://www.fleetfeet.com/s/raleigh/community/eno-river-state-park-fews-ford-trails",
         "retrieved": "2026-09-29"
       },
@@ -78,6 +78,12 @@
         "label": "NWS Raleigh forecast, issued 6:49 a.m. 28 Sep",
         "url": "https://forecast.weather.gov/MapClick.php?lat=35.9149&lon=-79.0568",
         "retrieved": "2026-09-29"
+      },
+      {
+        "kind": "park",
+        "label": "N.C. State Parks \u2014 official closure check",
+        "url": "https://www.ncparks.gov/state-parks/eno-river-state-park/trails",
+        "retrieved": "2026-09-30"
       }
     ],
     "seasons": [
@@ -101,7 +107,7 @@
       },
       {
         "label": "Keep in mind",
-        "text": "Rock at the water’s edge can be slick. Go early Saturday and leave room for other dogs at the bridge."
+        "text": "Rock at the water\u2019s edge can be slick. Go early Saturday and leave room for other dogs at the bridge."
       }
     ],
     "artwork": {
@@ -245,7 +251,7 @@
     "text": "Ten seconds of his first water entry of the day."
   },
   "conditions": {
-    "summary": "Friday near 90°F. Saturday partly sunny, high near 78, 30% chance of showers. Sunday mostly cloudy, high near 75, 40%.",
+    "summary": "Friday near 90\u00b0F. Saturday partly sunny, high near 78, 30% chance of showers. Sunday mostly cloudy, high near 75, 40%.",
     "as_of": "2026-09-28T06:49:00-04:00",
     "pivot": {
       "if": "Showers set in before 9 a.m. Saturday",
@@ -254,7 +260,7 @@
     }
   },
   "practical": {
-    "best_window": "Sat 07:30–10:30",
+    "best_window": "Sat 07:30\u201310:30",
     "fees": "None for day use",
     "bring": [
       "Towel for the car",
@@ -264,5 +270,11 @@
     "closures_checked": null,
     "closures_note": "Check the park's alerts page before leaving."
   },
-  "corrections": []
+  "corrections": [
+    {
+      "at": "2026-09-30T12:00:00-04:00",
+      "field": "flagship",
+      "note": "Recommendation withdrawn: N.C. State Parks lists Cox Mountain Trail CLOSED and gives 4.1 miles, rather than the published 3.75 miles. Do not enter the closed trail."
+    }
+  ]
 }

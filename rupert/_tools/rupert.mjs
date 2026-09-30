@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { accessProblem } from '../assets/js/core/publication.js';
 import { artworkProblems } from '../assets/js/core/adventure.js';
 import { createHash } from 'node:crypto';
 // The Rupert Atlas build tool. No dependencies. Run from anywhere:
@@ -34,17 +35,18 @@ async function load() {
   const site = await readJSON(P('data/site.json'));
   const places = await readJSON(P('data/places.json'));
   const photos = await readJSON(P('data/photos.json'));
+  const accessChecks = await readJSON(P('data/access-checks.json'));
   const schema = await readJSON(P('schema/edition.schema.json'));
   const photoSchema = await readJSON(P('schema/photo.schema.json'));
   const files = (await readdir(P('data/editions'))).filter(f => /^\d{4}-W\d{2}-(tue|thu)\.json$/.test(f)).sort();
   const editions = {};
   for (const f of files) editions[f.replace(/\.json$/, '')] = await readJSON(P('data/editions', f));
-  return { site, places, photos, schema, photoSchema, editions };
+  return { site, places, photos, schema, photoSchema, editions, accessChecks };
 }
 
 /* ---------- checks ---------- */
 
-function checkEditions({ editions, schema, places, photos }) {
+function checkEditions({ editions, schema, places, photos, accessChecks }) {
   const placeIds = new Set(places.places.map(p => p.id));
   const photoIds = new Set(photos.photos.map(p => p.id));
   for (const issue of artworkProblems(editions, photos)) err('illustrations',issue);
@@ -65,6 +67,8 @@ function checkEditions({ editions, schema, places, photos }) {
       const pid = ed[role]?.place_id;
       if (pid && !placeIds.has(pid)) err(id, `${role}.place_id "${pid}" is not in places.json`);
     }
+    const accessIssue=accessProblem(ed,accessChecks.checks,accessChecks.official_hosts);
+    if(accessIssue)err(id,'Publication gate: '+accessIssue);
     const ph = ed.flagship?.photo?.id;
     if (ph && !photoIds.has(ph)) warn(id, `flagship photo "${ph}" is not in photos.json yet (a stand-in will render)`);
     const rec = photos.photos.find(p => p.id === ph);
@@ -172,7 +176,7 @@ function page({ title, description, depth, active, body, site, weekLabel, pageCl
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#172A3A">
+<meta name="theme-color" content="#6F1D24">
 <link rel="preload" href="${base}assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${base}assets/fonts/magrebis-regular.woff" as="font" type="font/woff" crossorigin>
 <link rel="icon" type="image/svg+xml" href="${base}assets/img/rupert-face.svg">
@@ -227,13 +231,16 @@ async function build({ writeFiles }) {
       body: renderWeek(pair, eds, { ...ctx0, base: '' }),
     }));
 
-    for (const ed of Object.values(eds).filter(e => e.status === 'published')) {
+    for (const ed of Object.values(eds).filter(e => ['published','withdrawn'].includes(e.status))) {
       const sib = Object.values(eds).find(o => o.id !== ed.id && o.status === 'published' && o.weekend.start === ed.weekend.start);
       await w(`edition/${ed.id}/index.html`, page({
         title: `${ed.flagship.title} · The Rupert Atlas`, description: ed.flagship.standfirst,
         depth: 2, active: 'week', site: data.site, weekLabel, pageClass: 'page-edition',
         body: renderEdition(ed, { ...ctx0, base: '../../' }, sib), extra: ['assets/js/fetch-view.js'],
       }));
+    }
+    for (const ed of Object.values(eds).filter(e=>e.status==='draft')) {
+      await w(`edition/${ed.id}/index.html`,page({title:'Edition in preparation · The Rupert Atlas',description:'Pending official access review.',depth:2,active:'week',site:data.site,weekLabel,body:'<div class="wrap page-head"><h1>Edition in Preparation</h1><p>This recommendation is awaiting its pre-publication official access check.</p></div>'}));
     }
     await w('edition/index.html', page({
       title: 'Editions · The Rupert Atlas', description: 'All editions', depth: 1, active: 'archive', site: data.site, weekLabel, scripts: false,

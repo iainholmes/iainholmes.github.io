@@ -134,7 +134,7 @@ export function chrome({ active, base, weekLabel, site, body, pageClass = '', no
 <div class="bar" id="bar">
   <div class="wrap bar-inner">
     <a class="bar-mark" href="${base}">The Rupert Atlas</a>
-    <nav class="bar-nav" aria-label="Sections, compact"><ul>${navItems('nav-link')}</ul></nav>
+    <nav class="bar-nav" aria-label="Sections, compact"><ul>${navItems('nav-link')}<li><a class="nav-link" href="${base}archive/"${active === 'archive' ? ' aria-current="page"' : ''}>Archive</a></li></ul></nav>
     <span class="bar-week">${esc(weekLabel.replace('Week ', 'Wk '))}</span>
   </div>
 </div>
@@ -166,6 +166,7 @@ function plate(slot, ed, pair, ctx) {
       : 'Weekend choice 1 of 2.'}</p>
 </article>`;
   }
+  if (ed.status === 'withdrawn') return `<article class="plate is-withdrawn" id="${id}" data-slot="${slot}" aria-labelledby="${id}-h"><p class="p-day">${SLOT_LABEL[slot]} · Withdrawn</p><h2 class="p-title" id="${id}-h">${esc(titleCase(ed.flagship.title))}</h2><p class="p-stand">${esc(ed.corrections.at(-1).note)}</p><p><a href="${base}edition/${esc(ed.id)}/">Read the withdrawal</a></p></article>`;
   const f = ed.flagship;
   const href = `${base}edition/${esc(ed.id)}/`;
   const bits = routeBits(f.snapshot).map(b => `<li>${b}</li>`).join('');
@@ -240,6 +241,7 @@ export function crowdVisual(crowd) {
 /* ---------- full edition ---------- */
 
 export function renderEdition(ed, ctx, sibling) {
+  if (ed.status === 'withdrawn') return `<article class="edition wrap"><header class="ed-head"><p class="header-kicker">Tuesday’s Choice · Withdrawn</p><h1>${esc(titleCase(ed.flagship.title))}</h1></header><section class="withdrawal"><h2 class="sec-h">Official Closure</h2><p>${esc(ed.corrections.at(-1).note)}</p><p>Checked 30 September 2026. The original recommendation is no longer active.</p><a href="https://www.ncparks.gov/state-parks/eno-river-state-park/trails">N.C. State Parks trail status</a></section><p><a href="${ctx.base}">This Week</a> · <a href="${ctx.base}archive/">Archive</a></p></article>`;
   const { base, photos, places } = ctx;
   const f = ed.flagship, s = f.snapshot || {};
   const panels = guidanceFor(f);
@@ -319,9 +321,10 @@ ${fetchDock(f.experiences?.some(x => ['river','swim'].includes(x)) ? 'water' : f
 
 export function renderArchive(groups, ctx) {
   const { base, photos, places } = ctx;
-  const cards = groups.map(g => `<section class="archive-week"><h2>${esc(weekendRange(g.weekend.start,g.weekend.end))}${g.editions.some(e=>e.current)?'<span class="arch-now">This Week</span>':''}</h2><div class="archive-results">${['tuesday','thursday'].map(slot=>{
+  const cards = groups.map(g => `<section class="archive-week${g.editions.some(e=>e.current)?' is-current':''}"><h2>${esc(weekendRange(g.weekend.start,g.weekend.end))}${g.editions.some(e=>e.current)?'<span class="arch-now">This Week</span>':''}</h2><div class="archive-results">${['tuesday','thursday'].map(slot=>{
     const e=g.editions.find(e=>e.slot===slot), publish=expectedPublish(slot,g.weekend.start);
     if(!e) return `<article class="archive-card is-missing"><p class="p-day">${SLOT_LABEL[slot]}</p><p>${publish > (ctx.now || new Date()) ? 'Publishes '+esc(publishedLabel(publish.toISOString())) : 'Not published'}</p></article>`;
+    if(e.status==='withdrawn') return `<article class="archive-card is-withdrawn" data-option="${esc(JSON.stringify({...e.options?.[0],title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''}))}"><div><p class="p-day">${SLOT_LABEL[slot]} · Withdrawn</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">Official trail closure · Recommendation withdrawn</p></div></article>`;
     const option={...(e.options?.find(o=>o.role==='flagship') || {}),title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''};
     return `<article class="archive-card" data-option="${esc(JSON.stringify(option))}"><a href="${base}edition/${esc(e.id)}/" class="archive-image" tabindex="-1" aria-hidden="true">${photo(e.photo_id?{id:e.photo_id}:null,photos,base,{sizes:'(min-width: 760px) 42vw, 90vw'})}</a><div><p class="p-day">${SLOT_LABEL[slot]} · ${esc(publishedLabel(e.published_at))}</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">${esc(option.place_name)}</p></div></article>`;
   }).join('')}</div></section>`).join('');
@@ -361,7 +364,7 @@ export function renderAtlas(model, ctx) {
       <div class="reg-main">
         <h4>${esc(p.name)}</h4>
         <p class="reg-meta">${meta}</p>${start}
-        <p class="reg-status"><span class="reg-word">${STAT[st.status]}</span>${eds ? ` · ${eds}` : ''}</p>
+        <p class="reg-status"><span class="reg-word">${p.closure?.status==='closed' ? 'Closed · Official Status Checked '+p.closure.checked : STAT[st.status]}</span>${eds ? ` · ${eds}` : ''}</p>
       </div>
       <button type="button" class="reg-show" data-show="${esc(p.id)}" hidden>Show on map</button>
     </li>`;
@@ -372,7 +375,7 @@ export function renderAtlas(model, ctx) {
   const legend = ['recommended', 'walked', 'planned', 'register']
     .map(k => `<li>${MARK_SVG[k]}<span>${STAT[k]}</span></li>`).join('');
   return `<div class="atlas">
-  <header class="page-head wrap"><div><p class="header-kicker">North Carolina · Place Directory</p><h1>Atlas</h1></div><aside class="head-note atlas-coverage"><span class="lbl">In the Atlas</span><p>${c.all} Places · ${c.recommended} Recommended<br>${c.walked} Walked · ${c.planned || 0} Planned</p><p id="atlas-selection">Select a Place on the Map</p></aside></header>
+  <header class="page-head wrap"><div><p class="header-kicker">North Carolina · Place Directory</p><h1>Atlas</h1></div><aside class="head-note atlas-coverage"><span class="lbl">Current Place</span><p id="atlas-selection">Choose a Place</p><small id="atlas-context">Select a directory entry or map marker.</small><button type="button" id="atlas-header-action">Show on Map →</button></aside></header>
   <div class="wrap"><details class="location-settings"><summary>Home &amp; Driving Routes</summary>
     <p>Home stays in this browser. Map providers receive the visible map area; home is never published.</p>
     <form id="address-form"><label>Home address<input name="address" autocomplete="street-address" maxlength="240" required placeholder="Street, town, state, ZIP"></label><button>Locate with OpenStreetMap</button></form><p class="season-note">Locating sends the address to OpenStreetMap’s Nominatim service. Check the returned coordinates below before saving home. You can also enter coordinates directly.</p>
@@ -408,7 +411,7 @@ export function renderComing(kind, ctx) {
 }
 
 export function renderTravel(ctx) {
-  return `<div class="travel wrap"><header class="page-head"><div><p class="header-kicker">Routes · Stops · Destination Activities</p><h1>Travel</h1></div><aside class="head-note"><span class="lbl">The Plan</span><p id="travel-header-plan">New Trip</p><p id="travel-header-state">1 Leg · Drive · 0 Saved Trips</p></aside></header>
+  return `<div class="travel wrap"><header class="page-head"><div><p class="header-kicker">Routes · Stops · Destination Activities</p><h1>Travel</h1></div><aside class="head-note"><span class="lbl">Current Journey</span><p id="travel-header-plan">Plan a Trip</p><small id="travel-header-state">Start with a destination</small><a href="#trip-title">Continue Planning →</a></aside></header>
   <noscript>Enable JavaScript to plan a trip.</noscript>
   <div class="travel-grid"><section class="travel-editor"><h2 class="sec-h">Trip Plan</h2><label>Trip name<input id="trip-title" maxlength="160" placeholder="Trip name"></label><div class="trip-dates"><label>Start date<input id="trip-start" type="date"></label><label>End date<input id="trip-end" type="date"></label></div>
   <ol id="trip-legs" class="trip-legs"></ol><div class="travel-actions"><button type="button" id="add-leg">Add leg</button><button type="button" id="save-trip">Save plan</button><button type="button" id="new-trip">New plan</button></div><p id="trip-status" role="status" aria-live="polite"></p>

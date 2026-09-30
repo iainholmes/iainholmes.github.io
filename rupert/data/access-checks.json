@@ -1,0 +1,39 @@
+{
+  "checks": [
+    {
+      "place_id": "eno-cox-mountain",
+      "status": "closed",
+      "checked": "2026-09-30",
+      "official_url": "https://www.ncparks.gov/state-parks/eno-river-state-park/trails",
+      "note": "Official listing: CLOSED, 4.1-mile loop. Published guide figure disagreed.",
+      "discrepancy": true
+    },
+    {
+      "place_id": "umstead-company-mill",
+      "status": "open",
+      "checked": "2026-09-30",
+      "official_url": "https://www.ncparks.gov/state-parks/william-b-umstead-state-park/trails",
+      "note": "Company Mill listed, 5.8 miles. Active construction alert names other multiuse trails.",
+      "discrepancy": false
+    },
+    {
+      "place_id": "occoneechee-mountain",
+      "status": "open",
+      "checked": "2026-09-30",
+      "official_url": "https://www.ncparks.gov/state-parks/occoneechee-mountain-state-natural-area/trails",
+      "note": "Loop listed, 2.2 miles; no closure alert on official listing.",
+      "discrepancy": false
+    },
+    {
+      "place_id": "raven-rock",
+      "status": "open",
+      "checked": "2026-09-30",
+      "official_url": "https://www.ncparks.gov/state-parks/raven-rock-state-park/trails",
+      "note": "Raven Rock Loop listed, 2.6 miles; no closure alert on official listing.",
+      "discrepancy": false
+    }
+  ],
+  "official_hosts": [
+    "www.ncparks.gov"
+  ]
+}

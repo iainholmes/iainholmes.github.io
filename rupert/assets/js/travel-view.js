@@ -42,9 +42,9 @@ function addLeg(leg = { mode: 'car', from: {label:''}, to:{label:''} }, stop = {
   row.append(actions); $('trip-legs').append(row); numberLegs();
 }
 function headerState() {
-  $('travel-header-plan').textContent=$('trip-title').value.trim() || 'New Trip';
-  const modes=[...new Set([...$('trip-legs').querySelectorAll('.leg-mode')].map(s=>s.selectedOptions[0].textContent))];
-  $('travel-header-state').textContent=`${$('trip-legs').children.length} ${$('trip-legs').children.length===1?'Leg':'Legs'} · ${modes.join(' / ')} · ${plans.length} Saved Trips`;
+  const rows=[...$('trip-legs').children], origin=rows[0]?.querySelector('.leg-from').value.trim(), destination=rows.at(-1)?.querySelector('.leg-to').value.trim();
+  $('travel-header-plan').textContent=$('trip-title').value.trim() || (destination ? `${origin || 'Origin'} → ${destination}` : 'Plan a Trip');
+  $('travel-header-state').textContent=destination ? `${origin || 'Origin'} → ${destination}${$('trip-start').value ? ' · '+$('trip-start').value : ''}${activeId ? '' : ' · Unsaved draft'}` : 'Start with a destination';
 }
 function numberLegs() { headerState(); [...$('trip-legs').children].forEach((row,i,all) => { const bs=row.querySelectorAll('.leg-actions button'); bs[0].disabled=i===0; bs[1].disabled=i===all.length-1; }); }
 function collect() {
@@ -60,13 +60,39 @@ function load(plan) {
   postcard=plan?.postcard || null; $('postcard-caption').value=postcard?.caption || ''; paintPostcard();
   dirty=false;
 }
-function savedList() { headerState(); $('saved-trips').replaceChildren(); if(!plans.length) $('saved-trips').append(el('p','No saved trips.')); plans.forEach(p=>{const row=el('p'); row.append(button(p.title,()=>{if(dirty && !confirm('Open this journey and discard unsaved edits?')) return; load(p); status('Journey opened.');})); $('saved-trips').append(row);}); }
+function savedList() {
+  headerState(); const box=$('saved-trips'); box.replaceChildren();
+  if(!plans.length) box.append(el('p','No saved trips.'));
+  for(const p of plans) {
+    const row=el('article',null,'saved-trip'), info=el('div');
+    info.append(el('h3',p.title),el('p',`${p.legs[0]?.from.label || 'Origin'} → ${p.legs.at(-1)?.to.label || 'Destination'}`));
+    if(p.dates?.start || p.dates?.end) info.append(el('small',[p.dates.start,p.dates.end].filter(Boolean).join(' – ')));
+    row.classList.toggle('is-active',p.id===activeId);
+    row.append(info,button('Open',()=>{if(dirty && !confirm('Open this journey and discard unsaved edits?')) return; load(p); savedList(); status('Journey opened.');}),button('Delete',()=>{
+      if(row.querySelector('.trip-delete-confirm'))return;
+      const confirmation=el('div',null,'trip-delete-confirm');
+      confirmation.append(el('p',`Delete “${p.title}” from this browser? Export a backup first to keep a copy.`),button('Confirm Delete',()=>{
+        if(persist(plans.filter(x=>x.id!==p.id))) { if(activeId===p.id){activeId=null;dirty=true;} savedList(); status('Saved trip deleted. The editor is kept as an unsaved draft.'); }
+      }),button('Keep Trip',()=>confirmation.remove())); row.append(confirmation); confirmation.querySelector('button').focus();
+    })); box.append(row);
+  }
+  if(plans.length) box.append(button('Clear All Saved Trips',()=>{
+    if(box.querySelector('.clear-trips-confirm'))return;
+    const confirmation=el('div',null,'clear-trips-confirm'), input=el('input'), label=field('Type DELETE ALL to confirm',input);
+    input.autocomplete='off';
+    const remove=button('Delete All Trips',()=>{
+      if(input.value!=='DELETE ALL')return;
+      if(persist([])){if(activeId)dirty=true;activeId=null;savedList();status('All saved trips cleared. The editor is kept as an unsaved draft.');}
+    });remove.disabled=true;input.addEventListener('input',()=>remove.disabled=input.value!=='DELETE ALL');
+    confirmation.append(el('p',`Delete all ${plans.length} saved trips? This cannot be undone. Export a backup first.`),label,remove,button('Keep Trips',()=>confirmation.remove()));box.append(confirmation);input.focus();
+  }));
+}
 $('add-leg').addEventListener('click',()=>{addLeg();dirty=true;clearMap();});
 $('save-trip').addEventListener('click',()=>{try { const plan=collect(), next=plans.filter(p=>p.id!==plan.id).concat(plan); if(next.length>100) throw Error('Export your journeys before adding more.'); if(persist(next)) {activeId=plan.id;dirty=false;savedList();status('Plan saved in this browser.');} } catch(e){status(e.message);} });
 $('new-trip').addEventListener('click',()=>{if(dirty && !confirm('Start a new journey and discard unsaved edits?')) return;load();status('New journey.');});
 $('export-trips').addEventListener('click',()=>{try {let exportPlans=plans; if(dirty){const draft=collect();exportPlans=plans.filter(p=>p.id!==draft.id).concat(draft);}const blob=new Blob([JSON.stringify({schema_version:1,plans:exportPlans},null,2)],{type:'application/json'}), url=URL.createObjectURL(blob), a=el('a');a.href=url;a.download='rupert-travel-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status('Backup exported, including the current draft.');} catch(e){status(e.message);} });
 $('import-trips').addEventListener('change',async e=>{try{const file=e.target.files[0];if(!file)return;const incoming=readBackup(await file.text()), next=[...plans];for(const p of incoming){if(!next.some(x=>x.id===p.id))next.push(p);}if(next.length>100)throw Error('Too many journeys.');const added=next.length-plans.length;if(persist(next)){savedList();status(`Imported ${added} journeys; existing plans were kept.`);}}catch(e){status('Import failed: '+e.message);}finally{e.target.value='';}});
-document.querySelector('.travel-editor').addEventListener('input',e=>{dirty=true;headerState();if(e.target.closest('#trip-legs')&&(mapped||routeController)){clearMap();$('trip-map-status').textContent='Trip changed. Map trip to update the route.';}});
+document.querySelector('.travel-editor').addEventListener('input',e=>{if(!e.target.matches('#trip-title,#trip-start,#trip-end')&&!e.target.closest('#trip-legs'))return;dirty=true;headerState();if(e.target.closest('#trip-legs')&&(mapped||routeController)){clearMap();$('trip-map-status').textContent='Trip changed. Map trip to update the route.';}});
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
 function paintPostcard() {
   const box=$('journey-postcard');box.replaceChildren();box.hidden=!postcard;
@@ -145,10 +171,10 @@ function chooseStop(p,legIndex) {
 async function showActivities(version,signal) {
   if(!mapped)return;const current=mapped,routeBox=$('route-activities'),destinationBox=$('destination-activities');routeBox.replaceChildren(el('p','Checking route stops…'));destinationBox.replaceChildren();
   const destination=current.plan.legs.at(-1).to;
-  let near=places.filter(p=>distanceMiles(destination,p.access)<=25).sort((a,b)=>distanceMiles(destination,a.access)-distanceMiles(destination,b.access)).slice(0,5);
+  let near=places.filter(p=>p.closure?.status!=='closed' && distanceMiles(destination,p.access)<=25).sort((a,b)=>distanceMiles(destination,a.access)-distanceMiles(destination,b.access)).slice(0,5);
   current.destinationPlaces=near;renderDestination(near,destination);paintMap();
   const maximum=Number($('trip-detour').value),candidates=[];
-  current.plan.legs.forEach((leg,i)=>{const result=current.baseResults[i];if(!result)return;for(const p of places){if(distanceMiles(p.access,leg.from)<1 || distanceMiles(p.access,leg.to)<1)continue;const offset=distanceToRoute(p.access,result.feature.geometry.coordinates);if(offset<maximum/3)candidates.push({p,i,offset});}});
+  current.plan.legs.forEach((leg,i)=>{const result=current.baseResults[i];if(!result)return;for(const p of places){if(p.closure?.status==='closed')continue;if(distanceMiles(p.access,leg.from)<1 || distanceMiles(p.access,leg.to)<1)continue;const offset=distanceToRoute(p.access,result.feature.geometry.coordinates);if(offset<maximum/3)candidates.push({p,i,offset});}});
   candidates.sort((a,b)=>a.offset-b.offset);const seen=new Set(),chosen=candidates.filter(c=>{if(seen.has(c.p.id))return false;seen.add(c.p.id);return true;}).slice(0,4);const cards=[];
   for(const {p,i} of chosen){if(version!==requestVersion)return;try{const leg=current.plan.legs[i],detour=await drivingRoute(leg.from,leg.to,{via:[p.access],signal}),extra=Math.max(0,detour.minutes-current.baseResults[i].minutes);if(extra<=maximum)cards.push(activityCard(p,`Leg ${i+1} · +${extra} min drive · ${p.routes?.[0]?.distance_mi ? p.routes[0].distance_mi+' mi walk' : 'Walk'}`,{label:'Add stop',run:()=>chooseStop(p,i)}));}catch(error){if(signal.aborted)throw error;}}
   if(version!==requestVersion)return;routeBox.replaceChildren(...(cards.length?cards:[el('p','No directory stops within this detour limit.')]));

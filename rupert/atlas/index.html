@@ -7,7 +7,7 @@
 <meta name="description" content="Places recommended, walked and planned, on a map and in a register.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="#172A3A">
+<meta name="theme-color" content="#6F1D24">
 <link rel="preload" href="../assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/magrebis-regular.woff" as="font" type="font/woff" crossorigin>
 <link rel="icon" type="image/svg+xml" href="../assets/img/rupert-face.svg">
@@ -27,13 +27,13 @@
 <div class="bar" id="bar">
   <div class="wrap bar-inner">
     <a class="bar-mark" href="../">The Rupert Atlas</a>
-    <nav class="bar-nav" aria-label="Sections, compact"><ul><li><a class="nav-link" href="../">This Week</a></li><li><a class="nav-link" href="../atlas/" aria-current="page">Atlas</a></li><li><a class="nav-link" href="../travel/">Travel</a></li><li><a class="nav-link" href="../log/">Field Log</a></li></ul></nav>
+    <nav class="bar-nav" aria-label="Sections, compact"><ul><li><a class="nav-link" href="../">This Week</a></li><li><a class="nav-link" href="../atlas/" aria-current="page">Atlas</a></li><li><a class="nav-link" href="../travel/">Travel</a></li><li><a class="nav-link" href="../log/">Field Log</a></li><li><a class="nav-link" href="../archive/">Archive</a></li></ul></nav>
     <span class="bar-week">Wk 40 · 2026 · Autumn</span>
   </div>
 </div>
 <main id="main" class="page-atlas" tabindex="-1">
 <div class="atlas">
-  <header class="page-head wrap"><div><p class="header-kicker">North Carolina · Place Directory</p><h1>Atlas</h1></div><aside class="head-note atlas-coverage"><span class="lbl">In the Atlas</span><p>9 Places · 1 Recommended<br>0 Walked · 0 Planned</p><p id="atlas-selection">Select a Place on the Map</p></aside></header>
+  <header class="page-head wrap"><div><p class="header-kicker">North Carolina · Place Directory</p><h1>Atlas</h1></div><aside class="head-note atlas-coverage"><span class="lbl">Current Place</span><p id="atlas-selection">Choose a Place</p><small id="atlas-context">Select a directory entry or map marker.</small><button type="button" id="atlas-header-action">Show on Map →</button></aside></header>
   <div class="wrap"><details class="location-settings"><summary>Home &amp; Driving Routes</summary>
     <p>Home stays in this browser. Map providers receive the visible map area; home is never published.</p>
     <form id="address-form"><label>Home address<input name="address" autocomplete="street-address" maxlength="240" required placeholder="Street, town, state, ZIP"></label><button>Locate with OpenStreetMap</button></form><p class="season-note">Locating sends the address to OpenStreetMap’s Nominatim service. Check the returned coordinates below before saving home. You can also enter coordinates directly.</p>
@@ -54,16 +54,16 @@
       <div class="reg-head"><h2 id="reg-h">Place Directory</h2>
         <div class="reg-filter" role="group" aria-label="Show places" hidden>
           <button type="button" data-filter="all" aria-pressed="true">All <span>9</span></button>
-          <button type="button" data-filter="recommended" aria-pressed="false">Recommended <span>1</span></button>
+          <button type="button" data-filter="recommended" aria-pressed="false" disabled>Recommended <span>0</span></button>
           <button type="button" data-filter="walked" aria-pressed="false" disabled>Walked <span>0</span></button>
         </div></div>
       <section class="reg-group" data-region="Durham County">
-      <h3 class="reg-region">Durham County</h3><ul class="reg"><li class="reg-row" id="place-eno-cox-mountain" data-place="eno-cox-mountain" data-status="recommended">
-      <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
+      <h3 class="reg-region">Durham County</h3><ul class="reg"><li class="reg-row" id="place-eno-cox-mountain" data-place="eno-cox-mountain" data-status="register">
+      <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
       <div class="reg-main">
         <h4>Eno River State Park — Cox Mountain Trail</h4>
-        <p class="reg-meta">3.75 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Fews Ford access, 6101 Cole Mill Rd.</p>
-        <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-tue/">Tuesday&#39;s choice, 3–4 Oct</a></p>
+        <p class="reg-meta">4.1 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Fews Ford access, 6101 Cole Mill Rd.</p>
+        <p class="reg-status"><span class="reg-word">Closed · Official Status Checked 2026-09-30</span></p>
       </div>
       <button type="button" class="reg-show" data-show="eno-cox-mountain" hidden>Show on map</button>
     </li></ul></section><section class="reg-group" data-region="Harnett County">
@@ -137,7 +137,7 @@
     </li></ul></section>
     </section>
   </div>
-  <script type="application/json" id="atlas-data">{"features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.006,36.0737]},"properties":{"id":"eno-cox-mountain","name":"Cox Mountain","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.7598,35.836]},"properties":{"id":"umstead-company-mill","name":"Company Mill","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0665,35.9407]},"properties":{"id":"carolina-north-forest","name":"Carolina North","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-80.266,36.3947]},"properties":{"id":"hanging-rock-moores-wall","name":"Moore's Wall","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.117,36.0606]},"properties":{"id":"occoneechee-mountain","name":"Occoneechee Mountain","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.1105,36.0708]},"properties":{"id":"hillsborough-riverwalk","name":"Riverwalk","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0294,35.9781]},"properties":{"id":"duke-forest-korstian","name":"Korstian Division","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.9142,35.4639]},"properties":{"id":"raven-rock","name":"Raven Rock","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0589,36.0314]},"properties":{"id":"brumley-forest","name":"Brumley Forest","status":"register"}}],"bounds":[[-80.346,35.383900000000004],[-78.6798,36.4747]]}</script>
+  <script type="application/json" id="atlas-data">{"features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.006,36.0737]},"properties":{"id":"eno-cox-mountain","name":"Cox Mountain","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.7598,35.836]},"properties":{"id":"umstead-company-mill","name":"Company Mill","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0665,35.9407]},"properties":{"id":"carolina-north-forest","name":"Carolina North","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-80.266,36.3947]},"properties":{"id":"hanging-rock-moores-wall","name":"Moore's Wall","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.117,36.0606]},"properties":{"id":"occoneechee-mountain","name":"Occoneechee Mountain","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.1105,36.0708]},"properties":{"id":"hillsborough-riverwalk","name":"Riverwalk","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0294,35.9781]},"properties":{"id":"duke-forest-korstian","name":"Korstian Division","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.9142,35.4639]},"properties":{"id":"raven-rock","name":"Raven Rock","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0589,36.0314]},"properties":{"id":"brumley-forest","name":"Brumley Forest","status":"register"}}],"bounds":[[-80.346,35.383900000000004],[-78.6798,36.4747]]}</script>
 </div>
 </main>
 <footer class="utility-footer"><div class="wrap"><a href="../archive/">Archive</a><a href="../atlas/">Place Directory</a><span>2026</span></div></footer>

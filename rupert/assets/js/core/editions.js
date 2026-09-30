@@ -11,7 +11,8 @@ export function expectedPublish(slot, weekendStart) {
 
 /**
  * Choose the pair of editions to show.
- * Only editions with status "published" and published_at <= now count.
+ * Published editions and withdrawal notices with published_at <= now count.
+ * Withdrawal notices preserve the weekend context; they are not active recommendations.
  * The latest weekend with at least one published choice wins.
  *
  * Returns { weekend, tuesday, thursday, state, missing } or null when nothing is published yet.
@@ -19,7 +20,7 @@ export function expectedPublish(slot, weekendStart) {
  *   missing: for each empty slot, the time it is expected (only meaningful while state !== "past")
  */
 export function selectCurrentPair(manifest, now = new Date()) {
-  const live = manifest.editions.filter(e => e.status === 'published' && new Date(e.published_at) <= now);
+  const live = manifest.editions.filter(e => ['published','withdrawn'].includes(e.status) && new Date(e.published_at) <= now);
   if (!live.length) return null;
 
   const latestStart = live.map(e => e.weekend.start).sort().at(-1);
@@ -49,7 +50,7 @@ export function pairKey(pair) {
 /** Archive grouping: every published edition not in the current pair, newest weekend first. */
 export function archiveGroups(manifest, now = new Date(), current = selectCurrentPair(manifest, now)) {
   const shown = new Set([current?.tuesday?.id, current?.thursday?.id].filter(Boolean));
-  const live = manifest.editions.filter(e => e.status === 'published' && new Date(e.published_at) <= now);
+  const live = manifest.editions.filter(e => ['published','withdrawn'].includes(e.status) && new Date(e.published_at) <= now);
   const byWeekend = new Map();
   for (const e of live) {
     if (!byWeekend.has(e.weekend.start)) byWeekend.set(e.weekend.start, { weekend: e.weekend, editions: [] });
