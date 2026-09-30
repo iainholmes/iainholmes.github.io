@@ -13,6 +13,107 @@
       },
       "title": "Cox Mountain and the Fews Ford crossing",
       "place_id": "eno-cox-mountain",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Cox Mountain and the Fews Ford crossing",
+          "place_id": "eno-cox-mountain",
+          "seasons": [
+            "spring",
+            "summer",
+            "autumn"
+          ],
+          "experiences": [
+            "woodland",
+            "river",
+            "ridge"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "local_trail",
+          "title": "Carolina North Forest",
+          "place_id": "carolina-north-forest",
+          "seasons": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "away_mission",
+          "title": "Hanging Rock, Moore's Wall Loop",
+          "place_id": "hanging-rock-moores-wall",
+          "seasons": [
+            "spring",
+            "autumn"
+          ],
+          "experiences": [
+            "ridge",
+            "full-day"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "wildcard",
+          "title": "Occoneechee Mountain, then the Hillsborough Riverwalk",
+          "place_id": "occoneechee-mountain",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "ridge",
+            "short-walk",
+            "river",
+            "town-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
       "place_ids": [
         "eno-cox-mountain",
         "carolina-north-forest",
@@ -51,6 +152,103 @@
       },
       "title": "Company Mill and the old dam on Crabtree Creek",
       "place_id": "umstead-company-mill",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Company Mill and the old dam on Crabtree Creek",
+          "place_id": "umstead-company-mill",
+          "seasons": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "river"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "local_trail",
+          "title": "Duke Forest, Korstian Division",
+          "place_id": "duke-forest-korstian",
+          "seasons": [
+            "spring",
+            "autumn"
+          ],
+          "experiences": [
+            "woodland"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "away_mission",
+          "title": "Raven Rock Loop, above the Cape Fear",
+          "place_id": "raven-rock",
+          "seasons": [
+            "spring",
+            "autumn"
+          ],
+          "experiences": [
+            "river",
+            "woodland"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "wildcard",
+          "title": "Brumley Forest, before eight",
+          "place_id": "brumley-forest",
+          "seasons": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
       "place_ids": [
         "umstead-company-mill",
         "duke-forest-korstian",
@@ -89,6 +287,105 @@
       },
       "title": "Occoneechee Mountain and the quarry overlook",
       "place_id": "occoneechee-mountain",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Occoneechee Mountain and the quarry overlook",
+          "place_id": "occoneechee-mountain",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "ridge",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "local_trail",
+          "title": "Brumley Forest",
+          "place_id": "brumley-forest",
+          "seasons": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "away_mission",
+          "title": "Hanging Rock, Moore's Wall Loop",
+          "place_id": "hanging-rock-moores-wall",
+          "seasons": [
+            "spring",
+            "autumn"
+          ],
+          "experiences": [
+            "ridge",
+            "full-day"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "wildcard",
+          "title": "Hillsborough Riverwalk, after the mountain",
+          "place_id": "hillsborough-riverwalk",
+          "seasons": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "river",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
       "place_ids": [
         "occoneechee-mountain",
         "brumley-forest",
@@ -127,6 +424,103 @@
       },
       "title": "Raven Rock and the stairs down to the Cape Fear",
       "place_id": "raven-rock",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Raven Rock and the stairs down to the Cape Fear",
+          "place_id": "raven-rock",
+          "seasons": [
+            "spring",
+            "autumn"
+          ],
+          "experiences": [
+            "river",
+            "woodland"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "local_trail",
+          "title": "Carolina North Forest",
+          "place_id": "carolina-north-forest",
+          "seasons": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "away_mission",
+          "title": "Umstead, Company Mill the long way",
+          "place_id": "umstead-company-mill",
+          "seasons": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "river"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        },
+        {
+          "role": "wildcard",
+          "title": "Duke Forest, Korstian Division",
+          "place_id": "duke-forest-korstian",
+          "seasons": [
+            "spring",
+            "autumn"
+          ],
+          "experiences": [
+            "woodland"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
       "place_ids": [
         "raven-rock",
         "carolina-north-forest",

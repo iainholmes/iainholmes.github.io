@@ -19,32 +19,40 @@
       "drive": { "from": "chapel-hill-public", "minutes": [70, 80] },
       "duration_h": [2, 3],
       "dog": { "leash": "Leashed, 6 ft maximum", "water": "The Cape Fear at the foot of the stairs, where the bank allows", "shade": "Wooded to the rock", "watch_for": ["The stairs: a long climb back up", "Current in the Cape Fear: keep him on the leash at the water's edge"] }
-    },
+    , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
     "photo": { "id": "rupert-plate-bank-trail", "alt": "Block-print plate: Rupert walks on a bank trail with a tennis ball and a red leash, beside a dark river beneath a full moon and wooded cliffs." },
     "sources": [
       { "kind": "park", "label": "NC State Parks — Raven Rock State Park", "url": "https://www.ncparks.gov/state-parks/raven-rock-state-park", "retrieved": "2026-09-29" },
       { "kind": "guide", "label": "NC Tripping — Raven Rock State Park", "url": "https://www.nctripping.com/raven-rock-state-park/", "retrieved": "2026-09-29" },
       { "kind": "forecast", "label": "NOAA CPC 6–10 and 8–14 day outlooks, issued 28 Sep", "url": "https://www.cpc.ncep.noaa.gov/products/predictions/610day/fxus06.html", "retrieved": "2026-09-29" }
-    ]
+    ],
+    "seasons": ["spring", "autumn"],
+    "experiences": ["river", "woodland"]
   },
   "local_trail": {
     "place_id": "carolina-north-forest",
     "title": "Carolina North Forest",
     "line": "Soft trail five minutes from town, if the drive south stops making sense.",
-    "snapshot": { "as_of": "2026-09-29", "drive": { "from": "chapel-hill-public", "minutes": [5, 10] }, "duration_h": [1, 1.5] }
+    "snapshot": { "as_of": "2026-09-29", "drive": { "from": "chapel-hill-public", "minutes": [5, 10] }, "duration_h": [1, 1.5] , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "experiences": ["woodland", "short-walk"]
   },
   "away_mission": {
     "place_id": "umstead-company-mill",
     "title": "Umstead, Company Mill the long way",
     "line": "5.8 miles to the old mill dam on Crabtree Creek. The half-day alternative, with the creek crossed on a bridge.",
     "commitment": "Half day",
-    "snapshot": { "as_of": "2026-09-29", "route": { "route_id": "umstead-company-mill-loop@1", "distance_mi": 5.8, "shape": "loop", "difficulty": "moderate" }, "drive": { "from": "chapel-hill-public", "minutes": [30, 40] } }
+    "snapshot": { "as_of": "2026-09-29", "route": { "route_id": "umstead-company-mill-loop@1", "distance_mi": 5.8, "shape": "loop", "difficulty": "moderate" }, "drive": { "from": "chapel-hill-public", "minutes": [30, 40] } , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "experiences": ["woodland", "river"]
   },
   "wildcard": {
     "place_id": "duke-forest-korstian",
     "title": "Duke Forest, Korstian Division",
     "line": "Fire roads down to New Hope Creek, fifteen minutes out: an hour, not a day.",
-    "snapshot": { "as_of": "2026-09-29", "drive": { "from": "chapel-hill-public", "minutes": [10, 15] } }
+    "snapshot": { "as_of": "2026-09-29", "drive": { "from": "chapel-hill-public", "minutes": [10, 15] } , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
+    "seasons": ["spring", "autumn"],
+    "experiences": ["woodland"]
   },
   "mission": { "text": "On the way back up the stairs, practise a sit-and-wait at every landing.", "tone": "training" },
   "memory_prompt": { "kind": "observation", "text": "What he does first at the river: drink, wade or stare." },

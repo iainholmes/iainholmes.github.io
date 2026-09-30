@@ -17,7 +17,7 @@ import { spawnSync } from 'node:child_process';
 import { validate } from './validate.mjs';
 import { selectCurrentPair, archiveGroups } from '../assets/js/core/editions.js';
 import { parseDate, nyDateString } from '../assets/js/core/dates.js';
-import { chrome, renderWeek, renderEdition, renderArchive, renderAtlas, renderComing, weekLabelFor, esc } from '../assets/js/core/render.js';
+import { chrome, renderWeek, renderEdition, renderArchive, renderAtlas, renderComing, renderTravel, weekLabelFor, esc } from '../assets/js/core/render.js';
 import { placeStatuses, markerFeatures, boundsOf, registerGroups, counts } from '../assets/js/core/atlas.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -150,6 +150,7 @@ function manifestFrom(editions) {
       .map(e => ({
         id: e.id, slot: e.slot, status: e.status, published_at: e.published_at, weekend: e.weekend,
         title: e.flagship.title, place_id: e.flagship.place_id,
+        options: ['flagship', 'local_trail', 'away_mission', 'wildcard'].map(role => ({ role, title: e[role].title, place_id: e[role].place_id, seasons: e[role].seasons, experiences: e[role].experiences, crowd: e[role].snapshot.crowd })),
         place_ids: ['flagship', 'local_trail', 'away_mission', 'wildcard'].map(r => e[r]?.place_id).filter(Boolean),
         place_roles: ['flagship', 'local_trail', 'away_mission', 'wildcard'].filter(r => e[r]?.place_id).map(r => ({ place_id: e[r].place_id, role: r })),
         photo_id: e.flagship.photo?.id || null,
@@ -172,6 +173,7 @@ ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta
 <meta name="theme-color" content="#1C1511" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="${base}assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${base}assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" type="image/svg+xml" href="${base}assets/img/rupert-face.svg">
 <link rel="stylesheet" href="${base}assets/css/atlas.css">
 ${scripts ? `<script type="module" src="${base}assets/js/site.js"></script>\n` : ''}${extra.map(x => `<script type="module" src="${base}${x}"></script>\n`).join('')}</head>
 <body data-base="${base}" data-section="${active}">
@@ -242,8 +244,8 @@ async function build({ writeFiles }) {
     }));
     for (const k of ['travel', 'log']) {
       await w(`${k}/index.html`, page({
-        title: `${k === 'log' ? 'Field Log' : 'Travel'} · The Rupert Atlas`, description: 'In preparation.',
-        depth: 1, active: k, site: data.site, weekLabel, body: renderComing(k, { base: '../' }),
+        title: `${k === 'log' ? 'Field Log' : 'Travel'} · The Rupert Atlas`, description: k === 'travel' ? 'Plan journeys as ordered legs, with stops and browser-local backups.' : 'A record of days together, in preparation.',
+        depth: 1, active: k, site: data.site, weekLabel, extra: k === 'travel' ? ['assets/js/travel-view.js'] : [], body: k === 'travel' ? renderTravel({ base: '../', places: data.places }) : renderComing(k, { base: '../' }),
       }));
     }
     console.log(changed.length ? `wrote:\n  ${changed.join('\n  ')}` : 'no changes');

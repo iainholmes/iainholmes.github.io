@@ -263,7 +263,8 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "as_of"
+        "as_of",
+        "crowd"
       ],
       "properties": {
         "as_of": {
@@ -370,6 +371,9 @@
               }
             }
           }
+        },
+        "crowd": {
+          "$ref": "#/$defs/crowd"
         }
       }
     },
@@ -415,7 +419,9 @@
         "snapshot",
         "photo",
         "sources",
-        "condition_level"
+        "condition_level",
+        "seasons",
+        "experiences"
       ],
       "properties": {
         "place_id": {
@@ -456,6 +462,33 @@
             "adverse"
           ],
           "description": "adverse = storms, dangerous heat, flooding, closures, ice. Only adverse gets the Field Red warning treatment."
+        },
+        "seasons": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "spring",
+              "summer",
+              "autumn",
+              "winter"
+            ]
+          }
+        },
+        "experiences": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "woodland",
+              "river",
+              "ridge",
+              "short-walk",
+              "full-day",
+              "swim",
+              "town-walk"
+            ]
+          }
         }
       }
     },
@@ -466,7 +499,9 @@
         "place_id",
         "title",
         "line",
-        "snapshot"
+        "snapshot",
+        "seasons",
+        "experiences"
       ],
       "properties": {
         "place_id": {
@@ -485,6 +520,110 @@
         },
         "snapshot": {
           "$ref": "#/$defs/snapshot"
+        },
+        "seasons": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "spring",
+              "summer",
+              "autumn",
+              "winter"
+            ]
+          }
+        },
+        "experiences": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "woodland",
+              "river",
+              "ridge",
+              "short-walk",
+              "full-day",
+              "swim",
+              "town-walk"
+            ]
+          }
+        }
+      }
+    },
+    "crowd": {
+      "description": "Core outing metadata. Null means not assessed, never Low. Levels describe typical presence and perceived crowding independently; attendance may describe observed headcounts or qualitative presence. Freeze at publication.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "typical_level",
+        "low_crowd_window",
+        "peak_period",
+        "weekend_vs_weekday",
+        "foot_traffic",
+        "dog_density",
+        "attendance",
+        "perceived_crowding"
+      ],
+      "properties": {
+        "typical_level": {
+          "enum": [
+            "Low",
+            "Moderate",
+            "Busy",
+            "Very Busy",
+            null
+          ]
+        },
+        "low_crowd_window": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "peak_period": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "weekend_vs_weekday": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "foot_traffic": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "dog_density": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "attendance": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "perceived_crowding": {
+          "enum": [
+            "Low",
+            "Moderate",
+            "Busy",
+            "Very Busy",
+            null
+          ]
         }
       }
     }

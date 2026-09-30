@@ -19,31 +19,39 @@
       "drive": { "from": "chapel-hill-public", "minutes": [30, 40] },
       "duration_h": [2.5, 3],
       "dog": { "leash": "Leashed, 6 ft maximum", "water": "Crabtree Creek at the old dam, about a mile in", "shade": "Wooded throughout", "watch_for": ["Bikes near the Reedy Creek lot", "Roots on the descents"] }
-    },
+    , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
     "photo": { "id": "rupert-lawn-2023-01", "alt": "Field print of Rupert in his mustard collar, grinning up at the camera, with two friends on a winter lawn." },
     "sources": [
       { "kind": "guide", "label": "This Is Raleigh — Company Mill Trail", "url": "https://thisisraleigh.com/?p=54244", "retrieved": "2026-09-29" },
       { "kind": "forecast", "label": "NWS Raleigh forecast, issued 6:49 a.m. 28 Sep", "url": "https://forecast.weather.gov/MapClick.php?lat=35.9149&lon=-79.0568", "retrieved": "2026-09-29" }
-    ]
+    ],
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "experiences": ["woodland", "river"]
   },
   "local_trail": {
     "place_id": "duke-forest-korstian",
     "title": "Duke Forest, Korstian Division",
     "line": "Fire roads and footpaths down to New Hope Creek, fifteen minutes out.",
-    "snapshot": { "as_of": "2026-09-28", "drive": { "from": "chapel-hill-public", "minutes": [10, 15] }, "duration_h": [1, 2] }
+    "snapshot": { "as_of": "2026-09-28", "drive": { "from": "chapel-hill-public", "minutes": [10, 15] }, "duration_h": [1, 2] , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
+    "seasons": ["spring", "autumn"],
+    "experiences": ["woodland"]
   },
   "away_mission": {
     "place_id": "raven-rock",
     "title": "Raven Rock Loop, above the Cape Fear",
     "line": "A 2.6-mile loop to the cliffs, then the stairs down to the river. A half day with a long lunch.",
     "commitment": "Half day",
-    "snapshot": { "as_of": "2026-09-28", "route": { "route_id": "raven-rock-loop@1", "distance_mi": 2.6, "shape": "loop" }, "drive": { "from": "chapel-hill-public", "minutes": [70, 80] } }
+    "snapshot": { "as_of": "2026-09-28", "route": { "route_id": "raven-rock-loop@1", "distance_mi": 2.6, "shape": "loop" }, "drive": { "from": "chapel-hill-public", "minutes": [70, 80] } , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
+    "seasons": ["spring", "autumn"],
+    "experiences": ["river", "woodland"]
   },
   "wildcard": {
     "place_id": "brumley-forest",
     "title": "Brumley Forest, before eight",
     "line": "Woods and field edges ten minutes north of town, quiet if you're early.",
-    "snapshot": { "as_of": "2026-09-28", "drive": { "from": "chapel-hill-public", "minutes": [10, 15] } }
+    "snapshot": { "as_of": "2026-09-28", "drive": { "from": "chapel-hill-public", "minutes": [10, 15] } , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "experiences": ["woodland", "short-walk"]
   },
   "mission": { "text": "Let Rupert choose the way at three trail junctions, then find your way back to the loop.", "tone": "explore" },
   "memory_prompt": { "kind": "photo", "text": "The largest acceptable stick, with Rupert for scale." },

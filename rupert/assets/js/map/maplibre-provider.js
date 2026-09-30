@@ -132,7 +132,7 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
       } else if (!done && (e?.sourceId === 'omt' || /\/planet\b/.test(text) || (tileUrlOverride && text.includes(tileUrlOverride)))) {
         done = true; clearTimeout(t); reject(fail('tiles', 'Map tiles failed to load'));
       } else if (done) {
-        emit('trouble', 'Some map tiles failed to load.');
+        emit('trouble', e?.sourceId === 'relief' ? 'Terrain tiles could not load; relief is unavailable.' : 'Some map tiles failed to load.');
       }
     });
   }).catch(err => { withDiag(err); map.remove(); throw err; });
@@ -171,8 +171,9 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   const empty = { type: 'FeatureCollection', features: [] };
   map.addSource('routes', { type: 'geojson', data: empty });
   map.addSource('marks', { type: 'geojson', data: empty, promoteId: 'id' });
+  map.addLayer({ id: 'route-halo', type: 'line', source: 'routes', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#5A3524', 'line-width': 10, 'line-opacity': 0.9 } });
   map.addLayer({ id: 'route-line', type: 'line', source: 'routes',
-    paint: { 'line-color': '#1E3547', 'line-width': 3, 'line-dasharray': ['case', ['==', ['get', 'status'], 'walked'], ['literal', [1, 0]], ['literal', [2, 1.2]]] } });
+    layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#F0B852', 'line-width': 6, 'line-opacity': 0.95 } });
   const statusOrder = ['match', ['get', 'status'], 'recommended', 3, 'walked', 2, 'planned', 1, 0];
   map.addLayer({ id: 'marks', type: 'symbol', source: 'marks',
     layout: {
@@ -226,23 +227,34 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
       perLayer,
       controls: `${box(ctrl)} ${cs(ctrl)}`,
       attribution: `${box(attrib)} ${cs(attrib)}`,
+      reliefVisible: map.getLayoutProperty('relief', 'visibility'), reliefLoaded: map.isSourceLoaded('relief'),
       zoom: (() => { try { return +map.getZoom().toFixed(2); } catch { return null; } })(),
     };
   }
 
-  let marks = [];
+  let marks = [], homeMarker = null, homePoint = null;
+  const duration = n => matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : n;
   const api = {
     raw: map,
     setMarkers(features) { marks = features; map.getSource('marks').setData({ type: 'FeatureCollection', features }); },
     setRoutes(features) { map.getSource('routes').setData({ type: 'FeatureCollection', features }); },
-    fit(b, opts = {}) { map.fitBounds(b, { padding: 48, duration: 600, ...opts }); },
+    fit(b, opts = {}) { map.fitBounds(b, { padding: 48, duration: duration(600), ...opts }); },
     select(id) { map.setFilter('marks-sel', ['==', ['get', 'id'], id || '']); },
     focus(id) {
       const f = marks.find(m => m.properties.id === id); if (!f) return;
       api.select(id);
-      map.easeTo({ center: f.geometry.coordinates, zoom: Math.max(map.getZoom(), 11), duration: 700 });
+      map.easeTo({ center: f.geometry.coordinates, zoom: Math.max(map.getZoom(), 11), duration: duration(700) });
     },
-    setRelief(on) { map.setLayoutProperty('relief', 'visibility', on ? 'visible' : 'none'); },
+    setRelief(on) { map.setLayoutProperty('relief', 'visibility', on ? 'visible' : 'none'); map.triggerRepaint(); },
+    setHome(point) {
+      homePoint = point;
+      homeMarker?.remove(); homeMarker = null;
+      if (!point) return;
+      const icon = document.createElement('div'); icon.className = 'home-marker'; icon.title = 'Home';
+      const img = document.createElement('img'); img.src = base + 'assets/img/rupert-face.svg'; img.alt = 'Home'; icon.append(img);
+      homeMarker = new maplibregl.Marker({ element: icon }).setLngLat([point.lng, point.lat]).addTo(map);
+    },
+    centerHome() { if (homePoint) map.easeTo({center:[homePoint.lng,homePoint.lat],zoom:10,duration:duration(600)}); else api.fit(bounds); },
     on(type, fn) { handlers[type]?.push(fn); return api; },
     diagnostics,
     destroy() { map.remove(); },

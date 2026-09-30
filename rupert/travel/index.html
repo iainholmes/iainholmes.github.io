@@ -4,21 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Travel · The Rupert Atlas</title>
-<meta name="description" content="In preparation.">
+<meta name="description" content="Plan journeys as ordered legs, with stops and browser-local backups.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#ECE5D4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1C1511" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="../assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" type="image/svg+xml" href="../assets/img/rupert-face.svg">
 <link rel="stylesheet" href="../assets/css/atlas.css">
 <script type="module" src="../assets/js/site.js"></script>
+<script type="module" src="../assets/js/travel-view.js"></script>
 </head>
 <body data-base="../" data-section="travel">
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead" id="masthead">
   <div class="wrap">
-    <div class="dateline"><span>Chapel Hill, N.C. · Est. 2026</span><span>Week 40 · 2026</span></div>
+    <div class="dateline"><span>Good places. Days together.</span><span>Week 40 · 2026 · Autumn</span></div>
     <p class="wordmark"><a href="../">The Rupert Atlas</a></p>
     <nav class="primary" aria-label="Sections"><ul><li><a class="nav-link" href="../">This Week</a></li><li><a class="nav-link" href="../atlas/">Atlas</a></li><li><a class="nav-link" href="../travel/" aria-current="page">Travel</a></li><li><a class="nav-link" href="../log/">Field Log</a></li></ul><a class="nav-archive" href="../archive/">Archive</a></nav>
   </div>
@@ -27,18 +29,24 @@
   <div class="wrap bar-inner">
     <a class="bar-mark" href="../">The Rupert Atlas</a>
     <nav class="bar-nav" aria-label="Sections, compact"><ul><li><a class="nav-link" href="../">This Week</a></li><li><a class="nav-link" href="../atlas/">Atlas</a></li><li><a class="nav-link" href="../travel/" aria-current="page">Travel</a></li><li><a class="nav-link" href="../log/">Field Log</a></li></ul></nav>
-    <span class="bar-week">Wk 40 · 2026</span>
+    <span class="bar-week">Wk 40 · 2026 · Autumn</span>
   </div>
 </div>
 <main id="main" class="" tabindex="-1">
-<div class="wrap coming"><header class="page-head"><p class="wb-eyebrow">In preparation</p><h1>Travel</h1><p class="page-note">Trips as ordered legs: a flight, a drive, a ferry. Worthwhile stops are suggested for drives only. The first version takes manual stops. Detour times come later from a routing service, and the page will say which service sees which points before any are sent. Plans stay in this browser and never reach the public site.</p></header>
-    <p><a href="../">Back to This Week</a></p></div>
+<div class="travel wrap"><header class="page-head"><div><svg class="lab-outline lab-walk" viewBox="0 0 120 70" aria-hidden="true" focusable="false"><path d="M18 31Q6 29 3 19Q17 25 25 23Q53 18 76 25L84 14Q86 7 97 10L103 18L116 22L114 29L99 30L91 40L102 57L95 61L80 43Q60 45 44 39L24 57L18 53L31 37Z M95 13Q83 13 87 28L96 25 M43 39L54 60L47 61 M81 43L69 59L63 57" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><h1>Travel</h1><p class="page-note">Make room for the journey. Arrange the legs, then choose the stops worth slowing down for.</p></div><aside class="head-note"><span class="lbl">Between here & there</span><p>A walk before the next long drive. A river beside the road. A little time outside.</p></aside></header>
+  <noscript><p>Enable JavaScript to create a travel plan. <a href="../atlas/">Browse places in the Atlas</a>.</p></noscript>
+  <div class="travel-grid"><section class="travel-editor panel"><h2 class="sec-h">Your journey</h2><p class="season-note">Plans stay in this browser. Export a backup to keep them.</p>
+  <label>Trip name<input id="trip-title" maxlength="160" placeholder="A weekend away"></label><div class="trip-dates"><label>From<input id="trip-start" type="date"></label><label>Until<input id="trip-end" type="date"></label></div>
+  <ol id="trip-legs" class="trip-legs"></ol><div class="travel-actions"><button type="button" id="add-leg">Add a leg</button><button type="button" id="save-trip">Save plan</button><button type="button" id="new-trip">New plan</button></div><p id="trip-status" role="status" aria-live="polite"></p></section>
+  <aside class="travel-side"><section class="panel"><h2 class="sec-h">Kept journeys</h2><div id="saved-trips"></div><div class="travel-actions"><button type="button" id="export-trips">Export backup</button><label class="import-label">Import backup<input type="file" id="import-trips" accept="application/json,.json"></label></div></section>
+  <section class="panel"><h2 class="sec-h">Stops along the way</h2><p>Choose a place for each driving leg, or add your own stop. Stops are manual; the directory does not yet calculate detours from your route.</p><p>Flights, trains and ferries remain in the itinerary without road-stop suggestions.</p><a href="../atlas/">Explore the place directory →</a></section></aside></div>
+  <script type="application/json" id="travel-places">[{"id":"eno-cox-mountain","name":"Eno River State Park — Cox Mountain Trail"},{"id":"umstead-company-mill","name":"William B. Umstead State Park — Company Mill Trail"},{"id":"carolina-north-forest","name":"Carolina North Forest"},{"id":"hanging-rock-moores-wall","name":"Hanging Rock State Park — Moore's Wall Loop"},{"id":"occoneechee-mountain","name":"Occoneechee Mountain State Natural Area"},{"id":"hillsborough-riverwalk","name":"Hillsborough Riverwalk"},{"id":"duke-forest-korstian","name":"Duke Forest — Korstian Division"},{"id":"raven-rock","name":"Raven Rock State Park — Raven Rock Loop"},{"id":"brumley-forest","name":"Brumley Forest Nature Preserve"}]</script></div>
 </main>
 <footer class="colophon">
   <div class="wrap colophon-inner">
     <p class="colophon-mark">The Rupert Atlas</p>
     <p>A record of places, routes and weekends with Rupert, a chocolate Labrador. Chapel Hill, N.C.</p>
-    <p><a href="../archive/">Archive of editions</a></p>
+    <p><a href="../archive/">Archived Options for Rupert</a></p>
   </div>
 </footer>
 <nav class="dock" aria-label="Sections, bottom"><ul><li><a href="../">This Week</a></li><li><a href="../atlas/">Atlas</a></li><li><a href="../travel/" aria-current="page">Travel</a></li><li><a href="../log/">Field Log</a></li></ul></nav>

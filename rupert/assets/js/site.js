@@ -1,3 +1,6 @@
+import { setupArchive } from './archive-view.js';
+import { SEASONS, seasonFor } from './core/options.js';
+import { nyDateString, isoWeek } from './core/dates.js';
 // Runtime enhancement. Every page works without this file; it adds:
 //  - the compact bar on desktop once the masthead scrolls away
 //  - Tuesday/Thursday tabs (and swipe) on phones
@@ -98,6 +101,18 @@ function setupTabs() {
 phone.addEventListener('change', setupTabs);
 window.addEventListener('hashchange', () => { if (/^#(tuesday|thursday)$/.test(location.hash)) setupTabs(); });
 setupTabs();
+setupArchive();
+
+function refreshDateline() {
+  const date = nyDateString(new Date()), {week, year} = isoWeek(date);
+  const text = `Week ${week} · ${year} · ${SEASONS[seasonFor(date)]}`;
+  const stamp = document.querySelector('.dateline span:last-child');
+  if (stamp) stamp.textContent = text;
+  const bar = document.querySelector('.bar-week');
+  if (bar) bar.textContent = text.replace('Week ', 'Wk ');
+}
+refreshDateline();
+setInterval(refreshDateline, 60000);
 
 /* ---------- manifest re-check ---------- */
 async function recheck() {
@@ -113,7 +128,13 @@ async function recheck() {
       const [places, photos] = await Promise.all([get('data/places.json'), get('data/photos.json')]);
       const tpl = document.createElement('template');
       tpl.innerHTML = renderArchive(archiveGroups(manifest, now, pair), { base, places, photos, now });
+      const values = archive.querySelector('.archive-filters') ? Object.fromEntries(new FormData(archive.querySelector('.archive-filters'))) : {};
+      const focused = document.activeElement?.name;
+      const form = tpl.content.querySelector('.archive-filters');
+      for (const [name, value] of Object.entries(values)) if (form.elements[name]) form.elements[name].value = value;
       archive.replaceWith(tpl.content);
+      setupArchive();
+      if (focused && form.elements[focused]) form.elements[focused].focus({ preventScroll: true });
       return;
     }
     if (pairKey(pair) === week.dataset.pair) return;

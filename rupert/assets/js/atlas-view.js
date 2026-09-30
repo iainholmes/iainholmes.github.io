@@ -1,4 +1,5 @@
-// Atlas page behaviour. The register is complete without this file; this adds filters, the map, and
+import { setupLocation } from './location-view.js';
+// Atlas page behaviour. The directory is complete without this file; this adds filters, the map, and
 // selection kept in step between the two. The map is reached only through map/maplibre-provider.js.
 import { createMap } from './map/maplibre-provider.js';
 
@@ -18,6 +19,8 @@ const perf = (window.__atlasPerf = { start: performance.now() });
 
 let map = null;
 let filter = 'all';
+let selectedId = null;
+const locationControls = setupLocation({ getMap: () => map, features: data.features, onClear: () => select(null) });
 
 /* ---------- QA panel (?qa=1): what a tester on a phone needs to see ---------- */
 // "ready" now means drawn: MapLibre's 'load' is reported separately, with the evidence that pixels reached
@@ -45,6 +48,7 @@ function qaRender() {
     `load event: ${d.loadMs ?? '—'} ms · drawn: ${d.drawnMs ?? '—'} ms · frames ${d.frames} (${d.framesAfterLoad} after load)`,
     `container: ${d.container} · canvas css ${d.canvasCss} · backing ${d.canvasBacking} · ${d.canvasStyle}`,
     `webgl: ${d.webgl} · lost×${d.contextLost} restored×${d.contextRestored}`,
+    `terrain: ${d.reliefVisible} · loaded: ${d.reliefLoaded}`,
     `source omt loaded: ${d.omtLoaded} · all tiles loaded: ${d.tilesLoaded} · zoom ${d.zoom}`,
     `features drawn: ${d.features} · ${Object.entries(d.perLayer || {}).map(([k, v]) => k + ' ' + v).join(', ') || 'none'}`,
     `controls: ${d.controls} · attribution: ${d.attribution}`,
@@ -72,23 +76,26 @@ function visible(f) { return filter === 'all' || f.properties.status === filter;
 function applyFilter() {
   rows.forEach(r => { r.hidden = !(filter === 'all' || r.dataset.status === filter); });
   document.querySelectorAll('.reg-group').forEach(g => { g.hidden = !g.querySelector('.reg-row:not([hidden])'); });
+  if (selectedId && !data.features.filter(visible).some(f => f.properties.id === selectedId)) select(null);
   map?.setMarkers(data.features.filter(visible));
   qaRender();
 }
 
 function select(id, { from } = {}) {
   qa.last = id ? `${from || 'register'} → ${id}` : `${from || '?'} → (none)`; qaRender();
-  if (!id) { card.hidden = true; map?.select(null); rows.forEach(r => { r.classList.remove('is-selected'); r.removeAttribute('aria-current'); }); return; }
+  selectedId = id;
+  if (!id) { locationControls.clear(); card.hidden = true; map?.select(null); rows.forEach(r => { r.classList.remove('is-selected'); r.removeAttribute('aria-current'); }); return; }
   rows.forEach(r => { const on = r.dataset.place === id; r.classList.toggle('is-selected', on); on ? r.setAttribute('aria-current', 'true') : r.removeAttribute('aria-current'); });
   const row = rows.find(r => r.dataset.place === id);
   map?.select(id);
+  locationControls.select(id);
   if (from === 'map' && row) {
     if (phone.matches) showCard(id, row); else row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
 }
 function showCard(id, row) {
   const el = (tag, cls, text) => { const n = document.createElement(tag); n.className = cls; n.textContent = text; return n; };
-  const link = el('a', 'mc-link', 'See in the register'); link.href = `#place-${id}`;
+  const link = el('a', 'mc-link', 'See in the directory'); link.href = `#place-${id}`;
   link.addEventListener('click', e => { e.preventDefault(); row.scrollIntoView({ block: 'center', behavior: 'smooth' }); row.querySelector('.reg-show')?.focus({ preventScroll: true }); });
   const close = el('button', 'mc-close', 'Close'); close.type = 'button'; close.setAttribute('aria-label', 'Close place card');
   close.addEventListener('click', () => select(null));
@@ -106,15 +113,15 @@ document.querySelector('.atlas-register').addEventListener('click', e => {
 
 /* ---------- the map ---------- */
 const MESSAGES = {
-  nowebgl: "This browser can't draw the map (WebGL is unavailable). The register lists every place.",
-  offline: "You're offline, so the map can't load. The register still works.",
-  script: "The map software didn't load. The register lists every place.",
-  timeout: "The map tiles didn't arrive in time. The register lists every place.",
-  tiles: "The map tiles couldn't be loaded. The register lists every place.",
-  style: "The map couldn't be drawn. The register lists every place.",
-  size: "The map couldn't be drawn on this screen. The register lists every place.",
-  blank: "The map loaded but nothing could be drawn. The register lists every place.",
-  lost: "The map stopped drawing (the browser released its graphics). Reload to try again; the register lists every place.",
+  nowebgl: "This browser can't draw the map (WebGL is unavailable). The directory lists every place.",
+  offline: "You're offline, so the map can't load. The directory still works.",
+  script: "The map software didn't load. The directory lists every place.",
+  timeout: "The map tiles didn't arrive in time. The directory lists every place.",
+  tiles: "The map tiles couldn't be loaded. The directory lists every place.",
+  style: "The map couldn't be drawn. The directory lists every place.",
+  size: "The map couldn't be drawn on this screen. The directory lists every place.",
+  blank: "The map loaded but nothing could be drawn. The directory lists every place.",
+  lost: "The map stopped drawing (the browser released its graphics). Reload to try again; the directory lists every place.",
 };
 
 async function start() {
@@ -142,16 +149,18 @@ async function start() {
       // Safari can drop a WebGL context (memory pressure, backgrounding). Say so rather than leave a frozen or empty box.
       perf.failed = 'lost'; qa.diag = map.diagnostics(); stateEl.dataset.state = 'failed'; msg.textContent = MESSAGES.lost;
       rows.forEach(r => { r.querySelector('.reg-show').hidden = true; }); document.querySelector('.map-tools').hidden = true;
-      card.hidden = true; map.destroy(); map = null; qaRender();
+      card.hidden = true; locationControls.clear(); map.destroy(); map = null; qaRender();
     });
-    stateEl.dataset.state = 'ready'; qaRender();
+    stateEl.dataset.state = 'ready'; locationControls.ready(); qaRender();
     msg.textContent = '';
     rows.forEach(r => { r.querySelector('.reg-show').hidden = false; });
     const tools = document.querySelector('.map-tools'); tools.hidden = false;
     const rb = document.getElementById('relief');
+    const reliefLabel = () => { rb.textContent = relief ? 'Relief on' : 'Relief off'; document.querySelector('.atlas-map').dataset.relief = String(relief); };
+    reliefLabel();
     rb.setAttribute('aria-pressed', String(relief));
     rb.addEventListener('click', () => {
-      relief = !relief; rb.setAttribute('aria-pressed', String(relief)); map.setRelief(relief);
+      relief = !relief; rb.setAttribute('aria-pressed', String(relief)); map.setRelief(relief); reliefLabel();
       try { localStorage.setItem('rupert-relief', relief ? '1' : '0'); } catch {}
     });
     const pre = location.hash.startsWith('#place-') && location.hash.slice(7);
@@ -165,5 +174,5 @@ async function start() {
   }
 }
 
-// Load the map after the register has painted, so a slow or failed map never delays the list.
+// Load the map after the directory has painted, so a slow or failed map never delays the list.
 if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 800 }); else setTimeout(start, 50);

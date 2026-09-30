@@ -14,19 +14,19 @@ export const ATTRIBUTION =
 
 const PALETTES = {
   light: {
-    bg: '#EFE2C8', wood: '#E3DDBF', park: '#DDD9B8', parkLine: '#8F9269', grass: '#E6DDBE',
+    bg: '#D7DDD1', wood: '#E3DDBF', park: '#DDD9B8', parkLine: '#8F9269', grass: '#E6DDBE',
     water: '#AFC1C4', waterLine: '#6F8E98', waterText: '#3F5E68',
     road: '#FBF4E4', roadCase: '#C9B28E', major: '#EACB91', majorCase: '#B88430',
     path: '#3A322A', boundary: '#8C7B66',
-    text: '#2E2822', textHalo: '#EFE2C8', town: '#221F1C',
+    text: '#2E2822', textHalo: '#D7DDD1', town: '#221F1C',
     shadow: '#221F1C', highlight: '#FFF6E2',
   },
   dark: {
-    bg: '#13232C', wood: '#18302F', park: '#1B3330', parkLine: '#4E6A58', grass: '#17292F',
+    bg: '#21363B', wood: '#18302F', park: '#1B3330', parkLine: '#4E6A58', grass: '#17292F',
     water: '#0B1820', waterLine: '#3F6A78', waterText: '#86A8B1',
     road: '#2B3D47', roadCase: '#1B2C35', major: '#5C4A2A', majorCase: '#8E6A2E',
     path: '#D8C8AA', boundary: '#5E6F76',
-    text: '#EADCC3', textHalo: '#13232C', town: '#F3E8D2',
+    text: '#EADCC3', textHalo: '#21363B', town: '#F3E8D2',
     shadow: '#000000', highlight: '#3A5563',
   },
 };
@@ -56,7 +56,7 @@ export function atlasStyle(theme = 'light', { relief = false } = {}) {
       paint: { 'line-color': c.parkLine, 'line-width': 1, 'line-dasharray': [3, 2], 'line-opacity': 0.7 } },
     { id: 'relief', type: 'hillshade', source: 'relief', layout: { visibility: relief ? 'visible' : 'none' },
       paint: { 'hillshade-shadow-color': c.shadow, 'hillshade-highlight-color': c.highlight,
-        'hillshade-accent-color': c.shadow, 'hillshade-exaggeration': 0.35 } },
+        'hillshade-accent-color': c.shadow, 'hillshade-exaggeration': 0.85 } },
     { id: 'water', type: 'fill', source: 'omt', 'source-layer': 'water', paint: { 'fill-color': c.water } },
     { id: 'waterway', type: 'line', source: 'omt', 'source-layer': 'waterway',
       paint: { 'line-color': c.waterLine, 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.4, 13, 1.4, 16, 3] } },

@@ -1,3 +1,8 @@
+import { matchesOption, seasonFor } from '../assets/js/core/options.js';
+import { cleanPlan, readBackup } from '../assets/js/core/travel.js';
+import { validPoint, drivingRoute } from '../assets/js/core/routing.js';
+import { readFileSync } from 'node:fs';
+import { atlasStyle } from '../assets/js/map/style.js';
 // Tests for edition selection and date handling. Run: node rupert/_tools/test.mjs
 import assert from 'node:assert/strict';
 import { selectCurrentPair, archiveGroups } from '../assets/js/core/editions.js';
@@ -87,5 +92,63 @@ t('Archive computes new dates across DST and year boundaries', () => {
   assert.match(archiveAt(manifest, '2026-11-03T08:00:00-05:00'), /Publishes Thu 5 Nov/);
   const year = { editions: [ed('2026-W53-tue', 'tuesday', '2026-12-29T07:00:00-05:00', '2027-01-02', '2027-01-03')] };
   assert.match(archiveAt(year, '2026-12-29T08:00:00-05:00'), /Publishes Thu 31 Dec/);
+});
+t('Archive matches all active filters against the same option', () => {
+  const o={title:'Cox Mountain',place_name:'Eno River State Park',seasons:['spring','autumn'],experiences:['river','ridge']};
+  assert.equal(matchesOption(o,{query:'eno mountain',season:'autumn',experience:'ridge'}),true);
+  assert.equal(matchesOption(o,{season:'winter',experience:'ridge'}),false);
+  assert.equal(matchesOption(o,{query:'company mill'}),false);
+  assert.equal(matchesOption(o,{query:'  COX  ',experience:'short-walk'}),false);
+});
+t('Season boundaries use month in supplied New York date', () => {
+  assert.equal(seasonFor('2026-02-28'),'winter');assert.equal(seasonFor('2026-03-01'),'spring');assert.equal(seasonFor('2026-06-01'),'summer');assert.equal(seasonFor('2026-09-01'),'autumn');assert.equal(seasonFor('2026-12-01'),'winter');
+});
+const plan={id:'tp_test',title:'Journey',dates:{start:'2026-10-03',end:'2026-10-04'},legs:[{seq:1,mode:'car',from:{label:'Chapel Hill'},to:{label:'Durham'}},{seq:2,mode:'air',from:{label:'RDU'},to:{label:'Boston'}}],manual_stops:[{leg:1,place_id:'eno-cox-mountain',note:'Creek walk'}]};
+t('Travel backup round-trips all legs and manual driving stops', () => {
+  const clean=cleanPlan(plan);assert.deepEqual(readBackup(JSON.stringify({schema_version:1,plans:[clean]})),[clean]);
+});
+t('Travel rejects bad imports, dates, stops on flights and duplicated identifiers', () => {
+  assert.throws(()=>cleanPlan({...plan,dates:{start:'2026-10-04',end:'2026-10-03'}}));
+  assert.throws(()=>cleanPlan({...plan,legs:[]}));
+  assert.throws(()=>cleanPlan({...plan,manual_stops:[{leg:2,note:'Stop'}]}));
+  assert.throws(()=>readBackup(JSON.stringify({schema_version:1,plans:[plan,plan]})));
+  assert.throws(()=>readBackup(JSON.stringify({schema_version:2,plans:[plan]})));
+  assert.deepEqual(cleanPlan({...plan,unapproved:'data'}),plan);
+});
+t('Home points reject non-numeric or out-of-range coordinates', () => {
+  assert.equal(Boolean(validPoint({lat:'35',lng:-79})),false);assert.equal(Boolean(validPoint({lat:Infinity,lng:-79})),false);assert.equal(Boolean(validPoint({lat:90,lng:-79})),false);assert.equal(Boolean(validPoint({lat:35,lng:-79})),true);
+});
+t('Every suggestion has curated season and experience tags', () => {
+  for(const id of ['2026-W40-tue','2026-W40-thu','2026-W41-tue','2026-W41-thu']) {
+    const edition=JSON.parse(readFileSync(new URL(`../data/editions/${id}.json`,import.meta.url)));
+    for(const role of ['flagship','local_trail','away_mission','wildcard']) {assert.ok(edition[role].seasons.length);assert.ok(edition[role].experiences.length);}
+  }
+});
+t('Relief changes actual hillshade visibility and palettes differ from page', () => {
+  for(const theme of ['light','dark']) {
+    const off=atlasStyle(theme),on=atlasStyle(theme,{relief:true});assert.equal(off.layers.find(l=>l.id==='relief').layout.visibility,'none');assert.equal(on.layers.find(l=>l.id==='relief').layout.visibility,'visible');assert.equal(on.layers.find(l=>l.id==='relief').paint['hillshade-exaggeration'],0.85);
+    assert.notEqual(on.layers[0].paint['background-color'],theme==='dark'?'#13232C':'#EFE2C8');
+  }
+});
+const fakeRoute={code:'Ok',routes:[{duration:1200,distance:16093.44,geometry:{type:'LineString',coordinates:[[-79,35],[-78.9,35.1]]}}]};
+const route=await drivingRoute({lat:35,lng:-79},{lat:35.1,lng:-78.9},{request:async(url)=>{assert.match(url,/route\/v1\/driving\/-79,35;-78.9,35.1/);return {ok:true,json:async()=>fakeRoute};}});
+assert.equal(route.minutes,20);assert.equal(route.miles,'10.0');n++;console.log('ok Driving route returns road geometry, time and distance');
+await assert.rejects(()=>drivingRoute({lat:35,lng:-79},{lat:35.1,lng:-78.9},{request:async()=>({ok:true,json:async()=>({code:'NoRoute'})})}));
+await assert.rejects(()=>drivingRoute({lat:35,lng:-79},{lat:35.1,lng:-78.9},{request:async()=>({ok:false})}));n++;console.log('ok Route failure stays a failure, without fabricated geometry or duration');
+t('Crowd tolerance uses perceived space and never treats unknown as quiet', () => {
+  const option={title:'Forest',seasons:['winter'],experiences:['short-walk'],crowd:{typical_level:'Busy',perceived_crowding:'Low'}};
+  assert.equal(matchesOption(option,{query:'forest',season:'winter',experience:'short-walk',crowd:'quiet'}),true);
+  assert.equal(matchesOption({...option,crowd:null},{crowd:'quiet'}),false);
+  assert.equal(matchesOption({...option,crowd:null},{crowd:'any'}),true);
+  assert.equal(matchesOption({...option,crowd:{perceived_crowding:'Moderate'}},{crowd:'quiet'}),false);
+  assert.equal(matchesOption({...option,crowd:{perceived_crowding:'Moderate'}},{crowd:'low_moderate'}),true);
+  assert.equal(matchesOption(option,{season:'summer',crowd:'quiet'}),false);
+});
+t('Every published and future suggestion carries explicit unassessed crowd fields', () => {
+  const keys=['typical_level','low_crowd_window','peak_period','weekend_vs_weekday','foot_traffic','dog_density','attendance','perceived_crowding'];
+  for(const id of ['2026-W40-tue','2026-W40-thu','2026-W41-tue','2026-W41-thu']) {
+    const ed=JSON.parse(readFileSync(new URL(`../data/editions/${id}.json`,import.meta.url)));
+    for(const role of ['flagship','local_trail','away_mission','wildcard']) {assert.deepEqual(Object.keys(ed[role].snapshot.crowd).sort(),keys.slice().sort());assert.ok(Object.values(ed[role].snapshot.crowd).every(v=>v===null));}
+  }
 });
 console.log(`${n} tests passed`);

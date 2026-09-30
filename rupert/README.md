@@ -128,3 +128,19 @@ The build writes an edition's page as soon as its `status` is `published`, even 
 - `_tools/MAP-TESTS.md`: desktop map tests (passed), tap-target tests, and access-point verification.
 - `_tools/IPHONE-QA.md`: real-iPhone checklist and how to serve the branch to a phone over Wi-Fi. Build 2 passed on a real iPhone.
 - `_tools/PUBLISHING-TEST-W41.md`: the end-to-end publishing test, and every step that needed a person.
+
+## September interface update
+
+Metadata now uses regular-width Archivo; the old monospaced font files are removed. The banner reads “Good places. Days together.” and uses New York's ISO week plus the northern-hemisphere meteorological season. The favicon and Home marker share an original brown Labrador face; section headings use three original gold outline poses.
+
+Every flagship and supporting suggestion now requires `seasons` and `experiences`. These are editorial suitability tags, separate from the publication season. Historical route snapshots, sources and publish dates remain intact. The Archive searches all four suggestions in each published edition and combines search, season and experience on the same option. Clear filters restores the paired pending Thursday slot and its scheduled publication date. Future editions are still excluded by the existing publication-time selection.
+
+Travel is a working browser-local planner: ordered car, flight, ferry, rail and walking legs, reorder/remove controls, one manual place/note stop per driving leg, saved journeys and validated JSON backup import/export. Import merges new identifiers and preserves existing plans; road detours are not calculated. Field Log retains its existing backup/restore milestone gate.
+
+Home setup is browser-local under `rupert-location-v1`. The public build contains no residential address or coordinates. Address lookup is an explicit form submission to Nominatim; coordinate entry also works directly. Routing is opt-in, with disclosure beside its checkbox: OSRM receives the home and selected public trailhead coordinates. Its road geometry is highlighted in ochre, with estimated drive duration and mileage shown on the map; it does not include live traffic. Turning routing off, forgetting home, clearing selection or changing filters clears the route and cancels pending requests. Home view uses zoom 10 centered on the saved point, or all public places if no home is saved. Motion follows the reduced-motion preference.
+
+Relief now has stronger hillshade, visible on/off labels, provider-failure feedback and terrain diagnostics in `?qa=1`. The map uses sage parchment in light mode and a lighter blue-green in dark mode to distinguish it from the page.
+
+`_tools/test.mjs` covers combined option filters, season boundaries, all suggestion tags, backup round trips and invalid imports, coordinate validation, route geometry/time and failures, and relief style changes alongside the existing publication timing tests.
+
+Crowd metadata integrates the separately reviewed ca9612d change. All existing outings are explicitly unassessed; no crowd observations were invented. Search, season, experience and crowd tolerance match the same suggestion. See CROWD-METADATA.md.
