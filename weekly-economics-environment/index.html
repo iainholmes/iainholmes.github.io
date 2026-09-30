@@ -1,8 +1,9 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f3f1ea"><meta name="description" content="Loblolly &amp; Logit: Weekly journal covering environmental economics and applied research."><title>Loblolly &amp; Logit</title><script src="../personal-updates/reading-mode.js"></script><script>/* Periodicals navigation memory: the hub lifts the most recently visited title */try{localStorage.setItem('periodicals:last',JSON.stringify({t:'sp',at:Date.now()}))}catch(e){}</script><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%231f4a3b%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20text-anchor%3D%22middle%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2236%22%20font-style%3D%22italic%22%20fill%3D%22%23e5946a%22%3E%26amp%3B%3C%2Ftext%3E%3Cpath%20d%3D%22M12%2052h40%22%20stroke%3D%22%23f3f1ea%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet"><style>
-@font-face{font-family:"Multima Strong";src:url(../personal-updates/fonts/multima-strong.woff) format("woff");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"Ectros";src:url("fonts/Ectros-Regular.ttf") format("truetype");font-style:normal;font-weight:400;font-display:swap}
 :root{
   --paper:#f3f1ea;--paper-2:#e8e6da;--ink:#14302a;--text:#28372f;--muted:#5e6a62;--hair:#c9cbbe;--rule:#14302a;
   --forest:#1f4a3b;--sage:#8aa08f;--clay:#b4532e;--clay-wash:#f2e4d8;--light:#e8e6da;
+  --editorial-title:"Ectros","Source Serif 4",Georgia,serif;
   --serif:"Source Serif 4","Iowan Old Style",Georgia,serif;
   --sans:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
   --menu:"Fraunces",Georgia,serif;
@@ -27,7 +28,7 @@ button{cursor:pointer}
 .mh-top{display:flex;justify-content:space-between;gap:20px;align-items:center;min-height:44px;border-bottom:1px solid var(--hair);font:500 11.5px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-variant-numeric:lining-nums}
 .mh-top .vn b{color:var(--ink);font-weight:600}
 .mh-title{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:30px;padding:30px 0 16px;border-bottom:3px solid var(--rule)}
-.mh-title h1{margin:0;font:400 clamp(58px,8.6vw,124px)/.84 var(--serif);font-variation-settings:"opsz" 60;letter-spacing:-.045em;color:var(--ink)}
+.mh-title h1{margin:0;font:400 clamp(58px,8.6vw,124px)/.84 var(--editorial-title);font-variation-settings:"opsz" 60;letter-spacing:-.045em;color:var(--ink)}
 .mh-title h1 i{font-style:italic;color:var(--forest);letter-spacing:-.05em}
 .mh-title h1 .lam{font:italic 400 .3em/1 var(--serif);color:var(--clay);vertical-align:1.7em;margin-left:.08em;letter-spacing:0}
 .mh-sub{font:italic 400 17px/1.4 var(--serif);color:var(--muted);text-align:right;padding-bottom:8px;max-width:22ch}
@@ -72,7 +73,7 @@ body.scrolled .tb-name{opacity:1}
 /* hero: the issue's title page */
 .hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:56px;padding:40px 0 38px;border-bottom:1px solid var(--rule);align-items:start}
 .edition-label{font:500 11.5px/1.5 var(--sans);color:var(--clay);letter-spacing:.08em}
-.hero h1{margin:18px 0 20px;font:400 clamp(44px,5.2vw,74px)/1 var(--serif);font-variation-settings:"opsz" 60;letter-spacing:-.035em;color:var(--ink)}
+.hero h1{margin:18px 0 20px;font:400 clamp(44px,5.2vw,74px)/1 var(--editorial-title);font-variation-settings:"opsz" 60;letter-spacing:-.035em;color:var(--ink)}
 .hero h1 em{font-style:italic;color:var(--forest)}
 .hero-deck{margin:0;font:400 20px/1.5 var(--serif);max-width:34ch;color:var(--text)}
 .hero-footer{margin-top:22px;padding-top:12px;border-top:1px solid var(--hair);font:500 12px/1.5 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-variant-numeric:lining-nums;max-width:none;display:inline-block;padding-right:30px}
@@ -89,7 +90,7 @@ body.scrolled .tb-name{opacity:1}
 .overview-item{display:grid;grid-template-columns:40px minmax(0,1fr) 20px;gap:12px;align-items:baseline;padding:13px 0;border-top:1px solid var(--hair);text-decoration:none}
 .overview-item>span:first-child{font:500 13px/1 var(--sans);color:var(--clay);font-variant-numeric:lining-nums}
 .overview-item>span:last-child{font:400 14px/1 var(--sans);color:var(--hair);text-align:right}
-.overview-item h3{margin:0 0 3px;font:500 18px/1.3 var(--serif);color:var(--ink)}
+.overview-item h3{margin:0 0 3px;font:500 18px/1.3 var(--editorial-title);color:var(--ink)}
 .overview-item p{margin:0;font:400 14px/1.5 var(--serif);color:var(--muted)}
 .overview-item:hover h3{color:var(--clay)}
 .overview-item:hover>span:last-child{color:var(--clay)}
@@ -122,7 +123,7 @@ body.scrolled .tb-name{opacity:1}
 .entry-number{font:400 42px/.86 var(--serif);font-variation-settings:"opsz" 60;color:var(--clay);font-variant-numeric:lining-nums;letter-spacing:-.04em}
 .entry-head>div{grid-column:2/4}
 .entry .eyebrow{color:var(--forest);font-weight:600}
-.entry h2{margin:8px 0 10px;font:400 clamp(30px,2.8vw,40px)/1.1 var(--serif);font-variation-settings:"opsz" 60;letter-spacing:-.025em;color:var(--ink);max-width:24ch}
+.entry h2{margin:8px 0 10px;font:400 clamp(30px,2.8vw,40px)/1.1 var(--editorial-title);font-variation-settings:"opsz" 60;letter-spacing:-.025em;color:var(--ink);max-width:24ch}
 .status{display:flex;align-items:center;gap:8px;font:500 11.5px/1.4 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .status>span{width:18px;height:0;border-top:2px solid var(--sage);flex:none}
 .status::before{content:"Evidence";color:var(--ink);font-weight:600}
@@ -608,10 +609,10 @@ html[data-mode="night"] .register{background:#10231d!important}
 @media(min-width:821px){.edition-body>.synthesis,.edition-body>.knowledge{margin-left:0!important}}
 @media(max-width:820px){.contents-boundary{display:none}}
 
-.mh-title h1{font-family:"Multima Strong",Georgia,serif;letter-spacing:-.02em;line-height:1.05}
+.mh-title h1{font-family:var(--editorial-title);letter-spacing:-.02em;line-height:1.05}
 .mh-title h1 i{font-style:normal;letter-spacing:inherit}
 .mh-title h1 .amp{font-family:inherit;font-style:normal}
-.hero h1,.entry h2{font-family:"Multima Strong",Georgia,serif}
+.hero h1,.entry h2{font-family:var(--editorial-title)}
 .hero h1 em{font-style:normal}
 .footer .footer-brand{display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left}
 </style><link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
@@ -798,6 +799,8 @@ Reading mode: shared Periodicals key sessionStorage periodicals:session-mode (da
 shared across titles in this tab for the session; night = estuary-at-night palette via html[data-mode="night"] variables.
 Folio: superscript "No. 001" after the masthead (h1 .fo: clay Source Serif numerals, muted italic No.);
 Vol./No. publication-native line stays in the top strip.
+Titles: self-hosted Ectros via --editorial-title for masthead, issue, overview and entry titles;
+reuse these roles for future editions. See TYPOGRAPHY.md and fonts/README.md.
 Identity: environmental field journal x empirical economics notebook. Source Serif 4 text, IBM Plex Sans
 Condensed apparatus. Palette: bone paper, spruce, river/estuary blue, Carolina clay, lichen, pollen accent,
 charcoal. Color is compositional, never a topic code: river-ground hero plate with survey corners;
