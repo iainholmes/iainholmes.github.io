@@ -21,15 +21,14 @@ Like route facts, crowd metadata stays frozen at publication; factual updates be
 in the edition's corrections record. Newly migrated null fields do not alter any
 previously published facts.
 
-The build copies each outing's crowd record into the edition manifest. The shared
+The build copies the main recommendation’s crowd record into the edition manifest. The shared
 `core/crowds.js` policy supports recommendation selection and archive filtering:
 Quiet only accepts perceived Low; Low–moderate accepts Low or Moderate; Any accepts
 all, including unknown. Typical presence alone cannot qualify an outing as quiet.
-An edition matches if any outing qualifies; the archive names qualifying outings.
+Archive filtering applies only to the main recommendation, never to contingencies.
 Draft/future publication rules continue to apply before crowd filtering.
 
-Full Edition shows all fields for every outing; This Week and Archive show a short
-presence/space summary. Without JavaScript or if manifest loading fails, the full
+Full Edition presents typical and perceived crowding with compact four-level scales. Known timing and dog-density fields appear below. Unknown values remain explicit but are not repeated on cards. This Week and Archive show no crowd summaries. Without JavaScript or if manifest loading fails, the full
 static archive remains readable and its interactive filter stays hidden.
 
 Validate with `npm run build`, `npm run check`, and `npm test` inside `rupert/`.

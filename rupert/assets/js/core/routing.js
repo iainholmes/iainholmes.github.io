@@ -1,9 +1,10 @@
 export function validPoint(point) {
   return point && typeof point.lat === 'number' && typeof point.lng === 'number' && Number.isFinite(point.lat) && Number.isFinite(point.lng) && Math.abs(point.lat) <= 85 && Math.abs(point.lng) <= 180;
 }
-export async function drivingRoute(from, to, { signal, request = fetch } = {}) {
+export async function drivingRoute(from, to, { signal, request = fetch, via = [] } = {}) {
   if (!validPoint(from) || !validPoint(to)) throw new Error('Check both locations.');
-  const points = `${from.lng},${from.lat};${to.lng},${to.lat}`;
+  if(!Array.isArray(via) || via.length>20 || via.some(p=>!validPoint(p))) throw Error('Check the route stops.');
+  const points = [from,...via,to].map(p=>`${p.lng},${p.lat}`).join(';');
   const response = await request(`https://router.project-osrm.org/route/v1/driving/${points}?overview=full&geometries=geojson&steps=false`, { signal, referrerPolicy: 'no-referrer' });
   if (!response.ok) throw new Error('Driving routes are unavailable. Try again later.');
   const data = await response.json(), route = data.routes?.[0];

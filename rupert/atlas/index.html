@@ -10,7 +10,6 @@
 <meta name="theme-color" content="#ECE5D4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1C1511" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="../assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/svg+xml" href="../assets/img/rupert-face.svg">
 <link rel="stylesheet" href="../assets/css/atlas.css">
 <script type="module" src="../assets/js/site.js"></script>
@@ -20,7 +19,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead" id="masthead">
   <div class="wrap">
-    <div class="dateline"><span>Good places. Days together.</span><span>Week 40 · 2026 · Autumn</span></div>
+    <div class="dateline"><span>Week 40 · 2026 · Autumn</span></div>
     <p class="wordmark"><a href="../">The Rupert Atlas</a></p>
     <nav class="primary" aria-label="Sections"><ul><li><a class="nav-link" href="../">This Week</a></li><li><a class="nav-link" href="../atlas/" aria-current="page">Atlas</a></li><li><a class="nav-link" href="../travel/">Travel</a></li><li><a class="nav-link" href="../log/">Field Log</a></li></ul><a class="nav-archive" href="../archive/">Archive</a></nav>
   </div>
@@ -34,10 +33,9 @@
 </div>
 <main id="main" class="page-atlas" tabindex="-1">
 <div class="atlas">
-  <header class="page-head wrap"><div><svg class="lab-outline lab-stand" viewBox="0 0 120 70" aria-hidden="true" focusable="false"><path d="M15 34Q6 31 3 21Q15 28 24 25Q49 18 75 26L83 16Q85 7 96 10L101 18L114 22L112 29L99 31L92 42L89 62L81 62L80 42Q64 46 45 40L37 60L29 60L31 39Z M94 13Q82 13 87 29L96 26 M45 40L47 59L41 59 M80 42L76 58L70 58" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><h1>Places</h1>
-    <p class="page-note">Every place recommended, walked or planned. Pins mark public trailheads and parking, checked against park and preserve listings. Places marked "pin approximate" are still to be confirmed. Your home marker is saved in this browser.</p></div><aside class="head-note"><span class="lbl">Start close. Go farther.</span><p>A familiar path or a whole day away. Pick a place to see the way there.</p><a href="../archive/">Find a past suggestion →</a></aside></header>
+  <header class="page-head wrap"><div><h1>Atlas</h1></div></header>
   <div class="wrap"><details class="location-settings"><summary>Home &amp; driving routes</summary>
-    <p>Save your home in this browser to add Rupert’s brown dog marker. Map tiles are supplied by OpenFreeMap and Terrain Tiles; the map view is visible to those services. The location is never added to the public site.</p>
+    <p>Home stays in this browser. Map providers receive the visible map area; home is never published.</p>
     <form id="address-form"><label>Home address<input name="address" autocomplete="street-address" maxlength="240" required placeholder="Street, town, state, ZIP"></label><button>Locate with OpenStreetMap</button></form><p class="season-note">Locating sends the address to OpenStreetMap’s Nominatim service. Check the returned coordinates below before saving home. You can also enter coordinates directly.</p>
     <form id="location-form"><label>Latitude<input name="lat" type="number" step="any" min="-85" max="85" required></label><label>Longitude<input name="lng" type="number" step="any" min="-180" max="180" required></label><button>Save home</button><button type="button" id="forget-location">Forget home</button></form>
     <label class="routing-choice"><input type="checkbox" id="routing-enabled"> Enable driving routes: OSRM receives your home and selected trailhead coordinates. Estimates exclude live traffic.</label><p id="location-status" role="status"></p>
@@ -47,7 +45,7 @@
       <div class="map-canvas" id="map"></div>
       <p id="drive-status" class="drive-status" role="status" aria-live="polite">Select a place to plan the drive.</p>
       <div class="map-state" id="map-state" role="status"><span class="ridge" aria-hidden="true"></span>
-        <p id="map-msg">The map needs JavaScript. The directory lists every place.</p></div>
+        <p id="map-msg">Enable JavaScript for the map.</p></div>
       <ul class="map-legend" aria-label="Legend"><li><svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg><span>Recommended</span></li><li><svg class="mk mk-walk" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M6.6 10.2l2.4 2.6 4.6-5.2"/></svg><span>Walked</span></li><li><svg class="mk mk-plan" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.6l7.4 7.4-7.4 7.4-7.4-7.4z"/></svg><span>Planned</span></li><li><svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg><span>In the directory</span></li></ul>
       <div class="map-tools" hidden><button type="button" id="relief" aria-pressed="false">Relief</button><button type="button" id="recenter">Home view</button></div>
       <div class="map-card" id="map-card" hidden></div>
@@ -56,27 +54,29 @@
       <div class="reg-head"><h2 id="reg-h">Place directory</h2>
         <div class="reg-filter" role="group" aria-label="Show places" hidden>
           <button type="button" data-filter="all" aria-pressed="true">All <span>9</span></button>
-          <button type="button" data-filter="recommended" aria-pressed="false">Recommended <span>4</span></button>
+          <button type="button" data-filter="recommended" aria-pressed="false">Recommended <span>1</span></button>
           <button type="button" data-filter="walked" aria-pressed="false" disabled>Walked <span>0</span></button>
         </div></div>
-      <section class="reg-group" data-region="Orange County">
-      <h3 class="reg-region">Orange County</h3><ul class="reg"><li class="reg-row" id="place-carolina-north-forest" data-place="carolina-north-forest" data-status="recommended">
+      <section class="reg-group" data-region="Durham County">
+      <h3 class="reg-region">Durham County</h3><ul class="reg"><li class="reg-row" id="place-eno-cox-mountain" data-place="eno-cox-mountain" data-status="recommended">
       <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
       <div class="reg-main">
-        <h4>Carolina North Forest</h4>
-        <p class="reg-meta">Leashed</p><p class="reg-start">Start: Carolina North Forest (trailhead lot to be confirmed) <span class="reg-approx">· pin approximate</span></p>
-        <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-tue/">Tuesday&#39;s choice · Local Trail, 3–4 Oct</a></p>
+        <h4>Eno River State Park — Cox Mountain Trail</h4>
+        <p class="reg-meta">3.75 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Fews Ford access, 6101 Cole Mill Rd.</p>
+        <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-tue/">Tuesday&#39;s choice, 3–4 Oct</a></p>
       </div>
-      <button type="button" class="reg-show" data-show="carolina-north-forest" hidden>Show on map</button>
-    </li><li class="reg-row" id="place-occoneechee-mountain" data-place="occoneechee-mountain" data-status="recommended">
-      <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
+      <button type="button" class="reg-show" data-show="eno-cox-mountain" hidden>Show on map</button>
+    </li></ul></section><section class="reg-group" data-region="Harnett County">
+      <h3 class="reg-region">Harnett County</h3><ul class="reg"><li class="reg-row" id="place-raven-rock" data-place="raven-rock" data-status="register">
+      <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
       <div class="reg-main">
-        <h4>Occoneechee Mountain State Natural Area</h4>
-        <p class="reg-meta">2.2 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Main lot, 625 Virginia Cates Rd.</p>
-        <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-tue/">Tuesday&#39;s choice · Wildcard, 3–4 Oct</a></p>
+        <h4>Raven Rock State Park — Raven Rock Loop</h4>
+        <p class="reg-meta">2.6 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Main lot by the visitor center, 3009 Raven Rock Rd.</p>
+        <p class="reg-status"><span class="reg-word">In the directory</span></p>
       </div>
-      <button type="button" class="reg-show" data-show="occoneechee-mountain" hidden>Show on map</button>
-    </li><li class="reg-row" id="place-brumley-forest" data-place="brumley-forest" data-status="register">
+      <button type="button" class="reg-show" data-show="raven-rock" hidden>Show on map</button>
+    </li></ul></section><section class="reg-group" data-region="Orange County">
+      <h3 class="reg-region">Orange County</h3><ul class="reg"><li class="reg-row" id="place-brumley-forest" data-place="brumley-forest" data-status="register">
       <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
       <div class="reg-main">
         <h4>Brumley Forest Nature Preserve</h4>
@@ -84,6 +84,14 @@
         <p class="reg-status"><span class="reg-word">In the directory</span></p>
       </div>
       <button type="button" class="reg-show" data-show="brumley-forest" hidden>Show on map</button>
+    </li><li class="reg-row" id="place-carolina-north-forest" data-place="carolina-north-forest" data-status="register">
+      <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
+      <div class="reg-main">
+        <h4>Carolina North Forest</h4>
+        <p class="reg-meta">Leashed</p><p class="reg-start">Start: Carolina North Forest (trailhead lot to be confirmed) <span class="reg-approx">· pin approximate</span></p>
+        <p class="reg-status"><span class="reg-word">In the directory</span></p>
+      </div>
+      <button type="button" class="reg-show" data-show="carolina-north-forest" hidden>Show on map</button>
     </li><li class="reg-row" id="place-duke-forest-korstian" data-place="duke-forest-korstian" data-status="register">
       <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
       <div class="reg-main">
@@ -100,33 +108,23 @@
         <p class="reg-status"><span class="reg-word">In the directory</span></p>
       </div>
       <button type="button" class="reg-show" data-show="hillsborough-riverwalk" hidden>Show on map</button>
-    </li></ul></section><section class="reg-group" data-region="Durham County">
-      <h3 class="reg-region">Durham County</h3><ul class="reg"><li class="reg-row" id="place-eno-cox-mountain" data-place="eno-cox-mountain" data-status="recommended">
-      <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
+    </li><li class="reg-row" id="place-occoneechee-mountain" data-place="occoneechee-mountain" data-status="register">
+      <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
       <div class="reg-main">
-        <h4>Eno River State Park — Cox Mountain Trail</h4>
-        <p class="reg-meta">3.75 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Fews Ford access, 6101 Cole Mill Rd.</p>
-        <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-tue/">Tuesday&#39;s choice, 3–4 Oct</a></p>
+        <h4>Occoneechee Mountain State Natural Area</h4>
+        <p class="reg-meta">2.2 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Main lot, 625 Virginia Cates Rd.</p>
+        <p class="reg-status"><span class="reg-word">In the directory</span></p>
       </div>
-      <button type="button" class="reg-show" data-show="eno-cox-mountain" hidden>Show on map</button>
+      <button type="button" class="reg-show" data-show="occoneechee-mountain" hidden>Show on map</button>
     </li></ul></section><section class="reg-group" data-region="Stokes County">
-      <h3 class="reg-region">Stokes County</h3><ul class="reg"><li class="reg-row" id="place-hanging-rock-moores-wall" data-place="hanging-rock-moores-wall" data-status="recommended">
-      <svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>
+      <h3 class="reg-region">Stokes County</h3><ul class="reg"><li class="reg-row" id="place-hanging-rock-moores-wall" data-place="hanging-rock-moores-wall" data-status="register">
+      <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
       <div class="reg-main">
         <h4>Hanging Rock State Park — Moore&#39;s Wall Loop</h4>
         <p class="reg-meta">4.2 mi loop · strenuous · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Visitor center lot, 1790 Hanging Rock Park Rd.</p>
-        <p class="reg-status"><span class="reg-word">Recommended</span> · <a href="../edition/2026-W40-tue/">Tuesday&#39;s choice · Away Mission, 3–4 Oct</a></p>
-      </div>
-      <button type="button" class="reg-show" data-show="hanging-rock-moores-wall" hidden>Show on map</button>
-    </li></ul></section><section class="reg-group" data-region="Harnett County">
-      <h3 class="reg-region">Harnett County</h3><ul class="reg"><li class="reg-row" id="place-raven-rock" data-place="raven-rock" data-status="register">
-      <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
-      <div class="reg-main">
-        <h4>Raven Rock State Park — Raven Rock Loop</h4>
-        <p class="reg-meta">2.6 mi loop · moderate · Leashed, 6 ft maximum (N.C. State Parks)</p><p class="reg-start">Start: Main lot by the visitor center, 3009 Raven Rock Rd.</p>
         <p class="reg-status"><span class="reg-word">In the directory</span></p>
       </div>
-      <button type="button" class="reg-show" data-show="raven-rock" hidden>Show on map</button>
+      <button type="button" class="reg-show" data-show="hanging-rock-moores-wall" hidden>Show on map</button>
     </li></ul></section><section class="reg-group" data-region="Wake County">
       <h3 class="reg-region">Wake County</h3><ul class="reg"><li class="reg-row" id="place-umstead-company-mill" data-place="umstead-company-mill" data-status="register">
       <svg class="mk mk-reg" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.6"/></svg>
@@ -139,16 +137,10 @@
     </li></ul></section>
     </section>
   </div>
-  <script type="application/json" id="atlas-data">{"features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.006,36.0737]},"properties":{"id":"eno-cox-mountain","name":"Cox Mountain","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.7598,35.836]},"properties":{"id":"umstead-company-mill","name":"Company Mill","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0665,35.9407]},"properties":{"id":"carolina-north-forest","name":"Carolina North","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-80.266,36.3947]},"properties":{"id":"hanging-rock-moores-wall","name":"Moore's Wall","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.117,36.0606]},"properties":{"id":"occoneechee-mountain","name":"Occoneechee Mountain","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.1105,36.0708]},"properties":{"id":"hillsborough-riverwalk","name":"Riverwalk","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0294,35.9781]},"properties":{"id":"duke-forest-korstian","name":"Korstian Division","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.9142,35.4639]},"properties":{"id":"raven-rock","name":"Raven Rock","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0589,36.0314]},"properties":{"id":"brumley-forest","name":"Brumley Forest","status":"register"}}],"bounds":[[-80.346,35.383900000000004],[-78.6798,36.4747]]}</script>
+  <script type="application/json" id="atlas-data">{"features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.006,36.0737]},"properties":{"id":"eno-cox-mountain","name":"Cox Mountain","status":"recommended"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.7598,35.836]},"properties":{"id":"umstead-company-mill","name":"Company Mill","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0665,35.9407]},"properties":{"id":"carolina-north-forest","name":"Carolina North","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-80.266,36.3947]},"properties":{"id":"hanging-rock-moores-wall","name":"Moore's Wall","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.117,36.0606]},"properties":{"id":"occoneechee-mountain","name":"Occoneechee Mountain","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.1105,36.0708]},"properties":{"id":"hillsborough-riverwalk","name":"Riverwalk","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0294,35.9781]},"properties":{"id":"duke-forest-korstian","name":"Korstian Division","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-78.9142,35.4639]},"properties":{"id":"raven-rock","name":"Raven Rock","status":"register"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.0589,36.0314]},"properties":{"id":"brumley-forest","name":"Brumley Forest","status":"register"}}],"bounds":[[-80.346,35.383900000000004],[-78.6798,36.4747]]}</script>
 </div>
 </main>
-<footer class="colophon">
-  <div class="wrap colophon-inner">
-    <p class="colophon-mark">The Rupert Atlas</p>
-    <p>A record of places, routes and weekends with Rupert, a chocolate Labrador. Chapel Hill, N.C.</p>
-    <p><a href="../archive/">Archived Options for Rupert</a></p>
-  </div>
-</footer>
+<footer class="utility-footer"><div class="wrap"><a href="../archive/">Archive</a><a href="../atlas/">Place directory</a><span>2026</span></div></footer>
 <nav class="dock" aria-label="Sections, bottom"><ul><li><a href="../">This Week</a></li><li><a href="../atlas/" aria-current="page">Atlas</a></li><li><a href="../travel/">Travel</a></li><li><a href="../log/">Field Log</a></li></ul></nav>
 </body>
 </html>

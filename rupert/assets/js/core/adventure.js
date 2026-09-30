@@ -1,5 +1,5 @@
 // Editorial guidance is frozen with an edition; never infer a live forecast from a season.
-export const ROLES = ['flagship', 'local_trail', 'away_mission', 'wildcard'];
+export const ROLES = ['flagship'];
 export const LEGACY_EDITIONS = ['2026-W40-tue', '2026-W40-thu', '2026-W41-tue', '2026-W41-thu'];
 export const CHARACTERS = {
   rupert: 'Rupert: lean chocolate American Labrador Retriever, long muzzle, floppy ears, mustard-orange collar',
@@ -14,11 +14,11 @@ export function guidanceFor(option) {
     { label: 'Keep in mind', text: option.headline_condition || 'Check the forecast and conditions before leaving.' },
   ];
   if (q.activity === 'pup-cup') return [
-    { label: 'The important stop', text: 'A small treat for Rupert, if it suits his usual diet.' },
-    { label: 'While you’re there', text: 'Leave a little time for a sniff around afterwards.' },
+    { label: 'Treat stop', text: 'Check ingredients and portion size against Rupert’s usual diet.' },
+    { label: 'Short walk', text: 'Check nearby walking access and leash rules.' },
   ];
   if (q.activity === 'patio' || option.experiences?.includes('town-walk')) return [
-    { label: 'For Rupert', text: 'A relaxed stop, with a little room to settle.' },
+    { label: 'For Rupert', text: 'Check space, shade and drinking water at the stop.' },
     { label: 'Before you go', text: 'Confirm current dog access and opening hours.' },
   ];
   return [
@@ -47,5 +47,5 @@ export function artworkProblems(editions, photos) {
 export function illustrationPrompt(edition, role) {
   const o = edition[role]; if (!o) throw new Error('Unknown suggestion role');
   const characters = o.artwork?.characters || ['rupert'];
-  return `Create ONE newly generated finished illustration for ${edition.id} / ${role}: ${o.title}.\nOuting: ${o.line || o.standfirst || ''}\nSeasons: ${(o.seasons || []).join(', ')}. Experience: ${(o.experiences || []).join(', ')}.\nScene brief: ${o.artwork?.brief || 'One coherent scene reflecting this specific outing; use verified details only.'}\nCharacters, each depicted exactly once: ${characters.map(c => CHARACTERS[c]).join('; ')}. Default one Rupert, companions only when deliberately selected.\nArt direction: edgy, rough ink / deconstructed woodcut with warm chocolate and cream dog coloring and mustard collar. Strong contrast and imperfect broad contours. Background predominantly a FLAT color field; one or two sparse outing cues only. No scenic landscape wallpaper, dense scenery, tight realistic fur or rigid engraving. Within this family, vary viewpoint, pose, framing and dominant color balance for each suggestion; never repeat a fixed design. Broad chocolate/cream shapes, limited coarse cuts, no realistic shading or dense fur. Interpret Rupert through broad imperfect shapes, ears, muzzle and collar; do not chase realistic anatomy or sculpted fur. Restrained cream, navy, mustard, muted red, olive or dusty blue; choose a distinct dominant balance for this outing. Subtle grain, editorial rather than photorealistic. Use real photos for likeness and approved artwork only for style. Landscape 3:2, main subject within the central crop-safe area. No collage, panels, repeated figures, text or watermark. Never reuse an earlier finished illustration, even for the same place. This is adventure imagined; real Field Log photos are adventure remembered.`;
+  return `Create ONE newly generated finished illustration for ${edition.id} / ${role}: ${o.title}.\nOuting: ${o.line || o.standfirst || ''}\nSeasons: ${(o.seasons || []).join(', ')}. Experience: ${(o.experiences || []).join(', ')}.\nScene brief: ${o.artwork?.brief || 'One coherent scene reflecting this specific outing; use verified details only.'}\nCharacters, each depicted exactly once: ${characters.map(c => CHARACTERS[c]).join('; ')}. Default one Rupert, companions only when deliberately selected.\nArt direction: modern graphic print, coarse screen-print / photocopy / halftone, 3–5 colors maximum, large flat color field and lots of negative space, recognizable Rupert rather than realistic Rupert. No glossy fur, realistic eyes, coat sheen, detailed anatomy or cinematic light. Rough ink / deconstructed woodcut with warm chocolate and cream dog coloring and mustard collar. Strong contrast and imperfect broad contours. Background predominantly a FLAT color field; one or two sparse outing cues only. No scenic landscape wallpaper, dense scenery, tight realistic fur or rigid engraving. Within this family, vary viewpoint, pose, framing and dominant color balance for each suggestion; never repeat a fixed design. Broad chocolate/cream shapes, limited coarse cuts, no realistic shading or dense fur. Interpret Rupert through broad imperfect shapes, ears, muzzle and collar; do not chase realistic anatomy or sculpted fur. Restrained cream, navy, mustard, muted red, olive or dusty blue; choose a distinct dominant balance for this outing. Subtle grain, editorial rather than photorealistic. Use real photos for likeness and approved artwork only for style. Landscape 3:2, main subject within the central crop-safe area. No collage, panels, repeated figures, text or watermark. Never reuse an earlier finished illustration, even for the same place. Label this as an illustration; completed Field Log outings use real photographs.`;
 }

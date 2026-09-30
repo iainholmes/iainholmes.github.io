@@ -153,9 +153,9 @@ function manifestFrom(editions) {
       .map(e => ({
         id: e.id, slot: e.slot, status: e.status, published_at: e.published_at, weekend: e.weekend,
         title: e.flagship.title, place_id: e.flagship.place_id,
-        options: ['flagship', 'local_trail', 'away_mission', 'wildcard'].map(role => ({ role, title: e[role].title, place_id: e[role].place_id, seasons: e[role].seasons, experiences: e[role].experiences, crowd: e[role].snapshot.crowd })),
-        place_ids: ['flagship', 'local_trail', 'away_mission', 'wildcard'].map(r => e[r]?.place_id).filter(Boolean),
-        place_roles: ['flagship', 'local_trail', 'away_mission', 'wildcard'].filter(r => e[r]?.place_id).map(r => ({ place_id: e[r].place_id, role: r })),
+        options: ['flagship'].map(role => ({ role, title: e[role].title, place_id: e[role].place_id, seasons: e[role].seasons, experiences: e[role].experiences, crowd: e[role].snapshot.crowd })),
+        place_ids: ['flagship'].map(r => e[r]?.place_id).filter(Boolean),
+        place_roles: ['flagship'].filter(r => e[r]?.place_id).map(r => ({ place_id: e[r].place_id, role: r })),
         photo_id: e.flagship.artwork?.image_id || e.flagship.photo?.id || null,
         path: `data/editions/${e.id}.json`,
       })),
@@ -175,7 +175,6 @@ ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta
 <meta name="theme-color" content="#ECE5D4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1C1511" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="${base}assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="${base}assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/svg+xml" href="${base}assets/img/rupert-face.svg">
 <link rel="stylesheet" href="${base}assets/css/atlas.css">
 ${scripts ? `<script type="module" src="${base}assets/js/site.js"></script>\n` : ''}${extra.map(x => `<script type="module" src="${base}${x}"></script>\n`).join('')}</head>

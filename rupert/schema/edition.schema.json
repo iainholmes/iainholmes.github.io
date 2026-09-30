@@ -556,15 +556,6 @@
               "town-walk"
             ]
           }
-        },
-        "artwork": {
-          "$ref": "#/$defs/artwork"
-        },
-        "panels": {
-          "$ref": "#/$defs/panels"
-        },
-        "qualities": {
-          "$ref": "#/$defs/qualities"
         }
       }
     },

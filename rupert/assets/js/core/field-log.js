@@ -2,7 +2,7 @@ import { nyDateString } from './dates.js';
 import { seasonFor } from './options.js';
 export const LOG_KEY = 'rupert-field-log-v1';
 export const rupertDay = (now = new Date()) => nyDateString(now).slice(5) === '04-07';
-export const birthdayPrompt = 'Keep one small thing from Rupert Day: his favourite moment, your favourite moment, and a photograph worth returning to.';
+export const birthdayPrompt = 'Record today’s outing and add a photograph.';
 export function cleanEntry(v) {
   if (!v || typeof v !== 'object') throw Error('Invalid memory.');
   const date = String(v.date || '');

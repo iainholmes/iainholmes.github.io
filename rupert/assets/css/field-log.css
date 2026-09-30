@@ -12,3 +12,10 @@
 .rupert-day-note svg { width:90px; flex-shrink:0; }
 .rupert-day-card { border-top:2px solid var(--gold); }
 .log-completed { margin-block:24px; }
+
+.field-log #memories {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px;}
+.memory-card {margin:0;padding:24px;background:none;border:0;border-top:1px solid var(--rule);}
+.field-log #log-editor {max-width:860px;padding:28px;background:var(--paper-2);}
+.field-log .page-head {display:block;}
+.field-log .sec-h {font-size:24px;}
+@media(max-width:759.98px){.field-log #memories {grid-template-columns:1fr;}.field-log #log-editor {padding:20px;}}

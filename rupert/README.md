@@ -111,7 +111,7 @@ Editions live in `data/editions/<ISO week>-<tue|thu>.json`, validated against `s
 This path was proved end to end with W41; see `_tools/PUBLISHING-TEST-W41.md`.
 
 1. Write `data/editions/<week>-tue.json`, with `published_at` set to Tuesday 07:00 New York time. Copying the previous week's file is the quickest start. Every `place_id` must already be in `data/places.json`.
-2. Add the cover image with `rupert.mjs photo … --kind print|plate`, unless an image already in `data/photos.json` fits.
+2. Generate a fresh cover illustration for this recommendation, then import it with `rupert.mjs photo … --kind plate --provenance editorial`. See `ILLUSTRATIONS.md` for ownership and review requirements; do not reuse earlier suggestion art.
 3. Set `conditions.as_of` to a full timestamp (for example `2026-10-05T15:00:00-04:00`). Refresh the forecast and `headline_condition` on the morning of publication.
 4. Run `rupert.mjs build`, `check` and `audit`. This Week, the Archive, the edition page and the Atlas statuses all update from the data.
 5. Commit and push. Repeat for Thursday.
@@ -131,11 +131,11 @@ The build writes an edition's page as soon as its `status` is `published`, even 
 
 ## September interface update
 
-Metadata now uses regular-width Archivo; the old monospaced font files are removed. The banner reads “Good places. Days together.” and uses New York's ISO week plus the northern-hemisphere meteorological season. The favicon and Home marker share an original brown Labrador face; section headings use three original gold outline poses.
+Display, body and metadata use bundled Archivo. The masthead shows the site title, New York ISO week and northern-hemisphere meteorological season, with no slogan. Section outline decorations are removed, and the Atlas uses a native house marker for Home. Wider editorial proportions, smaller supporting type and clearer module spacing apply across the site.
 
-Every flagship and supporting suggestion now requires `seasons` and `experiences`. These are editorial suitability tags, separate from the publication season. Historical route snapshots, sources and publish dates remain intact. The Archive searches all four suggestions in each published edition and combines search, season and experience on the same option. Clear filters restores the paired pending Thursday slot and its scheduled publication date. Future editions are still excluded by the existing publication-time selection.
+The main recommendation and its subordinate contingencies carry `seasons` and `experiences`. These are editorial suitability tags, separate from the publication season. Historical route snapshots, sources and publish dates remain intact. The Archive contains one entry per Tuesday or Thursday recommendation; search and filters apply only to that main recommendation. Clear filters restores the paired pending Thursday slot and its scheduled publication date. Future editions are still excluded by the existing publication-time selection.
 
-Travel is a working browser-local planner: ordered car, flight, ferry, rail and walking legs, reorder/remove controls, one manual place/note stop per driving leg, saved journeys and validated JSON backup import/export. Import merges new identifiers and preserves existing plans; road detours are not calculated. Field Log retains its existing backup/restore milestone gate.
+Travel is a browser-local planner with a light map: ordered car, flight, ferry, rail and walking legs, reorder/remove controls, optional car-leg stops, saved trips and validated backup import/export. Explicit lookup calculates OSRM road geometry, measured detours, drive time, planned breaks and a chronological Trip Table. Transit connectors are schematic and manually timed. Destination activities use the public place directory, with an OpenStreetMap park lookup when needed. Import merges new identifiers and preserves existing plans. Field Log supports completed and unplanned outings, local photos and backup/restore.
 
 Home setup is browser-local under `rupert-location-v1`. The public build contains no residential address or coordinates. Address lookup is an explicit form submission to Nominatim; coordinate entry also works directly. Routing is opt-in, with disclosure beside its checkbox: OSRM receives the home and selected public trailhead coordinates. Its road geometry is highlighted in ochre, with estimated drive duration and mileage shown on the map; it does not include live traffic. Turning routing off, forgetting home, clearing selection or changing filters clears the route and cancels pending requests. Home view uses zoom 10 centered on the saved point, or all public places if no home is saved. Motion follows the reduced-motion preference.
 
@@ -143,8 +143,10 @@ Relief now has stronger hillshade, visible on/off labels, provider-failure feedb
 
 `_tools/test.mjs` covers combined option filters, season boundaries, all suggestion tags, backup round trips and invalid imports, coordinate validation, route geometry/time and failures, and relief style changes alongside the existing publication timing tests.
 
-Crowd metadata integrates the separately reviewed ca9612d change. All existing outings are explicitly unassessed; no crowd observations were invented. Search, season, experience and crowd tolerance match the same suggestion. See CROWD-METADATA.md.
+Crowd metadata integrates the separately reviewed ca9612d change. All existing outings are explicitly unassessed; no crowd observations were invented. Search, season, activity and crowd tolerance match only the main recommendation. Full Edition crowd bars distinguish typical crowd level from perceived crowding; factual details appear only when recorded. See CROWD-METADATA.md.
 
 ## Illustrations, fetch and postcards
 
 See `ILLUSTRATIONS.md` for new per-suggestion art ownership, character consistency, varied compositions, frozen contextual panels and the authoring workflow. The current artwork replacement is paused: rejected generated images are not in the release. Full Editions have an explicitly initiated accessible fetch dock; Travel supports a browser-local postcard per journey, including backup/restore. Field Log now supports planned completion and unplanned outings with local photos, and Rupert Day activates only on April 7 in New York time.
+
+The editorial reset uses the existing locally bundled SIL-OFL Archivo family for display, body and metadata. Display weight 850–900 and compact proportions replace the softer serif treatment. No proprietary logo font is used. Travel has a light route map, explicit location-lookup consent, OSRM road routes and detour estimates, manually timed transit connectors, ordered legs, planned breaks, destination activity lookup and local postcard/backup storage.

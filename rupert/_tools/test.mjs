@@ -1,3 +1,4 @@
+import { distanceMiles, distanceToRoute, routeBounds, breakStops, itineraryRows, nearbyParks } from '../assets/js/core/trip-map.js';
 import { guidanceFor, artworkProblems } from '../assets/js/core/adventure.js';
 import { rupertDay, cleanEntry, readLogBackup } from '../assets/js/core/field-log.js';
 import { matchesOption, seasonFor } from '../assets/js/core/options.js';
@@ -115,7 +116,7 @@ t('Travel rejects bad imports, dates, stops on flights and duplicated identifier
   assert.throws(()=>cleanPlan({...plan,manual_stops:[{leg:2,note:'Stop'}]}));
   assert.throws(()=>readBackup(JSON.stringify({schema_version:1,plans:[plan,plan]})));
   assert.throws(()=>readBackup(JSON.stringify({schema_version:2,plans:[plan]})));
-  assert.deepEqual(cleanPlan({...plan,unapproved:'data'}),plan);
+  assert.deepEqual(cleanPlan({...plan,unapproved:'data'}),{...plan,planning:{departure:'09:00',break_every:120}});
 });
 t('Home points reject non-numeric or out-of-range coordinates', () => {
   assert.equal(Boolean(validPoint({lat:'35',lng:-79})),false);assert.equal(Boolean(validPoint({lat:Infinity,lng:-79})),false);assert.equal(Boolean(validPoint({lat:90,lng:-79})),false);assert.equal(Boolean(validPoint({lat:35,lng:-79})),true);
@@ -137,6 +138,8 @@ const route=await drivingRoute({lat:35,lng:-79},{lat:35.1,lng:-78.9},{request:as
 assert.equal(route.minutes,20);assert.equal(route.miles,'10.0');n++;console.log('ok Driving route returns road geometry, time and distance');
 await assert.rejects(()=>drivingRoute({lat:35,lng:-79},{lat:35.1,lng:-78.9},{request:async()=>({ok:true,json:async()=>({code:'NoRoute'})})}));
 await assert.rejects(()=>drivingRoute({lat:35,lng:-79},{lat:35.1,lng:-78.9},{request:async()=>({ok:false})}));n++;console.log('ok Route failure stays a failure, without fabricated geometry or duration');
+await drivingRoute({lat:35,lng:-79},{lat:35.1,lng:-78.9},{via:[{lat:35.05,lng:-78.95}],request:async(url)=>{assert.match(url,/driving\/-79,35;-78.95,35.05;-78.9,35.1/);return {ok:true,json:async()=>fakeRoute};}});
+await assert.rejects(()=>drivingRoute({lat:35,lng:-79},{lat:35.1,lng:-78.9},{via:[{lat:NaN,lng:-78.95}],request:async()=>{throw Error('Invalid waypoint reached the service');}}),/Check the route stops/);n++;console.log('ok Driving stops preserve waypoint order and reject invalid coordinates before lookup');
 t('Crowd tolerance uses perceived space and never treats unknown as quiet', () => {
   const option={title:'Forest',seasons:['winter'],experiences:['short-walk'],crowd:{typical_level:'Busy',perceived_crowding:'Low'}};
   assert.equal(matchesOption(option,{query:'forest',season:'winter',experience:'short-walk',crowd:'quiet'}),true);
@@ -156,7 +159,7 @@ t('Every published and future suggestion carries explicit unassessed crowd field
 t('Context panels prioritize adverse conditions over a whimsical activity',()=>{
   const hot=guidanceFor({qualities:{activity:'pup-cup',expected_heat:'hot'},headline_condition:'Hot afternoon'});
   assert.equal(hot[1].label,'Keep in mind');assert.equal(hot[1].text,'Hot afternoon');
-  assert.equal(guidanceFor({qualities:{activity:'pup-cup'}})[0].label,'The important stop');
+  assert.equal(guidanceFor({qualities:{activity:'pup-cup'}})[0].label,'Treat stop');
   const frozen=[{label:'Look for',text:'An individually written detail.'},{label:'The window',text:'An individually verified time.'}];
   assert.deepEqual(guidanceFor({panels:frozen,condition_level:'adverse'}),frozen);
 });
@@ -164,7 +167,8 @@ t('New suggestions cannot share or omit generated illustration ownership',()=>{
   const o={artwork:{image_id:'new',characters:['rupert']},panels:[{},{}]};
   const images={photos:[{id:'new',file:'new',kind:'plate',provenance:'editorial',generation:{owner:'2027-W01-tue/flagship'}}]};
   assert.deepEqual(artworkProblems({a:{id:'2027-W01-tue',flagship:o}},images),[]);
-  assert.ok(artworkProblems({a:{id:'2027-W01-tue',flagship:o,local_trail:o}},images).some(x=>x.includes('already belongs')));
+  assert.deepEqual(artworkProblems({a:{id:'2027-W01-tue',flagship:o,local_trail:{}}},images),[]);
+  assert.ok(artworkProblems({a:{id:'2027-W01-tue',flagship:o},b:{id:'2027-W01-thu',flagship:o}},images).some(x=>x.includes('already belongs')));
   assert.ok(artworkProblems({a:{id:'2027-W01-tue',flagship:{}}},images).length);
 });
 t('Travel postcards survive backup round-trip and reject external or executable images',()=>{
@@ -185,4 +189,31 @@ t('Field Log validates memory dates, local photos and backup duplicates',()=>{
   assert.throws(()=>cleanEntry({...e,date:'2027-02-30'}));assert.throws(()=>cleanEntry({...e,photos:['https://example.com/photo.jpg']}));
   assert.throws(()=>readLogBackup(JSON.stringify({version:1,entries:[e,e]})));
 });
+t('Route distance measures segments, not just vertices, and bounds cover the journey',()=>{
+  assert.equal(distanceMiles({lat:35,lng:-79},{lat:35,lng:-79}),0);
+  assert.ok(distanceToRoute({lat:35,lng:-79},[[-80,35],[-78,35]])<0.001);
+  assert.ok(distanceToRoute({lat:36,lng:-79},[[-80,35],[-78,35]])>60);
+  assert.deepEqual(routeBounds([]),null);
+});
+t('Trip timing includes real drive minutes, stop dwell, Rupert breaks and overnight rollover',()=>{
+  const result={minutes:270,feature:{geometry:{coordinates:[[-79,35],[-78,35],[-77,35]]}}};
+  assert.equal(breakStops(result,120).length,2);assert.equal(breakStops(result,0).length,0);
+  const rows=itineraryRows([{mode:'car',from:{label:'A'},to:{label:'B'}},{mode:'air',from:{label:'B'},to:{label:'C'},minutes:60}],[result],{departure:'22:00',interval:120,stops:[{leg:1,minutes:30}]});
+  assert.equal(rows[0].arrival,'03:30 +1d');assert.equal(rows[1].arrival,'04:30 +1d');
+  assert.equal(itineraryRows([{mode:'air',from:{label:'A'},to:{label:'B'}}],[])[0].arrival,'—');
+});
+t('Travel keeps resolved endpoints, stop coordinates and manual transit durations in backups',()=>{
+ const p=cleanPlan({...plan,legs:[{mode:'air',from:{label:'A',lat:35,lng:-79},to:{label:'B',lat:36,lng:-78},minutes:80}],manual_stops:[],planning:{departure:'13:10',break_every:90}});
+ assert.deepEqual(readBackup(JSON.stringify({schema_version:1,plans:[p]}))[0],p);assert.equal(p.legs[0].minutes,80);assert.equal(p.legs[0].from.lat,35);
+ assert.throws(()=>cleanPlan({...plan,legs:[{...plan.legs[0],minutes:-1}]}));
+});
+const parks=await nearbyParks({lat:35,lng:-79},{request:async()=>({ok:true,json:async()=>({elements:[
+ {type:'node',id:1,lat:35,lon:-79,tags:{name:'Leashed',dog:'leashed'}},
+ {type:'node',id:2,lat:35,lon:-79,tags:{name:'No dogs',dog:'no'}},
+ {type:'node',id:3,lat:35,lon:-79,tags:{name:'Private',access:'private'}},
+ {type:'node',id:4,lat:35,lon:-79,tags:{name:'Unknown'}},
+ {type:'node',id:5,lat:35,lon:-79,tags:{name:'Seasonal',dog:'yes','dog:conditional':'no @ (May-Sep)'}},
+ {type:'node',id:6,lat:NaN,lon:-79,tags:{name:'Bad point'}}
+]})})});
+assert.deepEqual(parks.map(p=>p.name),['Leashed','Unknown','Seasonal']);assert.equal(parks[0].dog_policy,'Leashed (OpenStreetMap)');assert.equal(parks[1].dog_policy,'Dog access not verified');assert.match(parks[2].dog_policy,/Conditional/);n++;console.log('ok Destination park lookup excludes private, prohibited and invalid places, and preserves unknown or conditional dog access');
 console.log(`${n} tests passed`);

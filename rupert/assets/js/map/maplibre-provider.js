@@ -82,12 +82,13 @@ function markerImage(kind, dpr) {
 
 const TAP_RADIUS = 22; // px each side: a 44×44 target around every pin, as iOS guidelines ask
 
-export async function createMap(el, { base = '', theme = 'light', bounds, relief = false, tileUrlOverride = null, touch = false } = {}) {
+export async function createMap(el, { base = '', theme = 'light', bounds, relief = false, tileUrlOverride = null, touch = false, travel = false } = {}) {
   if (!hasWebGL()) throw fail('nowebgl', 'WebGL unavailable');
   if (navigator.onLine === false) throw fail('offline', 'Offline');
   const maplibregl = await loadLibrary(base);
 
   const style = atlasStyle(theme, { relief });
+  if(travel){const colors={bg:'#E9E0CF',wood:'#D9DFC9',grass:'#E6E6D6',park:'#CED8C4',water:'#AEC6D0'};for(const layer of style.layers){if(layer.id==='bg')layer.paint['background-color']=colors.bg;else if(colors[layer.id])layer.paint['fill-color']=colors[layer.id];}}
   if (tileUrlOverride) style.sources.omt.url = tileUrlOverride;
 
   const map = new maplibregl.Map({
@@ -171,9 +172,10 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   const empty = { type: 'FeatureCollection', features: [] };
   map.addSource('routes', { type: 'geojson', data: empty });
   map.addSource('marks', { type: 'geojson', data: empty, promoteId: 'id' });
-  map.addLayer({ id: 'route-halo', type: 'line', source: 'routes', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#5A3524', 'line-width': 10, 'line-opacity': 0.9 } });
+  map.addLayer({ id: 'route-halo', type: 'line', source: 'routes', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': travel ? '#F4EEE2' : '#142C42', 'line-width': travel ? 7 : 6, 'line-opacity': 0.9 } });
   map.addLayer({ id: 'route-line', type: 'line', source: 'routes',
-    layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#F0B852', 'line-width': 6, 'line-opacity': 0.95 } });
+    layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': travel ? '#76202B' : '#CCAA66', 'line-width': travel ? 3 : 3, 'line-opacity': 0.95 } });
+  if(travel){map.setFilter('route-halo',['==',['get','mode'],'drive']);map.setFilter('route-line',['==',['get','mode'],'drive']);for(const [mode,color,dash] of [['air','#40616A',[5,3]],['ferry','#47604D',[2,2]],['rail','#142C42',[1,2]],['walk','#B18B46',[1,1]]])map.addLayer({id:'transit-'+mode,type:'line',source:'routes',filter:['==',['get','mode'],mode],paint:{'line-color':color,'line-width':2.5,'line-dasharray':dash}});}
   const statusOrder = ['match', ['get', 'status'], 'recommended', 3, 'walked', 2, 'planned', 1, 0];
   map.addLayer({ id: 'marks', type: 'symbol', source: 'marks',
     layout: {
@@ -251,7 +253,7 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
       homeMarker?.remove(); homeMarker = null;
       if (!point) return;
       const icon = document.createElement('div'); icon.className = 'home-marker'; icon.title = 'Home';
-      const img = document.createElement('img'); img.src = base + 'assets/img/rupert-face.svg'; img.alt = 'Home'; icon.append(img);
+      icon.setAttribute('aria-label','Home origin'); icon.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9h-6v-6h-4v6H4Z"/></svg>';
       homeMarker = new maplibregl.Marker({ element: icon }).setLngLat([point.lng, point.lat]).addTo(map);
     },
     centerHome() { if (homePoint) map.easeTo({center:[homePoint.lng,homePoint.lat],zoom:10,duration:duration(600)}); else api.fit(bounds); },

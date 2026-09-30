@@ -1,8 +1,7 @@
 import { guidanceFor } from './adventure.js';
 import { fetchDock } from './fetch-drawing.js';
-import { crowdSummary, CROWD_TOLERANCES } from './crowds.js';
+import { CROWD_LEVELS, CROWD_TOLERANCES } from './crowds.js';
 import { SEASONS, EXPERIENCES, seasonFor } from './options.js';
-import { labrador } from './labrador.js';
 // HTML rendering. Pure string functions shared by the build tool (pre-render) and the browser (re-render).
 // Every value from data passes through esc(). No DOM access here.
 import { weekendRange, publishedLabel, shortDate, longDate, minutesRange, hoursRange, isoWeek, nyDateString, nyTime } from './dates.js';
@@ -12,8 +11,7 @@ import { expectedPublish } from './editions.js';
 export const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 export const SLOT_LABEL = { tuesday: "Tuesday's choice", thursday: "Thursday's choice" };
-const ROLE_LABEL = { local_trail: 'Local Trail', away_mission: 'Away Mission', wildcard: 'Wildcard' };
-const MEMORY_KIND = { photo: 'photograph', video: 'ten-second video', observation: 'observation', object: 'something to keep', note: 'short note' };
+const ROLE_LABEL = { local_trail: 'Closer', away_mission: 'Bigger day', wildcard: 'Alternative' };
 
 export const NAV = [
   { key: 'week', label: 'This Week', href: '' },
@@ -115,7 +113,6 @@ function supportLine(o) {
   if (snap.route?.distance_mi) bits.push(`${snap.route.distance_mi} mi`);
   if (snap.drive) bits.push(`${minutesRange(snap.drive.minutes)} drive`);
   if (o.commitment) bits.push(o.commitment.toLowerCase());
-  bits.push(crowdSummary(snap.crowd));
   return bits.join(' · ');
 }
 
@@ -127,7 +124,7 @@ export function chrome({ active, base, weekLabel, site, body, pageClass = '', no
   return `<a class="skip" href="#main">Skip to content</a>
 <header class="masthead" id="masthead">
   <div class="wrap">
-    <div class="dateline"><span>Good places. Days together.</span><span>${esc(weekLabel)}</span></div>
+    <div class="dateline"><span>${esc(weekLabel)}</span></div>
     <p class="wordmark"><a href="${base}">The Rupert Atlas</a></p>
     <nav class="primary" aria-label="Sections"><ul>${navItems('nav-link')}</ul><a class="nav-archive" href="${base}archive/"${active === 'archive' ? ' aria-current="page"' : ''}>Archive</a></nav>
   </div>
@@ -142,13 +139,7 @@ export function chrome({ active, base, weekLabel, site, body, pageClass = '', no
 <main id="main" class="${pageClass}" tabindex="-1">
 ${body}
 </main>
-<footer class="colophon">
-  <div class="wrap colophon-inner">
-    <p class="colophon-mark">The Rupert Atlas</p>
-    <p>A record of places, routes and weekends with Rupert, a chocolate Labrador. Chapel Hill, N.C.</p>
-    <p><a href="${base}archive/">Archived Options for Rupert</a></p>
-  </div>
-</footer>
+<footer class="utility-footer"><div class="wrap"><a href="${base}archive/">Archive</a><a href="${base}atlas/">Place directory</a><span>${esc((now || new Date()).getFullYear())}</span></div></footer>
 <nav class="dock" aria-label="Sections, bottom"><ul>${NAV.map(n =>
     `<li><a href="${base}${n.href}"${n.key === active ? ' aria-current="page"' : ''}>${esc(n.label)}</a></li>`).join('')}</ul></nav>`;
 }
@@ -178,26 +169,20 @@ function plate(slot, ed, pair, ctx) {
   const bits = routeBits(f.snapshot).map(b => `<li>${b}</li>`).join('');
   const adverse = f.condition_level === 'adverse';
   const cond = f.headline_condition ? `<li class="cond${adverse ? ' is-adverse' : ''}"><span class="cond-k">${adverse ? 'Warning' : 'Weather'}</span> ${esc(f.headline_condition)}</li>` : '';
-  const row = (k, v, extra = '', cls = '') => `<div class="row ${cls}"><dt>${k}</dt><dd>${v}${extra ? `<span class="row-meta">${esc(extra)}</span>` : ''}</dd></div>`;
-  const support = ['local_trail', 'away_mission', 'wildcard'].filter(r => ed[r])
-    .map(r => row(ROLE_LABEL[r], esc(ed[r].title) + optionTags(ed[r]), supportLine(ed[r]))).join('');
-  const panels = guidanceFor(f);
-  const mission = row(esc(panels[0].label), esc(panels[0].text), '', 'fun');
-  const memory = row(esc(panels[1].label), esc(panels[1].text), '', 'fun');
   return `<article class="plate" id="${id}" data-slot="${slot}" aria-labelledby="${id}-h">
   <p class="p-eyebrow"><span class="p-day">${SLOT_LABEL[slot]}</span><span class="p-pub">Published ${esc(publishedLabel(ed.published_at))}</span></p>
   <h2 class="p-title" id="${id}-h"><a href="${href}">${esc(f.title)}</a></h2>
-  <p class="p-stand">${esc(f.standfirst)}${optionTags(f)}</p>
+  <p class="p-stand">${esc(f.standfirst)}</p>
     <ul class="p-metrics" aria-label="Logistics">${bits}${cond}</ul>
   <figure class="p-photo">${photo(imageRef(f), photos, base, { sizes: '(min-width: 760px) 46vw, 100vw', eager: slot === 'tuesday' })}${credit(imageRef(f), photos, ctx.places)}</figure>
-  <dl class="p-ledger">${support}${mission}${memory}</dl>
-  <p class="p-more"><a href="${href}">Full edition<span class="vh"> for ${esc(f.title)}</span></a> <span class="p-more-note">dog notes, parking, the plan if it rains</span></p>
+
+  <p class="p-more"><a href="${href}">Full edition<span class="vh"> for ${esc(f.title)}</span></a></p>
 </article>`;
 }
 
 export function renderWeek(pair, editions, ctx) {
   if (!pair) {
-    return `<section class="week wrap" data-pair="none"><header class="weekband"><h1>The first editions are on their way</h1></header></section>`;
+    return `<section class="week wrap" data-pair="none"><header class="weekband"><h1>No editions published</h1></header></section>`;
   }
   const { base, photos, places } = ctx;
   const tue = pair.tuesday && editions[pair.tuesday.id];
@@ -210,7 +195,6 @@ export function renderWeek(pair, editions, ctx) {
   <header class="weekband wrap">
     <p class="wb-eyebrow">${eyebrow}</p>
     <h1 id="week-h">${esc(weekendRange(pair.weekend.start, pair.weekend.end))}</h1>
-    ${marginNote("A small plan", "Find a trail, leave room for a detour, bring home a memory.", `<a href="${base}atlas/">Explore the places →</a>`)}
   </header>
   <div class="tabs wrap" role="tablist" aria-label="Choose between this weekend's editions" hidden>
     ${tab('tuesday', tue)}${tab('thursday', thu)}
@@ -242,9 +226,13 @@ function interlude(ed, ctx) {
     ${p ? `<figcaption><span class="il-place">${esc(place)}</span>${date ? `<span class="il-date">${esc(longDate(date))}</span>` : ''}</figcaption>` : ''}</figure>`;
 }
 
-function crowdFacts(crowd) {
-  const labels = {typical_level:'Typical crowd', attendance:'Attendance', perceived_crowding:'Space feels', low_crowd_window:'Quietest window', peak_period:'Peak period', weekend_vs_weekday:'Weekend / weekday', foot_traffic:'Foot traffic', dog_density:'Dog density'};
-  return `<dl class="facts crowd-facts">${Object.entries(labels).map(([key,label]) => `<div><dt>${label}</dt><dd>${esc(crowd?.[key] || 'Not yet assessed')}</dd></div>`).join('')}</dl>`;
+export function crowdVisual(crowd) {
+  const scale = (label, value) => {
+    const index = CROWD_LEVELS.indexOf(value);
+    return `<div class="crowd-line"><span>${label}</span><span class="crowd-scale" role="img" aria-label="${esc(label)}: ${esc(value || 'No crowd data')}">${CROWD_LEVELS.map((x,i)=>`<i class="${index >= i ? 'filled' : ''}"></i>`).join('')}</span><span>${esc(value || '—')}</span></div>`;
+  };
+  const facts = [['Quietest window',crowd?.low_crowd_window],['Peak',crowd?.peak_period],['Dogs',crowd?.dog_density],['Attendance',crowd?.attendance],['Weekdays / weekends',crowd?.weekend_vs_weekday],['Foot traffic',crowd?.foot_traffic]].filter(([,v])=>v);
+  return `<div class="crowd-visual">${scale('Typical crowd',crowd?.typical_level)}${scale('Perceived crowding',crowd?.perceived_crowding)}<div class="crowd-key"><span>Quiet</span><span>Busy</span></div>${facts.length ? `<dl class="facts">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}${!crowd?.typical_level && !crowd?.perceived_crowding ? '<p class="as-of">No crowd data recorded.</p>' : ''}</div>`;
 }
 
 /* ---------- full edition ---------- */
@@ -280,11 +268,11 @@ export function renderEdition(ed, ctx, sibling) {
   const pivotTarget = ed.conditions?.pivot?.then && ed[ed.conditions.pivot.then];
   const outing = role => {
     const o = ed[role]; if (!o) return '';
-    return `<li class="outing" id="${role}"><p class="outing-k">${ROLE_LABEL[role]}</p><h3>${esc(o.title)}</h3><p>${esc(o.line)}</p><p class="outing-meta">${esc(supportLine(o))}</p>${optionTags(o)}${o.artwork ? `<figure class="outing-art">${photo(imageRef(o), photos, base)}${credit(imageRef(o),photos,places)}</figure>` : ''}${o.panels ? `<div class="outing-guidance">${o.panels.map(p => `<p><span class="lbl">${esc(p.label)}</span> ${esc(p.text)}</p>`).join('')}</div>` : ''}${crowdFacts(o.snapshot?.crowd)}</li>`;
+    return `<li id="${role}"><span>${ROLE_LABEL[role]}</span><a href="${base}atlas/#place-${esc(o.place_id)}">${esc(o.title)}</a><small>${esc(supportLine(o))}</small></li>`;
   };
   const corrections = (ed.corrections || []).length
     ? `<section class="ed-corrections"><h2 class="sec-h">Corrections</h2><ul>${ed.corrections.map(c => `<li><span class="data">${esc(c.at)}</span> ${esc(c.note)}</li>`).join('')}</ul></section>` : '';
-  const sib = sibling
+  const sib = sibling && new Date(sibling.published_at) <= (ctx.now || new Date())
     ? `<p class="ed-sibling"><span class="lbl">The other choice for this weekend</span><a href="${base}edition/${esc(sibling.id)}/">${esc(SLOT_LABEL[sibling.slot])}: ${esc(sibling.flagship.title)}</a></p>` : '';
 
   return `<article class="edition" aria-labelledby="ed-h">
@@ -296,10 +284,10 @@ export function renderEdition(ed, ctx, sibling) {
     ${marginNote("The outing", `${esc(place?.short_name || f.title)}<br>${esc(s.access?.name || '')}`, `<a href="${base}atlas/#place-${esc(f.place_id)}">Find it in the Atlas →</a>`)}
   </header>
   <div class="ed-feature wrap"><figure class="ed-hero${f.artwork ? ' adventure-illustration' : ''}">${photo(imageRef(f), photos, base, { sizes: '(min-width: 1024px) 65vw, 100vw', eager: true })}${credit(imageRef(f), photos, places)}</figure>
-    <aside class="ed-companion">${labrador('sit')}<h2 class="sec-h">Before you go</h2><p class="outing-meta">${esc(crowdSummary(s.crowd))}</p><ul class="feature-facts">${routeBits(s).map(x => `<li>${x}</li>`).join('')}</ul><p>${esc(ed.practical?.best_window || 'Choose a window that suits the weather.')}</p>${optionTags(f)}<p class="season-note">Seasons are a guide to this outing. Check weather, access and dog rules before leaving.</p></aside></div>
+    <aside class="ed-companion"><h2 class="sec-h">Outing overview</h2><ul class="feature-facts">${routeBits(s).map(x => `<li>${x}</li>`).join('')}</ul><p class="overview-window">${esc(ed.practical?.best_window || '')}</p><dl class="facts">${fact('Route',esc(r.difficulty))}${fact('Start',esc(s.access?.name))}</dl></aside></div>
   <div class="ed-body wrap">
     <div class="ed-main">
-      <section><h2 class="sec-h">Crowd &amp; foot traffic</h2><p>Attendance and how crowded the space feels are separate. Unassessed places do not qualify as quiet.</p>${crowdFacts(s.crowd)}</section><section><h2 class="sec-h">Why this week</h2><p>${esc(f.why_this_week)}</p></section>
+      <section><h2 class="sec-h">Why this week</h2><p>${esc(f.why_this_week)}</p></section>
       <section class="ed-conditions"><h2 class="sec-h">Conditions</h2><p>${esc(ed.conditions?.summary)}</p>
         ${ed.conditions?.pivot ? `<div class="pivot${ed.flagship.condition_level === 'adverse' ? ' is-adverse' : ''}"><p class="pivot-k">If it turns</p><p><strong>${esc(ed.conditions.pivot.if)}:</strong> ${esc(ed.conditions.pivot.note)}${pivotTarget ? ` <span class="pivot-to">Go to: ${esc(pivotTarget.title)}</span>` : ''}</p></div>` : ''}
         <p class="as-of">Forecast as of ${esc(shortDate(nyDateString(new Date(ed.conditions.as_of))))}, ${esc(nyTime(new Date(ed.conditions.as_of)))} ET</p></section>
@@ -307,14 +295,16 @@ export function renderEdition(ed, ctx, sibling) {
         ${panels.map(p => `<section><h2 class="sec-h">${esc(p.label)}</h2><p class="fun-text">${esc(p.text)}</p></section>`).join('')}
 
       </div>
-      <section><h2 class="sec-h">Also this weekend</h2><ul class="outings">${outing('local_trail')}${outing('away_mission')}${outing('wildcard')}</ul></section>
+      <section class="contingency"><h2 class="sec-h">If plans change</h2><ul class="fallbacks">${outing('local_trail')}${outing('away_mission')}${outing('wildcard')}</ul></section>
+      <section class="memory-prompt"><h2 class="sec-h">Memory prompt</h2><p>${esc(ed.memory_prompt?.text)}</p></section>
       ${corrections}
       <section class="ed-sources"><h2 class="sec-h">Sources</h2><ul>${(f.sources || []).map(x => `<li><a href="${esc(x.url)}" rel="noopener">${esc(x.label)}</a> <span class="data">retrieved ${esc(x.retrieved)}</span></li>`).join('')}</ul>
         <p class="as-of">Place details as recorded ${esc(shortDate(s.as_of))}. They stay as published even if the place's record is corrected later.</p></section>
     </div>
     <aside class="ed-sheet" aria-label="Trail facts">
       <section><h2 class="sec-h">The route</h2><dl class="facts">${facts}</dl></section>
-      ${dog ? `<section><h2 class="sec-h">For Rupert</h2><dl class="facts">${dog}</dl></section>` : ''}
+      ${dog ? `<section><h2 class="sec-h">Dog access</h2><dl class="facts">${dog}</dl></section>` : ''}
+      <section><h2 class="sec-h">Crowd &amp; foot traffic</h2>${crowdVisual(s.crowd)}</section>
       <section><h2 class="sec-h">Practical</h2><dl class="facts">${practical}</dl></section>
       ${place?.links?.length ? `<p class="sheet-links">${place.links.map(l => `<a href="${esc(l.url)}" rel="noopener">${esc(l.label)}</a>`).join('<br>')}</p>` : ''}
     </aside>
@@ -327,37 +317,13 @@ ${fetchDock(f.experiences?.some(x => ['river','swim'].includes(x)) ? 'water' : f
 
 export function renderArchive(groups, ctx) {
   const { base, photos, places } = ctx;
-  const placeName = id => (places?.places || []).find(p => p.id === id)?.short_name || '';
-  const ed = (g, slot) => {
-    const e = g.editions.find(x => x.slot === slot);
-    const publish = expectedPublish(slot, g.weekend.start);
-    const pending = publish > (ctx.now || new Date()) ? `Publishes ${publishedLabel(publish.toISOString())}` : 'Not published';
-    if (!e) return `<li class="arch-ed is-missing"><span class="arch-thumb" aria-hidden="true"></span><div><span class="p-day">${SLOT_LABEL[slot]}</span><h4>${esc(pending)}</h4></div></li>`;
-    const img = photo(e.photo_id ? { id: e.photo_id, alt: '' } : null, photos, base, { sizes: '132px' });
-    return `<li class="arch-ed"><a class="arch-thumb" href="${base}edition/${esc(e.id)}/" tabindex="-1" aria-hidden="true">${img}</a>
-      <div><span class="p-day">${SLOT_LABEL[slot]}</span><h4><a href="${base}edition/${esc(e.id)}/">${esc(e.title)}</a></h4>
-      <p class="arch-meta">${esc(placeName(e.place_id))}${placeName(e.place_id) ? ' · ' : ''}Published ${esc(publishedLabel(e.published_at))}</p>
-      <ul class="arch-options">${(e.options || [{ role: 'flagship', title: e.title, place_id: e.place_id }]).map(o => {
-        const record = { ...o, place_name: (places?.places || []).find(p => p.id === o.place_id)?.name || '' };
-        return `<li data-option="${esc(JSON.stringify(record))}"><a href="${base}edition/${esc(e.id)}/#${o.role === 'flagship' ? 'ed-h' : esc(o.role)}">${o.role === 'flagship' ? 'Main outing' : ROLE_LABEL[o.role]}: ${esc(o.title)}</a>${optionTags(o)}<p class="outing-meta">${esc(crowdSummary(o.crowd))}</p></li>`;
-      }).join('')}</ul></div></li>`;
-  };
-  let year = null, out = '';
-  for (const g of groups) {
-    const y = g.weekend.start.slice(0, 4);
-    if (y !== year) { out += `<h2 class="arch-year">${esc(y)}</h2>`; year = y; }
-    const now = g.editions.some(e => e.current);
-    out += `<article class="arch-week" aria-labelledby="w-${esc(g.weekend.start)}">
-      <div class="arch-when"><h3 id="w-${esc(g.weekend.start)}">${esc(weekendRange(g.weekend.start, g.weekend.end))}</h3>${now ? '<span class="arch-now">This Week</span>' : ''}</div>
-      <ul class="arch-pair">${ed(g, 'tuesday')}${ed(g, 'thursday')}</ul></article>`;
-  }
-  return `<div class="archive wrap"><header class="page-head"><p class="wb-eyebrow">Every edition, by weekend</p><h1>Archive</h1>
-    <p class="page-note">Each weekend had two choices, published Tuesday and Thursday. Every edition keeps the details as they stood when it was published.</p></header>
-    <form class="archive-filters" hidden role="search"><label>Search options<input type="search" name="query" placeholder="Place, trail or experience"></label>
-      <label>Season<select name="season"><option value="">All seasons</option>${Object.entries(SEASONS).map(([v,l]) => `<option value="${v}">${l}</option>`).join('')}</select></label>
-      <label>Experience<select name="experience"><option value="">All experiences</option>${Object.entries(EXPERIENCES).map(([v,l]) => `<option value="${v}">${l}</option>`).join('')}</select></label><label>Crowd tolerance<select name="crowd">${Object.entries(CROWD_TOLERANCES).map(([v,l]) => `<option value="${v}"${v === 'any' ? ' selected' : ''}>${l}</option>`).join('')}</select></label><button type="reset">Clear filters</button>
-    </form><p class="archive-count" role="status" aria-live="polite"></p><p class="archive-empty" hidden>No options match. Try different filters. Unassessed crowd levels appear under Any.</p>
-    ${out || '<p>No editions yet.</p>'}</div>`;
+  const cards = groups.map(g => `<section class="archive-week"><h2>${esc(weekendRange(g.weekend.start,g.weekend.end))}${g.editions.some(e=>e.current)?'<span class="arch-now">This Week</span>':''}</h2><div class="archive-results">${['tuesday','thursday'].map(slot=>{
+    const e=g.editions.find(e=>e.slot===slot), publish=expectedPublish(slot,g.weekend.start);
+    if(!e) return `<article class="archive-card is-missing"><p class="p-day">${SLOT_LABEL[slot]}</p><p>${publish > (ctx.now || new Date()) ? 'Publishes '+esc(publishedLabel(publish.toISOString())) : 'Not published'}</p></article>`;
+    const option={...(e.options?.find(o=>o.role==='flagship') || {}),title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''};
+    return `<article class="archive-card" data-option="${esc(JSON.stringify(option))}"><a href="${base}edition/${esc(e.id)}/" class="archive-image" tabindex="-1" aria-hidden="true">${photo(e.photo_id?{id:e.photo_id}:null,photos,base,{sizes:'(min-width: 760px) 42vw, 90vw'})}</a><div><p class="p-day">${SLOT_LABEL[slot]} · ${esc(publishedLabel(e.published_at))}</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(e.title)}</a></h3><p class="arch-meta">${esc(option.place_name)}</p></div></article>`;
+  }).join('')}</div></section>`).join('');
+  return `<div class="archive wrap"><header class="page-head"><h1>Archive</h1></header><form class="archive-filters" hidden role="search"><label>Search<input type="search" name="query" placeholder="Place or activity"></label><label>Season<select name="season"><option value="">All seasons</option>${Object.entries(SEASONS).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Activity<select name="experience"><option value="">All activities</option>${Object.entries(EXPERIENCES).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Crowd<select name="crowd">${Object.entries(CROWD_TOLERANCES).map(([v,l])=>`<option value="${v}"${v==='any'?' selected':''}>${l}</option>`).join('')}</select></label><button type="reset">Clear</button></form><p class="archive-count" role="status" aria-live="polite"></p><p class="archive-empty" hidden>No editions match these filters.</p>${cards || '<p>No editions published.</p>'}</div>`;
 }
 
 /* ---------- section placeholders (milestone 1 honesty pages) ---------- */
@@ -404,10 +370,9 @@ export function renderAtlas(model, ctx) {
   const legend = ['recommended', 'walked', 'planned', 'register']
     .map(k => `<li>${MARK_SVG[k]}<span>${STAT[k]}</span></li>`).join('');
   return `<div class="atlas">
-  <header class="page-head wrap"><div>${labrador('stand')}<h1>Places</h1>
-    <p class="page-note">Every place recommended, walked or planned. Pins mark public trailheads and parking, checked against park and preserve listings. Places marked "pin approximate" are still to be confirmed. Your home marker is saved in this browser.</p></div>${marginNote("Start close. Go farther.", "A familiar path or a whole day away. Pick a place to see the way there.", `<a href="${base}archive/">Find a past suggestion →</a>`)}</header>
+  <header class="page-head wrap"><div><h1>Atlas</h1></div></header>
   <div class="wrap"><details class="location-settings"><summary>Home &amp; driving routes</summary>
-    <p>Save your home in this browser to add Rupert’s brown dog marker. Map tiles are supplied by OpenFreeMap and Terrain Tiles; the map view is visible to those services. The location is never added to the public site.</p>
+    <p>Home stays in this browser. Map providers receive the visible map area; home is never published.</p>
     <form id="address-form"><label>Home address<input name="address" autocomplete="street-address" maxlength="240" required placeholder="Street, town, state, ZIP"></label><button>Locate with OpenStreetMap</button></form><p class="season-note">Locating sends the address to OpenStreetMap’s Nominatim service. Check the returned coordinates below before saving home. You can also enter coordinates directly.</p>
     <form id="location-form"><label>Latitude<input name="lat" type="number" step="any" min="-85" max="85" required></label><label>Longitude<input name="lng" type="number" step="any" min="-180" max="180" required></label><button>Save home</button><button type="button" id="forget-location">Forget home</button></form>
     <label class="routing-choice"><input type="checkbox" id="routing-enabled"> Enable driving routes: OSRM receives your home and selected trailhead coordinates. Estimates exclude live traffic.</label><p id="location-status" role="status"></p>
@@ -417,7 +382,7 @@ export function renderAtlas(model, ctx) {
       <div class="map-canvas" id="map"></div>
       <p id="drive-status" class="drive-status" role="status" aria-live="polite">Select a place to plan the drive.</p>
       <div class="map-state" id="map-state" role="status"><span class="ridge" aria-hidden="true"></span>
-        <p id="map-msg">The map needs JavaScript. The directory lists every place.</p></div>
+        <p id="map-msg">Enable JavaScript for the map.</p></div>
       <ul class="map-legend" aria-label="Legend">${legend}</ul>
       <div class="map-tools" hidden><button type="button" id="relief" aria-pressed="false">Relief</button><button type="button" id="recenter">Home view</button></div>
       <div class="map-card" id="map-card" hidden></div>
@@ -437,22 +402,20 @@ export function renderAtlas(model, ctx) {
 }
 
 export function renderComing(kind, ctx) {
-  const copy = {
-    travel: ['Travel', 'Trips as ordered legs: a flight, a drive, a ferry. Worthwhile stops are suggested for drives only. The first version takes manual stops. Detour times come later from a routing service, and the page will say which service sees which points before any are sent. Plans stay in this browser and never reach the public site.'],
-    log: ['Field Log', 'A record of each outing: the date, notes, what Rupert loved, what you loved, whether to go back, and photographs. It opens once backup and full restore have been tested end to end. Entries stay private in this browser until you approve specific fields and photographs for publication.'],
-  }[kind];
-  return `<div class="wrap coming"><header class="page-head"><div>${labrador('sit')}<h1>${copy[0]}</h1><p class="page-note">${copy[1]}</p></div>${marginNote("Keep a little of the day", "The place. His favourite moment. Yours. One photograph worth returning to.")}</header>
-    <p><a href="${ctx.base}">Back to This Week</a></p></div>`;
+  return `<div class="wrap coming"><header class="page-head"><h1>Field Log</h1></header><noscript>Enable JavaScript to record outings.</noscript></div>`;
 }
 
 export function renderTravel(ctx) {
-  return `<div class="travel wrap"><header class="page-head"><div>${labrador('walk')}<h1>Travel</h1><p class="page-note">Make room for the journey. Arrange the legs, then choose the stops worth slowing down for.</p></div>${marginNote("Between here & there", "A walk before the next long drive. A river beside the road. A little time outside.")}</header>
-  <noscript><p>Enable JavaScript to create a travel plan. <a href="${ctx.base}atlas/">Browse places in the Atlas</a>.</p></noscript>
-  <div class="travel-grid"><section class="travel-editor panel"><h2 class="sec-h">Your journey</h2><p class="season-note">Plans stay in this browser. Export a backup to keep them.</p>
-  <label>Trip name<input id="trip-title" maxlength="160" placeholder="A weekend away"></label><div class="trip-dates"><label>From<input id="trip-start" type="date"></label><label>Until<input id="trip-end" type="date"></label></div>
-  <ol id="trip-legs" class="trip-legs"></ol><div class="travel-actions"><button type="button" id="add-leg">Add a leg</button><button type="button" id="save-trip">Save plan</button><button type="button" id="new-trip">New plan</button></div><p id="trip-status" role="status" aria-live="polite"></p></section>
-  <aside class="travel-side"><section class="panel"><h2 class="sec-h">Kept journeys</h2><div id="saved-trips"></div><div class="travel-actions"><button type="button" id="export-trips">Export backup</button><label class="import-label">Import backup<input type="file" id="import-trips" accept="application/json,.json"></label></div></section>
-  <section class="panel"><h2 class="sec-h">A journey, imagined</h2><p>Keep a newly made illustration with your plan. Save the real photographs for the Field Log after the trip.</p><figure id="journey-postcard" class="travel-postcard" hidden></figure><div class="postcard-controls"><label>Postcard caption<input id="postcard-caption" maxlength="160" placeholder="A journey to come"></label><label class="import-label">Add a postcard<input id="postcard-file" type="file" accept="image/jpeg,image/png,image/webp"></label><button id="remove-postcard" type="button" hidden>Remove postcard</button></div></section>
-  <section class="panel"><h2 class="sec-h">Stops along the way</h2><p>Choose a place for each driving leg, or add your own stop. Stops are manual; the directory does not yet calculate detours from your route.</p><p>Flights, trains and ferries remain in the itinerary without road-stop suggestions.</p><a href="${ctx.base}atlas/">Explore the place directory →</a></section></aside></div>
-  <script type="application/json" id="travel-places">${JSON.stringify(ctx.places.places.map(p => ({id:p.id,name:p.name}))).replace(/</g, '\\u003c')}</script></div>`;
+  return `<div class="travel wrap"><header class="page-head"><h1>Travel</h1><p class="page-note">Route, stops and destination activities.</p></header>
+  <noscript>Enable JavaScript to plan a trip.</noscript>
+  <div class="travel-grid"><section class="travel-editor"><h2 class="sec-h">Trip plan</h2><label>Trip name<input id="trip-title" maxlength="160" placeholder="Trip name"></label><div class="trip-dates"><label>Start date<input id="trip-start" type="date"></label><label>End date<input id="trip-end" type="date"></label></div>
+  <ol id="trip-legs" class="trip-legs"></ol><div class="travel-actions"><button type="button" id="add-leg">Add leg</button><button type="button" id="save-trip">Save plan</button><button type="button" id="new-trip">New plan</button></div><p id="trip-status" role="status" aria-live="polite"></p>
+  <details class="travel-privacy"><summary>Location &amp; storage</summary><p>Plans and home coordinates stay in this browser. Export a backup before clearing browser data.</p><p>With route lookup enabled, OpenStreetMap Nominatim receives typed locations and OSRM receives route coordinates; OpenStreetMap Overpass receives destination coordinates for nearby-place searches. Map providers receive the visible map area. Nothing is published.</p></details>
+  <section class="trip-library"><h2 class="sec-h">Saved trips</h2><div id="saved-trips"></div><div class="travel-actions"><button id="export-trips" type="button">Export backup</button><label class="import-label">Import backup<input id="import-trips" type="file" accept="application/json,.json"></label></div></section></section>
+  <section class="travel-workspace"><div class="travel-route-controls"><label class="routing-choice"><input id="trip-routing" type="checkbox"> Enable route lookup</label><button id="map-trip" type="button">Map trip</button><button id="fit-trip" type="button">Fit route</button></div><div class="trip-map" aria-label="Trip map"><div id="travel-map" class="map-canvas"></div><p id="trip-map-status" role="status">Loading map…</p><div class="trip-map-key"><span>Drive</span><span>Flight / ferry / train</span><span>Stop</span></div></div>
+  <section class="trip-itinerary"><div class="itinerary-head"><h2 class="sec-h">Trip table</h2><label>Departure time<input id="trip-depart" type="time" value="09:00"></label><label>Break every<select id="break-every"><option value="120">2 hours</option><option value="90">90 minutes</option><option value="180">3 hours</option><option value="0">No planned breaks</option></select></label></div><p id="trip-summary"></p><div class="table-scroll"><table><thead><tr><th>Leg</th><th>Route</th><th>Mode</th><th>Travel</th><th>Stop / break</th><th>Arrival</th></tr></thead><tbody id="trip-table"><tr><td colspan="6">Map a trip to calculate drive times.</td></tr></tbody></table></div></section>
+  <div class="trip-activities"><section><h2 class="sec-h">Along the route</h2><label>Maximum detour<select id="trip-detour"><option value="10">10 minutes</option><option value="20" selected>20 minutes</option><option value="40">40 minutes</option></select></label><div id="route-activities"><p>Map a driving leg to find stops.</p></div></section><section><h2 class="sec-h">At the destination</h2><div id="destination-activities"><p>Map the destination to find nearby places.</p></div></section></div>
+  <details class="postcard-panel"><summary>Travel postcard</summary><figure id="journey-postcard" class="travel-postcard" hidden></figure><div class="postcard-controls"><label>Caption<input id="postcard-caption" maxlength="160" placeholder="Destination"></label><label class="import-label">Add illustration<input id="postcard-file" type="file" accept="image/jpeg,image/png,image/webp"></label><button id="remove-postcard" type="button" hidden>Remove postcard</button></div></details></section></div>
+  <datalist id="travel-locations"><option value="Home"></option>${ctx.places.places.map(p=>`<option value="${esc(p.name)}"></option>`).join('')}${Object.values(ctx.places.reference_points || {}).map(p=>`<option value="${esc(p.label)}"></option>`).join('')}</datalist>
+  <script type="application/json" id="travel-places">${JSON.stringify(ctx.places.places).replace(/</g,'\\u003c')}</script><script type="application/json" id="travel-references">${JSON.stringify(ctx.places.reference_points || {}).replace(/</g,'\\u003c')}</script></div>`;
 }
