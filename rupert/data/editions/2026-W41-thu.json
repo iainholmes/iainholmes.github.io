@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "2026-W41-thu",
+  "slot": "thursday",
+  "status": "published",
+  "published_at": "2026-10-08T07:00:00-04:00",
+  "weekend": { "start": "2026-10-10", "end": "2026-10-11" },
+  "flagship": {
+    "place_id": "raven-rock",
+    "title": "Raven Rock and the stairs down to the Cape Fear",
+    "standfirst": "A 2.6-mile loop through pine woods to a 150-foot cliff above the river, with stairs down to its foot and an overlook above.",
+    "why_this_week": "The longer-drive choice, for a day with nothing else in it. Rupert gets the river at the bottom of the stairs; you get the cliff. The park opens at 7 a.m. in October, so an early start beats the Saturday crowd at the rock.",
+    "headline_condition": "Outlook only: mild, no clear rain signal",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-09-29",
+      "route": { "route_id": "raven-rock-loop@1", "distance_mi": 2.6, "shape": "loop", "difficulty": "moderate", "surface": "Wide woodland path; long wooden stairs down to the river and back up" },
+      "access": { "name": "Raven Rock State Park, 3009 Raven Rock Rd., Lillington", "parking": "Main lot by the visitor center; the loop starts beside it." },
+      "drive": { "from": "chapel-hill-public", "minutes": [70, 80] },
+      "duration_h": [2, 3],
+      "dog": { "leash": "Leashed, 6 ft maximum", "water": "The Cape Fear at the foot of the stairs, where the bank allows", "shade": "Wooded to the rock", "watch_for": ["The stairs: a long climb back up", "Current in the Cape Fear: keep him on the leash at the water's edge"] }
+    },
+    "photo": { "id": "rupert-plate-bank-trail", "alt": "Block-print plate: Rupert walks on a bank trail with a tennis ball and a red leash, beside a dark river beneath a full moon and wooded cliffs." },
+    "sources": [
+      { "kind": "park", "label": "NC State Parks — Raven Rock State Park", "url": "https://www.ncparks.gov/state-parks/raven-rock-state-park", "retrieved": "2026-09-29" },
+      { "kind": "guide", "label": "NC Tripping — Raven Rock State Park", "url": "https://www.nctripping.com/raven-rock-state-park/", "retrieved": "2026-09-29" },
+      { "kind": "forecast", "label": "NOAA CPC 6–10 and 8–14 day outlooks, issued 28 Sep", "url": "https://www.cpc.ncep.noaa.gov/products/predictions/610day/fxus06.html", "retrieved": "2026-09-29" }
+    ]
+  },
+  "local_trail": {
+    "place_id": "carolina-north-forest",
+    "title": "Carolina North Forest",
+    "line": "Soft trail five minutes from town, if the drive south stops making sense.",
+    "snapshot": { "as_of": "2026-09-29", "drive": { "from": "chapel-hill-public", "minutes": [5, 10] }, "duration_h": [1, 1.5] }
+  },
+  "away_mission": {
+    "place_id": "umstead-company-mill",
+    "title": "Umstead, Company Mill the long way",
+    "line": "5.8 miles to the old mill dam on Crabtree Creek. The half-day alternative, with the creek crossed on a bridge.",
+    "commitment": "Half day",
+    "snapshot": { "as_of": "2026-09-29", "route": { "route_id": "umstead-company-mill-loop@1", "distance_mi": 5.8, "shape": "loop", "difficulty": "moderate" }, "drive": { "from": "chapel-hill-public", "minutes": [30, 40] } }
+  },
+  "wildcard": {
+    "place_id": "duke-forest-korstian",
+    "title": "Duke Forest, Korstian Division",
+    "line": "Fire roads down to New Hope Creek, fifteen minutes out: an hour, not a day.",
+    "snapshot": { "as_of": "2026-09-29", "drive": { "from": "chapel-hill-public", "minutes": [10, 15] } }
+  },
+  "mission": { "text": "On the way back up the stairs, practise a sit-and-wait at every landing.", "tone": "training" },
+  "memory_prompt": { "kind": "observation", "text": "What he does first at the river: drink, wade or stare." },
+  "conditions": {
+    "summary": "Outlook only, well ahead of the weekend: no clear rain signal, and mid-October highs are typically in the low to mid 70s. This will be replaced by the forecast on publication day.",
+    "as_of": "2026-09-28T15:00:00-04:00",
+    "pivot": { "if": "Heavy rain in the two days before", "then": "away_mission", "note": "The paths along the Cape Fear can flood after heavy rain. Take the Company Mill loop instead, where the creek is crossed on a bridge." }
+  },
+  "practical": {
+    "best_window": "Sat 07:00–11:00",
+    "fees": "None for day use",
+    "bring": ["Water for both", "Six-foot leash", "Towel for the car", "A snack for the stairs"],
+    "closures_checked": null,
+    "closures_note": "Check the park's alerts page before leaving."
+  },
+  "corrections": []
+}

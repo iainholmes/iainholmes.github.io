@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "2026-W41-tue",
+  "slot": "tuesday",
+  "status": "published",
+  "published_at": "2026-10-06T07:00:00-04:00",
+  "weekend": { "start": "2026-10-10", "end": "2026-10-11" },
+  "flagship": {
+    "place_id": "occoneechee-mountain",
+    "title": "Occoneechee Mountain and the quarry overlook",
+    "standfirst": "A 2.2-mile loop that climbs about 350 feet above the Eno to a rocky overlook at the old quarry, then drops back to the river.",
+    "why_this_week": "The short-and-close choice: twenty minutes out, done well before lunch, with a real climb and a view at the top. The outlook for the weekend has no clear signal either way, so this is the plan that survives a changing forecast. If Saturday looks wet on Friday night, go on Sunday instead.",
+    "headline_condition": "Outlook only: mild, no clear rain signal",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-09-29",
+      "route": { "route_id": "occoneechee-mountain-loop@1", "distance_mi": 2.2, "shape": "loop", "climb_ft_approx": 350, "difficulty": "moderate", "surface": "Roots and rock; short, steep pitches near the quarry" },
+      "access": { "name": "Occoneechee Mountain State Natural Area, 625 Virginia Cates Rd., Hillsborough", "parking": "Small lot at the end of Virginia Cates Rd. It fills on fair weekends, so arrive near opening." },
+      "drive": { "from": "chapel-hill-public", "minutes": [20, 25] },
+      "duration_h": [1, 1.5],
+      "dog": { "leash": "Leashed, 6 ft maximum", "water": "The Eno along the river section of the loop", "shade": "Wooded, except the open rock at the overlook", "watch_for": ["Loose, crumbling rock at the quarry edge: keep him back from the drop", "Short, steep descents"] }
+    },
+    "photo": { "id": "rupert-plate-eno-ledge", "alt": "Block-print plate: Rupert in his mustard collar sits on a hatched rock ledge above a blue river, wooded ridges behind and a low ochre sun." },
+    "sources": [
+      { "kind": "park", "label": "NC State Parks — Occoneechee Mountain State Natural Area", "url": "https://www.ncparks.gov/state-parks/occoneechee-mountain-state-natural-area", "retrieved": "2026-09-29" },
+      { "kind": "guide", "label": "SummitPost — Occoneechee Mountain", "url": "https://www.summitpost.org/occoneechee-mountain/611352", "retrieved": "2026-09-29" },
+      { "kind": "forecast", "label": "NOAA CPC 6–10 and 8–14 day outlooks, issued 28 Sep", "url": "https://www.cpc.ncep.noaa.gov/products/predictions/610day/fxus06.html", "retrieved": "2026-09-29" }
+    ]
+  },
+  "local_trail": {
+    "place_id": "brumley-forest",
+    "title": "Brumley Forest",
+    "line": "Woods and field edges ten minutes north of town, for the morning that gets away from you.",
+    "snapshot": { "as_of": "2026-09-29", "drive": { "from": "chapel-hill-public", "minutes": [10, 15] }, "duration_h": [1, 1.5] }
+  },
+  "away_mission": {
+    "place_id": "hanging-rock-moores-wall",
+    "title": "Hanging Rock, Moore's Wall Loop",
+    "line": "The full-day version: 4.2 strenuous miles to the tower on Moore's Knob. Worth it only if both days look dry.",
+    "commitment": "Full day",
+    "snapshot": { "as_of": "2026-09-29", "route": { "route_id": "hanging-rock-moores-wall-loop@1", "distance_mi": 4.2, "shape": "loop", "difficulty": "strenuous" }, "drive": { "from": "chapel-hill-public", "minutes": [100, 115] } }
+  },
+  "wildcard": {
+    "place_id": "hillsborough-riverwalk",
+    "title": "Hillsborough Riverwalk, after the mountain",
+    "line": "Five minutes from the trailhead: a flat, easy stretch along the Eno to cool down, then coffee in town.",
+    "snapshot": { "as_of": "2026-09-29", "drive": { "from": "chapel-hill-public", "minutes": [20, 25] } }
+  },
+  "mission": { "text": "Reach the overlook, then the river, and see which one Rupert chooses to sit at.", "tone": "play" },
+  "memory_prompt": { "kind": "photo", "text": "Rupert at the overlook, with the valley behind him." },
+  "conditions": {
+    "summary": "Outlook only, well ahead of the weekend: no clear rain signal, and mid-October highs are typically in the low to mid 70s. This will be replaced by the forecast on publication day.",
+    "as_of": "2026-09-28T15:00:00-04:00",
+    "pivot": { "if": "Rain or thunder on Saturday morning", "then": "local_trail", "note": "Brumley is ten minutes away. Save the overlook for a clear day, when the rock is dry." }
+  },
+  "practical": {
+    "best_window": "Sat or Sun, 08:00–10:30",
+    "fees": "None for day use",
+    "bring": ["Water for both", "Six-foot leash", "Towel for the car"],
+    "closures_checked": null,
+    "closures_note": "Check the park's alerts page before leaving."
+  },
+  "corrections": []
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "2026-W40-thu",
+  "slot": "thursday",
+  "status": "published",
+  "published_at": "2026-10-01T07:00:00-04:00",
+  "weekend": { "start": "2026-10-03", "end": "2026-10-04" },
+  "flagship": {
+    "place_id": "umstead-company-mill",
+    "title": "Company Mill and the old dam on Crabtree Creek",
+    "standfirst": "A longer, steadier morning: a 5.8-mile loop through Umstead's oaks to the stone remains of a mill dam built in 1810.",
+    "why_this_week": "This is the choice for a slower day with more miles. The creek is crossed on a bridge, not a ford, so a wet Sunday doesn't close the route, and the canopy takes the edge off light rain.",
+    "headline_condition": "Fine in light rain; Sun 40% showers",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-09-28",
+      "route": { "route_id": "umstead-company-mill-loop@1", "distance_mi": 5.8, "shape": "loop", "gain_ft": 636, "difficulty": "moderate", "surface": "Rocky in places, roots, several small footbridges, a few short steep pitches" },
+      "access": { "name": "Harrison Ave. entrance, Reedy Creek side", "parking": "Start from the back left corner of the lot." },
+      "drive": { "from": "chapel-hill-public", "minutes": [30, 40] },
+      "duration_h": [2.5, 3],
+      "dog": { "leash": "Leashed, 6 ft maximum", "water": "Crabtree Creek at the old dam, about a mile in", "shade": "Wooded throughout", "watch_for": ["Bikes near the Reedy Creek lot", "Roots on the descents"] }
+    },
+    "photo": { "id": "rupert-lawn-2023-01", "alt": "Field print of Rupert in his mustard collar, grinning up at the camera, with two friends on a winter lawn." },
+    "sources": [
+      { "kind": "guide", "label": "This Is Raleigh — Company Mill Trail", "url": "https://thisisraleigh.com/?p=54244", "retrieved": "2026-09-29" },
+      { "kind": "forecast", "label": "NWS Raleigh forecast, issued 6:49 a.m. 28 Sep", "url": "https://forecast.weather.gov/MapClick.php?lat=35.9149&lon=-79.0568", "retrieved": "2026-09-29" }
+    ]
+  },
+  "local_trail": {
+    "place_id": "duke-forest-korstian",
+    "title": "Duke Forest, Korstian Division",
+    "line": "Fire roads and footpaths down to New Hope Creek, fifteen minutes out.",
+    "snapshot": { "as_of": "2026-09-28", "drive": { "from": "chapel-hill-public", "minutes": [10, 15] }, "duration_h": [1, 2] }
+  },
+  "away_mission": {
+    "place_id": "raven-rock",
+    "title": "Raven Rock Loop, above the Cape Fear",
+    "line": "A 2.6-mile loop to the cliffs, then the stairs down to the river. A half day with a long lunch.",
+    "commitment": "Half day",
+    "snapshot": { "as_of": "2026-09-28", "route": { "route_id": "raven-rock-loop@1", "distance_mi": 2.6, "shape": "loop" }, "drive": { "from": "chapel-hill-public", "minutes": [70, 80] } }
+  },
+  "wildcard": {
+    "place_id": "brumley-forest",
+    "title": "Brumley Forest, before eight",
+    "line": "Woods and field edges ten minutes north of town, quiet if you're early.",
+    "snapshot": { "as_of": "2026-09-28", "drive": { "from": "chapel-hill-public", "minutes": [10, 15] } }
+  },
+  "mission": { "text": "Let Rupert choose the way at three trail junctions, then find your way back to the loop.", "tone": "explore" },
+  "memory_prompt": { "kind": "photo", "text": "The largest acceptable stick, with Rupert for scale." },
+  "conditions": {
+    "summary": "Saturday partly sunny, high near 78, 30% chance of showers. Sunday mostly cloudy, high near 75, 40%.",
+    "as_of": "2026-09-28T06:49:00-04:00",
+    "pivot": { "if": "Thunder in the forecast, not just showers", "then": "local_trail", "note": "Stay close: Korstian's fire roads are an easy hour, and you can leave quickly." }
+  },
+  "practical": {
+    "best_window": "Sat or Sun, 08:00–11:00",
+    "fees": "None for day use",
+    "bring": ["Towel for the car", "Water for both", "Six-foot leash"],
+    "closures_checked": null,
+    "closures_note": "Check the park's alerts page before leaving."
+  },
+  "corrections": []
+}

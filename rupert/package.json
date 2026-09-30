@@ -1,0 +1,11 @@
+{
+  "name": "rupert-atlas",
+  "private": true,
+  "type": "module",
+  "description": "The Rupert Atlas. Static; no dependencies. Build with: node _tools/rupert.mjs build",
+  "scripts": {
+    "build": "node _tools/rupert.mjs build",
+    "check": "node _tools/rupert.mjs check",
+    "test": "node _tools/test.mjs"
+  }
+}
