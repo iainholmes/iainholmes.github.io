@@ -349,7 +349,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
     var no=String(ed.no).padStart(3,'0'),d=new Date(ed.date+'T12:00:00');
     set('[data-cp="no"]',no);set('[data-cp="count"]',data.editions.length);set('[data-cp="dated"]',dotted(ed.date));total('cp',data.editions.length);
     set('[data-cp="date"]',d.getDate()+'.'+['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'][d.getMonth()]+'.'+String(d.getFullYear()).slice(2));
-    set('[data-cp="line"]','N<sup>o</sup>. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}),true);set('[data-cp-depth]',data.editions.reduce(function(a,x){return a+(x.questions||[]).length},0));var fields={};data.editions.forEach(function(x){(x.questions||[]).forEach(function(q){if(q.field)fields[q.field]=1})});set('[data-cp-fields]',Object.keys(fields).length);
+    set('[data-cp="line"]','N<sup>o</sup>. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}),true);set('[data-cp-depth]',data.editions.reduce(function(a,x){return a+(x.questions||[]).length},0));var allFields={};data.editions.forEach(function(x){(x.questions||[]).forEach(function(q){if(q.field)allFields[q.field]=1})});set('[data-cp-fields]',Object.keys(allFields).length);
     var q1=document.createElement('div');q1.innerHTML=ed.questions[0].stem;var t=q1.textContent.trim();set('[data-cp="q1"]','<b>1.</b> '+(t.length>150?t.slice(0,t.lastIndexOf(' ',150))+'…':t).replace(/[<>&]/g,''),true);
     set('[data-cp="title"]',ed.questions.length+' questions · '+fields.length+' fields');
     /* the cover grid shows the reader's own record for the latest set, if any */

@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#f7f7f3">
 <meta name="description" content="The Workbook: economics and econometrics problems, weekdays.">
 <title>The Workbook</title>
-<script>/* Periodicals: one reading mode shared by every title (localStorage periodicals:mode = day|night) */(function(){var K='periodicals:mode',m=null;try{m=localStorage.getItem(K);if(m!=='day'&&m!=='night'){var o=localStorage.getItem('fieldbrief:mode');m=(o==='day'||o==='night')?o:null;if(m)localStorage.setItem(K,m)}}catch(e){}if(!m)m=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'night':'day';document.documentElement.setAttribute('data-mode',m)})();</script><script>/* Periodicals navigation memory: the hub lifts the most recently visited title */try{localStorage.setItem('periodicals:last',JSON.stringify({t:'cp',at:Date.now()}))}catch(e){}</script>
+<script src="../personal-updates/reading-mode.js"></script><script>/* Periodicals navigation memory: the hub lifts the most recently visited title */try{localStorage.setItem('periodicals:last',JSON.stringify({t:'cp',at:Date.now()}))}catch(e){}</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2260%22%20height%3D%2260%22%20rx%3D%224%22%20fill%3D%22%23f7f7f3%22%20stroke%3D%22%231c2f4a%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20d%3D%22M2%2022h60M2%2042h60M22%202v60M42%202v60%22%20stroke%3D%22%23c9d3d6%22%20stroke-width%3D%221.2%22%2F%3E%3Cpath%20d%3D%22M12%2050L26%2034l10%208%2016-24%22%20fill%3D%22none%22%20stroke%3D%22%230e5360%22%20stroke-width%3D%224.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2252%22%20cy%3D%2218%22%20r%3D%224%22%20fill%3D%22%231c2f4a%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -390,8 +390,8 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 EDITION MAINTENANCE — read before every update.
 Publication name: The Workbook (formerly Daily Econ Challenge / Ceteris Paribus / Daily Problem Set / The Workbook; path daily-econ-challenge/
 unchanged; localStorage key dec:v1:<date> unchanged). Archive view (#archive) is titled "The Ledger".
-Reading mode: shared Periodicals key localStorage periodicals:mode (day|night), applied in <head> and
-synced across tabs; night is a dark drafting surface defined by the html[data-mode="night"] variables.
+Reading mode: shared Periodicals key sessionStorage periodicals:session-mode (day|night), applied in <head> and
+shared across titles in this tab for the session; night is a dark drafting surface defined by the html[data-mode="night"] variables.
 Issue folio grammar: superscript "No. 001" on the masthead (.fo: STIX italic "No." + JetBrains Mono
 three-digit numerals); same grammar on the results heading. Subline: "Economics & econometrics · weekdays".
 Shelf lists Periodicals, Field Brief, Loblolly & Logit, The Workbook + Handbook utility link.
@@ -923,12 +923,12 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   window.addEventListener('hashchange',route);window.addEventListener('periodicals:ready',render);
   route();
   /* shared Periodicals reading mode */
-  function setMode(m,quiet){document.documentElement.setAttribute('data-mode',m);if(!quiet){try{localStorage.setItem('periodicals:mode',m)}catch(e){}}
+  function setMode(m,quiet){document.documentElement.setAttribute('data-mode',m);if(!quiet){window.PeriodicalsMode.choose(m)}
     document.querySelectorAll('.dn button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===m))});
     var tc=document.querySelector('meta[name="theme-color"]');if(tc)tc.content=m==='night'?'#10161d':'#f7f7f3'}
   document.querySelectorAll('.dn button').forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.mode)})});
   setMode(document.documentElement.getAttribute('data-mode')==='night'?'night':'day',true);
-  window.addEventListener('storage',function(e){if(e.key==='periodicals:mode'&&(e.newValue==='day'||e.newValue==='night'))setMode(e.newValue,true)});
+  document.addEventListener('periodicals:modechange',function(e){setMode(e.detail,true)});
   setInterval(function(){var n=document.getElementById('nextSet');if(n)n.textContent=nextSet()},30000);
   window.addEventListener('scroll',function(){document.body.classList.toggle('scrolled',scrollY>140)},{passive:true});
   var imp=document.querySelector('.pd-imprint'),dr=document.getElementById('pdDrawer');

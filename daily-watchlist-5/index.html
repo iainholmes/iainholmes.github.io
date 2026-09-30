@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>/* Periodicals: one reading mode shared by every title (localStorage periodicals:mode = day|night) */(function(){var K='periodicals:mode',m=null;try{m=localStorage.getItem(K);if(m!=='day'&&m!=='night'){var o=localStorage.getItem('fieldbrief:mode');m=(o==='day'||o==='night')?o:null;if(m)localStorage.setItem(K,m)}}catch(e){}if(!m)m=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'night':'day';document.documentElement.setAttribute('data-mode',m)})();</script><script>/* Periodicals navigation memory: the hub lifts the most recently visited title */try{localStorage.setItem('periodicals:last',JSON.stringify({t:'fb',at:Date.now()}))}catch(e){}</script>
+<script src="../personal-updates/reading-mode.js"></script><script>/* Periodicals navigation memory: the hub lifts the most recently visited title */try{localStorage.setItem('periodicals:last',JSON.stringify({t:'fb',at:Date.now()}))}catch(e){}</script>
 <style>
 /* ---------- inks ---------- */
 :root{
@@ -342,9 +342,8 @@ Identity: Instrument Serif headlines; Instrument Sans text; parchment and espres
 vermilion, Prussian blue, viridian, ochre and oxblood inks by story position (never by subject).
 The metadata sits on a typographic publication rail under the masthead (.meta: Bodoni date with an
 oxblood underline, developments/read time in small caps, italic next issue at right, Edition Day/Night);
-not an equal-cell table. Day/Night lives in that rail and uses the shared Periodicals key localStorage
-periodicals:mode (day|night), set in <head> before paint, synced across tabs (fieldbrief:mode is
-migrated once). The Index is a slide-in contents panel with expandable issues. The Periodicals shelf
+not an equal-cell table. Day/Night lives in that rail and uses the shared Periodicals key sessionStorage
+periodicals:session-mode (day|night), set in <head> before paint, shared across titles in this tab for the session. The Index is a slide-in contents panel with expandable issues. The Periodicals shelf
 lists Periodicals, Field Brief, Loblolly & Logit, The Workbook, plus a Handbook utility link.
 No pills, chips, slogans, category labels above headlines or explanatory UI copy.
 Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepable addresses for the Commonplace; never recycle or change a published story number within an issue. Whole issues and stories are keepable. -->
@@ -1081,10 +1080,10 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
   /* ---- day / night: part of the edition's metadata ---- */
   /* shared Periodicals preference: periodicals:mode (migrated from fieldbrief:mode in <head>) */
   function setMode(m,fromOtherTab){root.dataset.mode=m;document.querySelector('meta[name="theme-color"]').content=m==='night'?'#16120e':'#f1e6d0';
-    if(!fromOtherTab){try{localStorage.setItem('periodicals:mode',m)}catch(e){}}
+    if(!fromOtherTab){window.PeriodicalsMode.choose(m)}
     document.querySelectorAll('.mode button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===m)))}
   setMode(root.dataset.mode==='night'?'night':'day',true);
-  window.addEventListener('storage',e=>{if(e.key==='periodicals:mode'&&(e.newValue==='day'||e.newValue==='night'))setMode(e.newValue,true)});
+  document.addEventListener('periodicals:modechange',function(e){setMode(e.detail,true)});
 
   /* ---- index ---- */
   const panel=document.getElementById('indexPanel'),veil=document.getElementById('veil'),openBtn=document.getElementById('indexOpen'),body=document.getElementById('ixBody');

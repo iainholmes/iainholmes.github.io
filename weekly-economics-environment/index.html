@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f3f1ea"><meta name="description" content="Loblolly &amp; Logit: Weekly journal covering environmental economics and applied research."><title>Loblolly &amp; Logit</title><script>/* Periodicals: one reading mode shared by every title (localStorage periodicals:mode = day|night) */(function(){var K='periodicals:mode',m=null;try{m=localStorage.getItem(K);if(m!=='day'&&m!=='night'){var o=localStorage.getItem('fieldbrief:mode');m=(o==='day'||o==='night')?o:null;if(m)localStorage.setItem(K,m)}}catch(e){}if(!m)m=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'night':'day';document.documentElement.setAttribute('data-mode',m)})();</script><script>/* Periodicals navigation memory: the hub lifts the most recently visited title */try{localStorage.setItem('periodicals:last',JSON.stringify({t:'sp',at:Date.now()}))}catch(e){}</script><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%231f4a3b%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20text-anchor%3D%22middle%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2236%22%20font-style%3D%22italic%22%20fill%3D%22%23e5946a%22%3E%26amp%3B%3C%2Ftext%3E%3Cpath%20d%3D%22M12%2052h40%22%20stroke%3D%22%23f3f1ea%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet"><style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f3f1ea"><meta name="description" content="Loblolly &amp; Logit: Weekly journal covering environmental economics and applied research."><title>Loblolly &amp; Logit</title><script src="../personal-updates/reading-mode.js"></script><script>/* Periodicals navigation memory: the hub lifts the most recently visited title */try{localStorage.setItem('periodicals:last',JSON.stringify({t:'sp',at:Date.now()}))}catch(e){}</script><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%231f4a3b%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20text-anchor%3D%22middle%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2236%22%20font-style%3D%22italic%22%20fill%3D%22%23e5946a%22%3E%26amp%3B%3C%2Ftext%3E%3Cpath%20d%3D%22M12%2052h40%22%20stroke%3D%22%23f3f1ea%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet"><style>
 :root{
   --paper:#f3f1ea;--paper-2:#e8e6da;--ink:#14302a;--text:#28372f;--muted:#5e6a62;--hair:#c9cbbe;--rule:#14302a;
   --forest:#1f4a3b;--sage:#8aa08f;--clay:#b4532e;--clay-wash:#f2e4d8;--light:#e8e6da;
@@ -476,7 +476,7 @@ html[data-mode="night"] .pd-drawer{background:var(--paper-2)}
 .heron-panel .hp-actions a,.heron-panel .hp-actions button{background:none;border:0;padding:0;font:600 11px/1.4 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--river);text-decoration:none;cursor:pointer}
 .heron-panel .hp-actions .hp-dismiss{color:var(--muted)}
 .heron-panel .hp-actions button:hover,.heron-panel .hp-actions a:hover{color:var(--clay)}
-.heron-flyer{position:fixed;left:0;top:0;width:96px;height:48px;z-index:25;pointer-events:none;color:var(--ink);will-change:transform}
+.heron-flyer{position:fixed;left:0;top:0;width:96px;height:48px;z-index:25;pointer-events:none;color:var(--ink);will-change:transform;transform-origin:48px 24px}
 .heron-flyer svg{width:100%;height:100%;display:block;overflow:visible}
 .heron-flyer .w-down{display:none}
 .heron-flyer.flap .w-up{display:none}
@@ -785,8 +785,8 @@ Each issue ALSO: (1) appends 3–5 entries to #field-register (schema above it; 
 sourced people/institutions only; "related" = article id; mark 2–3 of them "fieldNote": true for Field Notes); (2) adds a #companion-data key for its date
 with 0–4 Heron appearances (schema above it; silence is intended). Commonplace maintenance: article ids are permanent once published; every figure and research note must receive a stable data-keep-id (or keep the deterministic issue/article anchor already published); Field Register numbers and Heron appearance ids are permanent and must never be recycled.
 Visiting writes localStorage periodicals:last (hub navigation memory).
-Reading mode: shared Periodicals key localStorage periodicals:mode (day|night), applied in <head>,
-synced across tabs; night = estuary-at-night palette via html[data-mode="night"] variables.
+Reading mode: shared Periodicals key sessionStorage periodicals:session-mode (day|night), applied in <head>,
+shared across titles in this tab for the session; night = estuary-at-night palette via html[data-mode="night"] variables.
 Folio: superscript "No. 001" after the masthead (h1 .fo: clay Source Serif numerals, muted italic No.);
 Vol./No. publication-native line stays in the top strip.
 Identity: environmental field journal x empirical economics notebook. Source Serif 4 text, IBM Plex Sans
@@ -802,7 +802,7 @@ const full=$('full-mode'),glance=$('glance-mode'),dialog=$('archive-dialog'),sea
 const editions=[...document.querySelectorAll('[data-edition]')].sort((a,b)=>b.dataset.edition.localeCompare(a.dataset.edition));
 const chron=[...editions].reverse();
 const fmt=(d,o)=>new Date(d+'T12:00:00').toLocaleDateString('en-GB',o);
-function mode(brief){document.body.classList.toggle('glance',brief);full.setAttribute('aria-pressed',String(!brief));glance.setAttribute('aria-pressed',String(brief));updateProgress()}
+function mode(brief){document.body.classList.toggle('glance',brief);if(typeof HERON!=='undefined'&&HERON){settleHeron();if(!brief)heronTick()}full.setAttribute('aria-pressed',String(!brief));glance.setAttribute('aria-pressed',String(brief));updateProgress()}
 full.addEventListener('click',()=>mode(false));glance.addEventListener('click',()=>mode(true));
 function selectEdition(date){
   const active=editions.find(e=>e.dataset.edition===date)||editions[0];if(!active)return;
@@ -860,14 +860,14 @@ function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(m){retur
 function readJSON(id){try{return JSON.parse(document.getElementById(id).textContent)}catch(e){return null}}
 function pad3(n){return String(n).padStart(3,'0')}
 
-/* shared Periodicals reading mode (localStorage periodicals:mode) */
-function setMode(m,quiet){document.documentElement.setAttribute('data-mode',m);if(!quiet){try{localStorage.setItem('periodicals:mode',m)}catch(e){}}
+/* shared Periodicals reading mode (sessionStorage periodicals:session-mode) */
+function setMode(m,quiet){document.documentElement.setAttribute('data-mode',m);if(!quiet){window.PeriodicalsMode.choose(m)}
   document.querySelectorAll('.dn button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===m))});
   var tc=document.querySelector('meta[name="theme-color"]');if(tc)tc.content=m==='night'?'#0e1714':'#f3f1ea'}
 function initMode(){
   document.querySelectorAll('.dn button').forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.mode)})});
   setMode(document.documentElement.getAttribute('data-mode')==='night'?'night':'day',true);
-  addEventListener('storage',function(e){if(e.key==='periodicals:mode'&&(e.newValue==='day'||e.newValue==='night'))setMode(e.newValue,true)});
+  document.addEventListener('periodicals:modechange',function(e){setMode(e.detail,true)});
 }
 
 /* engraved specimen plate for register entries without a licensed image */
@@ -1002,7 +1002,7 @@ function companionOn(){return LS.get('economics-environment:companion','on')!=='
 function listKey(k){try{return JSON.parse(LS.get(k,'[]'))||[]}catch(e){return []}}
 function addTo(k,id){var l=listKey(k);if(l.indexOf(id)<0){l.push(id);LS.set(k,JSON.stringify(l))}}
 var reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
-var HERON={edition:null,items:[],io:null,current:null,flyer:null,flown:{},busy:false,timer:0};
+var HERON={edition:null,items:[],io:null,current:null,flyer:null,flown:{},busy:false,timer:0,raf:0,flight:0};
 function heronWide(){return innerWidth>1180}
 function motionOK(){return !reduceMotion.matches&&heronWide()}
 /* Home perch: the heron rests on the top of the contents spine, beside "In this edition", and returns there
@@ -1013,7 +1013,18 @@ function heronHome(){if(HOME&&HOME.isConnected)return HOME;var c=document.queryS
 function homeRect(){var h=heronHome();if(!h||!h.offsetParent)return null;var r=h.getBoundingClientRect();return (r.width&&r.bottom>0&&r.top<innerHeight)?r:null}
 function homePoint(){var r=homeRect()||(HOME?HOME.getBoundingClientRect():{left:0,top:0,width:0,height:0});return {x:r.left+r.width*.5,y:r.top+r.height*.42}}
 function setHome(present){var h=heronHome();if(h)h.classList.toggle('away',!present)}
-function teardownHeron(){if(HERON.io)HERON.io.disconnect();clearTimeout(HERON.timer);if(HERON.flyer)HERON.flyer.remove();HERON.flyer=null;HERON.current=null;HERON.busy=false;setHome(true)}
+function stopFlight(){
+  clearTimeout(HERON.timer);cancelAnimationFrame(HERON.raf);HERON.raf=0;HERON.flight++;HERON.busy=false;
+  if(HERON.flyer){HERON.flyer.style.display='none';HERON.flyer.classList.remove('flap')}
+}
+function settleHeron(){
+  stopFlight();var c=HERON.current;
+  if(!companionOn()||document.body.classList.contains('glance')){setHome(true);return}
+  HERON.items.forEach(function(it){it.btn.classList.toggle('vacant',it!==c&&!it.btn.hidden)});
+  if(c&&c.slot.isConnected){c.btn.hidden=false;c.btn.classList.remove('vacant')}
+  setHome(!c);
+}
+function teardownHeron(){stopFlight();if(HERON.io)HERON.io.disconnect();clearTimeout(HERON.timer);if(HERON.flyer)HERON.flyer.remove();HERON.flyer=null;HERON.current=null;HERON.busy=false;setHome(true)}
 function renderCompanion(active){
   teardownHeron();HERON.edition=active;HERON.items=[];
   var date=active.dataset.edition,all=readJSON('companion-data')||{},cfg=all[date];
@@ -1039,7 +1050,7 @@ function renderCompanion(active){
       var go=panel.querySelector('.hv-goto');if(go)go.addEventListener('click',function(){var f=HV.figureOf(art,a.visual);if(f)f.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'center'})});
       btn.addEventListener('click',function(){openP(panel.hidden)});
       slot.querySelector('.hp-close').addEventListener('click',function(){openP(false)});
-      slot.querySelector('.hp-dismiss').addEventListener('click',function(){addTo('economics-environment:companion:dismissed',a.id);var it=itemOf(),p=null;if(it&&HERON.current===it){p=slotPoint(it);HERON.current=null}HV.mark(art,a.visual,false);panel.hidden=true;btn.hidden=true;slot.remove();if(p)flyHome(p);else setHome(!HERON.current)});
+      slot.querySelector('.hp-dismiss').addEventListener('click',function(){stopFlight();addTo('economics-environment:companion:dismissed',a.id);var it=itemOf(),p=null;if(it&&HERON.current===it){p=slotPoint(it);HERON.current=null}HV.mark(art,a.visual,false);panel.hidden=true;btn.hidden=true;slot.remove();if(p)flyHome(p);else setHome(!HERON.current)});
       panel.addEventListener('keydown',function(e){if(e.key==='Escape'){e.stopPropagation();openP(false)}});
     }
     var anchor=(a.anchor&&art.querySelector(a.anchor))||art.querySelector('.finding')||art;
@@ -1048,9 +1059,10 @@ function renderCompanion(active){
   if(!HERON.items.length)return;
   HERON.io=new IntersectionObserver(function(ents){ents.forEach(function(en){var it=HERON.items.find(function(x){return x.anchor===en.target});if(it)it.inZone=en.isIntersecting});heronTick()},{rootMargin:'-30% 0px -35% 0px'});
   HERON.items.forEach(function(it){HERON.io.observe(it.anchor)});
-  addEventListener('scroll',heronScroll,{passive:true});
+
 }
 function heronScroll(){if(!HERON.items.length)return;
+  if(HERON.busy)settleHeron();
   /* a closed note keeps its label until its article has left the screen; then the slot resets */
   HERON.items.forEach(function(it){if(!it.closed||HERON.current===it)return;var r=it.art.getBoundingClientRect();if((r.bottom<0||r.top>innerHeight)&&document.activeElement!==it.btn){it.closed=false;it.btn.hidden=true;it.btn.classList.remove('vacant')}});
   if(HERON.busy)return;var c=HERON.current;
@@ -1062,9 +1074,9 @@ function heronTick(){
   if(!next||next===HERON.current)return;
   if(HERON.current&&!HERON.current.panel.hidden)return;   /* never leave while a note is open */
   clearTimeout(HERON.timer);
-  HERON.timer=setTimeout(function(){if(!next.inZone||HERON.busy)return;arrive(next)},next.a.delay||900);
+  HERON.timer=setTimeout(function(){if(!next.inZone||HERON.busy||!companionOn()||HERON.edition.hidden||document.body.classList.contains('glance'))return;arrive(next)},next.a.delay||900);
 }
-function slotPoint(it){var r=it.slot.getBoundingClientRect();return {x:r.left+2,y:r.top-8}}
+function slotPoint(it){var r=it.slot.getBoundingClientRect();return {x:r.left+20,y:r.top+28}}
 function arrive(it){
   var from=HERON.current;HERON.current=it;
   var quiet=reduceMotion.matches||!heronWide()||HERON.flown[it.a.id]||it.seen;
@@ -1087,6 +1099,7 @@ function depart(it){
 function flyHome(p){if(!motionOK()||HERON.busy||!homeRect()){setHome(true);heronTick();return}fly(p,homePoint,1900,function(){setHome(true);heronTick()})}
 /* A reader opens a note whose perch is vacant: the heron comes over from home (or from its current perch). */
 function summon(it){
+  if(HERON.busy)settleHeron();
   if(HERON.current===it)return;var from=HERON.current;HERON.current=it;it.closed=false;clearTimeout(HERON.timer);
   if(from){from.btn.classList.add('vacant')}else setHome(false);
   var start=from&&from.btn.offsetParent?slotPoint(from):homeRect()?homePoint():null;
@@ -1094,31 +1107,35 @@ function summon(it){
   it.btn.classList.add('vacant');fly(start,function(){return slotPoint(it)},1900,function(){it.btn.classList.remove('vacant')});
 }
 /* The note is closed: the label stays in the margin (so it can be reopened), the heron flies home. */
-function release(it){if(HERON.current!==it)return;HERON.current=null;it.closed=true;it.btn.classList.add('vacant');flyHome(slotPoint(it))}
+function release(it){if(HERON.current!==it)return;stopFlight();HERON.current=null;it.closed=true;it.btn.classList.add('vacant');flyHome(slotPoint(it))}
 function fly(start,endFn,dur,done){
-  HERON.busy=true;
+  stopFlight();HERON.busy=true;var token=HERON.flight;
   var f=HERON.flyer;if(!f){f=document.createElement('div');f.className='heron-flyer';f.setAttribute('aria-hidden','true');f.innerHTML=HERON_POSE.flight;document.body.append(f);HERON.flyer=f}
   f.style.display='block';var t0=performance.now(),flap=0;
   function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
   function frame(now){
+    if(token!==HERON.flight)return;
+    if(!motionOK()||!companionOn()||document.body.classList.contains('glance')){settleHeron();return}
     var t=Math.min(1,(now-t0)/dur),e=ease(t),end=endFn();
     var cx=(start.x+end.x)/2,cy=Math.min(start.y,end.y)-60;
     var x=(1-e)*(1-e)*start.x+2*(1-e)*e*cx+e*e*end.x,y=(1-e)*(1-e)*start.y+2*(1-e)*e*cy+e*e*end.y;
     var dir=end.x>start.x?-1:1;
     f.style.transform='translate('+(x-48)+'px,'+(y-24)+'px) scaleX('+(-dir===1?-1:1)+')';
     if(now-flap>230&&t<.92){f.classList.toggle('flap');flap=now}
-    if(t<1&&document.body.contains(f))requestAnimationFrame(frame);else{f.style.display='none';f.classList.remove('flap');HERON.busy=false;done&&done()}
+    if(t<1&&document.body.contains(f))HERON.raf=requestAnimationFrame(frame);else{f.style.display='none';f.classList.remove('flap');HERON.busy=false;done&&done()}
   }
-  requestAnimationFrame(frame);
+  HERON.raf=requestAnimationFrame(frame);
 }
 function initCompanion(){
   var btn=document.querySelector('.heron-toggle');
   function apply(on){document.body.classList.toggle('no-companion',!on);if(btn){btn.setAttribute('aria-pressed',String(on));btn.setAttribute('aria-label',on?'Heron on. Turn the heron off':'Heron off. Turn the heron on')}
-    if(!on){HERON.current=null;if(HERON.flyer)HERON.flyer.style.display='none';HERON.items.forEach(function(it){it.btn.hidden=true;it.panel.hidden=true;it.btn.classList.remove('vacant');HV.mark(it.art,it.a.visual,false)});setHome(true)}else heronTick()}
+    if(!on){stopFlight();HERON.current=null;if(HERON.flyer)HERON.flyer.style.display='none';HERON.items.forEach(function(it){it.btn.hidden=true;it.panel.hidden=true;it.btn.classList.remove('vacant');it.btn.setAttribute('aria-expanded','false');HV.mark(it.art,it.a.visual,false)});setHome(true)}else heronTick()}
   heronHome();
   apply(companionOn());
   if(btn)btn.addEventListener('click',function(){var on=btn.getAttribute('aria-pressed')!=='true';LS.set('economics-environment:companion',on?'on':'off');apply(on)});
-  addEventListener('resize',function(){if(!heronWide()&&HERON.flyer)HERON.flyer.style.display='none'});
+  addEventListener('scroll',heronScroll,{passive:true});
+  addEventListener('resize',function(){if(HERON.busy)settleHeron();heronTick()});
+  reduceMotion.addEventListener('change',function(){settleHeron();heronTick()});
 }
 
 initMode();initRegisterDialog();initCompanion();registerRoute();addEventListener('hashchange',registerRoute);
