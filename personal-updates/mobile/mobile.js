@@ -1,0 +1,40 @@
+/* No accounts, analytics or network writes. Reading state belongs to this browser. */
+(()=>{'use strict';
+const root=document.documentElement, path=location.pathname.replace(/index\.html$/,''), publication=/daily-watchlist|weekly-economics|daily-econ/.test(path);
+const read=k=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch{return null}},write=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
+document.querySelectorAll('.pd-imprint').forEach(b=>b.setAttribute('aria-label','Periodicals titles'));
+const tools=document.createElement('nav');tools.className='pd-tools';tools.setAttribute('aria-label','Reading controls');
+const home=document.createElement('a');home.href='/personal-updates/';home.textContent='Titles';tools.append(home);
+function button(text,fn){const b=document.createElement('button');b.type='button';b.textContent=text;b.addEventListener('click',fn);tools.append(b);return b}
+const archive=publication?button('Index',()=>{const target=document.querySelector('#indexOpen,#open-archive,#archiveLink');if(target)target.click()}):null;
+let state=null, saved=null, pending=null, timer=null;
+const resume=button('Continue',()=>{if(!saved||!state)return;pending=saved;const hash=state.hash(saved.edition);if(location.hash!==hash)location.hash=hash;else restore()});resume.hidden=true;
+const prev=publication?button('←',()=>turn(-1)):null,next=publication?button('→',()=>turn(1)):null;
+if(prev)prev.setAttribute('aria-label','Previous edition');if(next)next.setAttribute('aria-label','Next edition');
+const share=publication?button('Share',async()=>{const url=new URL(location.href);url.hash=state?state.hash(state.current):location.hash;try{if(navigator.share){await navigator.share({title:document.title,url:url.href});return}if(navigator.clipboard){await navigator.clipboard.writeText(url.href);status.textContent='Link copied.'}else status.textContent='Copy the edition link from the address bar.'}catch(e){if(e.name!=='AbortError')status.textContent='Sharing unavailable. Copy the address bar link.'}}):null;
+const status=document.createElement('span');status.className='pd-status';status.setAttribute('role','status');tools.append(status);document.body.append(tools);
+function key(){return 'periodicals:reading:v1:'+path}
+function restore(){if(!pending)return;const p=pending;pending=null;requestAnimationFrame(()=>requestAnimationFrame(()=>{window.scrollTo(0,Math.max(0,Math.min(p.y,document.documentElement.scrollHeight-innerHeight)));resume.hidden=true}))}
+function turn(dir){if(!state)return;const i=state.dates.indexOf(state.current),date=state.dates[i+dir];if(date)location.hash=state.hash(date)}
+function save(){if(!state||location.hash==='#archive'||window.scrollY<120)return;write(key(),{edition:state.current,y:window.scrollY,at:Date.now()})}
+function update(e){clearTimeout(timer);state=e.detail;saved=read(key());resume.hidden=!(saved&&state.dates.includes(saved.edition)&&saved.y>=120);prev.disabled=state.dates.indexOf(state.current)<=0;next.disabled=state.dates.indexOf(state.current)>=state.dates.length-1;
+const seenKey='periodicals:seen:v1:'+path,seen=[...new Set([...(read(seenKey)||[]),state.current])];document.querySelectorAll('.ix-item,.archive-entry,.pd-edition-entry').forEach(el=>{const date=el.dataset.date;let badge=el.querySelector('.pd-unread');if(date&&!seen.includes(date)){if(!badge){badge=document.createElement('small');badge.className='pd-unread';badge.textContent=' · Unread';(el.querySelector('.ix-title')||el).append(badge)}}else if(badge)badge.remove()});
+write(seenKey,[...new Set([...seen,state.current])].slice(-100));restore();images();}
+addEventListener('periodicals:edition',update);addEventListener('scroll',()=>{clearTimeout(timer);timer=setTimeout(save,400)},{passive:true});addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});
+// Swipes are limited to the bottom edition controls; the reading surface keeps native scrolling.
+let touch=null;tools.addEventListener('touchstart',e=>{touch=e.touches.length===1?{x:e.touches[0].clientX,y:e.touches[0].clientY,t:Date.now()}:null},{passive:true});tools.addEventListener('touchend',e=>{if(!touch||!state)return;const t=e.changedTouches[0],dx=t.clientX-touch.x,dy=t.clientY-touch.y;if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*2&&Date.now()-touch.t<700)turn(dx<0?1:-1);touch=null},{passive:true});tools.addEventListener('touchcancel',()=>touch=null,{passive:true});
+function theme(){const bg=getComputedStyle(document.body).backgroundColor;if(bg&&bg!=='rgba(0, 0, 0, 0)'){let meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=bg}}
+new MutationObserver(theme).observe(root,{attributes:true,attributeFilter:['data-mode']});theme();
+const dialog=document.createElement('dialog');dialog.className='pd-lightbox';dialog.setAttribute('aria-label','Image viewer');dialog.innerHTML='<header><button type="button" class="pd-zoom">Zoom</button><button type="button" class="pd-close">Close image</button></header><div class="pd-view"></div><p class="pd-caption"></p>';document.body.append(dialog);
+let opener=null, scroll=0,oldOverflow='';
+function close(){dialog.close()}
+dialog.querySelector('.pd-close').onclick=close;dialog.querySelector('.pd-zoom').onclick=()=>{const zoom=dialog.dataset.zoom!=='true';dialog.dataset.zoom=String(zoom);dialog.querySelector('.pd-zoom').textContent=zoom?'Fit image':'Zoom'};
+dialog.addEventListener('close',()=>{document.body.style.overflow=oldOverflow;window.scrollTo(0,scroll);if(opener)opener.focus({preventScroll:true})});
+function open(el){opener=el;scroll=window.scrollY;oldOverflow=document.body.style.overflow;const clone=el.cloneNode(true);clone.removeAttribute('tabindex');clone.removeAttribute('role');clone.removeAttribute('aria-label');const ids=new Map();clone.querySelectorAll('[id]').forEach(n=>{ids.set(n.id,'pd-view-'+n.id);n.id='pd-view-'+n.id});clone.querySelectorAll('*').forEach(n=>{for(const a of [...n.attributes]){let value=a.value;ids.forEach((to,from)=>{value=value.replaceAll('url(#'+from+')','url(#'+to+')');if(a.name==='aria-labelledby'||a.name==='aria-describedby')value=value.split(' ').map(id=>ids.get(id)||id).join(' ')});if(value!==a.value)n.setAttribute(a.name,value)}});clone.removeAttribute('id');dialog.querySelector('.pd-view').replaceChildren(clone);const figure=el.closest('figure');dialog.querySelector('.pd-caption').textContent=figure?.querySelector('figcaption')?.innerText||el.getAttribute('alt')||el.querySelector('title')?.textContent||'Editorial illustration';dialog.dataset.zoom='false';dialog.querySelector('.pd-zoom').textContent='Zoom';dialog.showModal();document.body.style.overflow='hidden'}
+function images(){document.querySelectorAll('main figure img,main figure svg').forEach(el=>{if(el.classList.contains('pd-image')||el.closest('a,button'))return;el.classList.add('pd-image');el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Open image: '+(el.getAttribute('alt')||el.querySelector('title')?.textContent||'editorial illustration'));el.addEventListener('click',()=>open(el));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(el)}})})}
+let dismissTouch=null;const viewerHeader=dialog.querySelector('header');viewerHeader.addEventListener('touchstart',e=>{dismissTouch=e.touches.length===1?{x:e.touches[0].clientX,y:e.touches[0].clientY}:null},{passive:true});viewerHeader.addEventListener('touchend',e=>{if(dismissTouch){const t=e.changedTouches[0];if(t.clientY-dismissTouch.y>80&&Math.abs(t.clientX-dismissTouch.x)<40)close()}dismissTouch=null},{passive:true});
+images();
+// Ask the existing edition router to announce the initial state after this module loads.
+dispatchEvent(new Event('periodicals:ready'));
+if(!publication){resume.remove();for(const [label,href] of [['Commonplace','/personal-updates/commonplace/'],['Handbook','/personal-updates/handbook/']]){const a=document.createElement('a');a.textContent=label;a.href=href;tools.insertBefore(a,status)}}
+})();

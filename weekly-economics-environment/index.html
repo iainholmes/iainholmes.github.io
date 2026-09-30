@@ -201,7 +201,7 @@ body.glance .edition-body{display:block}
 .footer a{text-decoration:none}
 
 /* issues dialog */
-dialog{background:var(--paper);color:var(--ink);border:0;border-top:5px solid var(--forest);padding:28px 32px 24px;width:min(640px,calc(100% - 28px));max-height:86vh;box-shadow:0 30px 90px rgba(10,30,24,.35)}
+dialog{background:var(--paper);color:var(--ink);border:0;border-top:5px solid var(--forest);padding:28px 32px 24px;width:min(640px,calc(100% - 28px));max-height:86dvh;box-shadow:0 30px 90px rgba(10,30,24,.35)}
 dialog::backdrop{background:rgba(20,48,42,.45)}
 .dialog-head{display:flex;justify-content:space-between;align-items:start;gap:20px;border-bottom:3px solid var(--rule);padding-bottom:12px}
 .dialog-head .eyebrow{display:none}
@@ -565,7 +565,7 @@ body{overflow-x:clip}
 .rg-row .fr-no{font-size:18px!important}
 .issue-no{white-space:nowrap}
 /* Permanent Register: wide, horizontal, informative, understated. */
-#register-dialog{width:min(1180px,calc(100% - 36px));max-height:82vh}
+#register-dialog{width:min(1180px,calc(100% - 36px));max-height:82dvh}
 #register-dialog .dialog-head h2{font-size:34px}
 .rg-list{margin-top:8px}
 .rg-issue{padding:18px 0 8px;border-bottom:1px solid var(--hair)}
@@ -602,7 +602,13 @@ body{overflow-x:clip}
 html[data-mode="night"] .register{background:#10231d!important}
 .pd-cm::before{content:"C"!important}
 .pd-cm{margin-left:auto!important}.pd-cm + .pd-hb{margin-left:0!important}
-</style></head><body><a class="skip" href="#edition">Skip to the edition</a>
+</style><link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/personal-updates/mobile/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Periodicals">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css">
+</head><body><a class="skip" href="#edition">Skip to the edition</a>
 <header class="masthead" id="top">
   <div class="mh-top"><span class="vn" id="volno"><b>Vol. 1</b> · 25 September 2026</span><span class="right"><span class="fri">Fridays</span><span class="dn" role="group" aria-label="Reading mode, shared by all Periodicals"><button type="button" data-mode="day" aria-pressed="true">Day</button><span class="sl" aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="false">Night</button></span></span></div>
   <div class="mh-title"><div class="mh-wordmark"><h1><span class="r1">Loblolly</span> <span class="amp">&amp;</span> <i>Logit</i></h1><p class="mh-desc">Weekly journal covering environmental economics and applied research</p></div><div class="mh-folio" aria-label="Issue number"><span class="no">N<sup>o</sup>.</span><span class="num" id="mhNo">001</span></div></div>
@@ -808,6 +814,7 @@ function selectEdition(date){
   list.querySelectorAll('.archive-entry').forEach(a=>a.setAttribute('aria-current',String(a.dataset.date===active.dataset.edition)));
   const rt=active.querySelector('#reading-time,.reading-time');
   if(rt)rt.textContent=Math.ceil(active.innerText.trim().split(/\s+/).length/220)+' minute read';
+  window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:active.dataset.edition,dates:chron.map(e=>e.dataset.edition),hash:d=>'#edition-'+d}}));
   if(READY)afterSelect(active);
 }
 function route(){let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return}
@@ -833,7 +840,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 function updateProgress(){const x=document.documentElement.scrollHeight-innerHeight;$('progress').style.width=(x>0?Math.min(100,scrollY/x*100):0)+'%';document.body.classList.toggle('scrolled',scrollY>180)}
 addEventListener('scroll',updateProgress,{passive:true});addEventListener('resize',updateProgress);
 document.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',updateProgress));
-selectEdition(editions[0]?.dataset.edition);route();addEventListener('hashchange',route);
+addEventListener('periodicals:ready',()=>selectEdition(editions.find(e=>!e.hidden)?.dataset.edition));selectEdition(editions[0]?.dataset.edition);route();addEventListener('hashchange',route);
 if('IntersectionObserver'in window){const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.contents a').forEach(a=>a.classList.toggle('current',a.hash==='#'+e.target.id))}),{rootMargin:'-15% 0px -60% 0px'});document.querySelectorAll('.entry,.synthesis,.knowledge').forEach(e=>ob.observe(e))}
 /* Periodicals shelf */
 const imp=document.querySelector('.pd-imprint'),dr=$('pdDrawer');
@@ -1119,4 +1126,5 @@ var cur=editions.find(function(e){return !e.hidden});if(cur)afterSelect(cur);
 var READY=true;
 })();
 </script><script src="../personal-updates/commonplace/commonplace.js"></script>
+<script src="/personal-updates/mobile/mobile.js"></script>
 </body></html>
