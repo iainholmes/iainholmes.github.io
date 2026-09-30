@@ -103,7 +103,7 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
         },
         "style_version": {
-          "enum": ["atlas-woodcut-1", "atlas-graphic-2"]
+          "enum": ["atlas-woodcut-1", "atlas-graphic-2", "atlas-engraved-3"]
         }
       }
     }

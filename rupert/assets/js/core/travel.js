@@ -24,7 +24,7 @@ export function cleanPlan(value) {
   if (value.postcard) {
     const p=value.postcard;
     if (typeof p.image !== 'string' || p.image.length > 1500000 || !/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(p.image) || typeof p.caption !== 'string' || !p.caption.trim() || p.caption.length > 160) throw new Error('Use a small JPEG, PNG or WebP illustration and a postcard caption.');
-    postcard={image:p.image,caption:p.caption.trim()};
+    postcard={image:p.image,caption:p.caption.trim(),...(p.automatic===true?{automatic:true}:{})};
   }
   const planning={departure:/^([01]\d|2[0-3]):[0-5]\d$/.test(value.planning?.departure)?value.planning.departure:'09:00',break_every:[0,90,120,180].includes(value.planning?.break_every)?value.planning.break_every:120};
   return { id, title:value.title.trim(), dates, legs, manual_stops, planning, ...(postcard ? {postcard} : {}) };

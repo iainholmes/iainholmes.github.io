@@ -58,7 +58,7 @@
         0.35
       ],
       "taken_at": "2023-10",
-      "caption": "Field print · Rupert, October 2023"
+      "caption": "Field print \u00b7 Rupert, October 2023"
     },
     {
       "id": "rupert-plate-eno-ledge",
@@ -76,7 +76,7 @@
         0.7,
         0.62
       ],
-      "caption": "Plate · Rupert above the river",
+      "caption": "Plate \u00b7 Rupert above the river",
       "source_note": "Drawn for the Atlas: a block-print scene with Rupert from Iain's illustration. No photograph."
     },
     {
@@ -94,7 +94,7 @@
         0.5,
         0.7
       ],
-      "caption": "Plate · Rupert on the bank trail",
+      "caption": "Plate \u00b7 Rupert on the bank trail",
       "source_note": "Editorial block-print illustration; no documentary location claim."
     },
     {
@@ -114,12 +114,37 @@
         0.5,
         0.5
       ],
-      "caption": "Illustration · Rupert",
+      "caption": "Illustration \u00b7 Rupert",
       "source_note": "Editorial screen-print illustration approved for this recommendation; no documentary location claim.",
       "generation": {
         "owner": "2026-W40-tue/flagship",
         "created_at": "2026-09-30",
         "style_version": "atlas-graphic-2"
+      }
+    },
+    {
+      "id": "rupert-riverwalk-2026-w40-r1-tue",
+      "file": "rupert-riverwalk-2026-w40-r1-tue",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1536,
+      "height": 1024,
+      "widths": [
+        800,
+        1400,
+        1536
+      ],
+      "alt": "Engraved woodcut illustration of Rupert, a chocolate Labrador carrying a mustard ball, beside sparse cream river marks on a deep blue field.",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "caption": "Illustration \u2014 Riverwalk outing",
+      "source_note": "New editorial illustration following the supplied print references; not a documentary view.",
+      "generation": {
+        "owner": "2026-W40-r1-tue/flagship",
+        "created_at": "2026-09-30",
+        "style_version": "atlas-engraved-3"
       }
     }
   ]

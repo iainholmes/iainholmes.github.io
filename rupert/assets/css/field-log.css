@@ -7,7 +7,7 @@
 .field-log .page-head { display:grid; }
 .field-log .log-actions { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:22px 24px; background:var(--paper-2); border-top:2px solid var(--band); margin-block:24px 38px; }
 .field-log .log-actions #unplanned,.log-completed { background:var(--band); color:var(--on-band); border-color:var(--band); text-decoration:none; }
-.field-log #header-open-memory { background:none; color:var(--on-band); border:0; padding:8px 0; text-align:left; }
+.field-log #header-open-memory { background:none; color:var(--text-2); border:0; padding:0; text-align:right;min-height:0; }
 .field-log #memories { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px; }
 .field-log #memories > p { grid-column:1/-1; padding:28px 24px; border-block:1px solid var(--rule); margin:0; font-size:14px; }
 .memory-card { margin:0; padding:24px 0; background:var(--paper); border-top:2px solid var(--band); scroll-margin-top:calc(var(--bar-h) + 20px); }

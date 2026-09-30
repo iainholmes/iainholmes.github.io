@@ -1,10 +1,11 @@
 /* The Rupert Atlas — canonical editorial system. */
-@font-face { font-family: "Archivo"; src: url(../fonts/archivo-latin-wdth-normal.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
-@font-face { font-family: "Magrebis"; src: url(../fonts/magrebis-regular.woff) format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
-
-
+@font-face {font-family: "VELENOR"; src: url(../fonts/velenor-regular.ttf) format("truetype"); font-weight:400; font-display:swap;}
+@font-face {font-family: "Latin Modern Roman"; src: url(../fonts/lmroman-regular.otf) format("opentype"); font-weight:400; font-style:normal; font-display:swap;}
+@font-face {font-family: "Latin Modern Roman"; src: url(../fonts/lmroman-bold.otf) format("opentype"); font-weight:700; font-style:normal; font-display:swap;}
+@font-face {font-family: "Latin Modern Roman"; src: url(../fonts/lmroman-italic.otf) format("opentype"); font-weight:400; font-style:italic; font-display:swap;}
+@font-face {font-family: "Latin Modern Roman"; src: url(../fonts/lmroman-bolditalic.otf) format("opentype"); font-weight:700; font-style:italic; font-display:swap;}
 /* Tokens */
-:root { --lake: #172A3A; --pine: #34483B; --ink: #211F1C; --red: #7A2024; --ochre: #B28A49; --gold: #B28A49; --parchment: #F3EFE5; --brown: #574E45; --taupe: #8E8980; --slate: #40616A; --rust: #AA3D23; --paper: #F3EFE5; --paper-2: #ECEDE7; --text: #211F1C; --text-2: #52605A; --muted: var(--text-2); --rule: #CDD0C8; --rule-strong: #6F1D24; --accent: #6F1D24; --mark: #B28A49; --band: #6F1D24; --on-band: #F3EFE5; --on-band-2: #F3EFE5; --foot: var(--band); --on-foot: var(--paper); --focus: #7A2024; --alert: var(--red); --scrim: rgba(18,30,38,.72); --f-editorial: "Magrebis",Georgia,serif; --f-text: "Archivo",Arial,sans-serif; --f-display: "Archivo",Arial,sans-serif; --f-data: "Archivo",Arial,sans-serif; --gutter: clamp(20px,3vw,48px); --max: 1600px; --bar-h: 52px; --dock-h: 58px; color-scheme: light; }
+:root { --lake: #1D2A3A; --pine: #34483B; --ink: #211F1C; --red: #7A2024; --ochre: #C98B4B; --gold: #C98B4B; --parchment: #F3EFE5; --brown: #574E45; --taupe: #8E8980; --slate: #40616A; --rust: #AA3D23; --paper: #F3EFE5; --paper-2: #ECEDE7; --text: #211F1C; --text-2: #52605A; --muted: var(--text-2); --rule: #CDD0C8; --rule-strong: #A46A32; --accent: #87521F; --mark: #C98B4B; --band: #1D2A3A; --on-band: #F3EFE5; --on-band-2: #F3EFE5; --foot: var(--band); --on-foot: var(--paper); --focus: #87521F; --alert: var(--red); --scrim: rgba(18,30,38,.72); --f-editorial: "VELENOR",Georgia,serif; --f-text: "Latin Modern Roman",Georgia,serif; --f-display: "Latin Modern Roman",Georgia,serif; --f-data: "Latin Modern Roman",Georgia,serif; --gutter: clamp(20px,3vw,48px); --max: 1600px; --bar-h: 52px; --dock-h: 58px; color-scheme: light; }
 
 
 /* Typography and Shared Elements */
@@ -375,7 +376,7 @@ h4 { font-family: var(--f-editorial); font-weight: 400; font-synthesis: none; }
 .reg-word { font-weight: 500; }
 .reg-show { align-self: center; font: 650 12px var(--f-display); background: none; color: var(--text); border: 1px solid var(--rule); cursor: pointer; white-space: nowrap; font-family: var(--f-data); font-stretch: normal; grid-column: 2; justify-self: start; min-height: 28px; font-size: 10px; padding: 3px 7px; text-transform: none; letter-spacing: 0; }
 .reg-show:hover { border-color: var(--text); }
-.reg-row.is-selected { padding-left: 12px; margin-left: -12px; background: #6F1D2414; box-shadow: inset 3px 0 var(--band); }
+.reg-row.is-selected { padding-left: 12px; margin-left: -12px; background: #C98B4B20; box-shadow: inset 3px 0 var(--band); }
 .atlas-map:has(.map-state[data-state="failed"]) .map-state { min-height: 150px; position: absolute; inset: 0; }
 .mc-close { position: absolute; top: 6px; right: 6px; min-width: 44px; min-height: 44px; background: none; border: 0; cursor: pointer; font: 650 12px var(--f-display); font-stretch: 80%; letter-spacing: .1em; text-transform: uppercase; color: #221F1C; }
 .mc-link { display: inline-block; padding-block: 10px; font: 650 12.5px var(--f-display); font-stretch: 80%; letter-spacing: .1em; text-transform: uppercase; color: #221F1C; }
@@ -392,7 +393,7 @@ h4 { font-family: var(--f-editorial); font-weight: 400; font-synthesis: none; }
 #location-form label { flex: 1 1 140px; }
 .location-settings .routing-choice { display: flex; align-items: start; margin-top: 16px; }
 .drive-status { margin-block: 12px 0; padding: 12px 16px; border-left: 3px solid var(--mark); background: var(--paper-2); font: 500 14px/1.5 var(--f-data); }
-.home-marker { border-radius: 50%; width: 28px; height: 28px; padding: 5px; background: #F3EFE5; border: 2px solid #172A3A; box-shadow: 0 1px 4px #0003; }
+.home-marker { border-radius: 50%; width: 28px; height: 28px; padding: 5px; background: #F3EFE5; border: 2px solid #1D2A3A; box-shadow: 0 1px 4px #0003; }
 .home-marker img { width: 100%; height: 100%; }
 #address-form { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-block: 16px; }
 #address-form label { flex: 1 1 240px; }
@@ -400,11 +401,11 @@ h4 { font-family: var(--f-editorial); font-weight: 400; font-synthesis: none; }
 .atlas-map:has(.map-state[data-state="failed"]) .drive-status { display: none; }
 .atlas-map:has(.map-state[data-state="loading"]) .drive-status { display: none; }
 .atlas-map:has(.map-card:not([hidden])) .map-legend { display: none; }
-.home-marker svg { width: 100%; height: 100%; fill: #172A3A; }
+.home-marker svg { width: 100%; height: 100%; fill: #1D2A3A; }
 .trip-map #trip-map-status { position: absolute; left: 12px; top: 12px; right: 60px; margin: 0; padding: 8px 12px; font-size: 12px; background: #F1EEE6EE; color: #20292D; pointer-events: none; }
 .trip-map #trip-map-status:empty { display: none; }
 .trip-map-key { position: absolute; bottom: 32px; left: 12px; display: flex; gap: 16px; padding: 5px 9px; font-size: 10px; background: #F3EFE5EF; }
-.trip-map-key span::before { content: ''; display: inline-block; width: 14px; height: 3px; margin-right: 6px; background: #7A2024; vertical-align: 3px; }
+.trip-map-key span::before { content: ''; display: inline-block; width: 14px; height: 3px; margin-right: 6px; background: #C98B4B; vertical-align: 3px; }
 .trip-map-key span:nth-child(2)::before { background: repeating-linear-gradient(90deg,#40616A 0 3px,transparent 3px 5px); }
 .trip-map-key span:last-child::before { width: 6px; height: 6px; border-radius: 50%; background: #B18B46; }
 .map-card .mc-name { font: 750 24px/1.05 var(--f-display); font-family: var(--f-editorial); font-weight: 400; font-synthesis: none; }
@@ -693,3 +694,47 @@ h4 { font-family: var(--f-editorial); font-weight: 400; font-synthesis: none; }
   .ed-main section { padding: 16px; }
   .panel { padding: 16px; }
 }
+
+/* Closing refinement: clean reading sheets framed by the blue site field. */
+body {background:var(--lake);}
+main {background:var(--paper);max-width:var(--max);margin:24px auto;}
+.wordmark {letter-spacing:.025em;}
+.page-head {grid-template-columns:minmax(0,1fr) minmax(320px,.85fr);align-items:center;min-height:230px;}
+.page-head h1 {font-size:96px;letter-spacing:0;line-height:1.03;}
+.head-note {background:transparent;color:var(--ink);display:grid;grid-template-columns:minmax(130px,1fr) minmax(0,1fr);align-content:center;align-items:center;gap:5px 22px;padding:0;text-align:right;}
+.head-note .lab-outline {grid-column:1;grid-row:1 / 5;width:100%;height:145px;margin:0;color:#A46A32;}
+.head-note .lbl {display:none;}
+.head-note p,.atlas .head-note p {grid-column:2;color:var(--ink);font:400 24px/1.2 var(--f-editorial);margin:0;}
+.head-note small,.head-note a,.head-note button {grid-column:2;color:var(--text-2);text-align:right;margin:0;border:0;padding:0;font-family:var(--f-data);}
+.header-kicker {font-family:var(--f-data);font-size:14px;}
+.is-withdrawn {border-color:var(--alert);}
+.head-note #header-add-outing {font-size:11px;}
+.postcard-panel[open] {padding-bottom:20px;}
+@media (min-width:760px) and (max-width:1050px) {.page-head h1 {font-size:68px;}.page-head {grid-template-columns:1fr 1.1fr;gap:20px;}.head-note .lab-outline{height:110px;}.head-note{grid-template-columns:1fr 1fr;gap:12px;}}
+@media (max-width:759.98px) {main{margin:12px 10px;}.page-head {display:grid;grid-template-columns:1fr;min-height:0;gap:22px;}.page-head h1{font-size:54px;letter-spacing:0;}.head-note{grid-template-columns:1fr 1fr;}.head-note .lab-outline{height:105px;}.head-note p,.atlas .head-note p{font-size:23px;}.wordmark{letter-spacing:.018em;}}
+.wordmark {font-size:clamp(42px,8.4vw,132px);line-height:1.34;letter-spacing:.018em;}
+.atlas .page-head h1 {font-size:100px;}
+.page-head h1 {font-weight:400;}
+.head-note {position:relative;grid-template-rows:repeat(3,min-content);}
+@media (min-width:760px) and (max-width:1050px) {.atlas .page-head h1{font-size:72px;}}
+@media (max-width:759.98px) {.wordmark{font-size:8.5vw;line-height:1.2;}.atlas .page-head h1{font-size:56px;}}
+
+.head-note {display:grid;grid-template-rows:1fr;align-items:center;align-content:center;}
+.head-note .lab-outline {grid-row:1;}
+.banner-copy {grid-column:2;display:flex;flex-direction:column;gap:7px;justify-content:center;}
+.banner-copy p,.banner-copy small,.banner-copy a,.banner-copy button {grid-column:auto;}
+main {margin:24px max(14px,calc((100vw - var(--max))/2));}
+@media (max-width:759.98px) {main{margin:12px 10px;}}
+
+.mc-name,.map-card .mc-name,.reg-head h2,.reg-region,.reg-row h4,.dossier-destination,.saved-trip h3,.trip-activity h3 {font-family:var(--f-text);}
+.atlas-label-layer {position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.atlas-label-layer span {position:absolute;transform:translateY(-50%);white-space:nowrap;visibility:hidden;font:400 12.5px/1.2 var(--f-data);color:var(--ink);text-shadow:1px 0 var(--paper),-1px 0 var(--paper),0 1px var(--paper),0 -1px var(--paper);}
+
+.archive-card.is-withdrawn > div {grid-column:1/-1;}
+.ed-head .head-note {display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.ed-head .head-note p,.ed-stand,.ed-companion .overview-window {font-family:var(--f-text);}
+.ed-companion {background:var(--paper);color:var(--ink);border-top:2px solid var(--accent);}
+.ed-companion .sec-h,.ed-companion .facts dt,.ed-companion .overview-window {color:var(--ink);}
+.ed-hero.adventure-illustration img {background:var(--lake);}
+
+.dateline,.head-note,.head-note p,.atlas .head-note p,.head-note .lbl,.p-day,.plate .p-day,.ed-head .p-day,.wb-eyebrow,.tab-k,.ed-sibling a {font-family:var(--f-text);}

@@ -71,6 +71,7 @@ t('formatters', () => {
   assert.equal(minutesRange([25, 35]), '25–35 min');
   assert.equal(minutesRange([100, 115]), '1 h 40 – 1 h 55');
   assert.equal(hoursRange([1.75, 2.5]), '2–2½ h');
+  assert.equal(hoursRange([.5, 1]), '½–1 h');
 });
 const archiveAt = (manifest, time) => {
   const now = at(time);

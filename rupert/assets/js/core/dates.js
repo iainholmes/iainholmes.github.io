@@ -99,6 +99,6 @@ export function minutesRange([a, b]) {
 
 /** Hours range → "About 2 h" / "2–3 h" */
 export function hoursRange([a, b]) {
-  const r = x => (Math.round(x * 2) / 2).toString().replace('.5', '½');
+  const r = x => (Math.round(x * 2) / 2).toString().replace('.5', '½').replace(/^0½$/, '½');
   return r(a) === r(b) ? `About ${r(a)} h` : `${r(a)}–${r(b)} h`;
 }

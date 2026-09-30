@@ -1,3 +1,4 @@
+import { automaticPostcard } from './core/postcard.js';
 import { createMap } from './map/maplibre-provider.js';
 import { validPoint, drivingRoute } from './core/routing.js';
 import { pointFeature, distanceMiles, distanceToRoute, routeBounds, itineraryRows, geocodeLocation, nearbyParks } from './core/trip-map.js';
@@ -44,7 +45,7 @@ function addLeg(leg = { mode: 'car', from: {label:''}, to:{label:''} }, stop = {
 function headerState() {
   const rows=[...$('trip-legs').children], origin=rows[0]?.querySelector('.leg-from').value.trim(), destination=rows.at(-1)?.querySelector('.leg-to').value.trim();
   $('travel-header-plan').textContent=$('trip-title').value.trim() || (destination ? `${origin || 'Origin'} → ${destination}` : 'Plan a Trip');
-  $('travel-header-state').textContent=destination ? `${origin || 'Origin'} → ${destination}${$('trip-start').value ? ' · '+$('trip-start').value : ''}${activeId ? '' : ' · Unsaved draft'}` : 'Start with a destination';
+  $('travel-header-state').textContent=rows[0]?.querySelector('.leg-mode').selectedOptions[0].textContent || '';
 }
 function numberLegs() { headerState(); [...$('trip-legs').children].forEach((row,i,all) => { const bs=row.querySelectorAll('.leg-actions button'); bs[0].disabled=i===0; bs[1].disabled=i===all.length-1; }); }
 function collect() {
@@ -57,7 +58,7 @@ function load(plan) {
   if(plan) plan.legs.forEach(leg=>addLeg(leg,plan.manual_stops.find(s=>s.leg===leg.seq))); else addLeg();
   $('trip-depart').value=plan?.planning?.departure||'09:00';$('break-every').value=plan?.planning?.break_every??120;
   clearMap();
-  postcard=plan?.postcard || null; $('postcard-caption').value=postcard?.caption || ''; paintPostcard();
+  postcard=plan?.postcard || null; if(plan)ensurePostcard(plan); $('postcard-caption').value=postcard?.caption || ''; paintPostcard();
   dirty=false;
 }
 function savedList() {
@@ -88,12 +89,13 @@ function savedList() {
   }));
 }
 $('add-leg').addEventListener('click',()=>{addLeg();dirty=true;clearMap();});
-$('save-trip').addEventListener('click',()=>{try { const plan=collect(), next=plans.filter(p=>p.id!==plan.id).concat(plan); if(next.length>100) throw Error('Export your journeys before adding more.'); if(persist(next)) {activeId=plan.id;dirty=false;savedList();status('Plan saved in this browser.');} } catch(e){status(e.message);} });
+$('save-trip').addEventListener('click',()=>{try { const plan=collect(); ensurePostcard(plan); plan.postcard=postcard; const next=plans.filter(p=>p.id!==plan.id).concat(plan); if(next.length>100) throw Error('Export your journeys before adding more.'); if(persist(next)) {activeId=plan.id;dirty=false;savedList();status('Plan saved in this browser.');} } catch(e){status(e.message);} });
 $('new-trip').addEventListener('click',()=>{if(dirty && !confirm('Start a new journey and discard unsaved edits?')) return;load();status('New journey.');});
 $('export-trips').addEventListener('click',()=>{try {let exportPlans=plans; if(dirty){const draft=collect();exportPlans=plans.filter(p=>p.id!==draft.id).concat(draft);}const blob=new Blob([JSON.stringify({schema_version:1,plans:exportPlans},null,2)],{type:'application/json'}), url=URL.createObjectURL(blob), a=el('a');a.href=url;a.download='rupert-travel-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status('Backup exported, including the current draft.');} catch(e){status(e.message);} });
 $('import-trips').addEventListener('change',async e=>{try{const file=e.target.files[0];if(!file)return;const incoming=readBackup(await file.text()), next=[...plans];for(const p of incoming){if(!next.some(x=>x.id===p.id))next.push(p);}if(next.length>100)throw Error('Too many journeys.');const added=next.length-plans.length;if(persist(next)){savedList();status(`Imported ${added} journeys; existing plans were kept.`);}}catch(e){status('Import failed: '+e.message);}finally{e.target.value='';}});
 document.querySelector('.travel-editor').addEventListener('input',e=>{if(!e.target.matches('#trip-title,#trip-start,#trip-end')&&!e.target.closest('#trip-legs'))return;dirty=true;headerState();if(e.target.closest('#trip-legs')&&(mapped||routeController)){clearMap();$('trip-map-status').textContent='Trip changed. Map trip to update the route.';}});
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
+function ensurePostcard(plan) { if(!postcard || postcard.automatic){ postcard=automaticPostcard(plan); $('postcard-caption').value=postcard.caption;paintPostcard();} }
 function paintPostcard() {
   const box=$('journey-postcard');box.replaceChildren();box.hidden=!postcard;
   if(postcard){const image=el('img');image.src=postcard.image;image.alt='Adventure imagined: '+postcard.caption;box.append(image,el('figcaption','Adventure imagined · '+postcard.caption));}
@@ -110,7 +112,7 @@ $('postcard-file').addEventListener('change',async e=>{
   }catch(error){status(error.message);}finally{e.target.value='';}
 });
 $('postcard-caption').addEventListener('input',()=>{if(postcard){postcard.caption=$('postcard-caption').value;paintPostcard();dirty=true;}});
-$('remove-postcard').addEventListener('click',()=>{postcard=null;paintPostcard();dirty=true;status('Postcard removed from this journey.');});
+$('remove-postcard').addEventListener('click',()=>{try {postcard=null;ensurePostcard(collect());dirty=true;status('Automatic artwork restored.');}catch(e){status(e.message);}});
 load();savedList();
 initMap();
 function clearMap() {
@@ -156,7 +158,7 @@ $('map-trip').addEventListener('click',async()=>{
     }
     if(version!==requestVersion)return;$('trip-map-status').textContent='';mapped={plan,results,baseResults,features,destinationPlaces:[]};
     [...$('trip-legs').children].forEach((row,i)=>{for(const [cls,point] of [['.leg-from',plan.legs[i].from],['.leg-to',plan.legs[i].to]]){const input=row.querySelector(cls);input.dataset.point=JSON.stringify(point);input.dataset.label=point.label;}});
-    dirty=true;paintTable();paintMap();status(errors.length?errors.join(' '):'Route calculated. Save the plan to keep the resolved locations.');
+    ensurePostcard(plan);dirty=true;paintTable();paintMap();status(errors.length?errors.join(' '):'Route calculated. Save the plan to keep the resolved locations.');
     await showActivities(version,controller.signal);
   }catch(error){if(version===requestVersion)status(error.name==='AbortError'?'Route lookup cancelled or timed out.':error.message);}finally{clearTimeout(timer);if(version===requestVersion){button.disabled=false;routeController=null;}else button.disabled=false;}
 });

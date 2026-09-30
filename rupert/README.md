@@ -128,9 +128,11 @@ The build writes an edition's page as soon as its `status` is `published`, even 
 - `_tools/IPHONE-QA.md`: real-iPhone checklist and how to serve the branch to a phone over Wi-Fi. Build 2 passed on a real iPhone.
 - `_tools/PUBLISHING-TEST-W41.md`: the end-to-end publishing test, and every step that needed a person.
 
-## September interface update
+## Closing refinement
 
-The masthead and editorial titles use user-provided Magrebis; body text, navigation and metadata use bundled Archivo. The masthead shows the site title, New York ISO week and northern-hemisphere meteorological season, with no slogan. Section outline decorations are removed, and the Atlas uses a native house marker for Home. Wider editorial proportions, smaller supporting type and clearer module spacing apply across the site.
+The Rupert Atlas uses self-hosted user-supplied VELENOR for editorial headings and Latin Modern Roman for supporting text. Blue fields frame cream reading sheets; copper marks actions and editorial details. The desktop map retains its 75/25 workspace and clamp(580px,72dvh,860px) height.
+
+Travel automatically composes a local canvas postcard when a journey is mapped or saved. A replacement image remains optional. Artwork, saved plans and Field Log memories stay in browser storage; explicit routing and location lookup retain their existing consent controls.
 
 The main recommendation and its subordinate contingencies carry `seasons` and `experiences`. These are editorial suitability tags, separate from the publication season. Historical route snapshots, sources and publish dates remain intact. The Archive contains one entry per Tuesday or Thursday recommendation; search and filters apply only to that main recommendation. Clear filters restores the paired pending Thursday slot and its scheduled publication date. Future editions are still excluded by the existing publication-time selection.
 
@@ -144,16 +146,15 @@ Relief has stronger hillshade, visible on/off labels, provider-failure feedback 
 
 Crowd metadata integrates the separately reviewed ca9612d change. All existing outings are explicitly unassessed; no crowd observations were invented. Search, season, activity and crowd tolerance match only the main recommendation. Full Edition crowd bars distinguish typical crowd level from perceived crowding; factual details appear only when recorded. See CROWD-METADATA.md.
 
-## Illustrations, fetch and postcards
 
-See `ILLUSTRATIONS.md` for new per-suggestion art ownership, character consistency, varied compositions, frozen contextual panels and the authoring workflow. The current Tuesday artwork uses the seated Rupert illustration specifically approved on 30 September; earlier rejected proposals remain excluded. Full Editions have an explicitly initiated accessible fetch dock; Travel supports a browser-local postcard per journey, including backup/restore. Field Log supports planned completion and unplanned outings with local photos, and Rupert Day activates only on April 7 in New York time.
+## Replacing an unavailable recommendation
 
-The visual system uses Magrebis Regular for display and editorial titles, paired with SIL-OFL Archivo for body text and utility information. Travel has a light route map, explicit location-lookup consent, OSRM road routes and detour estimates, manually timed transit connectors, ordered legs, planned breaks, destination activity lookup and local postcard/backup storage.
+`node rupert/_tools/replace.mjs ORIGINAL_ID CANDIDATE.json [CANDIDATE.json ...] --at REVIEW_TIMESTAMP` previews the lifecycle; add `--apply` to write and rebuild. Candidates are evaluated immediately in supplied editorial order. The original becomes Withdrawn with a correction while a separately identified revision (for example `2026-W40-r1-tue`) takes its active slot. Both remain in the Archive. Closed, disputed, stale, unverified and secondary-source-only candidates cannot publish. The command validates the full site and rolls back source writes if those checks fail. It refuses to overwrite an existing replacement.
 
-## Visual calibration
+This static site does not run a background crawler or invent fresh official evidence. An editor must supply a candidate queue, new artwork and a current official-manager check, plus a real forecast review. Run this command immediately when a recommendation becomes unavailable; refresh rejected candidates before considering the slot empty. A withdrawal without a replacement is allowed only when the queue yields no credible officially validated option. A build failure never deploys anything. The existing `build`, `check`, `audit` and rendered release review still apply before publication.
 
-The centered masthead and navigation, clean cream/navy/oxblood/forest palette, restrained editorial rules, map/directory proportions, Archive hover and active-filter states, Travel grouping and Field Log action area refine the existing architecture. Automatic dark switching is removed; the page and map have one intentional palette. No AllTrails integration is included.
+### September 30 replacement
 
-Magrebis is the chosen, user-provided design asset. The user's 30 September directive confirms responsibility for supplying the font and confirming any licensing requirements; no independent license-verification gate or font substitution is applied. Its single regular face is self-hosted as a 28 KB WOFF, with synthetic bold and italic disabled. Magrebis supplies the centered masthead, page titles, recommendation titles, Full Edition headlines and editorial subheads, Archive outing titles and Field Log entry titles. Archivo remains the body and utility font. Long headlines and utility layouts have been reviewed at 1366, 768 and 390 px widths without horizontal overflow; the phone masthead and context line are centered above the content.
+The current Tuesday slot for October 3–4 was replaced on September 30 with Hillsborough Riverwalk and Gold Park. The September 29 Cox Mountain record remains withdrawn. Town pages confirm ordinary opening hours and Gold Park access, dog-park rules and storm/flood limitations; no current closure was found on the reviewed listings and news page. The Town’s October 4–6 notice names Sunday races on Riverwalk. NWS Hillsborough, updated September 30 at 2:18 p.m. EDT, forecasts a 50% Saturday shower chance (mainly after 8 a.m.) and 70% Sunday chance with possible afternoon thunderstorms. Saturday’s short daylight window is provisional; fresh notices, radar and on-site barriers take priority.
 
-The user approved the seated Rupert illustration on 30 September, lifting the earlier image ban only for this asset. It replaces the current Tuesday creek print and is assigned to `2026-W40-tue/flagship`. Its desktop 3:2 frame, phone 9:10 crop and Archive thumbnail preserve the complete Rupert silhouette. Credits flow below the artwork rather than obscuring it. The metadata-stripping import, ownership checks, build, 36 tests and privacy audit pass. Earlier rejected proposals remain excluded.
+The transparent Travel Labrador is an approved engraved print element. Its PNG is stripped to pixel chunks (IHDR, IDAT, IEND); the public audit rejects any ancillary metadata or trailing bytes. Postcards are assembled and saved in the browser, with no itinerary sent to an image service.

@@ -59,7 +59,7 @@ function loadLibrary(base) {
 function markerImage(kind, dpr) {
   const S = 26 * dpr, c = document.createElement('canvas'); c.width = c.height = S;
   const g = c.getContext('2d'); const m = S / 2; const r = 8.2 * dpr;
-  const INK = kind.endsWith('sel') ? '#7A2024' : '#172A3A', PAPER = '#F3EFE5', OCHRE = '#B28A49', PINE = '#34483B', SLATE = kind.endsWith('sel') ? '#7A2024' : '#40616A';
+  const INK = kind.endsWith('sel') ? '#C98B4B' : '#1D2A3A', PAPER = '#F3EFE5', OCHRE = '#C98B4B', PINE = '#34483B', SLATE = kind.endsWith('sel') ? '#C98B4B' : '#40616A';
   g.lineJoin = 'round';
   if (kind === 'recommended' || kind === 'recommended-sel') {
     g.beginPath(); g.arc(m, m, r + (kind.endsWith('sel') ? 2 * dpr : 0), 0, Math.PI * 2);
@@ -174,13 +174,13 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   map.addSource('marks', { type: 'geojson', data: empty, promoteId: 'id' });
   map.addLayer({ id: 'route-halo', type: 'line', source: 'routes', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#F3EFE5', 'line-width': travel ? 7 : 6, 'line-opacity': 0.9 } });
   map.addLayer({ id: 'route-line', type: 'line', source: 'routes',
-    layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#7A2024', 'line-width': travel ? 3 : 3, 'line-opacity': 0.95 } });
-  if(travel){map.setFilter('route-halo',['==',['get','mode'],'drive']);map.setFilter('route-line',['==',['get','mode'],'drive']);for(const [mode,color,dash] of [['air','#40616A',[5,3]],['ferry','#47604D',[2,2]],['rail','#172A3A',[1,2]],['walk','#B28A49',[1,1]]])map.addLayer({id:'transit-'+mode,type:'line',source:'routes',filter:['==',['get','mode'],mode],paint:{'line-color':color,'line-width':2.5,'line-dasharray':dash}});}
+    layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#C98B4B', 'line-width': travel ? 3 : 3, 'line-opacity': 0.95 } });
+  if(travel){map.setFilter('route-halo',['==',['get','mode'],'drive']);map.setFilter('route-line',['==',['get','mode'],'drive']);for(const [mode,color,dash] of [['air','#40616A',[5,3]],['ferry','#47604D',[2,2]],['rail','#1D2A3A',[1,2]],['walk','#C98B4B',[1,1]]])map.addLayer({id:'transit-'+mode,type:'line',source:'routes',filter:['==',['get','mode'],mode],paint:{'line-color':color,'line-width':2.5,'line-dasharray':dash}});}
   const statusOrder = ['match', ['get', 'status'], 'recommended', 3, 'walked', 2, 'planned', 1, 0];
   map.addLayer({ id: 'marks', type: 'symbol', source: 'marks',
     layout: {
       'icon-image': ['concat', 'm-', ['get', 'status']], 'icon-allow-overlap': true, 'symbol-sort-key': ['-', 0, statusOrder],
-      'text-field': ['step', ['zoom'], '', 9, ['get', 'name']], 'text-font': ['Noto Sans Regular'], 'text-size': 12.5,
+      'text-field': '', 'text-size': 12.5,
       'text-offset': [1.1, 0], 'text-anchor': 'left', 'text-optional': true,
     },
     paint: { 'text-color': theme === 'dark' ? '#EADCC3' : '#221F1C', 'text-halo-color': theme === 'dark' ? '#13232C' : '#F3EFE5', 'text-halo-width': 1.6 } });
@@ -235,13 +235,21 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   }
 
   let marks = [], homeMarker = null, homePoint = null;
+  // Our labels use the self-hosted reading face, independently of third-party tile glyphs.
+  const labelLayer=document.createElement('div');labelLayer.className='atlas-label-layer';labelLayer.setAttribute('aria-hidden','true');el.append(labelLayer);
+  let labelNodes=[],selectedLabel=null;
+  function positionLabels(){const occupied=[];for(const {feature,node} of [...labelNodes].sort((a,b)=>Number(b.feature.properties.id===selectedLabel)-Number(a.feature.properties.id===selectedLabel))){const point=map.project(feature.geometry.coordinates);node.style.left=(point.x+14)+'px';node.style.top=point.y+'px';const width=node.offsetWidth,height=node.offsetHeight;
+    const rect={x:point.x+14,y:point.y-height/2,width,height};const fits=map.getZoom()>=9&&rect.x>=0&&rect.y>=0&&rect.x+width<el.clientWidth&&rect.y+height<el.clientHeight&&!occupied.some(b=>rect.x<b.x+b.width&&rect.x+width>b.x&&rect.y<b.y+b.height&&rect.y+height>b.y);
+    node.style.visibility=fits?'visible':'hidden';if(fits)occupied.push(rect);
+  }}
+  map.on('move',positionLabels);map.on('resize',positionLabels);
   const duration = n => matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : n;
   const api = {
     raw: map,
-    setMarkers(features) { marks = features; map.getSource('marks').setData({ type: 'FeatureCollection', features }); },
+    setMarkers(features) { marks = features; map.getSource('marks').setData({ type: 'FeatureCollection', features });labelLayer.replaceChildren();labelNodes=features.map(feature=>{const node=document.createElement('span');node.textContent=feature.properties.name;labelLayer.append(node);return {feature,node};});positionLabels(); },
     setRoutes(features) { map.getSource('routes').setData({ type: 'FeatureCollection', features }); },
     fit(b, opts = {}) { map.fitBounds(b, { padding: 48, duration: duration(600), ...opts }); },
-    select(id) { map.setFilter('marks-sel', ['==', ['get', 'id'], id || '']); },
+    select(id) { selectedLabel=id;map.setFilter('marks-sel', ['==', ['get', 'id'], id || '']);positionLabels(); },
     focus(id) {
       const f = marks.find(m => m.properties.id === id); if (!f) return;
       api.select(id);
@@ -259,7 +267,7 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
     centerHome() { if (homePoint) map.easeTo({center:[homePoint.lng,homePoint.lat],zoom:10,duration:duration(600)}); else api.fit(bounds); },
     on(type, fn) { handlers[type]?.push(fn); return api; },
     diagnostics,
-    destroy() { map.remove(); },
+    destroy() { labelLayer.remove();map.remove(); },
   };
   return api;
 }

@@ -184,12 +184,18 @@
         "coords_checked": "2026-09-29",
         "coords_source": "Gold Park address 415 Dimmocks Mill Rd. geocodes to the OpenStreetMap Gold Park parking lot beside the Riverwalk. (Previous pin was about 1.4 km off.)"
       },
-      "dog_policy": "Leashed",
+      "dog_policy": "Leashed on the greenway; off leash only inside Gold Park\u2019s fenced dog park. Maximum 6-foot leash entering and leaving it (Town rules).",
       "routes": [],
       "tags": [
         "paved",
         "Eno",
         "town"
+      ],
+      "links": [
+        {
+          "label": "Town of Hillsborough \u2014 Riverwalk",
+          "url": "https://www.hillsboroughnc.gov/community/public-spaces/recreation-facilities/riverwalk"
+        }
       ]
     },
     {

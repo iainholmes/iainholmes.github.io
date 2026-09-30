@@ -31,9 +31,18 @@
       "official_url": "https://www.ncparks.gov/state-parks/raven-rock-state-park/trails",
       "note": "Raven Rock Loop listed, 2.6 miles; no closure alert on official listing.",
       "discrepancy": false
+    },
+    {
+      "place_id": "hillsborough-riverwalk",
+      "status": "open",
+      "checked": "2026-09-30",
+      "official_url": "https://www.hillsboroughnc.gov/community/public-spaces/recreation-facilities/riverwalk",
+      "discrepancy": false,
+      "note": "Town Riverwalk, recreation, Gold Park and current news reviewed. Daily hours 7 a.m. to 30 minutes after sunset; no active closure on reviewed pages. Severe weather can close both. Sunday Oct 4 races use Riverwalk; Saturday provisional daylight window only."
     }
   ],
   "official_hosts": [
-    "www.ncparks.gov"
+    "www.ncparks.gov",
+    "www.hillsboroughnc.gov"
   ]
 }

@@ -53,6 +53,57 @@
       "path": "data/editions/2026-W40-tue.json"
     },
     {
+      "id": "2026-W40-r1-tue",
+      "slot": "tuesday",
+      "status": "published",
+      "published_at": "2026-09-30T17:40:00-04:00",
+      "weekend": {
+        "start": "2026-10-03",
+        "end": "2026-10-04"
+      },
+      "title": "Hillsborough Riverwalk and Gold Park",
+      "place_id": "hillsborough-riverwalk",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Hillsborough Riverwalk and Gold Park",
+          "place_id": "hillsborough-riverwalk",
+          "seasons": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "river",
+            "town-walk",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "hillsborough-riverwalk"
+      ],
+      "place_roles": [
+        {
+          "place_id": "hillsborough-riverwalk",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "rupert-riverwalk-2026-w40-r1-tue",
+      "path": "data/editions/2026-W40-r1-tue.json"
+    },
+    {
       "id": "2026-W40-thu",
       "slot": "thursday",
       "status": "published",

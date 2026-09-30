@@ -43,7 +43,7 @@ async function load() {
   const accessChecks = await readJSON(P('data/access-checks.json'));
   const schema = await readJSON(P('schema/edition.schema.json'));
   const photoSchema = await readJSON(P('schema/photo.schema.json'));
-  const files = (await readdir(P('data/editions'))).filter(f => /^\d{4}-W\d{2}-(tue|thu)\.json$/.test(f)).sort();
+  const files = (await readdir(P('data/editions'))).filter(f => /^\d{4}-W\d{2}-(?:r\d+-)?(tue|thu)\.json$/.test(f)).sort();
   const editions = {};
   for (const f of files) editions[f.replace(/\.json$/, '')] = await readJSON(P('data/editions', f));
   return { site, places, photos, schema, photoSchema, editions, accessChecks };
@@ -181,9 +181,9 @@ function page({ title, description, depth, active, body, site, weekLabel, pageCl
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#6F1D24">
-<link rel="preload" href="${base}assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="${base}assets/fonts/magrebis-regular.woff" as="font" type="font/woff" crossorigin>
+<meta name="theme-color" content="#1D2A3A">
+<link rel="preload" href="${base}assets/fonts/lmroman-regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="${base}assets/fonts/velenor-regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="icon" type="image/svg+xml" href="${base}assets/img/rupert-face.svg">
 <link rel="stylesheet" href="${base}assets/css/atlas.css">
 <script type="importmap">${JSON.stringify({imports:Object.fromEntries(moduleFiles.map(f=>[base+'assets/js/'+f,base+'assets/js/'+f+'?v='+assetVersion]))})}</script>
@@ -310,6 +310,15 @@ async function audit({ history }) {
   for (const f of files) {
     const buf = await readFile(join(ROOT, f)); bytes += buf.length;
     if (/\.(jpe?g)$/i.test(f)) { const m = jpegMetadata(buf); if (m.length) bad(f, `image metadata: ${m.join(', ')}`); continue; }
+    if(f==='assets/img/travel-labrador-engraved.png') {
+      // Approved transparent illustration: pixels-only PNG, no text, EXIF or profile chunks.
+      let offset=8,ended=false;
+      if(!buf.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))bad(f,'Invalid PNG signature');
+      while(offset+12<=buf.length){const length=buf.readUInt32BE(offset),type=buf.toString('ascii',offset+4,offset+8);
+        if(!['IHDR','IDAT','IEND'].includes(type))bad(f,'Unexpected PNG chunk: '+type);
+        offset+=length+12;if(type==='IEND'){ended=true;break;}}
+      if(!ended||offset!==buf.length)bad(f,'Incomplete PNG or trailing data');continue;
+    }
     if (/\.(png|gif|webp|heic|tiff?)$/i.test(f)) { bad(f, 'raster image outside the JPEG pipeline (metadata not checked)'); continue; }
     if (!/\.(html|js|json|css|svg|md|txt)$/i.test(f)) continue;
     if (f.startsWith('vendor/')) continue; // third-party library code

@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "id": "2026-W40-r1-tue",
+  "slot": "tuesday",
+  "status": "published",
+  "published_at": "2026-09-30T17:40:00-04:00",
+  "weekend": {
+    "start": "2026-10-03",
+    "end": "2026-10-04"
+  },
+  "flagship": {
+    "place_id": "hillsborough-riverwalk",
+    "title": "Hillsborough Riverwalk and Gold Park",
+    "standfirst": "A short paved out-and-back beside the Eno, starting at Gold Park and turning toward downtown Hillsborough. Set the turnaround by time, then return to the same parking lot.",
+    "why_this_week": "This is a town-adjacent greenway morning, rather than a ridge hike. Saturday is the more sensible weekend option: NWS expects showers mainly after 8 a.m.; Sunday has likely showers and possible afternoon thunderstorms, plus Riverwalk races. Keep the outing short and check conditions before leaving.",
+    "headline_condition": "Saturday showers 50%; Sunday showers 70%",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-09-30",
+      "route": {
+        "route_id": "hillsborough-riverwalk-flexible@1",
+        "shape": "out and back",
+        "difficulty": "easy",
+        "surface": "Accessible urban greenway; paved paths. Choose a time-based turnaround; the town lists about 3 miles for the full network, not this short outing."
+      },
+      "access": {
+        "name": "Gold Park, 415 Dimmocks Mill Road, Hillsborough",
+        "parking": "Use Gold Park parking. Restrooms and accessible paths are listed by the Town."
+      },
+      "duration_h": [
+        0.5,
+        1
+      ],
+      "dog": {
+        "leash": "Keep Rupert leashed on the greenway; use a maximum 6-foot leash entering and leaving the fenced dog park. Off leash only inside that enclosure.",
+        "water": "Bring drinking water; river access is not a swimming recommendation.",
+        "shade": "Mix of open park and riverside sections; bring water.",
+        "watch_for": [
+          "Flood closures and debris after storms",
+          "Cyclists and runners; keep right and yield at crossings",
+          "Sunday 4 October races on Riverwalk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "Town of Hillsborough \u2014 Riverwalk",
+        "url": "https://www.hillsboroughnc.gov/community/public-spaces/recreation-facilities/riverwalk",
+        "retrieved": "2026-09-30"
+      },
+      {
+        "kind": "park",
+        "label": "Town of Hillsborough \u2014 recreation, dog park and severe weather",
+        "url": "https://www.hillsboroughnc.gov/community/public-spaces/recreation-facilities",
+        "retrieved": "2026-09-30"
+      },
+      {
+        "kind": "park",
+        "label": "Town of Hillsborough \u2014 Gold Park access",
+        "url": "https://www.hillsboroughnc.gov/Home/Components/FacilityDirectory/FacilityDirectory/74/34?selcat=21",
+        "retrieved": "2026-09-30"
+      },
+      {
+        "kind": "park",
+        "label": "Town of Hillsborough \u2014 October 4\u20136 event impacts",
+        "url": "https://www.hillsboroughnc.gov/Home/Components/News/News/1227/14",
+        "retrieved": "2026-09-30"
+      },
+      {
+        "kind": "forecast",
+        "label": "NWS Hillsborough \u2014 updated 2:18 p.m. EDT September 30",
+        "url": "https://forecast.weather.gov/MapClick.php?lat=36.0754&lon=-79.0997",
+        "retrieved": "2026-09-30"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "river",
+      "town-walk",
+      "short-walk"
+    ],
+    "qualities": {
+      "activity": "town",
+      "expected_heat": "normal"
+    },
+    "panels": [
+      {
+        "label": "For Rupert",
+        "text": "A six-foot leash, drinking water and a short turnaround keep this an easy town walk. The fenced dog park is optional: dogs must be at least six months old, vaccinated with rabies tags, not in heat, and under voice control."
+      },
+      {
+        "label": "Before you go",
+        "text": "Check Town notices and NWS again. Never cross flood barriers or closure signs. Skip Sunday\u2019s Riverwalk races; shorten or postpone Saturday if rain or conditions deteriorate."
+      }
+    ],
+    "artwork": {
+      "image_id": "rupert-riverwalk-2026-w40-r1-tue",
+      "brief": "One walking Rupert on a sparse blue field with a simple river cue; graphic illustration, not a documentary scene.",
+      "characters": [
+        "rupert"
+      ]
+    },
+    "photo": {
+      "id": "rupert-riverwalk-2026-w40-r1-tue",
+      "alt": "Graphic print of a walking chocolate Labrador with a mustard collar on a blue field beside a simple river line."
+    }
+  },
+  "local_trail": {
+    "place_id": "carolina-north-forest",
+    "title": "Carolina North Forest",
+    "line": "Carolina North Forest is a closer option to consider only after independently checking current access and weather.",
+    "snapshot": {
+      "as_of": "2026-09-30",
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          5,
+          10
+        ]
+      },
+      "duration_h": [
+        1,
+        1.5
+      ],
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ]
+  },
+  "away_mission": {
+    "place_id": "hanging-rock-moores-wall",
+    "title": "Hanging Rock, Moore's Wall Loop",
+    "line": "A longer ridge outing for a future dry day, subject to a fresh official access and forecast check.",
+    "commitment": "Full day",
+    "snapshot": {
+      "as_of": "2026-09-30",
+      "route": {
+        "route_id": "hanging-rock-moores-wall-loop@1",
+        "distance_mi": 4.2,
+        "shape": "loop",
+        "difficulty": "strenuous"
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          100,
+          115
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn"
+    ],
+    "experiences": [
+      "ridge",
+      "full-day"
+    ]
+  },
+  "wildcard": {
+    "place_id": "occoneechee-mountain",
+    "title": "Occoneechee Mountain, then the Hillsborough Riverwalk",
+    "line": "A separate Hillsborough hill walk to consider on a dry day, subject to a fresh official check.",
+    "snapshot": {
+      "as_of": "2026-09-30",
+      "route": {
+        "route_id": "occoneechee-mountain-loop@1",
+        "distance_mi": 2.2,
+        "shape": "loop"
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          20,
+          25
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "ridge",
+      "short-walk",
+      "river",
+      "town-walk"
+    ]
+  },
+  "mission": {
+    "text": "Choose a turnaround before the walk, then notice one riverside detail on the return.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "photo",
+    "text": "One photo at your turnaround."
+  },
+  "conditions": {
+    "summary": "NWS, updated 2:18 p.m. EDT September 30: Saturday mostly cloudy, high near 75\u00b0F, 50% shower chance mainly after 8 a.m.; Sunday high near 68\u00b0F, 70% showers with thunderstorms possible after 2 p.m. Saturday morning is a provisional window, not a dry-weather guarantee.",
+    "as_of": "2026-09-30T14:18:00-04:00",
+    "pivot": {
+      "if": "Rain, thunder, high water or Town closure signs affect the route",
+      "then": "local_trail",
+      "note": "Postpone this river outing. Consider the closer option only after checking its own access and weather; never use it during thunderstorms."
+    }
+  },
+  "practical": {
+    "best_window": "Sat 3 Oct, about 07:30\u201308:15 after daylight; provisional, check radar and Town notices",
+    "fees": "No admission fee shown in the Town listings; no reservation needed for this ordinary walk.",
+    "bring": [
+      "Water for both",
+      "Six-foot leash",
+      "Waste bags",
+      "Light rain layer"
+    ],
+    "closures_checked": "2026-09-30",
+    "closures_note": "Town Riverwalk and Gold Park listings and current news reviewed September 30. No active closure notice found on those pages. Facilities close during and after severe weather pending inspection. Sunday Oct 4 races use Riverwalk; choose Saturday and heed posted barriers."
+  }
+}
