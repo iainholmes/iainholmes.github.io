@@ -171,10 +171,10 @@ function page({ title, description, depth, active, body, site, weekLabel, pageCl
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#ECE5D4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1C1511" media="(prefers-color-scheme: dark)">
+${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#172A3A">
 <link rel="preload" href="${base}assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${base}assets/fonts/magrebis-regular.woff" as="font" type="font/woff" crossorigin>
 <link rel="icon" type="image/svg+xml" href="${base}assets/img/rupert-face.svg">
 <link rel="stylesheet" href="${base}assets/css/atlas.css">
 ${scripts ? `<script type="module" src="${base}assets/js/site.js"></script>\n` : ''}${extra.map(x => `<script type="module" src="${base}${x}"></script>\n`).join('')}</head>
@@ -222,7 +222,7 @@ async function build({ writeFiles }) {
 
     const eds = data.editions;
     await w('index.html', page({
-      title: 'The Rupert Atlas', description: 'Two choices for the coming weekend with Rupert, published Tuesday and Thursday.',
+      title: 'The Rupert Atlas', description: 'Tuesday and Thursday outing recommendations, route details and a searchable archive.',
       depth: 0, active: 'week', site: data.site, weekLabel,
       body: renderWeek(pair, eds, { ...ctx0, base: '' }),
     }));
@@ -254,7 +254,7 @@ async function build({ writeFiles }) {
     }));
     for (const k of ['travel', 'log']) {
       await w(`${k}/index.html`, page({
-        title: `${k === 'log' ? 'Field Log' : 'Travel'} · The Rupert Atlas`, description: k === 'travel' ? 'Plan journeys as ordered legs, with stops and browser-local backups.' : 'A record of days together, in preparation.',
+        title: `${k === 'log' ? 'Field Log' : 'Travel'} · The Rupert Atlas`, description: k === 'travel' ? 'Plan trips with mapped routes, ordered legs, stops and browser-local backups.' : 'Record completed and unplanned outings, photos and notes in this browser.',
         depth: 1, active: k, site: data.site, weekLabel, extra: k === 'travel' ? ['assets/js/travel-view.js'] : [], body: k === 'travel' ? renderTravel({ base: '../', places: data.places }) : renderComing(k, { base: '../' }),
       }));
     }

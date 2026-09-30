@@ -60,10 +60,6 @@
         "perceived_crowding": null
       }
     },
-    "photo": {
-      "id": "rupert-creek-2023-04",
-      "alt": "Field print of Rupert beside a creek, wet, in his mustard collar, looking up and to the left; the water behind him printed in pale streaks."
-    },
     "sources": [
       {
         "kind": "guide",
@@ -107,7 +103,18 @@
         "label": "Keep in mind",
         "text": "Rock at the water’s edge can be slick. Go early Saturday and leave room for other dogs at the bridge."
       }
-    ]
+    ],
+    "artwork": {
+      "image_id": "rupert-cox-mountain-2026-w40-tue",
+      "brief": "One seated Rupert in his mustard collar, facing the viewer, with broad chocolate and cream screen-print shapes on a sparse oxblood field. A few cream and navy riverbank marks provide the outing cue; no literal location claim.",
+      "characters": [
+        "rupert"
+      ]
+    },
+    "photo": {
+      "id": "rupert-cox-mountain-2026-w40-tue",
+      "alt": "Screen-print illustration of Rupert, a lean chocolate Labrador with floppy ears and a mustard collar, sitting on an oxblood field above sparse cream and navy riverbank marks."
+    }
   },
   "local_trail": {
     "place_id": "carolina-north-forest",

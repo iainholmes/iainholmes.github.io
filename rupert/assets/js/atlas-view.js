@@ -12,9 +12,6 @@ const card = document.getElementById('map-card');
 const phone = window.matchMedia('(max-width: 759.98px)');
 const params = new URLSearchParams(location.search);
 const test = params.get('maptest'); // notiles | nowebgl | offline | nosize : failure drills
-// ?theme=light|dark forces a palette for testing (page and map), whatever the device setting.
-const forcedTheme = ['light', 'dark'].includes(params.get('theme')) ? params.get('theme') : null;
-if (forcedTheme) document.documentElement.dataset.theme = forcedTheme;
 const perf = (window.__atlasPerf = { start: performance.now() });
 
 let map = null;
@@ -39,7 +36,7 @@ function qaRender() {
   const d = map?.diagnostics?.() || qa.diag;
   const lines = [
     `map: ${st}${perf.failed ? ' (' + perf.failed + ')' : ''}${perf.ready ? ' · drawn ' + perf.ready + ' ms' : ''}`,
-    `relief: ${rel ?? 'n/a'} · filter: ${filter} · theme: ${d?.theme ?? pageTheme()}${forcedTheme ? ' (forced)' : ''}`,
+    `relief: ${rel ?? 'n/a'} · filter: ${filter} · theme: ${d?.theme ?? pageTheme()}`,
     `viewport: ${innerWidth}×${innerHeight} @${devicePixelRatio}x · touch: ${matchMedia('(pointer: coarse)').matches}`,
     `last tap: ${qa.last}`,
   ];
@@ -57,11 +54,7 @@ function qaRender() {
   qaEl.textContent = lines.join('\n');
 }
 if (qa.on) { window.addEventListener('resize', () => qaRender()); setInterval(qaRender, 1000); }
-function pageTheme() {
-  const t = document.documentElement.dataset.theme;
-  if (t === 'dark' || t === 'light') return t;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
+function pageTheme() { return 'light'; }
 
 /* ---------- register: filters and selection ---------- */
 const filterBox = document.querySelector('.reg-filter');

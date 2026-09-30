@@ -19,3 +19,12 @@
 .field-log .page-head {display:block;}
 .field-log .sec-h {font-size:24px;}
 @media(max-width:759.98px){.field-log #memories {grid-template-columns:1fr;}.field-log #log-editor {padding:20px;}}
+
+/* Existing outing workflow, with a visible action area and structured empty state. */
+.field-log .log-actions { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:22px 24px; background:var(--paper-2); border-top:2px solid var(--accent); margin-block:24px 38px; }
+.field-log .log-actions #unplanned { padding:10px 16px; border:1px solid var(--accent); color:var(--accent); text-decoration:none; background:var(--paper); }
+.field-log #memories > p { grid-column:1/-1; padding:28px 24px; border-block:1px solid var(--rule); margin:0; font-size:14px; background:color-mix(in srgb,var(--paper-2) 40%,var(--paper)); }
+.memory-card { background:color-mix(in srgb,var(--paper-2) 40%,var(--paper)); border-top-color:var(--pine); }
+.memory-card h3 { font:400 29px/1.12 var(--f-editorial); font-synthesis:none; }
+.field-log #log-editor { border-top:2px solid var(--lake); }
+@media(max-width:759.98px) { .field-log .log-actions { padding:20px; } }

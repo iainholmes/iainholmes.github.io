@@ -14,28 +14,21 @@ export const ATTRIBUTION =
 
 const PALETTES = {
   light: {
-    bg: '#D7DDD1', wood: '#E3DDBF', park: '#DDD9B8', parkLine: '#8F9269', grass: '#E6DDBE',
+    bg: '#E6EAE1', wood: '#CFD8CA', park: '#D8DFD1', parkLine: '#7D9180', grass: '#E3E7DC',
     water: '#AFC1C4', waterLine: '#6F8E98', waterText: '#3F5E68',
-    road: '#FBF4E4', roadCase: '#C9B28E', major: '#EACB91', majorCase: '#B88430',
-    path: '#3A322A', boundary: '#8C7B66',
-    text: '#2E2822', textHalo: '#D7DDD1', town: '#221F1C',
-    shadow: '#221F1C', highlight: '#FFF6E2',
+    road: '#F8F6EF', roadCase: '#C2C7BE', major: '#E3D5B9', majorCase: '#B28A49',
+    path: '#3A322A', boundary: '#8E948D',
+    text: '#2E2822', textHalo: '#E6EAE1', town: '#221F1C',
+    shadow: '#221F1C', highlight: '#F3EFE5',
   },
-  dark: {
-    bg: '#21363B', wood: '#18302F', park: '#1B3330', parkLine: '#4E6A58', grass: '#17292F',
-    water: '#0B1820', waterLine: '#3F6A78', waterText: '#86A8B1',
-    road: '#2B3D47', roadCase: '#1B2C35', major: '#5C4A2A', majorCase: '#8E6A2E',
-    path: '#D8C8AA', boundary: '#5E6F76',
-    text: '#EADCC3', textHalo: '#21363B', town: '#F3E8D2',
-    shadow: '#000000', highlight: '#3A5563',
-  },
+
 };
 
 const FONT = ['Noto Sans Regular'];
 const FONT_ITALIC = ['Noto Sans Italic'];
 
 export function atlasStyle(theme = 'light', { relief = false } = {}) {
-  const c = PALETTES[theme] || PALETTES.light;
+  const c = PALETTES.light;
   const sources = {
     omt: { type: 'vector', url: TILES.vector, attribution: ATTRIBUTION },
   };
@@ -100,5 +93,5 @@ export function atlasStyle(theme = 'light', { relief = false } = {}) {
       layout: { 'text-field': ['get', 'name'], 'text-font': FONT, 'text-size': 11.5 },
       paint: { 'text-color': c.text, 'text-halo-color': c.textHalo, 'text-halo-width': 1.4 } },
   ];
-  return { version: 8, glyphs: TILES.glyphs, sources, layers, name: `Rupert Atlas ${theme}` };
+  return { version: 8, glyphs: TILES.glyphs, sources, layers, name: 'Rupert Atlas' };
 }

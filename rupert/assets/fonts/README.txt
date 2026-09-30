@@ -1,1 +1,5 @@
-Fonts are self-hosted. Archivo (variable width 62–125) and Source Serif 4 (variable optical size), SIL Open Font License 1.1. Latin subsets from Fontsource. Metadata uses Archivo at regular width with tabular numerals.
+Archivo is self-hosted under SIL Open Font License 1.1. It provides navigation, metadata, tables, controls and body text at regular width. The existing Source Serif 4 assets are retained but unused.
+
+Magrebis Regular is a user-provided design asset, supplied as Magrebis-Regular-BF6abb38d467214.ttf and converted to WOFF without glyph changes. On 30 September 2026 the user explicitly directed implementation and publication, taking responsibility for supplying the asset and confirming licensing for their use. No font substitution or independent license-verification gate applies. Copyright: TimelessType.co. The bundled SIL license covers Archivo, not Magrebis.
+
+Magrebis is a single regular face, with synthetic bold and italic disabled. It supplies the centered masthead, recommendation titles, Full Edition headlines and editorial subheads, major page titles, Archive outing titles and Field Log entry titles. Archivo supplies body text and operational UI. Only these two families are actively loaded.

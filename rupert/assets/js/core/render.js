@@ -47,7 +47,7 @@ export function photo(ref, photos, base, { sizes = '100vw', eager = false, cls =
   const mid = p.widths[Math.floor(p.widths.length / 2)];
   return `<img class="${cls}" src="${base}photos/${esc(p.file)}-${mid}.jpg" srcset="${srcset}" sizes="${esc(sizes)}"`
     + ` width="${p.width}" height="${p.height}" alt="${esc(ref.alt || p.alt)}"`
-    + ` style="${focalVars(p.width / p.height, fx, fy)}"`
+    + ` ${p.generation ? 'data-illustration="true"' : ''} style="${focalVars(p.width / p.height, fx, fy)}"`
     + (eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"') + '>';
 }
 
@@ -157,7 +157,7 @@ function plate(slot, ed, pair, ctx) {
   if (!ed) {
     const when = pair.missing[slot] ? publishedLabel(pair.missing[slot]) : '';
     return `<article class="plate is-pending" id="${id}" data-slot="${slot}" aria-labelledby="${id}-h">
-  <p class="p-eyebrow"><span class="p-day">${SLOT_LABEL[slot]}</span></p>
+  <p class="p-eyebrow"><span class="p-day"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span>${SLOT_LABEL[slot]}</span></p>
   <h2 class="p-title" id="${id}-h">${pair.state === 'past' ? 'Not published' : `Publishes ${esc(when)}`}</h2>
   <p class="p-stand">${slot === 'thursday'
       ? 'Weekend choice 2 of 2.'
@@ -170,11 +170,11 @@ function plate(slot, ed, pair, ctx) {
   const adverse = f.condition_level === 'adverse';
   const cond = f.headline_condition ? `<li class="cond${adverse ? ' is-adverse' : ''}"><span class="cond-k">${adverse ? 'Warning' : 'Weather'}</span> ${esc(f.headline_condition)}</li>` : '';
   return `<article class="plate" id="${id}" data-slot="${slot}" aria-labelledby="${id}-h">
-  <p class="p-eyebrow"><span class="p-day">${SLOT_LABEL[slot]}</span><span class="p-pub">Published ${esc(publishedLabel(ed.published_at))}</span></p>
+  <p class="p-eyebrow"><span class="p-day"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span>${SLOT_LABEL[slot]}</span><span class="p-pub">Published ${esc(publishedLabel(ed.published_at))}</span></p>
   <h2 class="p-title" id="${id}-h"><a href="${href}">${esc(f.title)}</a></h2>
   <p class="p-stand">${esc(f.standfirst)}</p>
     <ul class="p-metrics" aria-label="Logistics">${bits}${cond}</ul>
-  <figure class="p-photo">${photo(imageRef(f), photos, base, { sizes: '(min-width: 760px) 46vw, 100vw', eager: slot === 'tuesday' })}${credit(imageRef(f), photos, ctx.places)}</figure>
+  <figure class="p-photo${f.artwork ? ' adventure-illustration' : ''}">${photo(imageRef(f), photos, base, { sizes: '(min-width: 760px) 46vw, 100vw', eager: slot === 'tuesday' })}${credit(imageRef(f), photos, ctx.places)}</figure>
 
   <p class="p-more"><a href="${href}">Full edition<span class="vh"> for ${esc(f.title)}</span></a></p>
 </article>`;
@@ -189,7 +189,7 @@ export function renderWeek(pair, editions, ctx) {
   const thu = pair.thursday && editions[pair.thursday.id];
   const eyebrow = pair.state === 'past' ? 'Last weekend' : pair.state === 'now' ? 'This weekend' : 'For the weekend of';
   const tab = (slot, ed) => `<button type="button" role="tab" class="tab" id="tab-${slot}" aria-controls="plate-${slot}" aria-selected="false" tabindex="-1">
-      <span class="tab-k">${SLOT_LABEL[slot]}</span><span class="tab-t">${ed ? esc(placeShort(places, ed.flagship.place_id, ed.flagship.title)) : 'Publishes ' + esc(publishedLabel(pair.missing[slot]))}</span></button>`;
+      <span class="tab-k"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span>${SLOT_LABEL[slot]}</span><span class="tab-t">${ed ? esc(placeShort(places, ed.flagship.place_id, ed.flagship.title)) : 'Publishes ' + esc(publishedLabel(pair.missing[slot]))}</span></button>`;
   const inter = interlude(thu || tue, ctx);
   return `<section class="week" data-pair="${esc(pairKeyFrom(pair))}" aria-labelledby="week-h">
   <header class="weekband wrap">

@@ -59,7 +59,7 @@ function loadLibrary(base) {
 function markerImage(kind, dpr) {
   const S = 26 * dpr, c = document.createElement('canvas'); c.width = c.height = S;
   const g = c.getContext('2d'); const m = S / 2; const r = 8.2 * dpr;
-  const INK = '#221F1C', PAPER = '#EFE2C8', OCHRE = '#B88430', PINE = '#3E422A', SLATE = '#40616A';
+  const INK = kind.endsWith('sel') ? '#7A2024' : '#172A3A', PAPER = '#F3EFE5', OCHRE = '#B28A49', PINE = '#34483B', SLATE = kind.endsWith('sel') ? '#7A2024' : '#40616A';
   g.lineJoin = 'round';
   if (kind === 'recommended' || kind === 'recommended-sel') {
     g.beginPath(); g.arc(m, m, r + (kind.endsWith('sel') ? 2 * dpr : 0), 0, Math.PI * 2);
@@ -88,7 +88,7 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   const maplibregl = await loadLibrary(base);
 
   const style = atlasStyle(theme, { relief });
-  if(travel){const colors={bg:'#E9E0CF',wood:'#D9DFC9',grass:'#E6E6D6',park:'#CED8C4',water:'#AEC6D0'};for(const layer of style.layers){if(layer.id==='bg')layer.paint['background-color']=colors.bg;else if(colors[layer.id])layer.paint['fill-color']=colors[layer.id];}}
+  if(travel){const colors={bg:'#E5E0D5',wood:'#D9DFC9',grass:'#E6E6D6',park:'#CED8C4',water:'#AEC6D0'};for(const layer of style.layers){if(layer.id==='bg')layer.paint['background-color']=colors.bg;else if(colors[layer.id])layer.paint['fill-color']=colors[layer.id];}}
   if (tileUrlOverride) style.sources.omt.url = tileUrlOverride;
 
   const map = new maplibregl.Map({
@@ -172,10 +172,10 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   const empty = { type: 'FeatureCollection', features: [] };
   map.addSource('routes', { type: 'geojson', data: empty });
   map.addSource('marks', { type: 'geojson', data: empty, promoteId: 'id' });
-  map.addLayer({ id: 'route-halo', type: 'line', source: 'routes', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': travel ? '#F4EEE2' : '#142C42', 'line-width': travel ? 7 : 6, 'line-opacity': 0.9 } });
+  map.addLayer({ id: 'route-halo', type: 'line', source: 'routes', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': travel ? '#F1EEE6' : '#172A3A', 'line-width': travel ? 7 : 6, 'line-opacity': 0.9 } });
   map.addLayer({ id: 'route-line', type: 'line', source: 'routes',
-    layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': travel ? '#76202B' : '#CCAA66', 'line-width': travel ? 3 : 3, 'line-opacity': 0.95 } });
-  if(travel){map.setFilter('route-halo',['==',['get','mode'],'drive']);map.setFilter('route-line',['==',['get','mode'],'drive']);for(const [mode,color,dash] of [['air','#40616A',[5,3]],['ferry','#47604D',[2,2]],['rail','#142C42',[1,2]],['walk','#B18B46',[1,1]]])map.addLayer({id:'transit-'+mode,type:'line',source:'routes',filter:['==',['get','mode'],mode],paint:{'line-color':color,'line-width':2.5,'line-dasharray':dash}});}
+    layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': travel ? '#7A2024' : '#CCAA66', 'line-width': travel ? 3 : 3, 'line-opacity': 0.95 } });
+  if(travel){map.setFilter('route-halo',['==',['get','mode'],'drive']);map.setFilter('route-line',['==',['get','mode'],'drive']);for(const [mode,color,dash] of [['air','#40616A',[5,3]],['ferry','#47604D',[2,2]],['rail','#172A3A',[1,2]],['walk','#B28A49',[1,1]]])map.addLayer({id:'transit-'+mode,type:'line',source:'routes',filter:['==',['get','mode'],mode],paint:{'line-color':color,'line-width':2.5,'line-dasharray':dash}});}
   const statusOrder = ['match', ['get', 'status'], 'recommended', 3, 'walked', 2, 'planned', 1, 0];
   map.addLayer({ id: 'marks', type: 'symbol', source: 'marks',
     layout: {
@@ -183,7 +183,7 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
       'text-field': ['step', ['zoom'], '', 9, ['get', 'name']], 'text-font': ['Noto Sans Regular'], 'text-size': 12.5,
       'text-offset': [1.1, 0], 'text-anchor': 'left', 'text-optional': true,
     },
-    paint: { 'text-color': theme === 'dark' ? '#EADCC3' : '#221F1C', 'text-halo-color': theme === 'dark' ? '#13232C' : '#EFE2C8', 'text-halo-width': 1.6 } });
+    paint: { 'text-color': theme === 'dark' ? '#EADCC3' : '#221F1C', 'text-halo-color': theme === 'dark' ? '#13232C' : '#F3EFE5', 'text-halo-width': 1.6 } });
   map.addLayer({ id: 'marks-sel', type: 'symbol', source: 'marks', filter: ['==', ['get', 'id'], ''],
     layout: { 'icon-image': ['concat', 'm-', ['get', 'status'], '-sel'], 'icon-allow-overlap': true, 'icon-size': 1.25 } });
 

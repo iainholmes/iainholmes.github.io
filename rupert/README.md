@@ -91,7 +91,6 @@ Failure drills:
 | `?maptest=nowebgl` | No WebGL |
 | `?maptest=offline` | Offline |
 | `?maptest=nosize` | A map box with no height (the first iPhone RC bug) |
-| `?theme=light` or `?theme=dark` | Forces a palette, to compare themes on one device |
 
 The map counts as ready only once it has **drawn**: the box and canvas have a real size, WebGL is alive, and basemap features are on screen. MapLibre's `load` event alone isn't enough. If it loads but can't draw, the page says so (`size`, `blank` or `lost`) instead of leaving an empty box.
 
@@ -131,7 +130,7 @@ The build writes an edition's page as soon as its `status` is `published`, even 
 
 ## September interface update
 
-Display, body and metadata use bundled Archivo. The masthead shows the site title, New York ISO week and northern-hemisphere meteorological season, with no slogan. Section outline decorations are removed, and the Atlas uses a native house marker for Home. Wider editorial proportions, smaller supporting type and clearer module spacing apply across the site.
+The masthead and editorial titles use user-provided Magrebis; body text, navigation and metadata use bundled Archivo. The masthead shows the site title, New York ISO week and northern-hemisphere meteorological season, with no slogan. Section outline decorations are removed, and the Atlas uses a native house marker for Home. Wider editorial proportions, smaller supporting type and clearer module spacing apply across the site.
 
 The main recommendation and its subordinate contingencies carry `seasons` and `experiences`. These are editorial suitability tags, separate from the publication season. Historical route snapshots, sources and publish dates remain intact. The Archive contains one entry per Tuesday or Thursday recommendation; search and filters apply only to that main recommendation. Clear filters restores the paired pending Thursday slot and its scheduled publication date. Future editions are still excluded by the existing publication-time selection.
 
@@ -139,7 +138,7 @@ Travel is a browser-local planner with a light map: ordered car, flight, ferry, 
 
 Home setup is browser-local under `rupert-location-v1`. The public build contains no residential address or coordinates. Address lookup is an explicit form submission to Nominatim; coordinate entry also works directly. Routing is opt-in, with disclosure beside its checkbox: OSRM receives the home and selected public trailhead coordinates. Its road geometry is highlighted in ochre, with estimated drive duration and mileage shown on the map; it does not include live traffic. Turning routing off, forgetting home, clearing selection or changing filters clears the route and cancels pending requests. Home view uses zoom 10 centered on the saved point, or all public places if no home is saved. Motion follows the reduced-motion preference.
 
-Relief now has stronger hillshade, visible on/off labels, provider-failure feedback and terrain diagnostics in `?qa=1`. The map uses sage parchment in light mode and a lighter blue-green in dark mode to distinguish it from the page.
+Relief has stronger hillshade, visible on/off labels, provider-failure feedback and terrain diagnostics in `?qa=1`. The map uses a light cream and forest palette with cool water tones; automatic dark switching is removed in the calibration pass.
 
 `_tools/test.mjs` covers combined option filters, season boundaries, all suggestion tags, backup round trips and invalid imports, coordinate validation, route geometry/time and failures, and relief style changes alongside the existing publication timing tests.
 
@@ -147,6 +146,14 @@ Crowd metadata integrates the separately reviewed ca9612d change. All existing o
 
 ## Illustrations, fetch and postcards
 
-See `ILLUSTRATIONS.md` for new per-suggestion art ownership, character consistency, varied compositions, frozen contextual panels and the authoring workflow. The current artwork replacement is paused: rejected generated images are not in the release. Full Editions have an explicitly initiated accessible fetch dock; Travel supports a browser-local postcard per journey, including backup/restore. Field Log now supports planned completion and unplanned outings with local photos, and Rupert Day activates only on April 7 in New York time.
+See `ILLUSTRATIONS.md` for new per-suggestion art ownership, character consistency, varied compositions, frozen contextual panels and the authoring workflow. The current Tuesday artwork uses the seated Rupert illustration specifically approved on 30 September; earlier rejected proposals remain excluded. Full Editions have an explicitly initiated accessible fetch dock; Travel supports a browser-local postcard per journey, including backup/restore. Field Log supports planned completion and unplanned outings with local photos, and Rupert Day activates only on April 7 in New York time.
 
-The editorial reset uses the existing locally bundled SIL-OFL Archivo family for display, body and metadata. Display weight 850–900 and compact proportions replace the softer serif treatment. No proprietary logo font is used. Travel has a light route map, explicit location-lookup consent, OSRM road routes and detour estimates, manually timed transit connectors, ordered legs, planned breaks, destination activity lookup and local postcard/backup storage.
+The visual system uses Magrebis Regular for display and editorial titles, paired with SIL-OFL Archivo for body text and utility information. Travel has a light route map, explicit location-lookup consent, OSRM road routes and detour estimates, manually timed transit connectors, ordered legs, planned breaks, destination activity lookup and local postcard/backup storage.
+
+## Visual calibration
+
+The centered masthead and navigation, clean cream/navy/oxblood/forest palette, restrained editorial rules, map/directory proportions, Archive hover and active-filter states, Travel grouping and Field Log action area refine the existing architecture. Automatic dark switching is removed; the page and map have one intentional palette. No AllTrails integration is included.
+
+Magrebis is the chosen, user-provided design asset. The user's 30 September directive confirms responsibility for supplying the font and confirming any licensing requirements; no independent license-verification gate or font substitution is applied. Its single regular face is self-hosted as a 28 KB WOFF, with synthetic bold and italic disabled. Magrebis supplies the centered masthead, page titles, recommendation titles, Full Edition headlines and editorial subheads, Archive outing titles and Field Log entry titles. Archivo remains the body and utility font. Long headlines and utility layouts have been reviewed at 1366, 768 and 390 px widths without horizontal overflow; the phone masthead and context line are centered above the content.
+
+The user approved the seated Rupert illustration on 30 September, lifting the earlier image ban only for this asset. It replaces the current Tuesday creek print and is assigned to `2026-W40-tue/flagship`. Its desktop 3:2 frame, phone 9:10 crop and Archive thumbnail preserve the complete Rupert silhouette. Credits flow below the artwork rather than obscuring it. The metadata-stripping import, ownership checks, build, 36 tests and privacy audit pass. Earlier rejected proposals remain excluded.
