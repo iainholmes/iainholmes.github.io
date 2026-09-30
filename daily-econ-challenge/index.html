@@ -432,6 +432,245 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Of ambiguous sign relative to <i>β</i>: omitted ability pushes it up, while measurement error attenuates it.",
             "Consistent, because classical measurement error averages out in large samples."
           ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Omitted-variable bias",
+            "Attenuation bias"
+          ],
+          "explanation": "<p>Write measured schooling as <i>S</i> = <i>S</i>* + <i>e</i>. With reliability ratio <i>λ</i> = Var(<i>S</i>*)/Var(<i>S</i>) &lt; 1 and <i>δ</i> the coefficient from projecting ability on true schooling, the probability limit is approximately <i>λ</i>(<i>β</i> + <i>γδ</i>), where <i>γ</i> &gt; 0 is ability's effect on wages. Ability inflates the term in parentheses; the reliability ratio shrinks everything toward zero. Which force wins depends on <i>λ</i>, <i>γ</i> and <i>δ</i>, so the net sign is an empirical question.</p><p>Measurement error attenuates rather than inflates, so (A) is wrong. Nothing guarantees attenuation dominates, so (B) is wrong. Measurement error does not average out: it enters Var(<i>S</i>) in the denominator at every sample size, so (D) is wrong. This tension is why the returns-to-schooling literature leans on twins, instruments and repeated reports.</p>",
+          "refs": "Griliches (1977), Econometrica; Ashenfelter & Krueger (1994), AER"
+        },
+        {
+          "id": "q2",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>States adopt a policy in different years (staggered adoption), and the treatment effect grows the longer a state has been treated. You estimate a two-way fixed-effects regression, <i>y<sub>st</sub></i> = <i>α<sub>s</sub></i> + <i>λ<sub>t</sub></i> + <i>τ D<sub>st</sub></i> + <i>ε<sub>st</sub></i>.</p><p>Which statements are correct?</p>",
+          "options": [
+            "The TWFE estimate of <i>τ</i> is a weighted average of all 2×2 difference-in-differences comparisons, including comparisons that use already-treated states as controls.",
+            "With effects that change over time, some group-time treatment effects can receive negative weight in the TWFE estimate.",
+            "If the pre-period event-study coefficients are statistically indistinguishable from zero, the TWFE estimate of <i>τ</i> is unbiased for the average treatment effect on the treated.",
+            "Callaway–Sant’Anna estimate group-time average treatment effects using never-treated or not-yet-treated units as controls, avoiding already-treated comparisons."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Staggered difference-in-differences",
+            "TWFE negative weights"
+          ],
+          "explanation": "<p>Goodman-Bacon shows the TWFE coefficient decomposes into every 2×2 DiD in the data, including “late vs. early” comparisons in which already-treated states serve as controls (A). When effects grow with time since treatment, those comparisons subtract the early group's still-evolving effect, and de Chaisemartin & D’Haultfœuille show some group-time effects can enter with negative weights (B). Callaway & Sant’Anna, like other heterogeneity-robust estimators, build group-time ATTs only from clean comparisons (D).</p><p>(C) fails for two reasons. First, the bias above comes from heterogeneous effects and remains even when parallel trends holds exactly. Second, an insignificant pre-trend test is not evidence of no pre-trend: these tests often have low power, and conditioning on passing them distorts inference (Roth 2022).</p>",
+          "refs": "Goodman-Bacon (2021); de Chaisemartin & D’Haultfœuille (2020); Callaway & Sant’Anna (2021); Roth (2022), all J. Econometrics / AER / AER: Insights"
+        },
+        {
+          "id": "q3",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>A regulator must commit to an emissions tax or a tradable cap before learning firms' marginal abatement cost (MAC), which is uncertain. Over the regulatory period the marginal damage (MD) curve is nearly flat, as for a long-lived stock pollutant, while the MAC curve is steep. Uncertainty affects only costs, and both curves are linear.</p><p>Which instrument minimises expected deadweight loss?</p>",
+          "options": [
+            "The cap, because it guarantees the environmental outcome.",
+            "The tax, because a flat marginal-damage curve means a fixed price closely tracks the optimum whatever costs turn out to be.",
+            "They are equivalent, because a cap and a tax are dual instruments.",
+            "It cannot be determined without knowing the correlation between cost and damage shocks."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Prices vs. quantities (Weitzman)"
+          ],
+          "explanation": "<p>Weitzman's result: with linear curves and cost uncertainty alone, the expected welfare advantage of prices over quantities is proportional to the variance of the cost shock times (|MAC slope| − |MD slope|). Prices win when marginal damages are flatter than marginal abatement costs. Intuitively, if MD is flat the efficient abatement level is wherever MAC crosses a roughly constant price, and a tax delivers exactly that. A cap fixes quantity and, with a steep MAC, produces large errors in abatement cost.</p><p>(A) treats certainty over quantity as valuable in itself; with flat damages it is not. (C) holds only without uncertainty. (D) matters only when damage shocks are also uncertain and correlated with cost shocks (Stavins 1996). The stem rules that out. This is the standard economic argument for carbon taxes or price-collared trading over pure short-run caps.</p>",
+          "refs": "Weitzman (1974), Review of Economic Studies; Stavins (1996), JEEM; Pizer (2002), J. Public Econ."
+        },
+        {
+          "id": "q4",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A small per-unit excise tax is levied on <i>sellers</i> in a competitive market. At the pre-tax equilibrium, the price elasticity of demand is −0.5 and the price elasticity of supply is 1.5.</p><p>Approximately what share of the tax is borne by consumers?</p>",
+          "options": [
+            "25%",
+            "50%",
+            "75%",
+            "100%, because the tax is collected from sellers, who pass it on in full."
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Tax incidence"
+          ],
+          "explanation": "<p>For a small tax, the consumer share of the burden is <i>ε<sub>S</sub></i> / (<i>ε<sub>S</sub></i> − <i>ε<sub>D</sub></i>) = 1.5 / (1.5 + 0.5) = 0.75. The less elastic side of the market bears more of the tax. Here demand is three times less elastic than supply, so consumers bear three-quarters.</p><p>Statutory incidence (who remits the tax) is irrelevant in a competitive market, so (D) is wrong. The 25% in (A) inverts the formula and is the producer share. Beyond this benchmark, pass-through can exceed 100% under imperfect competition with sufficiently convex demand (Weyl & Fabinger 2013).</p>",
+          "refs": "Weyl & Fabinger (2013), JPE; Fullerton & Metcalf (2002), Handbook of Public Economics"
+        },
+        {
+          "id": "q5",
+          "field": "Macroeconomics",
+          "kind": "tf",
+          "stem": "<p>In the standard three-equation New Keynesian model, the central bank sets</p><div class=\"eq\"><i>i<sub>t</sub></i> = <i>ρ</i> + <i>φ<sub>π</sub></i> <i>π<sub>t</sub></i> + <i>φ<sub>y</sub></i> <i>ỹ<sub>t</sub></i></div><p>True or false: with <i>φ<sub>y</sub></i> ≥ 0, choosing <i>φ<sub>π</sub></i> &gt; 1 raises the real interest rate when inflation rises and is sufficient for a determinate (locally unique) rational-expectations equilibrium.</p>",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Taylor principle & determinacy"
+          ],
+          "explanation": "<p>True. With <i>φ<sub>π</sub></i> &gt; 1 the nominal rate moves more than one-for-one with inflation, so the real rate rises and demand cools, ruling out self-fulfilling inflation paths. The exact determinacy condition (Bullard & Mitra 2002) is <i>κ</i>(<i>φ<sub>π</sub></i> − 1) + (1 − <i>β</i>)<i>φ<sub>y</sub></i> &gt; 0. With <i>κ</i> &gt; 0, <i>β</i> &lt; 1 and <i>φ<sub>y</sub></i> ≥ 0, it holds whenever <i>φ<sub>π</sub></i> &gt; 1.</p><p>Two caveats matter in practice. A large enough output response can deliver determinacy even with <i>φ<sub>π</sub></i> slightly below 1. The result is local, so the zero lower bound and global dynamics are separate questions (Benhabib, Schmitt-Grohé & Uribe 2001). Clarida, Galí & Gertler's estimate that pre-1979 Fed policy violated the principle is the classic empirical application.</p>",
+          "refs": "Bullard & Mitra (2002), JME; Clarida, Galí & Gertler (2000), QJE; Galí (2015), ch. 4"
+        },
+        {
+          "id": "q6",
+          "field": "Causal inference",
+          "kind": "single",
+          "stem": "<p>An oversubscribed charter school admits applicants by lottery. Some winners decline, and some losers enrol later from the waitlist.</p>",
+          "exhibit": {
+            "type": "table",
+            "caption": "Exhibit 6 · Lottery applicants",
+            "head": [
+              "",
+              "Won lottery",
+              "Lost lottery",
+              "Difference"
+            ],
+            "rows": [
+              [
+                "Share attending charter",
+                "0.72",
+                "0.42",
+                "0.30"
+              ],
+              [
+                "Mean test score (SD units)",
+                "0.11",
+                "0.05",
+                "0.06"
+              ]
+            ]
+          },
+          "after": "<p>Using winning the lottery as an instrument for attendance, which statement is correct?</p>",
+          "options": [
+            "The effect of attending is 0.06 SD, the difference in mean scores.",
+            "The effect of attending is 0.018 SD, the score difference times the attendance difference.",
+            "The IV estimate is 0.20 SD: the average effect of attendance for students who attend because they won the lottery.",
+            "The IV estimate is 0.20 SD: the average treatment effect of charter attendance for all applicants."
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "LATE / Wald estimator",
+            "Intent-to-treat"
+          ],
+          "explanation": "<p>The Wald estimator divides the reduced form by the first stage: 0.06 / 0.30 = 0.20 SD. Under independence, exclusion, relevance and monotonicity (no one attends <i>because</i> they lost), this is the local average treatment effect for <i>compliers</i>: applicants whose attendance is switched on by winning (Imbens & Angrist 1994).</p><p>0.06 SD is the intent-to-treat effect of an offer, a policy-relevant number in its own right but not the effect of attending, so (A) is wrong. (B) multiplies where it should divide. (D) overreaches: always-takers and never-takers contribute nothing to the estimate, and their effects may differ. Extrapolating to all applicants requires assumptions about effect heterogeneity.</p>",
+          "refs": "Imbens & Angrist (1994), Econometrica; Abdulkadiroğlu et al. (2011), QJE"
+        },
+        {
+          "id": "q7",
+          "field": "Statistics & inference",
+          "kind": "multi",
+          "stem": "<p>Six of fifty states adopt a policy. You have 20 years of individual-level data and estimate:</p>",
+          "exhibit": {
+            "type": "console",
+            "caption": "Exhibit 7 · R",
+            "code": "<span class=\"p\">&gt;</span> library(fixest)\n<span class=\"p\">&gt;</span> m &lt;- feols(y ~ treat | state + year,\n+            data = df, cluster = ~state)\n<span class=\"p\">&gt;</span> etable(m)   <span class=\"c\"># 6 treated clusters of 50</span>"
+          },
+          "after": "<p>Which statements are correct?</p>",
+          "options": [
+            "Heteroskedasticity-robust standard errors that ignore clustering are likely too small if outcomes are correlated within states over time.",
+            "Clustering by state changes the point estimate of the coefficient on <span style=\"font-family:var(--mono);font-size:.9em\">treat</span>.",
+            "With only six treated clusters, conventional cluster-robust t-tests can over-reject; wild cluster bootstrap or randomization inference are common responses.",
+            "Because the model includes state fixed effects, clustering by state is unnecessary."
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "concepts": [
+            "Cluster-robust inference",
+            "Few treated clusters"
+          ],
+          "explanation": "<p>(A) is the Bertrand, Duflo & Mullainathan lesson. Serially correlated state-level shocks make individual observations far less informative than their count suggests, and unclustered standard errors badly over-reject. (C) is correct because cluster-robust variance estimators rely on asymptotics in the number of clusters, and with few <i>treated</i> clusters they are unreliable. Wild cluster bootstrap and randomization inference are standard responses, though MacKinnon & Webb show even these can struggle when treated clusters are very few.</p><p>(B) is wrong: clustering changes only the variance estimate, never the point estimate. (D) is wrong: state fixed effects absorb time-invariant state differences but not serial correlation in state-year shocks, which is what causes the problem.</p>",
+          "refs": "Bertrand, Duflo & Mullainathan (2004), QJE; Cameron & Miller (2015), JHR; MacKinnon & Webb (2017), J. Applied Econometrics"
+        },
+        {
+          "id": "q8",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A competitive industry extracts a known, finite stock of a nonrenewable resource at zero marginal extraction cost. Demand is stationary and there is no backstop technology. The market interest rate rises unexpectedly and permanently.</p><p>What happens to the equilibrium path?</p>",
+          "options": [
+            "Nothing changes, because the total stock is fixed.",
+            "The initial price rises and extraction is delayed, because future revenue is discounted more heavily.",
+            "The initial price falls and extraction shifts toward the present; the price then rises faster than before.",
+            "The price grows at the same rate as before, but from a lower starting level."
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Hotelling rule"
+          ],
+          "explanation": "<p>With zero extraction cost, Hotelling's rule makes the price (the scarcity rent) grow at the interest rate: <i>p<sub>t</sub></i> = <i>p</i><sub>0</sub><i>e<sup>rt</sup></i>. A higher <i>r</i> makes the path steeper. The same total stock must still be exhausted, so a steeper path must start lower and cross the old path from below. The result is more extraction today, less later, and earlier exhaustion. Intuitively, a higher return on financial assets makes resources in the ground a worse store of value, so owners extract and sell sooner.</p><p>(A) ignores the timing margin. (B) reverses the logic: heavier discounting makes owners want revenue <i>sooner</i>. (D) contradicts the rule itself, since the growth rate equals <i>r</i>.</p>",
+          "refs": "Hotelling (1931), JPE; Dasgupta & Heal (1979), ch. 6"
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "date": "2026-09-29",
+      "minutes": 18,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Research design",
+          "kind": "multi",
+          "stem": "<p>A city randomly offers an energy audit to eligible households. Take-up is voluntary. You observe offer assignment, audit completion and subsequent electricity use for every household. Which analyses retain a credible interpretation under the stated random assignment?</p>",
+          "options": [
+            "Compare electricity use by random offer assignment to estimate the intention-to-treat effect of the offer.",
+            "Compare audit completers with non-completers to identify the causal effect of completion without further assumptions.",
+            "Condition the main offer-effect estimate on insulation installed after assignment to remove confounding.",
+            "Report take-up by assignment and keep the offer effect distinct from the effect of receiving an audit."
+          ],
+          "correct": [
+            0,
+            3
+          ],
+          "concepts": [
+            "Randomized encouragement",
+            "Post-treatment conditioning"
+          ],
+          "explanation": "<p>(A) is correct: random assignment identifies the effect of the offer, assuming complete outcome measurement and no interference. (D) is correct because assignment and receipt are different treatments. (B) fails because completion is a choice; households that complete may differ in motivation or costs. (C) conditions on a possible mediator affected by the offer and can remove part of the effect or induce selection bias. A receipt-effect interpretation needs additional assumptions; randomizing the offer does not randomize completion.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A monopolist can separate two markets and prevent resale. Demand elasticities at the interior optimum are −2 in market A and −4 in market B. Marginal cost is constant at <script type="application/json" id="challenge-data">
+2. What prices satisfy the segment-specific Lerner conditions?</p>",
+          "options": [
+            "{
+  "editions": [
+    {
+      "no": 1,
+      "date": "2026-09-28",
+      "minutes": 15,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "single",
+          "stem": "<p>You regress log hourly wages on years of schooling in a cross-section. Unobserved ability raises wages and is positively correlated with schooling. In addition, schooling is self-reported with classical measurement error (noise uncorrelated with true schooling, ability, and the wage error).</p><p>Relative to the true return to schooling <i>β</i>, the OLS coefficient is:</p>",
+          "options": [
+            "Biased upward, because omitted ability and measurement error both push the estimate up.",
+            "Biased toward zero, because classical measurement error dominates omitted-variable bias.",
+            "Of ambiguous sign relative to <i>β</i>: omitted ability pushes it up, while measurement error attenuates it.",
+            "Consistent, because classical measurement error averages out in large samples."
+          ],
           "correct": [2],
           "concepts": ["Omitted-variable bias", "Attenuation bias"],
           "explanation": "<p>Write measured schooling as <i>S</i> = <i>S</i>* + <i>e</i>. With reliability ratio <i>λ</i> = Var(<i>S</i>*)/Var(<i>S</i>) &lt; 1 and <i>δ</i> the coefficient from projecting ability on true schooling, the probability limit is approximately <i>λ</i>(<i>β</i> + <i>γδ</i>), where <i>γ</i> &gt; 0 is ability's effect on wages. Ability inflates the term in parentheses; the reliability ratio shrinks everything toward zero. Which force wins depends on <i>λ</i>, <i>γ</i> and <i>δ</i>, so the net sign is an empirical question.</p><p>Measurement error attenuates rather than inflates, so (A) is wrong. Nothing guarantees attenuation dominates, so (B) is wrong. Measurement error does not average out: it enters Var(<i>S</i>) in the denominator at every sample size, so (D) is wrong. This tension is why the returns-to-schooling literature leans on twins, instruments and repeated reports.</p>",
@@ -723,6 +962,647 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           ],
           "explanation": "<p>G′(X) = r(1 − 2X/K) is zero at X = K/2 = 500. Growth there is rK/4 = 100 tonnes per year, so (B) is correct. At carrying capacity growth is zero, rejecting (A). (C) both doubles the yield and confuses a biological maximum with a profit maximum. (D) ignores the entry incentives of open access: equilibrium depends on prices, harvesting costs and technology, and is not generally the maximum-yield stock. An economic optimum additionally values costs and, in a dynamic setting, future stocks.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        }
+      ]
+    }
+  ]
+}4 in A and <script type="application/json" id="challenge-data">
+6 in B.",
+            "<script type="application/json" id="challenge-data">
+6 in A and {
+  "editions": [
+    {
+      "no": 1,
+      "date": "2026-09-28",
+      "minutes": 15,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "single",
+          "stem": "<p>You regress log hourly wages on years of schooling in a cross-section. Unobserved ability raises wages and is positively correlated with schooling. In addition, schooling is self-reported with classical measurement error (noise uncorrelated with true schooling, ability, and the wage error).</p><p>Relative to the true return to schooling <i>β</i>, the OLS coefficient is:</p>",
+          "options": [
+            "Biased upward, because omitted ability and measurement error both push the estimate up.",
+            "Biased toward zero, because classical measurement error dominates omitted-variable bias.",
+            "Of ambiguous sign relative to <i>β</i>: omitted ability pushes it up, while measurement error attenuates it.",
+            "Consistent, because classical measurement error averages out in large samples."
+          ],
+          "correct": [2],
+          "concepts": ["Omitted-variable bias", "Attenuation bias"],
+          "explanation": "<p>Write measured schooling as <i>S</i> = <i>S</i>* + <i>e</i>. With reliability ratio <i>λ</i> = Var(<i>S</i>*)/Var(<i>S</i>) &lt; 1 and <i>δ</i> the coefficient from projecting ability on true schooling, the probability limit is approximately <i>λ</i>(<i>β</i> + <i>γδ</i>), where <i>γ</i> &gt; 0 is ability's effect on wages. Ability inflates the term in parentheses; the reliability ratio shrinks everything toward zero. Which force wins depends on <i>λ</i>, <i>γ</i> and <i>δ</i>, so the net sign is an empirical question.</p><p>Measurement error attenuates rather than inflates, so (A) is wrong. Nothing guarantees attenuation dominates, so (B) is wrong. Measurement error does not average out: it enters Var(<i>S</i>) in the denominator at every sample size, so (D) is wrong. This tension is why the returns-to-schooling literature leans on twins, instruments and repeated reports.</p>",
+          "refs": "Griliches (1977), Econometrica; Ashenfelter & Krueger (1994), AER"
+        },
+        {
+          "id": "q2",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>States adopt a policy in different years (staggered adoption), and the treatment effect grows the longer a state has been treated. You estimate a two-way fixed-effects regression, <i>y<sub>st</sub></i> = <i>α<sub>s</sub></i> + <i>λ<sub>t</sub></i> + <i>τ D<sub>st</sub></i> + <i>ε<sub>st</sub></i>.</p><p>Which statements are correct?</p>",
+          "options": [
+            "The TWFE estimate of <i>τ</i> is a weighted average of all 2×2 difference-in-differences comparisons, including comparisons that use already-treated states as controls.",
+            "With effects that change over time, some group-time treatment effects can receive negative weight in the TWFE estimate.",
+            "If the pre-period event-study coefficients are statistically indistinguishable from zero, the TWFE estimate of <i>τ</i> is unbiased for the average treatment effect on the treated.",
+            "Callaway–Sant’Anna estimate group-time average treatment effects using never-treated or not-yet-treated units as controls, avoiding already-treated comparisons."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Staggered difference-in-differences", "TWFE negative weights"],
+          "explanation": "<p>Goodman-Bacon shows the TWFE coefficient decomposes into every 2×2 DiD in the data, including “late vs. early” comparisons in which already-treated states serve as controls (A). When effects grow with time since treatment, those comparisons subtract the early group's still-evolving effect, and de Chaisemartin & D’Haultfœuille show some group-time effects can enter with negative weights (B). Callaway & Sant’Anna, like other heterogeneity-robust estimators, build group-time ATTs only from clean comparisons (D).</p><p>(C) fails for two reasons. First, the bias above comes from heterogeneous effects and remains even when parallel trends holds exactly. Second, an insignificant pre-trend test is not evidence of no pre-trend: these tests often have low power, and conditioning on passing them distorts inference (Roth 2022).</p>",
+          "refs": "Goodman-Bacon (2021); de Chaisemartin & D’Haultfœuille (2020); Callaway & Sant’Anna (2021); Roth (2022), all J. Econometrics / AER / AER: Insights"
+        },
+        {
+          "id": "q3",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>A regulator must commit to an emissions tax or a tradable cap before learning firms' marginal abatement cost (MAC), which is uncertain. Over the regulatory period the marginal damage (MD) curve is nearly flat, as for a long-lived stock pollutant, while the MAC curve is steep. Uncertainty affects only costs, and both curves are linear.</p><p>Which instrument minimises expected deadweight loss?</p>",
+          "options": [
+            "The cap, because it guarantees the environmental outcome.",
+            "The tax, because a flat marginal-damage curve means a fixed price closely tracks the optimum whatever costs turn out to be.",
+            "They are equivalent, because a cap and a tax are dual instruments.",
+            "It cannot be determined without knowing the correlation between cost and damage shocks."
+          ],
+          "correct": [1],
+          "concepts": ["Prices vs. quantities (Weitzman)"],
+          "explanation": "<p>Weitzman's result: with linear curves and cost uncertainty alone, the expected welfare advantage of prices over quantities is proportional to the variance of the cost shock times (|MAC slope| − |MD slope|). Prices win when marginal damages are flatter than marginal abatement costs. Intuitively, if MD is flat the efficient abatement level is wherever MAC crosses a roughly constant price, and a tax delivers exactly that. A cap fixes quantity and, with a steep MAC, produces large errors in abatement cost.</p><p>(A) treats certainty over quantity as valuable in itself; with flat damages it is not. (C) holds only without uncertainty. (D) matters only when damage shocks are also uncertain and correlated with cost shocks (Stavins 1996). The stem rules that out. This is the standard economic argument for carbon taxes or price-collared trading over pure short-run caps.</p>",
+          "refs": "Weitzman (1974), Review of Economic Studies; Stavins (1996), JEEM; Pizer (2002), J. Public Econ."
+        },
+        {
+          "id": "q4",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A small per-unit excise tax is levied on <i>sellers</i> in a competitive market. At the pre-tax equilibrium, the price elasticity of demand is −0.5 and the price elasticity of supply is 1.5.</p><p>Approximately what share of the tax is borne by consumers?</p>",
+          "options": [
+            "25%",
+            "50%",
+            "75%",
+            "100%, because the tax is collected from sellers, who pass it on in full."
+          ],
+          "correct": [2],
+          "concepts": ["Tax incidence"],
+          "explanation": "<p>For a small tax, the consumer share of the burden is <i>ε<sub>S</sub></i> / (<i>ε<sub>S</sub></i> − <i>ε<sub>D</sub></i>) = 1.5 / (1.5 + 0.5) = 0.75. The less elastic side of the market bears more of the tax. Here demand is three times less elastic than supply, so consumers bear three-quarters.</p><p>Statutory incidence (who remits the tax) is irrelevant in a competitive market, so (D) is wrong. The 25% in (A) inverts the formula and is the producer share. Beyond this benchmark, pass-through can exceed 100% under imperfect competition with sufficiently convex demand (Weyl & Fabinger 2013).</p>",
+          "refs": "Weyl & Fabinger (2013), JPE; Fullerton & Metcalf (2002), Handbook of Public Economics"
+        },
+        {
+          "id": "q5",
+          "field": "Macroeconomics",
+          "kind": "tf",
+          "stem": "<p>In the standard three-equation New Keynesian model, the central bank sets</p><div class=\"eq\"><i>i<sub>t</sub></i> = <i>ρ</i> + <i>φ<sub>π</sub></i> <i>π<sub>t</sub></i> + <i>φ<sub>y</sub></i> <i>ỹ<sub>t</sub></i></div><p>True or false: with <i>φ<sub>y</sub></i> ≥ 0, choosing <i>φ<sub>π</sub></i> &gt; 1 raises the real interest rate when inflation rises and is sufficient for a determinate (locally unique) rational-expectations equilibrium.</p>",
+          "options": ["True", "False"],
+          "correct": [0],
+          "concepts": ["Taylor principle & determinacy"],
+          "explanation": "<p>True. With <i>φ<sub>π</sub></i> &gt; 1 the nominal rate moves more than one-for-one with inflation, so the real rate rises and demand cools, ruling out self-fulfilling inflation paths. The exact determinacy condition (Bullard & Mitra 2002) is <i>κ</i>(<i>φ<sub>π</sub></i> − 1) + (1 − <i>β</i>)<i>φ<sub>y</sub></i> &gt; 0. With <i>κ</i> &gt; 0, <i>β</i> &lt; 1 and <i>φ<sub>y</sub></i> ≥ 0, it holds whenever <i>φ<sub>π</sub></i> &gt; 1.</p><p>Two caveats matter in practice. A large enough output response can deliver determinacy even with <i>φ<sub>π</sub></i> slightly below 1. The result is local, so the zero lower bound and global dynamics are separate questions (Benhabib, Schmitt-Grohé & Uribe 2001). Clarida, Galí & Gertler's estimate that pre-1979 Fed policy violated the principle is the classic empirical application.</p>",
+          "refs": "Bullard & Mitra (2002), JME; Clarida, Galí & Gertler (2000), QJE; Galí (2015), ch. 4"
+        },
+        {
+          "id": "q6",
+          "field": "Causal inference",
+          "kind": "single",
+          "stem": "<p>An oversubscribed charter school admits applicants by lottery. Some winners decline, and some losers enrol later from the waitlist.</p>",
+          "exhibit": {"type":"table","caption":"Exhibit 6 · Lottery applicants","head":["","Won lottery","Lost lottery","Difference"],"rows":[["Share attending charter","0.72","0.42","0.30"],["Mean test score (SD units)","0.11","0.05","0.06"]]},
+          "after": "<p>Using winning the lottery as an instrument for attendance, which statement is correct?</p>",
+          "options": [
+            "The effect of attending is 0.06 SD, the difference in mean scores.",
+            "The effect of attending is 0.018 SD, the score difference times the attendance difference.",
+            "The IV estimate is 0.20 SD: the average effect of attendance for students who attend because they won the lottery.",
+            "The IV estimate is 0.20 SD: the average treatment effect of charter attendance for all applicants."
+          ],
+          "correct": [2],
+          "concepts": ["LATE / Wald estimator", "Intent-to-treat"],
+          "explanation": "<p>The Wald estimator divides the reduced form by the first stage: 0.06 / 0.30 = 0.20 SD. Under independence, exclusion, relevance and monotonicity (no one attends <i>because</i> they lost), this is the local average treatment effect for <i>compliers</i>: applicants whose attendance is switched on by winning (Imbens & Angrist 1994).</p><p>0.06 SD is the intent-to-treat effect of an offer, a policy-relevant number in its own right but not the effect of attending, so (A) is wrong. (B) multiplies where it should divide. (D) overreaches: always-takers and never-takers contribute nothing to the estimate, and their effects may differ. Extrapolating to all applicants requires assumptions about effect heterogeneity.</p>",
+          "refs": "Imbens & Angrist (1994), Econometrica; Abdulkadiroğlu et al. (2011), QJE"
+        },
+        {
+          "id": "q7",
+          "field": "Statistics & inference",
+          "kind": "multi",
+          "stem": "<p>Six of fifty states adopt a policy. You have 20 years of individual-level data and estimate:</p>",
+          "exhibit": {"type":"console","caption":"Exhibit 7 · R","code":"<span class=\"p\">&gt;</span> library(fixest)\n<span class=\"p\">&gt;</span> m &lt;- feols(y ~ treat | state + year,\n+            data = df, cluster = ~state)\n<span class=\"p\">&gt;</span> etable(m)   <span class=\"c\"># 6 treated clusters of 50</span>"},
+          "after": "<p>Which statements are correct?</p>",
+          "options": [
+            "Heteroskedasticity-robust standard errors that ignore clustering are likely too small if outcomes are correlated within states over time.",
+            "Clustering by state changes the point estimate of the coefficient on <span style=\"font-family:var(--mono);font-size:.9em\">treat</span>.",
+            "With only six treated clusters, conventional cluster-robust t-tests can over-reject; wild cluster bootstrap or randomization inference are common responses.",
+            "Because the model includes state fixed effects, clustering by state is unnecessary."
+          ],
+          "correct": [0, 2],
+          "concepts": ["Cluster-robust inference", "Few treated clusters"],
+          "explanation": "<p>(A) is the Bertrand, Duflo & Mullainathan lesson. Serially correlated state-level shocks make individual observations far less informative than their count suggests, and unclustered standard errors badly over-reject. (C) is correct because cluster-robust variance estimators rely on asymptotics in the number of clusters, and with few <i>treated</i> clusters they are unreliable. Wild cluster bootstrap and randomization inference are standard responses, though MacKinnon & Webb show even these can struggle when treated clusters are very few.</p><p>(B) is wrong: clustering changes only the variance estimate, never the point estimate. (D) is wrong: state fixed effects absorb time-invariant state differences but not serial correlation in state-year shocks, which is what causes the problem.</p>",
+          "refs": "Bertrand, Duflo & Mullainathan (2004), QJE; Cameron & Miller (2015), JHR; MacKinnon & Webb (2017), J. Applied Econometrics"
+        },
+        {
+          "id": "q8",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A competitive industry extracts a known, finite stock of a nonrenewable resource at zero marginal extraction cost. Demand is stationary and there is no backstop technology. The market interest rate rises unexpectedly and permanently.</p><p>What happens to the equilibrium path?</p>",
+          "options": [
+            "Nothing changes, because the total stock is fixed.",
+            "The initial price rises and extraction is delayed, because future revenue is discounted more heavily.",
+            "The initial price falls and extraction shifts toward the present; the price then rises faster than before.",
+            "The price grows at the same rate as before, but from a lower starting level."
+          ],
+          "correct": [2],
+          "concepts": ["Hotelling rule"],
+          "explanation": "<p>With zero extraction cost, Hotelling's rule makes the price (the scarcity rent) grow at the interest rate: <i>p<sub>t</sub></i> = <i>p</i><sub>0</sub><i>e<sup>rt</sup></i>. A higher <i>r</i> makes the path steeper. The same total stock must still be exhausted, so a steeper path must start lower and cross the old path from below. The result is more extraction today, less later, and earlier exhaustion. Intuitively, a higher return on financial assets makes resources in the ground a worse store of value, so owners extract and sell sooner.</p><p>(A) ignores the timing margin. (B) reverses the logic: heavier discounting makes owners want revenue <i>sooner</i>. (D) contradicts the rule itself, since the growth rate equals <i>r</i>.</p>",
+          "refs": "Hotelling (1931), JPE; Dasgupta & Heal (1979), ch. 6"
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "date": "2026-09-29",
+      "minutes": 18,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Research design",
+          "kind": "multi",
+          "stem": "<p>A city randomly offers an energy audit to eligible households. Take-up is voluntary. You observe offer assignment, audit completion and subsequent electricity use for every household. Which analyses retain a credible interpretation under the stated random assignment?</p>",
+          "options": [
+            "Compare electricity use by random offer assignment to estimate the intention-to-treat effect of the offer.",
+            "Compare audit completers with non-completers to identify the causal effect of completion without further assumptions.",
+            "Condition the main offer-effect estimate on insulation installed after assignment to remove confounding.",
+            "Report take-up by assignment and keep the offer effect distinct from the effect of receiving an audit."
+          ],
+          "correct": [
+            0,
+            3
+          ],
+          "concepts": [
+            "Randomized encouragement",
+            "Post-treatment conditioning"
+          ],
+          "explanation": "<p>(A) is correct: random assignment identifies the effect of the offer, assuming complete outcome measurement and no interference. (D) is correct because assignment and receipt are different treatments. (B) fails because completion is a choice; households that complete may differ in motivation or costs. (C) conditions on a possible mediator affected by the offer and can remove part of the effect or induce selection bias. A receipt-effect interpretation needs additional assumptions; randomizing the offer does not randomize completion.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A monopolist can separate two markets and prevent resale. Demand elasticities at the interior optimum are −2 in market A and −4 in market B. Marginal cost is constant at $12. What prices satisfy the segment-specific Lerner conditions?</p>",
+          "options": [
+            "$24 in A and $16 in B.",
+            "$16 in A and $24 in B.",
+            "$18 in both markets.",
+            "$6 in A and $3 in B."
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Third-degree price discrimination",
+            "Lerner index"
+          ],
+          "explanation": "<p>In each segment, (P − MC)/P = 1/|ε|, so P = MC/(1 − 1/|ε|). Thus P<sub>A</sub> = 12/(1 − 1/2) = 24 and P<sub>B</sub> = 12/(1 − 1/4) = 16. (B) reverses the relationship: the less elastic market supports the larger markup. (C) ignores the different elasticities. (D) divides marginal cost by elasticity instead of solving the markup equation and gives prices below marginal cost. These are local optimum conditions, conditional on the stated elasticities and market separation.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "single",
+          "stem": "<p>In a one-period New Keynesian IS relation, <i>x</i> = E<i>x</i>′ − (1/σ)(<i>i</i> − E<i>π</i>′ − <i>r</i><sup>n</sup>), the nominal interest rate is fixed at its effective lower bound. Expected future inflation and the future output gap remain unchanged. The natural real rate falls by one percentage point. What happens to today’s output gap when σ = 2?</p>",
+          "options": [
+            "It rises by 0.5 percentage point.",
+            "It falls by 0.5 percentage point.",
+            "It falls by 2 percentage points.",
+            "It is unchanged because the nominal rate cannot fall."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Natural real interest rate",
+            "Effective lower bound"
+          ],
+          "explanation": "<p>The gap changes by Δx = Δr<sup>n</sup>/σ = −1/2 = −0.5 percentage point. The unchanged actual real rate becomes more restrictive relative to the lower natural rate. (A) reverses this sign. (C) multiplies by σ rather than its inverse. (D) confuses a fixed policy instrument with fixed economic activity. This calculation holds expectations fixed; changes in expected inflation or future policy could alter the total response.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q4",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>You observe workers in multiple years and estimate log wages on completed schooling with worker and year fixed effects. For every worker in the estimation sample, completed schooling is constant over time. Which statements are correct?</p>",
+          "options": [
+            "The schooling coefficient is not identified separately from worker fixed effects.",
+            "Adding more observations of the same workers necessarily solves the identification problem.",
+            "A pooled regression can use between-worker schooling differences, but needs stronger assumptions to interpret that variation causally.",
+            "Dropping one year dummy makes the schooling coefficient identified."
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "concepts": [
+            "Within transformation",
+            "Perfect collinearity"
+          ],
+          "explanation": "<p>(A) is correct because subtracting each worker’s time mean makes the schooling regressor zero. (C) is correct: a pooled regression retains between-worker variation, but unobserved worker characteristics may confound it. (B) fails because additional periods do not create within-worker variation when schooling never changes. (D) changes the normalization of time effects, not the collinearity between schooling and worker indicators. Software dropping schooling is a property of the design, not evidence that its economic effect is zero.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q5",
+          "field": "Environmental economics",
+          "kind": "tf",
+          "stem": "<p>A price-taking plant receives a fixed allocation of tradable emissions permits for free. Permits can be sold for $40 each, each unit of emissions requires one permit, and the allocation is independent of current output and emissions. True or false: emitting one additional unit has zero marginal permit cost until the free allocation is exhausted.</p>",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Permit opportunity cost",
+            "Allocation versus incentives"
+          ],
+          "explanation": "<p>False. Using a permit sacrifices the $40 the plant could receive by selling it, so the marginal opportunity cost is $40 even for a freely allocated permit. “True” confuses an accounting acquisition cost with an economic opportunity cost. A fixed free allocation transfers wealth but, under the stated competitive and frictionless conditions, does not eliminate the marginal emissions incentive. Output-based allocation, transaction frictions or market power would require a different analysis.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "single",
+          "stem": "<p>A pre-specified family contains 20 null hypotheses. The smallest unadjusted p-value is 0.003. You apply Bonferroni to control the family-wise error rate at 5%. What is the correct conclusion?</p>",
+          "options": [
+            "Reject at least one null because 0.003 is below 0.05.",
+            "Reject none because every p-value exceeds 0.05/20 = 0.0025.",
+            "Reject all nulls because the minimum p-value is small.",
+            "The procedure cannot be used unless the tests are independent."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Multiple testing",
+            "Family-wise error rate"
+          ],
+          "explanation": "<p>The per-test threshold is 0.0025. Since even the minimum is 0.003, no test crosses it: (B). Equivalently the smallest Bonferroni-adjusted p-value is 20 × 0.003 = 0.06. (A) ignores multiplicity. (C) wrongly transfers evidence from one hypothesis to all others. (D) is false: the union bound controls the family-wise error rate without independence, although Bonferroni can be conservative. Failure to reject does not establish that every null is true.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q7",
+          "field": "Causal inference",
+          "kind": "single",
+          "stem": "<p>A grant is awarded deterministically when a municipality’s pre-policy score is at least 70. There is no precise manipulation of the score. Near the cutoff, potential outcomes and other determinants vary continuously. A local regression estimates an outcome jump of 4 units at 70. Which interpretation is justified?</p>",
+          "options": [
+            "The average grant effect for every municipality is 4 units.",
+            "The grant effect for municipalities at the cutoff is 4 units, under the stated continuity and treatment-assignment assumptions.",
+            "A before–after comparison for recipients would identify the same causal effect without assumptions.",
+            "The estimate proves that scores have no direct relationship with outcomes."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Sharp regression discontinuity",
+            "Local treatment effects"
+          ],
+          "explanation": "<p>(B) is the sharp regression-discontinuity interpretation. Continuity supplies the counterfactual at the threshold, where treatment status jumps. (A) extrapolates a local effect to municipalities far from the cutoff. (C) ignores time shocks and the absence of a counterfactual in a simple before–after comparison. (D) is unnecessary: scores may predict outcomes smoothly; the design attributes the discontinuous jump to treatment. Bandwidth choice, functional form and uncertainty still need to be reported in an actual study.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q8",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A fish population follows logistic growth G(X) = rX(1 − X/K), with r = 0.4 per year and carrying capacity K = 1,000 tonnes. Harvest equals natural growth in a steady state. Which statement is correct?</p>",
+          "options": [
+            "Maximum sustainable yield is 400 tonnes per year at X = 1,000 tonnes.",
+            "Maximum sustainable yield is 100 tonnes per year at X = 500 tonnes, but this need not maximize economic profit.",
+            "Maximum sustainable yield is 200 tonnes per year at X = 500 tonnes and always maximizes profit.",
+            "Open access necessarily produces the stock that maximizes sustainable yield."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Logistic growth",
+            "Maximum sustainable yield",
+            "Bioeconomic optimum"
+          ],
+          "explanation": "<p>G′(X) = r(1 − 2X/K) is zero at X = K/2 = 500. Growth there is rK/4 = 100 tonnes per year, so (B) is correct. At carrying capacity growth is zero, rejecting (A). (C) both doubles the yield and confuses a biological maximum with a profit maximum. (D) ignores the entry incentives of open access: equilibrium depends on prices, harvesting costs and technology, and is not generally the maximum-yield stock. An economic optimum additionally values costs and, in a dynamic setting, future stocks.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        }
+      ]
+    }
+  ]
+}4 in B.",
+            "<script type="application/json" id="challenge-data">
+8 in both markets.",
+            "$6 in A and 
+</script> in B."
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Third-degree price discrimination",
+            "Lerner index"
+          ],
+          "explanation": "<p>In each segment, (P − MC)/P = 1/|ε|, so P = MC/(1 − 1/|ε|). Thus P<sub>A</sub> = 12/(1 − 1/2) = 24 and P<sub>B</sub> = 12/(1 − 1/4) = 16. (B) reverses the relationship: the less elastic market supports the larger markup. (C) ignores the different elasticities. (D) divides marginal cost by elasticity instead of solving the markup equation and gives prices below marginal cost. These are local optimum conditions, conditional on the stated elasticities and market separation.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "single",
+          "stem": "<p>In a one-period New Keynesian IS relation, <i>x</i> = E<i>x</i>′ − (1/σ)(<i>i</i> − E<i>π</i>′ − <i>r</i><sup>n</sup>), the nominal interest rate is fixed at its effective lower bound. Expected future inflation and the future output gap remain unchanged. The natural real rate falls by one percentage point. What happens to today’s output gap when σ = 2?</p>",
+          "options": [
+            "It rises by 0.5 percentage point.",
+            "It falls by 0.5 percentage point.",
+            "It falls by 2 percentage points.",
+            "It is unchanged because the nominal rate cannot fall."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Natural real interest rate",
+            "Effective lower bound"
+          ],
+          "explanation": "<p>The gap changes by Δx = Δr<sup>n</sup>/σ = −1/2 = −0.5 percentage point. The unchanged actual real rate becomes more restrictive relative to the lower natural rate. (A) reverses this sign. (C) multiplies by σ rather than its inverse. (D) confuses a fixed policy instrument with fixed economic activity. This calculation holds expectations fixed; changes in expected inflation or future policy could alter the total response.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q4",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>You observe workers in multiple years and estimate log wages on completed schooling with worker and year fixed effects. For every worker in the estimation sample, completed schooling is constant over time. Which statements are correct?</p>",
+          "options": [
+            "The schooling coefficient is not identified separately from worker fixed effects.",
+            "Adding more observations of the same workers necessarily solves the identification problem.",
+            "A pooled regression can use between-worker schooling differences, but needs stronger assumptions to interpret that variation causally.",
+            "Dropping one year dummy makes the schooling coefficient identified."
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "concepts": [
+            "Within transformation",
+            "Perfect collinearity"
+          ],
+          "explanation": "<p>(A) is correct because subtracting each worker’s time mean makes the schooling regressor zero. (C) is correct: a pooled regression retains between-worker variation, but unobserved worker characteristics may confound it. (B) fails because additional periods do not create within-worker variation when schooling never changes. (D) changes the normalization of time effects, not the collinearity between schooling and worker indicators. Software dropping schooling is a property of the design, not evidence that its economic effect is zero.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q5",
+          "field": "Environmental economics",
+          "kind": "tf",
+          "stem": "<p>A price-taking plant receives a fixed allocation of tradable emissions permits for free. Permits can be sold for $40 each, each unit of emissions requires one permit, and the allocation is independent of current output and emissions. True or false: emitting one additional unit has zero marginal permit cost until the free allocation is exhausted.</p>",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Permit opportunity cost",
+            "Allocation versus incentives"
+          ],
+          "explanation": "<p>False. Using a permit sacrifices the $40 the plant could receive by selling it, so the marginal opportunity cost is $40 even for a freely allocated permit. “True” confuses an accounting acquisition cost with an economic opportunity cost. A fixed free allocation transfers wealth but, under the stated competitive and frictionless conditions, does not eliminate the marginal emissions incentive. Output-based allocation, transaction frictions or market power would require a different analysis.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "single",
+          "stem": "<p>A pre-specified family contains 20 null hypotheses. The smallest unadjusted p-value is 0.003. You apply Bonferroni to control the family-wise error rate at 5%. What is the correct conclusion?</p>",
+          "options": [
+            "Reject at least one null because 0.003 is below 0.05.",
+            "Reject none because every p-value exceeds 0.05/20 = 0.0025.",
+            "Reject all nulls because the minimum p-value is small.",
+            "The procedure cannot be used unless the tests are independent."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Multiple testing",
+            "Family-wise error rate"
+          ],
+          "explanation": "<p>The per-test threshold is 0.0025. Since even the minimum is 0.003, no test crosses it: (B). Equivalently the smallest Bonferroni-adjusted p-value is 20 × 0.003 = 0.06. (A) ignores multiplicity. (C) wrongly transfers evidence from one hypothesis to all others. (D) is false: the union bound controls the family-wise error rate without independence, although Bonferroni can be conservative. Failure to reject does not establish that every null is true.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q7",
+          "field": "Causal inference",
+          "kind": "single",
+          "stem": "<p>A grant is awarded deterministically when a municipality’s pre-policy score is at least 70. There is no precise manipulation of the score. Near the cutoff, potential outcomes and other determinants vary continuously. A local regression estimates an outcome jump of 4 units at 70. Which interpretation is justified?</p>",
+          "options": [
+            "The average grant effect for every municipality is 4 units.",
+            "The grant effect for municipalities at the cutoff is 4 units, under the stated continuity and treatment-assignment assumptions.",
+            "A before–after comparison for recipients would identify the same causal effect without assumptions.",
+            "The estimate proves that scores have no direct relationship with outcomes."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Sharp regression discontinuity",
+            "Local treatment effects"
+          ],
+          "explanation": "<p>(B) is the sharp regression-discontinuity interpretation. Continuity supplies the counterfactual at the threshold, where treatment status jumps. (A) extrapolates a local effect to municipalities far from the cutoff. (C) ignores time shocks and the absence of a counterfactual in a simple before–after comparison. (D) is unnecessary: scores may predict outcomes smoothly; the design attributes the discontinuous jump to treatment. Bandwidth choice, functional form and uncertainty still need to be reported in an actual study.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q8",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A fish population follows logistic growth G(X) = rX(1 − X/K), with r = 0.4 per year and carrying capacity K = 1,000 tonnes. Harvest equals natural growth in a steady state. Which statement is correct?</p>",
+          "options": [
+            "Maximum sustainable yield is 400 tonnes per year at X = 1,000 tonnes.",
+            "Maximum sustainable yield is 100 tonnes per year at X = 500 tonnes, but this need not maximize economic profit.",
+            "Maximum sustainable yield is 200 tonnes per year at X = 500 tonnes and always maximizes profit.",
+            "Open access necessarily produces the stock that maximizes sustainable yield."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Logistic growth",
+            "Maximum sustainable yield",
+            "Bioeconomic optimum"
+          ],
+          "explanation": "<p>G′(X) = r(1 − 2X/K) is zero at X = K/2 = 500. Growth there is rK/4 = 100 tonnes per year, so (B) is correct. At carrying capacity growth is zero, rejecting (A). (C) both doubles the yield and confuses a biological maximum with a profit maximum. (D) ignores the entry incentives of open access: equilibrium depends on prices, harvesting costs and technology, and is not generally the maximum-yield stock. An economic optimum additionally values costs and, in a dynamic setting, future stocks.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        }
+      ]
+    },
+    {
+      "no": 3,
+      "date": "2026-09-30",
+      "minutes": 20,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "single",
+          "stem": "<p>You estimate a two-group, two-period difference-in-differences model. Before treatment, the treated-group mean is 12 and the control-group mean is 10. After treatment, the treated-group mean is 17 and the control-group mean is 13. Under parallel trends, what is the estimated treatment effect?</p>",
+          "options": [
+            "2",
+            "3",
+            "5",
+            "8"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Difference-in-differences",
+            "Parallel trends"
+          ],
+          "explanation": "<p>The treated group rises by 5 and the control group rises by 3. Difference-in-differences is 5 − 3 = 2. Parallel trends supplies the untreated counterfactual change for the treated group.</p>",
+          "refs": "Original exercise; standard two-period difference-in-differences algebra."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "multi",
+          "stem": "<p>A competitive market has inverse demand P = 100 − Q and inverse supply P = 20 + Q. The government imposes a binding price ceiling of $50. Which statements are correct?</p>",
+          "options": [
+            "Quantity demanded is 50.",
+            "Quantity supplied is 30.",
+            "The shortage is 20 units.",
+            "The competitive equilibrium price is below $50."
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Price ceilings",
+            "Market disequilibrium"
+          ],
+          "explanation": "<p>At P = 50, demand gives Q = 50 and supply gives Q = 30, so the shortage is 20. The unconstrained equilibrium is Q = 40 and P = 60, so the ceiling binds.</p>",
+          "refs": "Original exercise; competitive supply-and-demand model."
+        },
+        {
+          "id": "q3",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>Two firms must jointly abate 10 units. Firm A has MAC<sub>A</sub> = 2a<sub>A</sub>; firm B has MAC<sub>B</sub> = 6a<sub>B</sub>. What cost-effective allocation satisfies a<sub>A</sub> + a<sub>B</sub> = 10?</p>",
+          "options": [
+            "5 and 5",
+            "7.5 for A and 2.5 for B",
+            "2.5 for A and 7.5 for B",
+            "10 for A and 0 for B"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Cost-effective abatement",
+            "Equimarginal principle"
+          ],
+          "explanation": "<p>Cost effectiveness requires equal marginal abatement costs: 2a<sub>A</sub> = 6a<sub>B</sub>, so a<sub>A</sub> = 3a<sub>B</sub>. Combining with total abatement of 10 gives a<sub>B</sub> = 2.5 and a<sub>A</sub> = 7.5.</p>",
+          "refs": "Original exercise; equimarginal principle in pollution control."
+        },
+        {
+          "id": "q4",
+          "field": "Causal inference",
+          "kind": "tf",
+          "stem": "<p>True or false: instrument relevance by itself is enough to justify a causal interpretation of an instrumental-variables coefficient.</p>",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Instrumental variables",
+            "Exclusion restriction",
+            "Relevance"
+          ],
+          "explanation": "<p>False. Relevance only requires that the instrument shifts treatment. A causal interpretation also requires assumptions such as exogeneity/independence and exclusion; LATE additionally uses monotonicity.</p>",
+          "refs": "Imbens & Angrist (1994), Econometrica; Angrist & Pischke, Mostly Harmless Econometrics."
+        },
+        {
+          "id": "q5",
+          "field": "Macroeconomics",
+          "kind": "single",
+          "stem": "<p>The nominal interest rate is 6% and expected inflation is 2%. Using the Fisher approximation, what is the expected real interest rate?</p>",
+          "options": [
+            "2%",
+            "4%",
+            "6%",
+            "8%"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Fisher equation",
+            "Real interest rate"
+          ],
+          "explanation": "<p>Using r ≈ i − Eπ gives 6% − 2% = 4%. The exact Fisher relation gives a value close to 3.92%.</p>",
+          "refs": "Original exercise; Fisher relation."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "multi",
+          "stem": "<p>You increase sample size from 400 to 1,600 while keeping the data-generating process and estimator otherwise unchanged. Under standard regularity conditions, which statements are generally correct?</p>",
+          "options": [
+            "The standard error should be about half as large.",
+            "The variance should be about one-quarter as large.",
+            "The estimator automatically becomes unbiased.",
+            "A 95% confidence interval will generally become narrower."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Sampling variance",
+            "Standard errors",
+            "Asymptotics"
+          ],
+          "explanation": "<p>Standard errors commonly scale with 1/√n, so quadrupling n halves the standard error and quarters the variance. Confidence intervals narrow. Larger samples do not automatically remove bias from misspecification, measurement error or non-random sampling.</p>",
+          "refs": "Original exercise; standard large-sample approximation."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A renewable resource follows G(X) = 0.5X(1 − X/800). What is maximum sustainable yield?</p>",
+          "options": [
+            "50 at X = 200",
+            "100 at X = 400",
+            "200 at X = 400",
+            "400 at X = 800"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Logistic growth",
+            "Maximum sustainable yield"
+          ],
+          "explanation": "<p>Maximum sustainable yield occurs at K/2 = 400. Growth there is rK/4 = 0.5 × 800 / 4 = 100. This is a biological benchmark, not necessarily the profit-maximizing stock.</p>",
+          "refs": "Original exercise; logistic renewable-resource growth."
+        },
+        {
+          "id": "q8",
+          "field": "Research design",
+          "kind": "single",
+          "stem": "<p>A researcher evaluates job training using observational data. Participants had substantially lower earnings than nonparticipants for several years before enrollment. After matching only on age, sex and education, the researcher reports the post-program earnings gap as causal. What is the main concern?</p>",
+          "options": [
+            "Matching guarantees causal identification once demographics balance.",
+            "Persistent pre-treatment earnings differences suggest remaining selection on labor-market history.",
+            "A larger post-treatment sample removes the problem.",
+            "The estimate must be biased upward."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Selection on observables",
+            "Pre-treatment outcomes",
+            "Conditional independence"
+          ],
+          "explanation": "<p>Persistent pre-treatment earnings differences indicate that participants and controls differ along dimensions related to future earnings. Matching only on demographics leaves important selection concerns. More observations reduce sampling noise, not selection bias, and the bias direction is not determined here.</p>",
+          "refs": "Original exercise; selection-on-observables program-evaluation framework."
         }
       ]
     }
