@@ -28,3 +28,16 @@
 .memory-card h3 { font:400 29px/1.12 var(--f-editorial); font-synthesis:none; }
 .field-log #log-editor { border-top:2px solid var(--lake); }
 @media(max-width:759.98px) { .field-log .log-actions { padding:20px; } }
+.field-log .page-head {display:grid;}
+.field-log .memory-card {background:var(--paper);border-top:2px solid var(--accent);padding:24px 0;}
+.memory-card h3 {font:600 32px/1.12 var(--f-editorial);letter-spacing:-.02em;}
+.log-year {grid-column:1/-1;margin:12px 0 0;font:600 42px/1 var(--f-editorial);color:var(--accent);}
+.memory-actions {display:flex;gap:12px;margin-top:20px;}
+.field-log .delete-memory {color:var(--accent);border-color:var(--accent);}
+.memory-photos img {width:100%;max-width:280px;}
+.field-log .season-note {font:500 16px var(--f-editorial);color:var(--accent);}
+.field-log .sec-h {font-family:var(--f-editorial);}
+.delete-confirm {padding:14px;margin-top:16px;border:1px solid var(--accent);background:var(--paper-2);}
+.delete-confirm p {margin-top:0;}
+.delete-confirm button {margin-right:12px;}
+.delete-confirm button[data-confirm-delete] {background:var(--accent);color:var(--paper);}

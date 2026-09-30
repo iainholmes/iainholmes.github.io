@@ -41,7 +41,12 @@ function addLeg(leg = { mode: 'car', from: {label:''}, to:{label:''} }, stop = {
   actions.append(button('Move earlier',() => { if(row.previousElementSibling) row.before(row.previousElementSibling); dirty = true; numberLegs();clearMap(); }),button('Move later',() => { if(row.nextElementSibling) row.after(row.nextElementSibling); dirty = true; numberLegs();clearMap(); }),button('Remove leg',() => { row.remove(); dirty = true; numberLegs();clearMap(); }));
   row.append(actions); $('trip-legs').append(row); numberLegs();
 }
-function numberLegs() { [...$('trip-legs').children].forEach((row,i,all) => { const bs=row.querySelectorAll('.leg-actions button'); bs[0].disabled=i===0; bs[1].disabled=i===all.length-1; }); }
+function headerState() {
+  $('travel-header-plan').textContent=$('trip-title').value.trim() || 'New Trip';
+  const modes=[...new Set([...$('trip-legs').querySelectorAll('.leg-mode')].map(s=>s.selectedOptions[0].textContent))];
+  $('travel-header-state').textContent=`${$('trip-legs').children.length} ${$('trip-legs').children.length===1?'Leg':'Legs'} · ${modes.join(' / ')} · ${plans.length} Saved Trips`;
+}
+function numberLegs() { headerState(); [...$('trip-legs').children].forEach((row,i,all) => { const bs=row.querySelectorAll('.leg-actions button'); bs[0].disabled=i===0; bs[1].disabled=i===all.length-1; }); }
 function collect() {
   const rows=[...$('trip-legs').children];
   const endpoint=input=>{const label=input.value.trim();let point;try{if(input.dataset.label===label)point=JSON.parse(input.dataset.point);}catch{}return {label,...(validPoint(point)?{lat:point.lat,lng:point.lng}: {})};};
@@ -55,13 +60,13 @@ function load(plan) {
   postcard=plan?.postcard || null; $('postcard-caption').value=postcard?.caption || ''; paintPostcard();
   dirty=false;
 }
-function savedList() { $('saved-trips').replaceChildren(); if(!plans.length) $('saved-trips').append(el('p','No saved trips.')); plans.forEach(p=>{const row=el('p'); row.append(button(p.title,()=>{if(dirty && !confirm('Open this journey and discard unsaved edits?')) return; load(p); status('Journey opened.');})); $('saved-trips').append(row);}); }
+function savedList() { headerState(); $('saved-trips').replaceChildren(); if(!plans.length) $('saved-trips').append(el('p','No saved trips.')); plans.forEach(p=>{const row=el('p'); row.append(button(p.title,()=>{if(dirty && !confirm('Open this journey and discard unsaved edits?')) return; load(p); status('Journey opened.');})); $('saved-trips').append(row);}); }
 $('add-leg').addEventListener('click',()=>{addLeg();dirty=true;clearMap();});
 $('save-trip').addEventListener('click',()=>{try { const plan=collect(), next=plans.filter(p=>p.id!==plan.id).concat(plan); if(next.length>100) throw Error('Export your journeys before adding more.'); if(persist(next)) {activeId=plan.id;dirty=false;savedList();status('Plan saved in this browser.');} } catch(e){status(e.message);} });
 $('new-trip').addEventListener('click',()=>{if(dirty && !confirm('Start a new journey and discard unsaved edits?')) return;load();status('New journey.');});
 $('export-trips').addEventListener('click',()=>{try {let exportPlans=plans; if(dirty){const draft=collect();exportPlans=plans.filter(p=>p.id!==draft.id).concat(draft);}const blob=new Blob([JSON.stringify({schema_version:1,plans:exportPlans},null,2)],{type:'application/json'}), url=URL.createObjectURL(blob), a=el('a');a.href=url;a.download='rupert-travel-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status('Backup exported, including the current draft.');} catch(e){status(e.message);} });
 $('import-trips').addEventListener('change',async e=>{try{const file=e.target.files[0];if(!file)return;const incoming=readBackup(await file.text()), next=[...plans];for(const p of incoming){if(!next.some(x=>x.id===p.id))next.push(p);}if(next.length>100)throw Error('Too many journeys.');const added=next.length-plans.length;if(persist(next)){savedList();status(`Imported ${added} journeys; existing plans were kept.`);}}catch(e){status('Import failed: '+e.message);}finally{e.target.value='';}});
-document.querySelector('.travel-editor').addEventListener('input',e=>{dirty=true;if(e.target.closest('#trip-legs')&&(mapped||routeController)){clearMap();$('trip-map-status').textContent='Trip changed. Map trip to update the route.';}});
+document.querySelector('.travel-editor').addEventListener('input',e=>{dirty=true;headerState();if(e.target.closest('#trip-legs')&&(mapped||routeController)){clearMap();$('trip-map-status').textContent='Trip changed. Map trip to update the route.';}});
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
 function paintPostcard() {
   const box=$('journey-postcard');box.replaceChildren();box.hidden=!postcard;
@@ -73,7 +78,7 @@ $('postcard-file').addEventListener('change',async e=>{
     const file=e.target.files[0];if(!file)return;
     if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>10000000)throw Error('Choose a JPEG, PNG or WebP illustration under 10 MB.');
     const bitmap=await createImageBitmap(file),scale=Math.min(1,1000/bitmap.width,1000/bitmap.height),canvas=document.createElement('canvas');
-    canvas.width=Math.round(bitmap.width*scale);canvas.height=Math.round(bitmap.height*scale);const context=canvas.getContext('2d');context.fillStyle='#EFE2C8';context.fillRect(0,0,canvas.width,canvas.height);context.drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+    canvas.width=Math.round(bitmap.width*scale);canvas.height=Math.round(bitmap.height*scale);const context=canvas.getContext('2d');context.fillStyle='#F3EFE5';context.fillRect(0,0,canvas.width,canvas.height);context.drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
     const image=canvas.toDataURL('image/jpeg',0.82);if(image.length>1500000)throw Error('That picture is too large; use a simpler illustration.');
     postcard={image,caption:$('postcard-caption').value.trim()||$('trip-title').value.trim()||'Trip postcard'};$('postcard-caption').value=postcard.caption;paintPostcard();dirty=true;status('Postcard added to this journey. Save the plan to keep it.');
   }catch(error){status(error.message);}finally{e.target.value='';}

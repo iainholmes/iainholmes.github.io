@@ -169,3 +169,12 @@ async function start() {
 
 // Load the map after the directory has painted, so a slow or failed map never delays the list.
 if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 800 }); else setTimeout(start, 50);
+
+// The stationary desktop workspace uses the height left below its actual header.
+function sizeWorkspace() {
+  const workspace=document.querySelector('.atlas-body');
+  if(!workspace || !matchMedia('(min-width:1024px)').matches)return;
+  const top=workspace.getBoundingClientRect().top+scrollY;
+  workspace.style.setProperty('--atlas-workspace-height',`${Math.max(220,innerHeight-top-22)}px`);
+}
+sizeWorkspace();document.fonts.ready.then(sizeWorkspace);window.addEventListener('resize',sizeWorkspace);document.querySelector('.location-settings')?.addEventListener('toggle',sizeWorkspace);

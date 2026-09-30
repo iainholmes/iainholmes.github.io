@@ -10,7 +10,9 @@ import { expectedPublish } from './editions.js';
 
 export const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-export const SLOT_LABEL = { tuesday: "Tuesday's choice", thursday: "Thursday's choice" };
+export const titleCase = value => String(value || '').split(/(\s+)/).map((word,i,all) => /^(and|or|the|a|an|of|in|on|at|to|for|with|from|by)$/i.test(word) && i > 0 && i < all.length-1 ? word.toLowerCase() : word.charAt(0).toUpperCase()+word.slice(1)).join('');
+
+export const SLOT_LABEL = { tuesday: "Tuesday's Choice", thursday: "Thursday's Choice" };
 const ROLE_LABEL = { local_trail: 'Closer', away_mission: 'Bigger day', wildcard: 'Alternative' };
 
 export const NAV = [
@@ -124,7 +126,7 @@ export function chrome({ active, base, weekLabel, site, body, pageClass = '', no
   return `<a class="skip" href="#main">Skip to content</a>
 <header class="masthead" id="masthead">
   <div class="wrap">
-    <div class="dateline"><span>${esc(weekLabel)}</span></div>
+    <div class="dateline"><span>Chapel Hill, N.C.</span><span>${esc(weekLabel)}</span></div>
     <p class="wordmark"><a href="${base}">The Rupert Atlas</a></p>
     <nav class="primary" aria-label="Sections"><ul>${navItems('nav-link')}</ul><a class="nav-archive" href="${base}archive/"${active === 'archive' ? ' aria-current="page"' : ''}>Archive</a></nav>
   </div>
@@ -139,7 +141,7 @@ export function chrome({ active, base, weekLabel, site, body, pageClass = '', no
 <main id="main" class="${pageClass}" tabindex="-1">
 ${body}
 </main>
-<footer class="utility-footer"><div class="wrap"><a href="${base}archive/">Archive</a><a href="${base}atlas/">Place directory</a><span>${esc((now || new Date()).getFullYear())}</span></div></footer>
+<footer class="utility-footer"><div class="wrap"><a href="${base}archive/">Archive</a><a href="${base}atlas/">Place Directory</a><span>${esc((now || new Date()).getFullYear())}</span></div></footer>
 <nav class="dock" aria-label="Sections, bottom"><ul>${NAV.map(n =>
     `<li><a href="${base}${n.href}"${n.key === active ? ' aria-current="page"' : ''}>${esc(n.label)}</a></li>`).join('')}</ul></nav>`;
 }
@@ -171,12 +173,12 @@ function plate(slot, ed, pair, ctx) {
   const cond = f.headline_condition ? `<li class="cond${adverse ? ' is-adverse' : ''}"><span class="cond-k">${adverse ? 'Warning' : 'Weather'}</span> ${esc(f.headline_condition)}</li>` : '';
   return `<article class="plate" id="${id}" data-slot="${slot}" aria-labelledby="${id}-h">
   <p class="p-eyebrow"><span class="p-day"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span>${SLOT_LABEL[slot]}</span><span class="p-pub">Published ${esc(publishedLabel(ed.published_at))}</span></p>
-  <h2 class="p-title" id="${id}-h"><a href="${href}">${esc(f.title)}</a></h2>
+  <h2 class="p-title" id="${id}-h"><a href="${href}">${esc(titleCase(f.title))}</a></h2>
   <p class="p-stand">${esc(f.standfirst)}</p>
     <ul class="p-metrics" aria-label="Logistics">${bits}${cond}</ul>
   <figure class="p-photo${f.artwork ? ' adventure-illustration' : ''}">${photo(imageRef(f), photos, base, { sizes: '(min-width: 760px) 46vw, 100vw', eager: slot === 'tuesday' })}${credit(imageRef(f), photos, ctx.places)}</figure>
 
-  <p class="p-more"><a href="${href}">Full edition<span class="vh"> for ${esc(f.title)}</span></a></p>
+  <p class="p-more"><a href="${href}">Full edition<span class="vh"> for ${esc(titleCase(f.title))}</span></a></p>
 </article>`;
 }
 
@@ -278,33 +280,33 @@ export function renderEdition(ed, ctx, sibling) {
   return `<article class="edition" aria-labelledby="ed-h">
   <header class="ed-head wrap">
     <div class="ed-heading"><p class="ed-eyebrow"><span class="p-day">${SLOT_LABEL[ed.slot]}</span><span>For the weekend of ${esc(weekendRange(ed.weekend.start, ed.weekend.end))}</span></p>
-    <h1 id="ed-h">${esc(f.title)}</h1>
+    <h1 id="ed-h">${esc(titleCase(f.title))}</h1>
     <p class="ed-stand">${esc(f.standfirst)}</p>
     <p class="ed-pub">Published ${esc(publishedLabel(ed.published_at))} · ${esc(nyTime(new Date(ed.published_at)))} ET · Weekend choice ${ed.slot === 'tuesday' ? 1 : 2} of 2</p></div>
-    ${marginNote("The outing", `${esc(place?.short_name || f.title)}<br>${esc(s.access?.name || '')}`, `<a href="${base}atlas/#place-${esc(f.place_id)}">Find it in the Atlas →</a>`)}
+    ${marginNote("The Outing", `${esc(place?.short_name || f.title)}<br>${esc(s.access?.name || '')}`, `<a href="${base}atlas/#place-${esc(f.place_id)}">Find it in the Atlas →</a>`)}
   </header>
   <div class="ed-feature wrap"><figure class="ed-hero${f.artwork ? ' adventure-illustration' : ''}">${photo(imageRef(f), photos, base, { sizes: '(min-width: 1024px) 65vw, 100vw', eager: true })}${credit(imageRef(f), photos, places)}</figure>
-    <aside class="ed-companion"><h2 class="sec-h">Outing overview</h2><ul class="feature-facts">${routeBits(s).map(x => `<li>${x}</li>`).join('')}</ul><p class="overview-window">${esc(ed.practical?.best_window || '')}</p><dl class="facts">${fact('Route',esc(r.difficulty))}${fact('Start',esc(s.access?.name))}</dl></aside></div>
+    <aside class="ed-companion"><h2 class="sec-h">Outing Overview</h2><ul class="feature-facts">${routeBits(s).map(x => `<li>${x}</li>`).join('')}</ul><p class="overview-window">${esc(ed.practical?.best_window || '')}</p><dl class="facts">${fact('Route',esc(r.difficulty))}${fact('Start',esc(s.access?.name))}</dl></aside></div>
   <div class="ed-body wrap">
     <div class="ed-main">
-      <section><h2 class="sec-h">Why this week</h2><p>${esc(f.why_this_week)}</p></section>
+      <section><h2 class="sec-h">Why This Week</h2><p>${esc(f.why_this_week)}</p></section>
       <section class="ed-conditions"><h2 class="sec-h">Conditions</h2><p>${esc(ed.conditions?.summary)}</p>
         ${ed.conditions?.pivot ? `<div class="pivot${ed.flagship.condition_level === 'adverse' ? ' is-adverse' : ''}"><p class="pivot-k">If it turns</p><p><strong>${esc(ed.conditions.pivot.if)}:</strong> ${esc(ed.conditions.pivot.note)}${pivotTarget ? ` <span class="pivot-to">Go to: ${esc(pivotTarget.title)}</span>` : ''}</p></div>` : ''}
         <p class="as-of">Forecast as of ${esc(shortDate(nyDateString(new Date(ed.conditions.as_of))))}, ${esc(nyTime(new Date(ed.conditions.as_of)))} ET</p></section>
       <div class="ed-fun">
-        ${panels.map(p => `<section><h2 class="sec-h">${esc(p.label)}</h2><p class="fun-text">${esc(p.text)}</p></section>`).join('')}
+        ${panels.map(p => `<section><h2 class="sec-h">${esc(titleCase(p.label))}</h2><p class="fun-text">${esc(p.text)}</p></section>`).join('')}
 
       </div>
-      <section class="contingency"><h2 class="sec-h">If plans change</h2><ul class="fallbacks">${outing('local_trail')}${outing('away_mission')}${outing('wildcard')}</ul></section>
-      <section class="memory-prompt"><h2 class="sec-h">Memory prompt</h2><p>${esc(ed.memory_prompt?.text)}</p></section>
+      <section class="contingency"><h2 class="sec-h">If Plans Change</h2><ul class="fallbacks">${outing('local_trail')}${outing('away_mission')}${outing('wildcard')}</ul></section>
+      <section class="memory-prompt"><h2 class="sec-h">Memory Prompt</h2><p>${esc(ed.memory_prompt?.text)}</p></section>
       ${corrections}
       <section class="ed-sources"><h2 class="sec-h">Sources</h2><ul>${(f.sources || []).map(x => `<li><a href="${esc(x.url)}" rel="noopener">${esc(x.label)}</a> <span class="data">retrieved ${esc(x.retrieved)}</span></li>`).join('')}</ul>
         <p class="as-of">Place details as recorded ${esc(shortDate(s.as_of))}. They stay as published even if the place's record is corrected later.</p></section>
     </div>
     <aside class="ed-sheet" aria-label="Trail facts">
-      <section><h2 class="sec-h">The route</h2><dl class="facts">${facts}</dl></section>
-      ${dog ? `<section><h2 class="sec-h">Dog access</h2><dl class="facts">${dog}</dl></section>` : ''}
-      <section><h2 class="sec-h">Crowd &amp; foot traffic</h2>${crowdVisual(s.crowd)}</section>
+      <section><h2 class="sec-h">The Route</h2><dl class="facts">${facts}</dl></section>
+      ${dog ? `<section><h2 class="sec-h">Dog Access</h2><dl class="facts">${dog}</dl></section>` : ''}
+      <section><h2 class="sec-h">Crowd &amp; Foot Traffic</h2>${crowdVisual(s.crowd)}</section>
       <section><h2 class="sec-h">Practical</h2><dl class="facts">${practical}</dl></section>
       ${place?.links?.length ? `<p class="sheet-links">${place.links.map(l => `<a href="${esc(l.url)}" rel="noopener">${esc(l.label)}</a>`).join('<br>')}</p>` : ''}
     </aside>
@@ -321,7 +323,7 @@ export function renderArchive(groups, ctx) {
     const e=g.editions.find(e=>e.slot===slot), publish=expectedPublish(slot,g.weekend.start);
     if(!e) return `<article class="archive-card is-missing"><p class="p-day">${SLOT_LABEL[slot]}</p><p>${publish > (ctx.now || new Date()) ? 'Publishes '+esc(publishedLabel(publish.toISOString())) : 'Not published'}</p></article>`;
     const option={...(e.options?.find(o=>o.role==='flagship') || {}),title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''};
-    return `<article class="archive-card" data-option="${esc(JSON.stringify(option))}"><a href="${base}edition/${esc(e.id)}/" class="archive-image" tabindex="-1" aria-hidden="true">${photo(e.photo_id?{id:e.photo_id}:null,photos,base,{sizes:'(min-width: 760px) 42vw, 90vw'})}</a><div><p class="p-day">${SLOT_LABEL[slot]} · ${esc(publishedLabel(e.published_at))}</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(e.title)}</a></h3><p class="arch-meta">${esc(option.place_name)}</p></div></article>`;
+    return `<article class="archive-card" data-option="${esc(JSON.stringify(option))}"><a href="${base}edition/${esc(e.id)}/" class="archive-image" tabindex="-1" aria-hidden="true">${photo(e.photo_id?{id:e.photo_id}:null,photos,base,{sizes:'(min-width: 760px) 42vw, 90vw'})}</a><div><p class="p-day">${SLOT_LABEL[slot]} · ${esc(publishedLabel(e.published_at))}</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">${esc(option.place_name)}</p></div></article>`;
   }).join('')}</div></section>`).join('');
   return `<div class="archive wrap"><header class="page-head"><h1>Archive</h1></header><form class="archive-filters" hidden role="search"><label>Search<input type="search" name="query" placeholder="Place or activity"></label><label>Season<select name="season"><option value="">All seasons</option>${Object.entries(SEASONS).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Activity<select name="experience"><option value="">All activities</option>${Object.entries(EXPERIENCES).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Crowd<select name="crowd">${Object.entries(CROWD_TOLERANCES).map(([v,l])=>`<option value="${v}"${v==='any'?' selected':''}>${l}</option>`).join('')}</select></label><button type="reset">Clear</button></form><p class="archive-count" role="status" aria-live="polite"></p><p class="archive-empty" hidden>No editions match these filters.</p>${cards || '<p>No editions published.</p>'}</div>`;
 }
@@ -370,8 +372,8 @@ export function renderAtlas(model, ctx) {
   const legend = ['recommended', 'walked', 'planned', 'register']
     .map(k => `<li>${MARK_SVG[k]}<span>${STAT[k]}</span></li>`).join('');
   return `<div class="atlas">
-  <header class="page-head wrap"><div><h1>Atlas</h1></div></header>
-  <div class="wrap"><details class="location-settings"><summary>Home &amp; driving routes</summary>
+  <header class="page-head wrap"><div><p class="header-kicker">North Carolina · Place Directory</p><h1>Atlas</h1></div><aside class="head-note atlas-coverage"><span class="lbl">In the Atlas</span><p>${c.all} Places · ${c.recommended} Recommended<br>${c.walked} Walked · ${c.planned || 0} Planned</p><p id="atlas-selection">Select a Place on the Map</p></aside></header>
+  <div class="wrap"><details class="location-settings"><summary>Home &amp; Driving Routes</summary>
     <p>Home stays in this browser. Map providers receive the visible map area; home is never published.</p>
     <form id="address-form"><label>Home address<input name="address" autocomplete="street-address" maxlength="240" required placeholder="Street, town, state, ZIP"></label><button>Locate with OpenStreetMap</button></form><p class="season-note">Locating sends the address to OpenStreetMap’s Nominatim service. Check the returned coordinates below before saving home. You can also enter coordinates directly.</p>
     <form id="location-form"><label>Latitude<input name="lat" type="number" step="any" min="-85" max="85" required></label><label>Longitude<input name="lng" type="number" step="any" min="-180" max="180" required></label><button>Save home</button><button type="button" id="forget-location">Forget home</button></form>
@@ -388,7 +390,7 @@ export function renderAtlas(model, ctx) {
       <div class="map-card" id="map-card" hidden></div>
     </section>
     <section class="atlas-register" aria-labelledby="reg-h">
-      <div class="reg-head"><h2 id="reg-h">Place directory</h2>
+      <div class="reg-head"><h2 id="reg-h">Place Directory</h2>
         <div class="reg-filter" role="group" aria-label="Show places" hidden>
           <button type="button" data-filter="all" aria-pressed="true">All <span>${c.all}</span></button>
           <button type="button" data-filter="recommended" aria-pressed="false"${c.recommended ? '' : ' disabled'}>Recommended <span>${c.recommended}</span></button>
@@ -406,16 +408,16 @@ export function renderComing(kind, ctx) {
 }
 
 export function renderTravel(ctx) {
-  return `<div class="travel wrap"><header class="page-head"><h1>Travel</h1><p class="page-note">Route, stops and destination activities.</p></header>
+  return `<div class="travel wrap"><header class="page-head"><div><p class="header-kicker">Routes · Stops · Destination Activities</p><h1>Travel</h1></div><aside class="head-note"><span class="lbl">The Plan</span><p id="travel-header-plan">New Trip</p><p id="travel-header-state">1 Leg · Drive · 0 Saved Trips</p></aside></header>
   <noscript>Enable JavaScript to plan a trip.</noscript>
-  <div class="travel-grid"><section class="travel-editor"><h2 class="sec-h">Trip plan</h2><label>Trip name<input id="trip-title" maxlength="160" placeholder="Trip name"></label><div class="trip-dates"><label>Start date<input id="trip-start" type="date"></label><label>End date<input id="trip-end" type="date"></label></div>
+  <div class="travel-grid"><section class="travel-editor"><h2 class="sec-h">Trip Plan</h2><label>Trip name<input id="trip-title" maxlength="160" placeholder="Trip name"></label><div class="trip-dates"><label>Start date<input id="trip-start" type="date"></label><label>End date<input id="trip-end" type="date"></label></div>
   <ol id="trip-legs" class="trip-legs"></ol><div class="travel-actions"><button type="button" id="add-leg">Add leg</button><button type="button" id="save-trip">Save plan</button><button type="button" id="new-trip">New plan</button></div><p id="trip-status" role="status" aria-live="polite"></p>
-  <details class="travel-privacy"><summary>Location &amp; storage</summary><p>Plans and home coordinates stay in this browser. Export a backup before clearing browser data.</p><p>With route lookup enabled, OpenStreetMap Nominatim receives typed locations and OSRM receives route coordinates; OpenStreetMap Overpass receives destination coordinates for nearby-place searches. Map providers receive the visible map area. Nothing is published.</p></details>
-  <section class="trip-library"><h2 class="sec-h">Saved trips</h2><div id="saved-trips"></div><div class="travel-actions"><button id="export-trips" type="button">Export backup</button><label class="import-label">Import backup<input id="import-trips" type="file" accept="application/json,.json"></label></div></section></section>
+  <details class="travel-privacy"><summary>Location &amp; Storage</summary><p>Plans and home coordinates stay in this browser. Export a backup before clearing browser data.</p><p>With route lookup enabled, OpenStreetMap Nominatim receives typed locations and OSRM receives route coordinates; OpenStreetMap Overpass receives destination coordinates for nearby-place searches. Map providers receive the visible map area. Nothing is published.</p></details>
+  <section class="trip-library"><h2 class="sec-h">Saved Trips</h2><div id="saved-trips"></div><div class="travel-actions"><button id="export-trips" type="button">Export backup</button><label class="import-label">Import backup<input id="import-trips" type="file" accept="application/json,.json"></label></div></section></section>
   <section class="travel-workspace"><div class="travel-route-controls"><label class="routing-choice"><input id="trip-routing" type="checkbox"> Enable route lookup</label><button id="map-trip" type="button">Map trip</button><button id="fit-trip" type="button">Fit route</button></div><div class="trip-map" aria-label="Trip map"><div id="travel-map" class="map-canvas"></div><p id="trip-map-status" role="status">Loading map…</p><div class="trip-map-key"><span>Drive</span><span>Flight / ferry / train</span><span>Stop</span></div></div>
-  <section class="trip-itinerary"><div class="itinerary-head"><h2 class="sec-h">Trip table</h2><label>Departure time<input id="trip-depart" type="time" value="09:00"></label><label>Break every<select id="break-every"><option value="120">2 hours</option><option value="90">90 minutes</option><option value="180">3 hours</option><option value="0">No planned breaks</option></select></label></div><p id="trip-summary"></p><div class="table-scroll"><table><thead><tr><th>Leg</th><th>Route</th><th>Mode</th><th>Travel</th><th>Stop / break</th><th>Arrival</th></tr></thead><tbody id="trip-table"><tr><td colspan="6">Map a trip to calculate drive times.</td></tr></tbody></table></div></section>
-  <div class="trip-activities"><section><h2 class="sec-h">Along the route</h2><label>Maximum detour<select id="trip-detour"><option value="10">10 minutes</option><option value="20" selected>20 minutes</option><option value="40">40 minutes</option></select></label><div id="route-activities"><p>Map a driving leg to find stops.</p></div></section><section><h2 class="sec-h">At the destination</h2><div id="destination-activities"><p>Map the destination to find nearby places.</p></div></section></div>
-  <details class="postcard-panel"><summary>Travel postcard</summary><figure id="journey-postcard" class="travel-postcard" hidden></figure><div class="postcard-controls"><label>Caption<input id="postcard-caption" maxlength="160" placeholder="Destination"></label><label class="import-label">Add illustration<input id="postcard-file" type="file" accept="image/jpeg,image/png,image/webp"></label><button id="remove-postcard" type="button" hidden>Remove postcard</button></div></details></section></div>
+  <section class="trip-itinerary"><div class="itinerary-head"><h2 class="sec-h">Trip Table</h2><label>Departure time<input id="trip-depart" type="time" value="09:00"></label><label>Break every<select id="break-every"><option value="120">2 hours</option><option value="90">90 minutes</option><option value="180">3 hours</option><option value="0">No planned breaks</option></select></label></div><p id="trip-summary"></p><div class="table-scroll"><table><thead><tr><th>Leg</th><th>Route</th><th>Mode</th><th>Travel</th><th>Stop / break</th><th>Arrival</th></tr></thead><tbody id="trip-table"><tr><td colspan="6">Map a trip to calculate drive times.</td></tr></tbody></table></div></section>
+  <div class="trip-activities"><section><h2 class="sec-h">Along the Route</h2><label>Maximum detour<select id="trip-detour"><option value="10">10 minutes</option><option value="20" selected>20 minutes</option><option value="40">40 minutes</option></select></label><div id="route-activities"><p>Map a driving leg to find stops.</p></div></section><section><h2 class="sec-h">At the Destination</h2><div id="destination-activities"><p>Map the destination to find nearby places.</p></div></section></div>
+  <details class="postcard-panel"><summary>Travel Postcard</summary><figure id="journey-postcard" class="travel-postcard" hidden></figure><div class="postcard-controls"><label>Caption<input id="postcard-caption" maxlength="160" placeholder="Destination"></label><label class="import-label">Add illustration<input id="postcard-file" type="file" accept="image/jpeg,image/png,image/webp"></label><button id="remove-postcard" type="button" hidden>Remove postcard</button></div></details></section></div>
   <datalist id="travel-locations"><option value="Home"></option>${ctx.places.places.map(p=>`<option value="${esc(p.name)}"></option>`).join('')}${Object.values(ctx.places.reference_points || {}).map(p=>`<option value="${esc(p.label)}"></option>`).join('')}</datalist>
   <script type="application/json" id="travel-places">${JSON.stringify(ctx.places.places).replace(/</g,'\\u003c')}</script><script type="application/json" id="travel-references">${JSON.stringify(ctx.places.reference_points || {}).replace(/</g,'\\u003c')}</script></div>`;
 }

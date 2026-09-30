@@ -172,9 +172,9 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   const empty = { type: 'FeatureCollection', features: [] };
   map.addSource('routes', { type: 'geojson', data: empty });
   map.addSource('marks', { type: 'geojson', data: empty, promoteId: 'id' });
-  map.addLayer({ id: 'route-halo', type: 'line', source: 'routes', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': travel ? '#F1EEE6' : '#172A3A', 'line-width': travel ? 7 : 6, 'line-opacity': 0.9 } });
+  map.addLayer({ id: 'route-halo', type: 'line', source: 'routes', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#F3EFE5', 'line-width': travel ? 7 : 6, 'line-opacity': 0.9 } });
   map.addLayer({ id: 'route-line', type: 'line', source: 'routes',
-    layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': travel ? '#7A2024' : '#CCAA66', 'line-width': travel ? 3 : 3, 'line-opacity': 0.95 } });
+    layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#7A2024', 'line-width': travel ? 3 : 3, 'line-opacity': 0.95 } });
   if(travel){map.setFilter('route-halo',['==',['get','mode'],'drive']);map.setFilter('route-line',['==',['get','mode'],'drive']);for(const [mode,color,dash] of [['air','#40616A',[5,3]],['ferry','#47604D',[2,2]],['rail','#172A3A',[1,2]],['walk','#B28A49',[1,1]]])map.addLayer({id:'transit-'+mode,type:'line',source:'routes',filter:['==',['get','mode'],mode],paint:{'line-color':color,'line-width':2.5,'line-dasharray':dash}});}
   const statusOrder = ['match', ['get', 'status'], 'recommended', 3, 'walked', 2, 'planned', 1, 0];
   map.addLayer({ id: 'marks', type: 'symbol', source: 'marks',
