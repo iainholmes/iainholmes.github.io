@@ -26,6 +26,11 @@ import { placeStatuses, markerFeatures, boundsOf, registerGroups, counts } from 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
 const readJSON = async f => JSON.parse(await readFile(f, 'utf8'));
+// Version the whole module graph so cached imports cannot revive old layouts.
+const moduleFiles = (await walk(P('assets/js'))).filter(f=>f.endsWith('.js')).sort();
+const assetHash = createHash('sha256');
+for (const file of [...moduleFiles.map(f=>'assets/js/'+f),'assets/css/atlas.css','assets/css/field-log.css']) assetHash.update(await readFile(P(file)));
+const assetVersion = assetHash.digest('hex').slice(0,12);
 
 const errors = [], warnings = [];
 const err = (where, msg) => errors.push(`${where}: ${msg}`);
@@ -181,6 +186,7 @@ ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta
 <link rel="preload" href="${base}assets/fonts/magrebis-regular.woff" as="font" type="font/woff" crossorigin>
 <link rel="icon" type="image/svg+xml" href="${base}assets/img/rupert-face.svg">
 <link rel="stylesheet" href="${base}assets/css/atlas.css">
+<script type="importmap">${JSON.stringify({imports:Object.fromEntries(moduleFiles.map(f=>[base+'assets/js/'+f,base+'assets/js/'+f+'?v='+assetVersion]))})}</script>
 ${scripts ? `<script type="module" src="${base}assets/js/site.js"></script>\n` : ''}${extra.map(x => `<script type="module" src="${base}${x}"></script>\n`).join('')}</head>
 <body data-base="${base}" data-section="${active}">
 ${chrome({ active, base, weekLabel, site, body, pageClass })}
@@ -190,7 +196,7 @@ ${chrome({ active, base, weekLabel, site, body, pageClass })}
 }
 
 async function write(rel, content) {
-  if (rel.endsWith('.html')) content = content.replace(/[ \t]+$/gm, '');
+  if (rel.endsWith('.html')) content = content.replace(/[ \t]+$/gm, '').replace(/((?:href|src)="[^"?]*assets\/(?:css|js)\/[^"?]+)(")/g,`$1?v=${assetVersion}$2`);
   const f = P(rel);
   await mkdir(dirname(f), { recursive: true });
   let old = null;
