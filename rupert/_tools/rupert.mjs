@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { artworkProblems } from '../assets/js/core/adventure.js';
+import { createHash } from 'node:crypto';
 // The Rupert Atlas build tool. No dependencies. Run from anywhere:
 //   node rupert/_tools/rupert.mjs build     validate everything, write the manifest, render all pages
 //   node rupert/_tools/rupert.mjs check     validate only (exit 1 on any error)
@@ -45,6 +47,7 @@ async function load() {
 function checkEditions({ editions, schema, places, photos }) {
   const placeIds = new Set(places.places.map(p => p.id));
   const photoIds = new Set(photos.photos.map(p => p.id));
+  for (const issue of artworkProblems(editions, photos)) err('illustrations',issue);
   for (const [id, ed] of Object.entries(editions)) {
     for (const e of validate(ed, schema)) err(`editions/${id}.json`, e);
     if (ed.id !== id) err(id, `id "${ed.id}" does not match filename`);
@@ -153,7 +156,7 @@ function manifestFrom(editions) {
         options: ['flagship', 'local_trail', 'away_mission', 'wildcard'].map(role => ({ role, title: e[role].title, place_id: e[role].place_id, seasons: e[role].seasons, experiences: e[role].experiences, crowd: e[role].snapshot.crowd })),
         place_ids: ['flagship', 'local_trail', 'away_mission', 'wildcard'].map(r => e[r]?.place_id).filter(Boolean),
         place_roles: ['flagship', 'local_trail', 'away_mission', 'wildcard'].filter(r => e[r]?.place_id).map(r => ({ place_id: e[r].place_id, role: r })),
-        photo_id: e.flagship.photo?.id || null,
+        photo_id: e.flagship.artwork?.image_id || e.flagship.photo?.id || null,
         path: `data/editions/${e.id}.json`,
       })),
   };
@@ -198,6 +201,14 @@ async function build({ writeFiles }) {
   checkEditions(data);
   await checkPhotos(data);
 
+  const artworkHashes = new Map();
+  for (const record of data.photos.photos) {
+    const width=record.widths[0], file=P(`photos/${record.file}-${width}.jpg`);
+    if (!existsSync(file)) continue;
+    const hash=createHash('sha256').update(await readFile(file)).digest('hex');
+    if (record.generation && artworkHashes.has(hash)) err('illustrations',`new illustration ${record.id} duplicates ${artworkHashes.get(hash)}`);
+    artworkHashes.set(hash,record.id);
+  }
   const manifest = manifestFrom(data.editions);
   const now = new Date();
   const pair = selectCurrentPair(manifest, now);
@@ -222,7 +233,7 @@ async function build({ writeFiles }) {
       await w(`edition/${ed.id}/index.html`, page({
         title: `${ed.flagship.title} · The Rupert Atlas`, description: ed.flagship.standfirst,
         depth: 2, active: 'week', site: data.site, weekLabel, pageClass: 'page-edition',
-        body: renderEdition(ed, { ...ctx0, base: '../../' }, sib),
+        body: renderEdition(ed, { ...ctx0, base: '../../' }, sib), extra: ['assets/js/fetch-view.js'],
       }));
     }
     await w('edition/index.html', page({

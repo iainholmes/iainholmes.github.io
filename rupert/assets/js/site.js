@@ -1,3 +1,4 @@
+import './field-log-view.js';
 import { setupArchive } from './archive-view.js';
 import { SEASONS, seasonFor } from './core/options.js';
 import { nyDateString, isoWeek } from './core/dates.js';

@@ -16,10 +16,16 @@ export function cleanPlan(value) {
   if (new Set(manual_stops.map(s => s.leg)).size !== manual_stops.length) throw new Error('Use one stop record per driving leg; combine extra stops in its note.');
   if (manual_stops.length > 80) throw new Error('Too many stops in this backup.');
   const id = typeof value.id === 'string' && /^tp_[a-z0-9_-]{1,100}$/i.test(value.id) ? value.id : `tp_${crypto.randomUUID()}`;
-  return { id, title: value.title.trim(), dates, legs, manual_stops };
+  let postcard;
+  if (value.postcard) {
+    const p=value.postcard;
+    if (typeof p.image !== 'string' || p.image.length > 1500000 || !/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(p.image) || typeof p.caption !== 'string' || !p.caption.trim() || p.caption.length > 160) throw new Error('Use a small JPEG, PNG or WebP illustration and a postcard caption.');
+    postcard={image:p.image,caption:p.caption.trim()};
+  }
+  return { id, title: value.title.trim(), dates, legs, manual_stops, ...(postcard ? {postcard} : {}) };
 }
 export function readBackup(text) {
-  if (text.length > 500000) throw new Error('This backup is too large.');
+  if (text.length > 20000000) throw new Error('This backup is too large.');
   const d = JSON.parse(text);
   if (d.schema_version !== 1 || !Array.isArray(d.plans) || d.plans.length > 100) throw new Error('Use a Rupert Travel backup.');
   const plans = d.plans.map(cleanPlan);

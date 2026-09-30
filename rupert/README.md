@@ -144,3 +144,7 @@ Relief now has stronger hillshade, visible on/off labels, provider-failure feedb
 `_tools/test.mjs` covers combined option filters, season boundaries, all suggestion tags, backup round trips and invalid imports, coordinate validation, route geometry/time and failures, and relief style changes alongside the existing publication timing tests.
 
 Crowd metadata integrates the separately reviewed ca9612d change. All existing outings are explicitly unassessed; no crowd observations were invented. Search, season, experience and crowd tolerance match the same suggestion. See CROWD-METADATA.md.
+
+## Illustrations, fetch and postcards
+
+See `ILLUSTRATIONS.md` for new per-suggestion art ownership, character consistency, varied compositions, frozen contextual panels and the authoring workflow. The current artwork replacement is paused: rejected generated images are not in the release. Full Editions have an explicitly initiated accessible fetch dock; Travel supports a browser-local postcard per journey, including backup/restore. Field Log now supports planned completion and unplanned outings with local photos, and Rupert Day activates only on April 7 in New York time.

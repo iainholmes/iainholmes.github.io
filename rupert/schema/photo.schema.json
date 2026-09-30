@@ -31,7 +31,7 @@
         "print",
         "plate"
       ],
-      "description": "Three layers. photograph: documentary record (preferred for Field Log and memories). print: the Atlas's signature field print made from a photograph (This Week, edition covers, archive, seasonal). plate: an occasional illustrative/editorial graphic (landscape, water, ridge, sun); always provenance editorial."
+      "description": "photograph: adventure remembered / Field Log; print: legacy photo treatment; plate: newly generated adventure imagined illustration, editorial provenance."
     },
     "provenance": {
       "enum": [
@@ -83,6 +83,29 @@
       },
       "minItems": 2,
       "maxItems": 2
+    },
+    "generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "created_at",
+        "style_version"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 100
+        },
+        "created_at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "style_version": {
+          "const": "atlas-woodcut-1"
+        }
+      }
     }
   }
 }

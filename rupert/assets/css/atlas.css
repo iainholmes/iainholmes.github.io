@@ -577,3 +577,30 @@ input[type="checkbox"] { width: 20px; height: 20px; margin: 0; }
 .atlas-map .drive-status { position: absolute; z-index: 2; top: 64px; left: 10px; right: 60px; margin: 0; padding: 8px 12px; background: rgba(239,226,200,.96); color: #221F1C; font-size: 13px; border: 1px solid #B88430; }
 .atlas-map:has(.map-state[data-state="failed"]) .drive-status, .atlas-map:has(.map-state[data-state="loading"]) .drive-status { display: none; }
 .atlas-map:has(.map-card:not([hidden])) .map-legend { display: none; }
+
+/* Full Edition's small ball dock. Ink-line poses share Periodicals' discrete animation treatment. */
+.fetch-dock { position: fixed; z-index: 24; right: max(14px, env(safe-area-inset-right)); bottom: calc(24px + env(safe-area-inset-bottom)); width: 52px; height: 76px; border-bottom: 2px solid var(--gold); background: var(--paper); color: var(--text); box-shadow: 0 0 0 1px var(--rule); display: grid; place-items: center; }
+.fetch-motif { width: 22px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.2; opacity: .7; }
+.fetch-trigger { width: 48px; height: 44px; display: grid; place-items: center; background: none; border: 0; cursor: pointer; padding: 0; }
+.tennis-ball { display: block; width: 16px; height: 16px; border-radius: 50%; background: #929D62; box-shadow: inset -2px -2px 0 #74804F; position: relative; }
+.tennis-ball::after { content: ''; position: absolute; width: 7px; height: 13px; left: 4px; top: 1px; border-left: 1.5px solid #F0E4BE; border-right: 1.5px solid #F0E4BE; border-radius: 50%; transform: rotate(28deg); }
+.fetch-trigger:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.fetch-dock[data-state="playing"] .fetch-trigger .tennis-ball { visibility: hidden; }
+.fetch-stage { position: fixed; left: 0; bottom: 0; width: 100%; height: 230px; z-index: 25; pointer-events: none; overflow: hidden; color: var(--text); --fetch-fill: var(--paper); }
+.fetch-runner { position: absolute; width: 110px; height: 59px; }
+.fetch-runner svg { width: 100%; height: 100%; overflow: visible; }
+.fetch-ball { position: absolute; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.page-edition .colophon-inner { padding-right: 82px; }
+@media (max-width: 759.98px) { .fetch-dock { bottom: calc(var(--dock-h) + 16px + env(safe-area-inset-bottom)); } .fetch-stage { height: 270px; } }
+@media (prefers-reduced-motion: reduce) { .fetch-stage { display: none !important; } .fetch-dock[data-state="rest"] .fetch-motif { opacity: 1; } }
+.outing-art { margin: 18px 0; max-width: 560px; }
+.outing-art img { display: block; width: 100%; height: auto; }
+.ed-feature:has(.adventure-illustration) { align-items: start; }
+.ed-hero.adventure-illustration { aspect-ratio: auto; max-height: none; }
+.ed-hero.adventure-illustration img { width: 100%; height: auto; object-fit: contain; }
+.ed-hero.adventure-illustration .credit { position: static; background: var(--paper); color: var(--muted); }
+.travel-postcard { margin: 0; padding: 16px; background: var(--paper-2); border: 1px solid var(--rule); }
+.travel-postcard img { width: 100%; height: auto; display: block; }
+.travel-postcard figcaption { padding-top: 10px; font: 500 12px/1.5 var(--f-data); color: var(--muted); }
+.postcard-controls { margin-block: 24px; display: grid; gap: 14px; }

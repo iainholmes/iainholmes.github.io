@@ -4,7 +4,10 @@
   "slot": "tuesday",
   "status": "published",
   "published_at": "2026-09-29T07:00:00-04:00",
-  "weekend": { "start": "2026-10-03", "end": "2026-10-04" },
+  "weekend": {
+    "start": "2026-10-03",
+    "end": "2026-10-04"
+  },
   "flagship": {
     "place_id": "eno-cox-mountain",
     "title": "Cox Mountain and the Fews Ford crossing",
@@ -14,57 +17,250 @@
     "condition_level": "normal",
     "snapshot": {
       "as_of": "2026-09-28",
-      "route": { "route_id": "eno-cox-mountain-loop@1", "distance_mi": 3.75, "shape": "loop", "climb_ft_approx": 300, "difficulty": "moderate", "surface": "Dirt, rocks and roots; good traction needed on the ridge" },
-      "access": { "name": "Fews Ford access, 6101 Cole Mill Rd., Durham", "parking": "Main lot at Fews Ford; arrive early on a fair-weather Saturday." },
-      "drive": { "from": "chapel-hill-public", "minutes": [25, 35] },
-      "duration_h": [1.75, 2.5],
-      "dog": { "leash": "Leashed, 6 ft maximum", "water": "River access on both sides of the bridge", "shade": "Mostly wooded", "watch_for": ["Slick rock at the water's edge", "Other dogs at the bridge on busy mornings"] }
-    , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
-    "photo": { "id": "rupert-creek-2023-04", "alt": "Field print of Rupert beside a creek, wet, in his mustard collar, looking up and to the left; the water behind him printed in pale streaks." },
+      "route": {
+        "route_id": "eno-cox-mountain-loop@1",
+        "distance_mi": 3.75,
+        "shape": "loop",
+        "climb_ft_approx": 300,
+        "difficulty": "moderate",
+        "surface": "Dirt, rocks and roots; good traction needed on the ridge"
+      },
+      "access": {
+        "name": "Fews Ford access, 6101 Cole Mill Rd., Durham",
+        "parking": "Main lot at Fews Ford; arrive early on a fair-weather Saturday."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          25,
+          35
+        ]
+      },
+      "duration_h": [
+        1.75,
+        2.5
+      ],
+      "dog": {
+        "leash": "Leashed, 6 ft maximum",
+        "water": "River access on both sides of the bridge",
+        "shade": "Mostly wooded",
+        "watch_for": [
+          "Slick rock at the water's edge",
+          "Other dogs at the bridge on busy mornings"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "photo": {
+      "id": "rupert-creek-2023-04",
+      "alt": "Field print of Rupert beside a creek, wet, in his mustard collar, looking up and to the left; the water behind him printed in pale streaks."
+    },
     "sources": [
-      { "kind": "guide", "label": "NC Tripping — Eno River trails", "url": "https://www.nctripping.com/eno-river-state-park-trails/", "retrieved": "2026-09-29" },
-      { "kind": "guide", "label": "Fleet Feet Raleigh — Fews Ford trails", "url": "https://www.fleetfeet.com/s/raleigh/community/eno-river-state-park-fews-ford-trails", "retrieved": "2026-09-29" },
-      { "kind": "forecast", "label": "NWS Raleigh forecast, issued 6:49 a.m. 28 Sep", "url": "https://forecast.weather.gov/MapClick.php?lat=35.9149&lon=-79.0568", "retrieved": "2026-09-29" }
+      {
+        "kind": "guide",
+        "label": "NC Tripping — Eno River trails",
+        "url": "https://www.nctripping.com/eno-river-state-park-trails/",
+        "retrieved": "2026-09-29"
+      },
+      {
+        "kind": "guide",
+        "label": "Fleet Feet Raleigh — Fews Ford trails",
+        "url": "https://www.fleetfeet.com/s/raleigh/community/eno-river-state-park-fews-ford-trails",
+        "retrieved": "2026-09-29"
+      },
+      {
+        "kind": "forecast",
+        "label": "NWS Raleigh forecast, issued 6:49 a.m. 28 Sep",
+        "url": "https://forecast.weather.gov/MapClick.php?lat=35.9149&lon=-79.0568",
+        "retrieved": "2026-09-29"
+      }
     ],
-    "seasons": ["spring", "summer", "autumn"],
-    "experiences": ["woodland", "river", "ridge"]
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "experiences": [
+      "woodland",
+      "river",
+      "ridge"
+    ],
+    "artwork": {
+      "image_id": "rupert-2026-w40-tue-cox",
+      "brief": "One Rupert in shallow Eno water with a sparse suspension-bridge cue, warm chocolate ink and loose cream cuts.",
+      "characters": [
+        "rupert"
+      ]
+    },
+    "qualities": {
+      "activity": "hike",
+      "expected_heat": "normal"
+    },
+    "panels": [
+      {
+        "label": "For Rupert",
+        "text": "A shaded climb, then a quiet pause beside the river. Bring drinking water and keep his six-foot leash handy."
+      },
+      {
+        "label": "Keep in mind",
+        "text": "Rock at the water’s edge can be slick. Go early Saturday and leave room for other dogs at the bridge."
+      }
+    ]
   },
   "local_trail": {
     "place_id": "carolina-north-forest",
     "title": "Carolina North Forest",
     "line": "An hour of soft trail five minutes from town, for the morning the weather decides for you.",
-    "snapshot": { "as_of": "2026-09-28", "drive": { "from": "chapel-hill-public", "minutes": [5, 10] }, "duration_h": [1, 1.5] , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
-    "seasons": ["spring", "summer", "autumn", "winter"],
-    "experiences": ["woodland", "short-walk"]
+    "snapshot": {
+      "as_of": "2026-09-28",
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          5,
+          10
+        ]
+      },
+      "duration_h": [
+        1,
+        1.5
+      ],
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ]
   },
   "away_mission": {
     "place_id": "hanging-rock-moores-wall",
     "title": "Hanging Rock, Moore's Wall Loop",
     "line": "A strenuous 4.2-mile loop to the tower on Moore's Knob. A full day, and the best one if the forecast firms up.",
     "commitment": "Full day",
-    "snapshot": { "as_of": "2026-09-28", "route": { "route_id": "hanging-rock-moores-wall-loop@1", "distance_mi": 4.2, "shape": "loop", "difficulty": "strenuous" }, "drive": { "from": "chapel-hill-public", "minutes": [100, 115] } , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
-    "seasons": ["spring", "autumn"],
-    "experiences": ["ridge", "full-day"]
+    "snapshot": {
+      "as_of": "2026-09-28",
+      "route": {
+        "route_id": "hanging-rock-moores-wall-loop@1",
+        "distance_mi": 4.2,
+        "shape": "loop",
+        "difficulty": "strenuous"
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          100,
+          115
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn"
+    ],
+    "experiences": [
+      "ridge",
+      "full-day"
+    ]
   },
   "wildcard": {
     "place_id": "occoneechee-mountain",
     "title": "Occoneechee Mountain, then the Hillsborough Riverwalk",
     "line": "A short loop past the old quarry, then a slow walk along the Eno in town.",
-    "snapshot": { "as_of": "2026-09-28", "route": { "route_id": "occoneechee-mountain-loop@1", "distance_mi": 2.2, "shape": "loop" }, "drive": { "from": "chapel-hill-public", "minutes": [20, 25] } , "crowd": {"typical_level": null, "low_crowd_window": null, "peak_period": null, "weekend_vs_weekday": null, "foot_traffic": null, "dog_density": null, "attendance": null, "perceived_crowding": null}},
-    "seasons": ["spring", "autumn", "winter"],
-    "experiences": ["ridge", "short-walk", "river", "town-walk"]
+    "snapshot": {
+      "as_of": "2026-09-28",
+      "route": {
+        "route_id": "occoneechee-mountain-loop@1",
+        "distance_mi": 2.2,
+        "shape": "loop"
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          20,
+          25
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "ridge",
+      "short-walk",
+      "river",
+      "town-walk"
+    ]
   },
-  "mission": { "text": "Find the best wading spot within sight of the suspension bridge.", "tone": "explore" },
-  "memory_prompt": { "kind": "video", "text": "Ten seconds of his first water entry of the day." },
+  "mission": {
+    "text": "Find the best wading spot within sight of the suspension bridge.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "video",
+    "text": "Ten seconds of his first water entry of the day."
+  },
   "conditions": {
     "summary": "Friday near 90°F. Saturday partly sunny, high near 78, 30% chance of showers. Sunday mostly cloudy, high near 75, 40%.",
     "as_of": "2026-09-28T06:49:00-04:00",
-    "pivot": { "if": "Showers set in before 9 a.m. Saturday", "then": "local_trail", "note": "Switch to Carolina North and save Cox Mountain for a dry morning; the ridge rock is slick when wet." }
+    "pivot": {
+      "if": "Showers set in before 9 a.m. Saturday",
+      "then": "local_trail",
+      "note": "Switch to Carolina North and save Cox Mountain for a dry morning; the ridge rock is slick when wet."
+    }
   },
   "practical": {
     "best_window": "Sat 07:30–10:30",
     "fees": "None for day use",
-    "bring": ["Towel for the car", "Water for both", "Six-foot leash"],
+    "bring": [
+      "Towel for the car",
+      "Water for both",
+      "Six-foot leash"
+    ],
     "closures_checked": null,
     "closures_note": "Check the park's alerts page before leaving."
   },

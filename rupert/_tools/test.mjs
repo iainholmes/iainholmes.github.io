@@ -1,3 +1,5 @@
+import { guidanceFor, artworkProblems } from '../assets/js/core/adventure.js';
+import { rupertDay, cleanEntry, readLogBackup } from '../assets/js/core/field-log.js';
 import { matchesOption, seasonFor } from '../assets/js/core/options.js';
 import { cleanPlan, readBackup } from '../assets/js/core/travel.js';
 import { validPoint, drivingRoute } from '../assets/js/core/routing.js';
@@ -150,5 +152,37 @@ t('Every published and future suggestion carries explicit unassessed crowd field
     const ed=JSON.parse(readFileSync(new URL(`../data/editions/${id}.json`,import.meta.url)));
     for(const role of ['flagship','local_trail','away_mission','wildcard']) {assert.deepEqual(Object.keys(ed[role].snapshot.crowd).sort(),keys.slice().sort());assert.ok(Object.values(ed[role].snapshot.crowd).every(v=>v===null));}
   }
+});
+t('Context panels prioritize adverse conditions over a whimsical activity',()=>{
+  const hot=guidanceFor({qualities:{activity:'pup-cup',expected_heat:'hot'},headline_condition:'Hot afternoon'});
+  assert.equal(hot[1].label,'Keep in mind');assert.equal(hot[1].text,'Hot afternoon');
+  assert.equal(guidanceFor({qualities:{activity:'pup-cup'}})[0].label,'The important stop');
+  const frozen=[{label:'Look for',text:'An individually written detail.'},{label:'The window',text:'An individually verified time.'}];
+  assert.deepEqual(guidanceFor({panels:frozen,condition_level:'adverse'}),frozen);
+});
+t('New suggestions cannot share or omit generated illustration ownership',()=>{
+  const o={artwork:{image_id:'new',characters:['rupert']},panels:[{},{}]};
+  const images={photos:[{id:'new',file:'new',kind:'plate',provenance:'editorial',generation:{owner:'2027-W01-tue/flagship'}}]};
+  assert.deepEqual(artworkProblems({a:{id:'2027-W01-tue',flagship:o}},images),[]);
+  assert.ok(artworkProblems({a:{id:'2027-W01-tue',flagship:o,local_trail:o}},images).some(x=>x.includes('already belongs')));
+  assert.ok(artworkProblems({a:{id:'2027-W01-tue',flagship:{}}},images).length);
+});
+t('Travel postcards survive backup round-trip and reject external or executable images',()=>{
+  const p=cleanPlan({...plan,postcard:{image:'data:image/jpeg;base64,YQ==',caption:'A journey imagined'}});
+  assert.deepEqual(readBackup(JSON.stringify({schema_version:1,plans:[p]}))[0].postcard,p.postcard);
+  assert.throws(()=>cleanPlan({...plan,postcard:{image:'https://example.com/photo.jpg',caption:'No'}}));
+  assert.throws(()=>cleanPlan({...plan,postcard:{image:'data:image/svg+xml;base64,YQ==',caption:'No'}}));
+});
+t('Rupert Day starts and ends at Eastern midnight only on April 7',()=>{
+  for(const year of [2027,2028]){
+    assert.equal(rupertDay(new Date(`${year}-04-07T03:59:59Z`)),false);assert.equal(rupertDay(new Date(`${year}-04-07T04:00:00Z`)),true);
+    assert.equal(rupertDay(new Date(`${year}-04-08T03:59:59Z`)),true);assert.equal(rupertDay(new Date(`${year}-04-08T04:00:00Z`)),false);
+  }
+});
+t('Field Log validates memory dates, local photos and backup duplicates',()=>{
+  const e=cleanEntry({id:'fl_test',date:'2027-04-07',place:'River',activity:'Walk',source:'unplanned',notes:'Our day'});
+  assert.equal(e.season,'spring');assert.deepEqual(readLogBackup(JSON.stringify({version:1,entries:[e]})),[e]);
+  assert.throws(()=>cleanEntry({...e,date:'2027-02-30'}));assert.throws(()=>cleanEntry({...e,photos:['https://example.com/photo.jpg']}));
+  assert.throws(()=>readLogBackup(JSON.stringify({version:1,entries:[e,e]})));
 });
 console.log(`${n} tests passed`);

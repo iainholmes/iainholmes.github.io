@@ -489,6 +489,15 @@
               "town-walk"
             ]
           }
+        },
+        "artwork": {
+          "$ref": "#/$defs/artwork"
+        },
+        "panels": {
+          "$ref": "#/$defs/panels"
+        },
+        "qualities": {
+          "$ref": "#/$defs/qualities"
         }
       }
     },
@@ -547,6 +556,15 @@
               "town-walk"
             ]
           }
+        },
+        "artwork": {
+          "$ref": "#/$defs/artwork"
+        },
+        "panels": {
+          "$ref": "#/$defs/panels"
+        },
+        "qualities": {
+          "$ref": "#/$defs/qualities"
         }
       }
     },
@@ -623,6 +641,87 @@
             "Busy",
             "Very Busy",
             null
+          ]
+        }
+      }
+    },
+    "artwork": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "image_id",
+        "brief",
+        "characters"
+      ],
+      "properties": {
+        "image_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "brief": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 1000
+        },
+        "characters": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "enum": [
+              "rupert",
+              "bosch",
+              "tilli"
+            ]
+          }
+        }
+      }
+    },
+    "panels": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "text"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 40
+          },
+          "text": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 350
+          }
+        }
+      }
+    },
+    "qualities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "activity": {
+          "enum": [
+            "hike",
+            "swim",
+            "town",
+            "patio",
+            "pup-cup",
+            "road-trip"
+          ]
+        },
+        "expected_heat": {
+          "enum": [
+            "hot",
+            "normal",
+            "cold",
+            "unknown"
           ]
         }
       }

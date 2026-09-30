@@ -5,7 +5,7 @@ const $ = id => document.getElementById(id);
 const el = (tag, text, cls) => { const n = document.createElement(tag); if (text) n.textContent = text; if (cls) n.className = cls; return n; };
 const button = (text, action) => { const n = el('button', text); n.type = 'button'; n.addEventListener('click', action); return n; };
 const status = text => { $('trip-status').textContent = text; };
-let plans = [], activeId = null, dirty = false;
+let plans = [], activeId = null, dirty = false, postcard = null;
 try { const text = localStorage.getItem(key); if (text) plans = readBackup(text); } catch { status('Saved plans could not be opened. Import a backup to restore them.'); }
 function persist(next) {
   try { localStorage.setItem(key, JSON.stringify({ schema_version: 1, plans: next })); plans = next; return true; }
@@ -33,11 +33,12 @@ function addLeg(leg = { mode: 'car', from: {label:''}, to:{label:''} }, stop = {
 function numberLegs() { [...$('trip-legs').children].forEach((row,i,all) => { const bs=row.querySelectorAll('.leg-actions button'); bs[0].disabled=i===0; bs[1].disabled=i===all.length-1; }); }
 function collect() {
   const rows=[...$('trip-legs').children];
-  return cleanPlan({id:activeId,title:$('trip-title').value,dates:{start:$('trip-start').value,end:$('trip-end').value},legs:rows.map((row,i)=>({seq:i+1,mode:row.querySelector('.leg-mode').value,from:{label:row.querySelector('.leg-from').value},to:{label:row.querySelector('.leg-to').value}})),manual_stops:rows.flatMap((row,i)=> {const place_id=row.querySelector('.leg-place').value,note=row.querySelector('.leg-note').value; return row.querySelector('.leg-mode').value==='car' && (place_id||note) ? [{leg:i+1,place_id,note}] : [];})});
+  return cleanPlan({...(postcard ? {postcard:{...postcard,caption:$('postcard-caption').value}} : {}),id:activeId,title:$('trip-title').value,dates:{start:$('trip-start').value,end:$('trip-end').value},legs:rows.map((row,i)=>({seq:i+1,mode:row.querySelector('.leg-mode').value,from:{label:row.querySelector('.leg-from').value},to:{label:row.querySelector('.leg-to').value}})),manual_stops:rows.flatMap((row,i)=> {const place_id=row.querySelector('.leg-place').value,note=row.querySelector('.leg-note').value; return row.querySelector('.leg-mode').value==='car' && (place_id||note) ? [{leg:i+1,place_id,note}] : [];})});
 }
 function load(plan) {
   activeId=plan?.id || null; $('trip-title').value=plan?.title || ''; $('trip-start').value=plan?.dates?.start || ''; $('trip-end').value=plan?.dates?.end || ''; $('trip-legs').replaceChildren();
   if(plan) plan.legs.forEach(leg=>addLeg(leg,plan.manual_stops.find(s=>s.leg===leg.seq))); else addLeg();
+  postcard=plan?.postcard || null; $('postcard-caption').value=postcard?.caption || ''; paintPostcard();
   dirty=false;
 }
 function savedList() { $('saved-trips').replaceChildren(); if(!plans.length) $('saved-trips').append(el('p','Your first journey starts here.')); plans.forEach(p=>{const row=el('p'); row.append(button(p.title,()=>{if(dirty && !confirm('Open this journey and discard unsaved edits?')) return; load(p); status('Journey opened.');})); $('saved-trips').append(row);}); }
@@ -48,4 +49,21 @@ $('export-trips').addEventListener('click',()=>{try {let exportPlans=plans; if(d
 $('import-trips').addEventListener('change',async e=>{try{const file=e.target.files[0];if(!file)return;const incoming=readBackup(await file.text()), next=[...plans];for(const p of incoming){if(!next.some(x=>x.id===p.id))next.push(p);}if(next.length>100)throw Error('Too many journeys.');const added=next.length-plans.length;if(persist(next)){savedList();status(`Imported ${added} journeys; existing plans were kept.`);}}catch(e){status('Import failed: '+e.message);}finally{e.target.value='';}});
 document.querySelector('.travel-editor').addEventListener('input',()=>{dirty=true;});
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
+function paintPostcard() {
+  const box=$('journey-postcard');box.replaceChildren();box.hidden=!postcard;
+  if(postcard){const image=el('img');image.src=postcard.image;image.alt='Adventure imagined: '+postcard.caption;box.append(image,el('figcaption','Adventure imagined · '+postcard.caption));}
+  $('remove-postcard').hidden=!postcard;
+}
+$('postcard-file').addEventListener('change',async e=>{
+  try {
+    const file=e.target.files[0];if(!file)return;
+    if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>10000000)throw Error('Choose a JPEG, PNG or WebP illustration under 10 MB.');
+    const bitmap=await createImageBitmap(file),scale=Math.min(1,1000/bitmap.width,1000/bitmap.height),canvas=document.createElement('canvas');
+    canvas.width=Math.round(bitmap.width*scale);canvas.height=Math.round(bitmap.height*scale);const context=canvas.getContext('2d');context.fillStyle='#EFE2C8';context.fillRect(0,0,canvas.width,canvas.height);context.drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+    const image=canvas.toDataURL('image/jpeg',0.82);if(image.length>1500000)throw Error('That picture is too large; use a simpler illustration.');
+    postcard={image,caption:$('postcard-caption').value.trim()||$('trip-title').value.trim()||'A journey to come'};$('postcard-caption').value=postcard.caption;paintPostcard();dirty=true;status('Postcard added to this journey. Save the plan to keep it.');
+  }catch(error){status(error.message);}finally{e.target.value='';}
+});
+$('postcard-caption').addEventListener('input',()=>{if(postcard){postcard.caption=$('postcard-caption').value;paintPostcard();dirty=true;}});
+$('remove-postcard').addEventListener('click',()=>{postcard=null;paintPostcard();dirty=true;status('Postcard removed from this journey.');});
 load();savedList();

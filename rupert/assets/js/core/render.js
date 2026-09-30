@@ -1,3 +1,5 @@
+import { guidanceFor } from './adventure.js';
+import { fetchDock } from './fetch-drawing.js';
 import { crowdSummary, CROWD_TOLERANCES } from './crowds.js';
 import { SEASONS, EXPERIENCES, seasonFor } from './options.js';
 import { labrador } from './labrador.js';
@@ -65,6 +67,8 @@ function focalVars(imgAspect, fx, fy) {
   };
   return `--pos-32:${pos(3 / 2)};--pos-45:${pos(4 / 5)};--pos-21:${pos(2 / 1)}`;
 }
+
+function imageRef(option) { return option.artwork ? { id: option.artwork.image_id } : option.photo; }
 
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 function takenLabel(t) {
@@ -177,14 +181,15 @@ function plate(slot, ed, pair, ctx) {
   const row = (k, v, extra = '', cls = '') => `<div class="row ${cls}"><dt>${k}</dt><dd>${v}${extra ? `<span class="row-meta">${esc(extra)}</span>` : ''}</dd></div>`;
   const support = ['local_trail', 'away_mission', 'wildcard'].filter(r => ed[r])
     .map(r => row(ROLE_LABEL[r], esc(ed[r].title) + optionTags(ed[r]), supportLine(ed[r]))).join('');
-  const mission = ed.mission ? row("Rupert's Mission", esc(ed.mission.text), '', 'fun') : '';
-  const memory = ed.memory_prompt ? row(`Memory Prompt`, esc(ed.memory_prompt.text), MEMORY_KIND[ed.memory_prompt.kind] || '', 'fun') : '';
+  const panels = guidanceFor(f);
+  const mission = row(esc(panels[0].label), esc(panels[0].text), '', 'fun');
+  const memory = row(esc(panels[1].label), esc(panels[1].text), '', 'fun');
   return `<article class="plate" id="${id}" data-slot="${slot}" aria-labelledby="${id}-h">
   <p class="p-eyebrow"><span class="p-day">${SLOT_LABEL[slot]}</span><span class="p-pub">Published ${esc(publishedLabel(ed.published_at))}</span></p>
   <h2 class="p-title" id="${id}-h"><a href="${href}">${esc(f.title)}</a></h2>
   <p class="p-stand">${esc(f.standfirst)}${optionTags(f)}</p>
     <ul class="p-metrics" aria-label="Logistics">${bits}${cond}</ul>
-  <figure class="p-photo">${photo(f.photo, photos, base, { sizes: '(min-width: 760px) 46vw, 100vw', eager: slot === 'tuesday' })}${credit(f.photo, photos, ctx.places)}</figure>
+  <figure class="p-photo">${photo(imageRef(f), photos, base, { sizes: '(min-width: 760px) 46vw, 100vw', eager: slot === 'tuesday' })}${credit(imageRef(f), photos, ctx.places)}</figure>
   <dl class="p-ledger">${support}${mission}${memory}</dl>
   <p class="p-more"><a href="${href}">Full edition<span class="vh"> for ${esc(f.title)}</span></a> <span class="p-more-note">dog notes, parking, the plan if it rains</span></p>
 </article>`;
@@ -247,6 +252,7 @@ function crowdFacts(crowd) {
 export function renderEdition(ed, ctx, sibling) {
   const { base, photos, places } = ctx;
   const f = ed.flagship, s = f.snapshot || {};
+  const panels = guidanceFor(f);
   const place = (places?.places || []).find(p => p.id === f.place_id);
   const ref = places?.reference_points?.[s.drive?.from];
   const fact = (k, v) => v ? `<div><dt>${k}</dt><dd>${v}</dd></div>` : '';
@@ -274,7 +280,7 @@ export function renderEdition(ed, ctx, sibling) {
   const pivotTarget = ed.conditions?.pivot?.then && ed[ed.conditions.pivot.then];
   const outing = role => {
     const o = ed[role]; if (!o) return '';
-    return `<li class="outing" id="${role}"><p class="outing-k">${ROLE_LABEL[role]}</p><h3>${esc(o.title)}</h3><p>${esc(o.line)}</p><p class="outing-meta">${esc(supportLine(o))}</p>${optionTags(o)}${crowdFacts(o.snapshot?.crowd)}</li>`;
+    return `<li class="outing" id="${role}"><p class="outing-k">${ROLE_LABEL[role]}</p><h3>${esc(o.title)}</h3><p>${esc(o.line)}</p><p class="outing-meta">${esc(supportLine(o))}</p>${optionTags(o)}${o.artwork ? `<figure class="outing-art">${photo(imageRef(o), photos, base)}${credit(imageRef(o),photos,places)}</figure>` : ''}${o.panels ? `<div class="outing-guidance">${o.panels.map(p => `<p><span class="lbl">${esc(p.label)}</span> ${esc(p.text)}</p>`).join('')}</div>` : ''}${crowdFacts(o.snapshot?.crowd)}</li>`;
   };
   const corrections = (ed.corrections || []).length
     ? `<section class="ed-corrections"><h2 class="sec-h">Corrections</h2><ul>${ed.corrections.map(c => `<li><span class="data">${esc(c.at)}</span> ${esc(c.note)}</li>`).join('')}</ul></section>` : '';
@@ -289,7 +295,7 @@ export function renderEdition(ed, ctx, sibling) {
     <p class="ed-pub">Published ${esc(publishedLabel(ed.published_at))} · ${esc(nyTime(new Date(ed.published_at)))} ET · Weekend choice ${ed.slot === 'tuesday' ? 1 : 2} of 2</p></div>
     ${marginNote("The outing", `${esc(place?.short_name || f.title)}<br>${esc(s.access?.name || '')}`, `<a href="${base}atlas/#place-${esc(f.place_id)}">Find it in the Atlas →</a>`)}
   </header>
-  <div class="ed-feature wrap"><figure class="ed-hero">${photo(f.photo, photos, base, { sizes: '(min-width: 1024px) 65vw, 100vw', eager: true })}${credit(f.photo, photos, places)}</figure>
+  <div class="ed-feature wrap"><figure class="ed-hero${f.artwork ? ' adventure-illustration' : ''}">${photo(imageRef(f), photos, base, { sizes: '(min-width: 1024px) 65vw, 100vw', eager: true })}${credit(imageRef(f), photos, places)}</figure>
     <aside class="ed-companion">${labrador('sit')}<h2 class="sec-h">Before you go</h2><p class="outing-meta">${esc(crowdSummary(s.crowd))}</p><ul class="feature-facts">${routeBits(s).map(x => `<li>${x}</li>`).join('')}</ul><p>${esc(ed.practical?.best_window || 'Choose a window that suits the weather.')}</p>${optionTags(f)}<p class="season-note">Seasons are a guide to this outing. Check weather, access and dog rules before leaving.</p></aside></div>
   <div class="ed-body wrap">
     <div class="ed-main">
@@ -298,8 +304,8 @@ export function renderEdition(ed, ctx, sibling) {
         ${ed.conditions?.pivot ? `<div class="pivot${ed.flagship.condition_level === 'adverse' ? ' is-adverse' : ''}"><p class="pivot-k">If it turns</p><p><strong>${esc(ed.conditions.pivot.if)}:</strong> ${esc(ed.conditions.pivot.note)}${pivotTarget ? ` <span class="pivot-to">Go to: ${esc(pivotTarget.title)}</span>` : ''}</p></div>` : ''}
         <p class="as-of">Forecast as of ${esc(shortDate(nyDateString(new Date(ed.conditions.as_of))))}, ${esc(nyTime(new Date(ed.conditions.as_of)))} ET</p></section>
       <div class="ed-fun">
-        ${ed.mission ? `<section><h2 class="sec-h">Rupert's Mission</h2><p class="fun-text">${esc(ed.mission.text)}</p></section>` : ''}
-        ${ed.memory_prompt ? `<section><h2 class="sec-h">Memory Prompt <span class="kind">${esc(MEMORY_KIND[ed.memory_prompt.kind] || '')}</span></h2><p class="fun-text">${esc(ed.memory_prompt.text)}</p></section>` : ''}
+        ${panels.map(p => `<section><h2 class="sec-h">${esc(p.label)}</h2><p class="fun-text">${esc(p.text)}</p></section>`).join('')}
+
       </div>
       <section><h2 class="sec-h">Also this weekend</h2><ul class="outings">${outing('local_trail')}${outing('away_mission')}${outing('wildcard')}</ul></section>
       ${corrections}
@@ -314,7 +320,7 @@ export function renderEdition(ed, ctx, sibling) {
     </aside>
   </div>
   <footer class="ed-foot wrap">${sib}<p><a href="${base}">Back to This Week</a> · <a href="${base}archive/">Archive</a></p></footer>
-</article>`;
+${fetchDock(f.experiences?.some(x => ['river','swim'].includes(x)) ? 'water' : f.experiences?.includes('town-walk') ? 'town' : 'trail')}</article>`;
 }
 
 /* ---------- archive ---------- */
@@ -446,6 +452,7 @@ export function renderTravel(ctx) {
   <label>Trip name<input id="trip-title" maxlength="160" placeholder="A weekend away"></label><div class="trip-dates"><label>From<input id="trip-start" type="date"></label><label>Until<input id="trip-end" type="date"></label></div>
   <ol id="trip-legs" class="trip-legs"></ol><div class="travel-actions"><button type="button" id="add-leg">Add a leg</button><button type="button" id="save-trip">Save plan</button><button type="button" id="new-trip">New plan</button></div><p id="trip-status" role="status" aria-live="polite"></p></section>
   <aside class="travel-side"><section class="panel"><h2 class="sec-h">Kept journeys</h2><div id="saved-trips"></div><div class="travel-actions"><button type="button" id="export-trips">Export backup</button><label class="import-label">Import backup<input type="file" id="import-trips" accept="application/json,.json"></label></div></section>
+  <section class="panel"><h2 class="sec-h">A journey, imagined</h2><p>Keep a newly made illustration with your plan. Save the real photographs for the Field Log after the trip.</p><figure id="journey-postcard" class="travel-postcard" hidden></figure><div class="postcard-controls"><label>Postcard caption<input id="postcard-caption" maxlength="160" placeholder="A journey to come"></label><label class="import-label">Add a postcard<input id="postcard-file" type="file" accept="image/jpeg,image/png,image/webp"></label><button id="remove-postcard" type="button" hidden>Remove postcard</button></div></section>
   <section class="panel"><h2 class="sec-h">Stops along the way</h2><p>Choose a place for each driving leg, or add your own stop. Stops are manual; the directory does not yet calculate detours from your route.</p><p>Flights, trains and ferries remain in the itinerary without road-stop suggestions.</p><a href="${ctx.base}atlas/">Explore the place directory →</a></section></aside></div>
   <script type="application/json" id="travel-places">${JSON.stringify(ctx.places.places.map(p => ({id:p.id,name:p.name}))).replace(/</g, '\\u003c')}</script></div>`;
 }
