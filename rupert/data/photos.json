@@ -96,31 +96,6 @@
       ],
       "caption": "Plate · Rupert on the bank trail",
       "source_note": "Editorial block-print illustration; no documentary location claim."
-    },
-    {
-      "id": "rupert-2026-w40-tue-cox",
-      "file": "rupert-2026-w40-tue-cox",
-      "kind": "plate",
-      "provenance": "editorial",
-      "width": 1536,
-      "height": 1024,
-      "widths": [
-        800,
-        1400,
-        1536
-      ],
-      "alt": "Rough chocolate-and-cream ink illustration of one Rupert in his mustard collar standing in shallow water, with a small dusty-blue suspension bridge behind him.",
-      "focal": [
-        0.55,
-        0.55
-      ],
-      "caption": "Adventure imagined · Cox Mountain / Fews Ford",
-      "source_note": "Newly generated editorial illustration for this suggestion; an imagined scene, not a documentary photograph.",
-      "generation": {
-        "owner": "2026-W40-tue/flagship",
-        "created_at": "2026-09-30",
-        "style_version": "atlas-woodcut-1"
-      }
     }
   ]
 }
