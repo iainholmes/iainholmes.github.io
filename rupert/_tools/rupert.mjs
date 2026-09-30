@@ -182,6 +182,7 @@ ${chrome({ active, base, weekLabel, site, body, pageClass })}
 }
 
 async function write(rel, content) {
+  if (rel.endsWith('.html')) content = content.replace(/[ \t]+$/gm, '');
   const f = P(rel);
   await mkdir(dirname(f), { recursive: true });
   let old = null;
