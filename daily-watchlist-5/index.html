@@ -287,6 +287,12 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
 .pd-cm::before{content:"C"!important}
 .pd-cm{margin-left:auto!important}.pd-cm + .pd-hb{margin-left:0!important}
 </style>
+<link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/personal-updates/mobile/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Periodicals">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css">
 </head>
 <body>
 <a class="skip" href="#briefing">Skip to the briefing</a>
@@ -1065,6 +1071,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
       ${ed.signalTitle?`<section class="signal"><div><div class="k">Across today's five</div><h2>${esc(ed.signalTitle)}</h2></div><div>${(ed.signal||[]).map(p=>`<p>${esc(p)}</p>`).join('')}</div></section>`:''}
       <nav class="turn" aria-label="Adjacent editions">${prev?`<a class="prev" href="#${esc(prev.date)}"><small>← Nᵒ. ${issueLabel(prev)} · ${esc(prev.shortDate||prev.date)}</small><span>${esc(prev.issueTitle||prev.stories[0].title)}</span></a>`:'<span></span>'}<span class="mid">Field Brief</span>${next?`<a class="next" href="#${esc(next.date)}"><small>Nᵒ. ${issueLabel(next)} · ${esc(next.shortDate||next.date)} →</small><span>${esc(next.issueTitle||next.stories[0].title)}</span></a>`:'<span></span>'}</nav>
     </article>`;
+    window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,dates:ordered.map(e=>e.date),hash:d=>'#'+d}}));
     mount.querySelectorAll('.mode button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
     document.querySelectorAll('.ix-item').forEach(it=>it.dataset.current=String(it.dataset.date===ed.date));
     const target=storyNo&&document.getElementById('story-'+storyNo);
@@ -1119,9 +1126,10 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
     render(ed,story);
   }
   document.getElementById('latestLink').addEventListener('click',e=>{e.preventDefault();const l=ordered[ordered.length-1];if(location.hash==='#'+l.date)load();else location.hash=l.date});
-  buildIndex();window.addEventListener('hashchange',load);load();
+  buildIndex();window.addEventListener('hashchange',load);window.addEventListener('periodicals:ready',load);load();
 })();
 </script>
 <script src="../personal-updates/commonplace/commonplace.js"></script>
+<script src="/personal-updates/mobile/mobile.js"></script>
 </body>
 </html>

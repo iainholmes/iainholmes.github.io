@@ -26,7 +26,7 @@
 }
 *{box-sizing:border-box}
 html{background:var(--night);-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100vh;background:var(--night);color:var(--bone);font:15px/1.55 var(--house);-webkit-font-smoothing:antialiased}
+body{margin:0;min-height:100svh;background:var(--night);color:var(--bone);font:15px/1.55 var(--house);-webkit-font-smoothing:antialiased}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--bone);outline-offset:4px}
 .skip{position:absolute;left:-999px;top:8px;background:var(--bone);color:var(--night);padding:8px 12px;z-index:9}.skip:focus{left:8px}
@@ -179,6 +179,12 @@ a{color:inherit}
 @media(max-width:1200px){.mast{grid-template-columns:1fr!important}.mast h1{font-size:clamp(72px,15vw,160px)}.press-clock{width:100%;max-width:560px}}
 @media(max-width:600px){.press-clock{display:none}.mast h1{font-size:clamp(58px,19vw,96px)}}
 </style>
+<link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/personal-updates/mobile/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Periodicals">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css">
 </head>
 <body>
 <!-- PERIODICALS HUB — /personal-updates/ (display name Periodicals). Permanently dark: no Day/Night
@@ -354,5 +360,6 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
   }).catch(function(){});
 })();
 </script>
+<script src="/personal-updates/mobile/mobile.js"></script>
 </body>
 </html>

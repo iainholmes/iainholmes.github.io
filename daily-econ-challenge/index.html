@@ -37,7 +37,7 @@
 *{box-sizing:border-box}
 html{background:var(--paper);-webkit-text-size-adjust:100%}
 body{
-  margin:0;min-height:100vh;color:var(--text);font:15px/1.6 var(--ui);-webkit-font-smoothing:antialiased;
+  margin:0;min-height:100svh;color:var(--text);font:15px/1.6 var(--ui);-webkit-font-smoothing:antialiased;
   background-color:var(--paper);
   background-image:
     linear-gradient(var(--grid-major) 1px,transparent 1px),
@@ -349,6 +349,12 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 .pd-cm::before{content:"C"!important}
 .pd-cm{margin-left:auto!important}.pd-cm + .pd-hb{margin-left:0!important}
 </style>
+<link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/personal-updates/mobile/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Periodicals">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css">
 </head>
 <body>
 <a class="skip" href="#bench">Skip to the problem set</a>
@@ -842,7 +848,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
       '<div class="wrap" style="padding-top:28px;padding-bottom:80px"><article class="sheet archive" aria-labelledby="arcTitle"><h2 id="arcTitle" class="sr-only">Problem sets</h2>'+
       '<table class="index"><thead><tr><th scope="col">No.</th><th scope="col">Set</th><th scope="col">Fields</th><th scope="col">Record</th></tr></thead><tbody>'+
       EDITIONS.map(function(e,i){var v=load(e.date),mine=v&&v.submitted?'<b>'+scoreOf(e,v)+'/'+e.questions.length+'</b>':v&&Object.keys(v.answers||{}).length?'<b>…</b>':'<b>—</b>';
-        return '<tr'+(i===0?' aria-current="true"':'')+'><td class="no">'+pad(e.no)+'</td><td class="date"><a href="#'+e.date+'">'+shortDate(e.date)+'</a><small>'+e.questions.length+' questions'+(i===0?' · today':'')+'</small></td><td class="fields">'+fields(e).join(', ')+'</td><td class="mine">'+recordHTML(e,v)+mine+'</td></tr>'}).join('')+
+        return '<tr'+(i===0?' aria-current="true"':'')+'><td class="no">'+pad(e.no)+'</td><td class="date"><a class="pd-edition-entry" data-date="'+e.date+'" href="#'+e.date+'">'+shortDate(e.date)+'</a><small>'+e.questions.length+' questions'+(i===0?' · today':'')+'</small></td><td class="fields">'+fields(e).join(', ')+'</td><td class="mine">'+recordHTML(e,v)+mine+'</td></tr>'}).join('')+
       '</tbody></table><p class="ledger-note">Records live in this browser.</p></article></div>';
   }
 
@@ -856,6 +862,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     }
     document.title='The Workbook No. '+pad(ed.no);document.body.classList.remove('ledger');
     app.innerHTML=headHTML()+'<div class="wrap bench" id="bench">'+sideHTML()+'<div class="main-col" id="mainCol">'+(st.submitted?resultsHTML():questionHTML())+'</div></div>';
+    window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,dates:EDITIONS.map(e=>e.date).sort(),hash:d=>'#'+d}}));
     if(focusMain){var h=app.querySelector('.q-num,.score');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
   }
 
@@ -913,7 +920,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     if(parts[1])setTimeout(function(){var target=parts[2]==='solution'&&st.submitted?document.getElementById('sol-'+(st.current+1)):document.querySelector('.q');if(target)target.scrollIntoView({block:'start'})},0);
   }
   document.getElementById('homeLink').addEventListener('click',function(e){e.preventDefault();location.hash=EDITIONS[0].date});
-  window.addEventListener('hashchange',route);
+  window.addEventListener('hashchange',route);window.addEventListener('periodicals:ready',render);
   route();
   /* shared Periodicals reading mode */
   function setMode(m,quiet){document.documentElement.setAttribute('data-mode',m);if(!quiet){try{localStorage.setItem('periodicals:mode',m)}catch(e){}}
@@ -932,5 +939,6 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
 })();
 </script>
 <script src="../personal-updates/commonplace/commonplace.js"></script>
+<script src="/personal-updates/mobile/mobile.js"></script>
 </body>
 </html>

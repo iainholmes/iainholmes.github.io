@@ -1,0 +1,29 @@
+/* Shared ergonomics; publication typography and colours remain page-owned. */
+:root{--pd-top:env(safe-area-inset-top,0px);--pd-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(80px + var(--pd-top));-webkit-text-size-adjust:100%}
+body{min-height:100svh;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.run,.runhead,.toolbar{padding-top:var(--pd-top)}
+.page>.imprint{padding-top:var(--pd-top)}
+aside.index{padding-top:var(--pd-top);padding-bottom:var(--pd-bottom);box-sizing:border-box;max-height:100dvh}
+dialog{max-height:calc(90dvh - var(--pd-top) - var(--pd-bottom))}
+.pd-tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border-top:1px solid var(--rule,var(--line,#80776c));background:var(--paper,var(--night,#131210));color:var(--ink,var(--bone,#efe9dc));padding:8px 20px;font:inherit}
+.pd-tools a,.pd-tools button{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;box-sizing:border-box;padding:6px 10px;color:inherit;background:none;border:0;font:inherit;text-decoration:none;cursor:pointer}
+.pd-tools [hidden]{display:none}.pd-tools button:disabled{opacity:.35;cursor:default}.pd-tools a:focus-visible,.pd-tools button:focus-visible,.pd-image:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.pd-tools button:active,.pd-tools a:active{opacity:.65}.pd-status{font-size:12px;padding:0 10px}
+.pd-image{cursor:zoom-in}.pd-lightbox{inset:0;margin:0;width:100%;height:100dvh;max-width:none;max-height:none!important;box-sizing:border-box;padding:calc(12px + var(--pd-top)) max(16px,env(safe-area-inset-right)) calc(12px + var(--pd-bottom)) max(16px,env(safe-area-inset-left));border:0;background:#131210;color:#efe9dc;box-shadow:none}
+.pd-lightbox[open]{display:flex;flex-direction:column}.pd-lightbox::backdrop{background:#131210}.pd-lightbox header{display:flex;justify-content:space-between;align-items:center;gap:12px}.pd-lightbox button{min-width:44px;min-height:44px;font:inherit;color:inherit;background:none;border:1px solid #80776c;padding:8px 12px;cursor:pointer}.pd-lightbox .pd-view{flex:1;min-height:0;overflow:auto;touch-action:pan-x pan-y pinch-zoom;display:flex;align-items:center;justify-content:center}.pd-view>img,.pd-view>svg{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;flex-shrink:0}.pd-lightbox[data-zoom="true"] .pd-view{display:block}.pd-lightbox[data-zoom="true"] .pd-view>img,.pd-lightbox[data-zoom="true"] .pd-view>svg{width:200%;max-width:none;max-height:none}.pd-caption{font-size:14px;line-height:1.5;max-height:22dvh;overflow:auto;margin:12px 0 0}
+@media(max-width:600px){
+ body{padding-bottom:calc(66px + var(--pd-bottom))}
+ .pd-tools{position:fixed;inset:auto 0 0;z-index:60;flex-wrap:nowrap;justify-content:space-evenly;gap:0;padding:4px env(safe-area-inset-right) calc(4px + var(--pd-bottom)) env(safe-area-inset-left);font-size:12px}
+ .pd-tools a,.pd-tools button{padding:6px;min-height:48px}.pd-status{position:absolute;bottom:100%;left:0;background:inherit;padding:6px 12px}.pd-status:empty{display:none}
+ button,input,select,textarea{min-height:44px}input,select,textarea{font-size:16px!important}
+ .run a,.run button,.runhead a,.runhead button,.toolbar a,.toolbar button,.mode button,.dn button,.imprint a,.colophon a,.contents a,.sources a,.front-list a{min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center}
+ .prose,.story-body,.story-text,.finding,.q-text{font-size:17px;line-height:1.7}.prose p,.story-body p{margin-bottom:1.15em}
+ h1,h2,h3{overflow-wrap:break-word}figcaption{font-size:13px;line-height:1.5}
+ .pd-drawer{max-height:calc(100dvh - 140px - var(--pd-top) - var(--pd-bottom));overflow-y:auto}
+}
+@media print{.pd-tools,.pd-lightbox{display:none!important}body{padding:0}}
+.masthead{padding-top:var(--pd-top)}
+@media(max-width:600px){.ix-row,.ix-close,.archive-entry,.archive-close,.knowledge summary,.cp-reader button,.cp-toolbar button{min-width:44px;min-height:44px}.pd-imprint{min-width:44px}.story .copy>p{font-size:17px;line-height:1.65}}
+
+@media(max-width:600px){.ledger article{overflow-x:auto}table.index{min-width:0;width:100%}table.index .date{white-space:normal}table.index th,table.index td{padding-left:5px;padding-right:5px}.mast-folio,.q-title{overflow-wrap:anywhere}}
