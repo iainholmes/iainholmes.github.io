@@ -894,7 +894,7 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .directory-controls > details { position: relative; margin: 0; padding: 0; border: 0; background: none; }
 .directory-controls > details > summary, .directory-catalog > summary { min-height: 44px; padding: 10px 12px; border: 1px solid var(--rule-strong); font: 400 16px/1.4 var(--f-text); color: var(--text); cursor: pointer; }
 .frame-options, .location-settings[open] > :not(summary) { background: var(--paper); }
-.frame-options { position: absolute; z-index: 10; top: calc(100% + 8px); right: 0; width: 300px; max-width: calc(100vw - 48px); border: 1px solid var(--rule-strong); box-shadow: 0 8px 20px #1d2a3a20; padding: 10px; }
+.frame-options { max-height: min(480px,65dvh); overflow: auto; overscroll-behavior: contain; position: absolute; z-index: 10; top: calc(100% + 8px); right: 0; width: 300px; max-width: calc(100vw - 48px); border: 1px solid var(--rule-strong); box-shadow: 0 8px 20px #1d2a3a20; padding: 10px; }
 .frame-options button { display: block; width: 100%; min-height: 44px; text-align: left; padding: 8px 10px; background: none; color: var(--text); border: 0; font: 400 16px/1.4 var(--f-text); cursor: pointer; }
 .frame-options button:hover:enabled { background: var(--paper-2); }
 .frame-options button:disabled { color: var(--text-2); cursor: default; }
@@ -902,8 +902,8 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .frame-regions > summary { padding: 10px; min-height: 44px; cursor: pointer; font-size: 16px; }
 .frame-regions button { padding-left: 24px; }
 .frame-note { margin: 8px 10px; font-size: 14px; line-height: 1.4; }
-.directory-controls .location-settings[open] { position: absolute; right: 0; top: 0; width: min(640px,100%); z-index: 12; border: 1px solid var(--rule-strong); padding: 0 16px 12px; background: var(--paper); box-shadow: 0 8px 20px #1d2a3a20; }
-.directory-controls .location-settings[open] > summary { border: 0; padding-inline: 0; }
+.directory-controls .location-settings[open] { max-height: 78dvh; overflow: auto; overscroll-behavior: contain; position: absolute; right: 0; top: 0; width: min(640px,100%); z-index: 12; border: 1px solid var(--rule-strong); padding: 0 16px 12px; background: var(--paper); box-shadow: 0 8px 20px #1d2a3a20; }
+.directory-controls .location-settings[open] > summary { position: sticky; top: 0; z-index: 1; background: var(--paper); border: 0; padding-inline: 0; }
 .directory-catalog > summary, .directory-picker { display: none; }
 .directory-list { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 20px; }
 .reg-group, .reg { display: contents; }
