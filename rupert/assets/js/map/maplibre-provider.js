@@ -250,6 +250,7 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   const duration = n => matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : n;
   const api = {
     raw: map,
+    resize() { map.resize(); },
     setMarkers(features) { marks = features; map.getSource('marks').setData({ type: 'FeatureCollection', features });labelLayer.replaceChildren();labelNodes=features.map(feature=>{const node=document.createElement('span');node.textContent=feature.properties.name;labelLayer.append(node);return {feature,node};});positionLabels(); },
     setRoutes(features) { map.getSource('routes').setData({ type: 'FeatureCollection', features }); },
     fit(b, opts = {}) { map.fitBounds(b, { padding: 48, duration: duration(600), ...opts }); },

@@ -130,7 +130,7 @@ The build writes an edition's page as soon as its `status` is `published`, even 
 
 ## Closing refinement
 
-The Rupert Atlas uses self-hosted user-supplied VELENOR for editorial headings and Latin Modern Roman for supporting text. Blue fields frame cream reading sheets; copper marks actions and editorial details. The final Atlas places a compact horizontal Place Directory above a full-width map. The desktop map retains its previous clamp(580px,72dvh,860px) height. Framing and home controls live in nested menus above the canvas. Tablet and phone use a place picker and expandable history, rather than a compressed desktop row.
+The Rupert Atlas uses self-hosted user-supplied VELENOR for editorial headings and Latin Modern Roman for supporting text. Blue fields frame cream reading sheets; copper marks actions and editorial details. The final Atlas places a compact horizontal Place Directory above a full-width map. The Atlas page field remains deep blue (#1D2A3A), with separate cream Directory cards and menus. Desktop map height fits the space remaining below the measured Directory and compact navigation, capped at the previous clamp(580px,72dvh,860px) height; shorter laptops shrink the canvas rather than require scrolling between its edges. Framing and home controls live in nested menus above the canvas. Tablet and phone use a place picker and expandable history, rather than a compressed desktop row.
 
 Travel automatically composes a local canvas postcard when a journey is mapped or saved. A replacement image remains optional. Artwork, saved plans and Field Log memories stay in browser storage; explicit routing and location lookup retain their existing consent controls.
 

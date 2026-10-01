@@ -944,3 +944,21 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
   .directory-catalog > summary { font-size: 14px; padding-inline: 8px; }
 }
 @media (min-width: 1024px) { .directory-catalog:not([open]) > summary { display: block; } }
+
+/* Blue is the Atlas page field; cream is reserved for discrete tools and content. */
+main.page-atlas { background: #1D2A3A; color: var(--paper); }
+.page-atlas .page-head, .page-atlas .reg-head { background: transparent; }
+.page-atlas .page-head { border-color: #F3EFE530; }
+.page-atlas .page-head h1, .page-atlas .head-note p { color: var(--paper); }
+.page-atlas .header-kicker, .page-atlas .head-note .lab-outline { color: #C98B4B; }
+.page-atlas .head-note small, .page-atlas .head-note button { color: #DDDCD5; }
+.page-atlas .reg-heading, .page-atlas .directory-note { color: var(--paper); }
+.page-atlas .directory-controls > details > summary, .page-atlas .directory-catalog > summary { background: var(--paper); color: var(--ink); }
+.page-atlas .reg-row { background: var(--paper); color: var(--ink); padding: 4px 12px 8px; }
+.page-atlas .reg-row.is-selected { box-shadow: inset 3px 0 var(--gold); }
+.page-atlas .frame-options, .page-atlas .location-settings[open], .page-atlas .atlas-map { color: var(--ink); }
+.page-atlas select.directory-picker { background: var(--paper); color: var(--ink); border: 1px solid var(--rule-strong); }
+.atlas-register { scroll-margin-top: calc(var(--bar-h) + 16px); }
+@media (min-width: 1024px) {
+  .atlas-map { height: min(var(--atlas-workspace-height),calc(100dvh - var(--bar-h) - var(--atlas-directory-height,152px) - 48px)); min-height: 280px; }
+}

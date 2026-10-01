@@ -1,3 +1,4 @@
+.field-log #log-editor { scroll-margin-top: calc(var(--bar-h) + 20px); }
 /* Field Log integration: editorial headings, browser-local memories and real photos. */
 .field-log #log-editor,.rupert-day-card { padding:28px; margin-block:24px; border:1px solid var(--rule); border-top:2px solid var(--band); background:var(--paper-2); max-width:860px; }
 .field-log form { display:grid; gap:16px; max-width:650px; }

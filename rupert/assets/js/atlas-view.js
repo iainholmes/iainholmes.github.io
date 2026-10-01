@@ -18,6 +18,14 @@ const perf = (window.__atlasPerf = { start: performance.now() });
 let map = null;
 let cameraScope = 'all';
 let selectedId = null;
+const workspace=document.querySelector('.atlas-body');
+const directory=document.querySelector('.atlas-register');
+const mapBox=document.querySelector('.atlas-map');
+function sizeWorkspace() { workspace.style.setProperty('--atlas-directory-height', Math.ceil(directory.getBoundingClientRect().height)+'px'); }
+sizeWorkspace();
+const directorySize=new ResizeObserver(sizeWorkspace); directorySize.observe(directory);
+const canvasSize=new ResizeObserver(()=>map?.resize()); canvasSize.observe(mapBox);
+function showWorkspace() { document.querySelector(compactDirectory.matches ? '.atlas-map' : '.atlas-register').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); }
 const locationControls = setupLocation({ getMap: () => map, features: data.features, onClear: () => select(null) });
 
 /* ---------- QA panel (?qa=1): what a tester on a phone needs to see ---------- */
@@ -84,7 +92,7 @@ document.querySelector('.frame-menu').addEventListener('click', e => {
     frameStatus.textContent=`Framed: ${b.textContent}. Every published place remains on the map and in the Directory.`;
     document.querySelectorAll('.frame-menu details').forEach(d=>{d.open=false;});
     document.querySelector('.frame-menu').open=false;
-    qaRender();
+    showWorkspace(); qaRender();
   }
 });
 // Keep one disclosure open at a time; Escape returns keyboard focus to its summary.
@@ -121,7 +129,7 @@ document.querySelector('.atlas-register').addEventListener('click', e => {
   const id = b.dataset.show;
   select(id);
   map?.focus(id);
-  if (phone.matches) document.querySelector('.atlas-map').scrollIntoView({ block: 'start', behavior: 'smooth' });
+  showWorkspace();
 });
 
 /* ---------- the map ---------- */
@@ -164,7 +172,7 @@ async function start() {
       controlsReady(false);
       card.hidden = true; locationControls.clear(); map.destroy(); map = null; qaRender();
     });
-    stateEl.dataset.state = 'ready'; locationControls.ready(); qaRender();
+    stateEl.dataset.state = 'ready'; map.resize(); locationControls.ready(); qaRender();
     msg.textContent = '';
     controlsReady(true); frameStatus.textContent='Camera framing only; every published place stays in the Directory and on the map.';
     const rb = document.getElementById('relief');
@@ -194,5 +202,5 @@ const headerAction = document.getElementById('atlas-header-action');
 headerAction.addEventListener('click', () => {
   const id = selectedId || data.features.find(f => f.properties.status === 'recommended')?.properties.id;
   if (id) { select(id); map?.focus(id); }
-  document.querySelector('.atlas-map').scrollIntoView({block:'start', behavior:'smooth'});
+  showWorkspace();
 });
