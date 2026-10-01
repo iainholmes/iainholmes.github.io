@@ -390,7 +390,7 @@ export function renderAtlas(model, ctx) {
       ${frameButton('all','All published places')}${frameButton('recommended','Recommended places')}${frameButton('withdrawn','Withdrawn history')}
       <details class="frame-regions"><summary>By region</summary>${regions.map((r,i)=>frameButton('region:'+i,r.label)).join('')}</details>
       <button type="button" id="recenter" disabled>Home view</button><button type="button" id="relief" aria-pressed="false" disabled>Relief</button><p class="frame-note" id="frame-status" role="status">Camera framing only; every published place stays in the Directory and on the map.</p></div></details>
-      <details class="location-settings"><summary>Home &amp; Driving Routes</summary>
+      <details class="location-settings"><summary>Home &amp; routes</summary>
     <p>Home stays in this browser. Map providers receive the visible map area; home is never published.</p>
     <form id="address-form"><label>Home address<input name="address" autocomplete="street-address" maxlength="240" required placeholder="Street, town, state, ZIP"></label><button>Locate with OpenStreetMap</button></form><p class="season-note">Locating sends the address to OpenStreetMap’s Nominatim service. Check the returned coordinates below before saving home. You can also enter coordinates directly.</p>
     <form id="location-form"><label>Latitude<input name="lat" type="number" step="any" min="-85" max="85" required></label><label>Longitude<input name="lng" type="number" step="any" min="-180" max="180" required></label><button>Save home</button><button type="button" id="forget-location">Forget home</button></form>
