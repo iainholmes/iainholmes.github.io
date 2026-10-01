@@ -7,19 +7,36 @@ const tools=document.createElement('nav');tools.className='pd-tools';tools.setAt
 const home=document.createElement('a');home.href='/personal-updates/';home.textContent='Titles';tools.append(home);
 function button(text,fn){const b=document.createElement('button');b.type='button';b.textContent=text;b.addEventListener('click',fn);tools.append(b);return b}
 const archive=publication?button('Index',()=>{const target=document.querySelector('#indexOpen,#open-archive,#archiveLink');if(target)target.click()}):null;
-let state=null, saved=null, pending=null, timer=null;
-const resume=button('Continue',()=>{if(!saved||!state)return;pending=saved;const hash=state.hash(saved.edition);if(location.hash!==hash)location.hash=hash;else restore()});resume.hidden=true;
-const prev=publication?button('←',()=>turn(-1)):null,next=publication?button('→',()=>turn(1)):null;
+let state=null, saved=null, pending=null, timer=null, engaged=false;
+const resume=document.createElement('aside');resume.className='pd-resume';resume.hidden=true;resume.setAttribute('aria-label','Saved progress');
+const resumeTitle=document.createElement('strong'),resumeContext=document.createElement('p'),resumeActions=document.createElement('div');
+function action(label,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',fn);resumeActions.append(b)}
+action('Resume',()=>{if(!saved||!state)return;engaged=true;pending=saved;resume.hidden=true;const hash=state.hash(saved.edition);if(location.hash!==hash)location.hash=hash;else restore()});
+action('Start from top',()=>{if(!state)return;engaged=true;const edition=saved?.edition||state.current;try{localStorage.removeItem(key())}catch{}saved=null;pending={edition,fromTop:true};resume.hidden=true;const hash=state.hash(edition);if(location.hash!==hash)location.hash=hash;else restore()});
+resume.append(resumeTitle,resumeContext,resumeActions);
+const prev=publication?button('‹ Prev',()=>turn(-1)):null,next=publication?button('Next ›',()=>turn(1)):null;
 if(prev)prev.setAttribute('aria-label','Previous edition');if(next)next.setAttribute('aria-label','Next edition');
 const share=publication?button('Share',async()=>{const url=new URL(location.href);url.hash=state?state.hash(state.current):location.hash;try{if(navigator.share){await navigator.share({title:document.title,url:url.href});return}if(navigator.clipboard){await navigator.clipboard.writeText(url.href);status.textContent='Link copied.'}else status.textContent='Copy the edition link from the address bar.'}catch(e){if(e.name!=='AbortError')status.textContent='Sharing unavailable. Copy the address bar link.'}}):null;
 const status=document.createElement('span');status.className='pd-status';status.setAttribute('role','status');tools.append(status);document.body.append(tools);
-function key(){return 'periodicals:reading:v1:'+path}
-function restore(){if(!pending)return;const p=pending;pending=null;requestAnimationFrame(()=>requestAnimationFrame(()=>{window.scrollTo(0,Math.max(0,Math.min(p.y,document.documentElement.scrollHeight-innerHeight)));resume.hidden=true}))}
-function turn(dir){if(!state)return;const i=state.dates.indexOf(state.current),date=state.dates[i+dir];if(date)location.hash=state.hash(date)}
-function save(){if(!state||location.hash==='#archive'||window.scrollY<120)return;write(key(),{edition:state.current,y:window.scrollY,at:Date.now()})}
-function update(e){clearTimeout(timer);state=e.detail;saved=read(key());resume.hidden=!(saved&&state.dates.includes(saved.edition)&&saved.y>=120);prev.disabled=state.dates.indexOf(state.current)<=0;next.disabled=state.dates.indexOf(state.current)>=state.dates.length-1;
+const workbook=/daily-econ/.test(path),ll=/weekly-economics/.test(path);
+function key(){return 'periodicals:reading:v2:'+path}
+function sections(){return [...document.querySelectorAll(ll?'.edition:not([hidden]) .entry,.edition:not([hidden]) .synthesis,.edition:not([hidden]) .knowledge':'.story')].filter(el=>el.id&&el.getClientRects().length)}
+function context(el){return el.querySelector('h2,h3')?.textContent.trim()||el.id}
+function restore(){if(!pending||!state)return;const p=pending;if(p.edition!==state.current)return;pending=null;requestAnimationFrame(()=>requestAnimationFrame(()=>{if(p.fromTop){if(workbook)state.start?.();else state.full?.();window.scrollTo({top:0,behavior:'instant'});resume.hidden=true;return}if(workbook){state.resume?.(p.question)}else{state.full?.();const el=document.getElementById(p.section);if(el){const top=el.getBoundingClientRect().top+scrollY;window.scrollTo({top:Math.max(0,top+Math.min(p.offset,Math.max(0,el.offsetHeight-120))-120),behavior:'instant'})}}resume.hidden=true}))}
+function turn(dir){if(!state)return;engaged=true;save();pending=null;resume.hidden=true;const i=state.dates.indexOf(state.current),date=state.dates[i+dir];if(date)location.hash=state.hash(date)}
+function save(){if(!state||pending||location.hash==='#archive'||document.querySelector('dialog[open]'))return;
+if(workbook){const p=state.progress;if(p&&(p.answered>0||p.question>0)&&!p.submitted&&p.answered<p.total){write(key(),{edition:state.current,question:p.question,label:'No. '+String(p.no).padStart(3,'0')+' · Question '+(p.question+1)+' of '+p.total,at:Date.now()})}else if(p&&(p.submitted||p.answered>=p.total)){try{localStorage.removeItem(key())}catch{}}return}
+if(ll&&document.body.classList.contains('glance'))return;
+const els=sections();if(!els.length)return;const y=scrollY+120,first=els[0].getBoundingClientRect().top+scrollY,end=els.at(-1).getBoundingClientRect().bottom+scrollY;
+if(y<first+80)return;engaged=true;resume.hidden=true;if(y>=end-200||scrollY+innerHeight>=document.documentElement.scrollHeight-120){try{localStorage.removeItem(key())}catch{}return}
+let el=els[0];for(const x of els){if(x.getBoundingClientRect().top+scrollY<=y)el=x;else break}
+const label=ll?(state.title+' · '+context(el)):(state.label+' · Story '+el.id.replace('story-',''));
+write(key(),{edition:state.current,section:el.id,offset:Math.max(0,y-(el.getBoundingClientRect().top+scrollY)),label,at:Date.now()})}
+function placeResume(){const anchor=document.querySelector(ll?'.edition:not([hidden]) .hero':workbook?'.ps-head':'.edition .front');if(anchor&&!resume.isConnected)anchor.after(resume);else if(anchor&&resume.previousElementSibling!==anchor)anchor.after(resume)}
+function update(e){clearTimeout(timer);const previous=state;state=e.detail;placeResume();if(!pending){saved=read(key());if(workbook&&!previous&&!saved)saved=state.recovery;resume.hidden=engaged||!(saved&&state.dates.includes(saved.edition)&&saved.label&&!(workbook&&(state.progress?.submitted||state.progress?.answered>=state.progress?.total)));resumeTitle.textContent=workbook?'Resume problem set':'Resume reading';resumeContext.textContent=saved?.label||''}
+prev.disabled=state.dates.indexOf(state.current)<=0;next.disabled=state.dates.indexOf(state.current)>=state.dates.length-1;
 const seenKey='periodicals:seen:v1:'+path,seen=[...new Set([...(read(seenKey)||[]),state.current])];document.querySelectorAll('.ix-item,.archive-entry,.pd-edition-entry').forEach(el=>{const date=el.dataset.date;let badge=el.querySelector('.pd-unread');if(date&&!seen.includes(date)){if(!badge){badge=document.createElement('small');badge.className='pd-unread';badge.textContent=' · Unread';(el.querySelector('.ix-title')||el).append(badge)}}else if(badge)badge.remove()});
-write(seenKey,[...new Set([...seen,state.current])].slice(-100));restore();images();}
+write(seenKey,seen.slice(-100));if(workbook&&previous&&previous.current===state.current&&JSON.stringify(previous.progress)!==JSON.stringify(state.progress)){engaged=true;save();resume.hidden=true}restore();images();}
 addEventListener('periodicals:edition',update);addEventListener('scroll',()=>{clearTimeout(timer);timer=setTimeout(save,400)},{passive:true});addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});
 // Swipes are limited to the bottom edition controls; the reading surface keeps native scrolling.
 let touch=null;tools.addEventListener('touchstart',e=>{touch=e.touches.length===1?{x:e.touches[0].clientX,y:e.touches[0].clientY,t:Date.now()}:null},{passive:true});tools.addEventListener('touchend',e=>{if(!touch||!state)return;const t=e.changedTouches[0],dx=t.clientX-touch.x,dy=t.clientY-touch.y;if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*2&&Date.now()-touch.t<700)turn(dx<0?1:-1);touch=null},{passive:true});tools.addEventListener('touchcancel',()=>touch=null,{passive:true});

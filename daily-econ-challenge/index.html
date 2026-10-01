@@ -354,7 +354,7 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Periodicals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" href="/personal-updates/mobile/mobile.css">
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20260930-final">
 </head>
 <body>
 <a class="skip" href="#bench">Skip to the problem set</a>
@@ -382,7 +382,7 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 <main id="app"></main>
 
 <footer class="foot">
-  <span><i style="font:italic 400 15px var(--math);color:var(--ink)">The Workbook</i> · economics &amp; econometrics · weekdays, 10:00 ET · <a href="../personal-updates/commonplace/">Commonplace</a> · <a href="../personal-updates/handbook/">Handbook</a></span>
+  <span><i style="font:italic 400 15px var(--math);color:var(--ink)">The Workbook</i> · economics &amp; econometrics · weekdays, 10:00 AM ET · <a href="../personal-updates/commonplace/">Commonplace</a> · <a href="../personal-updates/handbook/">Handbook</a></span>
   <a href="../personal-updates/">Periodicals</a>
 </footer>
 
@@ -989,7 +989,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   var ed = null, st = null;
 
   function load(date){try{var r=localStorage.getItem(KEY+date);return r?JSON.parse(r):null}catch(e){return null}}
-  function save(){try{localStorage.setItem(KEY+ed.date,JSON.stringify(st))}catch(e){}}
+  function save(){try{localStorage.setItem(KEY+ed.date,JSON.stringify(st))}catch(e){} announceProgress()}
   function fresh(){return {answers:{},current:0,submitted:false}}
   function pad(n){return String(n).padStart(3,'0')}
   function dateObj(d){return new Date(d+'T12:00:00')}
@@ -1025,7 +1025,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     var dow=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),mins=(+p.hour%24)*60+(+p.minute);
     for(var k=0;k<8;k++){var d=(dow+k)%7;if(d===0||d===6)continue;var until=k*1440+600-mins;if(until<=0)continue;
       if(until<=720){var h=Math.floor(until/60),m=until%60;return (h?h+' h ':'')+String(m).padStart(h?2:1,'0')+' min'}
-      return (k===1?'Tomorrow':DOWN[d])+', 10:00'}
+      return (k===1?'Tomorrow':DOWN[d])+', 10:00 AM'}
     return '';
   }
   function headHTML(){
@@ -1101,6 +1101,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
       '</tbody></table><p class="ledger-note">Records live in this browser.</p></article></div>';
   }
 
+  function announceProgress(){if(!ed||!st)return;window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,dates:EDITIONS.map(e=>e.date).sort(),hash:d=>'#'+d,recovery:EDITIONS.map(function(e){var p=load(e.date);return p&&!p.submitted&&(p.current>0||Object.values(p.answers||{}).some(a=>a.length))&&e.questions.filter(q=>(p.answers[q.id]||[]).length).length<e.questions.length?{edition:e.date,question:p.current||0,label:'No. '+pad(e.no)+' · Question '+((p.current||0)+1)+' of '+e.questions.length}:null}).find(Boolean),progress:{no:ed.no,question:st.current,answered:nAnswered(),total:ed.questions.length,submitted:st.submitted},start:function(){go(0,true)},resume:function(q){go(q,true);document.getElementById('bench')?.scrollIntoView({block:'start'})}}}))}
   function render(focusMain){
     document.getElementById('archiveLink').setAttribute('aria-current',location.hash==='#archive'?'page':'false');
     if(location.hash==='#archive'){
@@ -1111,7 +1112,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     }
     document.title='The Workbook No. '+pad(ed.no);document.body.classList.remove('ledger');
     app.innerHTML=headHTML()+'<div class="wrap bench" id="bench">'+sideHTML()+'<div class="main-col" id="mainCol">'+(st.submitted?resultsHTML():questionHTML())+'</div></div>';
-    window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,dates:EDITIONS.map(e=>e.date).sort(),hash:d=>'#'+d}}));
+    announceProgress();
     if(focusMain){var h=app.querySelector('.q-num,.score');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
   }
 
@@ -1188,6 +1189,6 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
 })();
 </script>
 <script src="../personal-updates/commonplace/commonplace.js"></script>
-<script src="/personal-updates/mobile/mobile.js"></script>
+<script src="/personal-updates/mobile/mobile.js?v=20260930-final"></script>
 </body>
 </html>

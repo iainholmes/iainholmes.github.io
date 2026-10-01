@@ -293,7 +293,7 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Periodicals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" href="/personal-updates/mobile/mobile.css">
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20260930-final">
 </head>
 <body>
 <a class="skip" href="#briefing">Skip to the briefing</a>
@@ -971,7 +971,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
           "title": "Raleigh sets October 6 hearing on a proposed data-center approvals pause",
           "art": "compute",
           "summary": [
-            "Raleigh has scheduled an October 6 public hearing, during the 7 p.m. council session, on a proposed six-month moratorium on major data-center development approvals. Council directed the city attorney to draft the ordinance on September 15; the public notice was published September 24.",
+            "Raleigh has scheduled an October 6 public hearing, during the 7 PM council session, on a proposed six-month moratorium on major data-center development approvals. Council directed the city attorney to draft the ordinance on September 15; the public notice was published September 24.",
             "The proposal would give the city time to study impacts and develop regulations. It has not yet been adopted. Raleigh’s FAQ says current state law does not allow its development ordinance simply to ban data centers."
           ],
           "why": "Local land-use rules are becoming part of AI infrastructure policy. A pause creates time to study effects, but also delays investment; the economic question is what information and enforceable conditions the additional time produces.",
@@ -1219,7 +1219,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
     const latest=ordered[ordered.length-1];
     if(ed!==latest)return `<span class="k">Latest</span><a class="v" href="#${esc(latest.date)}" style="text-decoration:none">N<sup>o</sup>. ${issueLabel(latest)} →</a>`;
     const h=+new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',hour12:false}).format(new Date())%24;
-    return `<span class="k">Next edition</span><span class="v">${h<8?'Today':'Tomorrow'}, 8:00</span>`;
+    return `<span class="k">Next edition</span><span class="v">${h<8?'Today':'Tomorrow'}, 8:00 AM</span>`;
   }
   function modeHTML(){const n=root.dataset.mode==='night';return `<div class="mode" role="group" aria-label="Edition"><button type="button" data-mode="day" aria-pressed="${!n}">Day</button><span class="sl" aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="${n}">Night</button></div>`}
   function render(ed,storyNo){
@@ -1238,7 +1238,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
       ${ed.signalTitle?`<section class="signal"><div><div class="k">Across today's five</div><h2>${esc(ed.signalTitle)}</h2></div><div>${(ed.signal||[]).map(p=>`<p>${esc(p)}</p>`).join('')}</div></section>`:''}
       <nav class="turn" aria-label="Adjacent editions">${prev?`<a class="prev" href="#${esc(prev.date)}"><small>← Nᵒ. ${issueLabel(prev)} · ${esc(prev.shortDate||prev.date)}</small><span>${esc(prev.issueTitle||prev.stories[0].title)}</span></a>`:'<span></span>'}<span class="mid">Field Brief</span>${next?`<a class="next" href="#${esc(next.date)}"><small>Nᵒ. ${issueLabel(next)} · ${esc(next.shortDate||next.date)} →</small><span>${esc(next.issueTitle||next.stories[0].title)}</span></a>`:'<span></span>'}</nav>
     </article>`;
-    window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,dates:ordered.map(e=>e.date),hash:d=>'#'+d}}));
+    window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,label:ed.shortDate||ed.displayDate,dates:ordered.map(e=>e.date),hash:d=>'#'+d}}));
     mount.querySelectorAll('.mode button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
     document.querySelectorAll('.ix-item').forEach(it=>it.dataset.current=String(it.dataset.date===ed.date));
     const target=storyNo&&document.getElementById('story-'+storyNo);
@@ -1297,6 +1297,6 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
 })();
 </script>
 <script src="../personal-updates/commonplace/commonplace.js"></script>
-<script src="/personal-updates/mobile/mobile.js"></script>
+<script src="/personal-updates/mobile/mobile.js?v=20260930-final"></script>
 </body>
 </html>
