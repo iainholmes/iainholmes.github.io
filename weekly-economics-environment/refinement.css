@@ -22,3 +22,9 @@ body.glance .perch,body.glance .heron-flyer{display:none!important}
 @media(max-width:600px){.closing-wordmark{padding:0 18px 16px}.footer nav{gap:8px 18px}.footer nav a{min-height:44px;display:inline-flex;align-items:center}.notebook-preview{grid-template-columns:1fr}.overview-item h3{font-size:21px}.hero h1{font-size:clamp(32px,8vw,48px)}}
 html[data-mode=night] #register-dialog .eyebrow,html[data-mode=night] #register-dialog .rg-count{color:#aebab0}
 html[data-mode=night] .field-register a:hover,html[data-mode=night] .field-register a:focus-visible{color:#f3f0e6!important}
+
+/* Keep the synthesis full width, with its heading above balanced reading columns. */
+.synthesis{display:block;column-count:2;column-gap:40px;padding:34px 40px 30px!important}
+.synthesis .eyebrow,.synthesis h2,.synthesis .closing{column-span:all}
+.synthesis h2{margin:10px 0 24px}.synthesis p{orphans:3;widows:3}
+@media(max-width:820px){.synthesis{column-count:1;padding:26px 20px!important}}
