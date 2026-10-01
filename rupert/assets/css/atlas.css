@@ -962,3 +962,6 @@ main.page-atlas { background: #1D2A3A; color: var(--paper); }
 @media (min-width: 1024px) {
   .atlas-map { height: min(var(--atlas-workspace-height),calc(100dvh - var(--bar-h) - var(--atlas-directory-height,152px) - 48px)); min-height: 280px; }
 }
+
+.ed-head.ed-withdrawn-head { display: block; }
+.ed-withdrawn-head h1 { margin-top: 16px; max-width: 26ch; }

@@ -248,7 +248,7 @@ export function crowdVisual(crowd) {
 /* ---------- full edition ---------- */
 
 export function renderEdition(ed, ctx, sibling) {
-  if (ed.status === 'withdrawn') return `<article class="edition wrap"><header class="ed-head"><p class="header-kicker">${SLOT_LABEL[ed.slot]} · Withdrawn</p><h1>${esc(titleCase(ed.flagship.title))}</h1></header><section class="withdrawal"><h2 class="sec-h">Recommendation Withdrawn</h2><p>${esc(ed.corrections.at(-1).note)}</p><p>Withdrawal recorded ${esc(ed.corrections.at(-1).at)}. The original recommendation is no longer active.</p>${(ed.flagship.sources||[]).filter(s=>s.kind==='park').map(s=>`<a href="${esc(s.url)}">${esc(s.label)}</a>`).join(' · ')}</section><p><a href="${ctx.base}">This Week</a> · <a href="${ctx.base}archive/">Archive</a></p></article>`;
+  if (ed.status === 'withdrawn') return `<article class="edition wrap"><header class="ed-head ed-withdrawn-head"><p class="header-kicker">${SLOT_LABEL[ed.slot]} · Withdrawn</p><h1>${esc(titleCase(ed.flagship.title))}</h1></header><section class="withdrawal"><h2 class="sec-h">Recommendation Withdrawn</h2><p>${esc(ed.corrections.at(-1).note)}</p><p>Withdrawal recorded ${esc(ed.corrections.at(-1).at)}. The original recommendation is no longer active.</p>${(ed.flagship.sources||[]).filter(s=>s.kind==='park').map(s=>`<a href="${esc(s.url)}">${esc(s.label)}</a>`).join(' · ')}</section><p><a href="${ctx.base}">This Week</a> · <a href="${ctx.base}archive/">Archive</a></p></article>`;
   const { base, photos, places } = ctx;
   const f = ed.flagship, s = f.snapshot || {};
   const panels = guidanceFor(f);
