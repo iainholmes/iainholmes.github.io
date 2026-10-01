@@ -1,5 +1,5 @@
 @font-face{font-family:Menor;src:url('fonts/Menor-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
-:root{--headline:Menor,'Source Serif 4',Georgia,serif}
+:root{--headline:'LM Roman Dunhill','Source Serif 4',Georgia,serif}
 .hero h1,.overview-item h3,.entry h2{font-family:var(--headline);font-weight:400;font-synthesis:none;letter-spacing:0;line-height:1.14}
 .hero h1 em{font-style:normal}.overview-item h3{font-size:23px;line-height:1.2}.entry h2{line-height:1.17}
 .closing-wordmark{max-width:1320px;margin:30px auto 0;padding:0 44px 18px;font:italic 400 20px/1 var(--editorial-title);color:var(--ink);letter-spacing:0}
@@ -31,7 +31,7 @@ html[data-mode=night] .field-register a:hover,html[data-mode=night] .field-regis
 
 @font-face{font-family:'LM Roman Dunhill';src:url('fonts/LMRomanDunhill-Regular.otf') format('opentype');font-style:normal;font-weight:400;font-display:swap}
 @font-face{font-family:'LM Roman Dunhill';src:url('fonts/LMRomanDunhill-Oblique.otf') format('opentype');font-style:oblique;font-weight:400;font-display:swap}
-.overview-item h3,.entry h2{font-family:'LM Roman Dunhill','Source Serif 4',Georgia,serif;font-weight:400;font-style:normal;font-synthesis:none;text-transform:none;line-height:1.2}
+.hero h1,.overview-item h3,.entry h2{font-family:'LM Roman Dunhill','Source Serif 4',Georgia,serif;font-weight:400;font-style:normal;font-synthesis:none;text-transform:none;line-height:1.2}
 html{scroll-padding-top:var(--ll-anchor-top,64px)}
 .entry{scroll-margin-top:0}
 
@@ -55,3 +55,5 @@ html[data-mode=night] .register a:hover,html[data-mode=night] .register a:focus-
   .heron-perch.vacant{grid-template-columns:1fr}
   .heron-perch.vacant svg{display:none!important}
 }
+
+.hero h1 em{font-style:normal;font-family:inherit;font-synthesis:none}

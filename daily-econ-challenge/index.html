@@ -388,6 +388,10 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 
 <!--
 EDITION MAINTENANCE — read before every update.
+Write discipline: read latest master; isolate the appended edition; validate sequential no/date and
+question/answer content; freeze its mark with scripts/prepare_periodicals.cjs; commit intended files;
+verify the remote master payload and live page; only then advance publisher state or backup. On any
+write failure preserve the draft without claiming publication. See personal-updates/PUBLISHING.md.
 Publication name: The Workbook (formerly Daily Econ Challenge / Ceteris Paribus / Daily Problem Set / The Workbook; path daily-econ-challenge/
 unchanged; localStorage key dec:v1:<date> unchanged). Archive view (#archive) is titled "The Ledger".
 Reading mode: shared Periodicals key sessionStorage periodicals:session-mode (day|night), applied in <head> and
@@ -972,6 +976,189 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           ],
           "explanation": "<p>Persistent pre-treatment earnings differences indicate that participants and controls differ along dimensions related to future earnings. Matching only on demographics leaves important selection concerns. More observations reduce sampling noise, not selection bias, and the bias direction is not determined here.</p>",
           "refs": "Original exercise; selection-on-observables program-evaluation framework."
+        }
+      ]
+    },
+    {
+      "no": 4,
+      "date": "2026-10-01",
+      "minutes": 20,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Statistics & inference",
+          "kind": "multi",
+          "stem": "<p>A tutoring intervention is randomly assigned to 60 schools, with 40 pupils observed per school. Outcomes share an unobserved school shock. You regress pupil test scores on the school treatment indicator. Which statements are correct?</p>",
+          "options": [
+            "Clustering by school allows arbitrary residual dependence among pupils within a school.",
+            "With 2,400 pupils, heteroskedasticity-robust standard errors necessarily provide valid inference.",
+            "Adding school fixed effects identifies the treatment coefficient more precisely in this one-period design.",
+            "The assignment design supplies 60 independently randomized units, not 2,400; inference should respect that level."
+          ],
+          "correct": [
+            0,
+            3
+          ],
+          "concepts": [
+            "Treatment-level clustering",
+            "Cluster-randomized assignment"
+          ],
+          "explanation": "<p>(A) and (D) are correct. Treatment varies across schools, and the shared school shock makes within-school outcomes dependent. A school-clustered covariance estimator aggregates score contributions at the assignment level. Under equal cluster size <i>m</i> and intraclass correlation <i>ρ</i>, the illustrative variance inflation is 1 + (<i>m</i> − 1)<i>ρ</i>: at <i>m</i> = 40 and <i>ρ</i> = 0.10 it is 4.9, giving an SE multiplier of approximately 2.21.</p><p>(B) mistakes pupil count for independent assignment units. (C) fails because the school treatment indicator is constant within school and therefore collinear with school fixed effects. With 60 clusters, finite-sample corrections or inference based on the actual randomization remain useful; conventional clustered asymptotics are not guaranteed by the raw pupil count.</p>",
+          "refs": "Abadie, Athey, Imbens & Wooldridge, When Should You Adjust Standard Errors for Clustering? https://www.nber.org/papers/w24003; original numerical exercise."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A competitive market has marginal private benefit MPB(<i>q</i>) = 100 − <i>q</i>, marginal cost MC(<i>q</i>) = 20 + <i>q</i>, and constant marginal external benefit MEB = 20. There are no other distortions; a per-unit consumption subsidy can be financed without an additional welfare cost. Which quantity and subsidy implement the efficient allocation?</p>",
+          "options": [
+            "<i>q</i> = 40, subsidy = 0.",
+            "<i>q</i> = 50, subsidy = 20.",
+            "<i>q</i> = 60, subsidy = 20.",
+            "<i>q</i> = 50, tax = 20."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Positive externalities",
+            "Pigouvian subsidy"
+          ],
+          "explanation": "<p>Private equilibrium solves 100 − <i>q</i> = 20 + <i>q</i>, so <i>q</i><sub>p</sub> = 40. Social marginal benefit is 120 − <i>q</i>; equating it to MC gives 2<i>q</i> = 100 and <i>q</i>* = 50. A subsidy of 20 internalizes MEB: buyers pay the producer price less 20, so MPB + 20 = MC. At <i>q</i> = 50, producer price is 70 and buyer price is 50.</p><p>(A) leaves the spillover unpriced. (C) increases quantity by the full subsidy despite both curves having nonzero slopes. (D) discourages an activity with a positive externality. The welfare gain is the triangle ½ × (50 − 40) × 20 = 100; subsidy spending is a transfer under the stated financing assumption, not itself a net social loss.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "single",
+          "stem": "<p>In a continuous-time Ramsey model with CRRA utility, no population or technology growth, and an interior optimum, consumption obeys <i>ċ/c</i> = [<i>f</i>′(<i>k</i>) − <i>δ</i> − <i>ρ</i>]/<i>σ</i>. At the current capital stock, <i>f</i>′(<i>k</i>) = 0.08, depreciation <i>δ</i> = 0.03, discount rate <i>ρ</i> = 0.02, and curvature <i>σ</i> = 2. What follows locally?</p>",
+          "options": [
+            "Consumption grows at 1.5% per year; this alone does not determine the sign of capital accumulation.",
+            "Consumption grows at 3% per year and capital must increase.",
+            "Consumption falls at 1.5% per year because depreciation exceeds impatience.",
+            "Consumption is stationary because the model is on its saddle path."
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Ramsey dynamics",
+            "Euler equation",
+            "Capital accumulation"
+          ],
+          "explanation": "<p>The net marginal return is 0.08 − 0.03 = 0.05. Subtract impatience and divide by curvature: (0.05 − 0.02)/2 = 0.015. Thus consumption grows locally at 1.5%. Capital follows <i>k̇</i> = <i>f</i>(<i>k</i>) − <i>c</i> − <i>δk</i>, whose sign also requires output and consumption levels.</p><p>(B) omits division by <i>σ</i> and infers capital growth without the resource constraint. (C) compares the wrong quantities: the Euler equation compares the net return with impatience. (D) confuses a saddle path, which generally includes transition dynamics, with the steady state. Stationary consumption requires <i>f</i>′(<i>k</i>*) = <i>δ</i> + <i>ρ</i> = 0.05.</p>",
+          "refs": "MIT OpenCourseWare, 14.05, The Neoclassical Growth Model (Ramsey lecture notes); original numerical exercise."
+        },
+        {
+          "id": "q4",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>A randomized offer <i>Z</i> increases training participation <i>D</i> from 0.20 to 0.60 and average annual earnings from $30,000 to $32,000. Assume random assignment, exclusion, monotonicity, no interference, and a nonzero first stage. Which statements are correct?</p>",
+          "options": [
+            "The intent-to-treat effect of the offer on earnings is $2,000.",
+            "The Wald estimate is a $5,000 effect for compliers.",
+            "The Wald estimate necessarily equals the average effect for everyone who participates.",
+            "A direct effect of the offer on earnings outside training would threaten the exclusion restriction."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Noncompliance",
+            "Complier effect",
+            "Exclusion restriction"
+          ],
+          "explanation": "<p>(A) is the reduced form: $32,000 − $30,000 = $2,000. The first stage is 0.60 − 0.20 = 0.40. Dividing gives $2,000/0.40 = $5,000. Under the stated assumptions, this is LATE for people induced to participate by the offer, so (B) is correct.</p><p>(C) is wrong because participants can include always-takers, whose effects need not equal compliers’ effects. The identifying assumptions do not make effects homogeneous. (D) is correct: an offer that independently changes job search or provides other services can affect earnings without participation, invalidating exclusion. Comparing actual participants with nonparticipants also loses the protection of random assignment.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q5",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>A competitive risk-neutral firm can bank unused emission permits from today to next year, but cannot borrow future permits. Permits do not expire, the bank is strictly positive, there is no uncertainty, and there are no holding costs or transaction costs. The annual interest rate is 5%. If today’s permit price is $40, what next-year price is consistent with an interior banking decision?</p>",
+          "options": [
+            "$38.10.",
+            "$40.",
+            "$42.",
+            "$45, because banking always causes scarcity."
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Permit banking",
+            "Intertemporal arbitrage"
+          ],
+          "explanation": "<p>Keeping one permit sacrifices $40 today and delivers one permit next year. An interior banking choice equalizes discounted values: <i>p</i><sub>t</sub> = <i>p</i><sub>t+1</sub>/(1 + <i>r</i>). Hence <i>p</i><sub>t+1</sub> = 1.05 × $40 = $42.</p><p>(A) discounts in the wrong direction. (B) ignores the opportunity cost of tying up capital. (D) invents a price wedge not supported by the assumptions. If the bank were zero, the no-borrowing constraint could bind and the equality need not hold. Uncertainty, invalidation risk, or storage costs would also change this simple condition.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q6",
+          "field": "Research design",
+          "kind": "multi",
+          "stem": "<p>In a completely randomized experiment, you pre-specify an OLS adjustment using a fixed number of baseline covariates, centered at their full-sample means, plus interactions of every covariate with treatment. Assume regularity and treatment shares bounded away from zero and one. Which statements are correct?</p>",
+          "options": [
+            "Baseline covariates can improve precision without supplying the identification that randomization already provides.",
+            "The fully interacted adjustment is guaranteed to remove all finite-sample bias.",
+            "Under the stated large-sample conditions, fully interacted adjustment is asymptotically no less efficient than the unadjusted difference in means.",
+            "Replacing baseline covariates with treatment-affected outcomes preserves the same randomization-based justification."
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "concepts": [
+            "Experimental covariate adjustment",
+            "Treatment–covariate interactions",
+            "Pre-treatment covariates"
+          ],
+          "explanation": "<p>(A) is correct: randomization identifies the average treatment effect; adjustment uses predictive baseline information to reduce noise. Centering makes the treatment coefficient compare fitted outcomes at the full-sample covariate means. Allowing separate slopes by arm protects against misspecification of a common outcome–covariate relationship. Under fixed dimension and standard regularity, (C) is the asymptotic efficiency result; heteroskedasticity-robust inference is appropriate.</p><p>(B) overstates a large-sample result: regression adjustment can have small finite-sample bias and need not improve precision in every realized sample. (D) changes the estimand and can introduce post-treatment bias. Treatment-affected outcomes are not baseline precision variables.</p>",
+          "refs": "Lin (2013), Agnostic notes on regression adjustments to experimental data, Annals of Applied Statistics; https://arxiv.org/abs/1208.2301."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A forest owner repeats identical rotations forever. Net harvest revenue at stand age <i>T</i> is <i>R</i>(<i>T</i>); regeneration costs <i>C</i> are paid at the start of every rotation. With constant discount rate <i>r</i>, bare-land value is <i>V</i>(<i>T</i>) = [<i>R</i>(<i>T</i>)e<sup>−rT</sup> − <i>C</i>]/[1 − e<sup>−rT</sup>]. At a positive interior optimum, which condition is correct?</p>",
+          "options": [
+            "<i>R</i>′(<i>T</i>) = <i>rR</i>(<i>T</i>) only.",
+            "<i>R</i>′(<i>T</i>) = <i>r</i>[<i>R</i>(<i>T</i>) + <i>V</i>(<i>T</i>)].",
+            "<i>R</i>′(<i>T</i>) = <i>rC</i> only.",
+            "Harvest when annual physical growth is maximal, regardless of prices or land value."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Faustmann rotations",
+            "Land opportunity cost"
+          ],
+          "explanation": "<p>Let <i>x</i> = e<sup>−rT</sup>. The quotient rule gives <i>V</i>′(<i>T</i>) = <i>x</i>{[<i>R</i>′ − <i>rR</i>](1 − <i>x</i>) − <i>r</i>(<i>Rx</i> − <i>C</i>)}/(1 − <i>x</i>)². Setting the numerator to zero and using <i>V</i> = (<i>Rx</i> − <i>C</i>)/(1 − <i>x</i>) yields <i>R</i>′ = <i>r</i>(<i>R</i> + <i>V</i>).</p><p>Waiting one more instant earns additional timber value but delays both harvest receipts and the opportunity to begin future rotations. (A) omits that land opportunity cost and corresponds to a single-rotation comparison. (C) ignores timber and future land returns. (D) substitutes a biological criterion for an economic one. With positive <i>V</i> and usual declining marginal growth conditions, the land term tends to shorten the optimal rotation relative to the single-rotation optimum.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
+        },
+        {
+          "id": "q8",
+          "field": "Econometrics",
+          "kind": "single",
+          "stem": "<p>A fish advisory affects visitation at treated river access sites. Visitors displaced from treated sites switch to nearby untreated sites. In an otherwise valid before–after comparison, the direct change at treated sites is −20 visits per day and the spillover change at control sites is +8. Baseline trends would have been identical without the advisory. What does the simple difference-in-differences estimate capture?</p>",
+          "options": [
+            "−12 visits per day, the treated loss net of displacement.",
+            "−20 visits per day, the direct effect, because controls are formally untreated.",
+            "−28 visits per day, the direct effect minus the control spillover.",
+            "+8 visits per day, the average effect on all sites."
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Spatial spillovers",
+            "Interference",
+            "Contaminated controls"
+          ],
+          "explanation": "<p>DiD subtracts the control change from the treated change: −20 − (+8) = −28. It therefore overstates the magnitude of the direct treated-site loss of −20 by 8. Formal untreated status does not imply an unaffected outcome; visitor substitution violates the no-interference comparison.</p><p>(A) adds the spillover rather than subtracting the control change. (B) assumes away the mechanism given in the question. (D) is the control spillover alone. The estimate is neither a system-wide visitation effect nor a welfare estimate. A stronger design would define exposure using river access and substitution patterns, examine more distant controls, and estimate direct and displaced visitation separately; distance alone does not establish an uncontaminated control.</p>",
+          "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         }
       ]
     }

@@ -328,6 +328,25 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
 
 <main class="main" id="briefing"><div id="editionMount"></div></main>
 
+<!-- Editorial memory: Before selecting each new five-story edition, read up to the previous seven
+published editions (fewer is valid). Use personal-updates/editorial-memory.js to profile candidates
+and penalize repeats in entity, dispute, technology, industry, geography, regulatory mechanism,
+and underlying editorial question. Supply explicit editorial tags/domain when heuristics are too
+coarse. Normally choose at most two stories per major domain and at least three materially different
+domains; consequence remains the priority, and exceptional days may override with a recorded reason.
+A material-development override needs evidenceUrl, reason, previousStatus and newStatus; a renamed
+headline or incremental update is insufficient. Do not force a synthesis across heterogeneous stories.
+Broaden technology to cyber/chips/telecom/biotech/competition/productivity; environment to water,
+agriculture/conservation/transport/insurance/resilience/commodities/environmental health; U.S. policy
+to monetary/fiscal/labor/housing/health/education/trade/public finance/infrastructure; Triangle coverage
+to universities/research/housing/transit/development/companies/environment/health/labor/government.
+Persist an editorialSelection record on NEW editions only: historyDates, selected candidate repeat
+assessments, any evidence-backed overrides and any deliberate diversity exception. Never retrofit old issues.
+The helper scores candidates for editorial judgment; it does not manufacture or automatically select news.
+Publication: read latest master, isolate the append, verify five stories/numbering, freeze the new
+issue mark with scripts/prepare_periodicals.cjs, commit intended files, refetch and verify master,
+verify the live page, then advance backup/state. See personal-updates/PUBLISHING.md.
+-->
 <!-- Edition maintenance: Fetch the current canonical GitHub file before every update. Append one
 object to "editions" in #briefing-data; never delete, rewrite or renumber editions. Issue numbers
 are derived from date order (skipped days do not skip numbers). Every story needs number, title,
