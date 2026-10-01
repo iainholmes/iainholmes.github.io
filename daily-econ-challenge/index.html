@@ -382,7 +382,7 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 <main id="app"></main>
 
 <footer class="foot">
-  <span><i style="font:italic 400 15px var(--math);color:var(--ink)">The Workbook</i> · economics &amp; econometrics · weekdays, 10:00 AM ET · <a href="../personal-updates/commonplace/">Commonplace</a> · <a href="../personal-updates/handbook/">Handbook</a></span>
+  <span><i style="font:italic 400 15px var(--math);color:var(--ink)">The Workbook</i> · Economics &amp; Econometrics · weekdays, 10:00 AM ET · <a href="../personal-updates/commonplace/">Commonplace</a> · <a href="../personal-updates/handbook/">Handbook</a></span>
   <a href="../personal-updates/">Periodicals</a>
 </footer>
 
@@ -393,7 +393,7 @@ unchanged; localStorage key dec:v1:<date> unchanged). Archive view (#archive) is
 Reading mode: shared Periodicals key sessionStorage periodicals:session-mode (day|night), applied in <head> and
 shared across titles in this tab for the session; night is a dark drafting surface defined by the html[data-mode="night"] variables.
 Issue folio grammar: superscript "No. 001" on the masthead (.fo: STIX italic "No." + JetBrains Mono
-three-digit numerals); same grammar on the results heading. Subline: "Economics & econometrics · weekdays".
+three-digit numerals); same grammar on the results heading. Subline: "Economics & Econometrics · weekdays".
 Shelf lists Periodicals, Field Brief, Loblolly & Logit, The Workbook + Handbook utility link.
 Canonical file: daily-econ-challenge/index.html in iainholmes/iainholmes.github.io. Fetch the
 current GitHub version immediately before editing; preserve unfamiliar changes (another
@@ -1031,7 +1031,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   function headHTML(){
     var latest=EDITIONS[0]===ed,n=ed.questions.length,sc=scoreOf(ed,st);
     var rec=st.submitted?sc+' / '+n+' '+recordHTML(ed,st):nAnswered()?nAnswered()+' of '+n+' answered':'Not started';
-    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><h1 id="psTitle">The <i>Workbook</i></h1><div class="ps-no"><b class="ps-folio"><span class="no">N<sup>o</sup>.</span>'+pad(ed.no)+'</b><span>'+(latest?'Today’s set':'From the ledger')+'</span><em class="sub">Economics &amp; econometrics · weekdays</em></div></div>'+
+    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><h1 id="psTitle">The <i>Workbook</i></h1><div class="ps-no"><b class="ps-folio"><span class="no">N<sup>o</sup>.</span>'+pad(ed.no)+'</b><span>'+(latest?'Today’s set':'From the ledger')+'</span><em class="sub">Economics &amp; Econometrics · weekdays</em></div></div>'+
       '<dl class="ps-facts"><div><dt>Set</dt><dd><time datetime="'+ed.date+'">'+longDate(ed.date)+'</time></dd></div><div><dt>Questions</dt><dd>'+n+' · about '+ed.minutes+' min</dd></div><div><dt>Your record</dt><dd id="statusFact">'+rec+'</dd></div><div><dt>Next set</dt><dd id="nextSet">'+nextSet()+'</dd></div></dl></section>';
   }
 
