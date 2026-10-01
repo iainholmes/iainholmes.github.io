@@ -515,7 +515,7 @@ h4 { font-family: var(--f-editorial); font-weight: 400; font-synthesis: none; }
   .ed-body { grid-template-columns: minmax(0,2fr) minmax(300px,1fr); }
   .ed-sheet { top: calc(var(--bar-h) + 20px); align-self: start; }
   .arch-week { grid-template-columns: 180px minmax(0,1fr); }
-  .atlas-body { gap: 20px; padding-bottom: 12px; grid-template-columns: minmax(0,3fr) minmax(0,1fr); align-items: start; --atlas-workspace-height: clamp(580px,72dvh,860px); }
+  .atlas-body { gap: 20px; padding-bottom: 12px; grid-template-columns: minmax(0,1fr); align-items: start; --atlas-workspace-height: clamp(580px,72dvh,860px); }
   .atlas-map { height: var(--atlas-workspace-height); min-height: 580px; max-height: 860px; position: sticky; top: calc(var(--bar-h) + 16px); margin-top: 0; }
   .ed-head { grid-template-columns: minmax(0,2.2fr) minmax(240px,1fr); }
   .weekband .head-note { display: block; grid-column: 2; grid-row: 1 / 3; }
@@ -528,8 +528,8 @@ h4 { font-family: var(--f-editorial); font-weight: 400; font-synthesis: none; }
   .atlas .head-note p { font-size: 22px; margin-top: 4px; }
   .atlas .head-note .lbl { font-size: 18px; }
   .atlas .header-kicker { font-size: 14px; }
-  .atlas-register { height: var(--atlas-workspace-height); min-height: 580px; max-height: 860px; position: sticky; top: calc(var(--bar-h) + 16px); margin-top: 0; overflow: auto; overscroll-behavior: contain; padding: 0 8px 0 0; }
-  .reg-head { position: sticky; top: 0; z-index: 3; background: var(--paper); padding-block: 8px; }
+  .atlas-register { padding: 0; }
+  .reg-head { background: var(--paper); padding-block: 8px; }
   .atlas + * { margin-top: 0; }
   body:has(.atlas) .utility-footer { margin-top: 0; }
 }
@@ -882,3 +882,65 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 
 .archive-card .p-day, .archive-card .arch-meta, .archive-count, .archive-card.is-missing { font-size: var(--type-meta); }
 .archive input, .archive select { font-size: 16px; }
+
+/* Final Atlas addendum: banner → compact Directory/control surface → full-width map.
+   Retain the previous desktop map height; menus and history sit outside the canvas. */
+.atlas-body { grid-template-columns: minmax(0,1fr); gap: 16px; }
+.atlas-register { padding: 0; min-height: 0; height: auto; max-height: none; overflow: visible; position: relative; z-index: 4; }
+.reg-head { align-items: center; padding: 0 0 8px; gap: 8px 16px; }
+.reg-heading { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.directory-note { margin: 0; font-size: 14px; }
+.directory-controls { display: flex; gap: 8px; align-items: start; }
+.directory-controls > details { position: relative; margin: 0; padding: 0; border: 0; background: none; }
+.directory-controls > details > summary, .directory-catalog > summary { min-height: 44px; padding: 10px 12px; border: 1px solid var(--rule-strong); font: 400 16px/1.4 var(--f-text); color: var(--text); cursor: pointer; }
+.frame-options, .location-settings[open] > :not(summary) { background: var(--paper); }
+.frame-options { position: absolute; z-index: 10; top: calc(100% + 8px); right: 0; width: 300px; max-width: calc(100vw - 48px); border: 1px solid var(--rule-strong); box-shadow: 0 8px 20px #1d2a3a20; padding: 10px; }
+.frame-options button { display: block; width: 100%; min-height: 44px; text-align: left; padding: 8px 10px; background: none; color: var(--text); border: 0; font: 400 16px/1.4 var(--f-text); cursor: pointer; }
+.frame-options button:hover:enabled { background: var(--paper-2); }
+.frame-options button:disabled { color: var(--text-2); cursor: default; }
+.frame-regions { border-block: 1px solid var(--rule); padding-block: 4px; }
+.frame-regions > summary { padding: 10px; min-height: 44px; cursor: pointer; font-size: 16px; }
+.frame-regions button { padding-left: 24px; }
+.frame-note { margin: 8px 10px; font-size: 14px; line-height: 1.4; }
+.directory-controls .location-settings[open] { position: absolute; right: 0; top: 0; width: min(640px,100%); z-index: 12; border: 1px solid var(--rule-strong); padding: 0 16px 12px; background: var(--paper); box-shadow: 0 8px 20px #1d2a3a20; }
+.directory-controls .location-settings[open] > summary { border: 0; padding-inline: 0; }
+.directory-catalog > summary, .directory-picker { display: none; }
+.directory-list { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 20px; }
+.reg-group, .reg { display: contents; }
+.reg-row { padding: 4px 0 8px; grid-template-columns: 18px minmax(0,1fr); gap: 4px 8px; border-bottom: 1px solid var(--rule); }
+.reg-row .mk { margin-top: 13px; }
+.reg-row h4 { font-size: 20px; line-height: 1.3; }
+.reg-select { padding: 4px 0; min-height: 44px; font: inherit; border: 0; background: none; color: inherit; cursor: pointer; text-align: left; }
+.reg-select:hover { color: var(--accent); }
+.reg-brief { display: flex; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; font-size: 14px; line-height: 1.5; }
+.reg-word { font-weight: 400; }
+.reg-latest { font-size: 16px; }
+.reg-details { position: relative; margin-left: auto; }
+.reg-details > summary { cursor: pointer; min-height: 28px; }
+.reg-dossier { position: absolute; z-index: 8; top: calc(100% + 8px); right: 0; width: 320px; max-width: calc(100vw - 64px); border: 1px solid var(--rule-strong); background: var(--paper); box-shadow: 0 8px 20px #1d2a3a20; padding: 16px; }
+.reg-row.is-selected { padding-left: 8px; margin-left: 0; }
+.reg-row[data-status="withdrawn"] .reg-word { color: #843d32; }
+.reg-details[open] > summary { color: var(--accent); }
+@media (max-width: 1023.98px) {
+  .atlas-register { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px; }
+  .reg-head { grid-column: 1 / -1; }
+  .reg-heading { display: block; }
+  .directory-note { margin-top: 4px; }
+  select.directory-picker { display: block; width: 100%; min-height: 44px; font: 400 16px/1.4 var(--f-text); }
+  .directory-catalog > summary { display: block; }
+  .directory-catalog[open] { grid-column: 1 / -1; }
+  .directory-list { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px 20px; }
+  .directory-catalog[open] > summary { margin-bottom: 8px; }
+  .reg-dossier { position: static; width: auto; box-shadow: none; padding: 12px 0 0; border: 0; }
+  .reg-details[open] { flex-basis: 100%; }
+}
+@media (max-width: 599.98px) {
+  .reg-head { display: grid; grid-template-columns: minmax(0,1fr); }
+  .directory-controls > details { flex: 1; }
+  .directory-controls > details > summary { font-size: 16px; padding-inline: 8px; }
+  .frame-options { left: 0; right: auto; width: 290px; }
+  .directory-list { grid-template-columns: minmax(0,1fr); }
+  .reg-row h4 { font-size: 20px; }
+  .directory-catalog > summary { font-size: 14px; padding-inline: 8px; }
+}
+@media (min-width: 1024px) { .directory-catalog:not([open]) > summary { display: block; } }

@@ -1,6 +1,7 @@
 import { setupLocation } from './location-view.js';
-// Atlas page behaviour. The directory is complete without this file; this adds filters, the map, and
+// Atlas page behaviour. The directory is complete without this file; this adds camera framing, the map, and
 // selection kept in step between the two. The map is reached only through map/maplibre-provider.js.
+import { frameFeatures, frameMap } from './core/framing.js';
 import { createMap } from './map/maplibre-provider.js';
 
 const base = document.body.dataset.base || '';
@@ -15,7 +16,7 @@ const test = params.get('maptest'); // notiles | nowebgl | offline | nosize : fa
 const perf = (window.__atlasPerf = { start: performance.now() });
 
 let map = null;
-let filter = 'all';
+let cameraScope = 'all';
 let selectedId = null;
 const locationControls = setupLocation({ getMap: () => map, features: data.features, onClear: () => select(null) });
 
@@ -24,6 +25,7 @@ const locationControls = setupLocation({ getMap: () => map, features: data.featu
 // the screen (sizes, WebGL, sources, rendered features). Tap the panel to shrink or expand it.
 const qa = { on: params.get('qa') === '1', last: '—', diag: null };
 let qaEl = null;
+function geometry(selector) { const r=document.querySelector(selector).getBoundingClientRect();return `${Math.round(r.width)}×${Math.round(r.height)} at ${Math.round(r.x)},${Math.round(r.y)}`; }
 function qaRender() {
   if (!qa.on) return;
   if (!qaEl) {
@@ -36,9 +38,12 @@ function qaRender() {
   const d = map?.diagnostics?.() || qa.diag;
   const lines = [
     `map: ${st}${perf.failed ? ' (' + perf.failed + ')' : ''}${perf.ready ? ' · drawn ' + perf.ready + ' ms' : ''}`,
-    `relief: ${rel ?? 'n/a'} · filter: ${filter} · theme: ${d?.theme ?? pageTheme()}`,
+    `relief: ${rel ?? 'n/a'} · camera: ${cameraScope} · markers: ${data.features.length} · theme: ${d?.theme ?? pageTheme()}`,
     `viewport: ${innerWidth}×${innerHeight} @${devicePixelRatio}x · touch: ${matchMedia('(pointer: coarse)').matches}`,
     `last tap: ${qa.last}`,
+    `Directory: ${geometry('.atlas-register')} · map: ${geometry('.atlas-map')}`,
+    `Directory above map: ${document.querySelector('.atlas-register').getBoundingClientRect().bottom <= document.querySelector('.atlas-map').getBoundingClientRect().top}`,
+
   ];
   if (d) lines.push(
     `— map diagnostics —`,
@@ -56,40 +61,55 @@ function qaRender() {
 if (qa.on) { window.addEventListener('resize', () => qaRender()); setInterval(qaRender, 1000); }
 function pageTheme() { return 'light'; }
 
-/* ---------- register: filters and selection ---------- */
-const filterBox = document.querySelector('.reg-filter');
-filterBox.hidden = false;
-filterBox.addEventListener('click', e => {
-  const b = e.target.closest('button[data-filter]'); if (!b || b.disabled) return;
-  filter = b.dataset.filter;
-  filterBox.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-  applyFilter();
-});
-function visible(f) { return filter === 'all' || f.properties.status === filter; }
-function applyFilter() {
-  rows.forEach(r => { r.hidden = !(filter === 'all' || r.dataset.status === filter); });
-  document.querySelectorAll('.reg-group').forEach(g => { g.hidden = !g.querySelector('.reg-row:not([hidden])'); });
-  if (selectedId && !data.features.filter(visible).some(f => f.properties.id === selectedId)) select(null);
-  map?.setMarkers(data.features.filter(visible));
-  qaRender();
+/* ---------- Directory: selection; camera scopes are transient, never filters ---------- */
+const catalog = document.querySelector('.directory-catalog');
+const picker = document.getElementById('place-picker');
+const compactDirectory = matchMedia('(max-width: 1023.98px)');
+function directoryTreatment() { catalog.open = !compactDirectory.matches; }
+directoryTreatment(); compactDirectory.addEventListener('change', directoryTreatment);
+picker.addEventListener('change', () => { select(picker.value || null); if(picker.value) map?.focus(picker.value); });
+const frameStatus = document.getElementById('frame-status');
+const frameButtons = [...document.querySelectorAll('[data-frame]')];
+function controlsReady(ready) {
+  frameButtons.forEach(b => { b.disabled = !ready || !frameFeatures(data.features, data.regions, b.dataset.frame).length; });
+  document.getElementById('relief').disabled = !ready;
+  document.getElementById('recenter').disabled = !ready;
+  if(!ready) frameStatus.textContent='Camera controls become available when the map loads. Published history remains available below.';
 }
+controlsReady(false);
+document.querySelector('.frame-menu').addEventListener('click', e => {
+  const b=e.target.closest('[data-frame]'); if(!b || b.disabled) return;
+  if(frameMap(map, data.features, data.regions, b.dataset.frame)) {
+    cameraScope=b.dataset.frame;
+    frameStatus.textContent=`Framed: ${b.textContent}. Every published place remains on the map and in the Directory.`;
+    document.querySelectorAll('.frame-menu details').forEach(d=>{d.open=false;});
+    document.querySelector('.frame-menu').open=false;
+    qaRender();
+  }
+});
+// Keep one disclosure open at a time; Escape returns keyboard focus to its summary.
+const disclosures=[...document.querySelectorAll('.directory-controls > details, .reg-details')];
+disclosures.forEach(d=>{
+  d.addEventListener('toggle',()=>{if(d.open) disclosures.filter(x=>x!==d).forEach(x=>{x.open=false;});});
+  d.addEventListener('keydown',e=>{if(e.key==='Escape'){d.open=false;d.querySelector('summary').focus();}});
+});
 
 function select(id, { from } = {}) {
   qa.last = id ? `${from || 'register'} → ${id}` : `${from || '?'} → (none)`; qaRender();
-  selectedId = id;
+  selectedId = id; picker.value = id || '';
   if (!id) { locationControls.clear(); card.hidden = true; map?.select(null); rows.forEach(r => { r.classList.remove('is-selected'); r.removeAttribute('aria-current'); }); return; }
   rows.forEach(r => { const on = r.dataset.place === id; r.classList.toggle('is-selected', on); on ? r.setAttribute('aria-current', 'true') : r.removeAttribute('aria-current'); });
   const row = rows.find(r => r.dataset.place === id);
   map?.select(id);
   locationControls.select(id);
   if (from === 'map' && row) {
-    if (phone.matches) showCard(id, row); else row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    if (phone.matches) showCard(id, row); else { catalog.open=true; row.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
   }
 }
 function showCard(id, row) {
   const el = (tag, cls, text) => { const n = document.createElement(tag); n.className = cls; n.textContent = text; return n; };
   const link = el('a', 'mc-link', 'See in the directory'); link.href = `#place-${id}`;
-  link.addEventListener('click', e => { e.preventDefault(); row.scrollIntoView({ block: 'center', behavior: 'smooth' }); row.querySelector('.reg-show')?.focus({ preventScroll: true }); });
+  link.addEventListener('click', e => { e.preventDefault(); catalog.open=true; row.scrollIntoView({ block: 'center', behavior: 'smooth' }); row.querySelector('.reg-select')?.focus({ preventScroll: true }); });
   const close = el('button', 'mc-close', 'Close'); close.type = 'button'; close.setAttribute('aria-label', 'Close place card');
   close.addEventListener('click', () => select(null));
   card.replaceChildren(close, el('p', 'mc-name', row.querySelector('h4').textContent), el('p', 'mc-status', row.querySelector('.reg-word').textContent), link);
@@ -135,19 +155,18 @@ async function start() {
       tileUrlOverride: test === 'notiles' ? 'https://tiles.openfreemap.org/planet-does-not-exist' : null,
     });
     perf.ready = Math.round(performance.now() - perf.start);
-    map.setMarkers(data.features.filter(visible));
+    map.setMarkers(data.features);
     map.on('select', id => select(id, { from: 'map' }));
     map.on('trouble', t => { stateEl.dataset.state = 'notice'; msg.textContent = t; });
     map.on('lost', () => {
       // Safari can drop a WebGL context (memory pressure, backgrounding). Say so rather than leave a frozen or empty box.
       perf.failed = 'lost'; qa.diag = map.diagnostics(); stateEl.dataset.state = 'failed'; msg.textContent = MESSAGES.lost;
-      rows.forEach(r => { r.querySelector('.reg-show').hidden = true; }); document.querySelector('.map-tools').hidden = true;
+      controlsReady(false);
       card.hidden = true; locationControls.clear(); map.destroy(); map = null; qaRender();
     });
     stateEl.dataset.state = 'ready'; locationControls.ready(); qaRender();
     msg.textContent = '';
-    rows.forEach(r => { r.querySelector('.reg-show').hidden = false; });
-    const tools = document.querySelector('.map-tools'); tools.hidden = false;
+    controlsReady(true); frameStatus.textContent='Camera framing only; every published place stays in the Directory and on the map.';
     const rb = document.getElementById('relief');
     const reliefLabel = () => { rb.textContent = relief ? 'Relief on' : 'Relief off'; document.querySelector('.atlas-map').dataset.relief = String(relief); };
     reliefLabel();
@@ -161,7 +180,7 @@ async function start() {
   } catch (e) {
     perf.failed = e.reason || 'unknown';
     qa.diag = e.diagnostics || null;
-    stateEl.dataset.state = 'failed'; qaRender();
+    stateEl.dataset.state = 'failed'; controlsReady(false); qaRender();
     msg.textContent = MESSAGES[e.reason] || MESSAGES.tiles;
     console.warn('Rupert Atlas map:', e.reason || e, e.message || '');
   }

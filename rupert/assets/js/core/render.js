@@ -363,59 +363,49 @@ export const MARK_SVG = {
  */
 export function renderAtlas(model, ctx) {
   const { base } = ctx;
-  const STAT = { walked: 'Walked', recommended: 'Recommended', withdrawn: 'Withdrawn · Historical publication' };
+  const STAT = { walked: 'Walked', recommended: 'Recommended', withdrawn: 'Withdrawn' };
   const row = p => {
-    const st = model.statuses.get(p.id);
-    const r = p.routes?.[0];
+    const st = model.statuses.get(p.id), r = p.routes?.[0], latest = st.editions[0];
+    const editionLink = e => `<a href="${base}edition/${esc(e.id)}/">${esc(e.label)}, ${esc(weekendShort(e.weekend.start, e.weekend.end))}</a>`;
     const meta = [r ? `${r.distance_mi} mi ${r.shape}` : null, r?.difficulty, p.dog_policy].filter(Boolean).map(esc).join(' · ');
     const start = p.access ? `<p class="reg-start">Start: ${esc(p.access.name)}${p.access.coords_verified ? '' : ' <span class="reg-approx">· pin approximate</span>'}</p>` : '';
-    const latest = st.editions[0];
-    const editionLink = e => `<a href="${base}edition/${esc(e.id)}/">${esc(e.label)}, ${esc(weekendShort(e.weekend.start, e.weekend.end))}</a>`;
-    const eds = `<p class="reg-edition">${editionLink(latest)}</p>${st.editions.length > 1 ? `<details class="reg-history"><summary>Prior recommendations (${st.editions.length - 1})</summary>${st.editions.slice(1).map(editionLink).join('<br>')}</details>` : ''}`;
     return `<li class="reg-row" id="place-${esc(p.id)}" data-place="${esc(p.id)}" data-status="${st.status}">
-      ${MARK_SVG[st.status]}
-      <div class="reg-main">
-        <h4>${esc(p.name)}</h4>
-        <p class="reg-meta">${meta}</p>${start}
-        <p class="reg-status"><span class="reg-word">${p.closure?.status==='closed' ? 'Closed · Official Status Checked '+esc(p.closure.checked) : STAT[st.status]}</span></p>${eds}
-      </div>
-      <button type="button" class="reg-show" data-show="${esc(p.id)}" hidden>Show on map</button>
-    </li>`;
+      ${MARK_SVG[st.status]}<div class="reg-main"><h4><button type="button" class="reg-select" data-show="${esc(p.id)}" aria-label="Select ${esc(p.name)}">${esc(p.short_name || p.name)}</button></h4>
+      <div class="reg-brief"><span class="reg-word">${esc(STAT[st.status])}</span><a class="reg-latest" href="${base}edition/${esc(latest.id)}/">${latest.status === 'withdrawn' ? 'Historical edition' : 'Latest edition'} →</a>
+      <details class="reg-details"><summary>Details</summary><div class="reg-dossier"><p class="reg-meta">${esc(p.name)} · ${esc(p.region)}</p><p class="reg-meta">${meta}</p>${start}
+      <p class="reg-status">${p.closure?.status === 'closed' ? 'Closed · Official Status Checked ' + esc(p.closure.checked) : latest.status === 'withdrawn' ? 'Withdrawn historical publication; this is not a current recommendation.' : 'Published recommendation'}</p>
+      <p class="reg-edition">${editionLink(latest)}</p>${st.editions.length > 1 ? `<details class="reg-history"><summary>Prior recommendations (${st.editions.length - 1})</summary>${st.editions.slice(1).map(editionLink).join('<br>')}</details>` : ''}</div></details></div></div></li>`;
   };
-  const groups = model.groups.map(g => `<section class="reg-group" data-region="${esc(g.region)}">
-      <h3 class="reg-region">${esc(g.region)}</h3><ul class="reg">${g.places.map(row).join('')}</ul></section>`).join('');
-  const c = model.counts;
-  const legend = ['recommended', 'withdrawn']
-    .map(k => `<li>${MARK_SVG[k]}<span>${STAT[k]}</span></li>`).join('');
+  const groups = model.groups.map(g => `<section class="reg-group" data-region="${esc(g.region)}"><h3 class="reg-region vh">${esc(g.region)}</h3><ul class="reg">${g.places.map(row).join('')}</ul></section>`).join('');
+  const regions = model.groups.map(g => ({ label:g.region, ids:g.places.map(p=>p.id) }));
+  const places = model.groups.flatMap(g=>g.places), c = model.counts;
+  const frameButton = (key, label) => `<button type="button" data-frame="${esc(key)}" disabled>${esc(label)}</button>`;
+  const legend = ['recommended', 'withdrawn'].map(k => `<li>${MARK_SVG[k]}<span>${STAT[k]}</span></li>`).join('');
   return `<div class="atlas">
   <header class="page-head wrap"><div><p class="header-kicker">North Carolina · Place Directory</p><h1>Atlas</h1></div><aside class="head-note atlas-coverage">${labrador('stand')}<div class="banner-copy"><span class="lbl">Current Place</span><p id="atlas-selection">Choose a Place</p><small id="atlas-context">North Carolina</small><button type="button" id="atlas-header-action">Show on Map →</button></div></aside></header>
-  <div class="wrap"><details class="location-settings"><summary>Home &amp; Driving Routes</summary>
+  <div class="atlas-body wrap">
+    <section class="atlas-register" aria-labelledby="reg-h">
+      <div class="reg-head"><div class="reg-heading"><h2 id="reg-h">Place Directory</h2><p class="directory-note">${c.all} published places · History retained</p></div>
+      <div class="directory-controls"><details class="frame-menu"><summary>Frame map</summary><div class="frame-options">
+      ${frameButton('all','All published places')}${frameButton('recommended','Recommended places')}${frameButton('withdrawn','Withdrawn history')}
+      <details class="frame-regions"><summary>By region</summary>${regions.map((r,i)=>frameButton('region:'+i,r.label)).join('')}</details>
+      <button type="button" id="recenter" disabled>Home view</button><button type="button" id="relief" aria-pressed="false" disabled>Relief</button><p class="frame-note" id="frame-status" role="status">Camera framing only; every published place stays in the Directory and on the map.</p></div></details>
+      <details class="location-settings"><summary>Home &amp; Driving Routes</summary>
     <p>Home stays in this browser. Map providers receive the visible map area; home is never published.</p>
     <form id="address-form"><label>Home address<input name="address" autocomplete="street-address" maxlength="240" required placeholder="Street, town, state, ZIP"></label><button>Locate with OpenStreetMap</button></form><p class="season-note">Locating sends the address to OpenStreetMap’s Nominatim service. Check the returned coordinates below before saving home. You can also enter coordinates directly.</p>
     <form id="location-form"><label>Latitude<input name="lat" type="number" step="any" min="-85" max="85" required></label><label>Longitude<input name="lng" type="number" step="any" min="-180" max="180" required></label><button>Save home</button><button type="button" id="forget-location">Forget home</button></form>
     <label class="routing-choice"><input type="checkbox" id="routing-enabled"> Enable driving routes: OSRM receives your home and selected trailhead coordinates. Estimates exclude live traffic.</label><p id="location-status" role="status"></p>
-  </details></div>
-  <div class="atlas-body wrap">
-    <section class="atlas-map" aria-label="Map of places">
-      <div class="map-canvas" id="map"></div>
-      <p id="drive-status" class="drive-status" role="status" aria-live="polite">Select a place to plan the drive.</p>
-      <div class="map-state" id="map-state" role="status"><span class="ridge" aria-hidden="true"></span>
-        <p id="map-msg">Enable JavaScript for the map.</p></div>
-      <ul class="map-legend" aria-label="Legend">${legend}</ul>
-      <div class="map-tools" hidden><button type="button" id="relief" aria-pressed="false">Relief</button><button type="button" id="recenter">Home view</button></div>
-      <div class="map-card" id="map-card" hidden></div>
+  </details></div></div>
+      <label class="directory-picker vh" for="place-picker">Choose a published place</label><select id="place-picker" class="directory-picker"><option value="">Choose a place</option>${places.map(p=>`<option value="${esc(p.id)}">${esc(p.short_name || p.name)}${model.statuses.get(p.id).status === 'withdrawn' ? ' · Withdrawn' : ''}</option>`).join('')}</select>
+      <details class="directory-catalog" open><summary>Browse history (${c.all})</summary><div class="directory-list">${groups || '<p>No places published yet.</p>'}</div></details>
     </section>
-    <section class="atlas-register" aria-labelledby="reg-h">
-      <div class="reg-head"><h2 id="reg-h">Place Directory</h2>
-        <div class="reg-filter" role="group" aria-label="Show places" hidden>
-          <button type="button" data-filter="all" aria-pressed="true">All <span>${c.all}</span></button>
-          <button type="button" data-filter="recommended" aria-pressed="false"${c.recommended ? '' : ' disabled'}>Recommended <span>${c.recommended}</span></button>
-          <button type="button" data-filter="walked" aria-pressed="false"${c.walked ? '' : ' disabled'}>Walked <span>${c.walked}</span></button>
-        </div></div>
-      <p class="directory-note">Published recommendations and their history.</p>${groups || '<p>No places published yet.</p>'}
+    <section class="atlas-map" aria-label="Map of places"><div class="map-canvas" id="map"></div>
+      <p id="drive-status" class="drive-status" role="status" aria-live="polite">Select a place to plan the drive.</p>
+      <div class="map-state" id="map-state" role="status"><span class="ridge" aria-hidden="true"></span><p id="map-msg">Enable JavaScript for the map.</p></div>
+      <ul class="map-legend" aria-label="Legend">${legend}</ul><div class="map-card" id="map-card" hidden></div>
     </section>
   </div>
-  <script type="application/json" id="atlas-data">${JSON.stringify({ features: model.features, bounds: model.bounds }).replace(/</g, '\\u003c')}</script>
+  <script type="application/json" id="atlas-data">${JSON.stringify({ features:model.features, bounds:model.bounds, regions }).replace(/</g, '\\u003c')}</script>
 </div>`;
 }
 
