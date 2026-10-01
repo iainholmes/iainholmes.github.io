@@ -179,20 +179,34 @@ a{color:inherit}
 @media(max-width:1200px){.mast{grid-template-columns:1fr!important}.mast h1{font-size:clamp(72px,15vw,160px)}.press-clock{width:100%;max-width:560px}}
 @media(max-width:600px){.press-clock{display:none}.mast h1{font-size:clamp(58px,19vw,96px)}}
 
-/* Covers and their notes share a single snap unit on small screens. */
+/* Desktop retains its two-row composition; mobile notes use one stationary panel. */
 .shelf-unit{display:contents}
 .shelf-unit>.vol{grid-row:1}
 .shelf-unit>.press-note{grid-row:2;margin-top:18px;margin-bottom:40px}
 .shelf-unit:nth-child(1)>*{grid-column:1}.shelf-unit:nth-child(2)>*{grid-column:2}.shelf-unit:nth-child(3)>*{grid-column:3}
 @media(max-width:1000px){
- .shelf{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:var(--shelf-width);--shelf-width:min(calc((100vw - 32px)*.78),360px);align-items:start;gap:24px;margin-right:0;padding:34px max(0px,calc(100% - var(--shelf-width))) 24px 0!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:0;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+ .shelf{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:var(--shelf-width);--shelf-width:calc((100vw - 64px)*.86);align-items:start;gap:14px;margin-right:0;padding:34px max(0px,calc(100% - var(--shelf-width))) 24px 0!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:0;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
  .shelf-unit{display:block;min-width:0;scroll-snap-align:start;scroll-snap-stop:normal}
- .shelf-unit>.press-note{margin:24px 0 0;padding-bottom:16px}
+ .mobile-press-note{margin:0 0 40px;min-width:0}
+ .mobile-press-note>.press-note{display:grid;grid-template-columns:auto 1fr;column-gap:12px;margin:0;padding-bottom:12px;scroll-snap-align:none}
+ .mobile-press-note>.press-note[hidden]{display:none}
+ .mobile-press-note .note-head{grid-column:1/-1;grid-row:1}
+ .mobile-press-note .latest-block{grid-column:1/-1;grid-row:2;margin-bottom:14px}
+ .mobile-press-note .metric-run{grid-column:1;grid-row:3;margin:0;align-items:baseline}
+ .mobile-press-note .metric-run>span:not(:first-child){display:none}
+ .mobile-press-note .metric-run b{font:inherit;color:var(--bone);letter-spacing:inherit;margin-right:0}
+ .mobile-press-note .issue-line{display:contents}
+ .mobile-press-note .issue-line>span:first-child{grid-column:2;grid-row:3;margin:0;text-align:left}
+ .mobile-press-note .issue-line>span:last-child{grid-column:1/-1;grid-row:4;margin-top:9px}
+ .mobile-press-note .note-head{margin-bottom:14px}
+ .mobile-press-note .press-note::before{height:48px;width:3px}
+ .mobile-press-note .press-note::after{width:24px;height:3px}
  .note-head{align-items:flex-start;flex-direction:column;gap:5px}
  .issue-line{display:block}.issue-line>span{display:block;margin-top:4px;text-align:left!important}
  .vol.recent .cover,.vol:hover .cover,.vol:focus-visible .cover{transform:none}
 }
-@media(max-width:600px){.mast h1{font-size:clamp(54px,17.6vw,96px)}}
+@media(max-width:600px){.mast h1{font-size:clamp(54px,17.6vw,96px)}.shelf{--shelf-width:calc((100vw - 32px)*.86)}}
+@media(max-width:1000px) and (orientation:landscape){.shelf{--shelf-width:min(calc((100vw - 64px)*.86),300px)}}
 @media(min-width:1201px){.pc-track{grid-template-columns:1fr 1fr 1.22fr;gap:16px}.press-clock p>b{font-size:10px}}
 
 @media(min-width:1201px){.mast h1{font-size:clamp(72px,9.4vw,144px)}.press-clock p>em{font-size:17px}}
@@ -370,6 +384,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
   addEventListener('focus',refreshIssues);
 })();
 </script>
+<script src="mobile-shelf.js?v=20261001-interactions"></script>
 <script src="/personal-updates/mobile/mobile.js?v=20260930-final"></script>
 </body>
 </html>

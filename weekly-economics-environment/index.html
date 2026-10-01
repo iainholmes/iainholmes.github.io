@@ -1049,7 +1049,7 @@ function stopFlight(){
 function companionMobile(){return companionViewport.matches}
 function settleHeron(){
   stopFlight();
-  HERON.items.forEach(function(it){it.btn.hidden=!companionMobile()||!companionOn()||it.state==='closed';it.btn.classList.remove('vacant')});
+  HERON.items.forEach(function(it){it.btn.hidden=!companionMobile()||!companionOn()||it.state==='dismissed';it.btn.classList.toggle('vacant',it.state==='label-only')});
 }
 function teardownHeron(){HERON.items.forEach(function(it){HV.mark(it.art,it.a.visual,false);it.panel.hidden=true;it.btn.hidden=true;it.btn.setAttribute('aria-expanded','false')});stopFlight();if(HERON.io)HERON.io.disconnect();clearTimeout(HERON.timer);if(HERON.flyer)HERON.flyer.remove();HERON.flyer=null;HERON.current=null;HERON.busy=false;}
 function renderCompanion(active){
@@ -1076,33 +1076,37 @@ function renderCompanion(active){
       var btn=slot.querySelector('.heron-perch'),panel=slot.querySelector('.heron-panel');
       var itemOf=function(){return HERON.items.find(function(x){return x.slot===slot})};
       function openP(o){
-        var it=itemOf();if(!it||!companionMobile()||!companionOn()||it.state==='closed')return;
+        var it=itemOf();if(!it||!companionMobile()||!companionOn()||it.state==='dismissed')return;
         if(o&&HERON.current&&HERON.current!==it)HERON.current.closeNote();
         panel.hidden=!o;btn.setAttribute('aria-expanded',String(o));HV.mark(art,a.visual,o);
         if(o){addTo(seenKey,a.id);summon(it);panel.focus({preventScroll:true})}
-        else{release(it);var heading=art.querySelector('h2');if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}}
+        else{release(it);btn.focus();btn.scrollIntoView({block:'center',behavior:'instant'})}
       }
       var go=panel.querySelector('.hv-goto');if(go)go.addEventListener('click',function(){var f=HV.figureOf(art,a.visual);if(f)f.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'center'})});
       btn.addEventListener('click',function(){openP(panel.hidden)});
       slot.querySelector('.hp-close').addEventListener('click',function(){openP(false)});
-      slot.querySelector('.hp-dismiss').addEventListener('click',function(){addTo('economics-environment:companion:dismissed',a.id);var it=itemOf();HV.mark(art,a.visual,false);panel.hidden=true;btn.setAttribute('aria-expanded','false');openP(false);if(it)release(it);btn.hidden=true;});
+      slot.querySelector('.hp-dismiss').addEventListener('click',function(){var it=itemOf();if(!it)return;openP(false);dismissHeron(it);var heading=art.querySelector('h2');if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}});
       panel.addEventListener('keydown',function(e){if(e.key==='Escape'){e.stopPropagation();openP(false)}});
     }
     var anchor=(a.anchor&&art.querySelector(a.anchor))||art.querySelector('.finding')||art;
-    HERON.items.push({a:a,art:art,slot:slot,btn:slot.querySelector('.heron-perch'),panel:slot.querySelector('.heron-panel'),anchor:anchor,state:HERON.closed[date+':'+a.id]?'closed':'perched',seen:listKey(seenKey).indexOf(a.id)>=0,closeNote:function(){slot.querySelector('.hp-close').click()}});
+    HERON.items.push({a:a,art:art,slot:slot,btn:slot.querySelector('.heron-perch'),panel:slot.querySelector('.heron-panel'),anchor:anchor,state:HERON.closed[date+':'+a.id]?'label-only':'perched',seen:listKey(seenKey).indexOf(a.id)>=0,closeNote:function(){slot.querySelector('.hp-close').click()}});
   });
-  HERON.items.forEach(function(it){it.btn.hidden=!companionMobile()||!companionOn()||it.state==='closed';it.btn.classList.remove('vacant');it.panel.hidden=true;it.btn.setAttribute('aria-expanded','false')});
+  HERON.items.forEach(function(it){it.btn.hidden=!companionMobile()||!companionOn()||it.state==='dismissed';it.btn.classList.toggle('vacant',it.state==='label-only');it.panel.hidden=true;it.btn.setAttribute('aria-expanded','false')});
 }
 /* Every configured, undismissed item has its own static standing perch. */
 function heronScroll(){}
 function heronTick(){settleHeron()}
 function summon(it){
- if(it.state==='closed'||!companionMobile()||!companionOn())return;
+ if(it.state==='dismissed'||!companionMobile()||!companionOn())return;
  HERON.current=it;it.state='note';it.btn.hidden=false;it.btn.classList.remove('vacant');
 }
 function release(it){
- it.state='closed';HERON.closed[HERON.edition.dataset.edition+':'+it.a.id]=true;
- it.btn.hidden=true;it.panel.hidden=true;it.btn.setAttribute('aria-expanded','false');
+ it.state='label-only';HERON.closed[HERON.edition.dataset.edition+':'+it.a.id]=true;
+ it.btn.hidden=!companionMobile()||!companionOn();it.btn.classList.add('vacant');it.panel.hidden=true;it.btn.setAttribute('aria-expanded','false');
+ if(HERON.current===it)HERON.current=null;
+}
+function dismissHeron(it){
+ addTo('economics-environment:companion:dismissed',it.a.id);it.state='dismissed';it.btn.hidden=true;it.panel.hidden=true;it.btn.setAttribute('aria-expanded','false');
  if(HERON.current===it)HERON.current=null;
 }
 function initCompanion(){
