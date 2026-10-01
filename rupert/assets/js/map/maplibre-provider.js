@@ -69,6 +69,10 @@ function markerImage(kind, dpr) {
     g.fillStyle = PINE; g.fill(); g.lineWidth = 2.2 * dpr; g.strokeStyle = PAPER; g.stroke();
     g.beginPath(); g.moveTo(m - 4 * dpr, m); g.lineTo(m - 1 * dpr, m + 3.4 * dpr); g.lineTo(m + 4.6 * dpr, m - 3.6 * dpr);
     g.lineWidth = 2.4 * dpr; g.strokeStyle = PAPER; g.stroke();
+  } else if (kind === 'withdrawn' || kind === 'withdrawn-sel') {
+    g.beginPath(); g.arc(m, m, r, 0, Math.PI * 2);
+    g.fillStyle = PAPER; g.fill(); g.lineWidth = 2.2 * dpr; g.strokeStyle = '#7A2024'; g.stroke();
+    g.beginPath(); g.moveTo(m - 4 * dpr, m); g.lineTo(m + 4 * dpr, m); g.stroke();
   } else if (kind === 'planned' || kind === 'planned-sel') {
     const q = r + 1.5 * dpr + (kind.endsWith('sel') ? 2 * dpr : 0);
     g.beginPath(); g.moveTo(m, m - q); g.lineTo(m + q, m); g.lineTo(m, m + q); g.lineTo(m - q, m); g.closePath();
@@ -165,7 +169,7 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   }).catch(err => { withDiag(err); map.remove(); throw err; });
 
   const dpr = Math.min(3, Math.ceil(window.devicePixelRatio || 1));
-  for (const k of ['recommended', 'walked', 'planned', 'register']) {
+  for (const k of ['recommended', 'walked', 'planned', 'register', 'withdrawn']) {
     map.addImage(`m-${k}`, markerImage(k, dpr), { pixelRatio: dpr });
     map.addImage(`m-${k}-sel`, markerImage(`${k}-sel`, dpr), { pixelRatio: dpr });
   }

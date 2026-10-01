@@ -14,7 +14,7 @@ const withdrawn={...edition,status:'withdrawn',place_roles:[{place_id:'trail',ro
 const manifest={editions:[withdrawn]},now=new Date('2026-09-30T12:00:00-04:00');
 assert.equal(selectCurrentPair(manifest,now).tuesday.status,'withdrawn');
 assert.equal(archiveGroups(manifest,now)[0].editions[0].status,'withdrawn');
-assert.equal(placeStatuses({places:[{id:'trail'}]},manifest,{now}).get('trail').status,'register');
+assert.equal(placeStatuses({places:[{id:'trail'}]},manifest,{now}).get('trail').status,'withdrawn');
 console.log('9 corrective publication and withdrawal assertions passed');
 const {replacementFor}=await import('../assets/js/core/publication.js');
 const candidate={...edition,id:'2026-W40-r1-tue',flagship:{place_id:'riverwalk'}};

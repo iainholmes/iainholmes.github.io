@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { readLogBackup } from '../assets/js/core/field-log.js';
+import { previousSuggestions, reuseEligibility } from '../assets/js/core/recommendations.js';
 import { accessProblem } from '../assets/js/core/publication.js';
 import { artworkProblems } from '../assets/js/core/adventure.js';
 import { createHash } from 'node:crypto';
@@ -46,12 +48,16 @@ async function load() {
   const files = (await readdir(P('data/editions'))).filter(f => /^\d{4}-W\d{2}-(?:r\d+-)?(tue|thu)\.json$/.test(f)).sort();
   const editions = {};
   for (const f of files) editions[f.replace(/\.json$/, '')] = await readJSON(P('data/editions', f));
-  return { site, places, photos, schema, photoSchema, editions, accessChecks };
+  const logArg = process.argv.indexOf('--log');
+  const logPath = logArg >= 0 ? process.argv[logArg + 1] : P('_private/recommendation-log.json');
+  if (logArg >= 0 && !logPath) throw Error('Provide a local Field Log backup after --log.');
+  const completionLog = existsSync(logPath) ? readLogBackup(await readFile(logPath, 'utf8')) : [];
+  return { site, places, photos, schema, photoSchema, editions, accessChecks, completionLog };
 }
 
 /* ---------- checks ---------- */
 
-function checkEditions({ editions, schema, places, photos, accessChecks }) {
+function checkEditions({ editions, schema, places, photos, accessChecks, completionLog }) {
   const placeIds = new Set(places.places.map(p => p.id));
   const photoIds = new Set(photos.photos.map(p => p.id));
   for (const issue of artworkProblems(editions, photos)) err('illustrations',issue);
@@ -74,6 +80,16 @@ function checkEditions({ editions, schema, places, photos, accessChecks }) {
     }
     const accessIssue=accessProblem(ed,accessChecks.checks,accessChecks.official_hosts);
     if(accessIssue)err(id,'Publication gate: '+accessIssue);
+    if (ed.status === 'published' && previousSuggestions(ed, Object.values(editions)).length) {
+      const reuse = reuseEligibility(ed, Object.values(editions), {log: completionLog});
+      if (!reuse.eligible) err(id, 'Recommendation reuse: ' + reuse.reason);
+      const stamp = new Date(ed.published_at);
+      for (const [label, value, limit] of [['Place snapshot', ed.flagship.snapshot.as_of + 'T00:00:00-04:00', 7], ['Forecast', ed.conditions.as_of, 3]]) {
+        const age = (stamp - new Date(value)) / 86400000;
+        if (!Number.isFinite(age) || age < -1 || age > limit) err(id, `Refresh ${label.toLowerCase()} for the new edition.`);
+      }
+    }
+    if (ed.status === 'published' && ed.flagship.experiences?.includes('event') && !ed.flagship.event_window) err(id, 'Event recommendations need an event_window.');
     const ph = ed.flagship?.photo?.id;
     if (ph && !photoIds.has(ph)) warn(id, `flagship photo "${ph}" is not in photos.json yet (a stand-in will render)`);
     const rec = photos.photos.find(p => p.id === ph);
@@ -162,6 +178,7 @@ function manifestFrom(editions) {
       .map(e => ({
         id: e.id, slot: e.slot, status: e.status, published_at: e.published_at, weekend: e.weekend,
         title: e.flagship.title, place_id: e.flagship.place_id,
+        experience_key: e.flagship.experience_id || e.flagship.snapshot?.route?.route_id || null,
         options: ['flagship'].map(role => ({ role, title: e[role].title, place_id: e[role].place_id, seasons: e[role].seasons, experiences: e[role].experiences, crowd: e[role].snapshot.crowd })),
         place_ids: ['flagship'].map(r => e[r]?.place_id).filter(Boolean),
         place_roles: ['flagship'].filter(r => e[r]?.place_id).map(r => ({ place_id: e[r].place_id, role: r })),
@@ -225,7 +242,7 @@ async function build({ writeFiles }) {
 
   if (writeFiles && !errors.length) {
     const changed = [];
-    const ctx0 = { photos: data.photos, places: data.places, now };
+    const ctx0 = { photos: data.photos, places: data.places, history: Object.values(data.editions), now };
     const w = async (rel, html) => { if (await write(rel, html)) changed.push(rel); };
 
     await w('data/editions/index.json', JSON.stringify(manifest, null, 2) + '\n');
@@ -259,9 +276,9 @@ async function build({ writeFiles }) {
     }));
     const statuses = placeStatuses(data.places, manifest, { now });
     const atlasModel = { statuses, groups: registerGroups(data.places, statuses), counts: counts(statuses),
-      features: markerFeatures(data.places, statuses), bounds: boundsOf(data.places) };
+      features: markerFeatures(data.places, statuses), bounds: boundsOf({ places: data.places.places.filter(p => statuses.has(p.id)) }) };
     await w('atlas/index.html', page({
-      title: 'Atlas · The Rupert Atlas', description: 'Places recommended, walked and planned, on a map and in a register.',
+      title: 'Atlas · The Rupert Atlas', description: 'Published recommendations and their history, on a map and in a directory.',
       depth: 1, active: 'atlas', site: data.site, weekLabel, pageClass: 'page-atlas', extra: ['assets/js/atlas-view.js'],
       body: renderAtlas(atlasModel, { base: '../' }),
     }));
@@ -302,6 +319,9 @@ async function audit({ history }) {
   for (const p of places.places) if (p.access) allowed.add(key(p.access.lat, p.access.lng));
   for (const r of Object.values(places.reference_points || {})) allowed.add(key(r.lat, r.lng));
   for (const [lo, la] of boundsOf(places)) allowed.add(key(la, lo)); // the Atlas's padded default view
+  const manifest = await readJSON(P('data/editions/index.json'));
+  const published = placeStatuses(places, manifest);
+  for (const [lo, la] of boundsOf({places: places.places.filter(p => published.has(p.id))})) allowed.add(key(la, lo));
 
   const files = await walk(ROOT);
   const FORBIDDEN_KEYS = ['gps', 'origin', 'home', 'residence', 'notes_private', 'source_file', 'camera', 'approved_media', 'exact'];

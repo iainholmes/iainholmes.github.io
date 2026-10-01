@@ -486,7 +486,19 @@
               "short-walk",
               "full-day",
               "swim",
-              "town-walk"
+              "town-walk",
+              "cafe",
+              "patio",
+              "brewery",
+              "pup-treat",
+              "market",
+              "shopping",
+              "garden",
+              "campus",
+              "scenic-drive",
+              "ferry",
+              "picnic",
+              "event"
             ]
           }
         },
@@ -498,6 +510,32 @@
         },
         "qualities": {
           "$ref": "#/$defs/qualities"
+        },
+        "experience_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]{3,100}$"
+        },
+        "difference_note": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 500,
+          "description": "Editorial evidence of a materially different route, event or seasonal experience; a rewrite is insufficient."
+        },
+        "event_window": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "start",
+            "end"
+          ],
+          "properties": {
+            "start": {
+              "$ref": "#/$defs/date"
+            },
+            "end": {
+              "$ref": "#/$defs/date"
+            }
+          }
         }
       }
     },
@@ -553,7 +591,19 @@
               "short-walk",
               "full-day",
               "swim",
-              "town-walk"
+              "town-walk",
+              "cafe",
+              "patio",
+              "brewery",
+              "pup-treat",
+              "market",
+              "shopping",
+              "garden",
+              "campus",
+              "scenic-drive",
+              "ferry",
+              "picnic",
+              "event"
             ]
           }
         }

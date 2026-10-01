@@ -2,6 +2,7 @@
 // No DOM, no map library. Shared by the build tool (register pre-render) and the browser (map).
 
 export const STATUS = {
+  withdrawn: { label: 'Withdrawn', order: 0 },
   walked: { label: 'Walked', order: 3 },
   recommended: { label: 'Recommended', order: 2 },
   planned: { label: 'Planned', order: 1 },   // travel stops; browser-only, never published
@@ -18,22 +19,27 @@ const ROLE = { flagship: 'flagship', local_trail: 'Local Trail', away_mission: '
 export function placeStatuses(places, manifest, { log = [], now = new Date() } = {}) {
   const out = new Map(places.places.map(p => [p.id, { status: 'register', editions: [], visits: [] }]));
   for (const e of manifest.editions) {
-    if (e.status !== 'published' || new Date(e.published_at) > now) continue;
+    if (!['published', 'withdrawn'].includes(e.status) || new Date(e.published_at) > now) continue;
     for (const { place_id, role } of e.place_roles || []) {
       const s = out.get(place_id); if (!s) continue;
-      s.editions.push({ id: e.id, slot: e.slot, role, weekend: e.weekend, label: `${SLOT_SHORT[e.slot]}${role === 'flagship' ? '' : ' · ' + ROLE[role]}` });
-      if (s.status === 'register') s.status = 'recommended';
+      s.editions.push({ id: e.id, slot: e.slot, role, weekend: e.weekend, published_at: e.published_at, status: e.status, label: `${SLOT_SHORT[e.slot]}${e.status === 'withdrawn' ? ' · Withdrawn' : ''}${role === 'flagship' ? '' : ' · ' + ROLE[role]}` });
+      s.status = e.status === 'published' ? 'recommended' : s.status === 'recommended' ? s.status : 'withdrawn';
     }
   }
   for (const v of log) {
     const s = out.get(v.place_id); if (!s) continue;
+    if (!s.editions.length) continue; // Personal outings do not earn editorial Directory entries.
     s.visits.push(v); s.status = 'walked';
+  }
+  for (const [id, s] of out) {
+    if (!s.editions.length) out.delete(id);
+    else s.editions.sort((a, b) => b.published_at.localeCompare(a.published_at));
   }
   return out;
 }
 
 export function markerFeatures(places, statuses) {
-  return places.places.filter(p => p.access?.lat != null).map(p => ({
+  return places.places.filter(p => statuses.has(p.id) && p.access?.lat != null).map(p => ({
     type: 'Feature',
     geometry: { type: 'Point', coordinates: [p.access.lng, p.access.lat] },
     properties: { id: p.id, name: p.short_name || p.name, status: statuses.get(p.id)?.status || 'register' },
@@ -52,6 +58,7 @@ export function boundsOf(places, pad = 0.08) {
 export function registerGroups(places, statuses) {
   const by = new Map();
   for (const p of places.places) {
+    if (!statuses.has(p.id)) continue;
     if (!by.has(p.region)) by.set(p.region, []);
     by.get(p.region).push(p);
   }
@@ -65,7 +72,7 @@ export function registerGroups(places, statuses) {
 }
 
 export function counts(statuses) {
-  const c = { all: statuses.size, recommended: 0, walked: 0, planned: 0 };
+  const c = { all: statuses.size, recommended: 0, walked: 0, planned: 0, withdrawn: 0 };
   for (const s of statuses.values()) if (c[s.status] != null) c[s.status]++;
   return c;
 }

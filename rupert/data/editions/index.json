@@ -13,6 +13,7 @@
       },
       "title": "Cox Mountain and the Fews Ford crossing",
       "place_id": "eno-cox-mountain",
+      "experience_key": "eno-cox-mountain-loop@1",
       "options": [
         {
           "role": "flagship",
@@ -63,6 +64,7 @@
       },
       "title": "Hillsborough Riverwalk and Gold Park",
       "place_id": "hillsborough-riverwalk",
+      "experience_key": "hillsborough-riverwalk-flexible@1",
       "options": [
         {
           "role": "flagship",
@@ -114,6 +116,7 @@
       },
       "title": "Company Mill and the old dam on Crabtree Creek",
       "place_id": "umstead-company-mill",
+      "experience_key": "umstead-company-mill-loop@1",
       "options": [
         {
           "role": "flagship",
@@ -164,6 +167,7 @@
       },
       "title": "Occoneechee Mountain and the quarry overlook",
       "place_id": "occoneechee-mountain",
+      "experience_key": "occoneechee-mountain-loop@1",
       "options": [
         {
           "role": "flagship",
@@ -213,6 +217,7 @@
       },
       "title": "Raven Rock and the stairs down to the Cape Fear",
       "place_id": "raven-rock",
+      "experience_key": "raven-rock-loop@1",
       "options": [
         {
           "role": "flagship",

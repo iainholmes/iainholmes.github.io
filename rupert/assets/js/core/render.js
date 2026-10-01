@@ -8,6 +8,11 @@ import { SEASONS, EXPERIENCES, seasonFor } from './options.js';
 import { weekendRange, publishedLabel, shortDate, longDate, minutesRange, hoursRange, isoWeek, nyDateString, nyTime } from './dates.js';
 
 import { expectedPublish } from './editions.js';
+import { previousSuggestions } from './recommendations.js';
+// Editorial slot and real publication date are separate; the timestamp stays machine-readable.
+function slotPublication(ed) {
+  return `<time datetime="${esc(ed.published_at)}">${esc(SLOT_LABEL[ed.slot].replace("'s Choice", ' edition'))} · ${esc(shortDate(nyDateString(new Date(ed.published_at))))}</time>`;
+}
 
 export const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -106,7 +111,7 @@ function routeBits(snap) {
   const bits = [];
   if (r?.distance_mi) bits.push(`<b>${esc(r.distance_mi)}</b> mi${r.shape ? ' ' + esc(r.shape) : ''}`);
   if (snap?.drive) bits.push(`<b>${esc(minutesRange(snap.drive.minutes))}</b> drive`);
-  if (snap?.duration_h) bits.push(esc(hoursRange(snap.duration_h)) + ' on trail');
+  if (snap?.duration_h) bits.push(esc(hoursRange(snap.duration_h)) + ' outside');
   return bits;
 }
 
@@ -174,7 +179,7 @@ function plate(slot, ed, pair, ctx) {
   const adverse = f.condition_level === 'adverse';
   const cond = f.headline_condition ? `<li class="cond${adverse ? ' is-adverse' : ''}"><span class="cond-k">${adverse ? 'Warning' : 'Weather'}</span> ${esc(f.headline_condition)}</li>` : '';
   return `<article class="plate" id="${id}" data-slot="${slot}" aria-labelledby="${id}-h">
-  <p class="p-eyebrow"><span class="p-day"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span>${SLOT_LABEL[slot]}</span><span class="p-pub">Published ${esc(publishedLabel(ed.published_at))}</span></p>
+  <p class="p-eyebrow"><span class="p-day"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span>${SLOT_LABEL[slot]}</span><span class="p-pub">${slotPublication(ed)}</span></p>
   <h2 class="p-title" id="${id}-h"><a href="${href}">${esc(titleCase(f.title))}</a></h2>
   <p class="p-stand">${esc(f.standfirst)}</p>
     <ul class="p-metrics" aria-label="Logistics">${bits}${cond}</ul>
@@ -246,6 +251,8 @@ export function renderEdition(ed, ctx, sibling) {
   const { base, photos, places } = ctx;
   const f = ed.flagship, s = f.snapshot || {};
   const panels = guidanceFor(f);
+  const previous = previousSuggestions(ed, ctx.history || [], ed.published_at)[0];
+  const historyLink = previous ? `<p class="previously-suggested"><a href="${base}edition/${esc(previous.id)}/">Previously suggested · ${esc(shortDate(nyDateString(new Date(previous.published_at))))}</a></p>` : '';
   const place = (places?.places || []).find(p => p.id === f.place_id);
   const ref = places?.reference_points?.[s.drive?.from];
   const fact = (k, v) => v ? `<div><dt>${k}</dt><dd>${v}</dd></div>` : '';
@@ -255,7 +262,7 @@ export function renderEdition(ed, ctx, sibling) {
     fact('Climb', r.gain_ft ? `${esc(r.gain_ft)} ft gain` : r.climb_ft_approx ? `About ${esc(r.climb_ft_approx)} ft` : ''),
     fact('Difficulty', esc(r.difficulty)),
     fact('Surface', esc(r.surface)),
-    fact('Time on trail', s.duration_h ? esc(hoursRange(s.duration_h)) : ''),
+    fact('Outing time', s.duration_h ? esc(hoursRange(s.duration_h)) : ''),
     fact('Drive', s.drive ? `${esc(minutesRange(s.drive.minutes))}<span class="fact-note">from ${esc(ref?.label || 'Chapel Hill')}</span>` : ''),
     fact('Start', esc(s.access?.name)),
     fact('Parking', esc(s.access?.parking)),
@@ -273,7 +280,8 @@ export function renderEdition(ed, ctx, sibling) {
   const pivotTarget = ed.conditions?.pivot?.then && ed[ed.conditions.pivot.then];
   const outing = role => {
     const o = ed[role]; if (!o) return '';
-    return `<li id="${role}"><span>${ROLE_LABEL[role]}</span><a href="${base}atlas/#place-${esc(o.place_id)}">${esc(o.title)}</a><small>${esc(supportLine(o))}</small></li>`;
+    const placeLink = places?.places?.find(p => p.id === o.place_id)?.links?.[0]?.url;
+    return `<li id="${role}"><span>${ROLE_LABEL[role]}</span>${placeLink ? `<a href="${esc(placeLink)}">${esc(o.title)}</a>` : `<strong>${esc(o.title)}</strong>`}<small>${esc(supportLine(o))}</small></li>`;
   };
   const corrections = (ed.corrections || []).length
     ? `<section class="ed-corrections"><h2 class="sec-h">Corrections</h2><ul>${ed.corrections.map(c => `<li><span class="data">${esc(c.at)}</span> ${esc(c.note)}</li>`).join('')}</ul></section>` : '';
@@ -285,7 +293,7 @@ export function renderEdition(ed, ctx, sibling) {
     <div class="ed-heading"><p class="ed-eyebrow"><span class="p-day">${SLOT_LABEL[ed.slot]}</span><span>For the weekend of ${esc(weekendRange(ed.weekend.start, ed.weekend.end))}</span></p>
     <h1 id="ed-h">${esc(titleCase(f.title))}</h1>
     <p class="ed-stand">${esc(f.standfirst)}</p>
-    <p class="ed-pub">Published ${esc(publishedLabel(ed.published_at))} · ${esc(nyTime(new Date(ed.published_at)))} ET · Weekend choice ${ed.slot === 'tuesday' ? 1 : 2} of 2</p></div>
+    <p class="ed-pub">${slotPublication(ed)} · Weekend choice ${ed.slot === 'tuesday' ? 1 : 2} of 2</p>${historyLink}</div>
     ${marginNote("The Outing", `${esc(place?.short_name || f.title)}<br>${esc(s.access?.name || '')}`, `<a href="${base}atlas/#place-${esc(f.place_id)}">Find it in the Atlas →</a>`)}
   </header>
   <div class="ed-feature wrap"><figure class="ed-hero${f.artwork ? ' adventure-illustration' : ''}">${photo(imageRef(f), photos, base, { sizes: '(min-width: 1024px) 65vw, 100vw', eager: true })}${credit(imageRef(f), photos, places)}</figure>
@@ -306,7 +314,7 @@ export function renderEdition(ed, ctx, sibling) {
       <section class="ed-sources"><h2 class="sec-h">Sources</h2><ul>${(f.sources || []).map(x => `<li><a href="${esc(x.url)}" rel="noopener">${esc(x.label)}</a> <span class="data">retrieved ${esc(x.retrieved)}</span></li>`).join('')}</ul>
         <p class="as-of">Place details as recorded ${esc(shortDate(s.as_of))}. They stay as published even if the place's record is corrected later.</p></section>
     </div>
-    <aside class="ed-sheet" aria-label="Trail facts">
+    <aside class="ed-sheet" aria-label="Outing facts">
       <section><h2 class="sec-h">The Route</h2><dl class="facts">${facts}</dl></section>
       ${dog ? `<section><h2 class="sec-h">Dog Access</h2><dl class="facts">${dog}</dl></section>` : ''}
       <section><h2 class="sec-h">Crowd &amp; Foot Traffic</h2>${crowdVisual(s.crowd)}</section>
@@ -341,6 +349,7 @@ function weekendShort(a, b) {
 }
 
 export const MARK_SVG = {
+  withdrawn: '<svg class="mk mk-withdrawn" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/><path d="M6 10h8"/></svg>',
   recommended: '<svg class="mk mk-rec" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/></svg>',
   walked: '<svg class="mk mk-walk" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M6.6 10.2l2.4 2.6 4.6-5.2"/></svg>',
   planned: '<svg class="mk mk-plan" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.6l7.4 7.4-7.4 7.4-7.4-7.4z"/></svg>',
@@ -353,19 +362,21 @@ export const MARK_SVG = {
  */
 export function renderAtlas(model, ctx) {
   const { base } = ctx;
-  const STAT = { walked: 'Walked', recommended: 'Recommended', planned: 'Planned', register: 'In the directory' };
+  const STAT = { walked: 'Walked', recommended: 'Recommended', withdrawn: 'Withdrawn · Historical publication' };
   const row = p => {
     const st = model.statuses.get(p.id);
     const r = p.routes?.[0];
     const meta = [r ? `${r.distance_mi} mi ${r.shape}` : null, r?.difficulty, p.dog_policy].filter(Boolean).map(esc).join(' · ');
     const start = p.access ? `<p class="reg-start">Start: ${esc(p.access.name)}${p.access.coords_verified ? '' : ' <span class="reg-approx">· pin approximate</span>'}</p>` : '';
-    const eds = st.editions.map(e => `<a href="${base}edition/${esc(e.id)}/">${esc(e.label)}, ${esc(weekendShort(e.weekend.start, e.weekend.end))}</a>`).join('; ');
+    const latest = st.editions[0];
+    const editionLink = e => `<a href="${base}edition/${esc(e.id)}/">${esc(e.label)}, ${esc(weekendShort(e.weekend.start, e.weekend.end))}</a>`;
+    const eds = `<p class="reg-edition">${editionLink(latest)}</p>${st.editions.length > 1 ? `<details class="reg-history"><summary>Prior recommendations (${st.editions.length - 1})</summary>${st.editions.slice(1).map(editionLink).join('<br>')}</details>` : ''}`;
     return `<li class="reg-row" id="place-${esc(p.id)}" data-place="${esc(p.id)}" data-status="${st.status}">
       ${MARK_SVG[st.status]}
       <div class="reg-main">
         <h4>${esc(p.name)}</h4>
         <p class="reg-meta">${meta}</p>${start}
-        <p class="reg-status"><span class="reg-word">${p.closure?.status==='closed' ? 'Closed · Official Status Checked '+p.closure.checked : STAT[st.status]}</span>${eds ? ` · ${eds}` : ''}</p>
+        <p class="reg-status"><span class="reg-word">${p.closure?.status==='closed' ? 'Closed · Official Status Checked '+esc(p.closure.checked) : STAT[st.status]}</span></p>${eds}
       </div>
       <button type="button" class="reg-show" data-show="${esc(p.id)}" hidden>Show on map</button>
     </li>`;
@@ -373,7 +384,7 @@ export function renderAtlas(model, ctx) {
   const groups = model.groups.map(g => `<section class="reg-group" data-region="${esc(g.region)}">
       <h3 class="reg-region">${esc(g.region)}</h3><ul class="reg">${g.places.map(row).join('')}</ul></section>`).join('');
   const c = model.counts;
-  const legend = ['recommended', 'walked', 'planned', 'register']
+  const legend = ['recommended', 'withdrawn']
     .map(k => `<li>${MARK_SVG[k]}<span>${STAT[k]}</span></li>`).join('');
   return `<div class="atlas">
   <header class="page-head wrap"><div><p class="header-kicker">North Carolina · Place Directory</p><h1>Atlas</h1></div><aside class="head-note atlas-coverage">${labrador('stand')}<div class="banner-copy"><span class="lbl">Current Place</span><p id="atlas-selection">Choose a Place</p><small id="atlas-context">North Carolina</small><button type="button" id="atlas-header-action">Show on Map →</button></div></aside></header>
@@ -400,7 +411,7 @@ export function renderAtlas(model, ctx) {
           <button type="button" data-filter="recommended" aria-pressed="false"${c.recommended ? '' : ' disabled'}>Recommended <span>${c.recommended}</span></button>
           <button type="button" data-filter="walked" aria-pressed="false"${c.walked ? '' : ' disabled'}>Walked <span>${c.walked}</span></button>
         </div></div>
-      ${groups}
+      <p class="directory-note">Published recommendations and their history.</p>${groups || '<p>No places published yet.</p>'}
     </section>
   </div>
   <script type="application/json" id="atlas-data">${JSON.stringify({ features: model.features, bounds: model.bounds }).replace(/</g, '\\u003c')}</script>
