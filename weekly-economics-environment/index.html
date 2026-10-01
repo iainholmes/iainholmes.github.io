@@ -1075,13 +1075,14 @@ function renderCompanion(active){
       if(a.perch==='before-note'&&note)note.before(slot);else col.append(slot);
       var btn=slot.querySelector('.heron-perch'),panel=slot.querySelector('.heron-panel');
       var itemOf=function(){return HERON.items.find(function(x){return x.slot===slot})};
-      function openP(o){
+      function openP(o,quiet){
         var it=itemOf();if(!it||!companionMobile()||!companionOn()||it.state==='dismissed')return;
-        if(o&&HERON.current&&HERON.current!==it)HERON.current.closeNote();
+        var switching=o&&HERON.current&&HERON.current!==it;if(switching)HERON.current.closeNote();
         panel.hidden=!o;btn.setAttribute('aria-expanded',String(o));HV.mark(art,a.visual,o);
-        if(o){addTo(seenKey,a.id);summon(it);panel.focus({preventScroll:true})}
-        else{release(it);btn.focus();btn.scrollIntoView({block:'center',behavior:'instant'})}
+        if(o){addTo(seenKey,a.id);summon(it);panel.focus({preventScroll:true});if(switching)btn.scrollIntoView({block:'center',behavior:'instant'})}
+        else{release(it);if(!quiet){btn.focus();btn.scrollIntoView({block:'center',behavior:'instant'})}}
       }
+      slot.closeHeronNote=function(){openP(false,true)};
       var go=panel.querySelector('.hv-goto');if(go)go.addEventListener('click',function(){var f=HV.figureOf(art,a.visual);if(f)f.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'center'})});
       btn.addEventListener('click',function(){openP(panel.hidden)});
       slot.querySelector('.hp-close').addEventListener('click',function(){openP(false)});
@@ -1089,7 +1090,7 @@ function renderCompanion(active){
       panel.addEventListener('keydown',function(e){if(e.key==='Escape'){e.stopPropagation();openP(false)}});
     }
     var anchor=(a.anchor&&art.querySelector(a.anchor))||art.querySelector('.finding')||art;
-    HERON.items.push({a:a,art:art,slot:slot,btn:slot.querySelector('.heron-perch'),panel:slot.querySelector('.heron-panel'),anchor:anchor,state:HERON.closed[date+':'+a.id]?'label-only':'perched',seen:listKey(seenKey).indexOf(a.id)>=0,closeNote:function(){slot.querySelector('.hp-close').click()}});
+    HERON.items.push({a:a,art:art,slot:slot,btn:slot.querySelector('.heron-perch'),panel:slot.querySelector('.heron-panel'),anchor:anchor,state:HERON.closed[date+':'+a.id]?'label-only':'perched',seen:listKey(seenKey).indexOf(a.id)>=0,closeNote:function(){slot.closeHeronNote()}});
   });
   HERON.items.forEach(function(it){it.btn.hidden=!companionMobile()||!companionOn()||it.state==='dismissed';it.btn.classList.toggle('vacant',it.state==='label-only');it.panel.hidden=true;it.btn.setAttribute('aria-expanded','false')});
 }

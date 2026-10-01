@@ -16,6 +16,16 @@ assert(source.includes("it.btn.hidden=!companionMobile()||!companionOn()||it.sta
 assert(!source.includes('.heron-perch:hover .pose-inspect'),'hover alone must not bend the standing bird');
 console.log('Heron lifecycle: open → close → bird gone + label retained → reopen; persistent dismissal; independent items, mobile scope and Off passed.');
 
+// The actual open/close handler retains contents, labels and keyboard focus semantics.
+const uiItem=item('ui');let focusReturns=0,scrollReturns=0;
+uiItem.btn.focus=()=>focusReturns++;uiItem.btn.scrollIntoView=()=>scrollReturns++;uiItem.panel.focus=()=>{};
+const ui={companionMobile:()=>true,companionOn:()=>true,settleHeron(){},addTo(){},HERON:{closed:{},current:null,edition:{dataset:{edition:'test'}}},slot:{},itemOf:()=>uiItem,panel:uiItem.panel,btn:uiItem.btn,art:{},a:uiItem.a,seenKey:'seen',HV:{mark(){}}};
+vm.createContext(ui);vm.runInContext(block,ui);
+vm.runInContext(source.slice(source.indexOf('function openP(o,quiet)'),source.indexOf("var go=panel.querySelector('.hv-goto')")),ui);
+ui.openP(true);assert(!uiItem.panel.hidden);ui.openP(false);assert(uiItem.panel.hidden&&!uiItem.btn.hidden);assert.equal(focusReturns,1);
+ui.openP(true);assert(!uiItem.panel.hidden,'the retained label reopens full contents');ui.slot.closeHeronNote();assert(uiItem.panel.hidden&&!uiItem.btn.hidden);assert.equal(focusReturns,1,'automatic close must not steal focus from the newly opened note');assert.equal(scrollReturns,1,'automatic close must not scroll back to the previous label');
+console.log('Heron DOM handler: contents reopen, direct Close restores focus, automatic close preserves the new reading position passed.');
+
 // Exercise the real shelf controller with geometry and node identity, including resize restoration.
 const shelfSource=fs.readFileSync('personal-updates/mobile-shelf.js','utf8');
 const shelfEvents={},media={matches:true,addEventListener:(name,fn)=>media.change=fn},frames=[];
