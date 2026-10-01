@@ -43,5 +43,8 @@ for(const key of ['fb','cp','sp']){
  if(key==='fb')set('data-fb-depth',fb.reduce((n,x)=>n+x.stories.length,0));
  if(key==='cp'){set('data-cp-depth',cp.reduce((n,x)=>n+x.questions.length,0));set('data-cp-fields',new Set(cp.flatMap(x=>x.questions.map(q=>q.field))).size);}
 }
+// Version the immutable registry whenever any publication advances.
+const version=[latest.fb.date,latest.cp.date,latest.sp.date].join('_');
+hub=hub.replace(/issue-mark-archive\.js(?:\?v=[^"]*)?"/,'issue-mark-archive.js?v='+version+'"');
 write('personal-updates/index.html',hub);
 console.log('Pinned issue artwork and Field Studies; refreshed hub fallback metadata.');
