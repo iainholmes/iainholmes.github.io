@@ -2,12 +2,12 @@ const fs=require('fs'),vm=require('vm'),assert=require('assert');
 const source=fs.readFileSync('weekly-economics-environment/index.html','utf8');
 const block=source.slice(source.indexOf('function heronScroll()'),source.indexOf('function initCompanion()'));
 let on=true,settled=0;
-const ctx={companionOn:()=>on,settleHeron:()=>settled++,HERON:{closed:{},items:[],current:null,edition:{dataset:{edition:'test'}}}};
+const ctx={companionMobile:()=>true,companionOn:()=>on,settleHeron:()=>settled++,HERON:{closed:{},items:[],current:null,edition:{dataset:{edition:'test'}}}};
 vm.createContext(ctx);vm.runInContext(block,ctx);
 function item(id){return {a:{id},state:'perched',btn:{hidden:false,classList:{remove(){}},setAttribute(k,v){this[k]=v}},panel:{hidden:false}}}
-const a=item('a'),b=item('b');ctx.HERON.items=[a,b];ctx.summon(a);assert.equal(a.state,'note');assert.equal(ctx.HERON.current,a);ctx.release(a);assert(a.btn.hidden&&a.panel.hidden);assert.equal(a.btn['aria-expanded'],'false');assert(ctx.HERON.closed['test:a']);assert.equal(ctx.HERON.current,null);assert(!b.btn.hidden,'closing affects only this perch');ctx.summon(a);assert(a.btn.hidden,'closed perch cannot immediately reappear');ctx.summon(b);assert.equal(b.state,'note');on=false;ctx.release(b);const c=item('c');ctx.summon(c);assert.equal(c.state,'perched','Heron Off prevents opening');ctx.heronTick();assert.equal(settled,1);
+const a=item('a'),b=item('b');ctx.HERON.items=[a,b];ctx.summon(a);assert.equal(a.state,'note');assert.equal(ctx.HERON.current,a);ctx.release(a);assert(a.btn.hidden&&a.panel.hidden);assert.equal(a.btn['aria-expanded'],'false');assert(ctx.HERON.closed['test:a']);assert.equal(ctx.HERON.current,null);assert(!b.btn.hidden,'closing affects only this perch');ctx.summon(a);assert(a.btn.hidden,'closed perch cannot immediately reappear');ctx.summon(b);assert.equal(b.state,'note');on=false;ctx.release(b);const c=item('c');ctx.summon(c);assert.equal(c.state,'perched','Heron Off prevents opening');ctx.heronTick();assert.equal(settled,1);on=true;ctx.companionMobile=()=>false;ctx.summon(c);assert.equal(c.state,'perched','desktop cannot open a companion');
 assert(!source.includes('new IntersectionObserver(function(ents)'),'standing perches do not depend on scroll-triggered arrival');
-assert(source.includes("it.btn.hidden=!companionOn()||it.state==='closed'"));
+assert(source.includes("it.btn.hidden=!companionMobile()||!companionOn()||it.state==='closed'"));
 assert(!source.includes('.heron-perch:hover .pose-inspect'),'hover alone must not bend the standing bird');
 console.log('Heron static lifecycle: configured perches, open, close, independent items, no resurrection and Off passed.');
 
