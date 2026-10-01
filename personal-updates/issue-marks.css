@@ -1,3 +1,6 @@
 @font-face{font-family:Ectros;src:url('../weekly-economics-environment/fonts/Ectros-Regular.ttf') format('truetype');font-display:swap}
 .shelf .vol .cover.issue-mark{aspect-ratio:3/4!important;padding:0;display:block;background-image:none}
 .issue-mark>svg{display:block;width:100%;height:100%}
+
+/* Metadata face is a presentation layer; archived artwork/models remain frozen. */
+.issue-mark text[font-family^="IBM Plex Sans Condensed"]{font-family:"Instrument Sans",sans-serif}

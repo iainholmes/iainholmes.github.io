@@ -1,18 +1,15 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 const source=fs.readFileSync('weekly-economics-environment/index.html','utf8');
 const block=source.slice(source.indexOf('function heronScroll()'),source.indexOf('function initCompanion()'));
-function classes(){const s=new Set;return {add:x=>s.add(x),remove:x=>s.delete(x),contains:x=>s.has(x),toggle(x){s.has(x)?s.delete(x):s.add(x)}}}
-let now=0,frames=[],timers=[],seen=[],tick=0;
-const ctx={innerWidth:1400,innerHeight:900,document:{body:{classList:{contains:()=>false},append(){}},createElement:()=>({style:{},classList:classes(),setAttribute(){}})},performance:{now:()=>now},requestAnimationFrame:f=>(frames.push(f),frames.length),clearTimeout:()=>{},setTimeout:f=>(timers.push(f),timers.length),companionOn:()=>true,motionOK:()=>true,edgePoint:p=>({x:1470,y:p.y}),addTo:(key,id)=>seen.push(id),listKey:()=>[],HERON_POSE:{flight:''},HERON:{items:[],edition:{hidden:false,dataset:{edition:'test'}},busy:false,current:null,flight:0,flown:{},flyer:null}};
+let on=true,settled=0;
+const ctx={companionOn:()=>on,settleHeron:()=>settled++,HERON:{closed:{},items:[],current:null,edition:{dataset:{edition:'test'}}}};
 vm.createContext(ctx);vm.runInContext(block,ctx);
-function item(id){return {a:{id},state:'unseen',inZone:true,slot:{isConnected:true,getBoundingClientRect:()=>({left:1050,top:260})},art:{getBoundingClientRect:()=>({top:100,bottom:1000}),querySelector:()=>({getBoundingClientRect:()=>({right:1000})})},btn:{hidden:true,classList:classes()},panel:{hidden:true}}}
-function advance(){now+=1500;const f=frames;frames=[];f.forEach(fn=>fn(now))}
-const a=item('a'),b=item('b');ctx.HERON.items=[a,b];ctx.heronTick();timers.shift()();assert.equal(a.state,'arrive');assert(ctx.HERON.busy);const token=ctx.HERON.flight;ctx.heronScroll();ctx.heronTick();assert.equal(ctx.HERON.flight,token,'fast scroll must not interrupt arrival');assert.equal(ctx.HERON.current,a);advance();assert.equal(a.state,'perched');a.panel.hidden=false;ctx.heronTick();assert.equal(ctx.HERON.current,a,'open note blocks next intervention');a.panel.hidden=true;ctx.release(a);assert.equal(a.state,'depart');ctx.heronScroll();assert(ctx.HERON.busy);advance();assert.equal(a.state,'label-only');assert(!a.btn.hidden);timers.shift()();assert.equal(b.state,'arrive');advance();assert.equal(b.state,'perched');ctx.release(b);advance();ctx.summon(a);assert.equal(a.state,'note');assert(!ctx.HERON.busy,'reopen is static');ctx.release(a);advance();assert.equal(seen.length,2);assert.equal(frames.length,0);assert.equal(ctx.HERON.current,null);assert.equal(ctx.HERON.flyer.style.display,'none');
-// Static mobile/reduced-motion lifecycle.
-ctx.motionOK=()=>false;const c=item('c');ctx.HERON.items=[c];ctx.arrive(c);assert.equal(c.state,'perched');assert(!ctx.HERON.busy);ctx.release(c);assert.equal(c.state,'label-only');assert(!c.btn.hidden);
-// One pending open waits for an active departure.
-ctx.motionOK=()=>true;const d=item('d');ctx.HERON.items=[c,d];ctx.summon(c);ctx.release(c);let opened=false;d.openPending=true;d.openNote=()=>{opened=true;ctx.summon(d)};advance();assert(opened);assert.equal(ctx.HERON.current,d);assert.equal(d.state,'note');
-console.log('Heron lifecycle: arrival, queued triggers, fast scrolling, note blocking, departure, label retention, static reopen, mobile/reduced motion and pending open passed.');
+function item(id){return {a:{id},state:'perched',btn:{hidden:false,classList:{remove(){}},setAttribute(k,v){this[k]=v}},panel:{hidden:false}}}
+const a=item('a'),b=item('b');ctx.HERON.items=[a,b];ctx.summon(a);assert.equal(a.state,'note');assert.equal(ctx.HERON.current,a);ctx.release(a);assert(a.btn.hidden&&a.panel.hidden);assert.equal(a.btn['aria-expanded'],'false');assert(ctx.HERON.closed['test:a']);assert.equal(ctx.HERON.current,null);assert(!b.btn.hidden,'closing affects only this perch');ctx.summon(a);assert(a.btn.hidden,'closed perch cannot immediately reappear');ctx.summon(b);assert.equal(b.state,'note');on=false;ctx.release(b);const c=item('c');ctx.summon(c);assert.equal(c.state,'perched','Heron Off prevents opening');ctx.heronTick();assert.equal(settled,1);
+assert(!source.includes('new IntersectionObserver(function(ents)'),'standing perches do not depend on scroll-triggered arrival');
+assert(source.includes("it.btn.hidden=!companionOn()||it.state==='closed'"));
+assert(!source.includes('.heron-perch:hover .pose-inspect'),'hover alone must not bend the standing bird');
+console.log('Heron static lifecycle: configured perches, open, close, independent items, no resurrection and Off passed.');
 
 const mobile=fs.readFileSync('personal-updates/mobile/mobile.js','utf8');
 const recoveryBlock=mobile.slice(mobile.indexOf('const workbook='),mobile.indexOf("addEventListener('periodicals:edition'"));

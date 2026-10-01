@@ -9,7 +9,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23131210%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%2212%22%20width%3D%228%22%20height%3D%2240%22%20fill%3D%22%238a2a36%22%2F%3E%3Crect%20x%3D%2225%22%20y%3D%2216%22%20width%3D%228%22%20height%3D%2236%22%20fill%3D%22%231f4a3b%22%2F%3E%3Crect%20x%3D%2237%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%2242%22%20fill%3D%22%231c2f4a%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%2220%22%20width%3D%224%22%20height%3D%2232%22%20fill%3D%22%23efe9dc%22%2F%3E%3Cpath%20d%3D%22M8%2054h48%22%20stroke%3D%22%23efe9dc%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400&family=Bodoni+Moda:opsz,wght@6..96,500&family=Instrument+Serif&family=Instrument+Sans:wght@500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans+Condensed:wght@500&family=STIX+Two+Text:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400&family=Bodoni+Moda:opsz,wght@6..96,500&family=Instrument+Serif&family=Instrument+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=STIX+Two+Text:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{
   --night:#131210;
@@ -18,7 +18,7 @@
   --bone-dim:#a9a397;
   --rule:#35322c;
   --house:"Fraunces",Georgia,serif;
-  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--sans:var(--ui);--serif:var(--house);
   /* sibling house colours: each title owns its own */
   --fb:#8a2a36;--fb-paper:#f1e6d0;--fb-ink:#221a14;
   --sp:#1f4a3b;--sp-paper:#f4f2ea;--sp-ink:#15302a;--sp-clay:#b4532e;
@@ -33,7 +33,7 @@ a{color:inherit}
 .page{width:min(1240px,calc(100% - 64px));margin:0 auto}
 
 /* imprint line */
-.imprint{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:52px;border-bottom:1px solid var(--rule);font:12px/1 var(--mono);color:var(--bone-dim);letter-spacing:.02em}
+.imprint{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:52px;border-bottom:1px solid var(--rule);font:12px/1 var(--ui);color:var(--bone-dim);letter-spacing:.02em}
 .imprint .date{text-align:center;color:var(--bone)}
 .imprint a{justify-self:end;text-decoration:none}
 .imprint a:hover{color:var(--bone)}
@@ -51,9 +51,9 @@ a{color:inherit}
 .shelf .vol:nth-child(2) .cover{aspect-ratio:3/3.85}
 .shelf .vol:nth-child(3) .cover{aspect-ratio:3/3.7}
 .label{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:18px 0 0;border-top:3px solid var(--c);margin-top:22px}
-.label .n{font:400 13px/1.4 var(--mono);color:var(--bone-dim);grid-row:1/3}
+.label .n{font:400 13px/1.4 var(--ui);color:var(--bone-dim);grid-row:1/3}
 .label h2{margin:0;font:400 30px/1.05 var(--house);letter-spacing:-.02em}
-.label p{margin:0;font:13px/1.5 var(--mono);color:var(--bone-dim)}
+.label p{margin:0;font:13px/1.5 var(--ui);color:var(--bone-dim)}
 .vol:hover h2{font-style:italic}
 
 /* --- Field Brief cover --- */
@@ -71,27 +71,27 @@ a{color:inherit}
 
 /* --- Loblolly & Logit cover --- */
 .c-sp{background:var(--sp-paper);color:var(--sp-ink);padding:8% 8% 6%;display:grid;grid-template-rows:auto auto 1fr auto}
-.c-sp .vl{font:500 9.5px/1.4 "IBM Plex Sans Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:.5px solid var(--sp-ink);padding-bottom:6px}
+.c-sp .vl{font:500 9.5px/1.4 var(--ui);letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:.5px solid var(--sp-ink);padding-bottom:6px}
 .c-sp .ttl{font:400 clamp(30px,3.6vw,48px)/.95 "Source Serif 4",Georgia,serif;letter-spacing:-.03em;margin:16px 0 4px}
 .c-sp .ttl i{color:var(--sp)}
 .c-sp .toc{list-style:none;margin:14px 0 0;padding:0;counter-reset:t;border-top:2px solid var(--sp-ink)}
 .c-sp .toc li{display:grid;grid-template-columns:18px 1fr;gap:6px;font:400 11px/1.3 "Source Serif 4",serif;padding:5px 0;border-bottom:.5px solid #c7c8bd}
-.c-sp .toc li::before{counter-increment:t;content:counter(t,decimal-leading-zero);font:500 9px/1.5 "IBM Plex Sans Condensed",sans-serif;color:var(--sp-clay)}
-.c-sp .fig{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:end;border-top:.5px solid var(--sp-ink);padding-top:8px;font:500 8.5px/1.3 "IBM Plex Sans Condensed",sans-serif;letter-spacing:.05em;text-transform:uppercase}
+.c-sp .toc li::before{counter-increment:t;content:counter(t,decimal-leading-zero);font:500 9px/1.5 var(--ui);color:var(--sp-clay)}
+.c-sp .fig{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:end;border-top:.5px solid var(--sp-ink);padding-top:8px;font:500 8.5px/1.3 var(--ui);letter-spacing:.05em;text-transform:uppercase}
 .c-sp .fig svg{width:100%;height:42px}
 
 /* --- The Workbook cover --- */
 .c-cp{background-color:var(--cp-paper);background-image:linear-gradient(rgba(28,47,74,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(28,47,74,.09) 1px,transparent 1px);background-size:14px 14px;color:#1d2126;padding:9% 9% 8%;display:flex;flex-direction:column}
-.c-cp .no{font:500 11px/1 "JetBrains Mono",monospace;display:flex;justify-content:space-between;color:var(--cp)}
+.c-cp .no{font:500 11px/1 var(--ui);display:flex;justify-content:space-between;color:var(--cp)}
 .c-cp .ttl{font:italic 400 clamp(28px,3.2vw,42px)/.98 "STIX Two Text",serif;margin:18px 0 6px;letter-spacing:-.01em}
 .c-cp .eq{font:italic 400 17px/1.4 "STIX Two Text",serif;color:var(--cp-teal);margin:0 0 16px}
-.c-cp .q1{font:400 12.5px/1.5 "STIX Two Text",serif;margin:0 0 14px;max-width:30ch}.c-cp .q1 b{font:500 11px "JetBrains Mono",monospace;color:var(--cp)}
+.c-cp .q1{font:400 12.5px/1.5 "STIX Two Text",serif;margin:0 0 14px;max-width:30ch}.c-cp .q1 b{font:500 11px var(--ui);color:var(--cp)}
 .c-cp .grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid #1d2126;border-left:1.5px solid #1d2126;margin-top:auto}
-.c-cp .grid span{aspect-ratio:1.5;border-right:1.5px solid #1d2126;border-bottom:1.5px solid #1d2126;display:grid;place-items:center;font:500 12px/1 "JetBrains Mono",monospace;background:#fdfdfb}
+.c-cp .grid span{aspect-ratio:1.5;border-right:1.5px solid #1d2126;border-bottom:1.5px solid #1d2126;display:grid;place-items:center;font:500 12px/1 var(--ui);background:#fdfdfb}
 .c-cp .grid span.f{background:var(--cp);color:#fff}
 .c-cp .grid span.t{background:#dde9ec}
 
-.colophon{display:flex;justify-content:space-between;gap:20px;margin:44px 0 0;padding:20px 0 44px;border-top:1px solid var(--rule);font:12px/1.6 var(--mono);color:var(--bone-dim)}
+.colophon{display:flex;justify-content:space-between;gap:20px;margin:44px 0 0;padding:20px 0 44px;border-top:1px solid var(--rule);font:12px/1.6 var(--ui);color:var(--bone-dim)}
 .colophon a{text-decoration:none}.colophon a:hover{color:var(--bone)}
 
 @media (max-width:1000px){
@@ -166,26 +166,44 @@ a{color:inherit}
 .mast h1{font-size:clamp(72px,11vw,178px)}
 .press-clock{padding:0 0 10px;color:var(--bone-dim)}
 .pc-head{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin-bottom:12px}
-.pc-head span,.pc-head small{font:500 9.5px/1.4 var(--mono);letter-spacing:.15em;text-transform:uppercase}
+.pc-head span,.pc-head small{font:500 9.5px/1.4 var(--ui);letter-spacing:.15em;text-transform:uppercase}
 .pc-head span{color:var(--bone)}.pc-head small{color:var(--bone-dim)}
 .pc-head>i{display:block;height:1px;background:var(--hair);opacity:.75}
 .pc-track{display:grid;grid-template-columns:1fr 1fr 1.16fr;gap:20px;border-top:2px solid var(--bone);padding-top:16px}
 .press-clock p{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-rows:2.7em auto;column-gap:8px;row-gap:12px;margin:0;min-width:0}
 .press-clock p::before{content:"";position:absolute;left:0;top:-21px;width:8px;height:8px;background:var(--pc);transform:rotate(45deg)}
 .press-clock p>i{grid-column:1;grid-row:1/3;font:italic 400 21px/1 var(--house);color:var(--pc)}
-.press-clock p>b{grid-column:2;font:600 10.5px/1.35 var(--mono);letter-spacing:.035em;text-transform:uppercase;color:var(--bone)}
+.press-clock p>b{grid-column:2;font:600 10.5px/1.35 var(--ui);letter-spacing:.035em;text-transform:uppercase;color:var(--bone)}
 .press-clock p>em{grid-column:2;font:400 20px/1.2 var(--house);font-style:italic;color:var(--bone);white-space:normal}
-.press-clock p>em b{display:block;margin:0 0 3px;font:500 9px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--bone-dim)}
+.press-clock p>em b{display:block;margin:0 0 3px;font:500 9px/1.4 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--bone-dim)}
 @media(max-width:1200px){.mast{grid-template-columns:1fr!important}.mast h1{font-size:clamp(72px,15vw,160px)}.press-clock{width:100%;max-width:560px}}
 @media(max-width:600px){.press-clock{display:none}.mast h1{font-size:clamp(58px,19vw,96px)}}
+
+/* Covers and their notes share a single snap unit on small screens. */
+.shelf-unit{display:contents}
+.shelf-unit>.vol{grid-row:1}
+.shelf-unit>.press-note{grid-row:2;margin-top:18px;margin-bottom:40px}
+.shelf-unit:nth-child(1)>*{grid-column:1}.shelf-unit:nth-child(2)>*{grid-column:2}.shelf-unit:nth-child(3)>*{grid-column:3}
+@media(max-width:1000px){
+ .shelf{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:var(--shelf-width);--shelf-width:min(calc((100vw - 32px)*.78),360px);align-items:start;gap:24px;margin-right:0;padding:34px max(0px,calc(100% - var(--shelf-width))) 24px 0!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:0;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+ .shelf-unit{display:block;min-width:0;scroll-snap-align:start;scroll-snap-stop:normal}
+ .shelf-unit>.press-note{margin:24px 0 0;padding-bottom:16px}
+ .note-head{align-items:flex-start;flex-direction:column;gap:5px}
+ .issue-line{display:block}.issue-line>span{display:block;margin-top:4px;text-align:left!important}
+ .vol.recent .cover,.vol:hover .cover,.vol:focus-visible .cover{transform:none}
+}
+@media(max-width:600px){.mast h1{font-size:clamp(54px,17.6vw,96px)}}
+@media(min-width:1201px){.pc-track{grid-template-columns:1fr 1fr 1.22fr;gap:16px}.press-clock p>b{font-size:10px}}
+
+@media(min-width:1201px){.mast h1{font-size:clamp(72px,9.4vw,144px)}.press-clock p>em{font-size:17px}}
 </style>
 <link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="/personal-updates/mobile/icon-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Periodicals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20260930-final">
-<link rel="stylesheet" href="issue-marks.css?v=20261001"><script src="issue-mark-archive.js?v=2026-10-01_2026-10-01_2026-09-25"></script>
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261001-polish">
+<link rel="stylesheet" href="issue-marks.css?v=20261001-polish"><script src="issue-mark-archive.js?v=2026-10-01_2026-10-01_2026-09-25"></script>
 <script src="issue-marks.js?v=20261001-maintenance"></script>
 </head>
 <body>
@@ -218,21 +236,10 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
 
   <main>
     <section class="shelf" id="shelf" aria-label="Titles">
-      <a class="vol" href="../daily-watchlist-5/" style="--c:var(--fb)" aria-label="Field Brief, Daily Briefing">
+      <div class="shelf-unit"><a class="vol" href="../daily-watchlist-5/" style="--c:var(--fb)" aria-label="Field Brief, Daily Briefing">
         <div class="cover c-fb issue-mark" data-issue-mark="fb" data-edition="2026-10-01" data-theme="institutions" data-signature="91693980"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Field Brief, issue 006: Capability, power &amp; oversight"><title>Field Brief · 006 · Capability, power &amp; oversight</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="#f1e6d0"/><g><path d="M70 462H530M112 462V360L166 323L219 360V462" fill="none" stroke="#221a14" stroke-width="12"/><path d="M166 323V166M120 223H212M132 193H200" stroke="#221a14" stroke-width="7"/><path d="M218 377H280V300H340" fill="none" stroke="#8a2a36" stroke-width="14"/><rect x="340" y="194" width="156" height="248" fill="#221a14"/><path d="M364 228H472M364 268H472M364 308H472M364 348H472M364 388H472" stroke="#f1e6d0" stroke-width="10"/><path d="M300 154V110H532V490H300V448" fill="none" stroke="#8a2a36" stroke-width="8"/><circle cx="166" cy="166" r="27" fill="#c5ad88"/></g><path d="M42 570H558" stroke="#221a14" stroke-width="2"/><g fill="#221a14"><text x="42" y="634" font-family="Instrument Serif,Georgia,serif" font-size="48">Field Brief</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">ISSUE 006 / 2026-10-01</text><text x="42" y="740" font-family="Instrument Serif,Georgia,serif" font-size="26">Capability, power &amp; oversight</text></g></svg></div>
       </a>
-
-      <a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)" aria-label="Loblolly &amp; Logit">
-        <div class="cover c-sp issue-mark" data-issue-mark="sp" data-edition="2026-09-25" data-theme="complements" data-signature="1102534134"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Loblolly &amp; Logit, issue 001: Costs, risk &amp; institutions"><title>Loblolly &amp; Logit · 001 · Costs, risk &amp; institutions</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="#f3f0e6"/><g><g fill="none" stroke="#1f4a3b" opacity=".16"><path d="M-20 460Q150 290 300 440T620 410M-20 480Q150 310 300 460T620 430M-20 500Q150 330 300 480T620 450M-20 520Q150 350 300 500T620 470"/></g><path d="M85 484V340A215 215 0 0 1 515 340V484H445V340A145 145 0 0 0 155 340V484Z" fill="#1f4a3b"/><path d="M266 126L334 126L321 195H279Z" fill="#b4532e"/><g stroke="#f3f0e6" stroke-width="4"><path d="M180 162L213 224M108 248L170 280M155 340H85M420 162L387 224M492 248L430 280M445 340H515"/></g><path d="M60 484H540" stroke="#e3b456" stroke-width="6"/><path d="M170 455Q300 378 430 455" fill="none" stroke="#b4532e" stroke-width="2"/></g><path d="M42 570H558" stroke="#1f4a3b" stroke-width="2"/><g fill="#1f4a3b"><text x="42" y="634" font-family="Ectros,Georgia,serif" font-size="43">Loblolly &amp; Logit</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">ISSUE 001 / 2026-09-25</text><text x="42" y="740" font-family="Ectros,Georgia,serif" font-size="26">Costs, risk &amp; institutions</text></g></svg></div>
-      </a>
-
-      <a class="vol" href="../daily-econ-challenge/" style="--c:var(--cp-teal)" aria-label="The Workbook">
-        <div class="cover c-cp issue-mark" data-issue-mark="cp" data-edition="2026-10-01" data-theme="allocation" data-signature="2586619030"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="The Workbook, set 004: Assignment &amp; evidence"><title>The Workbook · 004 · Assignment &amp; evidence</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="#f7f7f3"/><g><path d="M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540M60 360H540M60 420H540M60 480H540M60 60V500M120 60V500M180 60V500M240 60V500M300 60V500M360 60V500M420 60V500M480 60V500M540 60V500" fill="none" stroke="#1c2f4a" opacity=".12"/><path d="M300 110V228M300 228L146 338M300 228L454 338" fill="none" stroke="#1c2f4a" stroke-width="12"/><circle cx="300" cy="148" r="48" fill="#b5ced1"/><rect x="80" y="338" width="134" height="134" fill="#0e5360"/><circle cx="454" cy="405" r="67" fill="#1c2f4a"/><path d="M214 404H387" stroke="#1c2f4a" stroke-width="4" stroke-dasharray="10 8"/></g><path d="M42 570H558" stroke="#1c2f4a" stroke-width="2"/><g fill="#1c2f4a"><text x="42" y="634" font-family="STIX Two Text,Georgia,serif" font-size="48">The Workbook</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">SET 004 / 2026-10-01</text><text x="42" y="740" font-family="STIX Two Text,Georgia,serif" font-size="26">Assignment &amp; evidence</text></g></svg></div>
-      </a>
-    </section>
-
-    <section class="press-notes" aria-label="Publication notes">
-      <article class="press-note" style="--c:var(--fb)">
+<article class="press-note" style="--c:var(--fb)">
         <div class="note-head"><h2>Field Brief</h2><span>daily · 8:00 AM ET</span></div>
         <div class="metric-run" aria-label="Field Brief metrics">
           <span><b data-fb="count">6</b> editions</span>
@@ -241,8 +248,11 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
         </div>
         <div class="latest-block"><small>Latest</small><p class="latest" data-fb="title">Frontier AI, energy investment and legal constraints</p></div>
         <p class="issue-line"><span data-fb="line">N<sup>o</sup>. 006 · 1 Oct 2026</span><span>Next <span data-next="fb"></span></span></p>
-      </article>
-      <article class="press-note" style="--c:var(--sp)">
+      </article></div>
+      <div class="shelf-unit"><a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)" aria-label="Loblolly &amp; Logit">
+        <div class="cover c-sp issue-mark" data-issue-mark="sp" data-edition="2026-09-25" data-theme="complements" data-signature="1102534134"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Loblolly &amp; Logit, issue 001: Costs, risk &amp; institutions"><title>Loblolly &amp; Logit · 001 · Costs, risk &amp; institutions</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="#f3f0e6"/><g><g fill="none" stroke="#1f4a3b" opacity=".16"><path d="M-20 460Q150 290 300 440T620 410M-20 480Q150 310 300 460T620 430M-20 500Q150 330 300 480T620 450M-20 520Q150 350 300 500T620 470"/></g><path d="M85 484V340A215 215 0 0 1 515 340V484H445V340A145 145 0 0 0 155 340V484Z" fill="#1f4a3b"/><path d="M266 126L334 126L321 195H279Z" fill="#b4532e"/><g stroke="#f3f0e6" stroke-width="4"><path d="M180 162L213 224M108 248L170 280M155 340H85M420 162L387 224M492 248L430 280M445 340H515"/></g><path d="M60 484H540" stroke="#e3b456" stroke-width="6"/><path d="M170 455Q300 378 430 455" fill="none" stroke="#b4532e" stroke-width="2"/></g><path d="M42 570H558" stroke="#1f4a3b" stroke-width="2"/><g fill="#1f4a3b"><text x="42" y="634" font-family="Ectros,Georgia,serif" font-size="43">Loblolly &amp; Logit</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">ISSUE 001 / 2026-09-25</text><text x="42" y="740" font-family="Ectros,Georgia,serif" font-size="26">Costs, risk &amp; institutions</text></g></svg></div>
+      </a>
+<article class="press-note" style="--c:var(--sp)">
         <div class="note-head"><h2>Loblolly &amp; Logit</h2><span>Fridays · 3:00 PM ET</span></div>
         <div class="metric-run" aria-label="Loblolly & Logit metrics">
           <span><b data-sp="count">1</b> edition</span>
@@ -252,8 +262,11 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
         </div>
         <div class="latest-block"><small>Latest</small><p class="latest" data-sp="title">The Price of a Resilient Economy</p></div>
         <p class="issue-line"><span data-sp="line">N<sup>o</sup>. 001 · 25 Sept 2026</span><span>Next <span data-next="sp"></span></span></p>
-      </article>
-      <article class="press-note" style="--c:var(--cp-teal)">
+      </article></div>
+      <div class="shelf-unit"><a class="vol" href="../daily-econ-challenge/" style="--c:var(--cp-teal)" aria-label="The Workbook">
+        <div class="cover c-cp issue-mark" data-issue-mark="cp" data-edition="2026-10-01" data-theme="allocation" data-signature="2586619030"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="The Workbook, set 004: Assignment &amp; evidence"><title>The Workbook · 004 · Assignment &amp; evidence</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="#f7f7f3"/><g><path d="M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540M60 360H540M60 420H540M60 480H540M60 60V500M120 60V500M180 60V500M240 60V500M300 60V500M360 60V500M420 60V500M480 60V500M540 60V500" fill="none" stroke="#1c2f4a" opacity=".12"/><path d="M300 110V228M300 228L146 338M300 228L454 338" fill="none" stroke="#1c2f4a" stroke-width="12"/><circle cx="300" cy="148" r="48" fill="#b5ced1"/><rect x="80" y="338" width="134" height="134" fill="#0e5360"/><circle cx="454" cy="405" r="67" fill="#1c2f4a"/><path d="M214 404H387" stroke="#1c2f4a" stroke-width="4" stroke-dasharray="10 8"/></g><path d="M42 570H558" stroke="#1c2f4a" stroke-width="2"/><g fill="#1c2f4a"><text x="42" y="634" font-family="STIX Two Text,Georgia,serif" font-size="48">The Workbook</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">SET 004 / 2026-10-01</text><text x="42" y="740" font-family="STIX Two Text,Georgia,serif" font-size="26">Assignment &amp; evidence</text></g></svg></div>
+      </a>
+<article class="press-note" style="--c:var(--cp-teal)">
         <div class="note-head"><h2>The Workbook</h2><span>weekdays · 10:00 AM ET</span></div>
         <div class="metric-run" aria-label="The Workbook metrics">
           <span><b data-cp="count">4</b> set</span>
@@ -263,8 +276,10 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
         </div>
         <div class="latest-block"><small>Current set</small><p class="latest" data-cp="title">8 questions · 8 fields</p></div>
         <p class="issue-line"><span data-cp="line">N<sup>o</sup>. 004 · 1 Oct 2026</span><span>Next <span data-next="cp"></span></span></p>
-      </article>
+      </article></div>
     </section>
+
+
 
   </main>
 

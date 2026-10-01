@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#131210">
+<meta name="theme-color" content="#11110f">
 <title>Periodicals Handbook</title>
 <meta name="description" content="How Periodicals works: the three titles, navigation, issue folios, Day/Night, Field Notes and Register, the Heron, and the Commonplace.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23131210%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%2212%22%20width%3D%228%22%20height%3D%2240%22%20fill%3D%22%238a2a36%22%2F%3E%3Crect%20x%3D%2225%22%20y%3D%2216%22%20width%3D%228%22%20height%3D%2236%22%20fill%3D%22%231f4a3b%22%2F%3E%3Crect%20x%3D%2237%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%2242%22%20fill%3D%22%231c2f4a%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%2220%22%20width%3D%224%22%20height%3D%2232%22%20fill%3D%22%23efe9dc%22%2F%3E%3Cpath%20d%3D%22M8%2054h48%22%20stroke%3D%22%23efe9dc%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Literata:opsz,wght@7..72,350;7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Literata:opsz,wght@7..72,350;7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet">
 <style>
 :root{
   --ground:#11110f;--ground-2:#181712;--paper:#f2eadc;--soft:#c4b9a8;--dim:#8d8579;
   --fb:#b7485e;--ll:#72a98f;--wb:#78afc6;--gold:#c5a66a;
-  --display:"Cormorant Garamond",Georgia,serif;--text:"Literata",Georgia,serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--menu:"Fraunces",Georgia,serif
+  --display:"Cormorant Garamond",Georgia,serif;--text:"Literata",Georgia,serif;--ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--menu:"Fraunces",Georgia,serif
 }
 *{box-sizing:border-box}
 html{background:var(--ground);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -27,14 +27,14 @@ a:hover{text-decoration-color:var(--paper)}
 :focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .skip{position:absolute;left:-999px;top:8px;background:var(--paper);color:var(--ground);padding:9px 13px}.skip:focus{left:8px;z-index:50}
 .page{width:min(1240px,calc(100% - 72px));margin:0 auto}
-.imprint{display:flex;justify-content:space-between;align-items:center;height:58px;font:500 11px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--dim)}
+.imprint{display:flex;justify-content:space-between;align-items:center;height:58px;font:500 11px/1 var(--ui);letter-spacing:.05em;text-transform:uppercase;color:var(--dim)}
 .imprint a{text-decoration:none}.imprint a:hover{color:var(--paper)}
 .mast{position:relative;min-height:430px;padding:76px 0 72px;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:60px;align-items:start}
 .mast::before{content:"";position:absolute;left:0;top:70px;width:5px;height:214px;background:linear-gradient(var(--fb) 0 33%,var(--ll) 33% 67%,var(--wb) 67%)}
 .mast::after{content:"";position:absolute;left:0;right:0;bottom:28px;height:1px;background:linear-gradient(90deg,var(--paper) 0 73%,rgba(242,234,220,.28) 73% 100%)}
 .mast h1{margin:0 0 0 34px;font:500 clamp(72px,10vw,142px)/.72 var(--display);letter-spacing:-.055em;max-width:820px}
 .mast h1 i{display:block;font-style:italic;font-weight:400;margin-left:.64em;color:#fff}
-.mast p{margin:0 0 18px;font:500 12px/1.7 var(--mono);letter-spacing:.04em;color:var(--soft)}
+.mast p{margin:0 0 18px;font:500 12px/1.7 var(--ui);letter-spacing:.04em;color:var(--soft)}
 .body{display:grid;grid-template-columns:230px minmax(0,1fr);gap:82px;padding:24px 0 90px}
 .toc{position:sticky;top:28px;align-self:start;padding:2px 0 14px 22px;font:400 15px/1.3 var(--menu)}
 .toc::before{content:"";position:absolute;left:5px;top:54px;bottom:12px;width:1px;background:linear-gradient(var(--fb),var(--ll) 48%,var(--wb))}
@@ -64,17 +64,17 @@ dl.titles{margin:12px 0 0}
 .title{position:relative;padding:20px 0 24px 28px;margin:0 0 24px}
 .title::before{content:"";position:absolute;left:0;top:18px;bottom:20px;width:3px;background:var(--c)}
 .title h3{margin:0 0 4px;font-style:normal;font-size:34px}
-.title .meta{font:500 11px/1.55 var(--mono);letter-spacing:.02em;color:var(--dim);margin:0 0 12px}
+.title .meta{font:500 11px/1.55 var(--ui);letter-spacing:.02em;color:var(--dim);margin:0 0 12px}
 .title ul{margin:10px 0 0;padding:0 0 0 19px}
 .title li{margin:0 0 7px}
 figure{width:min(980px,calc(100vw - 80px));margin:34px 0 34px -34px;padding:28px 34px;background:var(--ground-2)}
 figure svg{display:block;width:100%;height:auto}
-figcaption{font:500 11px/1.55 var(--mono);color:var(--dim);margin-top:13px}
+figcaption{font:500 11px/1.55 var(--ui);color:var(--dim);margin-top:13px}
 .folio{font:500 1em/1 var(--text);white-space:nowrap}
 .folio .no{font-style:normal;color:var(--soft);margin-right:.12em}
 .folio .no sup{font-size:.56em;vertical-align:.58em;line-height:0;font-style:italic}
 table.modes{width:100%;border-collapse:separate;border-spacing:0 10px;font-size:15.5px;margin:20px 0}
-table.modes th{text-align:left;padding:0 18px 2px 0;font:500 10px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
+table.modes th{text-align:left;padding:0 18px 2px 0;font:500 10px/1.3 var(--ui);text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
 table.modes td{vertical-align:top;padding:13px 18px 13px 0;background:rgba(255,255,255,.025)}
 table.modes td:first-child{padding-left:14px;font-weight:500}
 .can,.cannot{margin:13px 0 18px;padding:0 0 0 20px}
@@ -84,9 +84,9 @@ table.modes td:first-child{padding-left:14px;font-weight:500}
 .start li+li{margin-top:8px}
 .start span{color:var(--soft)}
 .start a{font:500 27px/1.1 var(--display);font-style:italic;text-decoration:none;white-space:nowrap}
-.start a::after{content:" ↗";font:500 11px/1 var(--mono);color:var(--gold)}
+.start a::after{content:" ↗";font:500 11px/1 var(--ui);color:var(--gold)}
 .start a:hover{color:#fff}
-.colophon{display:flex;justify-content:space-between;gap:20px;padding:26px 0 52px;font:500 11px/1.6 var(--mono);letter-spacing:.03em;color:var(--dim)}
+.colophon{display:flex;justify-content:space-between;gap:20px;padding:26px 0 52px;font:500 11px/1.6 var(--ui);letter-spacing:.03em;color:var(--dim)}
 .colophon a{text-decoration:none}
 #heron figure{background:#141b17}
 #register h2 .n{color:var(--ll)}#daynight h2 .n{color:var(--wb)}#titles h2 .n{color:var(--fb)}
@@ -108,46 +108,56 @@ table.modes td:first-child{padding-left:14px;font-weight:500}
 
 .mast-side{align-self:start;display:flex;flex-direction:column;align-items:flex-end;gap:26px;padding-top:4px}
 .mast-side p{margin:0!important;text-align:right;max-width:260px}
-.hb-no{display:flex;align-items:flex-start;gap:8px;color:var(--paper);font-variant-numeric:lining-nums}
-.hb-no .no{font:italic 400 20px/1 var(--display);color:var(--gold);padding-top:11px}
-.hb-no .no sup{font-size:.56em;vertical-align:.6em;line-height:0}
-.hb-no .num{font:500 82px/.8 var(--display);letter-spacing:-.05em}
 #commonplace h2 .n{color:var(--gold)}
 #commonplace .lede{font-style:italic;font-size:21px;line-height:1.52;max-width:46ch}
-#commonplace>a,#commonplace p>a{font:500 11px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--paper);text-decoration-color:var(--gold)}
-@media(max-width:900px){.mast-side{align-items:flex-start;padding-left:24px}.mast-side p{text-align:left}.hb-no .num{font-size:62px}}
-
+#commonplace>a,#commonplace p>a{font:500 11px/1.4 var(--ui);letter-spacing:.05em;text-transform:uppercase;color:var(--paper);text-decoration-color:var(--gold)}
+@media(max-width:900px){.mast-side{align-items:flex-start;padding-left:24px}.mast-side p{text-align:left}}
 /* Navigation plate: labels and return path each have their own space. */
 #moving .nav-map{width:100%;margin:30px 0;padding:28px 24px 22px;border-top:1px solid var(--hair);background:var(--ground-2)}
 .nav-route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;list-style:none;margin:0;padding:0}
 .nav-route li{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-width:0;min-height:164px;padding:0 0 14px;border-bottom:1px solid var(--hair)}
-.nav-route li+li::before{content:"→";position:absolute;left:-23px;bottom:65px;color:var(--soft);font:400 18px/1 var(--mono)}
-.nav-route .route-step{margin-bottom:auto;font:500 10px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.nav-route li+li::before{content:"→";position:absolute;left:-23px;bottom:65px;color:var(--soft);font:400 18px/1 var(--ui)}
+.nav-route .route-step{margin-bottom:auto;font:500 10px/1.5 var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
 .nav-route strong{display:block;font:500 26px/1.05 var(--display);letter-spacing:-.02em;color:var(--paper)}
-.nav-route small{display:block;min-height:3em;margin-top:9px;font:400 12px/1.5 var(--mono);color:var(--dim)}
+.nav-route small{display:block;min-height:3em;margin-top:9px;font:400 12px/1.5 var(--ui);color:var(--dim)}
 .shelf-mini{display:flex;gap:4px;align-items:flex-end;width:70px;height:40px;margin:10px 0 12px;padding:0 5px 4px;border-bottom:2px solid var(--paper)}
 .shelf-mini i{width:11px;height:24px;border:1px solid var(--soft)}.shelf-mini i:nth-child(2){height:29px;background:var(--fb);border:0}.shelf-mini i:nth-child(3){height:34px;background:var(--ll);border:0}.shelf-mini i:nth-child(4){height:27px;background:var(--wb);border:0}
-.nav-return{display:flex;align-items:baseline;gap:10px;margin:20px 0 0;color:var(--soft);font:400 12px/1.6 var(--mono)}.nav-return>span{color:var(--wb);font-size:20px}
+.nav-return{display:flex;align-items:baseline;gap:10px;margin:20px 0 0;color:var(--soft);font:400 12px/1.6 var(--ui)}.nav-return>span{color:var(--wb);font-size:20px}
 #moving figcaption{margin-top:16px;max-width:60ch}
 @media(max-width:600px){#moving .nav-map{padding:22px 18px}.nav-route{grid-template-columns:1fr;gap:18px}.nav-route li{min-height:0;padding:0 0 18px 34px}.nav-route li+li::before{content:"↓";left:0;top:2px;bottom:auto}.nav-route .route-step{margin-bottom:8px}.nav-route small{min-height:0}.shelf-mini{position:absolute;right:0;bottom:28px}.route-shelf strong,.route-shelf small{padding-right:82px}.nav-return{font-size:11px}}
+
+/* The house pages stay dark through the mobile controls and safe area. */
+html{color-scheme:dark;background:var(--ground)}
+body{min-height:100svh;background-color:var(--ground)}
+.colophon{padding-bottom:calc(56px + env(safe-area-inset-bottom,0px))}
+body .pd-tools{background:var(--ground);color:var(--paper)}
+
+.house-index{font:500 12px/1.4 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--soft);white-space:nowrap}
+@media(max-width:900px){.mast-side{align-items:flex-end;padding:12px 24px 0 0}}
+@media(max-width:560px){.mast-side{padding-top:24px;padding-right:26px}.house-index{font-size:11px}}
+
+figure{max-width:calc(100% + 34px)}
+@media(max-width:560px){.mast h1{font-size:clamp(48px,15.7vw,62px)}.mast h1 i{margin-left:.42em}}
+
+@media(max-width:360px){h2{font-size:34px;gap:12px}h2 .n{font-size:20px}}
 </style>
 <link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="/personal-updates/mobile/icon-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Periodicals">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20260930-final">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261001-polish">
 </head>
 <body>
 <!-- PERIODICALS HANDBOOK — /personal-updates/handbook/. Documentation for the publishing system only:
-not a publication, not scheduled, and no shelf spine. The large Nᵒ. 21 in the masthead is a personal catalogue/colophon mark, not a publication issue number. Permanently dark like the hub.
+not a publication, not scheduled, and no shelf spine. HOUSE INDEX is the quiet secondary house identifier. Permanently dark like the hub.
 Update it by hand when a title's behaviour changes (names, navigation, modes, Field Register, Heron). -->
 <a class="skip" href="#content">Skip to the handbook</a>
 <div class="page">
   <header class="imprint"><a href="../">← Periodicals</a><span><a href="../commonplace/">Commonplace</a> · Handbook</span></header>
   <header class="mast">
     <h1>Periodicals <i>Handbook</i></h1>
-    <div class="mast-side"><div class="hb-no" aria-label="Number 21"><span class="no">N<sup>o</sup>.</span><span class="num">21</span></div></div>
+    <div class="mast-side"><span class="house-index">HOUSE INDEX</span></div>
   </header>
   <div class="body">
     <nav class="toc" aria-label="Contents"><div class="toc-head"><span>Contents</span><small>9 sections</small></div><ol>
@@ -251,30 +261,27 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
 
 <section id="heron">
   <h2><span class="n">G</span>The Heron</h2>
-  <p class="lede">The Heron is an occasional methodological margin editor that lives in the margins of Loblolly &amp; Logit. On a few passages each week it flies in, lands beside the text, and waits. If you ask, it tells you something useful about what you are reading.</p>
+  <p class="lede">The Heron is an occasional methodological margin editor that lives in the margins of Loblolly &amp; Logit. On a few configured passages each week it already stands beside the text and waits. If you ask, it tells you something useful about what you are reading.</p>
 
   <h3>Why a heron, and why a body at all</h3>
-  <p>Help text usually arrives as a tooltip or a bubble: easy to ignore when it is everywhere, and easy to resent when it interrupts. The Heron is embodied so that its presence carries information: when it has landed, a passage has been judged worth a second look. A heron fits the journal’s subject and its margins: a patient wading bird, narrow and upright, that watches before it acts.</p>
+  <p>Help text usually arrives as a tooltip or a bubble: easy to ignore when it is everywhere, and easy to resent when it interrupts. The Heron is embodied so that its presence carries information: when it is perched, a passage has been judged worth a second look. A heron fits the journal’s subject and its margins: a patient wading bird, narrow and upright, that watches before it acts.</p>
 
   <figure>
-    <svg viewBox="0 0 700 190" role="img" aria-labelledby="hT hD"><title id="hT">The Heron’s cycle</title><desc id="hD">Observe, fly, perch, explain or question, leave.</desc>
+    <svg viewBox="0 0 700 190" role="img" aria-labelledby="hT hD"><title id="hT">The Heron’s cycle</title><desc id="hD">Standing at a configured item; bent to view an opened note; absent after closing.</desc>
       <g fill="none" stroke="#efe9dc" stroke-linecap="round" stroke-linejoin="round">
-        <g transform="translate(30 36) scale(1.05)"><path d="M27.2 45 L26.6 60.5 L26.2 77 M30.2 45 L31 60.5 L32 77" stroke-width="1.1"/><path d="M20.6 77 H28.2 M26.6 77 H35.6" stroke-width="1"/><path d="M19 29.4 C26.4 27.4 34.6 34.4 41.4 46.4 L36 46.2 C29.6 46 21.8 43.8 18.2 38.2 C16.9 35.4 17.2 31.4 19 29.4 Z" fill="#131210" stroke-width="1.3"/><path d="M19.2 30.4 C12.2 26.6 20.4 18.6 15.4 12.4 C13.9 10.4 14 8.8 15.4 7.8" stroke-width="2.2"/><ellipse cx="16.6" cy="7.2" rx="2.6" ry="1.8" fill="#131210" stroke-width="1.1"/><path d="M14.4 6.7 L.8 8.9 L14.4 7.9 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/></g>
-        <g transform="translate(150 70)"><path d="M68 25.2 L94 28.4 M68 26.4 L93 31" stroke-width="1"/><path d="M47 21.5 C53 7 67 1.5 85 4 C75 9 65 15 59 22.5 Z" fill="#131210" stroke-width="1.2"/><path d="M34 22 C44 17 62 18 72.5 24.2 C64 28.6 46 29.4 36 27 C33.4 26 32.6 23.4 34 22 Z" fill="#131210" stroke-width="1.3"/><path d="M35.6 23.2 C30 21.4 28.6 16.4 24.6 16.8 C21.4 17.2 20.4 20.6 22.2 22.6" stroke-width="2.2"/><ellipse cx="20.6" cy="22.2" rx="2.6" ry="1.8" fill="#131210" stroke-width="1.1"/><path d="M18.6 21.8 L4 24.2 L18.6 23 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/></g>
-        <g transform="translate(300 36) scale(1.05)"><path d="M27.2 45 L26.6 60.5 L26.2 77 M30.2 45 L31 60.5 L32 77" stroke-width="1.1"/><path d="M20.6 77 H28.2 M26.6 77 H35.6" stroke-width="1"/><path d="M19 29.4 C26.4 27.4 34.6 34.4 41.4 46.4 L36 46.2 C29.6 46 21.8 43.8 18.2 38.2 C16.9 35.4 17.2 31.4 19 29.4 Z" fill="#131210" stroke-width="1.3"/><path d="M19.2 30.4 C12.2 26.6 20.4 18.6 15.4 12.4 C13.9 10.4 14 8.8 15.4 7.8" stroke-width="2.2"/><ellipse cx="16.6" cy="7.2" rx="2.6" ry="1.8" fill="#131210" stroke-width="1.1"/><path d="M14.4 6.7 L.8 8.9 L14.4 7.9 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/><path d="M-6 80H56" stroke-width="2"/></g>
-        <g transform="translate(420 36) scale(1.05)"><path d="M27.2 45 L26.6 60.5 L26.2 77 M30.2 45 L31 60.5 L32 77" stroke-width="1.1"/><path d="M20.6 77 H28.2 M26.6 77 H35.6" stroke-width="1"/><path d="M19 29.4 C26.4 27.4 34.6 34.4 41.4 46.4 L36 46.2 C29.6 46 21.8 43.8 18.2 38.2 C16.9 35.4 17.2 31.4 19 29.4 Z" fill="#131210" stroke-width="1.3"/><path d="M19.4 30.6 C14.4 27.2 10.6 27.4 7.6 30.6" stroke-width="2.2"/><ellipse cx="6.2" cy="31.8" rx="2.6" ry="1.8" transform="rotate(28 6.2 31.8)" fill="#131210" stroke-width="1.1"/><path d="M5.2 33 L-5.6 40.6 L6 34 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/><path d="M-10 80H56" stroke-width="2"/></g>
-        <rect x="486" y="46" width="72" height="44" stroke="#a9a397"/><path d="M494 60h52M494 70h40M494 80h46" stroke="#a9a397"/>
-        <g transform="translate(578 40) scale(-1 1) translate(-96 0)"><path d="M68 25.2 L94 28.4 M68 26.4 L93 31" stroke-width="1"/><path d="M47 25 C53 36 65 44.5 82 46.5 C73 40 64 33 59 25.6 Z" fill="#131210" stroke-width="1.2"/><path d="M34 22 C44 17 62 18 72.5 24.2 C64 28.6 46 29.4 36 27 C33.4 26 32.6 23.4 34 22 Z" fill="#131210" stroke-width="1.3"/><path d="M35.6 23.2 C30 21.4 28.6 16.4 24.6 16.8 C21.4 17.2 20.4 20.6 22.2 22.6" stroke-width="2.2"/><ellipse cx="20.6" cy="22.2" rx="2.6" ry="1.8" fill="#131210" stroke-width="1.1"/><path d="M18.6 21.8 L4 24.2 L18.6 23 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/></g>
+        <g transform="translate(100 36) scale(1.05)"><path d="M27.2 45 L26.6 60.5 L26.2 77 M30.2 45 L31 60.5 L32 77" stroke-width="1.1"/><path d="M20.6 77 H28.2 M26.6 77 H35.6" stroke-width="1"/><path d="M19 29.4 C26.4 27.4 34.6 34.4 41.4 46.4 L36 46.2 C29.6 46 21.8 43.8 18.2 38.2 C16.9 35.4 17.2 31.4 19 29.4 Z" fill="#131210" stroke-width="1.3"/><path d="M19.2 30.4 C12.2 26.6 20.4 18.6 15.4 12.4 C13.9 10.4 14 8.8 15.4 7.8" stroke-width="2.2"/><ellipse cx="16.6" cy="7.2" rx="2.6" ry="1.8" fill="#131210" stroke-width="1.1"/><path d="M14.4 6.7 L.8 8.9 L14.4 7.9 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/><path d="M-6 80H56" stroke-width="2"/></g>
+        <g transform="translate(300 36) scale(1.05)"><path d="M27.2 45 L26.6 60.5 L26.2 77 M30.2 45 L31 60.5 L32 77" stroke-width="1.1"/><path d="M20.6 77 H28.2 M26.6 77 H35.6" stroke-width="1"/><path d="M19 29.4 C26.4 27.4 34.6 34.4 41.4 46.4 L36 46.2 C29.6 46 21.8 43.8 18.2 38.2 C16.9 35.4 17.2 31.4 19 29.4 Z" fill="#131210" stroke-width="1.3"/><path d="M19.4 30.6 C14.4 27.2 10.6 27.4 7.6 30.6" stroke-width="2.2"/><ellipse cx="6.2" cy="31.8" rx="2.6" ry="1.8" transform="rotate(28 6.2 31.8)" fill="#131210" stroke-width="1.1"/><path d="M5.2 33 L-5.6 40.6 L6 34 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/><path d="M-10 80H56" stroke-width="2"/></g>
+        <rect x="366" y="46" width="72" height="44" stroke="#a9a397"/><path d="M374 60h52M374 70h40M374 80h46" stroke="#a9a397"/>
       </g>
-      <g font-family="JetBrains Mono,monospace" font-size="12" fill="#efe9dc" text-anchor="middle"><text x="58" y="160">observe</text><text x="198" y="160">fly</text><text x="326" y="160">perch</text><text x="480" y="160">explain / question</text><text x="630" y="160">leave</text></g>
-      <g font-family="JetBrains Mono,monospace" font-size="10" fill="#a9a397" text-anchor="middle"><text x="58" y="176">passage nears</text><text x="198" y="176">1.4 s, in the margin</text><text x="326" y="176">waits, silent</text><text x="480" y="176">only when you open it</text><text x="630" y="176">once you move on</text></g>
+      <path d="M562 120H622" stroke="#a9a397" stroke-dasharray="3 4"/><g font-family="Instrument Sans,sans-serif" font-size="12" fill="#efe9dc" text-anchor="middle"><text x="128" y="160">STANDING</text><text x="365" y="160">VIEWING</text><text x="590" y="160">CLOSED</text></g>
+      <g font-family="Instrument Sans,sans-serif" font-size="10" fill="#a9a397" text-anchor="middle"><text x="128" y="176">already beside the item</text><text x="365" y="176">when you open its note</text><text x="590" y="176">perch disappears</text></g>
     </svg>
     <figcaption>Poses carry meaning: upright and still means waiting; leaning forward with the bill lowered means it is looking at the passage with you (on hover, focus, or while its note is open); wings out means arriving or leaving.</figcaption>
   </figure>
 
   <h3>How it behaves</h3>
-  <p>Each Friday issue programs a few appearances, usually two or three, with a maximum of four, each tied to a specific passage: a figure, a finding, an identification caveat. When that passage reaches the middle of your screen the Heron waits a moment, then flies in for 1.4 seconds along a short arc from the right page edge, keeping to the margin, and lands beside the passage below its research note. It then stays still. Its perch is labelled with the kind of intervention and a one-line title, so what it has to say is visible without any motion.</p>
-  <p>Choose the Heron (click, tap, or <span class="mono">Tab</span> to it and press <span class="mono">Enter</span>) and a compact note opens directly beneath it in the margin: a few sentences, at most one compact analytical sketch or figure annotation, and often a link to the relevant entry in the methods notebook. <span class="mono">Esc</span> or <b>Close</b> returns you to where you were. Closing the note sends the bird off the right edge while keeping its label available to reopen. When you read well past that section the Heron leaves, and the next unseen intervention waits for that departure to finish. It never leaves while its note is open.</p>
+  <p>Each Friday issue programs a few appearances, usually two or three, with a maximum of four, each tied to a specific passage: a figure, a finding, an identification caveat. Each configured item has a standing Heron in its margin from the moment the issue loads. It stays still until you open its note, when it bends to look with you. Its perch is labelled with the kind of intervention and a one-line title, so what it has to say is visible without any motion.</p>
+  <p>Choose the Heron (click, tap, or <span class="mono">Tab</span> to it and press <span class="mono">Enter</span>) and a compact note opens directly beneath it in the margin: a few sentences, at most one compact analytical sketch or figure annotation, and often a link to the relevant entry in the methods notebook. <span class="mono">Esc</span> or <b>Close</b> returns you to where you were. Closing the note removes that perch for this reading session; it does not immediately return. Other configured perches remain beside their own items.</p>
 
   <h3>What it can do</h3>
   <ul class="can">
@@ -315,7 +322,7 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
   <p>These choices are stored in this browser only.</p>
 
   <h3>Accessibility and reduced motion</h3>
-  <p>The perched Heron is an ordinary button with a full spoken label (for example, “The heron asks: What is the counterfactual here? Open note”), reachable by keyboard in reading order beside its article. Notes are regions that receive focus when opened and return focus on close. If your system asks for reduced motion, or the screen is too narrow for a margin, the Heron never flies: it simply appears at its perch beside the passage. Nothing it offers depends on seeing it move.</p>
+  <p>The perched Heron is an ordinary button with a full spoken label (for example, “The heron asks: What is the counterfactual here? Open note”), reachable by keyboard in reading order beside its article. Notes are regions that receive focus when opened; closing returns focus to the article heading. The Heron appears statically beside its configured passage at every screen size, including when your system asks for reduced motion. Nothing it offers depends on seeing it move.</p>
 
   <h3>Heron and Field Register</h3>
   <p>They are related but do different jobs. Field Notes and the Field Register introduce <i>who</i> does environmental economics, the people and institutions behind the week’s evidence, and accumulate into a directory. The Heron works on <i>how</i> to read the evidence, one passage at a time, and keeps nothing but your preferences.</p>
