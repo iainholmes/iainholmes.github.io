@@ -51,6 +51,7 @@ async function load() {
   const logArg = process.argv.indexOf('--log');
   const logPath = logArg >= 0 ? process.argv[logArg + 1] : P('_private/recommendation-log.json');
   if (logArg >= 0 && !logPath) throw Error('Provide a local Field Log backup after --log.');
+  if (logArg >= 0 && !existsSync(logPath)) throw Error('The supplied Field Log backup does not exist.');
   const completionLog = existsSync(logPath) ? readLogBackup(await readFile(logPath, 'utf8')) : [];
   return { site, places, photos, schema, photoSchema, editions, accessChecks, completionLog };
 }
@@ -80,9 +81,11 @@ function checkEditions({ editions, schema, places, photos, accessChecks, complet
     }
     const accessIssue=accessProblem(ed,accessChecks.checks,accessChecks.official_hosts);
     if(accessIssue)err(id,'Publication gate: '+accessIssue);
-    if (ed.status === 'published' && previousSuggestions(ed, Object.values(editions)).length) {
+    if (ed.status === 'published') {
       const reuse = reuseEligibility(ed, Object.values(editions), {log: completionLog});
       if (!reuse.eligible) err(id, 'Recommendation reuse: ' + reuse.reason);
+    }
+    if (ed.status === 'published' && previousSuggestions(ed, Object.values(editions)).length) {
       const stamp = new Date(ed.published_at);
       for (const [label, value, limit] of [['Place snapshot', ed.flagship.snapshot.as_of + 'T00:00:00-04:00', 7], ['Forecast', ed.conditions.as_of, 3]]) {
         const age = (stamp - new Date(value)) / 86400000;

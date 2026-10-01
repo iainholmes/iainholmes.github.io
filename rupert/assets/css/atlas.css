@@ -730,8 +730,11 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .p-stand { font-size: var(--type-lead); line-height: 1.5; }
 .p-metrics { font-size: var(--type-body); line-height: 1.5; padding-block: 16px; }
 .cond-k { font-size: var(--type-micro); }
-.p-photo .credit { font-size: var(--type-micro); }
-.p-photo.adventure-illustration img { background: var(--lake); }
+.p-photo, .p-photo.adventure-illustration { aspect-ratio: auto; max-height: none; background: none; }
+.p-photo img, .p-photo.adventure-illustration img { width: 100%; height: auto; aspect-ratio: 3/2; background: var(--lake); }
+.p-photo .credit { position: static; max-width: none; padding: 8px 0 0; background: var(--paper); color: var(--text-2); font-size: var(--type-micro); }
+.row dt { font-size: var(--type-micro); }
+.row dd { font-size: var(--type-body); line-height: 1.5; }
 .p-more a, .week-archive, .utility-footer .wrap { font-size: var(--type-meta); }
 .p-more a { display: inline-flex; align-items: center; min-height: 44px; }
 .plate.is-pending .p-title { font-size: var(--type-card); }
@@ -755,7 +758,7 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .ed-main { font-size: 21px; line-height: 1.6; }
 .ed-main > section { margin-bottom: 32px; }
 .ed-main p { margin-bottom: 14px; }
-.ed-fun { gap: 28px; align-items: start; margin-bottom: 32px; }
+.ed-fun { gap: 28px; align-items: start; margin-bottom: 32px; scroll-margin-top: calc(var(--bar-h) + 20px); }
 .ed-fun section { height: auto; min-height: 0; align-self: start; padding: 20px 0 0; margin: 0; background: transparent; border: 0; border-top: 2px solid var(--accent); }
 .fun-text { font-size: 21px; line-height: 1.6; }
 .ed-fun p:last-child { margin-bottom: 0; }
@@ -765,6 +768,7 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .facts dd { font-size: 19px; line-height: 1.5; overflow-wrap: anywhere; }
 .fact-note, .sheet-links, .fallbacks span, .fallbacks small, .pivot-to { font-size: var(--type-meta); line-height: 1.5; }
 .fallbacks li { grid-template-columns: 100px minmax(0,1fr); }
+.ed-sources { font-size: var(--type-body); }
 .ed-sources li { margin-bottom: 12px; }
 .edition .pivot-k { font-size: var(--type-micro) !important; }
 .crowd-line { font-size: var(--type-meta); }
@@ -772,6 +776,7 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .archive-card h3 { font-size: 32px; line-height: 1.2; }
 .archive-week > h2 { font-size: 36px; }
 .archive-filters label, .archive-filters button { font-size: var(--type-meta); }
+.archive .page-head { min-height: 0; }
 .mc-name, .map-card .mc-name, .reg-head h2, .reg-region, .reg-row h4, .dossier-destination, .saved-trip h3, .trip-activity h3 { font-family: var(--f-text); }
 .reg-head h2 { font-size: 27px; line-height: 1.2; }
 .reg-region { font-size: 18px; }
@@ -795,6 +800,11 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .atlas-label-layer span { position: absolute; transform: translateY(-50%); white-space: nowrap; visibility: hidden; font: 400 14px/1.2 var(--f-data); color: var(--ink); text-shadow: 1px 0 var(--paper),-1px 0 var(--paper),0 1px var(--paper),0 -1px var(--paper); }
 .travel label, .travel button, .travel input, .travel select, .travel-privacy, .trip-library, .postcard-panel, #trip-summary, .travel-postcard figcaption, .trip-map #trip-map-status { font-size: var(--type-meta); line-height: 1.5; }
 .travel-editor .sec-h { font-size: 28px; }
+.trip-leg { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; }
+.trip-leg label { align-content: start; }
+.trip-leg > label:first-child, .leg-stops, .leg-actions { grid-column: 1/-1; }
+.trip-activities .sec-h { font-size: var(--type-section); }
+.saved-trip p, .saved-trip small { font-size: var(--type-meta); line-height: 1.5; }
 .leg-actions button { font-size: var(--type-micro); min-height: 44px; }
 .trip-map-key { font-size: var(--type-micro); }
 .trip-itinerary table, .trip-itinerary th { font-size: var(--type-meta); }
@@ -816,7 +826,11 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
   .bar-mark { font-size: 25px; }
   .bar-nav ul { gap: 18px; }
   .bar-nav .nav-link { font-size: 14px; }
+  .archive-filters { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .archive-filters label:first-child { grid-column: 1/-1; }
+  .archive-filters button { grid-column: 3; justify-self: end; }
 }
+@media (min-width:901px), (max-width:419px) { .trip-dates { grid-template-columns: 1fr; } }
 @media (max-width:1100px) {
   .travel-grid { grid-template-columns: minmax(300px,340px) minmax(0,1fr); gap: 28px; }
 }

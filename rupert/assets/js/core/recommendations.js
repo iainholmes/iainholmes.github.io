@@ -14,6 +14,7 @@ export function reuseEligibility(candidate, history, { at = candidate.published_
   const instant = new Date(at), f = main(candidate), date = candidate.weekend?.start || String(at).slice(0, 10);
   if (!Number.isFinite(+instant)) return { eligible: false, reason: 'A valid publication time is required.' };
   if (!f.seasons?.includes(seasonFor(date))) return { eligible: false, reason: 'Wait for a suitable season.' };
+  if (f.experiences?.includes('event') && !f.event_window) return { eligible: false, reason: 'Supply the appropriate event window.' };
   if (f.event_window && (f.event_window.start > f.event_window.end || date < f.event_window.start || date > f.event_window.end))
     return { eligible: false, reason: 'Wait for the appropriate event window.' };
   const previous = previousSuggestions(candidate, history, at);

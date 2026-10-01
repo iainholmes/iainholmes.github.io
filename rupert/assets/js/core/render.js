@@ -11,7 +11,8 @@ import { expectedPublish } from './editions.js';
 import { previousSuggestions } from './recommendations.js';
 // Editorial slot and real publication date are separate; the timestamp stays machine-readable.
 function slotPublication(ed) {
-  return `<time datetime="${esc(ed.published_at)}">${esc(SLOT_LABEL[ed.slot].replace("'s Choice", ' edition'))} · ${esc(shortDate(nyDateString(new Date(ed.published_at))))}</time>`;
+  const date = publishedLabel(ed.published_at).replace(/^\S+\s/, '');
+  return `<time datetime="${esc(ed.published_at)}">${esc(SLOT_LABEL[ed.slot].replace("'s Choice", ' edition'))} · ${esc(date)}</time>`;
 }
 
 export const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -335,7 +336,7 @@ export function renderArchive(groups, ctx) {
     if(!e) return `<article class="archive-card is-missing"><p class="p-day">${SLOT_LABEL[slot]}</p><p>${publish > (ctx.now || new Date()) ? 'Publishes '+esc(publishedLabel(publish.toISOString())) : 'Not published'}</p></article>`;
     if(e.status==='withdrawn') return `<article class="archive-card is-withdrawn" data-option="${esc(JSON.stringify({...e.options?.[0],title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''}))}"><div><p class="p-day">${SLOT_LABEL[slot]} · Withdrawn</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">Recommendation withdrawn · Historical publication</p></div></article>`;
     const option={...(e.options?.find(o=>o.role==='flagship') || {}),title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''};
-    return `<article class="archive-card" data-option="${esc(JSON.stringify(option))}"><a href="${base}edition/${esc(e.id)}/" class="archive-image" tabindex="-1" aria-hidden="true">${photo(e.photo_id?{id:e.photo_id}:null,photos,base,{sizes:'(min-width: 760px) 42vw, 90vw'})}</a><div><p class="p-day">${SLOT_LABEL[slot]} · ${esc(publishedLabel(e.published_at))}</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">${esc(option.place_name)}</p></div></article>`;
+    return `<article class="archive-card" data-option="${esc(JSON.stringify(option))}"><a href="${base}edition/${esc(e.id)}/" class="archive-image" tabindex="-1" aria-hidden="true">${photo(e.photo_id?{id:e.photo_id}:null,photos,base,{sizes:'(min-width: 760px) 42vw, 90vw'})}</a><div><p class="p-day">${slotPublication(e)}</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">${esc(option.place_name)}</p></div></article>`;
   }).join('')}</div></section>`).join('');
   return `<div class="archive wrap"><header class="page-head"><h1>Archive</h1></header><form class="archive-filters" hidden role="search"><label>Search<input type="search" name="query" placeholder="Place or activity"></label><label>Season<select name="season"><option value="">All seasons</option>${Object.entries(SEASONS).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Activity<select name="experience"><option value="">All activities</option>${Object.entries(EXPERIENCES).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Crowd<select name="crowd">${Object.entries(CROWD_TOLERANCES).map(([v,l])=>`<option value="${v}"${v==='any'?' selected':''}>${l}</option>`).join('')}</select></label><button type="reset">Clear</button></form><p class="archive-count" role="status" aria-live="polite"></p><p class="archive-empty" hidden>No editions match these filters.</p>${cards || '<p>No editions published.</p>'}</div>`;
 }

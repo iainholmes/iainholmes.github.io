@@ -1,4 +1,4 @@
-// Atlas model: pure functions from places + editions (+ published Field Log, later) to map and register data.
+// Atlas model: published primary recommendation history, with optional visit status.
 // No DOM, no map library. Shared by the build tool (register pre-render) and the browser (map).
 
 export const STATUS = {
@@ -14,26 +14,28 @@ const ROLE = { flagship: 'flagship', local_trail: 'Local Trail', away_mission: '
 
 /**
  * For each place: its status and the editions / visits behind it.
- * manifest.editions carry place_roles: [{ place_id, role }] so a place used as a Wildcard is still found.
+ * Only primary recommendations earn a Directory entry; contingency and planning candidates stay out.
  */
 export function placeStatuses(places, manifest, { log = [], now = new Date() } = {}) {
   const out = new Map(places.places.map(p => [p.id, { status: 'register', editions: [], visits: [] }]));
   for (const e of manifest.editions) {
     if (!['published', 'withdrawn'].includes(e.status) || new Date(e.published_at) > now) continue;
     for (const { place_id, role } of e.place_roles || []) {
+      if (role !== 'flagship') continue;
       const s = out.get(place_id); if (!s) continue;
       s.editions.push({ id: e.id, slot: e.slot, role, weekend: e.weekend, published_at: e.published_at, status: e.status, label: `${SLOT_SHORT[e.slot]}${e.status === 'withdrawn' ? ' · Withdrawn' : ''}${role === 'flagship' ? '' : ' · ' + ROLE[role]}` });
-      s.status = e.status === 'published' ? 'recommended' : s.status === 'recommended' ? s.status : 'withdrawn';
     }
-  }
-  for (const v of log) {
-    const s = out.get(v.place_id); if (!s) continue;
-    if (!s.editions.length) continue; // Personal outings do not earn editorial Directory entries.
-    s.visits.push(v); s.status = 'walked';
   }
   for (const [id, s] of out) {
     if (!s.editions.length) out.delete(id);
-    else s.editions.sort((a, b) => b.published_at.localeCompare(a.published_at));
+    else {
+      s.editions.sort((a, b) => b.published_at.localeCompare(a.published_at));
+      s.status = s.editions[0].status === 'withdrawn' ? 'withdrawn' : 'recommended';
+    }
+  }
+  for (const v of log) {
+    const s = out.get(v.place_id); if (!s) continue; // Personal outings do not earn editorial entries.
+    s.visits.push(v); s.status = 'walked';
   }
   return out;
 }
