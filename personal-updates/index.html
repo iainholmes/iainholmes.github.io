@@ -185,11 +185,12 @@ a{color:inherit}
 <meta name="apple-mobile-web-app-title" content="Periodicals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20260930-final">
+<link rel="stylesheet" href="issue-marks.css?v=20261001"><script src="issue-marks.js?v=20261001"></script>
 </head>
 <body>
 <!-- PERIODICALS HUB — /personal-updates/ (display name Periodicals). Permanently dark: no Day/Night
 control and it ignores localStorage periodicals:mode (the three publications still share that key).
-The three covers remain the organizing surface. Beneath them, an unboxed three-part press note may show useful live publication information (archive depth, latest issue and next release), but never as a ledger, table, ruled rail or card grid. Each cover reads the latest issue from its title's canonical page. Shared hub folios stay three-digit.
+The three issue marks remain the organizing surface: a single conceptual illustration occupies 71% of each common 600×800 frame, with publication identity, current number/date and a short derived theme beneath it. New issues update from the canonical pages on load, focus and restored navigation. The current marks are also embedded for offline/no-script reading. Beneath them, an unboxed three-part press note may show useful live publication information (archive depth, latest issue and next release), but never as a ledger, table, ruled rail or card grid. Each cover reads the latest issue from its title's canonical page. Shared hub folios stay three-digit.
 Navigation memory: each title writes localStorage periodicals:last = {t:"fb"|"sp"|"cp", at}; the hub
 lifts that cover (.vol.recent) and lengthens its rail accent (.rc.recent) for 45 days; order never changes.
 The root personal-site route lives quietly in the footer.
@@ -217,31 +218,15 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
   <main>
     <section class="shelf" id="shelf" aria-label="Titles">
       <a class="vol" href="../daily-watchlist-5/" style="--c:var(--fb)" aria-label="Field Brief, Daily Briefing">
-        <div class="cover c-fb" aria-hidden="true">
-          <div class="top"><span>Field Brief</span><span data-fb="dow">Sunday</span></div>
-          <div class="mh">Daily <i>Briefing</i><span class="fo"><span class="no">N<sup>o</sup>.</span><span data-fb="no">002</span></span></div>
-          <div class="meta"><span data-fb="date">September 27, 2026</span><span data-fb="read">10 min read</span></div>
-          <div class="head" data-fb="head">Supreme Court restores the administration’s expanded voter-verification system</div><ol class="more" data-fb="more"><li>A second federal judge rejects EPA’s cancellation rationale for Solar for All</li><li>CMS cancels 315,000 unauthorized Marketplace enrollments</li><li>Frontier-AI safety is moving toward enforceable federal rules</li><li>Wake County approves WakeMed–Atrium combination</li></ol>
-          <div class="plate"><svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMax slice"><rect width="400" height="220" fill="#dcc6a0"/><circle cx="318" cy="62" r="40" fill="#8a2a36"/><path d="M0 160c70-30 130 14 200-4s120-40 200-10v74H0z" fill="#1f4e6e"/><path d="M0 188c90-22 150 16 230 0s110-14 170 0v32H0z" fill="#221a14"/><path d="M60 170V96h54v74M136 170V70h60v100" fill="#221a14"/><g fill="#f1e6d0"><rect x="72" y="108" width="30" height="8"/><rect x="72" y="126" width="30" height="8"/><rect x="148" y="84" width="36" height="8"/><rect x="148" y="102" width="36" height="8"/><rect x="148" y="120" width="36" height="8"/></g><path d="M250 150l30-58 30 58z" fill="#c28b1e"/></svg></div>
-        </div>
+        <div class="cover c-fb issue-mark" data-issue-mark="fb" data-edition="2026-09-30" data-theme="institutions" data-signature="2845269718"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Field Brief, issue 005: Institutional constraints"><title>Field Brief · 005 · Institutional constraints</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="#f1e6d0"/><g><path d="M110 494V128H490V494H420V204H180V494Z" fill="#221a14"/><path d="M218 276H400V408H218Z" fill="#8a2a36"/><path d="M180 350H420" stroke="#f1e6d0" stroke-width="12"/><path d="M300 234V450" stroke="#f1e6d0" stroke-width="6"/><path d="M62 494H538" stroke="#221a14" stroke-width="3"/></g><path d="M42 570H558" stroke="#221a14" stroke-width="2"/><g fill="#221a14"><text x="42" y="634" font-family="Instrument Serif,Georgia,serif" font-size="48">Field Brief</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">ISSUE 005 / 2026-09-30</text><text x="42" y="740" font-family="Instrument Serif,Georgia,serif" font-size="26">Institutional constraints</text></g></svg></div>
       </a>
 
       <a class="vol" href="../weekly-economics-environment/" style="--c:var(--sp)" aria-label="Loblolly &amp; Logit">
-        <div class="cover c-sp" aria-hidden="true">
-          <div class="vl"><span>Vol. 1</span><span data-sp="date">25 Sep 2026</span></div>
-          <div><div class="ttl">Loblolly <span class="amp">&amp;</span><br><i>Logit</i><span class="spfo"><i>N<sup>o</sup>.</i> <span data-sp="no">001</span></span></div></div>
-          <ol class="toc" data-sp="toc"><li>Electrification’s opportunity is larger than its current market share</li><li>The grid gets a $5.25 billion investment test</li><li>Carbon-border policy enters a new institutional test</li><li>Insurance stress has an urban geography of its own</li><li>Glyphosate review makes the value of information concrete</li></ol>
-          <div class="fig"><span>Fig. 1</span><svg viewBox="0 0 120 42" preserveAspectRatio="none"><path d="M0 41.5H120" stroke="#15302a" stroke-width="1"/><rect x="8" y="18" width="22" height="23" fill="#15302a"/><rect x="48" y="8" width="22" height="33" fill="#8aa08f"/><rect x="88" y="6" width="22" height="35" fill="#b4532e"/></svg></div>
-        </div>
+        <div class="cover c-sp issue-mark" data-issue-mark="sp" data-edition="2026-09-25" data-theme="complements" data-signature="1102534134"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Loblolly &amp; Logit, issue 001: Costs, risk &amp; institutions"><title>Loblolly &amp; Logit · 001 · Costs, risk &amp; institutions</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="#f3f0e6"/><g><g fill="none" stroke="#1f4a3b" opacity=".16"><path d="M-20 460Q150 290 300 440T620 410M-20 480Q150 310 300 460T620 430M-20 500Q150 330 300 480T620 450M-20 520Q150 350 300 500T620 470"/></g><path d="M85 484V340A215 215 0 0 1 515 340V484H445V340A145 145 0 0 0 155 340V484Z" fill="#1f4a3b"/><path d="M266 126L334 126L321 195H279Z" fill="#b4532e"/><g stroke="#f3f0e6" stroke-width="4"><path d="M180 162L213 224M108 248L170 280M155 340H85M420 162L387 224M492 248L430 280M445 340H515"/></g><path d="M60 484H540" stroke="#e3b456" stroke-width="6"/><path d="M170 455Q300 378 430 455" fill="none" stroke="#b4532e" stroke-width="2"/></g><path d="M42 570H558" stroke="#1f4a3b" stroke-width="2"/><g fill="#1f4a3b"><text x="42" y="634" font-family="Ectros,Georgia,serif" font-size="43">Loblolly &amp; Logit</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">ISSUE 001 / 2026-09-25</text><text x="42" y="740" font-family="Ectros,Georgia,serif" font-size="26">Costs, risk &amp; institutions</text></g></svg></div>
       </a>
 
       <a class="vol" href="../daily-econ-challenge/" style="--c:var(--cp-teal)" aria-label="The Workbook">
-        <div class="cover c-cp" aria-hidden="true">
-          <div class="no"><span><i class="cpno">N<sup>o</sup>.</i><span data-cp="no">001</span></span><span data-cp="date">28.IX.26</span></div>
-          <div class="ttl">The<br><i>Workbook</i></div>
-          <div class="eq">∂y / ∂x |<sub>z = z̄</sub></div><p class="q1" data-cp="q1"><b>1.</b> You regress log hourly wages on years of schooling in a cross-section. Unobserved ability raises wages and is positively correlated with schooling…</p>
-          <div class="grid" data-cp="grid"><span class="f">1</span><span class="t">2</span><span>3</span><span class="t">4</span><span>5</span><span class="f">6</span><span>7</span><span class="t">8</span></div>
-        </div>
+        <div class="cover c-cp issue-mark" data-issue-mark="cp" data-edition="2026-09-30" data-theme="identification" data-signature="3685055472"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="The Workbook, set 003: Comparisons &amp; evidence"><title>The Workbook · 003 · Comparisons &amp; evidence</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="#f7f7f3"/><g><path d="M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540M60 360H540M60 420H540M60 480H540M60 60V500M120 60V500M180 60V500M240 60V500M300 60V500M360 60V500M420 60V500M480 60V500M540 60V500" fill="none" stroke="#1c2f4a" opacity=".12"/><path d="M92 104V480H522" fill="none" stroke="#1c2f4a" stroke-width="3"/><path d="M110 432L210 367L310 301L481 164" fill="none" stroke="#0e5360" stroke-width="12" stroke-linecap="round"/><path d="M110 432L210 367L310 301L481 283" fill="none" stroke="#1c2f4a" stroke-width="5" stroke-dasharray="10 8"/><path d="M310 126V480" stroke="#1c2f4a" opacity=".35" stroke-width="2"/><path d="M481 164V283" stroke="#b5ced1" stroke-width="6"/><circle cx="310" cy="301" r="10" fill="#1c2f4a"/></g><path d="M42 570H558" stroke="#1c2f4a" stroke-width="2"/><g fill="#1c2f4a"><text x="42" y="634" font-family="STIX Two Text,Georgia,serif" font-size="48">The Workbook</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">SET 003 / 2026-09-30</text><text x="42" y="740" font-family="STIX Two Text,Georgia,serif" font-size="26">Comparisons &amp; evidence</text></g></svg></div>
       </a>
     </section>
 
@@ -320,6 +305,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
   function paintKept(){var counts={fb:0,sp:0,cp:0};try{var book=JSON.parse(localStorage.getItem('periodicals:commonplace:v1')||'null');Object.keys(book&&book.items||{}).forEach(function(id){var x=book.items[id],k=x&&x.publicationKey;if(k==='ll')k='sp';if(counts[k]!=null)counts[k]++})}catch(e){}Object.keys(counts).forEach(function(k){set('[data-kept="'+k+'"]',counts[k])})}
   paintKept();addEventListener('pageshow',paintKept);addEventListener('storage',function(e){if(e.key==='periodicals:commonplace:v1')paintKept()});
 
+  function refreshIssues(){
   get('../daily-watchlist-5/').then(function(doc){
     var data=JSON.parse(doc.getElementById('briefing-data').textContent);
     var eds=data.editions.slice().sort(function(a,b){return a.date.localeCompare(b.date)});
@@ -329,6 +315,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
     set('[data-fb="read"]',ed.readTime);set('[data-fb="head"]',ed.stories[0].title);
     set('[data-fb="line"]','N<sup>o</sup>. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}),true);set('[data-fb-depth]',eds.reduce(function(a,x){return a+(x.stories||[]).length},0));
     set('[data-fb="title"]',ed.issueTitle||ed.stories[0].title);
+    PeriodicalsIssueMarks.update({key:'fb',date:ed.date,no:no,title:ed.issueTitle,framing:[ed.deck,ed.signalTitle].concat(ed.signal||[]).join(' ')});
     set('[data-fb="more"]',ed.stories.slice(1,5).map(function(x){return '<li>'+x.title.replace(/[<>&]/g,'')+'</li>'}).join(''),true);
   }).catch(function(){});
 
@@ -338,6 +325,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
     set('[data-sp="no"]',String(n).padStart(3,'0'));set('[data-sp="count"]',n);set('[data-sp="dated"]',dotted(ed.dataset.edition));total('sp',n);set('[data-sp="date"]',fmt(ed.dataset.edition,{day:'numeric',month:'short',year:'numeric'}));
     set('[data-sp="line"]','N<sup>o</sup>. '+String(n).padStart(3,'0')+' · '+fmt(ed.dataset.edition,{day:'numeric',month:'short',year:'numeric'}),true);var rc=eds.reduce(function(a,x){return a+x.querySelectorAll('.entry').length},0),fr=0;try{fr=JSON.parse(doc.getElementById('field-register').textContent).entries.length}catch(e){}set('[data-sp-depth]',rc);set('[data-sp-register]',fr);
     set('[data-sp="title"]',ed.dataset.title);
+    PeriodicalsIssueMarks.update({key:'sp',date:ed.dataset.edition,no:n,title:ed.dataset.title,framing:ed.querySelector('.synthesis')?.textContent||ed.dataset.title});
     var heads=[].slice.call(ed.querySelectorAll('.entry h2')).slice(0,5);
     if(heads.length)set('[data-sp="toc"]',heads.map(function(h){return '<li>'+h.textContent.replace(/[<>&]/g,'')+'</li>'}).join(''),true);
   }).catch(function(){});
@@ -352,12 +340,17 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
     set('[data-cp="line"]','N<sup>o</sup>. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}),true);set('[data-cp-depth]',data.editions.reduce(function(a,x){return a+(x.questions||[]).length},0));var allFields={};data.editions.forEach(function(x){(x.questions||[]).forEach(function(q){if(q.field)allFields[q.field]=1})});set('[data-cp-fields]',Object.keys(allFields).length);
     var q1=document.createElement('div');q1.innerHTML=ed.questions[0].stem;var t=q1.textContent.trim();set('[data-cp="q1"]','<b>1.</b> '+(t.length>150?t.slice(0,t.lastIndexOf(' ',150))+'…':t).replace(/[<>&]/g,''),true);
     set('[data-cp="title"]',ed.questions.length+' questions · '+fields.length+' fields');
+    PeriodicalsIssueMarks.update({key:'cp',date:ed.date,no:ed.no,questions:ed.questions});
     /* the cover grid shows the reader's own record for the latest set, if any */
     try{var s=JSON.parse(localStorage.getItem('dec:v1:'+ed.date)||'null');
       set('[data-cp="grid"]',ed.questions.map(function(q,i){var a=s&&s.answers&&s.answers[q.id];var cls='';
         if(s&&s.submitted){var ok=a&&a.slice().sort().join()===q.correct.slice().sort().join();cls=ok?'f':'t'}else if(a&&a.length)cls='t';
         return '<span class="'+cls+'">'+(i+1)+'</span>'}).join(''),true)}catch(e){}
   }).catch(function(){});
+  }
+  refreshIssues();
+  addEventListener('pageshow',function(e){if(e.persisted)refreshIssues()});
+  addEventListener('focus',refreshIssues);
 })();
 </script>
 <script src="/personal-updates/mobile/mobile.js?v=20260930-final"></script>
