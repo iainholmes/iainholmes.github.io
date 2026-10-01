@@ -3,7 +3,7 @@
 .hero h1,.overview-item h3,.entry h2{font-family:var(--headline);font-weight:400;font-synthesis:none;letter-spacing:0;line-height:1.14}
 .hero h1 em{font-style:normal}.overview-item h3{font-size:23px;line-height:1.2}.entry h2{line-height:1.17}
 .closing-wordmark{max-width:1320px;margin:30px auto 0;padding:0 44px 18px;font:italic 400 20px/1 var(--editorial-title);color:var(--ink);letter-spacing:0}
-.footer{align-items:flex-start}.footer .footer-brand{max-width:46ch}.footer nav{flex-wrap:wrap}
+.footer{align-items:baseline;flex-wrap:wrap;padding-top:12px;padding-bottom:14px}.footer .footer-brand{max-width:none;min-width:0}.footer nav{flex-wrap:wrap}
 .notebook-preview{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin-top:20px}.notebook-preview a{padding:12px 0;border-bottom:1px solid var(--hair);text-decoration:none}
 .synthesis p a{color:inherit;text-decoration-color:var(--pollen);text-underline-offset:4px}.synthesis p a:hover,.synthesis p a:focus-visible{color:var(--pollen)}
 /* Literal night-register colours keep nested theme tokens from dimming names. */
