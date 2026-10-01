@@ -15,7 +15,8 @@ export function reuseEligibility(candidate, history, { at = candidate.published_
   if (!Number.isFinite(+instant)) return { eligible: false, reason: 'A valid publication time is required.' };
   if (!f.seasons?.includes(seasonFor(date))) return { eligible: false, reason: 'Wait for a suitable season.' };
   if (f.experiences?.includes('event') && !f.event_window) return { eligible: false, reason: 'Supply the appropriate event window.' };
-  if (f.event_window && (f.event_window.start > f.event_window.end || date < f.event_window.start || date > f.event_window.end))
+  const end = candidate.weekend?.end || date;
+  if (f.event_window && (f.event_window.start > f.event_window.end || end < f.event_window.start || date > f.event_window.end))
     return { eligible: false, reason: 'Wait for the appropriate event window.' };
   const previous = previousSuggestions(candidate, history, at);
   if (!previous.length) return { eligible: true, cooldown: 0, recencyPenalty: 0, previous: null };

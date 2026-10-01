@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {reuseEligibility,rankCandidates,experienceKey} from '../assets/js/core/recommendations.js';
 import {placeStatuses,registerGroups,markerFeatures,counts} from '../assets/js/core/atlas.js';
 import {renderEdition,renderWeek} from '../assets/js/core/render.js';
+import {accessProblem} from '../assets/js/core/publication.js';
 const start='2026-01-01T12:00:00Z', all=['spring','summer','autumn','winter'];
 const old={id:'old',status:'published',published_at:start,slot:'tuesday',weekend:{start:'2026-01-03',end:'2026-01-04'},flagship:{place_id:'park',title:'Old walk',seasons:all,experiences:['woodland'],snapshot:{route:{route_id:'loop@1'}}},place_roles:[{place_id:'park',role:'flagship'}]};
 const candidate={...old,id:'new',flagship:{...old.flagship,title:'Cosmetic rewrite'}};
@@ -19,6 +20,8 @@ assert.equal(reuseEligibility({...candidate,weekend:{start:'2026-07-04'},flagshi
 assert.equal(reuseEligibility({...candidate,flagship:{...candidate.flagship,event_window:{start:'2026-10-01',end:'2026-10-03'}}},[old],{at:at(200)}).eligible,false);
 assert.equal(reuseEligibility({...candidate,flagship:{...candidate.flagship,experiences:['event']}},[],{at:at(200)}).eligible,false);
 assert.equal(reuseEligibility({...candidate,weekend:{start:'2026-07-04'},flagship:{...candidate.flagship,seasons:['winter']}},[],{at:at(200)}).eligible,false);
+assert.equal(reuseEligibility({...candidate,flagship:{...candidate.flagship,experiences:['event'],event_window:{start:'2026-01-04',end:'2026-01-04'}}},[],{at:start}).eligible,true);
+assert.equal(reuseEligibility({...candidate,flagship:{...candidate.flagship,experiences:['event'],event_window:{start:'2026-01-02',end:'2026-01-02'}}},[],{at:start}).eligible,false);
 const repeat={...old,id:'second',published_at:at(180)};
 assert.equal(reuseEligibility(candidate,[old,repeat],{at:at(359)}).eligible,false);
 assert.equal(reuseEligibility(candidate,[old,repeat],{at:at(360)}).eligible,true);
@@ -51,4 +54,10 @@ const revised=structuredClone(editions);revised.published_at='2026-09-30T16:00:0
 const revisedHtml=renderEdition(revised,{base:'../../',places,photos:{photos:[]},history:[old],now});
 assert.match(revisedHtml,/<time datetime="2026-09-30T16:00:00-04:00">Tuesday edition · 30 Sep<\/time>/);
 assert.doesNotMatch(revisedHtml,/Tuesday edition · Wed/);
-console.log('34 publication history, cooldown, category variety and provenance assertions passed');
+const official={place_id:'park',status:'open',checked:'2026-01-01',official_url:'https://www.ncparks.gov/park'};
+const fresh={...official,checked:'2026-06-30'};
+assert.equal(accessProblem(old,[fresh,official],['www.ncparks.gov']),null);
+assert.equal(accessProblem({...candidate,published_at:at(180)},[official,fresh],['www.ncparks.gov']),null);
+assert.match(accessProblem({...candidate,published_at:at(180)},[official,{...fresh,status:'closed'}],['www.ncparks.gov']),/closed/);
+assert.match(accessProblem({...candidate,published_at:at(180)},[fresh,{...fresh,status:'closed'}],['www.ncparks.gov']),/closed/);
+console.log('40 publication history, cooldown, category variety and provenance assertions passed');

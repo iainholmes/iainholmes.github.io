@@ -768,6 +768,7 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .facts dd { font-size: 19px; line-height: 1.5; overflow-wrap: anywhere; }
 .fact-note, .sheet-links, .fallbacks span, .fallbacks small, .pivot-to { font-size: var(--type-meta); line-height: 1.5; }
 .fallbacks li { grid-template-columns: 100px minmax(0,1fr); }
+.fallbacks a, .fallbacks strong { font-size: var(--type-body); font-weight: 400; line-height: 1.5; }
 .ed-sources { font-size: var(--type-body); }
 .ed-sources li { margin-bottom: 12px; }
 .edition .pivot-k { font-size: var(--type-micro) !important; }
@@ -790,6 +791,7 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .mk-withdrawn circle { fill: var(--paper); stroke: var(--alert); stroke-width: 2; }
 .mk-withdrawn path { stroke: var(--alert); stroke-width: 2; }
 .is-withdrawn { border-color: var(--alert); }
+.withdrawal { background: var(--alert); font-size: var(--type-body); }
 .atlas-map .drive-status { font-size: var(--type-meta); width: 310px; }
 .map-legend { font-size: var(--type-micro); }
 .mc-status, .mc-link, .mc-close, .dossier-context, .dossier-message, .dossier-provider { font-size: var(--type-micro); }
