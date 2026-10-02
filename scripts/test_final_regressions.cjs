@@ -1,5 +1,5 @@
 const fs=require('fs'),assert=require('assert/strict'),{execFileSync}=require('child_process');
-const base='34eb9978c331d7eeac4ae68f3287832932f9e33d',instrument='c3294f7e0c8660970230d6b26c2bef0b9b081815';
+const base='c05c25d9d5900fc4b1483aabfd1ef734c3410bc1',instrument='c3294f7e0c8660970230d6b26c2bef0b9b081815';
 const read=p=>fs.readFileSync(p,'utf8'),at=(sha,p)=>execFileSync('git',['show',sha+':'+p],{encoding:'utf8'});
 const pages=['personal-updates/index.html','personal-updates/commonplace/index.html','personal-updates/handbook/index.html','daily-watchlist-5/index.html','daily-econ-challenge/index.html','weekly-economics-environment/index.html','weekly-economics-environment/notebook/index.html'];
 const scripts=s=>[...s.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)].filter(m=>!m[1].includes('src=')).map(m=>m[2]);
@@ -29,6 +29,9 @@ assert(fb.includes('--sans:"Instrument Sans"'));assert.equal(rules(fb,'body{')[0
 for(const prefix of ['.summary p','.side .why','.side dd','.signal p','.mast h1','.mast-folio'])assert.deepEqual(rules(fb,prefix),rules(at(base,'daily-watchlist-5/index.html'),prefix),'Field Brief protected reading/title/folio treatment changed: '+prefix);
 assert(!fb.includes('<span class="mast-cadence">Daily</span>'));assert(fb.includes('${modeHTML()}'));assert(fb.includes('.mast-vn{flex:0 0 100%;white-space:nowrap;'));
 const ll=read('weekly-economics-environment/index.html'),oldLL=at(base,'weekly-economics-environment/index.html');
+// The hotfix can change this portrait control cluster's flow only; all other page bytes stay locked.
+const navFlow=s=>s.replace(/^ \.toolbar \.toolbar-inner\{[^\n]*\}\n|^ \.toolbar \.toolbar-inner \.modes,\.toolbar \.toolbar-inner \.heron-toggle\{[^\n]*\}\n/gm,'');
+assert.equal(navFlow(ll),navFlow(oldLL),'portrait navigation hotfix changed unrelated L&L markup, typography or behavior');
 assert(ll.includes('.mh-folio .num{font:400 30px/1 var(--editorial-title)'));assert(ll.includes('.mh-folio .no{font:400 14px/1 var(--editorial-title)'));
 for(const prefix of ['.mh-title h1','.mh-folio .no sup','.hero h1','.hero-deck','.entry h2','.prose','.research-note'])assert.deepEqual(rules(ll,prefix),rules(oldLL,prefix),'L&L protected editorial treatment changed: '+prefix);
 const mobile=read('personal-updates/mobile/mobile.css');assert(mobile.includes('grid-template-columns:44px auto auto;justify-content:start'));assert(mobile.includes('.toolbar-inner .modes{gap:8px;flex-wrap:nowrap}'));assert(mobile.includes('.toolbar-inner button{white-space:nowrap}'));assert(mobile.includes('.pd-resume strong{font-family:"Instrument Sans"'));

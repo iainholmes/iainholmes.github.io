@@ -621,6 +621,8 @@ html[data-mode="night"] .register{background:#10231d!important}
 /* Compact portrait controls and a lower-right folio; editorial type stays page-owned. */
 @media(max-width:600px) and (orientation:portrait){
  .masthead .mh-folio{justify-self:end;text-align:right}
+ .toolbar .toolbar-inner{display:flex;justify-content:flex-start;flex-wrap:wrap}
+ .toolbar .toolbar-inner .modes,.toolbar .toolbar-inner .heron-toggle{flex:none}
  .toolbar .toolbar-inner .modes button,.toolbar .toolbar-inner .heron-toggle{font-size:10.5px;line-height:1;letter-spacing:.05em;padding-block:10px}
  .toolbar .toolbar-inner .heron-toggle{gap:4px}
  .toolbar .toolbar-inner .heron-toggle svg{width:11px;height:18px;margin-top:0}
