@@ -373,16 +373,17 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 .ps-context>span{font:500 11px/1.3 var(--ui);text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
 .ps-context .sub{font:italic 400 17px/1.3 var(--math);color:var(--text)}
 .ps-head-actions{align-self:end;display:flex;align-items:baseline;justify-content:flex-end;gap:22px;padding-bottom:2px;white-space:nowrap}
-.ledger-head{font:500 15px/1 var(--ui);letter-spacing:.025em;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
-.ledger-head:hover,.ledger-head:focus-visible{color:var(--teal);border-bottom-color:var(--teal)}
+.ledger-head{display:inline-flex;align-items:center;gap:8px;padding:8px 11px 9px;border:1px solid var(--teal);background:var(--teal-wash);font:600 14px/1 var(--ui);letter-spacing:.035em;color:var(--teal);text-decoration:none}
+.ledger-head span{font-size:1.05em;transform:translateY(-.02em)}
+.ledger-head:hover,.ledger-head:focus-visible{background:var(--teal);color:var(--paper);border-color:var(--teal)}
 .ps-head-actions .ps-folio{display:block;margin:0;font:500 clamp(31px,calc(3.6vw + 1px),47px)/1 var(--math);color:var(--navy);letter-spacing:-.04em;text-transform:none}
 .ps-head-actions .ps-folio .no{font:400 .7em/1 var(--math);font-style:normal;color:var(--muted);margin-right:.25em;letter-spacing:0}
 .ps-head-actions .ps-folio .no sup{font-size:.58em;vertical-align:.58em;line-height:0;font-style:italic}
 
-.foot{align-items:flex-start}
-.foot-brand{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:16px}
-.foot .foot-mark{position:relative;left:auto;transform:none;padding:2px 2px 8px;font-size:19px}
-.foot .foot-mark::after{left:0;right:58%;bottom:2px}
+.foot{display:grid;grid-template-columns:1fr;align-items:start;gap:20px}
+.foot-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;width:100%;min-width:0}
+.foot .foot-mark{position:relative;left:auto;transform:none;justify-self:center;margin:4px auto 0;padding:2px 10px 9px;font-size:19px;text-align:center}
+.foot .foot-mark::after{left:28%;right:28%;bottom:2px}
 
 @media(max-width:600px){
   .wb-mark{font-size:15.5px;padding-inline:0}
@@ -393,9 +394,10 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
   .ps-context{grid-column:1;grid-row:2;margin-top:2px;align-self:end}
   .ps-context .sub{font-size:16px}
   .ps-head-actions{grid-column:2;grid-row:2;gap:12px;align-self:end;padding-bottom:1px}
-  .ledger-head{font-size:14px}
+  .ledger-head{font-size:13.5px;padding:7px 9px 8px}
   .ps-head-actions .ps-folio{font-size:26px}
-  .foot .foot-mark{font-size:18px}
+  .foot-meta{flex-direction:column;gap:10px}
+  .foot .foot-mark{font-size:18px;margin-top:8px;justify-self:center}
 }
 </style>
 <link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
@@ -431,11 +433,11 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 <main id="app"></main>
 
 <footer class="foot">
-  <div class="foot-brand">
-    <a class="wb-mark foot-mark" href="#" aria-label="The Workbook, latest set"><span class="wb-eq">Y<sub>i</sub> = β<sub>0</sub> + β<sub>1</sub>X<sub>i</sub> + ε<sub>i</sub></span></a>
+  <div class="foot-meta">
     <span><i style="font:italic 400 15px var(--math);color:var(--ink)">The Workbook</i> · Economics &amp; Econometrics · weekdays, 10:00 AM ET · <a href="../personal-updates/commonplace/">Commonplace</a> · <a href="../personal-updates/handbook/">Handbook</a></span>
+    <a href="../personal-updates/">Periodicals</a>
   </div>
-  <a href="../personal-updates/">Periodicals</a>
+  <a class="wb-mark foot-mark" href="#" aria-label="The Workbook, latest set"><span class="wb-eq">Y<sub>i</sub> = β<sub>0</sub> + β<sub>1</sub>X<sub>i</sub> + ε<sub>i</sub></span></a>
 </footer>
 
 <!--
@@ -1459,7 +1461,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   function headHTML(){
     var latest=EDITIONS[0]===ed,n=ed.questions.length,sc=scoreOf(ed,st);
     var rec=st.submitted?sc+' / '+n+' '+recordHTML(ed,st):nAnswered()?nAnswered()+' of '+n+' answered':'Not started';
-    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><div class="ps-title-main"><h1 id="psTitle">The <i>Workbook</i></h1><div class="ps-context"><span>'+(latest?'Today’s set':'From the ledger')+'</span><em class="sub">Economics &amp; Econometrics · weekdays</em></div></div><div class="ps-head-actions"><a class="ledger-head" href="#archive">Ledger</a><b class="ps-folio"><span class="no">N<sup>o</sup>.</span>'+pad(ed.no)+'</b></div></div>'+
+    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><div class="ps-title-main"><h1 id="psTitle">The <i>Workbook</i></h1><div class="ps-context"><span>'+(latest?'Today’s set':'From the ledger')+'</span><em class="sub">Economics &amp; Econometrics · weekdays</em></div></div><div class="ps-head-actions"><a class="ledger-head" href="#archive" aria-label="Open the Ledger — all published problem sets">Ledger <span aria-hidden="true">→</span></a><b class="ps-folio"><span class="no">N<sup>o</sup>.</span>'+pad(ed.no)+'</b></div></div>'+
       '<dl class="ps-facts"><div><dt>Set</dt><dd><time datetime="'+ed.date+'">'+longDate(ed.date)+'</time></dd></div><div><dt>Questions</dt><dd>'+n+' · about '+ed.minutes+' min</dd></div><div><dt>Your record</dt><dd id="statusFact">'+rec+'</dd></div><div><dt>Next set</dt><dd id="nextSet">'+nextSet()+'</dd></div></dl></section>';
   }
 
