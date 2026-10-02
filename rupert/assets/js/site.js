@@ -1,8 +1,8 @@
 import './field-log-view.js';
 import { setupMenus } from './core/menus.js';
 import { setupArchive } from './archive-view.js';
-import { SEASONS, seasonFor } from './core/options.js';
-import { nyDateString, isoWeek } from './core/dates.js';
+import { cycleIdentity, cycleWeekend } from './core/cycles.js';
+import { setupVeil } from './veil-view.js';
 // Runtime enhancement. Every page works without this file; it adds:
 //  - the compact bar on desktop once the masthead scrolls away
 //  - Tuesday/Thursday tabs (and swipe) on phones
@@ -13,6 +13,7 @@ import { renderWeek, renderArchive } from './core/render.js';
 const root = document.documentElement;
 root.classList.add('js');
 const base = document.body.dataset.base || '';
+setupVeil(base);
 
 /* ---------- compact bar ---------- */
 const mast = document.getElementById('masthead');
@@ -107,12 +108,11 @@ setupArchive();
 setupMenus();
 
 function refreshDateline() {
-  const date = nyDateString(new Date()), {week, year} = isoWeek(date);
-  const text = `Week ${week} · ${year} · ${SEASONS[seasonFor(date)]}`;
+  const text = cycleIdentity(document.body.dataset.cycle || cycleWeekend(new Date()).start).label;
   const stamp = document.querySelector('.dateline span:last-child');
   if (stamp) stamp.textContent = text;
   const bar = document.querySelector('.bar-week');
-  if (bar) bar.textContent = text.replace('Week ', 'Wk ');
+  if (bar) bar.textContent = text;
 }
 refreshDateline();
 setInterval(refreshDateline, 60000);
@@ -154,3 +154,5 @@ async function recheck() {
   }
 }
 recheck();
+setInterval(recheck,60000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){refreshDateline();recheck();}});

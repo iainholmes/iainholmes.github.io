@@ -7,7 +7,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const args = process.argv.slice(2), value = key => args[args.indexOf(key) + 1];
 const port = args.includes('--port') ? Number(value('--port')) : 4173;
 const host = args.includes('--host') ? value('--host') : '127.0.0.1';
-const mime = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.webmanifest':'application/manifest+json','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png','.otf':'font/otf','.ttf':'font/ttf','.woff2':'font/woff2'};
+const mime = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.webmanifest':'application/manifest+json','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png','.otf':'font/otf','.ttf':'font/ttf','.woff':'font/woff','.woff2':'font/woff2'};
 createServer(async (req, res) => {
   try {
     const path = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);

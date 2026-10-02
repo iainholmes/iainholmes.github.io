@@ -22,6 +22,8 @@ import { spawnSync } from 'node:child_process';
 import { validate } from './validate.mjs';
 import { selectCurrentPair, archiveGroups } from '../assets/js/core/editions.js';
 import { parseDate, nyDateString } from '../assets/js/core/dates.js';
+import { cycleWeekend } from '../assets/js/core/cycles.js';
+import { veilState, veilArtworkProblems } from '../assets/js/core/veil.js';
 import { chrome, renderWeek, renderEdition, renderArchive, renderAtlas, renderComing, renderTravel, weekLabelFor, esc } from '../assets/js/core/render.js';
 import { placeStatuses, markerFeatures, boundsOf, registerGroups, counts } from '../assets/js/core/atlas.js';
 
@@ -33,6 +35,7 @@ const moduleFiles = (await walk(P('assets/js'))).filter(f=>f.endsWith('.js')).so
 const assetHash = createHash('sha256');
 for (const file of [...moduleFiles.map(f=>'assets/js/'+f),'assets/css/atlas.css','assets/css/field-log.css']) assetHash.update(await readFile(P(file)));
 const assetVersion = assetHash.digest('hex').slice(0,12);
+const iconVersion = createHash('sha256').update(await readFile(P('assets/img/icons/apple-touch-icon.png'))).digest('hex').slice(0,12);
 
 const errors = [], warnings = [];
 const err = (where, msg) => errors.push(`${where}: ${msg}`);
@@ -191,7 +194,7 @@ function manifestFrom(editions) {
   };
 }
 
-function page({ title, description, depth, active, body, site, weekLabel, pageClass, scripts = true, extra = [] }) {
+function page({ title, description, depth, active, body, site, weekLabel, cycle = '', pageClass, scripts = true, extra = [] }) {
   const base = '../'.repeat(depth);
   return `<!doctype html>
 <html lang="en-US" style="background:#1D2A3A">
@@ -206,7 +209,7 @@ ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="The Atlas">
 <link rel="manifest" href="${base}manifest.webmanifest">
-<link rel="apple-touch-icon" sizes="180x180" href="${base}assets/img/icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="${base}assets/img/icons/apple-touch-icon.png?v=${iconVersion}">
 <link rel="preload" href="${base}assets/fonts/lmromandunhill-regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="${base}assets/fonts/lmroman-regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="${base}assets/fonts/velenor-regular.ttf" as="font" type="font/ttf" crossorigin>
@@ -214,7 +217,7 @@ ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta
 <link rel="stylesheet" href="${base}assets/css/atlas.css">
 <script type="importmap">${JSON.stringify({imports:Object.fromEntries(moduleFiles.map(f=>[base+'assets/js/'+f,base+'assets/js/'+f+'?v='+assetVersion]))})}</script>
 ${scripts ? `<script type="module" src="${base}assets/js/site.js"></script>\n` : ''}${extra.map(x => `<script type="module" src="${base}${x}"></script>\n`).join('')}</head>
-<body data-base="${base}" data-section="${active}">
+<body data-base="${base}" data-section="${active}"${cycle ? ` data-cycle="${esc(cycle)}"` : ''}>
 ${chrome({ active, base, weekLabel, site, body, pageClass })}
 </body>
 </html>
@@ -247,7 +250,15 @@ async function build({ writeFiles }) {
   const manifest = manifestFrom(data.editions);
   const now = new Date();
   const pair = selectCurrentPair(manifest, now);
-  const weekLabel = weekLabelFor(nyDateString(now));
+  const weekLabel = weekLabelFor(cycleWeekend(now).start);
+  const frontispiece = veilState(manifest,now);
+  if(frontispiece.active) for(const issue of veilArtworkProblems(frontispiece,data.photos)) err('frontispiece',issue);
+  // Validate the next authored cycle now, including the unpublished Thursday's real image.
+  const nextStart = [...new Set(manifest.editions.map(e=>e.weekend.start))].filter(s=>s>frontispiece.weekend.start).sort()[0];
+  if(nextStart) {
+    const previewNow = new Date(Date.parse(nextStart+'T12:00:00Z')-5*86400000);
+    for(const issue of veilArtworkProblems(veilState(manifest,previewNow),data.photos)) err('frontispiece',issue);
+  }
 
   if (writeFiles && !errors.length) {
     const changed = [];
@@ -255,6 +266,9 @@ async function build({ writeFiles }) {
     const w = async (rel, html) => { if (await write(rel, html)) changed.push(rel); };
 
     await w('data/editions/index.json', JSON.stringify(manifest, null, 2) + '\n');
+    const pwa = await readJSON(P('manifest.webmanifest'));
+    for(const icon of pwa.icons) icon.src=icon.src.split('?')[0]+'?v='+iconVersion;
+    await w('manifest.webmanifest',JSON.stringify(pwa,null,2)+'\n');
 
     const eds = data.editions;
     await w('index.html', page({
@@ -267,15 +281,15 @@ async function build({ writeFiles }) {
       const sib = Object.values(eds).find(o => o.id !== ed.id && o.status === 'published' && o.weekend.start === ed.weekend.start);
       await w(`edition/${ed.id}/index.html`, page({
         title: `${ed.flagship.title} · The Rupert Atlas`, description: ed.flagship.standfirst,
-        depth: 2, active: 'week', site: data.site, weekLabel, pageClass: 'page-edition',
+        depth: 2, active: 'week', site: data.site, weekLabel:weekLabelFor(ed.weekend.start), cycle:ed.weekend.start, pageClass: 'page-edition',
         body: renderEdition(ed, { ...ctx0, base: '../../' }, sib), extra: ['assets/js/fetch-view.js'],
       }));
     }
     for (const ed of Object.values(eds).filter(e=>e.status==='draft')) {
-      await w(`edition/${ed.id}/index.html`,page({title:'Edition in preparation · The Rupert Atlas',description:'Pending official access review.',depth:2,active:'week',site:data.site,weekLabel,body:'<div class="wrap page-head"><h1>Edition in Preparation</h1><p>This recommendation is awaiting its pre-publication official access check.</p></div>'}));
+      await w(`edition/${ed.id}/index.html`,page({title:'Edition in preparation · The Rupert Atlas',description:'Pending official access review.',depth:2,active:'week',site:data.site,weekLabel:weekLabelFor(ed.weekend.start),cycle:ed.weekend.start,body:'<div class="wrap page-head"><h1>Edition in Preparation</h1><p>This recommendation is awaiting its pre-publication official access check.</p></div>'}));
     }
     await w('edition/index.html', page({
-      title: 'Editions · The Rupert Atlas', description: 'All editions', depth: 1, active: 'archive', site: data.site, weekLabel, scripts: false,
+      title: 'Editions · The Rupert Atlas', description: 'All editions', depth: 1, active: 'archive', site: data.site, weekLabel,
       body: `<div class="wrap page-head"><h1>Editions</h1><p><a href="../archive/">See the archive</a></p></div>`,
     }));
     await w('archive/index.html', page({

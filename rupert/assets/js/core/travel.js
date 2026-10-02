@@ -1,6 +1,7 @@
 import { validPoint } from './routing.js';
 import { cleanJourney, cleanManualRoutes } from './journey-storage.js';
 const MODES = ['car', 'air', 'ferry', 'rail', 'walk'];
+export const TRAVEL_STORAGE_KEY = 'rupert-travel-v1';
 // Explicit projection prevents imported objects from carrying unexpected fields into storage.
 export function cleanPlan(value) {
   if (!value || typeof value.title !== 'string' || !value.title.trim() || value.title.length > 160 || !Array.isArray(value.legs) || !value.legs.length || value.legs.length > 40) throw new Error('A plan needs a name and 1–40 legs.');

@@ -2,11 +2,11 @@ import { automaticPostcard } from './core/postcard.js';
 import { createMap } from './map/maplibre-provider.js';
 import { validPoint, drivingRoute, drivingAlternatives } from './core/routing.js';
 import { pointFeature, distanceMiles, distanceToRoute, routeBounds, geocodeLocation } from './core/trip-map.js';
-import { cleanPlan, readBackup } from './core/travel.js';
+import { cleanPlan, readBackup, TRAVEL_STORAGE_KEY } from './core/travel.js';
 import { durationLabel, routeFamilies, routePoint, routeProgress, wholeJourneyBounds, opportunityZones, overnightZones, journeyLegs, journeySchedule } from './core/journey.js';
 import { discoverActivities, areaName } from './core/discovery.js';
 
-const key='rupert-travel-v1', base=document.body.dataset.base||'', $=id=>document.getElementById(id);
+const key=TRAVEL_STORAGE_KEY, base=document.body.dataset.base||'', $=id=>document.getElementById(id);
 const places=JSON.parse($('travel-places').textContent),references=JSON.parse($('travel-references').textContent),publications=JSON.parse($('travel-publications').textContent);
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!=null)n.textContent=text;if(cls)n.className=cls;return n;};
 const button=(text,action)=>{const n=el('button',text);n.type='button';n.addEventListener('click',action);return n;};

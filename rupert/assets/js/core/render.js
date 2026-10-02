@@ -6,7 +6,9 @@ import { CROWD_LEVELS, CROWD_TOLERANCES } from './crowds.js';
 import { SEASONS, EXPERIENCES, seasonFor } from './options.js';
 // HTML rendering. Pure string functions shared by the build tool (pre-render) and the browser (re-render).
 // Every value from data passes through esc(). No DOM access here.
-import { weekendRange, publishedLabel, shortDate, longDate, minutesRange, hoursRange, isoWeek, nyDateString, nyTime } from './dates.js';
+import { weekendRange, publishedLabel, shortDate, longDate, minutesRange, hoursRange, nyDateString, nyTime } from './dates.js';
+import { cycleIdentity } from './cycles.js';
+import { PENDING_TIME } from './veil.js';
 
 import { expectedPublish } from './editions.js';
 import { previousSuggestions } from './recommendations.js';
@@ -143,7 +145,7 @@ export function chrome({ active, base, weekLabel, site, body, pageClass = '', no
   <div class="wrap bar-inner">
     <a class="bar-mark" href="${base}">The Rupert Atlas</a>
     <nav class="bar-nav" aria-label="Sections, compact"><ul>${navItems('nav-link')}<li><a class="nav-link" href="${base}archive/"${active === 'archive' ? ' aria-current="page"' : ''}>Archive</a></li></ul></nav>
-    <span class="bar-week">${esc(weekLabel.replace('Week ', 'Wk '))}</span>
+    <span class="bar-week">${esc(weekLabel)}</span>
   </div>
 </div>
 <main id="main" class="${pageClass}" tabindex="-1">
@@ -155,8 +157,7 @@ ${body}
 }
 
 export function weekLabelFor(dateStr) {
-  const { year, week } = isoWeek(dateStr);
-  return `Week ${week} · ${year} · ${SEASONS[seasonFor(dateStr)]}`;
+  return cycleIdentity(dateStr).label;
 }
 
 /* ---------- This Week ---------- */
@@ -168,7 +169,7 @@ function plate(slot, ed, pair, ctx) {
     const when = pair.missing[slot] ? publishedLabel(pair.missing[slot]) : '';
     return `<article class="plate is-pending" id="${id}" data-slot="${slot}" aria-labelledby="${id}-h">
   <p class="p-eyebrow"><span class="p-day"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span>${SLOT_LABEL[slot]}</span></p>
-  <h2 class="p-title" id="${id}-h">${pair.state === 'past' ? 'Not published' : `Publishes ${esc(when)}`}</h2>
+  <h2 class="p-title" id="${id}-h">${pair.state === 'past' ? 'Not published' : `Publishes ${esc(when)} · ${PENDING_TIME}`}</h2>
   <p class="p-stand">${slot === 'thursday'
       ? 'Weekend choice 2 of 2.'
       : 'Weekend choice 1 of 2.'}</p>
@@ -201,7 +202,7 @@ export function renderWeek(pair, editions, ctx) {
   const thu = pair.thursday && editions[pair.thursday.id];
   const eyebrow = pair.state === 'past' ? 'Last weekend' : pair.state === 'now' ? 'This weekend' : 'For the weekend of';
   const tab = (slot, ed) => `<button type="button" role="tab" class="tab" id="tab-${slot}" aria-controls="plate-${slot}" aria-selected="false" tabindex="-1">
-      <span class="tab-k"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span>${SLOT_LABEL[slot]}</span><span class="tab-t">${ed ? esc(placeShort(places, ed.flagship.place_id, ed.flagship.title)) : 'Publishes ' + esc(publishedLabel(pair.missing[slot]))}</span></button>`;
+      <span class="tab-k"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span><span>${SLOT_LABEL[slot]}</span></span><span class="tab-t">${ed ? esc(placeShort(places, ed.flagship.place_id, ed.flagship.title)) : 'Publishes ' + esc(publishedLabel(pair.missing[slot])) + ' · ' + PENDING_TIME}</span></button>`;
   const inter = interlude(thu || tue, ctx);
   return `<section class="week" data-pair="${esc(pairKeyFrom(pair))}" aria-labelledby="week-h">
   <header class="weekband wrap">
@@ -335,7 +336,7 @@ export function renderArchive(groups, ctx) {
   const { base, photos, places } = ctx;
   const cards = groups.map(g => `<section class="archive-week${g.editions.some(e=>e.current)?' is-current':''}"><h2>${esc(weekendRange(g.weekend.start,g.weekend.end))}${g.editions.some(e=>e.current)?'<span class="arch-now">This Week</span>':''}</h2><div class="archive-results">${['tuesday','thursday'].flatMap(slot=>{const entries=g.editions.filter(e=>e.slot===slot);return entries.length?entries.map(e=>({slot,e})):[{slot,e:null}];}).map(({slot,e})=>{
     const publish=expectedPublish(slot,g.weekend.start);
-    if(!e) return `<article class="archive-card is-missing"><p class="p-day">${SLOT_LABEL[slot]}</p><p>${publish > (ctx.now || new Date()) ? 'Publishes '+esc(publishedLabel(publish.toISOString())) : 'Not published'}</p></article>`;
+    if(!e) return `<article class="archive-card is-missing"><p class="p-day">${SLOT_LABEL[slot]}</p><p>${publish > (ctx.now || new Date()) ? 'Publishes '+esc(publishedLabel(publish.toISOString()))+' · '+PENDING_TIME : 'Not published'}</p></article>`;
     if(e.status==='withdrawn') return `<article class="archive-card is-withdrawn" data-option="${esc(JSON.stringify({...e.options?.[0],title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''}))}"><div><p class="p-day">${SLOT_LABEL[slot]} · Withdrawn</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">Recommendation withdrawn · Historical publication</p></div></article>`;
     const option={...(e.options?.find(o=>o.role==='flagship') || {}),title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''};
     return `<article class="archive-card" data-option="${esc(JSON.stringify(option))}"><a href="${base}edition/${esc(e.id)}/" class="archive-image" tabindex="-1" aria-hidden="true">${photo(e.photo_id?{id:e.photo_id}:null,photos,base,{sizes:'(min-width: 760px) 42vw, 90vw'})}</a><div><p class="p-day">${slotPublication(e)}</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">${esc(option.place_name)}</p></div></article>`;
@@ -384,7 +385,7 @@ export function renderAtlas(model, ctx) {
   const frameButton = (key, label) => `<button type="button" data-frame="${esc(key)}" disabled>${esc(label)}</button>`;
   const legend = ['recommended', 'withdrawn'].map(k => `<li>${MARK_SVG[k]}<span>${STAT[k]}</span></li>`).join('');
   return `<div class="atlas">
-  <header class="page-head wrap"><div><h1>Atlas</h1></div><aside class="head-note atlas-coverage">${labrador('stand')}<div class="banner-copy"><span class="lbl">Current Place</span><p id="atlas-selection">Choose a Place</p><small id="atlas-context" hidden></small><button type="button" id="atlas-header-action">Show on Map →</button></div></aside></header>
+  <header class="page-head wrap"><div><h1>Atlas</h1></div><aside class="head-note atlas-coverage">${labrador('stand')}<div class="banner-copy"><span class="lbl">Current Place</span><p id="atlas-selection">Choose a Place</p><small id="atlas-context" hidden></small></div></aside></header>
   <div class="atlas-body wrap">
     <section class="atlas-register" aria-labelledby="reg-h">
       <div class="reg-head"><div class="reg-heading"><h2 id="reg-h">Place Directory</h2><p class="directory-note">${c.all} published places · History retained</p></div>

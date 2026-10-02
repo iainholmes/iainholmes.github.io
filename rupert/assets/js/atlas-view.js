@@ -21,6 +21,8 @@ let selectedId = null;
 const workspace=document.querySelector('.atlas-body');
 const directory=document.querySelector('.atlas-register');
 const mapBox=document.querySelector('.atlas-map');
+const driveOverlay=document.querySelector('.map-drive-overlay');
+new ResizeObserver(()=>mapBox.style.setProperty('--map-overlay-height',Math.ceil(driveOverlay.getBoundingClientRect().height)+'px')).observe(driveOverlay);
 function sizeWorkspace() { workspace.style.setProperty('--atlas-directory-height', Math.ceil(directory.getBoundingClientRect().height)+'px'); }
 sizeWorkspace();
 const directorySize=new ResizeObserver(sizeWorkspace); directorySize.observe(directory);
@@ -103,9 +105,12 @@ disclosures.forEach(d=>{
 });
 
 function select(id, { from } = {}) {
+  // Unknown hashes/picker values are empty state, never a fallback destination.
+  if (!data.features.some(f => f.properties.id === id)) id = null;
   qa.last = id ? `${from || 'register'} → ${id}` : `${from || '?'} → (none)`; qaRender();
   selectedId = id; picker.value = id || '';
-  if (!id) { locationControls.clear(); card.hidden = true; map?.select(null); rows.forEach(r => { r.classList.remove('is-selected'); r.removeAttribute('aria-current'); }); return; }
+  card.hidden = true;
+  if (!id) { locationControls.clear(); map?.select(null); rows.forEach(r => { r.classList.remove('is-selected'); r.removeAttribute('aria-current'); }); return; }
   rows.forEach(r => { const on = r.dataset.place === id; r.classList.toggle('is-selected', on); on ? r.setAttribute('aria-current', 'true') : r.removeAttribute('aria-current'); });
   const row = rows.find(r => r.dataset.place === id);
   map?.select(id);
@@ -119,7 +124,7 @@ function showCard(id, row) {
   const link = el('a', 'mc-link', 'See in the directory'); link.href = `#place-${id}`;
   link.addEventListener('click', e => { e.preventDefault(); catalog.open=true; row.scrollIntoView({ block: 'center', behavior: 'smooth' }); row.querySelector('.reg-select')?.focus({ preventScroll: true }); });
   const close = el('button', 'mc-close', 'Close'); close.type = 'button'; close.setAttribute('aria-label', 'Close place card');
-  close.addEventListener('click', () => select(null));
+  close.addEventListener('click', e => { e.stopPropagation(); card.hidden = true; });
   card.replaceChildren(close, el('p', 'mc-name', row.querySelector('h4').textContent), el('p', 'mc-status', row.querySelector('.reg-word').textContent), link);
   card.hidden = false;
 }
@@ -184,7 +189,7 @@ async function start() {
       try { localStorage.setItem('rupert-relief', relief ? '1' : '0'); } catch {}
     });
     const pre = location.hash.startsWith('#place-') && location.hash.slice(7);
-    if (pre) { select(pre); map.focus(pre); }
+    if (pre) { select(pre); if(selectedId) map.focus(selectedId); }
   } catch (e) {
     perf.failed = e.reason || 'unknown';
     qa.diag = e.diagnostics || null;
@@ -198,9 +203,3 @@ async function start() {
 if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 800 }); else setTimeout(start, 50);
 
 // Workspace height is owned by CSS, independent of the masthead's document position.
-const headerAction = document.getElementById('atlas-header-action');
-headerAction.addEventListener('click', () => {
-  const id = selectedId || data.features.find(f => f.properties.status === 'recommended')?.properties.id;
-  if (id) { select(id); map?.focus(id); }
-  showWorkspace();
-});

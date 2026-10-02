@@ -1,0 +1,3842 @@
+{
+  "base": "http://127.0.0.1:37651/",
+  "engine": "153.0.8010.0",
+  "checks": 635,
+  "layouts": [
+    {
+      "width": 375,
+      "height": 812,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 812,
+        "bottom": 812,
+        "right": 375
+      },
+      "client": 812,
+      "scroll": 812,
+      "plateClient": 812,
+      "plateScroll": 812,
+      "groups": [
+        {
+          "x": 20,
+          "y": 346.828125,
+          "width": 156.5,
+          "height": 149.078125,
+          "bottom": 495.90625,
+          "right": 176.5
+        },
+        {
+          "x": 198.5,
+          "y": 346.828125,
+          "width": 156.5,
+          "height": 149.078125,
+          "bottom": 495.90625,
+          "right": 355
+        }
+      ],
+      "tiles": [
+        {
+          "x": 25.125,
+          "y": 389.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 453.21875,
+          "right": 89.125
+        },
+        {
+          "x": 107.375,
+          "y": 389.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 453.21875,
+          "right": 171.375
+        },
+        {
+          "x": 203.625,
+          "y": 389.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 453.21875,
+          "right": 267.625
+        },
+        {
+          "x": 285.875,
+          "y": 389.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 453.21875,
+          "right": 349.875
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 739.8125,
+        "width": 335,
+        "height": 52.1875,
+        "bottom": 792,
+        "right": 355
+      },
+      "lockup": {
+        "x": 72.640625,
+        "y": 36,
+        "width": 229.703125,
+        "height": 66.9375,
+        "bottom": 102.9375,
+        "right": 302.34375
+      },
+      "documentScroll": 812,
+      "focusInside": true
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": {
+        "x": 20,
+        "y": 462.78125,
+        "width": 335,
+        "height": 94.25,
+        "bottom": 557.03125,
+        "right": 355
+      },
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 812,
+        "bottom": 812,
+        "right": 375
+      },
+      "client": 812,
+      "scroll": 812,
+      "plateClient": 812,
+      "plateScroll": 812,
+      "groups": [
+        {
+          "x": 20,
+          "y": 285.703125,
+          "width": 156.5,
+          "height": 149.078125,
+          "bottom": 434.78125,
+          "right": 176.5
+        },
+        {
+          "x": 198.5,
+          "y": 285.703125,
+          "width": 156.5,
+          "height": 149.078125,
+          "bottom": 434.78125,
+          "right": 355
+        }
+      ],
+      "tiles": [
+        {
+          "x": 25.125,
+          "y": 328.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 392.09375,
+          "right": 89.125
+        },
+        {
+          "x": 107.375,
+          "y": 328.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 392.09375,
+          "right": 171.375
+        },
+        {
+          "x": 203.625,
+          "y": 328.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 392.09375,
+          "right": 267.625
+        },
+        {
+          "x": 285.875,
+          "y": 328.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 392.09375,
+          "right": 349.875
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 739.8125,
+        "width": 335,
+        "height": 52.1875,
+        "bottom": 792,
+        "right": 355
+      },
+      "lockup": {
+        "x": 72.640625,
+        "y": 36,
+        "width": 229.703125,
+        "height": 66.9375,
+        "bottom": 102.9375,
+        "right": 302.34375
+      },
+      "documentScroll": 812,
+      "focusInside": true
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 812,
+        "bottom": 812,
+        "right": 375
+      },
+      "client": 812,
+      "scroll": 812,
+      "plateClient": 812,
+      "plateScroll": 812,
+      "groups": [
+        {
+          "x": 20,
+          "y": 346.828125,
+          "width": 156.5,
+          "height": 149.078125,
+          "bottom": 495.90625,
+          "right": 176.5
+        },
+        {
+          "x": 198.5,
+          "y": 346.828125,
+          "width": 156.5,
+          "height": 149.078125,
+          "bottom": 495.90625,
+          "right": 355
+        }
+      ],
+      "tiles": [
+        {
+          "x": 25.125,
+          "y": 389.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 453.21875,
+          "right": 89.125
+        },
+        {
+          "x": 107.375,
+          "y": 389.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 453.21875,
+          "right": 171.375
+        },
+        {
+          "x": 203.625,
+          "y": 389.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 453.21875,
+          "right": 267.625
+        },
+        {
+          "x": 285.875,
+          "y": 389.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 453.21875,
+          "right": 349.875
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 739.8125,
+        "width": 335,
+        "height": 52.1875,
+        "bottom": 792,
+        "right": 355
+      },
+      "lockup": {
+        "x": 72.640625,
+        "y": 36,
+        "width": 229.703125,
+        "height": 66.9375,
+        "bottom": 102.9375,
+        "right": 302.34375
+      },
+      "documentScroll": 812,
+      "focusInside": true
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": {
+        "x": 20,
+        "y": 462.78125,
+        "width": 335,
+        "height": 94.25,
+        "bottom": 557.03125,
+        "right": 355
+      },
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 812,
+        "bottom": 812,
+        "right": 375
+      },
+      "client": 812,
+      "scroll": 812,
+      "plateClient": 812,
+      "plateScroll": 812,
+      "groups": [
+        {
+          "x": 20,
+          "y": 285.703125,
+          "width": 156.5,
+          "height": 149.078125,
+          "bottom": 434.78125,
+          "right": 176.5
+        },
+        {
+          "x": 198.5,
+          "y": 285.703125,
+          "width": 156.5,
+          "height": 149.078125,
+          "bottom": 434.78125,
+          "right": 355
+        }
+      ],
+      "tiles": [
+        {
+          "x": 25.125,
+          "y": 328.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 392.09375,
+          "right": 89.125
+        },
+        {
+          "x": 107.375,
+          "y": 328.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 392.09375,
+          "right": 171.375
+        },
+        {
+          "x": 203.625,
+          "y": 328.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 392.09375,
+          "right": 267.625
+        },
+        {
+          "x": 285.875,
+          "y": 328.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 392.09375,
+          "right": 349.875
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 739.8125,
+        "width": 335,
+        "height": 52.1875,
+        "bottom": 792,
+        "right": 355
+      },
+      "lockup": {
+        "x": 72.640625,
+        "y": 36,
+        "width": 229.703125,
+        "height": 66.9375,
+        "bottom": 102.9375,
+        "right": 302.34375
+      },
+      "documentScroll": 812,
+      "focusInside": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "bottom": 844,
+        "right": 390
+      },
+      "client": 844,
+      "scroll": 844,
+      "plateClient": 844,
+      "plateScroll": 844,
+      "groups": [
+        {
+          "x": 20,
+          "y": 364.171875,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 513.25,
+          "right": 184
+        },
+        {
+          "x": 206,
+          "y": 364.171875,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 513.25,
+          "right": 370
+        }
+      ],
+      "tiles": [
+        {
+          "x": 27,
+          "y": 406.5625,
+          "width": 64,
+          "height": 64,
+          "bottom": 470.5625,
+          "right": 91
+        },
+        {
+          "x": 113,
+          "y": 406.5625,
+          "width": 64,
+          "height": 64,
+          "bottom": 470.5625,
+          "right": 177
+        },
+        {
+          "x": 213,
+          "y": 406.5625,
+          "width": 64,
+          "height": 64,
+          "bottom": 470.5625,
+          "right": 277
+        },
+        {
+          "x": 299,
+          "y": 406.5625,
+          "width": 64,
+          "height": 64,
+          "bottom": 470.5625,
+          "right": 363
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 771.8125,
+        "width": 350,
+        "height": 52.1875,
+        "bottom": 824,
+        "right": 370
+      },
+      "lockup": {
+        "x": 77.640625,
+        "y": 36,
+        "width": 234.703125,
+        "height": 69.609375,
+        "bottom": 105.609375,
+        "right": 312.34375
+      },
+      "documentScroll": 844,
+      "focusInside": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": {
+        "x": 20,
+        "y": 480.125,
+        "width": 350,
+        "height": 94.25,
+        "bottom": 574.375,
+        "right": 370
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "bottom": 844,
+        "right": 390
+      },
+      "client": 844,
+      "scroll": 844,
+      "plateClient": 844,
+      "plateScroll": 844,
+      "groups": [
+        {
+          "x": 20,
+          "y": 303.046875,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 452.125,
+          "right": 184
+        },
+        {
+          "x": 206,
+          "y": 303.046875,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 452.125,
+          "right": 370
+        }
+      ],
+      "tiles": [
+        {
+          "x": 27,
+          "y": 345.4375,
+          "width": 64,
+          "height": 64,
+          "bottom": 409.4375,
+          "right": 91
+        },
+        {
+          "x": 113,
+          "y": 345.4375,
+          "width": 64,
+          "height": 64,
+          "bottom": 409.4375,
+          "right": 177
+        },
+        {
+          "x": 213,
+          "y": 345.4375,
+          "width": 64,
+          "height": 64,
+          "bottom": 409.4375,
+          "right": 277
+        },
+        {
+          "x": 299,
+          "y": 345.4375,
+          "width": 64,
+          "height": 64,
+          "bottom": 409.4375,
+          "right": 363
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 771.8125,
+        "width": 350,
+        "height": 52.1875,
+        "bottom": 824,
+        "right": 370
+      },
+      "lockup": {
+        "x": 77.640625,
+        "y": 36,
+        "width": 234.703125,
+        "height": 69.609375,
+        "bottom": 105.609375,
+        "right": 312.34375
+      },
+      "documentScroll": 844,
+      "focusInside": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "bottom": 844,
+        "right": 390
+      },
+      "client": 844,
+      "scroll": 844,
+      "plateClient": 844,
+      "plateScroll": 844,
+      "groups": [
+        {
+          "x": 20,
+          "y": 364.171875,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 513.25,
+          "right": 184
+        },
+        {
+          "x": 206,
+          "y": 364.171875,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 513.25,
+          "right": 370
+        }
+      ],
+      "tiles": [
+        {
+          "x": 27,
+          "y": 406.5625,
+          "width": 64,
+          "height": 64,
+          "bottom": 470.5625,
+          "right": 91
+        },
+        {
+          "x": 113,
+          "y": 406.5625,
+          "width": 64,
+          "height": 64,
+          "bottom": 470.5625,
+          "right": 177
+        },
+        {
+          "x": 213,
+          "y": 406.5625,
+          "width": 64,
+          "height": 64,
+          "bottom": 470.5625,
+          "right": 277
+        },
+        {
+          "x": 299,
+          "y": 406.5625,
+          "width": 64,
+          "height": 64,
+          "bottom": 470.5625,
+          "right": 363
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 771.8125,
+        "width": 350,
+        "height": 52.1875,
+        "bottom": 824,
+        "right": 370
+      },
+      "lockup": {
+        "x": 77.640625,
+        "y": 36,
+        "width": 234.703125,
+        "height": 69.609375,
+        "bottom": 105.609375,
+        "right": 312.34375
+      },
+      "documentScroll": 844,
+      "focusInside": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": {
+        "x": 20,
+        "y": 480.125,
+        "width": 350,
+        "height": 94.25,
+        "bottom": 574.375,
+        "right": 370
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "bottom": 844,
+        "right": 390
+      },
+      "client": 844,
+      "scroll": 844,
+      "plateClient": 844,
+      "plateScroll": 844,
+      "groups": [
+        {
+          "x": 20,
+          "y": 303.046875,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 452.125,
+          "right": 184
+        },
+        {
+          "x": 206,
+          "y": 303.046875,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 452.125,
+          "right": 370
+        }
+      ],
+      "tiles": [
+        {
+          "x": 27,
+          "y": 345.4375,
+          "width": 64,
+          "height": 64,
+          "bottom": 409.4375,
+          "right": 91
+        },
+        {
+          "x": 113,
+          "y": 345.4375,
+          "width": 64,
+          "height": 64,
+          "bottom": 409.4375,
+          "right": 177
+        },
+        {
+          "x": 213,
+          "y": 345.4375,
+          "width": 64,
+          "height": 64,
+          "bottom": 409.4375,
+          "right": 277
+        },
+        {
+          "x": 299,
+          "y": 345.4375,
+          "width": 64,
+          "height": 64,
+          "bottom": 409.4375,
+          "right": 363
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 771.8125,
+        "width": 350,
+        "height": 52.1875,
+        "bottom": 824,
+        "right": 370
+      },
+      "lockup": {
+        "x": 77.640625,
+        "y": 36,
+        "width": 234.703125,
+        "height": 69.609375,
+        "bottom": 105.609375,
+        "right": 312.34375
+      },
+      "documentScroll": 844,
+      "focusInside": true
+    },
+    {
+      "width": 393,
+      "height": 852,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 393,
+        "height": 852,
+        "bottom": 852,
+        "right": 393
+      },
+      "client": 852,
+      "scroll": 852,
+      "plateClient": 852,
+      "plateScroll": 852,
+      "groups": [
+        {
+          "x": 21.5,
+          "y": 368.4375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 517.515625,
+          "right": 185.5
+        },
+        {
+          "x": 207.5,
+          "y": 368.4375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 517.515625,
+          "right": 371.5
+        }
+      ],
+      "tiles": [
+        {
+          "x": 28.5,
+          "y": 410.828125,
+          "width": 64,
+          "height": 64,
+          "bottom": 474.828125,
+          "right": 92.5
+        },
+        {
+          "x": 114.5,
+          "y": 410.828125,
+          "width": 64,
+          "height": 64,
+          "bottom": 474.828125,
+          "right": 178.5
+        },
+        {
+          "x": 214.5,
+          "y": 410.828125,
+          "width": 64,
+          "height": 64,
+          "bottom": 474.828125,
+          "right": 278.5
+        },
+        {
+          "x": 300.5,
+          "y": 410.828125,
+          "width": 64,
+          "height": 64,
+          "bottom": 474.828125,
+          "right": 364.5
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 779.8125,
+        "width": 353,
+        "height": 52.1875,
+        "bottom": 832,
+        "right": 373
+      },
+      "lockup": {
+        "x": 79.140625,
+        "y": 36,
+        "width": 234.703125,
+        "height": 70.140625,
+        "bottom": 106.140625,
+        "right": 313.84375
+      },
+      "documentScroll": 852,
+      "focusInside": true
+    },
+    {
+      "width": 393,
+      "height": 852,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": {
+        "x": 20,
+        "y": 484.390625,
+        "width": 353,
+        "height": 94.25,
+        "bottom": 578.640625,
+        "right": 373
+      },
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 393,
+        "height": 852,
+        "bottom": 852,
+        "right": 393
+      },
+      "client": 852,
+      "scroll": 852,
+      "plateClient": 852,
+      "plateScroll": 852,
+      "groups": [
+        {
+          "x": 21.5,
+          "y": 307.3125,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 456.390625,
+          "right": 185.5
+        },
+        {
+          "x": 207.5,
+          "y": 307.3125,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 456.390625,
+          "right": 371.5
+        }
+      ],
+      "tiles": [
+        {
+          "x": 28.5,
+          "y": 349.703125,
+          "width": 64,
+          "height": 64,
+          "bottom": 413.703125,
+          "right": 92.5
+        },
+        {
+          "x": 114.5,
+          "y": 349.703125,
+          "width": 64,
+          "height": 64,
+          "bottom": 413.703125,
+          "right": 178.5
+        },
+        {
+          "x": 214.5,
+          "y": 349.703125,
+          "width": 64,
+          "height": 64,
+          "bottom": 413.703125,
+          "right": 278.5
+        },
+        {
+          "x": 300.5,
+          "y": 349.703125,
+          "width": 64,
+          "height": 64,
+          "bottom": 413.703125,
+          "right": 364.5
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 779.8125,
+        "width": 353,
+        "height": 52.1875,
+        "bottom": 832,
+        "right": 373
+      },
+      "lockup": {
+        "x": 79.140625,
+        "y": 36,
+        "width": 234.703125,
+        "height": 70.140625,
+        "bottom": 106.140625,
+        "right": 313.84375
+      },
+      "documentScroll": 852,
+      "focusInside": true
+    },
+    {
+      "width": 393,
+      "height": 852,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 393,
+        "height": 852,
+        "bottom": 852,
+        "right": 393
+      },
+      "client": 852,
+      "scroll": 852,
+      "plateClient": 852,
+      "plateScroll": 852,
+      "groups": [
+        {
+          "x": 21.5,
+          "y": 368.4375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 517.515625,
+          "right": 185.5
+        },
+        {
+          "x": 207.5,
+          "y": 368.4375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 517.515625,
+          "right": 371.5
+        }
+      ],
+      "tiles": [
+        {
+          "x": 28.5,
+          "y": 410.828125,
+          "width": 64,
+          "height": 64,
+          "bottom": 474.828125,
+          "right": 92.5
+        },
+        {
+          "x": 114.5,
+          "y": 410.828125,
+          "width": 64,
+          "height": 64,
+          "bottom": 474.828125,
+          "right": 178.5
+        },
+        {
+          "x": 214.5,
+          "y": 410.828125,
+          "width": 64,
+          "height": 64,
+          "bottom": 474.828125,
+          "right": 278.5
+        },
+        {
+          "x": 300.5,
+          "y": 410.828125,
+          "width": 64,
+          "height": 64,
+          "bottom": 474.828125,
+          "right": 364.5
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 779.8125,
+        "width": 353,
+        "height": 52.1875,
+        "bottom": 832,
+        "right": 373
+      },
+      "lockup": {
+        "x": 79.140625,
+        "y": 36,
+        "width": 234.703125,
+        "height": 70.140625,
+        "bottom": 106.140625,
+        "right": 313.84375
+      },
+      "documentScroll": 852,
+      "focusInside": true
+    },
+    {
+      "width": 393,
+      "height": 852,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": {
+        "x": 20,
+        "y": 484.390625,
+        "width": 353,
+        "height": 94.25,
+        "bottom": 578.640625,
+        "right": 373
+      },
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 393,
+        "height": 852,
+        "bottom": 852,
+        "right": 393
+      },
+      "client": 852,
+      "scroll": 852,
+      "plateClient": 852,
+      "plateScroll": 852,
+      "groups": [
+        {
+          "x": 21.5,
+          "y": 307.3125,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 456.390625,
+          "right": 185.5
+        },
+        {
+          "x": 207.5,
+          "y": 307.3125,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 456.390625,
+          "right": 371.5
+        }
+      ],
+      "tiles": [
+        {
+          "x": 28.5,
+          "y": 349.703125,
+          "width": 64,
+          "height": 64,
+          "bottom": 413.703125,
+          "right": 92.5
+        },
+        {
+          "x": 114.5,
+          "y": 349.703125,
+          "width": 64,
+          "height": 64,
+          "bottom": 413.703125,
+          "right": 178.5
+        },
+        {
+          "x": 214.5,
+          "y": 349.703125,
+          "width": 64,
+          "height": 64,
+          "bottom": 413.703125,
+          "right": 278.5
+        },
+        {
+          "x": 300.5,
+          "y": 349.703125,
+          "width": 64,
+          "height": 64,
+          "bottom": 413.703125,
+          "right": 364.5
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 779.8125,
+        "width": 353,
+        "height": 52.1875,
+        "bottom": 832,
+        "right": 373
+      },
+      "lockup": {
+        "x": 79.140625,
+        "y": 36,
+        "width": 234.703125,
+        "height": 70.140625,
+        "bottom": 106.140625,
+        "right": 313.84375
+      },
+      "documentScroll": 852,
+      "focusInside": true
+    },
+    {
+      "width": 402,
+      "height": 874,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 402,
+        "height": 874
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 402,
+        "height": 874,
+        "bottom": 874,
+        "right": 402
+      },
+      "client": 874,
+      "scroll": 874,
+      "plateClient": 874,
+      "plateScroll": 874,
+      "groups": [
+        {
+          "x": 26,
+          "y": 380.234375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 529.3125,
+          "right": 190
+        },
+        {
+          "x": 212,
+          "y": 380.234375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 529.3125,
+          "right": 376
+        }
+      ],
+      "tiles": [
+        {
+          "x": 33,
+          "y": 422.625,
+          "width": 64,
+          "height": 64,
+          "bottom": 486.625,
+          "right": 97
+        },
+        {
+          "x": 119,
+          "y": 422.625,
+          "width": 64,
+          "height": 64,
+          "bottom": 486.625,
+          "right": 183
+        },
+        {
+          "x": 219,
+          "y": 422.625,
+          "width": 64,
+          "height": 64,
+          "bottom": 486.625,
+          "right": 283
+        },
+        {
+          "x": 305,
+          "y": 422.625,
+          "width": 64,
+          "height": 64,
+          "bottom": 486.625,
+          "right": 369
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 801.8125,
+        "width": 362,
+        "height": 52.1875,
+        "bottom": 854,
+        "right": 382
+      },
+      "lockup": {
+        "x": 82.140625,
+        "y": 36,
+        "width": 237.703125,
+        "height": 71.75,
+        "bottom": 107.75,
+        "right": 319.84375
+      },
+      "documentScroll": 874,
+      "focusInside": true
+    },
+    {
+      "width": 402,
+      "height": 874,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": {
+        "x": 20,
+        "y": 496.1875,
+        "width": 362,
+        "height": 94.25,
+        "bottom": 590.4375,
+        "right": 382
+      },
+      "viewport": {
+        "width": 402,
+        "height": 874
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 402,
+        "height": 874,
+        "bottom": 874,
+        "right": 402
+      },
+      "client": 874,
+      "scroll": 874,
+      "plateClient": 874,
+      "plateScroll": 874,
+      "groups": [
+        {
+          "x": 26,
+          "y": 319.109375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 468.1875,
+          "right": 190
+        },
+        {
+          "x": 212,
+          "y": 319.109375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 468.1875,
+          "right": 376
+        }
+      ],
+      "tiles": [
+        {
+          "x": 33,
+          "y": 361.5,
+          "width": 64,
+          "height": 64,
+          "bottom": 425.5,
+          "right": 97
+        },
+        {
+          "x": 119,
+          "y": 361.5,
+          "width": 64,
+          "height": 64,
+          "bottom": 425.5,
+          "right": 183
+        },
+        {
+          "x": 219,
+          "y": 361.5,
+          "width": 64,
+          "height": 64,
+          "bottom": 425.5,
+          "right": 283
+        },
+        {
+          "x": 305,
+          "y": 361.5,
+          "width": 64,
+          "height": 64,
+          "bottom": 425.5,
+          "right": 369
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 801.8125,
+        "width": 362,
+        "height": 52.1875,
+        "bottom": 854,
+        "right": 382
+      },
+      "lockup": {
+        "x": 82.140625,
+        "y": 36,
+        "width": 237.703125,
+        "height": 71.75,
+        "bottom": 107.75,
+        "right": 319.84375
+      },
+      "documentScroll": 874,
+      "focusInside": true
+    },
+    {
+      "width": 402,
+      "height": 874,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 402,
+        "height": 874
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 402,
+        "height": 874,
+        "bottom": 874,
+        "right": 402
+      },
+      "client": 874,
+      "scroll": 874,
+      "plateClient": 874,
+      "plateScroll": 874,
+      "groups": [
+        {
+          "x": 26,
+          "y": 380.234375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 529.3125,
+          "right": 190
+        },
+        {
+          "x": 212,
+          "y": 380.234375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 529.3125,
+          "right": 376
+        }
+      ],
+      "tiles": [
+        {
+          "x": 33,
+          "y": 422.625,
+          "width": 64,
+          "height": 64,
+          "bottom": 486.625,
+          "right": 97
+        },
+        {
+          "x": 119,
+          "y": 422.625,
+          "width": 64,
+          "height": 64,
+          "bottom": 486.625,
+          "right": 183
+        },
+        {
+          "x": 219,
+          "y": 422.625,
+          "width": 64,
+          "height": 64,
+          "bottom": 486.625,
+          "right": 283
+        },
+        {
+          "x": 305,
+          "y": 422.625,
+          "width": 64,
+          "height": 64,
+          "bottom": 486.625,
+          "right": 369
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 801.8125,
+        "width": 362,
+        "height": 52.1875,
+        "bottom": 854,
+        "right": 382
+      },
+      "lockup": {
+        "x": 82.140625,
+        "y": 36,
+        "width": 237.703125,
+        "height": 71.75,
+        "bottom": 107.75,
+        "right": 319.84375
+      },
+      "documentScroll": 874,
+      "focusInside": true
+    },
+    {
+      "width": 402,
+      "height": 874,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": {
+        "x": 20,
+        "y": 496.1875,
+        "width": 362,
+        "height": 94.25,
+        "bottom": 590.4375,
+        "right": 382
+      },
+      "viewport": {
+        "width": 402,
+        "height": 874
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 402,
+        "height": 874,
+        "bottom": 874,
+        "right": 402
+      },
+      "client": 874,
+      "scroll": 874,
+      "plateClient": 874,
+      "plateScroll": 874,
+      "groups": [
+        {
+          "x": 26,
+          "y": 319.109375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 468.1875,
+          "right": 190
+        },
+        {
+          "x": 212,
+          "y": 319.109375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 468.1875,
+          "right": 376
+        }
+      ],
+      "tiles": [
+        {
+          "x": 33,
+          "y": 361.5,
+          "width": 64,
+          "height": 64,
+          "bottom": 425.5,
+          "right": 97
+        },
+        {
+          "x": 119,
+          "y": 361.5,
+          "width": 64,
+          "height": 64,
+          "bottom": 425.5,
+          "right": 183
+        },
+        {
+          "x": 219,
+          "y": 361.5,
+          "width": 64,
+          "height": 64,
+          "bottom": 425.5,
+          "right": 283
+        },
+        {
+          "x": 305,
+          "y": 361.5,
+          "width": 64,
+          "height": 64,
+          "bottom": 425.5,
+          "right": 369
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 801.8125,
+        "width": 362,
+        "height": 52.1875,
+        "bottom": 854,
+        "right": 382
+      },
+      "lockup": {
+        "x": 82.140625,
+        "y": 36,
+        "width": 237.703125,
+        "height": 71.75,
+        "bottom": 107.75,
+        "right": 319.84375
+      },
+      "documentScroll": 874,
+      "focusInside": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 932,
+        "bottom": 932,
+        "right": 430
+      },
+      "client": 932,
+      "scroll": 932,
+      "plateClient": 932,
+      "plateScroll": 932,
+      "groups": [
+        {
+          "x": 40,
+          "y": 411.734375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 560.8125,
+          "right": 204
+        },
+        {
+          "x": 226,
+          "y": 411.734375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 560.8125,
+          "right": 390
+        }
+      ],
+      "tiles": [
+        {
+          "x": 47,
+          "y": 454.125,
+          "width": 64,
+          "height": 64,
+          "bottom": 518.125,
+          "right": 111
+        },
+        {
+          "x": 133,
+          "y": 454.125,
+          "width": 64,
+          "height": 64,
+          "bottom": 518.125,
+          "right": 197
+        },
+        {
+          "x": 233,
+          "y": 454.125,
+          "width": 64,
+          "height": 64,
+          "bottom": 518.125,
+          "right": 297
+        },
+        {
+          "x": 319,
+          "y": 454.125,
+          "width": 64,
+          "height": 64,
+          "bottom": 518.125,
+          "right": 383
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 859.8125,
+        "width": 390,
+        "height": 52.1875,
+        "bottom": 912,
+        "right": 410
+      },
+      "lockup": {
+        "x": 93.640625,
+        "y": 36,
+        "width": 242.703125,
+        "height": 76.734375,
+        "bottom": 112.734375,
+        "right": 336.34375
+      },
+      "documentScroll": 932,
+      "focusInside": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": {
+        "x": 20,
+        "y": 527.6875,
+        "width": 390,
+        "height": 94.25,
+        "bottom": 621.9375,
+        "right": 410
+      },
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 932,
+        "bottom": 932,
+        "right": 430
+      },
+      "client": 932,
+      "scroll": 932,
+      "plateClient": 932,
+      "plateScroll": 932,
+      "groups": [
+        {
+          "x": 40,
+          "y": 350.609375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 499.6875,
+          "right": 204
+        },
+        {
+          "x": 226,
+          "y": 350.609375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 499.6875,
+          "right": 390
+        }
+      ],
+      "tiles": [
+        {
+          "x": 47,
+          "y": 393,
+          "width": 64,
+          "height": 64,
+          "bottom": 457,
+          "right": 111
+        },
+        {
+          "x": 133,
+          "y": 393,
+          "width": 64,
+          "height": 64,
+          "bottom": 457,
+          "right": 197
+        },
+        {
+          "x": 233,
+          "y": 393,
+          "width": 64,
+          "height": 64,
+          "bottom": 457,
+          "right": 297
+        },
+        {
+          "x": 319,
+          "y": 393,
+          "width": 64,
+          "height": 64,
+          "bottom": 457,
+          "right": 383
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 859.8125,
+        "width": 390,
+        "height": 52.1875,
+        "bottom": 912,
+        "right": 410
+      },
+      "lockup": {
+        "x": 93.640625,
+        "y": 36,
+        "width": 242.703125,
+        "height": 76.734375,
+        "bottom": 112.734375,
+        "right": 336.34375
+      },
+      "documentScroll": 932,
+      "focusInside": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 932,
+        "bottom": 932,
+        "right": 430
+      },
+      "client": 932,
+      "scroll": 932,
+      "plateClient": 932,
+      "plateScroll": 932,
+      "groups": [
+        {
+          "x": 40,
+          "y": 411.734375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 560.8125,
+          "right": 204
+        },
+        {
+          "x": 226,
+          "y": 411.734375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 560.8125,
+          "right": 390
+        }
+      ],
+      "tiles": [
+        {
+          "x": 47,
+          "y": 454.125,
+          "width": 64,
+          "height": 64,
+          "bottom": 518.125,
+          "right": 111
+        },
+        {
+          "x": 133,
+          "y": 454.125,
+          "width": 64,
+          "height": 64,
+          "bottom": 518.125,
+          "right": 197
+        },
+        {
+          "x": 233,
+          "y": 454.125,
+          "width": 64,
+          "height": 64,
+          "bottom": 518.125,
+          "right": 297
+        },
+        {
+          "x": 319,
+          "y": 454.125,
+          "width": 64,
+          "height": 64,
+          "bottom": 518.125,
+          "right": 383
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 859.8125,
+        "width": 390,
+        "height": 52.1875,
+        "bottom": 912,
+        "right": 410
+      },
+      "lockup": {
+        "x": 93.640625,
+        "y": 36,
+        "width": 242.703125,
+        "height": 76.734375,
+        "bottom": 112.734375,
+        "right": 336.34375
+      },
+      "documentScroll": 932,
+      "focusInside": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": {
+        "x": 20,
+        "y": 527.6875,
+        "width": 390,
+        "height": 94.25,
+        "bottom": 621.9375,
+        "right": 410
+      },
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 932,
+        "bottom": 932,
+        "right": 430
+      },
+      "client": 932,
+      "scroll": 932,
+      "plateClient": 932,
+      "plateScroll": 932,
+      "groups": [
+        {
+          "x": 40,
+          "y": 350.609375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 499.6875,
+          "right": 204
+        },
+        {
+          "x": 226,
+          "y": 350.609375,
+          "width": 164,
+          "height": 149.078125,
+          "bottom": 499.6875,
+          "right": 390
+        }
+      ],
+      "tiles": [
+        {
+          "x": 47,
+          "y": 393,
+          "width": 64,
+          "height": 64,
+          "bottom": 457,
+          "right": 111
+        },
+        {
+          "x": 133,
+          "y": 393,
+          "width": 64,
+          "height": 64,
+          "bottom": 457,
+          "right": 197
+        },
+        {
+          "x": 233,
+          "y": 393,
+          "width": 64,
+          "height": 64,
+          "bottom": 457,
+          "right": 297
+        },
+        {
+          "x": 319,
+          "y": 393,
+          "width": 64,
+          "height": 64,
+          "bottom": 457,
+          "right": 383
+        }
+      ],
+      "footer": {
+        "x": 20,
+        "y": 859.8125,
+        "width": 390,
+        "height": 52.1875,
+        "bottom": 912,
+        "right": 410
+      },
+      "lockup": {
+        "x": 93.640625,
+        "y": 36,
+        "width": 242.703125,
+        "height": 76.734375,
+        "bottom": 112.734375,
+        "right": 336.34375
+      },
+      "documentScroll": 932,
+      "focusInside": true
+    },
+    {
+      "width": 852,
+      "height": 393,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 852,
+        "height": 393
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 852,
+        "height": 393,
+        "bottom": 393,
+        "right": 852
+      },
+      "client": 393,
+      "scroll": 393,
+      "plateClient": 393,
+      "plateScroll": 393,
+      "groups": [
+        {
+          "x": 34.078125,
+          "y": 153.09375,
+          "width": 366.359375,
+          "height": 132.6875,
+          "bottom": 285.78125,
+          "right": 400.4375
+        },
+        {
+          "x": 451.546875,
+          "y": 153.09375,
+          "width": 366.375,
+          "height": 132.6875,
+          "bottom": 285.78125,
+          "right": 817.921875
+        }
+      ],
+      "tiles": [
+        {
+          "x": 88.65625,
+          "y": 185.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 249.09375,
+          "right": 152.65625
+        },
+        {
+          "x": 281.84375,
+          "y": 185.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 249.09375,
+          "right": 345.84375
+        },
+        {
+          "x": 506.140625,
+          "y": 185.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 249.09375,
+          "right": 570.140625
+        },
+        {
+          "x": 699.328125,
+          "y": 185.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 249.09375,
+          "right": 763.328125
+        }
+      ],
+      "footer": {
+        "x": 34.078125,
+        "y": 357.703125,
+        "width": 783.84375,
+        "height": 23.296875,
+        "bottom": 381,
+        "right": 817.921875
+      },
+      "lockup": {
+        "x": 296.953125,
+        "y": 14,
+        "width": 258.078125,
+        "height": 67.1875,
+        "bottom": 81.1875,
+        "right": 555.03125
+      },
+      "documentScroll": 393,
+      "focusInside": true
+    },
+    {
+      "width": 852,
+      "height": 393,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": {
+        "x": 34.078125,
+        "y": 270.40625,
+        "width": 783.84375,
+        "height": 40.75,
+        "bottom": 311.15625,
+        "right": 817.921875
+      },
+      "viewport": {
+        "width": 852,
+        "height": 393
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 852,
+        "height": 393,
+        "bottom": 393,
+        "right": 852
+      },
+      "client": 393,
+      "scroll": 393,
+      "plateClient": 393,
+      "plateScroll": 393,
+      "groups": [
+        {
+          "x": 34.078125,
+          "y": 127.71875,
+          "width": 366.359375,
+          "height": 132.6875,
+          "bottom": 260.40625,
+          "right": 400.4375
+        },
+        {
+          "x": 451.546875,
+          "y": 127.71875,
+          "width": 366.375,
+          "height": 132.6875,
+          "bottom": 260.40625,
+          "right": 817.921875
+        }
+      ],
+      "tiles": [
+        {
+          "x": 88.65625,
+          "y": 159.71875,
+          "width": 64,
+          "height": 64,
+          "bottom": 223.71875,
+          "right": 152.65625
+        },
+        {
+          "x": 281.84375,
+          "y": 159.71875,
+          "width": 64,
+          "height": 64,
+          "bottom": 223.71875,
+          "right": 345.84375
+        },
+        {
+          "x": 506.140625,
+          "y": 159.71875,
+          "width": 64,
+          "height": 64,
+          "bottom": 223.71875,
+          "right": 570.140625
+        },
+        {
+          "x": 699.328125,
+          "y": 159.71875,
+          "width": 64,
+          "height": 64,
+          "bottom": 223.71875,
+          "right": 763.328125
+        }
+      ],
+      "footer": {
+        "x": 34.078125,
+        "y": 357.703125,
+        "width": 783.84375,
+        "height": 23.296875,
+        "bottom": 381,
+        "right": 817.921875
+      },
+      "lockup": {
+        "x": 296.953125,
+        "y": 14,
+        "width": 258.078125,
+        "height": 67.1875,
+        "bottom": 81.1875,
+        "right": 555.03125
+      },
+      "documentScroll": 393,
+      "focusInside": true
+    },
+    {
+      "width": 852,
+      "height": 393,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 852,
+        "height": 393
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 852,
+        "height": 393,
+        "bottom": 393,
+        "right": 852
+      },
+      "client": 393,
+      "scroll": 393,
+      "plateClient": 393,
+      "plateScroll": 393,
+      "groups": [
+        {
+          "x": 34.078125,
+          "y": 153.09375,
+          "width": 366.359375,
+          "height": 132.6875,
+          "bottom": 285.78125,
+          "right": 400.4375
+        },
+        {
+          "x": 451.546875,
+          "y": 153.09375,
+          "width": 366.375,
+          "height": 132.6875,
+          "bottom": 285.78125,
+          "right": 817.921875
+        }
+      ],
+      "tiles": [
+        {
+          "x": 88.65625,
+          "y": 185.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 249.09375,
+          "right": 152.65625
+        },
+        {
+          "x": 281.84375,
+          "y": 185.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 249.09375,
+          "right": 345.84375
+        },
+        {
+          "x": 506.140625,
+          "y": 185.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 249.09375,
+          "right": 570.140625
+        },
+        {
+          "x": 699.328125,
+          "y": 185.09375,
+          "width": 64,
+          "height": 64,
+          "bottom": 249.09375,
+          "right": 763.328125
+        }
+      ],
+      "footer": {
+        "x": 34.078125,
+        "y": 357.703125,
+        "width": 783.84375,
+        "height": 23.296875,
+        "bottom": 381,
+        "right": 817.921875
+      },
+      "lockup": {
+        "x": 296.953125,
+        "y": 14,
+        "width": 258.078125,
+        "height": 67.1875,
+        "bottom": 81.1875,
+        "right": 555.03125
+      },
+      "documentScroll": 393,
+      "focusInside": true
+    },
+    {
+      "width": 852,
+      "height": 393,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": {
+        "x": 34.078125,
+        "y": 270.40625,
+        "width": 783.84375,
+        "height": 40.75,
+        "bottom": 311.15625,
+        "right": 817.921875
+      },
+      "viewport": {
+        "width": 852,
+        "height": 393
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 852,
+        "height": 393,
+        "bottom": 393,
+        "right": 852
+      },
+      "client": 393,
+      "scroll": 393,
+      "plateClient": 393,
+      "plateScroll": 393,
+      "groups": [
+        {
+          "x": 34.078125,
+          "y": 127.71875,
+          "width": 366.359375,
+          "height": 132.6875,
+          "bottom": 260.40625,
+          "right": 400.4375
+        },
+        {
+          "x": 451.546875,
+          "y": 127.71875,
+          "width": 366.375,
+          "height": 132.6875,
+          "bottom": 260.40625,
+          "right": 817.921875
+        }
+      ],
+      "tiles": [
+        {
+          "x": 88.65625,
+          "y": 159.71875,
+          "width": 64,
+          "height": 64,
+          "bottom": 223.71875,
+          "right": 152.65625
+        },
+        {
+          "x": 281.84375,
+          "y": 159.71875,
+          "width": 64,
+          "height": 64,
+          "bottom": 223.71875,
+          "right": 345.84375
+        },
+        {
+          "x": 506.140625,
+          "y": 159.71875,
+          "width": 64,
+          "height": 64,
+          "bottom": 223.71875,
+          "right": 570.140625
+        },
+        {
+          "x": 699.328125,
+          "y": 159.71875,
+          "width": 64,
+          "height": 64,
+          "bottom": 223.71875,
+          "right": 763.328125
+        }
+      ],
+      "footer": {
+        "x": 34.078125,
+        "y": 357.703125,
+        "width": 783.84375,
+        "height": 23.296875,
+        "bottom": 381,
+        "right": 817.921875
+      },
+      "lockup": {
+        "x": 296.953125,
+        "y": 14,
+        "width": 258.078125,
+        "height": 67.1875,
+        "bottom": 81.1875,
+        "right": 555.03125
+      },
+      "documentScroll": 393,
+      "focusInside": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "bottom": 390,
+        "right": 844
+      },
+      "client": 390,
+      "scroll": 390,
+      "plateClient": 390,
+      "plateScroll": 390,
+      "groups": [
+        {
+          "x": 33.75,
+          "y": 151.59375,
+          "width": 362.9375,
+          "height": 132.6875,
+          "bottom": 284.28125,
+          "right": 396.6875
+        },
+        {
+          "x": 447.3125,
+          "y": 151.59375,
+          "width": 362.9375,
+          "height": 132.6875,
+          "bottom": 284.28125,
+          "right": 810.25
+        }
+      ],
+      "tiles": [
+        {
+          "x": 87.484375,
+          "y": 183.59375,
+          "width": 64,
+          "height": 64,
+          "bottom": 247.59375,
+          "right": 151.484375
+        },
+        {
+          "x": 278.953125,
+          "y": 183.59375,
+          "width": 64,
+          "height": 64,
+          "bottom": 247.59375,
+          "right": 342.953125
+        },
+        {
+          "x": 501.046875,
+          "y": 183.59375,
+          "width": 64,
+          "height": 64,
+          "bottom": 247.59375,
+          "right": 565.046875
+        },
+        {
+          "x": 692.515625,
+          "y": 183.59375,
+          "width": 64,
+          "height": 64,
+          "bottom": 247.59375,
+          "right": 756.515625
+        }
+      ],
+      "footer": {
+        "x": 33.75,
+        "y": 354.703125,
+        "width": 776.5,
+        "height": 23.296875,
+        "bottom": 378,
+        "right": 810.25
+      },
+      "lockup": {
+        "x": 292.953125,
+        "y": 14,
+        "width": 258.078125,
+        "height": 67.1875,
+        "bottom": 81.1875,
+        "right": 551.03125
+      },
+      "documentScroll": 390,
+      "focusInside": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": {
+        "x": 33.75,
+        "y": 268.90625,
+        "width": 776.5,
+        "height": 40.75,
+        "bottom": 309.65625,
+        "right": 810.25
+      },
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "bottom": 390,
+        "right": 844
+      },
+      "client": 390,
+      "scroll": 390,
+      "plateClient": 390,
+      "plateScroll": 390,
+      "groups": [
+        {
+          "x": 33.75,
+          "y": 126.21875,
+          "width": 362.9375,
+          "height": 132.6875,
+          "bottom": 258.90625,
+          "right": 396.6875
+        },
+        {
+          "x": 447.3125,
+          "y": 126.21875,
+          "width": 362.9375,
+          "height": 132.6875,
+          "bottom": 258.90625,
+          "right": 810.25
+        }
+      ],
+      "tiles": [
+        {
+          "x": 87.484375,
+          "y": 158.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 222.21875,
+          "right": 151.484375
+        },
+        {
+          "x": 278.953125,
+          "y": 158.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 222.21875,
+          "right": 342.953125
+        },
+        {
+          "x": 501.046875,
+          "y": 158.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 222.21875,
+          "right": 565.046875
+        },
+        {
+          "x": 692.515625,
+          "y": 158.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 222.21875,
+          "right": 756.515625
+        }
+      ],
+      "footer": {
+        "x": 33.75,
+        "y": 354.703125,
+        "width": 776.5,
+        "height": 23.296875,
+        "bottom": 378,
+        "right": 810.25
+      },
+      "lockup": {
+        "x": 292.953125,
+        "y": 14,
+        "width": 258.078125,
+        "height": 67.1875,
+        "bottom": 81.1875,
+        "right": 551.03125
+      },
+      "documentScroll": 390,
+      "focusInside": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "bottom": 390,
+        "right": 844
+      },
+      "client": 390,
+      "scroll": 390,
+      "plateClient": 390,
+      "plateScroll": 390,
+      "groups": [
+        {
+          "x": 33.75,
+          "y": 151.59375,
+          "width": 362.9375,
+          "height": 132.6875,
+          "bottom": 284.28125,
+          "right": 396.6875
+        },
+        {
+          "x": 447.3125,
+          "y": 151.59375,
+          "width": 362.9375,
+          "height": 132.6875,
+          "bottom": 284.28125,
+          "right": 810.25
+        }
+      ],
+      "tiles": [
+        {
+          "x": 87.484375,
+          "y": 183.59375,
+          "width": 64,
+          "height": 64,
+          "bottom": 247.59375,
+          "right": 151.484375
+        },
+        {
+          "x": 278.953125,
+          "y": 183.59375,
+          "width": 64,
+          "height": 64,
+          "bottom": 247.59375,
+          "right": 342.953125
+        },
+        {
+          "x": 501.046875,
+          "y": 183.59375,
+          "width": 64,
+          "height": 64,
+          "bottom": 247.59375,
+          "right": 565.046875
+        },
+        {
+          "x": 692.515625,
+          "y": 183.59375,
+          "width": 64,
+          "height": 64,
+          "bottom": 247.59375,
+          "right": 756.515625
+        }
+      ],
+      "footer": {
+        "x": 33.75,
+        "y": 354.703125,
+        "width": 776.5,
+        "height": 23.296875,
+        "bottom": 378,
+        "right": 810.25
+      },
+      "lockup": {
+        "x": 292.953125,
+        "y": 14,
+        "width": 258.078125,
+        "height": 67.1875,
+        "bottom": 81.1875,
+        "right": 551.03125
+      },
+      "documentScroll": 390,
+      "focusInside": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": {
+        "x": 33.75,
+        "y": 268.90625,
+        "width": 776.5,
+        "height": 40.75,
+        "bottom": 309.65625,
+        "right": 810.25
+      },
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "bottom": 390,
+        "right": 844
+      },
+      "client": 390,
+      "scroll": 390,
+      "plateClient": 390,
+      "plateScroll": 390,
+      "groups": [
+        {
+          "x": 33.75,
+          "y": 126.21875,
+          "width": 362.9375,
+          "height": 132.6875,
+          "bottom": 258.90625,
+          "right": 396.6875
+        },
+        {
+          "x": 447.3125,
+          "y": 126.21875,
+          "width": 362.9375,
+          "height": 132.6875,
+          "bottom": 258.90625,
+          "right": 810.25
+        }
+      ],
+      "tiles": [
+        {
+          "x": 87.484375,
+          "y": 158.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 222.21875,
+          "right": 151.484375
+        },
+        {
+          "x": 278.953125,
+          "y": 158.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 222.21875,
+          "right": 342.953125
+        },
+        {
+          "x": 501.046875,
+          "y": 158.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 222.21875,
+          "right": 565.046875
+        },
+        {
+          "x": 692.515625,
+          "y": 158.21875,
+          "width": 64,
+          "height": 64,
+          "bottom": 222.21875,
+          "right": 756.515625
+        }
+      ],
+      "footer": {
+        "x": 33.75,
+        "y": 354.703125,
+        "width": 776.5,
+        "height": 23.296875,
+        "bottom": 378,
+        "right": 810.25
+      },
+      "lockup": {
+        "x": 292.953125,
+        "y": 14,
+        "width": 258.078125,
+        "height": 67.1875,
+        "bottom": 81.1875,
+        "right": 551.03125
+      },
+      "documentScroll": 390,
+      "focusInside": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1024,
+        "bottom": 1024,
+        "right": 768
+      },
+      "client": 1024,
+      "scroll": 1024,
+      "plateClient": 1024,
+      "plateScroll": 1024,
+      "groups": [
+        {
+          "x": 30.71875,
+          "y": 434.5,
+          "width": 330.234375,
+          "height": 257.984375,
+          "bottom": 692.484375,
+          "right": 360.953125
+        },
+        {
+          "x": 407.03125,
+          "y": 434.5,
+          "width": 330.25,
+          "height": 257.984375,
+          "bottom": 692.484375,
+          "right": 737.28125
+        }
+      ],
+      "tiles": [
+        {
+          "x": 36.265625,
+          "y": 488.09375,
+          "width": 144,
+          "height": 144,
+          "bottom": 632.09375,
+          "right": 180.265625
+        },
+        {
+          "x": 211.390625,
+          "y": 488.09375,
+          "width": 144,
+          "height": 144,
+          "bottom": 632.09375,
+          "right": 355.390625
+        },
+        {
+          "x": 412.59375,
+          "y": 488.09375,
+          "width": 144,
+          "height": 144,
+          "bottom": 632.09375,
+          "right": 556.59375
+        },
+        {
+          "x": 587.71875,
+          "y": 488.09375,
+          "width": 144,
+          "height": 144,
+          "bottom": 632.09375,
+          "right": 731.71875
+        }
+      ],
+      "footer": {
+        "x": 30.71875,
+        "y": 968.8125,
+        "width": 706.5625,
+        "height": 35.1875,
+        "bottom": 1004,
+        "right": 737.28125
+      },
+      "lockup": {
+        "x": 206.09375,
+        "y": 61.4375,
+        "width": 355.8125,
+        "height": 96.75,
+        "bottom": 158.1875,
+        "right": 561.90625
+      },
+      "documentScroll": 1024,
+      "focusInside": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": {
+        "x": 30.71875,
+        "y": 681.609375,
+        "width": 706.5625,
+        "height": 57.75,
+        "bottom": 739.359375,
+        "right": 737.28125
+      },
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1024,
+        "bottom": 1024,
+        "right": 768
+      },
+      "client": 1024,
+      "scroll": 1024,
+      "plateClient": 1024,
+      "plateScroll": 1024,
+      "groups": [
+        {
+          "x": 30.71875,
+          "y": 387.625,
+          "width": 330.234375,
+          "height": 257.984375,
+          "bottom": 645.609375,
+          "right": 360.953125
+        },
+        {
+          "x": 407.03125,
+          "y": 387.625,
+          "width": 330.25,
+          "height": 257.984375,
+          "bottom": 645.609375,
+          "right": 737.28125
+        }
+      ],
+      "tiles": [
+        {
+          "x": 36.265625,
+          "y": 441.21875,
+          "width": 144,
+          "height": 144,
+          "bottom": 585.21875,
+          "right": 180.265625
+        },
+        {
+          "x": 211.390625,
+          "y": 441.21875,
+          "width": 144,
+          "height": 144,
+          "bottom": 585.21875,
+          "right": 355.390625
+        },
+        {
+          "x": 412.59375,
+          "y": 441.21875,
+          "width": 144,
+          "height": 144,
+          "bottom": 585.21875,
+          "right": 556.59375
+        },
+        {
+          "x": 587.71875,
+          "y": 441.21875,
+          "width": 144,
+          "height": 144,
+          "bottom": 585.21875,
+          "right": 731.71875
+        }
+      ],
+      "footer": {
+        "x": 30.71875,
+        "y": 968.8125,
+        "width": 706.5625,
+        "height": 35.1875,
+        "bottom": 1004,
+        "right": 737.28125
+      },
+      "lockup": {
+        "x": 206.09375,
+        "y": 61.4375,
+        "width": 355.8125,
+        "height": 96.75,
+        "bottom": 158.1875,
+        "right": 561.90625
+      },
+      "documentScroll": 1024,
+      "focusInside": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1024,
+        "bottom": 1024,
+        "right": 768
+      },
+      "client": 1024,
+      "scroll": 1024,
+      "plateClient": 1024,
+      "plateScroll": 1024,
+      "groups": [
+        {
+          "x": 30.71875,
+          "y": 434.5,
+          "width": 330.234375,
+          "height": 257.984375,
+          "bottom": 692.484375,
+          "right": 360.953125
+        },
+        {
+          "x": 407.03125,
+          "y": 434.5,
+          "width": 330.25,
+          "height": 257.984375,
+          "bottom": 692.484375,
+          "right": 737.28125
+        }
+      ],
+      "tiles": [
+        {
+          "x": 36.265625,
+          "y": 488.09375,
+          "width": 144,
+          "height": 144,
+          "bottom": 632.09375,
+          "right": 180.265625
+        },
+        {
+          "x": 211.390625,
+          "y": 488.09375,
+          "width": 144,
+          "height": 144,
+          "bottom": 632.09375,
+          "right": 355.390625
+        },
+        {
+          "x": 412.59375,
+          "y": 488.09375,
+          "width": 144,
+          "height": 144,
+          "bottom": 632.09375,
+          "right": 556.59375
+        },
+        {
+          "x": 587.71875,
+          "y": 488.09375,
+          "width": 144,
+          "height": 144,
+          "bottom": 632.09375,
+          "right": 731.71875
+        }
+      ],
+      "footer": {
+        "x": 30.71875,
+        "y": 968.8125,
+        "width": 706.5625,
+        "height": 35.1875,
+        "bottom": 1004,
+        "right": 737.28125
+      },
+      "lockup": {
+        "x": 206.09375,
+        "y": 61.4375,
+        "width": 355.8125,
+        "height": 96.75,
+        "bottom": 158.1875,
+        "right": 561.90625
+      },
+      "documentScroll": 1024,
+      "focusInside": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": {
+        "x": 30.71875,
+        "y": 681.609375,
+        "width": 706.5625,
+        "height": 57.75,
+        "bottom": 739.359375,
+        "right": 737.28125
+      },
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1024,
+        "bottom": 1024,
+        "right": 768
+      },
+      "client": 1024,
+      "scroll": 1024,
+      "plateClient": 1024,
+      "plateScroll": 1024,
+      "groups": [
+        {
+          "x": 30.71875,
+          "y": 387.625,
+          "width": 330.234375,
+          "height": 257.984375,
+          "bottom": 645.609375,
+          "right": 360.953125
+        },
+        {
+          "x": 407.03125,
+          "y": 387.625,
+          "width": 330.25,
+          "height": 257.984375,
+          "bottom": 645.609375,
+          "right": 737.28125
+        }
+      ],
+      "tiles": [
+        {
+          "x": 36.265625,
+          "y": 441.21875,
+          "width": 144,
+          "height": 144,
+          "bottom": 585.21875,
+          "right": 180.265625
+        },
+        {
+          "x": 211.390625,
+          "y": 441.21875,
+          "width": 144,
+          "height": 144,
+          "bottom": 585.21875,
+          "right": 355.390625
+        },
+        {
+          "x": 412.59375,
+          "y": 441.21875,
+          "width": 144,
+          "height": 144,
+          "bottom": 585.21875,
+          "right": 556.59375
+        },
+        {
+          "x": 587.71875,
+          "y": 441.21875,
+          "width": 144,
+          "height": 144,
+          "bottom": 585.21875,
+          "right": 731.71875
+        }
+      ],
+      "footer": {
+        "x": 30.71875,
+        "y": 968.8125,
+        "width": 706.5625,
+        "height": 35.1875,
+        "bottom": 1004,
+        "right": 737.28125
+      },
+      "lockup": {
+        "x": 206.09375,
+        "y": 61.4375,
+        "width": 355.8125,
+        "height": 96.75,
+        "bottom": 158.1875,
+        "right": 561.90625
+      },
+      "documentScroll": 1024,
+      "focusInside": true
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768,
+        "bottom": 768,
+        "right": 1024
+      },
+      "client": 768,
+      "scroll": 768,
+      "plateClient": 768,
+      "plateScroll": 768,
+      "groups": [
+        {
+          "x": 87,
+          "y": 314.953125,
+          "width": 394.28125,
+          "height": 257.984375,
+          "bottom": 572.9375,
+          "right": 481.28125
+        },
+        {
+          "x": 542.71875,
+          "y": 314.953125,
+          "width": 394.28125,
+          "height": 257.984375,
+          "bottom": 572.9375,
+          "right": 937
+        }
+      ],
+      "tiles": [
+        {
+          "x": 108.5625,
+          "y": 368.546875,
+          "width": 144,
+          "height": 144,
+          "bottom": 512.546875,
+          "right": 252.5625
+        },
+        {
+          "x": 315.703125,
+          "y": 368.546875,
+          "width": 144,
+          "height": 144,
+          "bottom": 512.546875,
+          "right": 459.703125
+        },
+        {
+          "x": 564.28125,
+          "y": 368.546875,
+          "width": 144,
+          "height": 144,
+          "bottom": 512.546875,
+          "right": 708.28125
+        },
+        {
+          "x": 771.421875,
+          "y": 368.546875,
+          "width": 144,
+          "height": 144,
+          "bottom": 512.546875,
+          "right": 915.421875
+        }
+      ],
+      "footer": {
+        "x": 40.953125,
+        "y": 712.8125,
+        "width": 942.09375,
+        "height": 35.1875,
+        "bottom": 748,
+        "right": 983.046875
+      },
+      "lockup": {
+        "x": 312.59375,
+        "y": 46.078125,
+        "width": 398.8125,
+        "height": 129.015625,
+        "bottom": 175.09375,
+        "right": 711.40625
+      },
+      "documentScroll": 768,
+      "focusInside": true
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": {
+        "x": 87,
+        "y": 562.0625,
+        "width": 850,
+        "height": 57.75,
+        "bottom": 619.8125,
+        "right": 937
+      },
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768,
+        "bottom": 768,
+        "right": 1024
+      },
+      "client": 768,
+      "scroll": 768,
+      "plateClient": 768,
+      "plateScroll": 768,
+      "groups": [
+        {
+          "x": 87,
+          "y": 268.078125,
+          "width": 394.28125,
+          "height": 257.984375,
+          "bottom": 526.0625,
+          "right": 481.28125
+        },
+        {
+          "x": 542.71875,
+          "y": 268.078125,
+          "width": 394.28125,
+          "height": 257.984375,
+          "bottom": 526.0625,
+          "right": 937
+        }
+      ],
+      "tiles": [
+        {
+          "x": 108.5625,
+          "y": 321.671875,
+          "width": 144,
+          "height": 144,
+          "bottom": 465.671875,
+          "right": 252.5625
+        },
+        {
+          "x": 315.703125,
+          "y": 321.671875,
+          "width": 144,
+          "height": 144,
+          "bottom": 465.671875,
+          "right": 459.703125
+        },
+        {
+          "x": 564.28125,
+          "y": 321.671875,
+          "width": 144,
+          "height": 144,
+          "bottom": 465.671875,
+          "right": 708.28125
+        },
+        {
+          "x": 771.421875,
+          "y": 321.671875,
+          "width": 144,
+          "height": 144,
+          "bottom": 465.671875,
+          "right": 915.421875
+        }
+      ],
+      "footer": {
+        "x": 40.953125,
+        "y": 712.8125,
+        "width": 942.09375,
+        "height": 35.1875,
+        "bottom": 748,
+        "right": 983.046875
+      },
+      "lockup": {
+        "x": 312.59375,
+        "y": 46.078125,
+        "width": 398.8125,
+        "height": 129.015625,
+        "bottom": 175.09375,
+        "right": 711.40625
+      },
+      "documentScroll": 768,
+      "focusInside": true
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768,
+        "bottom": 768,
+        "right": 1024
+      },
+      "client": 768,
+      "scroll": 768,
+      "plateClient": 768,
+      "plateScroll": 768,
+      "groups": [
+        {
+          "x": 87,
+          "y": 314.953125,
+          "width": 394.28125,
+          "height": 257.984375,
+          "bottom": 572.9375,
+          "right": 481.28125
+        },
+        {
+          "x": 542.71875,
+          "y": 314.953125,
+          "width": 394.28125,
+          "height": 257.984375,
+          "bottom": 572.9375,
+          "right": 937
+        }
+      ],
+      "tiles": [
+        {
+          "x": 108.5625,
+          "y": 368.546875,
+          "width": 144,
+          "height": 144,
+          "bottom": 512.546875,
+          "right": 252.5625
+        },
+        {
+          "x": 315.703125,
+          "y": 368.546875,
+          "width": 144,
+          "height": 144,
+          "bottom": 512.546875,
+          "right": 459.703125
+        },
+        {
+          "x": 564.28125,
+          "y": 368.546875,
+          "width": 144,
+          "height": 144,
+          "bottom": 512.546875,
+          "right": 708.28125
+        },
+        {
+          "x": 771.421875,
+          "y": 368.546875,
+          "width": 144,
+          "height": 144,
+          "bottom": 512.546875,
+          "right": 915.421875
+        }
+      ],
+      "footer": {
+        "x": 40.953125,
+        "y": 712.8125,
+        "width": 942.09375,
+        "height": 35.1875,
+        "bottom": 748,
+        "right": 983.046875
+      },
+      "lockup": {
+        "x": 312.59375,
+        "y": 46.078125,
+        "width": 398.8125,
+        "height": 129.015625,
+        "bottom": 175.09375,
+        "right": 711.40625
+      },
+      "documentScroll": 768,
+      "focusInside": true
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": {
+        "x": 87,
+        "y": 562.0625,
+        "width": 850,
+        "height": 57.75,
+        "bottom": 619.8125,
+        "right": 937
+      },
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768,
+        "bottom": 768,
+        "right": 1024
+      },
+      "client": 768,
+      "scroll": 768,
+      "plateClient": 768,
+      "plateScroll": 768,
+      "groups": [
+        {
+          "x": 87,
+          "y": 268.078125,
+          "width": 394.28125,
+          "height": 257.984375,
+          "bottom": 526.0625,
+          "right": 481.28125
+        },
+        {
+          "x": 542.71875,
+          "y": 268.078125,
+          "width": 394.28125,
+          "height": 257.984375,
+          "bottom": 526.0625,
+          "right": 937
+        }
+      ],
+      "tiles": [
+        {
+          "x": 108.5625,
+          "y": 321.671875,
+          "width": 144,
+          "height": 144,
+          "bottom": 465.671875,
+          "right": 252.5625
+        },
+        {
+          "x": 315.703125,
+          "y": 321.671875,
+          "width": 144,
+          "height": 144,
+          "bottom": 465.671875,
+          "right": 459.703125
+        },
+        {
+          "x": 564.28125,
+          "y": 321.671875,
+          "width": 144,
+          "height": 144,
+          "bottom": 465.671875,
+          "right": 708.28125
+        },
+        {
+          "x": 771.421875,
+          "y": 321.671875,
+          "width": 144,
+          "height": 144,
+          "bottom": 465.671875,
+          "right": 915.421875
+        }
+      ],
+      "footer": {
+        "x": 40.953125,
+        "y": 712.8125,
+        "width": 942.09375,
+        "height": 35.1875,
+        "bottom": 748,
+        "right": 983.046875
+      },
+      "lockup": {
+        "x": 312.59375,
+        "y": 46.078125,
+        "width": 398.8125,
+        "height": 129.015625,
+        "bottom": 175.09375,
+        "right": 711.40625
+      },
+      "documentScroll": 768,
+      "focusInside": true
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1000,
+        "bottom": 1000,
+        "right": 1440
+      },
+      "client": 1000,
+      "scroll": 1000,
+      "plateClient": 1000,
+      "plateScroll": 1000,
+      "groups": [
+        {
+          "x": 295,
+          "y": 462.65625,
+          "width": 381.796875,
+          "height": 257.984375,
+          "bottom": 720.640625,
+          "right": 676.796875
+        },
+        {
+          "x": 763.1875,
+          "y": 462.65625,
+          "width": 381.8125,
+          "height": 257.984375,
+          "bottom": 720.640625,
+          "right": 1145
+        }
+      ],
+      "tiles": [
+        {
+          "x": 313.4375,
+          "y": 516.25,
+          "width": 144,
+          "height": 144,
+          "bottom": 660.25,
+          "right": 457.4375
+        },
+        {
+          "x": 514.34375,
+          "y": 516.25,
+          "width": 144,
+          "height": 144,
+          "bottom": 660.25,
+          "right": 658.34375
+        },
+        {
+          "x": 781.640625,
+          "y": 516.25,
+          "width": 144,
+          "height": 144,
+          "bottom": 660.25,
+          "right": 925.640625
+        },
+        {
+          "x": 982.546875,
+          "y": 516.25,
+          "width": 144,
+          "height": 144,
+          "bottom": 660.25,
+          "right": 1126.546875
+        }
+      ],
+      "footer": {
+        "x": 196,
+        "y": 944.8125,
+        "width": 1048,
+        "height": 35.1875,
+        "bottom": 980,
+        "right": 1244
+      },
+      "lockup": {
+        "x": 487.09375,
+        "y": 60,
+        "width": 465.8125,
+        "height": 178.5,
+        "bottom": 238.5,
+        "right": 952.90625
+      },
+      "documentScroll": 1000,
+      "focusInside": true
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "time": "2026-10-05T12:00:00-04:00",
+      "travel": {
+        "x": 295,
+        "y": 709.765625,
+        "width": 850,
+        "height": 57.75,
+        "bottom": 767.515625,
+        "right": 1145
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1000,
+        "bottom": 1000,
+        "right": 1440
+      },
+      "client": 1000,
+      "scroll": 1000,
+      "plateClient": 1000,
+      "plateScroll": 1000,
+      "groups": [
+        {
+          "x": 295,
+          "y": 415.78125,
+          "width": 381.796875,
+          "height": 257.984375,
+          "bottom": 673.765625,
+          "right": 676.796875
+        },
+        {
+          "x": 763.1875,
+          "y": 415.78125,
+          "width": 381.8125,
+          "height": 257.984375,
+          "bottom": 673.765625,
+          "right": 1145
+        }
+      ],
+      "tiles": [
+        {
+          "x": 313.4375,
+          "y": 469.375,
+          "width": 144,
+          "height": 144,
+          "bottom": 613.375,
+          "right": 457.4375
+        },
+        {
+          "x": 514.34375,
+          "y": 469.375,
+          "width": 144,
+          "height": 144,
+          "bottom": 613.375,
+          "right": 658.34375
+        },
+        {
+          "x": 781.640625,
+          "y": 469.375,
+          "width": 144,
+          "height": 144,
+          "bottom": 613.375,
+          "right": 925.640625
+        },
+        {
+          "x": 982.546875,
+          "y": 469.375,
+          "width": 144,
+          "height": 144,
+          "bottom": 613.375,
+          "right": 1126.546875
+        }
+      ],
+      "footer": {
+        "x": 196,
+        "y": 944.8125,
+        "width": 1048,
+        "height": 35.1875,
+        "bottom": 980,
+        "right": 1244
+      },
+      "lockup": {
+        "x": 487.09375,
+        "y": 60,
+        "width": 465.8125,
+        "height": 178.5,
+        "bottom": 238.5,
+        "right": 952.90625
+      },
+      "documentScroll": 1000,
+      "focusInside": true
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": null,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1000,
+        "bottom": 1000,
+        "right": 1440
+      },
+      "client": 1000,
+      "scroll": 1000,
+      "plateClient": 1000,
+      "plateScroll": 1000,
+      "groups": [
+        {
+          "x": 295,
+          "y": 462.65625,
+          "width": 381.796875,
+          "height": 257.984375,
+          "bottom": 720.640625,
+          "right": 676.796875
+        },
+        {
+          "x": 763.1875,
+          "y": 462.65625,
+          "width": 381.8125,
+          "height": 257.984375,
+          "bottom": 720.640625,
+          "right": 1145
+        }
+      ],
+      "tiles": [
+        {
+          "x": 313.4375,
+          "y": 516.25,
+          "width": 144,
+          "height": 144,
+          "bottom": 660.25,
+          "right": 457.4375
+        },
+        {
+          "x": 514.34375,
+          "y": 516.25,
+          "width": 144,
+          "height": 144,
+          "bottom": 660.25,
+          "right": 658.34375
+        },
+        {
+          "x": 781.640625,
+          "y": 516.25,
+          "width": 144,
+          "height": 144,
+          "bottom": 660.25,
+          "right": 925.640625
+        },
+        {
+          "x": 982.546875,
+          "y": 516.25,
+          "width": 144,
+          "height": 144,
+          "bottom": 660.25,
+          "right": 1126.546875
+        }
+      ],
+      "footer": {
+        "x": 196,
+        "y": 944.8125,
+        "width": 1048,
+        "height": 35.1875,
+        "bottom": 980,
+        "right": 1244
+      },
+      "lockup": {
+        "x": 487.09375,
+        "y": 60,
+        "width": 465.8125,
+        "height": 178.5,
+        "bottom": 238.5,
+        "right": 952.90625
+      },
+      "documentScroll": 1000,
+      "focusInside": true
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "time": "2026-10-07T12:00:00-04:00",
+      "travel": {
+        "x": 295,
+        "y": 709.765625,
+        "width": 850,
+        "height": 57.75,
+        "bottom": 767.515625,
+        "right": 1145
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "veil": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1000,
+        "bottom": 1000,
+        "right": 1440
+      },
+      "client": 1000,
+      "scroll": 1000,
+      "plateClient": 1000,
+      "plateScroll": 1000,
+      "groups": [
+        {
+          "x": 295,
+          "y": 415.78125,
+          "width": 381.796875,
+          "height": 257.984375,
+          "bottom": 673.765625,
+          "right": 676.796875
+        },
+        {
+          "x": 763.1875,
+          "y": 415.78125,
+          "width": 381.8125,
+          "height": 257.984375,
+          "bottom": 673.765625,
+          "right": 1145
+        }
+      ],
+      "tiles": [
+        {
+          "x": 313.4375,
+          "y": 469.375,
+          "width": 144,
+          "height": 144,
+          "bottom": 613.375,
+          "right": 457.4375
+        },
+        {
+          "x": 514.34375,
+          "y": 469.375,
+          "width": 144,
+          "height": 144,
+          "bottom": 613.375,
+          "right": 658.34375
+        },
+        {
+          "x": 781.640625,
+          "y": 469.375,
+          "width": 144,
+          "height": 144,
+          "bottom": 613.375,
+          "right": 925.640625
+        },
+        {
+          "x": 982.546875,
+          "y": 469.375,
+          "width": 144,
+          "height": 144,
+          "bottom": 613.375,
+          "right": 1126.546875
+        }
+      ],
+      "footer": {
+        "x": 196,
+        "y": 944.8125,
+        "width": 1048,
+        "height": 35.1875,
+        "bottom": 980,
+        "right": 1244
+      },
+      "lockup": {
+        "x": 487.09375,
+        "y": 60,
+        "width": 465.8125,
+        "height": 178.5,
+        "bottom": 238.5,
+        "right": 952.90625
+      },
+      "documentScroll": 1000,
+      "focusInside": true
+    }
+  ],
+  "pages": [
+    "This Week",
+    "atlas/",
+    "travel/",
+    "log/",
+    "archive/",
+    "edition/2026-W40-r1-tue/",
+    "edition/2026-W40-thu/",
+    "edition/2026-W41-thu/",
+    "edition/"
+  ],
+  "errors": [],
+  "map": "fixture",
+  "physicalIPhone": false,
+  "webgl": "map: failed (tiles)\nrelief: false · camera: all · markers: 3 · theme: light\nviewport: 393×852 @1x · touch: false\nlast tap: —\nDirectory: 333×174 at 30,239 · map: 333×579 at 30,429\nDirectory above map: true\n— map diagnostics —\nload event: — ms · drawn: — ms · frames 21 (0 after load)\ncontainer: 331×577 (absolute) · canvas css 331×577 · backing 331×577 · block/visible/op1\nwebgl: webgl2 · lost false · maxTex 8192 · lost×0 restored×0\nterrain: none · loaded: true\nsource omt loaded: true · all tiles loaded: true · zoom 8.34\nfeatures drawn: 0 · none\ncontrols: 41×70 block/visible/op1 · attribution: 0×0 none/visible/op1\nerrors: \n  3405ms omt: AJAXError: Failed to fetch (0): https://tiles.openfreemap.org/planet"
+}
