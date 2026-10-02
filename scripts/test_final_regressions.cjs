@@ -1,26 +1,41 @@
 const fs=require('fs'),assert=require('assert/strict'),{execFileSync}=require('child_process');
-const base='9d2777912fdc8adb230bafa628813a626c3d40e6',pre='960ef0700ed31ea3c4089b2fe7e13791e8da3a81';
+const base='07253428b72e257cfb43fa57ceed3ebda1e04265',instrument='c3294f7e0c8660970230d6b26c2bef0b9b081815';
 const read=p=>fs.readFileSync(p,'utf8'),at=(sha,p)=>execFileSync('git',['show',sha+':'+p],{encoding:'utf8'});
 const pages=['personal-updates/index.html','personal-updates/commonplace/index.html','personal-updates/handbook/index.html','daily-watchlist-5/index.html','daily-econ-challenge/index.html','weekly-economics-environment/index.html','weekly-economics-environment/notebook/index.html'];
-for(const p of pages){const s=read(p);assert(!/Instrument(?:\+| )Sans/.test(s),p+' retains an active Instrument Sans use');assert(s.includes('/personal-updates/fonts/fahkwang.css?v=20261002-regression'));for(const w of [400,500,600,700])assert(s.includes('fahkwang-'+w+'.woff2'));}
-for(const p of ['personal-updates/issue-marks.css','personal-updates/mobile/mobile.css','weekly-economics-environment/notebook/notebook.css'])assert.equal(read(p),at(base,p).replaceAll('Instrument Sans','Fahkwang'),p+' changed beyond the requested UI family');
-// Both locked interactions and their data remain byte-identical.
-assert.equal(read('personal-updates/mobile-shelf.js'),at(base,'personal-updates/mobile-shelf.js'));
-const hub=read(pages[0]),oldHub=at(base,pages[0]);
-assert.equal(hub.match(/@media\(max-width:1000px\)[\s\S]*?<\/style>/)[0],oldHub.match(/@media\(max-width:1000px\)[\s\S]*?<\/style>/)[0]);
-const ll=read('weekly-economics-environment/index.html'),oldLL=at(base,'weekly-economics-environment/index.html');
 const scripts=s=>[...s.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)].filter(m=>!m[1].includes('src=')).map(m=>m[2]);
-assert.deepEqual(scripts(ll),scripts(oldLL),'locked Heron/schema/edition scripts changed');
 const rules=(s,prefix)=>[...s.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>m[1].trim().startsWith(prefix)).map(m=>m[0].trim());
-assert.deepEqual(rules(ll,'.mh-folio'),rules(at(pre,'weekly-economics-environment/index.html'),'.mh-folio'),'verified Source Serif folio treatment changed');
-const book=read('daily-econ-challenge/index.html'),oldBook=at(pre,'daily-econ-challenge/index.html');
-for(const prefix of ['.ps-no b{','.ps-no .ps-folio{','.ps-no .ps-folio .no,','.ps-no .ps-folio .no sup,'])assert.deepEqual(rules(book,prefix),rules(oldBook,prefix),'Workbook pre-polish folio cascade changed: '+prefix);
-assert(book.includes('#resTitle .folio-num{font-family:var(--mono);font-weight:500}'));
-assert(book.includes('<span class="folio-num">\'+pad(ed.no)+\'</span>'));
-const fb=read('daily-watchlist-5/index.html');assert.deepEqual(rules(fb,'.mast-folio'),rules(at(base,'daily-watchlist-5/index.html'),'.mast-folio'),'Field Brief issue folio changed');
-assert(fb.includes('.mast-vn{flex:0 0 100%;white-space:nowrap;'));
-const hb=read('personal-updates/handbook/index.html');assert(hb.includes('class="house-index">HOUSE INDEX</span><span class="house-year">2026</span>'));assert(hb.includes('.house-year{font:500 82px/.8 var(--display)'));assert(!hb.includes('class="hb-no"'));
-const cp=read('personal-updates/commonplace/index.html');assert(cp.includes('.imprint>a,.imprint nav>a,.imprint nav>span{display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box}'));assert(cp.includes('<span aria-current="page">Commonplace</span>'));
-const fontCSS=read('personal-updates/fonts/fahkwang.css');for(const style of ['normal','italic'])for(const weight of [400,500,600,700]){assert(fontCSS.includes('font-weight:'+weight));const p='personal-updates/fonts/fahkwang-'+weight+(style==='italic'?'-italic':'')+'.woff2';assert.equal(fs.readFileSync(p).subarray(0,4).toString(),'wOF2');}
-assert(fontCSS.includes('font-display:block'));assert(read('personal-updates/fonts/OFL-Fahkwang.txt').includes('SIL OPEN FONT LICENSE'));
-console.log('Final regression checks: Fahkwang loading/scope, locked shelf/Heron scripts, exact pre-polish folio rules, unchanged Field Brief folio, date line, Handbook year, Commonplace alignment passed.');
+const families=s=>[...s.matchAll(/--(display|head|math|mono|text|house|serif|editorial-title|headline|menu)\s*:[^;}]+/g)].map(m=>m[0]);
+const editorialImports=s=>s.match(/https:\/\/fonts.googleapis.com\/css2\?[^"<>]+/)[0].replace(/(?:family=Instrument\+Sans:[^&]+&)/,'');
+for(const p of pages){
+ const s=read(p),before=at(base,p);assert(s.includes('family=Instrument+Sans:wght@400;500;600;700'),p+' needs the historical UI weights');assert(!/Fahkwang|fahkwang/.test(s),p+' retains unintended Fahkwang');
+ assert.deepEqual(families(s),families(before),p+' editorial font variables changed');assert.equal(editorialImports(s),editorialImports(before),p+' editorial font loading changed');
+ // Canonical data and every interaction stay intact; only the named DAILY label is removed.
+ const oldScripts=scripts(before).map(x=>p==='daily-watchlist-5/index.html'?x.replace('<span class="mast-cadence">Daily</span>',''):x);
+ assert.deepEqual(scripts(s),oldScripts,p+' publication data or interaction scripts changed');
+}
+for(const p of ['personal-updates/mobile-shelf.js','personal-updates/mobile/mobile.js','personal-updates/reading-mode.js','weekly-economics-environment/refinement.css','personal-updates/issue-marks.js','personal-updates/issue-mark-archive.js','personal-updates/editorial-memory.js','weekly-economics-environment/field-study.js','scripts/prepare_periodicals.cjs'])assert.equal(read(p),at(base,p),p+' locked feature changed');
+assert.equal(execFileSync('git',['diff',base,'--name-only','--','rupert'],{encoding:'utf8'}),'','The Rupert Atlas changed');
+const hub=read(pages[0]),oldHub=at(base,pages[0]);
+const shelf=s=>s.match(/\/\* Desktop retains its two-row composition;[\s\S]*?@media\(min-width:1201px\)/)[0];
+assert.equal(shelf(hub),shelf(oldHub),'locked cover-only shelf and stationary panel CSS changed');
+assert(hub.includes('@media(max-width:600px) and (orientation:portrait)'));assert(hub.includes('.press-clock{display:block}'));assert(hub.includes('border-left:2px solid var(--bone)'));
+assert.equal(hub.match(/<aside class="press-clock"[\s\S]*?<\/aside>/)[0],oldHub.match(/<aside class="press-clock"[\s\S]*?<\/aside>/)[0],'Press Run order, colors or live timing hooks changed');
+const fb=read('daily-watchlist-5/index.html'),historic=at(instrument,'daily-watchlist-5/index.html');
+assert(fb.includes('--sans:"Instrument Sans"'));assert.equal(rules(fb,'body{')[0],rules(historic,'body{')[0],'Field Brief historical body inheritance changed');
+for(const prefix of ['.summary p','.side .why','.side dd','.signal p','.mast h1','.mast-folio'])assert.deepEqual(rules(fb,prefix),rules(at(base,'daily-watchlist-5/index.html'),prefix),'Field Brief protected reading/title/folio treatment changed: '+prefix);
+assert(!fb.includes('<span class="mast-cadence">Daily</span>'));assert(fb.includes('${modeHTML()}'));assert(fb.includes('.mast-vn{flex:0 0 100%;white-space:nowrap;'));
+const ll=read('weekly-economics-environment/index.html'),oldLL=at(base,'weekly-economics-environment/index.html');
+assert(ll.includes('.mh-folio .num{font:400 30px/1 var(--editorial-title)'));assert(ll.includes('.mh-folio .no{font:400 14px/1 var(--editorial-title)'));
+for(const prefix of ['.mh-title h1','.mh-folio .no sup','.hero h1','.hero-deck','.entry h2','.prose','.research-note'])assert.deepEqual(rules(ll,prefix),rules(oldLL,prefix),'L&L protected editorial treatment changed: '+prefix);
+const mobile=read('personal-updates/mobile/mobile.css');assert(mobile.includes('grid-template-columns:44px auto auto;justify-content:start'));assert(mobile.includes('.toolbar-inner .modes{gap:8px;flex-wrap:nowrap}'));assert(mobile.includes('.toolbar-inner button{white-space:nowrap}'));assert(mobile.includes('.pd-resume strong{font-family:"Instrument Sans"'));
+const book=read('daily-econ-challenge/index.html'),oldBook=at(base,'daily-econ-challenge/index.html');
+assert(book.includes('.ps-no b{font:500 clamp(31px,calc(3.6vw + 1px),47px)/1 var(--math)!important'));assert(book.includes('.ps-no .ps-folio{display:block;margin:0 0 5px;font:500 21px/1 var(--math)'));assert(book.includes('#resTitle .folio-num{font-family:var(--math);font-weight:500}'));
+for(const prefix of ['.ps-title h1{','.ps-no .ps-folio .no,','.ps-no .ps-folio .no sup,','.stem','.opt-text','.eq','.expl','.keys kbd'])assert.deepEqual(rules(book,prefix),rules(oldBook,prefix),'Workbook protected title/reading/math treatment changed: '+prefix);
+assert(book.includes('font-family:var(--mono);font-size:.9em'),'semantic literal lost monospace');
+const hb=read('personal-updates/handbook/index.html'),cp=read('personal-updates/commonplace/index.html');
+for(const prefix of ['.mast-side','.house-index','.house-year','.mast h1','.toc a'])assert.deepEqual(rules(hb,prefix),rules(at(base,'personal-updates/handbook/index.html'),prefix),'Handbook composition changed');
+assert(hb.includes('class="house-index">HOUSE INDEX</span><span class="house-year">2026</span>'));assert(hb.includes('.house-year{font:500 82px/.8 var(--display)'));assert(!hb.includes('class="hb-no"'));
+assert(cp.includes('.imprint>a,.imprint nav>a,.imprint nav>span{display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box}'));assert(cp.includes('<span aria-current="page">Commonplace</span>'));
+for(const p of ['personal-updates/commonplace/index.html','personal-updates/handbook/index.html']){const s=read(p);assert(s.includes('body .pd-tools{background:var(--ground);color:var(--paper)}'));assert(s.includes('color-scheme:dark'));assert(s.includes('env(safe-area-inset-bottom,0px)'));}
+const keeper=read('personal-updates/commonplace/commonplace.js');assert(keeper.includes('family=Instrument+Sans:wght@400;500;600&display=swap'));assert(!keeper.includes('Fahkwang'));
+console.log('Instrument UI restoration: historical loading/body inheritance; protected editorial/math/monospace fonts; title-family folios; DAILY removal; compact mobile navigation; portrait Press Run hooks; locked shelf/Heron/data, safe areas and Atlas passed.');

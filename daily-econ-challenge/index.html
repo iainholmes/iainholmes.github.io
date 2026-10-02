@@ -8,10 +8,9 @@
 <title>The Workbook</title>
 <script src="../personal-updates/reading-mode.js"></script><script>/* Periodicals navigation memory: the hub lifts the most recently visited title */try{localStorage.setItem('periodicals:last',JSON.stringify({t:'cp',at:Date.now()}))}catch(e){}</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2260%22%20height%3D%2260%22%20rx%3D%224%22%20fill%3D%22%23f7f7f3%22%20stroke%3D%22%231c2f4a%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20d%3D%22M2%2022h60M2%2042h60M22%202v60M42%202v60%22%20stroke%3D%22%23c9d3d6%22%20stroke-width%3D%221.2%22%2F%3E%3Cpath%20d%3D%22M12%2050L26%2034l10%208%2016-24%22%20fill%3D%22none%22%20stroke%3D%22%230e5360%22%20stroke-width%3D%224.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2252%22%20cy%3D%2218%22%20r%3D%224%22%20fill%3D%22%231c2f4a%22%2F%3E%3C%2Fsvg%3E">
-<link rel="stylesheet" href="/personal-updates/fonts/fahkwang.css?v=20261002-regression"><link rel="preload" href="/personal-updates/fonts/fahkwang-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/personal-updates/fonts/fahkwang-500.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/personal-updates/fonts/fahkwang-600.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/personal-updates/fonts/fahkwang-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=STIX+Two+Text:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=STIX+Two+Text:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:light;
@@ -31,7 +30,7 @@
   --right-wash:#e4f0ea;
   --wrong:#9a3b2e;
   --wrong-wash:#f6e6e2;
-  --ui:"Fahkwang",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --math:"STIX Two Text","STIX Two Math","Cambria",Georgia,serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
@@ -73,7 +72,7 @@ body.scrolled .wordmark,body.ledger .wordmark{opacity:1}
 .ps-title h1{margin:0;font:500 clamp(34px,4.6vw,56px)/1 var(--ui);letter-spacing:-.035em;color:var(--ink)}
 .ps-title h1 span{font-family:var(--mono);font-weight:500;color:var(--teal);letter-spacing:-.04em;margin-left:.1em}
 .ps-no{font:500 13px/1.3 var(--ui);color:var(--muted);text-align:right}
-.ps-no b{display:block;font:500 34px/1 var(--mono);color:var(--navy);letter-spacing:-.02em;margin-top:6px}
+.ps-no b{display:block;font:500 34px/1 var(--math);color:var(--navy);letter-spacing:-.02em;margin-top:6px}
 .ps-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--rule)}
 .ps-facts>div{padding:12px 16px 13px;border-left:1px solid var(--rule)}
 .ps-facts>div:first-child{border-left:0;padding-left:0}
@@ -256,7 +255,7 @@ table.index tr[aria-current="true"] td.no{color:var(--teal)}
 .ps-title h1 i{color:var(--teal)}
 .ps-no{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .ps-no span{font:500 11px/1.3 var(--ui);text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
-.ps-no b{font:500 clamp(31px,calc(3.6vw + 1px),47px)/1 var(--mono)!important;color:var(--navy);letter-spacing:-.04em;margin:0!important}
+.ps-no b{font:500 clamp(31px,calc(3.6vw + 1px),47px)/1 var(--math)!important;color:var(--navy);letter-spacing:-.04em;margin:0!important}
 /* record strips */
 .record{display:inline-flex;gap:3px;vertical-align:-2px;margin-left:8px}
 .record i{width:11px;height:11px;border:1.5px solid var(--ink);background:var(--sheet)}
@@ -323,7 +322,7 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 .pd-hb:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
 
 /* superscript folio + subline (The Workbook) */
-.ps-title h1 .fo{display:inline-block;vertical-align:top;margin:.1em 0 0 .12em;font:500 .3em/1 var(--mono);font-style:normal;color:var(--navy);letter-spacing:-.02em;white-space:nowrap}
+.ps-title h1 .fo{display:inline-block;vertical-align:top;margin:.1em 0 0 .12em;font:500 .3em/1 var(--math);font-style:normal;color:var(--navy);letter-spacing:-.02em;white-space:nowrap}
 .ps-title h1 .fo .no{font:italic 400 1.02em/1 var(--math);color:var(--muted);margin-right:.2em;letter-spacing:0}
 .ps-no .sub{font:italic 400 17px/1.3 var(--math);color:var(--text);text-align:right}
 @media (max-width:600px){.ps-no{flex-direction:column;align-items:flex-start;gap:4px}.ps-no .sub{text-align:left}}
@@ -335,12 +334,12 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 .ps-title{align-items:start}
 .ps-title h1{align-self:end}
 .ps-no{display:grid;justify-items:end;gap:4px;min-width:210px;padding-top:5px;font-size:11px;letter-spacing:.07em;text-transform:uppercase}
-.ps-no .ps-folio{display:block;margin:0 0 5px;font:500 21px/1 var(--mono);color:var(--navy);letter-spacing:-.01em;text-transform:none}
+.ps-no .ps-folio{display:block;margin:0 0 5px;font:500 21px/1 var(--math);color:var(--navy);letter-spacing:-.01em;text-transform:none}
 .ps-no .ps-folio .no,#resTitle .no{font:400 .7em/1 var(--math);font-style:normal;color:var(--muted);margin-right:.25em;letter-spacing:0}
 .ps-no .ps-folio .no sup,#resTitle .no sup{font-size:.58em;vertical-align:.58em;line-height:0;font-style:italic}
 .ps-no .sub{font-size:16px;text-transform:none;letter-spacing:0}
 .ps-title h1 .fo{display:none!important}
-#resTitle .folio-num{font-family:var(--mono);font-weight:500}
+#resTitle .folio-num{font-family:var(--math);font-weight:500}
 /* Handbook is a small manual object inside the Periodicals shelf. */
 .pd-hb{display:flex!important;align-items:center;gap:9px;margin-left:auto!important;padding:8px 11px!important;border:1px solid var(--rule)!important;background:var(--paper)!important;text-decoration:none!important;opacity:.9}
 .pd-hb::before{content:"H";display:grid;place-items:center;width:23px;height:29px;border:1px solid currentColor;font:600 9px/1 var(--ui);letter-spacing:0}
@@ -356,7 +355,7 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Periodicals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-regression">
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-instrument">
 </head>
 <body>
 <a class="skip" href="#bench">Skip to the problem set</a>
@@ -1377,7 +1376,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&dr.dataset.open==='true'){shelf(false);imp.focus()}});
 })();
 </script>
-<script src="../personal-updates/commonplace/commonplace.js?v=20261002-regression"></script>
+<script src="../personal-updates/commonplace/commonplace.js?v=20261002-instrument"></script>
 <script src="/personal-updates/mobile/mobile.js?v=20260930-final"></script>
 </body>
 </html>

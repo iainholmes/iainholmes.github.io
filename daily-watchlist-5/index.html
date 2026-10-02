@@ -6,10 +6,9 @@
 <meta name="theme-color" content="#f1e6d0">
 <title>Field Brief — Daily Briefing</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2258%22%20height%3D%2258%22%20rx%3D%2213%22%20fill%3D%22%23F3E7D2%22%20stroke%3D%22%237C5A3E%22%20stroke-width%3D%224%22%2F%3E%3Cpath%20d%3D%22M18%2039a14%2014%200%200%201%2028%200%22%20fill%3D%22%23B35F46%22%20stroke%3D%22%2329231D%22%20stroke-width%3D%223.2%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M32%2013v8M17.5%2019.5l5.7%205.7M46.5%2019.5l-5.7%205.7M11%2033h8M45%2033h8%22%20fill%3D%22none%22%20stroke%3D%22%23A47B55%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M13%2042h38M17%2049h30%22%20fill%3D%22none%22%20stroke%3D%22%2329231D%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
-<link rel="stylesheet" href="/personal-updates/fonts/fahkwang.css?v=20261002-regression"><link rel="preload" href="/personal-updates/fonts/fahkwang-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/personal-updates/fonts/fahkwang-500.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/personal-updates/fonts/fahkwang-600.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/personal-updates/fonts/fahkwang-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <script src="../personal-updates/reading-mode.js"></script><script>/* Periodicals navigation memory: the hub lifts the most recently visited title */try{localStorage.setItem('periodicals:last',JSON.stringify({t:'fb',at:Date.now()}))}catch(e){}</script>
 <style>
 /* ---------- inks ---------- */
@@ -19,7 +18,7 @@
   --vermilion:#c4452c;--prussian:#1b4a6b;--viridian:#1d5f47;--ochre:#b87b0c;--oxblood:#7a1f33;
   --display:"Bodoni Moda",Didot,Georgia,serif;
   --head:"Instrument Serif","Bodoni Moda",Georgia,serif;
-  --sans:"Fahkwang",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --art-filter:none;
   color-scheme:light;
 }
@@ -300,7 +299,7 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Periodicals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-regression">
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-instrument">
 </head>
 <body>
 <a class="skip" href="#briefing">Skip to the briefing</a>
@@ -365,7 +364,7 @@ Naming hierarchy: "Field Brief" is the publication (small Bodoni line above the 
 the running head); "Daily Briefing" is the recurring edition masthead. Do not rename either.
 Folio: superscript "No. 002" beside the masthead (.folio: small light italic "No." + Bodoni
 numerals, three-digit, no box/rule/numero sign); same grammar in the Index.
-Identity: Instrument Serif headlines; Fahkwang text; parchment and espresso structure;
+Identity: Instrument Serif headlines; Instrument Sans text; parchment and espresso structure;
 vermilion, Prussian blue, viridian, ochre and oxblood inks by story position (never by subject).
 The metadata sits on a typographic publication rail under the masthead (.meta: Bodoni date with an
 oxblood underline, developments/read time in small caps, italic next issue at right, Edition Day/Night);
@@ -1404,7 +1403,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
     const i=ordered.indexOf(ed),prev=ordered[i-1],next=ordered[i+1];
     mount.innerHTML=`<article class="edition">
       <header class="mast">
-        <div class="mast-top"><span class="mast-vn"><b>Field Brief</b> · <time datetime="${esc(ed.date)}">${esc(ed.displayDate)}</time></span><span class="mast-right"><span class="mast-cadence">Daily</span>${modeHTML()}</span></div>
+        <div class="mast-top"><span class="mast-vn"><b>Field Brief</b> · <time datetime="${esc(ed.date)}">${esc(ed.displayDate)}</time></span><span class="mast-right">${modeHTML()}</span></div>
         <div class="mast-main"><div><h1><span class="sr">Field Brief: </span>Daily <i>Briefing</i></h1><p class="mast-desc">${ed.stories.length} consequential developments · ${esc(ed.readTime)}</p></div><div class="mast-folio" aria-label="Number ${issueNumber(ed)}"><span class="no" aria-hidden="true">N<sup>o</sup>.</span><span class="num" aria-hidden="true">${issueLabel(ed)}</span><small>${esc(dayName(ed))} edition</small></div></div>
       </header>
       <section class="front">
@@ -1473,7 +1472,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
   buildIndex();window.addEventListener('hashchange',load);window.addEventListener('periodicals:ready',load);load();
 })();
 </script>
-<script src="../personal-updates/commonplace/commonplace.js?v=20261002-regression"></script>
+<script src="../personal-updates/commonplace/commonplace.js?v=20261002-instrument"></script>
 <script src="/personal-updates/mobile/mobile.js?v=20260930-final"></script>
 </body>
 </html>
