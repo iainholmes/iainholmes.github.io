@@ -111,7 +111,7 @@ function register(root,spec,opt){
   refreshButtons();
 }
 function json(id){try{return JSON.parse(document.getElementById(id).textContent)}catch(e){return null}}
-function revealHash(){var id=decodeURIComponent(location.hash.slice(1));if(!id)return;setTimeout(function(){var t=document.getElementById(id);if(t){t.scrollIntoView({block:'center'});if(id.indexOf('heron-')===0){var b=t.querySelector('.heron-perch');if(b){b.hidden=false;if(b.getAttribute('aria-expanded')!=='true')b.click()}}}},30)}
+function revealHash(){var id=decodeURIComponent(location.hash.slice(1));if(!/^(cp-ll-|heron-)/.test(id))return;requestAnimationFrame(function(){if(decodeURIComponent(location.hash.slice(1))!==id)return;var t=document.getElementById(id);if(t){t.scrollIntoView({block:'center'});if(id.indexOf('heron-')===0){var b=t.querySelector('.heron-perch');if(b){b.hidden=false;if(b.getAttribute('aria-expanded')!=='true')b.click()}}}})}
 function scanFB(){
   var data=json('briefing-data');if(!data)return;var tm=document.querySelector('.mast-vn time[datetime]');if(!tm)return;
   var date=tm.getAttribute('datetime'),ed=(data.editions||[]).filter(function(x){return x.date===date})[0];if(!ed)return;

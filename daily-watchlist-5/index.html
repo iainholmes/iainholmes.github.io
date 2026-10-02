@@ -1814,7 +1814,11 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
     mount.querySelectorAll('.mode button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
     document.querySelectorAll('.ix-item').forEach(it=>it.dataset.current=String(it.dataset.date===ed.date));
     const target=storyNo&&document.getElementById('story-'+storyNo);
-    if(target)target.scrollIntoView({block:'start'});else window.scrollTo({top:0,behavior:'instant'});
+    if(target){
+      const scroll=()=>{if(document.getElementById(target.id)===target&&location.hash==='#'+ed.date+'/'+storyNo)target.scrollIntoView({block:'start'})};
+      target.getBoundingClientRect();
+      if(document.fonts)document.fonts.ready.then(()=>requestAnimationFrame(scroll));else scroll();
+    }else window.scrollTo(0,0);
   }
 
   /* ---- day / night: part of the edition's metadata ---- */
@@ -1860,15 +1864,17 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
   /* ---- routing ---- */
   function load(){
     const [key,story]=decodeURIComponent(location.hash.slice(1)).split('/');
+    if(key==='briefing'&&mount.firstElementChild)return;
     const ed=data.editions.find(e=>e.date===key)||ordered[ordered.length-1];
     if(!ed){mount.innerHTML='<div class="empty">No briefings archived yet.</div>';return}
     render(ed,story);
   }
   document.getElementById('latestLink').addEventListener('click',e=>{e.preventDefault();const l=ordered[ordered.length-1];if(location.hash==='#'+l.date)load();else location.hash=l.date});
+  document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!e.defaultPrevented&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey&&a&&a.hash===location.hash&&/^#\d{4}-\d{2}-\d{2}(?:\/\d{2})?$/.test(a.hash)){e.preventDefault();load()}});
   buildIndex();window.addEventListener('hashchange',load);window.addEventListener('periodicals:ready',load);load();
 })();
 </script>
-<script src="../personal-updates/commonplace/commonplace.js?v=20261002-instrument"></script>
-<script src="/personal-updates/mobile/mobile.js?v=20260930-final"></script>
+<script src="../personal-updates/commonplace/commonplace.js?v=20261002-navigation"></script>
+<script src="/personal-updates/mobile/mobile.js?v=20261002-reading"></script>
 </body>
 </html>

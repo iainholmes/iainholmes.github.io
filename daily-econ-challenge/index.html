@@ -1542,13 +1542,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
 
   function route(){
     var h=decodeURIComponent(location.hash.slice(1)),parts=h.split('/');
+    if(h==='bench'&&document.getElementById('bench'))return;
     if(h!=='archive'){
       var m=EDITIONS.filter(function(e){return e.date===parts[0]})[0]||EDITIONS[0];
       if(!ed||m!==ed){ed=m;st=load(ed.date)||fresh()}
       if(parts[1]){var qi=ed.questions.findIndex(function(q){return q.id===parts[1]});if(qi>=0)st.current=qi}
     } else if(!ed){ed=EDITIONS[0];st=load(ed.date)||fresh()}
     render();window.scrollTo(0,0);
-    if(parts[1])setTimeout(function(){var target=parts[2]==='solution'&&st.submitted?document.getElementById('sol-'+(st.current+1)):document.querySelector('.q');if(target)target.scrollIntoView({block:'start'})},0);
+    if(parts[1])setTimeout(function(){var target=st.submitted?document.getElementById('sol-'+(st.current+1)):document.querySelector('.q');if(target)target.scrollIntoView({block:'start'})},0);
   }
   document.getElementById('homeLink').addEventListener('click',function(e){e.preventDefault();location.hash=EDITIONS[0].date});
   window.addEventListener('hashchange',route);window.addEventListener('periodicals:ready',render);
@@ -1569,7 +1570,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&dr.dataset.open==='true'){shelf(false);imp.focus()}});
 })();
 </script>
-<script src="../personal-updates/commonplace/commonplace.js?v=20261002-instrument"></script>
-<script src="/personal-updates/mobile/mobile.js?v=20260930-final"></script>
+<script src="../personal-updates/commonplace/commonplace.js?v=20261002-navigation"></script>
+<script src="/personal-updates/mobile/mobile.js?v=20261002-reading"></script>
 </body>
 </html>

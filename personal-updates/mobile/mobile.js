@@ -11,8 +11,8 @@ let state=null, saved=null, pending=null, timer=null, engaged=false;
 const resume=document.createElement('aside');resume.className='pd-resume';resume.hidden=true;resume.setAttribute('aria-label','Saved progress');
 const resumeTitle=document.createElement('strong'),resumeContext=document.createElement('p'),resumeActions=document.createElement('div');
 function action(label,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',fn);resumeActions.append(b)}
-action('Resume',()=>{if(!saved||!state)return;engaged=true;pending=saved;resume.hidden=true;const hash=state.hash(saved.edition);if(location.hash!==hash)location.hash=hash;else restore()});
-action('Start from top',()=>{if(!state)return;engaged=true;const edition=saved?.edition||state.current;try{localStorage.removeItem(key())}catch{}saved=null;pending={edition,fromTop:true};resume.hidden=true;const hash=state.hash(edition);if(location.hash!==hash)location.hash=hash;else restore()});
+action('Resume',()=>{if(!saved||!state)return;engaged=true;clearTimeout(timer);pending={...saved};resume.hidden=true;const hash=state.hash(saved.edition);if(location.hash!==hash)location.hash=hash;else restore()});
+action('Start from top',()=>{if(!state)return;engaged=true;clearTimeout(timer);const edition=saved?.edition||state.current;pending={edition,fromTop:true};try{localStorage.removeItem(key())}catch{}saved=null;resume.hidden=true;const hash=state.hash(edition);if(location.hash!==hash)location.hash=hash;else restore()});
 resume.append(resumeTitle,resumeContext,resumeActions);
 const prev=publication?button('‹ Prev',()=>turn(-1)):null,next=publication?button('Next ›',()=>turn(1)):null;
 if(prev)prev.setAttribute('aria-label','Previous edition');if(next)next.setAttribute('aria-label','Next edition');
@@ -22,7 +22,30 @@ const workbook=/daily-econ/.test(path),ll=/weekly-economics/.test(path);
 function key(){return 'periodicals:reading:v2:'+path}
 function sections(){return [...document.querySelectorAll(ll?'.edition:not([hidden]) .entry,.edition:not([hidden]) .synthesis,.edition:not([hidden]) .knowledge':'.story')].filter(el=>el.id&&el.getClientRects().length)}
 function context(el){return el.querySelector('h2,h3')?.textContent.trim()||el.id}
-function restore(){if(!pending||!state)return;const p=pending;if(p.edition!==state.current)return;pending=null;requestAnimationFrame(()=>requestAnimationFrame(()=>{if(p.fromTop){if(workbook)state.start?.();else state.full?.();window.scrollTo({top:0,behavior:'instant'});resume.hidden=true;return}if(workbook){state.resume?.(p.question)}else{state.full?.();const el=document.getElementById(p.section);if(el){const top=el.getBoundingClientRect().top+scrollY;window.scrollTo({top:Math.max(0,top+Math.min(p.offset,Math.max(0,el.offsetHeight-120))-120),behavior:'instant'})}}resume.hidden=true}))}
+function readingTarget(hash=location.hash){
+ if(workbook)return /^#\d{4}-\d{2}-\d{2}\/[^/]+(?:\/solution)?$/.test(hash);
+ if(!ll)return /^#\d{4}-\d{2}-\d{2}\/\d{2}$/.test(hash);
+ if(/^#(?:cp-ll-|heron-)/.test(hash))return true;
+ try{return !!document.getElementById(decodeURIComponent(hash.slice(1)))?.closest('.entry,.synthesis,.knowledge')}catch{return false}
+}
+function explicitNavigation(hash){if(readingTarget(hash)){engaged=true;resume.hidden=true}}
+function restore(){
+ if(!pending||!state)return;const p=pending;if(p.edition!==state.current||p.applying)return;p.applying=true;
+ // Keep saving suspended until routing, page load and font layout have completed.
+ const frame=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  if(pending!==p)return;
+  if(p.edition!==state.current||location.hash!==state.hash(p.edition)){pending=null;return}
+  if(p.fromTop){
+   if(workbook)state.start?.();else state.full?.();
+   const beginning=ll?document.querySelector('.edition:not([hidden])'):null;
+   if(beginning)beginning.scrollIntoView({block:'start',behavior:'auto'});else window.scrollTo(0,0);
+  }else if(workbook)state.resume?.(p.question);
+  else{state.full?.();const el=document.getElementById(p.section);if(el){const top=el.getBoundingClientRect().top+scrollY;window.scrollTo(0,Math.max(0,top+Math.min(p.offset,Math.max(0,el.offsetHeight-120))-120))}}
+  clearTimeout(timer);pending=null;resume.hidden=true;
+ }));
+ const settle=()=>{if(document.fonts)document.fonts.ready.then(frame);else frame()};
+ if(document.readyState&&document.readyState!=='complete')addEventListener('load',settle,{once:true});else settle();
+}
 function turn(dir){if(!state)return;engaged=true;save();pending=null;resume.hidden=true;const i=state.dates.indexOf(state.current),date=state.dates[i+dir];if(date)location.hash=state.hash(date)}
 function save(){if(!state||pending||location.hash==='#archive'||document.querySelector('dialog[open]'))return;
 if(workbook){const p=state.progress;if(p&&(p.answered>0||p.question>0)&&!p.submitted&&p.answered<p.total){write(key(),{edition:state.current,question:p.question,label:'No. '+String(p.no).padStart(3,'0')+' · Question '+(p.question+1)+' of '+p.total,at:Date.now()})}else if(p&&(p.submitted||p.answered>=p.total)){try{localStorage.removeItem(key())}catch{}}return}
@@ -33,11 +56,16 @@ let el=els[0];for(const x of els){if(x.getBoundingClientRect().top+scrollY<=y)el
 const label=ll?(state.title+' · '+context(el)):(state.label+' · Story '+el.id.replace('story-',''));
 write(key(),{edition:state.current,section:el.id,offset:Math.max(0,y-(el.getBoundingClientRect().top+scrollY)),label,at:Date.now()})}
 function placeResume(){const anchor=document.querySelector(ll?'.edition:not([hidden]) .hero':workbook?'.ps-head':'.edition .front');if(anchor&&!resume.isConnected)anchor.after(resume);else if(anchor&&resume.previousElementSibling!==anchor)anchor.after(resume)}
-function update(e){clearTimeout(timer);const previous=state;state=e.detail;placeResume();if(!pending){saved=read(key());if(workbook&&!previous&&!saved)saved=state.recovery;resume.hidden=engaged||!(saved&&state.dates.includes(saved.edition)&&saved.label&&!(workbook&&(state.progress?.submitted||state.progress?.answered>=state.progress?.total)));resumeTitle.textContent=workbook?'Resume problem set':'Resume reading';resumeContext.textContent=saved?.label||''}
+function update(e){clearTimeout(timer);const previous=state;state=e.detail;explicitNavigation(location.hash);placeResume();if(!pending){saved=read(key());if(workbook&&!previous&&!saved)saved=state.recovery;resume.hidden=engaged||!(saved&&state.dates.includes(saved.edition)&&saved.label&&!(workbook&&(state.progress?.submitted||state.progress?.answered>=state.progress?.total)));resumeTitle.textContent=workbook?'Resume problem set':'Resume reading';resumeContext.textContent=saved?.label||''}
 prev.disabled=state.dates.indexOf(state.current)<=0;next.disabled=state.dates.indexOf(state.current)>=state.dates.length-1;
 const seenKey='periodicals:seen:v1:'+path,seen=[...new Set([...(read(seenKey)||[]),state.current])];document.querySelectorAll('.ix-item,.archive-entry,.pd-edition-entry').forEach(el=>{const date=el.dataset.date;let badge=el.querySelector('.pd-unread');if(date&&!seen.includes(date)){if(!badge){badge=document.createElement('small');badge.className='pd-unread';badge.textContent=' · Unread';(el.querySelector('.ix-title')||el).append(badge)}}else if(badge)badge.remove()});
 write(seenKey,seen.slice(-100));if(workbook&&previous&&previous.current===state.current&&JSON.stringify(previous.progress)!==JSON.stringify(state.progress)){engaged=true;save();resume.hidden=true}restore();images();}
-addEventListener('periodicals:edition',update);addEventListener('scroll',()=>{clearTimeout(timer);timer=setTimeout(save,400)},{passive:true});addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});
+addEventListener('periodicals:edition',update);
+// A router may reuse the current edition without announcing a new one.
+addEventListener('hashchange',()=>{explicitNavigation(location.hash);if(pending&&location.hash!==state?.hash(pending.edition))pending=null;restore()});
+// Collapse recovery before a publication router measures its explicit reading target.
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!e.defaultPrevented&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey&&a)explicitNavigation(a.hash)},true);
+addEventListener('scroll',()=>{clearTimeout(timer);timer=setTimeout(save,400)},{passive:true});addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});
 // Swipes are limited to the bottom edition controls; the reading surface keeps native scrolling.
 let touch=null;tools.addEventListener('touchstart',e=>{touch=e.touches.length===1?{x:e.touches[0].clientX,y:e.touches[0].clientY,t:Date.now()}:null},{passive:true});tools.addEventListener('touchend',e=>{if(!touch||!state)return;const t=e.changedTouches[0],dx=t.clientX-touch.x,dy=t.clientY-touch.y;if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*2&&Date.now()-touch.t<700)turn(dx<0?1:-1);touch=null},{passive:true});tools.addEventListener('touchcancel',()=>touch=null,{passive:true});
 function theme(){const bg=getComputedStyle(document.body).backgroundColor;if(bg&&bg!=='rgba(0, 0, 0, 0)'){let meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=bg}}

@@ -1,7 +1,8 @@
 const fs=require('fs'),assert=require('assert/strict'),{execFileSync}=require('child_process');
-const base='c05c25d9d5900fc4b1483aabfd1ef734c3410bc1',instrument='c3294f7e0c8660970230d6b26c2bef0b9b081815';
+const base='fc05b595d7441a726b12ca8c6b61fc221cee4a12',instrument='c3294f7e0c8660970230d6b26c2bef0b9b081815';
 const read=p=>fs.readFileSync(p,'utf8'),at=(sha,p)=>execFileSync('git',['show',sha+':'+p],{encoding:'utf8'});
 const pages=['personal-updates/index.html','personal-updates/commonplace/index.html','personal-updates/handbook/index.html','daily-watchlist-5/index.html','daily-econ-challenge/index.html','weekly-economics-environment/index.html','weekly-economics-environment/notebook/index.html'];
+const cache=s=>s.replace(/(commonplace\.js|mobile\.js)\?v=[^\"]+/g,'$1?v=release');
 const scripts=s=>[...s.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)].filter(m=>!m[1].includes('src=')).map(m=>m[2]);
 const rules=(s,prefix)=>[...s.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>m[1].trim().startsWith(prefix)).map(m=>m[0].trim());
 const families=s=>[...s.matchAll(/--(display|head|math|mono|text|house|serif|editorial-title|headline|menu)\s*:[^;}]+/g)].map(m=>m[0]);
@@ -9,11 +10,14 @@ const editorialImports=s=>s.match(/https:\/\/fonts.googleapis.com\/css2\?[^"<>]+
 for(const p of pages){
  const s=read(p),before=at(base,p);assert(s.includes('family=Instrument+Sans:wght@400;500;600;700'),p+' needs the historical UI weights');assert(!/Fahkwang|fahkwang/.test(s),p+' retains unintended Fahkwang');
  assert.deepEqual(families(s),families(before),p+' editorial font variables changed');assert.equal(editorialImports(s),editorialImports(before),p+' editorial font loading changed');
- // Canonical data and every interaction stay intact; only the named DAILY label is removed.
+ // Current visual markup and canonical data stay locked while the named routers may change.
  const oldScripts=scripts(before).map(x=>p==='daily-watchlist-5/index.html'?x.replace('<span class="mast-cadence">Daily</span>',''):x);
- assert.deepEqual(scripts(s),oldScripts,p+' publication data or interaction scripts changed');
+ if(p==='daily-watchlist-5/index.html'||p==='daily-econ-challenge/index.html'){
+  const visual=x=>cache(x.replace(/<script(?![^>]*type="application\/json")[^>]*>[\s\S]*?<\/script>/g,''));
+  assert.equal(visual(s),visual(before),p+' accepted CSS, markup or canonical data changed');
+ }else assert.deepEqual(scripts(s),oldScripts,p+' publication data or interaction scripts changed');
 }
-for(const p of ['personal-updates/mobile-shelf.js','personal-updates/mobile/mobile.js','personal-updates/reading-mode.js','weekly-economics-environment/refinement.css','personal-updates/issue-marks.js','personal-updates/issue-mark-archive.js','personal-updates/editorial-memory.js','weekly-economics-environment/field-study.js','scripts/prepare_periodicals.cjs'])assert.equal(read(p),at(base,p),p+' locked feature changed');
+for(const p of ['personal-updates/mobile-shelf.js','personal-updates/reading-mode.js','weekly-economics-environment/refinement.css','personal-updates/issue-marks.js','personal-updates/issue-mark-archive.js','personal-updates/editorial-memory.js','weekly-economics-environment/field-study.js','scripts/prepare_periodicals.cjs'])assert.equal(read(p),at(base,p),p+' locked feature changed');
 assert.equal(execFileSync('git',['diff',base,'--name-only','--','rupert'],{encoding:'utf8'}),'','The Rupert Atlas changed');
 const hub=read(pages[0]),oldHub=at(base,pages[0]);
 const shelf=s=>s.match(/\/\* Desktop retains its two-row composition;[\s\S]*?@media\(min-width:1201px\)/)[0];
@@ -29,9 +33,8 @@ assert(fb.includes('--sans:"Instrument Sans"'));assert.equal(rules(fb,'body{')[0
 for(const prefix of ['.summary p','.side .why','.side dd','.signal p','.mast h1','.mast-folio'])assert.deepEqual(rules(fb,prefix),rules(at(base,'daily-watchlist-5/index.html'),prefix),'Field Brief protected reading/title/folio treatment changed: '+prefix);
 assert(!fb.includes('<span class="mast-cadence">Daily</span>'));assert(fb.includes('${modeHTML()}'));assert(fb.includes('.mast-vn{flex:0 0 100%;white-space:nowrap;'));
 const ll=read('weekly-economics-environment/index.html'),oldLL=at(base,'weekly-economics-environment/index.html');
-// The hotfix can change this portrait control cluster's flow only; all other page bytes stay locked.
-const navFlow=s=>s.replace(/^ \.toolbar \.toolbar-inner\{[^\n]*\}\n|^ \.toolbar \.toolbar-inner \.modes,\.toolbar \.toolbar-inner \.heron-toggle\{[^\n]*\}\n/gm,'');
-assert.equal(navFlow(ll),navFlow(oldLL),'portrait navigation hotfix changed unrelated L&L markup, typography or behavior');
+// L&L markup, scripts and accepted portrait navigation remain byte-for-byte locked.
+assert.equal(cache(ll),cache(oldLL),'accepted L&L page or portrait navigation changed');
 assert(ll.includes('.mh-folio .num{font:400 30px/1 var(--editorial-title)'));assert(ll.includes('.mh-folio .no{font:400 14px/1 var(--editorial-title)'));
 for(const prefix of ['.mh-title h1','.mh-folio .no sup','.hero h1','.hero-deck','.entry h2','.prose','.research-note'])assert.deepEqual(rules(ll,prefix),rules(oldLL,prefix),'L&L protected editorial treatment changed: '+prefix);
 const mobile=read('personal-updates/mobile/mobile.css');assert(mobile.includes('grid-template-columns:44px auto auto;justify-content:start'));assert(mobile.includes('.toolbar-inner .modes{gap:8px;flex-wrap:nowrap}'));assert(mobile.includes('.toolbar-inner button{white-space:nowrap}'));assert(mobile.includes('.pd-resume strong{font-family:"Instrument Sans"'));
