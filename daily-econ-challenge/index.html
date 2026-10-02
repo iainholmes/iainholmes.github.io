@@ -1166,6 +1166,195 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         }
       ]
+    },
+    {
+      "no": 5,
+      "date": "2026-10-02",
+      "minutes": 20,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Microeconomics",
+          "kind": "multi",
+          "stem": "In a competitive used-car market, sellers know vehicle quality but buyers cannot observe it before purchase. High-quality cars are worth $18,000 to buyers and $15,000 to their owners; low-quality cars are worth $8,000 to buyers and $6,000 to their owners. Buyers initially believe half the cars are high quality. Which statements are correct?",
+          "options": [
+            "At the initial 50–50 composition, a risk-neutral buyer’s expected value is $13,000.",
+            "A single pooling price of $13,000 would induce both quality types to sell.",
+            "If buyers correctly anticipate that only low-quality owners accept $13,000, willingness to pay falls to $8,000.",
+            "A credible inspection or warranty can improve trade by revealing or signaling quality."
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ],
+          "concepts": [
+            "Adverse selection",
+            "Market unraveling",
+            "Quality signaling"
+          ],
+          "explanation": "<p><b>(A), (C), and (D) are correct.</b> At the stated prior, expected buyer value is 0.5($18,000) + 0.5($8,000) = $13,000. But $13,000 is below the high-quality owner’s $15,000 reservation value, so (B) is false: only low-quality owners accept. Once buyers infer that selection, the rational pooling offer falls to $8,000. Low-quality trade can still occur because $8,000 exceeds the low-quality owner’s $6,000 value, while mutually beneficial high-quality trades are lost. Inspections, certification, or warranties can reduce the information asymmetry if they credibly separate quality types.</p>",
+          "refs": "Akerlof (1970), “The Market for ‘Lemons’”; Mas-Colell, Whinston & Green, ch. 13."
+        },
+        {
+          "id": "q2",
+          "field": "Econometrics",
+          "kind": "single",
+          "stem": "You estimate <i>log(wage)</i> = β<sub>0</sub> + 0.08·schooling + 0.04·female + 0.02·(schooling × female) + <i>u</i>, where <i>female</i> is an indicator. Holding other modeled factors fixed, what is the exact percentage effect of one additional year of schooling for women?",
+          "options": [
+            "About 2.0%",
+            "About 8.3%",
+            "About 10.0%",
+            "About 10.5%"
+          ],
+          "correct": [
+            3
+          ],
+          "concepts": [
+            "Interaction terms",
+            "Log-level models",
+            "Exact percentage effects"
+          ],
+          "explanation": "<p>For women, the schooling slope is 0.08 + 0.02 = 0.10 log points. The exact percentage effect is 100[exp(0.10) − 1] ≈ 10.52%, so <b>(D)</b> is correct. (C) is the usual small-coefficient approximation, not the exact transformation. (B) applies exp(0.08) − 1 and therefore gives the male effect. (A) mistakes the interaction coefficient for the full marginal effect. The 0.04 coefficient shifts the intercept for women; it does not alter the schooling slope beyond the interaction.</p>",
+          "refs": "Wooldridge, Introductory Econometrics, sections on semilog models and interactions."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "single",
+          "stem": "Use the approximation Δ<i>b</i> ≈ (<i>r</i> − <i>g</i>)<i>b</i> − <i>s</i>, where <i>b</i> is the debt-to-GDP ratio and <i>s</i> is the primary surplus as a share of GDP. A country begins with <i>b</i> = 1.00, has <i>r</i> = 4%, <i>g</i> = 2%, and runs a primary deficit of 1% of GDP. What is the approximate one-year change in the debt ratio?",
+          "options": [
+            "It falls by 1 percentage point.",
+            "It rises by 1 percentage point.",
+            "It rises by 2 percentage points.",
+            "It rises by 3 percentage points."
+          ],
+          "correct": [
+            3
+          ],
+          "concepts": [
+            "Debt dynamics",
+            "Primary balance",
+            "Interest-growth differential"
+          ],
+          "explanation": "<p>A primary deficit of 1% means <i>s</i> = −0.01. Therefore Δ<i>b</i> ≈ (0.04 − 0.02)(1.00) − (−0.01) = 0.03. The debt-to-GDP ratio rises by about 3 percentage points, making <b>(D)</b> correct. (B) counts only the primary deficit; (C) counts only the interest-growth effect; (A) applies the sign on the primary balance incorrectly. This is an approximation: valuation changes, stock-flow adjustments, and compounding can matter in observed debt data.</p>",
+          "refs": "IMF, Fiscal Monitor analytical framework; Blanchard, Macroeconomics, government debt dynamics."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "multi",
+          "stem": "A stock pollutant evolves according to Δ<i>S</i><sub>t</sub> = <i>E</i><sub>t</sub> − δ<i>S</i><sub>t</sub>. Emissions are initially constant at 100 units per year and δ = 0.05. The stock begins at its steady state. Emissions then fall permanently to 90. Which statements are correct?",
+          "options": [
+            "The initial steady-state stock is 2,000 units.",
+            "The stock immediately falls to 1,800 units in the first year.",
+            "The new steady-state stock is 1,800 units.",
+            "In the first year after the policy, the stock falls by 10 units."
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ],
+          "concepts": [
+            "Stock pollutants",
+            "Steady states",
+            "Pollutant decay"
+          ],
+          "explanation": "<p><b>(A), (C), and (D) are correct.</b> A steady state satisfies <i>E</i> = δ<i>S</i>, so the initial stock is 100/0.05 = 2,000 and the new long-run stock is 90/0.05 = 1,800. In the first year, starting from 2,000, Δ<i>S</i> = 90 − 0.05(2,000) = −10. Thus (B) is false: the stock adjusts gradually because emissions are a flow and only 5% of the existing stock decays per year. The distinction is central for long-lived pollutants, where a sizable emissions cut need not produce an immediate proportional stock reduction.</p>",
+          "refs": "Perman, Ma, Common, Maddison & McGilvray, Natural Resource and Environmental Economics, stock-pollution models."
+        },
+        {
+          "id": "q5",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "A randomized experiment reports a two-sided randomization-inference <i>p</i>-value of 0.03 for the sharp null that the treatment effect is zero for every unit. True or false: this proves that at least 97% of units experienced a nonzero treatment effect.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Randomization inference",
+            "Sharp null hypothesis",
+            "P-value interpretation"
+          ],
+          "explanation": "<p><b>False.</b> The p-value is the probability, under the sharp null and the experiment’s assignment mechanism, of obtaining a test statistic at least as extreme as the observed one. It is not a posterior probability that the null is true, and it does not identify the fraction of units with nonzero effects. Rejecting the sharp null establishes evidence against the claim that every unit’s effect is exactly zero, subject to the design and test, but many heterogeneous effect patterns—including effects concentrated among a small share of units—can generate rejection.</p>",
+          "refs": "Fisher (1935), The Design of Experiments; Imbens & Rubin (2015), Causal Inference, ch. 5."
+        },
+        {
+          "id": "q6",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "A cash-transfer program is randomly assigned. The transfer may change employment, which in turn affects household consumption. A researcher regresses consumption on treatment and post-treatment employment. Which statements are correct?",
+          "options": [
+            "Random assignment alone guarantees that the treatment coefficient in this regression equals the total causal effect.",
+            "Conditioning on employment can block part of the treatment effect that operates through employment.",
+            "If unobserved health affects both employment and consumption, conditioning on employment can induce additional selection bias.",
+            "Estimating a controlled direct effect requires assumptions beyond random assignment of the transfer."
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ],
+          "concepts": [
+            "Post-treatment controls",
+            "Mediation",
+            "Collider bias"
+          ],
+          "explanation": "<p><b>(B), (C), and (D) are correct.</b> Employment is downstream of treatment, so controlling for it removes the mediated pathway treatment → employment → consumption and generally prevents the coefficient from representing the total effect; (A) is false. If employment is also affected by unobserved health, conditioning on this common effect of treatment and health can open a noncausal path between treatment and consumption. A controlled direct effect is a different estimand and requires additional identification assumptions about mediator–outcome confounding and intervention on the mediator. The clean total-effect estimate here comes from comparing consumption by randomized assignment without conditioning on treatment-induced variables.</p>",
+          "refs": "Hernán & Robins (2020), Causal Inference: What If, chs. 17–19; Angrist & Pischke (2009), Mostly Harmless Econometrics."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "In a static common-pool fishery, harvest is <i>H</i>(<i>E</i>) with <i>H</i>′ &gt; 0 and <i>H</i>″ &lt; 0, price is <i>p</i>, and effort costs <i>wE</i>. With free entry and no regulation, which condition characterizes an interior open-access equilibrium with positive effort?",
+          "options": [
+            "<i>pH</i>′(<i>E</i>) = <i>w</i>",
+            "<i>pH</i>(<i>E</i>)/<i>E</i> = <i>w</i>",
+            "<i>H</i>′(<i>E</i>) = 0",
+            "<i>pH</i>(<i>E</i>) − <i>wE</i> is maximized"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Open-access equilibrium",
+            "Common-pool resources",
+            "Rent dissipation"
+          ],
+          "explanation": "<p>Free entry drives average revenue per unit of effort to the effort cost: <i>pH</i>(<i>E</i>)/<i>E</i> = <i>w</i>, equivalently total resource rent <i>pH</i>(<i>E</i>) − <i>wE</i> equals zero. Thus <b>(B)</b> is correct. (A) is the sole-owner or static social optimum’s marginal condition. Because diminishing returns imply average product exceeds marginal product at positive effort, open access typically produces more effort than the rent-maximizing allocation. (C) describes the biological peak of harvest as a function of effort, not entry equilibrium. (D) states the planner’s objective, which open access does not generally implement.</p>",
+          "refs": "Gordon (1954), “The Economic Theory of a Common-Property Resource”; Clark (1990), Mathematical Bioeconomics."
+        },
+        {
+          "id": "q8",
+          "field": "Research design",
+          "kind": "multi",
+          "stem": "One state adopts a major water-pricing reform. You construct a synthetic control from untreated states using pre-reform outcomes and predictors. Which practices materially strengthen the design?",
+          "options": [
+            "Show that the synthetic control closely reproduces the treated state’s pre-reform outcome path.",
+            "Exclude donor states exposed to spillovers from the reform.",
+            "Treat a small post-reform gap as causal whenever the pre-reform fit is good.",
+            "Use placebo reassignments and sensitivity checks for influential donor states."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Synthetic control",
+            "Donor-pool validity",
+            "Placebo inference"
+          ],
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Good pre-treatment fit makes the synthetic unit a more credible representation of the treated unit’s untreated trajectory. Donors affected by spillovers are not valid untreated comparisons. Placebo reassignments show whether gaps of the observed size are unusual relative to untreated units, while leave-one-out or weight-sensitivity exercises reveal dependence on a single donor. (C) is false: even excellent pre-fit does not make every post-treatment gap causal; concurrent treated-unit shocks, anticipation, interference, and weak post-period signal remain alternative explanations.</p>",
+          "refs": "Abadie, Diamond & Hainmueller (2010), JASA; Abadie (2021), Journal of Economic Literature."
+        }
+      ]
     }
   ]
 }
