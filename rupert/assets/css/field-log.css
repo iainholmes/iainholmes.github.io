@@ -12,15 +12,15 @@
 .field-log #memories { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px; }
 .field-log #memories > p { grid-column:1/-1; padding:28px 24px; border-block:1px solid var(--rule); margin:0; font-size:18px; }
 .memory-card { margin:0; padding:24px 0; background:var(--paper); border-top:2px solid var(--band); scroll-margin-top:calc(var(--bar-h) + 20px); }
-.memory-card h3 { font:400 32px/1.12 var(--f-editorial); letter-spacing:-.02em; font-synthesis:none; }
-.log-year { grid-column:1/-1; margin:12px 0 0; padding:10px 14px; font:400 42px/1 var(--f-editorial); background:var(--band); color:var(--on-band); }
+.memory-card h3 { font:400 32px/1.12 var(--f-secondary); letter-spacing:-.02em; font-synthesis:none; }
+.log-year { grid-column:1/-1; margin:12px 0 0; padding:10px 14px; font:400 42px/1 var(--f-secondary); background:var(--band); color:var(--on-band); }
 .memory-notes { white-space:pre-wrap; }
 .memory-photos { display:flex; flex-wrap:wrap; gap:12px; }
 .memory-photos img { width:100%; max-width:100%; height:auto; object-fit:contain; }
 .memory-actions { display:flex; gap:12px; margin-top:20px; }
 .field-log .delete-memory { color:var(--band); border-color:var(--band); }
 .field-log .season-note { font:400 16px/1.5 var(--f-data); color:var(--text-2); }
-.field-log .sec-h { font:400 var(--type-section)/1.18 var(--f-editorial); }
+.field-log .sec-h { font:400 var(--type-section)/1.18 var(--f-secondary); }
 .delete-confirm { padding:14px; margin-top:16px; border:1px solid var(--band); background:var(--paper-2); }
 .delete-confirm p { margin-top:0; }
 .delete-confirm button { margin-right:12px; }

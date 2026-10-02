@@ -1103,6 +1103,7 @@ main.page-travel {background:var(--lake);color:var(--paper);}
 .journey-bottom {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;}
 .journey-bottom .trip-library,.journey-bottom .postcard-panel {margin-top:32px;border-top-color:#F3EFE550;}
 .journey-bottom .sec-h,.postcard-panel > summary {font-size:30px;}
+.page-travel .journey-bottom .sec-h,.page-travel .journey-bottom .import-label {color:var(--paper);}
 .postcard-panel > summary {cursor:pointer;min-height:44px;}
 .journey-bottom .saved-trip {border-bottom-color:#F3EFE550;}
 .journey-bottom .saved-trip p,.journey-bottom .saved-trip small {color:var(--paper);}

@@ -37,7 +37,7 @@ Chrome rendered the actual generated site inside fixed-size review frames. The r
 | 390 × 844 phone portrait | Pass | Pass | Pass | Pass | Pass | Pass |
 | 844 × 390 phone landscape | — | Pass | Pass | Pass | Pass | — |
 
-All 28 recorded cases have no page-level horizontal overflow and loaded the three intended font families. Screenshots were inspected for all six desktop/portrait pages and the four critical landscape pages; tablet geometry and font checks were inspected. These are responsive browser frames, not physical iPhone or installed-mode certification.
+All 28 recorded cases have no page-level horizontal overflow and loaded the three intended font families. Screenshots were inspected for all six desktop/portrait pages and the four critical landscape pages; tablet geometry and font checks were inspected. These are responsive browser frames, not physical iPhone or installed-mode certification. All six live public pages were also inspected at the browser’s native 1363 × 936 viewport. A live Chapel Hill → Durham journey, Carrboro split, Save/Open restoration and automatic postcard were verified after deployment. Final deployed-asset byte verification and the final SHA are reported in the delivery.
 
 ## Travel implementation and real-provider QA
 
@@ -69,7 +69,7 @@ Automatic postcards remain local, with the approved simplified engraved Rupert, 
 
 | Requirement | Result |
 |---|---|
-| VELENOR / Dunhill / Roman hierarchy | Self-hosted licensed Dunhill regular/oblique for secondary headings; VELENOR remains masthead/page H1/full-edition title; body, controls and metadata retain Roman. Computed fonts verified. |
+| VELENOR / Dunhill / Roman hierarchy | Self-hosted licensed Dunhill regular/oblique for secondary headings; VELENOR remains masthead/page H1/full-edition title; body, controls and metadata retain Roman. Computed fonts verified, including the separately loaded Field Log stylesheet for section, year-group and memory headings. Travel saved-trip headings and import/replacement labels use readable cream on blue. |
 | Compact banners | Atlas/Travel/Field Log measure 142px desktop with 100px dogs; 128px tablet with 88px dogs. Phone dogs 72px; Travel 108px, Atlas 154px including functional context, Field Log about 130px with a two-line title. Standing/walking/sitting poses preserved. |
 | Blue-page hierarchy | Atlas/Travel use #26384C banners and a restrained copper hairline against #1D2A3A. Cream reading areas remain. |
 | Banner kicker removal | Ordinary ornamental accents removed; This Week weekend eyebrow, edition publication context and masthead metadata preserved. |
@@ -105,6 +105,7 @@ Automatic postcards remain local, with the approved simplified engraved Rupert, 
 - `rupert/_tools/visual-qa.html`
 - `rupert/archive/index.html`
 - `rupert/assets/css/atlas.css`
+- `rupert/assets/css/field-log.css`
 - `rupert/assets/fonts/README.txt`
 - `rupert/assets/fonts/lmromandunhill-oblique.otf`
 - `rupert/assets/fonts/lmromandunhill-regular.otf`
