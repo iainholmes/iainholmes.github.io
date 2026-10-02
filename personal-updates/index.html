@@ -7,9 +7,10 @@
 <title>Periodicals</title>
 <meta name="description" content="Periodicals: Field Brief, Loblolly &amp; Logit and The Workbook.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23131210%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%2212%22%20width%3D%228%22%20height%3D%2240%22%20fill%3D%22%238a2a36%22%2F%3E%3Crect%20x%3D%2225%22%20y%3D%2216%22%20width%3D%228%22%20height%3D%2236%22%20fill%3D%22%231f4a3b%22%2F%3E%3Crect%20x%3D%2237%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%2242%22%20fill%3D%22%231c2f4a%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%2220%22%20width%3D%224%22%20height%3D%2232%22%20fill%3D%22%23efe9dc%22%2F%3E%3Cpath%20d%3D%22M8%2054h48%22%20stroke%3D%22%23efe9dc%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="/personal-updates/fonts/fahkwang.css?v=20261002-regression"><link rel="preload" href="/personal-updates/fonts/fahkwang-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/personal-updates/fonts/fahkwang-500.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/personal-updates/fonts/fahkwang-600.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/personal-updates/fonts/fahkwang-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400&family=Bodoni+Moda:opsz,wght@6..96,500&family=Instrument+Serif&family=Instrument+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=STIX+Two+Text:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400&family=Bodoni+Moda:opsz,wght@6..96,500&family=Instrument+Serif&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=STIX+Two+Text:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{
   --night:#131210;
@@ -18,7 +19,7 @@
   --bone-dim:#a9a397;
   --rule:#35322c;
   --house:"Fraunces",Georgia,serif;
-  --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--sans:var(--ui);--serif:var(--house);
+  --ui:"Fahkwang",system-ui,-apple-system,"Segoe UI",sans-serif;--sans:var(--ui);--serif:var(--house);
   /* sibling house colours: each title owns its own */
   --fb:#8a2a36;--fb-paper:#f1e6d0;--fb-ink:#221a14;
   --sp:#1f4a3b;--sp-paper:#f4f2ea;--sp-ink:#15302a;--sp-clay:#b4532e;
@@ -58,14 +59,14 @@ a{color:inherit}
 
 /* --- Field Brief cover --- */
 .c-fb{background:var(--fb-paper);color:var(--fb-ink);padding:7% 7% 0;display:flex;flex-direction:column}
-.c-fb .top{display:flex;justify-content:space-between;font:600 9px/1 "Instrument Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--fb-ink);padding-bottom:6px}
+.c-fb .top{display:flex;justify-content:space-between;font:600 9px/1 "Fahkwang",sans-serif;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--fb-ink);padding-bottom:6px}
 .c-fb .mh{font:500 clamp(34px,4.4vw,58px)/.9 "Bodoni Moda",Didot,serif;letter-spacing:-.055em;margin:14px 0 10px;white-space:nowrap}
 .c-fb .mh i{color:var(--fb)}
 .c-fb .mh sup{font:500 .26em/1 "Bodoni Moda",serif;letter-spacing:0;vertical-align:1.9em;margin-left:.15em;color:var(--fb);border-bottom:1.5px solid var(--fb)}
-.c-fb .meta{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--fb-ink);border-bottom:1px solid var(--fb-ink);font:600 9px/1.3 "Instrument Sans",sans-serif;letter-spacing:.06em}
+.c-fb .meta{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--fb-ink);border-bottom:1px solid var(--fb-ink);font:600 9px/1.3 "Fahkwang",sans-serif;letter-spacing:.06em}
 .c-fb .meta span{padding:6px 0}.c-fb .meta span+span{border-left:1px solid #b9a483;padding-left:8px}
 .c-fb .head{font:400 clamp(17px,1.7vw,23px)/1.1 "Instrument Serif",serif;margin:12px 0 10px}
-.c-fb .more{list-style:none;margin:0;padding:0;counter-reset:m 1}.c-fb .more li{counter-increment:m;display:grid;grid-template-columns:18px 1fr;font:500 10px/1.35 "Instrument Sans",sans-serif;padding:4px 0;border-top:1px solid #cdb893}.c-fb .more li::before{content:counter(m,decimal-leading-zero);font:500 11px/1.2 "Bodoni Moda",serif;color:var(--fb)}
+.c-fb .more{list-style:none;margin:0;padding:0;counter-reset:m 1}.c-fb .more li{counter-increment:m;display:grid;grid-template-columns:18px 1fr;font:500 10px/1.35 "Fahkwang",sans-serif;padding:4px 0;border-top:1px solid #cdb893}.c-fb .more li::before{content:counter(m,decimal-leading-zero);font:500 11px/1.2 "Bodoni Moda",serif;color:var(--fb)}
 .c-fb .plate{margin-top:auto;height:34%;margin-inline:-8%}
 .c-fb .plate svg{width:100%;height:100%;display:block}
 
@@ -216,8 +217,8 @@ a{color:inherit}
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Periodicals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261001-polish">
-<link rel="stylesheet" href="issue-marks.css?v=20261001-polish"><script src="issue-mark-archive.js?v=2026-10-01_2026-10-01_2026-09-25"></script>
+<link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-regression">
+<link rel="stylesheet" href="issue-marks.css?v=20261002-regression"><script src="issue-mark-archive.js?v=2026-10-01_2026-10-01_2026-09-25"></script>
 <script src="issue-marks.js?v=20261001-maintenance"></script>
 </head>
 <body>

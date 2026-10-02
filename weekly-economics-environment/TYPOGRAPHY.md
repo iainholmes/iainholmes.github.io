@@ -4,7 +4,7 @@ Ectros Regular is publication identity only: the masthead and closing wordmark u
 
 Latin Modern Roman Dunhill Regular supplies edition `.hero h1`, content-selection `.overview-item h3` and full article `.entry h2` titles. Edition titles use normal editorial Title Case. These structural classes inherit the correct face in every edition. Keep a single canonical article title in editorial Title Case in the overview and article heading; generated Field Notes, Commonplace and hub representations read those headings. Primary article titles are upright, with synthetic emphasis disabled. The self-hosted Dunhill Oblique face is available only for selective secondary editorial treatment. Self-hosted title assets: `fonts/LMRomanDunhill-Regular.otf` and `fonts/LMRomanDunhill-Oblique.otf`. Keep these structural classes for new editions. Do not place Menor in body text, controls, metadata, Field Register, Heron notes or general section headings. The cumulative notebook uses Menor for its concept headlines and Ectros for its publication wordmark.
 
-Body retains Source Serif 4. Generic apparatus, metadata and controls use Instrument Sans; editorial/display faces remain publication-specific. Verify computed families, loaded fonts and wrapping at desktop, 393px, 320px and landscape widths after adding new content. Do not rely on a locally installed font: CSS sources are URLs only.
+Body retains Source Serif 4. Generic apparatus, metadata and controls use Fahkwang; editorial/display faces remain publication-specific. Verify computed families, loaded fonts and wrapping at desktop, 393px, 320px and landscape widths after adding new content. Do not rely on a locally installed font: CSS sources are URLs only.
 
 # Notebook maintenance
 

@@ -44,7 +44,7 @@ dialog{max-height:calc(90dvh - var(--pd-top) - var(--pd-bottom))}
 @media print{.pd-resume{display:none!important}}
 
 /* Utility controls use the house UI face, separate from publication prose. */
-.pd-tools,.pd-lightbox header,.pd-caption,.pd-resume{font-family:"Instrument Sans",system-ui,sans-serif}
+.pd-tools,.pd-lightbox header,.pd-caption,.pd-resume{font-family:"Fahkwang",system-ui,sans-serif}
 
 /* Wider UI glyphs keep each L&L toolbar label together in landscape. */
 @media(max-width:1024px) and (max-height:500px){.toolbar-inner{flex-wrap:wrap;height:auto;min-height:48px;gap:8px;padding-inline:18px}.toolbar-inner .tb-name{display:none}.toolbar-inner .modes{gap:16px}.toolbar-inner button{white-space:nowrap}.toolbar-inner .archive-button{margin-left:0}}
