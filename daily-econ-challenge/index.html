@@ -353,6 +353,50 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 @media(max-width:600px) and (orientation:portrait){
  .ps-title .ps-no .ps-folio{grid-row:3;justify-self:end}
 }
+
+/* Workbook publication signature and masthead navigation. */
+.wb-mark{
+  position:absolute;left:50%;transform:translateX(-50%);
+  display:inline-flex;align-items:baseline;justify-content:center;
+  padding:8px 2px 7px;white-space:nowrap;text-decoration:none;
+  font:400 18px/1 var(--math);letter-spacing:-.018em;color:var(--navy)
+}
+.wb-mark::after{content:"";position:absolute;left:24%;right:24%;bottom:2px;border-bottom:2px solid var(--teal);opacity:.72}
+.wb-mark sub{font-size:.62em;line-height:0;vertical-align:-.2em}
+.wb-mark:hover,.wb-mark:focus-visible{color:var(--teal)}
+.ledger-proxy{display:none!important}
+.runhead nav.site{margin-left:auto}
+.dn{margin-right:0!important}
+
+.ps-title-main{min-width:0}
+.ps-context{display:flex;flex-direction:column;gap:4px;margin-top:14px}
+.ps-context>span{font:500 11px/1.3 var(--ui);text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.ps-context .sub{font:italic 400 17px/1.3 var(--math);color:var(--text)}
+.ps-head-actions{align-self:end;display:flex;align-items:baseline;justify-content:flex-end;gap:22px;padding-bottom:2px;white-space:nowrap}
+.ledger-head{font:500 15px/1 var(--ui);letter-spacing:.025em;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+.ledger-head:hover,.ledger-head:focus-visible{color:var(--teal);border-bottom-color:var(--teal)}
+.ps-head-actions .ps-folio{display:block;margin:0;font:500 clamp(31px,calc(3.6vw + 1px),47px)/1 var(--math);color:var(--navy);letter-spacing:-.04em;text-transform:none}
+.ps-head-actions .ps-folio .no{font:400 .7em/1 var(--math);font-style:normal;color:var(--muted);margin-right:.25em;letter-spacing:0}
+.ps-head-actions .ps-folio .no sup{font-size:.58em;vertical-align:.58em;line-height:0;font-style:italic}
+
+.foot{align-items:flex-start}
+.foot-brand{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:16px}
+.foot .foot-mark{position:relative;left:auto;transform:none;padding:2px 2px 8px;font-size:19px}
+.foot .foot-mark::after{left:0;right:58%;bottom:2px}
+
+@media(max-width:600px){
+  .wb-mark{font-size:15.5px;padding-inline:0}
+  .wb-mark::after{left:22%;right:22%}
+  .ps-title{grid-template-columns:minmax(0,1fr) auto;gap:12px 16px}
+  .ps-title-main{display:contents}
+  .ps-title-main h1{grid-column:1/-1;grid-row:1}
+  .ps-context{grid-column:1;grid-row:2;margin-top:2px;align-self:end}
+  .ps-context .sub{font-size:16px}
+  .ps-head-actions{grid-column:2;grid-row:2;gap:12px;align-self:end;padding-bottom:1px}
+  .ledger-head{font-size:14px}
+  .ps-head-actions .ps-folio{font-size:26px}
+  .foot .foot-mark{font-size:18px}
+}
 </style>
 <link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="/personal-updates/mobile/icon-180.png">
@@ -376,10 +420,10 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
           <a class="pd-hb pd-cm" href="../personal-updates/commonplace/" style="font:500 11px/1.4 var(--ui);color:var(--ink)">Commonplace</a><a class="pd-hb" href="../personal-updates/handbook/" style="font:500 11px/1.4 var(--ui);color:var(--ink)">Periodicals Handbook</a>
       </div></div>
     </nav>
-    <a class="wordmark" href="#" id="homeLink" aria-label="The Workbook, latest set">The <i>Workbook</i></a>
+    <a class="wb-mark" href="#" id="homeLink" aria-label="The Workbook, latest set"><span class="wb-eq">Y<sub>i</sub> = β<sub>0</sub> + β<sub>1</sub>X<sub>i</sub> + ε<sub>i</sub></span></a>
     <nav class="site" aria-label="Site">
       <span class="dn" role="group" aria-label="Reading mode, shared by all Periodicals"><button type="button" data-mode="day" aria-pressed="true">day</button><span aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="false">night</button></span>
-      <a href="#archive" id="archiveLink">Ledger</a>
+      <a href="#archive" id="archiveLink" class="ledger-proxy" aria-hidden="true" tabindex="-1">Ledger</a>
     </nav>
   </div>
 </header>
@@ -387,7 +431,10 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 <main id="app"></main>
 
 <footer class="foot">
-  <span><i style="font:italic 400 15px var(--math);color:var(--ink)">The Workbook</i> · Economics &amp; Econometrics · weekdays, 10:00 AM ET · <a href="../personal-updates/commonplace/">Commonplace</a> · <a href="../personal-updates/handbook/">Handbook</a></span>
+  <div class="foot-brand">
+    <a class="wb-mark foot-mark" href="#" aria-label="The Workbook, latest set"><span class="wb-eq">Y<sub>i</sub> = β<sub>0</sub> + β<sub>1</sub>X<sub>i</sub> + ε<sub>i</sub></span></a>
+    <span><i style="font:italic 400 15px var(--math);color:var(--ink)">The Workbook</i> · Economics &amp; Econometrics · weekdays, 10:00 AM ET · <a href="../personal-updates/commonplace/">Commonplace</a> · <a href="../personal-updates/handbook/">Handbook</a></span>
+  </div>
   <a href="../personal-updates/">Periodicals</a>
 </footer>
 
@@ -1412,7 +1459,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   function headHTML(){
     var latest=EDITIONS[0]===ed,n=ed.questions.length,sc=scoreOf(ed,st);
     var rec=st.submitted?sc+' / '+n+' '+recordHTML(ed,st):nAnswered()?nAnswered()+' of '+n+' answered':'Not started';
-    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><h1 id="psTitle">The <i>Workbook</i></h1><div class="ps-no"><b class="ps-folio"><span class="no">N<sup>o</sup>.</span>'+pad(ed.no)+'</b><span>'+(latest?'Today’s set':'From the ledger')+'</span><em class="sub">Economics &amp; Econometrics · weekdays</em></div></div>'+
+    return '<section class="wrap ps-head" aria-labelledby="psTitle"><div class="ps-title"><div class="ps-title-main"><h1 id="psTitle">The <i>Workbook</i></h1><div class="ps-context"><span>'+(latest?'Today’s set':'From the ledger')+'</span><em class="sub">Economics &amp; Econometrics · weekdays</em></div></div><div class="ps-head-actions"><a class="ledger-head" href="#archive">Ledger</a><b class="ps-folio"><span class="no">N<sup>o</sup>.</span>'+pad(ed.no)+'</b></div></div>'+
       '<dl class="ps-facts"><div><dt>Set</dt><dd><time datetime="'+ed.date+'">'+longDate(ed.date)+'</time></dd></div><div><dt>Questions</dt><dd>'+n+' · about '+ed.minutes+' min</dd></div><div><dt>Your record</dt><dd id="statusFact">'+rec+'</dd></div><div><dt>Next set</dt><dd id="nextSet">'+nextSet()+'</dd></div></dl></section>';
   }
 
@@ -1551,7 +1598,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     render();window.scrollTo(0,0);
     if(parts[1])setTimeout(function(){var target=st.submitted?document.getElementById('sol-'+(st.current+1)):document.querySelector('.q');if(target)target.scrollIntoView({block:'start'})},0);
   }
-  document.getElementById('homeLink').addEventListener('click',function(e){e.preventDefault();location.hash=EDITIONS[0].date});
+  document.querySelectorAll('#homeLink,.foot-mark').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();location.hash=EDITIONS[0].date})});
   window.addEventListener('hashchange',route);window.addEventListener('periodicals:ready',render);
   route();
   /* shared Periodicals reading mode */
