@@ -1009,7 +1009,7 @@ main.page-travel {background:var(--lake);color:var(--paper);}
 .archive-week {margin-top:0;padding-top:0;border-top:0;margin-bottom:36px;}
 .archive-week > h2 {background:var(--lake);color:var(--paper);padding:12px 16px;margin:0 0 20px;}
 .archive-results {gap:24px;}
-.archive-card {grid-template-columns:118px minmax(0,1fr);gap:16px;padding:10px;margin:0;}
+.archive-card {display:grid;grid-template-columns:118px minmax(0,1fr);gap:16px;padding:10px;margin:0;}
 .archive-card h3 {font-size:26px;line-height:1.22;margin-block:6px;}
 .archive-card .p-day,.archive-card .arch-meta,.archive-card.is-missing {font-size:14px;line-height:1.45;}
 .archive-card .arch-meta {margin-block:8px;}
