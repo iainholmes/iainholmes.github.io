@@ -111,6 +111,9 @@ table.modes td:first-child{padding-left:14px;font-weight:500}
 #commonplace h2 .n{color:var(--gold)}
 #commonplace .lede{font-style:italic;font-size:21px;line-height:1.52;max-width:46ch}
 #commonplace>a,#commonplace p>a{font:500 11px/1.4 var(--ui);letter-spacing:.05em;text-transform:uppercase;color:var(--paper);text-decoration-color:var(--gold)}
+.keep-guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:24px 0 26px;background:var(--hair);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.keep-guide>div{background:var(--ground-2);padding:16px 18px 17px}.keep-guide b{display:block;margin-bottom:6px;font:500 10px/1.4 var(--ui);letter-spacing:.11em;text-transform:uppercase;color:var(--gold)}.keep-guide span{display:block;font:400 14px/1.55 var(--text);color:var(--soft)}
+@media(max-width:600px){.keep-guide{grid-template-columns:1fr}.keep-guide>div{padding:14px 16px}}
 @media(max-width:900px){.mast-side{align-items:flex-start;padding-left:24px}.mast-side p{text-align:left}}
 /* Navigation plate: labels and return path each have their own space. */
 #moving .nav-map{width:100%;margin:30px 0;padding:28px 24px 22px;border-top:1px solid var(--hair);background:var(--ground-2)}
@@ -135,9 +138,9 @@ body .pd-tools{background:var(--ground);color:var(--paper)}
 /* One right-aligned house mark occupies the former folio's masthead territory. */
 .house-mark{display:flex;align-items:baseline;gap:6px;white-space:nowrap;font:500 12px/1.4 var(--ui);color:var(--soft)}
 .house-index{font:500 12px/1.4 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--soft);white-space:nowrap}
-.house-year{font:500 12px/1.4 var(--display);letter-spacing:0;color:var(--soft);font-variant-numeric:lining-nums}
+.house-year{font:500 14px/1.25 var(--display);letter-spacing:0;color:var(--soft);font-variant-numeric:lining-nums}
 @media(max-width:900px){.mast-side{align-items:flex-end;padding:12px 24px 0 0}}
-@media(max-width:560px){.mast-side{padding-top:16px;padding-right:26px}.house-mark,.house-index,.house-year{font-size:11px}}
+@media(max-width:560px){.mast-side{padding-top:16px;padding-right:26px}.house-mark,.house-index{font-size:11px}.house-year{font-size:13px}}
 
 figure{max-width:calc(100% + 34px)}
 @media(max-width:560px){.mast h1{font-size:clamp(48px,15.7vw,62px)}.mast h1 i{margin-left:.42em}}
@@ -153,7 +156,7 @@ figure{max-width:calc(100% + 34px)}
 </head>
 <body>
 <!-- PERIODICALS HANDBOOK — /personal-updates/handbook/. Documentation for the publishing system only:
-not a publication, not scheduled, and no shelf spine. HOUSE INDEX is the quiet secondary house identifier. Permanently dark like the hub.
+not a publication, not scheduled, and no shelf spine. HOUSE INDEX is the quiet secondary house identifier. Permanently dark like the hub and Commonplace.
 Update it by hand when a title's behaviour changes (names, navigation, modes, Field Register, Heron). -->
 <a class="skip" href="#content">Skip to the handbook</a>
 <div class="page">
@@ -231,9 +234,9 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
     <p class="nav-return"><span aria-hidden="true">↶</span> Back to Periodicals from any title’s shelf</p>
     <figcaption id="nav-caption">Open a title, then use its shelf to move between publications or return to the front page.</figcaption>
   </figure>
-  <p><b>The shelf.</b> Every title has a small Periodicals mark at the top left. It opens a row of book spines, one per title, with the one you are reading raised. Choose a spine to move; <span class="mono">Esc</span> or a click elsewhere closes it. The same row carries a link to this handbook.</p>
+  <p><b>The shelf.</b> Every title has a small Periodicals mark inside its own navigation, but its exact position follows that publication’s layout. In Field Brief and The Workbook it sits at the left of the upper reading bar; in Loblolly &amp; Logit it sits in the separate reading toolbar directly below the masthead. It opens a row of book spines, one per title, with the one you are reading raised. Choose a spine to move; <span class="mono">Esc</span> or a click elsewhere closes it. The same shelf also carries utility links to the <b>Commonplace</b> and this <b>Handbook</b>.</p>
   <p><b>The front page remembers.</b> The title you visited most recently stands slightly raised on the Periodicals shelf, so returning is one glance. The order of the titles never changes.</p>
-  <p><b>Each title’s own archive</b> sits in its top bar: <b>Index</b> in Field Brief, <b>Editions</b> in Loblolly &amp; Logit, <b>Ledger</b> in The Workbook. Each opens with the latest edition or set; earlier ones are one choice away and each has its own link.</p>
+  <p><b>Each title’s own archive</b> lives in its publication navigation: <b>Index</b> in Field Brief, <b>Editions</b> in Loblolly &amp; Logit, and <b>Ledger</b> in The Workbook. Each opens with the latest edition or set; earlier ones are one choice away and each has its own link.</p>
 </section>
 
 <section id="folios">
@@ -244,14 +247,14 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
 
 <section id="daynight">
   <h2><span class="n">E</span>Day / Night</h2>
-  <p>On iPhone, the bottom bar keeps five consistent actions: <b>Titles</b> returns to the shelf, <b>Index</b> opens this publication’s archive, <b>Prev</b> and <b>Next</b> change editions, and <b>Share</b> shares the current edition. Swipe only across that bar to turn editions. Saved progress appears separately as <b>Resume reading</b> or <b>Resume problem set</b>, naming the edition and passage or question before you choose Resume. Start from top begins the edition named in that prompt; Workbook answers remain in this browser.</p>
+  <p>On iPhone publication pages, the bottom reading bar keeps five consistent actions: <b>Titles</b> returns to the Periodicals front page, <b>Index</b> opens that publication’s archive, <b>Prev</b> and <b>Next</b> change editions, and <b>Share</b> shares the current edition. Swipe only across that bar to turn editions. Saved progress appears separately as <b>Resume reading</b> or <b>Resume problem set</b>, naming the edition and passage or question before you choose Resume. <b>Start from top</b> begins the edition named in that prompt; Workbook answers remain in this browser. On the three house pages—the Periodicals front page, Commonplace and this Handbook—the bottom bar instead carries <b>Titles</b>, <b>Commonplace</b> and <b>Handbook</b>.</p>
   <p>Each fresh browser session starts in Day from 7:00 AM through 6:59 PM, and Night from 7:00 PM through 6:59 AM, using your device’s local time. Choose Day or Night at any time; your choice follows you between titles in the same tab for the rest of that session. Without a manual choice, an open title switches at the next boundary. Each interprets Night in its own materials rather than inverting colors:</p>
   <table class="modes"><thead><tr><th>Title</th><th>Where the switch is</th><th>Night looks like</th></tr></thead><tbody>
-    <tr><td>Field Brief</td><td>“Edition: Day / Night” in the metadata strip</td><td>Espresso paper, lifted inks</td></tr>
+    <tr><td>Field Brief</td><td>Upper right of the edition masthead</td><td>Espresso paper, lifted inks</td></tr>
     <tr><td>Loblolly &amp; Logit</td><td>Top right of the masthead</td><td>An estuary at night: deep spruce and river blue</td></tr>
     <tr><td>The Workbook</td><td><span class="mono">[day] / night</span> in the top bar</td><td>A dark drafting surface with a faint grid</td></tr>
   </tbody></table>
-  <p>The Periodicals front page and this handbook are always dark and have no switch.</p>
+  <p>The Periodicals front page, the Commonplace and this Handbook are house pages: all three are permanently dark and have no Day / Night switch.</p>
 </section>
 
 <section id="register">
@@ -318,7 +321,7 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
 
   <h3>You stay in control</h3>
   <ul class="can">
-    <li><b>Off:</b> the Heron switch in the top bar turns it off everywhere in Loblolly &amp; Logit until you turn it back on.</li>
+    <li><b>Off:</b> the Heron switch in Loblolly &amp; Logit’s reading toolbar turns it off everywhere in the journal until you turn it back on.</li>
     <li><b>Dismiss:</b> “Don’t show this again” in any note retires that one appearance permanently.</li>
     <li><b>Seen:</b> notes you have opened are remembered for that issue, so it will not fly in to show them again.</li>
   </ul>
@@ -336,7 +339,8 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
   <h2><span class="n">H</span>The Commonplace</h2>
   <p class="lede">The publication stays permanent; your relationship to it is allowed to change.</p>
   <p>The Commonplace is the private keeping layer shared by all three titles. A whole issue, Field Brief story, Loblolly &amp; Logit article, figure, research note, Field Register entry, Heron note, Workbook question or worked solution can be kept without changing its source.</p>
-  <p><b>Keeping while reading.</b> On desktop, a small <i>keep</i> action appears only when a keepable object is hovered or focused. On touch, press and hold the object. Keyboard users can reach the same action in reading order. The first action keeps the item; returning to it opens the quiet editor for your own thread names, an importance value from 0–5, and a short annotation.</p>
+  <div class="keep-guide" aria-label="How to keep an item"><div><b>Touch</b><span>Press and hold a non-interactive part of the item for about 0.6 seconds.</span></div><div><b>Desktop</b><span>Hover or focus the item, then choose the quiet <i>keep</i> action.</span></div><div><b>Keyboard</b><span>Move through the item in reading order and activate its <i>keep</i> control.</span></div></div>
+  <p><b>Keeping while reading.</b> The first keep saves the item immediately. Opening a kept item again brings up the quiet editor for your own thread names, an importance value from 0–5, and a short annotation. On touch devices the visible button is intentionally de-emphasized; the press-and-hold gesture is the primary action.</p>
   <p><b>Threads cross publications.</b> Threads are names you invent, not categories imposed by Periodicals. A Field Brief story, a Loblolly &amp; Logit article and a Workbook solution can therefore live together in one thread. The Commonplace uses those shared threads to show related material and, rarely, to bring an older item back into view.</p>
   <p><b>Stable addresses.</b> Every keepable object has a durable source address. Existing story, article and question IDs remain permanent; figures, research notes, Register entries and Heron interventions receive their own stable anchors. Future issue maintenance must never recycle or silently change a published keepable ID.</p>
   <p><b>Private and local.</b> The Commonplace lives in <span class="mono">periodicals:commonplace:v1</span> in this browser. It does not sync to another device and nothing is sent to an account or outside service. To move it, use the Commonplace’s JSON export on one device and import it on another.</p>
