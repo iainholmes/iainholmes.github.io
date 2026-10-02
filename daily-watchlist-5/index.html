@@ -293,6 +293,12 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
  .mast-vn{flex:0 0 100%;white-space:nowrap;font-size:clamp(9px,2.6vw,11px);letter-spacing:.045em}
  .mast-right{margin-left:auto}
 }
+/* Portrait keeps the issue folio at the banner's lower-right, on the existing row. */
+@media(max-width:600px) and (orientation:portrait){
+ .mast-main .mast-folio{display:flex;align-items:baseline;justify-content:flex-end;width:100%;text-align:right}
+ .mast-main .mast-folio small{order:-2;margin-left:0;margin-right:0}
+ .mast-main .mast-folio .cp-keep-toggle.cp-inline{order:-1;margin:0 auto 0 12px}
+}
 </style>
 <link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="/personal-updates/mobile/icon-180.png">

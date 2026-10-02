@@ -133,11 +133,11 @@ body{min-height:100svh;background-color:var(--ground)}
 body .pd-tools{background:var(--ground);color:var(--paper)}
 
 /* One right-aligned house mark occupies the former folio's masthead territory. */
-.house-mark{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.house-mark{display:flex;align-items:baseline;gap:6px;white-space:nowrap;font:500 12px/1.4 var(--ui);color:var(--soft)}
 .house-index{font:500 12px/1.4 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--soft);white-space:nowrap}
-.house-year{font:500 82px/.8 var(--display);letter-spacing:-.05em;color:var(--paper);font-variant-numeric:lining-nums}
-@media(max-width:900px){.mast-side{align-items:flex-end;padding:12px 24px 0 0}.house-year{font-size:62px}}
-@media(max-width:560px){.mast-side{padding-top:16px;padding-right:26px}.house-index{font-size:11px}.house-mark{gap:9px}}
+.house-year{font:500 12px/1.4 var(--display);letter-spacing:0;color:var(--soft);font-variant-numeric:lining-nums}
+@media(max-width:900px){.mast-side{align-items:flex-end;padding:12px 24px 0 0}}
+@media(max-width:560px){.mast-side{padding-top:16px;padding-right:26px}.house-mark,.house-index,.house-year{font-size:11px}}
 
 figure{max-width:calc(100% + 34px)}
 @media(max-width:560px){.mast h1{font-size:clamp(48px,15.7vw,62px)}.mast h1 i{margin-left:.42em}}
@@ -160,7 +160,7 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
   <header class="imprint"><a href="../">← Periodicals</a><span><a href="../commonplace/">Commonplace</a> · Handbook</span></header>
   <header class="mast">
     <h1>Periodicals <i>Handbook</i></h1>
-    <div class="mast-side"><div class="house-mark" aria-label="House index, 2026"><span class="house-index">HOUSE INDEX</span><span class="house-year">2026</span></div></div>
+    <div class="mast-side"><div class="house-mark" aria-label="House index · 2026"><span class="house-index">HOUSE INDEX</span><span aria-hidden="true"> · </span><span class="house-year">2026</span></div></div>
   </header>
   <div class="body">
     <nav class="toc" aria-label="Contents"><div class="toc-head"><span>Contents</span><small>9 sections</small></div><ol>
