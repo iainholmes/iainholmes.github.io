@@ -1,4 +1,5 @@
 import { validPoint } from './routing.js';
+import { cleanJourney, cleanManualRoutes } from './journey-storage.js';
 const MODES = ['car', 'air', 'ferry', 'rail', 'walk'];
 // Explicit projection prevents imported objects from carrying unexpected fields into storage.
 export function cleanPlan(value) {
@@ -19,7 +20,7 @@ export function cleanPlan(value) {
   });
   if (new Set(manual_stops.map(s => s.leg)).size !== manual_stops.length) throw new Error('Use one stop record per driving leg; combine extra stops in its note.');
   if (manual_stops.length > 80) throw new Error('Too many stops in this backup.');
-  const id = typeof value.id === 'string' && /^tp_[a-z0-9_-]{1,100}$/i.test(value.id) ? value.id : `tp_${crypto.randomUUID()}`;
+  const id = typeof value.id === 'string' && /^tp_[a-z0-9_-]{1,100}$/i.test(value.id) ? value.id : `tp_${crypto.randomUUID?.() || [...crypto.getRandomValues(new Uint8Array(16))].map(n=>n.toString(16).padStart(2,'0')).join('')}`;
   let postcard;
   if (value.postcard) {
     const p=value.postcard;
@@ -27,7 +28,11 @@ export function cleanPlan(value) {
     postcard={image:p.image,caption:p.caption.trim(),...(p.automatic===true?{automatic:true}:{})};
   }
   const planning={departure:/^([01]\d|2[0-3]):[0-5]\d$/.test(value.planning?.departure)?value.planning.departure:'09:00',break_every:[0,90,120,180].includes(value.planning?.break_every)?value.planning.break_every:120};
-  return { id, title:value.title.trim(), dates, legs, manual_stops, planning, ...(postcard ? {postcard} : {}) };
+  if(value.planning?.detour!=null) {
+    if(!Number.isFinite(value.planning.detour)||value.planning.detour<0||value.planning.detour>120) throw Error('Check the detour tolerance.');
+    planning.detour=value.planning.detour;
+  }
+  return { id, title:value.title.trim(), dates, legs, manual_stops, planning, ...(postcard ? {postcard} : {}), ...(value.journey?{journey:cleanJourney(value.journey)}:{}), ...(value.manual_routes?{manual_routes:cleanManualRoutes(value.manual_routes,legs)}:{}) };
 }
 export function readBackup(text) {
   if (text.length > 20000000) throw new Error('This backup is too large.');

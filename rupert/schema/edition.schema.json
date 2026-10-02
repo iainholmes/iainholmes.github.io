@@ -154,6 +154,33 @@
               "type": "string"
             }
           }
+        },
+        "days": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "day",
+              "forecast"
+            ],
+            "properties": {
+              "day": {
+                "enum": [
+                  "Saturday",
+                  "Sunday"
+                ]
+              },
+              "forecast": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "trail_note": {
+          "type": "string"
         }
       }
     },

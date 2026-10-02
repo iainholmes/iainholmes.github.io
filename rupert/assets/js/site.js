@@ -1,4 +1,5 @@
 import './field-log-view.js';
+import { setupMenus } from './core/menus.js';
 import { setupArchive } from './archive-view.js';
 import { SEASONS, seasonFor } from './core/options.js';
 import { nyDateString, isoWeek } from './core/dates.js';
@@ -103,6 +104,7 @@ phone.addEventListener('change', setupTabs);
 window.addEventListener('hashchange', () => { if (/^#(tuesday|thursday)$/.test(location.hash)) setupTabs(); });
 setupTabs();
 setupArchive();
+setupMenus();
 
 function refreshDateline() {
   const date = nyDateString(new Date()), {week, year} = isoWeek(date);

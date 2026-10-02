@@ -1,1 +1,3 @@
 The Rupert Atlas self-hosts user-supplied VELENOR Regular for editorial titles and Latin Modern Roman for supporting text. VELENOR comes from the user’s downloaded font package. Latin Modern’s GUST e-foundry license is included. Regular, bold, italic and bold italic supporting faces are bundled. No external font services are used.
+
+Latin Modern Roman Dunhill Regular and Oblique are copied from the repository’s existing Latin Modern assets. Dunhill is reserved for secondary editorial headings; VELENOR remains the masthead and page/edition-title face. Both Latin Modern families are covered by the included GUST license.

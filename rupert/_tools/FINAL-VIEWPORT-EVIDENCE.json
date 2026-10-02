@@ -1,0 +1,5103 @@
+{
+  "testedAt": "2026-10-02T03:17:01.794Z",
+  "viewports": [
+    {
+      "page": "/travel/index.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "pageField": "rgb(29, 42, 58)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "17px",
+        "lineHeight": "27.2px",
+        "box": [
+          375,
+          4361
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "46px",
+        "lineHeight": "48.3px",
+        "box": [
+          152,
+          48
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": {
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif",
+        "size": "29px",
+        "lineHeight": "34.22px",
+        "box": [
+          279,
+          35
+        ]
+      },
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            279,
+            74
+          ]
+        },
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "",
+      "footerIcon": {
+        "x": 327,
+        "y": 4240.71875,
+        "width": 28,
+        "height": 28,
+        "bottom": 4268.71875
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": null,
+      "bannerHeight": 108,
+      "dogHeight": 72,
+      "headingFaces": [
+        {
+          "text": "Travel",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "01 Plan",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "02 Choose a Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "03 Build the Journey",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Overnight Opportunities",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Along the Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "At the Destination",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "04 Itinerary",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Trip Table",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Saved Trips",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/log/index.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "17px",
+        "lineHeight": "27.2px",
+        "box": [
+          375,
+          1046
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "46px",
+        "lineHeight": "48.3px",
+        "box": [
+          152,
+          97
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "30px",
+        "lineHeight": "35.4px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            221,
+            46
+          ]
+        },
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          152,
+          101
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "",
+      "footerIcon": {
+        "x": 327,
+        "y": 925.609375,
+        "width": 28,
+        "height": 28,
+        "bottom": 953.609375
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": null,
+      "bannerHeight": 129.59375,
+      "dogHeight": 72,
+      "headingFaces": [
+        {
+          "text": "Field Log",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outing Details",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outings",
+          "font": "VELENOR, Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/edition/2026-W40-r1-tue/index.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "17px",
+        "lineHeight": "27.2px",
+        "box": [
+          375,
+          7515
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "40px",
+        "lineHeight": "43.2px",
+        "box": [
+          315,
+          130
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": {
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif",
+        "size": "30px",
+        "lineHeight": "35.4px",
+        "box": [
+          271,
+          35
+        ]
+      },
+      "bodyCopy": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "19px",
+        "lineHeight": "30.4px",
+        "box": [
+          315,
+          213
+        ]
+      },
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "17px",
+          "lineHeight": "27.2px",
+          "box": [
+            296,
+            54
+          ]
+        },
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          315,
+          148
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "The OutingRiverwalkGold Park, 415 Dimmocks Mill Road, HillsboroughFind it in the Atlas →",
+      "footerIcon": {
+        "x": 327,
+        "y": 7395.328125,
+        "width": 28,
+        "height": 28,
+        "bottom": 7423.328125
+      },
+      "categoryWash": "color(srgb 0.885804 0.875451 0.844392)",
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": null,
+      "headingFaces": [
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outing Overview",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Why This Week",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Conditions",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "For Rupert",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Before You Go",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "If Plans Change",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Memory Prompt",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Sources",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "The Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [
+        {
+          "height": 284,
+          "text": 213,
+          "heading": 35
+        },
+        {
+          "height": 223,
+          "text": 152,
+          "heading": 35
+        }
+      ],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/index.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "17px",
+        "lineHeight": "27.2px",
+        "box": [
+          375,
+          1940
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "38px",
+        "lineHeight": "43.7px",
+        "box": [
+          315,
+          87
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "15px",
+          "lineHeight": "22.5px",
+          "box": [
+            169,
+            23
+          ]
+        },
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [
+        {
+          "width": 315,
+          "height": 210,
+          "loaded": true
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "loaded": false
+        }
+      ],
+      "banner": null,
+      "fontsLoaded": true,
+      "footerIcon": {
+        "x": 327,
+        "y": 1820.4375,
+        "width": 28,
+        "height": 28,
+        "bottom": 1848.4375
+      },
+      "categoryWash": null,
+      "weatherDays": [
+        "Saturdaymostly cloudy · high near 75°F · 50% shower chance mainly after 8 a.m",
+        "Sundayhigh near 68°F · 70% showers with thunderstorms possible after 2 p.m",
+        "Saturdaypartly sunny · high near 78 · 30% chance of showers",
+        "Sundaymostly cloudy · high near 75 · 40% showers"
+      ],
+      "weekBottomPadding": "50px",
+      "directoryScroll": null,
+      "menuTests": null,
+      "headingFaces": [
+        {
+          "text": "Sat 3 – Sun 4 October",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Company Mill and the Old Dam on Crabtree Creek",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/atlas/index.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "pageField": "rgb(29, 42, 58)",
+      "workspaceFits": false,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "17px",
+        "lineHeight": "27.2px",
+        "box": [
+          375,
+          1278
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "46px",
+        "lineHeight": "48.3px",
+        "box": [
+          152,
+          48
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            58,
+            120
+          ]
+        },
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "Current PlaceChoose a PlaceShow on Map →",
+      "footerIcon": {
+        "x": 327,
+        "y": 984.578125,
+        "width": 28,
+        "height": 28,
+        "bottom": 1012.578125
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": {
+        "client": 132,
+        "scroll": 132,
+        "top": 0,
+        "left": 0,
+        "count": 3,
+        "cardWidths": [
+          132,
+          132,
+          132
+        ],
+        "rowTops": [
+          259,
+          429,
+          615
+        ]
+      },
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "bannerHeight": 154,
+      "dogHeight": 72,
+      "headingFaces": [
+        {
+          "text": "Atlas",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Place Directory",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Orange County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Wake County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Durham County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [
+        {
+          "id": "hillsborough-riverwalk",
+          "links": 2
+        },
+        {
+          "id": "umstead-company-mill",
+          "links": 2
+        },
+        {
+          "id": "eno-cox-mountain",
+          "links": 2
+        }
+      ],
+      "modules": [],
+      "map": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "17px",
+        "lineHeight": "27.2px",
+        "box": [
+          315,
+          574
+        ]
+      },
+      "geometry": {
+        "banner": {
+          "x": 10,
+          "y": -86.109375,
+          "width": 355,
+          "height": 154,
+          "bottom": 67.890625
+        },
+        "directory": {
+          "x": 30,
+          "y": 87.890625,
+          "width": 315,
+          "height": 173.78125,
+          "bottom": 261.671875
+        },
+        "toolbar": {
+          "x": 30,
+          "y": 87.890625,
+          "width": 315,
+          "height": 118.78125,
+          "bottom": 206.671875
+        },
+        "map": {
+          "x": 30,
+          "y": 277.671875,
+          "width": 315,
+          "height": 573.90625,
+          "bottom": 851.578125
+        },
+        "catalogOpen": false,
+        "rows": []
+      }
+    },
+    {
+      "page": "/archive/index.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "17px",
+        "lineHeight": "27.2px",
+        "box": [
+          375,
+          1494
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "46px",
+        "lineHeight": "48.3px",
+        "box": [
+          315,
+          48
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "14px",
+          "lineHeight": "20.3px",
+          "box": [
+            315,
+            20
+          ]
+        }
+      },
+      "images": [],
+      "banner": null,
+      "fontsLoaded": true,
+      "footerIcon": {
+        "x": 327,
+        "y": 1374.078125,
+        "width": 28,
+        "height": 28,
+        "bottom": 1402.078125
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": null,
+      "bannerHeight": 81.296875,
+      "headingFaces": [
+        {
+          "text": "Archive",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Sat 3 – Sun 4 OctoberThis Week",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Cox Mountain and the Fews Ford Crossing",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Company Mill and the Old Dam on Crabtree Creek",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": "315px",
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/index.html",
+      "viewport": [
+        834,
+        1112
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          819,
+          1595
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "38px",
+        "lineHeight": "43.7px",
+        "box": [
+          741,
+          44
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            180,
+            24
+          ]
+        },
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [
+        {
+          "width": 350,
+          "height": 234,
+          "loaded": true
+        },
+        {
+          "width": 350,
+          "height": 234,
+          "loaded": false
+        }
+      ],
+      "banner": null,
+      "fontsLoaded": true,
+      "footerIcon": {
+        "x": 763.984375,
+        "y": 1529.171875,
+        "width": 30,
+        "height": 30,
+        "bottom": 1559.171875
+      },
+      "categoryWash": null,
+      "weatherDays": [
+        "Saturdaymostly cloudy · high near 75°F · 50% shower chance mainly after 8 a.m",
+        "Sundayhigh near 68°F · 70% showers with thunderstorms possible after 2 p.m",
+        "Saturdaypartly sunny · high near 78 · 30% chance of showers",
+        "Sundaymostly cloudy · high near 75 · 40% showers"
+      ],
+      "weekBottomPadding": "0px",
+      "directoryScroll": null,
+      "menuTests": null,
+      "headingFaces": [
+        {
+          "text": "Sat 3 – Sun 4 October",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Company Mill and the Old Dam on Crabtree Creek",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/atlas/index.html",
+      "viewport": [
+        834,
+        1112
+      ],
+      "overflow": false,
+      "pageField": "rgb(29, 42, 58)",
+      "workspaceFits": false,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          819,
+          1317
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "68px",
+        "lineHeight": "71.4px",
+        "box": [
+          341,
+          71
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            43,
+            120
+          ]
+        },
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          376,
+          90
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "Current PlaceChoose a PlaceShow on Map →",
+      "footerIcon": {
+        "x": 763.984375,
+        "y": 1250.546875,
+        "width": 30,
+        "height": 30,
+        "bottom": 1280.546875
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": {
+        "client": 156,
+        "scroll": 215,
+        "top": 0,
+        "left": 0,
+        "count": 3,
+        "cardWidths": [
+          68,
+          68,
+          68
+        ],
+        "rowTops": [
+          343,
+          343,
+          567
+        ]
+      },
+      "menuTests": null,
+      "bannerHeight": 128,
+      "dogHeight": 88,
+      "headingFaces": [
+        {
+          "text": "Atlas",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Place Directory",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Orange County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Wake County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Durham County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [
+        {
+          "id": "hillsborough-riverwalk",
+          "links": 2
+        },
+        {
+          "id": "umstead-company-mill",
+          "links": 2
+        },
+        {
+          "id": "eno-cox-mountain",
+          "links": 2
+        }
+      ],
+      "modules": [],
+      "map": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          741,
+          756
+        ]
+      },
+      "geometry": {
+        "banner": {
+          "x": 14,
+          "y": 76,
+          "width": 791,
+          "height": 128,
+          "bottom": 204
+        },
+        "directory": {
+          "x": 39.015625,
+          "y": 224,
+          "width": 740.96875,
+          "height": 121.390625,
+          "bottom": 345.390625
+        },
+        "toolbar": {
+          "x": 39.015625,
+          "y": 224,
+          "width": 740.96875,
+          "height": 66.390625,
+          "bottom": 290.390625
+        },
+        "map": {
+          "x": 39.015625,
+          "y": 361.390625,
+          "width": 740.96875,
+          "height": 756.15625,
+          "bottom": 1117.546875
+        },
+        "catalogOpen": false,
+        "rows": []
+      }
+    },
+    {
+      "page": "/travel/index.html",
+      "viewport": [
+        834,
+        1112
+      ],
+      "overflow": false,
+      "pageField": "rgb(29, 42, 58)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          819,
+          3602
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "68px",
+        "lineHeight": "71.4px",
+        "box": [
+          341,
+          71
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": {
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif",
+        "size": "32px",
+        "lineHeight": "37.76px",
+        "box": [
+          689,
+          38
+        ]
+      },
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            316,
+            74
+          ]
+        },
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          376,
+          94
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "",
+      "footerIcon": {
+        "x": 763.984375,
+        "y": 3535.5,
+        "width": 30,
+        "height": 30,
+        "bottom": 3565.5
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": null,
+      "bannerHeight": 128,
+      "dogHeight": 88,
+      "headingFaces": [
+        {
+          "text": "Travel",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "01 Plan",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "02 Choose a Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "03 Build the Journey",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Overnight Opportunities",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Along the Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "At the Destination",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "04 Itinerary",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Trip Table",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Saved Trips",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/log/index.html",
+      "viewport": [
+        834,
+        1112
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          834,
+          829
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "68px",
+        "lineHeight": "71.4px",
+        "box": [
+          349,
+          71
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "28px",
+        "lineHeight": "33.04px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            221,
+            46
+          ]
+        },
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          383,
+          95
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "",
+      "footerIcon": {
+        "x": 778.984375,
+        "y": 763.421875,
+        "width": 30,
+        "height": 30,
+        "bottom": 793.421875
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": null,
+      "bannerHeight": 128,
+      "dogHeight": 88,
+      "headingFaces": [
+        {
+          "text": "Field Log",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outing Details",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outings",
+          "font": "VELENOR, Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/archive/index.html",
+      "viewport": [
+        834,
+        1112
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          819,
+          1661
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "68px",
+        "lineHeight": "71.4px",
+        "box": [
+          741,
+          71
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "14px",
+          "lineHeight": "20.3px",
+          "box": [
+            482,
+            20
+          ]
+        }
+      },
+      "images": [],
+      "banner": null,
+      "fontsLoaded": true,
+      "footerIcon": {
+        "x": 763.984375,
+        "y": 1595.140625,
+        "width": 30,
+        "height": 30,
+        "bottom": 1625.140625
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": null,
+      "bannerHeight": 108.390625,
+      "headingFaces": [
+        {
+          "text": "Archive",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Sat 3 – Sun 4 OctoberThis Week",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Cox Mountain and the Fews Ford Crossing",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Company Mill and the Old Dam on Crabtree Creek",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": "215.078px 501.891px",
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/edition/2026-W40-r1-tue/index.html",
+      "viewport": [
+        834,
+        1112
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          819,
+          5610
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "44.202px",
+        "lineHeight": "47.7382px",
+        "box": [
+          486,
+          95
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": {
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif",
+        "size": "28px",
+        "lineHeight": "33.04px",
+        "box": [
+          689,
+          33
+        ]
+      },
+      "bodyCopy": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "21px",
+        "lineHeight": "33.6px",
+        "box": [
+          362,
+          235
+        ]
+      },
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "18px",
+          "lineHeight": "28.8px",
+          "box": [
+            721,
+            29
+          ]
+        },
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          741,
+          118
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "The OutingRiverwalkGold Park, 415 Dimmocks Mill Road, HillsboroughFind it in the Atlas →",
+      "footerIcon": {
+        "x": 763.984375,
+        "y": 5543.578125,
+        "width": 30,
+        "height": 30,
+        "bottom": 5573.578125
+      },
+      "categoryWash": "color(srgb 0.885804 0.875451 0.844392)",
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": null,
+      "headingFaces": [
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outing Overview",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Why This Week",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Conditions",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "For Rupert",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Before You Go",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "If Plans Change",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Memory Prompt",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Sources",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "The Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [
+        {
+          "height": 304,
+          "text": 235,
+          "heading": 33
+        },
+        {
+          "height": 237,
+          "text": 168,
+          "heading": 33
+        }
+      ],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/atlas/index.html",
+      "viewport": [
+        844,
+        390
+      ],
+      "overflow": false,
+      "pageField": "rgb(29, 42, 58)",
+      "workspaceFits": false,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          829,
+          1034
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "68px",
+        "lineHeight": "71.4px",
+        "box": [
+          346,
+          71
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            43,
+            120
+          ]
+        },
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          380,
+          83
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "Current PlaceChoose a PlaceShow on Map →",
+      "footerIcon": {
+        "x": 773.6875,
+        "y": 967.578125,
+        "width": 30,
+        "height": 30,
+        "bottom": 997.578125
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": {
+        "client": 156,
+        "scroll": 215,
+        "top": 0,
+        "left": 0,
+        "count": 3,
+        "cardWidths": [
+          68,
+          68,
+          68
+        ],
+        "rowTops": [
+          336,
+          336,
+          560
+        ]
+      },
+      "menuTests": null,
+      "bannerHeight": 121.1875,
+      "dogHeight": 68,
+      "headingFaces": [
+        {
+          "text": "Atlas",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Place Directory",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Orange County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Wake County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Durham County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [
+        {
+          "id": "hillsborough-riverwalk",
+          "links": 2
+        },
+        {
+          "id": "umstead-company-mill",
+          "links": 2
+        },
+        {
+          "id": "eno-cox-mountain",
+          "links": 2
+        }
+      ],
+      "modules": [],
+      "map": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          750,
+          480
+        ]
+      },
+      "geometry": {
+        "banner": {
+          "x": 14,
+          "y": 76,
+          "width": 801,
+          "height": 121.1875,
+          "bottom": 197.1875
+        },
+        "directory": {
+          "x": 39.3125,
+          "y": 217.1875,
+          "width": 750.375,
+          "height": 121.390625,
+          "bottom": 338.578125
+        },
+        "toolbar": {
+          "x": 39.3125,
+          "y": 217.1875,
+          "width": 750.375,
+          "height": 66.390625,
+          "bottom": 283.578125
+        },
+        "map": {
+          "x": 39.3125,
+          "y": 354.578125,
+          "width": 750.375,
+          "height": 480,
+          "bottom": 834.578125
+        },
+        "catalogOpen": false,
+        "rows": []
+      }
+    },
+    {
+      "page": "/travel/index.html",
+      "viewport": [
+        844,
+        390
+      ],
+      "overflow": false,
+      "pageField": "rgb(29, 42, 58)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          829,
+          3233
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "68px",
+        "lineHeight": "71.4px",
+        "box": [
+          346,
+          71
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": {
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif",
+        "size": "32px",
+        "lineHeight": "37.76px",
+        "box": [
+          698,
+          38
+        ]
+      },
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            321,
+            74
+          ]
+        },
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          380,
+          75
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "",
+      "footerIcon": {
+        "x": 773.6875,
+        "y": 3167.453125,
+        "width": 30,
+        "height": 30,
+        "bottom": 3197.453125
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": null,
+      "bannerHeight": 109.390625,
+      "dogHeight": 68,
+      "headingFaces": [
+        {
+          "text": "Travel",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "01 Plan",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "02 Choose a Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "03 Build the Journey",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Overnight Opportunities",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Along the Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "At the Destination",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "04 Itinerary",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Trip Table",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Saved Trips",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/log/index.html",
+      "viewport": [
+        844,
+        390
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          829,
+          822
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "68px",
+        "lineHeight": "71.4px",
+        "box": [
+          346,
+          71
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "28px",
+        "lineHeight": "33.04px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            221,
+            46
+          ]
+        },
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          380,
+          88
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "",
+      "footerIcon": {
+        "x": 773.6875,
+        "y": 756.421875,
+        "width": 30,
+        "height": 30,
+        "bottom": 786.421875
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": null,
+      "bannerHeight": 121,
+      "dogHeight": 88,
+      "headingFaces": [
+        {
+          "text": "Field Log",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outing Details",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outings",
+          "font": "VELENOR, Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/archive/index.html",
+      "viewport": [
+        844,
+        390
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          829,
+          2233
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "68px",
+        "lineHeight": "71.4px",
+        "box": [
+          750,
+          71
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "100px",
+        "lineHeight": "102px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            0,
+            0
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "14px",
+          "lineHeight": "20.3px",
+          "box": [
+            730,
+            20
+          ]
+        }
+      },
+      "images": [],
+      "banner": null,
+      "fontsLoaded": true,
+      "footerIcon": {
+        "x": 773.6875,
+        "y": 2166.53125,
+        "width": 30,
+        "height": 30,
+        "bottom": 2196.53125
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "bannerHeight": 108.390625,
+      "headingFaces": [
+        {
+          "text": "Archive",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Sat 3 – Sun 4 OctoberThis Week",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Cox Mountain and the Fews Ford Crossing",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Company Mill and the Old Dam on Crabtree Creek",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": "750.375px",
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/atlas/index.html",
+      "viewport": [
+        1366,
+        768
+      ],
+      "overflow": false,
+      "pageField": "rgb(29, 42, 58)",
+      "workspaceFits": false,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1351,
+          1323
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "81.96px",
+        "lineHeight": "86.058px",
+        "box": [
+          676,
+          86
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "136.6px",
+        "lineHeight": "139.332px",
+        "box": [
+          1269,
+          165
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            286,
+            48
+          ]
+        },
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          541,
+          104
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "Current PlaceChoose a PlaceShow on Map →",
+      "footerIcon": {
+        "x": 1280.03125,
+        "y": 1256.890625,
+        "width": 30,
+        "height": 30,
+        "bottom": 1286.890625
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": {
+        "client": 1241,
+        "scroll": 1241,
+        "top": 0,
+        "left": 0,
+        "count": 3,
+        "cardWidths": [
+          403,
+          403,
+          403
+        ],
+        "rowTops": [
+          490,
+          490,
+          490
+        ]
+      },
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "bannerHeight": 142,
+      "dogHeight": 100,
+      "headingFaces": [
+        {
+          "text": "Atlas",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Place Directory",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Orange County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Wake County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Durham County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [
+        {
+          "id": "hillsborough-riverwalk",
+          "links": 2
+        },
+        {
+          "id": "umstead-company-mill",
+          "links": 2
+        },
+        {
+          "id": "eno-cox-mountain",
+          "links": 2
+        }
+      ],
+      "modules": [],
+      "map": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1241,
+          515
+        ]
+      },
+      "geometry": {
+        "banner": {
+          "x": 14,
+          "y": 278.5,
+          "width": 1323,
+          "height": 142,
+          "bottom": 420.5
+        },
+        "directory": {
+          "x": 54.96875,
+          "y": 436.5,
+          "width": 1241.0625,
+          "height": 152.390625,
+          "bottom": 588.890625
+        },
+        "toolbar": {
+          "x": 54.96875,
+          "y": 436.5,
+          "width": 1241.0625,
+          "height": 53.390625,
+          "bottom": 489.890625
+        },
+        "map": {
+          "x": 54.96875,
+          "y": 604.890625,
+          "width": 1241.0625,
+          "height": 515,
+          "bottom": 1119.890625
+        },
+        "catalogOpen": true,
+        "rows": [
+          {
+            "id": "hillsborough-riverwalk",
+            "x": 54.96875,
+            "y": 489.890625,
+            "width": 403.015625,
+            "height": 89
+          },
+          {
+            "id": "umstead-company-mill",
+            "x": 473.984375,
+            "y": 489.890625,
+            "width": 403.015625,
+            "height": 89
+          },
+          {
+            "id": "eno-cox-mountain",
+            "x": 893,
+            "y": 489.890625,
+            "width": 403.015625,
+            "height": 89
+          }
+        ]
+      }
+    },
+    {
+      "page": "/index.html",
+      "viewport": [
+        1366,
+        768
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1351,
+          1839
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "61.47px",
+        "lineHeight": "70.6905px",
+        "box": [
+          1241,
+          71
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "136.6px",
+        "lineHeight": "139.332px",
+        "box": [
+          1269,
+          165
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            180,
+            24
+          ]
+        },
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [
+        {
+          "width": 601,
+          "height": 400,
+          "loaded": true
+        },
+        {
+          "width": 601,
+          "height": 400,
+          "loaded": false
+        }
+      ],
+      "banner": null,
+      "fontsLoaded": true,
+      "footerIcon": {
+        "x": 1280.03125,
+        "y": 1773.140625,
+        "width": 30,
+        "height": 30,
+        "bottom": 1803.140625
+      },
+      "categoryWash": null,
+      "weatherDays": [
+        "Saturdaymostly cloudy · high near 75°F · 50% shower chance mainly after 8 a.m",
+        "Sundayhigh near 68°F · 70% showers with thunderstorms possible after 2 p.m",
+        "Saturdaypartly sunny · high near 78 · 30% chance of showers",
+        "Sundaymostly cloudy · high near 75 · 40% showers"
+      ],
+      "weekBottomPadding": "0px",
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "headingFaces": [
+        {
+          "text": "Sat 3 – Sun 4 October",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Company Mill and the Old Dam on Crabtree Creek",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/travel/index.html",
+      "viewport": [
+        1366,
+        768
+      ],
+      "overflow": false,
+      "pageField": "rgb(29, 42, 58)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1351,
+          3018
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "81.96px",
+        "lineHeight": "86.058px",
+        "box": [
+          676,
+          86
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "136.6px",
+        "lineHeight": "139.332px",
+        "box": [
+          1269,
+          165
+        ]
+      },
+      "section": {
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif",
+        "size": "32px",
+        "lineHeight": "37.76px",
+        "box": [
+          1189,
+          38
+        ]
+      },
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            567,
+            74
+          ]
+        },
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          541,
+          104
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "",
+      "footerIcon": {
+        "x": 1280.03125,
+        "y": 2952.34375,
+        "width": 30,
+        "height": 30,
+        "bottom": 2982.34375
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "bannerHeight": 142,
+      "dogHeight": 100,
+      "headingFaces": [
+        {
+          "text": "Travel",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "01 Plan",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "02 Choose a Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "03 Build the Journey",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Overnight Opportunities",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Along the Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "At the Destination",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "04 Itinerary",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Trip Table",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Saved Trips",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/log/index.html",
+      "viewport": [
+        1366,
+        768
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1351,
+          1053
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "81.96px",
+        "lineHeight": "86.058px",
+        "box": [
+          676,
+          86
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "136.6px",
+        "lineHeight": "139.332px",
+        "box": [
+          1269,
+          165
+        ]
+      },
+      "section": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "34.15px",
+        "lineHeight": "40.297px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            221,
+            46
+          ]
+        },
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          541,
+          105
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "",
+      "footerIcon": {
+        "x": 1280.03125,
+        "y": 987.1875,
+        "width": 30,
+        "height": 30,
+        "bottom": 1017.1875
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "bannerHeight": 142,
+      "dogHeight": 100,
+      "headingFaces": [
+        {
+          "text": "Field Log",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outing Details",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outings",
+          "font": "VELENOR, Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/archive/index.html",
+      "viewport": [
+        1366,
+        768
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1351,
+          1119
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "81.96px",
+        "lineHeight": "86.058px",
+        "box": [
+          1241,
+          86
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "136.6px",
+        "lineHeight": "139.332px",
+        "box": [
+          1269,
+          165
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "14px",
+          "lineHeight": "20.3px",
+          "box": [
+            421,
+            20
+          ]
+        }
+      },
+      "images": [],
+      "banner": null,
+      "fontsLoaded": true,
+      "footerIcon": {
+        "x": 1280.03125,
+        "y": 1052.625,
+        "width": 30,
+        "height": 30,
+        "bottom": 1082.625
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "bannerHeight": 127.046875,
+      "headingFaces": [
+        {
+          "text": "Archive",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Sat 3 – Sun 4 OctoberThis Week",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Cox Mountain and the Fews Ford Crossing",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Company Mill and the Old Dam on Crabtree Creek",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": "302.266px 906.797px",
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/edition/2026-W40-r1-tue/index.html",
+      "viewport": [
+        1366,
+        768
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1351,
+          3994
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "72.398px",
+        "lineHeight": "78.1898px",
+        "box": [
+          796,
+          156
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "136.6px",
+        "lineHeight": "139.332px",
+        "box": [
+          1269,
+          165
+        ]
+      },
+      "section": {
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif",
+        "size": "34.15px",
+        "lineHeight": "40.297px",
+        "box": [
+          371,
+          40
+        ]
+      },
+      "bodyCopy": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "21px",
+        "lineHeight": "33.6px",
+        "box": [
+          382,
+          202
+        ]
+      },
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "18px",
+          "lineHeight": "28.8px",
+          "box": [
+            760,
+            29
+          ]
+        },
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          375,
+          361
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "The OutingRiverwalkGold Park, 415 Dimmocks Mill Road, HillsboroughFind it in the Atlas →",
+      "footerIcon": {
+        "x": 1280.03125,
+        "y": 3928.109375,
+        "width": 30,
+        "height": 30,
+        "bottom": 3958.109375
+      },
+      "categoryWash": "color(srgb 0.885804 0.875451 0.844392)",
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "headingFaces": [
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outing Overview",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Why This Week",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Conditions",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "For Rupert",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Before You Go",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "If Plans Change",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Memory Prompt",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Sources",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "The Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [
+        {
+          "height": 278,
+          "text": 202,
+          "heading": 40
+        },
+        {
+          "height": 244,
+          "text": 168,
+          "heading": 40
+        }
+      ],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/index.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1425,
+          1879
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "64px",
+        "lineHeight": "73.6px",
+        "box": [
+          1311,
+          74
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "144px",
+        "lineHeight": "146.88px",
+        "box": [
+          1339,
+          173
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            180,
+            24
+          ]
+        },
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [
+        {
+          "width": 635,
+          "height": 424,
+          "loaded": true
+        },
+        {
+          "width": 635,
+          "height": 424,
+          "loaded": false
+        }
+      ],
+      "banner": null,
+      "fontsLoaded": true,
+      "footerIcon": {
+        "x": 1351.8125,
+        "y": 1812.546875,
+        "width": 30,
+        "height": 30,
+        "bottom": 1842.546875
+      },
+      "categoryWash": null,
+      "weatherDays": [
+        "Saturdaymostly cloudy · high near 75°F · 50% shower chance mainly after 8 a.m",
+        "Sundayhigh near 68°F · 70% showers with thunderstorms possible after 2 p.m",
+        "Saturdaypartly sunny · high near 78 · 30% chance of showers",
+        "Sundaymostly cloudy · high near 75 · 40% showers"
+      ],
+      "weekBottomPadding": "0px",
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "headingFaces": [
+        {
+          "text": "Sat 3 – Sun 4 October",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Company Mill and the Old Dam on Crabtree Creek",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/atlas/index.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": false,
+      "pageField": "rgb(29, 42, 58)",
+      "workspaceFits": false,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1425,
+          1462
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "86.4px",
+        "lineHeight": "90.72px",
+        "box": [
+          715,
+          91
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "144px",
+        "lineHeight": "146.88px",
+        "box": [
+          1339,
+          173
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            286,
+            48
+          ]
+        },
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          572,
+          104
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "Current PlaceChoose a PlaceShow on Map →",
+      "footerIcon": {
+        "x": 1351.8125,
+        "y": 1396.453125,
+        "width": 30,
+        "height": 30,
+        "bottom": 1426.453125
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": {
+        "client": 1311,
+        "scroll": 1311,
+        "top": 0,
+        "left": 0,
+        "count": 3,
+        "cardWidths": [
+          426,
+          426,
+          426
+        ],
+        "rowTops": [
+          497,
+          497,
+          497
+        ]
+      },
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "bannerHeight": 142,
+      "dogHeight": 100,
+      "headingFaces": [
+        {
+          "text": "Atlas",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Place Directory",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Orange County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Wake County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Durham County",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [
+        {
+          "id": "hillsborough-riverwalk",
+          "links": 2
+        },
+        {
+          "id": "umstead-company-mill",
+          "links": 2
+        },
+        {
+          "id": "eno-cox-mountain",
+          "links": 2
+        }
+      ],
+      "modules": [],
+      "map": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1311,
+          647
+        ]
+      },
+      "geometry": {
+        "banner": {
+          "x": 14,
+          "y": 286.0625,
+          "width": 1397,
+          "height": 142,
+          "bottom": 428.0625
+        },
+        "directory": {
+          "x": 57.1875,
+          "y": 444.0625,
+          "width": 1310.625,
+          "height": 152.390625,
+          "bottom": 596.453125
+        },
+        "toolbar": {
+          "x": 57.1875,
+          "y": 444.0625,
+          "width": 1310.625,
+          "height": 53.390625,
+          "bottom": 497.453125
+        },
+        "map": {
+          "x": 57.1875,
+          "y": 612.453125,
+          "width": 1310.625,
+          "height": 647,
+          "bottom": 1259.453125
+        },
+        "catalogOpen": true,
+        "rows": [
+          {
+            "id": "hillsborough-riverwalk",
+            "x": 57.1875,
+            "y": 497.453125,
+            "width": 426.203125,
+            "height": 89
+          },
+          {
+            "id": "umstead-company-mill",
+            "x": 499.390625,
+            "y": 497.453125,
+            "width": 426.203125,
+            "height": 89
+          },
+          {
+            "id": "eno-cox-mountain",
+            "x": 941.59375,
+            "y": 497.453125,
+            "width": 426.203125,
+            "height": 89
+          }
+        ]
+      }
+    },
+    {
+      "page": "/travel/index.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": false,
+      "pageField": "rgb(29, 42, 58)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1425,
+          3108
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "86.4px",
+        "lineHeight": "90.72px",
+        "box": [
+          715,
+          91
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "144px",
+        "lineHeight": "146.88px",
+        "box": [
+          1339,
+          173
+        ]
+      },
+      "section": {
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif",
+        "size": "32px",
+        "lineHeight": "37.76px",
+        "box": [
+          1259,
+          38
+        ]
+      },
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            601,
+            74
+          ]
+        },
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          572,
+          104
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "",
+      "footerIcon": {
+        "x": 1351.8125,
+        "y": 3041.75,
+        "width": 30,
+        "height": 30,
+        "bottom": 3071.75
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "bannerHeight": 142,
+      "dogHeight": 100,
+      "headingFaces": [
+        {
+          "text": "Travel",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "01 Plan",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "02 Choose a Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "03 Build the Journey",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Overnight Opportunities",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Along the Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "At the Destination",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "04 Itinerary",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Trip Table",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Saved Trips",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/log/index.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1425,
+          1063
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "86.4px",
+        "lineHeight": "90.72px",
+        "box": [
+          715,
+          91
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "144px",
+        "lineHeight": "146.88px",
+        "box": [
+          1339,
+          173
+        ]
+      },
+      "section": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "36px",
+        "lineHeight": "42.48px",
+        "box": [
+          0,
+          0
+        ]
+      },
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "24px",
+          "box": [
+            221,
+            46
+          ]
+        },
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          572,
+          105
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "",
+      "footerIcon": {
+        "x": 1351.8125,
+        "y": 996.921875,
+        "width": 30,
+        "height": 30,
+        "bottom": 1026.921875
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "bannerHeight": 142,
+      "dogHeight": 100,
+      "headingFaces": [
+        {
+          "text": "Field Log",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outing Details",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outings",
+          "font": "VELENOR, Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/archive/index.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1425,
+          1113
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "86.4px",
+        "lineHeight": "90.72px",
+        "box": [
+          1311,
+          91
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "144px",
+        "lineHeight": "146.88px",
+        "box": [
+          1339,
+          173
+        ]
+      },
+      "section": null,
+      "bodyCopy": null,
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": null,
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "14px",
+          "lineHeight": "20.3px",
+          "box": [
+            447,
+            20
+          ]
+        }
+      },
+      "images": [],
+      "banner": null,
+      "fontsLoaded": true,
+      "footerIcon": {
+        "x": 1351.8125,
+        "y": 1047.171875,
+        "width": 30,
+        "height": 30,
+        "bottom": 1077.171875
+      },
+      "categoryWash": null,
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "bannerHeight": 131.71875,
+      "headingFaces": [
+        {
+          "text": "Archive",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Sat 3 – Sun 4 OctoberThis Week",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Cox Mountain and the Fews Ford Crossing",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Company Mill and the Old Dam on Crabtree Creek",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": "319.656px 958.969px",
+      "directory": [],
+      "modules": [],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    },
+    {
+      "page": "/edition/2026-W40-r1-tue/index.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": false,
+      "pageField": "rgb(243, 239, 229)",
+      "workspaceFits": null,
+      "body": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "18px",
+        "lineHeight": "28.8px",
+        "box": [
+          1425,
+          3912
+        ]
+      },
+      "title": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "76.32px",
+        "lineHeight": "82.4256px",
+        "box": [
+          840,
+          165
+        ]
+      },
+      "masthead": {
+        "font": "VELENOR, Georgia, serif",
+        "size": "144px",
+        "lineHeight": "146.88px",
+        "box": [
+          1339,
+          173
+        ]
+      },
+      "section": {
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif",
+        "size": "36px",
+        "lineHeight": "42.48px",
+        "box": [
+          395,
+          42
+        ]
+      },
+      "bodyCopy": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "21px",
+        "lineHeight": "33.6px",
+        "box": [
+          404,
+          202
+        ]
+      },
+      "typography": {
+        ".primary .nav-link": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "16px",
+          "lineHeight": "normal",
+          "box": [
+            115,
+            53
+          ]
+        },
+        ".p-pub": null,
+        ".row dt": null,
+        ".ed-sources li": {
+          "font": "\"Latin Modern Roman\", Georgia, serif",
+          "size": "18px",
+          "lineHeight": "28.8px",
+          "box": [
+            805,
+            29
+          ]
+        },
+        ".reg-meta": null,
+        ".travel label": null,
+        ".field-log button": null,
+        ".archive-card .p-day": null
+      },
+      "images": [],
+      "banner": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "25.6px",
+        "box": [
+          397,
+          375
+        ]
+      },
+      "fontsLoaded": true,
+      "headerCopy": "The OutingRiverwalkGold Park, 415 Dimmocks Mill Road, HillsboroughFind it in the Atlas →",
+      "footerIcon": {
+        "x": 1351.8125,
+        "y": 3845.78125,
+        "width": 30,
+        "height": 30,
+        "bottom": 3875.78125
+      },
+      "categoryWash": "color(srgb 0.885804 0.875451 0.844392)",
+      "weatherDays": [],
+      "weekBottomPadding": null,
+      "directoryScroll": null,
+      "menuTests": {
+        "mouseLeave": true,
+        "touchRetained": true,
+        "keyboardRetained": true,
+        "escapeClosed": true,
+        "focusReturned": true
+      },
+      "headingFaces": [
+        {
+          "text": "Hillsborough Riverwalk and Gold Park",
+          "font": "VELENOR, Georgia, serif"
+        },
+        {
+          "text": "Outing Overview",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Why This Week",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Conditions",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "For Rupert",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Before You Go",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "If Plans Change",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Memory Prompt",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "Sources",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        },
+        {
+          "text": "The Route",
+          "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+        }
+      ],
+      "archiveColumns": null,
+      "directory": [],
+      "modules": [
+        {
+          "height": 280,
+          "text": 202,
+          "heading": 42
+        },
+        {
+          "height": 246,
+          "text": 168,
+          "heading": 42
+        }
+      ],
+      "map": null,
+      "geometry": {
+        "banner": null,
+        "directory": null,
+        "toolbar": null,
+        "map": null,
+        "rows": []
+      }
+    }
+  ],
+  "directoryFixture": {
+    "page": "/atlas/index.html",
+    "viewport": [
+      1366,
+      768
+    ],
+    "overflow": false,
+    "pageField": "rgb(29, 42, 58)",
+    "workspaceFits": true,
+    "body": {
+      "font": "\"Latin Modern Roman\", Georgia, serif",
+      "size": "18px",
+      "lineHeight": "28.8px",
+      "box": [
+        1351,
+        1323
+      ]
+    },
+    "title": {
+      "font": "VELENOR, Georgia, serif",
+      "size": "81.96px",
+      "lineHeight": "86.058px",
+      "box": [
+        676,
+        86
+      ]
+    },
+    "masthead": {
+      "font": "VELENOR, Georgia, serif",
+      "size": "136.6px",
+      "lineHeight": "139.332px",
+      "box": [
+        1269,
+        165
+      ]
+    },
+    "section": null,
+    "bodyCopy": null,
+    "typography": {
+      ".primary .nav-link": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "normal",
+        "box": [
+          115,
+          53
+        ]
+      },
+      ".p-pub": null,
+      ".row dt": null,
+      ".ed-sources li": null,
+      ".reg-meta": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "24px",
+        "box": [
+          286,
+          48
+        ]
+      },
+      ".travel label": null,
+      ".field-log button": null,
+      ".archive-card .p-day": null
+    },
+    "images": [],
+    "banner": {
+      "font": "\"Latin Modern Roman\", Georgia, serif",
+      "size": "16px",
+      "lineHeight": "25.6px",
+      "box": [
+        541,
+        104
+      ]
+    },
+    "fontsLoaded": true,
+    "headerCopy": "Current PlaceChoose a PlaceShow on Map →",
+    "footerIcon": {
+      "x": 1280.03125,
+      "y": 887.890625,
+      "width": 30,
+      "height": 30,
+      "bottom": 917.890625
+    },
+    "categoryWash": null,
+    "weatherDays": [],
+    "weekBottomPadding": null,
+    "directoryScroll": {
+      "client": 1241,
+      "scroll": 5904,
+      "top": 0,
+      "left": 4663,
+      "count": 20,
+      "cardWidths": [
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280
+      ],
+      "rowTops": [
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121
+      ]
+    },
+    "menuTests": null,
+    "bannerHeight": 142,
+    "dogHeight": 100,
+    "headingFaces": [
+      {
+        "text": "Atlas",
+        "font": "VELENOR, Georgia, serif"
+      },
+      {
+        "text": "Place Directory",
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+      },
+      {
+        "text": "QA fixture",
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+      }
+    ],
+    "archiveColumns": null,
+    "directory": [
+      {
+        "id": "qa-history-0",
+        "links": 2
+      },
+      {
+        "id": "qa-history-1",
+        "links": 2
+      },
+      {
+        "id": "qa-history-2",
+        "links": 2
+      },
+      {
+        "id": "qa-history-3",
+        "links": 2
+      },
+      {
+        "id": "qa-history-4",
+        "links": 2
+      },
+      {
+        "id": "qa-history-5",
+        "links": 2
+      },
+      {
+        "id": "qa-history-6",
+        "links": 2
+      },
+      {
+        "id": "qa-history-7",
+        "links": 2
+      },
+      {
+        "id": "qa-history-8",
+        "links": 2
+      },
+      {
+        "id": "qa-history-9",
+        "links": 2
+      },
+      {
+        "id": "qa-history-10",
+        "links": 2
+      },
+      {
+        "id": "qa-history-11",
+        "links": 2
+      },
+      {
+        "id": "qa-history-12",
+        "links": 2
+      },
+      {
+        "id": "qa-history-13",
+        "links": 2
+      },
+      {
+        "id": "qa-history-14",
+        "links": 2
+      },
+      {
+        "id": "qa-history-15",
+        "links": 2
+      },
+      {
+        "id": "qa-history-16",
+        "links": 2
+      },
+      {
+        "id": "qa-history-17",
+        "links": 2
+      },
+      {
+        "id": "qa-history-18",
+        "links": 2
+      },
+      {
+        "id": "qa-history-19",
+        "links": 2
+      }
+    ],
+    "modules": [],
+    "map": {
+      "font": "\"Latin Modern Roman\", Georgia, serif",
+      "size": "18px",
+      "lineHeight": "28.8px",
+      "box": [
+        1241,
+        477
+      ]
+    },
+    "geometry": {
+      "banner": {
+        "x": 14,
+        "y": -90.5,
+        "width": 1323,
+        "height": 142,
+        "bottom": 51.5
+      },
+      "directory": {
+        "x": 54.96875,
+        "y": 67.5,
+        "width": 1241.0625,
+        "height": 190.390625,
+        "bottom": 257.890625
+      },
+      "toolbar": {
+        "x": 54.96875,
+        "y": 67.5,
+        "width": 1241.0625,
+        "height": 53.390625,
+        "bottom": 120.890625
+      },
+      "map": {
+        "x": 54.96875,
+        "y": 273.890625,
+        "width": 1241.0625,
+        "height": 477,
+        "bottom": 750.890625
+      },
+      "catalogOpen": true,
+      "rows": [
+        {
+          "id": "qa-history-0",
+          "x": -4608.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-1",
+          "x": -4312.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-2",
+          "x": -4016.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-3",
+          "x": -3720.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-4",
+          "x": -3424.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-5",
+          "x": -3128.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-6",
+          "x": -2832.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-7",
+          "x": -2536.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-8",
+          "x": -2240.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-9",
+          "x": -1944.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-10",
+          "x": -1648.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-11",
+          "x": -1352.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-12",
+          "x": -1056.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-13",
+          "x": -760.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-14",
+          "x": -464.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-15",
+          "x": -168.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-16",
+          "x": 127.96875,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-17",
+          "x": 423.96875,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-18",
+          "x": 719.96875,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-19",
+          "x": 1015.96875,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        }
+      ]
+    }
+  },
+  "menuFixture": {
+    "page": "/atlas/index.html",
+    "viewport": [
+      1366,
+      768
+    ],
+    "overflow": false,
+    "pageField": "rgb(29, 42, 58)",
+    "workspaceFits": true,
+    "body": {
+      "font": "\"Latin Modern Roman\", Georgia, serif",
+      "size": "18px",
+      "lineHeight": "28.8px",
+      "box": [
+        1351,
+        1323
+      ]
+    },
+    "title": {
+      "font": "VELENOR, Georgia, serif",
+      "size": "81.96px",
+      "lineHeight": "86.058px",
+      "box": [
+        676,
+        86
+      ]
+    },
+    "masthead": {
+      "font": "VELENOR, Georgia, serif",
+      "size": "136.6px",
+      "lineHeight": "139.332px",
+      "box": [
+        1269,
+        165
+      ]
+    },
+    "section": null,
+    "bodyCopy": null,
+    "typography": {
+      ".primary .nav-link": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "normal",
+        "box": [
+          115,
+          53
+        ]
+      },
+      ".p-pub": null,
+      ".row dt": null,
+      ".ed-sources li": null,
+      ".reg-meta": {
+        "font": "\"Latin Modern Roman\", Georgia, serif",
+        "size": "16px",
+        "lineHeight": "24px",
+        "box": [
+          286,
+          48
+        ]
+      },
+      ".travel label": null,
+      ".field-log button": null,
+      ".archive-card .p-day": null
+    },
+    "images": [],
+    "banner": {
+      "font": "\"Latin Modern Roman\", Georgia, serif",
+      "size": "16px",
+      "lineHeight": "25.6px",
+      "box": [
+        541,
+        104
+      ]
+    },
+    "fontsLoaded": true,
+    "headerCopy": "Current PlaceChoose a PlaceShow on Map →",
+    "footerIcon": {
+      "x": 1280.03125,
+      "y": 887.890625,
+      "width": 30,
+      "height": 30,
+      "bottom": 917.890625
+    },
+    "categoryWash": null,
+    "weatherDays": [],
+    "weekBottomPadding": null,
+    "directoryScroll": {
+      "client": 1241,
+      "scroll": 5904,
+      "top": 0,
+      "left": 4663,
+      "count": 20,
+      "cardWidths": [
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280,
+        280
+      ],
+      "rowTops": [
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121,
+        121
+      ]
+    },
+    "menuTests": {
+      "mouseLeave": true,
+      "touchRetained": true,
+      "keyboardRetained": true,
+      "escapeClosed": true,
+      "focusReturned": true
+    },
+    "bannerHeight": 142,
+    "dogHeight": 100,
+    "headingFaces": [
+      {
+        "text": "Atlas",
+        "font": "VELENOR, Georgia, serif"
+      },
+      {
+        "text": "Place Directory",
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+      },
+      {
+        "text": "QA fixture",
+        "font": "\"Latin Modern Roman Dunhill\", Georgia, serif"
+      }
+    ],
+    "archiveColumns": null,
+    "directory": [
+      {
+        "id": "qa-history-0",
+        "links": 2
+      },
+      {
+        "id": "qa-history-1",
+        "links": 2
+      },
+      {
+        "id": "qa-history-2",
+        "links": 2
+      },
+      {
+        "id": "qa-history-3",
+        "links": 2
+      },
+      {
+        "id": "qa-history-4",
+        "links": 2
+      },
+      {
+        "id": "qa-history-5",
+        "links": 2
+      },
+      {
+        "id": "qa-history-6",
+        "links": 2
+      },
+      {
+        "id": "qa-history-7",
+        "links": 2
+      },
+      {
+        "id": "qa-history-8",
+        "links": 2
+      },
+      {
+        "id": "qa-history-9",
+        "links": 2
+      },
+      {
+        "id": "qa-history-10",
+        "links": 2
+      },
+      {
+        "id": "qa-history-11",
+        "links": 2
+      },
+      {
+        "id": "qa-history-12",
+        "links": 2
+      },
+      {
+        "id": "qa-history-13",
+        "links": 2
+      },
+      {
+        "id": "qa-history-14",
+        "links": 2
+      },
+      {
+        "id": "qa-history-15",
+        "links": 2
+      },
+      {
+        "id": "qa-history-16",
+        "links": 2
+      },
+      {
+        "id": "qa-history-17",
+        "links": 2
+      },
+      {
+        "id": "qa-history-18",
+        "links": 2
+      },
+      {
+        "id": "qa-history-19",
+        "links": 2
+      }
+    ],
+    "modules": [],
+    "map": {
+      "font": "\"Latin Modern Roman\", Georgia, serif",
+      "size": "18px",
+      "lineHeight": "28.8px",
+      "box": [
+        1241,
+        477
+      ]
+    },
+    "geometry": {
+      "banner": {
+        "x": 14,
+        "y": -90.5,
+        "width": 1323,
+        "height": 142,
+        "bottom": 51.5
+      },
+      "directory": {
+        "x": 54.96875,
+        "y": 67.5,
+        "width": 1241.0625,
+        "height": 190.390625,
+        "bottom": 257.890625
+      },
+      "toolbar": {
+        "x": 54.96875,
+        "y": 67.5,
+        "width": 1241.0625,
+        "height": 53.390625,
+        "bottom": 120.890625
+      },
+      "map": {
+        "x": 54.96875,
+        "y": 273.890625,
+        "width": 1241.0625,
+        "height": 477,
+        "bottom": 750.890625
+      },
+      "catalogOpen": true,
+      "rows": [
+        {
+          "id": "qa-history-0",
+          "x": -4608.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-1",
+          "x": -4312.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-2",
+          "x": -4016.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-3",
+          "x": -3720.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-4",
+          "x": -3424.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-5",
+          "x": -3128.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-6",
+          "x": -2832.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-7",
+          "x": -2536.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-8",
+          "x": -2240.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-9",
+          "x": -1944.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-10",
+          "x": -1648.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-11",
+          "x": -1352.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-12",
+          "x": -1056.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-13",
+          "x": -760.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-14",
+          "x": -464.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-15",
+          "x": -168.03125,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-16",
+          "x": 127.96875,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-17",
+          "x": 423.96875,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-18",
+          "x": 719.96875,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        },
+        {
+          "id": "qa-history-19",
+          "x": 1015.96875,
+          "y": 120.890625,
+          "width": 280,
+          "height": 117
+        }
+      ]
+    }
+  },
+  "trips": [
+    {
+      "name": "QA — short NC trip",
+      "summary": "14 mapped mi · 32 min driving · 1 selected stops. Planned elapsed time 1 h 47 min; finish Day 1 · 10:47. Destination activities follow arrival; local transfers are not included.",
+      "legs": "Chapel Hill, NC → Carrboro, NC4 min · Arrive Day 1 · 09:04Carrboro, NC · 45 minCarrboro, NC → Durham, NC28 min · Arrive Day 1 · 10:17",
+      "fit": {
+        "families": 1,
+        "legs": 2,
+        "stops": 1,
+        "bounds": [
+          [
+            -79.085248,
+            35.899956
+          ],
+          [
+            -78.891549,
+            36.006679
+          ]
+        ],
+        "coordinates": 864,
+        "completeGeometryCovered": true,
+        "mapAvailable": false,
+        "camera": null,
+        "minimumZoom": null
+      }
+    },
+    {
+      "name": "QA — regional Asheville",
+      "summary": "222 mapped mi · 4 h 30 min driving · 1 selected stops. Planned elapsed time 5 h 15 min; finish Day 1 · 14:15. ",
+      "legs": "Chapel Hill, NC → Mocksville, NC2 h 5 min · Arrive Day 1 · 11:05Mocksville, NC · 45 minMocksville, NC → Asheville, NC2 h 25 min · Arrive Day 1 · 14:15",
+      "fit": {
+        "families": 1,
+        "legs": 2,
+        "stops": 1,
+        "bounds": [
+          [
+            -82.5608407,
+            35.557021
+          ],
+          [
+            -79.043841,
+            36.089423
+          ]
+        ],
+        "coordinates": 4925,
+        "completeGeometryCovered": true,
+        "mapAvailable": false,
+        "camera": null,
+        "minimumZoom": null
+      }
+    },
+    {
+      "name": "QA — continental Seattle",
+      "summary": "2,914 mapped mi · 51 h 57 min driving · 1 selected stops · 1 overnight stays. Planned elapsed time 66 h 17 min; finish 2026-10-06 · 03:17. ",
+      "legs": "Chapel Hill, NC → Nashville, TN9 h 40 min · Arrive 2026-10-03 · 18:40Stay overnight · Depart 2026-10-04 · 09:00Nashville, TN → Seattle, WA42 h 17 min · Arrive 2026-10-06 · 03:17",
+      "fit": {
+        "families": 2,
+        "legs": 2,
+        "stops": 1,
+        "bounds": [
+          [
+            -122.340924,
+            35.850296
+          ],
+          [
+            -79.043841,
+            47.724312
+          ]
+        ],
+        "coordinates": 11983,
+        "completeGeometryCovered": true,
+        "mapAvailable": false,
+        "camera": null,
+        "minimumZoom": null
+      }
+    }
+  ],
+  "limitations": [
+    "Cloud Chrome has no WebGL; geometric bounds and routing were checked, but rendered map camera fit cannot be certified.",
+    "No physical or installed/standalone iPhone was available.",
+    "Overpass discovery was intermittently unavailable; failed queries show retry feedback and provider cooldown."
+  ]
+}

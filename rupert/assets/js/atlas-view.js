@@ -81,7 +81,7 @@ const frameButtons = [...document.querySelectorAll('[data-frame]')];
 function controlsReady(ready) {
   frameButtons.forEach(b => { b.disabled = !ready || !frameFeatures(data.features, data.regions, b.dataset.frame).length; });
   document.getElementById('relief').disabled = !ready;
-  document.getElementById('recenter').disabled = !ready;
+  document.getElementById('recenter').disabled = !ready || !locationControls.hasHome();
   if(!ready) frameStatus.textContent='Camera controls become available when the map loads. Published history remains available below.';
 }
 controlsReady(false);

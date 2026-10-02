@@ -99,7 +99,7 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
     container: el, style, bounds, fitBoundsOptions: { padding: 48 },
     // On touch screens the map sits inside a scrolling page: one finger scrolls the page, two move the map.
     attributionControl: false, cooperativeGestures: touch, dragRotate: false, pitchWithRotate: false,
-    maxZoom: 17, minZoom: 5,
+    maxZoom: 17, minZoom: travel ? 2 : 5,
   });
   map.touchZoomRotate.disableRotation();
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');

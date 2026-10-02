@@ -194,7 +194,7 @@ function manifestFrom(editions) {
 function page({ title, description, depth, active, body, site, weekLabel, pageClass, scripts = true, extra = [] }) {
   const base = '../'.repeat(depth);
   return `<!doctype html>
-<html lang="en-US">
+<html lang="en-US" style="background:#1D2A3A">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -202,6 +202,12 @@ function page({ title, description, depth, active, body, site, weekLabel, pageCl
 <meta name="description" content="${esc(description)}">
 ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta name="color-scheme" content="light">
 <meta name="theme-color" content="#1D2A3A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="The Atlas">
+<link rel="manifest" href="${base}manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="${base}assets/img/icons/apple-touch-icon.png">
+<link rel="preload" href="${base}assets/fonts/lmromandunhill-regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="${base}assets/fonts/lmroman-regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="${base}assets/fonts/velenor-regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="icon" type="image/svg+xml" href="${base}assets/img/rupert-face.svg">
@@ -288,7 +294,7 @@ async function build({ writeFiles }) {
     for (const k of ['travel', 'log']) {
       await w(`${k}/index.html`, page({
         title: `${k === 'log' ? 'Field Log' : 'Travel'} · The Rupert Atlas`, description: k === 'travel' ? 'Plan trips with mapped routes, ordered legs, stops and browser-local backups.' : 'Record completed and unplanned outings, photos and notes in this browser.',
-        depth: 1, active: k, site: data.site, weekLabel, extra: k === 'travel' ? ['assets/js/travel-view.js'] : [], body: k === 'travel' ? renderTravel({ base: '../', places: data.places }) : renderComing(k, { base: '../' }),
+        depth: 1, active: k, site: data.site, weekLabel, pageClass:k==='travel'?'page-travel':'', extra: k === 'travel' ? ['assets/js/travel-view.js'] : [], body: k === 'travel' ? renderTravel({ ...ctx0, base: '../' }) : renderComing(k, { base: '../' }),
       }));
     }
     console.log(changed.length ? `wrote:\n  ${changed.join('\n  ')}` : 'no changes');
@@ -333,17 +339,20 @@ async function audit({ history }) {
   for (const f of files) {
     const buf = await readFile(join(ROOT, f)); bytes += buf.length;
     if (/\.(jpe?g)$/i.test(f)) { const m = jpegMetadata(buf); if (m.length) bad(f, `image metadata: ${m.join(', ')}`); continue; }
-    if(f==='assets/img/travel-labrador-engraved.png') {
+    const iconSizes={'apple-touch-icon.png':180,'icon-192.png':192,'icon-512.png':512,'maskable-192.png':192,'maskable-512.png':512};
+    const iconSize=f.startsWith('assets/img/icons/')&&iconSizes[f.split('/').at(-1)];
+    if(f==='assets/img/travel-labrador-engraved.png' || iconSize) {
       // Approved transparent illustration: pixels-only PNG, no text, EXIF or profile chunks.
       let offset=8,ended=false;
       if(!buf.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))bad(f,'Invalid PNG signature');
       while(offset+12<=buf.length){const length=buf.readUInt32BE(offset),type=buf.toString('ascii',offset+4,offset+8);
         if(!['IHDR','IDAT','IEND'].includes(type))bad(f,'Unexpected PNG chunk: '+type);
+        if(type==='IHDR' && iconSize && (buf.readUInt32BE(offset+8)!==iconSize || buf.readUInt32BE(offset+12)!==iconSize))bad(f,'Incorrect PWA icon dimensions');
         offset+=length+12;if(type==='IEND'){ended=true;break;}}
       if(!ended||offset!==buf.length)bad(f,'Incomplete PNG or trailing data');continue;
     }
     if (/\.(png|gif|webp|heic|tiff?)$/i.test(f)) { bad(f, 'raster image outside the JPEG pipeline (metadata not checked)'); continue; }
-    if (!/\.(html|js|json|css|svg|md|txt)$/i.test(f)) continue;
+    if (!/\.(html|js|json|webmanifest|css|svg|md|txt)$/i.test(f)) continue;
     if (f.startsWith('vendor/')) continue; // third-party library code
     const text = buf.toString('utf8');
     const isSchema = f.startsWith('schema/'); // schemas describe fields; they hold no data
@@ -353,7 +362,7 @@ async function audit({ history }) {
       const [la, lo] = m[1] ? [m[1], m[2]] : [m[4], m[3]];
       if (!allowed.has(key(la, lo))) bad(f, `coordinate ${la}, ${lo} is not a public access point or the town reference`);
     }
-    if (f.endsWith('.json') && !isSchema) {
+    if (/\.(json|webmanifest)$/.test(f) && !isSchema) {
       const walkKeys = (o, path) => { if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) {
         if (FORBIDDEN_KEYS.includes(k.toLowerCase())) bad(f, `forbidden key "${path}${k}"`); walkKeys(v, `${path}${k}.`); } };
       try { walkKeys(JSON.parse(text), ''); } catch { bad(f, 'invalid JSON'); }

@@ -15,9 +15,9 @@ export function distanceToRoute(point,coordinates) {
   }return best;
 }
 export function routeBounds(features) {
-  const pts=features.flatMap(f=>f.geometry.type==='Point'?[f.geometry.coordinates]:f.geometry.coordinates);
-  if(!pts.length)return null;const xs=pts.map(c=>c[0]),ys=pts.map(c=>c[1]);
-  return [[Math.min(...xs)-.01,Math.min(...ys)-.01],[Math.max(...xs)+.01,Math.max(...ys)+.01]];
+  let west=Infinity,south=Infinity,east=-Infinity,north=-Infinity;
+  for(const feature of features)for(const [lng,lat]of feature.geometry.type==='Point'?[feature.geometry.coordinates]:feature.geometry.coordinates){west=Math.min(west,lng);south=Math.min(south,lat);east=Math.max(east,lng);north=Math.max(north,lat);}
+  return west===Infinity?null:[[west-.01,south-.01],[east+.01,north+.01]];
 }
 export function breakStops(route,interval=120) {
   if(!interval || route.minutes<=interval)return [];
@@ -36,10 +36,19 @@ export function itineraryRows(legs,results,{departure='09:00',interval=120,stops
   });
 }
 let lastLookup=0;
+let lookupQueue=Promise.resolve();
+export function nominatimLookup(url,{signal,request=fetch}={}) {
+  const job=lookupQueue.catch(()=>{}).then(async()=>{
+    if(signal?.aborted)throw new DOMException('Lookup cancelled','AbortError');
+    const wait=Math.max(0,1100-(Date.now()-lastLookup));if(wait)await new Promise(r=>setTimeout(r,wait));
+    if(signal?.aborted)throw new DOMException('Lookup cancelled','AbortError');
+    lastLookup=Date.now();return request(url,{signal,referrerPolicy:'origin'});
+  });
+  lookupQueue=job;return job;
+}
 export async function geocodeLocation(label,{signal,request=fetch}={}) {
-  const wait=Math.max(0,1100-(Date.now()-lastLookup));if(wait)await new Promise(r=>setTimeout(r,wait));lastLookup=Date.now();
   const url=new URL('https://nominatim.openstreetmap.org/search');url.search=new URLSearchParams({q:label,format:'jsonv2',limit:'1'});
-  const response=await request(url,{signal,referrerPolicy:'no-referrer'});if(!response.ok)throw Error('Location lookup unavailable. Use a directory place or latitude, longitude.');
+  const response=await nominatimLookup(url,{signal,request});if(!response.ok)throw Error('Location lookup unavailable. Use a directory place or latitude, longitude.');
   const match=(await response.json())[0],point=match&&{lat:Number(match.lat),lng:Number(match.lon)};
   if(!validPoint(point))throw Error(`Location not found: ${label}`);return {...point,display:match.display_name};
 }
