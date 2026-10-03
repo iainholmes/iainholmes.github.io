@@ -1202,13 +1202,14 @@ main.page-travel {background:var(--lake);color:var(--paper);}
 /* One editorial plate above the requested route; the entire shell remains under the graduated navy. */
 @font-face {font-family:"Magrebis";src:url(../fonts/magrebis-regular.woff) format("woff");font-weight:400;font-style:normal;font-display:swap;}
 .veil-active {overflow:hidden;overscroll-behavior:none;}
-.atlas-veil {position:fixed;inset:0;z-index:10000;width:100%;height:100vh;height:100dvh;overflow:hidden;overscroll-behavior:none;touch-action:none;color:var(--paper);--focus:var(--gold);background:linear-gradient(180deg,#1D2A3A9E 0%,#1D2A3AD9 24%,#1D2A3AF0 56%,#142230F7 100%);}
+html.veil-active,html.veil-active body{background:#1D2A3A!important;}
+.atlas-veil {position:fixed;inset:0;z-index:10000;box-sizing:border-box;overflow:hidden;overscroll-behavior:none;touch-action:none;color:var(--paper);--focus:var(--gold);background:rgba(29,42,58,.72);}
 .atlas-veil:focus {outline:none;}
-.veil-plate {height:100%;max-width:1160px;margin-inline:auto;padding:calc(env(safe-area-inset-top) + clamp(26px,6dvh,72px)) clamp(20px,4vw,56px) calc(env(safe-area-inset-bottom) + 20px);display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:20px;}
+.veil-plate {height:100%;min-height:100%;box-sizing:border-box;max-width:1160px;margin-inline:auto;padding:calc(env(safe-area-inset-top) + clamp(26px,6dvh,72px)) clamp(20px,4vw,56px) calc(env(safe-area-inset-bottom) + 20px);display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:20px;}
 .veil-lockup {display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;margin-inline:auto;gap:26px;}
 .veil-no {font:400 clamp(90px,12vw,170px)/1.05 "Magrebis",Georgia,serif;white-space:nowrap;}
-.veil-cycle {border-left:1px solid #F3EFE596;padding-left:26px;display:grid;gap:8px;text-align:left;font:400 32px/1.15 var(--f-text);}
-.veil-cycle small {font:400 20px/1.2 var(--f-data);white-space:nowrap;letter-spacing:.03em;}
+.veil-cycle {border-left:1px solid #F3EFE596;padding-left:26px;display:grid;gap:8px;text-align:left;font:400 20px/1.2 var(--f-text);}
+.veil-cycle small {font:400 1em/1.2 var(--f-data);white-space:nowrap;letter-spacing:.03em;}
 .veil-center {display:flex;flex-direction:column;justify-content:center;align-items:center;gap:36px;min-height:0;}
 .veil-band {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,6vw,90px);width:100%;max-width:850px;}
 .veil-group {min-width:0;text-align:center;}
@@ -1218,7 +1219,7 @@ main.page-travel {background:var(--lake);color:var(--paper);}
 .veil-tile .veil-image {width:min(100%,144px);height:auto;aspect-ratio:1;object-fit:cover;object-position:var(--pos-45);margin-bottom:6px;border:1px solid #C98B4B85;}
 .veil-tile strong {font:700 18px/1.2 var(--f-data);text-transform:uppercase;letter-spacing:.035em;}
 .veil-tile span {white-space:nowrap;}
-.veil-tile.is-pending .veil-image {filter:saturate(.18);opacity:.58;}
+.veil-tile.is-pending .veil-image {filter:grayscale(.9) saturate(.08) contrast(.82);opacity:.34;}
 .veil-tile.is-published .veil-image {filter:none;opacity:1;}
 .veil-tile.is-withdrawn .veil-image {filter:saturate(.15);opacity:.58;}
 .veil-tile[href]:hover .veil-image {border-color:var(--paper);}
@@ -1232,8 +1233,8 @@ main.page-travel {background:var(--lake);color:var(--paper);}
   .veil-plate {padding:calc(env(safe-area-inset-top) + 36px) 20px calc(env(safe-area-inset-bottom) + 20px);gap:18px;}
   .veil-lockup {gap:14px;}
   .veil-no {font-size:clamp(60px,17vw,78px);}
-  .veil-cycle {padding-left:14px;gap:6px;font-size:22px;}
-  .veil-cycle small {font-size:13px;letter-spacing:.01em;}
+  .veil-cycle {padding-left:14px;gap:6px;font-size:15px;}
+  .veil-cycle small {font-size:1em;letter-spacing:.01em;}
   .veil-band {gap:22px;max-width:350px;}
   .veil-group h2 {font-size:22px;margin-bottom:16px;}
   .veil-tiles {gap:8px;}
@@ -1251,8 +1252,8 @@ main.page-travel {background:var(--lake);color:var(--paper);}
 @media (max-height:600px) {
   .veil-plate {padding-top:calc(env(safe-area-inset-top) + 14px);padding-bottom:calc(env(safe-area-inset-bottom) + 12px);gap:10px;}
   .veil-no {font-size:64px;}
-  .veil-cycle {font-size:22px;gap:4px;}
-  .veil-cycle small {font-size:13px;}
+  .veil-cycle {font-size:15px;gap:4px;}
+  .veil-cycle small {font-size:1em;}
   .veil-group h2 {font-size:20px;margin-bottom:8px;}
   .veil-tile .veil-image {width:64px;margin-bottom:2px;}
   .veil-tile {font-size:11px;gap:3px;}

@@ -2,7 +2,7 @@ import './field-log-view.js';
 import { setupMenus } from './core/menus.js';
 import { setupArchive } from './archive-view.js';
 import { cycleIdentity, cycleWeekend } from './core/cycles.js';
-import { setupVeil } from './veil-view.js?v=20261002-review2';
+import { setupVeil } from './veil-view.js?v=20261002-review3';
 // Runtime enhancement. Every page works without this file; it adds:
 //  - the compact bar on desktop once the masthead scrolls away
 //  - Tuesday/Thursday tabs (and swipe) on phones
