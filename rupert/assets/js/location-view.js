@@ -10,7 +10,7 @@ export function setupLocation({ getMap, features, onClear }) {
   const unavailable='Live traffic temporarily unavailable · showing baseline estimate';
   const trafficNote=document.getElementById('traffic-note');
   const providerName=trafficConfig.provider==='tomtom'?'TomTom':'Mapbox';
-  const navigation=document.createElement('details');navigation.className='route-navigation';navigation.hidden=true;mapBox?.after(navigation);
+  const navigation=document.createElement('details');navigation.className='route-navigation wrap';navigation.hidden=true;mapBox?.parentElement.after(navigation);
   const credits=document.createElement('details');credits.className='traffic-credits';credits.hidden=true;trafficNote?.after(credits);
   const routeKey=(id)=>JSON.stringify([point?.lng,point?.lat,id]);
   function mode(on, incidents=[]) {mapBox?.classList.toggle('is-traffic',on);getMap()?.setTrafficMode?.(on);getMap()?.setTrafficIncidents?.(incidents);}

@@ -60,7 +60,9 @@ try{
   check(await page.locator('.navigation-choices a').nth(2).innerText().then(s=>s.includes('current location')),'Waze origin misrepresented');
   check(await page.locator('.navigation-choices a').evaluateAll(ns=>ns.every(n=>n.getBoundingClientRect().height>=44)),'Navigation touch targets too small');
   await page.locator('.route-navigation').evaluate(n=>n.open=false);
-  await toggle(page,true);const on=await read(page);
+  await toggle(page,true);
+  await page.waitForFunction(()=>window.__trafficQaMap.raw.queryRenderedFeatures({layers:['route-line','route-unknown','route-closure']}).some(f=>f.properties.traffic));
+  const on=await read(page);
   check(on.theme==='traffic'&&on.bg==='#1D2A3A','Traffic mode not dark');check(on.outsideBackground===off.outsideBackground,'Traffic changed whole page');
   check(on.routes.join()===(trafficProvider==='tomtom'?'unknown,mild,moderate,heavy,unknown,closure,unknown':'normal,mild,moderate,heavy,severe,unknown,closure,normal'),'Route annotations lost');
   check(await page.locator('.dossier-provider').innerText()===(trafficProvider==='tomtom'?'Live Traffic · TomTom · +7 min vs free flow':'Live Traffic · +7 min vs typical'),'Provider ETA/delay incorrect');
@@ -79,6 +81,8 @@ try{
   await page.evaluate(()=>window.__trafficQaMap.focus('hillsborough-riverwalk'));await page.clock.runFor(100);
   if(width<760){await page.waitForFunction(()=>{const m=window.__trafficQaMap.raw,p=m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id==='hillsborough-riverwalk').geometry.coordinates);return m.queryRenderedFeatures([[p.x-22,p.y-22],[p.x+22,p.y+22]],{layers:['marks']}).some(f=>f.properties.id==='hillsborough-riverwalk');});await page.evaluate(()=>{const m=window.__trafficQaMap.raw,event=new MouseEvent('click');Object.defineProperty(event,'target',{value:m.getCanvas()});m.fire('click',{originalEvent:event,point:m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id==='hillsborough-riverwalk').geometry.coordinates)});});await page.locator('.dossier-provider').waitFor();const g=await read(page);check(g.card&&g.card.y>=g.route.bottom+8,'Traffic/place cards overlap');check(g.cardBackground==='rgb(35, 51, 70)','Dark popup contrast');check(g.card.bottom<=g.map.bottom-10,'Traffic place card clipped');check(await page.locator('.mc-place-detail').textContent()==='Orange County','County regressed');}
   await page.evaluate(()=>{document.documentElement.style.scrollBehavior='auto';window.scrollTo(0,scrollY+document.querySelector('.atlas-map').getBoundingClientRect().top-10);});await page.clock.runFor(100);
+  const navigationGeometry=await page.evaluate(()=>({mapBottom:document.querySelector('.atlas-map').getBoundingClientRect().bottom,navigationTop:document.querySelector('.route-navigation').getBoundingClientRect().top}));
+  check(navigationGeometry.navigationTop>=navigationGeometry.mapBottom,'Sticky map covers navigation handoff '+JSON.stringify(navigationGeometry));
   if([375,393,852,1440].includes(width))await page.screenshot({path:resolve(output,`traffic-${width}x${height}.png`)});
   await page.locator('.traffic-incident').first().evaluate(n=>n.click());check(await page.locator('.traffic-incident-popup').innerText().then(s=>s.includes(trafficProvider==='tomtom'?'Road works':'Fixture road works')),'Incident description unavailable');
   await page.locator('.traffic-incident-popup .maplibregl-popup-close-button').click();
