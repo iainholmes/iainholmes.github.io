@@ -3,6 +3,7 @@
   'use strict';
   var identities={fb:'Field Brief',sp:'Loblolly & Logit',cp:'The Workbook'};
   var archive=typeof module==='object'&&module.exports?require('./issue-mark-archive.js'):(root.PeriodicalsMarkArchive||{});
+  var fbArtwork=typeof module==='object'&&module.exports?require('../daily-watchlist-5/artwork.js'):root.FieldBriefArtwork;
   var palettes={fb:['#f1e6d0','#221a14','#8a2a36','#c5ad88'],sp:['#f3f0e6','#1f4a3b','#b4532e','#e3b456'],cp:['#f7f7f3','#1c2f4a','#0e5360','#b5ced1']};
   var themes=[
     {id:'institutions',words:/institution|statutor|jurisdiction|legal|court|governance|credib|administrative|standards/ig,phrase:'Institutional constraints'},
@@ -38,6 +39,7 @@
     var ranked=themes.map(function(t,i){var score=sources.reduce(function(n,s){var hits=s.match(t.words)||[];return n+(info.key==='cp'?Math.min(1,hits.length):hits.length)},0);return {theme:t,score:score,order:i}}).sort(function(a,b){return b.score-a.score||a.order-b.order});
     var chosen=ranked[0].score?ranked[0].theme:themes[4];
     var framing=sources.join(' '),seed=hash(info.key+'|'+info.date+'|'+String(info.no).padStart(3,'0')+'|'+framing.replace(/\W/g,''));
+    if(info.key==='fb')return Object.assign({key:info.key,date:info.date,no:String(info.no).padStart(3,'0'),identity:identities.fb,theme:chosen.id,framing:framing},fbArtwork.issueModel(info,archive));
     var subject=concept(framing,info.key),previous=info.previous;
     if(previous&&!previous.subject)previous=model(previous);
     var composition=previous&&previous.subject===subject.id&&previous.composition==='section'?'plan':'section';
@@ -47,6 +49,7 @@
     var ink=p[1],accent=p[2],support=p[3],shift=m.seed%29-14;
     var grid=m.key==='cp'?'<path d="M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540M60 360H540M60 420H540M60 480H540M60 60V500M120 60V500M180 60V500M240 60V500M300 60V500M360 60V500M420 60V500M480 60V500M540 60V500" fill="none" stroke="'+ink+'" opacity=".12"/>':'';
     var contours=m.key==='sp'?'<g fill="none" stroke="'+ink+'" opacity=".16"><path d="M-20 460Q150 290 300 440T620 410M-20 480Q150 310 300 460T620 430M-20 500Q150 330 300 480T620 450M-20 520Q150 350 300 500T620 470"/></g>':'';
+    if(m.version===3&&m.key==='fb')return fbArtwork.issuePlate(m,p);
     if(m.version===2)return grid+contours+specificArtwork(m,p);
     var art;
     if(m.theme==='institutions'){

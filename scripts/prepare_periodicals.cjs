@@ -1,19 +1,29 @@
 /* Run after appending canonical content, before committing. Never changes an existing edition. */
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');const read=p=>fs.readFileSync(path.join(root,p),'utf8');const write=(p,s)=>fs.writeFileSync(path.join(root,p),s);
+const crypto=require('node:crypto');
+const storyArt=require('../daily-watchlist-5/artwork.js'),storyArchive=require('../daily-watchlist-5/artwork-archive.js');
+const digest=s=>crypto.createHash('sha256').update(s).digest('hex').slice(0,12);
 const marks=require('../personal-updates/issue-marks.js'),archive=require('../personal-updates/issue-mark-archive.js'),studies=require('../weekly-economics-environment/field-study.js');
 const plain=s=>String(s).replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&nbsp;/g,'\u00a0').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(+n)).replace(/&lt;/g,'<').replace(/&gt;/g,'>');
 function data(s,id){return JSON.parse(s.match(new RegExp('<script type="application/json" id="'+id+'">([\\s\\S]*?)</script>'))[1]);}
 function jsonReplace(s,id,value){return s.replace(new RegExp('(<script type="application/json" id="'+id+'">)[\\s\\S]*?(</script>)'),(_,a,b)=>a+'\n'+JSON.stringify(value,null,2)+'\n'+b);}
 const fb=data(read('daily-watchlist-5/index.html'),'briefing-data').editions.sort((a,b)=>a.date.localeCompare(b.date));
+for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])throw Error('Published Field Brief is missing its story artwork pin: '+ed.date);
+const plates=storyArt.prepare(fb,storyArchive);
 const cp=data(read('daily-econ-challenge/index.html'),'challenge-data').editions.sort((a,b)=>a.date.localeCompare(b.date));
 for(const [key,editions] of [['fb',fb],['cp',cp]]){
  editions.forEach((e,i)=>{if(key==='cp'&&e.no!==i+1)throw Error('Nonsequential Workbook number');if(key==='fb'&&e.stories.length!==5)throw Error('Field Brief needs five stories');if(new Set(editions.map(x=>x.date)).size!==editions.length)throw Error('Duplicate publication date');
  const id=key+':'+e.date;if(archive[id])return;
  const m=marks.model({key,date:e.date,no:e.no||i+1,title:e.issueTitle,questions:e.questions,framing:[e.deck,e.signalTitle,...e.signal||[]].join(' '),previous:i?archive[key+':'+editions[i-1].date]:null});
+ if(key==='fb'){const previous=i?archive[key+':'+editions[i-1].date]:null;if(previous&&storyArt.markSignature(m)===storyArt.markSignature(previous))throw Error('Repeated Field Brief issue composition');}
  archive[id]={...m,frozen:marks.svg(m)};
  });
 }
+write('daily-watchlist-5/artwork-archive.js',"/* Frozen published Field Brief plates. Legacy templates preserve their exact SVG bytes. Append only. */\n(function(root){const archive="+JSON.stringify(plates,null,2)+";if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});\n");
+let brief=read('daily-watchlist-5/index.html');
+brief=brief.replace(/artwork-archive\.js(?:\?v=[^"]*)?"/,'artwork-archive.js?v='+digest(read('daily-watchlist-5/artwork-archive.js'))+'"');
+write('daily-watchlist-5/index.html',brief);
 let ll=read('weekly-economics-environment/index.html');const field=data(ll,'field-studies');
 const editions=[...ll.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[^>]*data-title="([^"]+)"[^>]*>([\s\S]*?)(?=<section class="edition"|<\/main>)/g)].sort((a,b)=>a[1].localeCompare(b[1]));
 editions.forEach((e,i)=>{
@@ -44,7 +54,7 @@ for(const key of ['fb','cp','sp']){
  if(key==='cp'){set('data-cp-depth',cp.reduce((n,x)=>n+x.questions.length,0));set('data-cp-fields',new Set(cp.flatMap(x=>x.questions.map(q=>q.field))).size);}
 }
 // Version the immutable registry whenever any publication advances.
-const version=[latest.fb.date,latest.cp.date,latest.sp.date].join('_');
+const version=[latest.fb.date,latest.cp.date,latest.sp.date].join('_')+'_'+digest(read('personal-updates/issue-mark-archive.js'));
 hub=hub.replace(/issue-mark-archive\.js(?:\?v=[^"]*)?"/,'issue-mark-archive.js?v='+version+'"');
 write('personal-updates/index.html',hub);
 console.log('Pinned issue artwork and Field Studies; refreshed hub fallback metadata.');
