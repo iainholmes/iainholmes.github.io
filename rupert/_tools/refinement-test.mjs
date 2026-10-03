@@ -25,16 +25,16 @@ check(()=>assert.match(renderEdition(withdrawn,ctx),/Recommendation Withdrawn/))
 check(()=>assert.ok(renderEdition(withdrawn,ctx).includes(withdrawn.corrections.at(-1).note)));
 check(()=>assert.ok(!renderEdition(withdrawn,ctx).includes('outing-info')));
 const state=veilState(manifest,new Date('2026-10-05T12:00:00-04:00'));
-check(()=>assert.match(renderVeil(state,photos,'../',null,true),/edition\/[^" ]+\/\?veil=review/));
+check(()=>assert.match(renderVeil(state,photos,'../'),/href="\.\.\/edition\/2026-W40-r1-tue\/"/));
 check(()=>assert.ok(!renderVeil(state,photos,'../').includes('?veil=review')));
-check(()=>assert.match(renderVeil(state,photos,'../',{title:'Trip',start:'2026-10-17'},true),/travel\/\?veil=review#saved-trips/));
+check(()=>assert.match(renderVeil(state,photos,'../',{title:'Trip',start:'2026-10-17'}),/travel\/#saved-trips/));
 check(()=>assert.match(chrome({...ctx,active:'week',body:'',weekLabel:'Week 40'}),/rupert-portrait-outline\.svg/));
 check(()=>assert.match(renderVeil(state,photos,''),/rupert-portrait-outline\.svg/));
 const svg=readFileSync(new URL('../assets/img/rupert-portrait-outline.svg',import.meta.url),'utf8');
 check(()=>assert.match(svg,/AE36F5F4-9591-433C-855E-FDD32AF594C1\.jpeg/));
 check(()=>assert.ok(!svg.includes('<image')&&!svg.includes('base64')));
 check(()=>assert.match(svg,/fill="none"/));
-const veil=renderVeil(state,photos,'../',null,true);
+const veil=renderVeil(state,photos,'../');
 check(()=>assert.match(veil,/veil-number-prefix">N<sup>o<\/sup>\./));
 check(()=>assert.match(veil,/aria-label="Number 41"/));
 check(()=>assert.match(veil,/Chapel Hill, N.C. · Saturday 10 Oct/));
@@ -42,4 +42,6 @@ check(()=>assert.equal((veil.match(/class="veil-almanac-item"/g)||[]).length,3))
 check(()=>assert.equal((veil.match(/class="veil-almanac-symbol"/g)||[]).length,3));
 check(()=>assert.ok(veil.indexOf('>Sunset<')<veil.indexOf('>Moon<')&&veil.indexOf('>Moon<')<veil.indexOf('>Daylight<')));
 check(()=>assert.ok(!veil.includes('Home')));
+const source=readFileSync(new URL('../assets/js/veil-view.js',import.meta.url),'utf8');
+check(()=>assert.doesNotMatch(source,/reviewMode|reviewNow|veil=review|rupert-veil-review|display-mode:\s*standalone/));
 console.log(`${checks} final refinement source checks passed.`);
