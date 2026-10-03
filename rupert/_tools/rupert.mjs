@@ -45,7 +45,7 @@ const err = (where, msg) => errors.push(`${where}: ${msg}`);
 const warn = (where, msg) => warnings.push(`${where}: ${msg}`);
 
 async function load() {
-  if(trafficConfig.publicToken && !trafficAvailable(trafficConfig,'https://iainholmes.github.io')) err('traffic-config','Use only a dedicated restricted public token and the production origin; secret/invalid credentials cannot be built.');
+  if((trafficConfig.apiKey || trafficConfig.publicToken) && !trafficAvailable(trafficConfig,'https://iainholmes.github.io')) err('traffic-config','Use only a dedicated restricted browser credential and the production origin; secret/invalid credentials cannot be built.');
   const site = await readJSON(P('data/site.json'));
   const places = await readJSON(P('data/places.json'));
   const photos = await readJSON(P('data/photos.json'));

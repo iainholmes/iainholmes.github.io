@@ -1,4 +1,5 @@
 import { validPoint } from './routing.js';
+import { tomtomTrafficRoute } from './tomtom-traffic.js';
 
 export const TRAFFIC_FRESH_MS = 5 * 60 * 1000;
 export const TRAFFIC_COLORS = Object.freeze({
@@ -6,7 +7,9 @@ export const TRAFFIC_COLORS = Object.freeze({
   heavy: '#C36360', severe: '#C36360', closure: '#963D48', unknown: '#A9B3B8',
 });
 export function trafficAvailable(config, origin) {
-  return config?.provider === 'mapbox' && /^pk\.[\w-]+\.[\w-]+$/.test(config.publicToken || '') && config.allowedOrigins?.includes(origin);
+  const credential = config?.provider === 'mapbox' ? /^pk\.[\w-]+\.[\w-]+$/.test(config.publicToken || '') :
+    config?.provider === 'tomtom' && /^[\w-]{16,128}$/.test(config.apiKey || '');
+  return !!credential && !!config.allowedOrigins?.includes(origin);
 }
 // Numeric boundaries are Atlas display bins, not invented measurements. Null stays unknown.
 export function congestionLevel(value, category) {
@@ -17,6 +20,10 @@ export function congestionLevel(value, category) {
   return ({ low: 'normal', moderate: 'moderate', heavy: 'heavy', severe: 'severe' })[category] || 'unknown';
 }
 export function trafficProviderLabel(result) {
+  if (result.provider === 'tomtom') {
+    const delay = result.delaySeconds;
+    return 'Live Traffic · TomTom' + (!Number.isFinite(delay) ? '' : delay === 0 ? ' · 0 min delay vs free flow' : delay < 60 ? ' · <1 min delay vs free flow' : ` · +${Math.round(delay / 60)} min vs free flow`);
+  }
   if (!Number.isFinite(result.typicalSeconds)) return 'Live Traffic';
   const delta = Math.round((result.seconds - result.typicalSeconds) / 60);
   return 'Live Traffic · ' + (delta > 0 ? `+${delta} min vs typical` : delta < 0 ? `${delta} min vs typical` : 'Typical travel time');
@@ -61,6 +68,7 @@ export function parseTrafficRoute(data, fetchedAt = Date.now()) {
 export async function trafficRoute(from, to, { config, origin, signal, request = fetch, now = Date.now } = {}) {
   if (!validPoint(from) || !validPoint(to)) throw Error('Check both locations.');
   if (!trafficAvailable(config, origin)) throw Error('Live traffic is not configured for this site.');
+  if (config.provider === 'tomtom') return tomtomTrafficRoute(from, to, { config, signal, request, now });
   const endpoints = [from, to].map(p => `${p.lng},${p.lat}`).join(';');
   const url = new URL(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${endpoints}`);
   url.search = new URLSearchParams({ access_token: config.publicToken, overview: 'full', geometries: 'geojson', steps: 'false', alternatives: 'false', depart_at: 'now', annotations: 'congestion,congestion_numeric,closure' });

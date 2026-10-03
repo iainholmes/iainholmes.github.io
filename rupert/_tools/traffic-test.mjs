@@ -5,7 +5,7 @@ import { trafficAvailable, congestionLevel, parseTrafficRoute, trafficRoute, tra
 import { atlasStyle } from '../assets/js/map/style.js';
 let checks=0;const check=fn=>{fn();checks++;};
 const config={provider:'mapbox',publicToken:'pk.unit.fixture',allowedOrigins:['https://atlas.example']};
-check(()=>assert.equal(trafficAvailable(trafficConfig,'https://iainholmes.github.io'),!!trafficConfig.publicToken));
+check(()=>assert.equal(trafficAvailable(trafficConfig,'https://iainholmes.github.io'),!!(trafficConfig.apiKey || trafficConfig.publicToken)));
 check(()=>assert.equal(trafficAvailable(config,'https://atlas.example'),true));
 for(const token of ['', 'secret', 'sk'+'.unit.fixture'])check(()=>assert.equal(trafficAvailable({...config,publicToken:token},'https://atlas.example'),false));
 check(()=>assert.equal(trafficAvailable(config,'https://other.example'),false));
@@ -42,7 +42,7 @@ const result=await trafficRoute({lng:-79,lat:35},{lng:-78,lat:36},{config,origin
 }});
 check(()=>assert.equal(result.fetchedAt,300));check(()=>assert.equal(requestCount,1));
 await assert.rejects(()=>trafficRoute({lat:NaN,lng:-79},{lat:36,lng:-78},{config,origin:'https://atlas.example',request:()=>{throw Error('Invalid Home reached service');}}),/Check both/);checks++;
-await assert.rejects(()=>trafficRoute({lat:35,lng:-79},{lat:36,lng:-78},{config:{...trafficConfig,publicToken:''},origin:'https://iainholmes.github.io',request:()=>{throw Error('Unconfigured service was called');}}),/not configured/);checks++;
+await assert.rejects(()=>trafficRoute({lat:35,lng:-79},{lat:36,lng:-78},{config:{...trafficConfig,apiKey:'',publicToken:''},origin:'https://iainholmes.github.io',request:()=>{throw Error('Unconfigured service was called');}}),/not configured/);checks++;
 await assert.rejects(()=>trafficRoute({lat:35,lng:-79},{lat:36,lng:-78},{config,origin:'https://atlas.example',request:async()=>({ok:false})}),/temporarily unavailable/);checks++;
 check(()=>assert.equal(TRAFFIC_FRESH_MS,300000));
 check(()=>assert.equal(atlasStyle('light').layers[0].paint['background-color'],'#E6EAE1'));

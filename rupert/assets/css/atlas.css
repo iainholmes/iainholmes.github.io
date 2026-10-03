@@ -1408,3 +1408,16 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .traffic-incident-popup .maplibregl-popup-content p{margin:0;}
 .traffic-incident-popup .maplibregl-popup-close-button{color:#E9E4D9;min-width:44px;min-height:44px;}
 .traffic-incident-popup.maplibregl-popup-anchor-bottom .maplibregl-popup-tip{border-top-color:#233346;}
+
+/* Coordinate-only navigation handoff lives outside the fixed map cards. */
+.route-navigation{border-top:1px solid var(--rule);margin-top:8px;font:400 12px/1.4 var(--f-data);}
+.route-navigation[hidden],.traffic-credits[hidden]{display:none;}
+.route-navigation summary,.traffic-credits summary{min-height:44px;display:flex;align-items:center;gap:8px;cursor:pointer;}
+.route-navigation summary{color:var(--mark);text-transform:uppercase;letter-spacing:.06em;}
+.route-navigation summary::before,.traffic-credits summary::before{content:'+';}
+.route-navigation[open] summary::before,.traffic-credits[open] summary::before{content:'−';}
+.navigation-choices{display:flex;flex-wrap:wrap;gap:4px 20px;}
+.navigation-choices a{display:flex;align-items:center;min-height:44px;color:var(--ink);text-underline-offset:3px;}
+.route-navigation p{font-size:11px;max-width:70ch;margin:6px 0 14px;}
+.traffic-credits{font:400 11px/1.5 var(--f-data);}
+.traffic-credits p{white-space:pre-line;overflow-wrap:anywhere;}
