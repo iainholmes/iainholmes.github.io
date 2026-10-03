@@ -39,7 +39,7 @@ check(()=>assert.ok(veilArtworkProblems(monday,{photos:[]}).length===4));
 check(()=>assert.equal(monday.previous.tuesday.edition.id,'2026-W40-r1-tue'));
 check(()=>assert.equal(monday.previous.thursday.edition.id,'2026-W40-thu'));
 const html=renderVeil(monday,photos,'../');
-check(()=>assert.equal((html.match(/<img /g)||[]).length,4));
+check(()=>assert.equal((html.match(/class="veil-image"/g)||[]).length,4));
 check(()=>assert.equal((html.match(/is-pending/g)||[]).length,2));
 check(()=>assert.equal((html.match(/is-published/g)||[]).length,2));
 check(()=>assert.equal((html.match(/7:00 AM ET/g)||[]).length,4)); // Visible time and accessible name on each pending tile.

@@ -5,18 +5,18 @@ import { weekendAlmanac } from './core/almanac.js';
 import { readBackup, TRAVEL_STORAGE_KEY } from './core/travel.js';
 import { esc, photo, titleCase } from './core/render.js';
 
-export function renderVeil(state, photos, base, trip = null) {
+export function renderVeil(state, photos, base, trip = null, reviewMode = false) {
   const tile = (slot, entry) => {
     const { edition: e, published, withdrawn } = entry;
     const link = published || withdrawn;
     const name = `${DAY_LABEL[slot]} · ${titleCase(e.title)} · ${published ? 'Published' : withdrawn ? 'Withdrawn' : 'Unpublished, '+PENDING_TIME}`;
     const tag = link ? 'a' : 'div';
-    return `<${tag} class="veil-tile${published ? ' is-published' : withdrawn ? ' is-withdrawn' : ' is-pending'}"${link ? ` href="${base}edition/${esc(e.id)}/"` : ''} aria-label="${esc(name)}">${photo({id:e.photo_id},photos,base,{sizes:'(min-width: 760px) 92px, 54px',eager:true,cls:'veil-image'})}<span class="veil-tile-copy"><strong>${DAY_LABEL[slot]}</strong><span>${published ? 'Published' : withdrawn ? 'Withdrawn' : PENDING_TIME}</span></span></${tag}>`;
+    return `<${tag} class="veil-tile${published ? ' is-published' : withdrawn ? ' is-withdrawn' : ' is-pending'}"${link ? ` href="${base}edition/${esc(e.id)}/${reviewMode ? '?veil=review' : ''}"` : ''} aria-label="${esc(name)}"><span class="veil-thumbnail">${photo({id:e.photo_id},photos,base,{sizes:'(min-width: 760px) 92px, 54px',eager:true,cls:'veil-image'})}</span><span class="veil-tile-copy"><strong>${DAY_LABEL[slot]}</strong><span>${published ? 'Published' : withdrawn ? 'Withdrawn' : PENDING_TIME}</span></span></${tag}>`;
   };
   const { month, season, year, issue } = state.identity;
   const almanac = weekendAlmanac(state.weekend.start);
   const group = (key, label) => `<section class="veil-week-group" aria-label="${label}"><h2 class="veil-group-title">${label}</h2><div class="veil-tiles veil-tiles-group">${SLOTS.map(slot=>tile(slot,state[key][slot])).join('')}</div></section>`;
-  return `<div class="veil-plate"><div class="veil-lockup"><span class="veil-no">No. ${issue}</span><div class="veil-cycle"><span>${month}</span><small>${season} · ${year}</small></div></div><div class="veil-center"><div class="veil-band" aria-label="Previous and current recommendation previews">${group('previous','Previous Week')}${group('current','This Week')}</div><img class="veil-rupert-mark" src="${base}assets/img/rupert-outline.svg?v=20261002-portrait1" alt="" aria-hidden="true">${trip ? `<a class="veil-travel" href="${base}travel/#saved-trips"><span>Upcoming Travel</span><strong>${esc(trip.title)}</strong><time datetime="${esc(trip.start)}">${esc(longDate(trip.start))}</time></a>` : ''}</div><footer class="veil-almanac" aria-label="Calculated almanac for Chapel Hill, ${esc(longDate(state.weekend.start))}"><span>Sunset ${esc(almanac.sunset)} ET</span><span>Daylight ${esc(almanac.daylight)}</span><span>${esc(almanac.moon)}</span></footer></div>`;
+  return `<div class="veil-plate"><div class="veil-lockup"><span class="veil-no">No. ${issue}</span><div class="veil-cycle"><span>${month}</span><small>${season} · ${year}</small></div></div><div class="veil-center"><div class="veil-recommendations"><div class="veil-band" aria-label="Previous and current recommendation previews">${group('previous','Previous Week')}${group('current','This Week')}</div>${trip ? `<a class="veil-travel" href="${base}travel/${reviewMode ? '?veil=review' : ''}#saved-trips"><span>Upcoming Travel</span><strong>${esc(trip.title)}</strong><time datetime="${esc(trip.start)}">${esc(longDate(trip.start))}</time></a>` : ''}</div><div class="veil-portrait-territory" aria-hidden="true"><img class="veil-rupert-mark" src="${base}assets/img/rupert-portrait-outline.svg" alt=""></div></div><footer class="veil-almanac" aria-label="Calculated almanac for Chapel Hill, ${esc(longDate(state.weekend.start))}"><span>Sunset ${esc(almanac.sunset)} ET</span><span>Daylight ${esc(almanac.daylight)}</span><span>${esc(almanac.moon)}</span></footer></div>`;
 }
 
 export function setupVeil(base) {
@@ -74,11 +74,11 @@ export function setupVeil(base) {
     if (problems.length) { close(); console.warn('Rupert Atlas: frontispiece artwork integrity',problems.join('; ')); return; }
     if (veil && last.dismissalKey!==state.dismissalKey) close();
     last = state;
-    const html = renderVeil(state,photos,base,localTrip(now));
+    const html = renderVeil(state,photos,base,localTrip(now),reviewMode);
     if (!veil) {
       veil=document.createElement('div'); veil.className='atlas-veil'; veil.tabIndex=-1;
       veil.setAttribute('role','dialog'); veil.setAttribute('aria-modal','true');
-      veil.addEventListener('click',e=>{const link=e.target.closest('a[href]');if(link){e.preventDefault();e.stopPropagation();const href=link.href;close(false);location.assign(href);return;}if(e.target.closest('button,input,select,textarea')){e.stopPropagation();return;}close(true);});
+      veil.addEventListener('click',e=>{const link=e.target.closest('a[href]');if(link){e.stopPropagation();return;}if(e.target.closest('button,input,select,textarea')){e.stopPropagation();return;}close(true);});
       veil.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
       document.body.append(veil); restore=lockPage();
     }

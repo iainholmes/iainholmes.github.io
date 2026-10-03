@@ -1307,3 +1307,60 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   .page-atlas .map-card .mc-link{font-size:9px;line-height:1.15;letter-spacing:.075em;padding:5px 0;}
   .page-atlas .map-card .mc-place-detail{font:400 10px/1.2 var(--f-data);color:#5A5044;text-align:right;white-space:nowrap;}
 }
+
+/* Finite refinement: shared outing information, portrait mark and mobile details. */
+.outing-info{order:4;display:grid;gap:20px;margin:0 0 18px;padding:16px 0;border-block:1px solid var(--rule-strong);font:400 15px/1.5 var(--f-data);}
+.outing-heading{font:400 17px/1.2 var(--f-secondary);text-transform:uppercase;letter-spacing:.025em;color:var(--accent);margin:0 0 10px;}
+.outing-metrics{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0;margin:0;gap:0;}
+.outing-metrics li{padding:4px 14px;border-left:1px solid var(--rule);}
+.outing-metrics li:first-child{padding-left:0;border-left:0;}
+.outing-metrics b{font-weight:700;}
+.outing-weather p{margin:8px 0 0;}
+.outing-weather.is-adverse>.outing-heading{color:var(--alert);}
+.outing-forecast{width:100%;border-collapse:collapse;border-block:1px solid var(--rule-strong);table-layout:fixed;text-align:left;}
+.outing-forecast th,.outing-forecast td{padding:9px 10px;vertical-align:top;border-bottom:1px solid var(--rule);overflow-wrap:anywhere;}
+.outing-forecast tr:last-child th,.outing-forecast tr:last-child td{border-bottom:0;}
+.outing-forecast thead th{font:400 12px/1.3 var(--f-data);text-transform:uppercase;letter-spacing:.035em;color:var(--text-2);}
+.outing-forecast th:first-child{width:100px;padding-left:0;}
+.outing-forecast tbody th{font:400 17px/1.3 var(--f-text);}
+.outing-forecast td{padding-right:0;font:400 14px/1.45 var(--f-data);}
+.outing-trail{border-left:2px solid var(--gold);padding-left:14px;}
+.outing-trail p{font:italic 17px/1.5 var(--f-text);margin:0;}
+.veil-center{display:grid;grid-template-columns:minmax(0,1fr);justify-content:normal;align-items:stretch;grid-template-rows:minmax(0,3fr) minmax(0,2fr);gap:12px;padding-top:46px;}
+.veil-recommendations{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;width:100%;min-height:0;}
+.veil-portrait-territory{display:flex;align-items:center;justify-content:center;min-height:0;padding:12px 0;pointer-events:none;}
+.veil-rupert-mark{width:clamp(140px,22dvh,220px);height:auto;max-height:100%;max-width:100%;opacity:.24;margin:0;}
+.veil-almanac{bottom:env(safe-area-inset-bottom,0px);}
+@media(max-width:759.98px){
+  :root{--dock-h:52px;}
+  .utility-footer .wrap{padding-bottom:calc(28px + var(--dock-h) + env(safe-area-inset-bottom,0px));}
+  .outing-metrics{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:8px;}
+  .outing-metrics li:nth-child(3){grid-column:1/-1;border-left:0;border-top:1px solid var(--rule);padding:10px 0 0;}
+  .outing-heading{font-size:16px;}
+  .outing-forecast th:first-child{width:88px;}
+}
+@media(max-width:759.98px) and (orientation:portrait){
+  .veil-center{padding-top:48px;}
+  .veil-almanac{bottom:env(safe-area-inset-bottom,0px);}
+  .veil-rupert-mark{width:clamp(130px,20dvh,190px);height:auto;margin:0;}
+  .page-atlas .map-card{width:min(250px,calc(100% - 100px));padding:8px 10px 8px;padding-right:48px;}
+  .page-atlas .map-card .mc-name{font-size:32px;line-height:1.07;}
+  .page-atlas .map-card .mc-close{min-width:44px;min-height:44px;}
+  .page-atlas .map-card .mc-bottom{margin-right:-38px;gap:8px;}
+  .page-atlas .map-card .mc-link{min-height:44px;display:flex;align-items:center;margin-block:-12px;font-size:9px;text-decoration-thickness:1px;text-underline-offset:2px;}
+  .page-atlas .map-card .mc-place-detail{text-transform:uppercase;white-space:normal;max-width:100px;}
+}
+@media(max-height:600px){
+  .veil-center{padding-top:20px;grid-template-rows:auto minmax(0,1fr);gap:4px;}
+  .veil-recommendations{gap:8px;}
+  .veil-portrait-territory{padding:2px 0;}
+  .veil-rupert-mark{width:80px;height:min(60px,15dvh);margin:0;}
+  .veil-travel{grid-template-columns:auto minmax(0,1fr) auto;gap:8px;padding-block:6px;}
+}
+
+/* Keep the ochre frame outside the pending-artwork filter. */
+.veil-thumbnail{display:block;width:92px;height:64px;border:1px solid #C98B4B85;overflow:hidden;}
+.veil-tile .veil-image{width:100%;height:100%;border:0;}
+.veil-tile[href]:hover .veil-thumbnail{border-color:var(--paper);}
+@media(max-width:759.98px) and (orientation:portrait){.veil-thumbnail{width:44px;height:38px;}}
+@media(max-height:600px){.veil-thumbnail{width:46px;height:34px;}}

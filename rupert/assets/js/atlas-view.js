@@ -1,4 +1,4 @@
-import { setupLocation } from './location-view.js?v=20261002-auto-route1';
+import { setupLocation } from './location-view.js';
 // Atlas page behaviour. The directory is complete without this file; this adds camera framing, the map, and
 // selection kept in step between the two. The map is reached only through map/maplibre-provider.js.
 import { frameFeatures, frameMap } from './core/framing.js';

@@ -151,7 +151,7 @@ export function chrome({ active, base, weekLabel, site, body, pageClass = '', no
 <main id="main" class="${pageClass}" tabindex="-1">
 ${body}
 </main>
-<footer class="utility-footer"><div class="wrap"><a href="${base}archive/">Archive</a><a href="${base}atlas/">Place Directory</a><span class="footer-identity">${esc((now || new Date()).getFullYear())}<img src="${base}assets/img/rupert-outline.svg" width="30" height="30" alt="" aria-hidden="true"></span></div></footer>
+<footer class="utility-footer"><div class="wrap"><a href="${base}archive/">Archive</a><a href="${base}atlas/">Place Directory</a><span class="footer-identity">${esc((now || new Date()).getFullYear())}<img src="${base}assets/img/rupert-portrait-outline.svg" width="30" height="30" alt="" aria-hidden="true"></span></div></footer>
 <nav class="dock" aria-label="Sections, bottom"><ul>${NAV.map(n =>
     `<li><a href="${base}${n.href}"${n.key === active ? ' aria-current="page"' : ''}>${esc(n.label)}</a></li>`).join('')}</ul></nav>`;
 }
@@ -178,19 +178,24 @@ function plate(slot, ed, pair, ctx) {
   if (ed.status === 'withdrawn') return `<article class="plate is-withdrawn" id="${id}" data-slot="${slot}" aria-labelledby="${id}-h"><p class="p-day">${SLOT_LABEL[slot]} · Withdrawn</p><h2 class="p-title" id="${id}-h">${esc(titleCase(ed.flagship.title))}</h2><p class="p-stand">${esc(ed.corrections.at(-1).note)}</p><p><a href="${base}edition/${esc(ed.id)}/">Read the withdrawal</a></p></article>`;
   const f = ed.flagship;
   const href = `${base}edition/${esc(ed.id)}/`;
-  const bits = routeBits(f.snapshot).map(b => `<li>${b}</li>`).join('');
-  const adverse = f.condition_level === 'adverse';
-  const weather=weatherParts(ed);
-  const cond=(weather.days.length||weather.forecast)?`<li class="cond weather-block${adverse?' is-adverse':''}"><span class="cond-k">${adverse?'Weather warning':'Weather'}</span>${weather.days.map(d=>`<div class="weather-day"><strong>${esc(d.day)}</strong><span>${esc(d.forecast)}</span></div>`).join('')}${weather.forecast?`<p>${esc(weather.forecast)}</p>`:''}${weather.context?`<p class="weather-context">${esc(weather.context)}</p>`:''}${weather.trail?`<div class="weather-trail"><span class="cond-k">Trail note</span><span>${esc(weather.trail)}</span></div>`:''}</li>`:'';
   return `<article class="plate" id="${id}" data-slot="${slot}" aria-labelledby="${id}-h">
   <p class="p-eyebrow"><span class="p-day"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span>${SLOT_LABEL[slot]}</span><span class="p-pub">${slotPublication(ed)}</span></p>
   <h2 class="p-title" id="${id}-h"><a href="${href}">${esc(titleCase(f.title))}</a></h2>
   <p class="p-stand">${esc(f.standfirst)}</p>
-    <ul class="p-metrics" aria-label="Logistics">${bits}${cond}</ul>
+    ${renderOutingInfo(ed)}
   <figure class="p-photo${f.artwork ? ' adventure-illustration' : ''}">${photo(imageRef(f), photos, base, { sizes: '(min-width: 760px) 46vw, 100vw', eager: slot === 'tuesday' })}${credit(imageRef(f), photos, ctx.places)}</figure>
 
   <p class="p-more"><a href="${href}">Full edition<span class="vh"> for ${esc(titleCase(f.title))}</span></a></p>
 </article>`;
+}
+
+export function renderOutingInfo(ed) {
+  const weather=weatherParts(ed), bits=routeBits(ed.flagship?.snapshot);
+  return `<div class="outing-info">
+    ${bits.length ? `<section class="outing-glance"><h3 class="outing-heading">Outing at a glance</h3><ul class="outing-metrics" aria-label="Outing logistics">${bits.map(b=>`<li>${b}</li>`).join('')}</ul></section>` : ''}
+    ${(weather.days.length||weather.forecast) ? `<section class="outing-weather${weather.adverse?' is-adverse':''}"><h3 class="outing-heading">${weather.adverse?'Weather warning':'Weather'}</h3>${weather.days.length?`<table class="outing-forecast"><thead><tr><th scope="col">Day</th><th scope="col">Forecast</th></tr></thead><tbody>${weather.days.map(d=>`<tr><th scope="row">${esc(d.day)}</th><td>${esc(d.forecast)}</td></tr>`).join('')}</tbody></table>`:''}${weather.forecast?`<p>${esc(weather.forecast)}</p>`:''}${weather.context?`<p class="weather-context">${esc(weather.context)}</p>`:''}</section>`:''}
+    ${weather.trail?`<section class="outing-trail"><h3 class="outing-heading">Trail note</h3><p>${esc(weather.trail)}</p></section>`:''}
+  </div>`;
 }
 
 export function renderWeek(pair, editions, ctx) {
@@ -397,7 +402,7 @@ export function renderAtlas(model, ctx) {
     <p>Home stays in this browser. Map providers receive the visible map area; home is never published.</p>
     <form id="address-form"><label>Home address<input name="address" autocomplete="street-address" maxlength="240" required placeholder="Street, town, state, ZIP"></label><button>Locate with OpenStreetMap</button></form><p class="season-note">Locating sends the address to OpenStreetMap’s Nominatim service. Check the returned coordinates below before saving home. You can also enter coordinates directly.</p>
     <form id="location-form"><label>Latitude<input name="lat" type="number" step="any" min="-85" max="85" required></label><label>Longitude<input name="lng" type="number" step="any" min="-180" max="180" required></label><button>Save home</button><button type="button" id="forget-location">Forget home</button></form>
-    <label class="routing-choice"><input type="checkbox" id="routing-enabled"> Enable driving routes: OSRM receives your home and selected trailhead coordinates. Estimates exclude live traffic.</label><p id="location-status" role="status"></p>
+    <p class="season-note">Selecting a place automatically requests a driving route. OSRM receives Home and the selected trailhead coordinates; Home stays saved only in this browser.</p><label class="routing-choice traffic-choice"><input type="checkbox" id="traffic-enabled" disabled aria-describedby="traffic-note"> Enable live traffic data</label><p id="traffic-note" class="season-note traffic-note">Live traffic unavailable with current routing provider.</p><p id="location-status" role="status"></p>
   </details></div></div>
       <label class="directory-picker vh" for="place-picker">Choose a published place</label><select id="place-picker" class="directory-picker"><option value="">Choose a place</option>${places.map(p=>`<option value="${esc(p.id)}">${esc(p.short_name || p.name)}${model.statuses.get(p.id).status === 'withdrawn' ? ' · Withdrawn' : ''}</option>`).join('')}</select>
       <details class="directory-catalog" open><summary>Browse history (${c.all})</summary><div class="directory-list">${groups || '<p>No places published yet.</p>'}</div></details>
