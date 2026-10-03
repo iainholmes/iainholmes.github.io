@@ -16,6 +16,7 @@
 // Swapping MapLibre, tile hosts or adding a routing layer happens here, not in the UI.
 
 import { atlasStyle } from './style.js';
+import { TRAFFIC_COLORS } from '../core/traffic.js';
 
 const VERSION = '5.24.0';
 const LOAD_TIMEOUT_MS = 12000;   // style + first tiles
@@ -180,6 +181,11 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   map.addLayer({ id: 'route-line', type: 'line', source: 'routes',
     layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#C98B4B', 'line-width': travel ? 3 : 3, 'line-opacity': 0.95 } });
   if(travel){map.setFilter('route-halo',['==',['get','mode'],'drive']);map.setFilter('route-line',['==',['get','mode'],'drive']);for(const [mode,color,dash] of [['air','#40616A',[5,3]],['ferry','#47604D',[2,2]],['rail','#1D2A3A',[1,2]],['walk','#C98B4B',[1,1]]])map.addLayer({id:'transit-'+mode,type:'line',source:'routes',filter:['==',['get','mode'],mode],paint:{'line-color':color,'line-width':2.5,'line-dasharray':dash}});}
+  if(!travel){
+    map.setFilter('route-line',['!', ['in',['get','traffic'],['literal',['closure','unknown']]]]);
+    map.setPaintProperty('route-line','line-color',['match',['get','traffic'],...Object.entries(TRAFFIC_COLORS).flat(),'#C98B4B']);
+    for(const level of ['closure','unknown'])map.addLayer({id:'route-'+level,type:'line',source:'routes',filter:['==',['get','traffic'],level],layout:{'line-cap':'butt','line-join':'round'},paint:{'line-color':TRAFFIC_COLORS[level],'line-width':4,'line-dasharray':level==='closure'?[1.2,1]:[2,1.5]}});
+  }
   const statusOrder = ['match', ['get', 'status'], 'recommended', 3, 'walked', 2, 'planned', 1, 0];
   map.addLayer({ id: 'marks', type: 'symbol', source: 'marks',
     layout: {
@@ -239,6 +245,8 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   }
 
   let marks = [], homeMarker = null, homePoint = null;
+  let trafficMarkers=[],incidentPopup=null;
+  function clearIncidents(){trafficMarkers.forEach(m=>m.remove());trafficMarkers=[];incidentPopup?.remove();incidentPopup=null;}
   // Our labels use the self-hosted reading face, independently of third-party tile glyphs.
   const labelLayer=document.createElement('div');labelLayer.className='atlas-label-layer';labelLayer.setAttribute('aria-hidden','true');el.append(labelLayer);
   let labelNodes=[],selectedLabel=null;
@@ -253,6 +261,27 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
     resize() { map.resize(); },
     setMarkers(features) { marks = features; map.getSource('marks').setData({ type: 'FeatureCollection', features });labelLayer.replaceChildren();labelNodes=features.map(feature=>{const node=document.createElement('span');node.textContent=feature.properties.name;labelLayer.append(node);return {feature,node};});positionLabels(); },
     setRoutes(features) { map.getSource('routes').setData({ type: 'FeatureCollection', features }); },
+    setTrafficMode(on) {
+      if(travel)return;
+      for(const layer of atlasStyle(on?'traffic':'light').layers){
+        if(!map.getLayer(layer.id))map.addLayer(layer,'route-halo');
+        else for(const [name,value] of Object.entries(layer.paint || {}))map.setPaintProperty(layer.id,name,value);
+      }
+      if(map.getLayer('traffic-road-name'))map.setLayoutProperty('traffic-road-name','visibility',on?'visible':'none');
+      map.setPaintProperty('route-halo','line-color',on?'#101D2A':'#F3EFE5');
+      map.setPaintProperty('route-line','line-width',on?4:3);
+      diag.theme=on?'traffic':'light';map.triggerRepaint();
+    },
+    setTrafficIncidents(incidents) {
+      clearIncidents();if(travel)return;
+      for(const incident of incidents){
+        const button=document.createElement('button');button.type='button';button.className='traffic-incident'+(incident.closed?' is-closure':'');
+        button.setAttribute('aria-label',incident.description);button.title=incident.description;
+        button.innerHTML='<span aria-hidden="true">!</span>';
+        button.addEventListener('click',e=>{e.stopPropagation();incidentPopup?.remove();const text=document.createElement('p');text.textContent=incident.description;incidentPopup=new maplibregl.Popup({className:'traffic-incident-popup',maxWidth:'240px',closeButton:true}).setLngLat(incident.coordinates).setDOMContent(text).addTo(map);});
+        trafficMarkers.push(new maplibregl.Marker({element:button}).setLngLat(incident.coordinates).addTo(map));
+      }
+    },
     fit(b, opts = {}) { map.fitBounds(b, { padding: 48, duration: duration(600), ...opts }); },
     select(id) { selectedLabel=id;map.setFilter('marks-sel', ['==', ['get', 'id'], id || '']);positionLabels(); },
     focus(id) {
@@ -272,7 +301,7 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
     centerHome() { if (homePoint) map.easeTo({center:[homePoint.lng,homePoint.lat],zoom:10,duration:duration(600)}); else api.fit(bounds); },
     on(type, fn) { handlers[type]?.push(fn); return api; },
     diagnostics,
-    destroy() { labelLayer.remove();map.remove(); },
+    destroy() { clearIncidents();labelLayer.remove();map.remove(); },
   };
   return api;
 }

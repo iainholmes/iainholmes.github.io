@@ -1,0 +1,62 @@
+# Atlas live traffic integration
+
+Status: integration prepared; live account verification and activation require an owner-created restricted Mapbox public token. Production remains light with OSRM and the disabled traffic control until configured. Browser tests use explicitly synthetic responses, never purported live observations.
+
+## Provider comparison — researched 3 October 2026
+
+All three providers offer current traffic in the United States and HTTPS routing APIs usable separately from a visual basemap. None offers anonymous, credential-free production traffic. Home and destination coordinates are necessarily disclosed to the chosen routing service; a direct request also exposes the client's IP address. No provider SDK, telemetry or basemap replacement is needed.
+
+| Consideration | Mapbox Directions `driving-traffic` | HERE Routing v8 | TomTom Routing v1 |
+|---|---|---|---|
+| ETA and comparison | Traffic-aware duration; provider's typical duration | Dynamic duration, typical duration, free-flow base duration | Traffic-aware, historic and no-traffic travel times |
+| Route congestion | Categories and 0–100 values aligned with geometry; explicit unknown/null data | Dynamic speed information by span; requires a speed-ratio display policy | Traffic sections with delay magnitude and geometry indices; unaffected gaps do not establish observed free flow |
+| Incidents/closures | Returned along the selected route; closure geometry indices | Route incidents and span references | Route traffic events; separate incident-details API available |
+| Static/browser authentication | Dedicated public `pk` token; URL restrictions; no secret scope | App API key with enabled Trusted Domains; OAuth secrets belong on a server | API key with domain whitelist and product restrictions; whitelist uses CORS |
+| Restrictions/limitations | Referer required; restrictions are best-effort, not an unforgeable identity check | Referer/domain checks; credential restrictions do not apply to OAuth tokens | CORS/browser whitelist does not stop a non-browser client; isolate products and monitor/limit usage |
+| Low-volume plan shown in current official sources | 100,000 Directions requests/month free; next tier $2/1,000. New trial accounts cannot create the required restricted token until a payment method is added | Limited Plan: 1,000 daily requests without payment information; traffic/time-aware routing may incur additional transaction charges. Verify current account entitlements/pricing | 20,000 Routing requests/month free; current pricing says no upfront card. Verify account entitlements/limits |
+| MapLibre/OpenFreeMap compatibility | GeoJSON directly; non-Mapbox service attribution documented. Supply official logo and linked Mapbox/OSM attribution | Flexible polyline decoding and span offsets; keep HERE data separately attributed and independently licensed | Coordinate arrays directly; preserve attribution. Public terms landing page currently returns no substantive terms; account contract would need review before activation |
+| Complexity | Lowest for explicit congestion/unknown coverage and route incidents | More decoding/normalization and congestion inference from supplied speeds | Straightforward sections; fewer explicit observations outside affected sections |
+| Proxy required? | No for restricted public token; optional for abuse/cost policy | No for restricted browser key; yes for secret OAuth credentials | No for deliberately browser-exposed restricted key; proxy for private key or stronger abuse controls |
+
+Mapbox is selected for explicit geometry-aligned congestion, typical-duration comparison, route-local incidents, documented public-token restrictions and non-Mapbox attribution. HERE and TomTom remain technically viable alternatives, not rejected as impossible. A Mapbox Directions subscription is distinct from the separately licensed downloadable Traffic Data product; this integration uses only Directions.
+
+Reviewed Mapbox's July 2026 Product Terms: provider results are not exported or stored/cached, attribution is supplied next to the result, and no proprietary map data is merged into the OpenStreetMap database. The five-minute age limit expires a displayed estimate; it is not a result cache. Only user interactions trigger provider requests.
+
+## Exact remaining owner setup
+
+1. Create/sign in to a [Mapbox account](https://console.mapbox.com/). If it is a trial, add a payment method to unlock creation of a dedicated token. Account terms and any potential overage billing are the owner's decision; no account or billing changes were made by this build.
+2. In [Access Tokens](https://console.mapbox.com/account/access-tokens/), create a dedicated **public** token for Rupert Atlas production. Do not use the default unrestricted token. Do not select secret/write/admin scopes. Directions requires a valid access token; it does not document a Directions-specific scope. Remove unused public map/style/font/dataset permissions wherever the dashboard permits.
+3. Set Allowed URLs to `https://iainholmes.github.io` only. No wildcard, unrelated origin, `api.mapbox.com`, or local-development exception is needed for these direct browser requests. Origin-only Referer intentionally omits `/rupert/` and all page paths/queries, so a path-specific URL restriction will not match. Use a separate restricted development token if needed later.
+4. Confirm the account has Directions `driving-traffic` access. Enable usage/billing notifications, monitor token statistics and rotate/revoke the token if abused. URL restrictions mitigate browser reuse; they do not prevent a determined non-browser caller from spoofing a Referer. The public token is intentionally visible and must never carry secret capabilities.
+5. Put only this restricted `pk` token in `rupert/assets/js/traffic-config.js` → `publicToken`. The production origin is already configured. The configuration currently contains an empty string. No other application change is required.
+6. Build, run regression checks, redeploy, then verify a real route from the allowed production origin: genuine ETA/segments, correct attribution, and rejected calls from an unrelated origin. Credential-dependent coverage, account entitlements and URL restrictions cannot be proven using synthetic fixtures.
+
+If keeping every credential private or preventing arbitrary anonymous quota use is required, the smallest alternative is a serverless edge function: an environment-secret provider key, fixed routing endpoint (no general proxy), strict coordinate/body validation, exact-origin CORS, server-side rate/budget limits and no coordinate logging or shared caching. CORS alone is not authentication. A Cloudflare Worker or equivalent would add an account/deployment and the edge operator as another recipient of Home coordinates. That infrastructure is unnecessary for the selected restricted-public-token model and was not introduced.
+
+## Implemented UI and freshness
+
+- OFF: accepted light Atlas map, automatic OSRM routing, `OSRM Estimate · Traffic Not Included`.
+- ON with a configured token: request the selected Home → destination traffic route; only after a valid response, recolor the existing OpenFreeMap layers in navy/paper and draw congestion on that route. Camera, selection, Relief and controls are retained.
+- Numeric display bins: 0 ochre; 1–39 amber; 40–59 orange; 60–79 muted red; 80–100 muted red. These are documented Atlas display bins applied to actual numbers, not manufactured measurements. Categorical fallback uses the provider's low/moderate/heavy/severe classification. Null/missing observations remain grey/dashed; explicit closures use dark red/dashes. No traffic tile layer colors unrelated roads.
+- Card: actual traffic-adjusted duration and distance; signed difference from the provider's `duration_typical` only when supplied; checked time, refresh action and provider attribution. No OSRM-vs-Mapbox duration is mislabeled as traffic delay.
+- Incidents: only geometry-indexed events supplied on the selected route; restrained selectable marks, escaped/plain-text provider descriptions. Closure flags are honored. No area-wide incident requests.
+- Failure/timeout/malformed geometry: return to light, remove incidents/congestion, uncheck traffic, show baseline and `Live traffic temporarily unavailable · showing baseline estimate`. Retry is explicit; late/aborted responses cannot override a newer selection or OFF state.
+- Refresh: enabling, destination/Home changes, manual refresh, or returning to a visible/focused page after five minutes. No periodic API polling or background requests. At five minutes the displayed live treatment expires, leaving baseline if already available, otherwise a refresh prompt. This bounds stale claims and usage while respecting the terms' user-interaction requirement. Reload/standalone starts OFF and does not silently opt in.
+
+## Privacy
+
+Home remains in the existing local-only browser setting. When the reader opts in, the traffic request transmits only endpoint coordinates and routing options to Mapbox over HTTPS; not the typed Home address, recommendation title, saved-trip data or a GPS trace. Mapbox also receives the source IP, browser transport metadata, account token and site origin. No cookies/credentials, analytics, SDK telemetry, persistent traffic results or route export are added. The existing address lookup/Nominatim and Travel/OSRM behavior are unchanged. Clear Home cancels requests and removes displayed route/incident data.
+
+## Primary sources
+
+- [Mapbox Directions API](https://docs.mapbox.com/api/navigation/directions/), [traffic coverage](https://docs.mapbox.com/help/dive-deeper/directions/), [token management](https://docs.mapbox.com/accounts/guides/tokens/), [pricing](https://www.mapbox.com/pricing), [non-Mapbox attribution](https://docs.mapbox.com/help/dive-deeper/attribution/), [Product Terms](https://www.mapbox.com/legal/product-terms), [privacy](https://www.mapbox.com/legal/privacy).
+- [HERE traffic routing](https://docs.here.com/routing/docs/routing-v8-traffic-in-routing), [duration definitions](https://docs.here.com/routing/docs/routing-v8-duration), [spans](https://docs.here.com/routing/docs/routing-v8-span), [API keys/Trusted Domains](https://docs.here.com/identity-and-access-management/docs/plat-using-apikeys), [Limited Plan limits](https://www.here.com/get-started/pricing/rps-limits-excluded-use-cases), [pricing](https://www.here.com/get-started/pricing), [Platform Terms](https://legal.here.com/us-en/terms/here-platform-terms). The pricing and terms pages were intermittently 403-blocked; indexed official excerpts were available. No unverified dollar rate is asserted for HERE.
+- [TomTom Calculate Route](https://docs.tomtom.com/routing-api/documentation/tomtom-maps/v1/calculate-route), [browser-key security](https://docs.tomtom.com/maps-sdk-js/guides/security/where-your-api-key-runs), [key restrictions](https://docs.tomtom.com/platform/documentation/api-best-practices/api-key-management-best-practices), [pricing](https://docs.tomtom.com/pricing), [terms landing page](https://docs.tomtom.com/legal/terms-and-conditions).
+
+## Verification commands
+
+Prepared-release verification: 382 source assertions (319 existing plus 63 traffic checks); build, validation and public-file audit passed. Existing browser suites passed 1,080 refinement and 635 closure checks. The traffic suite passed 212 assertions across all nine requested viewport classes, including simulated standalone, genuine MapLibre/OpenFreeMap rendering and synthetic provider responses. A further 375px multiline-popup/state run passed 46 checks; final frozen-surface recheck passed 530 checks. No browser JavaScript errors or public secret credentials were found. Approved CSS is preserved byte-for-byte before the appended traffic rules; generated page changes are asset versions/imports only.
+
+`npm test`, `npm run build`, `npm run check`, `node _tools/rupert.mjs audit` from `/rupert/`.
+
+With Playwright and a WebGL-capable Chromium: `ATLAS_QA_CHROME=/path/to/chromium node rupert/_tools/traffic-browser-test.mjs`, plus existing `refinement-browser-test.mjs` and `closure-browser-test.mjs`. Store QA outputs outside the repository using `ATLAS_QA_OUTPUT_DIR`. New traffic browser tests use the real MapLibre/OpenFreeMap renderer and synthetic route responses. Physical Safari/iPhone and a genuine account-backed API request remain activation checks, not claims made by fixture tests.

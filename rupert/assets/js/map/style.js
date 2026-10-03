@@ -21,14 +21,21 @@ const PALETTES = {
     text: '#2E2822', textHalo: '#E6EAE1', town: '#221F1C',
     shadow: '#221F1C', highlight: '#F3EFE5',
   },
-
+  traffic: {
+    bg: '#1D2A3A', wood: '#283D37', park: '#30443B', parkLine: '#718779', grass: '#28372F',
+    water: '#263F50', waterLine: '#587B8B', waterText: '#9EBCC7',
+    road: '#65727C', roadCase: '#273544', major: '#89919B', majorCase: '#354454',
+    path: '#B4AD97', boundary: '#72818A',
+    text: '#C7CFD1', textHalo: '#1D2A3A', town: '#E1DDD3',
+    shadow: '#111E2A', highlight: '#7D8984',
+  },
 };
 
 const FONT = ['Noto Sans Regular'];
 const FONT_ITALIC = ['Noto Sans Italic'];
 
 export function atlasStyle(theme = 'light', { relief = false } = {}) {
-  const c = PALETTES.light;
+  const c = PALETTES[theme] || PALETTES.light;
   const sources = {
     omt: { type: 'vector', url: TILES.vector, attribution: ATTRIBUTION },
   };
@@ -93,5 +100,10 @@ export function atlasStyle(theme = 'light', { relief = false } = {}) {
       layout: { 'text-field': ['get', 'name'], 'text-font': FONT, 'text-size': 11.5 },
       paint: { 'text-color': c.text, 'text-halo-color': c.textHalo, 'text-halo-width': 1.4 } },
   ];
+  // Road labels are added only while viewing traffic; the accepted light cartography is unchanged.
+  if(theme==='traffic') layers.push({ id:'traffic-road-name',type:'symbol',source:'omt','source-layer':'transportation_name',minzoom:11,
+    filter:['in',['get','class'],['literal',['motorway','trunk','primary','secondary','tertiary','minor']]],
+    layout:{'symbol-placement':'line','text-field':['coalesce',['get','name'],['get','ref']],'text-font':FONT,'text-size':11},
+    paint:{'text-color':c.text,'text-halo-color':c.textHalo,'text-halo-width':1.5} });
   return { version: 8, glyphs: TILES.glyphs, sources, layers, name: 'Rupert Atlas' };
 }

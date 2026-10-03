@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node _tools/rupert.mjs build",
     "check": "node _tools/rupert.mjs check",
-    "test": "node _tools/test.mjs && node _tools/corrective-test.mjs && node _tools/lifecycle-test.mjs && node _tools/framing-test.mjs && node _tools/finish-test.mjs && node _tools/closure-test.mjs && node _tools/refinement-test.mjs",
+    "test": "node _tools/test.mjs && node _tools/corrective-test.mjs && node _tools/lifecycle-test.mjs && node _tools/framing-test.mjs && node _tools/finish-test.mjs && node _tools/closure-test.mjs && node _tools/refinement-test.mjs && node _tools/traffic-test.mjs",
     "dev": "node _tools/preview.mjs"
   }
 }

@@ -27,6 +27,8 @@ import { veilState, veilArtworkProblems } from '../assets/js/core/veil.js';
 import { veilArrivalBoot } from '../assets/js/core/veil-arrival.js';
 import { chrome, renderWeek, renderEdition, renderArchive, renderAtlas, renderComing, renderTravel, weekLabelFor, esc } from '../assets/js/core/render.js';
 import { placeStatuses, markerFeatures, boundsOf, registerGroups, counts } from '../assets/js/core/atlas.js';
+import { trafficConfig } from '../assets/js/traffic-config.js';
+import { trafficAvailable } from '../assets/js/core/traffic.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
@@ -43,6 +45,7 @@ const err = (where, msg) => errors.push(`${where}: ${msg}`);
 const warn = (where, msg) => warnings.push(`${where}: ${msg}`);
 
 async function load() {
+  if(trafficConfig.publicToken && !trafficAvailable(trafficConfig,'https://iainholmes.github.io')) err('traffic-config','Use only a dedicated restricted public token and the production origin; secret/invalid credentials cannot be built.');
   const site = await readJSON(P('data/site.json'));
   const places = await readJSON(P('data/places.json'));
   const photos = await readJSON(P('data/photos.json'));
