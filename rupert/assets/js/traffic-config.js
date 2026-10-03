@@ -3,7 +3,7 @@
 // Account setup and restrictions: /rupert/_tools/LIVE-TRAFFIC.md.
 export const trafficConfig = Object.freeze({
   provider: 'tomtom',
-  apiKey: '',
+  apiKey: '2KQIdEnRbnAHC14eVA3RaLhDmY4gKqp0',
   // Retained for the inactive Mapbox adapter; do not configure it for this release.
   publicToken: '',
   allowedOrigins: ['https://iainholmes.github.io'],

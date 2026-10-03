@@ -1,6 +1,6 @@
 # Atlas zero-cost traffic — 3 October 2026
 
-TomTom is the first viable no-payment candidate. Orbis v3 integration is prepared and tested with synthetic responses. Activation and a real production-origin request await an owner-created restricted browser key. Production contains no key and stays on OSRM. The existing Mapbox adapter/UI/logo remain available but inactive; do not configure Mapbox or add billing.
+TomTom Orbis v3 is configured with the owner's dedicated domain/product-restricted browser key. Genuine Routing and Copyrights responses were verified from the production origin before activation; deployment verification is described below. OSRM remains the default until explicit traffic opt-in. The existing Mapbox adapter/UI/logo remain available but inactive; do not configure Mapbox or add billing. No private/server credential, paid service or proxy is introduced.
 
 ## Verified plan and security
 
@@ -47,13 +47,13 @@ A quiet **Open Live Navigation** chooser beneath the map works independently of 
 ## Exact owner setup
 
 1. Register/sign in at [MyTomTom](https://my.tomtom.com/) on **Freemium / Start building**. No card is required. Do not add payment details, buy credits, top up or enable recurring payments.
-2. Create a dedicated **Rupert Atlas traffic** key. Enable only **Routing API** (Orbis v3) and **Map Display API** (Copyrights v2). Disable unrelated products, including separate Traffic Flow/Incidents and Search. If narrower endpoint controls are offered, allow only Calculate Route and Copyrights. Confirm both free entitlements; a paid-only requirement blocks activation.
+2. Create a dedicated **The Rupert Atlas** key. Enable only **Routing API** (Orbis v3) and **Map Display API** (Copyrights v2). Disable unrelated products, including separate Traffic Flow/Incidents and Search. If narrower endpoint controls are offered, allow only Calculate Route and Copyrights. Confirm both free entitlements; a paid-only requirement blocks activation.
 3. Enable domain whitelisting and enter exactly **`iainholmes.github.io`**. No scheme, path, port, wildcard or localhost. Save. Enable usage notifications if available and monitor per-key analytics.
 4. Use GitHub's editor for [traffic-config.js](https://github.com/iainholmes/iainholmes.github.io/edit/master/rupert/assets/js/traffic-config.js). Put only this restricted **browser** key in `apiKey`. Leave `provider: 'tomtom'`, the production origin and empty Mapbox `publicToken` unchanged. The browser key is intentionally inspectable. Never enter an unrestricted/private credential or paste it into chat.
 5. Tell Codex the restricted key is configured, without sending the key. The remaining release step is to rebuild the canonical import/cache versions (`npm --prefix rupert run build`), run test/check, deploy, and make a genuine production-origin request. A config-only edit without rebuilding can retain an older cached import graph.
 6. Activation verification must observe Routing 200 and Copyrights 200 from the production origin, correct restricted-origin CORS, genuine ETA, reported section/unknown data and free-flow delay. Fixtures cannot prove account entitlements/CORS or real traffic availability. Do not publicly log credentials or private Home coordinates.
 
-TomTom satisfied the first-candidate investigation; HERE/agency fallback was not needed. No account or billing changes were made.
+TomTom satisfied the first-candidate investigation; HERE/agency fallback was not needed. The owner completed account/key setup and supplied the restricted browser key for activation. The activation pass adds no billing, credits, subscriptions or paid products.
 
 ## Validation of this preparation
 
@@ -62,4 +62,13 @@ TomTom satisfied the first-candidate investigation; HERE/agency fallback was not
 - 103 browser assertions preserve the Mapbox adapter at portrait, landscape and desktop sizes. Existing Atlas browser suites passed 1,080 + 635 assertions, including natural veil lifecycle, published-tile navigation, This Week/footer, withdrawal/history, automatic baseline routing and saved Travel behavior. After correcting the navigation chooser’s desktop sticky-container placement, the representative 530-assertion Atlas suite passed again.
 - Real MapLibre/OpenFreeMap rendering was used for traffic tests; TomTom/Mapbox/OSRM route responses were explicitly synthetic. Tests wait for rendered route features before snapshots. Portrait/landscape/desktop screenshots reviewed; map controls and route/place cards remain legible/non-overlapping.
 - Existing CSS is byte-preserved with only navigation/credits rules appended. All 11 generated HTML pages differ only by canonical import graph/cache versions. Changes are under `/rupert/`; frozen sources and Periodicals are untouched. Both production credentials are empty; fixture keys are confined to unpublished test tools.
-- A genuine TomTom production-origin request remains pending the owner's restricted key; no physical-device traffic observation is claimed.
+- The above counts describe the original preparation with inactive credentials. No physical-device traffic observation is claimed.
+
+## Activation verification — 3 October 2026
+
+- The owner's browser key is configured only in `assets/js/traffic-config.js`; Mapbox `publicToken` stays empty. The canonical build regenerates all 11 HTML import/cache versions; their markup and approved styling are otherwise unchanged.
+- Real browser requests originate at `https://iainholmes.github.io`, with origin-only referrers. Routing v3 and Copyrights v2 both return HTTP 200 using the restricted key. No key, private Home address or private coordinates are included in QA reports. Public Chapel Hill reference coordinates are used for the isolated test Home.
+- Genuine Riverwalk and Cox Mountain routes supply traffic-aware durations, distance and zero reported free-flow delay. The sampled responses contain no traffic sections/incidents; Atlas therefore displays neutral unknown route segments, not a claim of clear traffic. Synthetic regressions separately verify every supported severity, closure and incident description. No incidents or delays are manufactured.
+- Real opt-in, dark MapLibre/OpenFreeMap treatment, provider ETA/delay, Copyrights attribution, explicit Refresh and destination replacement are checked against the provider responses. A controlled 429 verifies immediate light-map OSRM fallback and no automatic retry. Reload/standalone starts OFF.
+- The 466 source regressions, build/validation, 316 TomTom browser assertions at all nine specified viewports, 103 retained Mapbox assertions and 530 representative Atlas lifecycle/navigation/footer/routing assertions pass. Five-minute expiry and foreground refresh are tested with an isolated browser clock; traffic makes no periodic polling requests.
+- Deployment must additionally verify the published configuration/import versions byte-for-byte and repeat genuine Routing/Copyrights requests against deployed files. Traffic remains coordinate-only and explicit opt-in. The user's earlier physical-iPhone design approval remains applicable; no new physical-device test is claimed.
