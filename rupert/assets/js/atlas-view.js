@@ -1,4 +1,4 @@
-import { setupLocation } from './location-view.js';
+import { setupLocation } from './location-view.js?v=20261002-auto-route1';
 // Atlas page behaviour. The directory is complete without this file; this adds camera framing, the map, and
 // selection kept in step between the two. The map is reached only through map/maplibre-provider.js.
 import { frameFeatures, frameMap } from './core/framing.js';
@@ -121,11 +121,14 @@ function select(id, { from } = {}) {
 }
 function showCard(id, row) {
   const el = (tag, cls, text) => { const n = document.createElement(tag); n.className = cls; n.textContent = text; return n; };
-  const link = el('a', 'mc-link', 'See in the directory'); link.href = `#place-${id}`;
+  const link = el('a', 'mc-link', 'See in directory'); link.href = `#place-${id}`;
   link.addEventListener('click', e => { e.preventDefault(); catalog.open=true; row.scrollIntoView({ block: 'center', behavior: 'smooth' }); row.querySelector('.reg-select')?.focus({ preventScroll: true }); });
   const close = el('button', 'mc-close', 'Close'); close.type = 'button'; close.setAttribute('aria-label', 'Close place card');
   close.addEventListener('click', e => { e.stopPropagation(); card.hidden = true; });
-  card.replaceChildren(close, el('p', 'mc-name', row.querySelector('h4').textContent), el('p', 'mc-status', row.querySelector('.reg-word').textContent), link);
+  const region=row.closest('.reg-group')?.dataset.region || '';
+  const bottom=document.createElement('div');bottom.className='mc-bottom';bottom.append(link);
+  if(region) bottom.append(el('span','mc-place-detail',region));
+  card.replaceChildren(close, el('p', 'mc-name', row.querySelector('h4').textContent), el('p', 'mc-status', row.querySelector('.reg-word').textContent), bottom);
   card.hidden = false;
 }
 

@@ -16,7 +16,7 @@ export function renderVeil(state, photos, base, trip = null) {
   const { month, season, year, issue } = state.identity;
   const almanac = weekendAlmanac(state.weekend.start);
   const group = (key, label) => `<section class="veil-week-group" aria-label="${label}"><h2 class="veil-group-title">${label}</h2><div class="veil-tiles veil-tiles-group">${SLOTS.map(slot=>tile(slot,state[key][slot])).join('')}</div></section>`;
-  return `<div class="veil-plate"><div class="veil-lockup"><span class="veil-no">No. ${issue}</span><div class="veil-cycle"><span>${month}</span><small>${season} · ${year}</small></div></div><div class="veil-center"><div class="veil-band" aria-label="Previous and current recommendation previews">${group('previous','Previous Week')}${group('current','This Week')}</div>${trip ? `<a class="veil-travel" href="${base}travel/#saved-trips"><span>Upcoming Travel</span><strong>${esc(trip.title)}</strong><time datetime="${esc(trip.start)}">${esc(longDate(trip.start))}</time></a>` : ''}</div><footer class="veil-almanac" aria-label="Calculated almanac for Chapel Hill, ${esc(longDate(state.weekend.start))}"><span>Sunset ${esc(almanac.sunset)} ET</span><span>Daylight ${esc(almanac.daylight)}</span><span>${esc(almanac.moon)}</span></footer></div>`;
+  return `<div class="veil-plate"><div class="veil-lockup"><span class="veil-no">No. ${issue}</span><div class="veil-cycle"><span>${month}</span><small>${season} · ${year}</small></div></div><div class="veil-center"><div class="veil-band" aria-label="Previous and current recommendation previews">${group('previous','Previous Week')}${group('current','This Week')}</div><img class="veil-rupert-mark" src="${base}assets/img/rupert-outline.svg?v=20261002-portrait1" alt="" aria-hidden="true">${trip ? `<a class="veil-travel" href="${base}travel/#saved-trips"><span>Upcoming Travel</span><strong>${esc(trip.title)}</strong><time datetime="${esc(trip.start)}">${esc(longDate(trip.start))}</time></a>` : ''}</div><footer class="veil-almanac" aria-label="Calculated almanac for Chapel Hill, ${esc(longDate(state.weekend.start))}"><span>Sunset ${esc(almanac.sunset)} ET</span><span>Daylight ${esc(almanac.daylight)}</span><span>${esc(almanac.moon)}</span></footer></div>`;
 }
 
 export function setupVeil(base) {
@@ -78,7 +78,7 @@ export function setupVeil(base) {
     if (!veil) {
       veil=document.createElement('div'); veil.className='atlas-veil'; veil.tabIndex=-1;
       veil.setAttribute('role','dialog'); veil.setAttribute('aria-modal','true');
-      veil.addEventListener('click',e=>{if(e.target.closest('a,button,input,select,textarea')) { e.stopPropagation(); return; } close(true);});
+      veil.addEventListener('click',e=>{const link=e.target.closest('a[href]');if(link){e.preventDefault();e.stopPropagation();const href=link.href;close(false);location.assign(href);return;}if(e.target.closest('button,input,select,textarea')){e.stopPropagation();return;}close(true);});
       veil.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
       document.body.append(veil); restore=lockPage();
     }

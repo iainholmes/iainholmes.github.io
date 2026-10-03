@@ -1270,3 +1270,40 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   .veil-travel strong {font-size:18px;}
   .veil-almanac {font-size:11px;padding-top:8px;gap:4px 16px;}
 }
+
+/* Final veil spatial polish. */
+.veil-plate{position:relative;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 72px);}
+.veil-almanac{position:absolute;left:0;right:0;bottom:max(2px,env(safe-area-inset-bottom,0px));margin-inline:clamp(20px,4vw,56px);}
+.veil-rupert-mark{display:block;width:92px;height:94px;object-fit:contain;opacity:.92;filter:none;margin:18px auto 0;pointer-events:none;}
+@media(max-width:759.98px) and (orientation:portrait){
+  .veil-plate{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 66px);}
+  .veil-almanac{bottom:max(1px,env(safe-area-inset-bottom,0px));margin-inline:20px;}
+  .veil-rupert-mark{width:74px;height:78px;margin-top:18px;}
+}
+@media(max-height:600px){
+  .veil-plate{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 52px);}
+  .veil-rupert-mark{width:48px;height:50px;margin-top:6px;}
+}
+
+/* Atlas final mobile polish: slightly shorter navigation dock and compact place card. */
+@media(max-width:759.98px){
+  :root{--dock-h:54px;}
+  .dock a{min-height:var(--dock-h);}
+  .utility-footer .wrap{padding-bottom:calc(28px + var(--dock-h));}
+  .traffic-choice{margin-top:10px!important;}
+  .traffic-choice:has(input:disabled){opacity:.68;}
+  .traffic-note{margin-top:6px!important;}
+}
+@media(max-width:759.98px) and (orientation:portrait){
+  .page-atlas .map-card{
+    top:calc(20px + var(--map-overlay-height,260px));
+    bottom:auto;left:18px;right:auto;width:min(270px,calc(100% - 92px));
+    padding:10px 12px 9px;padding-right:48px;
+  }
+  .page-atlas .map-card .mc-name{font-size:30px;line-height:1.02;}
+  .page-atlas .map-card .mc-status{font-size:11px;margin:3px 0 8px!important;}
+  .page-atlas .map-card .mc-close{top:4px;right:4px;min-width:40px;min-height:40px;font-size:10px;}
+  .page-atlas .map-card .mc-bottom{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-top:4px;}
+  .page-atlas .map-card .mc-link{font-size:9px;line-height:1.15;letter-spacing:.075em;padding:5px 0;}
+  .page-atlas .map-card .mc-place-detail{font:400 10px/1.2 var(--f-data);color:#5A5044;text-align:right;white-space:nowrap;}
+}
