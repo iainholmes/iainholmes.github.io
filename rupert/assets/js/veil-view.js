@@ -20,6 +20,9 @@ export function renderVeil(state, photos, base, trip = null) {
 }
 
 export function setupVeil(base) {
+  const reviewMode = new URLSearchParams(window.location.search).get('veil') === 'review';
+  // Temporary live-review clock: show the next natural Monday frontispiece without changing normal Friday behavior.
+  const reviewNow = new Date('2026-10-05T12:00:00-04:00');
   let veil = null, last = null, manifest = null, photos = null, busy = false, restore = () => {};
   const dismissed = new Set();
   const isDismissed = key => { try { return dismissed.has(key) || sessionStorage.getItem(key)==='1'; } catch { return dismissed.has(key); } };
@@ -54,7 +57,10 @@ export function setupVeil(base) {
   }
   function reconcile(now) {
     if (!manifest || !photos) return;
+    if (reviewMode) now = reviewNow;
     const state = veilState(manifest,now);
+    // Never let a review dismissal suppress the real Monday/Wednesday frontispiece later.
+    if (reviewMode) state.dismissalKey = `rupert-veil-review:${state.weekend.start}:${state.phase}`;
     if (!state.active || isDismissed(state.dismissalKey)) { close(); return; }
     const problems = veilArtworkProblems(state,photos);
     if (problems.length) { close(); console.warn('Rupert Atlas: frontispiece artwork integrity',problems.join('; ')); return; }
