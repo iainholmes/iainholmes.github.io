@@ -24,6 +24,7 @@ import { selectCurrentPair, archiveGroups } from '../assets/js/core/editions.js'
 import { parseDate, nyDateString } from '../assets/js/core/dates.js';
 import { cycleWeekend } from '../assets/js/core/cycles.js';
 import { veilState, veilArtworkProblems } from '../assets/js/core/veil.js';
+import { veilArrivalBoot } from '../assets/js/core/veil-arrival.js';
 import { chrome, renderWeek, renderEdition, renderArchive, renderAtlas, renderComing, renderTravel, weekLabelFor, esc } from '../assets/js/core/render.js';
 import { placeStatuses, markerFeatures, boundsOf, registerGroups, counts } from '../assets/js/core/atlas.js';
 
@@ -218,6 +219,7 @@ ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta
 <script type="importmap">${JSON.stringify({imports:Object.fromEntries(moduleFiles.map(f=>[base+'assets/js/'+f,base+'assets/js/'+f+'?v='+assetVersion]))})}</script>
 ${scripts ? `<script type="module" src="${base}assets/js/site.js"></script>\n` : ''}${extra.map(x => `<script type="module" src="${base}${x}"></script>\n`).join('')}</head>
 <body data-base="${base}" data-section="${active}"${cycle ? ` data-cycle="${esc(cycle)}"` : ''}>
+${scripts ? `<script>(${veilArrivalBoot.toString()})();</script>` : ''}
 ${chrome({ active, base, weekLabel, site, body, pageClass })}
 </body>
 </html>

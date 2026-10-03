@@ -34,4 +34,12 @@ const svg=readFileSync(new URL('../assets/img/rupert-portrait-outline.svg',impor
 check(()=>assert.match(svg,/AE36F5F4-9591-433C-855E-FDD32AF594C1\.jpeg/));
 check(()=>assert.ok(!svg.includes('<image')&&!svg.includes('base64')));
 check(()=>assert.match(svg,/fill="none"/));
+const veil=renderVeil(state,photos,'../',null,true);
+check(()=>assert.match(veil,/veil-number-prefix">N<sup>o<\/sup>\./));
+check(()=>assert.match(veil,/aria-label="Number 41"/));
+check(()=>assert.match(veil,/Chapel Hill, N.C. · Saturday 10 Oct/));
+check(()=>assert.equal((veil.match(/class="veil-almanac-item"/g)||[]).length,3));
+check(()=>assert.equal((veil.match(/class="veil-almanac-symbol"/g)||[]).length,3));
+check(()=>assert.ok(veil.indexOf('>Sunset<')<veil.indexOf('>Moon<')&&veil.indexOf('>Moon<')<veil.indexOf('>Daylight<')));
+check(()=>assert.ok(!veil.includes('Home')));
 console.log(`${checks} final refinement source checks passed.`);

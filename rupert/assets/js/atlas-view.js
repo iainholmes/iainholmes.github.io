@@ -128,7 +128,9 @@ function showCard(id, row) {
   const region=row.closest('.reg-group')?.dataset.region || '';
   const bottom=document.createElement('div');bottom.className='mc-bottom';bottom.append(link);
   if(region) bottom.append(el('span','mc-place-detail',region));
-  card.replaceChildren(close, el('p', 'mc-name', row.querySelector('h4').textContent), el('p', 'mc-status', row.querySelector('.reg-word').textContent), bottom);
+  const top=document.createElement('div');top.className='mc-top';
+  top.append(el('p','mc-name',row.querySelector('h4').textContent),close);
+  card.replaceChildren(top, el('p', 'mc-status', row.querySelector('.reg-word').textContent), bottom);
   card.hidden = false;
 }
 
