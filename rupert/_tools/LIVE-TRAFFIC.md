@@ -25,16 +25,19 @@ Traffic Incident Details has 2,500 free requests/month and Flow Segment Data 20,
 | `summary.travelDurationInSeconds` | Genuine live/historical traffic-aware ETA |
 | `summary.lengthInMeters` | Driving distance |
 | `summary.trafficDelayDurationInSeconds` | Returned delay **vs free flow**, never “vs typical” |
+| `summary.trafficLengthInMeters` | Length affected by delay-causing events, **not** traffic coverage |
 | `legs[0].path` | Selected route geometry |
 | `startPathIndex` / `endPathIndex` | Inclusive coordinate boundaries; line segments from start through end−1 |
 | `delayMagnitude: minor` | Mild, warm amber |
 | `delayMagnitude: moderate` | Moderate, orange |
 | `delayMagnitude: major` | Heavy, muted red |
 | `iconCategory: roadClosed` | Closure, dark red/dashed |
-| Unknown/undefined/missing magnitude; unannotated gaps | Neutral unknown/dashed; absence does not establish clear traffic |
+| Unannotated geometry with a complete traffic summary and returned event sections, or explicit zero delay/zero affected length | Normal ochre: no reported delay on that geometry |
+| Unknown/undefined/missing event magnitude | Neutral unknown/dashed on that event's geometry |
+| Missing traffic summary, or positive delay/affected length without event geometry | Neutral unknown/dashed; cannot responsibly localize conditions |
 | `iconCategory`, `delayDurationInSeconds`, `eventId` | Factual route-local incidents/delay, deduplicated markers |
 
-This API does not distinguish a separate severe category or report observed free-flow coverage of every road. Neither is invented. The existing full palette remains for Mapbox. No inferred speed ratios, typical duration, OSRM delay comparison or regional incident search is used. Invalid geometry/indexes reject the result; overlapping annotations preserve the more severe reported condition.
+Traffic sections describe incidents/traffic-affected parts of the route, not a coverage mask. Orbis omits `sections.traffic` (and may omit `sections` entirely) when it has no events to report. Normal ochre means no reported delay in the valid live-traffic result, not a guarantee of observed free-flow speed on every metre. The response does not expose a per-road live-observation/coverage flag, so genuinely uncovered roads cannot be identified from omitted events alone. The API also does not distinguish a separate severe category; neither coverage nor severity is invented. The existing full palette remains for Mapbox. No inferred speed ratios, typical duration, OSRM delay comparison or regional incident search is used. Invalid geometry/indexes reject the result; overlapping annotations preserve the more severe reported condition.
 
 ## Privacy and freshness
 
@@ -68,7 +71,23 @@ TomTom satisfied the first-candidate investigation; HERE/agency fallback was not
 
 - The owner's browser key is configured only in `assets/js/traffic-config.js`; Mapbox `publicToken` stays empty. The canonical build regenerates all 11 HTML import/cache versions; their markup and approved styling are otherwise unchanged.
 - Real browser requests originate at `https://iainholmes.github.io`, with origin-only referrers. Routing v3 and Copyrights v2 both return HTTP 200 using the restricted key. No key, private Home address or private coordinates are included in QA reports. Public Chapel Hill reference coordinates are used for the isolated test Home.
-- Genuine Riverwalk and Cox Mountain routes supply traffic-aware durations, distance and zero reported free-flow delay. The sampled responses contain no traffic sections/incidents; Atlas therefore displays neutral unknown route segments, not a claim of clear traffic. Synthetic regressions separately verify every supported severity, closure and incident description. No incidents or delays are manufactured.
+- Genuine Riverwalk and Cox Mountain routes supply traffic-aware durations, distance and zero reported free-flow delay. The initial adapter rendered their omitted traffic sections as unknown; the diagnostic below corrects this event/coverage conflation. Synthetic regressions separately verify every supported severity, closure and incident description. No incidents or delays are manufactured.
 - Real opt-in, dark MapLibre/OpenFreeMap treatment, provider ETA/delay, Copyrights attribution, explicit Refresh and destination replacement are checked against the provider responses. A controlled 429 verifies immediate light-map OSRM fallback and no automatic retry. Reload/standalone starts OFF.
 - The 466 source regressions, build/validation, 316 TomTom browser assertions at all nine specified viewports, 103 retained Mapbox assertions and 530 representative Atlas lifecycle/navigation/footer/routing assertions pass. Five-minute expiry and foreground refresh are tested with an isolated browser clock; traffic makes no periodic polling requests.
 - Deployment must additionally verify the published configuration/import versions byte-for-byte and repeat genuine Routing/Copyrights requests against deployed files. Traffic remains coordinate-only and explicit opt-in. The user's earlier physical-iPhone design approval remains applicable; no new physical-device test is claimed.
+
+## Traffic-section diagnostic — 3 October 2026
+
+Before any implementation change, real browser requests from the production origin at 19:30 ET used the public Chapel Hill reference and all three canonical destination access points. Every request returned HTTP 200, with `traffic: live` and the unchanged production field mask. Exact relevant response fields:
+
+| Route | Duration (s) | Distance (m) | Traffic delay (s) | Delay-affected length (m) | Traffic sections | Old → corrected classification |
+|---|---:|---:|---:|---:|---|---|
+| Riverwalk | 1414 | 21038 | 0 | 0 | Omitted | 576 unknown segments → normal/no reported delay |
+| Cox Mountain | 1611 | 24025 | 0 | 0 | Omitted | 590 unknown segments → normal/no reported delay |
+| Company Mill | 1518 | 31305 | 0 | 0 | Omitted | 475 unknown segments → normal/no reported delay |
+
+A fourth Company Mill request broadened the field mask to `routes,routes.sections.traffic,routes.progressPoints`. It returned country/motorway/speed-limit/travel-mode/urban sections and progress points, but still no traffic events or per-road coverage field. This rules out the production field mask omitting a documented coverage signal.
+
+The [current Orbis v3 schema](https://docs.tomtom.com/routing-api/documentation/tomtom-orbis-maps/v3/calculate-route) defines traffic length as delay-affected length and section magnitude/speed/delay as incident properties. The [official SDK traffic guide](https://docs.tomtom.com/maps-sdk-js/guides/core/traffic) likewise defines routing traffic sections as incident-affected sections. [US market coverage](https://docs.tomtom.com/routing-api/documentation/tomtom-orbis-maps/v3/product-information/market-coverage) includes real-time traffic; this is market availability, not proof of individual live speed observations. The adapter correction therefore distinguishes normal/no reported delay from reported events and indeterminate event/summary data without inventing a coverage mask. UI, palette, request fields, refresh/privacy policy, Mapbox and OSRM fallback remain unchanged.
+
+Validation: build/check and 496 source assertions pass, including omitted/empty sections, explicit unknown event severity, absent/invalid traffic-summary values, unlocated delay and overlapping events. The 322 TomTom browser assertions pass at all nine viewports, covering solid ochre no-event rendering, explicit unknown dashes, severity/closure/incident handling, responsive popup geometry, freshness, refresh, failure/429, reload and standalone. The fixture geometry check waits for the existing ResizeObserver to settle rather than reading popup placement before layout completes. The retained Mapbox browser suite passes 103 assertions; the Atlas lifecycle/navigation/footer/routing suite passes 530. Genuine production-origin candidate checks pass 70 assertions for Riverwalk, Cox Mountain, Company Mill, explicit Refresh, real ETA/free-flow delay/attribution, solid normal route rendering and controlled OSRM fallback. All sampled live routes return no incidents; congestion/unknown/closures are verified with fixtures, not fabricated production conditions. No physical-iPhone observation is claimed by this automated check.

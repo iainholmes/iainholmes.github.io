@@ -1,8 +1,9 @@
 import { validPoint } from './routing.js';
 
-// Orbis v3 reports affected sections, not observed free-flow coverage of every road.
-// Leave unannotated geometry unknown; use only the provider's reported delay magnitude.
-const rank = { unknown: 0, mild: 1, moderate: 2, heavy: 3, closure: 4 };
+// Orbis v3 sections describe traffic events, not a coverage mask. A valid traffic
+// summary leaves unaffected geometry normal (no reported delay), not unknown.
+// This does not claim an observed live speed for every road.
+const rank = { normal: 0, unknown: 1, mild: 2, moderate: 3, heavy: 4, closure: 5 };
 const names = { accident: 'Crash', brokenDownVehicle: 'Broken-down vehicle', dangerousConditions: 'Dangerous conditions', flooding: 'Flooding', fog: 'Fog', ice: 'Ice', jam: 'Traffic jam', laneClosed: 'Lane closed', rain: 'Rain', roadClosed: 'Road closed', roadWorks: 'Road works', wind: 'Wind', unknown: 'Route incident' };
 export function tomtomSeverity(section) {
   if (section.iconCategory === 'roadClosed') return 'closure';
@@ -17,7 +18,12 @@ export function parseTomtomTrafficRoute(data, fetchedAt = Date.now()) {
   }
   const sections = route.sections?.traffic ?? [];
   if (!Array.isArray(sections) || sections.length > 10000) throw Error('Live traffic segment geometry did not match.');
-  const levels = Array(coords.length - 1).fill('unknown'), incidents = [], seen = new Set();
+  const hasTrafficSummary = Number.isFinite(summary.trafficDelayDurationInSeconds) && summary.trafficDelayDurationInSeconds >= 0 &&
+    Number.isFinite(summary.trafficLengthInMeters) && summary.trafficLengthInMeters >= 0;
+  // Positive delay without section geometry cannot be localized; missing traffic
+  // summary fields are not evidence of normal conditions either.
+  const normal = hasTrafficSummary && (sections.length > 0 || (summary.trafficDelayDurationInSeconds === 0 && summary.trafficLengthInMeters === 0));
+  const levels = Array(coords.length - 1).fill(normal ? 'normal' : 'unknown'), incidents = [], seen = new Set();
   for (const section of sections) {
     const start = section?.startPathIndex, end = section?.endPathIndex;
     if (!Number.isInteger(start) || !Number.isInteger(end) || start < 0 || end < start || end >= coords.length) throw Error('Live traffic segment geometry did not match.');

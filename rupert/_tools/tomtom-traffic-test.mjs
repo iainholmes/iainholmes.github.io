@@ -9,7 +9,7 @@ check(()=>assert.ok(trafficAvailable(config,'https://atlas.example')));
 for(const patch of [{apiKey:''},{apiKey:'not a key'},{apiKey:'https://secret.example'},{provider:'other'}])check(()=>assert.equal(trafficAvailable({...config,...patch},'https://atlas.example'),false));
 check(()=>assert.equal(trafficAvailable(config,'https://wrong.example'),false));
 const coordinates=Array.from({length:9},(_,i)=>[-79+i/100,35+i/100]);
-const fixture={routes:[{summary:{travelDurationInSeconds:2580,lengthInMeters:43612,trafficDelayDurationInSeconds:420},legs:[{path:{type:'LineString',coordinates}}],sections:{traffic:[
+const fixture={routes:[{summary:{travelDurationInSeconds:2580,lengthInMeters:43612,trafficDelayDurationInSeconds:420,trafficLengthInMeters:2000},legs:[{path:{type:'LineString',coordinates}}],sections:{traffic:[
  {startPathIndex:1,endPathIndex:2,iconCategory:'roadWorks',delayMagnitude:'minor',delayDurationInSeconds:120},
  {startPathIndex:2,endPathIndex:3,iconCategory:'jam',delayMagnitude:'moderate'},
  {startPathIndex:3,endPathIndex:4,iconCategory:'jam',delayMagnitude:'major'},
@@ -19,17 +19,38 @@ const result=parseTomtomTrafficRoute(fixture,100);
 check(()=>assert.equal(result.minutes,43));check(()=>assert.equal(result.miles,'27.1'));check(()=>assert.equal(result.fetchedAt,100));
 check(()=>assert.equal(result.typicalSeconds,null));check(()=>assert.equal(result.delaySeconds,420));
 check(()=>assert.equal(trafficProviderLabel(result),'Live Traffic · TomTom · +7 min vs free flow'));
-check(()=>assert.deepEqual(result.features.map(f=>f.properties.traffic),['unknown','mild','moderate','heavy','unknown','closure','unknown']));
+check(()=>assert.deepEqual(result.features.map(f=>f.properties.traffic),['normal','mild','moderate','heavy','normal','closure','normal']));
 check(()=>assert.deepEqual(result.features.flatMap((f,i)=>i?f.geometry.coordinates.slice(1):f.geometry.coordinates),coordinates));
-check(()=>assert.equal(result.unknownSegments,4));check(()=>assert.equal(result.incidents.length,4));
+check(()=>assert.equal(result.unknownSegments,0));check(()=>assert.equal(result.incidents.length,4));
 check(()=>assert.equal(result.incidents[0].description,'Road works · 2 min delay'));check(()=>assert.equal(result.incidents[3].closed,true));
 for(const [patch,expected] of [[{delaySeconds:0},' · 0 min delay vs free flow'],[{delaySeconds:1},' · <1 min delay vs free flow'],[{delaySeconds:null},'']])check(()=>assert.equal(trafficProviderLabel({...result,...patch}),'Live Traffic · TomTom'+expected));
 for(const section of [{delayMagnitude:'unknown'},{delayMagnitude:'undefined'},{delayMagnitude:'invented'},{delayDurationInSeconds:0,effectiveSpeedInKilometersPerHour:70},{}])check(()=>assert.equal(tomtomSeverity(section),'unknown'));
 check(()=>assert.equal(tomtomSeverity({iconCategory:'roadClosed',delayMagnitude:'minor'}),'closure'));
 const empty=structuredClone(fixture);delete empty.routes[0].sections;
 check(()=>assert.equal(parseTomtomTrafficRoute(empty).features[0].properties.traffic,'unknown'));
+// Production Orbis v3 omits sections entirely when there are no traffic events.
+// Explicit zero delay/affected length means no reported delay, not no coverage.
+const clear=structuredClone(empty);Object.assign(clear.routes[0].summary,{trafficDelayDurationInSeconds:0,trafficLengthInMeters:0});
+for(const sections of [undefined,{}, {traffic:[]}]){
+ clear.routes[0].sections=sections;const normal=parseTomtomTrafficRoute(clear);
+ check(()=>assert.deepEqual(normal.features.map(f=>f.properties.traffic),['normal']));
+ check(()=>assert.equal(normal.unknownSegments,0));check(()=>assert.equal(normal.incidents.length,0));
+ check(()=>assert.equal(normal.seconds,2580));check(()=>assert.equal(normal.delaySeconds,0));
+}
+for(const key of ['trafficDelayDurationInSeconds','trafficLengthInMeters'])for(const value of [undefined,null,NaN,-1]){
+ const missing=structuredClone(clear);missing.routes[0].summary[key]=value;
+ check(()=>assert.equal(parseTomtomTrafficRoute(missing).features[0].properties.traffic,'unknown'));
+}
+const unlocated=structuredClone(clear);unlocated.routes[0].summary.trafficLengthInMeters=100;
+check(()=>assert.equal(parseTomtomTrafficRoute(unlocated).features[0].properties.traffic,'unknown'));
+for(const section of [{delayMagnitude:'unknown'},{delayMagnitude:'undefined'},{}]){
+ const indeterminate=structuredClone(fixture);indeterminate.routes[0].sections.traffic.push({startPathIndex:4,endPathIndex:5,iconCategory:'jam',...section});
+ const parsed=parseTomtomTrafficRoute(indeterminate);
+ check(()=>assert.deepEqual(parsed.features.map(f=>f.properties.traffic),['normal','mild','moderate','heavy','unknown','normal','closure','normal']));
+ check(()=>assert.equal(parsed.unknownSegments,1));
+}
 const overlap=structuredClone(fixture);overlap.routes[0].sections.traffic.push({startPathIndex:1,endPathIndex:7,delayMagnitude:'minor',iconCategory:'jam'});
-check(()=>assert.deepEqual(parseTomtomTrafficRoute(overlap).features.map(f=>f.properties.traffic),['unknown','mild','moderate','heavy','mild','closure','unknown']));
+check(()=>assert.deepEqual(parseTomtomTrafficRoute(overlap).features.map(f=>f.properties.traffic),['normal','mild','moderate','heavy','mild','closure','normal']));
 const duplicate=structuredClone(fixture);duplicate.routes[0].sections.traffic[0].eventId='same';duplicate.routes[0].sections.traffic.push({...duplicate.routes[0].sections.traffic[0]});
 check(()=>assert.equal(parseTomtomTrafficRoute(duplicate).incidents.length,4));
 for(const mutate of [d=>d.routes=[],d=>d.routes[0].summary.travelDurationInSeconds=NaN,d=>d.routes[0].summary.lengthInMeters=-1,d=>d.routes[0].legs.push({}),d=>d.routes[0].legs[0].path.coordinates[1]=[181,35],d=>d.routes[0].sections.traffic[0].endPathIndex=900,d=>d.routes[0].sections.traffic[0].startPathIndex=-1,d=>d.routes[0].sections.traffic[0].endPathIndex=0,d=>d.routes[0].sections.traffic={}]){const bad=structuredClone(fixture);mutate(bad);check(()=>assert.throws(()=>parseTomtomTrafficRoute(bad),/Live traffic/));}
