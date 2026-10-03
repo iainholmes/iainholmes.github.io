@@ -13,14 +13,17 @@ export function renderVeil(state, photos, base, trip = null) {
     const tag = link ? 'a' : 'div';
     return `<${tag} class="veil-tile${published ? ' is-published' : withdrawn ? ' is-withdrawn' : ' is-pending'}"${link ? ` href="${base}edition/${esc(e.id)}/"` : ''} aria-label="${esc(name)}">${photo({id:e.photo_id},photos,base,{sizes:'(min-width: 760px) 144px, 64px',eager:true,cls:'veil-image'})}<strong>${DAY_LABEL[slot]}</strong><span>${published ? 'Published' : withdrawn ? 'Withdrawn' : PENDING_TIME}</span></${tag}>`;
   };
-  const group = (key, label) => `<section class="veil-group" aria-label="${label}"><h2>${label}</h2><div class="veil-tiles">${SLOTS.map(slot=>tile(slot,state[key][slot])).join('')}</div></section>`;
   const { month, season, year, issue } = state.identity;
   const almanac = weekendAlmanac(state.weekend.start);
-  return `<div class="veil-plate"><div class="veil-lockup"><span class="veil-no">No. ${issue}</span><div class="veil-cycle"><span>${month}</span><small>${season} · ${year}</small></div></div><div class="veil-center"><div class="veil-band">${group('previous','Previous Week')}${group('current','This Week')}</div>${trip ? `<a class="veil-travel" href="${base}travel/#saved-trips"><span>Upcoming Travel</span><strong>${esc(trip.title)}</strong><time datetime="${esc(trip.start)}">${esc(longDate(trip.start))}</time></a>` : ''}</div><footer class="veil-almanac" aria-label="Calculated almanac for Chapel Hill, ${esc(longDate(state.weekend.start))}"><span>Sunset ${esc(almanac.sunset)} ET</span><span>Daylight ${esc(almanac.daylight)}</span><span>${esc(almanac.moon)}</span></footer></div>`;
+  const tiles = [
+    ...SLOTS.map(slot=>tile(slot,state.previous[slot])),
+    ...SLOTS.map(slot=>tile(slot,state.current[slot])),
+  ].join('');
+  return `<div class="veil-plate"><div class="veil-lockup"><span class="veil-no">No. ${issue}</span><div class="veil-cycle"><span>${month}</span><small>${season} · ${year}</small></div></div><div class="veil-center"><div class="veil-band" aria-label="Previous and current recommendation previews"><h2 class="veil-group-title veil-group-previous">Previous Week</h2><h2 class="veil-group-title veil-group-current">This Week</h2><div class="veil-tiles veil-tiles-all">${tiles}</div></div>${trip ? `<a class="veil-travel" href="${base}travel/#saved-trips"><span>Upcoming Travel</span><strong>${esc(trip.title)}</strong><time datetime="${esc(trip.start)}">${esc(longDate(trip.start))}</time></a>` : ''}</div><footer class="veil-almanac" aria-label="Calculated almanac for Chapel Hill, ${esc(longDate(state.weekend.start))}"><span>Sunset ${esc(almanac.sunset)} ET</span><span>Daylight ${esc(almanac.daylight)}</span><span>${esc(almanac.moon)}</span></footer></div>`;
 }
 
 export function setupVeil(base) {
-  const reviewMode = new URLSearchParams(window.location.search).get('veil') === 'review';
+  const reviewMode = new URLSearchParams(window.location.search).get('veil') === 'review' || window.matchMedia('(display-mode: standalone)').matches;
   // Temporary live-review clock: show the next natural Monday frontispiece without changing normal Friday behavior.
   const reviewNow = new Date('2026-10-05T12:00:00-04:00');
   let veil = null, last = null, manifest = null, photos = null, busy = false, restore = () => {};
