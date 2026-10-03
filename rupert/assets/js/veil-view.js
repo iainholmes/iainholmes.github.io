@@ -11,15 +11,12 @@ export function renderVeil(state, photos, base, trip = null) {
     const link = published || withdrawn;
     const name = `${DAY_LABEL[slot]} · ${titleCase(e.title)} · ${published ? 'Published' : withdrawn ? 'Withdrawn' : 'Unpublished, '+PENDING_TIME}`;
     const tag = link ? 'a' : 'div';
-    return `<${tag} class="veil-tile${published ? ' is-published' : withdrawn ? ' is-withdrawn' : ' is-pending'}"${link ? ` href="${base}edition/${esc(e.id)}/"` : ''} aria-label="${esc(name)}">${photo({id:e.photo_id},photos,base,{sizes:'(min-width: 760px) 144px, 64px',eager:true,cls:'veil-image'})}<strong>${DAY_LABEL[slot]}</strong><span>${published ? 'Published' : withdrawn ? 'Withdrawn' : PENDING_TIME}</span></${tag}>`;
+    return `<${tag} class="veil-tile${published ? ' is-published' : withdrawn ? ' is-withdrawn' : ' is-pending'}"${link ? ` href="${base}edition/${esc(e.id)}/"` : ''} aria-label="${esc(name)}">${photo({id:e.photo_id},photos,base,{sizes:'(min-width: 760px) 92px, 54px',eager:true,cls:'veil-image'})}<span class="veil-tile-copy"><strong>${DAY_LABEL[slot]}</strong><span>${published ? 'Published' : withdrawn ? 'Withdrawn' : PENDING_TIME}</span></span></${tag}>`;
   };
   const { month, season, year, issue } = state.identity;
   const almanac = weekendAlmanac(state.weekend.start);
-  const tiles = [
-    ...SLOTS.map(slot=>tile(slot,state.previous[slot])),
-    ...SLOTS.map(slot=>tile(slot,state.current[slot])),
-  ].join('');
-  return `<div class="veil-plate"><div class="veil-lockup"><span class="veil-no">No. ${issue}</span><div class="veil-cycle"><span>${month}</span><small>${season} · ${year}</small></div></div><div class="veil-center"><div class="veil-band" aria-label="Previous and current recommendation previews"><h2 class="veil-group-title veil-group-previous">Previous Week</h2><h2 class="veil-group-title veil-group-current">This Week</h2><div class="veil-tiles veil-tiles-all">${tiles}</div></div>${trip ? `<a class="veil-travel" href="${base}travel/#saved-trips"><span>Upcoming Travel</span><strong>${esc(trip.title)}</strong><time datetime="${esc(trip.start)}">${esc(longDate(trip.start))}</time></a>` : ''}</div><footer class="veil-almanac" aria-label="Calculated almanac for Chapel Hill, ${esc(longDate(state.weekend.start))}"><span>Sunset ${esc(almanac.sunset)} ET</span><span>Daylight ${esc(almanac.daylight)}</span><span>${esc(almanac.moon)}</span></footer></div>`;
+  const group = (key, label) => `<section class="veil-week-group" aria-label="${label}"><h2 class="veil-group-title">${label}</h2><div class="veil-tiles veil-tiles-group">${SLOTS.map(slot=>tile(slot,state[key][slot])).join('')}</div></section>`;
+  return `<div class="veil-plate"><div class="veil-lockup"><span class="veil-no">No. ${issue}</span><div class="veil-cycle"><span>${month}</span><small>${season} · ${year}</small></div></div><div class="veil-center"><div class="veil-band" aria-label="Previous and current recommendation previews">${group('previous','Previous Week')}${group('current','This Week')}</div>${trip ? `<a class="veil-travel" href="${base}travel/#saved-trips"><span>Upcoming Travel</span><strong>${esc(trip.title)}</strong><time datetime="${esc(trip.start)}">${esc(longDate(trip.start))}</time></a>` : ''}</div><footer class="veil-almanac" aria-label="Calculated almanac for Chapel Hill, ${esc(longDate(state.weekend.start))}"><span>Sunset ${esc(almanac.sunset)} ET</span><span>Daylight ${esc(almanac.daylight)}</span><span>${esc(almanac.moon)}</span></footer></div>`;
 }
 
 export function setupVeil(base) {
@@ -40,6 +37,12 @@ export function setupVeil(base) {
   function lockPage() {
     const focus = document.activeElement, x = window.scrollX, y = window.scrollY;
     const bodyStyle = document.body.getAttribute('style'), htmlStyle = document.documentElement.getAttribute('style');
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const schemeMeta = document.querySelector('meta[name="color-scheme"]');
+    const themeBefore = themeMeta?.getAttribute('content');
+    const schemeBefore = schemeMeta?.getAttribute('content');
+    if (themeMeta) themeMeta.setAttribute('content','#1D2A3A');
+    if (schemeMeta) schemeMeta.setAttribute('content','dark');
     const inert = new Map();
     const cover = node => { if (node!==veil && node instanceof HTMLElement && !inert.has(node)) { inert.set(node,node.inert); node.inert=true; } };
     [...document.body.children].forEach(cover);
@@ -52,6 +55,8 @@ export function setupVeil(base) {
       observer.disconnect(); inert.forEach((value,node)=>node.inert=value);
       for (const [node,style] of [[document.body,bodyStyle],[document.documentElement,htmlStyle]]) style===null ? node.removeAttribute('style') : node.setAttribute('style',style);
       document.documentElement.classList.remove('veil-active');
+      if (themeMeta) themeBefore===null ? themeMeta.removeAttribute('content') : themeMeta.setAttribute('content',themeBefore);
+      if (schemeMeta) schemeBefore===null ? schemeMeta.removeAttribute('content') : schemeMeta.setAttribute('content',schemeBefore);
       // Ignore CSS smooth-scroll preferences when returning to the exact previous reading position.
       const previous = document.documentElement.style.scrollBehavior;
       document.documentElement.style.scrollBehavior='auto'; window.scrollTo(x,y); document.documentElement.style.scrollBehavior=previous;
