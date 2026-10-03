@@ -1205,11 +1205,11 @@ main.page-travel {background:var(--lake);color:var(--paper);}
 html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:100%;color-scheme:dark;}
 .atlas-veil {position:fixed;inset:0;bottom:calc(0px - env(safe-area-inset-bottom,0px));min-height:100vh;min-height:100svh;min-height:100dvh;z-index:10000;box-sizing:border-box;overflow:hidden;overscroll-behavior:none;touch-action:none;color:var(--paper);--focus:var(--gold);background-color:rgba(29,42,58,.93);-webkit-backdrop-filter:blur(3.5px) saturate(.5) brightness(.68);backdrop-filter:blur(3.5px) saturate(.5) brightness(.68);}
 .atlas-veil:focus {outline:none;}
-.veil-plate {height:100vh;height:100dvh;box-sizing:border-box;max-width:1160px;margin-inline:auto;padding:calc(env(safe-area-inset-top) + clamp(26px,6dvh,72px)) clamp(20px,4vw,56px) calc(env(safe-area-inset-bottom) + 20px);display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:20px;}
-.veil-lockup {display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;margin-inline:auto;gap:26px;}
+.veil-plate {height:100vh;height:100dvh;box-sizing:border-box;max-width:1160px;margin-inline:auto;padding:calc(env(safe-area-inset-top) + clamp(26px,6dvh,72px)) clamp(20px,4vw,56px) calc(env(safe-area-inset-bottom) + 4px);display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:20px;}
+.veil-lockup {display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;margin-inline:auto;gap:26px;transform:translateY(54px);}
 .veil-no {font:400 clamp(90px,12vw,170px)/1.05 "Magrebis",Georgia,serif;white-space:nowrap;}
 .veil-cycle {border-left:1px solid #F3EFE596;padding-left:26px;display:grid;gap:8px;text-align:left;--veil-cycle-size:20px;font:400 var(--veil-cycle-size)/1.2 var(--f-text);-webkit-text-size-adjust:100%;text-size-adjust:100%;}
-.veil-cycle > span {font-size:var(--veil-cycle-size);}
+.veil-cycle > span {font-size:calc(var(--veil-cycle-size) * 1.22);line-height:1.05;}
 .veil-cycle small {font:400 var(--veil-cycle-size)/1.2 var(--f-data);white-space:nowrap;letter-spacing:.03em;}
 .veil-center {display:flex;flex-direction:column;justify-content:center;align-items:center;gap:36px;min-height:0;}
 .veil-band {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,4vw,44px);width:100%;max-width:850px;align-items:start;}
@@ -1230,40 +1230,41 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .veil-travel > span {font:400 14px/1.25 var(--f-data);text-transform:uppercase;letter-spacing:.045em;}
 .veil-travel strong {font:400 22px/1.25 var(--f-secondary);overflow-wrap:anywhere;}
 .veil-travel time {font:400 15px/1.25 var(--f-data);}
-.veil-almanac {display:flex;justify-content:center;flex-wrap:wrap;gap:6px 24px;font:400 14px/1.3 var(--f-data);text-transform:uppercase;letter-spacing:.045em;text-align:center;border-top:1px solid #C98B4B70;padding-top:16px;}
+.veil-almanac {display:flex;justify-content:center;flex-wrap:wrap;gap:6px 24px;font:400 14px/1.3 var(--f-data);text-transform:uppercase;letter-spacing:.045em;text-align:center;border-top:2px solid #D69A5ACC;padding-top:14px;}
 .veil-almanac span {white-space:nowrap;}
 @media (max-width:759.98px) and (orientation:portrait) {
-  .veil-plate {padding:calc(env(safe-area-inset-top) + 36px) 20px calc(env(safe-area-inset-bottom) + 20px);gap:18px;}
-  .veil-lockup {gap:14px;}
+  .veil-plate {padding:calc(env(safe-area-inset-top) + 36px) 20px calc(env(safe-area-inset-bottom) + 4px);gap:18px;}
+  .veil-lockup {gap:14px;transform:translateY(48px);}
   .veil-no {font-size:clamp(60px,17vw,78px);}
   .veil-cycle {padding-left:14px;gap:6px;--veil-cycle-size:15px;}
   .veil-cycle small {letter-spacing:.01em;}
   .veil-band {max-width:360px;gap:12px;}
-  .veil-group-title {font-size:19px;margin-top:-8px;margin-bottom:18px;}
-  .veil-tiles-group {gap:10px;}
-  .veil-tile {grid-template-columns:52px minmax(0,1fr);gap:14px;font-size:10px;}
-  .veil-tile .veil-image {width:52px;height:44px;margin:0;}
-  .veil-tile strong {font-size:10px;line-height:1.1;letter-spacing:.005em;white-space:nowrap;}
-  .veil-tile-copy > span {font-size:9.5px;line-height:1.15;white-space:nowrap;}
+  .veil-group-title {font-size:22px;line-height:1.08;margin-top:-8px;margin-bottom:18px;}
+  .veil-tiles-group {gap:12px;padding-top:14px;}
+  .veil-tile {grid-template-columns:44px minmax(0,1fr);gap:16px;font-size:11px;}
+  .veil-tile .veil-image {width:44px;height:38px;margin:0;}
+  .veil-tile strong {font-size:12px;line-height:1.08;letter-spacing:.005em;white-space:nowrap;}
+  .veil-tile-copy > span {font-size:11px;line-height:1.15;white-space:nowrap;}
   .veil-center {gap:28px;}
   .veil-travel {grid-template-columns:minmax(0,1fr);gap:6px;padding-block:12px;}
   .veil-travel > span {font-size:12px;}
   .veil-travel strong {font-size:20px;}
   .veil-travel time {font-size:13px;}
-  .veil-almanac {display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:12px;letter-spacing:.01em;padding-top:14px;}
+  .veil-almanac {display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:12px;letter-spacing:.01em;padding-top:12px;border-top-width:2px;border-top-color:#DFA55CDD;}
   .veil-almanac span:last-child {grid-column:1/-1;}
 }
 @media (max-height:600px) {
-  .veil-plate {padding-top:calc(env(safe-area-inset-top) + 14px);padding-bottom:calc(env(safe-area-inset-bottom) + 12px);gap:10px;}
+  .veil-plate {padding-top:calc(env(safe-area-inset-top) + 14px);padding-bottom:calc(env(safe-area-inset-bottom) + 3px);gap:10px;}
+  .veil-lockup {transform:translateY(18px);}
   .veil-no {font-size:64px;}
   .veil-cycle {--veil-cycle-size:15px;gap:4px;}
-  .veil-group-title {font-size:18px;margin-top:-6px;margin-bottom:12px;}
+  .veil-group-title {font-size:20px;margin-top:-6px;margin-bottom:12px;}
   .veil-band {gap:18px;}
-  .veil-tiles-group {gap:6px;}
-  .veil-tile {grid-template-columns:54px minmax(0,1fr);gap:14px;font-size:10px;}
-  .veil-tile .veil-image {width:54px;height:40px;margin:0;}
-  .veil-tile strong {font-size:10px;}
-  .veil-tile-copy > span {font-size:9px;}
+  .veil-tiles-group {gap:7px;padding-top:8px;}
+  .veil-tile {grid-template-columns:46px minmax(0,1fr);gap:14px;font-size:10px;}
+  .veil-tile .veil-image {width:46px;height:34px;margin:0;}
+  .veil-tile strong {font-size:11px;}
+  .veil-tile-copy > span {font-size:10px;}
   .veil-center {gap:10px;}
   .veil-travel {padding-block:8px;}
   .veil-travel strong {font-size:18px;}
