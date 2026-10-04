@@ -183,5 +183,20 @@
     "phrase": "Observe, enforce & adapt",
     "seed": 2194436955,
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 008: Observe, enforce &amp; adapt\"><title>Field Brief · 008 · Observe, enforce &amp; adapt</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><circle cx=\"218\" cy=\"252\" r=\"131\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"25\"/><path d=\"M110 252Q218 147 326 252Q218 357 110 252Z\" fill=\"#8a2a36\"/><circle cx=\"218\" cy=\"252\" r=\"40\" fill=\"#f1e6d0\"/><path d=\"M344 252H425V445M344 252H495V155\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"17\"/><path d=\"M385 445H465M455 155H535\" stroke=\"#c5ad88\" stroke-width=\"35\"/><path d=\"M128 435H297\" stroke=\"#c5ad88\" stroke-width=\"11\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 008 / 2026-10-03</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observe, enforce &amp; adapt</text></g></svg>"
+  },
+  "fb:2026-10-04": {
+    "key": "fb",
+    "date": "2026-10-04",
+    "no": "009",
+    "identity": "Field Brief",
+    "theme": "allocation",
+    "framing": "Today’s developments range from constrained oil supply and a new Medicare rebate to European electric-vehicle investment, a shift in North Carolina campaign spending and a cautious conservation signal from Australia. The subjects are distinct; each turns on whether an announced target, payment, investment or rebound will translate into durable real-world capacity. The developments share a test of delivery, not a common cause. OPEC+ targets, a Medicare rebate, Renault’s investment, campaign reservations and a moth migration belong to different systems. They should not be read as evidence of one economic or political trend. The useful comparison is narrower: announced policy and observed outcomes can diverge. Oil quotas exceed deliverable supply, a rebate provides temporary rather than structural relief, capital commitments require execution, ad reservations can be withdrawn and one strong migration does not yet prove ecological recovery.",
+    "version": 3,
+    "subject": "capacity",
+    "composition": "capacity-relay",
+    "signature": "issue:capacity-relay",
+    "phrase": "Observe, enforce & adapt",
+    "seed": 3466503226,
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 009: Observe, enforce &amp; adapt\"><title>Field Brief · 009 · Observe, enforce &amp; adapt</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M97 146H228V287H97ZM361 317H506V465H361Z\" fill=\"#221a14\"/><path d=\"M228 214H429V317\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"27\"/><circle cx=\"318\" cy=\"214\" r=\"60\" fill=\"#c5ad88\"/><path d=\"M122 370H246V486H122Z\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"15\"/><path d=\"M246 427H360\" stroke=\"#221a14\" stroke-width=\"15\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 009 / 2026-10-04</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observe, enforce &amp; adapt</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

@@ -294,6 +294,68 @@
         "seed": 1528603222,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Research benches lose staffed capacity\"><title>RTI International plans 200 more job cuts</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-03-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-03-05)\"><path d=\"M75 525H730\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M95 235H300V285H95ZM385 385H715V435H385Z\" fill=\"#1b4a6b\"/><path d=\"M135 285V525M260 285V525M420 435V525M680 435V525\" stroke=\"#2c241d\" stroke-width=\"23\"/><path d=\"M170 214V160H207V113H245L270 177L233 210Z\" fill=\"#2c241d\"/><path d=\"M466 360V254H534V360M586 360V254H654V360\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/><path d=\"M548 105L548 190M510 153L548 195L586 153\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
       }
+    },
+    "2026-10-04": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-04",
+        "number": "01",
+        "category": "Energy · oil markets",
+        "topic": "trade",
+        "title": "OPEC+ holds November targets as Gulf exports remain disrupted",
+        "composition": "trade-port",
+        "signature": "plate:trade-port",
+        "seed": 4252521603,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A cargo crane lifts a sealed crate at a port\"><title>OPEC+ holds November targets as Gulf exports remain disrupted</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-04-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-04-01)\"><path d=\"M150 540V120H590M185 120L500 355M515 120V315\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"25\"/><path d=\"M445 350H610V475H445Z\" fill=\"#c4452c\"/><path d=\"M480 350V475M575 350V475\" stroke=\"#f4ead7\" stroke-width=\"12\"/><path d=\"M65 535H715L665 588H135Z\" fill=\"#1b4a6b\"/><path d=\"M365 138V237H645V138\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"12\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-04",
+        "number": "02",
+        "category": "U.S. policy · health finance",
+        "topic": "finance",
+        "title": "Medicare will send $90 rebates to 20.8 million beneficiaries",
+        "composition": "finance-blocked",
+        "signature": "plate:finance-blocked",
+        "seed": 227633485,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Payment branches meet a blocking seal\"><title>Medicare will send $90 rebates to 20.8 million beneficiaries</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-04-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-04-02)\"><path d=\"M120 150L365 315L120 485M365 315L665 160M365 315L665 490\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"31\"/><g fill=\"#c98a12\"><circle cx=\"120\" cy=\"150\" r=\"58\"/><circle cx=\"120\" cy=\"485\" r=\"58\"/><circle cx=\"665\" cy=\"160\" r=\"58\"/></g><rect x=\"565\" y=\"408\" width=\"158\" height=\"125\" fill=\"#7a1f33\"/><path d=\"M585 435L705 505M705 435L585 505\" stroke=\"#f4ead7\" stroke-width=\"18\"/><circle cx=\"365\" cy=\"315\" r=\"69\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-04",
+        "number": "03",
+        "category": "Technology · transport",
+        "topic": "energy",
+        "title": "Renault commits more than €10 billion to French EV and affordable-car production",
+        "composition": "energy-feeder",
+        "signature": "plate:energy-feeder",
+        "seed": 3208708960,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A power feed crosses an interrupted grid\"><title>Renault commits more than €10 billion to French EV and affordable-car production</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-04-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-04-03)\"><path d=\"M90 145H285V285H455V480H710\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"34\"/><path d=\"M90 145V490H285V390\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"23\"/><path d=\"M370 235V335M332 275H408\" stroke=\"#c4452c\" stroke-width=\"25\"/><circle cx=\"710\" cy=\"480\" r=\"53\" fill=\"#c98a12\"/><path d=\"M110 546H675\" stroke=\"#7c5a3e\" stroke-width=\"15\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-04",
+        "number": "04",
+        "category": "North Carolina · elections",
+        "topic": "research",
+        "title": "Major Republican super PAC pauses North Carolina Senate advertising",
+        "composition": "research-observatory",
+        "signature": "plate:research-observatory",
+        "seed": 3846971757,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An observing instrument links separated research stations\"><title>Major Republican super PAC pauses North Carolina Senate advertising</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-04-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-04-04)\"><path d=\"M175 255L440 100L490 185L225 341Z\" fill=\"#1b4a6b\"/><path d=\"M280 290L180 525M280 290L420 525\" stroke=\"#2c241d\" stroke-width=\"25\"/><circle cx=\"475\" cy=\"137\" r=\"58\" fill=\"#c98a12\"/><rect x=\"540\" y=\"350\" width=\"145\" height=\"170\" fill=\"#2c241d\"/><path d=\"M563 395H662M563 447H662\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M380 325H520\" stroke=\"#c4452c\" stroke-width=\"18\" stroke-dasharray=\"28 20\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-04",
+        "number": "05",
+        "category": "Environment · conservation",
+        "topic": "climate",
+        "title": "Bogong moth migration rebound offers a cautious conservation signal",
+        "composition": "climate-watershed",
+        "signature": "plate:climate-watershed",
+        "seed": 1941212462,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A high lake spills toward inhabited lower ground\"><title>Bogong moth migration rebound offers a cautious conservation signal</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-04-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-04-05)\"><path d=\"M50 425L235 130L398 385L530 215L750 525H50Z\" fill=\"#1d5f47\"/><ellipse cx=\"290\" cy=\"285\" rx=\"85\" ry=\"34\" fill=\"#1b4a6b\"/><path d=\"M340 295Q340 430 570 483\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"34\"/><path d=\"M584 410L650 355L716 410V510H584Z\" fill=\"#2c241d\"/><path d=\"M93 480H234\" stroke=\"#c98a12\" stroke-width=\"25\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
