@@ -58,9 +58,33 @@ async function mapSelect(page,id){
  await page.evaluate(id=>{const m=window.__trafficQaMap.raw,event=new MouseEvent('click');Object.defineProperty(event,'target',{value:m.getCanvas()});m.fire('click',{originalEvent:event,point:m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id===id).geometry.coordinates)});},id);
 }
 async function swatch(page,level,color,dashed=false){
- const s=await page.locator('.traffic-swatch').evaluate(n=>({level:n.dataset.traffic,color:n.firstElementChild.getAttribute('stroke'),dash:n.firstElementChild.hasAttribute('stroke-dasharray'),hidden:n.getAttribute('aria-hidden'),width:n.getBoundingClientRect().width,first:n.parentElement.firstElementChild===n}));
+ const s=await page.locator(`.traffic-swatch[data-traffic="${level}"]`).evaluate(n=>({level:n.dataset.traffic,color:n.firstElementChild.getAttribute('stroke'),dash:n.firstElementChild.hasAttribute('stroke-dasharray'),hidden:n.getAttribute('aria-hidden'),width:n.getBoundingClientRect().width,first:n.parentElement.firstElementChild===n}));
  check(s.level===level&&s.color===color&&s.dash===dashed,'Contextual swatch disagrees with route: '+JSON.stringify(s));
  check(s.hidden==='true'&&s.width===18&&s.first,'Swatch is oversized, duplicates speech or follows status');
+ await routeKey(page);
+}
+async function routeKey(page){
+ const expected=await page.evaluate(()=>{const found=new Set((window.__trafficQaFeatures||[]).map(f=>f.properties.traffic==='severe'?'heavy':f.properties.traffic));return ['normal','mild','moderate','heavy','closure','unknown'].filter(v=>found.has(v));});
+ const actual=await page.locator('.traffic-swatch').evaluateAll(ns=>ns.map(n=>n.dataset.traffic));
+ check(JSON.stringify(actual)===JSON.stringify(expected),'Key invents, omits or accumulates route states: '+JSON.stringify(actual));
+ const colors={normal:'#C98B4B',mild:'#DEA953',moderate:'#D47742',heavy:'#C36360',closure:'#963D48',unknown:'#A9B3B8'};
+ for(const level of expected){const path=page.locator(`.traffic-swatch[data-traffic="${level}"] path`);check(await path.getAttribute('stroke')===colors[level],'Key color differs from route');check((await path.getAttribute('stroke-dasharray'))===(level==='unknown'?'4 3':level==='closure'?'2.4 2':null),'Key dash differs from route');}
+ check(await page.locator('.traffic-key').count()===(expected.length>1?1:0),'Clear or single-state route has unnecessary legend');
+ if(expected.length>1)check(await page.locator('.traffic-key > span').count()===expected.length,'Mixed key labels missing');
+}
+async function navigationContrast(page,ctx,width,height){
+ const links=page.locator('.navigation-choices a'),urls=await links.evaluateAll(ns=>ns.map(n=>n.href));
+ const cdp=await ctx.newCDPSession(page);await cdp.send('DOM.enable');await cdp.send('CSS.enable');
+ const {root}=await cdp.send('DOM.getDocument');const {nodeIds}=await cdp.send('DOM.querySelectorAll',{nodeId:root.nodeId,selector:'.navigation-choices a'});
+ for(const [i,nodeId] of nodeIds.entries())for(const state of [[],['visited'],['hover'],['focus'],['focus','focus-visible'],['active']]){
+  await cdp.send('CSS.forcePseudoState',{nodeId,forcedPseudoClasses:state});
+  const style=await links.nth(i).evaluate(n=>{const s=getComputedStyle(n);return {color:s.color,accent:s.textDecorationColor,outline:s.outlineColor,focus:n.matches(':focus-visible')};});
+  check(style.color==='rgb(243, 239, 229)'&&style.accent==='rgb(201, 139, 75)','Navigation contrast/accent changed in '+state.join('/')+' '+JSON.stringify(style));
+  if(style.focus)check(style.outline==='rgb(201, 139, 75)','Keyboard focus indicator lacks light-surface contrast');
+ }
+ for(const nodeId of nodeIds)await cdp.send('CSS.forcePseudoState',{nodeId,forcedPseudoClasses:[]});await cdp.detach();
+ check(JSON.stringify(await links.evaluateAll(ns=>ns.map(n=>n.href)))===JSON.stringify(urls),'State QA changed navigation destinations');
+ await links.first().scrollIntoViewIfNeeded();await page.screenshot({path:resolve(output,`navigation-${width}x${height}.png`)});
 }
 const read=page=>page.evaluate(()=>{const api=window.__trafficQaMap,m=api.raw;const r=n=>{const b=n.getBoundingClientRect();return {y:b.y,bottom:b.bottom,right:b.right,height:b.height};};return {theme:api.diagnostics().theme,bg:m.getPaintProperty('bg','background-color'),routes:(window.__trafficQaFeatures || []).map(f=>f.properties.traffic || 'baseline'),line:m.getPaintProperty('route-line','line-color'),home:!!document.querySelector('.home-marker'),incidents:document.querySelectorAll('.traffic-incident').length,selected:m.getFilter('marks-sel'),zoom:m.getZoom(),center:m.getCenter().toArray(),relief:m.getLayoutProperty('relief','visibility'),overflow:document.documentElement.scrollWidth>innerWidth,map:r(document.querySelector('.atlas-map')),route:r(document.querySelector('#drive-status')),cardBackground:getComputedStyle(document.querySelector('#map-card')).backgroundColor,card:document.querySelector('#map-card').hidden?null:r(document.querySelector('#map-card')),outsideBackground:getComputedStyle(document.body).backgroundColor,controls:getComputedStyle(document.querySelector('#recenter')).backgroundColor,attribution:getComputedStyle(document.querySelector('.maplibregl-ctrl-attrib')).backgroundColor};});
 try{
@@ -75,6 +99,7 @@ try{
   check(await page.locator('.navigation-choices a').first().getAttribute('href').then(s=>new URL(s).searchParams.get('saddr')===`${home.lat},${home.lng}`),'Navigation did not use saved Home coordinates');
   check(await page.locator('.navigation-choices a').nth(2).innerText().then(s=>s.includes('current location')),'Waze origin misrepresented');
   check(await page.locator('.navigation-choices a').evaluateAll(ns=>ns.every(n=>n.getBoundingClientRect().height>=44)),'Navigation touch targets too small');
+  await navigationContrast(page,ctx,width,height);
   await page.locator('.route-navigation').evaluate(n=>n.open=false);
   await toggle(page,true);
   await page.waitForFunction(()=>window.__trafficQaMap.raw.queryRenderedFeatures({layers:['route-line','route-unknown','route-closure']}).some(f=>f.properties.traffic));
@@ -138,7 +163,7 @@ try{
   check((await read(page)).routes.includes('unknown'),'Explicit unknown event lost its dashes');
   check(await page.locator('.dossier-provider').innerText().then(s=>s.includes('PARTIAL DATA')),'Partial route lacks contextual status');
   state.noEvents=true;await select(page,'hillsborough-riverwalk');
-  check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Destination transition retained partial status');
+  check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Destination transition retained partial status');await routeKey(page);
   await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.dossier-provider').waitFor();
   check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Refresh retained obsolete diagnostics');
   check(await page.locator('.maplibregl-ctrl-attrib').count()===1,'Refresh duplicated map credit');
@@ -186,10 +211,10 @@ try{
   check(requests.filter(v=>v.provider===trafficName).length===3,'Traffic polled without user action');
   await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await page.locator('.dossier-provider').waitFor();check((await read(page)).theme==='traffic'&&requests.filter(v=>v.provider===trafficName).length===4,'Foreground failed to refresh stale route');
   state.failure=true;await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.traffic-fallback').waitFor();
-  check((await read(page)).theme==='light','Failure trapped user in dark map');check(await page.locator('.traffic-fallback').innerText().then(s=>s.includes('Live traffic temporarily unavailable · showing baseline estimate')),'Failure status missing');
+  check((await read(page)).theme==='light','Failure trapped user in dark map');check(await page.locator('.traffic-key,.traffic-swatch').count()===0,'Provider fallback retained obsolete key');check(await page.locator('.traffic-fallback').innerText().then(s=>s.includes('Live traffic temporarily unavailable · showing baseline estimate')),'Failure status missing');
   check(await page.locator('.dossier-provider').innerText()==='OSRM Estimate · Traffic Not Included','Fallback falsely claimed traffic');check(!await page.locator('#traffic-enabled').isChecked(),'Failed toggle remained on');
   state.failureStatus=429;await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.traffic-fallback').waitFor();
-  check((await read(page)).theme==='light'&&!await page.locator('#traffic-enabled').isChecked(),'Free allowance/rate limit did not fall back');
+  check((await read(page)).theme==='light'&&!await page.locator('#traffic-enabled').isChecked(),'Free allowance/rate limit did not fall back');check(await page.locator('.traffic-key,.traffic-swatch').count()===0,'Rate-limit fallback retained key');
   const limited=requests.filter(v=>v.provider===trafficName).length;await page.clock.fastForward(300001);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));check(requests.filter(v=>v.provider===trafficName).length===limited,'429 automatically retried');
   state.failure=false;await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.traffic-attribution').waitFor();check((await read(page)).theme==='traffic','Retry did not recover');
   let release;state.hold=new Promise(r=>release=r);await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.waitForFunction(()=>document.querySelector('.dossier-message')?.textContent.includes('Checking traffic'));

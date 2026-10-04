@@ -1401,6 +1401,8 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .traffic-attribution img{display:block;width:81px;height:20px;filter:invert(1);}
 .traffic-coverage,.traffic-fallback{display:block;font:400 11px/1.4 var(--f-data);margin-top:5px;color:#E9E4D9;}
 .traffic-swatch{display:inline-block;margin-right:7px;vertical-align:middle;}
+.traffic-key{display:flex;flex-wrap:wrap;gap:3px 12px;margin-top:5px;font:400 11px/1.4 var(--f-data);color:#E9E4D9;}
+.traffic-key > span{display:inline-flex;align-items:center;white-space:nowrap;}
 .traffic-checked{white-space:nowrap;}
 .traffic-refresh{font:inherit;background:transparent;color:inherit;border:0;text-decoration:underline;text-underline-offset:3px;min-height:44px;padding:0 5px;cursor:pointer;}
 .traffic-incident{width:44px;height:44px;padding:0;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;}
@@ -1420,6 +1422,9 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .route-navigation[open] summary::before,.traffic-credits[open] summary::before{content:'−';}
 .navigation-choices{display:flex;flex-wrap:wrap;gap:4px 20px;}
 .navigation-choices a{display:flex;align-items:center;min-height:44px;color:var(--ink);text-underline-offset:3px;}
+.page-atlas .navigation-choices a,
+.page-atlas .navigation-choices a:is(:link,:visited,:hover,:focus,:focus-visible,:active){color:var(--on-band);text-decoration-color:var(--mark);}
+.page-atlas .navigation-choices a:focus-visible{outline-color:var(--mark);}
 .route-navigation p{font-size:11px;max-width:70ch;margin:6px 0 14px;}
 .traffic-credits{font:400 11px/1.5 var(--f-data);}
 .traffic-credits p{white-space:pre-line;overflow-wrap:anywhere;}

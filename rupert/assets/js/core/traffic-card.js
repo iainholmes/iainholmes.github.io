@@ -19,10 +19,12 @@ export function trafficCardStatus(result) {
   return 'LIVE TRAFFIC · ' + status;
 }
 
-// One contextual swatch: the most significant returned route condition. Unknown
-// wins over normal, but never hides a known delay/closure. No delay-based inference.
-export function trafficCardSwatch(result) {
-  const levels=(result.features || []).map(f=>f.properties.traffic);
-  if(result.incidents?.some(v=>v.closed))return 'closure';
-  return ['closure','severe','heavy','moderate','mild','unknown','normal'].find(v=>levels.includes(v)) || 'unknown';
+// Only states actually drawn on the selected route belong in its compact key.
+// Heavy/severe share a color and reader label; no delay/coverage inference.
+export function trafficCardKey(result) {
+  const levels=new Set((result.features || []).map(f=>f.properties.traffic === 'severe' ? 'heavy' : f.properties.traffic));
+  return [
+    ['normal','No reported delay'],['mild','Minor delay'],['moderate','Moderate delay'],
+    ['heavy','Major delay'],['closure','Closure'],['unknown','Indeterminate']
+  ].filter(([level])=>levels.has(level)).map(([level,label])=>({level,label}));
 }

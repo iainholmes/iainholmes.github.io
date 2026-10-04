@@ -2,7 +2,7 @@ import { validPoint, drivingRoute } from './core/routing.js';
 import { durationLabel } from './core/journey.js';
 import { trafficConfig } from './traffic-config.js';
 import { trafficAvailable, trafficRoute, TRAFFIC_FRESH_MS, TRAFFIC_COLORS } from './core/traffic.js';
-import { trafficCardStatus, trafficCardSwatch } from './core/traffic-card.js';
+import { trafficCardStatus, trafficCardKey } from './core/traffic-card.js';
 import { navigationLinks } from './core/navigation.js';
 export function setupLocation({ getMap, features, onClear, onRouteDisplay }) {
   const key='rupert-location-v1', form=document.getElementById('location-form'), traffic=document.getElementById('traffic-enabled'), status=document.getElementById('location-status'), drive=document.getElementById('drive-status');
@@ -27,9 +27,10 @@ export function setupLocation({ getMap, features, onClear, onRouteDisplay }) {
     const tomtomCredit=result?.traffic && result.provider==='tomtom'?'<span class="traffic-attribution"><a href="https://www.tomtom.com/legal/en_gb/product-attributions/" target="_blank" rel="noopener noreferrer">© TomTom</a></span>':'';
     getMap()?.setTrafficAttribution?.(tomtomCredit);
     const attribution=result?.provider==='tomtom'?'':`<span class="traffic-attribution"><a href="https://www.mapbox.com/about/maps/" target="_blank" rel="noopener"><img src="${document.body.dataset.base || ''}assets/img/mapbox-logo.svg" alt="Mapbox" width="81" height="20"></a><span><a href="https://www.mapbox.com/about/maps/" target="_blank" rel="noopener">© Mapbox</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a></span></span>`;
-    const level=result?.traffic ? trafficCardSwatch(result) : null;
-    const swatch=level ? `<svg class="traffic-swatch" data-traffic="${level}" width="18" height="6" viewBox="0 0 18 6" aria-hidden="true"><path d="M0 3H18" fill="none" stroke="${TRAFFIC_COLORS[level]}" stroke-width="2"${level==='closure'?' stroke-dasharray="2.4 2"':level==='unknown'?' stroke-dasharray="4 3"':''}/></svg>` : '';
-    const provider=result?.traffic ? `<small class="dossier-provider">${swatch}${esc(trafficCardStatus(result))}</small>${attribution}<small class="traffic-coverage"><span class="traffic-checked">Updated ${esc(new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit'}).format(result.fetchedAt))}</span> · <button type="button" class="traffic-refresh">Refresh</button></small>` : '<small class="dossier-provider">OSRM Estimate · Traffic Not Included</small>';
+    const key=result?.traffic ? trafficCardKey(result) : [];
+    const swatch=({level})=>`<svg class="traffic-swatch" data-traffic="${level}" width="18" height="6" viewBox="0 0 18 6" aria-hidden="true"><path d="M0 3H18" fill="none" stroke="${TRAFFIC_COLORS[level]}" stroke-width="2"${level==='closure'?' stroke-dasharray="2.4 2"':level==='unknown'?' stroke-dasharray="4 3"':''}/></svg>`;
+    const contextualKey=key.length>1 ? `<small class="traffic-key" aria-label="Displayed route colors">${key.map(v=>`<span>${swatch(v)}${esc(v.label)}</span>`).join('')}</small>` : '';
+    const provider=result?.traffic ? `<small class="dossier-provider">${key.length===1?swatch(key[0]):''}${esc(trafficCardStatus(result))}</small>${contextualKey}${attribution}<small class="traffic-coverage"><span class="traffic-checked">Updated ${esc(new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit'}).format(result.fetchedAt))}</span> · <button type="button" class="traffic-refresh">Refresh</button></small>` : '<small class="dossier-provider">OSRM Estimate · Traffic Not Included</small>';
     drive.innerHTML=`<span class="dossier-label"><i aria-hidden="true"></i>Driving Route</span><strong class="dossier-destination">${name ? 'Home → '+esc(name) : 'Select a Place'}</strong>${result ? `<div class="dossier-values"><span>${esc(durationLabel(result.minutes))}</span><b>${esc(result.miles)} mi</b></div>${provider}${notice?`<small class="traffic-fallback">${esc(notice)} <button type="button" class="traffic-refresh">Retry</button></small>`:''}` : `<p class="dossier-message">${esc(message)}${configured&&message.startsWith('Traffic estimate expired')?' <button type="button" class="traffic-refresh">Refresh</button>':''}</p>`}`;
     // Popup presentation only; pending/visible routing keeps the map to one card.
     onRouteDisplay?.(!!result || pending);
