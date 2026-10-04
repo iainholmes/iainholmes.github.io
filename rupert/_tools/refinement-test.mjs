@@ -43,5 +43,12 @@ check(()=>assert.equal((veil.match(/class="veil-almanac-symbol"/g)||[]).length,3
 check(()=>assert.ok(veil.indexOf('>Sunset<')<veil.indexOf('>Moon<')&&veil.indexOf('>Moon<')<veil.indexOf('>Daylight<')));
 check(()=>assert.ok(!veil.includes('Home')));
 const source=readFileSync(new URL('../assets/js/veil-view.js',import.meta.url),'utf8');
-check(()=>assert.doesNotMatch(source,/reviewMode|reviewNow|veil=review|rupert-veil-review|display-mode:\s*standalone/));
+check(()=>assert.match(source,/new URLSearchParams\(window.location.search\).get\('veil'\) === 'review'/));
+check(()=>assert.doesNotMatch(source,/display-mode:\s*standalone/));
+check(()=>assert.match(source,/if \(reviewMode\) now = reviewNow/));
+check(()=>assert.match(source,/if \(reviewMode\) state.dismissalKey = `rupert-veil-review:acceptance-20261004:/));
+const review=renderVeil(state,photos,'../',null,true);
+check(()=>assert.match(review,/href="\.\.\/edition\/2026-W40-r1-tue\/\?veil=review"/));
+check(()=>assert.equal(review.replaceAll('?veil=review',''),veil));
+check(()=>assert.match(renderVeil(state,photos,'../',{title:'Trip',start:'2026-10-17'},true),/travel\/\?veil=review#saved-trips/));
 console.log(`${checks} final refinement source checks passed.`);
