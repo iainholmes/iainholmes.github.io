@@ -1613,8 +1613,9 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     if(parts[1]&&ed.questions.some(function(q){return q.id===parts[1]}))save();
     render();window.scrollTo(0,0);
     if(parts[1]){
-      var target=st.submitted?document.getElementById('sol-'+(st.current+1)):document.querySelector('.q');
-      var position=function(){if(token===navigation&&location.hash===hash&&target&&target.isConnected)target.scrollIntoView({block:'start',behavior:'auto'})};
+      var targetId=st.submitted?'sol-'+(st.current+1):null;
+      // The shared ready event refreshes this same question; resolve its live node after layout.
+      var position=function(){if(token!==navigation||location.hash!==hash)return;var target=targetId?document.getElementById(targetId):document.querySelector('.q');if(target)target.scrollIntoView({block:'start',behavior:'auto'})};
       if(document.fonts)document.fonts.ready.then(function(){requestAnimationFrame(position)});else position();
     }
   }

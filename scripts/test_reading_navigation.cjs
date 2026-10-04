@@ -54,6 +54,8 @@ const routeFrames=[],targets=[],r={navigation:0,location:{hash:'#'+old.date+'/q7
 run(routeSource,r);r.route();assert.equal(r.ed.date,old.date);assert.equal(r.st.current,6);
 r.location.hash='#'+latest.date;r.route();routeFrames.shift()();assert.equal(targets.length,0,'newer routes cancel obsolete deferred question scroll');
 r.location.hash='#'+old.date+'/q3';r.route();routeFrames.shift()();assert.equal(r.st.current,2);assert.equal(targets.at(-1),'start');
+let initialScrolls=0,readyScrolls=0;r.document.querySelector=()=>({scrollIntoView:()=>initialScrolls++});r.route();
+r.document.querySelector=()=>({scrollIntoView:()=>readyScrolls++});routeFrames.shift()();assert.equal(initialScrolls,0);assert.equal(readyScrolls,1,'shared-ready replacement of the same question must retain direct-link scrolling');
 assert(wb.includes("if(location.hash===hash)route();else location.hash=hash"),'same-hash latest control routes explicitly');
 console.log('Workbook canonical question URL, repeated numbered/Previous/Next paths, direct routes and stale-scroll cancellation passed.');
 
