@@ -2585,7 +2585,10 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
   ['pointerdown','touchstart','wheel','keydown'].forEach(type=>addEventListener(type,stopReadingPosition,{capture:true,passive:true}));
   function positionReading(target,hash){
     const article=mount.firstElementChild,main=mount.closest('.main'),position={observer:null,queued:false,main,transition:null};readingPosition=position;
-    const scroll=()=>{position.queued=false;if(readingPosition!==position||mount.firstElementChild!==article||location.hash!==hash||document.getElementById(target.id)!==target||(main&&getComputedStyle(main).transform!=='none'))return;target.scrollIntoView({block:'start',behavior:'auto'})};
+    const scroll=()=>{position.queued=false;if(readingPosition!==position||mount.firstElementChild!==article||location.hash!==hash||document.getElementById(target.id)!==target||(main&&getComputedStyle(main).transform!=='none'))return;
+      // Explicit reading routes frame the section below the running head, without stacking shared scroll padding and story scroll margin.
+      const head=document.querySelector('.run');window.scrollTo(0,target.getBoundingClientRect().top+window.scrollY-(head?.getBoundingClientRect().bottom||0));
+    };
     const queue=()=>{if(!position.queued){position.queued=true;requestAnimationFrame(scroll)}};
     // The Index animates this surface; measure its final reading coordinates after it closes.
     position.transition=e=>{if(e.target===main&&e.propertyName==='transform')queue()};

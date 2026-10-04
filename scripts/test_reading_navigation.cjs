@@ -60,11 +60,15 @@ assert(wb.includes("if(location.hash===hash)route();else location.hash=hash"),'s
 console.log('Workbook canonical question URL, repeated numbered/Previous/Next paths, direct routes and stale-scroll cancellation passed.');
 
 const positionSource=fb.slice(fb.indexOf('  let readingPosition='),fb.indexOf('  function render(ed,storyNo)'));
-const events={},positionFrames=[],observers=[],scrolls=[],article={},node={id:'story-03',scrollIntoView:o=>scrolls.push(o)};
+const events={},positionFrames=[],observers=[],scrolls=[],article={},node={id:'story-03',getBoundingClientRect:()=>({top:storyTop-p.window.scrollY})};let storyTop=2400,headerBottom=49;
 const transitionEvents={},main={addEventListener:(type,fn)=>transitionEvents[type]=fn,removeEventListener:type=>delete transitionEvents[type]};let transform='none';
-const p=run(positionSource,{mount:{firstElementChild:article,closest:()=>main},getComputedStyle:()=>({transform}),location:{hash:'#2026-10-04/03'},document:{getElementById:()=>node,fonts:{ready:{then:f=>f()}}},requestAnimationFrame:f=>positionFrames.push(f),addEventListener:(type,fn)=>events[type]=fn,ResizeObserver:class{constructor(fn){this.fn=fn;observers.push(this)}observe(a){assert.equal(a,article)}disconnect(){this.disconnected=true}}});
-p.positionReading(node,p.location.hash);positionFrames.shift()();assert.equal(scrolls.length,1);assert.equal(scrolls[0].behavior,'auto');
+const p=run(positionSource,{mount:{firstElementChild:article,closest:()=>main},getComputedStyle:()=>({transform}),location:{hash:'#2026-10-04/03'},window:{scrollY:1700,scrollTo:(x,y)=>{assert.equal(x,0);scrolls.push(y);p.window.scrollY=y}},document:{getElementById:()=>node,querySelector:s=>{assert.equal(s,'.run');return {getBoundingClientRect:()=>({bottom:headerBottom})}},fonts:{ready:{then:f=>f()}}},requestAnimationFrame:f=>positionFrames.push(f),addEventListener:(type,fn)=>events[type]=fn,ResizeObserver:class{constructor(fn){this.fn=fn;observers.push(this)}observe(a){assert.equal(a,article)}disconnect(){this.disconnected=true}}});
+p.positionReading(node,p.location.hash);positionFrames.shift()();assert.equal(scrolls.length,1);assert.equal(scrolls[0],storyTop-headerBottom);
+assert.equal(node.getBoundingClientRect().top,headerBottom,'selected reading starts immediately below the masthead, with no preceding reading content exposed by stacked scroll offsets');
+// Existing safe-area padding increases the real masthead height; layout changes also move the reading.
+headerBottom=69;storyTop+=35;
 observers.at(-1).fn();positionFrames.shift()();assert.equal(scrolls.length,2,'post-render keeping/font layout realigns the destination');
+assert.equal(node.getBoundingClientRect().top,headerBottom,'framing uses the measured masthead including its safe area');
 events.touchstart();assert(observers.at(-1).disconnected);observers.at(-1).fn();positionFrames.shift()();assert.equal(scrolls.length,2,'reading input ends alignment ownership');
 p.positionReading(node,p.location.hash);p.location.hash='#2026-10-04/05';positionFrames.shift()();assert.equal(scrolls.length,2,'late alignment cannot override a new hash');
 p.location.hash='#2026-10-04/03';p.positionReading(node,p.location.hash);p.mount.firstElementChild={};positionFrames.shift()();assert.equal(scrolls.length,2,'replaced editions cannot receive stale scrolling');
