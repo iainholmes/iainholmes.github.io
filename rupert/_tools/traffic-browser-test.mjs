@@ -16,7 +16,7 @@ const places=JSON.parse(await readFile(resolve(root,'data/places.json'))),home=p
 const provider=await readFile(resolve(root,'assets/js/map/maplibre-provider.js'),'utf8');
 const trafficProvider=process.env.ATLAS_QA_TRAFFIC_PROVIDER || 'tomtom',trafficName=trafficProvider==='tomtom'?'TomTom':'Mapbox';
 const config=`export const trafficConfig={provider:${JSON.stringify(trafficProvider)},apiKey:'synthetic-browser-fixture-key',publicToken:'pk.browser.fixture',allowedOrigins:[${JSON.stringify(origin)}]};`;
-const evidence={engine:await browser.version(),checks:0,layouts:[],errors:[],realProviderVerified:false,map:'real MapLibre/OpenFreeMap',responses:`synthetic ${trafficName}/OSRM`,physicalIOS:false};
+const evidence={engine:await browser.version(),checks:0,layouts:[],errors:[],realProviderVerified:false,map:'real MapLibre/OpenFreeMap',responses:`synthetic ${trafficName}/OSRM`,physicalIOS:false,reliefPreference:process.env.ATLAS_QA_RELIEF || 'default'};
 const check=(v,m)=>{assert.ok(v,m);evidence.checks++;};
 const sizes=process.env.ATLAS_QA_SIZES?process.env.ATLAS_QA_SIZES.split(',').map(s=>s.split('x').map(Number)):process.env.ATLAS_QA_QUICK?[[393,852],[852,393],[1440,1000]]:[[375,812],[390,844],[393,852],[402,874],[430,932],[844,390],[852,393],[1024,768],[1440,1000]];
 function fixture(from,to){const coordinates=Array.from({length:9},(_,i)=>[from[0]+(to[0]-from[0])*i/8,from[1]+(to[1]-from[1])*i/8]);return {code:'Ok',routes:[{duration:2580,duration_typical:2160,distance:43612,geometry:{type:'LineString',coordinates},legs:[{annotation:{congestion_numeric:[0,12,45,65,85,null,0,0]},closures:[{geometry_index_start:6,geometry_index_end:7}],incidents:[{type:'construction',description:'Fixture road works on this route',geometry_index_start:2,geometry_index_end:3},{type:'road_closure',closed:true,description:'Fixture route closure',geometry_index_start:6,geometry_index_end:7}]}]}]};}
@@ -24,12 +24,13 @@ function tomtomFixture(from,to){const old=fixture(from,to),coordinates=old.route
 async function context({width=393,height=852,standalone=false,saved=true,configured=true}={}){
  const ctx=await browser.newContext({viewport:{width,height},isMobile:width<760,hasTouch:width<760,reducedMotion:'reduce'}),page=await ctx.newPage();
  page.on('pageerror',e=>evidence.errors.push(e.message));await page.clock.install({time:new Date('2026-10-03T12:00:00-04:00')});
+ if(process.env.ATLAS_QA_RELIEF==='off')await page.addInitScript(()=>localStorage.setItem('rupert-relief','0'));
  if(saved)await page.addInitScript(p=>localStorage.setItem('rupert-location-v1',JSON.stringify({point:{lat:p.lat,lng:p.lng}})),home);
  if(standalone)await page.addInitScript(()=>{const m=matchMedia;window.matchMedia=q=>q==='(display-mode: standalone)'?{matches:true,media:q,addEventListener(){},removeEventListener(){}}:m(q);});
  await page.route('**/assets/js/traffic-config.js*',r=>r.fulfill({contentType:'text/javascript',body:configured?config:'export const trafficConfig={provider:"mapbox",publicToken:"",allowedOrigins:[]};'}));
  await page.route('**/assets/js/map/maplibre-provider.js*',r=>r.fulfill({contentType:'text/javascript',body:provider.replace('  return api;','  window.__trafficQaMap=api; return api;').replace('setRoutes(features) {', 'setRoutes(features) { window.__trafficQaFeatures=features;')}));
- const requests=[],state={failure:false,failureStatus:503,hold:null,noEvents:false,missingSummary:false,partial:false};
- await page.route('https://router.project-osrm.org/**',r=>{requests.push({provider:'OSRM',url:r.request().url()});const coordinates=new URL(r.request().url()).pathname.split('/').at(-1).split(';').map(p=>p.split(',').map(Number));return r.fulfill({json:{code:'Ok',routes:[{duration:2160,distance:43000,geometry:{type:'LineString',coordinates}}]}});});
+ const requests=[],state={failure:false,failureStatus:503,hold:null,noEvents:false,missingSummary:false,partial:false,magnitude:null,baselineFailure:false};
+ await page.route('https://router.project-osrm.org/**',r=>{requests.push({provider:'OSRM',url:r.request().url()});if(state.baselineFailure)return r.fulfill({status:503,body:'Unavailable'});const coordinates=new URL(r.request().url()).pathname.split('/').at(-1).split(';').map(p=>p.split(',').map(Number));return r.fulfill({json:{code:'Ok',routes:[{duration:2160,distance:43000,geometry:{type:'LineString',coordinates}}]}});});
  await page.route('https://api.mapbox.com/directions/**',async r=>{
   requests.push({provider:'Mapbox',url:r.request().url(),headers:await r.request().allHeaders()});
   if(state.hold)await state.hold;if(state.failure)return r.fulfill({status:state.failureStatus,body:'Unavailable'});
@@ -42,6 +43,7 @@ async function context({width=393,height=852,standalone=false,saved=true,configu
   if(state.noEvents){Object.assign(data.routes[0].summary,{trafficDelayDurationInSeconds:0,trafficLengthInMeters:0});delete data.routes[0].sections;}
   if(state.missingSummary){delete data.routes[0].summary.trafficDelayDurationInSeconds;delete data.routes[0].summary.trafficLengthInMeters;}
   if(state.partial)data.routes[0].sections={traffic:[{startPathIndex:4,endPathIndex:5,iconCategory:'unknown',delayMagnitude:'unknown'}]};
+  if(state.magnitude)data.routes[0].sections={traffic:[{startPathIndex:1,endPathIndex:2,iconCategory:'jam',delayMagnitude:state.magnitude,delayDurationInSeconds:420}]};
   return r.fulfill({json:data});
  });
  await page.route('https://api.tomtom.com/maps/orbis/copyrights',async r=>{requests.push({provider:'TomTom credits',url:r.request().url(),headers:await r.request().allHeaders()});return r.fulfill({contentType:'text/plain',body:'© TomTom. Synthetic copyright fixture.\n© OpenStreetMap contributors.'});});
@@ -50,8 +52,16 @@ async function context({width=393,height=852,standalone=false,saved=true,configu
 }
 const select=async(page,id)=>{await page.locator('#place-picker').selectOption(id,{force:true});await page.locator('.dossier-provider').waitFor();};
 const toggle=async(page,on)=>{await page.locator('#traffic-enabled').evaluate((n,v)=>{n.checked=v;n.dispatchEvent(new Event('change',{bubbles:true}));},on);await page.locator('.dossier-provider').waitFor();};
-// The existing popup geometry follows a ResizeObserver after route-card layout.
-const settledOverlay=page=>page.waitForFunction(()=>Math.ceil(document.querySelector('.map-drive-overlay').getBoundingClientRect().height)===parseFloat(getComputedStyle(document.querySelector('.atlas-map')).getPropertyValue('--map-overlay-height')));
+async function mapSelect(page,id){
+ await page.evaluate(id=>window.__trafficQaMap.focus(id),id);await page.clock.runFor(100);
+ await page.waitForFunction(id=>{const m=window.__trafficQaMap.raw,p=m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id===id).geometry.coordinates);return m.queryRenderedFeatures([[p.x-22,p.y-22],[p.x+22,p.y+22]],{layers:['marks']}).some(f=>f.properties.id===id);},id);
+ await page.evaluate(id=>{const m=window.__trafficQaMap.raw,event=new MouseEvent('click');Object.defineProperty(event,'target',{value:m.getCanvas()});m.fire('click',{originalEvent:event,point:m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id===id).geometry.coordinates)});},id);
+}
+async function swatch(page,level,color,dashed=false){
+ const s=await page.locator('.traffic-swatch').evaluate(n=>({level:n.dataset.traffic,color:n.firstElementChild.getAttribute('stroke'),dash:n.firstElementChild.hasAttribute('stroke-dasharray'),hidden:n.getAttribute('aria-hidden'),width:n.getBoundingClientRect().width,first:n.parentElement.firstElementChild===n}));
+ check(s.level===level&&s.color===color&&s.dash===dashed,'Contextual swatch disagrees with route: '+JSON.stringify(s));
+ check(s.hidden==='true'&&s.width===18&&s.first,'Swatch is oversized, duplicates speech or follows status');
+}
 const read=page=>page.evaluate(()=>{const api=window.__trafficQaMap,m=api.raw;const r=n=>{const b=n.getBoundingClientRect();return {y:b.y,bottom:b.bottom,right:b.right,height:b.height};};return {theme:api.diagnostics().theme,bg:m.getPaintProperty('bg','background-color'),routes:(window.__trafficQaFeatures || []).map(f=>f.properties.traffic || 'baseline'),line:m.getPaintProperty('route-line','line-color'),home:!!document.querySelector('.home-marker'),incidents:document.querySelectorAll('.traffic-incident').length,selected:m.getFilter('marks-sel'),zoom:m.getZoom(),center:m.getCenter().toArray(),relief:m.getLayoutProperty('relief','visibility'),overflow:document.documentElement.scrollWidth>innerWidth,map:r(document.querySelector('.atlas-map')),route:r(document.querySelector('#drive-status')),cardBackground:getComputedStyle(document.querySelector('#map-card')).backgroundColor,card:document.querySelector('#map-card').hidden?null:r(document.querySelector('#map-card')),outsideBackground:getComputedStyle(document.body).backgroundColor,controls:getComputedStyle(document.querySelector('#recenter')).backgroundColor,attribution:getComputedStyle(document.querySelector('.maplibregl-ctrl-attrib')).backgroundColor};});
 try{
  for(const [width,height] of sizes){
@@ -72,6 +82,7 @@ try{
   check(on.theme==='traffic'&&on.bg==='#1D2A3A','Traffic mode not dark');check(on.outsideBackground===off.outsideBackground,'Traffic changed whole page');
   check(on.routes.join()===(trafficProvider==='tomtom'?'normal,mild,moderate,heavy,unknown,normal,closure,normal':'normal,mild,moderate,heavy,severe,unknown,closure,normal'),'Route annotations lost');
   check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · ROAD CLOSURE · +7 MIN DELAY · PARTIAL DATA','Contextual traffic status incorrect');
+  await swatch(page,'closure','#963D48',true);
   check(await page.locator('#drive-status .dossier-context').count()===0,'Redundant destination context remained');
   check(await page.locator('#drive-status').innerText().then(s=>!s.includes('Grey dashes:')&&!s.includes('0 min delay vs free flow')),'Permanent traffic diagnostics remained');
   check(await page.locator('.traffic-coverage').innerText().then(s=>/^Updated .+ · Refresh$/.test(s)),'Updated/Refresh line changed');
@@ -93,7 +104,7 @@ try{
    check(requests.filter(v=>v.provider==='TomTom credits').length===1,'Unnecessary attribution/provider requests');
   }
   await page.evaluate(()=>window.__trafficQaMap.focus('hillsborough-riverwalk'));await page.clock.runFor(100);
-  if(width<760){await page.waitForFunction(()=>{const m=window.__trafficQaMap.raw,p=m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id==='hillsborough-riverwalk').geometry.coordinates);return m.queryRenderedFeatures([[p.x-22,p.y-22],[p.x+22,p.y+22]],{layers:['marks']}).some(f=>f.properties.id==='hillsborough-riverwalk');});await page.evaluate(()=>{const m=window.__trafficQaMap.raw,event=new MouseEvent('click');Object.defineProperty(event,'target',{value:m.getCanvas()});m.fire('click',{originalEvent:event,point:m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id==='hillsborough-riverwalk').geometry.coordinates)});});await page.locator('.dossier-provider').waitFor();await settledOverlay(page);const g=await read(page);check(g.card&&g.card.y>=g.route.bottom+8,'Traffic/place cards overlap');check(g.cardBackground==='rgb(35, 51, 70)','Dark popup contrast');check(g.card.bottom<=g.map.bottom-10,'Traffic place card clipped');check(await page.locator('.mc-place-detail').textContent()==='Orange County','County regressed');}
+  if(width<760){await mapSelect(page,'hillsborough-riverwalk');await page.locator('.dossier-provider').waitFor();check(await page.locator('#map-card').isHidden(),'Riverwalk popup visible over active traffic route');check((await read(page)).selected.includes('hillsborough-riverwalk'),'Destination marker changed by suppression');}
   await page.evaluate(()=>{document.documentElement.style.scrollBehavior='auto';window.scrollTo(0,scrollY+document.querySelector('.atlas-map').getBoundingClientRect().top-10);});await page.clock.runFor(100);
   const navigationGeometry=await page.evaluate(()=>({mapBottom:document.querySelector('.atlas-map').getBoundingClientRect().bottom,navigationTop:document.querySelector('.route-navigation').getBoundingClientRect().top}));
   check(navigationGeometry.navigationTop>=navigationGeometry.mapBottom,'Sticky map covers navigation handoff '+JSON.stringify(navigationGeometry));
@@ -101,14 +112,12 @@ try{
   await page.locator('.traffic-incident').first().evaluate(n=>n.click());check(await page.locator('.traffic-incident-popup').innerText().then(s=>s.includes(trafficProvider==='tomtom'?'Road works':'Fixture road works')),'Incident description unavailable');
   await page.locator('.traffic-incident-popup .maplibregl-popup-close-button').click();
   if(width===375){
-   await select(page,'eno-cox-mountain');await page.evaluate(()=>window.__trafficQaMap.focus('eno-cox-mountain'));
-   await page.waitForFunction(()=>{const m=window.__trafficQaMap.raw,p=m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id==='eno-cox-mountain').geometry.coordinates);return m.queryRenderedFeatures([[p.x-22,p.y-22],[p.x+22,p.y+22]],{layers:['marks']}).some(f=>f.properties.id==='eno-cox-mountain');});
-   await page.evaluate(()=>{const m=window.__trafficQaMap.raw,event=new MouseEvent('click');Object.defineProperty(event,'target',{value:m.getCanvas()});m.fire('click',{originalEvent:event,point:m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id==='eno-cox-mountain').geometry.coordinates)});});await page.locator('.dossier-provider').waitFor();await settledOverlay(page);
-   const g=await read(page);check(g.card.y>=g.route.bottom+8&&g.card.bottom<=g.map.bottom-10,'Multi-line traffic popup overlaps or clips');
-   check(await page.locator('.mc-name').evaluate(n=>n.getBoundingClientRect().right<=document.querySelector('.mc-close').getBoundingClientRect().left),'Multi-line name crowds Close');
+   for(const id of ['eno-cox-mountain','umstead-company-mill']){await mapSelect(page,id);await page.locator('.dossier-provider').waitFor();check(await page.locator('#map-card').isHidden(),'Popup visible over active route: '+id);check((await read(page)).selected.includes(id),'Suppression changed selected marker: '+id);}
   }
   await toggle(page,false);const back=await read(page);check(back.bg===off.bg&&back.theme==='light'&&back.routes.join()==='baseline'&&back.incidents===0,'Toggle off did not restore baseline');
   check(await page.locator('.traffic-attribution').count()===0,'Traffic attribution remained on baseline');
+  check(await page.locator('.traffic-swatch').count()===0,'Baseline route falsely carries traffic swatch');
+  if(width<760){await mapSelect(page,'hillsborough-riverwalk');await page.locator('.dossier-provider').waitFor();check(await page.locator('#map-card').isHidden(),'OSRM route did not suppress place popup');}
   evidence.layouts.push({width,height,standalone:width===393,off,on,back});await ctx.close();console.log(`traffic ${width}x${height} PASS`);
  }
  // The real Orbis no-event shape omits sections, while explicitly reporting zero
@@ -119,6 +128,8 @@ try{
   const normal=await read(page);check(normal.routes.join()==='normal'&&normal.theme==='traffic','No-event route became traffic unknown');
   check(normal.line.includes('#C98B4B')&&normal.incidents===0,'No-event route lost ochre or invented incidents');
   check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Zero-delay route not clear');
+  await swatch(page,'normal','#C98B4B');
+  check(await page.locator('#traffic-note').textContent().then(s=>s.includes('Ochre indicates no reported delay; amber minor delay, orange moderate, muted red major; red dashes a closure, grey dashes unknown traffic.')),'Normal-state explanation missing or semantics changed');
   check(await page.locator('.traffic-coverage').innerText().then(s=>!s.includes('Grey dashes')),'Normal route claims unknown traffic');
   check(await page.evaluate(()=>!window.__trafficQaMap.raw.queryRenderedFeatures({layers:['route-unknown']}).length),'No-event route still renders grey dashes');
   await page.evaluate(()=>{document.documentElement.style.scrollBehavior='auto';window.scrollTo(0,scrollY+document.querySelector('.atlas-map').getBoundingClientRect().top-10);});await page.clock.runFor(100);
@@ -133,15 +144,35 @@ try{
   check(await page.locator('.maplibregl-ctrl-attrib').count()===1,'Refresh duplicated map credit');
   state.missingSummary=true;await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.dossier-provider').waitFor();
   check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · DATA UNAVAILABLE'&&(await read(page)).routes.join()==='unknown','Indeterminate data falsely marked clear');
+  await swatch(page,'unknown','#A9B3B8',true);
   state.missingSummary=false;state.partial=true;await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.dossier-provider').waitFor();
   check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · PARTIAL DATA'&&(await read(page)).routes.join()==='normal,unknown,normal','Unknown section not localized');
+  await swatch(page,'unknown','#A9B3B8',true);
+  state.partial=false;state.noEvents=false;
+  for(const [magnitude,level,color] of [['minor','mild','#DEA953'],['moderate','moderate','#D47742'],['major','heavy','#C36360']]){state.magnitude=magnitude;await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.dossier-provider').waitFor();await swatch(page,level,color);check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · +7 MIN DELAY','Known delay swatch changed status');}
+  state.magnitude=null;state.noEvents=true;
   state.partial=false;await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.dossier-provider').waitFor();
   check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Partial-to-clear refresh remained stale');
+  await swatch(page,'normal','#C98B4B');
   check(await page.locator('#drive-status').innerText().then(s=>!s.includes('Grey dashes')&&!s.includes('TomTom')&&!s.includes('Selected Destination')),'Clear card retained diagnostics');
   await page.clock.fastForward(300001);check(await page.locator('.traffic-attribution').count()===0,'Expired result retained traffic credit');
   await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await page.locator('.dossier-provider').waitFor();
   check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Expired/focus refresh retained diagnostics');
   await ctx.close();
+ }
+ // Exploration popups remain available without a displayed route. Saving Home,
+ // pending routing and a successful result suppress an already visible popup.
+ {
+  const {ctx,page,requests,state}=await context({saved:false});
+  for(const id of ['hillsborough-riverwalk','eno-cox-mountain','umstead-company-mill']){await mapSelect(page,id);await page.locator('#map-card').waitFor();check((await read(page)).routes.length===0&&requests.length===0,'Exploration requested a drive');check(await page.locator('.mc-name').textContent().then(s=>s.length>0),'Exploration popup lost place name');await page.locator('.mc-close').click();check(await page.locator('#map-card').isHidden(),'Exploration Close failed');}
+  await mapSelect(page,'hillsborough-riverwalk');await page.locator('#map-card').waitFor();
+  await page.locator('.location-settings').evaluate(n=>n.open=true);await page.locator('#location-form input[name=lat]').fill(String(home.lat));await page.locator('#location-form input[name=lng]').fill(String(home.lng));await page.locator('#location-form').evaluate(n=>n.requestSubmit());await page.locator('.dossier-provider').waitFor();
+  check(await page.locator('#map-card').isHidden(),'Saving Home left existing popup over route');
+  state.baselineFailure=true;await mapSelect(page,'eno-cox-mountain');await page.locator('#map-card').waitFor();
+  check((await read(page)).routes.length===0&&!await page.locator('.dossier-values').count(),'No-route failure retained route state');
+  state.baselineFailure=false;await mapSelect(page,'eno-cox-mountain');await page.locator('.dossier-provider').waitFor();check(await page.locator('#map-card').isHidden(),'Successful retry failed to suppress popup');
+  await page.locator('#forget-location').evaluate(n=>n.click());await mapSelect(page,'umstead-company-mill');await page.locator('#map-card').waitFor();check((await read(page)).routes.length===0,'Restored popup recreated route');
+  await page.screenshot({path:resolve(output,'exploration-popup-393x852.png')});await ctx.close();
  }
  // State changes, stale estimates, retries and a late aborted provider response.
  {

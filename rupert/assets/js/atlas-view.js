@@ -18,6 +18,7 @@ const perf = (window.__atlasPerf = { start: performance.now() });
 let map = null;
 let cameraScope = 'all';
 let selectedId = null;
+let mapCardRequested = false;
 const workspace=document.querySelector('.atlas-body');
 const directory=document.querySelector('.atlas-register');
 const mapBox=document.querySelector('.atlas-map');
@@ -28,7 +29,10 @@ sizeWorkspace();
 const directorySize=new ResizeObserver(sizeWorkspace); directorySize.observe(directory);
 const canvasSize=new ResizeObserver(()=>map?.resize()); canvasSize.observe(mapBox);
 function showWorkspace() { document.querySelector(compactDirectory.matches ? '.atlas-map' : '.atlas-register').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); }
-const locationControls = setupLocation({ getMap: () => map, features: data.features, onClear: () => select(null) });
+const locationControls = setupLocation({ getMap: () => map, features: data.features, onClear: () => select(null), onRouteDisplay: showing => {
+  if(showing) card.hidden=true;
+  else if(mapCardRequested && selectedId && phone.matches){const row=rows.find(r=>r.dataset.place===selectedId);if(row)showCard(selectedId,row);}
+} });
 
 /* ---------- QA panel (?qa=1): what a tester on a phone needs to see ---------- */
 // "ready" now means drawn: MapLibre's 'load' is reported separately, with the evidence that pixels reached
@@ -109,14 +113,15 @@ function select(id, { from } = {}) {
   if (!data.features.some(f => f.properties.id === id)) id = null;
   qa.last = id ? `${from || 'register'} → ${id}` : `${from || '?'} → (none)`; qaRender();
   selectedId = id; picker.value = id || '';
+  mapCardRequested = !!id && from === 'map' && phone.matches;
   card.hidden = true;
   if (!id) { locationControls.clear(); map?.select(null); rows.forEach(r => { r.classList.remove('is-selected'); r.removeAttribute('aria-current'); }); return; }
   rows.forEach(r => { const on = r.dataset.place === id; r.classList.toggle('is-selected', on); on ? r.setAttribute('aria-current', 'true') : r.removeAttribute('aria-current'); });
   const row = rows.find(r => r.dataset.place === id);
   map?.select(id);
   locationControls.select(id);
-  if (from === 'map' && row) {
-    if (phone.matches) showCard(id, row); else { catalog.open=true; row.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+  if (from === 'map' && row && !phone.matches) {
+    catalog.open=true; row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
 }
 function showCard(id, row) {
@@ -124,7 +129,7 @@ function showCard(id, row) {
   const link = el('a', 'mc-link', 'See in directory'); link.href = `#place-${id}`;
   link.addEventListener('click', e => { e.preventDefault(); catalog.open=true; row.scrollIntoView({ block: 'center', behavior: 'smooth' }); row.querySelector('.reg-select')?.focus({ preventScroll: true }); });
   const close = el('button', 'mc-close', 'Close'); close.type = 'button'; close.setAttribute('aria-label', 'Close place card');
-  close.addEventListener('click', e => { e.stopPropagation(); card.hidden = true; });
+  close.addEventListener('click', e => { e.stopPropagation(); mapCardRequested=false; card.hidden = true; });
   const region=row.closest('.reg-group')?.dataset.region || '';
   const bottom=document.createElement('div');bottom.className='mc-bottom';bottom.append(link);
   if(region) bottom.append(el('span','mc-place-detail',region));
@@ -180,7 +185,7 @@ async function start() {
       // Safari can drop a WebGL context (memory pressure, backgrounding). Say so rather than leave a frozen or empty box.
       perf.failed = 'lost'; qa.diag = map.diagnostics(); stateEl.dataset.state = 'failed'; msg.textContent = MESSAGES.lost;
       controlsReady(false);
-      card.hidden = true; locationControls.clear(); map.destroy(); map = null; qaRender();
+      mapCardRequested=false; card.hidden = true; locationControls.clear(); map.destroy(); map = null; qaRender();
     });
     stateEl.dataset.state = 'ready'; map.resize(); locationControls.ready(); qaRender();
     msg.textContent = '';

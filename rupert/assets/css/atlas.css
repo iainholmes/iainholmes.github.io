@@ -1400,6 +1400,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .atlas-map .maplibregl-ctrl-attrib .traffic-attribution{display:inline;font:inherit;margin:0;}
 .traffic-attribution img{display:block;width:81px;height:20px;filter:invert(1);}
 .traffic-coverage,.traffic-fallback{display:block;font:400 11px/1.4 var(--f-data);margin-top:5px;color:#E9E4D9;}
+.traffic-swatch{display:inline-block;margin-right:7px;vertical-align:middle;}
 .traffic-checked{white-space:nowrap;}
 .traffic-refresh{font:inherit;background:transparent;color:inherit;border:0;text-decoration:underline;text-underline-offset:3px;min-height:44px;padding:0 5px;cursor:pointer;}
 .traffic-incident{width:44px;height:44px;padding:0;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;}

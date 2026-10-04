@@ -18,3 +18,11 @@ export function trafficCardStatus(result) {
   if (partial && (closed || delayed)) status += ' · PARTIAL DATA';
   return 'LIVE TRAFFIC · ' + status;
 }
+
+// One contextual swatch: the most significant returned route condition. Unknown
+// wins over normal, but never hides a known delay/closure. No delay-based inference.
+export function trafficCardSwatch(result) {
+  const levels=(result.features || []).map(f=>f.properties.traffic);
+  if(result.incidents?.some(v=>v.closed))return 'closure';
+  return ['closure','severe','heavy','moderate','mild','unknown','normal'].find(v=>levels.includes(v)) || 'unknown';
+}
