@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {renderOutingInfo,renderWeek,renderEdition,renderAtlas,chrome} from '../assets/js/core/render.js';
 import {selectCurrentPair} from '../assets/js/core/editions.js';
@@ -43,12 +44,11 @@ check(()=>assert.equal((veil.match(/class="veil-almanac-symbol"/g)||[]).length,3
 check(()=>assert.ok(veil.indexOf('>Sunset<')<veil.indexOf('>Moon<')&&veil.indexOf('>Moon<')<veil.indexOf('>Daylight<')));
 check(()=>assert.ok(!veil.includes('Home')));
 const source=readFileSync(new URL('../assets/js/veil-view.js',import.meta.url),'utf8');
-check(()=>assert.match(source,/new URLSearchParams\(window.location.search\).get\('veil'\) === 'review'/));
-check(()=>assert.doesNotMatch(source,/display-mode:\s*standalone/));
-check(()=>assert.match(source,/if \(reviewMode\) now = reviewNow/));
-check(()=>assert.match(source,/if \(reviewMode\) state.dismissalKey = `rupert-veil-review:acceptance-20261004:/));
-const review=renderVeil(state,photos,'../',null,true);
-check(()=>assert.match(review,/href="\.\.\/edition\/2026-W40-r1-tue\/\?veil=review"/));
-check(()=>assert.equal(review.replaceAll('?veil=review',''),veil));
-check(()=>assert.match(renderVeil(state,photos,'../',{title:'Trip',start:'2026-10-17'},true),/travel\/\?veil=review#saved-trips/));
+check(()=>assert.doesNotMatch(source,/reviewMode|reviewNow|veil=review|rupert-veil-review|display-mode:\s*standalone/));
+// Golden markup from the physically approved acceptance commit 4a68d070.
+// Review removal must not change production rendering at either active phase.
+for(const [time,digest] of [
+  ['2026-10-05T12:00:00-04:00','d619f66b939c64bed6cc9b70bc6eac242367017d2900055ce1b6aac470284107'],
+  ['2026-10-07T12:00:00-04:00','a5cb2109514537b64e89a44256c21ed3f83ff66f6ebe527f6ef88faf8dcc926f']
+])check(()=>assert.equal(createHash('sha256').update(renderVeil(veilState(manifest,new Date(time)),photos,'../')).digest('hex'),digest));
 console.log(`${checks} final refinement source checks passed.`);

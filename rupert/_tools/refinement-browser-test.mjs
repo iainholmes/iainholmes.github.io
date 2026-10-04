@@ -2,8 +2,6 @@
 // ATLAS_QA_CHROME=/path/to/chromium node rupert/_tools/refinement-browser-test.mjs
 // ATLAS_QA_URL=https://iainholmes.github.io/rupert/ checks deployed bytes with the same fixtures.
 import assert from 'node:assert/strict';
-import {veilState} from '../assets/js/core/veil.js';
-import {renderVeil} from '../assets/js/veil-view.js';
 import {createRequire} from 'node:module';
 import {createServer} from 'node:http';
 import {readFile,mkdir,stat,writeFile} from 'node:fs/promises';
@@ -12,7 +10,6 @@ import {resolve,extname} from 'node:path';
 const {chromium}=createRequire(import.meta.url)('playwright');
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
 const manifest=JSON.parse(await readFile(resolve(root,'data/editions/index.json'),'utf8'));
-const photos=JSON.parse(await readFile(resolve(root,'data/photos.json'),'utf8'));
 const monday='2026-10-05T12:00:00-04:00';
 const output=resolve(process.env.ATLAS_QA_OUTPUT_DIR||resolve(root,'_tools/refinement-evidence'));
 await mkdir(output,{recursive:true});
@@ -59,63 +56,7 @@ try{
   if(width===393&&!standalone&&!travel)await page.screenshot({path:resolve(output,'veil-portrait.png')});if(width===1440&&!standalone&&!travel)await page.screenshot({path:resolve(output,'veil-desktop.png')});if(width===852&&!standalone&&travel)await page.screenshot({path:resolve(output,'veil-landscape-travel.png')});
   evidence.layouts.push({standalone,travel,...g});await ctx.close();console.log(`veil ${width}x${height} ${standalone?'PWA':'browser'} travel=${travel} PASS`);
  }
- // Deliberate acceptance access uses the actual production renderer on a clear Sunday.
- const sunday='2026-10-04T17:14:00-04:00';
- const productionKey='rupert-veil:2026-10-10:preTuesday';
- const reviewKey='rupert-veil-review:acceptance-20261004:2026-10-10:preTuesday';
- const ready=async(page,url)=>{
-  const data=Promise.all(['data/editions/index.json','data/photos.json'].map(path=>page.waitForResponse(r=>new URL(r.url()).pathname.endsWith('/'+path))));
-  await page.goto(url);await Promise.all((await data).map(r=>r.finished()));await settle(page);
- };
- for(const [width,height] of sizes){
-  const {ctx,page}=await context({width,height,time:sunday});
-  await ready(page,base);check(await page.locator('.atlas-veil').count()===0,'Ordinary Sunday visit forced veil');
-  await ready(page,base+'?veil=review');await page.locator('.atlas-veil').waitFor();
-  const state=veilState(manifest,new Date(monday)),html=renderVeil(state,photos,await page.locator('body').getAttribute('data-base'));
-  check(await page.evaluate(html=>{const normal=document.createElement('div');normal.innerHTML=html;return document.querySelector('.atlas-veil').innerHTML.replaceAll('?veil=review','')===normal.innerHTML;},html),'Review differs from actual production renderer');
-  check(await page.locator('.veil-tile.is-published').count()===2&&await page.locator('.veil-tile.is-pending').count()===2,'Review changed publication states');
-  check(await page.locator('.atlas-veil a').evaluateAll(ns=>ns.every(n=>new URL(n.href).searchParams.get('veil')==='review')),'Review links lost deliberate review context');
-  const g=await geometry(page);check(g.bottom&&!g.overflow&&height-g.almanac.bottom<=2,'Review coverage/safe-bottom regression');
-  await page.screenshot({path:resolve(output,`acceptance-review-${width}x${height}.png`)});
-  await page.locator('.atlas-veil').click({position:{x:8,y:170}});
-  check(await page.locator('.atlas-veil').count()===0,'Initial review background dismissal failed');
-  check(await page.evaluate(k=>sessionStorage.getItem(k)==='1',reviewKey),'Review dismissal was not remembered');
-  check(await page.evaluate(k=>sessionStorage.getItem(k)===null,productionKey),'Review poisoned production dismissal state');
-  await ready(page,base);check(await page.locator('.atlas-veil').count()===0,'Review leaked into ordinary Sunday');
-  await page.clock.setSystemTime(new Date(monday));await ready(page,base);await page.locator('.atlas-veil').waitFor();
-  check(await page.locator('.atlas-veil a').evaluateAll(ns=>ns.every(n=>!n.search)),'Review query leaked into natural links');
-  await ctx.close();console.log(`acceptance review/dismissal isolation ${width}x${height} PASS`);
- }
- // One physical-style touch must navigate immediately, with a pre-paint frontispiece
- // even while destination enhancement is held back. Query access also works in PWA.
- for(const standalone of [false,true]){
-  const {ctx,page}=await context({time:sunday,standalone});
-  await ready(page,base);check(await page.locator('.atlas-veil').count()===0,'PWA alone forced Sunday veil');
-  await page.evaluate(k=>{sessionStorage.setItem(k,'1');sessionStorage.setItem('rupert-veil-review:2026-10-10:preTuesday','1');},productionKey);
-  await ready(page,base+'?veil=review');await page.locator('.atlas-veil').waitFor();
-  check(await page.evaluate(k=>sessionStorage.getItem(k)===null,reviewKey),'Old dismissal blocked new acceptance access');
-  const tile=page.locator('.veil-week-group').first().locator('.veil-tile.is-published').first(),target=new URL(await tile.getAttribute('href'),page.url()),point=await tile.boundingBox();
-  check(target.search==='?veil=review','Previous Week review destination missing query');
-  let release;const gate=new Promise(r=>release=r);await page.route('**/assets/js/site.js*',async r=>{await gate;await r.continue();});
-  const committed=page.waitForURL(target.href,{waitUntil:'commit'});
-  await page.touchscreen.tap(point.x+point.width/2,point.y+point.height/2);await committed;
-  await page.locator('.ed-head h1').waitFor({state:'attached'});
-  check(page.url()===target.href,'Review touch did not immediately navigate to Full Edition');
-  check(await page.locator('.atlas-veil').count()===1,'Uncovered review destination before enhancement');
-  check(await page.evaluate(()=>!!window.__atlasVeilArrival&&sessionStorage.getItem('rupert-frontispiece-arrival')===null),'Review pre-paint arrival not consumed once');
-  check(await page.evaluate(k=>sessionStorage.getItem(k)===null,reviewKey),'Previous Week touch dismissed review');
-  release();await page.waitForLoadState('load');await page.waitForFunction(()=>!window.__atlasVeilArrival&&document.body.style.position==='fixed');
-  check(await page.locator('.atlas-veil').count()===1,'Enhancement removed destination review');
-  const before=page.url();await page.touchscreen.tap(8,500);
-  check(await page.locator('.atlas-veil').count()===0&&await page.locator('.ed-head h1').isVisible(),'Review background touch did not reveal Full Edition');
-  check(page.url()===before,'Review dismissal caused latent navigation');
-  check(await page.evaluate(([p,r])=>sessionStorage.getItem(p)==='1'&&sessionStorage.getItem(r)==='1',[productionKey,reviewKey]),'Review changed pre-existing production dismissal');
-  await page.reload();await settle(page);check(await page.locator('.atlas-veil').count()===0,'Review dismissal reopened on reload');
-  await ready(page,base);check(await page.locator('.atlas-veil').count()===0,'Completed review forced ordinary Sunday');
-  await ctx.close();console.log(`acceptance single-touch navigation ${standalone?'PWA':'browser'} PASS`);
- }
- // Unrecognized queries and installed display mode cannot override real publication.
-
+ // Query strings and installed display mode cannot override actual publication state.
  const thursdayPublished=structuredClone(manifest);
  thursdayPublished.editions.find(e=>e.id==='2026-W41-thu').status='published';
  const delayedTuesday=structuredClone(manifest);
@@ -132,16 +73,17 @@ try{
   {name:'Sunday after Thursday publication',time:'2026-10-11T23:59:59-04:00',fixture:thursdayPublished,active:false},
   {name:'Current published Friday',time:'2026-10-02T16:00:00-04:00',active:false},
   {name:'Current published Saturday',time:'2026-10-03T12:00:00-04:00',active:false},
+  {name:'Current published Sunday',time:'2026-10-04T17:36:00-04:00',active:false},
   {name:'Tuesday publication delayed',time:'2026-10-06T15:00:00-04:00',fixture:delayedTuesday,active:true,published:2,pending:2},
   {name:'Thursday publication delayed',time:'2026-10-08T15:00:00-04:00',active:true,published:3,pending:1},
   {name:'Friday without Thursday publication',time:'2026-10-09T12:00:00-04:00',active:true,published:3,pending:1}
  ];
- for(const mode of ['browser','other-query','standalone']){
+ for(const mode of ['browser','legacy-query','standalone']){
   for(const state of states)for(const route of state.direct?['','edition/2026-W40-r1-tue/']:['']){
    const {ctx,page}=await context({time:state.time,standalone:mode==='standalone',fixture:state.fixture||manifest});
    await page.clock.setFixedTime(new Date(state.time));
    const data=Promise.all(['data/editions/index.json','data/photos.json'].map(path=>page.waitForResponse(r=>new URL(r.url()).pathname.endsWith('/'+path))));
-   await page.goto(base+route+(mode==='other-query'?'?veil=ignored':''));
+   await page.goto(base+route+(mode==='legacy-query'?'?veil=review':''));
    await Promise.all((await data).map(r=>r.finished()));await settle(page);
    check(await page.locator('.atlas-veil').count()===(state.active?1:0),`${mode}: ${state.name} lifecycle wrong on ${route||'This Week'}`);
    if(state.active){
@@ -155,9 +97,9 @@ try{
   console.log(`${mode} natural lifecycle, actual publication, direct editions and clear weekends PASS`);
  }
  // Exact single-touch sequence, including the destination before its enhancement module loads.
- for(const mode of ['standard','other-query','standalone']){
+ for(const mode of ['standard','legacy-query','standalone']){
   const {ctx,page}=await context({standalone:mode==='standalone',time:monday});
-  await page.goto(base+(mode==='other-query'?'?veil=ignored':''));await page.locator('.atlas-veil').waitFor();await settle(page);
+  await page.goto(base+(mode==='legacy-query'?'?veil=review':''));await page.locator('.atlas-veil').waitFor();await settle(page);
   const tile=page.locator('.veil-tile.is-published').first(),target=new URL(await tile.getAttribute('href'),page.url()),point=await tile.boundingBox();
   check(!target.search,'Review query propagated into published navigation');
   let release;const gate=new Promise(r=>release=r);
@@ -176,6 +118,29 @@ try{
   check(page.url()===before&&await page.locator('.ed-head h1').isVisible(),'Background dismissal triggered latent navigation');
   check(await page.evaluate(()=>Object.keys(sessionStorage).filter(k=>k.startsWith('rupert-veil')).length===1),'Intentional dismissal not saved');
   await ctx.close();console.log(`${mode} single-touch destination/arrival/background sequence PASS`);
+ }
+ // Wednesday's genuinely published Tuesday uses the same single-touch handoff.
+ for(const standalone of [false,true]){
+  const {ctx,page}=await context({time:'2026-10-07T12:00:00-04:00',standalone});
+  await page.addInitScript(()=>sessionStorage.setItem('rupert-veil-review:acceptance-20261004:2026-10-10:preTuesday','1'));
+  await page.goto(base+'?veil=review');await page.locator('.atlas-veil').waitFor();await settle(page);
+  const group=page.locator('.veil-week-group').nth(1),tile=group.locator('.veil-tile.is-published'),pending=group.locator('.veil-tile.is-pending');
+  check(await tile.count()===1&&await pending.count()===1,'Wednesday must reveal only Tuesday');
+  check(await pending.evaluate(n=>n.tagName==='DIV'&&!n.hasAttribute('href')),'Wednesday exposed pending Thursday');
+  const target=new URL(await tile.getAttribute('href'),page.url()),point=await tile.boundingBox();
+  check(target.pathname.endsWith('/edition/2026-W41-tue/')&&!target.search,'Wednesday Tuesday route/query incorrect');
+  let release;const gate=new Promise(r=>release=r);await page.route('**/assets/js/site.js*',async r=>{await gate;await r.continue();});
+  const committed=page.waitForURL(target.href,{waitUntil:'commit'});
+  await page.touchscreen.tap(point.x+point.width/2,point.y+point.height/2);await committed;
+  await page.locator('.ed-head h1').waitFor({state:'attached'});
+  check(page.url()===target.href&&await page.locator('.atlas-veil').count()===1,'Wednesday navigation uncovered destination or needed second tap');
+  check(await page.evaluate(()=>!Object.keys(sessionStorage).some(k=>k.startsWith('rupert-veil:'))),'Wednesday navigation dismissed production veil');
+  release();await page.waitForLoadState('load');await page.waitForFunction(()=>!window.__atlasVeilArrival&&document.body.style.position==='fixed');
+  const before=page.url();await page.touchscreen.tap(8,500);
+  check(await page.locator('.atlas-veil').count()===0&&page.url()===before&&await page.locator('.ed-head h1').isVisible(),'Wednesday background dismissal did not reveal Tuesday edition');
+  check(await page.evaluate(()=>sessionStorage.getItem('rupert-veil:2026-10-10:preThursday')==='1'),'Wednesday dismissal key not preserved');
+  await page.reload();await settle(page);check(await page.locator('.atlas-veil').count()===0,'Wednesday session dismissal reopened');
+  await ctx.close();console.log(`Wednesday published Tuesday single-touch ${standalone?'PWA':'browser'} PASS`);
  }
  // Stale or unrelated one-use arrivals must never force a frontispiece on a clear Friday.
  for(const kind of ['expired','other-route','unsafe-tree']){
