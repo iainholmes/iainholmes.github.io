@@ -1416,7 +1416,9 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   var LETTERS = 'ABCDEFGH';
   var app = document.getElementById('app');
   var KEY = 'dec:v1:';
-  var ed = null, st = null;
+  var ed = null, st = null, navigation = 0;
+  // This router owns synthetic set/question positions, including history traversal.
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
 
   function load(date){try{var r=localStorage.getItem(KEY+date);return r?JSON.parse(r):null}catch(e){return null}}
   function save(){try{localStorage.setItem(KEY+ed.date,JSON.stringify(st))}catch(e){} announceProgress()}
@@ -1531,7 +1533,15 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
       '</tbody></table><p class="ledger-note">Records live in this browser.</p></article></div>';
   }
 
-  function announceProgress(){if(!ed||!st)return;window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,dates:EDITIONS.map(e=>e.date).sort(),hash:d=>'#'+d,recovery:EDITIONS.map(function(e){var p=load(e.date);return p&&!p.submitted&&(p.current>0||Object.values(p.answers||{}).some(a=>a.length))&&e.questions.filter(q=>(p.answers[q.id]||[]).length).length<e.questions.length?{edition:e.date,question:p.current||0,label:'No. '+pad(e.no)+' · Question '+((p.current||0)+1)+' of '+e.questions.length}:null}).find(Boolean),progress:{no:ed.no,question:st.current,answered:nAnswered(),total:ed.questions.length,submitted:st.submitted},start:function(){go(0,true)},resume:function(q){go(q,true);document.getElementById('bench')?.scrollIntoView({block:'start'})}}}))}
+  function recovery(date,question){
+    var e=EDITIONS.find(function(e){return e.date===date}),p=e&&load(date);
+    if(!p||p.submitted)return null;
+    var answered=e.questions.filter(function(q){return (p.answers[q.id]||[]).length}).length;
+    if(answered>=e.questions.length||!(answered||p.current>0))return null;
+    var q=Number.isInteger(question)?question:p.current||0;q=Math.max(0,Math.min(e.questions.length-1,q));
+    return {edition:date,question:q,label:'No. '+pad(e.no)+' · Question '+(q+1)+' of '+e.questions.length};
+  }
+  function announceProgress(){if(!ed||!st)return;window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,dates:EDITIONS.map(e=>e.date).sort(),hash:d=>'#'+d,recover:recovery,recovery:EDITIONS.map(function(e){return recovery(e.date)}).find(Boolean),progress:{no:ed.no,question:st.current,answered:nAnswered(),total:ed.questions.length,submitted:st.submitted},start:function(){go(0,true)},resume:function(q){go(q,true);document.getElementById('bench')?.scrollIntoView({block:'start',behavior:'auto'})}}}))}
   function render(focusMain){
     document.getElementById('archiveLink').setAttribute('aria-current',location.hash==='#archive'?'page':'false');
     if(location.hash==='#archive'){
@@ -1546,7 +1556,9 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     if(focusMain){var h=app.querySelector('.q-num,.score');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
   }
 
-  function go(i,focus){st.current=Math.max(0,Math.min(ed.questions.length-1,i));save();render(focus);
+  function go(i,focus){navigation++;st.current=Math.max(0,Math.min(ed.questions.length-1,i));
+    // Replace the current entry: question buttons keep their existing history behavior.
+    history.replaceState(history.state,'','#'+ed.date+'/'+ed.questions[st.current].id);save();render(focus);
     var b=document.getElementById('bench');if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView({block:'start'})}
 
   function pick(i){
@@ -1568,7 +1580,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     if(a==='prev')go(st.current-1,true);
     if(a==='next')go(st.current+1,true);
     if(a==='submit')submit();
-    if(a==='retake'){st=fresh();save();render(true);window.scrollTo(0,0)}
+    if(a==='retake'){st=fresh();go(0,true);window.scrollTo(0,0)}
     if(a==='copy'){var txt='The Workbook No. '+pad(ed.no)+' · '+scoreOf(ed,st)+'/'+ed.questions.length+'\n'+ed.questions.map(function(q){return isRight(q)?'■':'□'}).join('')+'\n'+location.href.split('#')[0]+'#'+ed.date;
       var note=document.getElementById('copyNote');
       (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){note.textContent='Copied'},function(){note.textContent=txt.split('\n').slice(0,2).join('  ')});}
@@ -1597,10 +1609,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
       if(!ed||m!==ed){ed=m;st=load(ed.date)||fresh()}
       if(parts[1]){var qi=ed.questions.findIndex(function(q){return q.id===parts[1]});if(qi>=0)st.current=qi}
     } else if(!ed){ed=EDITIONS[0];st=load(ed.date)||fresh()}
+    var token=++navigation,hash=location.hash;
+    if(parts[1]&&ed.questions.some(function(q){return q.id===parts[1]}))save();
     render();window.scrollTo(0,0);
-    if(parts[1])setTimeout(function(){var target=st.submitted?document.getElementById('sol-'+(st.current+1)):document.querySelector('.q');if(target)target.scrollIntoView({block:'start'})},0);
+    if(parts[1]){
+      var target=st.submitted?document.getElementById('sol-'+(st.current+1)):document.querySelector('.q');
+      var position=function(){if(token===navigation&&location.hash===hash&&target&&target.isConnected)target.scrollIntoView({block:'start',behavior:'auto'})};
+      if(document.fonts)document.fonts.ready.then(function(){requestAnimationFrame(position)});else position();
+    }
   }
-  document.querySelectorAll('#homeLink,.foot-mark').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();location.hash=EDITIONS[0].date})});
+  document.querySelectorAll('#homeLink,.foot-mark').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var hash='#'+EDITIONS[0].date;if(location.hash===hash)route();else location.hash=hash})});
   window.addEventListener('hashchange',route);window.addEventListener('periodicals:ready',render);
   route();
   /* shared Periodicals reading mode */
@@ -1620,6 +1638,6 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
 })();
 </script>
 <script src="../personal-updates/commonplace/commonplace.js?v=20261002-navigation"></script>
-<script src="/personal-updates/mobile/mobile.js?v=20261002-reading"></script>
+<script src="/personal-updates/mobile/mobile.js?v=20261004-navigation"></script>
 </body>
 </html>

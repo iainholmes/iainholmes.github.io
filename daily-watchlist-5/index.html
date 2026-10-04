@@ -2578,7 +2578,24 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
     return `<span class="k">Next edition</span><span class="v">${h<8?'Today':'Tomorrow'}, 8:00 AM</span>`;
   }
   function modeHTML(){const n=root.dataset.mode==='night';return `<div class="mode" role="group" aria-label="Edition"><button type="button" data-mode="day" aria-pressed="${!n}">Day</button><span class="sl" aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="${n}">Night</button></div>`}
+  // Synthetic reading routes own their viewport; native history restoration must not compete.
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
+  let readingPosition=null;
+  function stopReadingPosition(){if(readingPosition){readingPosition.observer?.disconnect();readingPosition.main?.removeEventListener('transitionend',readingPosition.transition);readingPosition.main?.removeEventListener('transitioncancel',readingPosition.transition);readingPosition=null}}
+  ['pointerdown','touchstart','wheel','keydown'].forEach(type=>addEventListener(type,stopReadingPosition,{capture:true,passive:true}));
+  function positionReading(target,hash){
+    const article=mount.firstElementChild,main=mount.closest('.main'),position={observer:null,queued:false,main,transition:null};readingPosition=position;
+    const scroll=()=>{position.queued=false;if(readingPosition!==position||mount.firstElementChild!==article||location.hash!==hash||document.getElementById(target.id)!==target||(main&&getComputedStyle(main).transform!=='none'))return;target.scrollIntoView({block:'start',behavior:'auto'})};
+    const queue=()=>{if(!position.queued){position.queued=true;requestAnimationFrame(scroll)}};
+    // The Index animates this surface; measure its final reading coordinates after it closes.
+    position.transition=e=>{if(e.target===main&&e.propertyName==='transform')queue()};
+    main?.addEventListener('transitionend',position.transition);main?.addEventListener('transitioncancel',position.transition);
+    // Keeping controls and font layout may change the height above this reading after render.
+    if(typeof ResizeObserver==='function'){position.observer=new ResizeObserver(queue);position.observer.observe(article);}
+    if(document.fonts)document.fonts.ready.then(queue);else queue();
+  }
   function render(ed,storyNo){
+    stopReadingPosition();
     document.title=`Field Brief — No. ${issueLabel(ed)} — ${ed.displayDate}`;
     const i=ordered.indexOf(ed),prev=ordered[i-1],next=ordered[i+1];
     mount.innerHTML=`<article class="edition">
@@ -2598,11 +2615,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
     mount.querySelectorAll('.mode button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
     document.querySelectorAll('.ix-item').forEach(it=>it.dataset.current=String(it.dataset.date===ed.date));
     const target=storyNo&&document.getElementById('story-'+storyNo);
-    if(target){
-      const scroll=()=>{if(document.getElementById(target.id)===target&&location.hash==='#'+ed.date+'/'+storyNo)target.scrollIntoView({block:'start'})};
-      target.getBoundingClientRect();
-      if(document.fonts)document.fonts.ready.then(()=>requestAnimationFrame(scroll));else scroll();
-    }else window.scrollTo(0,0);
+    if(target)positionReading(target,location.hash);else window.scrollTo(0,0);
   }
 
   /* ---- day / night: part of the edition's metadata ---- */
@@ -2659,6 +2672,6 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
 })();
 </script>
 <script src="../personal-updates/commonplace/commonplace.js?v=20261002-navigation"></script>
-<script src="/personal-updates/mobile/mobile.js?v=20261002-reading"></script>
+<script src="/personal-updates/mobile/mobile.js?v=20261004-navigation"></script>
 </body>
 </html>
