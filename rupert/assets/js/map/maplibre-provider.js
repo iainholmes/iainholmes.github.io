@@ -104,7 +104,8 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   });
   map.touchZoomRotate.disableRotation();
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
-  map.addControl(new maplibregl.AttributionControl({ compact: false }), 'bottom-right');
+  let attributionControl = new maplibregl.AttributionControl({ compact: false }), trafficAttribution = '';
+  map.addControl(attributionControl, 'bottom-right');
 
   const handlers = { select: [], trouble: [], lost: [] };
   const emit = (t, v) => handlers[t].forEach(fn => fn(v));
@@ -261,6 +262,13 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
     resize() { map.resize(); },
     setMarkers(features) { marks = features; map.getSource('marks').setData({ type: 'FeatureCollection', features });labelLayer.replaceChildren();labelNodes=features.map(feature=>{const node=document.createElement('span');node.textContent=feature.properties.name;labelLayer.append(node);return {feature,node};});positionLabels(); },
     setRoutes(features) { map.getSource('routes').setData({ type: 'FeatureCollection', features }); },
+    setTrafficAttribution(caption) {
+      if(travel || caption===trafficAttribution)return;
+      trafficAttribution=caption;
+      map.removeControl(attributionControl);
+      attributionControl=new maplibregl.AttributionControl({compact:false,customAttribution:caption});
+      map.addControl(attributionControl,'bottom-right');
+    },
     setTrafficMode(on) {
       if(travel)return;
       for(const layer of atlasStyle(on?'traffic':'light').layers){

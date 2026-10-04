@@ -28,7 +28,7 @@ async function context({width=393,height=852,standalone=false,saved=true,configu
  if(standalone)await page.addInitScript(()=>{const m=matchMedia;window.matchMedia=q=>q==='(display-mode: standalone)'?{matches:true,media:q,addEventListener(){},removeEventListener(){}}:m(q);});
  await page.route('**/assets/js/traffic-config.js*',r=>r.fulfill({contentType:'text/javascript',body:configured?config:'export const trafficConfig={provider:"mapbox",publicToken:"",allowedOrigins:[]};'}));
  await page.route('**/assets/js/map/maplibre-provider.js*',r=>r.fulfill({contentType:'text/javascript',body:provider.replace('  return api;','  window.__trafficQaMap=api; return api;').replace('setRoutes(features) {', 'setRoutes(features) { window.__trafficQaFeatures=features;')}));
- const requests=[],state={failure:false,failureStatus:503,hold:null,noEvents:false};
+ const requests=[],state={failure:false,failureStatus:503,hold:null,noEvents:false,missingSummary:false,partial:false};
  await page.route('https://router.project-osrm.org/**',r=>{requests.push({provider:'OSRM',url:r.request().url()});const coordinates=new URL(r.request().url()).pathname.split('/').at(-1).split(';').map(p=>p.split(',').map(Number));return r.fulfill({json:{code:'Ok',routes:[{duration:2160,distance:43000,geometry:{type:'LineString',coordinates}}]}});});
  await page.route('https://api.mapbox.com/directions/**',async r=>{
   requests.push({provider:'Mapbox',url:r.request().url(),headers:await r.request().allHeaders()});
@@ -40,6 +40,8 @@ async function context({width=393,height=852,standalone=false,saved=true,configu
   if(state.hold)await state.hold;if(state.failure)return r.fulfill({status:state.failureStatus,body:'Unavailable'});
   const data=tomtomFixture(body.routePlanningLocations.origin.coordinates,body.routePlanningLocations.destination.coordinates);
   if(state.noEvents){Object.assign(data.routes[0].summary,{trafficDelayDurationInSeconds:0,trafficLengthInMeters:0});delete data.routes[0].sections;}
+  if(state.missingSummary){delete data.routes[0].summary.trafficDelayDurationInSeconds;delete data.routes[0].summary.trafficLengthInMeters;}
+  if(state.partial)data.routes[0].sections={traffic:[{startPathIndex:4,endPathIndex:5,iconCategory:'unknown',delayMagnitude:'unknown'}]};
   return r.fulfill({json:data});
  });
  await page.route('https://api.tomtom.com/maps/orbis/copyrights',async r=>{requests.push({provider:'TomTom credits',url:r.request().url(),headers:await r.request().allHeaders()});return r.fulfill({contentType:'text/plain',body:'© TomTom. Synthetic copyright fixture.\n© OpenStreetMap contributors.'});});
@@ -69,7 +71,10 @@ try{
   const on=await read(page);
   check(on.theme==='traffic'&&on.bg==='#1D2A3A','Traffic mode not dark');check(on.outsideBackground===off.outsideBackground,'Traffic changed whole page');
   check(on.routes.join()===(trafficProvider==='tomtom'?'normal,mild,moderate,heavy,unknown,normal,closure,normal':'normal,mild,moderate,heavy,severe,unknown,closure,normal'),'Route annotations lost');
-  check(await page.locator('.dossier-provider').innerText()===(trafficProvider==='tomtom'?'Live Traffic · TomTom · +7 min vs free flow':'Live Traffic · +7 min vs typical'),'Provider ETA/delay incorrect');
+  check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · ROAD CLOSURE · +7 MIN DELAY · PARTIAL DATA','Contextual traffic status incorrect');
+  check(await page.locator('#drive-status .dossier-context').count()===0,'Redundant destination context remained');
+  check(await page.locator('#drive-status').innerText().then(s=>!s.includes('Grey dashes:')&&!s.includes('0 min delay vs free flow')),'Permanent traffic diagnostics remained');
+  check(await page.locator('.traffic-coverage').innerText().then(s=>/^Updated .+ · Refresh$/.test(s)),'Updated/Refresh line changed');
   check(await page.locator('.dossier-values').innerText().then(s=>s.includes('43 min')&&s.includes('27.1 mi')),'Traffic ETA not used');
   check(on.home&&on.incidents===(trafficProvider==='tomtom'?5:2),'Home/route incident markers absent');check(on.controls==='rgb(35, 51, 70)'&&on.attribution==='rgb(35, 51, 70)','Dark controls/credits unreadable '+JSON.stringify(on));
   check(on.relief===off.relief&&JSON.stringify(on.center)===JSON.stringify(off.center)&&on.zoom===off.zoom,'Theme toggle moved camera or Relief');
@@ -80,6 +85,11 @@ try{
    check(req.body.traffic==='live'&&!JSON.stringify(req.body).includes('address'),'Non-live request or textual address disclosure');
    check(!req.url.includes('key')&&req.headers['tomtom-api-key']==='synthetic-browser-fixture-key','Browser key unnecessarily in URL');
    check(await page.locator('.traffic-credits').textContent().then(s=>s.includes('TomTom')),'Provider copyright missing');
+   check(await page.locator('#drive-status .traffic-attribution').count()===0,'TomTom credit remained in route card');
+   check(await page.locator('.maplibregl-ctrl-attrib .traffic-attribution').innerText()==='© TomTom','Visible map copyright absent');
+   check(await page.locator('.maplibregl-ctrl-attrib a[href="https://www.openstreetmap.org/copyright"]').isVisible(),'OSM map copyright absent');
+   check(await page.locator('.maplibregl-ctrl-attrib').count()===1,'Duplicate attribution controls');
+   check(await page.locator('.maplibregl-ctrl-attrib .traffic-attribution').evaluate(n=>parseFloat(getComputedStyle(n).fontSize)>=11),'Map copyright too small');
    check(requests.filter(v=>v.provider==='TomTom credits').length===1,'Unnecessary attribution/provider requests');
   }
   await page.evaluate(()=>window.__trafficQaMap.focus('hillsborough-riverwalk'));await page.clock.runFor(100);
@@ -108,11 +118,30 @@ try{
   await page.waitForFunction(()=>window.__trafficQaMap.raw.queryRenderedFeatures({layers:['route-line']}).some(f=>f.properties.traffic==='normal'));
   const normal=await read(page);check(normal.routes.join()==='normal'&&normal.theme==='traffic','No-event route became traffic unknown');
   check(normal.line.includes('#C98B4B')&&normal.incidents===0,'No-event route lost ochre or invented incidents');
-  check(await page.locator('.dossier-provider').innerText()==='Live Traffic · TomTom · 0 min delay vs free flow','Zero-delay summary changed');
+  check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Zero-delay route not clear');
   check(await page.locator('.traffic-coverage').innerText().then(s=>!s.includes('Grey dashes')),'Normal route claims unknown traffic');
   check(await page.evaluate(()=>!window.__trafficQaMap.raw.queryRenderedFeatures({layers:['route-unknown']}).length),'No-event route still renders grey dashes');
+  await page.evaluate(()=>{document.documentElement.style.scrollBehavior='auto';window.scrollTo(0,scrollY+document.querySelector('.atlas-map').getBoundingClientRect().top-10);});await page.clock.runFor(100);
+  await page.screenshot({path:resolve(output,'clear-traffic-393x852.png')});
   state.noEvents=false;await select(page,'eno-cox-mountain');
-  check((await read(page)).routes.includes('unknown'),'Explicit unknown event lost its dashes');await ctx.close();
+  check((await read(page)).routes.includes('unknown'),'Explicit unknown event lost its dashes');
+  check(await page.locator('.dossier-provider').innerText().then(s=>s.includes('PARTIAL DATA')),'Partial route lacks contextual status');
+  state.noEvents=true;await select(page,'hillsborough-riverwalk');
+  check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Destination transition retained partial status');
+  await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.dossier-provider').waitFor();
+  check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Refresh retained obsolete diagnostics');
+  check(await page.locator('.maplibregl-ctrl-attrib').count()===1,'Refresh duplicated map credit');
+  state.missingSummary=true;await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.dossier-provider').waitFor();
+  check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · DATA UNAVAILABLE'&&(await read(page)).routes.join()==='unknown','Indeterminate data falsely marked clear');
+  state.missingSummary=false;state.partial=true;await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.dossier-provider').waitFor();
+  check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · PARTIAL DATA'&&(await read(page)).routes.join()==='normal,unknown,normal','Unknown section not localized');
+  state.partial=false;await page.locator('.traffic-refresh').evaluate(n=>n.click());await page.locator('.dossier-provider').waitFor();
+  check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Partial-to-clear refresh remained stale');
+  check(await page.locator('#drive-status').innerText().then(s=>!s.includes('Grey dashes')&&!s.includes('TomTom')&&!s.includes('Selected Destination')),'Clear card retained diagnostics');
+  await page.clock.fastForward(300001);check(await page.locator('.traffic-attribution').count()===0,'Expired result retained traffic credit');
+  await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await page.locator('.dossier-provider').waitFor();
+  check(await page.locator('.dossier-provider').innerText()==='LIVE TRAFFIC · CLEAR','Expired/focus refresh retained diagnostics');
+  await ctx.close();
  }
  // State changes, stale estimates, retries and a late aborted provider response.
  {
