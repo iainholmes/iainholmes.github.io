@@ -8,7 +8,7 @@ import {resolve,extname} from 'node:path';
 import {cycleWeekend} from '../assets/js/core/cycles.js';
 import {expectedPublish} from '../assets/js/core/editions.js';
 import {addDays,longDate,shortDate} from '../assets/js/core/dates.js';
-import {currentAlmanac} from '../assets/js/core/almanac.js';
+import {currentAlmanac,moonGlyph} from '../assets/js/core/almanac.js';
 const {chromium}=createRequire(import.meta.url)('playwright');
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
 const manifest=JSON.parse(await readFile(resolve(root,'data/editions/index.json'),'utf8'));
@@ -52,6 +52,7 @@ async function almanacMatches(page,time){
  const values=await page.locator('.veil-almanac-item dd').allTextContents();
  check(JSON.stringify(values)===JSON.stringify([a.sunset+' ET',a.moon,a.daylight]),'Almanac values refer to different dates');
  check(await page.locator('.veil-almanac').getAttribute('aria-label')===`Calculated almanac for Chapel Hill, ${longDate(a.date)}`,'Accessible almanac date disagrees');
+ check(await page.locator('.veil-almanac-item').nth(1).locator('svg').evaluate((svg,glyph)=>{const template=document.createElement('template');template.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg">${glyph}</svg>`;return svg.innerHTML===template.content.firstElementChild.innerHTML;},moonGlyph(a.moon)),'Moon glyph disagrees with calculated phase label');
  check(await page.locator('.veil-almanac').evaluate(n=>n.scrollWidth<=n.clientWidth),'Almanac overflow');
  check(await page.locator('.veil-almanac').evaluate(n=>n.getBoundingClientRect().bottom<=innerHeight),'Almanac clipped');
  const bounds=await page.locator('.veil-almanac-item').evaluateAll(ns=>ns.map(n=>{const boxes=[...n.children].map(e=>e.getBoundingClientRect());return {left:Math.min(...boxes.map(r=>r.left)),right:Math.max(...boxes.map(r=>r.right))};}));
@@ -89,6 +90,14 @@ try{
  }
  for(const standalone of [false,true])for(const time of ['2026-10-06T06:59:00-04:00','2026-10-07T12:00:00-04:00','2026-10-08T06:59:00-04:00','2026-11-01T06:59:00-05:00','2026-03-08T06:59:00-04:00','2026-12-31T06:59:00-05:00','2027-01-01T06:59:00-05:00']){
   const {ctx,page}=await context({standalone,time,fixture:shiftedManifest(time)});await page.goto(base);await almanacMatches(page,time);await ctx.close();
+ }
+ // All eight categories use the real veil renderer, with genuine phase calculations on representative dates.
+ for(const standalone of [false,true])for(const [date,phase] of [['2026-10-09','New Moon'],['2026-10-12','Waxing Crescent'],['2026-10-16','First Quarter'],['2026-10-20','Waxing Gibbous'],['2026-10-24','Full Moon'],['2026-10-01','Waning Gibbous'],['2026-10-02','Last Quarter'],['2026-10-05','Waning Crescent']]){
+  const time=date+'T06:59:00-04:00';const {ctx,page}=await context({standalone,time,fixture:shiftedManifest(time)});await page.goto(base);await almanacMatches(page,time);
+  check(await page.locator('.veil-almanac-item').nth(1).locator('dd').textContent()===phase,'Representative lunar date classified incorrectly');
+  check(await page.locator('.veil-almanac-item').nth(1).locator('svg').evaluate(n=>{const r=n.getBoundingClientRect();return getComputedStyle(n).display!=='none'&&r.width===14&&r.height===14&&n.children.length>0;}),'Moon glyph missing or changed size');
+  if(!standalone)await page.locator('.veil-almanac').screenshot({path:resolve(output,'moon-'+phase.toLowerCase().replaceAll(' ','-')+'.png')});
+  await ctx.close();
  }
  // A sleeping/resumed tab refreshes its calendar even when the manifest request fails.
  for(const standalone of [false,true]){

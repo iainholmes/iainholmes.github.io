@@ -8,6 +8,24 @@ const PUBLIC_CHAPEL_HILL = { lat: 35.913, lng: -79.056 };
 const PHASES = ['New Moon','Waxing Crescent','First Quarter','Waxing Gibbous','Full Moon','Waning Gibbous','Last Quarter','Waning Crescent'];
 const { sin, cos, tan, asin, acos, atan2 } = Math;
 
+// Monochrome disk marks: the illuminated side is right while waxing, left while waning.
+// An outlined disk keeps New Moon perceptible; Full Moon alone fills the whole disk.
+export function moonGlyph(phase) {
+  const disk = '<circle cx="12" cy="12" r="8" fill="none"/>';
+  const light = d => `<path d="${d}" fill="currentColor" stroke="none"/>`;
+  const glyphs = {
+    'New Moon': disk,
+    'Waxing Crescent': disk + light('M12 4 A8 8 0 0 1 12 20 Q24 12 12 4 Z'),
+    'First Quarter': disk + light('M12 4 A8 8 0 0 1 12 20 Z'),
+    'Waxing Gibbous': disk + light('M12 4 A8 8 0 0 1 12 20 Q0 12 12 4 Z'),
+    'Full Moon': '<circle cx="12" cy="12" r="8" fill="currentColor"/>',
+    'Waning Gibbous': disk + light('M12 4 A8 8 0 0 0 12 20 Q24 12 12 4 Z'),
+    'Last Quarter': disk + light('M12 4 A8 8 0 0 0 12 20 Z'),
+    'Waning Crescent': disk + light('M12 4 A8 8 0 0 0 12 20 Q0 12 12 4 Z')
+  };
+  return glyphs[phase] || '';
+}
+
 function moonPhase(instant) {
   const d = instant.valueOf() / DAY + 2440587.5 - 2451545;
   const obliquity = 23.4397 * RAD;

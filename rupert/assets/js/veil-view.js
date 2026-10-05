@@ -2,7 +2,7 @@ import { veilState, veilArtworkProblems, upcomingTravel, PENDING_TIME, DAY_LABEL
 import { SLOTS } from './core/editions.js';
 import { nyDateString, longDate, shortDate } from './core/dates.js';
 import { saveVeilArrival } from './core/veil-arrival.js';
-import { currentAlmanac } from './core/almanac.js';
+import { currentAlmanac, moonGlyph } from './core/almanac.js';
 import { readBackup, TRAVEL_STORAGE_KEY } from './core/travel.js';
 import { esc, photo, titleCase } from './core/render.js';
 
@@ -18,7 +18,7 @@ export function renderVeil(state, photos, base, trip = null, now = new Date()) {
   const almanac = currentAlmanac(now);
   const symbols = {
     sunset: '<path d="M2 15h20M6 12a6 6 0 0 1 12 0M12 2v2M3 5l2 2M21 5l-2 2M12 18v4m-3-3 3 3 3-3"/>',
-    moon: '<path d="M16 3a9 9 0 1 0 5 14A9 9 0 0 1 16 3Z"/>',
+    moon: moonGlyph(almanac.moon),
     daylight: '<path d="M2 18h20M4 15a8 8 0 0 1 16 0M4 11v4h4m12-4v4h-4M12 2v2"/>'
   };
   const value = (label, symbol, text) => `<div class="veil-almanac-item"><dt><span class="veil-almanac-label">${label}</span><svg class="veil-almanac-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${symbols[symbol]}</svg></dt><dd>${esc(text)}</dd></div>`;

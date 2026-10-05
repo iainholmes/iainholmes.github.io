@@ -100,6 +100,7 @@ try{
  for(const mode of ['standard','legacy-query','standalone']){
   const {ctx,page}=await context({standalone:mode==='standalone',time:monday});
   await page.goto(base+(mode==='legacy-query'?'?veil=review':''));await page.locator('.atlas-veil').waitFor();await settle(page);
+  const moonBefore=await page.locator('.veil-almanac-item').nth(1).locator('svg').innerHTML();
   const tile=page.locator('.veil-tile.is-published').first(),target=new URL(await tile.getAttribute('href'),page.url()),point=await tile.boundingBox();
   check(!target.search,'Review query propagated into published navigation');
   let release;const gate=new Promise(r=>release=r);
@@ -109,6 +110,7 @@ try{
   await page.locator('.ed-head h1').waitFor({state:'attached'});
   check(page.url()===target.href,'Single tap did not open selected Full Edition');
   check(await page.locator('.atlas-veil').count()===1,'Destination flashed before active frontispiece restoration');
+  check(await page.locator('.veil-almanac-item').nth(1).locator('svg').innerHTML()===moonBefore,'Pre-paint handoff changed the calculated moon glyph');
   check(await page.locator('.atlas-veil img').evaluateAll(async ns=>{await Promise.all(ns.map(n=>n.decode()));return ns.every(n=>n.naturalWidth>0);}), 'Arrival artwork did not survive route depth change');
   check(await page.evaluate(()=>!!window.__atlasVeilArrival&&sessionStorage.getItem('rupert-frontispiece-arrival')===null),'Arrival must be consumed once, before enhancement');
   check(await page.evaluate(()=>!Object.keys(sessionStorage).some(k=>k.startsWith('rupert-veil'))),'Navigation incorrectly dismissed veil');
@@ -124,6 +126,7 @@ try{
   const {ctx,page}=await context({time:'2026-10-07T12:00:00-04:00',standalone});
   await page.addInitScript(()=>sessionStorage.setItem('rupert-veil-review:acceptance-20261004:2026-10-10:preTuesday','1'));
   await page.goto(base+'?veil=review');await page.locator('.atlas-veil').waitFor();await settle(page);
+  const moonBefore=await page.locator('.veil-almanac-item').nth(1).locator('svg').innerHTML();
   const group=page.locator('.veil-week-group').nth(1),tile=group.locator('.veil-tile.is-published'),pending=group.locator('.veil-tile.is-pending');
   check(await tile.count()===1&&await pending.count()===1,'Wednesday must reveal only Tuesday');
   check(await pending.evaluate(n=>n.tagName==='DIV'&&!n.hasAttribute('href')),'Wednesday exposed pending Thursday');
@@ -134,6 +137,7 @@ try{
   await page.touchscreen.tap(point.x+point.width/2,point.y+point.height/2);await committed;
   await page.locator('.ed-head h1').waitFor({state:'attached'});
   check(page.url()===target.href&&await page.locator('.atlas-veil').count()===1,'Wednesday navigation uncovered destination or needed second tap');
+  check(await page.locator('.veil-almanac-item').nth(1).locator('svg').innerHTML()===moonBefore,'Wednesday handoff changed moon phase');
   check(await page.evaluate(()=>!Object.keys(sessionStorage).some(k=>k.startsWith('rupert-veil:'))),'Wednesday navigation dismissed production veil');
   release();await page.waitForLoadState('load');await page.waitForFunction(()=>!window.__atlasVeilArrival&&document.body.style.position==='fixed');
   const before=page.url();await page.touchscreen.tap(8,500);

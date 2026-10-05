@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {crowdReadings, CROWD_LEVELS} from '../assets/js/core/crowds.js';
 import {crowdVisual} from '../assets/js/core/render.js';
-import {currentAlmanac, dailyAlmanac} from '../assets/js/core/almanac.js';
+import {currentAlmanac, dailyAlmanac, moonGlyph} from '../assets/js/core/almanac.js';
 import {nyInstant, nyDateString, nyOffsetMinutes, longDate, shortDate} from '../assets/js/core/dates.js';
 import {veilState} from '../assets/js/core/veil.js';
 import {renderVeil} from '../assets/js/veil-view.js';
@@ -64,4 +64,22 @@ for(const [instant,date] of [['2026-10-06T03:59:59Z','2026-10-05'],['2026-10-06T
 check(()=>assert.deepEqual(currentAlmanac(new Date('2026-11-01T01:30:00-04:00')),currentAlmanac(new Date('2026-11-01T01:30:00-05:00'))));
 for(const [date,offset] of [['2026-03-07',-300],['2026-03-08',-240],['2026-10-31',-240],['2026-11-01',-300]])check(()=>assert.equal(nyOffsetMinutes(nyInstant(date,'18:00:00')),offset));
 check(()=>assert.equal(nyDateString(nyInstant('2026-10-05','12:00:00')),'2026-10-05'));
+const phases=[['2026-10-09','New Moon'],['2026-10-12','Waxing Crescent'],['2026-10-16','First Quarter'],['2026-10-20','Waxing Gibbous'],['2026-10-24','Full Moon'],['2026-10-01','Waning Gibbous'],['2026-10-02','Last Quarter'],['2026-10-05','Waning Crescent']];
+for(const [date,phase] of phases){
+  const now=nyInstant(date,'12:00:00'),almanac=currentAlmanac(now);
+  check(()=>assert.equal(almanac.moon,phase));
+  const html=renderVeil(veilState(manifest,nyInstant('2026-10-05','12:00:00')),photos,'',null,now);
+  check(()=>assert.ok(html.includes(moonGlyph(phase))&&html.includes(`<dd>${phase}</dd>`)));
+}
+check(()=>assert.equal(new Set(phases.map(([,phase])=>moonGlyph(phase))).size,8));
+check(()=>assert.match(moonGlyph('New Moon'),/<circle[^>]+r="8"[^>]+fill="none"/));
+check(()=>assert.doesNotMatch(moonGlyph('New Moon'),/fill="currentColor"/));
+check(()=>assert.match(moonGlyph('Full Moon'),/fill="currentColor"/));
+for(const phase of ['Waxing Crescent','First Quarter','Waxing Gibbous'])check(()=>assert.match(moonGlyph(phase),/A8 8 0 0 1 12 20/));
+for(const phase of ['Waning Crescent','Last Quarter','Waning Gibbous'])check(()=>assert.match(moonGlyph(phase),/A8 8 0 0 0 12 20/));
+check(()=>assert.match(moonGlyph('Waxing Crescent'),/Q24 12/));
+check(()=>assert.match(moonGlyph('Waning Crescent'),/Q0 12/));
+check(()=>assert.match(moonGlyph('Waxing Gibbous'),/Q0 12/));
+check(()=>assert.match(moonGlyph('Waning Gibbous'),/Q24 12/));
+check(()=>assert.equal(moonGlyph('Unverified'),''));
 console.log(`${checks} crowd/almanac integrity assertions PASS (categorical fixtures; Eastern calendar/DST).`);
