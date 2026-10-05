@@ -30,7 +30,7 @@ for(const instant of ['2026-10-07T09:00:00-04:00','2026-10-08T06:59:59-04:00','2
 const thursdayPublished=structuredClone(manifest);thursdayPublished.editions.find(e=>e.id==='2026-W41-thu').status='published';
 for(const instant of ['2026-10-08T07:00:00-04:00','2026-10-09T12:00:00-04:00','2026-10-10T12:00:00-04:00','2026-10-11T23:59:59-04:00'])check(()=>assert.equal(at(instant,thursdayPublished).active,false));
 check(()=>assert.equal(at('2026-10-08T06:59:59-04:00',thursdayPublished).current.thursday.published,false));
-check(()=>assert.equal(selectCurrentPair(manifest,new Date('2026-10-05T12:00:00-04:00')).weekend.start,'2026-10-03'));
+check(()=>assert.equal(selectCurrentPair(manifest,new Date('2026-10-05T12:00:00-04:00')).weekend.start,'2026-10-10'));
 check(()=>assert.notEqual(at('2026-10-05T12:00:00-04:00').dismissalKey,at('2026-10-07T12:00:00-04:00').dismissalKey));
 check(()=>assert.notEqual(at('2026-10-05T12:00:00-04:00').dismissalKey,at('2026-10-12T12:00:00-04:00').dismissalKey));
 const monday=at('2026-10-05T12:00:00-04:00'), wednesday=at('2026-10-07T12:00:00-04:00');

@@ -24,9 +24,10 @@ const m = { editions: W40 };
 const at = s => new Date(s);
 let n = 0; const t = (name, fn) => { fn(); n++; console.log('ok', name); };
 
-t('Tuesday 06:59 still shows last weekend, labelled past', () => {
+t('Tuesday 06:59 shows this cycle with both slots pending', () => {
   const p = selectCurrentPair(m, at('2026-09-29T06:59:00-04:00'));
-  assert.equal(p.weekend.start, '2026-09-26'); assert.equal(p.state, 'past');
+  assert.equal(p.weekend.start, '2026-10-03'); assert.equal(p.state, 'upcoming');
+  assert.equal(p.tuesday, null); assert.equal(p.thursday, null);
 });
 t('Tuesday 07:01 switches to the new weekend with Thursday pending', () => {
   const p = selectCurrentPair(m, at('2026-09-29T07:01:00-04:00'));
@@ -40,23 +41,30 @@ t('Thursday after publication shows both', () => {
 });
 t('Saturday is "now"', () => assert.equal(selectCurrentPair(m, at('2026-10-03T09:00:00-04:00')).state, 'now'));
 t('Sunday 23:59 is still "now"', () => assert.equal(selectCurrentPair(m, at('2026-10-04T23:59:00-04:00')).state, 'now'));
-t('Monday keeps the pair, labelled past', () => {
+t('Monday advances both slots to the next calendar cycle', () => {
   const p = selectCurrentPair(m, at('2026-10-05T09:00:00-04:00'));
-  assert.equal(p.weekend.start, '2026-10-03'); assert.equal(p.state, 'past');
+  assert.equal(p.weekend.start, '2026-10-10'); assert.equal(p.state, 'upcoming');
+  assert.equal(p.tuesday, null); assert.equal(p.thursday, null);
 });
 t('drafts and future editions are ignored', () => {
   const p = selectCurrentPair({ editions: [...W40, ed('2026-W41-tue', 'tuesday', '2026-10-06T07:00:00-04:00', '2026-10-10', '2026-10-11', 'draft')] }, at('2026-10-07T09:00:00-04:00'));
-  assert.equal(p.weekend.start, '2026-10-03');
+  assert.equal(p.weekend.start, '2026-10-10');
+  assert.equal(p.tuesday, null); assert.equal(p.thursday, null);
 });
 t('missing Tuesday but Thursday published', () => {
   const p = selectCurrentPair({ editions: [W40[3]] }, at('2026-10-01T09:00:00-04:00'));
   assert.equal(p.tuesday, null); assert.equal(p.thursday.id, '2026-W40-thu');
 });
-t('nothing published returns null', () => assert.equal(selectCurrentPair({ editions: [] }, at('2026-10-01T09:00:00-04:00')), null));
+t('nothing published leaves both current-cycle slots pending', () => {
+  const p = selectCurrentPair({ editions: [] }, at('2026-10-01T09:00:00-04:00'));
+  assert.equal(p.weekend.start, '2026-10-03');
+  assert.equal(p.tuesday, null); assert.equal(p.thursday, null);
+});
 t('DST end: Sunday 1 Nov 2026 weekend ends at local midnight', () => {
   const eds = { editions: [ed('2026-W44-tue', 'tuesday', '2026-10-27T07:00:00-04:00', '2026-10-31', '2026-11-01')] };
   assert.equal(selectCurrentPair(eds, at('2026-11-01T23:30:00-05:00')).state, 'now');
-  assert.equal(selectCurrentPair(eds, at('2026-11-02T00:30:00-05:00')).state, 'past');
+  assert.equal(selectCurrentPair(eds, at('2026-11-02T00:30:00-05:00')).weekend.start, '2026-11-07');
+  assert.equal(selectCurrentPair(eds, at('2026-11-02T00:30:00-05:00')).tuesday, null);
   assert.equal(nyInstant('2026-11-02').toISOString(), '2026-11-02T05:00:00.000Z');
 });
 t('ISO weeks incl. week 53', () => {

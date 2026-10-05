@@ -118,10 +118,24 @@ refreshDateline();
 setInterval(refreshDateline, 60000);
 
 /* ---------- manifest re-check ---------- */
+function replaceWeek(week, pair, editions, ctx) {
+  const tpl = document.createElement('template');
+  tpl.innerHTML = renderWeek(pair, editions, ctx);
+  week.replaceWith(tpl.content);
+  setupTabs();
+  return document.querySelector('.week');
+}
+
 async function recheck() {
-  const week = document.querySelector('.week');
+  let week = document.querySelector('.week');
   const archive = document.querySelector('.archive');
   if (!week && !archive) return;
+  // A cached build must not carry last week's content into the new cycle,
+  // even while the fresh manifest is loading or unavailable.
+  const pending = selectCurrentPair({ editions: [] }, new Date());
+  if (week && week.dataset.pair.split('|')[0] !== pending.weekend.start) {
+    week = replaceWeek(week, pending, {}, { base });
+  }
   const get = p => fetch(base + p, { cache: 'no-cache' }).then(r => { if (!r.ok) throw new Error(p); return r.json(); });
   try {
     const manifest = await get('data/editions/index.json');
@@ -144,10 +158,7 @@ async function recheck() {
     const ids = [pair?.tuesday?.id, pair?.thursday?.id].filter(Boolean);
     const [places, photos, ...eds] = await Promise.all([get('data/places.json'), get('data/photos.json'), ...ids.map(id => get(`data/editions/${id}.json`))]);
     const editions = Object.fromEntries(eds.map(e => [e.id, e]));
-    const tpl = document.createElement('template');
-    tpl.innerHTML = renderWeek(pair, editions, { base, places, photos });
-    week.replaceWith(tpl.content);
-    setupTabs();
+    replaceWeek(week, pair, editions, { base, places, photos });
   } catch (e) {
     // The pre-rendered page stays as it is. Nothing to tell the reader.
     console.warn('Rupert Atlas: re-check skipped', e);

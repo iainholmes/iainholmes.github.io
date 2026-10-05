@@ -1,5 +1,6 @@
 // Edition selection. Pure functions: no DOM, no fetch. Shared by the browser and the build tool.
 import { nyInstant, addDays } from './dates.js';
+import { cycleWeekend } from './cycles.js';
 
 export const SLOTS = ['tuesday', 'thursday'];
 
@@ -10,22 +11,20 @@ export function expectedPublish(slot, weekendStart) {
 }
 
 /**
- * Choose the pair of editions to show.
+ * Choose the current calendar cycle's Tuesday and Thursday slots.
  * Published editions and withdrawal notices with published_at <= now count.
  * Withdrawal notices preserve the weekend context; they are not active recommendations.
- * The latest weekend with at least one published choice wins.
+ * Both slots belong to the same cycle as the masthead and veil, even before
+ * either edition publishes. A missing slot never borrows a previous week.
  *
- * Returns { weekend, tuesday, thursday, state, missing } or null when nothing is published yet.
- *   state: "upcoming" (before Saturday), "now" (Sat–Sun), "past" (after Sunday; shown as "Last weekend")
- *   missing: for each empty slot, the time it is expected (only meaningful while state !== "past")
+ * Returns { weekend, tuesday, thursday, state, missing }.
+ *   state: "upcoming" (before Saturday), "now" (Sat–Sun)
+ *   missing: each empty slot's nominal publication time, never a release signal
  */
 export function selectCurrentPair(manifest, now = new Date()) {
-  const live = manifest.editions.filter(e => ['published','withdrawn'].includes(e.status) && new Date(e.published_at) <= now);
-  if (!live.length) return null;
-
-  const latestStart = live.map(e => e.weekend.start).sort().at(-1);
-  const group = live.filter(e => e.weekend.start === latestStart);
-  const weekend = group[0].weekend;
+  const weekend = cycleWeekend(now);
+  const group = manifest.editions.filter(e => e.weekend.start === weekend.start
+    && ['published','withdrawn'].includes(e.status) && new Date(e.published_at) <= now);
 
   const pick = slot => group.filter(e => e.slot === slot)
     .sort((a, b) => a.published_at.localeCompare(b.published_at)).at(-1) || null;
