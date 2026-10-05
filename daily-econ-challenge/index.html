@@ -267,6 +267,33 @@ table.index tr[aria-current="true"] td.no{color:var(--teal)}
 td.mine .record{margin:0 10px 0 0}
 td.mine b{font-weight:500}
 .ledger-note{margin:14px 0 0;font:12px/1.5 var(--ui);color:var(--muted)}
+/* Question-level learning and Ledger management use the existing paper, rules and typefaces. */
+.learning{margin-top:20px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.learning summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;cursor:pointer;list-style:none;font:500 12px/1.4 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.learning summary::-webkit-details-marker{display:none}
+.learning summary::after{content:'+';font-size:18px;letter-spacing:0}
+.learning[open] summary::after{content:'−'}
+.learning summary:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.learning-material{padding:6px 0 16px;font:16px/1.65 var(--math);color:var(--text);overflow-wrap:anywhere}
+.learning-material p{margin:0 0 12px}
+.learning-material .eq{font-size:18px}
+.learning-material table{width:100%;min-width:0;margin:12px 0;font-size:13px}
+.learning-material table caption{font:500 11px/1.4 var(--ui);text-align:left;color:var(--muted);padding-bottom:8px}
+.learning-material table th,.learning-material table td{padding-right:8px}
+.learning-material pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 var(--mono);padding:12px 0;color:var(--ink);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.answer-action{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+.answer-action .hint,.answer-note{font:12px/1.5 var(--ui);color:var(--muted)}
+.answer-note{margin:18px 0 0}
+td.mine b,td.mine small{display:block;white-space:normal}
+td.mine small{font:11px/1.6 var(--ui);color:var(--muted);margin-top:4px}
+td.mine .record{margin:0 0 8px}
+.ledger-reset{display:inline-block;border:0;border-bottom:1px solid currentColor;background:none;color:var(--teal);font:12px/1.4 var(--ui);min-height:44px;padding:8px 0;margin-top:4px}
+.ledger-manage{margin-top:28px;padding-top:20px;border-top:1px solid var(--rule-strong)}
+.ledger-manage h3{font:500 11px/1.4 var(--ui);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 10px}
+.ledger-manage p{font:15px/1.6 var(--math);max-width:62ch;margin:0 0 14px}
+.reset-confirm{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule)}
+.reset-confirm .res-actions{margin-top:16px;padding-top:0;border-top:0}
+@media(max-width:360px){.ledger table.index td.date{white-space:normal}}
 /* Periodicals shelf (The Workbook dress) */
 .pd-imprint{display:flex;align-items:center;gap:8px;background:none;border:0;padding:8px 0;font:500 12px/1 var(--ui);color:var(--muted);letter-spacing:.02em}
 .pd-imprint svg{width:16px;height:14px}
@@ -461,7 +488,9 @@ per published set, and skipped days do not skip numbers. Dates are YYYY-MM-DD (A
 Commonplace maintenance: each question id is permanent once published. Deep keepable routes are #YYYY-MM-DD/<question-id> and #YYYY-MM-DD/<question-id>/solution; never recycle or silently change a published question id. Whole sets, questions and worked solutions are keepable.
 Each set: ~8 questions; applied reasoning over trivia; mix single / multi / tf only where the format
 fits the question. Every question needs: id unique within the set, field, concepts (short
-review-able names), a precise explanation that argues why each distractor fails, and "correct" as
+review-able names), authored question-specific assistance that teaches the method without revealing
+the answer (worked examples use different inputs), a precise post-answer explanation that argues
+why each distractor fails, and "correct" as
 zero-based option indexes. Before writing, list the concepts used in the previous ~20 sets and avoid
 repeating a concept unless the new question tests a genuinely different facet. Exhibits: "table",
 "console" (R / fixest style, must be syntactically valid), or "eq" (HTML math only). Keep numbers
@@ -497,6 +526,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Omitted-variable bias",
             "Attenuation bias"
           ],
+          "assistance": "<p>Separate omission of a wage determinant from noise in the included regressor. The omitted-variable contribution is <i>γ</i>Cov(<i>S</i>*, ability)/Var(<i>S</i>*); its sign depends on both the wage effect and the correlation.</p><div class=\"eq\"><i>λ</i> = Var(<i>S</i>*) / [Var(<i>S</i>*) + Var(noise)]</div><p>First construct the slope with the omitted determinant, then apply the reliability ratio. Compare the result with the true return rather than with zero. Ask which magnitudes the stem actually supplies, and do not assume a large sample removes a misspecified target.</p>",
           "explanation": "<p>Write measured schooling as <i>S</i> = <i>S</i>* + <i>e</i>. With reliability ratio <i>λ</i> = Var(<i>S</i>*)/Var(<i>S</i>) &lt; 1 and <i>δ</i> the coefficient from projecting ability on true schooling, the probability limit is approximately <i>λ</i>(<i>β</i> + <i>γδ</i>), where <i>γ</i> &gt; 0 is ability's effect on wages. Ability inflates the term in parentheses; the reliability ratio shrinks everything toward zero. Which force wins depends on <i>λ</i>, <i>γ</i> and <i>δ</i>, so the net sign is an empirical question.</p><p>Measurement error attenuates rather than inflates, so (A) is wrong. Nothing guarantees attenuation dominates, so (B) is wrong. Measurement error does not average out: it enters Var(<i>S</i>) in the denominator at every sample size, so (D) is wrong. This tension is why the returns-to-schooling literature leans on twins, instruments and repeated reports.</p>",
           "refs": "Griliches (1977), Econometrica; Ashenfelter & Krueger (1994), AER"
         },
@@ -520,6 +550,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Staggered difference-in-differences",
             "TWFE negative weights"
           ],
+          "assistance": "<p>Draw timelines for an early adopter, a late adopter and an untreated group. For each comparison, mark whether the comparison group has already received treatment. Its outcome change may contain a changing treatment effect as well as its untreated trend.</p><p>Distinguish weights on two-by-two comparisons from weights on individual group-time effects. A single TWFE coefficient and ATT(<i>g</i>, <i>t</i>) need not summarize the same object. Finally, ask what an insignificant pre-treatment lead can establish given sampling uncertainty.</p>",
           "explanation": "<p>Goodman-Bacon shows the TWFE coefficient decomposes into every 2×2 DiD in the data, including “late vs. early” comparisons in which already-treated states serve as controls (A). When effects grow with time since treatment, those comparisons subtract the early group's still-evolving effect, and de Chaisemartin & D’Haultfœuille show some group-time effects can enter with negative weights (B). Callaway & Sant’Anna, like other heterogeneity-robust estimators, build group-time ATTs only from clean comparisons (D).</p><p>(C) fails for two reasons. First, the bias above comes from heterogeneous effects and remains even when parallel trends holds exactly. Second, an insignificant pre-trend test is not evidence of no pre-trend: these tests often have low power, and conditioning on passing them distorts inference (Roth 2022).</p>",
           "refs": "Goodman-Bacon (2021); de Chaisemartin & D’Haultfœuille (2020); Callaway & Sant’Anna (2021); Roth (2022), all J. Econometrics / AER / AER: Insights"
         },
@@ -540,6 +571,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "concepts": [
             "Prices vs. quantities (Weitzman)"
           ],
+          "assistance": "<p>Compare two mistakes under uncertain costs: holding quantity fixed when costs change, and allowing quantity to adjust while price stays fixed. Sketch a cost shock as a vertical shift of MAC and locate its new efficient crossing with MD.</p><p>The welfare loss is an area between marginal cost and marginal damage. Examine how each curve's slope changes that area. Keep uncertainty about costs separate from a model with uncertain damages too, rather than treating quantity certainty as the objective itself.</p>",
           "explanation": "<p>Weitzman's result: with linear curves and cost uncertainty alone, the expected welfare advantage of prices over quantities is proportional to the variance of the cost shock times (|MAC slope| − |MD slope|). Prices win when marginal damages are flatter than marginal abatement costs. Intuitively, if MD is flat the efficient abatement level is wherever MAC crosses a roughly constant price, and a tax delivers exactly that. A cap fixes quantity and, with a steep MAC, produces large errors in abatement cost.</p><p>(A) treats certainty over quantity as valuable in itself; with flat damages it is not. (C) holds only without uncertainty. (D) matters only when damage shocks are also uncertain and correlated with cost shocks (Stavins 1996). The stem rules that out. This is the standard economic argument for carbon taxes or price-collared trading over pure short-run caps.</p>",
           "refs": "Weitzman (1974), Review of Economic Studies; Stavins (1996), JEEM; Pizer (2002), J. Public Econ."
         },
@@ -560,6 +592,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "concepts": [
             "Tax incidence"
           ],
+          "assistance": "<p>Economic incidence comes from the price wedge, not from the party remitting the tax. Combine the positive supply elasticity with the absolute demand elasticity.</p><div class=\"eq\">Consumer share = <i>ε</i><sub>S</sub> / (<i>ε</i><sub>S</sub> + |<i>ε</i><sub>D</sub>|)</div><p>Separate example: supply elasticity 0.8 and demand elasticity −1.2 imply 0.8/(0.8 + 1.2) = 0.40. Substitute this question's elasticities yourself. The producer share is the complement; the two shares should sum to one.</p>",
           "explanation": "<p>For a small tax, the consumer share of the burden is <i>ε<sub>S</sub></i> / (<i>ε<sub>S</sub></i> − <i>ε<sub>D</sub></i>) = 1.5 / (1.5 + 0.5) = 0.75. The less elastic side of the market bears more of the tax. Here demand is three times less elastic than supply, so consumers bear three-quarters.</p><p>Statutory incidence (who remits the tax) is irrelevant in a competitive market, so (D) is wrong. The 25% in (A) inverts the formula and is the producer share. Beyond this benchmark, pass-through can exceed 100% under imperfect competition with sufficiently convex demand (Weyl & Fabinger 2013).</p>",
           "refs": "Weyl & Fabinger (2013), JPE; Fullerton & Metcalf (2002), Handbook of Public Economics"
         },
@@ -578,6 +611,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "concepts": [
             "Taylor principle & determinacy"
           ],
+          "assistance": "<p>Separate the immediate real-rate response from equilibrium determinacy. The Fisher relation compares the nominal rate with expected inflation, so a nominal-rate increase alone is not enough.</p><p>Separate example: a one-point increase in expected inflation accompanied by a 0.8-point nominal-rate increase changes the real rate by −0.2 points. Apply that accounting to the stated rule. Determinacy additionally asks whether expectations dynamics admit a unique bounded path; distinguish a sufficient condition from a necessary one and from global uniqueness.</p>",
           "explanation": "<p>True. With <i>φ<sub>π</sub></i> &gt; 1 the nominal rate moves more than one-for-one with inflation, so the real rate rises and demand cools, ruling out self-fulfilling inflation paths. The exact determinacy condition (Bullard & Mitra 2002) is <i>κ</i>(<i>φ<sub>π</sub></i> − 1) + (1 − <i>β</i>)<i>φ<sub>y</sub></i> &gt; 0. With <i>κ</i> &gt; 0, <i>β</i> &lt; 1 and <i>φ<sub>y</sub></i> ≥ 0, it holds whenever <i>φ<sub>π</sub></i> &gt; 1.</p><p>Two caveats matter in practice. A large enough output response can deliver determinacy even with <i>φ<sub>π</sub></i> slightly below 1. The result is local, so the zero lower bound and global dynamics are separate questions (Benhabib, Schmitt-Grohé & Uribe 2001). Clarida, Galí & Gertler's estimate that pre-1979 Fed policy violated the principle is the classic empirical application.</p>",
           "refs": "Bullard & Mitra (2002), JME; Clarida, Galí & Gertler (2000), QJE; Galí (2015), ch. 4"
         },
@@ -624,6 +658,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "LATE / Wald estimator",
             "Intent-to-treat"
           ],
+          "assistance": "<p>Keep assignment, attendance and outcomes in separate columns. The outcome difference by lottery assignment is the reduced form; the attendance difference is the first stage.</p><div class=\"eq\">Wald ratio = Δ outcome / Δ participation</div><p>Separate example: participation changes by 0.25 and an outcome by 0.04 units, giving 0.04/0.25 = 0.16 outcome units per induced participant. Ask whose attendance the instrument changes, and check independence, exclusion and monotonicity before attaching a causal population label.</p>",
           "explanation": "<p>The Wald estimator divides the reduced form by the first stage: 0.06 / 0.30 = 0.20 SD. Under independence, exclusion, relevance and monotonicity (no one attends <i>because</i> they lost), this is the local average treatment effect for <i>compliers</i>: applicants whose attendance is switched on by winning (Imbens & Angrist 1994).</p><p>0.06 SD is the intent-to-treat effect of an offer, a policy-relevant number in its own right but not the effect of attending, so (A) is wrong. (B) multiplies where it should divide. (D) overreaches: always-takers and never-takers contribute nothing to the estimate, and their effects may differ. Extrapolating to all applicants requires assumptions about effect heterogeneity.</p>",
           "refs": "Imbens & Angrist (1994), Econometrica; Abdulkadiroğlu et al. (2011), QJE"
         },
@@ -652,6 +687,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Cluster-robust inference",
             "Few treated clusters"
           ],
+          "assistance": "<p>A state's policy and shocks can be shared by many people and persist across years. Count independently informative policy changes, not just regression rows.</p><pre><code># Separate illustration: same fitted regression\n# estimate    SE (HC)    SE (cluster)\n#    0.40       0.09            0.18</code></pre><p>The covariance calculation and slope play different roles. Ask whether state fixed effects remove time-varying correlated shocks, and whether the number of treated clusters supports the inference. More individuals are not a substitute for more independent assignments.</p>",
           "explanation": "<p>(A) is the Bertrand, Duflo & Mullainathan lesson. Serially correlated state-level shocks make individual observations far less informative than their count suggests, and unclustered standard errors badly over-reject. (C) is correct because cluster-robust variance estimators rely on asymptotics in the number of clusters, and with few <i>treated</i> clusters they are unreliable. Wild cluster bootstrap and randomization inference are standard responses, though MacKinnon & Webb show even these can struggle when treated clusters are very few.</p><p>(B) is wrong: clustering changes only the variance estimate, never the point estimate. (D) is wrong: state fixed effects absorb time-invariant state differences but not serial correlation in state-year shocks, which is what causes the problem.</p>",
           "refs": "Bertrand, Duflo & Mullainathan (2004), QJE; Cameron & Miller (2015), JHR; MacKinnon & Webb (2017), J. Applied Econometrics"
         },
@@ -672,6 +708,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "concepts": [
             "Hotelling rule"
           ],
+          "assistance": "<p>Distinguish the growth condition on scarcity rent from the price level satisfying the stock constraint.</p><div class=\"eq\"><i>p</i>(<i>t</i>) = <i>p</i>(0)e<sup><i>rt</i></sup></div><p>Sketch two rent paths with different growth rates, initially holding their starting prices equal. Would demand along those paths imply extraction of the same finite stock? Then let the starting price adjust to satisfy the stock constraint. This separates a timing response from a change in the total available resource.</p>",
           "explanation": "<p>With zero extraction cost, Hotelling's rule makes the price (the scarcity rent) grow at the interest rate: <i>p<sub>t</sub></i> = <i>p</i><sub>0</sub><i>e<sup>rt</sup></i>. A higher <i>r</i> makes the path steeper. The same total stock must still be exhausted, so a steeper path must start lower and cross the old path from below. The result is more extraction today, less later, and earlier exhaustion. Intuitively, a higher return on financial assets makes resources in the ground a worse store of value, so owners extract and sell sooner.</p><p>(A) ignores the timing margin. (B) reverses the logic: heavier discounting makes owners want revenue <i>sooner</i>. (D) contradicts the rule itself, since the growth rate equals <i>r</i>.</p>",
           "refs": "Hotelling (1931), JPE; Dasgupta & Heal (1979), ch. 6"
         }
@@ -701,6 +738,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Randomized encouragement",
             "Post-treatment conditioning"
           ],
+          "assistance": "<p>Label the offer <i>Z</i>, completion <i>D</i> and electricity use <i>Y</i>. Randomization concerns <i>Z</i>, while completion is a later decision.</p><p>For each comparison, ask whether groups are defined before or after assignment. Draw any pathway through insulation or completion to electricity use. Conditioning on a downstream variable can change the causal question. Keep the policy effect of offering a service distinct from the effect of receiving it.</p>",
           "explanation": "<p>(A) is correct: random assignment identifies the effect of the offer, assuming complete outcome measurement and no interference. (D) is correct because assignment and receipt are different treatments. (B) fails because completion is a choice; households that complete may differ in motivation or costs. (C) conditions on a possible mediator affected by the offer and can remove part of the effect or induce selection bias. A receipt-effect interpretation needs additional assumptions; randomizing the offer does not randomize completion.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -722,6 +760,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Third-degree price discrimination",
             "Lerner index"
           ],
+          "assistance": "<p>Solve the markup condition separately for each market, using the local elasticities at the interior optimum.</p><div class=\"eq\">1 − MC/<i>P</i> = 1/|<i>ε</i>|</div><p>Separate example: MC of $9 and elasticity −3 imply 1 − 9/<i>P</i> = 1/3, hence <i>P</i> = $13.50. Use the actual cost and elasticities for this problem's prices. Check which segment supports the larger proportional markup and why resale prevention is needed.</p>",
           "explanation": "<p>In each segment, (P − MC)/P = 1/|ε|, so P = MC/(1 − 1/|ε|). Thus P<sub>A</sub> = 12/(1 − 1/2) = 24 and P<sub>B</sub> = 12/(1 − 1/4) = 16. (B) reverses the relationship: the less elastic market supports the larger markup. (C) ignores the different elasticities. (D) divides marginal cost by elasticity instead of solving the markup equation and gives prices below marginal cost. These are local optimum conditions, conditional on the stated elasticities and market separation.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -743,6 +782,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Natural real interest rate",
             "Effective lower bound"
           ],
+          "assistance": "<p>Take a change of the IS equation, crossing out terms held fixed. Distinguish the actual real rate from the natural real rate.</p><div class=\"eq\">Δ<i>x</i> = −(1/<i>σ</i>)Δ(<i>i</i> − E<i>π</i>′ − <i>r</i><sup>n</sup>)</div><p>Separate example: with curvature 4, a 0.8-point change in the actual-minus-natural rate gap changes output by −0.8/4 = −0.2 points. Determine the sign of the rate gap in this question before calculating its response.</p>",
           "explanation": "<p>The gap changes by Δx = Δr<sup>n</sup>/σ = −1/2 = −0.5 percentage point. The unchanged actual real rate becomes more restrictive relative to the lower natural rate. (A) reverses this sign. (C) multiplies by σ rather than its inverse. (D) confuses a fixed policy instrument with fixed economic activity. This calculation holds expectations fixed; changes in expected inflation or future policy could alter the total response.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -765,6 +805,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Within transformation",
             "Perfect collinearity"
           ],
+          "assistance": "<p>A worker fixed effect removes that worker's time mean. Identification then depends on the remaining regressor variation.</p><div class=\"eq\"><i>x</i><sub>it</sub> − <i>x̄</i><sub>i</sub></div><table class=\"data\"><caption>Separate example: a changing regressor</caption><thead><tr><th scope=\"col\">Worker</th><th scope=\"col\">Year 1</th><th scope=\"col\">Year 2</th><th scope=\"col\">Deviations</th></tr></thead><tbody><tr><th scope=\"row\">A</th><td>4</td><td>6</td><td>−1, +1</td></tr><tr><th scope=\"row\">B</th><td>7</td><td>9</td><td>−1, +1</td></tr></tbody></table><p>Transform the actual schooling pattern yourself. Compare additional observations with additional identifying variation, and distinguish between-worker from within-worker comparisons.</p>",
           "explanation": "<p>(A) is correct because subtracting each worker’s time mean makes the schooling regressor zero. (C) is correct: a pooled regression retains between-worker variation, but unobserved worker characteristics may confound it. (B) fails because additional periods do not create within-worker variation when schooling never changes. (D) changes the normalization of time effects, not the collinearity between schooling and worker indicators. Software dropping schooling is a property of the design, not evidence that its economic effect is zero.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -784,6 +825,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Permit opportunity cost",
             "Allocation versus incentives"
           ],
+          "assistance": "<p>Compare the feasible alternatives for a permit: use it, sell it or retain it. Marginal opportunity cost is the value of the alternative given up, which can differ from the price originally paid.</p><p>Distinguish the allocation's effect on wealth from its effect on the incentive for another unit of emissions. Ask whether the allocation changes with output; the stem makes that detail explicit. A historical acquisition cost and a marginal cost answer different questions.</p>",
           "explanation": "<p>False. Using a permit sacrifices the $40 the plant could receive by selling it, so the marginal opportunity cost is $40 even for a freely allocated permit. “True” confuses an accounting acquisition cost with an economic opportunity cost. A fixed free allocation transfers wealth but, under the stated competitive and frictionless conditions, does not eliminate the marginal emissions incentive. Output-based allocation, transaction frictions or market power would require a different analysis.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -805,6 +847,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Multiple testing",
             "Family-wise error rate"
           ],
+          "assistance": "<p>Family-wise error concerns at least one false rejection across the family. Bonferroni divides the family's error budget across tests.</p><div class=\"eq\">Threshold = <i>α</i>/<i>m</i> · adjusted <i>p</i> = min(1, <i>mp</i>)</div><p>Separate example: eight hypotheses at a 10% family-wise level give 0.10/8 = 0.0125. Compare the minimum p-value with this problem's own threshold. The union bound does not require independent tests; a rejection decision does not establish the truth of unrejected nulls.</p>",
           "explanation": "<p>The per-test threshold is 0.0025. Since even the minimum is 0.003, no test crosses it: (B). Equivalently the smallest Bonferroni-adjusted p-value is 20 × 0.003 = 0.06. (A) ignores multiplicity. (C) wrongly transfers evidence from one hypothesis to all others. (D) is false: the union bound controls the family-wise error rate without independence, although Bonferroni can be conservative. Failure to reject does not establish that every null is true.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -826,6 +869,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Sharp regression discontinuity",
             "Local treatment effects"
           ],
+          "assistance": "<p>A sharp RDD changes treatment discontinuously at a threshold. Sketch the smooth outcome relationship on either side and compare its limits at the cutoff.</p><p>Ask which population those limits describe. A score may predict outcomes smoothly without invalidating the design. The counterfactual assumption concerns a jump absent treatment; check the stated continuity and manipulation restrictions before extending an interpretation beyond the threshold.</p>",
           "explanation": "<p>(B) is the sharp regression-discontinuity interpretation. Continuity supplies the counterfactual at the threshold, where treatment status jumps. (A) extrapolates a local effect to municipalities far from the cutoff. (C) ignores time shocks and the absence of a counterfactual in a simple before–after comparison. (D) is unnecessary: scores may predict outcomes smoothly; the design attributes the discontinuous jump to treatment. Bandwidth choice, functional form and uncertainty still need to be reported in an actual study.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -848,6 +892,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Maximum sustainable yield",
             "Bioeconomic optimum"
           ],
+          "assistance": "<p>Sustainable harvest at a steady stock equals growth. Find where the growth function has a stationary point and check that it is a maximum.</p><div class=\"eq\"><i>G</i>′(<i>X</i>) = <i>r</i>(1 − 2<i>X</i>/<i>K</i>)</div><p>Separate example: for 0.3<i>X</i>(1 − <i>X</i>/600), the stationary stock is 300 and yield is 45 per year. Use the question's parameters yourself. Keep the biological objective distinct from profits, which also depend on costs and prices.</p>",
           "explanation": "<p>G′(X) = r(1 − 2X/K) is zero at X = K/2 = 500. Growth there is rK/4 = 100 tonnes per year, so (B) is correct. At carrying capacity growth is zero, rejecting (A). (C) both doubles the yield and confuses a biological maximum with a profit maximum. (D) ignores the entry incentives of open access: equilibrium depends on prices, harvesting costs and technology, and is not generally the maximum-yield stock. An economic optimum additionally values costs and, in a dynamic setting, future stocks.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         }
@@ -876,6 +921,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Difference-in-differences",
             "Parallel trends"
           ],
+          "assistance": "<p>Calculate each group's change; the comparison change supplies the proposed untreated counterfactual.</p><table class=\"data\"><caption>Separate worked example</caption><thead><tr><th scope=\"col\">Group</th><th scope=\"col\">Before</th><th scope=\"col\">After</th><th scope=\"col\">Change</th></tr></thead><tbody><tr><th scope=\"row\">Treated</th><td>8</td><td>11</td><td>3</td></tr><tr><th scope=\"row\">Control</th><td>5</td><td>7.5</td><td>2.5</td></tr></tbody></table><p>Here DiD is 3 − 2.5 = 0.5. Repeat with the actual means. Parallel trends concerns untreated changes, not equal initial levels.</p>",
           "explanation": "<p>The treated group rises by 5 and the control group rises by 3. Difference-in-differences is 5 − 3 = 2. Parallel trends supplies the untreated counterfactual change for the treated group.</p>",
           "refs": "Original exercise; standard two-period difference-in-differences algebra."
         },
@@ -899,6 +945,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Price ceilings",
             "Market disequilibrium"
           ],
+          "assistance": "<p>Find the unconstrained clearing price by equating demand and supply. Then substitute the ceiling into each curve separately.</p><p>Separate example: demand <i>P</i> = 80 − <i>Q</i>, supply <i>P</i> = 10 + <i>Q</i> and a ceiling of $30 imply demand 50, supply 20 and shortage 30. Use the actual curves and ceiling yourself. A shortage is excess demand at the regulated price, not its distance from the equilibrium price.</p>",
           "explanation": "<p>At P = 50, demand gives Q = 50 and supply gives Q = 30, so the shortage is 20. The unconstrained equilibrium is Q = 40 and P = 60, so the ceiling binds.</p>",
           "refs": "Original exercise; competitive supply-and-demand model."
         },
@@ -920,6 +967,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Cost-effective abatement",
             "Equimarginal principle"
           ],
+          "assistance": "<p>Cost effectiveness minimizes total cost for a fixed abatement target. At an interior solution, transferring a small unit between firms must not reduce cost.</p><div class=\"eq\">MAC<sub>A</sub> = MAC<sub>B</sub></div><p>Separate example: MACs of 3<i>a</i><sub>A</sub> and 9<i>a</i><sub>B</sub>, with total 12, imply a ratio of three and quantities 9 and 3. Derive the ratio and impose this problem's target yourself. Equal marginal costs need not mean equal quantities.</p>",
           "explanation": "<p>Cost effectiveness requires equal marginal abatement costs: 2a<sub>A</sub> = 6a<sub>B</sub>, so a<sub>A</sub> = 3a<sub>B</sub>. Combining with total abatement of 10 gives a<sub>B</sub> = 2.5 and a<sub>A</sub> = 7.5.</p>",
           "refs": "Original exercise; equimarginal principle in pollution control."
         },
@@ -940,6 +988,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Exclusion restriction",
             "Relevance"
           ],
+          "assistance": "<p>Ask separately whether an instrument changes treatment, is related to unobserved outcome determinants, and can affect the outcome through another pathway.</p><p>For example, distance might predict service use while also proxying for access to other services. Evaluate what a strong first stage establishes about these separate pathways. A causal claim needs a target population and identifying assumptions in addition to a predictive relationship.</p>",
           "explanation": "<p>False. Relevance only requires that the instrument shifts treatment. A causal interpretation also requires assumptions such as exogeneity/independence and exclusion; LATE additionally uses monotonicity.</p>",
           "refs": "Imbens & Angrist (1994), Econometrica; Angrist & Pischke, Mostly Harmless Econometrics."
         },
@@ -961,6 +1010,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Fisher equation",
             "Real interest rate"
           ],
+          "assistance": "<p>Distinguish repayment in currency from its purchasing power over the consumption basket.</p><div class=\"eq\">1 + <i>r</i> = (1 + <i>i</i>)/(1 + E<i>π</i>)</div><p>Separate example: a nominal rate of 8% and inflation of 3% give the approximation 8 − 3 = 5%; the exact ratio gives about 4.85%. Use the approximation specifically requested, with this question's rates rather than the example rates.</p>",
           "explanation": "<p>Using r ≈ i − Eπ gives 6% − 2% = 4%. The exact Fisher relation gives a value close to 3.92%.</p>",
           "refs": "Original exercise; Fisher relation."
         },
@@ -985,6 +1035,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Standard errors",
             "Asymptotics"
           ],
+          "assistance": "<p>Variance and its square root, the standard error, scale differently with sample size.</p><div class=\"eq\">Var(<i>θ̂</i>) ≈ <i>c</i>/<i>n</i> · SE(<i>θ̂</i>) ≈ √(<i>c</i>/<i>n</i>)</div><p>Separate example: multiplying sample size by nine multiplies SE by one-third. Evaluate the actual sample-size ratio yourself. Separate precision from bias: more observations do not change a misspecified estimand merely by reducing sampling variation.</p>",
           "explanation": "<p>Standard errors commonly scale with 1/√n, so quadrupling n halves the standard error and quarters the variance. Confidence intervals narrow. Larger samples do not automatically remove bias from misspecification, measurement error or non-random sampling.</p>",
           "refs": "Original exercise; standard large-sample approximation."
         },
@@ -1006,6 +1057,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Logistic growth",
             "Maximum sustainable yield"
           ],
+          "assistance": "<p>Identify the logistic parameters, differentiate with respect to stock, and check the second derivative.</p><div class=\"eq\"><i>G</i>′ = <i>r</i>(1 − 2<i>X</i>/<i>K</i>) · <i>G</i>″ = −2<i>r</i>/<i>K</i></div><p>Separate example: <i>r</i> = 0.6 and <i>K</i> = 500 give a stationary stock of 250 and growth of 75 per year. Substitute the actual parameters yourself. Check whether each option describes a stock, a harvest flow, or both.</p>",
           "explanation": "<p>Maximum sustainable yield occurs at K/2 = 400. Growth there is rK/4 = 0.5 × 800 / 4 = 100. This is a biological benchmark, not necessarily the profit-maximizing stock.</p>",
           "refs": "Original exercise; logistic renewable-resource growth."
         },
@@ -1028,6 +1080,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Pre-treatment outcomes",
             "Conditional independence"
           ],
+          "assistance": "<p>Matching compares people similar on the variables used for matching. Ask what earnings prospects age, sex and education may leave unmeasured.</p><p>A persistent earnings history can carry information about employability, previous shocks or program selection. Compare that history before deciding whether the later gap is a credible causal counterfactual. Distinguish precision, remaining selection and bias direction: evidence of one does not automatically establish the others.</p>",
           "explanation": "<p>Persistent pre-treatment earnings differences indicate that participants and controls differ along dimensions related to future earnings. Matching only on demographics leaves important selection concerns. More observations reduce sampling noise, not selection bias, and the bias direction is not determined here.</p>",
           "refs": "Original exercise; selection-on-observables program-evaluation framework."
         }
@@ -1057,6 +1110,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Treatment-level clustering",
             "Cluster-randomized assignment"
           ],
+          "assistance": "<p>Identify the assignment level and the level of the shared outcome shock. Compare them with each regression row.</p><div class=\"eq\">Design effect = 1 + (<i>m</i> − 1)<i>ρ</i></div><p>Separate example: 12 people per group and intraclass correlation 0.20 give a variance multiplier of 3.2; SE scales by its square root. Clustering changes covariance estimation, while fixed effects change surviving regressor variation. Inspect what a group fixed-effect transformation does to group-level treatment in the stated design.</p>",
           "explanation": "<p>(A) and (D) are correct. Treatment varies across schools, and the shared school shock makes within-school outcomes dependent. A school-clustered covariance estimator aggregates score contributions at the assignment level. Under equal cluster size <i>m</i> and intraclass correlation <i>ρ</i>, the illustrative variance inflation is 1 + (<i>m</i> − 1)<i>ρ</i>: at <i>m</i> = 40 and <i>ρ</i> = 0.10 it is 4.9, giving an SE multiplier of approximately 2.21.</p><p>(B) mistakes pupil count for independent assignment units. (C) fails because the school treatment indicator is constant within school and therefore collinear with school fixed effects. With 60 clusters, finite-sample corrections or inference based on the actual randomization remain useful; conventional clustered asymptotics are not guaranteed by the raw pupil count.</p>",
           "refs": "Abadie, Athey, Imbens & Wooldridge, When Should You Adjust Standard Errors for Clustering? https://www.nber.org/papers/w24003; original numerical exercise."
         },
@@ -1078,6 +1132,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Positive externalities",
             "Pigouvian subsidy"
           ],
+          "assistance": "<p>Construct social marginal benefit by adding the spillover to private benefit. Write private equilibrium and social efficiency separately.</p><div class=\"eq\">MSB(<i>q</i>) = MPB(<i>q</i>) + MEB(<i>q</i>)</div><p>Separate example: MPB = 60 − <i>q</i>, MC = 12 + <i>q</i> and MEB = 8 imply 68 − <i>q</i> = 12 + <i>q</i>, yielding 28. Apply the actual curves yourself. Check the policy's incentive direction and distinguish transfers from resource costs under the financing assumption.</p>",
           "explanation": "<p>Private equilibrium solves 100 − <i>q</i> = 20 + <i>q</i>, so <i>q</i><sub>p</sub> = 40. Social marginal benefit is 120 − <i>q</i>; equating it to MC gives 2<i>q</i> = 100 and <i>q</i>* = 50. A subsidy of 20 internalizes MEB: buyers pay the producer price less 20, so MPB + 20 = MC. At <i>q</i> = 50, producer price is 70 and buyer price is 50.</p><p>(A) leaves the spillover unpriced. (C) increases quantity by the full subsidy despite both curves having nonzero slopes. (D) discourages an activity with a positive externality. The welfare gain is the triangle ½ × (50 − 40) × 20 = 100; subsidy spending is a transfer under the stated financing assumption, not itself a net social loss.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -1100,6 +1155,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Euler equation",
             "Capital accumulation"
           ],
+          "assistance": "<p>The Euler equation governs consumption growth; the resource constraint governs capital accumulation.</p><div class=\"eq\">Consumption growth = (net return − impatience)/curvature</div><p>Separate example: a net return of 6%, impatience 3% and curvature 3 give (0.06 − 0.03)/3 = 0.01, or 1%. For the actual problem, subtract depreciation from marginal product first. Inferring capital growth also requires output, consumption and depreciation in levels; keep those quantities separate from rates.</p>",
           "explanation": "<p>The net marginal return is 0.08 − 0.03 = 0.05. Subtract impatience and divide by curvature: (0.05 − 0.02)/2 = 0.015. Thus consumption grows locally at 1.5%. Capital follows <i>k̇</i> = <i>f</i>(<i>k</i>) − <i>c</i> − <i>δk</i>, whose sign also requires output and consumption levels.</p><p>(B) omits division by <i>σ</i> and infers capital growth without the resource constraint. (C) compares the wrong quantities: the Euler equation compares the net return with impatience. (D) confuses a saddle path, which generally includes transition dynamics, with the steady state. Stationary consumption requires <i>f</i>′(<i>k</i>*) = <i>δ</i> + <i>ρ</i> = 0.05.</p>",
           "refs": "MIT OpenCourseWare, 14.05, The Neoclassical Growth Model (Ramsey lecture notes); original numerical exercise."
         },
@@ -1124,6 +1180,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Complier effect",
             "Exclusion restriction"
           ],
+          "assistance": "<p>Compute the outcome difference by offer status and the participation difference by offer status. They have distinct units and interpretations.</p><div class=\"eq\">Reduced form / first stage</div><p>Separate example: earnings increase by $900 and participation by 0.30, yielding $3,000 per induced participant. Use the actual values yourself. Ask who changes participation because of the offer, and draw any offer-to-earnings pathway bypassing training before evaluating exclusion.</p>",
           "explanation": "<p>(A) is the reduced form: $32,000 − $30,000 = $2,000. The first stage is 0.60 − 0.20 = 0.40. Dividing gives $2,000/0.40 = $5,000. Under the stated assumptions, this is LATE for people induced to participate by the offer, so (B) is correct.</p><p>(C) is wrong because participants can include always-takers, whose effects need not equal compliers’ effects. The identifying assumptions do not make effects homogeneous. (D) is correct: an offer that independently changes job search or provides other services can affect earnings without participation, invalidating exclusion. Comparing actual participants with nonparticipants also loses the protection of random assignment.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -1145,6 +1202,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Permit banking",
             "Intertemporal arbitrage"
           ],
+          "assistance": "<p>Compare holding a permit with selling it and investing the proceeds. For an interior bank, discounted values agree under certainty and frictionless trading.</p><div class=\"eq\"><i>p</i><sub>t</sub> = <i>p</i><sub>t+1</sub>/(1 + <i>r</i>)</div><p>Separate example: a current price of $30 and rate of 4% imply a future value of $31.20. Apply the actual price and rate yourself. Distinguish this equality from the inequality possible when the no-borrowing constraint binds at a zero bank.</p>",
           "explanation": "<p>Keeping one permit sacrifices $40 today and delivers one permit next year. An interior banking choice equalizes discounted values: <i>p</i><sub>t</sub> = <i>p</i><sub>t+1</sub>/(1 + <i>r</i>). Hence <i>p</i><sub>t+1</sub> = 1.05 × $40 = $42.</p><p>(A) discounts in the wrong direction. (B) ignores the opportunity cost of tying up capital. (D) invents a price wedge not supported by the assumptions. If the bank were zero, the no-borrowing constraint could bind and the equality need not hold. Uncertainty, invalidation risk, or storage costs would also change this simple condition.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -1168,6 +1226,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Treatment–covariate interactions",
             "Pre-treatment covariates"
           ],
+          "assistance": "<p>Separate identification from precision improvement. A baseline covariate and a treatment-affected variable have different causal roles.</p><pre><code># Arm-specific baseline slopes; x_c is centered\nlm(y ~ treatment * x_c, data = trial)</code></pre><p>The interaction permits separate covariate slopes across arms. Compare a finite-sample guarantee with a large-sample result under fixed dimension and regularity. Ask what the treatment coefficient compares after centering, rather than assuming every adjustment has the same interpretation.</p>",
           "explanation": "<p>(A) is correct: randomization identifies the average treatment effect; adjustment uses predictive baseline information to reduce noise. Centering makes the treatment coefficient compare fitted outcomes at the full-sample covariate means. Allowing separate slopes by arm protects against misspecification of a common outcome–covariate relationship. Under fixed dimension and standard regularity, (C) is the asymptotic efficiency result; heteroskedasticity-robust inference is appropriate.</p><p>(B) overstates a large-sample result: regression adjustment can have small finite-sample bias and need not improve precision in every realized sample. (D) changes the estimand and can introduce post-treatment bias. Treatment-affected outcomes are not baseline precision variables.</p>",
           "refs": "Lin (2013), Agnostic notes on regression adjustments to experimental data, Annals of Applied Statistics; https://arxiv.org/abs/1208.2301."
         },
@@ -1189,6 +1248,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Faustmann rotations",
             "Land opportunity cost"
           ],
+          "assistance": "<p>Delaying harvest also delays the start of future rotations. Differentiate the whole discounted ratio, not just its numerator.</p><p>Write <i>N</i> = <i>R</i>(<i>T</i>)e<sup>−<i>rT</i></sup> − <i>C</i> and <i>D</i> = 1 − e<sup>−<i>rT</i></sup>.</p><div class=\"eq\"><i>V</i>′ = (<i>N</i>′<i>D</i> − <i>ND</i>′)/<i>D</i>²</div><p>Carry out both derivatives, set the numerator to zero, then use <i>N</i>/<i>D</i> = <i>V</i> to simplify. Compare with a single rotation without dropping the denominator's derivative.</p>",
           "explanation": "<p>Let <i>x</i> = e<sup>−rT</sup>. The quotient rule gives <i>V</i>′(<i>T</i>) = <i>x</i>{[<i>R</i>′ − <i>rR</i>](1 − <i>x</i>) − <i>r</i>(<i>Rx</i> − <i>C</i>)}/(1 − <i>x</i>)². Setting the numerator to zero and using <i>V</i> = (<i>Rx</i> − <i>C</i>)/(1 − <i>x</i>) yields <i>R</i>′ = <i>r</i>(<i>R</i> + <i>V</i>).</p><p>Waiting one more instant earns additional timber value but delays both harvest receipts and the opportunity to begin future rotations. (A) omits that land opportunity cost and corresponds to a single-rotation comparison. (C) ignores timber and future land returns. (D) substitutes a biological criterion for an economic one. With positive <i>V</i> and usual declining marginal growth conditions, the land term tends to shorten the optimal rotation relative to the single-rotation optimum.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         },
@@ -1211,6 +1271,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Interference",
             "Contaminated controls"
           ],
+          "assistance": "<p>Write DiD as treated change minus comparison change. Distinguish the comparison's untreated trend from a change caused by displacement.</p><div class=\"eq\">Comparison change = untreated trend + spillover</div><p>Separate example: a direct treated change of −12 and comparison spillover of +3 imply −12 − 3 = −15 when baseline trends cancel. Use the actual values yourself. Formal untreated status and absence of policy exposure are different claims.</p>",
           "explanation": "<p>DiD subtracts the control change from the treated change: −20 − (+8) = −28. It therefore overstates the magnitude of the direct treated-site loss of −20 by 8. Formal untreated status does not imply an unaffected outcome; visitor substitution violates the no-interference comparison.</p><p>(A) adds the spillover rather than subtracting the control change. (B) assumes away the mechanism given in the question. (D) is the control spillover alone. The estimate is neither a system-wide visitation effect nor a welfare estimate. A stronger design would define exposure using river access and substitution patterns, examine more distant controls, and estimate direct and displaced visitation separately; distance alone does not establish an uncontaminated control.</p>",
           "refs": "Original exercise; assumptions and derivation are stated in the question and worked solution."
         }
@@ -1242,6 +1303,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Market unraveling",
             "Quality signaling"
           ],
+          "assistance": "<p>A pooling offer depends on the expected quality of cars actually offered, which can differ from the initial population.</p><p>Separate example: buyer values $20,000 and $10,000 with a 40% high-quality prior give expected value $14,000. Compare a proposed price with each owner's reservation value, then update the quality mix among willing sellers. Apply these steps to the actual market before treating the initial prior as equilibrium. Distinguish credible inspections from unverifiable quality claims.</p>",
           "explanation": "<p><b>(A), (C), and (D) are correct.</b> At the stated prior, expected buyer value is 0.5($18,000) + 0.5($8,000) = $13,000. But $13,000 is below the high-quality owner’s $15,000 reservation value, so (B) is false: only low-quality owners accept. Once buyers infer that selection, the rational pooling offer falls to $8,000. Low-quality trade can still occur because $8,000 exceeds the low-quality owner’s $6,000 value, while mutually beneficial high-quality trades are lost. Inspections, certification, or warranties can reduce the information asymmetry if they credibly separate quality types.</p>",
           "refs": "Akerlof (1970), “The Market for ‘Lemons’”; Mas-Colell, Whinston & Green, ch. 13."
         },
@@ -1264,6 +1326,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Log-level models",
             "Exact percentage effects"
           ],
+          "assistance": "<p>Evaluate the marginal slope at the group's indicator value before converting log points to a percentage.</p><pre><code># Separate fitted model\n# term              estimate\n# schooling            0.03\n# group                0.015\n# schooling:group      0.01</code></pre><p>For group = 1 here, the slope is 0.03 + 0.01 = 0.04. Its exact percentage effect is 100[exp(0.04) − 1] ≈ 4.08%. The group main effect shifts the intercept. Apply both steps to this question's own coefficients.</p>",
           "explanation": "<p>For women, the schooling slope is 0.08 + 0.02 = 0.10 log points. The exact percentage effect is 100[exp(0.10) − 1] ≈ 10.52%, so <b>(D)</b> is correct. (C) is the usual small-coefficient approximation, not the exact transformation. (B) applies exp(0.08) − 1 and therefore gives the male effect. (A) mistakes the interaction coefficient for the full marginal effect. The 0.04 coefficient shifts the intercept for women; it does not alter the schooling slope beyond the interaction.</p>",
           "refs": "Wooldridge, Introductory Econometrics, sections on semilog models and interactions."
         },
@@ -1286,6 +1349,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Primary balance",
             "Interest-growth differential"
           ],
+          "assistance": "<p>Use decimals for rates and GDP shares. A primary surplus is positive; a deficit is negative.</p><p>Separate example: debt/GDP of 0.60, interest 5%, growth 3% and a primary surplus of 0.5% imply (0.05 − 0.03)(0.60) − 0.005 = 0.007, an increase of 0.7 percentage point. Calculate the interest-growth and primary-balance contributions separately with the actual values. Multiply a decimal ratio change by 100 to report percentage points.</p>",
           "explanation": "<p>A primary deficit of 1% means <i>s</i> = −0.01. Therefore Δ<i>b</i> ≈ (0.04 − 0.02)(1.00) − (−0.01) = 0.03. The debt-to-GDP ratio rises by about 3 percentage points, making <b>(D)</b> correct. (B) counts only the primary deficit; (C) counts only the interest-growth effect; (A) applies the sign on the primary balance incorrectly. This is an approximation: valuation changes, stock-flow adjustments, and compounding can matter in observed debt data.</p>",
           "refs": "IMF, Fiscal Monitor analytical framework; Blanchard, Macroeconomics, government debt dynamics."
         },
@@ -1310,6 +1374,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Steady states",
             "Pollutant decay"
           ],
+          "assistance": "<p>A stock accumulates flows. Find a steady state by setting the stock change to zero; evaluate the first-period change at the inherited stock.</p><div class=\"eq\">0 = <i>E</i> − <i>δS</i> · <i>S</i>′ = (1 − <i>δ</i>)<i>S</i> + <i>E</i></div><p>Separate example: emissions 60 and decay 0.10 imply steady stock 600. Emissions of 54 then give a first-period change of −6 and a long-run stock of 540. Use the actual parameters yourself, keeping time horizons distinct.</p>",
           "explanation": "<p><b>(A), (C), and (D) are correct.</b> A steady state satisfies <i>E</i> = δ<i>S</i>, so the initial stock is 100/0.05 = 2,000 and the new long-run stock is 90/0.05 = 1,800. In the first year, starting from 2,000, Δ<i>S</i> = 90 − 0.05(2,000) = −10. Thus (B) is false: the stock adjusts gradually because emissions are a flow and only 5% of the existing stock decays per year. The distinction is central for long-lived pollutants, where a sizable emissions cut need not produce an immediate proportional stock reduction.</p>",
           "refs": "Perman, Ma, Common, Maddison & McGilvray, Natural Resource and Environmental Economics, stock-pollution models."
         },
@@ -1330,6 +1395,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Sharp null hypothesis",
             "P-value interpretation"
           ],
+          "assistance": "<p>A sharp null specifies every unit's effect, allowing possible assignments to generate a reference distribution for a test statistic.</p><p>Separate example: 40 of 1,000 equally weighted assignments with statistics at least as extreme as observed give a tail probability of 0.04. Ask what is being counted: assignments, units, or probabilities over hypotheses. Distinguish evidence against a sharp null from claims about the share of individual effects that are nonzero.</p>",
           "explanation": "<p><b>False.</b> The p-value is the probability, under the sharp null and the experiment’s assignment mechanism, of obtaining a test statistic at least as extreme as the observed one. It is not a posterior probability that the null is true, and it does not identify the fraction of units with nonzero effects. Rejecting the sharp null establishes evidence against the claim that every unit’s effect is exactly zero, subject to the design and test, but many heterogeneous effect patterns—including effects concentrated among a small share of units—can generate rejection.</p>",
           "refs": "Fisher (1935), The Design of Experiments; Imbens & Rubin (2015), Causal Inference, ch. 5."
         },
@@ -1354,6 +1420,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Mediation",
             "Collider bias"
           ],
+          "assistance": "<p>Draw treatment → employment → consumption, then add an unobserved health variable pointing to employment and consumption.</p><p>Compare the total assignment effect with an effect holding a mediator fixed. Conditioning changes which paths remain; examine both the mediated pathway and the common-effect structure. Random assignment concerns treatment itself, so identify any extra assumptions a mediator-based estimand needs instead of treating every coefficient as the same causal effect.</p>",
           "explanation": "<p><b>(B), (C), and (D) are correct.</b> Employment is downstream of treatment, so controlling for it removes the mediated pathway treatment → employment → consumption and generally prevents the coefficient from representing the total effect; (A) is false. If employment is also affected by unobserved health, conditioning on this common effect of treatment and health can open a noncausal path between treatment and consumption. A controlled direct effect is a different estimand and requires additional identification assumptions about mediator–outcome confounding and intervention on the mediator. The clean total-effect estimate here comes from comparing consumption by randomized assignment without conditioning on treatment-induced variables.</p>",
           "refs": "Hernán & Robins (2020), Causal Inference: What If, chs. 17–19; Angrist & Pischke (2009), Mostly Harmless Econometrics."
         },
@@ -1376,6 +1443,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Common-pool resources",
             "Rent dissipation"
           ],
+          "assistance": "<p>Compare the industry's entry condition with an owner's marginal optimization. An entrant considers revenue per effort; a sole owner considers extra revenue from additional effort.</p><div class=\"eq\">Average harvest = <i>H</i>(<i>E</i>)/<i>E</i> · marginal harvest = <i>H</i>′(<i>E</i>)</div><p>Write rent as total revenue minus effort cost. Ask what induces entry or exit and what an interior stopping point requires. Distinguish that condition from maximizing rent or locating a biological harvest peak.</p>",
           "explanation": "<p>Free entry drives average revenue per unit of effort to the effort cost: <i>pH</i>(<i>E</i>)/<i>E</i> = <i>w</i>, equivalently total resource rent <i>pH</i>(<i>E</i>) − <i>wE</i> equals zero. Thus <b>(B)</b> is correct. (A) is the sole-owner or static social optimum’s marginal condition. Because diminishing returns imply average product exceeds marginal product at positive effort, open access typically produces more effort than the rent-maximizing allocation. (C) describes the biological peak of harvest as a function of effort, not entry equilibrium. (D) states the planner’s objective, which open access does not generally implement.</p>",
           "refs": "Gordon (1954), “The Economic Theory of a Common-Property Resource”; Clark (1990), Mathematical Bioeconomics."
         },
@@ -1400,6 +1468,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Donor-pool validity",
             "Placebo inference"
           ],
+          "assistance": "<p>A synthetic control fits a weighted donor comparison before the reform. Ask what makes it credible afterward too.</p><p>Inspect whether donors remain untreated, whether the earlier outcome path is reproduced, and whether the gap depends heavily on a particular donor or fitting choice. Placebos compare the result with analogously constructed results elsewhere; they do not replace identification assumptions. Good pre-fit and protection against concurrent treated-unit shocks are distinct claims.</p>",
           "explanation": "<p><b>(A), (B), and (D) are correct.</b> Good pre-treatment fit makes the synthetic unit a more credible representation of the treated unit’s untreated trajectory. Donors affected by spillovers are not valid untreated comparisons. Placebo reassignments show whether gaps of the observed size are unusual relative to untreated units, while leave-one-out or weight-sensitivity exercises reveal dependence on a single donor. (C) is false: even excellent pre-fit does not make every post-treatment gap causal; concurrent treated-unit shocks, anticipation, interference, and weak post-period signal remain alternative explanations.</p>",
           "refs": "Abadie, Diamond & Hainmueller (2010), JASA; Abadie (2021), Journal of Economic Literature."
         }
@@ -1416,13 +1485,13 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   var LETTERS = 'ABCDEFGH';
   var app = document.getElementById('app');
   var KEY = 'dec:v1:';
-  var ed = null, st = null, navigation = 0;
+  var ed = null, st = null, navigation = 0, resetRequest = null;
   // This router owns synthetic set/question positions, including history traversal.
   if('scrollRestoration' in history)history.scrollRestoration='manual';
 
-  function load(date){try{var r=localStorage.getItem(KEY+date);return r?JSON.parse(r):null}catch(e){return null}}
-  function save(){try{localStorage.setItem(KEY+ed.date,JSON.stringify(st))}catch(e){} announceProgress()}
-  function fresh(){return {answers:{},current:0,submitted:false}}
+  function load(date){try{var r=localStorage.getItem(KEY+date),s=r?JSON.parse(r):null;if(!s||typeof s!=='object')return null;s.answers=s.answers||{};s.learning=s.learning||{};s.committed=s.committed||{};return s}catch(e){return null}}
+  function save(){var last=EDITIONS.reduce(function(t,e){var p=load(e.date);return Math.max(t,p&&Number.isFinite(p.viewedAt)?p.viewedAt:0)},0);st.viewedAt=Math.max(Date.now(),last+1);try{localStorage.setItem(KEY+ed.date,JSON.stringify(st))}catch(e){} announceProgress()}
+  function fresh(){return {answers:{},current:0,submitted:false,learning:{},committed:{}}}
   function pad(n){return String(n).padStart(3,'0')}
   function dateObj(d){return new Date(d+'T12:00:00')}
   function longDate(d){return dateObj(d).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}
@@ -1435,6 +1504,18 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   function nAnswered(){return ed.questions.filter(answered).length}
   function fields(e){var s=[];e.questions.forEach(function(q){if(s.indexOf(q.field)<0)s.push(q.field)});return s}
   function scoreOf(e,s){return e.questions.filter(function(q){return same((s.answers||{})[q.id],q.correct)}).length}
+  function learningState(id){return st.learning[id]||(st.learning[id]={})}
+  function committed(q){return answered(q)&&(st.submitted||same(st.committed[q.id],st.answers[q.id]))}
+  function assistanceCount(e,s){return e.questions.filter(function(q){return s&&s.learning&&s.learning[q.id]&&s.learning[q.id].assistanceUsed}).length}
+  function learningHTML(q,kind){
+    if(kind==='explanation'&&!committed(q))return '';
+    var v=st.learning[q.id]||{},open=v[kind+'Open'],label=kind==='assistance'?'Assistance':'Explanation';
+    return '<details class="learning" data-learning="'+kind+'" data-question="'+q.id+'"'+(open?' open':'')+'><summary>'+label+'</summary><div class="learning-material">'+q[kind]+(kind==='explanation'?'<p class="refs">'+q.refs+'</p>':'')+'</div></details>';
+  }
+  function answerHTML(q){
+    if(committed(q))return '<p class="answer-note" role="status">Answer submitted.</p>'+learningHTML(q,'explanation');
+    return '<div class="answer-action"><button type="button" class="btn" data-act="answer"'+(answered(q)?'':' disabled')+'>Submit answer</button><span class="hint">Submit to open Explanation.</span></div>';
+  }
 
   function exhibitHTML(x){
     if(!x)return '';
@@ -1497,8 +1578,9 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
   function questionHTML(){
     var i=st.current,q=ed.questions[i],last=i===ed.questions.length-1,remaining=ed.questions.length-nAnswered();
     return '<article class="sheet q" aria-labelledby="qlabel"><header class="q-head"><span class="q-num" id="qlabel" aria-label="Question '+(i+1)+'">Q'+(i+1)+'</span><span class="q-field">'+q.field+'</span><span class="q-kind">'+(i+1)+' / '+ed.questions.length+' · '+kindShort(q.kind)+'</span></header>'+
-      '<div class="stem">'+q.stem+'</div>'+exhibitHTML(q.exhibit)+(q.after?'<div class="stem" style="margin-top:14px">'+q.after+'</div>':'')+
+      '<div class="stem">'+q.stem+'</div>'+exhibitHTML(q.exhibit)+(q.after?'<div class="stem" style="margin-top:14px">'+q.after+'</div>':'')+learningHTML(q,'assistance')+
       '<div class="prompt">'+kindLabel(q.kind)+'</div>'+optsHTML(q,false)+
+      '<div id="answerLearning">'+answerHTML(q)+'</div>'+
       '<div class="q-foot"><button type="button" class="btn" data-act="prev"'+(i===0?' disabled':'')+'>← Previous</button><span class="spacer"></span>'+
       (last?'<span class="hint">'+(remaining?remaining+' unanswered':'All questions answered')+'</span><button type="button" class="btn primary" data-act="submit"'+(remaining?' disabled':'')+'>Submit for solutions</button>':'<button type="button" class="btn primary" data-act="next">Next →</button>')+
       '</div></article>';
@@ -1517,70 +1599,109 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
       '<div><h3>Concepts to review</h3>'+(missed.length?'<ul class="review">'+missed.map(function(m){return '<li><b>'+m.c+'</b><a class="src" href="#sol-'+m.q+'" data-sol="'+m.q+'">Question '+m.q+' solution ↓</a><span class="src">'+m.refs+'</span></li>'}).join('')+'</ul>':'<p class="clean">Nothing flagged this time. The references under each solution are the natural next reading.</p>')+'</div></div>'+
       '<section class="solutions" aria-label="Worked solutions"><h3>Worked solutions</h3>'+ed.questions.map(function(q,i){
         var r=isRight(q);
-        return '<div class="sol" id="sol-'+(i+1)+'"><div class="sol-head"><span class="q-num">Q'+(i+1)+'</span><span class="q-field">'+q.field+'</span><span class="mark '+(r?'right':'wrong')+'" style="margin-left:auto">'+(r?'Correct':'Incorrect')+'</span></div><div class="stem">'+q.stem+'</div>'+exhibitHTML(q.exhibit)+(q.after?'<div class="stem">'+q.after+'</div>':'')+optsHTML(q,true)+'<div class="expl"><div class="expl-h">Reasoning</div>'+q.explanation+'</div><p class="refs">'+q.refs+'</p></div>';
+        return '<div class="sol" id="sol-'+(i+1)+'"><div class="sol-head"><span class="q-num">Q'+(i+1)+'</span><span class="q-field">'+q.field+'</span><span class="mark '+(r?'right':'wrong')+'" style="margin-left:auto">'+(r?'Correct':'Incorrect')+'</span></div><div class="stem">'+q.stem+'</div>'+exhibitHTML(q.exhibit)+(q.after?'<div class="stem">'+q.after+'</div>':'')+optsHTML(q,true)+learningHTML(q,'assistance')+learningHTML(q,'explanation')+'</div>';
       }).join('')+'</section>'+
       '<div class="res-actions"><button type="button" class="btn primary" data-act="copy">Copy result</button><button type="button" class="btn" data-act="retake">Retake this set</button><a class="btn" href="#archive" style="text-decoration:none">Ledger</a><span class="hint" id="copyNote" aria-live="polite"></span></div></article>';
   }
 
   function archiveHTML(){
     var done=0,right=0,tot=0;EDITIONS.forEach(function(e){var v=load(e.date);if(v&&v.submitted){done++;right+=scoreOf(e,v);tot+=e.questions.length}});
-    return '<section class="wrap ps-head"><div class="ps-title"><h1 id="psTitle">The <i>Ledger</i></h1><div class="ps-no"><span>Sets worked</span><b>'+done+'&thinsp;/&thinsp;'+EDITIONS.length+'</b></div></div>'+
+    return '<section class="wrap ps-head"><div class="ps-title"><h1 id="psTitle">The <i>Ledger</i></h1><div class="ps-no"><span>Sets completed</span><b>'+done+'&thinsp;/&thinsp;'+EDITIONS.length+'</b></div></div>'+
       '<dl class="ps-facts"><div><dt>Published</dt><dd>'+EDITIONS.length+' '+(EDITIONS.length===1?'set':'sets')+'</dd></div><div><dt>Questions right</dt><dd>'+(tot?right+' of '+tot:'—')+'</dd></div><div><dt>Accuracy</dt><dd>'+(tot?Math.round(100*right/tot)+'%':'—')+'</dd></div><div><dt>Next set</dt><dd id="nextSet">'+nextSet()+'</dd></div></dl></section>'+
       '<div class="wrap" style="padding-top:28px;padding-bottom:80px"><article class="sheet archive" aria-labelledby="arcTitle"><h2 id="arcTitle" class="sr-only">Problem sets</h2>'+
       '<table class="index"><thead><tr><th scope="col">No.</th><th scope="col">Set</th><th scope="col">Fields</th><th scope="col">Record</th></tr></thead><tbody>'+
-      EDITIONS.map(function(e,i){var v=load(e.date),mine=v&&v.submitted?'<b>'+scoreOf(e,v)+'/'+e.questions.length+'</b>':v&&Object.keys(v.answers||{}).length?'<b>…</b>':'<b>—</b>';
+      EDITIONS.map(function(e,i){var v=load(e.date),count=e.questions.filter(function(q){return v&&(v.answers[q.id]||[]).length}).length,used=assistanceCount(e,v),mine=v&&v.submitted?'<b>'+scoreOf(e,v)+'/'+e.questions.length+' correct</b><small>'+count+' of '+e.questions.length+' answered · Complete</small>':'<b>'+count+' of '+e.questions.length+' answered</b><small>'+(count?'In progress':'Not started')+'</small>';
+        if(used)mine+='<small>Assistance used '+used+'×</small>';
+        if(v&&(count||used||v.current>0||v.submitted))mine+='<button type="button" class="ledger-reset" data-retake="'+e.date+'">Retake set</button>';
         return '<tr'+(i===0?' aria-current="true"':'')+'><td class="no">'+pad(e.no)+'</td><td class="date"><a class="pd-edition-entry" data-date="'+e.date+'" href="#'+e.date+'">'+shortDate(e.date)+'</a><small>'+e.questions.length+' questions'+(i===0?' · today':'')+'</small></td><td class="fields">'+fields(e).join(', ')+'</td><td class="mine">'+recordHTML(e,v)+mine+'</td></tr>'}).join('')+
-      '</tbody></table><p class="ledger-note">Records live in this browser.</p></article></div>';
+      '</tbody></table><p class="ledger-note">Records live in this browser. Assistance use counts once per question, without changing your score.</p><section class="ledger-manage" aria-labelledby="recordManage"><h3 id="recordManage">Your Workbook record</h3><p>Start Fresh clears your local Workbook work and begins again at No. '+pad(EDITIONS[EDITIONS.length-1].no)+' · Question 1.</p><button type="button" class="btn" data-act="start-fresh">Start Fresh</button>'+resetHTML()+'</section></article></div>';
+  }
+
+  function resetHTML(){
+    if(!resetRequest)return '<p id="resetStatus" class="hint" role="status"></p>';
+    var all=resetRequest==='all',set=all?EDITIONS[EDITIONS.length-1]:EDITIONS.find(function(e){return e.date===resetRequest});
+    if(!set)return '';
+    return '<section class="reset-confirm" role="group" aria-labelledby="resetTitle"><h3 id="resetTitle">'+(all?'Start fresh?':'Retake No. '+pad(set.no)+'?')+'</h3><p>This clears '+(all?'all your locally stored Workbook work':'your local record for this set')+': answers and selections, completion, Assistance use, and open learning sections. '+(all?'Your last-viewed location and Ledger record will also be cleared. ':'Other sets stay recorded. ')+'Begin at No. '+pad(set.no)+' · Question 1.</p><div class="res-actions"><button type="button" class="btn" data-act="cancel-reset" id="resetCancel">Cancel</button><button type="button" class="btn primary" data-act="confirm-reset">'+(all?'Clear record and begin':'Clear this set and begin')+'</button></div><p id="resetStatus" class="hint" role="status"></p></section>';
+  }
+  function requestReset(date){resetRequest=date;render();document.getElementById('resetCancel')?.focus()}
+  function confirmReset(){
+    if(location.hash!=='#archive'||!resetRequest)return;
+    var all=resetRequest==='all',target=all?EDITIONS[EDITIONS.length-1]:EDITIONS.find(function(e){return e.date===resetRequest});if(!target)return;
+    try{var keys=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if((all&&k.indexOf(KEY)===0)||k===KEY+target.date)keys.push(k)}keys.forEach(function(k){localStorage.removeItem(k)});
+      localStorage.removeItem('periodicals:reading:v2:/daily-econ-challenge/');if(all)localStorage.removeItem('periodicals:seen:v1:/daily-econ-challenge/');
+    }catch(e){document.getElementById('resetStatus').textContent='The record could not be cleared in this browser. Please try again.';return}
+    window.dispatchEvent(new Event('workbook:reset'));resetRequest=null;ed=target;st=fresh();go(0,true);window.scrollTo(0,0);
   }
 
   function recovery(date,question){
     var e=EDITIONS.find(function(e){return e.date===date}),p=e&&load(date);
-    if(!p||p.submitted)return null;
-    var answered=e.questions.filter(function(q){return (p.answers[q.id]||[]).length}).length;
-    if(answered>=e.questions.length||!(answered||p.current>0))return null;
+    if(!e||(!p&&!Number.isInteger(question)))return null;
     var q=Number.isInteger(question)?question:p.current||0;q=Math.max(0,Math.min(e.questions.length-1,q));
     return {edition:date,question:q,label:'No. '+pad(e.no)+' · Question '+(q+1)+' of '+e.questions.length};
   }
-  function announceProgress(){if(!ed||!st)return;window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,dates:EDITIONS.map(e=>e.date).sort(),hash:d=>'#'+d,recover:recovery,recovery:EDITIONS.map(function(e){return recovery(e.date)}).find(Boolean),progress:{no:ed.no,question:st.current,answered:nAnswered(),total:ed.questions.length,submitted:st.submitted},start:function(){go(0,true)},resume:function(q){go(q,true);document.getElementById('bench')?.scrollIntoView({block:'start',behavior:'auto'})}}}))}
+  function latestRecovery(){
+    var records=EDITIONS.map(function(e){return {e:e,p:load(e.date)}}).filter(function(x){return x.p}).sort(function(a,b){return (b.p.viewedAt||0)-(a.p.viewedAt||0)});
+    // Existing pre-timestamp records retain the prior unfinished-set fallback; the shared location remains authoritative.
+    var last=records.find(function(x){return x.p.viewedAt})||records.find(function(x){return !x.p.submitted&&(x.p.current>0||x.e.questions.some(function(q){return (x.p.answers[q.id]||[]).length}))})||records[0];
+    return last?recovery(last.e.date):null;
+  }
+  function announceProgress(){if(!ed||!st)return;window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,dates:EDITIONS.map(e=>e.date).sort(),hash:d=>'#'+d,recover:recovery,recovery:latestRecovery(),progress:{no:ed.no,question:st.current,answered:nAnswered(),total:ed.questions.length,submitted:st.submitted,viewedAt:st.viewedAt||0},resume:function(q){go(q,true);document.getElementById(st.submitted?'sol-'+(st.current+1):'bench')?.scrollIntoView({block:'start',behavior:'auto'})}}}))}
   function render(focusMain){
     document.getElementById('archiveLink').setAttribute('aria-current',location.hash==='#archive'?'page':'false');
     if(location.hash==='#archive'){
       document.title='The Ledger · The Workbook';
       document.body.classList.add('ledger');
       app.innerHTML=archiveHTML();
+      if(resetRequest)document.getElementById('resetCancel')?.focus({preventScroll:true});
       return;
     }
+    resetRequest=null;
     document.title='The Workbook No. '+pad(ed.no);document.body.classList.remove('ledger');
     app.innerHTML=headHTML()+'<div class="wrap bench" id="bench">'+sideHTML()+'<div class="main-col" id="mainCol">'+(st.submitted?resultsHTML():questionHTML())+'</div></div>';
     announceProgress();
-    if(focusMain){var h=app.querySelector('.q-num,.score');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
+    if(focusMain){var h=app.querySelector(st.submitted?'#sol-'+(st.current+1)+' .q-num':'.q-num');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
   }
 
   function go(i,focus){navigation++;st.current=Math.max(0,Math.min(ed.questions.length-1,i));
     // Replace the current entry: question buttons keep their existing history behavior.
     history.replaceState(history.state,'','#'+ed.date+'/'+ed.questions[st.current].id);save();render(focus);
-    var b=document.getElementById('bench');if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView({block:'start'})}
+    var b=document.getElementById(st.submitted?'sol-'+(st.current+1):'bench');if(b&&(st.submitted||b.getBoundingClientRect().top<0))b.scrollIntoView({block:'start',behavior:'auto'})}
 
   function pick(i){
     var q=ed.questions[st.current],cur=(st.answers[q.id]||[]).slice();
     if(q.kind==='multi'){var k=cur.indexOf(i);if(k>=0)cur.splice(k,1);else cur.push(i);cur.sort()}
     else cur=[i];
+    if(!same(cur,st.answers[q.id]||[])){delete st.committed[q.id];learningState(q.id).explanationOpen=false}
     st.answers[q.id]=cur;save();render();
     var btn=app.querySelector('[data-opt="'+i+'"]');if(btn)btn.focus({preventScroll:true});
   }
 
   function submit(){if(nAnswered()<ed.questions.length)return;st.submitted=true;save();render(true);window.scrollTo(0,0)}
+  function submitAnswer(){var q=ed.questions[st.current];if(!answered(q)||st.submitted)return;st.committed[q.id]=st.answers[q.id].slice();learningState(q.id).explanationOpen=false;save();var box=document.getElementById('answerLearning');box.innerHTML=answerHTML(q);box.querySelector('summary')?.focus({preventScroll:true})}
+  app.addEventListener('toggle',function(e){
+    var t=e.target;if(!t.matches('details[data-learning]')||!t.isConnected)return;var q=ed.questions.find(function(q){return q.id===t.dataset.question});if(!q)return;
+    var kind=t.dataset.learning,v=learningState(q.id);if(kind==='explanation'&&!committed(q)){t.open=false;return}
+    // Restoring an already-open section during render is not a new visit or an additional use.
+    if(t.open===!!v[kind+'Open']&&(kind!=='assistance'||!t.open||v.assistanceUsed))return;
+    if(st.submitted&&t.open){st.current=ed.questions.indexOf(q);history.replaceState(history.state,'','#'+ed.date+'/'+q.id)}
+    if(kind==='assistance'&&t.open)v.assistanceUsed=true;v[kind+'Open']=t.open;save();
+  },true);
 
   app.addEventListener('click',function(e){
-    var sl=e.target.closest('[data-sol]');if(sl){e.preventDefault();var el=document.getElementById('sol-'+sl.dataset.sol);if(el)el.scrollIntoView({block:'start'});return}
-    var t=e.target.closest('[data-opt],[data-act],[data-go]');if(!t)return;
+    var sl=e.target.closest('[data-sol]');if(sl){e.preventDefault();return go(+sl.dataset.sol-1,true)}
+    var t=e.target.closest('[data-opt],[data-act],[data-go],[data-retake]');if(!t)return;
+    if(t.dataset.retake)return requestReset(t.dataset.retake);
     if(t.dataset.opt!=null)return pick(+t.dataset.opt);
-    if(t.dataset.go!=null){if(st.submitted){var s=document.getElementById('sol-'+(+t.dataset.go+1));if(s)s.scrollIntoView({block:'start'});return}return go(+t.dataset.go,true)}
+    if(t.dataset.go!=null)return go(+t.dataset.go,true);
     var a=t.dataset.act;
     if(a==='prev')go(st.current-1,true);
     if(a==='next')go(st.current+1,true);
     if(a==='submit')submit();
-    if(a==='retake'){st=fresh();go(0,true);window.scrollTo(0,0)}
+    if(a==='answer')submitAnswer();
+    if(a==='start-fresh')requestReset('all');
+    if(a==='cancel-reset'){var cancelled=resetRequest;resetRequest=null;render();app.querySelector(cancelled==='all'?'[data-act="start-fresh"]':'[data-retake="'+cancelled+'"]')?.focus({preventScroll:true})}
+    if(a==='confirm-reset')confirmReset();
+    if(a==='retake'){resetRequest=ed.date;location.hash='#archive'}
     if(a==='copy'){var txt='The Workbook No. '+pad(ed.no)+' · '+scoreOf(ed,st)+'/'+ed.questions.length+'\n'+ed.questions.map(function(q){return isRight(q)?'■':'□'}).join('')+'\n'+location.href.split('#')[0]+'#'+ed.date;
       var note=document.getElementById('copyNote');
       (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){note.textContent='Copied'},function(){note.textContent=txt.split('\n').slice(0,2).join('  ')});}
@@ -1610,7 +1731,8 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
       if(parts[1]){var qi=ed.questions.findIndex(function(q){return q.id===parts[1]});if(qi>=0)st.current=qi}
     } else if(!ed){ed=EDITIONS[0];st=load(ed.date)||fresh()}
     var token=++navigation,hash=location.hash;
-    if(parts[1]&&ed.questions.some(function(q){return q.id===parts[1]}))save();
+    if(parts[2]==='solution'&&committed(ed.questions[st.current]))learningState(ed.questions[st.current].id).explanationOpen=true;
+    if(EDITIONS.some(function(e){return e.date===parts[0]}))save();
     render();window.scrollTo(0,0);
     if(parts[1]){
       var targetId=st.submitted?'sol-'+(st.current+1):null;
@@ -1639,6 +1761,6 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
 })();
 </script>
 <script src="../personal-updates/commonplace/commonplace.js?v=20261002-navigation"></script>
-<script src="/personal-updates/mobile/mobile.js?v=20261004-navigation"></script>
+<script src="/personal-updates/mobile/mobile.js?v=20261005-workbook-learning"></script>
 </body>
 </html>

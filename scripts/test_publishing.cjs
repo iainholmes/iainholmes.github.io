@@ -2,7 +2,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),cp=require('nod
 const root=require('node:path').resolve(__dirname,'..'),read=p=>fs.readFileSync(root+'/'+p,'utf8'),base=p=>cp.execFileSync('git',['show','68490dbc4a62fbbdb813dafb04e1ef7fc45f93e5:'+p],{cwd:root,encoding:'utf8'});
 function data(s,id){return JSON.parse(s.match(new RegExp('id="'+id+'">([\\s\\S]*?)</script>'))[1]);}
 const current=read('daily-econ-challenge/index.html'),before=base('daily-econ-challenge/index.html'),wb=data(current,'challenge-data'),old=data(before,'challenge-data');
-assert.deepEqual(wb.editions.slice(0,3),old.editions);assert(current.includes(before.match(/id="challenge-data">([\s\S]*?)\n  \]\n}/)[1].trim()),'All previous edition data bytes retained');
+// The authorized learning release adds Assistance to historical questions; all prior fields/bytes remain protected.
+const core=current.replace(/^          "assistance":.*\n/gm,'');assert.deepEqual(data(core,'challenge-data').editions.slice(0,3),old.editions);assert(core.includes(before.match(/id="challenge-data">([\s\S]*?)\n  \]\n}/)[1].trim()),'All previous edition data bytes retained apart from the authored Assistance addition');
 assert.deepEqual(wb.editions.map(x=>x.no),[1,2,3,4]);const set=wb.editions.at(-1);assert.equal(set.date,'2026-10-01');assert.equal(set.questions.length,8);assert.equal(new Set(set.questions.map(q=>q.id)).size,8);
 for(const q of set.questions){assert(['single','multi','tf'].includes(q.kind));assert(q.explanation&&q.concepts.length&&q.refs);assert(q.correct.every(i=>i>=0&&i<q.options.length));if(q.kind==='single')assert.equal(q.correct.length,1);}
 assert(Math.abs((.08-.03-.02)/2-.015)<1e-12);assert(Math.abs((32000-30000)/(.6-.2)-5000)<1e-9);assert.equal(40*1.05,42);assert.equal(-20-8,-28);assert.equal(1+39*.1,4.9);

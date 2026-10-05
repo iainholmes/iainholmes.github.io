@@ -2,7 +2,7 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),{execFileSync}=require('child_process');
 const wb=fs.readFileSync('daily-econ-challenge/index.html','utf8'),fb=fs.readFileSync('daily-watchlist-5/index.html','utf8'),mobile=fs.readFileSync('personal-updates/mobile/mobile.js','utf8');
 const editions=JSON.parse(wb.match(/<script type="application\/json" id="challenge-data">([\s\S]*?)<\/script>/)[1]).editions;
-const old=editions.find(e=>e.date==='2026-10-01'),latest=editions[0];
+const old=editions.find(e=>e.date==='2026-10-01'),latest=editions.at(-1);
 assert(old&&latest.date!==old.date,'published Set 004 fixture and a newer set exist');
 function run(source,c){vm.createContext(c);vm.runInContext(source,c);return c}
 const recoverySource=wb.slice(wb.indexOf('  function recovery('),wb.indexOf('  function announceProgress('));
@@ -13,7 +13,7 @@ assert.equal(recovery.recovery(old.date,0).label,'No. 004 · Question 1 of 8');
 assert.equal(recovery.recovery(old.date,99).question,7,'saved questions are bounded by their own set');
 assert.equal(recovery.recovery('missing'),null);
 native.set(latest.date,{current:0,answers:{},submitted:true});
-assert.equal(recovery.recovery(latest.date),null,'completed sets cannot supply recovery');
+assert.equal(recovery.recovery(latest.date).question,0,'completion does not discard the last viewed question');
 assert.equal(recovery.recovery(old.date).question,6,'today completion cannot invalidate older progress');
 
 const recoveryBlock=mobile.slice(mobile.indexOf('const workbook='),mobile.indexOf("addEventListener('periodicals:edition'"));
@@ -24,26 +24,28 @@ function reader(path='/daily-econ-challenge/'){
  vm.runInContext(mobile.slice(mobile.indexOf("action('Resume'"),mobile.indexOf('resume.append(')),c);
  c.actions=actions;c.flush=()=>{while(frames.length)frames.shift()()};return c;
 }
-function detail(c,date){const p=native.get(date)||{current:0,answers:{},submitted:false},e=editions.find(e=>e.date===date);return {current:date,dates:editions.map(e=>e.date).sort(),hash:d=>'#'+d,recover:recovery.recovery,recovery:editions.map(e=>recovery.recovery(e.date)).find(Boolean),progress:{no:e.no,question:p.current,answered:Object.values(p.answers).filter(a=>a.length).length,total:e.questions.length,submitted:p.submitted},start:()=>navigate(0),resume:q=>navigate(q)};
+function detail(c,date){const p=native.get(date)||{current:0,answers:{},submitted:false},e=editions.find(e=>e.date===date);return {current:date,dates:editions.map(e=>e.date).sort(),hash:d=>'#'+d,recover:recovery.recovery,recovery:recovery.latestRecovery(),progress:{no:e.no,question:p.current,answered:Object.values(p.answers).filter(a=>a.length).length,total:e.questions.length,submitted:p.submitted},resume:q=>navigate(q)};
  function navigate(q){p.current=q;c.location.hash='#'+date+'/'+e.questions[q].id;c.update({detail:detail(c,date)});c.scrollY=400}}
 function setup(){const c=reader();c.write(c.key(),{edition:old.date,question:6,label:'No. 004 · Question 7 of 8'});c.update({detail:detail(c,latest.date)});return c}
 const undecided=setup();assert(!undecided.resume.hidden,'completed today still offers older unfinished set');
 undecided.save();assert.equal(undecided.read(undecided.key()).edition,old.date,'pagehide/scroll cannot overwrite an undecided recovery');
-for(const action of ['Resume','Start from top']){
+for(const action of ['Resume']){
  native.get(old.date).current=6;const c=setup(),answers=JSON.stringify(native.get(old.date).answers);
- c.actions[action]();assert.equal(c.location.hash,'#'+old.date,'both actions identify the set named in the panel');
+ assert.equal(c.actions['Start from top'],undefined,'Workbook recovery offers Resume only');
+ c.actions[action]();assert.equal(c.location.hash,'#'+old.date,'Resume identifies the set named in the panel');
  c.update({detail:detail(c,old.date)});c.flush();
- assert.equal(native.get(old.date).current,action==='Resume'?6:0);
- assert.equal(c.location.hash,'#'+old.date+(action==='Resume'?'/q7':'/q1'));
+ assert.equal(native.get(old.date).current,6);
+ assert.equal(c.location.hash,'#'+old.date+'/q7');
  assert.equal(JSON.stringify(native.get(old.date).answers),answers,'navigation preserves all answers');
  assert.equal(c.pending,null);assert(c.resume.hidden);
- if(action==='Start from top')assert.equal(c.scrollY,0,'start includes the set front matter');
+ assert.equal(c.scrollY,400,'Resume retains the saved question reading area');
 }
 native.get(old.date).current=6;
 const fallback=reader();fallback.update({detail:detail(fallback,latest.date)});assert.equal(fallback.saved.edition,old.date,'new session reconstructs native-only progress');
-fallback.write(fallback.key(),{edition:latest.date,question:4,label:'Completed set'});fallback.update({detail:detail(fallback,latest.date)});assert.equal(fallback.saved.edition,old.date,'stale completed recovery falls back to valid native progress');
+fallback.write(fallback.key(),{edition:'missing',question:4,label:'Missing set'});fallback.update({detail:detail(fallback,latest.date)});assert.equal(fallback.saved.edition,old.date,'unknown sets fall back to valid native progress');
+fallback.write(fallback.key(),{edition:latest.date,question:4,label:'Completed set'});fallback.update({detail:detail(fallback,latest.date)});assert.equal(fallback.saved.edition,latest.date,'a completed last-viewed set remains resumable');assert.equal(fallback.saved.question,4);
 const switching=setup();switching.update({detail:detail(switching,old.date)});assert(switching.engaged&&switching.resume.hidden,'deliberate cross-set routing leaves the recovery session');
-console.log('Workbook recovery: named set, saved question vs Q1, native fallback, completed/stale records, unresolved session and preserved answers passed.');
+console.log('Workbook recovery: Resume only, exact last-viewed question, native fallback, completed/stale records, unresolved session and preserved answers passed.');
 
 const goSource=wb.slice(wb.indexOf('  function go('),wb.indexOf('  function pick('));
 const historyCalls=[],g=run(goSource,{navigation:0,ed:old,st:{current:0,answers:{q1:[0]},submitted:false},history:{state:{retained:true},replaceState:(state,title,hash)=>historyCalls.push({state,hash})},save(){},render(){},document:{getElementById:()=>null}});

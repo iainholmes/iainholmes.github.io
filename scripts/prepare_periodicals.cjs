@@ -12,6 +12,8 @@ const fb=data(read('daily-watchlist-5/index.html'),'briefing-data').editions.sor
 for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])throw Error('Published Field Brief is missing its story artwork pin: '+ed.date);
 const plates=storyArt.prepare(fb,storyArchive);
 const cp=data(read('daily-econ-challenge/index.html'),'challenge-data').editions.sort((a,b)=>a.date.localeCompare(b.date));
+// Workbook publication requires authored, safe, question-specific Assistance and Explanation before any artifact is written.
+require('../daily-econ-challenge/learning-schema.cjs').validate({editions:cp});
 for(const [key,editions] of [['fb',fb],['cp',cp]]){
  editions.forEach((e,i)=>{if(key==='cp'&&e.no!==i+1)throw Error('Nonsequential Workbook number');if(key==='fb'&&e.stories.length!==5)throw Error('Field Brief needs five stories');if(new Set(editions.map(x=>x.date)).size!==editions.length)throw Error('Duplicate publication date');
  const id=key+':'+e.date;if(archive[id])return;

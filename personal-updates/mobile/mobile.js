@@ -12,7 +12,7 @@ const resume=document.createElement('aside');resume.className='pd-resume';resume
 const resumeTitle=document.createElement('strong'),resumeContext=document.createElement('p'),resumeActions=document.createElement('div');
 function action(label,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',fn);resumeActions.append(b)}
 action('Resume',()=>{if(!saved||!state)return;engaged=true;clearTimeout(timer);pending={...saved};resume.hidden=true;const hash=state.hash(saved.edition);if(location.hash!==hash)location.hash=hash;else restore()});
-action('Start from top',()=>{if(!state)return;engaged=true;clearTimeout(timer);const edition=saved?.edition||state.current;pending={edition,fromTop:true};try{localStorage.removeItem(key())}catch{}saved=null;resume.hidden=true;const hash=state.hash(edition);if(location.hash!==hash)location.hash=hash;else restore()});
+if(!/daily-econ/.test(path))action('Start from top',()=>{if(!state)return;engaged=true;clearTimeout(timer);const edition=saved?.edition||state.current;pending={edition,fromTop:true};try{localStorage.removeItem(key())}catch{}saved=null;resume.hidden=true;const hash=state.hash(edition);if(location.hash!==hash)location.hash=hash;else restore()});
 resume.append(resumeTitle,resumeContext,resumeActions);
 const prev=publication?button('‹ Prev',()=>turn(-1)):null,next=publication?button('Next ›',()=>turn(1)):null;
 if(prev)prev.setAttribute('aria-label','Previous edition');if(next)next.setAttribute('aria-label','Next edition');
@@ -28,7 +28,7 @@ function readingTarget(hash=location.hash){
  if(/^#(?:cp-ll-|heron-)/.test(hash))return true;
  try{return !!document.getElementById(decodeURIComponent(hash.slice(1)))?.closest('.entry,.synthesis,.knowledge')}catch{return false}
 }
-function explicitNavigation(hash){if(readingTarget(hash)){engaged=true;resume.hidden=true}}
+function explicitNavigation(hash){if(readingTarget(hash)||(workbook&&/^#\d{4}-\d{2}-\d{2}$/.test(hash))){engaged=true;resume.hidden=true}}
 function restore(){
  if(!pending||!state)return;const p=pending;if(p.edition!==state.current||p.applying)return;p.applying=true;
  // Keep saving suspended until routing, page load and font layout have completed.
@@ -49,7 +49,7 @@ function restore(){
 function turn(dir){if(!state)return;engaged=true;save();pending=null;resume.hidden=true;const i=state.dates.indexOf(state.current),date=state.dates[i+dir];if(date)location.hash=state.hash(date)}
 function save(){if(workbook&&!engaged&&!resume.hidden)return; // An undecided return visit must not replace the named recovery.
 if(!state||pending||location.hash==='#archive'||document.querySelector('dialog[open]'))return;
-if(workbook){const p=state.progress;if(p&&(p.answered>0||p.question>0)&&!p.submitted&&p.answered<p.total){write(key(),{edition:state.current,question:p.question,label:'No. '+String(p.no).padStart(3,'0')+' · Question '+(p.question+1)+' of '+p.total,at:Date.now()})}else if(p&&(p.submitted||p.answered>=p.total)){try{localStorage.removeItem(key())}catch{}}return}
+if(workbook){const p=state.progress;if(p){write(key(),{edition:state.current,question:p.question,label:'No. '+String(p.no).padStart(3,'0')+' · Question '+(p.question+1)+' of '+p.total,at:Date.now()})}return}
 if(ll&&document.body.classList.contains('glance'))return;
 const els=sections();if(!els.length)return;const y=scrollY+120,first=els[0].getBoundingClientRect().top+scrollY,end=els.at(-1).getBoundingClientRect().bottom+scrollY;
 if(y<first+80)return;engaged=true;resume.hidden=true;if(y>=end-200||scrollY+innerHeight>=document.documentElement.scrollHeight-120){try{localStorage.removeItem(key())}catch{}return}
@@ -57,11 +57,13 @@ let el=els[0];for(const x of els){if(x.getBoundingClientRect().top+scrollY<=y)el
 const label=ll?(state.title+' · '+context(el)):(state.label+' · Story '+el.id.replace('story-',''));
 write(key(),{edition:state.current,section:el.id,offset:Math.max(0,y-(el.getBoundingClientRect().top+scrollY)),label,at:Date.now()})}
 function placeResume(){const anchor=document.querySelector(ll?'.edition:not([hidden]) .hero':workbook?'.ps-head':'.edition .front');if(anchor&&!resume.isConnected)anchor.after(resume);else if(anchor&&resume.previousElementSibling!==anchor)anchor.after(resume)}
-function update(e){clearTimeout(timer);const previous=state;state=e.detail;if(workbook&&previous&&previous.current!==state.current&&!pending)engaged=true;explicitNavigation(location.hash);placeResume();if(!pending){saved=read(key());if(workbook){if(state.recover)saved=(saved&&state.recover(saved.edition,saved.question))||state.recovery;else if(!previous&&!saved)saved=state.recovery;}resume.hidden=engaged||!(saved&&state.dates.includes(saved.edition)&&saved.label&&!(workbook&&saved.edition===state.current&&(state.progress?.submitted||state.progress?.answered>=state.progress?.total)));resumeTitle.textContent=workbook?'Resume problem set':'Resume reading';resumeContext.textContent=saved?.label||''}
+function update(e){clearTimeout(timer);const previous=state;state=e.detail;if(workbook&&previous&&previous.current!==state.current&&!pending)engaged=true;explicitNavigation(location.hash);placeResume();if(!pending){saved=read(key());if(workbook){if(state.recover)saved=(saved&&state.recover(saved.edition,saved.question))||state.recovery;else if(!previous&&!saved)saved=state.recovery;}resume.hidden=engaged||!(saved&&state.dates.includes(saved.edition)&&saved.label);resumeTitle.textContent=workbook?'Resume problem set':'Resume reading';resumeContext.textContent=saved?.label||''}
 prev.disabled=state.dates.indexOf(state.current)<=0;next.disabled=state.dates.indexOf(state.current)>=state.dates.length-1;
 const seenKey='periodicals:seen:v1:'+path,seen=[...new Set([...(read(seenKey)||[]),state.current])];document.querySelectorAll('.ix-item,.archive-entry,.pd-edition-entry').forEach(el=>{const date=el.dataset.date;let badge=el.querySelector('.pd-unread');if(date&&!seen.includes(date)){if(!badge){badge=document.createElement('small');badge.className='pd-unread';badge.textContent=' · Unread';(el.querySelector('.ix-title')||el).append(badge)}}else if(badge)badge.remove()});
-write(seenKey,seen.slice(-100));if(workbook&&previous&&previous.current===state.current&&JSON.stringify(previous.progress)!==JSON.stringify(state.progress)){engaged=true;save();resume.hidden=true}restore();images();}
+write(seenKey,seen.slice(-100));if(workbook&&previous&&(previous.current!==state.current||JSON.stringify(previous.progress)!==JSON.stringify(state.progress))){engaged=true;save();resume.hidden=true}restore();images();}
 addEventListener('periodicals:edition',update);
+// Only the Workbook's confirmed Ledger reset can discard its pending/local recovery session.
+if(workbook)addEventListener('workbook:reset',()=>{clearTimeout(timer);pending=null;saved=null;engaged=true;resume.hidden=true});
 // A router may reuse the current edition without announcing a new one.
 addEventListener('hashchange',()=>{explicitNavigation(location.hash);if(pending&&location.hash!==state?.hash(pending.edition))pending=null;restore()});
 // Collapse recovery before a publication router measures its explicit reading target.

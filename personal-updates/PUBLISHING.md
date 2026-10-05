@@ -19,6 +19,16 @@ Canonical repository: `iainholmes/iainholmes.github.io`; branch: `master`. The G
 
 L&L's `#field-studies` maps dates to `{no, version, concept, composition, html}`. `field-study.js` exposes `artifact({date, no, synthesis, previous})` and `mount(editions, stored)`. Publishing stores the result; rendering always prefers the stored artifact. New plates have date-prefixed SVG IDs. L&L edition hero, Five Readings and full article titles use upright Latin Modern Roman Dunhill Regular; Ectros remains the masthead face.
 
+## Workbook learning content and local records
+
+Every Workbook question requires authored HTML fields `assistance` and `explanation`. Keep the existing question, options, answer key, references and permanent ID intact. Assistance teaches the method without naming the correct option or performing the actual question's calculation; worked examples use different inputs. Explanation can complete the actual calculation and discuss the answer choices. These fields belong to the published dated question and remain stable thereafter. Never fetch a runtime tutor response or silently replace historical learning content.
+
+Run `node daily-econ-challenge/learning-schema.cjs` to validate all current questions, or pass a candidate JSON/HTML file. Preparation runs the same validation before writing artifacts. Safe prose, mathematical HTML, short code/output excerpts and small semantic tables are supported; active content, hidden content, unsupported HTML and duplicate generic Assistance are rejected. Automated validation cannot substitute for editorial review of whether Assistance gives away the answer. Run `node scripts/test_workbook_learning.cjs` and the relevant browser regressions before release.
+
+Reader answers retain the `dec:v1:<date>` storage contract. A record may additionally contain `committed` (the submitted selection for each question), `learning` (question-level `assistanceUsed`, `assistanceOpen`, `explanationOpen`) and `viewedAt`. The shared Workbook reading record names the last viewed set and question, whether answered or not; completion does not remove that location. Older answer records remain readable. Changing a selection makes that question a draft again; final set submission commits the whole set. Assistance use counts distinct questions within an attempt and never changes the score.
+
+The return panel offers Resume only. Start Fresh is confirmed in the Ledger and clears this browser's Workbook answer/learning/completion records, Workbook reading location and Workbook seen-set record, then opens the first published set at Q1. Per-set Retake is also confirmed in the Ledger and leaves other sets intact. Neither action deletes published content or Commonplace keeps. Cancelling confirmation writes no record.
+
 ## October 1 recovery evidence
 
 The maintenance branch began at verified remote master `68490dbc4a62fbbdb813dafb04e1ef7fc45f93e5`. Two targeted personal-context/history searches recovered Set 004's eight topic requirements and confirmations of a blocked write, but no exact questions, options, explanations, recoverable draft attachment or raw rejection/error. Set 004 therefore had to be recreated in the canonical Workbook schema, rather than recovered verbatim. Sets 001–003 remain unchanged, including their original data bytes.
