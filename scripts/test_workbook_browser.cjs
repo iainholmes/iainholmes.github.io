@@ -26,12 +26,14 @@ async function reset(p){await ledger(p);await p.locator('[data-act="start-fresh"
 async function shot(p,name){await p.screenshot({path:path.join(out,name+'.png'),fullPage:false})}
 async function ledgerMap(p,label){
  const rows=await p.evaluate(()=>JSON.parse(document.getElementById('challenge-data').textContent).editions.map(e=>{
-  const state=JSON.parse(localStorage.getItem('dec:v1:'+e.date))||{},row=document.querySelector('table.index [data-date="'+e.date+'"]').closest('tr'),style=getComputedStyle(row),boxes=[...row.querySelectorAll('.record i')];
-  return {date:e.date,text:row.querySelector('.mine').textContent,expected:e.questions.map(q=>!!(state.answers&&state.answers[q.id]?.length)),empty:style.getPropertyValue('--sheet').trim(),boxes:boxes.map(el=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return {answered:el.classList.contains('a'),color:s.backgroundColor,image:s.backgroundImage,width:r.width,height:r.height}})};
+  const state=JSON.parse(localStorage.getItem('dec:v1:'+e.date))||{},row=document.querySelector('table.index [data-date="'+e.date+'"]').closest('tr'),style=getComputedStyle(row),record=row.querySelector('.record'),first=getComputedStyle(record,'::before'),last=getComputedStyle(record,'::after'),boxes=[...record.querySelectorAll('i')];
+  return {date:e.date,text:row.querySelector('.mine').textContent,expected:e.questions.map(q=>!!(state.answers&&state.answers[q.id]?.length)),empty:style.getPropertyValue('--sheet').trim(),cue:{first:first.content,last:last.content,start:first.left,end:last.right,font:parseFloat(first.fontSize),countFont:parseFloat(getComputedStyle(row.querySelector('.mine b')).fontSize)},boxes:boxes.map(el=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return {answered:el.classList.contains('a'),color:s.backgroundColor,image:s.backgroundImage,width:r.width,height:r.height}})};
  }));
  for(const r of rows){
   equal(r.boxes.map(b=>b.answered),r.expected,label+' '+r.date+' maps the actual saved question IDs');
   check(r.text.includes(r.expected.filter(Boolean).length+' of '+r.expected.length+' answered'),label+' text and boxes agree');
+  equal(r.cue.first,'"Q1"',label+' starts at Question 1');equal(r.cue.last,'"Q'+r.expected.length+'"',label+' ends at the actual final question');
+  equal([r.cue.start,r.cue.end],['0px','0px'],label+' endpoints align with the existing strip');check(r.cue.font<r.cue.countFont,label+' cue remains subordinate to the answered count');
   for(let i=0;i<r.boxes.length;i++){
    const b=r.boxes[i],hex=r.empty.slice(1),empty='rgb('+[0,2,4].map(n=>parseInt(hex.slice(n,n+2),16)).join(', ')+')';
    equal(b.color,r.expected[i]?'rgb(169, 199, 236)':empty,label+' '+r.date+' Q'+(i+1)+' uses existing powder blue or empty sheet');
@@ -52,6 +54,8 @@ async function main(){
   await p.locator('[data-date="'+mapped.date+'"].pd-edition-entry').click();await ready(p);
   for(const i of [1,4]){await go(p,i);await p.locator('[data-opt="0"]').click()}
   const mapAnswers=(await state(p,mapped.date)).answers;equal(Object.keys(mapAnswers).sort(),['q2','q5']);
+  for(const fixture of [{set:editions[0],positions:[0,1]},{set:editions[3],positions:[7]}]){await open(p,'#'+fixture.set.date+'/q1');for(const i of fixture.positions){await go(p,i);await p.locator('[data-opt="0"]').click()}}
+  await ledger(p);const positionMaps=await ledgerMap(p,'question-position cues');equal(positionMaps.find(r=>r.date===editions[0].date).expected,[true,true,false,false,false,false,false,false],'Q1 + Q2 answered');equal(positionMaps.find(r=>r.date===editions[3].date).expected,[false,false,false,false,false,false,false,true],'Q8 only answered');await open(p,'#'+mapped.date+'/q5');
   await p.locator('.pd-tools a').filter({hasText:'Titles'}).click();await p.waitForURL('**/personal-updates/');const mapVisit=await c.storageState();await c.close();c=await context(browser,{width:390,height:844},true,mapVisit);p=await c.newPage();await open(p);
   await p.locator('.pd-resume button').click();await p.waitForFunction(d=>location.hash==='#'+d+'/q5',mapped.date);await ready(p);equal((await state(p,mapped.date)).answers,mapAnswers,'Resume preserves the exact sparse answered map');
   await ledger(p);await ledgerMap(p,'reopened Resume');await p.reload();await ready(p);await ledgerMap(p,'reloaded Ledger');

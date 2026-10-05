@@ -286,7 +286,10 @@ td.mine b{font-weight:500}
 .answer-note{margin:18px 0 0}
 td.mine b,td.mine small{display:block;white-space:normal}
 td.mine small{font:11px/1.6 var(--ui);color:var(--muted);margin-top:4px}
-td.mine .record{margin:0 0 8px}
+td.mine .record{position:relative;padding-top:12px;margin:0 0 8px}
+td.mine .record::before,td.mine .record::after{position:absolute;top:0;font:500 9px/1 var(--ui);color:var(--muted)}
+td.mine .record::before{content:"Q1";left:0}
+td.mine .record::after{content:attr(data-last);right:0}
 /* The Ledger's answered map reuses the Workbook's existing powder-blue folio color. */
 td.mine .record i.a{background:#a9c7ec}
 .ledger-reset{display:inline-block;border:0;border-bottom:1px solid currentColor;background:none;color:var(--teal);font:12px/1.4 var(--ui);min-height:44px;padding:8px 0;margin-top:4px}
@@ -1535,7 +1538,7 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
       if(sv&&sv.submitted)c=same(a,q.correct)?'r':'w';else if(a&&a.length)c='a';return '<i class="'+c+'"></i>'}).join('')+'</span>';
   }
   function ledgerRecordHTML(answers){
-    return '<span class="record" aria-hidden="true">'+answers.map(function(answered){return '<i class="'+(answered?'a':'')+'"></i>'}).join('')+'</span>';
+    return '<span class="record" data-last="Q'+answers.length+'" aria-hidden="true">'+answers.map(function(answered){return '<i class="'+(answered?'a':'')+'"></i>'}).join('')+'</span>';
   }
   var DOWN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   function nextSet(){
