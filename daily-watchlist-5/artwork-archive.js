@@ -356,6 +356,68 @@
         "seed": 1941212462,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A high lake spills toward inhabited lower ground\"><title>Bogong moth migration rebound offers a cautious conservation signal</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-04-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-04-05)\"><path d=\"M50 425L235 130L398 385L530 215L750 525H50Z\" fill=\"#1d5f47\"/><ellipse cx=\"290\" cy=\"285\" rx=\"85\" ry=\"34\" fill=\"#1b4a6b\"/><path d=\"M340 295Q340 430 570 483\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"34\"/><path d=\"M584 410L650 355L716 410V510H584Z\" fill=\"#2c241d\"/><path d=\"M93 480H234\" stroke=\"#c98a12\" stroke-width=\"25\"/></g></svg>"
       }
+    },
+    "2026-10-05": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-05",
+        "number": "01",
+        "category": "Technology · governance",
+        "topic": "infrastructure",
+        "title": "White House gives new AI task force a 120-day mandate",
+        "composition": "infrastructure-duct",
+        "signature": "plate:infrastructure-duct",
+        "seed": 2232041721,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Cooling infrastructure surrounds a capacity chamber\"><title>White House gives new AI task force a 120-day mandate</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-01)\"><path d=\"M90 155H475V480H90Z\" fill=\"#2c241d\"/><path d=\"M130 202H432M130 270H432M130 338H432M130 406H432\" stroke=\"#f4ead7\" stroke-width=\"23\"/><path d=\"M520 510V185H690V410H600\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"51\"/><path d=\"M520 96V160M580 96V160M640 96V160\" stroke=\"#c4452c\" stroke-width=\"20\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-05",
+        "number": "02",
+        "category": "Environment · adaptation",
+        "topic": "climate",
+        "title": "Europe maps the gap between climate plans and delivery",
+        "composition": "climate-levee",
+        "signature": "plate:climate-levee",
+        "seed": 4155510334,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Water meets a protective levee beside a settlement\"><title>Europe maps the gap between climate plans and delivery</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-02)\"><path d=\"M45 365Q180 280 300 365T540 365V565H45Z\" fill=\"#1b4a6b\"/><path d=\"M430 540L515 225L583 540Z\" fill=\"#7c5a3e\"/><path d=\"M620 365L675 310L730 365V495H620Z\" fill=\"#2c241d\"/><path d=\"M72 438Q170 380 270 438T470 438\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"20\"/><circle cx=\"165\" cy=\"154\" r=\"81\" fill=\"#c98a12\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-05",
+        "number": "03",
+        "category": "Economics · public finance",
+        "topic": "infrastructure",
+        "title": "Japan tries to pair growth spending with a bond ceiling",
+        "composition": "infrastructure-wafer",
+        "signature": "plate:infrastructure-wafer",
+        "seed": 2103116322,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A wafer connects to separate production stages\"><title>Japan tries to pair growth spending with a bond ceiling</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-03)\"><circle cx=\"265\" cy=\"310\" r=\"190\" fill=\"#1b4a6b\"/><path d=\"M142 175H388M108 267H422M108 359H422M142 452H388M175 143V477M267 121V500M359 143V477\" stroke=\"#f4ead7\" stroke-width=\"13\"/><path d=\"M470 190H690V295H470ZM520 410H735V515H520Z\" fill=\"#2c241d\"/><path d=\"M430 310H555V400\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-05",
+        "number": "04",
+        "category": "Science · research funding",
+        "topic": "research",
+        "title": "DOE opens a $400 million lane for basic research",
+        "composition": "research-bridge",
+        "signature": "plate:research-bridge",
+        "seed": 895006642,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separated evidence platforms are connected by a narrow research bridge\"><title>DOE opens a $400 million lane for basic research</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-04)\"><rect x=\"85\" y=\"305\" width=\"185\" height=\"225\" fill=\"#1b4a6b\"/><rect x=\"530\" y=\"210\" width=\"185\" height=\"320\" fill=\"#1d5f47\"/><path d=\"M270 354Q400 195 530 260\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"30\"/><path d=\"M145 258V145H205V258M587 165V82H648V165\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"20\"/><path d=\"M305 420H490\" stroke=\"#7c5a3e\" stroke-width=\"15\" stroke-dasharray=\"26 20\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-05",
+        "number": "05",
+        "category": "Health · community care",
+        "topic": "government",
+        "title": "Eight communities get four-year street-treatment grants",
+        "composition": "government-balance",
+        "signature": "plate:government-balance",
+        "seed": 2076788866,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Public funds are held in balance under a legal decision\"><title>Eight communities get four-year street-treatment grants</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-05)\"><path d=\"M390 130V520M250 525H535M165 240H620\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M190 240L110 400H270ZM585 240L505 400H665Z\" fill=\"#1b4a6b\"/><path d=\"M135 401Q190 476 245 401M530 401Q585 476 640 401\" fill=\"#c98a12\"/><rect x=\"295\" y=\"90\" width=\"190\" height=\"105\" fill=\"#7a1f33\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

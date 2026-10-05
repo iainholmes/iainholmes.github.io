@@ -198,5 +198,20 @@
     "phrase": "Observe, enforce & adapt",
     "seed": 3466503226,
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 009: Observe, enforce &amp; adapt\"><title>Field Brief · 009 · Observe, enforce &amp; adapt</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M97 146H228V287H97ZM361 317H506V465H361Z\" fill=\"#221a14\"/><path d=\"M228 214H429V317\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"27\"/><circle cx=\"318\" cy=\"214\" r=\"60\" fill=\"#c5ad88\"/><path d=\"M122 370H246V486H122Z\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"15\"/><path d=\"M246 427H360\" stroke=\"#221a14\" stroke-width=\"15\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 009 / 2026-10-04</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observe, enforce &amp; adapt</text></g></svg>"
+  },
+  "fb:2026-10-05": {
+    "key": "fb",
+    "date": "2026-10-05",
+    "no": "010",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "Today’s developments move from a new federal AI task force and Europe’s uneven climate preparedness to Japan’s debt constraints, a U.S. basic-science funding call and street-based behavioral-health grants. Across otherwise separate systems, the practical question is whether new coordinating structures can turn stated priorities into accountable delivery. Coordination is being treated as infrastructure. An AI task force, climate-adaptation framework, debt ceiling on annual issuance, open science call and coordinated street-treatment network are not one trend. They operate at different scales, under different authorities and with different measures of success. What they share is a wager that institutional design can close the gap between intention and delivery. The relevant evidence comes next: a task-force report, adaptation metrics, a budget, research awards and community outcomes. Announcements create the structure; only subsequent decisions show whether it can carry weight.",
+    "version": 3,
+    "subject": "risk",
+    "composition": "risk-drain",
+    "signature": "issue:risk-drain",
+    "phrase": "Exposure & resilience",
+    "seed": 131882716,
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 010: Exposure &amp; resilience\"><title>Field Brief · 010 · Exposure &amp; resilience</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M73 435L196 122L352 435L439 255L534 435Z\" fill=\"#221a14\"/><ellipse cx=\"231\" cy=\"296\" rx=\"64\" ry=\"25\" fill=\"#c5ad88\"/><path d=\"M280 311Q280 427 463 462\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"23\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 010 / 2026-10-05</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Exposure &amp; resilience</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
