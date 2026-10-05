@@ -287,6 +287,8 @@ td.mine b{font-weight:500}
 td.mine b,td.mine small{display:block;white-space:normal}
 td.mine small{font:11px/1.6 var(--ui);color:var(--muted);margin-top:4px}
 td.mine .record{margin:0 0 8px}
+/* The Ledger's answered map reuses the Workbook's existing powder-blue folio color. */
+td.mine .record i.a{background:#a9c7ec}
 .ledger-reset{display:inline-block;border:0;border-bottom:1px solid currentColor;background:none;color:var(--teal);font:12px/1.4 var(--ui);min-height:44px;padding:8px 0;margin-top:4px}
 .ledger-manage{margin-top:28px;padding-top:20px;border-top:1px solid var(--rule-strong)}
 .ledger-manage h3{font:500 11px/1.4 var(--ui);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 10px}
@@ -1532,6 +1534,9 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
     return '<span class="'+(cls||'record')+'" aria-hidden="true">'+e.questions.map(function(q){var a=sv&&sv.answers&&sv.answers[q.id];var c='';
       if(sv&&sv.submitted)c=same(a,q.correct)?'r':'w';else if(a&&a.length)c='a';return '<i class="'+c+'"></i>'}).join('')+'</span>';
   }
+  function ledgerRecordHTML(answers){
+    return '<span class="record" aria-hidden="true">'+answers.map(function(answered){return '<i class="'+(answered?'a':'')+'"></i>'}).join('')+'</span>';
+  }
   var DOWN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   function nextSet(){
     var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});
@@ -1610,10 +1615,10 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
       '<dl class="ps-facts"><div><dt>Published</dt><dd>'+EDITIONS.length+' '+(EDITIONS.length===1?'set':'sets')+'</dd></div><div><dt>Questions right</dt><dd>'+(tot?right+' of '+tot:'—')+'</dd></div><div><dt>Accuracy</dt><dd>'+(tot?Math.round(100*right/tot)+'%':'—')+'</dd></div><div><dt>Next set</dt><dd id="nextSet">'+nextSet()+'</dd></div></dl></section>'+
       '<div class="wrap" style="padding-top:28px;padding-bottom:80px"><article class="sheet archive" aria-labelledby="arcTitle"><h2 id="arcTitle" class="sr-only">Problem sets</h2>'+
       '<table class="index"><thead><tr><th scope="col">No.</th><th scope="col">Set</th><th scope="col">Fields</th><th scope="col">Record</th></tr></thead><tbody>'+
-      EDITIONS.map(function(e,i){var v=load(e.date),count=e.questions.filter(function(q){return v&&(v.answers[q.id]||[]).length}).length,used=assistanceCount(e,v),mine=v&&v.submitted?'<b>'+scoreOf(e,v)+'/'+e.questions.length+' correct</b><small>'+count+' of '+e.questions.length+' answered · Complete</small>':'<b>'+count+' of '+e.questions.length+' answered</b><small>'+(count?'In progress':'Not started')+'</small>';
+      EDITIONS.map(function(e,i){var v=load(e.date),answers=e.questions.map(function(q){return !!(v&&(v.answers[q.id]||[]).length)}),count=answers.filter(Boolean).length,used=assistanceCount(e,v),mine=v&&v.submitted?'<b>'+scoreOf(e,v)+'/'+e.questions.length+' correct</b><small>'+count+' of '+e.questions.length+' answered · Complete</small>':'<b>'+count+' of '+e.questions.length+' answered</b><small>'+(count?'In progress':'Not started')+'</small>';
         if(used)mine+='<small>Assistance used '+used+'×</small>';
         if(v&&(count||used||v.current>0||v.submitted))mine+='<button type="button" class="ledger-reset" data-retake="'+e.date+'">Retake set</button>';
-        return '<tr'+(i===0?' aria-current="true"':'')+'><td class="no">'+pad(e.no)+'</td><td class="date"><a class="pd-edition-entry" data-date="'+e.date+'" href="#'+e.date+'">'+shortDate(e.date)+'</a><small>'+e.questions.length+' questions'+(i===0?' · today':'')+'</small></td><td class="fields">'+fields(e).join(', ')+'</td><td class="mine">'+recordHTML(e,v)+mine+'</td></tr>'}).join('')+
+        return '<tr'+(i===0?' aria-current="true"':'')+'><td class="no">'+pad(e.no)+'</td><td class="date"><a class="pd-edition-entry" data-date="'+e.date+'" href="#'+e.date+'">'+shortDate(e.date)+'</a><small>'+e.questions.length+' questions'+(i===0?' · today':'')+'</small></td><td class="fields">'+fields(e).join(', ')+'</td><td class="mine">'+ledgerRecordHTML(answers)+mine+'</td></tr>'}).join('')+
       '</tbody></table><p class="ledger-note">Records live in this browser. Assistance use counts once per question, without changing your score.</p><section class="ledger-manage" aria-labelledby="recordManage"><h3 id="recordManage">Your Workbook record</h3><p>Start Fresh clears your local Workbook work and begins again at No. '+pad(EDITIONS[EDITIONS.length-1].no)+' · Question 1.</p><button type="button" class="btn" data-act="start-fresh">Start Fresh</button>'+resetHTML()+'</section></article></div>';
   }
 

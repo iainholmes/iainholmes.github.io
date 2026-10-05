@@ -24,12 +24,44 @@ async function go(p,i){await p.locator('[data-go="'+i+'"]').click();await ready(
 async function ledger(p){if(!await p.locator('.ledger-manage').count())await p.locator('.ledger-head').click();await p.waitForSelector('.ledger-manage');await ready(p)}
 async function reset(p){await ledger(p);await p.locator('[data-act="start-fresh"]').click();await p.locator('[data-act="confirm-reset"]').click();await p.waitForSelector('.q');await ready(p)}
 async function shot(p,name){await p.screenshot({path:path.join(out,name+'.png'),fullPage:false})}
+async function ledgerMap(p,label){
+ const rows=await p.evaluate(()=>JSON.parse(document.getElementById('challenge-data').textContent).editions.map(e=>{
+  const state=JSON.parse(localStorage.getItem('dec:v1:'+e.date))||{},row=document.querySelector('table.index [data-date="'+e.date+'"]').closest('tr'),style=getComputedStyle(row),boxes=[...row.querySelectorAll('.record i')];
+  return {date:e.date,text:row.querySelector('.mine').textContent,expected:e.questions.map(q=>!!(state.answers&&state.answers[q.id]?.length)),empty:style.getPropertyValue('--sheet').trim(),boxes:boxes.map(el=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return {answered:el.classList.contains('a'),color:s.backgroundColor,image:s.backgroundImage,width:r.width,height:r.height}})};
+ }));
+ for(const r of rows){
+  equal(r.boxes.map(b=>b.answered),r.expected,label+' '+r.date+' maps the actual saved question IDs');
+  check(r.text.includes(r.expected.filter(Boolean).length+' of '+r.expected.length+' answered'),label+' text and boxes agree');
+  for(let i=0;i<r.boxes.length;i++){
+   const b=r.boxes[i],hex=r.empty.slice(1),empty='rgb('+[0,2,4].map(n=>parseInt(hex.slice(n,n+2),16)).join(', ')+')';
+   equal(b.color,r.expected[i]?'rgb(169, 199, 236)':empty,label+' '+r.date+' Q'+(i+1)+' uses existing powder blue or empty sheet');
+   equal(b.image,'none',label+' Ledger progress is distinct from solution correctness');
+   check(b.width===11&&b.height===11,label+' preserves existing box geometry');
+  }
+ }
+ return rows;
+}
 async function main(){
  const browser=await webkit.launch({headless:true,...process.env.WB_WEBKIT?{executablePath:process.env.WB_WEBKIT}:{},env:{...process.env,WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS:'1',WEBKIT_DISABLE_COMPOSITING_MODE:'1'}});
  try{
   let c=await context(browser,{width:390,height:844}),p=await c.newPage();await open(p);
   const data=await p.evaluate(()=>JSON.parse(document.getElementById('challenge-data').textContent)),editions=data.editions.slice().sort((a,b)=>a.date.localeCompare(b.date));
   equal(editions.length,5);equal(editions.reduce((n,e)=>n+e.questions.length,0),40);
+  // Acceptance regression: non-adjacent saved answers, genuine reopen/Resume, and both reset scopes.
+  const mapped=editions[1],other=editions[2];await ledger(p);await ledgerMap(p,'pristine');
+  await p.locator('[data-date="'+mapped.date+'"].pd-edition-entry').click();await ready(p);
+  for(const i of [1,4]){await go(p,i);await p.locator('[data-opt="0"]').click()}
+  const mapAnswers=(await state(p,mapped.date)).answers;equal(Object.keys(mapAnswers).sort(),['q2','q5']);
+  await p.locator('.pd-tools a').filter({hasText:'Titles'}).click();await p.waitForURL('**/personal-updates/');const mapVisit=await c.storageState();await c.close();c=await context(browser,{width:390,height:844},true,mapVisit);p=await c.newPage();await open(p);
+  await p.locator('.pd-resume button').click();await p.waitForFunction(d=>location.hash==='#'+d+'/q5',mapped.date);await ready(p);equal((await state(p,mapped.date)).answers,mapAnswers,'Resume preserves the exact sparse answered map');
+  await ledger(p);await ledgerMap(p,'reopened Resume');await p.reload();await ready(p);await ledgerMap(p,'reloaded Ledger');
+  for(const mode of ['day','night']){await p.locator('button[data-mode="'+mode+'"]').click();await ledgerMap(p,mode);await shot(p,'mapped-ledger-'+mode)}
+  await p.locator('[data-date="'+other.date+'"].pd-edition-entry').click();await ready(p);for(const i of [0,7]){await go(p,i);await p.locator('[data-opt="0"]').click()}
+  await ledger(p);const beforeRetake=await records(p);await p.locator('[data-retake="'+mapped.date+'"]').click();await p.locator('[data-act="cancel-reset"]').click();equal(await records(p),beforeRetake,'cancelled Retake leaves every box recorded');
+  await p.locator('[data-retake="'+mapped.date+'"]').click();await p.locator('[data-act="confirm-reset"]').click();await ready(p);await ledger(p);await ledgerMap(p,'per-set Retake');equal((await state(p,mapped.date)).answers,{});equal(Object.keys((await state(p,other.date)).answers).sort(),['q1','q8'],'Retake clears only its own map');
+  await p.locator('[data-date="'+other.date+'"].pd-edition-entry').click();await ready(p);for(let i=0;i<8;i++){await go(p,i);if(!(await state(p,other.date)).answers[other.questions[i].id]?.length)await p.locator('[data-opt="0"]').click()}
+  await p.locator('[data-act="submit"]').click();await p.waitForSelector('.results');check(await p.locator('.record.big i').evaluateAll(es=>es.length===8&&es.every(e=>e.classList.contains('r')||e.classList.contains('w'))),'solution correctness strips retain their original semantics');await ledger(p);await ledgerMap(p,'completed 8/8');
+  const beforeFresh=await records(p);await p.locator('[data-act="start-fresh"]').click();await p.locator('[data-act="cancel-reset"]').click();equal(await records(p),beforeFresh,'cancelled Start Fresh preserves all maps');await reset(p);await ledger(p);const freshMaps=await ledgerMap(p,'Start Fresh');check(freshMaps.every(r=>r.expected.every(v=>!v)),'Start Fresh empties all eight boxes of every set');await p.locator('button[data-mode="day"]').click();
   // Exercise every authored pair through the actual controls, including all three answer kinds.
   for(const e of editions){
    await ledger(p);await p.locator('a.pd-edition-entry[data-date="'+e.date+'"]').click();await p.waitForSelector('.q');await ready(p);
@@ -83,7 +115,8 @@ async function main(){
    const targets=await p.locator('.learning summary').evaluateAll(els=>els.map(el=>el.getBoundingClientRect().height));check(targets.every(h=>h>=44),'inline controls preserve touch height');
    await p.locator('button[data-mode="night"]').click();check(await p.locator('html').getAttribute('data-mode')==='night');await p.locator('button[data-mode="day"]').click();await p.locator('.pd-tools button').filter({hasText:'Share'}).click();check((await p.evaluate(()=>window.__copied)).some(url=>url.includes(last.date)));
    await p.locator('.pd-tools button').filter({hasText:'‹ Prev'}).click();await p.waitForFunction(d=>location.hash==='#'+d,editions.at(-2).date);await ready(p);equal((await saved(p)).edition,editions.at(-2).date);await p.locator('.pd-tools button').filter({hasText:'Next ›'}).click();await p.waitForFunction(d=>location.hash==='#'+d,last.date);await ready(p);equal((await saved(p)).edition,last.date);
-   await p.locator('.pd-tools button').filter({hasText:'Index'}).click();await ready(p);await overflow(p,'Ledger '+v.width);check(await p.locator('.archive').evaluate(el=>el.scrollWidth<=el.clientWidth+1),'Ledger records fit their available width');check(await p.locator('[data-act="start-fresh"]').isVisible());await shot(p,'ledger-'+v.width);await p.locator('[data-act="start-fresh"]').click();await overflow(p,'confirmation '+v.width);await p.locator('[data-act="cancel-reset"]').click();check(await p.locator('[data-act="start-fresh"]').evaluate(el=>el===document.activeElement),'Cancel returns focus');
+   await open(p,'#'+old.date+'/q2');await p.locator('[data-opt="0"]').click();await go(p,4);await p.locator('[data-opt="0"]').click();
+   await p.locator('.pd-tools button').filter({hasText:'Index'}).click();await ready(p);await overflow(p,'Ledger '+v.width);await ledgerMap(p,'responsive '+v.width);check(await p.locator('.archive').evaluate(el=>el.scrollWidth<=el.clientWidth+1),'Ledger records fit their available width');check(await p.locator('[data-act="start-fresh"]').isVisible());await shot(p,'ledger-'+v.width);await p.locator('button[data-mode="night"]').click();await ledgerMap(p,'responsive night '+v.width);await shot(p,'ledger-night-'+v.width);await p.locator('button[data-mode="day"]').click();await p.locator('[data-act="start-fresh"]').click();await overflow(p,'confirmation '+v.width);await p.locator('[data-act="cancel-reset"]').click();check(await p.locator('[data-act="start-fresh"]').evaluate(el=>el===document.activeElement),'Cancel returns focus');
    const ledgerText=await p.locator('table.index').textContent();check(ledgerText.includes('Assistance used 1×'));await c.close();console.log('Responsive Workbook checks passed at '+v.width+'×'+v.height);
   }
   equal(errors,[],'no JavaScript errors during all-question interaction');
