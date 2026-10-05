@@ -1478,6 +1478,201 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Abadie, Diamond & Hainmueller (2010), JASA; Abadie (2021), Journal of Economic Literature."
         }
       ]
+    },
+    {
+      "no": 6,
+      "date": "2026-10-05",
+      "minutes": 22,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "single",
+          "stem": "A researcher regresses county mean health outcomes on county pollution exposure. County <i>j</i>’s outcome mean is calculated from <i>n</i><sub>j</sub> independently sampled residents, and the individual outcome variance is the same across counties. Assume the county-level regression error has conditional variance σ²/<i>n</i><sub>j</sub> and the conditional mean is correctly specified. Which weighted least-squares objective is efficient?",
+          "options": [
+            "Minimize the sum of squared residuals with every county weighted equally.",
+            "Minimize the sum of squared residuals using weight <i>n</i><sub>j</sub> for county <i>j</i>.",
+            "Minimize the sum of squared residuals using weight 1/<i>n</i><sub>j</sub> for county <i>j</i>.",
+            "Discard counties with below-median sample sizes, then use equal weights."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Weighted least squares",
+            "Inverse-variance weighting",
+            "Grouped-data precision"
+          ],
+          "assistance": "<p>Efficient least squares gives more influence to observations measured more precisely. Translate the stated conditional variance into its inverse before choosing an objective weight.</p><p>Separate example: if two group means have error variances σ²/25 and σ²/100, their inverse variances are proportional to 25 and 100. The square roots enter a transformed regression, while the squared-residual objective uses the inverse variances themselves. Apply that distinction to the county sizes in this question.</p>",
+          "explanation": "<p><b>(B) is correct.</b> Efficient WLS weights each squared residual by the inverse of its conditional variance. Since Var(<i>u</i><sub>j</sub>|<i>X</i>) = σ²/<i>n</i><sub>j</sub>, inverse variance is proportional to <i>n</i><sub>j</sub>; the common σ² factor is irrelevant. Equal-weight OLS in (A) can remain consistent under the stated conditional-mean assumption, but it ignores known precision differences. (C) reverses the efficient weighting and gives the noisiest county means the greatest influence. (D) discards information and does not reproduce inverse-variance weighting.</p>",
+          "refs": "Wooldridge, Econometric Analysis of Cross Section and Panel Data, weighted least squares; Angrist & Pischke, Mostly Harmless Econometrics, grouped data."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "A gym faces identical consumers with inverse demand <i>p</i> = 10 − <i>q</i> for visits and constant marginal cost of $2 per visit. It can charge a per-visit price plus a fixed membership fee, consumers have no outside-option surplus, and resale is impossible. Which two-part tariff maximizes profit while inducing efficient usage?",
+          "options": [
+            "Per-visit price $2 and fixed fee $32.",
+            "Per-visit price $6 and fixed fee $8.",
+            "Per-visit price $10 and fixed fee $0.",
+            "Per-visit price $0 and fixed fee $50."
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Two-part tariffs",
+            "Consumer-surplus extraction",
+            "Efficient usage pricing"
+          ],
+          "assistance": "<p>With identical consumers, separate the usage decision from surplus extraction. First set the marginal usage price to govern quantity; then calculate the area under demand above that price.</p><p>Separate example: inverse demand <i>p</i> = 12 − <i>q</i> and marginal cost 4 imply efficient usage where willingness to pay equals 4. The resulting consumer-surplus triangle has height and base both equal to 8, so its area is 32. Repeat those steps with this question’s demand and cost rather than importing the example’s numbers.</p>",
+          "explanation": "<p><b>(A) is correct.</b> Efficient usage requires the per-visit price to equal marginal cost, $2, giving <i>q</i> = 8. Consumer surplus at that price is ½(10 − 2)(8) = $32, which the gym can extract with the fixed fee while leaving the consumer just willing to participate. (B) restricts usage below the efficient level and leaves profit on the table. (C) induces zero visits. Under (D), visits are free, so quantity is 10 and usage cost is not internalized; moreover the resulting gross surplus net of production cost does not support a $50 fee.</p>",
+          "refs": "Tirole, The Theory of Industrial Organization; Varian, Intermediate Microeconomics, nonlinear pricing."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "single",
+          "stem": "In a Solow model expressed per effective worker, output is <i>y</i> = <i>k</i><sup>1/2</sup>. The saving rate is 0.24, depreciation is 0.03, population growth is 0.02, and labor-augmenting technological growth is 0.01. Using the standard approximation δ + <i>n</i> + <i>g</i> for break-even investment, what is steady-state capital per effective worker?",
+          "options": [
+            "4",
+            "8",
+            "16",
+            "25"
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Solow steady state",
+            "Break-even investment",
+            "Capital per effective worker"
+          ],
+          "assistance": "<p>At a steady state per effective worker, saving-funded investment equals the amount needed to offset depreciation, population growth, and technological growth.</p><div class=\"eq\"><i>s f</i>(<i>k</i>) = (δ + <i>n</i> + <i>g</i>)<i>k</i></div><p>Separate example: with <i>f</i>(<i>k</i>) = √<i>k</i>, <i>s</i> = 0.20, and break-even rate 0.05, dividing by √<i>k</i> gives √<i>k</i> = 4 and hence <i>k</i> = 16. Build the analogous equation from the actual rates before squaring.</p>",
+          "explanation": "<p><b>(C) is correct.</b> The break-even rate is 0.03 + 0.02 + 0.01 = 0.06. The steady-state condition is 0.24√<i>k</i> = 0.06<i>k</i>. For positive <i>k</i>, divide by 0.06√<i>k</i> to obtain √<i>k</i> = 4, so <i>k</i>* = 16. (A) stops at steady-state output √<i>k</i> = 4 rather than capital. (B) has no support from the accumulation equation. (D) would require √<i>k</i> = 5, inconsistent with the saving-to-break-even ratio.</p>",
+          "refs": "Solow (1956), Quarterly Journal of Economics; Romer, Advanced Macroeconomics, Solow growth model."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "multi",
+          "stem": "Nutrient runoff comes from many farms. Regulators observe watershed-level ambient concentration but cannot reliably measure each farm’s runoff. Weather makes ambient concentration noisy, and farms differ in how runoff reaches the river. Which statements are correct?",
+          "options": [
+            "A farm-specific emissions tax is difficult to implement when individual runoff cannot be measured reliably.",
+            "An ambient tax or reward can create incentives, but it may expose farms to penalties driven partly by weather and other farms’ behavior.",
+            "Differences in transport from fields to the river can matter for cost-effective spatial targeting.",
+            "A uniform subsidy for fertilizer reduction is necessarily first-best despite unobserved runoff and heterogeneous transport."
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Nonpoint-source pollution",
+            "Ambient incentives",
+            "Spatially differentiated damages"
+          ],
+          "assistance": "<p>Separate what the regulator observes from what causes environmental damage. A policy tied to the common ambient outcome can influence behavior even when individual discharges are hidden, but the signal combines many contributors and natural variation.</p><p>Then ask whether one unit reduced at every location produces the same downstream benefit. In a separate watershed, a field with delivery ratio 0.8 affects the river four times as much as one with ratio 0.2. This illustrates why uniform input reductions and damage-weighted reductions need not coincide.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> Nonpoint pollution weakens the information needed for a conventional source-specific emissions tax. Ambient instruments can make the shared environmental indicator payoff-relevant, but weather and other farms’ actions add risk and weaken the link between one farm’s effort and its payment. Spatially heterogeneous delivery ratios mean equal edge-of-field reductions can yield unequal water-quality benefits. (D) is false: a uniform subsidy generally ignores heterogeneity in abatement costs, delivery, and marginal damages, so it is not necessarily first-best.</p>",
+          "refs": "Segerson (1988), Journal of Environmental Economics and Management; Shortle & Horan (2001), Journal of Economic Surveys."
+        },
+        {
+          "id": "q5",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "A balanced two-arm experiment currently has a standard error of 4 outcome units for the treatment-control mean difference. Holding outcome variance and design fixed, each arm’s sample size is quadrupled. Using the normal approximation for a two-sided 5% test with 80% power, the new minimum detectable effect is approximately 5.6 units. True or false?",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Minimum detectable effects",
+            "Statistical power",
+            "Sample-size scaling"
+          ],
+          "assistance": "<p>Standard errors scale approximately with 1/√<i>n</i>. For a two-sided test, a common normal-approximation MDE is the new standard error multiplied by the sum of the significance and power critical values.</p><div class=\"eq\">MDE ≈ (<i>z</i><sub>1−α/2</sub> + <i>z</i><sub>power</sub>) × SE</div><p>Separate example: if a standard error falls from 3 to 1.5, then 90% power at 5% uses approximately (1.96 + 1.28) × 1.5. Apply the square-root scaling and the 80%-power critical value to this question.</p>",
+          "explanation": "<p><b>True.</b> Quadrupling each arm’s sample size halves the standard error from 4 to 2. For a two-sided 5% test and 80% power, the normal critical values are approximately 1.96 and 0.84. Thus MDE ≈ (1.96 + 0.84)(2) = 5.6 units. The calculation concerns a pre-specified effect under the maintained variance and design assumptions; clustering, noncompliance, multiple outcomes, or variance changes would alter the design effect and therefore the MDE.</p>",
+          "refs": "Bloom (1995), Evaluation Review; Duflo, Glennerster & Kremer (2007), Handbook of Development Economics, experimental design."
+        },
+        {
+          "id": "q6",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "In a randomized job program, outcome retention is 90% in treatment and 75% in control. Assume treatment weakly increases the probability that every individual is observed, so no person would be observed under control but missing under treatment. Which statements about Lee bounds are correct?",
+          "options": [
+            "The higher-retention treatment outcome distribution is trimmed by a fraction 1 − 0.75/0.90 = 1/6 to make observed shares comparable.",
+            "Trimming the upper tail and the lower tail of treated outcomes produces opposite endpoints of a bound for always-observed individuals.",
+            "The monotonic-selection assumption follows automatically from randomized treatment assignment.",
+            "Lee bounds can remain informative without specifying a parametric outcome model for attrition."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Lee bounds",
+            "Differential attrition",
+            "Monotonic selection"
+          ],
+          "assistance": "<p>Random assignment balances treatment at baseline but does not by itself equalize who remains observed. Under monotonic selection, the lower-retention arm identifies the share of units who would be observed in both states.</p><p>Separate example: retention of 80% versus 64% requires removing 1 − 0.64/0.80 = 20% from the higher-retention arm. Because the identities of the extra observed units are unknown, trim once from each outcome tail to obtain extreme comparisons. Apply the same ratio logic here and keep the monotonicity assumption distinct from random assignment.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> The comparable always-observed share within observed treatment cases is 0.75/0.90, so 1/6 of treated observations are the unidentified excess and must be trimmed. Removing the best outcomes gives one extreme and removing the worst gives the other. (C) is false: randomization identifies assignment effects before attrition, whereas monotonic selection is an additional behavioral assumption about observation under the two assignments. Lee bounds are nonparametric with respect to the outcome equation, though their interpretation still depends on random assignment, monotonic selection, and the trimming setup.</p>",
+          "refs": "Lee (2009), Review of Economic Studies; Imai (2009), Statistics & Probability Letters."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "A developer can irreversibly convert a wetland now for a net payoff of $20 million. Alternatively, the developer may wait one year, learn whether the project’s gross payoff is $180 million or $60 million with equal probability, and then pay the $100 million conversion cost only if profitable. There are no interim cash flows, and the discount rate is 5%. What is the economically preferred action?",
+          "options": [
+            "Convert now because the current net payoff is positive.",
+            "Wait, because the discounted expected value of the option is about $38.1 million.",
+            "Wait, because the undiscounted expected gross payoff is $120 million.",
+            "Never convert because irreversible projects cannot have positive option value."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Real option value",
+            "Irreversible development",
+            "Value of waiting"
+          ],
+          "assistance": "<p>Waiting preserves the right—but not the obligation—to invest after uncertainty resolves. Evaluate each future state using the payoff after the conversion cost, replace negative state payoffs with zero, take the probability-weighted average, and discount.</p><p>Separate example: next-year gross payoffs of 150 or 70, cost 90, equal probabilities, and discount rate 10% give a waiting value [0.5(60) + 0.5(0)]/1.10. Compare the corresponding option value with the payoff from immediate irreversible action in this question.</p>",
+          "explanation": "<p><b>(B) is correct.</b> If the developer waits, conversion occurs only in the high state, yielding 180 − 100 = $80 million; the low-state option is abandoned. The discounted option value is [0.5($80) + 0.5($0)]/1.05 ≈ $38.1 million, exceeding the $20 million payoff from immediate conversion. (A) ignores the opportunity cost of destroying the option to wait. (C) compares expected gross benefits rather than state-contingent net payoffs and does not discount. (D) reverses the logic: irreversibility combined with uncertainty is precisely what can make waiting valuable.</p>",
+          "refs": "Dixit & Pindyck (1994), Investment Under Uncertainty; Arrow & Fisher (1974), Quarterly Journal of Economics."
+        },
+        {
+          "id": "q8",
+          "field": "Research design",
+          "kind": "multi",
+          "stem": "A county broadband subsidy is evaluated using observational panel data, and the main outcome is employment. Which proposed negative-control checks are informative?",
+          "options": [
+            "Test whether future subsidy receipt predicts employment measured before the subsidy could operate.",
+            "Use an outcome such as appendicitis admissions that should not respond to broadband but may share county reporting or healthcare-access confounding.",
+            "Conclude the employment estimate is causal whenever both negative controls are statistically insignificant.",
+            "Treat a meaningful negative-control association as evidence that the design or measurement process needs further investigation."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Negative controls",
+            "Residual confounding",
+            "Falsification tests"
+          ],
+          "assistance": "<p>A negative control should preserve a suspected bias pathway while removing the causal pathway of interest. Consider temporal ordering for an exposure control and substantive nonresponsiveness for an outcome control.</p><p>For a separate policy example, next year’s treatment should not cause last year’s outcome, while an unrelated contemporaneous outcome can reveal shared coding or access changes. Passing such checks removes specific warning signs; it does not verify every identifying assumption or guarantee adequate statistical power.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> A future-treatment association with a genuinely pre-treatment outcome can reveal selection, anticipation, or misspecified trends. An outcome that broadband should not affect but that shares reporting or access mechanisms can expose residual confounding or measurement changes. A detected association therefore warrants investigation. (C) is false: insignificant negative controls may be imprecise, may miss the relevant bias pathway, and cannot prove identification. They are targeted falsification checks, not omnibus validation tests.</p>",
+          "refs": "Lipsitch, Tchetgen Tchetgen & Cohen (2010), Epidemiology; Miao, Tchetgen Tchetgen & Geng (2018), Biometrika."
+        }
+      ]
     }
   ]
 }
