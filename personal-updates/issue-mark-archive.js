@@ -198,5 +198,20 @@
     "phrase": "Observe, enforce & adapt",
     "seed": 3466503226,
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 009: Observe, enforce &amp; adapt\"><title>Field Brief · 009 · Observe, enforce &amp; adapt</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M97 146H228V287H97ZM361 317H506V465H361Z\" fill=\"#221a14\"/><path d=\"M228 214H429V317\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"27\"/><circle cx=\"318\" cy=\"214\" r=\"60\" fill=\"#c5ad88\"/><path d=\"M122 370H246V486H122Z\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"15\"/><path d=\"M246 427H360\" stroke=\"#221a14\" stroke-width=\"15\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 009 / 2026-10-04</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observe, enforce &amp; adapt</text></g></svg>"
+  },
+  "fb:2026-10-05": {
+    "key": "fb",
+    "date": "2026-10-05",
+    "no": "010",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "Today’s developments span semiconductor licensing, the federal cost of capital, loan-backed nuclear expansion, Indonesia’s peat-fire emergency and a proposed use of autonomous vehicles in Raleigh policing. They do not describe one trend; each clarifies where a consequential system is testing the boundary between available technology and institutional control. Five separate systems are confronting limits on control. The Arm trial, Treasury market, reactor loan, Indonesian fires and Raleigh proposal do not share a single cause. They belong to different legal, financial, physical and municipal systems. The useful comparison is institutional: contracts determine access to chip tools, fiscal credibility shapes borrowing costs, licensing governs reactor expansion, peat hydrology limits fire suppression and public rules must precede autonomous policing. In each case, technical capacity alone does not decide the outcome.",
+    "version": 3,
+    "subject": "evidence",
+    "composition": "evidence-split",
+    "signature": "issue:evidence-split",
+    "phrase": "Observation & evidence",
+    "seed": 3156335925,
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 010: Observation &amp; evidence\"><title>Field Brief · 010 · Observation &amp; evidence</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M300 115V237L148 365M300 237L452 365\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"23\"/><path d=\"M90 365H207V477H90Z\" fill=\"#8a2a36\"/><path d=\"M386 365L452 300L518 365L452 476Z\" fill=\"#c5ad88\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 010 / 2026-10-05</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observation &amp; evidence</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

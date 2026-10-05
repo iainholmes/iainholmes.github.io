@@ -356,6 +356,68 @@
         "seed": 1941212462,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A high lake spills toward inhabited lower ground\"><title>Bogong moth migration rebound offers a cautious conservation signal</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-04-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-04-05)\"><path d=\"M50 425L235 130L398 385L530 215L750 525H50Z\" fill=\"#1d5f47\"/><ellipse cx=\"290\" cy=\"285\" rx=\"85\" ry=\"34\" fill=\"#1b4a6b\"/><path d=\"M340 295Q340 430 570 483\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"34\"/><path d=\"M584 410L650 355L716 410V510H584Z\" fill=\"#2c241d\"/><path d=\"M93 480H234\" stroke=\"#c98a12\" stroke-width=\"25\"/></g></svg>"
       }
+    },
+    "2026-10-05": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-05",
+        "number": "01",
+        "category": "Technology · semiconductors",
+        "topic": "government",
+        "title": "Qualcomm and Arm return to court over licensing tools and contract damages",
+        "composition": "government-balance",
+        "signature": "plate:government-balance",
+        "seed": 4132899390,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Public funds are held in balance under a legal decision\"><title>Qualcomm and Arm return to court over licensing tools and contract damages</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-01)\"><path d=\"M390 130V520M250 525H535M165 240H620\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M190 240L110 400H270ZM585 240L505 400H665Z\" fill=\"#1b4a6b\"/><path d=\"M135 401Q190 476 245 401M530 401Q585 476 640 401\" fill=\"#c98a12\"/><rect x=\"295\" y=\"90\" width=\"190\" height=\"105\" fill=\"#7a1f33\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-05",
+        "number": "02",
+        "category": "U.S. policy · public finance",
+        "topic": "finance",
+        "title": "High Treasury yields leave Washington with costly and risky choices",
+        "composition": "finance-vault",
+        "signature": "plate:finance-vault",
+        "seed": 2300944479,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A locked reserve encloses transfers\"><title>High Treasury yields leave Washington with costly and risky choices</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-02)\"><rect x=\"110\" y=\"125\" width=\"430\" height=\"395\" rx=\"9\" fill=\"#2c241d\"/><circle cx=\"325\" cy=\"320\" r=\"122\" fill=\"#1b4a6b\" stroke=\"#f4ead7\" stroke-width=\"16\"/><path d=\"M325 235V405M240 320H410\" stroke=\"#f4ead7\" stroke-width=\"16\"/><path d=\"M540 245H690V465H615\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"32\"/><path d=\"M607 449L586 465L607 481\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"13\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-05",
+        "number": "03",
+        "category": "Energy · nuclear finance",
+        "topic": "finance",
+        "title": "U.S. prepares $4.2 billion Vistra loan for nuclear uprates",
+        "composition": "finance-ledger",
+        "signature": "plate:finance-ledger",
+        "seed": 2363832533,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A ledger is inspected beside a hidden transfer channel\"><title>U.S. prepares $4.2 billion Vistra loan for nuclear uprates</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-03)\"><path d=\"M85 130H360V540H85Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M125 200H325M125 270H325M125 340H260M125 410H300\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"548\" cy=\"284\" r=\"112\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"35\"/><path d=\"M624 367L718 489\" stroke=\"#7a1f33\" stroke-width=\"42\"/><path d=\"M402 530V425H475V345H548\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"21\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-05",
+        "number": "04",
+        "category": "Environment · wildfire",
+        "topic": "heat",
+        "title": "Indonesia’s hotspot decline masks persistent peat-fire and health risk",
+        "composition": "heat-exposure",
+        "signature": "plate:heat-exposure",
+        "seed": 223675473,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An exposure field crossed by people and thermal bands\"><title>Indonesia’s hotspot decline masks persistent peat-fire and health risk</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-04)\"><path d=\"M90 115H710V510H90Z\" fill=\"#7a1f33\"/><path d=\"M90 205Q245 125 410 205T710 205M90 325Q245 245 410 325T710 325M90 445Q245 365 410 445T710 445\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"45\"/><g fill=\"#f4ead7\"><circle cx=\"255\" cy=\"283\" r=\"38\"/><path d=\"M205 450V355Q255 305 305 355V450Z\"/><circle cx=\"558\" cy=\"360\" r=\"38\"/><path d=\"M508 525V430Q558 380 608 430V525Z\"/></g></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-05",
+        "number": "05",
+        "category": "Triangle · public safety technology",
+        "topic": "research",
+        "title": "Raleigh police evaluate autonomous patrol vehicles for downtown",
+        "composition": "research-bridge",
+        "signature": "plate:research-bridge",
+        "seed": 243736416,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separated evidence platforms are connected by a narrow research bridge\"><title>Raleigh police evaluate autonomous patrol vehicles for downtown</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-05)\"><rect x=\"85\" y=\"305\" width=\"185\" height=\"225\" fill=\"#1b4a6b\"/><rect x=\"530\" y=\"210\" width=\"185\" height=\"320\" fill=\"#1d5f47\"/><path d=\"M270 354Q400 195 530 260\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"30\"/><path d=\"M145 258V145H205V258M587 165V82H648V165\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"20\"/><path d=\"M305 420H490\" stroke=\"#7c5a3e\" stroke-width=\"15\" stroke-dasharray=\"26 20\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
