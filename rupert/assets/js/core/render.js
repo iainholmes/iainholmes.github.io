@@ -2,7 +2,7 @@ import { labrador } from './labrador.js';
 import { weatherParts } from './weather.js';
 import { guidanceFor } from './adventure.js';
 import { fetchDock } from './fetch-drawing.js';
-import { CROWD_LEVELS, CROWD_TOLERANCES } from './crowds.js';
+import { CROWD_LEVELS, CROWD_TOLERANCES, crowdReadings } from './crowds.js';
 import { SEASONS, EXPERIENCES, seasonFor } from './options.js';
 // HTML rendering. Pure string functions shared by the build tool (pre-render) and the browser (re-render).
 // Every value from data passes through esc(). No DOM access here.
@@ -245,12 +245,11 @@ function interlude(ed, ctx) {
 }
 
 export function crowdVisual(crowd) {
-  const scale = (label, value) => {
-    const index = CROWD_LEVELS.indexOf(value);
-    return `<div class="crowd-line"><span>${label}</span><span class="crowd-scale" role="img" aria-label="${esc(label)}: ${esc(value || 'No crowd data')}">${CROWD_LEVELS.map((x,i)=>`<i class="${index >= i ? 'filled' : ''}"></i>`).join('')}</span><span>${esc(value || '—')}</span></div>`;
+  const { typical, perceived, facts } = crowdReadings(crowd);
+  const scale = (label, description, reading) => {
+    return `<div class="crowd-line${reading ? '' : ' is-unassessed'}"><div class="crowd-heading"><span>${label}</span><strong class="crowd-value">${esc(reading?.value || 'Not recorded')}</strong></div><p class="crowd-description">${description}</p>${reading ? `<div class="crowd-scale" role="img" aria-label="${esc(label)}: ${esc(reading.value)} on the Quiet to Busy scale">${CROWD_LEVELS.map((x,i)=>`<i${reading.index === i ? ' class="is-observed"' : ''} aria-hidden="true"></i>`).join('')}</div><div class="crowd-key" aria-hidden="true"><span>Quiet</span><span>Busy</span></div>` : ''}</div>`;
   };
-  const facts = [['Quietest window',crowd?.low_crowd_window],['Peak',crowd?.peak_period],['Dogs',crowd?.dog_density],['Attendance',crowd?.attendance],['Weekdays / weekends',crowd?.weekend_vs_weekday],['Foot traffic',crowd?.foot_traffic]].filter(([,v])=>v);
-  return `<div class="crowd-visual">${scale('Typical crowd',crowd?.typical_level)}${scale('Perceived crowding',crowd?.perceived_crowding)}<div class="crowd-key"><span>Quiet</span><span>Busy</span></div>${facts.length ? `<dl class="facts">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}${!crowd?.typical_level && !crowd?.perceived_crowding ? '<p class="as-of">No crowd data recorded.</p>' : ''}</div>`;
+  return `<div class="crowd-visual">${scale('Typical crowd','Usual number of visitors',typical)}${scale('Perceived crowding','How busy the space feels',perceived)}${facts.length ? `<dl class="facts">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}${!typical && !perceived && !facts.length ? '<p class="as-of">No crowd data recorded.</p>' : ''}</div>`;
 }
 
 /* ---------- full edition ---------- */

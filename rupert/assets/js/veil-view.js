@@ -2,11 +2,11 @@ import { veilState, veilArtworkProblems, upcomingTravel, PENDING_TIME, DAY_LABEL
 import { SLOTS } from './core/editions.js';
 import { nyDateString, longDate, shortDate } from './core/dates.js';
 import { saveVeilArrival } from './core/veil-arrival.js';
-import { weekendAlmanac } from './core/almanac.js';
+import { currentAlmanac } from './core/almanac.js';
 import { readBackup, TRAVEL_STORAGE_KEY } from './core/travel.js';
 import { esc, photo, titleCase } from './core/render.js';
 
-export function renderVeil(state, photos, base, trip = null) {
+export function renderVeil(state, photos, base, trip = null, now = new Date()) {
   const tile = (slot, entry) => {
     const { edition: e, published, withdrawn } = entry;
     const link = published || withdrawn;
@@ -15,16 +15,16 @@ export function renderVeil(state, photos, base, trip = null) {
     return `<${tag} class="veil-tile${published ? ' is-published' : withdrawn ? ' is-withdrawn' : ' is-pending'}"${link ? ` href="${base}edition/${esc(e.id)}/"` : ''} aria-label="${esc(name)}"><span class="veil-thumbnail">${photo({id:e.photo_id},photos,base,{sizes:'(min-width: 760px) 92px, 54px',eager:true,cls:'veil-image'})}</span><span class="veil-tile-copy"><strong>${DAY_LABEL[slot]}</strong><span>${published ? 'Published' : withdrawn ? 'Withdrawn' : PENDING_TIME}</span></span></${tag}>`;
   };
   const { month, season, year, issue } = state.identity;
-  const almanac = weekendAlmanac(state.weekend.start);
+  const almanac = currentAlmanac(now);
   const symbols = {
     sunset: '<path d="M2 15h20M6 12a6 6 0 0 1 12 0M12 2v2M3 5l2 2M21 5l-2 2M12 18v4m-3-3 3 3 3-3"/>',
     moon: '<path d="M16 3a9 9 0 1 0 5 14A9 9 0 0 1 16 3Z"/>',
     daylight: '<path d="M2 18h20M4 15a8 8 0 0 1 16 0M4 11v4h4m12-4v4h-4M12 2v2"/>'
   };
   const value = (label, symbol, text) => `<div class="veil-almanac-item"><dt><span class="veil-almanac-label">${label}</span><svg class="veil-almanac-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${symbols[symbol]}</svg></dt><dd>${esc(text)}</dd></div>`;
-  const provenance = `Chapel Hill, N.C. · ${longDate(state.weekend.start).split(' ')[0]} ${shortDate(state.weekend.start).split(' ').slice(1).join(' ')}`;
+  const provenance = `Chapel Hill, N.C. · ${longDate(almanac.date).split(' ')[0]} ${shortDate(almanac.date).split(' ').slice(1).join(' ')}`;
   const group = (key, label) => `<section class="veil-week-group" aria-label="${label}"><h2 class="veil-group-title">${label}</h2><div class="veil-tiles veil-tiles-group">${SLOTS.map(slot=>tile(slot,state[key][slot])).join('')}</div></section>`;
-  return `<div class="veil-plate"><div class="veil-lockup"><span class="veil-no" aria-label="Number ${issue}"><span class="veil-number-prefix">N<sup>o</sup>.</span> ${issue}</span><div class="veil-cycle"><span>${month}</span><small>${season} · ${year}</small></div></div><div class="veil-center"><div class="veil-recommendations"><div class="veil-band" aria-label="Previous and current recommendation previews">${group('previous','Previous Week')}${group('current','This Week')}</div>${trip ? `<a class="veil-travel" href="${base}travel/#saved-trips"><span>Upcoming Travel</span><strong>${esc(trip.title)}</strong><time datetime="${esc(trip.start)}">${esc(longDate(trip.start))}</time></a>` : ''}</div><div class="veil-portrait-territory" aria-hidden="true"><img class="veil-rupert-mark" src="${base}assets/img/rupert-portrait-outline.svg" alt=""></div></div><footer class="veil-almanac" aria-label="Calculated almanac for Chapel Hill, ${esc(longDate(state.weekend.start))}"><p class="veil-almanac-provenance">${esc(provenance)}</p><dl class="veil-almanac-values">${value('Sunset','sunset',almanac.sunset+' ET')}${value('Moon','moon',almanac.moon)}${value('Daylight','daylight',almanac.daylight)}</dl></footer></div>`;
+  return `<div class="veil-plate"><div class="veil-lockup"><span class="veil-no" aria-label="Number ${issue}"><span class="veil-number-prefix">N<sup>o</sup>.</span> ${issue}</span><div class="veil-cycle"><span>${month}</span><small>${season} · ${year}</small></div></div><div class="veil-center"><div class="veil-recommendations"><div class="veil-band" aria-label="Previous and current recommendation previews">${group('previous','Previous Week')}${group('current','This Week')}</div>${trip ? `<a class="veil-travel" href="${base}travel/#saved-trips"><span>Upcoming Travel</span><strong>${esc(trip.title)}</strong><time datetime="${esc(trip.start)}">${esc(longDate(trip.start))}</time></a>` : ''}</div><div class="veil-portrait-territory" aria-hidden="true"><img class="veil-rupert-mark" src="${base}assets/img/rupert-portrait-outline.svg" alt=""></div></div><footer class="veil-almanac" aria-label="Calculated almanac for Chapel Hill, ${esc(longDate(almanac.date))}"><p class="veil-almanac-provenance">${esc(provenance)}</p><dl class="veil-almanac-values">${value('Sunset','sunset',almanac.sunset+' ET')}${value('Moon','moon',almanac.moon)}${value('Daylight','daylight',almanac.daylight)}</dl></footer></div>`;
 }
 
 export function setupVeil(base) {
@@ -85,7 +85,7 @@ export function setupVeil(base) {
     if (problems.length) { close(); console.warn('Rupert Atlas: frontispiece artwork integrity',problems.join('; ')); return; }
     if (veil && last.dismissalKey!==state.dismissalKey) close();
     last = state;
-    const html = renderVeil(state,photos,base,localTrip(now));
+    const html = renderVeil(state,photos,base,localTrip(now),now);
     if (!veil) {
       veil=arrival?.veil?.isConnected ? arrival.veil : document.createElement('div'); veil.className='atlas-veil'; veil.tabIndex=-1;
       veil.setAttribute('role','dialog'); veil.setAttribute('aria-modal','true');

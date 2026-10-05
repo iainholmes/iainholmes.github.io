@@ -25,7 +25,8 @@ const withdrawn=Object.values(editions).find(e=>e.status==='withdrawn');
 check(()=>assert.match(renderEdition(withdrawn,ctx),/Recommendation Withdrawn/));
 check(()=>assert.ok(renderEdition(withdrawn,ctx).includes(withdrawn.corrections.at(-1).note)));
 check(()=>assert.ok(!renderEdition(withdrawn,ctx).includes('outing-info')));
-const state=veilState(manifest,new Date('2026-10-05T12:00:00-04:00'));
+const now=new Date('2026-10-05T12:00:00-04:00');
+const state=veilState(manifest,now);
 check(()=>assert.match(renderVeil(state,photos,'../'),/href="\.\.\/edition\/2026-W40-r1-tue\/"/));
 check(()=>assert.ok(!renderVeil(state,photos,'../').includes('?veil=review')));
 check(()=>assert.match(renderVeil(state,photos,'../',{title:'Trip',start:'2026-10-17'}),/travel\/#saved-trips/));
@@ -35,10 +36,10 @@ const svg=readFileSync(new URL('../assets/img/rupert-portrait-outline.svg',impor
 check(()=>assert.match(svg,/AE36F5F4-9591-433C-855E-FDD32AF594C1\.jpeg/));
 check(()=>assert.ok(!svg.includes('<image')&&!svg.includes('base64')));
 check(()=>assert.match(svg,/fill="none"/));
-const veil=renderVeil(state,photos,'../');
+const veil=renderVeil(state,photos,'../',null,now);
 check(()=>assert.match(veil,/veil-number-prefix">N<sup>o<\/sup>\./));
 check(()=>assert.match(veil,/aria-label="Number 41"/));
-check(()=>assert.match(veil,/Chapel Hill, N.C. · Saturday 10 Oct/));
+check(()=>assert.match(veil,/Chapel Hill, N.C. · Monday 5 Oct/));
 check(()=>assert.equal((veil.match(/class="veil-almanac-item"/g)||[]).length,3));
 check(()=>assert.equal((veil.match(/class="veil-almanac-symbol"/g)||[]).length,3));
 check(()=>assert.ok(veil.indexOf('>Sunset<')<veil.indexOf('>Moon<')&&veil.indexOf('>Moon<')<veil.indexOf('>Daylight<')));
@@ -46,9 +47,9 @@ check(()=>assert.ok(!veil.includes('Home')));
 const source=readFileSync(new URL('../assets/js/veil-view.js',import.meta.url),'utf8');
 check(()=>assert.doesNotMatch(source,/reviewMode|reviewNow|veil=review|rupert-veil-review|display-mode:\s*standalone/));
 // Golden markup from the physically approved acceptance commit 4a68d070.
-// Review removal must not change production rendering at either active phase.
+// Only the date-dependent almanac is authorized to change; all other Veil markup stays exact.
 for(const [time,digest] of [
-  ['2026-10-05T12:00:00-04:00','d619f66b939c64bed6cc9b70bc6eac242367017d2900055ce1b6aac470284107'],
-  ['2026-10-07T12:00:00-04:00','a5cb2109514537b64e89a44256c21ed3f83ff66f6ebe527f6ef88faf8dcc926f']
-])check(()=>assert.equal(createHash('sha256').update(renderVeil(veilState(manifest,new Date(time)),photos,'../')).digest('hex'),digest));
+  ['2026-10-05T12:00:00-04:00','c3e889203580d4e8fe01c1da7f8fc9042d599c67675760d5e0f57cdbabcc8451'],
+  ['2026-10-07T12:00:00-04:00','e89a6ee875e09fd981edd3e93c9f9236b4229e437b82cd5b2a43fb7ea6e63ef2']
+])check(()=>assert.equal(createHash('sha256').update(renderVeil(veilState(manifest,new Date(time)),photos,'../',null,new Date(time)).replace(/<footer class="veil-almanac"[\s\S]*?<\/footer>/,'')).digest('hex'),digest));
 console.log(`${checks} final refinement source checks passed.`);

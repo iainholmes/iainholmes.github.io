@@ -252,11 +252,16 @@ h4 { font-family: var(--f-editorial); font-weight: 400; font-synthesis: none; }
 .fallbacks a { font-size: 14px; }
 .ed-sources { font-size: 12px; }
 .ed-sources .sec-h { font-size: 18px; }
-.crowd-line { display: grid; grid-template-columns: 1fr 66px auto; align-items: center; gap: 10px; font-size: 11px; margin-block: 12px; }
-.crowd-scale { display: flex; gap: 3px; }
-.crowd-scale i { width: 14px; height: 6px; background: var(--rule); }
-.crowd-scale i.filled { background: var(--accent); }
-.crowd-key { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-2); margin: 8px 0 16px; }
+.crowd-line { font-size: 11px; margin-block: 16px; }
+.crowd-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.crowd-value { font-weight: 400; color: var(--ink); white-space: nowrap; }
+.crowd-description { font: 400 var(--type-micro)/1.4 var(--f-data); color: var(--text-2); margin: 2px 0 0; }
+.crowd-scale { display: flex; justify-content: space-between; align-items: center; height: 16px; margin: 8px 0 0; padding-inline: 8px; position: relative; }
+.crowd-scale::before { content: ''; position: absolute; left: 8px; right: 8px; top: 7px; border-top: 1px solid var(--rule-strong); }
+.crowd-scale i { width: 1px; height: 7px; background: var(--rule-strong); position: relative; }
+.crowd-scale i.is-observed::after { content: ''; position: absolute; width: 9px; height: 9px; left: -4px; top: -1px; background: var(--accent); border: 1px solid var(--ink); transform: rotate(45deg); }
+.crowd-key { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-2); margin: 0; }
+.crowd-line.is-unassessed .crowd-value { color: var(--text-2); font-style: italic; }
 .routing-choice { display: flex !important; gap: 8px; align-items: center; }
 .routing-choice input { width: 16px !important; }
 .ed-hero:not(.adventure-illustration) img { object-position: 50% 35%; }
@@ -1381,6 +1386,8 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   .veil-almanac-symbol{display:block;}
   .veil-almanac-provenance{font-size:11px;line-height:1.2;margin-bottom:5px;}
 }
+/* Full current-date phase names need a little more room on the narrowest phones. */
+@media(max-width:390px){.veil-almanac-item{gap:2px;}}
 
 /* Traffic affects only the Atlas map workspace, after a valid traffic-aware response. */
 .atlas-map.is-traffic{--paper:#E9E4D9;--ink:#E9E4D9;--rule:#66717B;--rule-strong:#A08054;background:#1D2A3A;color:#E9E4D9;}

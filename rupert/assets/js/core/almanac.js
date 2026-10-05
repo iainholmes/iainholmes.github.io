@@ -1,8 +1,8 @@
-// Local Saturday almanac at the existing PUBLIC Franklin Street reference. No private location input.
+// Calendar-day almanac at the existing PUBLIC Franklin Street reference. No private location input.
 // Solar equations: https://gml.noaa.gov/grad/solcalc/solareqns.PDF (NOAA fractional-year approximation).
 // Lunar coordinates/illumination adapted from SunCalc 1.9.0, Copyright (c) 2014 Vladimir Agafonkin.
 // BSD-2-Clause terms are retained in SUNCALC-LICENSE.txt; based on Meeus, Astronomical Algorithms.
-import { nyInstant, parseDate, TZ } from './dates.js';
+import { nyInstant, nyDateString, parseDate, TZ } from './dates.js';
 const RAD = Math.PI / 180, DAY = 86400000;
 const PUBLIC_CHAPEL_HILL = { lat: 35.913, lng: -79.056 };
 const PHASES = ['New Moon','Waxing Crescent','First Quarter','Waxing Gibbous','Full Moon','Waning Gibbous','Last Quarter','Waning Crescent'];
@@ -27,7 +27,7 @@ function moonPhase(instant) {
   return PHASES[Math.round(phase*8)%8];
 }
 
-export function weekendAlmanac(date) {
+export function dailyAlmanac(date) {
   const { y, m, d } = parseDate(date);
   const dayOfYear = (Date.UTC(y,m-1,d)-Date.UTC(y,0,1))/DAY+1;
   const yearDays = (Date.UTC(y+1,0,1)-Date.UTC(y,0,1))/DAY;
@@ -42,4 +42,9 @@ export function weekendAlmanac(date) {
   return { date, sunset: new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit',hour12:true}).format(sunset),
     daylight: `${Math.floor(daylightMinutes/60)}h ${String(daylightMinutes%60).padStart(2,'0')}m`,
     moon: moonPhase(nyInstant(date,'12:00:00')) };
+}
+
+// One Eastern calendar date drives the provenance and every astronomical value.
+export function currentAlmanac(now = new Date()) {
+  return dailyAlmanac(nyDateString(now));
 }
