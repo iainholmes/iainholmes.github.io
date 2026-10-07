@@ -1673,6 +1673,139 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Lipsitch, Tchetgen Tchetgen & Cohen (2010), Epidemiology; Miao, Tchetgen Tchetgen & Geng (2018), Biometrika."
         }
       ]
+    },
+    {
+      "no": 7,
+      "date": "2026-10-07",
+      "minutes": 23,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "single",
+          "stem": "A researcher models annual physician visits using exp(<i>X</i><sub>i</sub>β) as the conditional mean. The data are overdispersed: conditional variance substantially exceeds the conditional mean. If the exponential conditional-mean specification is correct, which estimator and inference approach is defensible?",
+          "options": [
+            "Poisson quasi-maximum likelihood with heteroskedasticity-robust standard errors.",
+            "Poisson maximum likelihood with model-based standard errors, because overdispersion affects neither estimates nor inference.",
+            "Log OLS after dropping zero-visit observations, because this preserves the same conditional mean.",
+            "Ordinary least squares in levels with homoskedastic standard errors, because the outcome is a count."
+          ],
+          "correct": [0],
+          "concepts": ["Poisson QMLE", "Conditional-mean specification", "Robust inference"],
+          "assistance": "<p>Separate assumptions needed for consistency of a conditional-mean estimator from assumptions used to calculate its conventional variance. A likelihood objective can serve as a quasi-likelihood even when the full distribution is misspecified.</p><p>In a separate setting, suppose the mean of a count is exp(<i>x</i>β) while its variance is twice that mean. Ask whether the score still has expectation zero at the true β, then decide whether a variance formula imposing equality of mean and variance remains appropriate.</p>",
+          "explanation": "<p><b>(A) is correct.</b> Poisson QMLE consistently estimates β when E(<i>Y</i>|<i>X</i>) = exp(<i>X</i>β) is correctly specified under standard regularity conditions, even if the conditional variance is not Poisson. Robust sandwich standard errors accommodate overdispersion. (B) wrongly retains the information-matrix variance formula, which relies on stronger distributional restrictions. (C) discards zeros and changes the estimand because E[log(<i>Y</i>)|<i>X</i>] is not log E(<i>Y</i>|<i>X</i>). (D) neither respects the exponential mean restriction nor supplies valid inference under the stated heteroskedasticity.</p>",
+          "refs": "Gourieroux, Monfort & Trognon (1984), Econometrica; Wooldridge, Econometric Analysis of Cross Section and Panel Data, count-data models."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "Two identical firms compete à la Cournot in a market with inverse demand <i>P</i> = 100 − <i>Q</i> and constant marginal cost 20. A merger turns them into a single profit-maximizing firm with no cost efficiencies. Relative to the pre-merger equilibrium, what happens?",
+          "options": [
+            "Total output rises by 13⅓ and price falls by 13⅓.",
+            "Total output falls by 13⅓ and price rises by 13⅓.",
+            "Total output and price are unchanged because marginal cost is unchanged.",
+            "Total output falls by 20 and price rises by 20."
+          ],
+          "correct": [1],
+          "concepts": ["Cournot competition", "Horizontal mergers", "Unilateral market power"],
+          "assistance": "<p>Compute the symmetric quantity equilibrium before the ownership change, then solve the single-owner monopoly problem. Keep firm output, total output and price in separate lines.</p><p>For a separate market <i>P</i> = 70 − <i>Q</i> with marginal cost 10, each of two symmetric Cournot firms produces (70 − 10)/3 = 20, while a monopolist produces (70 − 10)/2 = 30. Use the actual intercept and cost here and compare totals.</p>",
+          "explanation": "<p><b>(B) is correct.</b> With two identical Cournot firms, each produces (100 − 20)/(2 + 1) = 80/3, so total output is 160/3 and price is 140/3. A merged monopolist produces (100 − 20)/2 = 40 and charges 60. Output therefore falls by 160/3 − 40 = 40/3 = 13⅓, and price rises by the same amount. (A) reverses both effects. (C) ignores the change in internalized strategic interaction. (D) overstates the quantity and price changes.</p>",
+          "refs": "Tirole, The Theory of Industrial Organization; Farrell & Shapiro (1990), American Economic Review."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "Let <i>e</i><sub>t</sub> denote domestic currency per unit of foreign currency. In a sticky-price small open economy, the domestic central bank unexpectedly raises the short-term interest rate while the foreign rate and expected future exchange rate remain fixed. Under uncovered interest parity and standard expenditure switching, which short-run implications are consistent with the model?",
+          "options": [
+            "The domestic currency appreciates on impact, so <i>e</i><sub>t</sub> falls.",
+            "Expected subsequent depreciation of the domestic currency compensates for the higher domestic interest rate.",
+            "The appreciation tends to reduce net exports, holding foreign activity fixed.",
+            "Uncovered interest parity requires the domestic currency to depreciate immediately whenever the domestic interest rate rises."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Uncovered interest parity", "Exchange-rate overshooting", "Expenditure switching"],
+          "assistance": "<p>Write the approximate parity condition using the exchange-rate convention in the stem. Then hold the expected future level fixed and solve for the direction of the current jump.</p><div class=\"eq\"><i>i</i><sub>t</sub> − <i>i</i><sub>t</sub>* ≈ [E<sub>t</sub><i>e</i><sub>t+1</sub> − <i>e</i><sub>t</sub>]/<i>e</i><sub>t</sub></div><p>After establishing appreciation or depreciation, trace how the domestic-currency price of foreign goods changes and what that does to exports and imports. Do not infer the sign from the word “higher” without using the stated convention.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> A higher domestic interest rate requires an expected domestic-currency depreciation to equalize expected returns. With the expected future exchange rate fixed, the current exchange rate must fall—an impact appreciation—so it can subsequently rise toward the expected future level. The stronger currency makes domestic goods relatively more expensive and foreign goods cheaper, tending to reduce net exports. (D) confuses the expected movement after the initial jump with the impact response; parity does not require immediate depreciation under these maintained expectations.</p>",
+          "refs": "Dornbusch (1976), Journal of Political Economy; Obstfeld & Rogoff, Foundations of International Macroeconomics."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "multi",
+          "stem": "A pesticide container creates environmental harm if discarded illegally. Sales are observable, proper returns are verifiable, and illegal disposal is not directly observable. Which statements about a deposit-refund system are correct?",
+          "options": [
+            "A deposit collected at purchase raises the cost of acquiring a container regardless of its eventual disposal route.",
+            "A refund paid for verified return creates an opportunity cost of illegal disposal.",
+            "The system can mimic a disposal incentive without requiring regulators to observe each illegal disposal event.",
+            "The refund should be set to zero whenever returned containers have no resale value."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Deposit-refund systems", "Illegal disposal", "Observable policy margins"],
+          "assistance": "<p>Decompose the instrument into a charge on an observable upstream transaction and a payment for an observable downstream action. Compare the private payoff from returning the item with the payoff from discarding it.</p><p>In a separate example, a $12 deposit refunded upon battery return means illegal disposal sacrifices $12 even if inspectors never witness disposal. The refund's incentive value comes from the forgone payment, not necessarily from the scrap value of the returned object.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> The deposit prices the observable purchase, while the refund makes proper return privately valuable. Illegal disposal then sacrifices the refund, reproducing a disposal incentive without monitoring every disposal action. (D) is false: the optimal refund is tied to avoided external harm and enforcement or handling costs, not merely to the market resale value of the container. Even a valueless returned container may warrant a positive refund when proper collection prevents environmental damage.</p>",
+          "refs": "Fullerton & Kinnaman (1995), American Economic Review; Walls (2011), OECD Environment Working Papers."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "A conservation payment is a continuous function of a farm score, but its slope becomes sharply steeper at score 50 while the payment level remains continuous. Researchers use this policy kink to estimate the effect of payment intensity on fertilizer use. Which claims support a regression-kink interpretation?",
+          "options": [
+            "The conditional expectation of untreated fertilizer use would have a smooth first derivative through score 50.",
+            "Farms cannot precisely manipulate the score around 50 in a way that changes the composition of units at the kink.",
+            "The change in the outcome slope at 50 is scaled by the known change in the payment slope to obtain a local causal response.",
+            "Continuity of the outcome level at 50 is sufficient even if another policy's slope changes at the same score."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Regression kink design", "Slope discontinuities", "Local causal responses"],
+          "assistance": "<p>A kink design studies changes in derivatives rather than jumps in levels. Draw the policy schedule and a potential-outcome curve on either side of the threshold, marking their slopes.</p><p>In a separate schedule, the treatment slope changes from 1 to 3 while the outcome slope changes from −0.5 to −1.5. The relevant reduced-form change is a slope difference, divided by the treatment-slope difference. Then ask what else could create a derivative change at the same score.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> Identification requires the counterfactual outcome relationship and other determinants to be smooth in slope at the threshold. Sorting can change the types of farms just around the kink, undermining that comparison. The estimand is the outcome-slope change divided by the policy-slope change, yielding a local causal response for units near the threshold under the design's assumptions. (D) is false: an overlapping policy kink provides an alternative cause of the reduced-form slope change even if outcome levels remain continuous.</p>",
+          "refs": "Card, Lee, Pei & Weber (2015), Econometrica; Nielsen, Sørensen & Taber (2010), American Economic Journal: Economic Policy."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "Suppose estimators Â = 4 and B̂ = 2 have estimated variances 0.16 and 0.04 and estimated covariance 0.02. For the ratio <i>g</i>(<i>A</i>,<i>B</i>) = <i>A</i>/<i>B</i>, the first-order delta-method standard error is approximately √0.06 ≈ 0.245. True or false?",
+          "options": ["True", "False"],
+          "correct": [0],
+          "concepts": ["Delta method", "Ratio estimators", "Covariance propagation"],
+          "assistance": "<p>Differentiate the nonlinear function with respect to both inputs, evaluate the gradient at the estimates, and sandwich the covariance matrix between the gradient vectors.</p><div class=\"eq\">Var[<i>g</i>(θ̂)] ≈ ∇<i>g</i>′ Var(θ̂) ∇<i>g</i></div><p>For a ratio, the two derivatives generally have opposite signs. Keep the covariance cross-term and its factor of two; omitting it treats the numerator and denominator as independent without justification.</p>",
+          "explanation": "<p><b>True.</b> At Â = 4 and B̂ = 2, the gradient of <i>A</i>/<i>B</i> is (1/<i>B</i>, −<i>A</i>/<i>B</i>²) = (0.5, −1). The approximate variance is (0.5)²(0.16) + (−1)²(0.04) + 2(0.5)(−1)(0.02) = 0.04 + 0.04 − 0.02 = 0.06. Its square root is about 0.245. The covariance lowers the variance here because the derivatives have opposite signs and the covariance is positive.</p>",
+          "refs": "van der Vaart, Asymptotic Statistics; Casella & Berger, Statistical Inference."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "A recreation-demand study estimates an individual's seasonal trips to a lake as <i>V</i>(<i>c</i>) = 12 − 0.2<i>c</i>, where <i>c</i> is generalized travel cost in dollars. At the current cost of $20, what is the seasonal consumer surplus from lake access under this linear demand curve?",
+          "options": ["$80", "$160", "$240", "$320"],
+          "correct": [1],
+          "concepts": ["Travel-cost demand", "Recreation value", "Consumer surplus"],
+          "assistance": "<p>Find the choke travel cost at which predicted visits fall to zero. Consumer surplus is the area under the inverse trip-demand curve above the current generalized cost.</p><p>For a separate demand <i>V</i>(<i>c</i>) = 10 − 0.25<i>c</i> at cost $16, the choke cost is $40 and trips equal 6. The surplus triangle is one-half times the $24 cost gap times 6 trips. Repeat with this question's slope and intercept.</p>",
+          "explanation": "<p><b>(B) is correct.</b> At <i>c</i> = 20, predicted visits are 12 − 0.2(20) = 8. The choke cost solves 0 = 12 − 0.2<i>c</i>, so it is $60. Consumer surplus is the triangle ½($60 − $20)(8) = $160 per season. (A) omits the full area. (C) and (D) do not follow from the demand geometry. The calculation values access under the maintained demand specification; it is not total trip expenditure.</p>",
+          "refs": "Hotelling (1947), letter on recreation valuation; Phaneuf & Requate, A Course in Environmental Economics, recreation demand."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "multi",
+          "stem": "A public agency randomly assigns districts to one of four dates for beginning a new case-management program. Outcomes are observed monthly before and after every district crosses over, creating a stepped-wedge rollout. Which analysis choices are important for a credible effect estimate?",
+          "options": [
+            "Control flexibly for calendar time because later-treated observations also occur later in the common outcome environment.",
+            "Base inference on the district-level assignment structure rather than treating every person-month as independently assigned.",
+            "Investigate anticipation and dynamic effects around each district's rollout date.",
+            "Compare all treated person-months with all untreated person-months without time controls because rollout dates were randomized."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Stepped-wedge designs", "Calendar-time confounding", "Cluster-randomized rollout"],
+          "assistance": "<p>Draw a district-by-month grid and mark when each cluster crosses from control to treatment. Notice that treatment exposure and calendar time are mechanically related even under randomized rollout order.</p><p>Then identify the unit randomized, the unit observed and the possible timing of behavioral response. Randomization supports design-based comparisons only when estimation and inference respect the assignment and when the treatment contrast is not conflated with common time shocks.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> In a stepped wedge, treatment prevalence rises over calendar time, so secular shocks must be separated from the treatment contrast. Assignment occurs at the district level, requiring inference that respects cluster assignment and within-district dependence. Anticipation, ramp-up and treatment-effect dynamics can contaminate a single immediate-effect specification. (D) is false: random rollout order does not make pooled treated months comparable with pooled untreated months when those observations occupy systematically different calendar periods.</p>",
+          "refs": "Hussey & Hughes (2007), Contemporary Clinical Trials; Hemming et al. (2015), BMJ; Roth et al. (2023), Journal of Econometrics."
+        }
+      ]
     }
   ]
 }
