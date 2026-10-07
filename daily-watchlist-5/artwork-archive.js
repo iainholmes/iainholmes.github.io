@@ -418,6 +418,68 @@
         "seed": 2076788866,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Public funds are held in balance under a legal decision\"><title>Eight communities get four-year street-treatment grants</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-05-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-05-05)\"><path d=\"M390 130V520M250 525H535M165 240H620\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M190 240L110 400H270ZM585 240L505 400H665Z\" fill=\"#1b4a6b\"/><path d=\"M135 401Q190 476 245 401M530 401Q585 476 640 401\" fill=\"#c98a12\"/><rect x=\"295\" y=\"90\" width=\"190\" height=\"105\" fill=\"#7a1f33\"/></g></svg>"
       }
+    },
+    "2026-10-07": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-07",
+        "number": "01",
+        "category": "Environment · methane regulation",
+        "topic": "trade",
+        "title": "Europe gives fossil-fuel exporters another year before methane import rules bite",
+        "composition": "trade-checkpoint",
+        "signature": "plate:trade-checkpoint",
+        "seed": 291999153,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A commercial route passes through a staffed checkpoint\"><title>Europe gives fossil-fuel exporters another year before methane import rules bite</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-07-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-07-01)\"><path d=\"M80 400H720\" stroke=\"#7c5a3e\" stroke-width=\"58\"/><path d=\"M325 510V145H480V510\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M340 250H565\" stroke=\"#c4452c\" stroke-width=\"27\"/><rect x=\"110\" y=\"300\" width=\"142\" height=\"110\" fill=\"#1b4a6b\"/><path d=\"M140 300V410M216 300V410\" stroke=\"#f4ead7\" stroke-width=\"12\"/><circle cx=\"570\" cy=\"460\" r=\"31\" fill=\"#2c241d\"/><path d=\"M530 560V512Q570 480 610 512V560Z\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-07",
+        "number": "02",
+        "category": "U.S. policy · financial regulation",
+        "topic": "finance",
+        "title": "Federal Reserve will reorganize bank supervision into five regions",
+        "composition": "finance-ledger",
+        "signature": "plate:finance-ledger",
+        "seed": 216693472,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A ledger is inspected beside a hidden transfer channel\"><title>Federal Reserve will reorganize bank supervision into five regions</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-07-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-07-02)\"><path d=\"M85 130H360V540H85Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M125 200H325M125 270H325M125 340H260M125 410H300\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"548\" cy=\"284\" r=\"112\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"35\"/><path d=\"M624 367L718 489\" stroke=\"#7a1f33\" stroke-width=\"42\"/><path d=\"M402 530V425H475V345H548\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"21\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-07",
+        "number": "03",
+        "category": "Technology · semiconductors",
+        "topic": "trade",
+        "title": "Japan’s $15 billion Rapidus bet reaches the customer test",
+        "composition": "government-document",
+        "signature": "plate:government-document",
+        "seed": 2741230309,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A legal document meets a gate of authority\"><title>Japan’s $15 billion Rapidus bet reaches the customer test</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-07-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-07-03)\"><path d=\"M110 100H375L460 190V525H110Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M160 225H395M160 302H395M160 378H312\" stroke=\"#7c5a3e\" stroke-width=\"20\"/><path d=\"M530 535V185H690V535M490 260H728\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"30\"/><path d=\"M460 445H550\" stroke=\"#1b4a6b\" stroke-width=\"27\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-07",
+        "number": "04",
+        "category": "Economics · trade",
+        "topic": "trade",
+        "title": "U.S. trade deficit widens to $105.6 billion as imports set a record",
+        "composition": "infrastructure-aisle",
+        "signature": "plate:infrastructure-aisle",
+        "seed": 3421786771,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A server aisle separates storage and service capacity\"><title>U.S. trade deficit widens to $105.6 billion as imports set a record</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-07-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-07-04)\"><path d=\"M80 145H280V520H80ZM520 80H720V520H520Z\" fill=\"#2c241d\"/><path d=\"M115 200H245M115 290H245M115 380H245M555 135H685M555 225H685M555 315H685M555 405H685\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M320 550L405 210L480 550Z\" fill=\"#1b4a6b\"/><circle cx=\"402\" cy=\"145\" r=\"57\" fill=\"#c4452c\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-07",
+        "number": "05",
+        "category": "North Carolina · health infrastructure",
+        "topic": "research",
+        "title": "UNC Health breaks ground on a 144-bed hospital near Research Triangle Park",
+        "composition": "labor-benches",
+        "signature": "plate:labor-benches",
+        "seed": 4174146111,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separate work benches and an unfilled place\"><title>UNC Health breaks ground on a 144-bed hospital near Research Triangle Park</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-07-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-07-05)\"><path d=\"M85 300H325V350H85ZM445 420H715V470H445Z\" fill=\"#2c241d\"/><path d=\"M125 350V545M280 350V545M480 470V545M670 470V545\" stroke=\"#2c241d\" stroke-width=\"22\"/><circle cx=\"205\" cy=\"185\" r=\"47\" fill=\"#c4452c\"/><path d=\"M145 285V240Q205 195 265 240V285Z\" fill=\"#1b4a6b\"/><path d=\"M506 340V235H635V340\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"16\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
