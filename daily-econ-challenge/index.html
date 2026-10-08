@@ -1806,6 +1806,134 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Hussey & Hughes (2007), Contemporary Clinical Trials; Hemming et al. (2015), BMJ; Roth et al. (2023), Journal of Econometrics."
         }
       ]
+    },
+    {
+      "no": 8,
+      "date": "2026-10-08",
+      "minutes": 24,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "single",
+          "stem": "A researcher estimates the conditional median model <i>Q</i><sub>0.5</sub>(wage|training, <i>X</i>) = α + β training + <i>X</i>′γ and obtains β̂ = 2.4. Which interpretation is most defensible without additional assumptions?",
+          "options": [
+            "Holding <i>X</i> fixed, the conditional median wage differs by 2.4 units between the training groups.",
+            "Training raises every participant's wage by exactly 2.4 units.",
+            "The unconditional median wage is necessarily 2.4 units higher among trained workers.",
+            "The conditional mean wage differs by 2.4 units between the training groups."
+          ],
+          "correct": [0],
+          "concepts": ["Quantile regression", "Conditional quantiles", "Coefficient interpretation"],
+          "assistance": "<p>Identify the functional being modeled before interpreting its slope. Conditional means, conditional quantiles and unconditional distributional features answer different questions even when they use the same regressors.</p><p>In a separate example, a coefficient of 1.5 in a conditional 25th-percentile regression describes a 1.5-unit difference in that conditional percentile at fixed covariates. It does not by itself map individual ranks across treatment states or determine the population's unconditional percentile.</p>",
+          "explanation": "<p><b>(A) is correct.</b> In the stated linear conditional-quantile specification, β = 2.4 is the difference in the conditional median associated with training at a fixed value of <i>X</i>. (B) imposes a constant individual treatment effect and causal rank mapping that quantile regression alone does not establish. (C) confuses a conditional quantile with the unconditional median; integrating conditional distributions over different covariate distributions need not preserve the same coefficient. (D) substitutes the conditional mean for the modeled median.</p>",
+          "refs": "Koenker & Bassett (1978), Econometrica; Koenker, Quantile Regression."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "Two residents consume the same nonrival flood-warning service <i>G</i>. Their marginal willingness to pay is MB<sub>A</sub> = 10 − <i>G</i> and MB<sub>B</sub> = 6 − 0.5<i>G</i>. The constant marginal cost is 4. What level of <i>G</i> satisfies the Samuelson condition for an interior efficient allocation?",
+          "options": ["4", "6", "8", "12"],
+          "correct": [2],
+          "concepts": ["Public goods", "Samuelson condition", "Vertical summation"],
+          "assistance": "<p>For a nonrival public good, one unit is enjoyed simultaneously by both residents. Add marginal willingness to pay vertically at a common quantity, then compare the sum with marginal cost.</p><p>For a separate service with marginal benefits 8 − <i>G</i> and 4 − <i>G</i> and marginal cost 2, the interior condition is 12 − 2<i>G</i> = 2. Check that the resulting quantity lies where the included marginal benefits are nonnegative before applying the same steps here.</p>",
+          "explanation": "<p><b>(C) is correct.</b> The Samuelson condition sums marginal benefits across users: (10 − <i>G</i>) + (6 − 0.5<i>G</i>) = 4. Thus 16 − 1.5<i>G</i> = 4, so <i>G</i> = 8. At that quantity both marginal benefits remain nonnegative: 2 and 2. (A) equates neither the summed benefit nor an individual benefit correctly. (B) can arise from mishandling the slopes. (D) ignores marginal cost and would push one resident's marginal benefit below zero.</p>",
+          "refs": "Samuelson (1954), Review of Economics and Statistics; Cornes & Sandler, The Theory of Externalities, Public Goods, and Club Goods."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "In a search-and-matching labor market, matches are <i>M</i> = μ<i>U</i><sup>α</sup><i>V</i><sup>1−α</sup>, where <i>U</i> is unemployment and <i>V</i> is vacancies. Holding <i>U</i> and <i>V</i> fixed on impact, matching efficiency μ rises. Which implications follow mechanically?",
+          "options": [
+            "The number of new matches rises.",
+            "The job-finding rate <i>M</i>/<i>U</i> rises.",
+            "The vacancy-filling rate <i>M</i>/<i>V</i> rises.",
+            "The Beveridge curve must shift outward because more unemployment is required for any vacancy rate."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Matching functions", "Job-finding rates", "Beveridge curve"],
+          "assistance": "<p>Begin with the impact experiment specified in the stem: treat unemployment and vacancies as fixed inputs and change only the efficiency shifter. Then divide the matching function by each stock in turn.</p><p>After deriving those mechanical changes, distinguish them from the later equilibrium response of vacancy creation and unemployment. A more productive matching technology changes the relationship between the two stocks; its graphical direction should agree with needing fewer searchers for a given hiring flow.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> With <i>U</i> and <i>V</i> fixed, <i>M</i> is proportional to μ, so matches rise. Dividing that larger flow by unchanged unemployment raises the worker job-finding rate, and dividing it by unchanged vacancies raises the firm's vacancy-filling rate. (D) reverses the Beveridge-curve implication: greater matching efficiency generally shifts the curve inward, allowing a given vacancy environment to coexist with lower unemployment, though the full equilibrium also depends on vacancy creation, separations and bargaining.</p>",
+          "refs": "Pissarides, Equilibrium Unemployment Theory; Mortensen & Pissarides (1994), Review of Economic Studies."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "After one region prices carbon, its output falls by 100 units while unregulated foreign output rises by 40 units. Domestic emissions intensity is 0.5 ton per unit and foreign intensity is 0.8 ton per unit. Ignoring other channels, what are the net change in global emissions and the leakage rate, defined as the foreign emissions increase divided by the domestic emissions reduction?",
+          "options": [
+            "Global emissions fall 18 tons; leakage is 64%.",
+            "Global emissions fall 30 tons; leakage is 40%.",
+            "Global emissions rise 18 tons; leakage is 160%.",
+            "Global emissions fall 50 tons; leakage is 32%."
+          ],
+          "correct": [0],
+          "concepts": ["Carbon leakage", "Emissions intensity", "Global policy incidence"],
+          "assistance": "<p>Translate output changes into emissions changes separately for the regulated and unregulated locations. Keep the sign of each contribution visible before adding them.</p><p>In a separate case, a domestic contraction of 60 units at 0.4 ton per unit reduces 24 tons, while foreign expansion of 10 units at 0.6 adds 6 tons. Net global reduction is 18 and leakage is 6/24. Apply that sequence with the actual quantities and intensities.</p>",
+          "explanation": "<p><b>(A) is correct.</b> Domestic emissions fall by 100(0.5) = 50 tons. Foreign emissions rise by 40(0.8) = 32 tons. The net global change is −50 + 32 = −18 tons, a reduction of 18. The leakage rate is 32/50 = 0.64, or 64%. (B) uses output shares rather than intensity-adjusted emissions. (C) reverses the net sign and misstates the ratio. (D) ignores most of the foreign response and divides by the wrong base.</p>",
+          "refs": "Fowlie (2009), American Economic Review; Böhringer, Balistreri & Rutherford (2012), Energy Economics."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "Villages are randomly assigned to different treatment saturation rates, and households within each village are then randomly offered an agricultural information service according to the assigned saturation. Researchers want direct and within-village spillover effects. Which statements are correct?",
+          "options": [
+            "Comparing untreated households across saturation arms can identify spillover contrasts under partial interference and the randomized design.",
+            "Comparing offered and unoffered households within the same saturation arm can identify a direct offer effect at that saturation.",
+            "Inference should respect village-level saturation assignment and within-village dependence.",
+            "The design identifies spillovers even if treatment in one village changes outcomes in every other village without restriction."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Randomized saturation", "Interference", "Direct and spillover effects"],
+          "assistance": "<p>Index a household's potential outcome by both its own offer and the treatment environment around it. Then identify which randomization changes each component while holding the other fixed.</p><p>For a separate two-stage design, clusters first receive low or high coverage and individuals are randomized within cluster. Untreated people across coverage arms reveal an environmental contrast; treated-versus-untreated people within one coverage arm reveal an own-offer contrast. State clearly where interference is allowed and where it is ruled out.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> Among households not offered treatment, random saturation assignment creates comparisons of exposure to treated neighbors. Within a saturation arm, household-level random offers identify a direct offer contrast for that environment. Because saturation is assigned by village and outcomes within villages share treatment exposure and shocks, inference must reflect clustering and the two-stage design. (D) is false: standard identification relies on partial interference or another structured exposure model; unrestricted cross-village interference destroys the clean mapping from assigned saturation to a village's treatment environment.</p>",
+          "refs": "Hudgens & Halloran (2008), Journal of the American Statistical Association; Baird et al. (2018), Journal of Development Economics."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "A scalar parameter has prior θ ~ N(0, 1). An independent normal estimate <i>Y</i> = 1 is observed with sampling variance 1. The posterior is N(0.5, 0.5), so under the stated model a central 95% credible interval is approximately [−0.89, 1.89], and the posterior probability that θ lies in this realized interval is 0.95. True or false?",
+          "options": ["True", "False"],
+          "correct": [0],
+          "concepts": ["Bayesian updating", "Normal conjugacy", "Credible intervals"],
+          "assistance": "<p>Add prior and data precision to obtain posterior precision, and form the posterior mean as a precision-weighted average. Then use the posterior standard deviation for the interval.</p><div class=\"eq\">Precision<sub>post</sub> = Precision<sub>prior</sub> + Precision<sub>data</sub></div><p>Keep the probability statement conditional on the observed data and maintained prior-likelihood model. This differs from a frequentist coverage statement about the behavior of intervals over repeated samples.</p>",
+          "explanation": "<p><b>True.</b> Both prior and sampling precisions equal 1, so posterior precision is 2, posterior variance is 1/2 and posterior mean is (0·1 + 1·1)/2 = 0.5. The posterior standard deviation is √0.5 ≈ 0.707, giving 0.5 ± 1.96(0.707) ≈ [−0.89, 1.89]. Conditional on the observed data and the stated model, θ is random under the posterior, so the realized central credible interval contains 95% posterior probability. That is not the usual frequentist interpretation of a realized confidence interval.</p>",
+          "refs": "Gelman et al., Bayesian Data Analysis; Casella & Berger, Statistical Inference, conjugate normal models."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "Two farmers simultaneously choose groundwater withdrawals <i>q</i><sub>i</sub>. Farmer <i>i</i>'s payoff is 12<i>q</i><sub>i</sub> − 0.5<i>q</i><sub>i</sub><sup>2</sup> − (<i>q</i><sub>1</sub> + <i>q</i><sub>2</sub>)<i>q</i><sub>i</sub>. What is each farmer's withdrawal in the symmetric Nash equilibrium?",
+          "options": ["2", "2.4", "3", "4"],
+          "correct": [2],
+          "concepts": ["Common-pool resources", "Groundwater extraction", "Nash equilibrium"],
+          "assistance": "<p>When differentiating a farmer's pumping cost, remember that total withdrawal includes that farmer's own choice. Expand the cost term or use the product rule before imposing symmetry.</p><p>For a separate payoff 10<i>q</i><sub>i</sub> − 0.5<i>q</i><sub>i</sub>² − (<i>q</i><sub>i</sub> + <i>q</i><sub>j</sub>)<i>q</i><sub>i</sub>, the best-response condition includes both total withdrawal and an additional own-withdrawal term. Derive the analogous condition here, then set the two choices equal.</p>",
+          "explanation": "<p><b>(C) is correct.</b> Expanding the payoff gives 12<i>q</i><sub>i</sub> − 1.5<i>q</i><sub>i</sub>² − <i>q</i><sub>i</sub><i>q</i><sub>j</sub>. The first-order condition is 12 − 3<i>q</i><sub>i</sub> − <i>q</i><sub>j</sub> = 0. Under symmetry, 12 − 4<i>q</i> = 0, so each farmer withdraws 3. (A) and (B) do not satisfy the private best response. (D) results from omitting part of the effect of own withdrawal on pumping cost. A planner would choose less because each farmer does not internalize the cost imposed on the other.</p>",
+          "refs": "Provencher & Burt (1993), American Journal of Agricultural Economics; Ostrom, Governing the Commons."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "multi",
+          "stem": "A randomized program trial measures employment with a low-cost survey for everyone and a gold-standard administrative record for a random validation subsample. Differential reporting by treatment status is plausible. Which practices strengthen the analysis?",
+          "options": [
+            "Estimate survey sensitivity and specificity separately by treatment status when the validation sample supports it.",
+            "Account for the validation sampling design when transporting misclassification estimates to the full trial.",
+            "Report corrected estimates or sensitivity bounds alongside the naïve survey-based effect.",
+            "Treat high overall survey-record agreement as proof that treatment-effect bias is negligible."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Validation subsamples", "Differential misclassification", "Measurement-error sensitivity"],
+          "assistance": "<p>Separate the measurement process from the outcome-generating process. Construct a treatment-specific table comparing the survey classification with the validated status, and note how the validation cases were sampled.</p><p>Overall agreement can be dominated by the more common outcome category and can hide offsetting false positives and false negatives. Consider how even small differences in reporting error across randomized arms propagate into a difference in measured employment rates.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> Treatment may change reporting even when true employment is unaffected, so arm-specific sensitivity and specificity directly assess differential misclassification. If validation probabilities vary or the subsample is otherwise designed, appropriate weights or design-based transport are needed. Corrected estimates and sensitivity bounds show how measurement uncertainty affects the causal contrast. (D) is false: high aggregate agreement can coexist with treatment-differential errors, class imbalance or error rates large enough to bias a modest treatment effect.</p>",
+          "refs": "Carroll et al., Measurement Error in Nonlinear Models; Battistin et al. (2003), Journal of Business & Economic Statistics."
+        }
+      ]
     }
   ]
 }
@@ -2100,3 +2228,4 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
 <script src="/personal-updates/mobile/mobile.js?v=20261005-workbook-learning"></script>
 </body>
 </html>
+
