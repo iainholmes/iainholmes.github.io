@@ -39,6 +39,24 @@
       "official_url": "https://www.hillsboroughnc.gov/community/public-spaces/recreation-facilities/riverwalk",
       "discrepancy": false,
       "note": "Town Riverwalk, recreation, Gold Park and current news reviewed. Daily hours 7 a.m. to 30 minutes after sunset; no active closure on reviewed pages. Severe weather can close both. Sunday Oct 4 races use Riverwalk; Saturday provisional daylight window only."
+    },
+    {
+      "place_id": "raven-rock",
+      "status": "open",
+      "checked": "2026-10-08",
+      "checked_at": "2026-10-08T20:37:40Z",
+      "official_url": "https://www.ncparks.gov/state-parks/raven-rock-state-park",
+      "discrepancy": false,
+      "note": "Official home, trails and park rules reviewed. Hiking trails listed Open; Raven Rock Loop 2.6 miles; October main-access hours 7 a.m.\u20138 p.m.; attended pets on a leash no longer than six feet. No active closure on reviewed official pages. Current NWS forecast requires dry-weather-only Saturday guidance; no Sunday thunderstorm outing."
+    },
+    {
+      "place_id": "occoneechee-mountain",
+      "status": "open",
+      "checked": "2026-10-08",
+      "checked_at": "2026-10-08T20:37:44Z",
+      "official_url": "https://www.ncparks.gov/state-parks/occoneechee-mountain-state-natural-area",
+      "discrepancy": false,
+      "note": "Official home, trails and park rules reviewed. Hiking trails listed Open; Mountain Loop 2.2 miles; October hours 8 a.m.\u20138 p.m.; attended pets on a leash no longer than six feet. No active closure on reviewed official pages. Current NWS forecast requires dry-weather-only Saturday guidance; no Sunday thunderstorm outing."
     }
   ],
   "official_hosts": [

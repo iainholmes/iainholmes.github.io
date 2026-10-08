@@ -1,3 +1,4 @@
+import { pendingThursdayFixture } from './publication-fixtures.mjs';
 // Browser QA only: clocks, route responses and saved journeys are isolated runtime fixtures.
 // Usage: ATLAS_QA_CHROME=/path/to/chromium node rupert/_tools/closure-browser-test.mjs
 // ATLAS_QA_URL=https://iainholmes.github.io/rupert/ reuses the same checks against deployed bytes.
@@ -10,7 +11,7 @@ import { resolve, extname } from 'node:path';
 const require=createRequire(import.meta.url), { chromium }=require('playwright');
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
 const json=async p=>JSON.parse(await readFile(resolve(root,p),'utf8'));
-const manifest=await json('data/editions/index.json');
+const manifest=pendingThursdayFixture(await json('data/editions/index.json'));
 const output=resolve(process.env.ATLAS_QA_OUTPUT_DIR||resolve(root,'_tools/closure-evidence'));await mkdir(output,{recursive:true});
 const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.webmanifest':'application/manifest+json','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png','.otf':'font/otf','.ttf':'font/ttf','.woff':'font/woff','.woff2':'font/woff2'};
 let server;

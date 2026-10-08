@@ -3,10 +3,13 @@ import { setupLocation } from './location-view.js';
 // selection kept in step between the two. The map is reached only through map/maplibre-provider.js.
 import { frameFeatures, frameMap } from './core/framing.js';
 import { createMap } from './map/maplibre-provider.js';
+import { atlasModel } from './core/atlas.js';
+import { isReleased } from './core/editions.js';
+import { renderAtlas } from './core/render.js';
 
 const base = document.body.dataset.base || '';
 const data = JSON.parse(document.getElementById('atlas-data')?.textContent || '{"features":[],"bounds":null}');
-const rows = [...document.querySelectorAll('.reg-row')];
+let rows = [...document.querySelectorAll('.reg-row')];
 const stateEl = document.getElementById('map-state');
 const msg = document.getElementById('map-msg');
 const card = document.getElementById('map-card');
@@ -83,7 +86,7 @@ function directoryTreatment() { catalog.open = !compactDirectory.matches; }
 directoryTreatment(); compactDirectory.addEventListener('change', directoryTreatment);
 picker.addEventListener('change', () => { select(picker.value || null); if(picker.value) map?.focus(picker.value); });
 const frameStatus = document.getElementById('frame-status');
-const frameButtons = [...document.querySelectorAll('[data-frame]')];
+let frameButtons = [...document.querySelectorAll('[data-frame]')];
 function controlsReady(ready) {
   frameButtons.forEach(b => { b.disabled = !ready || !frameFeatures(data.features, data.regions, b.dataset.frame).length; });
   document.getElementById('relief').disabled = !ready;
@@ -102,11 +105,60 @@ document.querySelector('.frame-menu').addEventListener('click', e => {
   }
 });
 // Keep one disclosure open at a time; Escape returns keyboard focus to its summary.
-const disclosures=[...document.querySelectorAll('.directory-controls > details, .reg-details')];
-disclosures.forEach(d=>{
-  d.addEventListener('toggle',()=>{if(d.open) disclosures.filter(x=>x!==d).forEach(x=>{x.open=false;});});
-  d.addEventListener('keydown',e=>{if(e.key==='Escape'){d.open=false;d.querySelector('summary').focus();}});
+directory.addEventListener('toggle', e => {
+  if (!e.target.matches('.directory-controls > details, .reg-details') || !e.target.open) return;
+  directory.querySelectorAll('.directory-controls > details, .reg-details').forEach(d => { if (d !== e.target) d.open = false; });
+}, true);
+directory.addEventListener('keydown', e => {
+  const d = e.target.closest('.directory-controls > details, .reg-details');
+  if (d && e.key === 'Escape') { d.open = false; d.querySelector('summary').focus(); }
 });
+
+// The build is a fallback snapshot. Directory, picker and map share the same released-record model.
+// Update only the register: Home, route, camera, traffic and disclosure controls retain their state.
+let publicationKey = '', checkingPublications = false;
+async function refreshPublications() {
+  if (checkingPublications) return;
+  checkingPublications = true;
+  try {
+    const get = async path => { const r = await fetch(base + path, { cache: 'no-cache' }); if (!r.ok) throw Error('Publication data unavailable.'); return r.json(); };
+    const manifest = await get('data/editions/index.json');
+    const now = new Date();
+    const key = JSON.stringify(manifest.editions.filter(e => isReleased(e, now))) + (manifest.revision || '');
+    if (key === publicationKey) return;
+    const places = await get('data/places.json');
+    const model = atlasModel(places, manifest, { now });
+    const template = document.createElement('template'); template.innerHTML = renderAtlas(model, { base });
+    const fresh = template.content;
+    const opened = new Set([...directory.querySelectorAll('.reg-details[open]')].map(d => d.closest('.reg-row').dataset.place));
+    directory.querySelector('.directory-list').replaceChildren(...fresh.querySelector('.directory-list').childNodes);
+    directory.querySelector('.directory-note').textContent = fresh.querySelector('.directory-note').textContent;
+    catalog.querySelector('summary').textContent = fresh.querySelector('.directory-catalog > summary').textContent;
+    picker.replaceChildren(...fresh.querySelector('#place-picker').childNodes);
+    directory.querySelector('.frame-regions').replaceChildren(...fresh.querySelector('.frame-regions').childNodes);
+    // setupLocation intentionally retains this array, so new selections use the new coordinates.
+    data.features.splice(0, data.features.length, ...model.features);
+    data.bounds = model.bounds; data.regions = model.regions;
+    rows = [...directory.querySelectorAll('.reg-row')];
+    for (const row of rows) {
+      row.classList.toggle('is-selected', row.dataset.place === selectedId);
+      if (row.dataset.place === selectedId) row.setAttribute('aria-current', 'true');
+      if (opened.has(row.dataset.place)) row.querySelector('.reg-details').open = true;
+    }
+    frameButtons = [...document.querySelectorAll('[data-frame]')];
+    map?.setMarkers(data.features); controlsReady(!!map);
+    if (selectedId && !model.statuses.has(selectedId)) select(null);
+    picker.value = selectedId || '';
+    const hash = location.hash.replace(/^#place-/, '');
+    if (!selectedId && model.statuses.has(hash)) { select(hash); map?.focus(hash); }
+    publicationKey = key; sizeWorkspace(); qaRender();
+  } catch { /* Retain the last validated published history while offline. */ }
+  finally { checkingPublications = false; }
+}
+refreshPublications();
+setInterval(refreshPublications, 60000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshPublications(); });
+window.addEventListener('pageshow', refreshPublications);
 
 function select(id, { from } = {}) {
   // Unknown hashes/picker values are empty state, never a fallback destination.

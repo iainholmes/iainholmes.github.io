@@ -1,4 +1,5 @@
 import './field-log-view.js';
+import './edition-view.js';
 import { setupMenus } from './core/menus.js';
 import { setupArchive } from './archive-view.js';
 import { cycleIdentity, cycleWeekend } from './core/cycles.js';
@@ -167,3 +168,4 @@ async function recheck() {
 recheck();
 setInterval(recheck,60000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){refreshDateline();recheck();}});
+window.addEventListener('pageshow', recheck);

@@ -1,3 +1,4 @@
+import { pendingThursdayFixture } from './publication-fixtures.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { cycleIdentity, cycleWeekend } from '../assets/js/core/cycles.js';
@@ -10,7 +11,7 @@ import { renderWeek, renderArchive } from '../assets/js/core/render.js';
 let count=0;
 const check = fn => { fn(); count++; };
 const json = p => JSON.parse(readFileSync(new URL('../'+p,import.meta.url)));
-const manifest=json('data/editions/index.json'), photos=json('data/photos.json');
+const manifest=pendingThursdayFixture(json('data/editions/index.json')), photos=json('data/photos.json');
 const at = (instant,m=manifest) => veilState(m,new Date(instant));
 for(const [day,roman] of [[3,'I'],[10,'II'],[17,'III'],[24,'IV'],[31,'V']])check(()=>assert.equal(cycleIdentity(`2026-10-${String(day).padStart(2,'0')}`).label,`October ${roman} · AUTUMN · 2026`));
 for(const [date,label] of [['2026-11-07','November I · AUTUMN · 2026'],['2027-01-02','January I · WINTER · 2027'],['2027-03-06','March I · SPRING · 2027'],['2027-06-05','June I · SUMMER · 2027']])check(()=>assert.equal(cycleIdentity(date).label,label));

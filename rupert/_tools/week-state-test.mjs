@@ -1,3 +1,4 @@
+import { pendingThursdayFixture } from './publication-fixtures.mjs';
 // Calendar slots and genuine publication; dates/status changes below are fixtures only.
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -6,7 +7,7 @@ import {cycleWeekend} from '../assets/js/core/cycles.js';
 import {veilState} from '../assets/js/core/veil.js';
 import {renderWeek,renderArchive} from '../assets/js/core/render.js';
 const json=p=>JSON.parse(readFileSync(new URL('../'+p,import.meta.url)));
-const manifest=json('data/editions/index.json'),photos=json('data/photos.json'),places=json('data/places.json');
+const manifest=pendingThursdayFixture(json('data/editions/index.json')),photos=json('data/photos.json'),places=json('data/places.json');
 const editions=Object.fromEntries(manifest.editions.map(e=>[e.id,json(e.path)]));
 const released=structuredClone(manifest);
 released.editions.find(e=>e.id==='2026-W41-thu').status='published';

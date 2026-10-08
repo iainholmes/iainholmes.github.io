@@ -107,15 +107,15 @@ Editions live in `data/editions/<ISO week>-<tue|thu>.json`, validated against `s
 
 ### Publishing a new weekend
 
-This path was proved end to end with W41; see `_tools/PUBLISHING-TEST-W41.md`.
+Prepared recommendations remain `draft`. Their `published_at` records the intended Tuesday/Thursday 07:00 Eastern slot until genuine release. The clock does not promote a draft, create a Directory entry or reveal its This Week slot.
 
-1. Write `data/editions/<week>-tue.json`, with `published_at` set to Tuesday 07:00 New York time. Copying the previous week's file is the quickest start. Every `place_id` must already be in `data/places.json`.
-2. Generate a fresh cover illustration for this recommendation, then import it with `rupert.mjs photo … --kind plate --provenance editorial`. See `ILLUSTRATIONS.md` for ownership and review requirements; do not reuse earlier suggestion art.
-3. Set `conditions.as_of` to a full timestamp (for example `2026-10-05T15:00:00-04:00`). Refresh the forecast and `headline_condition` on the morning of publication.
-4. Run `rupert.mjs build`, `check` and `audit`. This Week, the Archive, the edition page and the Atlas statuses all update from the data.
-5. Commit and push. Repeat for Thursday.
+Use the guarded release procedure in [_tools/PUBLISHING.md](_tools/PUBLISHING.md). It refreshes the NWS weekend forecast at the public trailhead, requires a publication-day official access check and an editorial review of the actual refreshed evidence, validates all canonical content/artwork, and records the actual release instant. Never pre-mark a future draft as published to simulate scheduling.
 
-The build writes an edition's page as soon as its `status` is `published`, even before its `published_at`. This Week and the Archive wait for the publication time; the page's own URL does not.
+The release build regenerates This Week, Full Editions, Archive and Atlas from one manifest. This Week, Archive and the Directory/map also recheck the manifest every minute and on resume. Directory counts, markers, picker and edition links use the same genuine-publication gate; historical and withdrawn entries remain available. Manifest revisions also refresh a corrected forecast without needing a new edition ID.
+
+Weather is a dated snapshot, with source issue/retrieval timestamps. The original outlook is retained in `data/conditions-history.json`. A failed forecast is explicitly unavailable, never an invented benign forecast. An editor still checks closure, dog policy and safety before publication.
+
+Full Edition Drive facts use the existing device-local Home and shared OSRM router when available; otherwise they identify the editorial Chapel Hill reference estimate. No residential address or Home coordinates belong in public editorial data.
 
 ## Before merging
 

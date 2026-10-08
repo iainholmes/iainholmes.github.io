@@ -1,3 +1,4 @@
+import { pendingThursdayFixture } from './publication-fixtures.mjs';
 // Real renderer/veil handlers; crowd observations and future publication states are test fixtures only.
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
@@ -11,7 +12,7 @@ import {addDays,longDate,shortDate} from '../assets/js/core/dates.js';
 import {currentAlmanac,moonGlyph} from '../assets/js/core/almanac.js';
 const {chromium}=createRequire(import.meta.url)('playwright');
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
-const manifest=JSON.parse(await readFile(resolve(root,'data/editions/index.json'),'utf8'));
+const manifest=pendingThursdayFixture(JSON.parse(await readFile(resolve(root,'data/editions/index.json'),'utf8')));
 const output=resolve(process.env.ATLAS_QA_OUTPUT_DIR||resolve(root,'_tools/integrity-evidence'));
 await mkdir(output,{recursive:true});
 const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png','.otf':'font/otf','.ttf':'font/ttf','.woff':'font/woff','.woff2':'font/woff2'};

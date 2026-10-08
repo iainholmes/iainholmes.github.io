@@ -181,6 +181,76 @@
         },
         "trail_note": {
           "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "outlook",
+            "forecast",
+            "unavailable"
+          ]
+        },
+        "checked_at": {
+          "type": "string"
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "label",
+            "url",
+            "issued_at",
+            "retrieved_at"
+          ],
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "issued_at": {
+              "type": "string"
+            },
+            "retrieved_at": {
+              "type": "string"
+            }
+          }
+        },
+        "unavailable_reason": {
+          "type": "string"
+        },
+        "alerts_checked_at": {
+          "type": "string"
+        },
+        "alerts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "event",
+              "headline",
+              "severity",
+              "expires"
+            ],
+            "properties": {
+              "event": {
+                "type": "string"
+              },
+              "headline": {
+                "type": "string"
+              },
+              "severity": {
+                "type": "string"
+              },
+              "expires": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
         }
       }
     },

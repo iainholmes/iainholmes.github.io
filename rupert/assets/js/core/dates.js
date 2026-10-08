@@ -90,6 +90,13 @@ export function nyTime(instant) {
   return new Intl.DateTimeFormat('en-GB', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hour12: false }).format(instant);
 }
 
+/** A truthful actual instant, with the Eastern offset appropriate to that instant. */
+export function nyTimestamp(instant) {
+  const offset = nyOffsetMinutes(instant);
+  const wall = new Date(+instant + offset * 60000).toISOString().slice(0,19);
+  return `${wall}${offset < 0 ? '-' : '+'}${String(Math.floor(Math.abs(offset)/60)).padStart(2,'0')}:${String(Math.abs(offset)%60).padStart(2,'0')}`;
+}
+
 /** Minutes range → "30–40 min" or "1 h 40 – 1 h 55" */
 export function minutesRange([a, b]) {
   const f = n => n < 60 ? `${n}` : `${Math.floor(n / 60)} h ${String(n % 60).padStart(2, '0')}`;

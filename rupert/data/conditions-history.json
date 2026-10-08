@@ -1,0 +1,50 @@
+{
+  "snapshots": [
+    {
+      "edition_id": "2026-W41-thu",
+      "replaced_at": "2026-10-08T20:53:45.697Z",
+      "conditions": {
+        "summary": "Outlook only, well ahead of the weekend: no clear rain signal, and mid-October highs are typically in the low to mid 70s. This will be replaced by the forecast on publication day.",
+        "as_of": "2026-09-28T15:00:00-04:00",
+        "pivot": {
+          "if": "Heavy rain in the two days before",
+          "then": "away_mission",
+          "note": "The paths along the Cape Fear can flood after heavy rain. Take the Company Mill loop instead, where the creek is crossed on a bridge."
+        }
+      },
+      "headline_condition": "Outlook only: mild, no clear rain signal",
+      "condition_level": "normal",
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "NOAA CPC 6\u201310 and 8\u201314 day outlooks, issued 28 Sep",
+          "url": "https://www.cpc.ncep.noaa.gov/products/predictions/610day/fxus06.html",
+          "retrieved": "2026-09-29"
+        }
+      ]
+    },
+    {
+      "edition_id": "2026-W41-tue",
+      "replaced_at": "2026-10-08T20:54:09.250Z",
+      "conditions": {
+        "summary": "Outlook only, well ahead of the weekend: no clear rain signal, and mid-October highs are typically in the low to mid 70s. This will be replaced by the forecast on publication day.",
+        "as_of": "2026-09-28T15:00:00-04:00",
+        "pivot": {
+          "if": "Rain or thunder on Saturday morning",
+          "then": "local_trail",
+          "note": "Brumley is ten minutes away. Save the overlook for a clear day, when the rock is dry."
+        }
+      },
+      "headline_condition": "Outlook only: mild, no clear rain signal",
+      "condition_level": "normal",
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "NOAA CPC 6\u201310 and 8\u201314 day outlooks, issued 28 Sep",
+          "url": "https://www.cpc.ncep.noaa.gov/products/predictions/610day/fxus06.html",
+          "retrieved": "2026-09-29"
+        }
+      ]
+    }
+  ]
+}

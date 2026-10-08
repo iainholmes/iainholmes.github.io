@@ -1,5 +1,6 @@
 // Atlas model: published primary recommendation history, with optional visit status.
 // No DOM, no map library. Shared by the build tool (register pre-render) and the browser (map).
+import { isReleased } from './editions.js';
 
 export const STATUS = {
   withdrawn: { label: 'Withdrawn', order: 0 },
@@ -19,7 +20,7 @@ const ROLE = { flagship: 'flagship', local_trail: 'Local Trail', away_mission: '
 export function placeStatuses(places, manifest, { log = [], now = new Date() } = {}) {
   const out = new Map(places.places.map(p => [p.id, { status: 'register', editions: [], visits: [] }]));
   for (const e of manifest.editions) {
-    if (!['published', 'withdrawn'].includes(e.status) || new Date(e.published_at) > now) continue;
+    if (!isReleased(e, now)) continue;
     for (const { place_id, role } of e.place_roles || []) {
       if (role !== 'flagship') continue;
       const s = out.get(place_id); if (!s) continue;
@@ -77,4 +78,12 @@ export function counts(statuses) {
   const c = { all: statuses.size, recommended: 0, walked: 0, planned: 0, withdrawn: 0 };
   for (const s of statuses.values()) if (c[s.status] != null) c[s.status]++;
   return c;
+}
+
+export function atlasModel(places, manifest, { now = new Date() } = {}) {
+  const statuses = placeStatuses(places, manifest, { now });
+  const groups = registerGroups(places, statuses);
+  return { statuses, groups, counts: counts(statuses), features: markerFeatures(places, statuses),
+    bounds: boundsOf({ places: places.places.filter(p => statuses.has(p.id)) }),
+    regions: groups.map(g => ({ label: g.region, ids: g.places.map(p => p.id) })) };
 }

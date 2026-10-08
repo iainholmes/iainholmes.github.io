@@ -1,3 +1,4 @@
+import { pairKey } from './editions.js';
 import { labrador } from './labrador.js';
 import { weatherParts } from './weather.js';
 import { guidanceFor } from './adventure.js';
@@ -193,7 +194,7 @@ export function renderOutingInfo(ed) {
   const weather=weatherParts(ed), bits=routeBits(ed.flagship?.snapshot);
   return `<div class="outing-info">
     ${bits.length ? `<section class="outing-glance"><h3 class="outing-heading">Outing at a glance</h3><ul class="outing-metrics" aria-label="Outing logistics">${bits.map(b=>`<li>${b}</li>`).join('')}</ul></section>` : ''}
-    ${(weather.days.length||weather.forecast) ? `<section class="outing-weather${weather.adverse?' is-adverse':''}"><h3 class="outing-heading">${weather.adverse?'Weather warning':'Weather'}</h3>${weather.days.length?`<table class="outing-forecast"><thead><tr><th scope="col">Day</th><th scope="col">Forecast</th></tr></thead><tbody>${weather.days.map(d=>`<tr><th scope="row">${esc(d.day)}</th><td>${esc(d.forecast)}</td></tr>`).join('')}</tbody></table>`:''}${weather.forecast?`<p>${esc(weather.forecast)}</p>`:''}${weather.context?`<p class="weather-context">${esc(weather.context)}</p>`:''}</section>`:''}
+    ${(weather.days.length||weather.forecast) ? `<section class="outing-weather${weather.adverse?' is-adverse':''}"><h3 class="outing-heading">${weather.adverse?'Weather warning':'Weather'}</h3>${weather.days.length?`<table class="outing-forecast"><thead><tr><th scope="col">Day</th><th scope="col">Forecast</th></tr></thead><tbody>${weather.days.map(d=>`<tr><th scope="row">${esc(d.day)}</th><td>${esc(d.forecast)}</td></tr>`).join('')}</tbody></table>`:''}${weather.forecast?`<p>${esc(weather.forecast)}</p>`:''}${weather.context?`<p class="weather-context">${esc(weather.context)}</p>`:''}${weatherProvenance(ed.conditions, ed.flagship?.sources)}</section>`:''}
     ${weather.trail?`<section class="outing-trail"><h3 class="outing-heading">Trail note</h3><p>${esc(weather.trail)}</p></section>`:''}
   </div>`;
 }
@@ -209,7 +210,7 @@ export function renderWeek(pair, editions, ctx) {
   const tab = (slot, ed) => `<button type="button" role="tab" class="tab" id="tab-${slot}" aria-controls="plate-${slot}" aria-selected="false" tabindex="-1">
       <span class="tab-k"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span><span>${SLOT_LABEL[slot]}</span></span><span class="tab-t">${ed ? esc(placeShort(places, ed.flagship.place_id, ed.flagship.title)) : 'Publishes ' + esc(publishedLabel(pair.missing[slot])) + ' · ' + PENDING_TIME}</span></button>`;
   const inter = interlude(thu || tue, ctx);
-  return `<section class="week" data-pair="${esc(pairKeyFrom(pair))}" aria-labelledby="week-h">
+  return `<section class="week" data-pair="${esc(pairKey(pair))}" aria-labelledby="week-h">
   <header class="weekband wrap">
     <p class="wb-eyebrow">${eyebrow}</p>
     <h1 id="week-h">${esc(weekendRange(pair.weekend.start, pair.weekend.end))}</h1>
@@ -224,10 +225,6 @@ export function renderWeek(pair, editions, ctx) {
   ${inter}
   <p class="week-archive wrap"><a href="${base}archive/">Earlier weekends in the archive</a></p>
 </section>`;
-}
-
-function pairKeyFrom(pair) {
-  return [pair.weekend.start, pair.tuesday?.id || '-', pair.thursday?.id || '-', pair.state].join('|');
 }
 
 function placeShort(places, id, fallback) {
@@ -271,7 +268,7 @@ export function renderEdition(ed, ctx, sibling) {
     fact('Difficulty', esc(r.difficulty)),
     fact('Surface', esc(r.surface)),
     fact('Outing time', s.duration_h ? esc(hoursRange(s.duration_h)) : ''),
-    fact('Drive', s.drive ? `${esc(minutesRange(s.drive.minutes))}<span class="fact-note">from ${esc(ref?.label || 'Chapel Hill')}</span>` : ''),
+    fact('Drive', s.drive ? `<span class="edition-drive" data-place="${esc(f.place_id)}">${esc(minutesRange(s.drive.minutes))}<span class="fact-note">Chapel Hill reference estimate · ${esc(ref?.label || 'Franklin Street')}</span></span>` : ''),
     fact('Start', esc(s.access?.name)),
     fact('Parking', esc(s.access?.parking)),
   ].join('');
@@ -296,7 +293,7 @@ export function renderEdition(ed, ctx, sibling) {
   const sib = sibling && new Date(sibling.published_at) <= (ctx.now || new Date())
     ? `<p class="ed-sibling"><span class="lbl">The other choice for this weekend</span><a href="${base}edition/${esc(sibling.id)}/">${esc(SLOT_LABEL[sibling.slot])}: ${esc(sibling.flagship.title)}</a></p>` : '';
 
-  return `<article class="edition" aria-labelledby="ed-h">
+  return `<article class="edition" data-edition="${esc(ed.id)}" aria-labelledby="ed-h">
   <header class="ed-head wrap">
     <div class="ed-heading"><p class="ed-eyebrow"><span class="p-day">${SLOT_LABEL[ed.slot]}</span><span>For the weekend of ${esc(weekendRange(ed.weekend.start, ed.weekend.end))}</span></p>
     <h1 id="ed-h">${esc(titleCase(f.title))}</h1>
@@ -311,7 +308,7 @@ export function renderEdition(ed, ctx, sibling) {
       <section><h2 class="sec-h">Why This Week</h2><p>${esc(f.why_this_week)}</p></section>
       <section class="ed-conditions"><h2 class="sec-h">Conditions</h2><p>${esc(ed.conditions?.summary)}</p>
         ${ed.conditions?.pivot ? `<div class="pivot${ed.flagship.condition_level === 'adverse' ? ' is-adverse' : ''}"><p class="pivot-k">If it turns</p><p><strong>${esc(ed.conditions.pivot.if)}:</strong> ${esc(ed.conditions.pivot.note)}${pivotTarget ? ` <span class="pivot-to">Go to: ${esc(pivotTarget.title)}</span>` : ''}</p></div>` : ''}
-        <p class="as-of">Forecast as of ${esc(shortDate(nyDateString(new Date(ed.conditions.as_of))))}, ${esc(nyTime(new Date(ed.conditions.as_of)))} ET</p></section>
+        ${weatherProvenance(ed.conditions, ed.flagship?.sources)}</section>
       <div class="ed-fun">
         ${panels.map(p => `<section><h2 class="sec-h">${esc(titleCase(p.label))}</h2><p class="fun-text">${esc(p.text)}</p></section>`).join('')}
 
@@ -447,4 +444,14 @@ export function renderTravel(ctx) {
     <details class="postcard-panel" open><summary>Travel Postcard</summary><figure id="journey-postcard" class="travel-postcard" hidden></figure><div class="postcard-controls"><label>Caption<input id="postcard-caption" maxlength="160" placeholder="Destination"></label><label class="import-label">Replace Artwork (optional)<input id="postcard-file" type="file" accept="image/jpeg,image/png,image/webp"></label><button id="remove-postcard" type="button" hidden>Use Automatic Artwork</button></div></details></div>
   <datalist id="travel-locations"><option value="Home"></option>${ctx.places.places.map(p=>`<option value="${esc(p.name)}"></option>`).join('')}${Object.values(ctx.places.reference_points || {}).map(p=>`<option value="${esc(p.label)}"></option>`).join('')}</datalist>
   <script type="application/json" id="travel-places">${JSON.stringify(ctx.places.places).replace(/</g,'\\u003c')}</script><script type="application/json" id="travel-references">${JSON.stringify(ctx.places.reference_points || {}).replace(/</g,'\\u003c')}</script><script type="application/json" id="travel-publications">${JSON.stringify((ctx.history||[]).filter(e=>new Date(e.published_at)<=(ctx.now||new Date())).map(e=>({place_id:e.flagship.place_id,id:e.id}))).replace(/</g,'\\u003c')}</script></div>`;
+}
+
+// Dated snapshots never claim to be a current observation. Preserve their original source/issue time.
+export function weatherProvenance(conditions, sources = []) {
+  if (!conditions?.as_of || !Number.isFinite(+new Date(conditions.as_of))) return '';
+  const date = new Date(conditions.as_of);
+  const source = conditions.source || sources.find(s => s.kind === 'forecast');
+  const kind = conditions.kind || (/outlook/i.test(conditions.summary || '') ? 'outlook' : 'forecast');
+  const label = kind === 'unavailable' ? 'Forecast unavailable · checked' : kind === 'outlook' ? 'Historical outlook · issued' : 'Forecast snapshot · issued';
+  return `<p class="as-of">${label} ${esc(shortDate(nyDateString(date)))}, ${esc(nyTime(date))} ET${source?.url ? ` · <a href="${esc(source.url)}" rel="noopener">${esc(source.label)}</a>` : ''}</p>`;
 }

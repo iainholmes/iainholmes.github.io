@@ -1,3 +1,4 @@
+import { pendingThursdayFixture } from './publication-fixtures.mjs';
 // Real UI handlers; provider responses and Home below are isolated synthetic QA fixtures.
 // ATLAS_QA_CHROME=/path/to/chromium node rupert/_tools/refinement-browser-test.mjs
 // ATLAS_QA_URL=https://iainholmes.github.io/rupert/ checks deployed bytes with the same fixtures.
@@ -9,7 +10,7 @@ import {fileURLToPath} from 'node:url';
 import {resolve,extname} from 'node:path';
 const {chromium}=createRequire(import.meta.url)('playwright');
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
-const manifest=JSON.parse(await readFile(resolve(root,'data/editions/index.json'),'utf8'));
+const manifest=pendingThursdayFixture(JSON.parse(await readFile(resolve(root,'data/editions/index.json'),'utf8')));
 const monday='2026-10-05T12:00:00-04:00';
 const output=resolve(process.env.ATLAS_QA_OUTPUT_DIR||resolve(root,'_tools/refinement-evidence'));
 await mkdir(output,{recursive:true});

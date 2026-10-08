@@ -26,7 +26,7 @@ import { cycleWeekend } from '../assets/js/core/cycles.js';
 import { veilState, veilArtworkProblems } from '../assets/js/core/veil.js';
 import { veilArrivalBoot } from '../assets/js/core/veil-arrival.js';
 import { chrome, renderWeek, renderEdition, renderArchive, renderAtlas, renderComing, renderTravel, weekLabelFor, esc } from '../assets/js/core/render.js';
-import { placeStatuses, markerFeatures, boundsOf, registerGroups, counts } from '../assets/js/core/atlas.js';
+import { placeStatuses, markerFeatures, boundsOf, registerGroups, counts, atlasModel } from '../assets/js/core/atlas.js';
 import { trafficConfig } from '../assets/js/traffic-config.js';
 import { trafficAvailable } from '../assets/js/core/traffic.js';
 
@@ -183,6 +183,7 @@ function manifestFrom(editions) {
   return {
     schema_version: 1,
     generated_by: 'rupert/_tools/rupert.mjs',
+    revision: createHash('sha256').update(JSON.stringify(editions)).digest('hex').slice(0,16),
     editions: Object.values(editions)
       .sort((a, b) => a.published_at.localeCompare(b.published_at))
       .map(e => ({
@@ -302,13 +303,11 @@ async function build({ writeFiles }) {
       depth: 1, active: 'archive', site: data.site, weekLabel,
       body: renderArchive(archiveGroups(manifest, now, pair), { ...ctx0, base: '../' }),
     }));
-    const statuses = placeStatuses(data.places, manifest, { now });
-    const atlasModel = { statuses, groups: registerGroups(data.places, statuses), counts: counts(statuses),
-      features: markerFeatures(data.places, statuses), bounds: boundsOf({ places: data.places.places.filter(p => statuses.has(p.id)) }) };
+    const directoryModel = atlasModel(data.places, manifest, { now });
     await w('atlas/index.html', page({
       title: 'Atlas · The Rupert Atlas', description: 'Published recommendations and their history, on a map and in a directory.',
       depth: 1, active: 'atlas', site: data.site, weekLabel, pageClass: 'page-atlas', extra: ['assets/js/atlas-view.js'],
-      body: renderAtlas(atlasModel, { base: '../' }),
+      body: renderAtlas(directoryModel, { base: '../' }),
     }));
     for (const k of ['travel', 'log']) {
       await w(`${k}/index.html`, page({

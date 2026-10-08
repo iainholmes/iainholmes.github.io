@@ -1,3 +1,4 @@
+import { pendingThursdayFixture } from './publication-fixtures.mjs';
 // Actual production renderer/handlers; only the clock and publication manifest are fixtures.
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
@@ -10,7 +11,7 @@ import {renderWeek} from '../assets/js/core/render.js';
 const {chromium}=createRequire(import.meta.url)('playwright');
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
 const json=async p=>JSON.parse(await readFile(resolve(root,p),'utf8'));
-const manifest=await json('data/editions/index.json'),photos=await json('data/photos.json'),places=await json('data/places.json');
+const manifest=pendingThursdayFixture(await json('data/editions/index.json')),photos=await json('data/photos.json'),places=await json('data/places.json');
 const editions=Object.fromEntries(await Promise.all(manifest.editions.map(async e=>[e.id,await json(e.path)])));
 const released=structuredClone(manifest);released.editions.find(e=>e.id==='2026-W41-thu').status='published';
 const delayed=structuredClone(released);delayed.editions.find(e=>e.id==='2026-W41-tue').status='draft';

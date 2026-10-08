@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
+  "revision": "168027b366f6a4da",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -209,8 +210,8 @@
     {
       "id": "2026-W41-thu",
       "slot": "thursday",
-      "status": "draft",
-      "published_at": "2026-10-08T07:00:00-04:00",
+      "status": "published",
+      "published_at": "2026-10-08T16:57:58-04:00",
       "weekend": {
         "start": "2026-10-10",
         "end": "2026-10-11"
