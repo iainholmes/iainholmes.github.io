@@ -480,6 +480,68 @@
         "seed": 4174146111,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separate work benches and an unfilled place\"><title>UNC Health breaks ground on a 144-bed hospital near Research Triangle Park</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-07-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-07-05)\"><path d=\"M85 300H325V350H85ZM445 420H715V470H445Z\" fill=\"#2c241d\"/><path d=\"M125 350V545M280 350V545M480 470V545M670 470V545\" stroke=\"#2c241d\" stroke-width=\"22\"/><circle cx=\"205\" cy=\"185\" r=\"47\" fill=\"#c4452c\"/><path d=\"M145 285V240Q205 195 265 240V285Z\" fill=\"#1b4a6b\"/><path d=\"M506 340V235H635V340\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"16\"/></g></svg>"
       }
+    },
+    "2026-10-08": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-08",
+        "number": "01",
+        "category": "Environment · climate risk",
+        "topic": "climate",
+        "title": "WMO says record-strength El Niño will reshape climate risk",
+        "composition": "climate-terraces",
+        "signature": "plate:climate-terraces",
+        "seed": 4075764929,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Exposed terraces are monitored at different elevations\"><title>WMO says record-strength El Niño will reshape climate risk</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-08-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-08-01)\"><path d=\"M65 530V405H255V285H460V165H735V530Z\" fill=\"#1d5f47\"/><path d=\"M80 405H247M268 285H448M470 165H720\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M350 310V185M310 194H390\" stroke=\"#2c241d\" stroke-width=\"20\"/><circle cx=\"350\" cy=\"159\" r=\"41\" fill=\"#c4452c\"/><path d=\"M105 90Q270 20 440 90\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"32\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-08",
+        "number": "02",
+        "category": "Technology · biotechnology",
+        "topic": "research",
+        "title": "$1.8 billion Biohub coalition targets biology’s research-data gap",
+        "composition": "institution-weave",
+        "signature": "plate:institution-weave",
+        "seed": 1419309792,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Interdependent institutions form a woven system\"><title>$1.8 billion Biohub coalition targets biology’s research-data gap</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-08-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-08-02)\"><path d=\"M100 170H700M100 320H700M100 470H700\" stroke=\"#1b4a6b\" stroke-width=\"72\"/><path d=\"M225 80V560M575 80V560\" stroke=\"#7a1f33\" stroke-width=\"69\"/><path d=\"M185 320H266M535 170H616M535 470H616\" stroke=\"#f4ead7\" stroke-width=\"73\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-08",
+        "number": "03",
+        "category": "Technology · telecommunications",
+        "topic": "infrastructure",
+        "title": "FCC sets up spectrum auction for direct-to-phone satellite networks",
+        "composition": "institution-wheel",
+        "signature": "plate:institution-wheel",
+        "seed": 2306844207,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Institutional cooperation connects a shared hub to distinct tasks\"><title>FCC sets up spectrum auction for direct-to-phone satellite networks</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-08-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-08-03)\"><circle cx=\"400\" cy=\"315\" r=\"118\" fill=\"#7a1f33\"/><path d=\"M400 185V82M530 315H710M400 445V552M270 315H88\" stroke=\"#2c241d\" stroke-width=\"28\"/><rect x=\"340\" y=\"55\" width=\"120\" height=\"92\" fill=\"#1b4a6b\"/><circle cx=\"680\" cy=\"315\" r=\"61\" fill=\"#c98a12\"/><path d=\"M330 550L400 468L470 550Z\" fill=\"#1d5f47\"/><rect x=\"56\" y=\"253\" width=\"113\" height=\"124\" fill=\"#7c5a3e\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-08",
+        "number": "04",
+        "category": "Economics · housing",
+        "topic": "finance",
+        "title": "U.S. mortgage rates reach 7.49%, the highest in nearly three years",
+        "composition": "finance-vault",
+        "signature": "plate:finance-vault",
+        "seed": 519937004,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A locked reserve encloses transfers\"><title>U.S. mortgage rates reach 7.49%, the highest in nearly three years</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-08-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-08-04)\"><rect x=\"110\" y=\"125\" width=\"430\" height=\"395\" rx=\"9\" fill=\"#2c241d\"/><circle cx=\"325\" cy=\"320\" r=\"122\" fill=\"#1b4a6b\" stroke=\"#f4ead7\" stroke-width=\"16\"/><path d=\"M325 235V405M240 320H410\" stroke=\"#f4ead7\" stroke-width=\"16\"/><path d=\"M540 245H690V465H615\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"32\"/><path d=\"M607 449L586 465L607 481\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"13\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-08",
+        "number": "05",
+        "category": "North Carolina · land use",
+        "topic": "infrastructure",
+        "title": "Raleigh pauses major data-center approvals for six months",
+        "composition": "capacity-funnel",
+        "signature": "plate:capacity-funnel",
+        "seed": 3261674878,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A funnel channels many inputs into limited capacity\"><title>Raleigh pauses major data-center approvals for six months</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-08-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-08-05)\"><path d=\"M90 150H710L450 390V525H350V390Z\" fill=\"#1d5f47\"/><g fill=\"#c98a12\"><circle cx=\"220\" cy=\"90\" r=\"29\"/><circle cx=\"400\" cy=\"90\" r=\"29\"/><circle cx=\"580\" cy=\"90\" r=\"29\"/></g><path d=\"M250 228H550L422 345H378Z\" fill=\"#f4ead7\"/><path d=\"M315 560H485\" stroke=\"#c4452c\" stroke-width=\"28\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
