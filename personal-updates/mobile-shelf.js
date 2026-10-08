@@ -27,7 +27,8 @@
   shelf.addEventListener('scroll',schedule,{passive:true});
   shelf.addEventListener('scrollend',sync);
   shelf.addEventListener('focusin',function(event){
-    if(!mobile.matches)return;
+    // Keyboard focus selects a snap unit; pointer focus must not move the link mid-tap.
+    if(!mobile.matches||!event.target.matches(':focus-visible'))return;
     var unit=event.target.closest('.shelf-unit');if(!unit)return;
     shelf.scrollTo({left:shelf.scrollLeft+unit.getBoundingClientRect().left-shelf.getBoundingClientRect().left,behavior:'instant'});
     sync();

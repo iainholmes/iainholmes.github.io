@@ -18,6 +18,7 @@ for(const [key,editions] of [['fb',fb],['cp',cp]]){
  editions.forEach((e,i)=>{if(key==='cp'&&e.no!==i+1)throw Error('Nonsequential Workbook number');if(key==='fb'&&e.stories.length!==5)throw Error('Field Brief needs five stories');if(new Set(editions.map(x=>x.date)).size!==editions.length)throw Error('Duplicate publication date');
  const id=key+':'+e.date;if(archive[id])return;
  const m=marks.model({key,date:e.date,no:e.no||i+1,title:e.issueTitle,questions:e.questions,framing:[e.deck,e.signalTitle,...e.signal||[]].join(' '),previous:i?archive[key+':'+editions[i-1].date]:null});
+ if(key==='cp'){const recent=editions.slice(Math.max(0,i-3),i).map(x=>archive['cp:'+x.date]);if(recent.some(x=>marks.workbookSignature(x)===marks.workbookSignature(m)))throw Error('Repeated Workbook issue composition');}
  if(key==='fb'){const previous=i?archive[key+':'+editions[i-1].date]:null;if(previous&&storyArt.markSignature(m)===storyArt.markSignature(previous))throw Error('Repeated Field Brief issue composition');}
  archive[id]={...m,frozen:marks.svg(m)};
  });
