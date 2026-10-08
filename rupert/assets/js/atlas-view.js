@@ -6,6 +6,7 @@ import { createMap } from './map/maplibre-provider.js';
 import { atlasModel } from './core/atlas.js';
 import { isReleased } from './core/editions.js';
 import { renderAtlas } from './core/render.js';
+import { setupMenus } from './core/menus.js';
 
 const base = document.body.dataset.base || '';
 const data = JSON.parse(document.getElementById('atlas-data')?.textContent || '{"features":[],"bounds":null}');
@@ -145,6 +146,7 @@ async function refreshPublications() {
       if (row.dataset.place === selectedId) row.setAttribute('aria-current', 'true');
       if (opened.has(row.dataset.place)) row.querySelector('.reg-details').open = true;
     }
+    setupMenus(directory);
     frameButtons = [...document.querySelectorAll('[data-frame]')];
     map?.setMarkers(data.features); controlsReady(!!map);
     if (selectedId && !model.statuses.has(selectedId)) select(null);

@@ -4,7 +4,8 @@ export function setupMenus(host=document) {
   document.addEventListener('keydown',e=>{if(e.key==='Tab'||e.key.startsWith('Arrow'))keyboard=true;});
   document.addEventListener('pointerdown',()=>{keyboard=false;},true);
   const fine=matchMedia('(hover:hover) and (pointer:fine)');
-  for(const menu of host.querySelectorAll('.frame-menu,.frame-regions,.location-settings,.reg-details,[data-menu]')) {
+  // Home & routes is a form, not a hover menu: native autofill leaves the document.
+  for(const menu of host.querySelectorAll('.frame-menu,.frame-regions,.reg-details,[data-menu]')) {
     if(menu.dataset.menuReady)continue;menu.dataset.menuReady='true';let timer;
     const close=()=>{clearTimeout(timer);menu.open=false;};
     const focused=()=>keyboard&&menu.contains(document.activeElement);
@@ -14,15 +15,21 @@ export function setupMenus(host=document) {
       clearTimeout(timer);timer=setTimeout(()=>{if(!focused()&&!menu.matches(':hover'))close();},180);
     });
     menu.addEventListener('focusin',()=>clearTimeout(timer));
-    menu.addEventListener('focusout',()=>{clearTimeout(timer);timer=setTimeout(()=>{if(!menu.contains(document.activeElement)&&!menu.matches(':hover'))close();},180);});
+    menu.addEventListener('focusout',()=>{if(menu.matches('.reg-details')&&(!fine.matches||innerWidth<1024))return;clearTimeout(timer);timer=setTimeout(()=>{if(!menu.contains(document.activeElement)&&!menu.matches(':hover'))close();},180);});
     menu.addEventListener('keydown',e=>{if(e.key!=='Escape')return;e.preventDefault();e.stopPropagation();close();menu.querySelector(':scope > summary')?.focus();});
     if(menu.matches('.reg-details')) {
-      const popup=menu.querySelector('.reg-dossier'),summary=menu.querySelector(':scope > summary');
-      const position=()=>{if(!menu.open||!popup||!fine.matches||innerWidth<1024)return;
+      const popup=menu.querySelector('.reg-dossier'),summary=menu.querySelector(':scope > summary'),list=menu.closest('.directory-list');
+      const position=()=>{if(!popup)return;if(!fine.matches||innerWidth<1024){for(const p of ['width','left','top','max-height'])popup.style.removeProperty(p);return;}if(!menu.open)return;
         const rect=summary.getBoundingClientRect(),width=Math.min(360,innerWidth-40);popup.style.width=width+'px';popup.style.left=Math.max(20,Math.min(rect.right-width,innerWidth-width-20))+'px';
-        const height=Math.min(popup.scrollHeight,innerHeight-100);popup.style.maxHeight=height+'px';popup.style.top=(rect.bottom+height+12<innerHeight?rect.bottom+8:Math.max(12,rect.top-height-8))+'px';
+        popup.style.maxHeight=Math.max(0,innerHeight-24)+'px';
+        const height=popup.getBoundingClientRect().height,top=rect.bottom+height+20<=innerHeight?rect.bottom+8:rect.top-height-8;
+        popup.style.top=Math.max(12,Math.min(top,innerHeight-height-12))+'px';
       };
-      menu.addEventListener('toggle',position);window.addEventListener('resize',position);document.querySelector('.directory-list')?.addEventListener('scroll',()=>{if(menu.open&&!focused())close();else position();});
+      const release=()=>{window.removeEventListener('resize',resize);window.removeEventListener('scroll',resize);list?.removeEventListener('scroll',scroll);};
+      const resize=()=>{if(!menu.isConnected){release();return;}position();};
+      const scroll=()=>{if(!menu.isConnected){release();return;}if(menu.open&&!focused())close();else position();};
+      menu.addEventListener('toggle',position);window.addEventListener('resize',resize);window.addEventListener('scroll',resize);list?.addEventListener('scroll',scroll);
+      if(menu.open)position();
     }
   }
 }

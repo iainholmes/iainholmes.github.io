@@ -983,12 +983,12 @@ h2,h3,h4,.sec-h,.edition .sec-h,.ed-main .sec-h,.field-log .sec-h,.p-title,.plat
 .head-note.dog-only {display:flex;justify-content:flex-end;}
 .head-note.dog-only .lab-outline {width:172px;height:100px;}
 main.page-travel {background:var(--lake);color:var(--paper);}
-.page-atlas .page-head,.page-travel .page-head {background:var(--banner-blue);border-block:1px solid #C98B4B70;}
-.page-atlas .head-note,.page-travel .head-note {color:var(--paper);}
-.page-atlas .head-note p,.page-travel .head-note p,.page-travel .page-head h1 {color:var(--paper);}
+.page-atlas .page-head,.page-travel .page-head,.field-log .page-head {background:var(--banner-blue);border-block:1px solid #C98B4B70;}
+.page-atlas .head-note,.page-travel .head-note,.field-log .head-note {color:var(--paper);}
+.page-atlas .head-note p,.page-travel .head-note p,.page-travel .page-head h1,.field-log .page-head h1 {color:var(--paper);}
 .page-atlas .head-note small,.page-travel .head-note small {color:var(--paper);}
 .page-travel .travel {background:transparent;color:var(--paper);}
-.page-travel .page-head {margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);}
+.page-travel .page-head,.field-log .page-head {margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);}
 .ed-companion,.ed-sheet section {background:var(--category-wash);background:color-mix(in srgb,var(--lake) 8%,var(--paper));}
 .footer-identity {display:inline-flex;align-items:center;gap:12px;white-space:nowrap;}
 .footer-identity img {height:30px;width:30px;}
@@ -1022,7 +1022,7 @@ main.page-travel {background:var(--lake);color:var(--paper);}
 @media (min-width:1024px) {
   .directory-list {display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(280px,calc((100% - 32px)/3));gap:16px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-padding-inline:2px;padding-bottom:10px;scrollbar-color:var(--gold) var(--lake);scrollbar-width:thin;}
   .reg-row {min-width:280px;align-self:stretch;}
-  .reg-dossier {position:fixed;z-index:30;overflow:auto;overscroll-behavior:contain;}
+  .reg-dossier {position:fixed;top:auto;right:auto;z-index:30;overflow:auto;overscroll-behavior:contain;}
   .reg-details > summary {min-height:32px;padding-block:4px;}
 }
 @media (min-width:1024px) and (min-height:740px) {.archive-rail {position:sticky;top:calc(var(--bar-h) + 20px);}}
@@ -1435,3 +1435,13 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .route-navigation p{font-size:11px;max-width:70ch;margin:6px 0 14px;}
 .traffic-credits{font:400 11px/1.5 var(--f-data);}
 .traffic-credits p{white-space:pre-line;overflow-wrap:anywhere;}
+
+/* Desktop refinements keep the approved mobile masthead and banner placement. */
+@media(min-width:1024px){
+  .masthead .wordmark{font-size:clamp(102px,10.2vw,163px);padding-block:18px 8px;}
+  .week{padding-bottom:52px;}
+  .week-archive{margin-bottom:0;}
+  :is(.page-atlas,.page-travel,.field-log) .page-head .head-note{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(100px,.8fr);}
+  :is(.page-atlas,.page-travel,.field-log) .page-head .lab-outline{grid-column:2;grid-row:1;justify-self:end;}
+  :is(.page-atlas,.page-travel,.field-log) .page-head .banner-copy{grid-column:1;grid-row:1;}
+}
