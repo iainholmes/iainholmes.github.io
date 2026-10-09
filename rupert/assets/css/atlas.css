@@ -1020,8 +1020,14 @@ main.page-travel {background:var(--lake);color:var(--paper);}
 .archive-card .arch-meta {margin-block:8px;}
 /* The published history stays one row at any record count. Popovers escape the scrollport. */
 @media (min-width:1024px) {
-  .directory-list {display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(280px,calc((100% - 32px)/3));gap:16px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-padding-inline:2px;padding-bottom:10px;scrollbar-color:var(--gold) var(--lake);scrollbar-width:thin;}
-  .reg-row {min-width:280px;align-self:stretch;}
+  .directory-list {display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(236px,calc((100% - 64px)/5));gap:16px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-padding-inline:2px;padding-bottom:10px;scrollbar-color:var(--gold) var(--lake);scrollbar-width:thin;}
+  .reg-row {min-width:236px;align-self:stretch;}
+  /* Keep the title's marker column; let the shared metadata row use the full card width. */
+  .reg-main {display:contents;}
+  .reg-brief {grid-column:1/-1;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:0 12px;}
+  .reg-word {grid-column:1;grid-row:1;justify-self:center;}
+  .reg-latest {grid-column:1;grid-row:2;justify-self:center;white-space:nowrap;}
+  .reg-details {grid-column:2;grid-row:1/span 2;justify-self:end;align-self:end;margin:0 4px 0 0;}
   .reg-dossier {position:fixed;top:auto;right:auto;z-index:30;overflow:auto;overscroll-behavior:contain;}
   .reg-details > summary {min-height:32px;padding-block:4px;}
 }
@@ -1449,7 +1455,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .edition .ed-hero.adventure-illustration{justify-self:center;max-width:100%;aspect-ratio:auto;max-height:none;background:none;}
 .edition .ed-hero.adventure-illustration img{width:auto;max-width:100%;height:auto;max-height:min(640px,75svh);aspect-ratio:auto;object-fit:contain;object-position:center;background:none;margin-inline:auto;}
 
-/* Desktop This Week is a comparison spread; the established phone reading order stays intact. */
+/* Desktop This Week is a comparison spread. */
 @media(min-width:1024px){
   .week .plates{column-gap:clamp(40px,4vw,64px);row-gap:18px;align-items:stretch;}
   .week .plate{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:subgrid;grid-row:span 5;column-gap:24px;row-gap:18px;border-top:2px solid var(--accent);border-bottom:1px solid var(--rule-strong);padding:18px 0 20px!important;}
@@ -1478,4 +1484,28 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   .week .plate.is-pending,.week .plate.is-withdrawn{display:flex;grid-row:span 5;}
   .week .plate.is-pending .p-title{font-size:var(--type-card);}
   .week .plate.is-pending .p-stand{font-size:var(--type-body);}
+}
+
+/* Phone previews pair a small complete plate with the title; planning depth lives in the edition. */
+@media(max-width:759.98px), (min-width:760px) and (max-width:1023.98px) and (max-height:500px){
+  .week .plate:has(>.p-photo):not([hidden]){display:grid;grid-row:auto;grid-template-rows:none;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:14px 16px;align-content:start;padding:14px 0 24px!important;border-bottom:1px solid var(--rule-strong);}
+  .week .plate:has(>.p-photo)>.p-eyebrow{grid-column:1/-1;grid-row:1;margin:0;}
+  .week .p-photo{grid-column:1;grid-row:2;align-self:start;margin:0;}
+  .week .p-photo img{aspect-ratio:4/5;}
+  .week .p-photo[data-editorial-plate] img{width:auto;max-width:100%;height:auto;max-height:220px;aspect-ratio:auto;object-fit:contain;object-position:center;background:none;margin-inline:auto;}
+  .week .p-photo .credit{font-size:11px;line-height:1.35;}
+  .week .plate:has(>.p-photo)>.p-title{grid-column:2;grid-row:2;margin:0;align-self:start;font-size:clamp(27px,7.2vw,31px);line-height:1.18;}
+  .week .plate:has(>.p-photo)>.p-stand{grid-column:1/-1;grid-row:3;margin:0;font-size:18px;line-height:1.45;}
+  .week .outing-info{grid-column:1/-1;grid-row:4;gap:16px;margin:0;padding:12px 0 0;border-bottom:0;}
+  .week .outing-metrics{grid-template-columns:repeat(3,minmax(0,1fr));font-size:14px;}
+  .week .outing-metrics li{padding:4px 8px;}
+  .week .outing-metrics li:first-child{padding-left:0;}
+  .week .outing-metrics li:nth-child(3){grid-column:auto;border-top:0;border-left:1px solid var(--rule);}
+  /* Keep the authored weekend/overnight warning once; retain the table when no summary exists. */
+  .week .outing-weather:has(>.weather-context)>.outing-forecast{display:none;}
+  .week .weather-context{font:400 16px/1.5 var(--f-text);margin-top:0;}
+  .week .outing-weather .as-of{font-size:12px;line-height:1.5;}
+  .week .p-more{grid-column:1/-1;grid-row:5;margin:0;padding-top:6px;border-top:1px solid var(--rule);}
+  .week .p-more a{font:400 24px/1.2 var(--f-secondary);text-transform:none;letter-spacing:0;min-height:44px;}
+  .week .p-more a::after{content:' →';margin-left:12px;color:var(--accent);}
 }

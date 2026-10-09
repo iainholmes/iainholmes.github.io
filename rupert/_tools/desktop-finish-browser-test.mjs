@@ -60,7 +60,9 @@ try {
    check(Math.abs(parseFloat(a.wordmarkStyle.letterSpacing)/parseFloat(a.wordmarkStyle.fontSize)-parseFloat(b.wordmarkStyle.letterSpacing)/parseFloat(b.wordmarkStyle.fontSize))<.00001,`${label} masthead tracking in em changed`);
    if(width<1024){
     for(const k of ['wordmark','wordmarkStyle','dateline','primary','bar','dock'])check(JSON.stringify(a[k])===JSON.stringify(b[k]),`${label} approved mobile ${k} moved`);
-    if(path!=='log/')for(const k of ['head','dog','h1','plates','archive','main'])check(JSON.stringify(a[k])===JSON.stringify(b[k]),`${label} approved mobile ${k} changed: ${JSON.stringify(b[k])} / ${JSON.stringify(a[k])}`);
+    if(path!=='log/')for(const k of ['head','dog','h1',...(path?['plates','archive','main']:width>=760&&height>500?['plates','archive','main']:[])])check(JSON.stringify(a[k])===JSON.stringify(b[k]),`${label} approved mobile ${k} changed: ${JSON.stringify(b[k])} / ${JSON.stringify(a[k])}`);
+    // The authorized phone preview change retains its surrounding layout and shortens both cards.
+    if(!path&&(width<760||(width<1024&&height<=500))){check(a.plates.length===b.plates.length,'Phone edition slots changed');for(let i=0;i<a.plates.length;i++){near(a.plates[i].x,b.plates[i].x,'Phone preview left inset');near(a.plates[i].width,b.plates[i].width,'Phone preview width');check(b.plates[i].height===0?a.plates[i].height===0:a.plates[i].height<b.plates[i].height,'Phone preview not condensed');}check(a.archive.y<b.archive.y,'Archive not moved with shorter previews');}
    }else{
     check(a.wordmarkInk.y-b.wordmarkInk.y>=11,`${label} masthead not lower`);
     check(a.wordmarkInk.width>b.wordmarkInk.width&&a.wordmarkInk.width<b.wordmarkInk.width*1.04,`${label} enlargement not restrained`);
@@ -123,8 +125,10 @@ try {
    }
   }
   if(!baseline){
-   await page.locator('.directory-list').evaluate(n=>n.scrollLeft=0);await page.clock.runFor(50);
-   const mouseDetails=page.locator('#place-hillsborough-riverwalk .reg-details');await mouseDetails.locator(':scope > summary').scrollIntoViewIfNeeded();await mouseDetails.locator(':scope > summary').click();await page.locator('.directory-list').evaluate(n=>n.scrollLeft+=25);await page.waitForFunction(()=>!document.querySelector('#place-hillsborough-riverwalk .reg-details').open);check(!await mouseDetails.evaluate(n=>n.open),'Mouse-open Details did not close on directory scroll');
+   // All five cards now fit at 1440px; exercise scroll behavior where scrolling is necessary.
+   await page.setViewportSize({width:1024,height:900});await page.locator('.directory-list').evaluate(n=>n.scrollLeft=0);await page.clock.runFor(100);
+   check(await page.locator('.directory-list').evaluate(n=>n.scrollWidth>n.clientWidth),'Scroll fixture has no overflow');
+   const mouseDetails=page.locator('#place-hillsborough-riverwalk .reg-details');await mouseDetails.locator(':scope > summary').scrollIntoViewIfNeeded();await mouseDetails.locator(':scope > summary').click();await page.locator('.directory-list').evaluate(n=>n.scrollLeft+=25);await page.clock.runFor(50);await page.waitForFunction(()=>!document.querySelector('#place-hillsborough-riverwalk .reg-details').open);check(!await mouseDetails.evaluate(n=>n.open),'Mouse-open Details did not close on directory scroll');
    const details=page.locator('#place-eno-cox-mountain .reg-details'),summary=details.locator(':scope > summary');await summary.focus();await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');await summary.press('Enter');await page.clock.runFor(50);check(await details.evaluate(n=>n.open),'Keyboard Details activation failed');
    await page.locator('.directory-list').evaluate(n=>n.scrollLeft-=25);await page.clock.runFor(50);check(await details.evaluate(n=>n.open),'Keyboard-focused Details unexpectedly closed on scroll');
    await page.setViewportSize({width:1280,height:800});await page.clock.runFor(100);const box=await details.locator('.reg-dossier').boundingBox();check(box.x>=19&&box.x+box.width<=1261&&box.y>=11&&box.y+box.height<=789,'Details resize escaped viewport');
