@@ -10,6 +10,9 @@ function data(s,id){return JSON.parse(s.match(new RegExp('<script type="applicat
 function jsonReplace(s,id,value){return s.replace(new RegExp('(<script type="application/json" id="'+id+'">)[\\s\\S]*?(</script>)'),(_,a,b)=>a+'\n'+JSON.stringify(value,null,2)+'\n'+b);}
 const fb=data(read('daily-watchlist-5/index.html'),'briefing-data').editions.sort((a,b)=>a.date.localeCompare(b.date));
 for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])throw Error('Published Field Brief is missing its story artwork pin: '+ed.date);
+// Validate L&L companions before any publication artifacts are written.
+const llSource=read('weekly-economics-environment/index.html'),companions=data(llSource,'companion-data');
+for(const [date,cfg] of Object.entries(companions))if(cfg.enabled!==false&&(cfg.appearances||[]).length>2)throw Error('L&L permits at most two active Heron interventions: '+date);
 const plates=storyArt.prepare(fb,storyArchive);
 const cp=data(read('daily-econ-challenge/index.html'),'challenge-data').editions.sort((a,b)=>a.date.localeCompare(b.date));
 // Workbook publication requires authored, safe, question-specific Assistance and Explanation before any artifact is written.
@@ -31,8 +34,9 @@ let ll=read('weekly-economics-environment/index.html');const field=data(ll,'fiel
 const editions=[...ll.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[^>]*data-title="([^"]+)"[^>]*>([\s\S]*?)(?=<section class="edition"|<\/main>)/g)].sort((a,b)=>a[1].localeCompare(b[1]));
 editions.forEach((e,i)=>{
  const synthesis=plain(e[3].match(/<section class="synthesis"[\s\S]*?<\/section>/)?.[0]||e[2]);
- if(!field[e[1]])field[e[1]]=studies.artifact({date:e[1],no:i+1,synthesis,previous:i?field[editions[i-1][1]]:null});
+ const isNew=!field[e[1]];
  const id='sp:'+e[1];if(!archive[id]){const m=marks.model({key:'sp',date:e[1],no:i+1,framing:synthesis,previous:i?archive['sp:'+editions[i-1][1]]:null});archive[id]={...m,frozen:marks.svg(m)};}
+ if(isNew){field[e[1]]=studies.artifact({date:e[1],no:i+1,synthesis,previous:i?field[editions[i-1][1]]:null,cover:archive[id]});if(!studies.distinctFromCover(field[e[1]],archive[id]))throw Error('Field Study duplicates its issue cover: '+e[1]);}
  const figure='<figure class="hero-art" data-field-study="'+e[1]+'">'+field[e[1]].html+'</figure>';
  ll=ll.replace(e[0],e[0].replace(/<figure class="hero-art"[^>]*>[\s\S]*?<\/figure>/,figure));
 });

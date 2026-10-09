@@ -191,12 +191,13 @@ a{color:inherit}
  .mobile-press-note>.press-note[hidden]{display:none}
  .mobile-press-note .note-head{grid-column:1/-1;grid-row:1}
  .mobile-press-note .latest-block{grid-column:1/-1;grid-row:2;margin-bottom:14px}
- .mobile-press-note .metric-run{grid-column:1;grid-row:3;margin:0;align-items:baseline}
- .mobile-press-note .metric-run>span:not(:first-child){display:none}
+ .mobile-press-note .metric-run{grid-column:1/-1;grid-row:3;margin:0;align-items:baseline;gap:4px 0;font-size:10px;line-height:1.5}
+ .mobile-press-note .metric-run>span+span::before{content:"·";margin:0 7px}
+ .mobile-press-note .metric-run>span:has([data-sp-register]),.mobile-press-note .metric-run>span:has([data-cp-fields]){display:none}
  .mobile-press-note .metric-run b{font:inherit;color:var(--bone);letter-spacing:inherit;margin-right:0}
  .mobile-press-note .issue-line{display:contents}
- .mobile-press-note .issue-line>span:first-child{grid-column:2;grid-row:3;margin:0;text-align:left}
- .mobile-press-note .issue-line>span:last-child{grid-column:1/-1;grid-row:4;margin-top:9px}
+ .mobile-press-note .issue-line>span:first-child{grid-column:1/-1;grid-row:4;margin:9px 0 0;text-align:left}
+ .mobile-press-note .issue-line>span:last-child{grid-column:1/-1;grid-row:5;margin-top:9px}
  .mobile-press-note .note-head{margin-bottom:14px}
  .mobile-press-note .press-note::before{height:48px;width:3px}
  .mobile-press-note .press-note::after{width:24px;height:3px}
@@ -269,7 +270,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
         <div class="metric-run" aria-label="Field Brief metrics">
           <span><b data-fb="count">13</b> editions</span>
           <span><b data-fb-depth>65</b> stories</span>
-          <span><b data-kept="fb">0</b> kept</span>
+          <span><b data-kept="fb">0</b> kept here</span>
         </div>
         <div class="latest-block"><small>Latest</small><p class="latest" data-fb="title">Public finance, resource security and rural systems</p></div>
         <p class="issue-line"><span data-fb="line">N<sup>o</sup>. 013 · 9 Oct 2026</span><span>Next <span data-next="fb"></span></span></p>
@@ -280,10 +281,10 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
 <article class="press-note" style="--c:var(--sp)">
         <div class="note-head"><h2>Loblolly &amp; Logit</h2><span>Fridays · 3:00 PM ET</span></div>
         <div class="metric-run" aria-label="Loblolly & Logit metrics">
-          <span><b data-sp="count">3</b> edition</span>
+          <span><b data-sp="count">3</b> editions</span>
           <span><b data-sp-depth>15</b> readings</span>
           <span><b data-sp-register>14</b> register</span>
-          <span><b data-kept="sp">0</b> kept</span>
+          <span><b data-kept="sp">0</b> kept here</span>
         </div>
         <div class="latest-block"><small>Latest</small><p class="latest" data-sp="title">Where the Burden Lands</p></div>
         <p class="issue-line"><span data-sp="line">N<sup>o</sup>. 003 · 9 Oct 2026</span><span>Next <span data-next="sp"></span></span></p>
@@ -297,7 +298,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
           <span><b data-cp="count">9</b> sets</span>
           <span><b data-cp-depth>72</b> questions</span>
           <span><b data-cp-fields>9</b> fields</span>
-          <span><b data-kept="cp">0</b> kept</span>
+          <span><b data-kept="cp">0</b> kept here</span>
         </div>
         <div class="latest-block"><small>Current set</small><p class="latest" data-cp="title">8 questions · 8 fields</p></div>
         <p class="issue-line"><span data-cp="line">N<sup>o</sup>. 009 · 9 Oct 2026</span><span>Next <span data-next="cp"></span></span></p>
@@ -351,8 +352,8 @@ Object.keys(sched).forEach(function(k){var v=nextRun(sched[k][0],sched[k][1]);do
   function set(sel,val,html){document.querySelectorAll(sel).forEach(function(el){if(html)el.innerHTML=val;else el.textContent=val})}
   function fmt(d,o){return new Date(d+'T12:00:00').toLocaleDateString('en-GB',o)}
   function get(url){return fetch(url,{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){return new DOMParser().parseFromString(t,'text/html')})}
-  function paintKept(){var counts={fb:0,sp:0,cp:0};try{var book=JSON.parse(localStorage.getItem('periodicals:commonplace:v1')||'null');Object.keys(book&&book.items||{}).forEach(function(id){var x=book.items[id],k=x&&x.publicationKey;if(k==='ll')k='sp';if(counts[k]!=null)counts[k]++})}catch(e){}Object.keys(counts).forEach(function(k){set('[data-kept="'+k+'"]',counts[k])})}
-  paintKept();addEventListener('pageshow',paintKept);addEventListener('storage',function(e){if(e.key==='periodicals:commonplace:v1')paintKept()});
+  function paintKept(){var counts={fb:0,sp:0,cp:0};try{var book=JSON.parse(localStorage.getItem('periodicals:commonplace:v1')||'null');Object.keys(book&&book.items||{}).forEach(function(id){var x=book.items[id],k=x&&x.publicationKey;if(k==='ll')k='sp';if(k==='wb')k='cp';if(counts[k]!=null)counts[k]++})}catch(e){}Object.keys(counts).forEach(function(k){set('[data-kept="'+k+'"]',counts[k])})}
+  paintKept();addEventListener('pageshow',paintKept);addEventListener('focus',paintKept);addEventListener('storage',function(e){if(e.key==='periodicals:commonplace:v1')paintKept()});
 
   function refreshIssues(){
   get('../daily-watchlist-5/').then(function(doc){

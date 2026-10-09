@@ -2,7 +2,7 @@
 :root{--headline:'LM Roman Dunhill','Source Serif 4',Georgia,serif}
 .hero h1,.overview-item h3,.entry h2{font-family:var(--headline);font-weight:400;font-synthesis:none;letter-spacing:0;line-height:1.14}
 .hero h1 em{font-style:normal}.overview-item h3{font-size:23px;line-height:1.2}.entry h2{line-height:1.17}
-.closing-wordmark{max-width:1320px;margin:30px auto 0;padding:0 44px 18px;font:italic 400 20px/1 var(--editorial-title);color:var(--ink);letter-spacing:0}
+.closing-wordmark{max-width:1320px;margin:40px auto 0;padding:0 44px 8px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;font:italic 400 20px/1 var(--editorial-title);color:var(--ink);letter-spacing:0}
 .footer{align-items:baseline;flex-wrap:wrap;padding-top:12px;padding-bottom:14px}.footer .footer-brand{max-width:none;min-width:0}.footer nav{flex-wrap:wrap}
 .notebook-preview{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin-top:20px}.notebook-preview a{padding:12px 0;border-bottom:1px solid var(--hair);text-decoration:none}
 .synthesis p a{color:inherit;text-decoration-color:var(--pollen);text-underline-offset:4px}.synthesis p a:hover,.synthesis p a:focus-visible{color:var(--pollen)}
@@ -19,7 +19,7 @@ html[data-mode=night] #register-dialog input{background:#10231d;color:#f3f0e6}ht
 html[data-mode=night] #register-dialog .close,html[data-mode=night] #register-dialog .fr-no{color:#f3f0e6}
 body.glance .perch,body.glance .heron-flyer{display:none!important}
 .heron-perch{min-height:66px}.hp-actions button,.hp-actions a{min-height:44px;display:inline-flex;align-items:center}.heron-flyer{transform-origin:center}
-@media(max-width:600px){.closing-wordmark{padding:0 18px 16px}.footer nav{gap:8px 18px}.footer nav a{min-height:44px;display:inline-flex;align-items:center}.notebook-preview{grid-template-columns:1fr}.overview-item h3{font-size:21px}.hero h1{font-size:clamp(32px,8vw,48px)}}
+@media(max-width:600px){.closing-wordmark{margin-top:38px;padding:0 18px 8px}.footer nav{gap:8px 18px}.footer nav a{min-height:44px;display:inline-flex;align-items:center}.notebook-preview{grid-template-columns:1fr}.overview-item h3{font-size:21px}.hero h1{font-size:clamp(32px,8vw,48px)}}
 html[data-mode=night] #register-dialog .eyebrow,html[data-mode=night] #register-dialog .rg-count{color:#aebab0}
 html[data-mode=night] .field-register a:hover,html[data-mode=night] .field-register a:focus-visible{color:#f3f0e6!important}
 
@@ -57,3 +57,5 @@ html[data-mode=night] .register a:hover,html[data-mode=night] .register a:focus-
 }
 
 .hero h1 em{font-style:normal;font-family:inherit;font-synthesis:none}
+
+.closing-folio{white-space:nowrap;font-style:normal;font-size:18px}.closing-folio .no{font-size:.7em;color:var(--muted)}.closing-folio sup{font-size:.56em;vertical-align:.58em;line-height:0}
