@@ -1445,3 +1445,37 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   :is(.page-atlas,.page-travel,.field-log) .page-head .lab-outline{grid-column:2;grid-row:1;justify-self:end;}
   :is(.page-atlas,.page-travel,.field-log) .page-head .banner-copy{grid-column:1;grid-row:1;}
 }
+/* Registered Full Edition plates retain their native composition, including portrait prints. */
+.edition .ed-hero.adventure-illustration{justify-self:center;max-width:100%;aspect-ratio:auto;max-height:none;background:none;}
+.edition .ed-hero.adventure-illustration img{width:auto;max-width:100%;height:auto;max-height:min(640px,75svh);aspect-ratio:auto;object-fit:contain;object-position:center;background:none;margin-inline:auto;}
+
+/* Desktop This Week is a comparison spread; the established phone reading order stays intact. */
+@media(min-width:1024px){
+  .week .plates{column-gap:clamp(40px,4vw,64px);row-gap:18px;align-items:stretch;}
+  .week .plate{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:subgrid;grid-row:span 5;column-gap:24px;row-gap:18px;border-top:2px solid var(--accent);border-bottom:1px solid var(--rule-strong);padding:18px 0 20px!important;}
+  .week .p-eyebrow{grid-column:1/-1;grid-row:1;margin:0;}
+  .week .plate .p-day{font-size:20px;}
+  .week .p-pub{font-size:13px;}
+  .week .p-photo{grid-column:1;grid-row:2/4;align-self:start;margin:0;}
+  .week .p-photo img{aspect-ratio:4/5;object-fit:cover;}
+  .week .p-photo[data-editorial-plate] img{aspect-ratio:auto;height:auto;object-fit:contain;background:none;}
+  .week .p-photo .credit{font-size:11px;line-height:1.4;}
+  .week .p-title{grid-column:2;grid-row:2;margin:0;font-size:clamp(32px,2.8vw,44px);line-height:1.16;align-self:start;}
+  .week .p-stand{grid-column:2;grid-row:3;margin:0;font-size:20px;line-height:1.45;align-self:start;}
+  .week .outing-info{grid-column:1/-1;grid-row:4;gap:16px;padding:16px 0 0;margin:0;border-bottom:0;align-content:start;}
+  .week .outing-metrics{font-size:16px;}
+  .week .outing-metrics li{padding-inline:12px;}
+  .week .outing-metrics li:first-child{padding-left:0;}
+  /* The unchanged authored summary includes overnight hazards as well as both days.
+     Avoid repeating the detailed forecast table when that complete summary exists. */
+  .week .outing-weather:has(>.weather-context)>.outing-forecast{display:none;}
+  .week .weather-context{font:400 17px/1.5 var(--f-text);margin-top:0;}
+  .week .outing-weather .as-of{font-size:12px;line-height:1.5;}
+  .week .outing-trail p{font-size:17px;}
+  .week .p-more{grid-column:1/-1;grid-row:5;margin:0;border-top:1px solid var(--rule);padding-top:8px;align-self:end;}
+  .week .p-more a{font:400 24px/1.2 var(--f-secondary);text-transform:none;letter-spacing:0;min-height:44px;}
+  .week .p-more a::after{content:' →';margin-left:12px;color:var(--accent);}
+  .week .plate.is-pending,.week .plate.is-withdrawn{display:flex;grid-row:span 5;}
+  .week .plate.is-pending .p-title{font-size:var(--type-card);}
+  .week .plate.is-pending .p-stand{font-size:var(--type-body);}
+}

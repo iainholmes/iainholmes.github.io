@@ -81,6 +81,13 @@ function focalVars(imgAspect, fx, fy) {
 
 function imageRef(option) { return option.artwork ? { id: option.artwork.image_id } : option.photo; }
 
+// Registered editorial plates can arrive through either supported image field.
+// Archive prints and documentary photographs retain their photographic crop.
+function editorialPlate(option, photos) {
+  const registered = photoById(photos, imageRef(option)?.id);
+  return !!option.artwork || (registered?.kind === 'plate' && registered.provenance === 'editorial');
+}
+
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 function takenLabel(t) {
   if (!t) return '';
@@ -184,7 +191,7 @@ function plate(slot, ed, pair, ctx) {
   <h2 class="p-title" id="${id}-h"><a href="${href}">${esc(titleCase(f.title))}</a></h2>
   <p class="p-stand">${esc(f.standfirst)}</p>
     ${renderOutingInfo(ed)}
-  <figure class="p-photo${f.artwork ? ' adventure-illustration' : ''}">${photo(imageRef(f), photos, base, { sizes: '(min-width: 760px) 46vw, 100vw', eager: slot === 'tuesday' })}${credit(imageRef(f), photos, ctx.places)}</figure>
+  <figure class="p-photo${f.artwork ? ' adventure-illustration' : ''}"${editorialPlate(f, photos) ? ' data-editorial-plate' : ''}>${photo(imageRef(f), photos, base, { sizes: '(min-width: 1024px) 20vw, (min-width: 760px) 46vw, 100vw', eager: slot === 'tuesday' })}${credit(imageRef(f), photos, ctx.places)}</figure>
 
   <p class="p-more"><a href="${href}">Full edition<span class="vh"> for ${esc(titleCase(f.title))}</span></a></p>
 </article>`;
@@ -301,7 +308,7 @@ export function renderEdition(ed, ctx, sibling) {
     <p class="ed-pub">${slotPublication(ed)} · Weekend choice ${ed.slot === 'tuesday' ? 1 : 2} of 2</p>${historyLink}</div>
     ${marginNote("The Outing", `${esc(place?.short_name || f.title)}<br>${esc(s.access?.name || '')}`, `<a href="${base}atlas/#place-${esc(f.place_id)}">Find it in the Atlas →</a>`)}
   </header>
-  <div class="ed-feature wrap"><figure class="ed-hero${f.artwork ? ' adventure-illustration' : ''}">${photo(imageRef(f), photos, base, { sizes: '(min-width: 1024px) 65vw, 100vw', eager: true })}${credit(imageRef(f), photos, places)}</figure>
+  <div class="ed-feature wrap"><figure class="ed-hero${editorialPlate(f, photos) ? ' adventure-illustration' : ''}">${photo(imageRef(f), photos, base, { sizes: '(min-width: 1024px) 65vw, 100vw', eager: true })}${credit(imageRef(f), photos, places)}</figure>
     <aside class="ed-companion"><h2 class="sec-h">Outing Overview</h2><ul class="feature-facts">${routeBits(s).map(x => `<li>${x}</li>`).join('')}</ul><p class="overview-window">${esc(ed.practical?.best_window || '')}</p><dl class="facts">${fact('Route',esc(r.difficulty))}${fact('Start',esc(s.access?.name))}</dl></aside></div>
   <div class="ed-body wrap">
     <div class="ed-main">
