@@ -1934,6 +1934,144 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Carroll et al., Measurement Error in Nonlinear Models; Battistin et al. (2003), Journal of Business & Economic Statistics."
         }
       ]
+    },
+    {
+      "no": 9,
+      "date": "2026-10-09",
+      "minutes": 24,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "single",
+          "stem": "<p>A randomized encouragement <i>Z</i> is proposed as an instrument for program participation <i>D</i>. The estimated first stage is 0.015 with standard error 0.012. Conventional 2SLS reports an effect of 0.8 with standard error 0.5. Assuming the exclusion restriction and random assignment are credible, which inference strategy is most defensible?</p>",
+          "options": [
+            "Use the usual 2SLS normal approximation because random assignment of <i>Z</i> rules out weak-instrument problems.",
+            "Report only the first-stage <i>p</i>-value; it is a sufficient measure of the uncertainty in the causal effect.",
+            "Use weak-instrument-robust inference, such as an Anderson–Rubin confidence set, and disclose that the data may be weakly informative about the effect.",
+            "Replace 2SLS with OLS of the outcome on participation, which becomes unbiased whenever the instrument is weak."
+          ],
+          "correct": [2],
+          "concepts": ["Weak instruments", "Anderson–Rubin inference", "First-stage strength"],
+          "assistance": "<p>Instrument validity and instrument strength are separate properties. Random assignment can support exogeneity, but it does not determine how much the instrument moves treatment.</p><p>When the first-stage signal is small relative to its sampling noise, the finite-sample distribution of a ratio-based IV estimator can be far from normal. Compare procedures by asking whether their size control remains valid when the first-stage coefficient is near zero, rather than by asking only whether the instrument is randomized.</p>",
+          "explanation": "<p><b>(C) is correct.</b> The first-stage estimate is only 1.25 standard errors from zero, so conventional 2SLS normal approximations can be unreliable and the identified set may be wide or unbounded. An Anderson–Rubin test inverts the reduced-form null and remains valid under weak identification when the instrument itself is valid. (A) confuses exogeneity with relevance. (B) ignores uncertainty in the reduced form and does not deliver effect inference. (D) does not cure endogenous participation; weak IV does not make OLS unbiased.</p>",
+          "refs": "Staiger & Stock (1997), Econometrica; Andrews, Stock & Sun (2019), Annual Review of Economics."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A consumer has utility <i>u</i>(<i>x</i>,<i>y</i>) = √(<i>xy</i>), income 120, and initially faces prices <i>p</i><sub>x</sub> = 4 and <i>p</i><sub>y</sub> = 1. The price of <i>x</i> falls to 3. Using a compensated-demand decomposition that holds utility at its original level, approximately how much of the increase in Marshallian demand for <i>x</i> is the substitution effect?</p>",
+          "options": [
+            "0 units",
+            "2.32 units",
+            "2.68 units",
+            "5 units"
+          ],
+          "correct": [1],
+          "concepts": ["Hicks decomposition", "Hicksian demand", "Compensated price changes"],
+          "assistance": "<p>For equal-share Cobb–Douglas preferences, Marshallian demand spends half of income on each good. The compensated comparison instead holds utility fixed and minimizes expenditure at the new prices.</p><div class=\"eq\"><i>h</i><sub>x</sub>(<i>p</i>,<i>u</i>) = <i>u</i>√(<i>p</i><sub>y</sub>/<i>p</i><sub>x</sub>)</div><p>In a separate example, first compute the old bundle and its utility, then evaluate Hicksian demand at that utility under the new relative price. The difference between Hicksian quantities is the substitution effect; the remaining Marshallian change is the income effect.</p>",
+          "explanation": "<p><b>(B) is correct.</b> Initially the consumer spends 60 on each good, so <i>x</i><sub>0</sub> = 15, <i>y</i><sub>0</sub> = 60 and <i>u</i><sub>0</sub> = √900 = 30. At the new prices, compensated demand is <i>h</i><sub>x</sub> = 30/√3 ≈ 17.32. The substitution effect is therefore 17.32 − 15 = 2.32 units. New Marshallian demand is 120/(2·3) = 20, so the total change is 5 and the income effect is about 2.68. (A) ignores substitution, (C) is the income effect, and (D) is the total effect.</p>",
+          "refs": "Mas-Colell, Whinston & Green, Microeconomic Theory; Varian, Microeconomic Analysis."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "<p>A small open economy has two periods, zero initial foreign assets, world interest rate zero, and preferences log(<i>c</i><sub>1</sub>) + log(<i>c</i><sub>2</sub>). Output is temporarily high: <i>y</i><sub>1</sub> = 120 and <i>y</i><sub>2</sub> = 80. There is no investment or government spending. Which statements describe the consumption-smoothing allocation?</p>",
+          "options": [
+            "Consumption is 100 in each period.",
+            "The period-1 current account is a surplus of 20.",
+            "The economy accumulates foreign assets in period 1 and runs them down in period 2.",
+            "Consumption must equal current output in each period because the world interest rate is zero."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Intertemporal consumption smoothing", "Current account", "Temporary output shocks"],
+          "assistance": "<p>Combine the two period budget constraints into one present-value resource constraint. With equal log weights and a zero interest rate, the Euler condition equates consumption across dates.</p><p>Then use the national-income identity for this stripped-down economy: the current account equals output minus consumption. Keep flows and stocks distinct—the current-account flow changes the economy's net foreign asset position.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> Lifetime resources are 120 + 80 = 200, and equal log weights with <i>r</i> = 0 imply <i>c</i><sub>1</sub> = <i>c</i><sub>2</sub> = 100. Thus CA<sub>1</sub> = <i>y</i><sub>1</sub> − <i>c</i><sub>1</sub> = 20: the economy lends the temporary windfall abroad. In period 2 it consumes 20 more than output by drawing down those assets. (D) incorrectly imposes financial autarky; a zero interest rate does not prevent intertemporal trade.</p>",
+          "refs": "Obstfeld & Rogoff, Foundations of International Macroeconomics; Sachs (1981), Brookings Papers on Economic Activity."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "multi",
+          "stem": "<p>A conservation agency uses a procurement auction to buy five-year habitat contracts from landowners. Parcels differ in ecological benefit, landowners privately know their opportunity costs, and the agency has a fixed budget. Which design and evaluation claims are sound?</p>",
+          "options": [
+            "A transparent score based on verified ecological benefit per bid can improve expected habitat benefit per budget dollar relative to ranking bids by price alone.",
+            "Accepting the lowest nominal bids is always cost-effective because opportunity cost is the only relevant source of heterogeneity.",
+            "The payment rule can affect strategic bidding, so bids need not equal true opportunity costs.",
+            "Pre-specified random selection among parcels tied near the funding cutoff can create a credible comparison for estimating contract impacts."
+          ],
+          "correct": [0, 2, 3],
+          "concepts": ["Conservation auctions", "Procurement mechanism design", "Impact evaluation"],
+          "assistance": "<p>Separate allocation, payment and evaluation. Allocation determines which ecological services are purchased; the payment rule shapes how privately informed sellers translate costs into bids; evaluation requires a counterfactual for what selected land would have done without a contract.</p><p>For heterogeneous projects, a low price is not synonymous with high value. A cutoff or tie-breaking rule can also be designed to preserve a comparison group, but only if it is documented before outcomes are known.</p>",
+          "explanation": "<p><b>(A), (C), and (D) are correct.</b> When benefits vary, ranking verified benefit relative to bid can buy more habitat value for a fixed budget than ranking cost alone. Auction format and payment rules influence bid shading and information rents, so observed bids are not automatically truthful costs. Genuine random tie-breaking near a pre-specified cutoff can support causal impact estimation for marginal parcels. (B) ignores ecological heterogeneity and additionality: the cheapest parcel may protect little habitat or land that would have been conserved anyway.</p>",
+          "refs": "Latacz-Lohmann & Van der Hamsvoort (1997), American Journal of Agricultural Economics; Ferraro (2008), Land Economics."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "single",
+          "stem": "<p>In a randomized trial with 100 units per arm, employment is observed for 80 treated units and 90 control units. Among observed units, 48 treated and 45 control units are employed. With no assumptions about the missing outcomes beyond employment being binary, what are the worst-case bounds on the treatment effect in employment rates?</p>",
+          "options": [
+            "[−0.07, 0.23]",
+            "[0.05, 0.15]",
+            "[−0.20, 0.10]",
+            "[0.48, 0.68]"
+          ],
+          "correct": [0],
+          "concepts": ["Manski bounds", "Attrition", "Partial identification"],
+          "assistance": "<p>For each arm, construct the smallest possible mean by assigning every missing binary outcome zero and the largest possible mean by assigning every missing outcome one. Use the original randomized arm size as the denominator.</p><p>To bound a difference, pair the treated arm's lower endpoint with the control arm's upper endpoint, then pair the treated upper endpoint with the control lower endpoint. Do not substitute observed-case rates unless missingness assumptions justify doing so.</p>",
+          "explanation": "<p><b>(A) is correct.</b> The treated mean lies between 48/100 = 0.48 and (48 + 20)/100 = 0.68. The control mean lies between 45/100 = 0.45 and (45 + 10)/100 = 0.55. Therefore the treatment effect lies between 0.48 − 0.55 = −0.07 and 0.68 − 0.45 = 0.23. (B) treats observed-case differences as tightly identified, (C) does not use the feasible arm-specific endpoints, and (D) reports the treated mean's bounds rather than bounds on the contrast.</p>",
+          "refs": "Manski, Partial Identification of Probability Distributions; Horowitz & Manski (2000), Journal of Econometrics."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "<p>A split-conformal prediction interval is calibrated at level 90% using exchangeable observations and a held-out calibration sample. Without additional assumptions, it can provide finite-sample marginal coverage for a new exchangeable observation, but it does not guarantee 90% conditional coverage at every covariate value. True or false?</p>",
+          "options": ["True", "False"],
+          "correct": [0],
+          "concepts": ["Conformal prediction", "Marginal coverage", "Exchangeability"],
+          "assistance": "<p>State precisely what probability is averaged over. Exchangeability makes the new residual rank comparable with calibration residual ranks, which supports a statement averaged over the joint draw of covariates and outcomes.</p><p>A stronger guarantee would condition on a particular covariate value or subgroup. Ask whether finite-sample calibration alone supplies enough local information to deliver that stronger statement everywhere.</p>",
+          "explanation": "<p><b>True.</b> Under exchangeability and the standard split-conformal construction, the rank argument yields finite-sample marginal coverage at or above the nominal level, up to the usual discreteness adjustment. That probability averages over the new observation's covariates and outcome. Exact distribution-free conditional coverage for every covariate value is generally impossible without further structure, and some regions can be undercovered even when overall coverage is correct.</p>",
+          "refs": "Vovk, Gammerman & Shafer, Algorithmic Learning in a Random World; Lei et al. (2018), Journal of the American Statistical Association."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "multi",
+          "stem": "<p>An economy extracts an exhaustible resource and wants to convert the temporary resource endowment into a sustainable consumption stream. Which statements about the Hartwick rule are correct?</p>",
+          "options": [
+            "The textbook rule calls for investing scarcity rents, not necessarily all gross resource-export revenue, in reproducible capital.",
+            "Under its maintained production and efficiency assumptions, investing all scarcity rents can support constant consumption.",
+            "Consuming a temporary increase in the resource price automatically satisfies the rule because national income has risen.",
+            "Unpriced environmental damage, poor investment returns, or institutional leakage can break the link between formal compliance and genuine sustainability."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Hartwick rule", "Scarcity rent", "Weak sustainability"],
+          "assistance": "<p>Distinguish resource rent from sales revenue: extraction and other costs must be netted out to isolate the return to the natural asset. The accounting question is whether depletion of natural capital is offset by accumulation of another productive asset.</p><p>Then separate the theorem's idealized assumptions from implementation. A rule derived for an efficient aggregate production economy need not account for ecological thresholds, governance losses or investments that fail to create durable productive capacity.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Hartwick's rule reinvests the scarcity rent—the return attributable to depletion of the resource stock—rather than mechanically saving every dollar of gross sales. In the canonical efficient model, this investment offsets declining natural capital and can sustain constant consumption. (C) is false: consuming a price windfall rather than transforming the associated rent into productive assets is not the Hartwick prescription. (D) correctly marks the rule's limits as a weak-sustainability result under strong assumptions.</p>",
+          "refs": "Hartwick (1977), American Economic Review; Solow (1986), Scandinavian Journal of Economics."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "multi",
+          "stem": "<p>A multi-site randomized training trial estimates an internally valid sample average treatment effect. The policy target is a national population whose age and baseline-earnings distribution differs from the trial sample, and both variables may modify treatment effects. Which steps strengthen a claim about the target-population average effect?</p>",
+          "options": [
+            "Estimate trial-participation probabilities using variables observed in both the trial and target population, then use inverse-odds or calibration weights when overlap is adequate.",
+            "Inspect positivity by checking whether important target covariate profiles are represented in the trial.",
+            "Conduct sensitivity analysis for unmeasured effect modifiers or violations of conditional sample exchangeability.",
+            "Report the unweighted trial effect as the national effect because randomization guarantees external as well as internal validity."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Transportability", "Generalizability weighting", "Effect modification"],
+          "assistance": "<p>Randomization identifies causal effects for the experimental sample. Transporting them requires a second bridge between sample membership and the target population.</p><p>List plausible effect modifiers, determine whether they are measured in both data sources, and check support before weighting. Weighting can align observed distributions, while sensitivity analysis addresses the possibility that selection still depends on an unmeasured modifier of the treatment effect.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> Participation or calibration weights can reweight site-trial effects toward the target distribution when treatment-effect modifiers are observed and conditional sample exchangeability is plausible. Positivity is essential: no weighting method can learn effects for target profiles absent from the trial without extrapolation. Sensitivity analysis makes dependence on unmeasured modifiers explicit. (D) confuses internal validity with external validity; randomization balances treatment within the trial but does not make trial participants representative of the nation.</p>",
+          "refs": "Stuart et al. (2011), Journal of the Royal Statistical Society A; Dahabreh et al. (2019), Biometrics."
+        }
+      ]
     }
   ]
 }
