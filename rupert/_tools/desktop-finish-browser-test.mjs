@@ -38,13 +38,21 @@ async function context({width=393,height=852,standalone=false,saved=false,fixtur
  return {ctx,page,requests,state};
 }
 async function geometry(page){
- return page.evaluate(()=>{
+ const g=await page.evaluate(()=>{
   const rect=n=>n?Object.fromEntries(['x','y','width','height','bottom','right'].map(k=>[k,n.getBoundingClientRect()[k]])):null;
   const style=n=>n?Object.fromEntries(['display','fontSize','fontFamily','lineHeight','letterSpacing','paddingTop','paddingBottom','paddingRight','backgroundColor','color','borderTopWidth','borderBottomWidth'].map(k=>[k,getComputedStyle(n)[k]])):null;
   const ink=n=>{if(!n)return null;const range=document.createRange();range.selectNodeContents(n);return rect({getBoundingClientRect:()=>range.getBoundingClientRect()});};
   const dog=document.querySelector('.page-head .lab-outline');
   return {wordmark:rect(document.querySelector('.wordmark')),wordmarkStyle:style(document.querySelector('.wordmark')),wordmarkInk:ink(document.querySelector('.wordmark a')),mastWrap:rect(document.querySelector('.masthead .wrap')),mastWrapStyle:style(document.querySelector('.masthead .wrap')),dateline:rect(document.querySelector('.dateline')),primary:rect(document.querySelector('.primary')),bar:rect(document.querySelector('.bar')),dock:rect(document.querySelector('.dock')),head:rect(document.querySelector('.page-head')),headStyle:style(document.querySelector('.page-head')),h1:rect(document.querySelector('.page-head h1')),h1Style:style(document.querySelector('.page-head h1')),dog:rect(dog),dogStyle:style(dog),dogSVG:dog?.outerHTML,bannerCopy:rect(document.querySelector('.banner-copy')),archive:rect(document.querySelector('.week-archive a')),main:rect(document.querySelector('main')),plates:[...document.querySelectorAll('.plate')].map(rect),weekStyle:style(document.querySelector('.week')),logBodyStyle:style(document.querySelector('.field-log .log-actions')),overflow:document.documentElement.scrollWidth>innerWidth+1};
  });
+ // Optical offsets can move the unused font box past a divider while all letterforms remain clear.
+ // Measure rendered ink for collision checks rather than treating font descenders as painted text.
+ if(g.mastWrap.width>=1024){
+  const png=await page.locator('.wordmark').screenshot();
+  const box=JSON.parse(execFileSync('python',['-c',`import sys,io,json\nfrom PIL import Image,ImageChops\nim=Image.open(io.BytesIO(sys.stdin.buffer.read())).convert('RGB')\nm=[c.point([0]*181+[255]*75) for c in im.split()]\nprint(json.dumps(ImageChops.multiply(ImageChops.multiply(m[0],m[1]),m[2]).getbbox()))`],{input:png,encoding:'utf8'}));
+  g.wordmarkPaint={top:g.wordmark.y+box[1],bottom:g.wordmark.y+box[3]};
+ }
+ return g;
 }
 async function visit(page,path){await page.goto(base+path);if(path==='log/')await page.locator('.field-log').waitFor();if(path==='travel/')await page.locator('#saved-trips p').waitFor();if(path==='atlas/')await page.waitForFunction(()=>window.__publicationMap?.markers.length>0);await page.evaluate(()=>document.fonts.ready);await page.clock.runFor(100);}
 const near=(a,b,label)=>check(Math.abs(a-b)<.1,`${label}: ${a} != ${b}`);
@@ -68,7 +76,7 @@ try {
     check(a.wordmarkInk.width>b.wordmarkInk.width&&a.wordmarkInk.width<b.wordmarkInk.width*1.04,`${label} enlargement not restrained`);
     const inset=parseFloat(a.mastWrapStyle.paddingRight);
     check(a.wordmarkInk.x>=a.mastWrap.x+inset+8&&a.wordmarkInk.right<=a.mastWrap.right-inset-8,`${label} masthead too tight`);
-    check(a.dateline.bottom<a.wordmarkInk.y&&a.wordmarkInk.bottom<a.primary.y,`${label} masthead metadata/divider collision`);
+    check(a.dateline.bottom<a.wordmarkPaint.top&&a.wordmarkPaint.bottom<a.primary.y,`${label} masthead metadata/divider collision`);
     if(!path){const gap=a.main.bottom-a.archive.bottom;check(gap>=40&&gap<=60,`${label} archive cream inset ${gap}`);}
    }
    if(path){

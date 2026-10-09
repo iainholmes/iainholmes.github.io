@@ -1445,6 +1445,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 /* Desktop refinements keep the approved mobile masthead and banner placement. */
 @media(min-width:1024px){
   .masthead .wordmark{font-size:clamp(102px,10.2vw,163px);padding-block:18px 8px;}
+  .masthead .wordmark a{position:relative;top:calc(.13em - 6px);}
   .week{padding-bottom:52px;}
   .week-archive{margin-bottom:0;}
   :is(.page-atlas,.page-travel,.field-log) .page-head .head-note{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(100px,.8fr);}
