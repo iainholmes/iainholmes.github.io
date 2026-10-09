@@ -542,6 +542,68 @@
         "seed": 3261674878,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A funnel channels many inputs into limited capacity\"><title>Raleigh pauses major data-center approvals for six months</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-08-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-08-05)\"><path d=\"M90 150H710L450 390V525H350V390Z\" fill=\"#1d5f47\"/><g fill=\"#c98a12\"><circle cx=\"220\" cy=\"90\" r=\"29\"/><circle cx=\"400\" cy=\"90\" r=\"29\"/><circle cx=\"580\" cy=\"90\" r=\"29\"/></g><path d=\"M250 228H550L422 345H378Z\" fill=\"#f4ead7\"/><path d=\"M315 560H485\" stroke=\"#c4452c\" stroke-width=\"28\"/></g></svg>"
       }
+    },
+    "2026-10-09": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-09",
+        "number": "01",
+        "category": "U.S. policy · public finance",
+        "topic": "general",
+        "title": "U.S. deficit reaches $1.993 trillion as interest costs climb",
+        "composition": "capacity-columns",
+        "signature": "plate:capacity-columns",
+        "seed": 3544951458,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Unequal capacity columns carry a shared load\"><title>U.S. deficit reaches $1.993 trillion as interest costs climb</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-09-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-09-01)\"><path d=\"M85 140H715V202H85Z\" fill=\"#2c241d\"/><path d=\"M125 202V530H255V202M345 202V385H475V202M565 202V290H695V202\" fill=\"#1b4a6b\"/><path d=\"M345 465H475M565 375H695M565 465H695\" stroke=\"#7c5a3e\" stroke-width=\"27\"/><path d=\"M95 570H725\" stroke=\"#7a1f33\" stroke-width=\"17\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-09",
+        "number": "02",
+        "category": "Environment · rural energy",
+        "topic": "energy",
+        "title": "USDA shifts rural-energy grants to reimbursement after a year of operation",
+        "composition": "energy-feeder",
+        "signature": "plate:energy-feeder",
+        "seed": 157265908,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A power feed crosses an interrupted grid\"><title>USDA shifts rural-energy grants to reimbursement after a year of operation</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-09-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-09-02)\"><path d=\"M90 145H285V285H455V480H710\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"34\"/><path d=\"M90 145V490H285V390\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"23\"/><path d=\"M370 235V335M332 275H408\" stroke=\"#c4452c\" stroke-width=\"25\"/><circle cx=\"710\" cy=\"480\" r=\"53\" fill=\"#c98a12\"/><path d=\"M110 546H675\" stroke=\"#7c5a3e\" stroke-width=\"15\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-09",
+        "number": "03",
+        "category": "Technology · industrial supply chains",
+        "topic": "trade",
+        "title": "EU fast-tracks 46 more critical-mineral projects",
+        "composition": "trade-port",
+        "signature": "plate:trade-port",
+        "seed": 2168352300,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A cargo crane lifts a sealed crate at a port\"><title>EU fast-tracks 46 more critical-mineral projects</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-09-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-09-03)\"><path d=\"M150 540V120H590M185 120L500 355M515 120V315\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"25\"/><path d=\"M445 350H610V475H445Z\" fill=\"#c4452c\"/><path d=\"M480 350V475M575 350V475\" stroke=\"#f4ead7\" stroke-width=\"12\"/><path d=\"M65 535H715L665 588H135Z\" fill=\"#1b4a6b\"/><path d=\"M365 138V237H645V138\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"12\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-09",
+        "number": "04",
+        "category": "Technology · cybersecurity",
+        "topic": "infrastructure",
+        "title": "U.S. seizes seven domains used in Flax Typhoon hacking tools",
+        "composition": "research-observatory",
+        "signature": "plate:research-observatory",
+        "seed": 960154546,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An observing instrument links separated research stations\"><title>U.S. seizes seven domains used in Flax Typhoon hacking tools</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-09-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-09-04)\"><path d=\"M175 255L440 100L490 185L225 341Z\" fill=\"#1b4a6b\"/><path d=\"M280 290L180 525M280 290L420 525\" stroke=\"#2c241d\" stroke-width=\"25\"/><circle cx=\"475\" cy=\"137\" r=\"58\" fill=\"#c98a12\"/><rect x=\"540\" y=\"350\" width=\"145\" height=\"170\" fill=\"#2c241d\"/><path d=\"M563 395H662M563 447H662\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M380 325H520\" stroke=\"#c4452c\" stroke-width=\"18\" stroke-dasharray=\"28 20\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-09",
+        "number": "05",
+        "category": "North Carolina · rural health",
+        "topic": "government",
+        "title": "North Carolina directs $17 million to rural mental-health capacity",
+        "composition": "government-stairs",
+        "signature": "plate:government-stairs",
+        "seed": 893578207,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A petition ascends institutional steps\"><title>North Carolina directs $17 million to rural mental-health capacity</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-09-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-09-05)\"><path d=\"M70 535V430H240V335H410V240H580V145H730V535Z\" fill=\"#1b4a6b\"/><path d=\"M106 140H302V290H106Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M138 184H267M138 226H241\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M330 295L410 200L489 238\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
