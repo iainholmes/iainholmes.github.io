@@ -3,50 +3,154 @@
   "description": "A home for research, reading and getting outside.",
   "projects": [
     {
-      "id": "advisor", "group": "research", "presentation": "advisor",
-      "name": "Econometric Advisor", "url": "https://iainholmes.github.io/econometric-advisor/",
+      "id": "advisor",
+      "group": "research",
+      "presentation": "advisor",
+      "name": "Econometric Advisor",
+      "url": "https://iainholmes.github.io/econometric-advisor/",
       "description": "From a research question to a defensible design.",
       "detail": "Identification · Estimating equations · Knowledge graph",
-      "action": "Open Advisor", "asset": "assets/advisor-mark.svg"
-    },
-    {
-      "id": "qst", "group": "research", "presentation": "qst",
-      "name": "Quant Skills Trainer", "shortName": "QST",
-      "url": "https://iainholmes.github.io/quant-skills-trainer/",
-      "description": "Build your quantitative foundation.", "action": "Open QST",
-      "languages": ["Python", "R", "Stata"], "sequence": ["Learn", "Practice", "Feedback"]
-    },
-    {
-      "id": "periodicals", "group": "reading", "presentation": "periodicals",
-      "name": "Periodicals", "url": "https://iainholmes.github.io/personal-updates/",
-      "description": "Three publications. A continuing education.",
-      "publications": [
-        {"id": "field-brief", "name": "Field Brief", "description": "Economics & public affairs", "url": "https://iainholmes.github.io/daily-watchlist-5/"},
-        {"id": "loblolly", "name": "Loblolly & Logit", "description": "Research & environmental economics", "url": "https://iainholmes.github.io/weekly-economics-environment/"},
-        {"id": "workbook", "name": "The Workbook", "description": "Questions, methods & practice", "url": "https://iainholmes.github.io/daily-econ-challenge/"}
+      "action": "Open Advisor",
+      "asset": "assets/advisor-mark.svg",
+      "workflow": [
+        {
+          "name": "Research question",
+          "detail": "Outcome & comparison"
+        },
+        {
+          "name": "Identification",
+          "detail": "Variation & assumptions"
+        },
+        {
+          "name": "Specification",
+          "detail": "Estimator & diagnostics"
+        }
       ]
     },
     {
-      "id": "rupert", "group": "reading", "presentation": "rupert",
-      "name": "The Rupert Atlas", "url": "https://iainholmes.github.io/rupert/",
+      "id": "qst",
+      "group": "research",
+      "presentation": "qst",
+      "name": "Quant Skills Trainer",
+      "shortName": "QST",
+      "url": "https://iainholmes.github.io/quant-skills-trainer/",
+      "description": "Build your quantitative foundation.",
+      "action": "Open QST",
+      "languages": [
+        "Python",
+        "R",
+        "Stata"
+      ],
+      "sequence": [
+        {
+          "name": "Learn",
+          "detail": "Concepts & examples"
+        },
+        {
+          "name": "Practice",
+          "detail": "Write & run your code"
+        },
+        {
+          "name": "Feedback",
+          "detail": "Review & refine"
+        }
+      ],
+      "tiers": [
+        "Foundations",
+        "Core Econometrics",
+        "Advanced Methods",
+        "Computational Scale"
+      ]
+    },
+    {
+      "id": "periodicals",
+      "group": "reading",
+      "presentation": "periodicals",
+      "name": "Periodicals",
+      "url": "https://iainholmes.github.io/personal-updates/",
+      "description": "Three publications. A continuing education.",
+      "publications": [
+        {
+          "id": "field-brief",
+          "name": "Field Brief",
+          "description": "Economics & public affairs",
+          "url": "https://iainholmes.github.io/daily-watchlist-5/",
+          "schedule": "Every day",
+          "asset": "assets/field-brief-archive.svg",
+          "archiveKey": "fb:2026-10-09",
+          "archiveDate": "2026-10-09",
+          "archiveLabel": "09 Oct 2026",
+          "archiveNumber": "013"
+        },
+        {
+          "id": "loblolly",
+          "name": "Loblolly & Logit",
+          "description": "Research & environmental economics",
+          "url": "https://iainholmes.github.io/weekly-economics-environment/",
+          "schedule": "Fridays",
+          "asset": "assets/loblolly-archive.svg",
+          "archiveKey": "sp:2026-10-09",
+          "archiveDate": "2026-10-09",
+          "archiveLabel": "09 Oct 2026",
+          "archiveNumber": "003"
+        },
+        {
+          "id": "workbook",
+          "name": "The Workbook",
+          "description": "Questions, methods & practice",
+          "url": "https://iainholmes.github.io/daily-econ-challenge/",
+          "schedule": "Weekdays",
+          "asset": "assets/workbook-archive.svg",
+          "archiveKey": "cp:2026-10-08",
+          "archiveDate": "2026-10-08",
+          "archiveLabel": "08 Oct 2026",
+          "archiveNumber": "008"
+        }
+      ]
+    },
+    {
+      "id": "rupert",
+      "group": "reading",
+      "presentation": "rupert",
+      "name": "The Rupert Atlas",
+      "url": "https://iainholmes.github.io/rupert/",
       "description": "A little farther afield.",
       "asset": "assets/rupert-river-plate.jpg",
       "alt": "Rupert in a mustard collar above a blue river, beneath an ochre sun. Original editorial plate from The Rupert Atlas.",
       "action": "This Week",
       "links": [
-        {"name": "Atlas", "url": "https://iainholmes.github.io/rupert/atlas/"},
-        {"name": "Field Log", "url": "https://iainholmes.github.io/rupert/log/"}
+        {
+          "name": "Atlas",
+          "url": "https://iainholmes.github.io/rupert/atlas/",
+          "detail": "Explore the map"
+        },
+        {
+          "name": "Field Log",
+          "url": "https://iainholmes.github.io/rupert/log/",
+          "detail": "Remember the visit"
+        }
       ]
     },
     {
-      "id": "portfolio", "group": "profile", "presentation": "portfolio",
-      "name": "Personal Website", "displayName": "Iain Holmes",
+      "id": "portfolio",
+      "group": "profile",
+      "presentation": "portfolio",
+      "name": "Personal Website",
+      "displayName": "Iain Holmes",
       "url": "https://iainholmes.github.io/",
-      "description": "Economics, research & professional experience.", "action": "Visit website",
+      "description": "Environmental & natural resource economics.",
+      "action": "Visit website",
       "links": [
-        {"name": "Research", "url": "https://iainholmes.github.io/#research"},
-        {"name": "Academic CV", "url": "https://iainholmes.github.io/#experience-research"}
-      ]
+        {
+          "name": "Research",
+          "url": "https://iainholmes.github.io/#research"
+        },
+        {
+          "name": "Academic CV",
+          "url": "https://iainholmes.github.io/#experience-research"
+        }
+      ],
+      "affiliation": "M.S. Economics · NC State University"
     }
   ]
 }

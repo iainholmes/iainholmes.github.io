@@ -13,6 +13,7 @@ import json
 import re
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parent
@@ -42,6 +43,10 @@ class Page(HTMLParser):
             check(self.anchors == 0, 'Nested links are invalid')
             self.anchors += 1
             self.links.append(attrs.get('href', ''))
+        if tag in ['details', 'summary']:
+            check(self.anchors == 0, 'Disclosure controls must not be nested in navigation links')
+        if tag == 'details':
+            check('open' not in attrs, 'Introductions must be optional and initially closed')
         if tag == 'img':
             check('alt' in attrs, 'Every image needs an alt attribute')
             check('width' in attrs and 'height' in attrs, 'Image dimensions must reserve space')
@@ -56,6 +61,7 @@ class Page(HTMLParser):
 source = (ROOT / 'index.html').read_text()
 page = Page(source)
 config = json.loads((ROOT / 'projects.json').read_text())
+provenance = json.loads((ROOT / 'SOURCE-REVISIONS.json').read_text())
 css = (ROOT / 'desk.css').read_text()
 check(len(page.ids) == len(set(page.ids)), 'Duplicate IDs')
 check(all(ref in page.ids for ref in page.refs), 'Broken accessible label reference')
@@ -97,6 +103,21 @@ for dest, original in [
     ('assets/fonts/archivo.woff2', 'rupert/assets/fonts/archivo-latin-wdth-normal.woff2')
 ]:
     check(sha256((ROOT / dest).read_bytes()).digest() == sha256((REPO / original).read_bytes()).digest(), f'Original asset changed: {dest}')
+check(sha256((ROOT / 'assets/advisor-mark.svg').read_bytes()).hexdigest() == provenance['advisor_mark_sha256'], 'Original Advisor mark changed')
+archive_source = (REPO / 'personal-updates/issue-mark-archive.js').read_text()
+archive, _ = json.JSONDecoder().raw_decode(archive_source.split('var archive=', 1)[1])
+for item in provenance['archival_covers']:
+    cover = (ROOT / item['asset']).read_text()
+    check(cover == archive[item['archive_key']]['frozen'], f'Canonical artwork changed: {item["asset"]}')
+    check(sha256(cover.encode()).hexdigest() == item['sha256'], 'Cover provenance mismatch')
+    check(cover in source, 'Archived cover must be embedded without modification')
+    svg = ET.fromstring(cover)
+    check(svg.attrib.get('viewBox') == '0 0 600 800', 'Preserve complete archival cover proportions')
+    check(all(node.tag.rsplit('}', 1)[-1] not in ['script', 'foreignObject', 'image'] for node in svg.iter()), 'Cover must remain self-contained static vector artwork')
+    check(all(not k.lower().startswith('on') and k.rsplit('}', 1)[-1] != 'href' for node in svg.iter() for k in node.attrib), 'No active or external SVG resources')
+for item in provenance['additional_fonts']:
+    check(sha256((ROOT / item['asset']).read_bytes()).hexdigest() == item['sha256'], 'Font provenance mismatch')
+    check((ROOT / item['license']).is_file(), 'Font license missing')
 before = source
 subprocess.run(['node', str(ROOT / '_tools/build.mjs')], check=True, capture_output=True)
 check((ROOT / 'index.html').read_text() == before, 'Committed HTML is out of sync with configuration')

@@ -1,32 +1,35 @@
-# First release verification
+# Desk. refinement verification
 
-## Deployment status
+## Release status
 
-**Not deployed.** The implementation is on the dedicated `desk/foundation-20261010` branch. Master and existing applications remain unchanged.
+**Draft; not deployed.** Continue PR #4 on `desk/foundation-20261010`. This refinement pass must not merge into master or publish. All implementation changes stay in `desk/`.
 
-## Completed
+## Visual evidence and remaining gate
 
-- Read-only discovery of all three repositories and all five deployed application interfaces.
-- Purpose, branding, artwork, routes and useful deep links derived from source implementations.
-- Static generated page with no client JavaScript, data fetching, credentials or storage access.
-- Self-contained font, illustration and icon assets; original Atlas artwork and original user-supplied fonts retained byte-for-byte.
-- Desktop and mobile CSS compositions, safe-area rules, keyboard focus, skip navigation, reduced-motion rules and Home Screen metadata implemented.
+The owner reported that the initial candidate rendered successfully in Safari and Chrome on a 15-inch MacBook Air and accepted its wordmark, palette, typography and broad architectural composition. This is user-reported desktop review of the **initial candidate**, not visual acceptance of the refinement.
 
-- Automated source/structure checks passed; all 12 distinct application URLs and deep links returned HTTP 200, with portfolio anchor targets present.
-- Final diff contains only new files under `desk/`; no source application or publishing configuration changed.
-
-## Blocking verification
-
-The managed preview supervisor failed before server startup:
+The managed Work preview failed twice before application startup:
 
 ```text
 bwrap: Can't mount proc on /newroot/proc: Operation not permitted
 ```
 
-Supervisor status then reported `Sites preview stopped`. This is an environment failure, not a confirmed application rendering defect. No screenshot or browser layout test of Desk has been completed. In particular, laptop proportions, mobile wrapping/overflow, touch targets, focus appearance, sticky navigation and physical iPhone Home Screen behavior must not be reported as verified.
+No further recovery or launch attempts were made during the refinement. The owner explicitly selected their existing Mac/Python local preview as the acceptance workflow. See `LOCAL-REVIEW.md` for refresh and same-network iPhone instructions.
 
-The brief explicitly requires successful desktop and iPhone inspection before deployment, so production integration is held. Restore the supported preview environment, inspect at representative 1440/1710-pixel desktop and 375/402/430-pixel portrait widths (including 320-pixel reflow), fix any observed defects, then rerun the source checks before integration.
+**The revised candidate has not been browser-rendered by the agent. Desktop acceptance and physical iPhone acceptance are pending.** Responsive rules, native disclosure semantics, focus styles and reserved artwork proportions are implementation measures, not proof of rendering or device behavior. Do not claim automated screenshots, touch checks, VoiceOver checks or Home Screen installation have passed.
 
-## Integration procedure
+## Source verification
 
-After the browser gate passes, fetch current master, preserve all concurrent work, and compare the complete change set. Every changed path must start with `desk/`. Use a pull request or a non-forced fast-forward under the repository's current protection rules. Wait for the GitHub Pages build and verify the live `/desk/` response and asset bytes against the integrated commit. Do not call the release complete until that production comparison succeeds.
+- Existing build and static/source/navigation validation retained and rerun.
+- All 12 distinct public destination URLs return HTTP 200; the portfolio's Research and Academic CV fragments resolve.
+- Build reproduces committed HTML from configuration and local archival SVGs.
+- Original Rupert plate and source fonts remain byte-identical. Advisor mark hash matches the original.
+- Three publication cover SVGs are exact copies of frozen, dated archive entries, verified against `personal-updates/issue-mark-archive.js`; no artwork was generated, cropped or redrawn.
+- New Instrument Serif font is self-hosted with its OFL license, retaining the Field Brief archive cover's original font family.
+- Native disclosures are optional, initially closed and separate from direct navigation. No runtime JavaScript, embedded application sessions, storage access, polling, authentication or backend was added.
+- Permanent schedules match `personal-updates/PUBLISHING.md`: Field Brief every day including weekends; Workbook weekdays; Loblolly & Logit Fridays. No current publication availability, recommendation state, progress or operational status is asserted.
+- `git diff --check` and the source-isolation check must pass before updating the draft branch. Every PR path must start with `desk/`.
+
+## After owner acceptance
+
+Rerun the source checks if corrections are made. Once the owner accepts desktop and iPhone rendering and authorizes release, fetch current master, preserve concurrent work, and verify the entire PR diff remains within `desk/`. Integrate without a forced update under current repository protections, wait for GitHub Pages, and compare the public `/desk/` route and assets with the integrated commit. These release steps are not authorized during this refinement pass.
