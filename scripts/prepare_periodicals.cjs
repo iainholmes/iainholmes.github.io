@@ -12,6 +12,8 @@ const fb=data(read('daily-watchlist-5/index.html'),'briefing-data').editions.sor
 for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])throw Error('Published Field Brief is missing its story artwork pin: '+ed.date);
 // Validate L&L companions before any publication artifacts are written.
 const llSource=read('weekly-economics-environment/index.html'),companions=data(llSource,'companion-data');
+// A present edition without its cumulative notebook review is not a completed publication.
+require('../weekly-economics-environment/notebook/validate.cjs').validate({journal:llSource});
 // Labels follow the selected edition's annual volume/issue, preserving the existing superscript apparatus.
 const llEditionMarkup=llSource.match(/<main[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)[1];
 const labelEditions=[...llEditionMarkup.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[\s\S]*?<div class="eyebrow edition-label">([\s\S]*?)<\/div>/g)].sort((a,b)=>a[1].localeCompare(b[1]));

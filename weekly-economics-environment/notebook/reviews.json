@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "reviews": {
+    "2026-09-25": {
+      "reviewedOn": "2026-10-09",
+      "readings": [
+        "electrification",
+        "grid",
+        "carbon-border",
+        "insurance",
+        "glyphosate"
+      ],
+      "synthesis": "connections",
+      "revisited": [
+        "complementarity",
+        "adoption-capital-constraints",
+        "incidence",
+        "leakage-spillovers",
+        "fixed-effects",
+        "hedonic-prices",
+        "selection",
+        "value-of-information",
+        "behavioral-substitution",
+        "counterfactual-reasoning",
+        "identification"
+      ],
+      "added": [],
+      "note": "Retrospective verification of the original eleven entries against all five readings and the synthesis. Existing explanations, anchors and references retained."
+    },
+    "2026-10-02": {
+      "reviewedOn": "2026-10-09",
+      "readings": [
+        "2026-10-02-green-spending",
+        "2026-10-02-policy-mix",
+        "2026-10-02-amoc",
+        "2026-10-02-storage",
+        "2026-10-02-tax-bias"
+      ],
+      "synthesis": "2026-10-02-connections",
+      "revisited": [
+        "complementarity",
+        "incidence",
+        "leakage-spillovers",
+        "behavioral-substitution",
+        "counterfactual-reasoning",
+        "identification"
+      ],
+      "added": [
+        "fiscal-multipliers-local-projections",
+        "spatial-equilibrium-migration",
+        "private-returns-social-value",
+        "financing-wedges"
+      ],
+      "note": "Reviewed all five readings and equilibrium-response synthesis. Appended supported references and four distinct reusable concepts. Fixed effects, hedonic prices and value of information were not substantively revisited."
+    },
+    "2026-10-09": {
+      "reviewedOn": "2026-10-09",
+      "readings": [
+        "2026-10-09-trade-climate",
+        "2026-10-09-landslides",
+        "2026-10-09-nuclear-finance",
+        "2026-10-09-winter-bills",
+        "2026-10-09-climate-liability"
+      ],
+      "synthesis": "2026-10-09-connections",
+      "revisited": [
+        "adoption-capital-constraints",
+        "incidence",
+        "leakage-spillovers",
+        "selection",
+        "behavioral-substitution",
+        "counterfactual-reasoning",
+        "identification",
+        "spatial-equilibrium-migration",
+        "private-returns-social-value",
+        "financing-wedges"
+      ],
+      "added": [
+        "participation-constraints",
+        "spatial-boundary-design",
+        "location-specific-social-capital"
+      ],
+      "note": "Reviewed all five readings and incidence synthesis. Appended supported references and three distinct concepts on participation, spatial comparisons and local networks. Kept forecasts, model counterfactuals, prospective financing and identified exposure effects distinct."
+    }
+  }
+}
