@@ -1,7 +1,7 @@
 // Shared editorial reuse policy for publication validation and candidate ranking.
 import { seasonFor } from './options.js';
 import { nyDateString } from './dates.js';
-import { experienceKey, routeIdentity } from './experience-history.js';
+import { experienceKey, routeIdentity, activityCategory } from './experience-history.js';
 export { experienceKey } from './experience-history.js';
 const DAY = 86400000;
 const main = e => e.flagship || e;
@@ -71,9 +71,19 @@ export function rankCandidates(candidates, history, { at, log = [] } = {}) {
     const diversity = categoryFor(candidate) === 'other' ? 15 * trailShare : 0;
     const completed = completionRecords(candidate,history,log,at);
     const familiar = log.some(v => v.place_id === placeId(candidate) && (!v.date || v.date <= nyDateString(new Date(at))));
+    const personal = log.filter(v => v.place_id === placeId(candidate) && v.date && v.date <= nyDateString(new Date(at)));
+    const recordedActivities = [...new Set(personal.map(v => activityCategory(v.activity_category)).filter(Boolean))].sort();
+    const candidateActivities = main(candidate).experiences || [];
+    // Category familiarity is a small editorial adjustment, never an experience identity or eligibility waiver.
+    const repeatsActivity = recordedActivities.some(a => candidateActivities.includes(a));
+    const activityAdjustment = recordedActivities.length ? repeatsActivity ? -4 : reuse.cooldown === 120 || !reuse.previous ? 4 : 0 : 0;
+    const context = personal.find(v => v.editorial_context?.reviewed === true)?.editorial_context;
+    const contextAdjustment = context ? (candidateActivities.includes(context.explore_activity) ? 6 : 0) - (candidateActivities.includes(context.avoid_activity) ? 8 : 0) : 0;
     const unseen = !familiar && !previousSuggestions(candidate, history, at).length;
     const completionAge = completed.length ? Math.min(...completed.map(v => v.date ? (+new Date(at) - +new Date(v.date))/DAY : 0)) : Infinity;
     const completionPenalty = completed.length ? completionAge < 365 ? 60 : 30 : 0;
-    return { candidate, ...reuse, unseen, familiar, completionPenalty, diversity, score: suitability + diversity + (unseen ? 12 : 0) - (reuse.recencyPenalty || 0) - completionPenalty };
+    return { candidate, ...reuse, unseen, familiar, completionPenalty, diversity, recordedActivities, activityAdjustment, contextAdjustment,
+      ...(context ? { editorialContext: context } : {}),
+      score: suitability + diversity + (unseen ? 12 : 0) + activityAdjustment + contextAdjustment - (reuse.recencyPenalty || 0) - completionPenalty };
   }).sort((a, b) => Number(b.eligible) - Number(a.eligible) || b.score - a.score || Number(b.unseen) - Number(a.unseen));
 }

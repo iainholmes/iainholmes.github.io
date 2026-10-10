@@ -22,4 +22,6 @@ const ranked = rankCandidates(queue, history, { at, log }).map(({ candidate, ...
   const access = accessProblem({...candidate, status:'published', published_at:at}, checks.checks, checks.official_hosts);
   return { id:candidate.id, place_id:candidate.flagship.place_id, ...rank, accessProblem:access, readyForEditorialReview:rank.eligible && !access };
 });
-console.log(JSON.stringify({at, completionHistory:log.length ? 'Private minimal history supplied' : 'No personal history supplied', candidates:ranked}, null, 2));
+console.log(JSON.stringify({at, completionHistory:log.length ? 'Private minimal history supplied' : 'No personal history supplied',
+  activityHistory:log.some(r=>r.activity_category) ? 'Recorded activity categories supplied' : 'No recorded activity categories supplied',
+  reviewedContext:log.filter(r=>r.editorial_context).length, candidates:ranked}, null, 2));

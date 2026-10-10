@@ -1,6 +1,8 @@
 // Personal history is independent of editorial release/withdrawal state. Pure, shared with private CLI input.
 import { isReleased } from './editions.js';
 import { nyDateString } from './dates.js';
+import { EXPERIENCES } from './options.js';
+export const activityCategory = value => typeof value === 'string' && Object.hasOwn(EXPERIENCES, value) ? value : '';
 const main = e => e.flagship || e;
 export const routeIdentity = id => String(id || '').replace(/@\d+$/, '');
 export const experienceId = e => main(e).experience_id || routeIdentity(main(e).snapshot?.route?.route_id || e.experience_key) || 'default';
@@ -41,7 +43,7 @@ export function personalHistory(entries, catalog) {
     if (!validHistoryDate(entry.date) || entry.date > today) continue;
     const association = resolveHistoryEntry(entry, catalog);
     if (!association.resolved) continue;
-    const record = { ...association, id: entry.id, date: entry.date };
+    const record = { ...association, id: entry.id, date: entry.date, activity_category: activityCategory(entry.experience) };
     if (!visits.has(record.place_id)) visits.set(record.place_id, []);
     visits.get(record.place_id).push(record);
     if (record.completed) {
@@ -64,25 +66,48 @@ export function editionHistory(edition, history) {
   return { state: 'uncompleted', label: 'Outing not recorded', record: null };
 }
 
-// Deliberate export: canonical IDs and dates only, never a stripped copy of a private memory.
-export function recommendationHistory(entries, catalog) {
+// Deliberate export, never a stripped copy of a memory. Prose is supplied only by an explicit review.
+export function recommendationHistory(entries, catalog, { contexts = [] } = {}) {
   const history = personalHistory(entries, catalog), records = [];
-  for (const [place_id, visits] of history.visits) records.push({ history_kind: 'visit', place_id, date: visits.map(v => v.date).sort().at(-1) });
+  for (const [place_id, visits] of history.visits) {
+    const activities = new Map();
+    for (const visit of visits) if (!activities.has(visit.activity_category) || activities.get(visit.activity_category).date < visit.date) activities.set(visit.activity_category, visit);
+    for (const [category, visit] of activities) records.push({ history_kind: 'visit', place_id, date: visit.date, ...(category ? { activity_category: category } : {}) });
+  }
   for (const completions of history.experiences.values()) {
     const latest = [...completions].sort((a,b) => b.date.localeCompare(a.date))[0];
-    records.push({ history_kind: 'completed', place_id: latest.place_id, experience_id: latest.experience_id, ...(latest.edition ? { edition: latest.edition } : {}), date: latest.date });
+    records.push({ history_kind: 'completed', place_id: latest.place_id, experience_id: latest.experience_id, ...(latest.edition ? { edition: latest.edition } : {}), date: latest.date, ...(latest.activity_category ? { activity_category: latest.activity_category } : {}) });
   }
-  return { type: 'rupert-recommendation-history', version: 1, records };
+  const value = { type: 'rupert-recommendation-history', version: 2, records, contexts };
+  readRecommendationHistory(JSON.stringify(value), catalog);
+  return value;
 }
 
 export function readRecommendationHistory(text, catalog) {
   if (text.length > 100000) throw Error('Recommendation history exceeds 100 KB.');
   const value = JSON.parse(text), allowed = ['history_kind','place_id','experience_id','edition','date'];
-  if (value.type !== 'rupert-recommendation-history' || value.version !== 1 || !Array.isArray(value.records) || value.records.length > 400 || Object.keys(value).some(k => !['type','version','records'].includes(k))) throw Error('Use the minimal recommendation-history export.');
+  if (value.version === 2) allowed.push('activity_category');
+  const top = value.version === 2 ? ['type','version','records','contexts'] : ['type','version','records'];
+  if (value.type !== 'rupert-recommendation-history' || ![1,2].includes(value.version) || !Array.isArray(value.records) || value.records.length > 400 || Object.keys(value).some(k => !top.includes(k))) throw Error('Use the minimal recommendation-history export.');
   for (const record of value.records) {
     if (!record || Object.keys(record).some(k => !allowed.includes(k)) || !['visit','completed'].includes(record.history_kind) || !validHistoryDate(record.date) || record.date > nyDateString(catalog.now || new Date())) throw Error('Invalid recommendation-history record.');
     const resolved = resolveHistoryEntry(record, catalog);
     if (!resolved.resolved || record.history_kind === 'visit' && (record.experience_id || record.edition) || record.history_kind === 'completed' && (!resolved.completed || record.edition && record.edition !== resolved.edition)) throw Error('History must refer to a known place and an explicitly completed experience.');
+    if (record.activity_category !== undefined && !activityCategory(record.activity_category)) throw Error('Use a recognized activity category, not memory text.');
   }
-  return value.records;
+  const contexts = value.version === 2 ? value.contexts : [];
+  if (!Array.isArray(contexts) || contexts.length > 200 || new Set(contexts.map(c => c?.place_id)).size !== contexts.length) throw Error('Invalid reviewed editorial context.');
+  for (const context of contexts) {
+    if (!context || Object.keys(context).some(k => !['place_id','reviewed','summary','explore_activity','avoid_activity'].includes(k)) || context.reviewed !== true
+      || !value.records.some(r => r.place_id === context.place_id) || typeof context.summary !== 'string' || context.summary.length > 500
+      || !context.summary.trim() && !context.explore_activity && !context.avoid_activity
+      || ['explore_activity','avoid_activity'].some(k => context[k] !== undefined && !activityCategory(context[k]))
+      || context.explore_activity && context.explore_activity === context.avoid_activity) throw Error('Review a brief summary and distinct activity choices for a recorded place.');
+  }
+  // Internal CLI records carry the reviewed context once per place; no memory text is read or inferred.
+  const pending = new Map(contexts.map(c => [c.place_id,c]));
+  return value.records.map(record => {
+    const context = pending.get(record.place_id); pending.delete(record.place_id);
+    return context ? { ...record, editorial_context: context } : record;
+  });
 }

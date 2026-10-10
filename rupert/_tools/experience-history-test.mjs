@@ -78,7 +78,8 @@ check(()=>assert.doesNotMatch(ordinary,/fl_existing|Original memory|data:image/)
 check(()=>assert.match(renderArchive(archiveGroups(manifest,now),{base:'../',photos,places,now}),/data-edition="2026-W41-tue"/));
 const privateExport=recommendationHistory([migrated,completed,withdrawnVisit,{...legacy,id:'fl_unknown',edition:'',place:'Unassociated'}],catalog);
 check(()=>assert.equal(privateExport.records.length,3));
-for(const forbidden of ['notes','photos','activity','tags','prompt','home','address','fl_existing','Original memory'])check(()=>assert.ok(!JSON.stringify(privateExport).includes(forbidden)));
+for(const forbidden of ['notes','photos','activity','tags','prompt','home','address'])check(()=>assert.ok(privateExport.records.every(r=>!Object.hasOwn(r,forbidden))));
+for(const forbidden of ['fl_existing','Original memory',legacy.activity,photo])check(()=>assert.ok(!JSON.stringify(privateExport).includes(forbidden)));
 check(()=>assert.deepEqual(readRecommendationHistory(JSON.stringify(privateExport),catalog),privateExport.records));
 check(()=>assert.throws(()=>readRecommendationHistory(JSON.stringify({...privateExport,notes:'private'}),catalog)));
 check(()=>assert.throws(()=>readRecommendationHistory(JSON.stringify({...privateExport,records:[{...privateExport.records[0],notes:'private'}]}),catalog)));
@@ -110,6 +111,58 @@ check(()=>assert.equal(rankCandidates([freshRoute],[prior],{at:at(400),log})[0].
 check(()=>assert.equal(rankCandidates([unfamiliar],[],{at:at(400),log:[]})[0].unseen,true));
 check(()=>assert.equal(rankCandidates([unfamiliar],[],{at:at(400),log:[{place_id:'new-place',history_kind:'visit',date:'2026-01-03'}]})[0].unseen,false));
 check(()=>assert.equal(experienceKey({...prior,flagship:{...prior.flagship,snapshot:{...prior.flagship.snapshot,route:{route_id:experienceId(prior)+'@2'}}}}),experienceKey(prior)));
+// Recorded activities remain categories, never canonical completion identities or copied memory text.
+const shortWalk={...visit,experience:'short-walk',notes:'We took only a short stroll; the quarry loop remains unexplored.'};
+const shortExport=recommendationHistory([shortWalk],catalog),shortInput=readRecommendationHistory(JSON.stringify(shortExport),catalog);
+check(()=>assert.equal(shortExport.version,2));
+check(()=>assert.deepEqual(shortExport.contexts,[]));
+check(()=>assert.equal(shortInput[0].activity_category,'short-walk'));
+check(()=>assert.equal(shortInput[0].history_kind,'visit'));
+check(()=>assert.equal(shortInput[0].experience_id,undefined));
+check(()=>assert.equal(editionHistory(ed,personalHistory([shortWalk],catalog)).state,'visited'));
+check(()=>assert.ok(!JSON.stringify(shortExport).includes(shortWalk.notes)));
+check(()=>assert.ok(!JSON.stringify(shortExport).includes(shortWalk.activity)));
+check(()=>assert.equal(recommendationHistory([{...shortWalk,experience:'unrecognized private prose'}],catalog).records[0].activity_category,undefined));
+const twoActivities=recommendationHistory([shortWalk,{...shortWalk,id:'fl_swim',experience:'swim',date:'2026-09-21'}],catalog);
+check(()=>assert.deepEqual(twoActivities.records.map(r=>r.activity_category),['short-walk','swim']));
+const v1={type:privateExport.type,version:1,records:privateExport.records.map(({activity_category,...r})=>r)};
+check(()=>assert.deepEqual(readRecommendationHistory(JSON.stringify(v1),catalog),v1.records));
+const context={place_id:ed.place_id,reviewed:true,summary:'A short visit left the river-side opportunities unexplored.',explore_activity:'river',avoid_activity:'full-day'};
+const reviewed=recommendationHistory([shortWalk],catalog,{contexts:[context]}),reviewedInput=readRecommendationHistory(JSON.stringify(reviewed),catalog);
+check(()=>assert.deepEqual(reviewedInput[0].editorial_context,context));
+check(()=>assert.equal(editionHistory(ed,personalHistory([shortWalk],catalog)).state,'visited'));
+check(()=>assert.equal(JSON.stringify(shortWalk),JSON.stringify({...visit,experience:'short-walk',notes:shortWalk.notes})));
+for(const invalid of [{...context,reviewed:false},{...context,notes:'raw memory'},{...context,summary:'x'.repeat(501)},{...context,place_id:'unknown'}, {...context,explore_activity:'invented'}, {...context,avoid_activity:'river'}])
+ check(()=>assert.throws(()=>recommendationHistory([shortWalk],catalog,{contexts:[invalid]}),/Review/));
+check(()=>assert.throws(()=>recommendationHistory([shortWalk],catalog,{contexts:[context,context]}),/Invalid reviewed/));
+for(const activity_category of ['arbitrary prose',['short-walk'],null])check(()=>assert.throws(()=>readRecommendationHistory(JSON.stringify({...shortExport,records:[{...shortExport.records[0],activity_category}]}),catalog),/category/));
+const shortRanking=shortInput.map(r=>({...r,date:'2026-01-03'})),reviewedRanking=reviewedInput.map(r=>({...r,date:'2026-01-03'}));
+const shortRank=rankCandidates([candidate],[prior],{at:at(180),log:shortRanking})[0];
+check(()=>assert.equal(shortRank.familiar,true));check(()=>assert.equal(shortRank.unseen,false));
+check(()=>assert.equal(shortRank.completionPenalty,0));check(()=>assert.equal(shortRank.cooldown,180));
+check(()=>assert.equal(shortRank.activityAdjustment,-4));check(()=>assert.deepEqual(shortRank.recordedActivities,['short-walk']));
+check(()=>assert.equal(shortRank.editorialContext,undefined));
+const riverCandidate={...freshRoute,flagship:{...freshRoute.flagship,experiences:['river']}};
+const contextualRank=rankCandidates([riverCandidate],[prior],{at:at(120),log:reviewedRanking})[0];
+check(()=>assert.equal(contextualRank.eligible,true));check(()=>assert.equal(contextualRank.cooldown,120));
+check(()=>assert.equal(contextualRank.activityAdjustment,4));check(()=>assert.equal(contextualRank.contextAdjustment,6));
+check(()=>assert.deepEqual(contextualRank.editorialContext,context));
+const longCandidate={...riverCandidate,flagship:{...riverCandidate.flagship,experiences:['river','full-day']}};
+check(()=>assert.equal(rankCandidates([longCandidate],[prior],{at:at(120),log:reviewedRanking})[0].contextAdjustment,-2));
+for(const [item,input,before,after,cooldown] of [[riverCandidate,reviewedRanking,119,120,120],[candidate,shortRanking,179,180,180],[candidate,log,364,365,365]]){
+ check(()=>assert.equal(reuseEligibility(item,[prior],{at:at(before),log:input}).eligible,false));
+ check(()=>assert.equal(reuseEligibility(item,[prior],{at:at(after),log:input}).eligible,true));
+ check(()=>assert.equal(reuseEligibility(item,[prior],{at:at(after),log:input}).cooldown,cooldown));
+}
+check(()=>assert.equal(rankCandidates([riverCandidate],[prior],{at:at(119),log:reviewedRanking})[0].eligible,false));
+check(()=>assert.equal(rankCandidates([newTitle],[prior],{at:at(120),log:reviewedRanking})[0].eligible,false));
+// A user's prose never confirms/corrects an existing classification or automatically changes scores.
+const proseOnly=recommendationHistory([shortWalk],catalog,{contexts:[{place_id:ed.place_id,reviewed:true,summary:'We completed the full loop.'}]});
+const proseRank=rankCandidates([candidate],[prior],{at:at(180),log:readRecommendationHistory(JSON.stringify(proseOnly),catalog).map(r=>({...r,date:'2026-01-03'}))})[0];
+check(()=>assert.equal(proseRank.completionPenalty,0));check(()=>assert.equal(proseRank.contextAdjustment,0));
+check(()=>assert.equal(proseRank.score,shortRank.score));
+check(()=>assert.equal(resolveHistoryEntry({...completed,experience:'short-walk',notes:shortWalk.notes},catalog).completed,true));
+check(()=>assert.deepEqual(readLogBackup(JSON.stringify({version:2,entries:[shortWalk]}))[0],shortWalk));
 const dir=await mkdtemp(resolve(tmpdir(),'atlas-private-history-'));
 try{
  const path=resolve(dir,'history.json');await writeFile(path,JSON.stringify(privateExport));
@@ -126,11 +179,19 @@ try{
  check(()=>assert.equal(neutral.status,0,neutral.stderr));check(()=>assert.equal(personal.status,0,personal.stderr));
  const ordinary=JSON.parse(neutral.stdout),informed=JSON.parse(personal.stdout);
  check(()=>assert.equal(ordinary.candidates[0].completionPenalty,0));check(()=>assert.equal(informed.candidates[0].completionPenalty,60));
- check(()=>assert.equal(ordinary.candidates[0].score-informed.candidates[0].score,60+informed.candidates[0].recencyPenalty-ordinary.candidates[0].recencyPenalty));
+ check(()=>assert.equal(ordinary.candidates[0].score-informed.candidates[0].score,60+informed.candidates[0].recencyPenalty-ordinary.candidates[0].recencyPenalty-informed.candidates[0].activityAdjustment-informed.candidates[0].contextAdjustment));
  check(()=>assert.ok(!personal.stdout.includes('fl_existing')&&!personal.stdout.includes('Original memory')&&!personal.stdout.includes(photo)));
+ const reviewedPath=resolve(dir,'reviewed.json');await writeFile(reviewedPath,JSON.stringify(reviewed));
+ const contextual=cli(['--history',reviewedPath]);check(()=>assert.equal(contextual.status,0,contextual.stderr));
+ const contextReport=JSON.parse(contextual.stdout);check(()=>assert.equal(contextReport.reviewedContext,1));
+ check(()=>assert.equal(contextReport.activityHistory,'Recorded activity categories supplied'));
+ check(()=>assert.equal(contextReport.candidates[0].editorialContext.summary,context.summary));
+ check(()=>assert.equal(contextReport.candidates[0].completionPenalty,0));
+ check(()=>assert.ok(!contextual.stdout.includes(shortWalk.notes)&&!contextual.stdout.includes(photo)&&!contextual.stdout.includes(legacy.activity)));
+ check(()=>assert.equal(ordinary.reviewedContext,0));
  // A mistakenly public opt-in export fails the actual production privacy audit.
  const accidental=resolve(root,'data/history-audit-fixture.json');
- try {await writeFile(accidental,JSON.stringify(privateExport));const audit=spawnSync(process.execPath,[resolve(root,'_tools/rupert.mjs'),'audit'],{encoding:'utf8'});
+ try {await writeFile(accidental,JSON.stringify(reviewed));const audit=spawnSync(process.execPath,[resolve(root,'_tools/rupert.mjs'),'audit'],{encoding:'utf8'});
   check(()=>assert.notEqual(audit.status,0));check(()=>assert.match(audit.stderr+audit.stdout,/personal-history export in public assets/));
  }finally{await rm(accidental,{force:true});}
 }finally{await rm(dir,{recursive:true,force:true});}

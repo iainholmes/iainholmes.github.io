@@ -15,7 +15,7 @@ const u=process.env.HTTPS_PROXY?new URL(process.env.HTTPS_PROXY):null,proxy=u?{s
 const browser=await chromium.launch({headless:true,proxy,args:['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader'],...(process.env.ATLAS_QA_CHROME?{executablePath:process.env.ATLAS_QA_CHROME}:{})});
 const provider=await readFile(resolve(root,'assets/js/map/maplibre-provider.js'),'utf8'),manifest=JSON.parse(await readFile(resolve(root,'data/editions/index.json')));
 const photo='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jlbkAAAAASUVORK5CYII=';
-const original={id:'fl_occoneechee_legacy',date:'2026-09-20',source:'planned',edition:'2026-W41-tue',place:'Occoneechee Mountain and the quarry overlook',activity:'Earlier short walk',notes:'Private fixture memory stays local.',experience:'ridge',tags:'fixture',photos:[photo]};
+const original={id:'fl_occoneechee_legacy',date:'2026-09-20',source:'planned',edition:'2026-W41-tue',place:'Occoneechee Mountain and the quarry overlook',activity:'Earlier short walk',notes:'Private fixture memory stays local.',experience:'short-walk',tags:'fixture',photos:[photo]};
 const cox={id:'fl_cox_visit',date:'2026-09-20',source:'unplanned',place:'Cox Mountain',activity:'Earlier visit',place_id:'eno-cox-mountain',history_kind:'visit',photos:[]};
 const evidence={checks:0,layouts:[],errors:[],engine:await browser.version(),physicalIOS:false,realMap:true,realProvider:false};
 const check=(v,m)=>{assert.ok(v,m);evidence.checks++;};
@@ -29,7 +29,7 @@ async function context(width,height){
 }
 async function visit(page,path){await page.goto(base+path);await page.evaluate(()=>document.fonts.ready);await page.clock.runFor(100);}
 async function stored(page){return page.evaluate(()=>JSON.parse(localStorage.getItem('rupert-field-log-v1')));}
-async function save(page){await page.locator('#memory-form').getByRole('button',{name:'Save memory',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#log-status').textContent.includes('Memory saved'));}
+async function save(page){if(await page.locator('[name=history_kind]').inputValue()==='completed')await page.locator('[name=completion_confirm]').check();await page.locator('#memory-form').getByRole('button',{name:'Save memory',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#log-status').textContent.includes('Memory saved'));}
 async function localChange(page,entries){await page.evaluate(entries=>{localStorage.setItem('rupert-field-log-v1',JSON.stringify({version:2,entries}));window.dispatchEvent(new Event('rupert-history-changed'));},entries);}
 async function geometry(page,width){
  const g=await page.evaluate(()=>{const rows=[...document.querySelectorAll('.reg-row')],list=document.querySelector('.directory-list'),r=list.getBoundingClientRect();return {overflow:document.documentElement.scrollWidth>innerWidth+1,rows:rows.map(n=>({height:n.getBoundingClientRect().height,width:n.getBoundingClientRect().width})),visible:rows.filter(n=>{const b=n.getBoundingClientRect();return b.x>=r.x-1&&b.right<=r.right+1;}).length};});
@@ -80,6 +80,15 @@ try{
   check(saved.version===2&&old.place_id==='occoneechee-mountain'&&!old.experience_id&&old.history_kind==='visit','Visit classification not saved');
   for(const key of ['id','date','place','activity','notes','photos','edition','experience','tags'])check(JSON.stringify(old[key])===JSON.stringify(original[key]),'Historical field changed: '+key);
   if([393,1440].includes(width))await page.locator('.memory-card').first().screenshot({path:resolve(output,`memory-${width}.png`)});
+  await page.locator('#export-history').click();await page.locator('#history-review').waitFor();
+  const reviewGroup=page.locator('[data-context-place=occoneechee-mountain]');
+  check(await reviewGroup.locator('[name=summary]').inputValue()==='','Raw notes copied into editorial summary');
+  check(await reviewGroup.innerText().then(s=>s.includes('Short walk')&&s.includes('Place visited')),'Reviewed export omitted recorded activity/visit');
+  check(!await page.locator('#history-review-consent').isChecked(),'Export review consent inferred');
+  check(JSON.stringify(await stored(page))===JSON.stringify(saved),'Opening export review changed private history');
+  check(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),'History review overflow');
+  if([393,1440].includes(width))await page.locator('#history-review').screenshot({path:resolve(output,`review-${width}.png`)});
+  await page.locator('#cancel-history-review').click();
   await visit(page,'archive/');await page.waitForFunction(()=>document.querySelector('[data-edition="2026-W41-tue"]').dataset.history==='visited');
   check(await page.locator('[data-edition="2026-W41-tue"] .personal-history').innerText()==='Place visited · outing not completed','Archive conflated place/outing');
   check(await page.locator('[data-edition="2026-W41-tue"] .personal-history').evaluate(n=>getComputedStyle(n).color)==='rgb(62, 114, 84)','Archive visit indicator not forest green');
@@ -97,6 +106,12 @@ try{
    const archive=await ctx.newPage();await archive.clock.install({time:new Date('2026-10-10T12:00:00-04:00')});await visit(archive,'archive/');await archive.waitForFunction(()=>document.querySelector('[data-edition="2026-W41-tue"]').dataset.history==='visited');
    await page.getByRole('button',{name:'Mark as Completed',exact:true}).click();await page.waitForURL('**/log/');await page.waitForFunction(()=>!document.querySelector('[name=place_id]').disabled);
    check(await page.locator('[name=history_kind]').inputValue()==='completed'&&await page.locator('[name=completion_ref]').inputValue()==='edition:2026-W41-tue','Full Edition did not supply stable completion identity');
+   await page.locator('[name=experience]').selectOption('short-walk');
+   check(await page.locator('#completion-review-text').innerText().then(s=>s.includes('A short walk alone')&&s.includes('choose Place visited')),'Partial-outing classification guidance missing');
+   check(!await page.locator('[name=completion_confirm]').isChecked(),'Whole outing confirmation inferred');
+   const beforeConfirmation=JSON.stringify(await stored(page));
+   await page.locator('#memory-form').getByRole('button',{name:'Save memory',exact:true}).click();
+   check(JSON.stringify(await stored(page))===beforeConfirmation,'Unconfirmed completion changed history');
    await save(page);const entries=(await stored(page)).entries,done=entries.find(e=>e.id!==original.id&&e.id!==cox.id);
    check(done.edition==='2026-W41-tue'&&done.experience_id==='occoneechee-mountain-loop'&&done.history_kind==='completed','Specific completion not linked');
    await archive.waitForFunction(()=>document.querySelector('[data-edition="2026-W41-tue"]').dataset.history==='completed');
@@ -106,9 +121,35 @@ try{
    check(await full.getByRole('link',{name:'Edit memory',exact:true}).getAttribute('href').then(s=>s.endsWith('#memory-'+done.id)),'Completed edition cannot be corrected');
    const download=page.waitForEvent('download');await page.locator('#export-log').click();const backup=JSON.parse(await readFile(await (await download).path(),'utf8'));
    check(backup.version===2&&backup.entries.length===3&&backup.entries.find(e=>e.id===original.id).photos[0]===photo,'Full backup lost history/photo');
-   const minimalDownload=page.waitForEvent('download');await page.locator('#export-history').click();const minimal=JSON.parse(await readFile(await (await minimalDownload).path(),'utf8'));
+   await page.locator('#export-history').click();await page.locator('#history-review-consent').check();
+   const minimalDownload=page.waitForEvent('download');await page.locator('#history-review-form').getByRole('button',{name:'Download private history',exact:true}).click();const minimal=JSON.parse(await readFile(await (await minimalDownload).path(),'utf8'));
    check(minimal.type==='rupert-recommendation-history'&&minimal.records.some(e=>e.edition==='2026-W41-tue'),'Minimal opt-in history missing completion');
+   check(minimal.version===2&&minimal.contexts.length===0,'Blank review manufactured context');
+   check(minimal.records.some(e=>e.place_id==='occoneechee-mountain'&&e.history_kind==='visit'&&e.activity_category==='short-walk'),'Private export dropped short-walk category');
    for(const forbidden of [original.notes,original.activity,photo,'fl_occoneechee_legacy','rupert-location','address'])check(!JSON.stringify(minimal).includes(forbidden),'Private information in minimal export');
+   await page.locator('#export-history').click();
+   const group=page.locator('[data-context-place=occoneechee-mountain]');
+   await group.locator('[name=summary]').fill('A short visit left other opportunities unexplored.');
+   await group.locator('[name=explore_activity]').selectOption('river');await group.locator('[name=avoid_activity]').selectOption('full-day');
+   await page.locator('#history-review-consent').check();const reviewedDownload=page.waitForEvent('download');
+   const historyBeforeExport=JSON.stringify(await stored(page));
+   await page.locator('#history-review-form').getByRole('button',{name:'Download private history',exact:true}).click();
+   const reviewed=JSON.parse(await readFile(await (await reviewedDownload).path(),'utf8'));
+   check(reviewed.contexts.length===1&&reviewed.contexts[0].reviewed===true&&reviewed.contexts[0].explore_activity==='river'&&reviewed.contexts[0].avoid_activity==='full-day','Reviewed context not exported faithfully');
+   check(JSON.stringify(await stored(page))===historyBeforeExport,'Editorial export rewrote memories');
+   check(!JSON.stringify(reviewed).includes(original.notes)&&!JSON.stringify(reviewed).includes(photo),'Raw memory leaked through reviewed context');
+   await page.locator('#export-history').click();
+   check(await group.locator('[name=summary]').inputValue()==='','Old summary silently reused without review');
+   await group.locator('[name=explore_activity]').selectOption('river');await group.locator('[name=avoid_activity]').selectOption('river');await page.locator('#history-review-consent').check();
+   await page.locator('#history-review-form').getByRole('button',{name:'Download private history',exact:true}).click();
+   check(await page.locator('#history-review-status').innerText().then(s=>s.includes('distinct activity choices')),'Conflicting editorial choices exported');
+   check(await page.locator('#history-review').isVisible()&&JSON.stringify(await stored(page))===historyBeforeExport,'Invalid review changed history');
+   await page.locator('#cancel-history-review').click();
+   await page.locator('#export-history').click();await page.locator('#history-review-consent').check();
+   await atlas.evaluate(()=>window.localStorage.setItem('rupert-field-log-v1',JSON.stringify({...JSON.parse(localStorage.getItem('rupert-field-log-v1')),entries:JSON.parse(localStorage.getItem('rupert-field-log-v1')).entries.map(e=>e.id==='fl_cox_visit'?{...e,notes:'A concurrent private correction'}:e)})));
+   await page.locator('#history-review-form').getByRole('button',{name:'Download private history',exact:true}).click();
+   check(await page.locator('#history-review-status').innerText().then(s=>s.includes('History changed during review')),'Stale reviewed history was exported');
+   await page.locator('#cancel-history-review').click();
    await page.locator(`[data-edit="${done.id}"]`).click();await page.locator('[name=history_kind]').selectOption('visit');await save(page);
    await archive.waitForFunction(()=>document.querySelector('[data-edition="2026-W41-tue"]').dataset.history==='visited');await full.locator('.edition-history[data-history=visited]').waitFor();
    check(await full.getByRole('button',{name:'Mark as Completed',exact:true}).isVisible(),'Correction did not restore completion action');
@@ -152,7 +193,7 @@ try{
    check(await page.locator('#log-status').innerText().then(s=>s.includes('left intact')),'Corrupt-storage disclosure missing');check(await page.evaluate(()=>localStorage.getItem('rupert-field-log-v1'))==='damaged fixture','Corrupt storage overwritten');
    await atlas.close();await archive.close();await full.close();
   }
-  check(requests.every(r=>!r.url.includes('rupert-field-log')&&!r.url.includes('_private')&&!r.body.includes(original.notes)&&!r.body.includes(photo)),'Personal history was transmitted');
+  check(requests.every(r=>!r.url.includes('rupert-field-log')&&!r.url.includes('_private')&&!r.body.includes(original.notes)&&!r.body.includes(photo)&&!r.body.includes('A short visit left other opportunities unexplored.')),'Personal history was transmitted');
   evidence.layouts.push({width,height,before,after});await ctx.close();console.log(`history ${width}x${height} PASS`);
  }
  check(evidence.errors.length===0,'Browser errors: '+evidence.errors.join('; '));await writeFile(resolve(output,'results.json'),JSON.stringify(evidence,null,2));console.log(`${evidence.checks} experience-history browser assertions PASS.`);

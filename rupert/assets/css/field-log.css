@@ -32,6 +32,12 @@
 .log-completed { margin-block:24px; }
 .memory-history,.history-export-note { font:400 14px/1.5 var(--f-data); color:var(--text-2); }
 .history-actions a.log-completed { display:inline-flex;align-items:center;min-height:44px; }
+.field-log .history-consent { display:flex; align-items:flex-start; gap:10px; }
+.field-log .history-consent input { width:auto; flex:none; margin-top:5px; }
+.history-review { max-width:860px; border-top:1px solid var(--rule); padding-block:20px; margin-block:24px; scroll-margin-top:calc(var(--bar-h) + 20px); }
+.history-review fieldset { min-width:0; margin:0 0 24px; padding:16px 0; border:0; border-top:1px solid var(--rule); display:grid; gap:16px; }
+.history-review legend { font:400 24px/1.2 var(--f-secondary); padding:0 12px 0 0; }
+.history-review .memory-notes { overflow-wrap:anywhere; }
 @media(max-width:759.98px) {
  .field-log #memories { grid-template-columns:1fr; }
  .field-log #log-editor,.field-log .log-actions { padding:20px; }
