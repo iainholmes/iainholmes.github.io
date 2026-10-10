@@ -351,7 +351,7 @@ async function audit({ history }) {
   for (const [lo, la] of boundsOf({places: places.places.filter(p => published.has(p.id))})) allowed.add(key(la, lo));
 
   const files = await walk(ROOT);
-  const FORBIDDEN_KEYS = ['gps', 'origin', 'home', 'residence', 'notes_private', 'source_file', 'camera', 'approved_media', 'exact'];
+  const FORBIDDEN_KEYS = ['gps', 'origin', 'home', 'residence', 'notes_private', 'editorial_context', 'editorialcontext', 'source_file', 'camera', 'approved_media', 'exact'];
   const COORD = /(3[3-7]\.\d{3,})\s*,\s*(-(?:7[5-9]|8[0-4])\.\d{3,})|\[\s*(-(?:7[5-9]|8[0-4])\.\d{3,})\s*,\s*(3[3-7]\.\d{3,})\s*\]/g;
   let bytes = 0;
   for (const f of files) {

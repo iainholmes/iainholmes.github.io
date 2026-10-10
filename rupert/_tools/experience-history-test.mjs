@@ -193,6 +193,8 @@ try{
  const accidental=resolve(root,'data/history-audit-fixture.json');
  try {await writeFile(accidental,JSON.stringify(reviewed));const audit=spawnSync(process.execPath,[resolve(root,'_tools/rupert.mjs'),'audit'],{encoding:'utf8'});
   check(()=>assert.notEqual(audit.status,0));check(()=>assert.match(audit.stderr+audit.stdout,/personal-history export in public assets/));
+  await writeFile(accidental,JSON.stringify(contextReport));const reportAudit=spawnSync(process.execPath,[resolve(root,'_tools/rupert.mjs'),'audit'],{encoding:'utf8'});
+  check(()=>assert.notEqual(reportAudit.status,0));check(()=>assert.match(reportAudit.stderr+reportAudit.stdout,/forbidden key.*editorialContext/));
  }finally{await rm(accidental,{force:true});}
 }finally{await rm(dir,{recursive:true,force:true});}
 console.log(`${checks} private experience-history, migration, status, ranking and input-security assertions PASS.`);

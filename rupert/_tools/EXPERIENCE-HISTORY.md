@@ -37,7 +37,7 @@ Each place has an optional, initially blank editorial summary (up to 500 charact
 
 Raw activity prose, notes, memory IDs, tags, photographs, Home data and addresses are not automatically included. The review/download makes no upload or telemetry request. The optional authored summary is private editorial material: never commit it or post it publicly.
 
-Supply this file privately to the editor's clone, either outside the repository or at ignored `rupert/_private/recommendation-history.json`. Never put it in public `data/`, an issue, a committed file or an Actions artifact. The public audit rejects a history export accidentally placed in public assets. `_private/` must remain ignored and untracked. There is no browser-to-publisher connection, and the publisher on GitHub cannot read iPhone storage.
+Supply this file privately to the editor's clone, either outside the repository or at ignored `rupert/_private/recommendation-history.json`. Never put it in public `data/`, an issue, a committed file or an Actions artifact. The public audit rejects a history export or a candidate report containing private editorial context accidentally placed in public assets. `_private/` must remain ignored and untracked. There is no browser-to-publisher connection, and the publisher on GitHub cannot read iPhone storage.
 
 ```sh
 node rupert/_tools/recommend.mjs CANDIDATES.json --at TIMESTAMP --history /private/path/rupert-recommendation-history.json
