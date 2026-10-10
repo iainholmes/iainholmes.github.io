@@ -604,6 +604,68 @@
         "seed": 893578207,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A petition ascends institutional steps\"><title>North Carolina directs $17 million to rural mental-health capacity</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-09-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-09-05)\"><path d=\"M70 535V430H240V335H410V240H580V145H730V535Z\" fill=\"#1b4a6b\"/><path d=\"M106 140H302V290H106Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M138 184H267M138 226H241\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M330 295L410 200L489 238\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
       }
+    },
+    "2026-10-10": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-10",
+        "number": "01",
+        "category": "Economics · global growth",
+        "topic": "trade",
+        "title": "UNCTAD forecasts 2.6% global growth as trade resilience is tested",
+        "composition": "trade-detour",
+        "signature": "plate:trade-detour",
+        "seed": 807914950,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Server cargo takes an indirect route around an inspection gate\"><title>UNCTAD forecasts 2.6% global growth as trade resilience is tested</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-10-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-10-01)\"><path d=\"M65 480H240V180H490V480H715\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"38\"/><path d=\"M350 280V555\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M300 295H400\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M75 376H195V506H75ZM552 105H682V247H552Z\" fill=\"#2c241d\"/><path d=\"M99 410H173M99 451H173M578 146H658M578 194H658\" stroke=\"#f4ead7\" stroke-width=\"14\"/><path d=\"M490 180H545\" stroke=\"#c4452c\" stroke-width=\"24\"/><path d=\"M524 158L551 180L524 203\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"12\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-10",
+        "number": "02",
+        "category": "Technology · AI governance",
+        "topic": "infrastructure",
+        "title": "EU says its AI Act can contain risks from advanced models",
+        "composition": "infrastructure-wafer",
+        "signature": "plate:infrastructure-wafer",
+        "seed": 3852232256,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A wafer connects to separate production stages\"><title>EU says its AI Act can contain risks from advanced models</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-10-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-10-02)\"><circle cx=\"265\" cy=\"310\" r=\"190\" fill=\"#1b4a6b\"/><path d=\"M142 175H388M108 267H422M108 359H422M142 452H388M175 143V477M267 121V500M359 143V477\" stroke=\"#f4ead7\" stroke-width=\"13\"/><path d=\"M470 190H690V295H470ZM520 410H735V515H520Z\" fill=\"#2c241d\"/><path d=\"M430 310H555V400\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-10",
+        "number": "03",
+        "category": "Environment · climate science",
+        "topic": "climate",
+        "title": "IPCC timetable deadlock puts the 2028 climate review at risk",
+        "composition": "climate-levee",
+        "signature": "plate:climate-levee",
+        "seed": 147433731,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Water meets a protective levee beside a settlement\"><title>IPCC timetable deadlock puts the 2028 climate review at risk</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-10-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-10-03)\"><path d=\"M45 365Q180 280 300 365T540 365V565H45Z\" fill=\"#1b4a6b\"/><path d=\"M430 540L515 225L583 540Z\" fill=\"#7c5a3e\"/><path d=\"M620 365L675 310L730 365V495H620Z\" fill=\"#2c241d\"/><path d=\"M72 438Q170 380 270 438T470 438\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"20\"/><circle cx=\"165\" cy=\"154\" r=\"81\" fill=\"#c98a12\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-10",
+        "number": "04",
+        "category": "Economics · labor",
+        "topic": "labor",
+        "title": "Canada employment falls by 68,000 as the labor force shrinks",
+        "composition": "labor-steps",
+        "signature": "plate:labor-steps",
+        "seed": 78955846,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Hiring capacity narrows across workstations\"><title>Canada employment falls by 68,000 as the labor force shrinks</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-10-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-10-04)\"><path d=\"M85 510V185H255V510M300 510V285H470V510M515 510V395H685V510\" fill=\"#1b4a6b\"/><g fill=\"#f4ead7\"><circle cx=\"170\" cy=\"265\" r=\"28\"/><path d=\"M134 385V320Q170 286 206 320V385Z\"/><circle cx=\"385\" cy=\"356\" r=\"28\"/><path d=\"M349 476V410Q385 377 421 410V476Z\"/></g><path d=\"M535 440H665\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M75 548H725\" stroke=\"#2c241d\" stroke-width=\"18\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-10",
+        "number": "05",
+        "category": "North Carolina · public finance",
+        "topic": "energy",
+        "title": "North Carolina suspends gas tax to cut fuel costs",
+        "composition": "energy-turbine",
+        "signature": "plate:energy-turbine",
+        "seed": 2086677271,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Wind generation feeds a separate demand block\"><title>North Carolina suspends gas tax to cut fuel costs</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-10-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-10-05)\"><path d=\"M285 245V540\" stroke=\"#2c241d\" stroke-width=\"26\"/><path d=\"M285 245L180 97L218 75L302 220L445 202L449 247L306 260L240 392L201 371Z\" fill=\"#1d5f47\"/><path d=\"M475 355H690V530H475Z\" fill=\"#1b4a6b\"/><path d=\"M510 392H655M510 447H655\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M316 476H445\" stroke=\"#c4452c\" stroke-width=\"28\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
