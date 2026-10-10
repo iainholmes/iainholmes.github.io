@@ -5,7 +5,7 @@
 @font-face {font-family: "Latin Modern Roman"; src: url(../fonts/lmroman-italic.otf) format("opentype"); font-weight:400; font-style:italic; font-display:swap;}
 @font-face {font-family: "Latin Modern Roman"; src: url(../fonts/lmroman-bolditalic.otf) format("opentype"); font-weight:700; font-style:italic; font-display:swap;}
 /* Tokens */
-:root { --lake: #1D2A3A; --pine: #34483B; --ink: #211F1C; --red: #7A2024; --ochre: #C98B4B; --gold: #C98B4B; --parchment: #F3EFE5; --brown: #574E45; --taupe: #8E8980; --slate: #40616A; --rust: #AA3D23; --paper: #F3EFE5; --paper-2: #ECEDE7; --text: #211F1C; --text-2: #52605A; --muted: var(--text-2); --rule: #CDD0C8; --rule-strong: #A46A32; --accent: #87521F; --mark: #C98B4B; --band: #1D2A3A; --on-band: #F3EFE5; --on-band-2: #F3EFE5; --foot: var(--band); --on-foot: var(--paper); --focus: #87521F; --alert: var(--red); --scrim: rgba(18,30,38,.72); --f-editorial: "VELENOR",Georgia,serif; --f-text: "Latin Modern Roman",Georgia,serif; --f-display: "Latin Modern Roman",Georgia,serif; --f-data: "Latin Modern Roman",Georgia,serif; --gutter: clamp(20px,3vw,48px); --max: 1600px; --bar-h: 52px; --dock-h: 58px; color-scheme: light; }
+:root { --lake: #1D2A3A; --pine: #34483B; --visited-green: #3E7254; --ink: #211F1C; --red: #7A2024; --ochre: #C98B4B; --gold: #C98B4B; --parchment: #F3EFE5; --brown: #574E45; --taupe: #8E8980; --slate: #40616A; --rust: #AA3D23; --paper: #F3EFE5; --paper-2: #ECEDE7; --text: #211F1C; --text-2: #52605A; --muted: var(--text-2); --rule: #CDD0C8; --rule-strong: #A46A32; --accent: #87521F; --mark: #C98B4B; --band: #1D2A3A; --on-band: #F3EFE5; --on-band-2: #F3EFE5; --foot: var(--band); --on-foot: var(--paper); --focus: #87521F; --alert: var(--red); --scrim: rgba(18,30,38,.72); --f-editorial: "VELENOR",Georgia,serif; --f-text: "Latin Modern Roman",Georgia,serif; --f-display: "Latin Modern Roman",Georgia,serif; --f-data: "Latin Modern Roman",Georgia,serif; --gutter: clamp(20px,3vw,48px); --max: 1600px; --bar-h: 52px; --dock-h: 58px; color-scheme: light; }
 
 
 /* Typography and Shared Elements */
@@ -358,7 +358,7 @@ h4 { font-family: var(--f-editorial); font-weight: 400; font-synthesis: none; }
 .mc-status { font: 400 13px var(--f-data); color: #5A5044; margin: 2px 0 6px !important; }
 .mk { width: 20px; height: 20px; flex: none; }
 .mk-rec circle { fill: var(--ochre); stroke: var(--ink); stroke-width: 2.2; }
-.mk-walk circle { fill: var(--pine); stroke: var(--paper); stroke-width: 1.6; }
+.mk-walk circle { fill: var(--visited-green); stroke: var(--paper); stroke-width: 1.6; }
 .mk-walk path { fill: none; stroke: #F3EFE5; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .mk-plan path { fill: #F3EFE5; stroke: var(--slate); stroke-width: 2.2; }
 .mk-reg circle { fill: #F3EFE5; stroke: var(--ink); stroke-width: 1.8; }
@@ -807,8 +807,9 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .atlas-label-layer span { position: absolute; transform: translateY(-50%); white-space: nowrap; visibility: hidden; font: 400 14px/1.2 var(--f-data); color: var(--ink); text-shadow: 1px 0 var(--paper),-1px 0 var(--paper),0 1px var(--paper),0 -1px var(--paper); }
 .page-atlas .atlas-label-layer span { font-weight: 700; }
 .reg-word { position: relative; }
-.history-check { position: absolute; left: calc(100% + 2px); width: 9px; color: var(--pine); font-size: 13px; }
+.history-check { position: absolute; left: calc(100% + 2px); width: 9px; color: var(--visited-green); font-size: 13px; }
 .personal-history { font: 400 13px/1.4 var(--f-data); color: var(--pine); margin-block: 6px; }
+.archive-card .personal-history { color: var(--visited-green); }
 .edition-history { border-top: 1px solid var(--rule); padding-top: 12px; }
 .history-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
 .history-actions .log-completed { margin-block: 4px 12px; }

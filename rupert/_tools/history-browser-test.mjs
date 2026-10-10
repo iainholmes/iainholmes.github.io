@@ -47,6 +47,13 @@ try{
   const features=await page.evaluate(()=>window.__historyFeatures.map(f=>f.properties));
   check(features.find(f=>f.id==='occoneechee-mountain').marker_status==='walked'&&features.find(f=>f.id==='occoneechee-mountain').status==='recommended','Visit lost recommendation state');
   check(features.find(f=>f.id==='eno-cox-mountain').marker_status==='withdrawn'&&features.find(f=>f.id==='eno-cox-mountain').visited,'Visited withdrawal warning lost');
+  const colors=await page.evaluate(()=>{
+   const has=(id,color)=>{const image=window.__historyMap.raw.getImage(id),bytes=image?.data?.data||image?.data;if(!bytes)return false;for(let i=0;i<bytes.length;i+=4)if(bytes[i]===color[0]&&bytes[i+1]===color[1]&&bytes[i+2]===color[2]&&bytes[i+3]===255)return true;return false;};
+   return {green:has('m-walked',[62,114,84]),selectedGreen:has('m-walked-sel',[62,114,84]),ivory:has('m-walked',[243,239,229]),selectedIvory:has('m-walked-sel',[243,239,229]),ochre:has('m-recommended',[201,139,75]),red:has('m-withdrawn',[122,32,36])};
+  });
+  for(const [state,found]of Object.entries(colors))check(found,'Marker color/contrast changed: '+state);
+  check(await page.locator('#place-occoneechee-mountain .mk-walk circle').evaluate(n=>getComputedStyle(n).fill)==='rgb(62, 114, 84)','Directory visited marker not forest green');
+  check(await page.locator('#place-occoneechee-mountain .history-check').evaluate(n=>getComputedStyle(n).color)==='rgb(62, 114, 84)','Directory visit check not forest green');
   check(await page.locator('#place-eno-cox-mountain .mk-withdrawn').count()===1,'Withdrawn Directory warning lost');
   check(await page.locator('#place-occoneechee-mountain .reg-word').textContent()==='Recommended✓','Directory status misleading');
   check(await page.locator('#place-occoneechee-mountain .reg-latest').getAttribute('href')==='../edition/2026-W41-tue/','Edition destination changed');
@@ -75,6 +82,7 @@ try{
   if([393,1440].includes(width))await page.locator('.memory-card').first().screenshot({path:resolve(output,`memory-${width}.png`)});
   await visit(page,'archive/');await page.waitForFunction(()=>document.querySelector('[data-edition="2026-W41-tue"]').dataset.history==='visited');
   check(await page.locator('[data-edition="2026-W41-tue"] .personal-history').innerText()==='Place visited · outing not completed','Archive conflated place/outing');
+  check(await page.locator('[data-edition="2026-W41-tue"] .personal-history').evaluate(n=>getComputedStyle(n).color)==='rgb(62, 114, 84)','Archive visit indicator not forest green');
   check(await page.locator('[data-edition="2026-W40-tue"]').getAttribute('class').then(s=>s.includes('is-withdrawn')),'Archive withdrawal changed');
   check(await page.locator('[data-edition="2026-W41-thu"] .personal-history').count()===0,'Unvisited edition marked');
   if([393,1440].includes(width))await page.locator('.archive-index').screenshot({path:resolve(output,`archive-${width}.png`)});
@@ -92,6 +100,7 @@ try{
    await save(page);const entries=(await stored(page)).entries,done=entries.find(e=>e.id!==original.id&&e.id!==cox.id);
    check(done.edition==='2026-W41-tue'&&done.experience_id==='occoneechee-mountain-loop'&&done.history_kind==='completed','Specific completion not linked');
    await archive.waitForFunction(()=>document.querySelector('[data-edition="2026-W41-tue"]').dataset.history==='completed');
+   check(await archive.locator('[data-edition="2026-W41-tue"] .personal-history').evaluate(n=>getComputedStyle(n).color)==='rgb(62, 114, 84)','Archive completion indicator not forest green');
    check(await archive.locator('[data-edition="2026-W41-thu"] .personal-history').count()===0,'Completion spread to another edition');
    const full=await ctx.newPage();await full.clock.install({time:new Date('2026-10-10T12:00:00-04:00')});await visit(full,'edition/2026-W41-tue/');await full.locator('.edition-history[data-history=completed]').waitFor();
    check(await full.getByRole('link',{name:'Edit memory',exact:true}).getAttribute('href').then(s=>s.endsWith('#memory-'+done.id)),'Completed edition cannot be corrected');

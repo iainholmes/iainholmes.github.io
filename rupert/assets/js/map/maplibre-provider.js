@@ -60,7 +60,7 @@ function loadLibrary(base) {
 function markerImage(kind, dpr) {
   const S = 26 * dpr, c = document.createElement('canvas'); c.width = c.height = S;
   const g = c.getContext('2d'); const m = S / 2; const r = 8.2 * dpr;
-  const INK = kind.endsWith('sel') ? '#C98B4B' : '#1D2A3A', PAPER = '#F3EFE5', OCHRE = '#C98B4B', PINE = '#34483B', SLATE = kind.endsWith('sel') ? '#C98B4B' : '#40616A';
+  const INK = kind.endsWith('sel') ? '#C98B4B' : '#1D2A3A', PAPER = '#F3EFE5', OCHRE = '#C98B4B', PINE = '#3E7254', SLATE = kind.endsWith('sel') ? '#C98B4B' : '#40616A';
   g.lineJoin = 'round';
   if (kind === 'recommended' || kind === 'recommended-sel') {
     g.beginPath(); g.arc(m, m, r + (kind.endsWith('sel') ? 2 * dpr : 0), 0, Math.PI * 2);
