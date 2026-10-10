@@ -266,7 +266,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
         <div class="cover c-fb issue-mark" data-issue-mark="fb" data-edition="2026-10-10" data-theme="change" data-signature="2023005540"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Field Brief, issue 014: Routes &amp; enforcement"><title>Field Brief · 014 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="#f1e6d0"/><g><path d="M90 132H510L350 312V471H250V312Z" fill="#221a14"/><path d="M178 200H422" stroke="#c5ad88" stroke-width="22"/><path d="M210 388H390" stroke="#8a2a36" stroke-width="27"/><circle cx="300" cy="95" r="32" fill="#8a2a36"/></g><path d="M42 570H558" stroke="#221a14" stroke-width="2"/><g fill="#221a14"><text x="42" y="634" font-family="Instrument Serif,Georgia,serif" font-size="48">Field Brief</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">ISSUE 014 / 2026-10-10</text><text x="42" y="740" font-family="Instrument Serif,Georgia,serif" font-size="26">Routes &amp; enforcement</text></g></svg></div>
       </a>
 <article class="press-note" style="--c:var(--fb)">
-        <div class="note-head"><h2>Field Brief</h2><span>weekdays · 8:00 AM ET</span></div>
+        <div class="note-head"><h2>Field Brief</h2><span>daily · 8:00 AM ET</span></div>
         <div class="metric-run" aria-label="Field Brief metrics">
           <span><b data-fb="count">14</b> editions</span>
           <span><b data-fb-depth>70</b> stories</span>
@@ -342,7 +342,7 @@ Handbook: /personal-updates/handbook/ (documentation, not a publication, no spin
       return '<b>'+label+'</b>'+(h%12||12)+':00 '+(h<12?'AM':'PM')+' ET'}
     return '';
   }
-  var sched={fb:[[1,2,3,4,5],8],sp:[[5],15],cp:[[1,2,3,4,5],10]};
+  var sched={fb:[[0,1,2,3,4,5,6],8],sp:[[5],15],cp:[[1,2,3,4,5],10]};
   function paintSchedule(){now=new Date();document.getElementById('today').textContent=now.toLocaleDateString('en-GB',{timeZone:TZ,weekday:'long',day:'numeric',month:'long',year:'numeric'});
 Object.keys(sched).forEach(function(k){var v=nextRun(sched[k][0],sched[k][1]);document.querySelectorAll('[data-next="'+k+'"]').forEach(function(el){el.innerHTML=v});document.querySelectorAll('[data-next-clock="'+k+'"]').forEach(function(el){el.innerHTML=v})});
   }

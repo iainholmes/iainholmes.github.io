@@ -214,7 +214,10 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
   .art-frame{aspect-ratio:16/10}
   .side{margin-top:18px}
   .signal{grid-template-columns:1fr;gap:16px;padding:30px 22px;margin-inline:-18px}
-  .turn{grid-template-columns:1fr 1fr}.turn .mid{display:none}
+  .turn{grid-template-columns:1fr 1fr;row-gap:12px}
+  .turn>:first-child{grid-column:1;grid-row:1}
+  .turn>:last-child{grid-column:2;grid-row:1}
+  .turn .mid{grid-column:1/-1;grid-row:2;text-align:center}
   html.index-open .main{transform:none}
 }
 @media (max-width:420px){.run .title{font-size:17px}.pd-imprint .lbl{display:none}}
@@ -360,7 +363,9 @@ Publication: read latest master, isolate the append, verify five stories/numberi
 issue mark with scripts/prepare_periodicals.cjs, commit intended files, refetch and verify master,
 verify the live page, then advance backup/state. See personal-updates/PUBLISHING.md.
 -->
-<!-- Edition maintenance: Fetch the current canonical GitHub file before every update. Append one
+<!-- Schedule: daily, including Saturday and Sunday, at 8:00 AM America/New_York (365 days/year).
+Preserve every published weekend edition; retries for an existing date are a no-op.
+Edition maintenance: Fetch the current canonical GitHub file before every update. Append one
 object to "editions" in #briefing-data; never delete, rewrite or renumber editions. Issue numbers
 are derived from date order (skipped days do not skip numbers). Every story needs number, title,
 art, summary, why, implications, sources; "category" is retained in data but deliberately NOT
