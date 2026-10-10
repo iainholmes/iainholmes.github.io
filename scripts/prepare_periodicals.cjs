@@ -12,6 +12,17 @@ const fb=data(read('daily-watchlist-5/index.html'),'briefing-data').editions.sor
 for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])throw Error('Published Field Brief is missing its story artwork pin: '+ed.date);
 // Validate L&L companions before any publication artifacts are written.
 const llSource=read('weekly-economics-environment/index.html'),companions=data(llSource,'companion-data');
+// Labels follow the selected edition's annual volume/issue, preserving the existing superscript apparatus.
+const llEditionMarkup=llSource.match(/<main[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)[1];
+const labelEditions=[...llEditionMarkup.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[\s\S]*?<div class="eyebrow edition-label">([\s\S]*?)<\/div>/g)].sort((a,b)=>a[1].localeCompare(b[1]));
+if(labelEditions.length!==[...llEditionMarkup.matchAll(/<section class="edition"[^>]*data-edition=/g)].length)throw Error('Every L&L edition requires a hero edition label');
+const roman=n=>{let text='';for(const [value,symbol] of [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']])while(n>=value){text+=symbol;n-=value}return text};
+labelEditions.forEach(e=>{
+ const year=+e[1].slice(0,4),no=labelEditions.filter(x=>x[1].slice(0,4)===String(year)&&x[1]<=e[1]).length;
+ const date=new Date(e[1]+'T12:00:00Z').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
+ const expected='Volume '+roman(year-2025)+' / No. '+String(no).padStart(3,'0')+' / '+date;
+ if(year<2026||plain(e[2]).replace(/\s+/g,' ').trim()!==expected||!/<sup>o<\/sup>/.test(e[2]))throw Error('Invalid L&L edition label: '+e[1]+'; expected '+expected);
+});
 for(const [date,cfg] of Object.entries(companions))if(cfg.enabled!==false&&(cfg.appearances||[]).length>2)throw Error('L&L permits at most two active Heron interventions: '+date);
 const plates=storyArt.prepare(fb,storyArchive);
 const cp=data(read('daily-econ-challenge/index.html'),'challenge-data').editions.sort((a,b)=>a.date.localeCompare(b.date));
