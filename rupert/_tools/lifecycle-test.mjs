@@ -9,8 +9,8 @@ const candidate={...old,id:'new',flagship:{...old.flagship,title:'Cosmetic rewri
 const at=days=>new Date(+new Date(start)+days*86400000).toISOString();
 assert.equal(reuseEligibility(candidate,[old],{at:at(179.99)}).eligible,false);
 assert.equal(reuseEligibility(candidate,[old],{at:at(180)}).eligible,true);
-assert.equal(reuseEligibility(candidate,[old],{at:at(364),log:[{edition:'old'}]}).eligible,false);
-assert.equal(reuseEligibility(candidate,[old],{at:at(365),log:[{edition:'old'}]}).eligible,true);
+assert.equal(reuseEligibility(candidate,[old],{at:at(364),log:[{edition:'old',history_kind:'completed',date:'2026-01-03'}]}).eligible,false);
+assert.equal(reuseEligibility(candidate,[old],{at:at(365),log:[{edition:'old',history_kind:'completed',date:'2026-01-03'}]}).eligible,true);
 const different={...candidate,flagship:{...candidate.flagship,experience_id:'sunset-picnic',difference_note:'A sunset picnic at the water instead of the woodland loop.',experiences:['picnic']}};
 assert.equal(reuseEligibility(different,[old],{at:at(119)}).eligible,false);
 assert.equal(reuseEligibility(different,[old],{at:at(120)}).eligible,true);
@@ -25,7 +25,7 @@ assert.equal(reuseEligibility({...candidate,flagship:{...candidate.flagship,expe
 const repeat={...old,id:'second',published_at:at(180)};
 assert.equal(reuseEligibility(candidate,[old,repeat],{at:at(359)}).eligible,false);
 assert.equal(reuseEligibility(candidate,[old,repeat],{at:at(360)}).eligible,true);
-assert.equal(reuseEligibility(candidate,[old,repeat],{at:at(360),log:[{edition:'old'}]}).eligible,false);
+assert.equal(reuseEligibility(candidate,[old,repeat],{at:at(360),log:[{edition:'old',history_kind:'completed',date:'2026-01-03'}]}).eligible,false);
 assert.equal(reuseEligibility(candidate,[old],{at:at(1)}).recencyPenalty > 99,true);
 assert.equal(reuseEligibility(candidate,[old],{at:at(360)}).recencyPenalty,0);
 const unseen={...candidate,id:'cafe',flagship:{...candidate.flagship,place_id:'cafe',experiences:['cafe']}};

@@ -9,6 +9,8 @@ import { fetchWeekendForecast, unavailableForecast } from '../assets/js/core/for
 import { nyTimestamp } from '../assets/js/core/dates.js';
 import { expectedPublish } from '../assets/js/core/editions.js';
 import { cycleWeekend } from '../assets/js/core/cycles.js';
+import { reuseEligibility } from '../assets/js/core/recommendations.js';
+import { loadRecommendationHistory } from './history-input.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = async p => JSON.parse(await readFile(resolve(root,p),'utf8'));
@@ -48,7 +50,12 @@ if (args[0] === 'refresh') {
   const checks = await read('data/access-checks.json'), reviews = await optional('data/editorial-reviews.json',{reviews:[]});
   const due = editions.filter(({ed})=>ed.status==='draft' && ed.weekend.start===cycleWeekend(now).start && now>=expectedPublish(ed.slot,ed.weekend.start));
   if (!due.length) { console.log('No due drafts. Already published editions remain unchanged.'); process.exit(0); }
-  const problems = due.map(({ed})=>({id:ed.id,problem:releaseProblem(ed,{checks:checks.checks,officialHosts:checks.official_hosts,reviews:reviews.reviews,now})})).filter(e=>e.problem);
+  const places=await read('data/places.json');
+  const personal=await loadRecommendationHistory(args,{places,manifest:{editions:editions.map(e=>e.ed)},now},root);
+  const problems = due.map(({ed})=>{
+    const reuse=reuseEligibility(ed,editions.map(e=>e.ed),{at:now.toISOString(),log:personal});
+    return {id:ed.id,problem:releaseProblem(ed,{checks:checks.checks,officialHosts:checks.official_hosts,reviews:reviews.reviews,now})||(!reuse.eligible?'Recommendation reuse: '+reuse.reason:null)};
+  }).filter(e=>e.problem);
   if (problems.length) { problems.forEach(e=>console.error(`${e.id}: ${e.problem}`)); process.exit(1); }
   if (!args.includes('--apply')) { console.log('Ready: '+due.map(e=>e.ed.id).join(', ')+'. Use release --apply to record actual publication.'); process.exit(0); }
   const before = due.map(({path,ed})=>({path,ed:structuredClone(ed)}));

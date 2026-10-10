@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { readLogBackup } from '../assets/js/core/field-log.js';
+import { loadRecommendationHistory } from './history-input.mjs';
 import { previousSuggestions, reuseEligibility } from '../assets/js/core/recommendations.js';
 import { accessProblem } from '../assets/js/core/publication.js';
 import { artworkProblems } from '../assets/js/core/adventure.js';
@@ -55,11 +55,9 @@ async function load() {
   const files = (await readdir(P('data/editions'))).filter(f => /^\d{4}-W\d{2}-(?:r\d+-)?(tue|thu)\.json$/.test(f)).sort();
   const editions = {};
   for (const f of files) editions[f.replace(/\.json$/, '')] = await readJSON(P('data/editions', f));
-  const logArg = process.argv.indexOf('--log');
-  const logPath = logArg >= 0 ? process.argv[logArg + 1] : P('_private/recommendation-log.json');
-  if (logArg >= 0 && !logPath) throw Error('Provide a local Field Log backup after --log.');
-  if (logArg >= 0 && !existsSync(logPath)) throw Error('The supplied Field Log backup does not exist.');
-  const completionLog = existsSync(logPath) ? readLogBackup(await readFile(logPath, 'utf8')) : [];
+  // audit --history is the existing Git-history audit switch, not a private input filename.
+  const historyArgs = process.argv[2] === 'audit' ? process.argv.filter(arg => arg !== '--history') : process.argv;
+  const completionLog = await loadRecommendationHistory(historyArgs,{places,manifest:{editions:Object.values(editions)},now:new Date()},ROOT);
   return { site, places, photos, schema, photoSchema, editions, accessChecks, completionLog };
 }
 
@@ -89,7 +87,9 @@ function checkEditions({ editions, schema, places, photos, accessChecks, complet
     const accessIssue=accessProblem(ed,accessChecks.checks,accessChecks.official_hosts);
     if(accessIssue)err(id,'Publication gate: '+accessIssue);
     if (ed.status === 'published') {
-      const reuse = reuseEligibility(ed, Object.values(editions), {log: completionLog});
+      // Personal history supplied later cannot retroactively invalidate an accepted historical publication.
+      // The guarded release checks personal completion before promoting a new draft.
+      const reuse = reuseEligibility(ed, Object.values(editions));
       if (!reuse.eligible) err(id, 'Recommendation reuse: ' + reuse.reason);
     }
     if (ed.status === 'published' && previousSuggestions(ed, Object.values(editions)).length) {
@@ -383,7 +383,9 @@ async function audit({ history }) {
     if (/\.(json|webmanifest)$/.test(f) && !isSchema) {
       const walkKeys = (o, path) => { if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) {
         if (FORBIDDEN_KEYS.includes(k.toLowerCase())) bad(f, `forbidden key "${path}${k}"`); walkKeys(v, `${path}${k}.`); } };
-      try { walkKeys(JSON.parse(text), ''); } catch { bad(f, 'invalid JSON'); }
+      try { const value=JSON.parse(text); walkKeys(value, '');
+        if(value.type==='rupert-recommendation-history'||[1,2].includes(value.version)&&Array.isArray(value.entries))bad(f,'personal-history export in public assets');
+      } catch { bad(f, 'invalid JSON'); }
     }
   }
   notes.push(`${files.length} public files, ${(bytes / 1048576).toFixed(1)} MB`);

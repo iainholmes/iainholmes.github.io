@@ -259,7 +259,7 @@ export function crowdVisual(crowd) {
 /* ---------- full edition ---------- */
 
 export function renderEdition(ed, ctx, sibling) {
-  if (ed.status === 'withdrawn') return `<article class="edition wrap"><header class="ed-head ed-withdrawn-head"><p class="header-kicker">${SLOT_LABEL[ed.slot]} · Withdrawn</p><h1>${esc(titleCase(ed.flagship.title))}</h1></header><section class="withdrawal"><h2 class="sec-h">Recommendation Withdrawn</h2><p>${esc(ed.corrections.at(-1).note)}</p><p>Withdrawal recorded ${esc(ed.corrections.at(-1).at)}. The original recommendation is no longer active.</p>${(ed.flagship.sources||[]).filter(s=>s.kind==='park').map(s=>`<a href="${esc(s.url)}">${esc(s.label)}</a>`).join(' · ')}</section><p><a href="${ctx.base}">This Week</a> · <a href="${ctx.base}archive/">Archive</a></p></article>`;
+  if (ed.status === 'withdrawn') return `<article class="edition wrap" data-edition="${esc(ed.id)}"><header class="ed-head ed-withdrawn-head"><p class="header-kicker">${SLOT_LABEL[ed.slot]} · Withdrawn</p><h1>${esc(titleCase(ed.flagship.title))}</h1></header><section class="withdrawal"><h2 class="sec-h">Recommendation Withdrawn</h2><p>${esc(ed.corrections.at(-1).note)}</p><p>Withdrawal recorded ${esc(ed.corrections.at(-1).at)}. The original recommendation is no longer active.</p>${(ed.flagship.sources||[]).filter(s=>s.kind==='park').map(s=>`<a href="${esc(s.url)}">${esc(s.label)}</a>`).join(' · ')}</section><p><a href="${ctx.base}">This Week</a> · <a href="${ctx.base}archive/">Archive</a></p></article>`;
   const { base, photos, places } = ctx;
   const f = ed.flagship, s = f.snapshot || {};
   const panels = guidanceFor(f);
@@ -345,9 +345,9 @@ export function renderArchive(groups, ctx) {
   const cards = groups.map(g => `<section class="archive-week${g.editions.some(e=>e.current)?' is-current':''}"><h2>${esc(weekendRange(g.weekend.start,g.weekend.end))}${g.editions.some(e=>e.current)?'<span class="arch-now">This Week</span>':''}</h2><div class="archive-results">${['tuesday','thursday'].flatMap(slot=>{const entries=g.editions.filter(e=>e.slot===slot);return entries.length?entries.map(e=>({slot,e})):[{slot,e:null}];}).map(({slot,e})=>{
     const publish=expectedPublish(slot,g.weekend.start);
     if(!e) return `<article class="archive-card is-missing"><p class="p-day">${SLOT_LABEL[slot]}</p><p>${publish > (ctx.now || new Date()) ? 'Publishes '+esc(publishedLabel(publish.toISOString()))+' · '+PENDING_TIME : 'Not published'}</p></article>`;
-    if(e.status==='withdrawn') return `<article class="archive-card is-withdrawn" data-option="${esc(JSON.stringify({...e.options?.[0],title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''}))}"><div><p class="p-day">${SLOT_LABEL[slot]} · Withdrawn</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">Recommendation withdrawn · Historical publication</p></div></article>`;
+    if(e.status==='withdrawn') return `<article class="archive-card is-withdrawn" data-edition="${esc(e.id)}" data-option="${esc(JSON.stringify({...e.options?.[0],title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''}))}"><div><p class="p-day">${SLOT_LABEL[slot]} · Withdrawn</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">Recommendation withdrawn · Historical publication</p></div></article>`;
     const option={...(e.options?.find(o=>o.role==='flagship') || {}),title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''};
-    return `<article class="archive-card" data-option="${esc(JSON.stringify(option))}"><a href="${base}edition/${esc(e.id)}/" class="archive-image" tabindex="-1" aria-hidden="true">${photo(e.photo_id?{id:e.photo_id}:null,photos,base,{sizes:'(max-width: 759px) 88px, 118px'})}</a><div><p class="p-day">${slotPublication(e)}</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">${esc(option.place_name)}</p></div></article>`;
+    return `<article class="archive-card" data-edition="${esc(e.id)}" data-option="${esc(JSON.stringify(option))}"><a href="${base}edition/${esc(e.id)}/" class="archive-image" tabindex="-1" aria-hidden="true">${photo(e.photo_id?{id:e.photo_id}:null,photos,base,{sizes:'(max-width: 759px) 88px, 118px'})}</a><div><p class="p-day">${slotPublication(e)}</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">${esc(option.place_name)}</p></div></article>`;
   }).join('')}</div></section>`).join('');
   return `<div class="archive wrap"><header class="page-head"><h1>Archive</h1></header><div class="archive-layout"><aside class="archive-rail"><form class="archive-filters" hidden role="search"><label>Search<input type="search" name="query" placeholder="Place or activity"></label><label>Season<select name="season"><option value="">All seasons</option>${Object.entries(SEASONS).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Activity<select name="experience"><option value="">All activities</option>${Object.entries(EXPERIENCES).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Crowd<select name="crowd">${Object.entries(CROWD_TOLERANCES).map(([v,l])=>`<option value="${v}"${v==='any'?' selected':''}>${l}</option>`).join('')}</select></label><button type="reset">Clear</button></form><p class="archive-count" role="status" aria-live="polite"></p></aside><div class="archive-index"><p class="archive-empty" hidden>No editions match these filters.</p>${cards || '<p>No editions published.</p>'}</div></div></div>`;
 }
@@ -374,15 +374,15 @@ export const MARK_SVG = {
  */
 export function renderAtlas(model, ctx) {
   const { base } = ctx;
-  const STAT = { walked: 'Walked', recommended: 'Recommended', withdrawn: 'Withdrawn' };
+  const STAT = { walked: 'Visited', recommended: 'Recommended', withdrawn: 'Withdrawn' };
   const row = p => {
     const st = model.statuses.get(p.id), r = p.routes?.[0], latest = st.editions[0];
     const editionLink = e => `<a href="${base}edition/${esc(e.id)}/">${esc(e.label)}, ${esc(weekendShort(e.weekend.start, e.weekend.end))}</a>`;
     const meta = [r ? `${r.distance_mi} mi ${r.shape}` : null, r?.difficulty, p.dog_policy].filter(Boolean).map(esc).join(' · ');
     const start = p.access ? `<p class="reg-start">Start: ${esc(p.access.name)}${p.access.coords_verified ? '' : ' <span class="reg-approx">· pin approximate</span>'}</p>` : '';
     return `<li class="reg-row" id="place-${esc(p.id)}" data-place="${esc(p.id)}" data-status="${st.status}">
-      ${MARK_SVG[st.status]}<div class="reg-main"><h4><button type="button" class="reg-select" data-show="${esc(p.id)}" aria-label="Select ${esc(p.name)}">${esc(p.short_name || p.name)}</button></h4>
-      <div class="reg-brief"><span class="reg-word">${esc(STAT[st.status])}</span><a class="reg-latest" href="${base}edition/${esc(latest.id)}/">${latest.status === 'withdrawn' ? 'Historical edition' : 'Latest edition'} →</a>
+      ${MARK_SVG[st.visited && st.status !== 'withdrawn' ? 'walked' : st.status]}<div class="reg-main"><h4><button type="button" class="reg-select" data-show="${esc(p.id)}" aria-label="Select ${esc(p.name)}${st.visited ? ' · place visited' : ''}">${esc(p.short_name || p.name)}</button></h4>
+      <div class="reg-brief"><span class="reg-word">${esc(STAT[st.status])}${st.visited ? '<span class="history-check" role="img" aria-label="Place visited" title="Place visited">✓</span>' : ''}</span><a class="reg-latest" href="${base}edition/${esc(latest.id)}/">${latest.status === 'withdrawn' ? 'Historical edition' : 'Latest edition'} →</a>
       <details class="reg-details"><summary>Details</summary><div class="reg-dossier"><p class="reg-meta">${esc(p.name)} · ${esc(p.region)}</p><p class="reg-meta">${meta}</p>${start}
       <p class="reg-status">${p.closure?.status === 'closed' ? 'Closed · Official Status Checked ' + esc(p.closure.checked) : latest.status === 'withdrawn' ? 'Withdrawn historical publication; this is not a current recommendation.' : 'Published recommendation'}</p>
       <p class="reg-edition">${editionLink(latest)}</p>${st.editions.length > 1 ? `<details class="reg-history"><summary>Prior recommendations (${st.editions.length - 1})</summary>${st.editions.slice(1).map(editionLink).join('<br>')}</details>` : ''}</div></details></div></div></li>`;
@@ -391,7 +391,7 @@ export function renderAtlas(model, ctx) {
   const regions = model.groups.map(g => ({ label:g.region, ids:g.places.map(p=>p.id) }));
   const places = model.groups.flatMap(g=>g.places), c = model.counts;
   const frameButton = (key, label) => `<button type="button" data-frame="${esc(key)}" disabled>${esc(label)}</button>`;
-  const legend = ['recommended', 'withdrawn'].map(k => `<li>${MARK_SVG[k]}<span>${STAT[k]}</span></li>`).join('');
+  const legend = ['recommended', ...(c.walked ? ['walked'] : []), 'withdrawn'].map(k => `<li>${MARK_SVG[k]}<span>${STAT[k]}</span></li>`).join('');
   return `<div class="atlas">
   <header class="page-head wrap"><div><h1>Atlas</h1></div><aside class="head-note atlas-coverage">${labrador('stand')}<div class="banner-copy"><span class="lbl">Current Place</span><p id="atlas-selection">Choose a Place</p><small id="atlas-context" hidden></small></div></aside></header>
   <div class="atlas-body wrap">

@@ -1,5 +1,7 @@
 # Guarded Atlas release
 
+Optional personal experience history is supplied privately via `--history PRIVATE_HISTORY.json` or the deliberately installed ignored `rupert/_private/recommendation-history.json`. The canonical release guard applies completion-sensitive reuse before promoting a draft, in addition to all access/weather/editorial gates below. Historical publications are not retroactively re-evaluated using new personal data. Rank the authored candidate queue with the existing `recommend.mjs` before preparation. Never commit the private export; see [EXPERIENCE-HISTORY.md](EXPERIENCE-HISTORY.md).
+
 Canonical sources are the edition JSON files, public place records, artwork registry and official access checks under `/rupert/`. `data/editions/index.json` is generated, never edited to release a recommendation. Prepared editions stay `draft` until reviewed and actually released.
 
 Tuesday and Thursday are due at 07:00 America/New_York. The slot is attached to the current Saturday–Sunday edition week. A delayed draft remains pending everywhere, including the veil. The release command records actual wall-clock time with the correct Eastern offset; it has no production clock override.

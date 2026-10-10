@@ -1,33 +1,91 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "log-entry.private.schema.json",
-  "title": "Field Log entry — private (browser only)",
-  "description": "Lives in IndexedDB and in ZIP backups. Never written to the repository. Publication reads only publication.approved_fields and publication.approved_media.",
+  "title": "Field Log memory \u2014 browser-local",
+  "description": "Actual localStorage rupert-field-log-v1 record; version 1/2 JSON backups. Never a public asset. Identity resolution is non-destructive and legacy completion remains unclassified.",
   "type": "object",
-  "required": ["id", "date", "place_id", "created", "updated"],
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "date",
+    "place",
+    "activity"
+  ],
   "properties": {
-    "id": { "type": "string", "pattern": "^fl_[0-9A-HJKMNP-TV-Z]{26}$" },
-    "date": { "type": "string" },
-    "place_id": { "type": "string" },
-    "edition_ref": { "type": "object" },
-    "title": { "type": "string" },
-    "actual": { "type": "object", "properties": { "distance_mi": { "type": "number" }, "duration_min": { "type": "number" }, "start": { "type": "string" } } },
-    "notes_private": { "type": "string" },
-    "rupert_highlight": { "type": "string" },
-    "human_highlight": { "type": "string" },
-    "return_interest": { "enum": ["soon", "seasonal", "someday", "once-was-enough", "not-for-rupert"] },
-    "memory": { "type": "object", "properties": { "kind": { "type": "string" }, "text": { "type": "string" }, "media_ids": { "type": "array" } } },
-    "photos": { "type": "array", "items": { "type": "object", "required": ["media_id"] } },
-    "publication": {
-      "type": "object",
-      "properties": {
-        "approved_fields": { "type": "array", "items": { "enum": ["title", "edition_ref", "public_note", "rupert_highlight", "human_highlight", "return_interest"] } },
-        "public_note": { "type": "string" },
-        "approved_media": { "type": "array", "items": { "type": "string" } },
-        "approved_at": { "type": "string" }
+    "id": {
+      "type": "string",
+      "pattern": "^fl_[a-zA-Z0-9_-]{1,100}$"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "season": {
+      "enum": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ]
+    },
+    "source": {
+      "enum": [
+        "planned",
+        "unplanned",
+        "rupert-day"
+      ]
+    },
+    "history_kind": {
+      "enum": [
+        "visit",
+        "completed",
+        "unclassified"
+      ]
+    },
+    "association_manual": { "type": "boolean" },
+    "photos": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "pattern": "^data:image/(jpeg|png|webp);base64,"
       }
     },
-    "created": { "type": "string" },
-    "updated": { "type": "string" }
+    "place": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "activity": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 10000
+    },
+    "prompt": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "edition": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "experience": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "tags": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "place_id": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "experience_id": {
+      "type": "string",
+      "maxLength": 160
+    }
   }
 }

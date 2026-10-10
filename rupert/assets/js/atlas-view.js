@@ -7,6 +7,7 @@ import { atlasModel } from './core/atlas.js';
 import { isReleased } from './core/editions.js';
 import { renderAtlas } from './core/render.js';
 import { setupMenus } from './core/menus.js';
+import { LOG_KEY, LOG_CHANGED, readLocalHistory } from './core/field-log.js';
 
 const base = document.body.dataset.base || '';
 const data = JSON.parse(document.getElementById('atlas-data')?.textContent || '{"features":[],"bounds":null}');
@@ -117,18 +118,9 @@ directory.addEventListener('keydown', e => {
 
 // The build is a fallback snapshot. Directory, picker and map share the same released-record model.
 // Update only the register: Home, route, camera, traffic and disclosure controls retain their state.
-let publicationKey = '', checkingPublications = false;
-async function refreshPublications() {
-  if (checkingPublications) return;
-  checkingPublications = true;
-  try {
-    const get = async path => { const r = await fetch(base + path, { cache: 'no-cache' }); if (!r.ok) throw Error('Publication data unavailable.'); return r.json(); };
-    const manifest = await get('data/editions/index.json');
-    const now = new Date();
-    const key = JSON.stringify(manifest.editions.filter(e => isReleased(e, now))) + (manifest.revision || '');
-    if (key === publicationKey) return;
-    const places = await get('data/places.json');
-    const model = atlasModel(places, manifest, { now });
+let publicationKey = '', checkingPublications = false, refreshAgain = false, historyKey = '', cachedCatalog;
+const localKey = log => JSON.stringify(log.map(({id,date,place,place_id,experience_id,history_kind,edition,association_manual})=>({id,date,place,place_id,experience_id,history_kind,edition,association_manual})));
+function applyRegister(model) {
     const template = document.createElement('template'); template.innerHTML = renderAtlas(model, { base });
     const fresh = template.content;
     const opened = new Set([...directory.querySelectorAll('.reg-details[open]')].map(d => d.closest('.reg-row').dataset.place));
@@ -151,16 +143,39 @@ async function refreshPublications() {
     map?.setMarkers(data.features); controlsReady(!!map);
     if (selectedId && !model.statuses.has(selectedId)) select(null);
     picker.value = selectedId || '';
+    document.querySelector('.map-legend').replaceChildren(...fresh.querySelector('.map-legend').childNodes);
     const hash = location.hash.replace(/^#place-/, '');
     if (!selectedId && model.statuses.has(hash)) { select(hash); map?.focus(hash); }
-    publicationKey = key; sizeWorkspace(); qaRender();
-  } catch { /* Retain the last validated published history while offline. */ }
-  finally { checkingPublications = false; }
+  sizeWorkspace(); qaRender();
 }
+async function refreshPublications() {
+  if (checkingPublications) { refreshAgain = true; return; }
+  checkingPublications = true;
+  const log = readLocalHistory().entries, personalKey = localKey(log);
+  try {
+    const get = async path => { const r = await fetch(base + path, { cache: 'no-cache' }); if (!r.ok) throw Error('Publication data unavailable.'); return r.json(); };
+    const manifest = await get('data/editions/index.json');
+    const now = new Date();
+    const key = JSON.stringify(manifest.editions.filter(e => isReleased(e, now))) + (manifest.revision || '');
+    if (key === publicationKey && personalKey === historyKey) return;
+    const places = await get('data/places.json');
+    cachedCatalog = { places, manifest };
+    applyRegister(atlasModel(places, manifest, { now, log }));
+    publicationKey = key; historyKey = personalKey;
+  } catch {
+    // Local corrections must still update an open offline page using its last validated public catalog.
+    if (cachedCatalog && personalKey !== historyKey) {
+      applyRegister(atlasModel(cachedCatalog.places, cachedCatalog.manifest, { log })); historyKey = personalKey;
+    }
+  } finally { checkingPublications = false; if (refreshAgain) { refreshAgain = false; refreshPublications(); } }
+}
+
 refreshPublications();
 setInterval(refreshPublications, 60000);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshPublications(); });
 window.addEventListener('pageshow', refreshPublications);
+window.addEventListener(LOG_CHANGED, refreshPublications);
+window.addEventListener('storage', e => { if (e.key === LOG_KEY || e.key === null) refreshPublications(); });
 
 function select(id, { from } = {}) {
   // Unknown hashes/picker values are empty state, never a fallback destination.

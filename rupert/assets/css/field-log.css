@@ -30,6 +30,8 @@
 .rupert-day-note svg { width:90px; flex-shrink:0; }
 .rupert-day-card { border-top-color:var(--gold); }
 .log-completed { margin-block:24px; }
+.memory-history,.history-export-note { font:400 14px/1.5 var(--f-data); color:var(--text-2); }
+.history-actions a.log-completed { display:inline-flex;align-items:center;min-height:44px; }
 @media(max-width:759.98px) {
  .field-log #memories { grid-template-columns:1fr; }
  .field-log #log-editor,.field-log .log-actions { padding:20px; }

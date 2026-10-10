@@ -69,7 +69,7 @@ Print options:
 
 `atlas/` is a register that always works, plus a map the browser adds on top.
 
-- `assets/js/core/atlas.js` is pure: it turns places, editions (and later the Field Log) into statuses, markers and bounds.
+- `assets/js/core/atlas.js` is pure: it turns released editions and optional browser-local Field Log history into independent editorial/visit states, markers and bounds.
 - The UI (`assets/js/atlas-view.js`) reaches the map only through `assets/js/map/maplibre-provider.js`.
 - Tile hosts, the style and the relief source live in `assets/js/map/style.js`.
 - MapLibre GL JS 5.24.0 is vendored in `vendor/`.
@@ -79,7 +79,8 @@ Map states use shape as well as colour:
 | State | Marker |
 |---|---|
 | Recommended | Filled ochre circle |
-| Walked | Pine circle with a check |
+| Visited, still recommended | Pine circle with a check |
+| Withdrawn, whether visited or not | Red warning circle |
 | Planned | Open diamond |
 | Register only | Small ring |
 
@@ -172,12 +173,12 @@ The transparent Travel Labrador is an approved engraved print element. Its PNG i
 
 The Atlas Directory and markers now come exclusively from published primary recommendations whose publication time has passed. Withdrawn publications retain a clearly marked historical entry. Each place links to its latest edition and, after repeat publication, its earlier history. Draft/future recommendations, contingency options, Travel activities and unplanned Field Log memories do not earn Directory entries. Travel uses separate, ephemeral public-data discovery for the active trip; those activities never enter published history.
 
-The shared reuse policy enforces 180 days since the latest publication of the same experience, or 365 days when a supplied local Field Log backup marks it completed. A documented, materially different experience at the same place can use 120 days; changing its title or route version does not qualify. Stable `flagship.experience_id` and a substantive `difference_note` identify the new experience. Curated seasons and optional `event_window` restrict eligibility further. Repeats need a new edition ID, fresh official access evidence, a recent snapshot/forecast and newly owned artwork. The old edition is preserved, and the new one displays a Previously suggested link.
+The shared reuse policy enforces 180 days since the latest publication of the same experience, or 365 days when explicitly supplied private history marks it completed. A place visit alone does not trigger the completion cooldown. A documented, materially different experience at the same place can use 120 days; changing its title, ID or route version alone does not qualify. Stable `flagship.experience_id`, a substantive `difference_note`, and a different route/activity or comparable structured `experience_basis` identify the new experience. Curated seasons and optional `event_window` restrict eligibility further. Repeats need a new edition ID, fresh official access evidence, a recent snapshot/forecast and newly owned artwork. The old edition is preserved, and the new one displays a Previously suggested link.
 
 Append dated checks to `data/access-checks.json` when a place is reviewed again; retain its prior evidence. The publication gate selects the newest check available at that edition's publication time. A later closure blocks a new suggestion without rewriting an earlier Archive record; conflicting checks on the same day conservatively use the negative status.
 
-Rank an authored queue locally with `node rupert/_tools/recommend.mjs CANDIDATES.json --at TIMESTAMP --log FIELD_LOG_BACKUP.json`. Candidate `suitability_score` is editorial judgment; recent trail-heavy history raises credible café, patio, pup-treat, market, shopping, garden, water, town, campus, scenic-drive, ferry, picnic and event choices. Strong unseen candidates receive a preference. Ranking reports access problems and never publishes automatically.
+Rank an authored queue locally with `node rupert/_tools/recommend.mjs CANDIDATES.json --at TIMESTAMP --history PRIVATE_HISTORY.json`. Candidate `suitability_score` is editorial judgment; recent trail-heavy history raises credible café, patio, pup-treat, market, shopping, garden, water, town, campus, scenic-drive, ferry, picnic and event choices. Unfamiliar places receive a modest preference, while completed experiences receive a substantial penalty. Ranking reports access problems and never publishes automatically.
 
-For completion-aware build validation, use `node rupert/_tools/rupert.mjs check --log FIELD_LOG_BACKUP.json` (the same option works with build). Alternatively, keep that backup at ignored `_private/recommendation-log.json`. Browser-local memories cannot be read by the static publisher; export and supply the backup to apply the longer cooldown. The backup and its contents must never be committed or published.
+The Field Log's separate **Export recommendation history** supplies only canonical IDs and dates, never memories, notes, photographs or Home. Give the ignored minimal file to the draft release guard with `node rupert/_tools/publish.mjs release --history PRIVATE_HISTORY.json`, or deliberately place it in `rupert/_private/recommendation-history.json`. Existing explicit `--log` inputs remain compatible; legacy records do not imply completion. Browser-local memories cannot be read by the publisher, and personal information never enters generated pages or retroactively invalidates historical editions. See [_tools/EXPERIENCE-HISTORY.md](_tools/EXPERIENCE-HISTORY.md) for classification, corrections, backup portability and the private editorial workflow.
 
 `npm --prefix rupert test` includes cooldown boundaries, category variety, history provenance and the separation of Travel/Field Log from the Directory. `npm --prefix rupert run dev` serves a dependency-free local preview; `_tools/visual-qa.html` provides fixed-width desktop, laptop, tablet and iPhone frames and computed-font checks. `_tools/` is excluded from GitHub Pages.

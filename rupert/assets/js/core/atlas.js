@@ -1,10 +1,11 @@
 // Atlas model: published primary recommendation history, with optional visit status.
 // No DOM, no map library. Shared by the build tool (register pre-render) and the browser (map).
 import { isReleased } from './editions.js';
+import { personalHistory } from './experience-history.js';
 
 export const STATUS = {
   withdrawn: { label: 'Withdrawn', order: 0 },
-  walked: { label: 'Walked', order: 3 },
+  walked: { label: 'Visited', order: 3 },
   recommended: { label: 'Recommended', order: 2 },
   planned: { label: 'Planned', order: 1 },   // travel stops; browser-only, never published
   register: { label: 'In the register', order: 0 },
@@ -34,10 +35,8 @@ export function placeStatuses(places, manifest, { log = [], now = new Date() } =
       s.status = s.editions[0].status === 'withdrawn' ? 'withdrawn' : 'recommended';
     }
   }
-  for (const v of log) {
-    const s = out.get(v.place_id); if (!s) continue; // Personal outings do not earn editorial entries.
-    s.visits.push(v); s.status = 'walked';
-  }
+  const personal = personalHistory(log, { places, manifest, now });
+  for (const [id, s] of out) { s.visits = personal.visits.get(id) || []; s.visited = s.visits.length > 0; }
   return out;
 }
 
@@ -45,7 +44,8 @@ export function markerFeatures(places, statuses) {
   return places.places.filter(p => statuses.has(p.id) && p.access?.lat != null).map(p => ({
     type: 'Feature',
     geometry: { type: 'Point', coordinates: [p.access.lng, p.access.lat] },
-    properties: { id: p.id, name: p.short_name || p.name, status: statuses.get(p.id)?.status || 'register' },
+    properties: { id: p.id, name: p.short_name || p.name, status: statuses.get(p.id)?.status || 'register', visited: !!statuses.get(p.id)?.visited,
+      marker_status: statuses.get(p.id)?.status === 'withdrawn' ? 'withdrawn' : statuses.get(p.id)?.visited ? 'walked' : statuses.get(p.id)?.status || 'register' },
   }));
 }
 
@@ -76,12 +76,12 @@ export function registerGroups(places, statuses) {
 
 export function counts(statuses) {
   const c = { all: statuses.size, recommended: 0, walked: 0, planned: 0, withdrawn: 0 };
-  for (const s of statuses.values()) if (c[s.status] != null) c[s.status]++;
+  for (const s of statuses.values()) { if (c[s.status] != null) c[s.status]++; if (s.visited && s.status !== 'walked') c.walked++; }
   return c;
 }
 
-export function atlasModel(places, manifest, { now = new Date() } = {}) {
-  const statuses = placeStatuses(places, manifest, { now });
+export function atlasModel(places, manifest, { now = new Date(), log = [] } = {}) {
+  const statuses = placeStatuses(places, manifest, { now, log });
   const groups = registerGroups(places, statuses);
   return { statuses, groups, counts: counts(statuses), features: markerFeatures(places, statuses),
     bounds: boundsOf({ places: places.places.filter(p => statuses.has(p.id)) }),

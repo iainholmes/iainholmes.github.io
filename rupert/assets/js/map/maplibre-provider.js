@@ -190,13 +190,13 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   const statusOrder = ['match', ['get', 'status'], 'recommended', 3, 'walked', 2, 'planned', 1, 0];
   map.addLayer({ id: 'marks', type: 'symbol', source: 'marks',
     layout: {
-      'icon-image': ['concat', 'm-', ['get', 'status']], 'icon-allow-overlap': true, 'symbol-sort-key': ['-', 0, statusOrder],
+      'icon-image': ['concat', 'm-', ['coalesce', ['get', 'marker_status'], ['get', 'status']]], 'icon-allow-overlap': true, 'symbol-sort-key': ['-', 0, statusOrder],
       'text-field': '', 'text-size': 12.5,
       'text-offset': [1.1, 0], 'text-anchor': 'left', 'text-optional': true,
     },
     paint: { 'text-color': theme === 'dark' ? '#EADCC3' : '#221F1C', 'text-halo-color': theme === 'dark' ? '#13232C' : '#F3EFE5', 'text-halo-width': 1.6 } });
   map.addLayer({ id: 'marks-sel', type: 'symbol', source: 'marks', filter: ['==', ['get', 'id'], ''],
-    layout: { 'icon-image': ['concat', 'm-', ['get', 'status'], '-sel'], 'icon-allow-overlap': true, 'icon-size': 1.25 } });
+    layout: { 'icon-image': ['concat', 'm-', ['coalesce', ['get', 'marker_status'], ['get', 'status']], '-sel'], 'icon-allow-overlap': true, 'icon-size': 1.25 } });
 
   // Hit-test a 44×44 box around the tap rather than the drawn 20px icon, and take the nearest pin.
   map.on('click', e => {

@@ -633,6 +633,26 @@
               "$ref": "#/$defs/date"
             }
           }
+        },
+        "experience_basis": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "activity_id": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]{3,100}$"
+            },
+            "feature_id": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]{3,100}$"
+            },
+            "format_id": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]{3,100}$"
+            }
+          },
+          "description": "Stable, source-reviewed identifiers for substantive activity, destination feature or outing format. Titles and cosmetic wording are not identity."
         }
       }
     },

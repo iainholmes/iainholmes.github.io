@@ -1,10 +1,35 @@
 // Shared editorial reuse policy for publication validation and candidate ranking.
 import { seasonFor } from './options.js';
+import { nyDateString } from './dates.js';
+import { experienceKey, routeIdentity } from './experience-history.js';
+export { experienceKey } from './experience-history.js';
 const DAY = 86400000;
 const main = e => e.flagship || e;
 const placeId = e => main(e).place_id;
-// Stable identity: explicit experience, recorded route, or the place itself. Titles are never identity.
-export const experienceKey = e => `${placeId(e)}:${main(e).experience_id || main(e).snapshot?.route?.route_id?.replace(/@\d+$/, '') || 'default'}`;
+const NON_TRAIL = new Set(['cafe', 'patio', 'brewery', 'pup-treat', 'market', 'shopping', 'garden', 'town-walk', 'campus', 'scenic-drive', 'ferry', 'picnic', 'event', 'swim']);
+const activityKey = e => (main(e).experiences || []).filter(x => NON_TRAIL.has(x)).sort().join('|') || 'trail';
+const basisKey = e => JSON.stringify(Object.entries(main(e).experience_basis || {}).sort(([a],[b])=>a.localeCompare(b)));
+export function sameExperience(a,b) {
+  if (placeId(a) !== placeId(b)) return false;
+  if (experienceKey(a) === experienceKey(b)) return true;
+  const ar = routeIdentity(main(a).snapshot?.route?.route_id), br = routeIdentity(main(b).snapshot?.route?.route_id);
+  return !!ar && ar === br && activityKey(a) === activityKey(b) && basisKey(a) === basisKey(b);
+}
+export function substantiveDifference(a,b) {
+  if (sameExperience(a,b)) return false;
+  const ar = routeIdentity(main(a).snapshot?.route?.route_id), br = routeIdentity(main(b).snapshot?.route?.route_id);
+  return !!ar && !!br && ar !== br || activityKey(a) !== activityKey(b)
+    || !!main(a).experience_basis && !!main(b).experience_basis && basisKey(a) !== basisKey(b);
+}
+function completionRecords(candidate, history, log, at) {
+  const date = nyDateString(new Date(at));
+  return log.filter(v => {
+    if (v.history_kind !== 'completed' || v.date && v.date > date || v.place_id && v.place_id !== placeId(candidate)) return false;
+    const edition = history.find(e => e.id === v.edition);
+    if (edition && sameExperience(candidate,edition)) return true;
+    return v.place_id === placeId(candidate) && v.experience_id && experienceKey(candidate) === `${v.place_id}:${routeIdentity(v.experience_id)}`;
+  });
+}
 export function previousSuggestions(candidate, history, at = candidate.published_at) {
   return history.filter(e => e.id !== candidate.id && ['published', 'withdrawn'].includes(e.status)
     && placeId(e) === placeId(candidate) && new Date(e.published_at) < new Date(at))
@@ -21,20 +46,18 @@ export function reuseEligibility(candidate, history, { at = candidate.published_
   const previous = previousSuggestions(candidate, history, at);
   if (!previous.length) return { eligible: true, cooldown: 0, recencyPenalty: 0, previous: null };
   const latest = previous[0];
-  const same = previous.filter(e => experienceKey(e) === experienceKey(candidate));
-  const different = !same.length && Boolean(f.experience_id && f.difference_note?.trim().length >= 20);
+  const same = previous.filter(e => sameExperience(e,candidate));
+  const different = !same.length && Boolean(f.experience_id && f.difference_note?.trim().length >= 20 && substantiveDifference(candidate,latest));
   // A new title or ID alone cannot grant the shorter cooldown.
   const anchor = different ? latest : same[0] || latest;
-  const visited = log.some(v => (same.length ? same : [anchor]).some(e => v.edition === e.id) || (v.place_id === placeId(candidate)
-    && (!v.experience_id || v.experience_id === f.experience_id)));
-  const cooldown = different ? 120 : visited ? 365 : 180;
+  const completed = completionRecords(candidate,history,log,at).length > 0;
+  const cooldown = different ? 120 : completed ? 365 : 180;
   const elapsed = (instant - new Date(anchor.published_at)) / DAY;
   const eligibleAt = new Date(+new Date(anchor.published_at) + cooldown * DAY).toISOString();
   return { eligible: elapsed >= cooldown, cooldown, eligibleAt, previous: latest,
     recencyPenalty: 100 * Math.max(0, 1 - elapsed / (cooldown * 2)),
     reason: elapsed < cooldown ? `Wait until ${eligibleAt.slice(0, 10)} (${cooldown}-day cooldown).` : null };
 }
-const NON_TRAIL = new Set(['cafe', 'patio', 'brewery', 'pup-treat', 'market', 'shopping', 'garden', 'town-walk', 'campus', 'scenic-drive', 'ferry', 'picnic', 'event', 'swim']);
 export function categoryFor(e) { return main(e).experiences?.some(x => NON_TRAIL.has(x)) ? 'other' : 'trail'; }
 // Suitability stays primary. Recent categories and publication history adjust editorial ranking.
 // Eligibility does not validate access, weather, evidence or artwork.
@@ -46,7 +69,11 @@ export function rankCandidates(candidates, history, { at, log = [] } = {}) {
     const reuse = reuseEligibility(candidate, history, { at, log });
     const suitability = Number(candidate.suitability_score ?? 50);
     const diversity = categoryFor(candidate) === 'other' ? 15 * trailShare : 0;
-    const unseen = !previousSuggestions(candidate, history, at).length;
-    return { candidate, ...reuse, unseen, diversity, score: suitability + diversity + (unseen ? 12 : 0) - (reuse.recencyPenalty || 0) };
+    const completed = completionRecords(candidate,history,log,at);
+    const familiar = log.some(v => v.place_id === placeId(candidate) && (!v.date || v.date <= nyDateString(new Date(at))));
+    const unseen = !familiar && !previousSuggestions(candidate, history, at).length;
+    const completionAge = completed.length ? Math.min(...completed.map(v => v.date ? (+new Date(at) - +new Date(v.date))/DAY : 0)) : Infinity;
+    const completionPenalty = completed.length ? completionAge < 365 ? 60 : 30 : 0;
+    return { candidate, ...reuse, unseen, familiar, completionPenalty, diversity, score: suitability + diversity + (unseen ? 12 : 0) - (reuse.recencyPenalty || 0) - completionPenalty };
   }).sort((a, b) => Number(b.eligible) - Number(a.eligible) || b.score - a.score || Number(b.unseen) - Number(a.unseen));
 }
