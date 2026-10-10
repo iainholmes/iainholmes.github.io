@@ -23,7 +23,7 @@ function fixture(from,to){const coordinates=Array.from({length:9},(_,i)=>[from[0
 function tomtomFixture(from,to){const old=fixture(from,to),coordinates=old.routes[0].geometry.coordinates;return {routes:[{summary:{travelDurationInSeconds:2580,trafficDelayDurationInSeconds:420,trafficLengthInMeters:2000,lengthInMeters:43612},legs:[{path:{type:'LineString',coordinates}}],sections:{traffic:[{startPathIndex:1,endPathIndex:2,iconCategory:'roadWorks',delayMagnitude:'minor',delayDurationInSeconds:120},{startPathIndex:2,endPathIndex:3,iconCategory:'jam',delayMagnitude:'moderate'},{startPathIndex:3,endPathIndex:4,iconCategory:'jam',delayMagnitude:'major'},{startPathIndex:4,endPathIndex:5,iconCategory:'jam',delayMagnitude:'unknown'},{startPathIndex:6,endPathIndex:7,iconCategory:'roadClosed',delayMagnitude:'undefined'}]}}]};}
 async function context({width=393,height=852,standalone=false,saved=true,configured=true}={}){
  const ctx=await browser.newContext({viewport:{width,height},isMobile:width<760,hasTouch:width<760,reducedMotion:'reduce'}),page=await ctx.newPage();
- page.on('pageerror',e=>evidence.errors.push(e.message));await page.clock.install({time:new Date('2026-10-03T12:00:00-04:00')});
+ page.on('pageerror',e=>evidence.errors.push(e.message));await page.clock.install({time:new Date('2026-10-09T12:00:00-04:00')});
  if(process.env.ATLAS_QA_RELIEF==='off')await page.addInitScript(()=>localStorage.setItem('rupert-relief','0'));
  if(saved)await page.addInitScript(p=>localStorage.setItem('rupert-location-v1',JSON.stringify({point:{lat:p.lat,lng:p.lng}})),home);
  if(standalone)await page.addInitScript(()=>{const m=matchMedia;window.matchMedia=q=>q==='(display-mode: standalone)'?{matches:true,media:q,addEventListener(){},removeEventListener(){}}:m(q);});
@@ -56,6 +56,24 @@ async function mapSelect(page,id){
  await page.evaluate(id=>window.__trafficQaMap.focus(id),id);await page.clock.runFor(100);
  await page.waitForFunction(id=>{const m=window.__trafficQaMap.raw,p=m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id===id).geometry.coordinates);return m.queryRenderedFeatures([[p.x-22,p.y-22],[p.x+22,p.y+22]],{layers:['marks']}).some(f=>f.properties.id===id);},id);
  await page.evaluate(id=>{const m=window.__trafficQaMap.raw,event=new MouseEvent('click');Object.defineProperty(event,'target',{value:m.getCanvas()});m.fire('click',{originalEvent:event,point:m.project(JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id===id).geometry.coordinates)});},id);
+}
+async function placeLabels(page,width,height){
+ const expected=process.env.ATLAS_QA_LABEL_WEIGHT || '700';
+ for(const id of ['hillsborough-riverwalk','occoneechee-mountain']){
+  await page.evaluate(id=>{const api=window.__trafficQaMap;api.focus(id);api.raw.panBy([80,0],{duration:0});},id);await page.clock.runFor(100);
+  const labels=await page.evaluate(()=>[...document.querySelectorAll('.atlas-label-layer span')].map(n=>{const s=getComputedStyle(n),r=n.getBoundingClientRect(),b=n.parentElement.getBoundingClientRect();return {name:n.textContent,weight:s.fontWeight,size:s.fontSize,color:s.color,halo:s.textShadow,visible:s.visibility==='visible',x:r.x,y:r.y,right:r.right,bottom:r.bottom,inBounds:r.x>=b.x&&r.y>=b.y&&r.right<=b.right&&r.bottom<=b.bottom};}));
+  const name=await page.evaluate(id=>JSON.parse(document.querySelector('#atlas-data').textContent).features.find(f=>f.properties.id===id).properties.name,id);
+  check(labels.find(l=>l.name===name)?.visible,'Focused published-place label unavailable: '+name);
+  check(labels.every(l=>l.weight===expected&&l.size==='14px'),'Atlas label weight/size incorrect');
+  const visible=labels.filter(l=>l.visible);check(visible.every(l=>l.inBounds),'Published-place label clipped');
+  check(visible.every((a,i)=>visible.slice(i+1).every(b=>a.right<=b.x||b.right<=a.x||a.bottom<=b.y||b.bottom<=a.y)),'Published-place labels collide');
+  if([393,1440].includes(width))await page.locator('.atlas-map').screenshot({path:resolve(output,`labels-${id}-${width}x${height}.png`)});
+ }
+ // The shared provider also serves Travel; only Atlas labels may acquire bold weight.
+ const travelWeight=await page.evaluate(()=>{const main=document.querySelector('main.page-atlas');main.classList.replace('page-atlas','page-travel');const weight=getComputedStyle(main.querySelector('.atlas-label-layer span')).fontWeight;main.classList.replace('page-travel','page-atlas');return weight;});
+ check(travelWeight==='400','Atlas label emphasis leaked into Travel');
+ check(await page.evaluate(()=>getComputedStyle(document.querySelector('.atlas-label-layer')).pointerEvents==='none'),'Labels intercept map interactions');
+ check(await page.evaluate(()=>document.fonts.check('700 14px "Latin Modern Roman"')),'Bundled bold face unavailable');
 }
 async function swatch(page,level,color,dashed=false){
  const s=await page.locator(`.traffic-swatch[data-traffic="${level}"]`).evaluate(n=>({level:n.dataset.traffic,color:n.firstElementChild.getAttribute('stroke'),dash:n.firstElementChild.hasAttribute('stroke-dasharray'),hidden:n.getAttribute('aria-hidden'),width:n.getBoundingClientRect().width,first:n.parentElement.firstElementChild===n}));
@@ -143,6 +161,7 @@ try{
   check(await page.locator('.traffic-attribution').count()===0,'Traffic attribution remained on baseline');
   check(await page.locator('.traffic-swatch').count()===0,'Baseline route falsely carries traffic swatch');
   if(width<760){await mapSelect(page,'hillsborough-riverwalk');await page.locator('.dossier-provider').waitFor();check(await page.locator('#map-card').isHidden(),'OSRM route did not suppress place popup');}
+  await placeLabels(page,width,height);
   evidence.layouts.push({width,height,standalone:width===393,off,on,back});await ctx.close();console.log(`traffic ${width}x${height} PASS`);
  }
  // The real Orbis no-event shape omits sections, while explicitly reporting zero

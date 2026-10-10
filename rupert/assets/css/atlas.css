@@ -805,6 +805,7 @@ main { background: var(--paper); max-width: var(--max); margin: 24px max(14px,ca
 .location-settings, .location-settings label, .location-settings button, .location-settings p, .location-settings summary { font-size: var(--type-meta); }
 .atlas-label-layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .atlas-label-layer span { position: absolute; transform: translateY(-50%); white-space: nowrap; visibility: hidden; font: 400 14px/1.2 var(--f-data); color: var(--ink); text-shadow: 1px 0 var(--paper),-1px 0 var(--paper),0 1px var(--paper),0 -1px var(--paper); }
+.page-atlas .atlas-label-layer span { font-weight: 700; }
 .travel label, .travel button, .travel input, .travel select, .travel-privacy, .trip-library, .postcard-panel, #trip-summary, .travel-postcard figcaption, .trip-map #trip-map-status { font-size: var(--type-meta); line-height: 1.5; }
 .travel-editor .sec-h { font-size: 28px; }
 .trip-leg { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; }
