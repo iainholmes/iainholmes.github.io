@@ -1,0 +1,63 @@
+{
+  "inspected_on": "2026-10-10",
+  "repositories": {
+    "iainholmes/iainholmes.github.io": "860c2e9d02cedebe90434cd70d99be5def1f94e8",
+    "iainholmes/econometric-advisor": "05aab812de1ea81c28680a028aed843796ba7905",
+    "iainholmes/quant-skills-trainer": "5302cc29c620aa778af58ba93e1fd4d8fb25ae6d"
+  },
+  "advisor_mark_sha256": "01d875b44b7aae7b547cfc0394cd42c21a79be28ed48e5e31aa1e9102b0fd397",
+  "refined_on": "2026-10-10",
+  "archival_covers": [
+    {
+      "asset": "assets/field-brief-archive.svg",
+      "source": "personal-updates/issue-mark-archive.js",
+      "archive_key": "fb:2026-10-09",
+      "sha256": "b2da8a8aa405046ff793bcf4f097b7a6e348249d9e3cef0f8f1003ea4ee2e4ef",
+      "reuse": "Unmodified frozen SVG; embedded inline to retain self-hosted editorial typography."
+    },
+    {
+      "asset": "assets/loblolly-archive.svg",
+      "source": "personal-updates/issue-mark-archive.js",
+      "archive_key": "sp:2026-10-09",
+      "sha256": "1b9313cc0cf70e7b7f161b93d122a4a91e8d9db727701fc669c358171e325638",
+      "reuse": "Unmodified frozen SVG; embedded inline to retain self-hosted editorial typography."
+    },
+    {
+      "asset": "assets/workbook-archive.svg",
+      "source": "personal-updates/issue-mark-archive.js",
+      "archive_key": "cp:2026-10-08",
+      "sha256": "f8262a3d024f816911497b1b9580af9888cf39737687d0052f17402009d45fbf",
+      "reuse": "Unmodified frozen SVG; embedded inline to retain self-hosted editorial typography."
+    }
+  ],
+  "additional_fonts": [
+    {
+      "asset": "assets/fonts/instrument-serif.woff",
+      "source": "https://github.com/google/fonts/tree/main/ofl/instrumentserif",
+      "sha256": "ec63577b012b94bc7a532e18326d2e5548d2db472c10b9c01161578f4d6941b7",
+      "license": "assets/fonts/OFL-Instrument-Serif.txt"
+    },
+    {
+      "asset": "assets/fonts/lmromandunh10-regular.otf",
+      "source": "https://www.gust.org.pl/projects/e-foundry/latin-modern/",
+      "sha256": "b3c753eb7d1bbcbee362e18d6dc9a24d1b384690789373cfba0973b8ba951878",
+      "license": "assets/fonts/GUST-FONT-LICENSE.txt",
+      "notes": "Unmodified font; exact copy of weekly-economics-environment/fonts/LMRomanDunhill-Regular.otf. Internal name LMRomanDunh10-Regular, version 1.106, weight 400."
+    },
+    {
+      "asset": "assets/fonts/lmromandunh10-oblique.otf",
+      "source": "https://www.gust.org.pl/projects/e-foundry/latin-modern/",
+      "sha256": "fddc4f01d5e2449963e6edcd4005c642fad9ca734665d068246264c34bcdde03",
+      "license": "assets/fonts/GUST-FONT-LICENSE.txt",
+      "notes": "Unmodified font; exact copy of weekly-economics-environment/fonts/LMRomanDunhill-Oblique.otf. Internal name LMRomanDunh10-Oblique, version 1.106, weight 400."
+    },
+    {
+      "asset": "assets/fonts/archivo-italic.woff",
+      "source": "https://github.com/google/fonts/blob/main/ofl/archivo/Archivo-Italic%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "646d8c2115f3c1630715b773885579587f85d0f7d2de6b10393ccc467426d069",
+      "license": "assets/fonts/OFL-Archivo.txt",
+      "notes": "Genuine italic, width axis instantiated at 100; weight axis 100\u2013900 retained, losslessly packaged as WOFF. Wordmark uses weight 650."
+    }
+  ],
+  "finishing_pass": "2026-10-10; accepted a90259a composition, five requested corrections and lowercase italic wordmark."
+}
