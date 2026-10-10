@@ -3,7 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 const root = new URL('../', import.meta.url);
 const config = JSON.parse(await readFile(new URL('projects.json', root), 'utf8'));
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const arrow = '<span class="arrow" aria-hidden="true">↗</span>';
+const arrow = '<svg class="arrow" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false"><path d="M5 19 19 5M9 5h10v10M5 10v9h9"/></svg>';
 const number = i => String(i + 1).padStart(2, '0');
 const link = (url, label, cls = '') => `<a class="${cls}" href="${escape(url)}">${escape(label)}${arrow}</a>`;
 const disclosure = (label, body) => `<details class="context"><summary>${escape(label)}<span class="disclosure-sign" aria-hidden="true"></span></summary><div class="context-body">${body}</div></details>`;
@@ -73,35 +73,46 @@ const html = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#263b33">
+  <meta name="theme-color" content="#eeeee6">
   <meta name="description" content="${escape(config.description)} Desk. brings Iain Holmes’s applications, publications and projects together.">
-  <meta name="apple-mobile-web-app-title" content="Desk.">
+  <meta name="apple-mobile-web-app-title" content="desk.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>Desk.</title>
+  <title>desk.</title>
   <link rel="canonical" href="https://iainholmes.github.io/desk/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/archivo-italic.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="assets/fonts/lmromandunh10-regular.otf" as="font" type="font/otf" crossorigin>
+  <script src="desk.js"></script>
   <link rel="stylesheet" href="desk.css">
 </head>
 <body id="top">
   <a class="skip-link" href="#destinations">Skip to destinations</a>
   <div class="desk-shell">
     <header class="desk-header">
-      <div class="masthead"><h1>Desk<span>.</span></h1><p>${escape(config.description)}</p></div>
+      <div class="masthead"><h1>desk<span>.</span></h1><p>${escape(config.description)}</p></div>
       <div class="owner"><span>A personal collection</span><span>Iain Holmes</span></div>
     </header>
-    <nav class="desk-nav" aria-label="Desk sections"><a href="#research">Research &amp; practice</a><a href="#reading">Reading &amp; outdoors</a><a href="#profile">Personal website</a></nav>
+    <div class="desk-toolbar">
+    <nav class="desk-nav" aria-label="Desk sections"><a href="#research"><span>Research <span class="nav-detail">&amp; practice</span></span></a><a href="#reading"><span>Reading <span class="nav-detail">&amp; outdoors</span></span></a><a href="#profile"><span>Personal <span class="nav-detail">website</span></span></a></nav>
+    <button class="appearance-switch" type="button" aria-label="Night appearance" aria-pressed="false" hidden>
+      <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+      <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M20.5 15.2A9 9 0 0 1 8.8 3.5a9 9 0 1 0 11.7 11.7Z"/></svg>
+      <span class="appearance-label" aria-hidden="true">Day</span>
+    </button>
+    </div>
     <main id="destinations" tabindex="-1">
       <div class="collections">
-        <section class="research-group" id="research" aria-labelledby="research-title"><div class="section-heading"><h2 id="research-title">Research &amp; practice</h2><span aria-hidden="true">01</span></div><div class="research-projects">${groups('research')}</div></section>
-        <section class="reading-group" id="reading" aria-labelledby="reading-title"><div class="section-heading"><h2 id="reading-title">Reading &amp; outdoors</h2><span aria-hidden="true">02</span></div><div class="reading-projects">${groups('reading')}</div></section>
+        <section class="research-group" id="research" tabindex="-1" aria-labelledby="research-title"><div class="section-heading"><h2 id="research-title">Research &amp; practice</h2><span aria-hidden="true">01</span></div><div class="research-projects">${groups('research')}</div></section>
+        <section class="reading-group" id="reading" tabindex="-1" aria-labelledby="reading-title"><div class="section-heading"><h2 id="reading-title">Reading &amp; outdoors</h2><span aria-hidden="true">02</span></div><div class="reading-projects">${groups('reading')}</div></section>
       </div>
-      <section class="profile-group" id="profile" aria-labelledby="profile-title"><div class="section-heading"><h2 id="profile-title">Personal &amp; professional</h2><span aria-hidden="true">03</span></div>${groups('profile')}</section>
+      <section class="profile-group" id="profile" tabindex="-1" aria-labelledby="profile-title"><div class="section-heading"><h2 id="profile-title">Personal website</h2><span aria-hidden="true">03</span></div>${groups('profile')}</section>
     </main>
-    <footer class="desk-footer"><a href="#top" class="footer-wordmark" aria-label="Desk. — back to top">Desk.</a><p>Everything has its place.</p><details class="install-help"><summary>Keep Desk. close<span class="disclosure-sign" aria-hidden="true"></span></summary><div>On iPhone, open Desk. in Safari, tap Share, then Add to Home Screen.</div></details></footer>
+    <footer class="desk-footer"><a href="#top" class="footer-wordmark" aria-label="desk. — back to top">desk.</a><p>Everything has its place.</p><details class="install-help"><summary>Keep desk. close<span class="disclosure-sign" aria-hidden="true"></span></summary><div>On iPhone, open desk. in Safari, tap Share, then Add to Home Screen.</div></details></footer>
+    <div id="section-scroll-room" aria-hidden="true"></div>
   </div>
 </body>
 </html>

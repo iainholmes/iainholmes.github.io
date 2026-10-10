@@ -67,12 +67,25 @@ check(len(page.ids) == len(set(page.ids)), 'Duplicate IDs')
 check(all(ref in page.ids for ref in page.refs), 'Broken accessible label reference')
 check(sum(tag == 'main' for tag, _ in page.tags) == 1, 'Exactly one main landmark required')
 check(sum(tag == 'h1' for tag, _ in page.tags) == 1, 'Exactly one page heading required')
-check('<title>Desk.</title>' in source, 'Exact Desk. identity required')
-check(not any(tag in ['script', 'iframe', 'form'] for tag, _ in page.tags), 'No app execution, storage or embedded sessions')
+check('<title>desk.</title>' in source and '<h1>desk<span>.</span></h1>' in source, 'Lowercase desk. identity required')
+check(not any(tag in ['iframe', 'form'] for tag, _ in page.tags), 'No embedded application sessions')
+check([attrs.get('src') for tag, attrs in page.tags if tag == 'script'] == ['desk.js'], 'Only the local appearance/navigation script is permitted')
+check(source.index('<script src="desk.js">') < source.index('<link rel="stylesheet"'), 'Appearance must be set before stylesheet paint')
+check(all(not key.lower().startswith('on') for _, attrs in page.tags for key in attrs), 'No inline event handlers')
+check('↗' not in source, 'Use SVG link icons, not emoji-dependent arrows')
+for tag, attrs in page.tags:
+    if attrs.get('class') == 'arrow':
+        check(tag == 'svg' and attrs.get('aria-hidden') == 'true' and attrs.get('focusable') == 'false', 'Decorative SVG arrows must not create tab stops')
+    if attrs.get('class') == 'appearance-switch':
+        check(tag == 'button' and attrs.get('aria-label') == 'Night appearance' and attrs.get('aria-pressed') == 'false', 'Appearance control must be a labeled native toggle')
+    if attrs.get('id') in ['research', 'reading', 'profile']:
+        check(attrs.get('tabindex') == '-1', 'Section destinations must receive programmatic focus')
+check('font-synthesis:none' in css, 'Do not synthesize Dunhill font weights or styles')
+check('font-style:italic' in css and 'archivo-italic.woff' in css, 'Use genuine Archivo italic')
 check('viewport-fit=cover' in source and 'safe-area-inset-bottom' in css, 'Safe-area support')
 check('prefers-reduced-motion:reduce' in css, 'Reduced-motion support')
 check(':focus-visible' in css and 'Skip to destinations' in source, 'Keyboard navigation support')
-check(not any(token in source + css for token in ['localStorage', 'sessionStorage', 'api_key', 'api.anthropic', 'serviceWorker']), 'Desk must not access app storage or credentials')
+check(not any(token in source + css + (ROOT / 'desk.js').read_text() for token in ['localStorage', 'sessionStorage', 'api_key', 'api.anthropic', 'serviceWorker']), 'Desk must not access app storage or credentials')
 for tag, attrs in page.tags:
     for key in ['href', 'src']:
         value = attrs.get(key, '')
@@ -92,7 +105,7 @@ for p in config['projects']:
 for url in page.links:
     check(url.startswith('#') or url.startswith('https://iainholmes.github.io/'), f'Unexpected navigation: {url}')
 manifest = json.loads((ROOT / 'manifest.webmanifest').read_text())
-check(manifest['name'] == 'Desk.' and manifest['short_name'] == 'Desk.', 'Install identity')
+check(manifest['name'] == 'desk.' and manifest['short_name'] == 'desk.', 'Install identity')
 check(manifest['scope'] == '/desk/' and manifest['start_url'] == '/desk/', 'Install scope must stay within Desk')
 for icon in manifest['icons']:
     check((ROOT / icon['src']).is_file(), 'Missing installation icon')
@@ -100,7 +113,9 @@ for dest, original in [
     ('assets/rupert-river-plate.jpg', 'rupert/photos/rupert-plate-eno-ledge-800.jpg'),
     ('assets/fonts/velenor.ttf', 'rupert/assets/fonts/velenor-regular.ttf'),
     ('assets/fonts/ectros.ttf', 'weekly-economics-environment/fonts/Ectros-Regular.ttf'),
-    ('assets/fonts/archivo.woff2', 'rupert/assets/fonts/archivo-latin-wdth-normal.woff2')
+    ('assets/fonts/archivo.woff2', 'rupert/assets/fonts/archivo-latin-wdth-normal.woff2'),
+    ('assets/fonts/lmromandunh10-regular.otf', 'weekly-economics-environment/fonts/LMRomanDunhill-Regular.otf'),
+    ('assets/fonts/lmromandunh10-oblique.otf', 'weekly-economics-environment/fonts/LMRomanDunhill-Oblique.otf')
 ]:
     check(sha256((ROOT / dest).read_bytes()).digest() == sha256((REPO / original).read_bytes()).digest(), f'Original asset changed: {dest}')
 check(sha256((ROOT / 'assets/advisor-mark.svg').read_bytes()).hexdigest() == provenance['advisor_mark_sha256'], 'Original Advisor mark changed')
@@ -118,6 +133,12 @@ for item in provenance['archival_covers']:
 for item in provenance['additional_fonts']:
     check(sha256((ROOT / item['asset']).read_bytes()).hexdigest() == item['sha256'], 'Font provenance mismatch')
     check((ROOT / item['license']).is_file(), 'Font license missing')
+for name in ['GUST-FONT-LICENSE.txt', 'LPPL-1.3c.txt', 'Latin-Modern-README.txt', 'Latin-Modern-MANIFEST.txt', 'NOTICE.md']:
+    check((ROOT / 'assets/fonts' / name).is_file(), f'Missing font distribution notice: {name}')
+for file, size in [('apple-touch-icon.png', 180), ('icon-192.png', 192), ('icon-512.png', 512), ('favicon-32.png', 32)]:
+    image = (ROOT / 'assets' / file).read_bytes()
+    check(image[:8] == b'\x89PNG\r\n\x1a\n' and int.from_bytes(image[16:20], 'big') == size and int.from_bytes(image[20:24], 'big') == size, f'Incorrect PNG dimensions: {file}')
+
 before = source
 subprocess.run(['node', str(ROOT / '_tools/build.mjs')], check=True, capture_output=True)
 check((ROOT / 'index.html').read_text() == before, 'Committed HTML is out of sync with configuration')

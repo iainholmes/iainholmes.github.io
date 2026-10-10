@@ -36,6 +36,28 @@
       "source": "https://github.com/google/fonts/tree/main/ofl/instrumentserif",
       "sha256": "ec63577b012b94bc7a532e18326d2e5548d2db472c10b9c01161578f4d6941b7",
       "license": "assets/fonts/OFL-Instrument-Serif.txt"
+    },
+    {
+      "asset": "assets/fonts/lmromandunh10-regular.otf",
+      "source": "https://www.gust.org.pl/projects/e-foundry/latin-modern/",
+      "sha256": "b3c753eb7d1bbcbee362e18d6dc9a24d1b384690789373cfba0973b8ba951878",
+      "license": "assets/fonts/GUST-FONT-LICENSE.txt",
+      "notes": "Unmodified font; exact copy of weekly-economics-environment/fonts/LMRomanDunhill-Regular.otf. Internal name LMRomanDunh10-Regular, version 1.106, weight 400."
+    },
+    {
+      "asset": "assets/fonts/lmromandunh10-oblique.otf",
+      "source": "https://www.gust.org.pl/projects/e-foundry/latin-modern/",
+      "sha256": "fddc4f01d5e2449963e6edcd4005c642fad9ca734665d068246264c34bcdde03",
+      "license": "assets/fonts/GUST-FONT-LICENSE.txt",
+      "notes": "Unmodified font; exact copy of weekly-economics-environment/fonts/LMRomanDunhill-Oblique.otf. Internal name LMRomanDunh10-Oblique, version 1.106, weight 400."
+    },
+    {
+      "asset": "assets/fonts/archivo-italic.woff",
+      "source": "https://github.com/google/fonts/blob/main/ofl/archivo/Archivo-Italic%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "646d8c2115f3c1630715b773885579587f85d0f7d2de6b10393ccc467426d069",
+      "license": "assets/fonts/OFL-Archivo.txt",
+      "notes": "Genuine italic, width axis instantiated at 100; weight axis 100\u2013900 retained, losslessly packaged as WOFF. Wordmark uses weight 650."
     }
-  ]
+  ],
+  "finishing_pass": "2026-10-10; accepted a90259a composition, five requested corrections and lowercase italic wordmark."
 }
