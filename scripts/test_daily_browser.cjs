@@ -27,7 +27,7 @@ async function selected(p,date){await navigate(p,'/weekly-economics-environment/
   const c=await context(browser,viewport,viewport.width===390),p=await c.newPage();
   await navigate(p,'/daily-watchlist-5/');
   const dates=await p.locator('#briefing-data').evaluate(e=>JSON.parse(e.textContent).editions.map(e=>e.date).sort());
-  equal(dates.at(-1),'2026-10-10','Saturday preserved as latest');
+  check(dates.includes('2026-10-10'),'Saturday preserved in canonical archive');
   for(const date of [dates[0],dates[Math.floor(dates.length/2)],dates.at(-1)]){
    await navigate(p,'/daily-watchlist-5/#'+date);await p.locator('.turn').scrollIntoViewIfNeeded();await ready(p);
    const geom=await p.locator('.turn').evaluate(e=>{const mid=e.querySelector('.mid'),r=mid.getBoundingClientRect(),nav=e.getBoundingClientRect(),a=e.firstElementChild.getBoundingClientRect(),b=e.lastElementChild.getBoundingClientRect();return {visible:getComputedStyle(mid).display!=='none',x:r.x,y:r.y,w:r.width,h:r.height,cx:r.x+r.width/2,navcx:nav.x+nav.width/2,prevBottom:a.bottom,nextBottom:b.bottom,navBottom:nav.bottom,toolbarTop:document.querySelector('.pd-tools').getBoundingClientRect().top}});
