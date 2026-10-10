@@ -1,0 +1,9 @@
+{
+  "inspected_on": "2026-10-10",
+  "repositories": {
+    "iainholmes/iainholmes.github.io": "860c2e9d02cedebe90434cd70d99be5def1f94e8",
+    "iainholmes/econometric-advisor": "05aab812de1ea81c28680a028aed843796ba7905",
+    "iainholmes/quant-skills-trainer": "5302cc29c620aa778af58ba93e1fd4d8fb25ae6d"
+  },
+  "advisor_mark_sha256": "01d875b44b7aae7b547cfc0394cd42c21a79be28ed48e5e31aa1e9102b0fd397"
+}
