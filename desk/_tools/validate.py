@@ -139,6 +139,41 @@ for file, size in [('apple-touch-icon.png', 180), ('icon-192.png', 192), ('icon-
     image = (ROOT / 'assets' / file).read_bytes()
     check(image[:8] == b'\x89PNG\r\n\x1a\n' and int.from_bytes(image[16:20], 'big') == size and int.from_bytes(image[20:24], 'big') == size, f'Incorrect PNG dimensions: {file}')
 
+# The personal signature must remain portable vector geometry with one accessible label.
+identity_assets = {}
+for item in provenance['personal_signature']['assets']:
+    data = (ROOT / item['asset']).read_bytes()
+    check(sha256(data).hexdigest() == item['sha256'], 'Personal signature provenance mismatch')
+    svg = ET.fromstring(data)
+    check(svg.attrib.get('viewBox') in ['0 0 1000 1000', '0 0 100 100'], 'Identity canvas must remain square')
+    check(svg.attrib.get('role') == 'img' and bool(svg.attrib.get('aria-label')), 'Standalone identity needs an accessible name')
+    check(all(node.tag.rsplit('}', 1)[-1] in ['svg', 'title', 'desc', 'circle', 'g', 'path', 'defs', 'clipPath'] for node in svg.iter()), 'Identity must use only static vector geometry')
+    check(all(not k.lower().startswith('on') and k.rsplit('}', 1)[-1] != 'href' for node in svg.iter() for k in node.attrib), 'No identity script or external resource')
+    ids = {node.attrib['id'] for node in svg.iter() if 'id' in node.attrib}
+    check(all(ref in ids for ref in re.findall(r'url\(#([^)]*)\)', data.decode())), 'Identity clipping references must resolve locally')
+    check(any(node.attrib.get('fill') == '#976144' for node in svg.iter()), 'Copper signature color must remain constant')
+    if 'monogram' in item['asset']:
+        initials = {node.attrib.get('data-initial'): node.attrib.get('d') for node in svg.iter() if 'data-initial' in node.attrib}
+        check(set(initials) == {'I', 'H'} and initials['I'] != initials['H'], 'Both distinct initials are required')
+    identity_assets[Path(item['asset']).name] = (data, svg)
+primary = identity_assets['ih-monogram.svg'][1]
+night = identity_assets['ih-monogram-night.svg'][1]
+check([n.attrib.get('d') for n in primary.iter() if 'd' in n.attrib] == [n.attrib.get('d') for n in night.iter() if 'd' in n.attrib], 'Night treatment must preserve primary geometry')
+small = identity_assets['ih-monogram-small.svg'][1]
+check(not any(n.attrib.get('data-part') in ['pine', 'rupert'] for n in small.iter()), 'Small-format period must omit illegible miniature detail')
+check(sum(attrs.get('class') == 'owner-mark' and attrs.get('role') == 'img' and attrs.get('aria-label') == 'Iain Holmes — IH. personal monogram' for _, attrs in page.tags) == 1, 'Expose the personal identity once in the header')
+check(any(attrs.get('class') == 'footer-signature' and attrs.get('aria-hidden') == 'true' for _, attrs in page.tags), 'Repeated footer signature is decorative')
+check('A personal collection' not in source, 'Replace the old owner block rather than duplicating it')
+check('footer-utilities' in source and 'Keep desk. close' in source and 'desk. — back to top' in source, 'Preserve footer controls')
+for key, filename in [('primary', 'ih-monogram.svg'), ('small', 'ih-monogram-small.svg'), ('period', 'copper-period.svg')]:
+    embedded = re.search(r'<svg class="identity-' + key + r'".*?</svg>', source, re.S)
+    check(embedded is not None, f'Missing inline {key} identity')
+    svg = ET.fromstring(embedded.group(0))
+    check(svg.attrib.get('aria-hidden') == 'true' and svg.attrib.get('focusable') == 'false', 'Inline identities must not introduce duplicate announcements or focus stops')
+    check([ET.tostring(n) for n in svg] == [ET.tostring(n) for n in identity_assets[filename][1]], 'Inline identity geometry must match the canonical asset')
+subprocess.run(['node', str(ROOT / '_tools/build-identity.mjs')], check=True, capture_output=True)
+check(all((ROOT / 'assets/identity' / name).read_bytes() == data for name, (data, _) in identity_assets.items()), 'Canonical identity generation must be deterministic')
+
 before = source
 subprocess.run(['node', str(ROOT / '_tools/build.mjs')], check=True, capture_output=True)
 check((ROOT / 'index.html').read_text() == before, 'Committed HTML is out of sync with configuration')

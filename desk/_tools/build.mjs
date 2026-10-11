@@ -68,6 +68,14 @@ const render = p => {
   }
 };
 const groups = group => config.projects.filter(p=>p.group===group).map(render).join('\n');
+// Embed canonical geometry; only presentation/accessibility attributes differ.
+const identity = {};
+for (const [key, file] of Object.entries({primary:'ih-monogram.svg',small:'ih-monogram-small.svg',period:'copper-period.svg'})) {
+  identity[key] = (await readFile(new URL(`assets/identity/${file}`, root), 'utf8'))
+    .replace(/role="img" aria-label="[^"]*"/, 'aria-hidden="true" focusable="false"')
+    .replace('<svg ', `<svg class="identity-${key}" `).trim();
+}
+
 const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -94,7 +102,7 @@ const html = `<!doctype html>
   <div class="desk-shell">
     <header class="desk-header">
       <div class="masthead"><h1>desk<span>.</span></h1><p>${escape(config.description)}</p></div>
-      <div class="owner"><span>A personal collection</span><span>Iain Holmes</span></div>
+      <div class="owner-mark" role="img" aria-label="Iain Holmes — IH. personal monogram">${identity.primary}${identity.small}</div>
     </header>
     <div class="desk-toolbar">
     <nav class="desk-nav" aria-label="Desk sections"><a href="#research"><span>Research <span class="nav-detail">&amp; practice</span></span></a><a href="#reading"><span>Reading <span class="nav-detail">&amp; outdoors</span></span></a><a href="#profile"><span>Personal <span class="nav-detail">website</span></span></a></nav>
@@ -111,7 +119,7 @@ const html = `<!doctype html>
       </div>
       <section class="profile-group" id="profile" tabindex="-1" aria-labelledby="profile-title"><div class="section-heading"><h2 id="profile-title">Personal website</h2><span aria-hidden="true">03</span></div>${groups('profile')}</section>
     </main>
-    <footer class="desk-footer"><a href="#top" class="footer-wordmark" aria-label="desk. — back to top">desk.</a><p>Everything has its place.</p><details class="install-help"><summary>Keep desk. close<span class="disclosure-sign" aria-hidden="true"></span></summary><div>On iPhone, open desk. in Safari, tap Share, then Add to Home Screen.</div></details></footer>
+    <footer class="desk-footer"><div class="footer-utilities"><a href="#top" class="footer-wordmark" aria-label="desk. — back to top">desk.</a><p>Everything has its place.</p><details class="install-help"><summary>Keep desk. close<span class="disclosure-sign" aria-hidden="true"></span></summary><div>On iPhone, open desk. in Safari, tap Share, then Add to Home Screen.</div></details></div><div class="footer-signature" aria-hidden="true">${identity.period}</div></footer>
     <div id="section-scroll-room" aria-hidden="true"></div>
   </div>
 </body>

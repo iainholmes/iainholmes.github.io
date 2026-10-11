@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img" aria-label="IH. — Iain Holmes" data-identity="ih-small">
+  <title>IH. — Iain Holmes</title>
+  <desc>Staggered serif I and H within a fine circle, followed by a small copper period.</desc>
+  <circle class="ih-ring" cx="500" cy="500" r="466" fill="none" stroke="#263b33" stroke-width="14"/>
+  <g class="ih-ink" fill="#263b33"><path data-initial="I" d="M218 280H374V294C345 295 332 302 332 329V559C332 586 345 596 374 597V612H218V597C248 596 261 586 261 559V329C261 302 248 295 218 294Z"/><path data-initial="H" d="M356 398H490V412C464 414 456 422 456 449V552H584V449C584 422 576 414 544 412V398H688V412C656 414 648 422 648 449V669C648 696 656 706 688 707V722H544V707C576 706 584 696 584 669V572H456V669C456 696 464 706 490 707V722H356V707C388 706 396 696 396 669V449C396 422 388 414 356 412Z"/></g>
+  <circle data-part="period" cx="752" cy="672" r="50" fill="#976144"/>
+</svg>

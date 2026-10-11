@@ -2,7 +2,7 @@
 
 A self-contained organizational home at `https://iainholmes.github.io/desk/`.
 
-**Desk supplies the composition; its constituent applications supply much of the visual richness.** The owner has accepted the revised desktop and iPhone composition, application identities, archival artwork and optional introductions. This finishing pass applies the five approved corrections and lowercase italic wordmark without reopening that foundation.
+**Desk supplies the composition; its constituent applications supply much of the visual richness.** The owner has accepted the desktop and iPhone composition, application identities, archival artwork, optional introductions, lowercase italic wordmark, typography, navigation and appearance system at `df8c942`. This finishing pass adds only the canonical IH. personal signature and its header/footer integration.
 
 ## Architecture
 
@@ -23,6 +23,10 @@ Font sources, licenses, change notes and access to the complete Latin Modern dis
 
 All northeast link marks are matching static SVGs. The Home Screen icon is an original paper bookplate with outlined italic `desk.` lettering; the matching favicon uses `d.` for small-size legibility. SVG, opaque 180/192/512px PNG assets and a 32px fallback favicon are included. `_tools/build-icons.py` can reproduce these assets with fontTools and Inkscape; neither is required to serve or review the site.
 
+The circular **IH.** monogram identifies the person behind the work. Its hand-drawn serif initials, fine enclosure and subordinate copper period replace the former upper-right owner text. The primary period contains Rupert beneath the left boughs of a pine; a strengthened small-format mark uses a solid period. A simplified 26px copper-period device closes the footer between two short rules, below the preserved footer controls. Copper stays constant in both appearances; the letters and enclosure follow the existing page palette.
+
+The four canonical vector assets, minimum sizes and reuse guidance are documented in [assets/identity/README.md](assets/identity/README.md). The separate [cross-site assessment](IDENTITY-INTEGRATION.md) is a proposal only: no other application has been modified, and no “by desk.” label or new backlink is proposed.
+
 ## Preserved material
 
 - Advisor's original mark, navy identity and research-design workflow.
@@ -39,6 +43,7 @@ Stable publication cadences remain descriptive. No availability, progress, recom
 From the repository root:
 
 ```sh
+node desk/_tools/build-identity.mjs
 node desk/_tools/build.mjs
 node --check desk/desk.js
 node --test desk/_tools/test-runtime.cjs
@@ -46,4 +51,4 @@ python3 desk/_tools/validate.py --online
 git diff --check
 ```
 
-Read `LOCAL-REVIEW.md` to refresh the owner's established Mac/iPhone preview and review the five corrections. `VERIFICATION.md` records evidence and its limits. The managed Sites preview is not retried. PR #4 remains draft; this pass does not authorize merging or deployment.
+Read `LOCAL-REVIEW.md` to refresh the owner's established Mac/iPhone preview and review the IH. integration. `VERIFICATION.md` records evidence and its limits. The managed Sites preview is not retried. PR #4 remains draft; this pass does not authorize merging or deployment.

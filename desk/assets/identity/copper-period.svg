@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Iain Holmes — copper-period signature" data-identity="ih-period">
+  <title>IH. copper-period signature</title>
+  <desc>Rupert sitting below the left boughs of a pine within a copper circle.</desc>
+  <circle cx="50" cy="50" r="50" fill="#976144"/>
+  <defs><clipPath id="ih-period-scene"><circle cx="50" cy="50" r="50"/></clipPath></defs>
+  <g clip-path="url(#ih-period-scene)" fill="#eeeee6"><path data-part="pine" d="M66 7L61 21L65 20C61 29 54 33 47 34L60 33C55 40 47 44 38 45L43 49C51 48 57 45 63 41L62 98H70L68 40C74 46 81 47 86 44L75 39L81 39C75 33 71 27 68 21L73 22Z"/><path data-part="rupert" d="M16 91C17 86 17 82 20 77C23 72 28 69 29 63L29 59C26 57 27 52 31 50C34 47 38 48 41 50L47 47L49 50L44 55L40 56C38 60 37 66 36 72L38 87C38 89 40 90 43 91V93H33L30 80L28 89C31 90 31 92 31 93H14C9 93 7 90 9 88C11 90 13 91 16 91Z"/></g>
+</svg>

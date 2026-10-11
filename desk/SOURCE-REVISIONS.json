@@ -59,5 +59,29 @@
       "notes": "Genuine italic, width axis instantiated at 100; weight axis 100\u2013900 retained, losslessly packaged as WOFF. Wordmark uses weight 650."
     }
   ],
-  "finishing_pass": "2026-10-10; accepted a90259a composition, five requested corrections and lowercase italic wordmark."
+  "finishing_pass": "2026-10-10; accepted a90259a composition, five requested corrections and lowercase italic wordmark.",
+  "personal_signature": {
+    "finalized_on": "2026-10-11",
+    "reference": "Elegant IH Monogram with Dog and Pine Dot.png",
+    "reference_sha256": "2172ea8bd3b2af6d0a32036a047d27f00d0c709aba7ecdc928b9e58aa39b1dba",
+    "construction": "Original hand-drawn vector paths based on the approved reference; no embedded raster or font dependency.",
+    "assets": [
+      {
+        "asset": "assets/identity/ih-monogram.svg",
+        "sha256": "10a3722f4cd3a5f798775a24405f2d2e7fb906286783f06ec8e5e68593ff1688"
+      },
+      {
+        "asset": "assets/identity/ih-monogram-night.svg",
+        "sha256": "3a3c9aa418b48e1166fd76938d20fcfd56d5a640c8c30f45a9a1a2423a43ed5c"
+      },
+      {
+        "asset": "assets/identity/ih-monogram-small.svg",
+        "sha256": "f26b258e26abeb9b791a3d1abaa03b5c6e28aad3bfa90087eb38d485b801cd5c"
+      },
+      {
+        "asset": "assets/identity/copper-period.svg",
+        "sha256": "b6f4fc8c16fa5ea38c854ba7c0648901817c4d8074a12afb8f3d63a0c0b8597b"
+      }
+    ]
+  }
 }

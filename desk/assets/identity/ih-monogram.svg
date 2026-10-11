@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img" aria-label="IH. — Iain Holmes" data-identity="ih-primary">
+  <title>IH. — Iain Holmes</title>
+  <desc>Staggered serif I and H within a fine circle, followed by a small copper period containing Rupert seated to the left of a pine, looking up beneath its lowest boughs.</desc>
+  <circle class="ih-ring" cx="500" cy="500" r="466" fill="none" stroke="#263b33" stroke-width="9"/>
+  <g class="ih-ink" fill="#263b33"><path data-initial="I" d="M222 280H378V288C348 289 335 297 335 326V562C335 591 347 600 378 602V610H222V602C253 600 265 591 265 562V326C265 297 253 289 222 288Z"/><path data-initial="H" d="M352 398H486V406C460 408 452 416 452 446V556H584V446C584 416 576 408 542 406V398H686V406C653 408 646 416 646 446V672C646 702 654 710 686 712V720H542V712C576 710 584 702 584 672V568H452V672C452 702 460 710 486 712V720H352V712C384 710 392 702 392 672V446C392 416 384 408 352 406Z"/></g>
+  <g data-part="period" transform="translate(702 622)"><circle cx="50" cy="50" r="50" fill="#976144"/>
+  <defs><clipPath id="ih-primary-scene"><circle cx="50" cy="50" r="50"/></clipPath></defs>
+  <g clip-path="url(#ih-primary-scene)" fill="#eeeee6"><path data-part="pine" d="M66 6C65 13 63 17 59 20L63 20C60 25 55 28 50 29L60 28C57 33 51 36 44 37L58 35C53 40 46 43 37 44L42 47C49 47 57 44 63 40L62 98H69L67 39C73 45 79 46 86 44L76 39L81 39C77 36 73 33 69 29L79 31C75 27 71 24 68 20L73 21C69 16 68 11 66 6Z"/><path data-part="rupert" d="M16 91C17 86 17 82 20 77C23 72 28 69 29 63L29 59C26 57 27 52 31 50C34 47 38 48 41 50L47 47L49 50L44 55L40 56C38 60 37 66 36 72L38 87C38 89 40 90 43 91V93H33L30 80L28 89C31 90 31 92 31 93H14C9 93 7 90 9 88C11 90 13 91 16 91Z"/></g></g>
+</svg>

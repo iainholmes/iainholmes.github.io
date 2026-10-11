@@ -96,8 +96,11 @@ section:focus-visible>.section-heading { outline:3px solid var(--accent); outlin
   padding-bottom:2px;
   letter-spacing:0
 }
-.owner { display:grid; gap:7px; font-size:15px; padding-bottom:3px; text-align:right }
-.owner span:first-child { color:var(--muted); font-size:14px }
+.owner-mark { width:112px; height:112px; flex-shrink:0; align-self:center }
+.owner-mark>svg { width:100%; height:100% }
+.owner-mark .ih-ink { fill:var(--ink) }
+.owner-mark .ih-ring { stroke:var(--ink) }
+.owner-mark .identity-small { display:none }
 .desk-nav {
   display:flex;
   gap:30px;
@@ -325,7 +328,11 @@ p+.context-list { margin-top:16px }
 .portfolio nav a { display:flex; align-items:center; gap:9px; min-height:44px; font-size:15px }
 .portfolio nav .arrow { font-size:15px }
 .portfolio nav .portfolio-open { justify-content:space-between; font-size:16px; border-bottom:1px solid #b9c5cb; margin-bottom:4px }
-.desk-footer { display:flex; align-items:center; gap:25px; min-height:80px; padding:15px 0 max(18px,env(safe-area-inset-bottom)); color:var(--muted); font-size:14px }
+.desk-footer { display:grid; gap:8px; padding:15px 0 max(24px,env(safe-area-inset-bottom)); color:var(--muted); font-size:14px }
+.footer-utilities { display:flex; align-items:center; gap:25px; min-height:44px; width:100% }
+.footer-signature { display:flex; align-items:center; gap:14px; width:min(220px,70%); margin:2px auto 0 }
+.footer-signature::before,.footer-signature::after { content:''; height:1px; flex:1; background:var(--rule) }
+.footer-signature>svg { width:26px; height:26px; flex-shrink:0 }
 .footer-wordmark { font-family:"Desk Sans",Arial,sans-serif; font-style:italic; font-size:22px; letter-spacing:-.06em; font-weight:650; color:var(--ink); display:flex; align-items:center; min-height:44px; min-width:48px }
 .install-help { margin-left:auto; position:relative }
 .install-help summary { gap:14px; font-size:14px }
@@ -429,7 +436,9 @@ p+.context-list { margin-top:16px }
   .research-projects { grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start }
   .masthead { gap:30px }
   .masthead p { font-size:17px; max-width:200px }
-  .owner { font-size:14px }
+  .owner-mark { width:96px; height:96px }
+  .owner-mark .identity-primary { display:none }
+  .owner-mark .identity-small { display:block }
   .publication h4 { font-size:30px }
   .loblolly h4 { font-size:28px }
   .workbook h4 { font-size:29px }
@@ -452,8 +461,7 @@ p+.context-list { margin-top:16px }
   .masthead { display:block; min-width:0 }
   .masthead h1 { font-size:88px }
   .masthead p { font-size:16px; line-height:1.45; max-width:210px; margin-top:20px }
-  .owner { font-size:14px; padding-top:5px; line-height:1.5; max-width:110px; flex-shrink:0 }
-  .owner span:first-child { font-size:14px }
+  .owner-mark { width:84px; height:84px; align-self:flex-start }
   .desk-toolbar { gap:12px; align-items:stretch }
   .desk-nav { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; min-height:70px }
   .desk-toolbar .appearance-switch { flex-direction:column; justify-content:center; gap:4px; min-width:60px; padding:8px 5px; font-size:15px; border-left:1px solid var(--rule) }
@@ -526,14 +534,14 @@ p+.context-list { margin-top:16px }
   .portfolio nav .portfolio-open { justify-content:space-between; border-bottom:1px solid #b9c5cb }
   .portfolio nav>div { justify-content:space-between; gap:10px }
   .portfolio nav a { font-size:14px; min-height:46px }
-  .desk-footer { gap:15px; min-height:84px }
+  .footer-utilities { gap:15px }
   .desk-footer p { display:none }
   .footer-wordmark { font-size:20px }
 }
 @media(max-width:370px) {
   .desk-shell { padding-left:max(17px,env(safe-area-inset-left)); padding-right:max(17px,env(safe-area-inset-right)) }
   .masthead h1 { font-size:74px }
-  .owner { max-width:90px }
+  .owner-mark { width:72px; height:72px }
   .desk-nav a { font-size:14px }
   .desk-nav { gap:6px }
   .desk-toolbar { gap:8px }
@@ -558,4 +566,7 @@ p+.context-list { margin-top:16px }
   a:focus-visible,summary:focus-visible,button:focus-visible { outline-color:Highlight }
   .disclosure-sign::before,.disclosure-sign::after { background:CanvasText }
   .arrow { forced-color-adjust:auto }
+  .owner-mark .ih-ink { fill:CanvasText }
+  .owner-mark .ih-ring { stroke:CanvasText }
+  .footer-signature::before,.footer-signature::after { background:CanvasText }
 }
