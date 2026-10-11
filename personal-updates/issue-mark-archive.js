@@ -353,5 +353,20 @@
     "phrase": "Routes & enforcement",
     "seed": 2023005540,
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 014: Routes &amp; enforcement\"><title>Field Brief · 014 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M90 132H510L350 312V471H250V312Z\" fill=\"#221a14\"/><path d=\"M178 200H422\" stroke=\"#c5ad88\" stroke-width=\"22\"/><path d=\"M210 388H390\" stroke=\"#8a2a36\" stroke-width=\"27\"/><circle cx=\"300\" cy=\"95\" r=\"32\" fill=\"#8a2a36\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 014 / 2026-10-10</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
+  },
+  "fb:2026-10-11": {
+    "key": "fb",
+    "date": "2026-10-11",
+    "no": "015",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "The World Bank prepares a larger crisis-finance response as energy shocks pressure developing economies, while the United States opens a temporary route for Russian diesel. China couples industrial AI expansion with controls on speculative investment, new Medicaid restrictions remove coverage from certain legal immigrants, and Isaias brings a flash-flood threat into North Carolina. The five developments concern different forms of public protection rather than one common shock. The World Bank is preparing liquidity for vulnerable economies; the diesel decision changes an energy-and-sanctions rule; China is managing industrial investment; Medicaid eligibility determines who carries health costs; and North Carolina is responding to a physical hazard. Their mechanisms and timescales are distinct. The practical tests are correspondingly separate: whether crisis finance arrives without worsening debt, Russian supply changes prices, China's controls restrain duplication, states absorb coverage losses, and warnings prevent avoidable storm harm.",
+    "version": 3,
+    "subject": "enforcement",
+    "composition": "enforcement-seal",
+    "signature": "issue:enforcement-seal",
+    "phrase": "Routes & enforcement",
+    "seed": 1643603920,
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 015: Routes &amp; enforcement\"><title>Field Brief · 015 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M80 156H256V296H80ZM358 337H531V477H358Z\" fill=\"#221a14\"/><path d=\"M256 226H446V337\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"22\"/><circle cx=\"339\" cy=\"226\" r=\"70\" fill=\"#8a2a36\"/><path d=\"M304 191L374 261M374 191L304 261\" stroke=\"#f1e6d0\" stroke-width=\"16\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 015 / 2026-10-11</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

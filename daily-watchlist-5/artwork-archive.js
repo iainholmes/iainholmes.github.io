@@ -666,6 +666,68 @@
         "seed": 2086677271,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Wind generation feeds a separate demand block\"><title>North Carolina suspends gas tax to cut fuel costs</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-10-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-10-05)\"><path d=\"M285 245V540\" stroke=\"#2c241d\" stroke-width=\"26\"/><path d=\"M285 245L180 97L218 75L302 220L445 202L449 247L306 260L240 392L201 371Z\" fill=\"#1d5f47\"/><path d=\"M475 355H690V530H475Z\" fill=\"#1b4a6b\"/><path d=\"M510 392H655M510 447H655\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M316 476H445\" stroke=\"#c4452c\" stroke-width=\"28\"/></g></svg>"
       }
+    },
+    "2026-10-11": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-11",
+        "number": "01",
+        "category": "Economics · development finance",
+        "topic": "finance",
+        "title": "World Bank discusses crisis support with 30 to 40 countries",
+        "composition": "finance-ledger",
+        "signature": "plate:finance-ledger",
+        "seed": 4037778410,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A ledger is inspected beside a hidden transfer channel\"><title>World Bank discusses crisis support with 30 to 40 countries</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-11-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-11-01)\"><path d=\"M85 130H360V540H85Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M125 200H325M125 270H325M125 340H260M125 410H300\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"548\" cy=\"284\" r=\"112\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"35\"/><path d=\"M624 367L718 489\" stroke=\"#7a1f33\" stroke-width=\"42\"/><path d=\"M402 530V425H475V345H548\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"21\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-11",
+        "number": "02",
+        "category": "U.S. policy · energy and sanctions",
+        "topic": "energy",
+        "title": "U.S. opens a six-month route for Russian diesel",
+        "composition": "energy-reserve",
+        "signature": "plate:energy-reserve",
+        "seed": 3188953460,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A storage tank feeds a finite reserve through a valve\"><title>U.S. opens a six-month route for Russian diesel</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-11-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-11-02)\"><path d=\"M105 170Q250 85 395 170V485Q250 555 105 485Z\" fill=\"#1b4a6b\"/><ellipse cx=\"250\" cy=\"170\" rx=\"145\" ry=\"48\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M395 380H555V520H710\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"32\"/><circle cx=\"555\" cy=\"380\" r=\"52\" fill=\"#c4452c\"/><path d=\"M555 338V422M513 380H597\" stroke=\"#f4ead7\" stroke-width=\"11\"/><path d=\"M155 315H345\" stroke=\"#c98a12\" stroke-width=\"26\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-11",
+        "number": "03",
+        "category": "Technology · industrial policy",
+        "topic": "infrastructure",
+        "title": "China pairs industrial AI expansion with investment controls",
+        "composition": "infrastructure-duct",
+        "signature": "plate:infrastructure-duct",
+        "seed": 3213748776,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Cooling infrastructure surrounds a capacity chamber\"><title>China pairs industrial AI expansion with investment controls</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-11-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-11-03)\"><path d=\"M90 155H475V480H90Z\" fill=\"#2c241d\"/><path d=\"M130 202H432M130 270H432M130 338H432M130 406H432\" stroke=\"#f4ead7\" stroke-width=\"23\"/><path d=\"M520 510V185H690V410H600\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"51\"/><path d=\"M520 96V160M580 96V160M640 96V160\" stroke=\"#c4452c\" stroke-width=\"20\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-11",
+        "number": "04",
+        "category": "U.S. policy · health coverage",
+        "topic": "government",
+        "title": "Medicaid restrictions remove coverage from certain legal immigrants",
+        "composition": "government-balance",
+        "signature": "plate:government-balance",
+        "seed": 2371707081,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Public funds are held in balance under a legal decision\"><title>Medicaid restrictions remove coverage from certain legal immigrants</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-11-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-11-04)\"><path d=\"M390 130V520M250 525H535M165 240H620\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M190 240L110 400H270ZM585 240L505 400H665Z\" fill=\"#1b4a6b\"/><path d=\"M135 401Q190 476 245 401M530 401Q585 476 640 401\" fill=\"#c98a12\"/><rect x=\"295\" y=\"90\" width=\"190\" height=\"105\" fill=\"#7a1f33\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-11",
+        "number": "05",
+        "category": "North Carolina · weather and resilience",
+        "topic": "climate",
+        "title": "Isaias remnants bring a flash-flood threat into North Carolina",
+        "composition": "climate-watershed",
+        "signature": "plate:climate-watershed",
+        "seed": 3670475639,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A high lake spills toward inhabited lower ground\"><title>Isaias remnants bring a flash-flood threat into North Carolina</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-11-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-11-05)\"><path d=\"M50 425L235 130L398 385L530 215L750 525H50Z\" fill=\"#1d5f47\"/><ellipse cx=\"290\" cy=\"285\" rx=\"85\" ry=\"34\" fill=\"#1b4a6b\"/><path d=\"M340 295Q340 430 570 483\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"34\"/><path d=\"M584 410L650 355L716 410V510H584Z\" fill=\"#2c241d\"/><path d=\"M93 480H234\" stroke=\"#c98a12\" stroke-width=\"25\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
