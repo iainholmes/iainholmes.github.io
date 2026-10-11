@@ -29,4 +29,12 @@ Copyright 2020 The Archivo Project Authors (https://github.com/Omnibus-Type/Arch
 
 ## Canonical artwork
 
+### QST authentic application reveal
+
+Only the revealed QST article uses the application's **Atkinson Hyperlegible Next** sans and **JetBrains Mono** technical typography. The already committed `atkinson.woff` (400) and `atkinson-semibold.woff` (600) remain unchanged and retain `OFL-Atkinson.txt`. These faces do not replace Dunhill anywhere else.
+
+`jetbrains-mono.woff` is the upright variable font from [Google Fonts' official JetBrains Mono directory](https://github.com/google/fonts/tree/main/ofl/jetbrainsmono), retaining the 100–800 weight axis and unmodified outline data in lossless WOFF packaging. Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono). SIL Open Font License 1.1 is included as `OFL-JetBrains-Mono.txt`. Source/export hashes are in `SOURCE-REVISIONS.json`. No synthetic weights, external font request or font-service runtime dependency is introduced.
+
+### Publication artwork
+
 The cover SVGs remain byte-for-byte copies of their archived sources. Their own font-family attributes remain intact. Ectros, STIX Two Text and Instrument Serif continue to serve the cover lettering; navigation and explanatory text surrounding those covers use Dunhill. The final application-identity assignment restores Bodoni Moda 500 for the Field Brief masthead, Ectros for Loblolly & Logit and STIX Two Text for The Workbook. These are the existing local font files, with their existing licenses; no binaries or weights were synthesized. Previously committed source fonts and their licenses remain available, though unused interface faces are no longer declared or requested by the stylesheet.

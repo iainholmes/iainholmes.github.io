@@ -9,21 +9,21 @@
       "name": "Econometric Advisor",
       "url": "https://iainholmes.github.io/econometric-advisor/",
       "description": "From a research question to a defensible design.",
-      "detail": "Identification · Estimating equations · Knowledge graph",
+      "detail": "Identification · Estimating Equations · Knowledge Graph",
       "action": "Open Advisor",
       "asset": "assets/advisor-mark.svg",
       "workflow": [
         {
-          "name": "Research question",
-          "detail": "Outcome & comparison"
+          "name": "Research Question",
+          "detail": "Outcome & Comparison"
         },
         {
           "name": "Identification",
-          "detail": "Variation & assumptions"
+          "detail": "Variation & Assumptions"
         },
         {
           "name": "Specification",
-          "detail": "Estimator & diagnostics"
+          "detail": "Estimator & Diagnostics"
         }
       ]
     },
@@ -34,7 +34,7 @@
       "name": "Quant Skills Trainer",
       "shortName": "QST",
       "url": "https://iainholmes.github.io/quant-skills-trainer/",
-      "description": "Build your quantitative foundation.",
+      "description": "Build Your Quantitative Foundation.",
       "action": "Open QST",
       "languages": [
         "Python",
@@ -44,15 +44,15 @@
       "sequence": [
         {
           "name": "Learn",
-          "detail": "Concepts & examples"
+          "detail": "Concepts & Examples"
         },
         {
           "name": "Practice",
-          "detail": "Write & run your code"
+          "detail": "Write & Run Your Code"
         },
         {
           "name": "Feedback",
-          "detail": "Review & refine"
+          "detail": "Review & Refine"
         }
       ],
       "tiers": [
@@ -73,9 +73,9 @@
         {
           "id": "field-brief",
           "name": "Field Brief",
-          "description": "Economics & public affairs",
+          "description": "Economics & Public Affairs",
           "url": "https://iainholmes.github.io/daily-watchlist-5/",
-          "schedule": "Every day",
+          "schedule": "Every Day",
           "asset": "assets/field-brief-archive.svg",
           "archiveKey": "fb:2026-10-09",
           "archiveDate": "2026-10-09",
@@ -85,7 +85,7 @@
         {
           "id": "loblolly",
           "name": "Loblolly & Logit",
-          "description": "Research & environmental economics",
+          "description": "Research & Environmental Economics",
           "url": "https://iainholmes.github.io/weekly-economics-environment/",
           "schedule": "Fridays",
           "asset": "assets/loblolly-archive.svg",
@@ -97,7 +97,7 @@
         {
           "id": "workbook",
           "name": "The Workbook",
-          "description": "Questions, methods & practice",
+          "description": "Questions, Methods & Practice",
           "url": "https://iainholmes.github.io/daily-econ-challenge/",
           "schedule": "Weekdays",
           "asset": "assets/workbook-archive.svg",
@@ -114,7 +114,7 @@
       "presentation": "rupert",
       "name": "The Rupert Atlas",
       "url": "https://iainholmes.github.io/rupert/",
-      "description": "A little farther afield.",
+      "description": "A Little Farther Afield.",
       "asset": "assets/rupert-river-plate.jpg",
       "alt": "Rupert in a mustard collar above a blue river, beneath an ochre sun. Original editorial plate from The Rupert Atlas.",
       "action": "This Week",
@@ -122,12 +122,12 @@
         {
           "name": "Atlas",
           "url": "https://iainholmes.github.io/rupert/atlas/",
-          "detail": "Explore the map"
+          "detail": "Explore the Map"
         },
         {
           "name": "Field Log",
           "url": "https://iainholmes.github.io/rupert/log/",
-          "detail": "Remember the visit"
+          "detail": "Remember the Visit"
         }
       ]
     },
@@ -138,8 +138,8 @@
       "name": "Personal Website",
       "displayName": "Iain Holmes",
       "url": "https://iainholmes.github.io/",
-      "description": "Environmental & natural resource economics.",
-      "action": "Visit website",
+      "description": "Environmental & Natural Resource Economics.",
+      "action": "Visit Website",
       "links": [
         {
           "name": "Research",

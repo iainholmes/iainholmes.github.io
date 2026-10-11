@@ -84,7 +84,7 @@ check('font-synthesis:none' in css, 'Do not synthesize Dunhill font weights or s
 check('font-style:italic' in css and 'archivo-italic.woff' in css, 'Use genuine Archivo italic')
 check('viewport-fit=cover' in source and 'safe-area-inset-bottom' in css, 'Safe-area support')
 check('prefers-reduced-motion:reduce' in css, 'Reduced-motion support')
-check(':focus-visible' in css and 'Skip to destinations' in source, 'Keyboard navigation support')
+check(':focus-visible' in css and 'Skip to Destinations' in source, 'Keyboard navigation support')
 check(not any(token in source + css + (ROOT / 'desk.js').read_text() for token in ['localStorage', 'sessionStorage', 'api_key', 'api.anthropic', 'serviceWorker']), 'Desk must not access app storage or credentials')
 for tag, attrs in page.tags:
     for key in ['href', 'src']:
@@ -161,7 +161,7 @@ check(not list((ROOT / 'assets/identity').glob('*.svg')), 'Remove superseded rec
 check(sum(tag == 'img' and attrs.get('src') == 'assets/identity/ih-signature.png' and attrs.get('alt') == 'Iain Holmes — IH. personal signature with Rupert beneath a loblolly pine' for tag, attrs in page.tags) == 1, 'Header must expose the exact supplied identity once')
 check(sum(tag == 'img' and attrs.get('src') == 'assets/identity/ih-period.png' and attrs.get('alt') == '' and attrs.get('aria-hidden') == 'true' for tag, attrs in page.tags) == 1, 'Footer uses the exact decorative period crop')
 check(any(attrs.get('class') == 'footer-signature' and attrs.get('aria-hidden') == 'true' for _, attrs in page.tags), 'Repeated footer signature is decorative')
-check('footer-utilities' in source and 'Keep desk. close' in source and 'desk. — back to top' in source, 'Preserve footer controls')
+check('footer-utilities' in source and 'Keep desk. Close' in source and 'desk. — back to top' in source, 'Preserve footer controls')
 check('identity-small' not in source + css and 'ih-monogram' not in source, 'Never switch back to a reconstructed or simplified logo')
 check(not re.search(r'(?:filter|mix-blend-mode)\s*:', css), 'Never recolor or blend the supplied identity')
 subprocess.run([sys.executable, str(ROOT / '_tools/prepare-identity.py')], check=True, capture_output=True)

@@ -957,6 +957,76 @@ body { background-image:repeating-linear-gradient(0deg,transparent 0 5px,#976144
 :root[data-initial-reveal="work-workbook"]:not([data-reveal-ready]) #work-workbook,
 :root[data-initial-reveal="work-rupert"]:not([data-reveal-ready]) #work-rupert,
 :root[data-initial-reveal="work-portfolio"]:not([data-reveal-ready]) #work-portfolio { visibility:hidden }
+/* QST's authentic reveal: a static, compact adaptation of the application.
+   All rules are scoped to this article; collection and other apps are untouched. */
+@font-face { font-family:"QST Sans"; src:url(assets/fonts/atkinson.woff) format('woff'); font-weight:400; font-display:swap }
+@font-face { font-family:"QST Sans"; src:url(assets/fonts/atkinson-semibold.woff) format('woff'); font-weight:600; font-display:swap }
+@font-face { font-family:"QST Mono"; src:url(assets/fonts/jetbrains-mono.woff) format('woff'); font-weight:100 800; font-display:swap }
+.authentic-presentation .qst.qst-app { container:qst-preview / inline-size; background:#211e17; color:#ede8dc; border:1px solid #4d4735; font-family:"QST Sans",sans-serif; --qst-green:#5fb864; --qst-mono:"QST Mono",monospace }
+.qst-app .qst-app-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 16px; padding:17px 18px; border-bottom:1px solid #4d4735 }
+.qst-app .qst-app-header h3 { display:flex; align-items:center; gap:8px; font:500 12px/1.45 var(--qst-mono); letter-spacing:.055em; text-transform:uppercase }
+.qst-app .qst-brand-pip { width:7px; height:7px; flex:none; border-radius:50%; background:var(--qst-green) }
+.qst-app .qst-preview-note { color:#c2bcaa; font:400 10px/1.4 var(--qst-mono) }
+.qst-app .qst-workspace { display:grid; grid-template-columns:minmax(142px,.95fr) minmax(0,1.8fr) }
+.qst-app .qst-module-sidebar { min-width:0; background:#202218; border-right:2px solid var(--qst-green) }
+.qst-app .qst-language-nav { list-style:none; display:flex; margin:0; padding:0; border-bottom:1px solid #4d4735; font:500 12px/1.4 var(--qst-mono); text-transform:uppercase; letter-spacing:.02em }
+.qst-app .qst-language-nav li { flex:1; text-align:center; padding:11px 3px; color:#c2bcaa; border-bottom:2px solid transparent }
+.qst-app .qst-language-nav .qst-nav-0 { color:var(--qst-green); background:#1c3320; border-bottom-color:var(--qst-green) }
+.qst-app .qst-module-index { padding:18px 12px 0 }
+.qst-app .qst-module-index h4 { color:var(--qst-green); font:500 11px/1.5 var(--qst-mono); text-transform:uppercase; letter-spacing:.035em; margin-bottom:13px }
+.qst-app .qst-foundation-list { list-style:none; margin:0; padding:0; display:grid; gap:13px }
+.qst-app .qst-foundation-list li { font-size:13px; line-height:1.35; padding-left:10px; border-left:1px solid #53643a; overflow-wrap:anywhere }
+.qst-app .qst-foundation-list li>span { display:block; margin-top:4px; color:#c2bcaa; font:400 10px/1.55 var(--qst-mono) }
+.qst-app .qst-tier-index { list-style:none; margin:18px -12px 0; padding:0 }
+.qst-app .qst-tier-index li { padding:13px 12px; border-top:1px solid #3d6b42; color:var(--qst-green); font:500 10px/1.5 var(--qst-mono); text-transform:uppercase }
+.qst-app .qst-overview { min-width:0; padding:23px 20px 18px; background:linear-gradient(165deg,#283024 0,#211e17 46%) }
+.qst-app .qst-app-name { font-size:15px; font-weight:600; line-height:1.35 }
+.qst-app .qst-hero { font-size:30px; font-weight:600; letter-spacing:-.02em; line-height:1.08; margin-top:17px; max-width:20ch }
+.qst-app .qst-hero em { color:var(--qst-green); font-style:normal }
+.qst-app .qst-deck { color:#c2bcaa; font-size:15px; line-height:1.4; margin-top:13px; max-width:32ch }
+.qst-app .qst-language-cards { list-style:none; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin:24px 0 0; padding:0 }
+.qst-app .qst-language-cards li { min-width:0; padding:13px 9px 12px; background:#211e17; border:1px solid #4d4735; border-top:3px solid currentColor; border-radius:8px }
+.qst-app .qst-card-0 { color:var(--qst-green) }
+.qst-app .qst-card-1 { color:#7b98e8 }
+.qst-app .qst-card-2 { color:#7fb8de }
+.qst-app .qst-language-cards strong { font:500 13px/1.4 var(--qst-mono) }
+.qst-app .qst-language-cards li>span { display:block; color:#c2bcaa; font-size:12px; line-height:1.3; margin-top:7px; overflow-wrap:anywhere }
+.qst-app .qst-skills-map { width:100%; max-width:300px; height:auto; margin:21px auto 17px }
+.qst-app .qst-skills-map text { font:600 15px "QST Sans",sans-serif; fill:#c2bcaa }
+.qst-app .qst-skills-map .qst-map-python { fill:#18391b; font-size:19px }
+.qst-app .qst-workflow { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); list-style:none; gap:10px; margin:0; padding:13px 0 0; border-top:1px solid #4d4735 }
+.qst-app .qst-workflow strong { display:block; color:var(--qst-green); font:500 10px/1.4 var(--qst-mono) }
+.qst-app .qst-workflow li>span { display:block; margin-top:5px; color:#c2bcaa; font-size:12px; line-height:1.35 }
+.qst-app .qst-open { display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:50px; margin:0 18px; padding:11px 0; border-top:1px solid #3d6b42; color:var(--qst-green); font:500 13px/1.4 var(--qst-mono) }
+.qst-app .qst-open:hover span { text-decoration:underline; text-underline-offset:4px }
+.authentic-presentation .qst.qst-app .context { margin-inline:18px; color:#c2bcaa; border-color:#4d4735 }
+.qst.qst-app .context summary { font-family:"QST Sans",sans-serif; font-size:14px }
+.authentic-presentation .qst.qst-app .context-body { color:#c2bcaa; font:400 14px/1.55 "QST Sans",sans-serif }
+.qst-app .curriculum-list { font-size:14px }
+.qst-app a:focus-visible,.qst-app summary:focus-visible { outline-color:#8ed78c }
+@container qst-preview (max-width:440px) {
+  .qst-app .qst-app-header { padding:15px }
+  .qst-app .qst-workspace { grid-template-columns:1fr }
+  .qst-app .qst-module-sidebar { display:contents }
+  .qst-app .qst-language-nav { grid-row:1; background:#202218; font-size:13px }
+  .qst-app .qst-overview { grid-row:2; padding:21px 17px 18px }
+  .qst-app .qst-hero { font-size:29px; max-width:19ch }
+  .qst-app .qst-skills-map { max-width:245px; margin-block:15px }
+  .qst-app .qst-module-index { grid-row:3; padding:17px; border-top:1px solid #3d6b42; background:#202218 }
+  .qst-app .qst-foundation-list { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px }
+  .qst-app .qst-tier-index { display:flex; flex-wrap:wrap; gap:7px 16px; margin:17px 0 0; padding-top:12px; border-top:1px solid #3d6b42 }
+  .qst-app .qst-tier-index li { border:0; padding:0; max-width:18ch }
+  .qst-app .qst-open { margin-inline:17px }
+}
+@container qst-preview (max-width:300px) {
+  .qst-app .qst-foundation-list { grid-template-columns:1fr }
+  .qst-app .qst-language-cards { gap:5px }
+  .qst-app .qst-language-cards li { padding-inline:6px }
+}
+@media(forced-colors:active) {
+  .authentic-presentation .qst.qst-app,.qst-app .qst-overview,.qst-app .qst-module-index { background:Canvas; color:CanvasText }
+  .qst-app .qst-skills-map { forced-color-adjust:none }
+}
 @media(prefers-reduced-motion:reduce) {
   *,*::before,*::after { transition:none!important; animation:none!important; scroll-behavior:auto!important }
 }

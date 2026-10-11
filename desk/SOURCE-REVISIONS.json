@@ -57,6 +57,14 @@
       "sha256": "646d8c2115f3c1630715b773885579587f85d0f7d2de6b10393ccc467426d069",
       "license": "assets/fonts/OFL-Archivo.txt",
       "notes": "Genuine italic, width axis instantiated at 100; weight axis 100\u2013900 retained, losslessly packaged as WOFF. Wordmark uses weight 650."
+    },
+    {
+      "asset": "assets/fonts/jetbrains-mono.woff",
+      "source": "https://github.com/google/fonts/blob/main/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf",
+      "source_sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+      "sha256": "060596a0b2cfb124f3a8d711d263beae069910458d93445c0c03998e32a65f61",
+      "license": "assets/fonts/OFL-JetBrains-Mono.txt",
+      "notes": "Unmodified variable outline data, weight axis 100\u2013800, losslessly packaged as WOFF with fontTools. Used only in the authentic QST reveal."
     }
   ],
   "finishing_pass": "2026-10-10; accepted a90259a composition, five requested corrections and lowercase italic wordmark.",
@@ -147,5 +155,12 @@
         "sha256": "5d30ec290f1a3a2602bd3bee250b9ac293bbd671f9505d3161e09db44fd3672d"
       }
     ]
+  },
+  "qst_authentic_reveal": {
+    "corrected_on": "2026-10-11",
+    "visual_reference": "Owner screenshots: actual QST at 3.29.45 PM; former desk representation at 3.30.23 PM.",
+    "source": "https://github.com/iainholmes/quant-skills-trainer/blob/main/index.html",
+    "source_blob": "996e81759893c9046719dba5edcfb063a14ad271",
+    "policy": "Static local representation; no embedded application, progress values, module counts, credentials or simulated controls. Authentic application remains unchanged."
   }
 }
