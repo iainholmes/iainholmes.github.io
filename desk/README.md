@@ -2,7 +2,7 @@
 
 A self-contained organizational home at `https://iainholmes.github.io/desk/`.
 
-**Desk supplies the composition; its constituent applications supply much of the visual richness.** The owner has accepted the desktop and iPhone composition, application identities, archival artwork, optional introductions, lowercase italic wordmark, typography, navigation and appearance system at `df8c942`. This finishing pass adds only the canonical IH. personal signature and its header/footer integration.
+**Desk supplies the composition; its constituent applications supply much of the visual richness.** The owner has accepted the desktop and iPhone composition, application identities, archival artwork, optional introductions, lowercase italic wordmark, typography, navigation and appearance system at `df8c942`. The current pass refines the surrounding editorial composition and integrates the user’s final, fixed IH. artwork. The earlier hand-drawn identity is superseded.
 
 ## Architecture
 
@@ -23,9 +23,15 @@ Font sources, licenses, change notes and access to the complete Latin Modern dis
 
 All northeast link marks are matching static SVGs. The Home Screen icon is an original paper bookplate with outlined italic `desk.` lettering; the matching favicon uses `d.` for small-size legibility. SVG, opaque 180/192/512px PNG assets and a 32px fallback favicon are included. `_tools/build-icons.py` can reproduce these assets with fontTools and Inkscape; neither is required to serve or review the site.
 
-The circular **IH.** monogram identifies the person behind the work. Its hand-drawn serif initials, fine enclosure and subordinate copper period replace the former upper-right owner text. Every header variant preserves Rupert beneath the left boughs of the loblolly. The compact master opens the branches and strengthens the silhouettes without replacing them with a plain dot. A 26px illustrated copper-period device closes the content between symmetrical fine rules, above the preserved footer controls. Copper stays constant in both appearances; the letters and enclosure follow the existing page palette.
+The final **IH.** signature is the exact supplied image, not a font substitution or reconstructed SVG. The untouched master is retained in `assets/identity/`; header and footer exports are lossless whitespace crops with pixel-for-pixel validation. A light paper mount preserves the original artwork in both day and night appearances. [Identity guidance](assets/identity/README.md) documents the crop rectangles and display limits.
 
-The four canonical vector assets, minimum sizes and reuse guidance are documented in [assets/identity/README.md](assets/identity/README.md). The separate [cross-site assessment](IDENTITY-INTEGRATION.md) is a proposal only: no other application has been modified, and no “by desk.” label or new backlink is proposed.
+## Editorial composition
+
+The page is treated as a collection with a beginning, distinct chapters and a quiet colophon. A narrower maximum measure, more generous outer margins and a slightly calmer wordmark scale balance the fixed personal signature. Dunhill Oblique gives the existing introductory sentence a clear secondary voice. On iPhone it occupies a full row below the wordmark and signature instead of being compressed alongside them.
+
+Numbered section headings, fine rules and wider gutters organize the collection. A vertical rule separates the two desktop groups; on narrow screens it gives way to spacing. Publication covers retain their complete archival artwork, with more deliberate paper margins and a light shadow. The Rupert plate gains a narrow cream mount inside its navy field. Advisor, QST and the academic profile retain their distinct palettes, content and working structures. The original illustrated period closes the page between equal rules; the existing footer phrase aligns beneath it on desktop, while phone controls remain a simple two-column row.
+
+The [cross-site assessment](IDENTITY-INTEGRATION.md) remains historical placement guidance only. Any expansion of the identity is a separate future assignment.
 
 ## Preserved material
 
@@ -43,7 +49,7 @@ Stable publication cadences remain descriptive. No availability, progress, recom
 From the repository root:
 
 ```sh
-node desk/_tools/build-identity.mjs
+python3 desk/_tools/prepare-identity.py
 node desk/_tools/build.mjs
 node --check desk/desk.js
 node --test desk/_tools/test-runtime.cjs
@@ -51,4 +57,4 @@ python3 desk/_tools/validate.py --online
 git diff --check
 ```
 
-Read `LOCAL-REVIEW.md` to refresh the owner's established Mac/iPhone preview and review the IH. integration. `VERIFICATION.md` records evidence and its limits. The managed Sites preview is not retried. PR #4 remains draft; this pass does not authorize merging or deployment.
+Read `LOCAL-REVIEW.md` to refresh the owner's established Mac/iPhone preview and review the editorial refinement and exact supplied identity. `VERIFICATION.md` records evidence and its limits. The managed Sites preview is not retried. PR #4 remains draft; this pass does not authorize merging or deployment.

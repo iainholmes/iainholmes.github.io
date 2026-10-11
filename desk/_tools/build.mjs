@@ -68,13 +68,11 @@ const render = p => {
   }
 };
 const groups = group => config.projects.filter(p=>p.group===group).map(render).join('\n');
-// Embed canonical geometry; only presentation/accessibility attributes differ.
-const identity = {};
-for (const [key, file] of Object.entries({primary:'ih-monogram.svg',small:'ih-monogram-small.svg',period:'copper-period.svg'})) {
-  identity[key] = (await readFile(new URL(`assets/identity/${file}`, root), 'utf8'))
-    .replace(/role="img" aria-label="[^"]*"/, 'aria-hidden="true" focusable="false"')
-    .replace('<svg ', `<svg class="identity-${key}" `).trim();
-}
+// The final identity is a fixed user-supplied raster master, never reconstructed.
+const identity = {
+  primary: '<img src="assets/identity/ih-signature.png" width="466" height="438" alt="Iain Holmes — IH. personal signature with Rupert beneath a loblolly pine" decoding="async">',
+  period: '<img src="assets/identity/ih-period.png" width="60" height="60" alt="" aria-hidden="true" decoding="async">'
+};
 
 const html = `<!doctype html>
 <html lang="en">
@@ -102,7 +100,7 @@ const html = `<!doctype html>
   <div class="desk-shell">
     <header class="desk-header">
       <div class="masthead"><h1>desk<span>.</span></h1><p>${escape(config.description)}</p></div>
-      <div class="owner-mark" role="img" aria-label="Iain Holmes — IH. personal monogram">${identity.primary}${identity.small}</div>
+      <div class="owner-mark">${identity.primary}</div>
     </header>
     <div class="desk-toolbar">
     <nav class="desk-nav" aria-label="Desk sections"><a href="#research"><span>Research <span class="nav-detail">&amp; practice</span></span></a><a href="#reading"><span>Reading <span class="nav-detail">&amp; outdoors</span></span></a><a href="#profile"><span>Personal <span class="nav-detail">website</span></span></a></nav>

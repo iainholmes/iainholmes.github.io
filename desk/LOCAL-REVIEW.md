@@ -1,6 +1,6 @@
-# Review the desk. IH. integration
+# Review the desk. editorial refinement and final identity
 
-PR #4 stays draft. The owner has accepted the desktop/iPhone design, lowercase italic wordmark, typography, application representations, navigation and day/night system at `df8c942`. This review checks the new IH. monogram and header/footer integration using the established local Mac preview. Merging and deployment remain unauthorized.
+PR #4 stays draft and undeployed. This pass completes the broader visual refinement and uses the exact supplied final IH. image. Review the 15-inch MacBook Air and iPhone portrait compositions in both appearances; source tests and asset proofs are not browser acceptance.
 
 ## Refresh a downloaded ZIP
 
@@ -14,7 +14,7 @@ PR #4 stays draft. The owner has accepted the desktop/iPhone design, lowercase i
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Open http://localhost:8000/desk/ in Safari and Chrome. Reload without cache if a previous version appears: Option-Command-R in Safari; Shift-Command-R in Chrome. The new version has a circular **IH.** mark at the upper right and a centered copper-period signature between two rules at the footer. The header period now contains the dog and tree at every width, and the ruled footer signature sits above the existing footer controls. A plain header dot indicates an older copy.
+Open http://localhost:8000/desk/ in Safari and Chrome. Reload without cache: Option-Command-R in Safari; Shift-Command-R in Chrome. The current version has the supplied **uncircled IH.** on a light paper mount at upper right, numbered section headings with fine rules, and the original copper-period image in the footer. A circular logo indicates an obsolete copy.
 
 If port 8000 is already in use, stop the existing preview server first. Keep this Terminal window running throughout the review.
 
@@ -40,19 +40,20 @@ ipconfig getifaddr en0
 ```
 
 3. In iPhone Safari, open `http://MAC_IP:8000/desk/`, replacing `MAC_IP` with that address (for example, `http://192.168.1.25:8000/desk/`). Do not use `localhost` on the iPhone: that refers to the phone itself.
-4. Reload the iPhone page after replacing the files. If an old copy persists, close that local-preview tab and reopen `http://MAC_IP:8000/desk/?review=ih-fidelity`. Open the page in Safari rather than an older Home Screen shortcut.
+4. Reload the iPhone page after replacing the files. If an old copy persists, close that local-preview tab and reopen `http://MAC_IP:8000/desk/?review=final-identity`. Open the page in Safari rather than an older Home Screen shortcut.
 5. If the Mac asks whether Python can accept incoming connections, allow it for this local review. If the address command returns nothing, use the Mac's Wi-Fi IP address shown in System Settings.
 6. Keep the Mac awake and the server running. Stop the server with Control-C when finished.
 
 No build, package installation or application credentials are needed. The direct destination links intentionally open the existing public applications; use Back to return to Desk.
 
-## IH. integration checks
+## Review checks
 
-- **Header:** At normal MacBook size in Safari and Chrome, the complete circular IH. should balance the existing italic desk. wordmark without competing with it. Both initials must remain distinct, the enclosure fine, and the copper period subordinate. The copper period must contain the seated, upward-looking dog to the left of the pine; inspect `/desk/assets/identity/ih-monogram.svg` enlarged to examine its geometry.
-- **iPhone and transitions:** Review portrait at normal and enlarged text, then narrow/resize the Mac window. The mark uses the compact illustrated master at 1000px and below; it must never change to a plain copper dot. Header sizes are 120/104/96/88px. At the usual 96px phone size, the period is about 10px wide: verify the separate dog/tree silhouettes, while recognizing that the ear and fine branches are too small to read reliably. Inspect the SVG enlarged when evaluating those details. Check clear space, crisp initials, alignment, no clipping and no sideways scrolling at 320–430 CSS-pixel widths. The accepted wordmark and introductory copy should retain their hierarchy.
-- **Footer:** Scroll to the end. The 26px copper-period signature should sit centered between two equal, fine rules, above the existing footer row. It should read as the editorial close between the final panel and the utility controls, with equal 12px gaps on both sides of the period. Check breathing room above the phone's bottom safe area. Back-to-top and “Keep desk. close” must remain usable; opening installation help must not collide with the signature.
-- **Day/night:** Switch both ways and inspect the header and footer. Letters and enclosure should follow the page ink; the copper and cream silhouette should remain consistent. The established Eastern schedule and visit-only override are unchanged. Reload to recheck automatic appearance and absence of a wrong-theme flash.
-- **Accessibility:** VoiceOver should announce the header once as “Iain Holmes — IH. personal monogram”; the repeated footer ornament should be skipped. Neither mark adds a tab stop or tiny touch target. Verify visible focus and comfortable touch use on the preserved footer controls and sticky appearance switch.
-- **Preservation:** Quickly exercise all three section links, a direct destination, an optional introduction and back-to-top. Each selected section heading should remain below the sticky bar, including Personal website. Typography, canonical artwork, SVG link arrows and existing Home Screen/favicon assets are unchanged. No shortcut reinstallation is required for this pass.
+- **Exact identity:** Compare `/desk/assets/identity/ih-master.png` with your supplied original, then `/desk/assets/identity/ih-signature.png` at native size. The crop must preserve both initials, the H crossbar extension, period placement, colors and Rupert/loblolly detail. There is no circular enclosure, alternate lettering or simplified mobile mark.
+- **Desktop opening:** Check the balance of the italic desk. wordmark, Dunhill Oblique introduction and light-mounted personal signature at normal zoom on the 15-inch MacBook Air. Inspect the quiet vertical division and the breathing room before navigation.
+- **iPhone opening:** The wordmark and signature share the first row; the introduction occupies its own full-width row below. Check portrait, enlarged text, and 320–430 CSS-pixel widths for overlap or sideways scrolling. The complete image must remain visible. The tiny header scene is inherently miniature; the footer shows it more clearly.
+- **Collection:** Check numbered section headings, fine rules, column spacing, the original publication covers and the cream-mounted Rupert plate. Advisor, QST, each publication and the academic profile should retain their identities. At narrow widths the desktop divider disappears; the groups remain clearly separated by spacing.
+- **Footer:** The original copper period should sit between equal rules, above the utility row. The closing phrase is centered on desktop and omitted on phone as before. Back-to-top and installation help must remain comfortably usable, with no overlap or safe-area clipping.
+- **Day/night:** Both themes must show the exact same green/copper logo on its light mount. Switch manually, scroll and reload; the accepted Eastern schedule and visit-only override remain unchanged. Inspect text contrast, focus outlines and night panel colors.
+- **Navigation/accessibility:** Exercise all three section links, especially Personal website, plus direct fragments and Back. Headings should still arrive 12px beneath the sticky toolbar. Tab/Enter through the page and use VoiceOver: the header image is named once; the footer ornament is skipped. Check every optional introduction and a direct application link.
 
-Report any integration-specific defect with its browser/device and a screenshot of the affected area. The overall design remains accepted. No build, dependency installation, new preview service or Sites launch is needed. See `IDENTITY-INTEGRATION.md` for the separate read-only proposal; no cross-site visual changes are expected.
+No build or dependency installation is needed to review the committed site. Report any defect with browser/device, viewport or zoom setting, and a screenshot. The supported managed browser remains unavailable; no substitute preview or deployment was used.

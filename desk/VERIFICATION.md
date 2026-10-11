@@ -1,35 +1,34 @@
-# desk. IH. visual-correction verification
+# desk. final identity and editorial refinement verification
 
-## Status and scope
+## Recovery and scope
 
-**Draft PR #4; unmerged and undeployed.** Branch: `desk/foundation-20261010`. The working tree was clean at `175bba989170c1e37a5ba9351955ebf2eab87add` when this correction began. The accepted site foundation remains `df8c942`. This pass corrects only IH. vector fidelity and header/footer placement, plus their documentation and validation. All repository changes remain in `desk/`.
+Resumed the existing branch `desk/foundation-20261010` at `314657d8824bbee4ee1162d071913b96894eaf15`. The working tree was clean: the interrupted creative pass had inspection progress but no uncommitted implementation to recover. Prior accepted functionality and artwork were preserved. All changes remain within `desk/`. PR #4 stays draft, unmerged and undeployed.
 
-## Demonstrated discrepancies and corrections
+## Completed composition
 
-- The first implementation explicitly replaced the scene with a solid dot below 1000px. The user's header screenshot confirms it. **Every variant now contains Rupert and the loblolly.** Compact geometry opens branch spacing and strengthens fine strokes instead of removing the defining figures.
-- Compared the large SVG with the approved logo using normalized enclosures. Refined the I/H vertical placement, serifs, spacing and H/period baseline; retained separate initials and a fine circle. Period diameter is 10.4% of the canvas, matching the reference's approximate proportion and remaining constant at every breakpoint.
-- Replaced the coarse tree and dog contours with a seated haunch/foreleg, lifted muzzle, ear, resting tail and ground, beside six irregular branch tiers. The compact master uses four more open tiers and no ear cutout. Clear space separates the muzzle from the branches.
-- Warmed only the signature copper from `#976144` to `#a45f35` toward the approved reference. Copper/cream remain fixed in day/night. Accepted page colors, wordmark color, typefaces and theme logic are unchanged.
-- Header scale is now 120px desktop, 104px intermediate, 96px phone and 88px narrow phone, with a small mobile optical offset. The wordmark and its descriptive typography are unchanged.
-- The supplied footer capture showed the signature appended below the utility row. It now closes the content above those controls, using equal rule tracks, .75px lines, 12px gaps and a centered 26px illustrated period. The group has more deliberate space from the final panel and preserves footer functionality.
+Refined the maximum page measure, outer margins, header spacing and wordmark scale. The existing introductory sentence uses authentic Dunhill Oblique; on iPhone it occupies a separate full-width row below the wordmark and signature. Numbered section headings and fine rules establish a consistent rhythm. Wider gutters and a desktop vertical divider distinguish the two application groups without imposing a uniform card design. Publication covers retain their full artwork with more breathing room; the Rupert plate receives a narrow cream mount. The final illustrated period concludes the page between symmetrical rules above the preserved footer controls.
+
+## Exact final identity
+
+The supplied `IH_personal logo(1).png` supersedes every previous identity. `assets/identity/ih-master.png` is an unchanged copy, SHA-256 `7e2dabb7244b44c8a582792f59ff3cb1fa0eb8e911a8a4e7c249d68c5ba0c619`. The header and footer PNGs are integer-coordinate whitespace crops. Pixel equality against the corresponding master regions is tested; there is no resampling, redraw, recoloring, transparency conversion or substitute typography. Obsolete SVGs and their generator were removed.
+
+The header displays the same complete artwork at every breakpoint on a light paper mount, including night appearance. This preserves the original green, copper and textured light background. The footer uses the exact original illustrated period. See `assets/identity/README.md` for coordinates, dimensions and reproduction instructions.
 
 ## Visual evidence and limitations
 
-Inspected the approved logo, both identity boards and the user's existing header/footer screenshots. The concept sheet containing alternative plain-dot ideas does not override the specifically approved Rupert/loblolly mark. Illustrative hero imagery and publication mockups were not reproduced.
+Inspected the supplied master and both earlier reference boards. The boards inform editorial craftsmanship, not replacement layouts. Examined the crops at native resolution and actual-size asset proofs at 148, 132, 112 and 100px header mount widths and a 32px footer signature, against day and night backgrounds. The original I/H geometry, staggered alignment, extended H crossbar, period placement and illustration are retained.
 
-Rendered the final primary SVG at 1000px and compared it with the approved reference. Also inspected Inkscape proofs of **120, 104, 96 and 88px** header marks, the **26px** ruled footer device, both day/night palettes and a **3× raster** of the phone-sized SVG. Both initials remain distinct; both dog/tree silhouettes are present and separate. At 96px, the period is about 10px and Rupert only about 4px tall. The scene is therefore miniature: the ear and individual branch tips are not reliably readable at normal viewing distance, even on a high-density display. This limitation is documented rather than hidden by substituting a plain dot. The 26px footer scene is materially clearer.
+The small header period is approximately 10–15px across. Its scene remains present but Rupert and individual branches cannot be reliably distinguished at normal viewing distance on the smallest rendering. No simplified mark is substituted and the period is not enlarged independently. The 32px footer presentation makes the scene clearer; its 60px source crop also limits useful enlargement. Final physical-device legibility is for the owner's review.
 
-**These are asset renderings, not a browser rendering of the revised website.** Current source geometry and the owner's prior captures informed header/footer corrections; final integrated proportions, surrounding negative space, Safari/Chrome behavior and physical iPhone acceptance remain for the owner's established local review. No claim of complete visual acceptance is made.
+These are image proofs, **not browser screenshots of the website**. Integrated layout, wrapping, enlarged text, touch behavior and Safari/Chrome acceptance still require the established MacBook/iPhone review in `LOCAL-REVIEW.md`. The managed preview previously failed twice before startup with `bwrap: Can't mount proc on /newroot/proc: Operation not permitted`; no supported browser-control dependency was available. No launch retry, substitute preview infrastructure or deployment was performed. No hosted preview link is available.
 
-The Sites managed-preview environment still has no exposed supported browser-control dependency. Its prior launch and retry failed before initialization with `bwrap: Can't mount proc on /newroot/proc: Operation not permitted`. No launch was retried, browser installed, substitute preview infrastructure started or deployment performed. Follow `LOCAL-REVIEW.md`.
+## Validation — 11 October 2026
 
-## Validation — 10 October 2026, Eastern
+- `python3 desk/_tools/validate.py --online`: **226 static/source checks passed**, including all 12 destination URLs and both portfolio fragments. Includes exact master hash, pixel-identical crops, deterministic exports/HTML, artwork/font provenance, accessible identity labeling and repository isolation.
+- `node --check desk/desk.js`: passed.
+- `node --test desk/_tools/test-runtime.cjs`: **7 tests passed**, covering Eastern time/DST boundaries, scheduling, visit-only override, all three section positions/focus, bottom scroll space and fragment/history behavior. These are simulated-DOM tests, not browser tests.
+- Generated main content and navigation match the previous commit. Runtime, project configuration, runtime tests and all 39 non-identity assets are byte-identical. Section headings retain the existing measured 12px sticky-navigation offset; no new top padding shifts the anchored heading.
+- Header artwork has one descriptive accessible image name; the footer ornament is hidden from assistive technology. Existing controls, focus treatment and direct links remain intact. No filter changes the approved image in night appearance.
+- `git diff --check` passed. Candidate paths remain exclusively within `desk/`; full PR isolation is checked before updating the branch.
 
-- Canonical SVGs and HTML regenerate deterministically with `node desk/_tools/build-identity.mjs` and `node desk/_tools/build.mjs`.
-- `node --check desk/desk.js` and the established runtime suite: **7 tests passed**, covering Eastern time/DST, scheduling, visit-only override, section positioning/focus, bottom scroll space and fragment/history behavior. The runtime and tests are unchanged; these are simulated-DOM tests.
-- `python3 desk/_tools/validate.py --online`: **254 checks passed**, including HTTP 200 for all 12 destination URLs and both portfolio fragments. Adds a regression requirement that every identity asset contains Rupert and the loblolly; retains asset hashes, local clipping, portable vector structure, embedded/canonical equivalence, accessible labels, source artwork/font provenance, deterministic output and repository isolation.
-- Identity contrast: letters/enclosure **10.26:1 day / 13.97:1 night**; copper against day paper/cream **4.22:1**, against night paper **3.44:1**. The illustration and mark exceed the 3:1 graphic threshold. Decorative rules use the current ink at 45% opacity.
-- Byte preservation checks cover the runtime, project configuration, manifest, existing icons, canonical artwork, all fonts/licenses and the generated page's accepted masthead, toolbar and main content.
-- `git diff --check` passed. All candidate and complete PR paths are under `desk/`.
-
-Keep this PR draft. The cross-site assessment remains a proposal only; its old 48–56px full-monogram suggestion is revised to respect the newly explicit minimum size. No cross-site changes, merge or deployment are authorized.
+Cross-site identity changes remain a separate future assignment. Final visual acceptance and release require the owner's approval.

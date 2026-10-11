@@ -62,27 +62,35 @@
   "finishing_pass": "2026-10-10; accepted a90259a composition, five requested corrections and lowercase italic wordmark.",
   "personal_signature": {
     "finalized_on": "2026-10-11",
-    "reference": "Elegant IH Monogram with Dog and Pine Dot.png",
-    "reference_sha256": "2172ea8bd3b2af6d0a32036a047d27f00d0c709aba7ecdc928b9e58aa39b1dba",
-    "construction": "Original vector paths optically redrawn against the approved reference. Every format retains Rupert and the loblolly; the compact master simplifies fine detail without replacing the scene with a plain dot.",
+    "source_filename": "IH_personal logo(1).png",
+    "master": "assets/identity/ih-master.png",
+    "master_sha256": "7e2dabb7244b44c8a582792f59ff3cb1fa0eb8e911a8a4e7c249d68c5ba0c619",
+    "policy": "Exact supplied master supersedes all prior vectors and typographic specifications. Derivatives are integer-coordinate, lossless whitespace crops only. No resizing, recoloring, transparency manipulation or reconstruction.",
     "assets": [
       {
-        "asset": "assets/identity/ih-monogram.svg",
-        "sha256": "476a82e9a1440014b44d30e8d1e7185272dc0d7d4424e3825900d748defaefd4"
+        "asset": "assets/identity/ih-master.png",
+        "sha256": "7e2dabb7244b44c8a582792f59ff3cb1fa0eb8e911a8a4e7c249d68c5ba0c619"
       },
       {
-        "asset": "assets/identity/ih-monogram-night.svg",
-        "sha256": "203c2fb2eaf3d989fabded626b89f0ca43cca0236afb935b01a07a8bc2aa7ef5"
+        "asset": "assets/identity/ih-signature.png",
+        "sha256": "d069d41082adfe788c3dda539f2e20d4e9ba5173799b10dc408c115028e428f7",
+        "source_crop": [
+          400,
+          380,
+          866,
+          818
+        ]
       },
       {
-        "asset": "assets/identity/ih-monogram-small.svg",
-        "sha256": "60817a71e8117e0dc5f018d6c7891d015fe2e81e7a9d5efcd8858d6dfbd773b5"
-      },
-      {
-        "asset": "assets/identity/copper-period.svg",
-        "sha256": "18552fb84a3b6775384366d9030f6cf1bb9fd847067efa50c1638f44a00b9dd9"
+        "asset": "assets/identity/ih-period.png",
+        "sha256": "3ab32c2f0dd7e192b003ffa0a3813622299ef91b90029e1da162b0af2101a028",
+        "source_crop": [
+          780,
+          723,
+          840,
+          783
+        ]
       }
-    ],
-    "corrected_on": "2026-10-10 America/New_York"
+    ]
   }
 }

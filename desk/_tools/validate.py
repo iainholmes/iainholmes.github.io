@@ -139,41 +139,33 @@ for file, size in [('apple-touch-icon.png', 180), ('icon-192.png', 192), ('icon-
     image = (ROOT / 'assets' / file).read_bytes()
     check(image[:8] == b'\x89PNG\r\n\x1a\n' and int.from_bytes(image[16:20], 'big') == size and int.from_bytes(image[20:24], 'big') == size, f'Incorrect PNG dimensions: {file}')
 
-# The personal signature must remain portable vector geometry with one accessible label.
-identity_assets = {}
-for item in provenance['personal_signature']['assets']:
-    data = (ROOT / item['asset']).read_bytes()
-    check(sha256(data).hexdigest() == item['sha256'], 'Personal signature provenance mismatch')
-    svg = ET.fromstring(data)
-    check(svg.attrib.get('viewBox') in ['0 0 1000 1000', '0 0 100 100'], 'Identity canvas must remain square')
-    check(svg.attrib.get('role') == 'img' and bool(svg.attrib.get('aria-label')), 'Standalone identity needs an accessible name')
-    check(all(node.tag.rsplit('}', 1)[-1] in ['svg', 'title', 'desc', 'circle', 'g', 'path', 'defs', 'clipPath'] for node in svg.iter()), 'Identity must use only static vector geometry')
-    check(all(not k.lower().startswith('on') and k.rsplit('}', 1)[-1] != 'href' for node in svg.iter() for k in node.attrib), 'No identity script or external resource')
-    ids = {node.attrib['id'] for node in svg.iter() if 'id' in node.attrib}
-    check(all(ref in ids for ref in re.findall(r'url\(#([^)]*)\)', data.decode())), 'Identity clipping references must resolve locally')
-    check(any(node.attrib.get('fill') == '#a45f35' for node in svg.iter()), 'Reference-matched copper signature color must remain constant')
-    check(all(any(node.attrib.get('data-part') == part and node.attrib.get('d') for node in svg.iter()) for part in ['pine', 'rupert']), 'Every identity variant must retain Rupert and the loblolly')
-    if 'monogram' in item['asset']:
-        initials = {node.attrib.get('data-initial'): node.attrib.get('d') for node in svg.iter() if 'data-initial' in node.attrib}
-        check(set(initials) == {'I', 'H'} and initials['I'] != initials['H'], 'Both distinct initials are required')
-    identity_assets[Path(item['asset']).name] = (data, svg)
-primary = identity_assets['ih-monogram.svg'][1]
-night = identity_assets['ih-monogram-night.svg'][1]
-check([n.attrib.get('d') for n in primary.iter() if 'd' in n.attrib] == [n.attrib.get('d') for n in night.iter() if 'd' in n.attrib], 'Night treatment must preserve primary geometry')
-small = identity_assets['ih-monogram-small.svg'][1]
-check(any(n.attrib.get('data-part') == 'period' and n.attrib.get('transform') == 'translate(702 633) scale(1.04)' for n in small.iter()), 'Compact identity must preserve the reference period proportion and placement')
-check(sum(attrs.get('class') == 'owner-mark' and attrs.get('role') == 'img' and attrs.get('aria-label') == 'Iain Holmes — IH. personal monogram' for _, attrs in page.tags) == 1, 'Expose the personal identity once in the header')
+# The supplied final identity is immutable; derivatives must be exact source pixels.
+from PIL import Image
+identity = provenance['personal_signature']
+master_path = ROOT / identity['master']
+check(sha256(master_path.read_bytes()).hexdigest() == '7e2dabb7244b44c8a582792f59ff3cb1fa0eb8e911a8a4e7c249d68c5ba0c619', 'Supplied IH. master must remain byte-identical')
+master = Image.open(master_path)
+check(master.size == (1254, 1254) and master.mode == 'RGBA', 'Preserve master dimensions and channels')
+identity_before = {}
+for item in identity['assets']:
+    path = ROOT / item['asset']
+    data = path.read_bytes()
+    identity_before[path] = data
+    check(sha256(data).hexdigest() == item['sha256'], 'Identity asset provenance mismatch')
+    if 'source_crop' in item:
+        crop = master.crop(item['source_crop'])
+        export = Image.open(path)
+        check(export.size == crop.size and export.mode == crop.mode, 'No identity resampling or channel conversion')
+        check(export.tobytes() == crop.tobytes(), 'Every exported identity pixel must equal the supplied master crop')
+check(not list((ROOT / 'assets/identity').glob('*.svg')), 'Remove superseded reconstructed identity SVGs')
+check(sum(tag == 'img' and attrs.get('src') == 'assets/identity/ih-signature.png' and attrs.get('alt') == 'Iain Holmes — IH. personal signature with Rupert beneath a loblolly pine' for tag, attrs in page.tags) == 1, 'Header must expose the exact supplied identity once')
+check(sum(tag == 'img' and attrs.get('src') == 'assets/identity/ih-period.png' and attrs.get('alt') == '' and attrs.get('aria-hidden') == 'true' for tag, attrs in page.tags) == 1, 'Footer uses the exact decorative period crop')
 check(any(attrs.get('class') == 'footer-signature' and attrs.get('aria-hidden') == 'true' for _, attrs in page.tags), 'Repeated footer signature is decorative')
-check('A personal collection' not in source, 'Replace the old owner block rather than duplicating it')
 check('footer-utilities' in source and 'Keep desk. close' in source and 'desk. — back to top' in source, 'Preserve footer controls')
-for key, filename in [('primary', 'ih-monogram.svg'), ('small', 'ih-monogram-small.svg'), ('period', 'copper-period.svg')]:
-    embedded = re.search(r'<svg class="identity-' + key + r'".*?</svg>', source, re.S)
-    check(embedded is not None, f'Missing inline {key} identity')
-    svg = ET.fromstring(embedded.group(0))
-    check(svg.attrib.get('aria-hidden') == 'true' and svg.attrib.get('focusable') == 'false', 'Inline identities must not introduce duplicate announcements or focus stops')
-    check([ET.tostring(n) for n in svg] == [ET.tostring(n) for n in identity_assets[filename][1]], 'Inline identity geometry must match the canonical asset')
-subprocess.run(['node', str(ROOT / '_tools/build-identity.mjs')], check=True, capture_output=True)
-check(all((ROOT / 'assets/identity' / name).read_bytes() == data for name, (data, _) in identity_assets.items()), 'Canonical identity generation must be deterministic')
+check('identity-small' not in source + css and 'ih-monogram' not in source, 'Never switch back to a reconstructed or simplified logo')
+check(not re.search(r'(?:filter|mix-blend-mode)\s*:', css), 'Never recolor or blend the supplied identity')
+subprocess.run([sys.executable, str(ROOT / '_tools/prepare-identity.py')], check=True, capture_output=True)
+check(all(path.read_bytes() == data for path, data in identity_before.items()), 'Identity crop generation must be deterministic and preserve the master')
 
 before = source
 subprocess.run(['node', str(ROOT / '_tools/build.mjs')], check=True, capture_output=True)
