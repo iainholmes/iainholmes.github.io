@@ -128,5 +128,24 @@
         "sha256": "735d035f91b44dd889c3a206c229a281fb763b72d4c4163bf539d1b954410e49"
       }
     ]
+  },
+  "chapter_signatures": {
+    "authored_on": "2026-10-11",
+    "source": "Original hand-authored SVG companion devices for the IH. collection; no third-party art or reconstructed IH. initials.",
+    "policy": "Secondary chapter identities only. Hide on any chapter reveal; canonical personal logo and application artwork are unchanged.",
+    "assets": [
+      {
+        "asset": "assets/chapter-signatures/field-folio.svg",
+        "sha256": "18b7c63651dfa42065a1200cf0835732f53a1c992374814d7fd08f300dfad68a"
+      },
+      {
+        "asset": "assets/chapter-signatures/inquiry.svg",
+        "sha256": "21e095ac4fb1217a50e1ac09e2686be46ab5877c052fb9f388a8265d2563f192"
+      },
+      {
+        "asset": "assets/chapter-signatures/scholar.svg",
+        "sha256": "5d30ec290f1a3a2602bd3bee250b9ac293bbd671f9505d3161e09db44fd3672d"
+      }
+    ]
   }
 }

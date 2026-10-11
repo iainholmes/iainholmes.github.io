@@ -45,6 +45,14 @@ Switches replace one layout with the other, then position and focus the stable w
 
 The [cross-site assessment](IDENTITY-INTEGRATION.md) remains historical guidance only. Expansion of the identity is a separate future assignment.
 
+## Final editorial identities
+
+Three [companion signatures](assets/chapter-signatures/README.md) now introduce the default chapters: **Inquiry** uses a measured divider construction; **Field & folio** joins an open book and pine in one continuous device; **Scholar** uses an abstract architectural bookplate. They share line weights, forest/ivory ink, restrained copper points and Dunhill labels. Desktop signatures sit beside the heading; mobile signatures sit above the title alongside its number. Any reveal in a chapter hides that signature until the full collection returns. The accepted application and collection compositions remain unchanged.
+
+The exact IH. header image now sits within a finely ruled archival-paper bookplate, with unchanged image display dimensions. Footer text is exactly **“Everything in its right place.”** The line is centered on desktop and below the existing controls on phone; the canonical copper-period ornament remains intact. No added attribution, lyrics, navigation or animation.
+
+The [rendered proof](./_review/identity-refinement.png) shows the three signature assets and logo mount at desktop/mobile dimensions in both palettes. It does not establish integrated browser acceptance.
+
 ## Preserved material
 
 - Advisor's original mark, navy identity and research-design workflow.

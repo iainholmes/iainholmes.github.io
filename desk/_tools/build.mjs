@@ -98,6 +98,11 @@ function work(p, chapter, authentic) {
 }
 const groups = group => config.projects.filter(p=>p.group===group).map(p=>p.presentation==='periodicals' ? render(p) : work(p,group,render(p))).join('\n');
 const chapterReturn = id => `<button class="chapter-return" type="button" data-return="${id}" hidden>Return chapter to collection</button>`;
+// Secondary editorial signatures never reproduce or alter the canonical IH. mark.
+const chapterIdentities = {research:['inquiry','Inquiry'], reading:['field-folio','Field & folio'], profile:['scholar','Scholar']};
+const chapterMarks = new Map(await Promise.all(Object.entries(chapterIdentities).map(async ([id,[file,label]]) => [id,
+  `<div class="chapter-signature" data-chapter-signature="${id}" aria-hidden="true">${await readFile(new URL(`assets/chapter-signatures/${file}.svg`,root),'utf8')}<span>${escape(label)}</span></div>`
+])));
 // The final identity is a fixed user-supplied raster master, never reconstructed.
 const identity = {
   primary: '<img src="assets/identity/ih-signature.png" width="466" height="438" alt="Iain Holmes — IH. personal signature with Rupert beneath a loblolly pine" decoding="async">',
@@ -130,7 +135,7 @@ const html = `<!doctype html>
   <div class="desk-shell">
     <header class="desk-header">
       <div class="masthead"><h1>desk<span>.</span></h1></div>
-      <div class="owner-mark">${identity.primary}</div>
+      <div class="owner-mark"><div class="bookplate-window">${identity.primary}</div></div>
     </header>
     <div class="desk-toolbar">
     <nav class="desk-nav" aria-label="Desk sections"><a href="#research"><span>Research <span class="nav-detail">&amp; practice</span></span></a><a href="#reading"><span>Reading <span class="nav-detail">&amp; outdoors</span></span></a><a href="#profile"><span>Personal <span class="nav-detail">website</span></span></a></nav>
@@ -142,12 +147,12 @@ const html = `<!doctype html>
     </div>
     <main id="destinations" tabindex="-1">
       <div class="collections">
-        <section class="research-group editorial-chapter" id="research" tabindex="-1" aria-labelledby="research-title"><div class="section-heading"><h2 id="research-title">Research &amp; practice</h2><span aria-hidden="true">01</span></div>${chapterReturn('research')}<div class="research-projects">${groups('research')}</div></section>
-        <section class="reading-group editorial-chapter" id="reading" tabindex="-1" aria-labelledby="reading-title"><div class="section-heading"><h2 id="reading-title">Reading &amp; outdoors</h2><span aria-hidden="true">02</span></div>${chapterReturn('reading')}<div class="reading-projects">${groups('reading')}</div></section>
+        <section class="research-group editorial-chapter" id="research" tabindex="-1" aria-labelledby="research-title"><div class="section-heading"><h2 id="research-title">Research &amp; practice</h2><span aria-hidden="true">01</span>${chapterMarks.get('research')}</div>${chapterReturn('research')}<div class="research-projects">${groups('research')}</div></section>
+        <section class="reading-group editorial-chapter" id="reading" tabindex="-1" aria-labelledby="reading-title"><div class="section-heading"><h2 id="reading-title">Reading &amp; outdoors</h2><span aria-hidden="true">02</span>${chapterMarks.get('reading')}</div>${chapterReturn('reading')}<div class="reading-projects">${groups('reading')}</div></section>
       </div>
-      <section class="profile-group editorial-chapter" id="profile" tabindex="-1" aria-labelledby="profile-title"><div class="section-heading"><h2 id="profile-title">Personal website</h2><span aria-hidden="true">03</span></div>${chapterReturn('profile')}<div class="profile-composition">${groups('profile')}</div></section>
+      <section class="profile-group editorial-chapter" id="profile" tabindex="-1" aria-labelledby="profile-title"><div class="section-heading"><h2 id="profile-title">Personal website</h2><span aria-hidden="true">03</span>${chapterMarks.get('profile')}</div>${chapterReturn('profile')}<div class="profile-composition">${groups('profile')}</div></section>
     </main>
-    <footer class="desk-footer"><div class="footer-utilities"><a href="#top" class="footer-wordmark" aria-label="desk. — back to top">desk.</a><p>Everything has its place.</p><details class="install-help"><summary>Keep desk. close<span class="disclosure-sign" aria-hidden="true"></span></summary><div>On iPhone, open desk. in Safari, tap Share, then Add to Home Screen.</div></details></div><div class="footer-signature" aria-hidden="true">${identity.period}</div></footer>
+    <footer class="desk-footer"><div class="footer-utilities"><a href="#top" class="footer-wordmark" aria-label="desk. — back to top">desk.</a><p>Everything in its right place.</p><details class="install-help"><summary>Keep desk. close<span class="disclosure-sign" aria-hidden="true"></span></summary><div>On iPhone, open desk. in Safari, tap Share, then Add to Home Screen.</div></details></div><div class="footer-signature" aria-hidden="true">${identity.period}</div></footer>
     <div id="section-scroll-room" aria-hidden="true"></div>
   </div>
 </body>

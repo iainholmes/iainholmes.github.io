@@ -1,6 +1,6 @@
-# Review the IH. collection and authentic application reveals
+# Review the final editorial identity refinements
 
-PR #4 remains draft and undeployed. This revision replaces automatic scroll-driven chapter styling with separate IH. collection and authentic application presentations. Full browser acceptance has not occurred in Work.
+PR #4 remains draft and undeployed. The two-state collection/application design is accepted. This finishing pass adds three chapter signatures, frames the unchanged IH. header artwork and replaces the footer line. Full browser inspection of this finishing pass has not occurred in Work.
 
 ## Refresh the existing Mac preview
 
@@ -19,11 +19,20 @@ In Terminal, `cd` to the repository folder containing the root index.html and de
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Open [the local collection](http://localhost:8000/desk/?review=ih-collection) in Safari and Chrome with **no fragment after the URL**. Reload without cache with Option-Command-R in Safari or Shift-Command-R in Chrome. No package installation or build is required. Preserve local edits; if Git reports divergence, use the fresh ZIP instead of resetting them.
+Open [the local collection](http://localhost:8000/desk/?review=final-identities) in Safari and Chrome with **no fragment after the URL**. Reload without cache with Option-Command-R in Safari or Shift-Command-R in Chrome. No package installation or build is required. Preserve local edits; if Git reports divergence, use the fresh ZIP instead of resetting them.
 
 ## iPhone
 
-Keep the Mac awake and server running on the same Wi-Fi network. Find its Wi-Fi address using `ipconfig getifaddr en0` (or System Settings if empty). Open `http://MAC_IP:8000/desk/?review=ih-collection` in iPhone Safari, replacing MAC_IP. Use Safari rather than an older Home Screen shortcut. Allow Python's incoming local-network connection if macOS asks.
+Keep the Mac awake and server running on the same Wi-Fi network. Find its Wi-Fi address using `ipconfig getifaddr en0` (or System Settings if empty). Open `http://MAC_IP:8000/desk/?review=final-identities` in iPhone Safari, replacing MAC_IP. Use Safari rather than an older Home Screen shortcut. Allow Python's incoming local-network connection if macOS asks.
+
+## Focus of this final review
+
+- Inspect the three companion signatures in Day and Night. Desktop placement is beside the heading; phone placement is a small running signature above the title. They should be legible without crowding titles or competing with the existing illustrations.
+- Reveal a whole chapter, then an individual application. Its chapter signature should disappear in either case and return when all works in that chapter return to the collection. The original application panels must remain unchanged.
+- Inspect the header's light, finely ruled bookplate alongside the italic wordmark. The artwork and its displayed size are unchanged; only the surrounding mount differs. Check narrow portrait widths and increased text size.
+- Confirm the exact centered footer line **“Everything in its right place.”** It now also appears beneath the existing footer controls on phone. Check the retained copper period, back-to-top link and Home Screen help.
+
+The [asset proof](./_review/identity-refinement.png) shows the new marks and mount in both palettes. It is not a page screenshot. The broader regression procedure below is retained as a reference; it does not reopen the accepted two-state design.
 
 ## Required before/after visual captures
 

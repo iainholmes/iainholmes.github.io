@@ -16,9 +16,9 @@ Master SHA-256: `7e2dabb7244b44c8a582792f59ff3cb1fa0eb8e911a8a4e7c249d68c5ba0c61
 
 ## Presentation
 
-The same header image is served at every width and in both appearances. Its light paper mount accommodates the original colors on dark surfaces. Never use filters, blend modes, artificial outlines, color inversion or a replacement font. Do not add a circular enclosure to the final mark.
+The same header image is served at every width and in both appearances. A warm archival-paper mount, fine copper outer rule, inset paper rule and forest-gray inner window accommodate the original light background. At night the mount remains deliberately light. These are surrounding HTML/CSS elements, never alterations to the artwork. Never use filters, blend modes, artificial outlines, color inversion or a replacement font. Do not add a circular enclosure to the final mark.
 
-Mount widths are 148px above a 1000px viewport, 132px at 601–1000px, 112px at 371–600px and 100px at 370px and below. Padding and border leave respective image widths of 126, 114, 98 and 88 CSS pixels. The 466px source crop supplies over 3× native resolution even at the largest header size. The header period remains part of the complete image; it is never separately resized or repositioned.
+Mount widths are 156px above a 1000px viewport, 144px at 601–1000px, 122px at 371–600px and 112px at 370px and below. Outer and inner padding/borders preserve the previous image widths exactly: 126, 114, 98 and 88 CSS pixels respectively. The 466px source crop supplies over 3× native resolution even at the largest header size. The header period remains part of the complete image; it is never separately resized or repositioned.
 
 The footer period crop displays at 32px between equal rules with 18px gaps. Its round white surrounding margin accommodates the original light background; clipping removes only the square crop's outer white corners, not the copper disc. The copper disc itself is approximately 29px across, from 54 source pixels. This gives roughly 1.9 source pixels per displayed CSS pixel; higher-density screens will interpolate. Do not invent extra detail to disguise that limit. A higher-resolution original would be required for sharper large exports.
 
