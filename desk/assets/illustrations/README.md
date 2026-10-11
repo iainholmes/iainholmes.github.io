@@ -6,19 +6,19 @@ These devices implement the fish, botanical pine, books and compass vocabulary o
 
 | Asset | Placement and purpose |
 | --- | --- |
-| `field-fish.svg` | Burgundy natural-history ornament above the Field Brief masthead on desktop; above its archival cover on phone. Not a statement that Field Brief specializes in fisheries. |
+| `field-fish.svg` | Burgundy natural-history ornament beside the Field Brief masthead on wide screens; beneath its archival cover on phone. Not a statement that Field Brief specializes in fisheries. |
 | `loblolly-sprig.svg` | Forest-green botanical study of a long-needle pine sprig and cone, paired with Loblolly & Logit's cover. Decorative, not a scientific identification plate. |
 | `workbook-volumes.svg` | Three engraved scholarly volumes with page edges, cloth hatching and a geometric bookboard, paired with The Workbook's equation-bearing cover. |
-| `advisor-dividers.svg` | Warm brass drafting dividers and construction lines beside the existing research-design workflow. Not a new tool, data plot or model result. |
-| `qst-instruments.svg` | Set square and protractor beside the QST introduction, preceding the unchanged language identities and Learn / Practice / Feedback sequence. |
+| `advisor-dividers.svg` | Warm brass drafting dividers and construction lines in the shared Research & Practice chapter opening. Not a new tool, data plot or model result. |
+| `qst-instruments.svg` | Set square and protractor in the shared Research & Practice chapter opening, introducing the unchanged language identities and Learn / Practice / Feedback sequence. |
 | `atlas-bearing.svg` | Small compass rose and abstract contour lines above the Atlas heading, leaving the original Rupert plate unobstructed. Not a geographic map. |
-| `academic-arcade.svg` | Original academic arcade vignette beside the portfolio identity. It is not a depiction of UVA, NC State, Sewanee or any other named building. |
+| `academic-arcade.svg` | Original academic arcade vignette in the Personal Website chapter margin. It is not a depiction of UVA, NC State, Sewanee or any other named building. |
 
 ## Display and accessibility
 
 The page embeds the canonical SVGs unchanged. Their `currentColor` ink inherits the destination's palette; explicit muted cream/ink treatments support night appearance. No filters, scripts, external resources, animation or text fonts occur inside these vectors. The exact personal logo is outside this color system and remains unchanged.
 
-Desktop publication devices occupy an 88–94px-high band; the mobile device is 56–64px high, above the cover in its existing left column. Research instruments occupy reserved side columns; Atlas and portfolio ornaments have independent compact placements. Fine engraving detail naturally reduces at phone sizes, but the principal silhouettes are retained. There is no separate simplified mobile asset.
+Wide-screen publication devices occupy small title margins; mobile devices sit beneath their covers, 42px high. Research instruments share a reserved chapter-opening position. The Atlas compass stays with its heading; the academic arcade occupies a chapter margin on desktop and a restrained opening vignette on phone. Fine engraving detail naturally reduces at phone sizes, but the principal silhouettes are retained. There is no separate simplified mobile asset.
 
 All seven devices are decorative. Wrappers and SVGs use `aria-hidden="true"`; SVGs also use `focusable="false"`. They receive no pointer events, introduce no controls and add no repeated screen-reader description. Existing destination names, link labels and navigation remain authoritative.
 

@@ -170,8 +170,8 @@ check(all(path.read_bytes() == data for path, data in identity_before.items()), 
 # Seven self-contained, decorative devices must remain attached to their destinations.
 illustration_targets = {
     'field-fish':'field-brief', 'loblolly-sprig':'loblolly',
-    'workbook-volumes':'workbook', 'advisor-dividers':'advisor',
-    'qst-instruments':'qst', 'atlas-bearing':'rupert', 'academic-arcade':'portfolio'
+    'workbook-volumes':'workbook', 'advisor-dividers':'research-group',
+    'qst-instruments':'research-group', 'atlas-bearing':'rupert', 'academic-arcade':'profile-group'
 }
 illustration_before = {}
 check(len(provenance['editorial_illustrations']['assets']) == 7, 'Exactly seven editorial devices required')
@@ -186,11 +186,19 @@ for item in provenance['editorial_illustrations']['assets']:
     check(all(not k.lower().startswith('on') and k.rsplit('}',1)[-1] != 'href' for node in svg.iter() for k in node.attrib), 'No active or remote illustration resources')
     name = file.stem
     target = illustration_targets[name]
-    article = re.search(r'<article class="[^"]*\b'+target+r'\b[^"]*".*?</article>', source, re.S)
+    tag = 'section' if target.endswith('-group') else 'article'
+    article = re.search(r'<'+tag+r' class="[^"]*\b'+target+r'\b[^"]*".*?</'+tag+'>', source, re.S)
     check(article is not None and data.decode() in article.group(), f'Illustration missing from its own destination: {name}')
     check(source.count('data-illustration="'+name+'"') == 1, 'Each destination needs its own single illustration')
 subprocess.run([sys.executable, str(ROOT / '_tools/build-illustrations.py')], check=True, capture_output=True)
 check(all(path.read_bytes() == data for path,data in illustration_before.items()), 'Illustration output must reproduce deterministically')
+
+check('A home for research, reading and getting outside.' not in source + json.dumps(config), 'Remove the introductory tagline from served markup and configuration')
+check('<div class="masthead"><h1>desk<span>.</span></h1></div>' in source, 'Home header must not replace the tagline with another sentence')
+check(sum(tag == 'section' and 'editorial-chapter' in attrs.get('class','').split() for tag,attrs in page.tags) == 3, 'Keep exactly three continuous editorial chapters')
+check('class="chapter-instruments" aria-hidden="true"' in source, 'Research instruments belong to the chapter opening')
+check('class="profile-composition"' in source, 'Architecture must frame the academic chapter')
+check('.editorial-chapter::before' in css and 'pointer-events:none' in css, 'Atmospheric layers must not block interaction')
 
 before = source
 subprocess.run(['node', str(ROOT / '_tools/build.mjs')], check=True, capture_output=True)

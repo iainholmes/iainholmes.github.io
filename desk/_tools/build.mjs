@@ -36,14 +36,14 @@ const render = p => {
       <a class="destination-link" href="${e.url}" aria-labelledby="advisor-title advisor-action">
         <div class="advisor-top"><span class="native-label">Research design</span><img src="${e.asset}" width="52" height="52" alt="" aria-hidden="true"></div>
         <h3 id="advisor-title">Econometric<br>Advisor</h3><p class="advisor-description">${e.description}</p>
-        <div class="advisor-study">${plate('advisor-dividers','advisor-device')}<ol class="design-path" aria-label="Research-design workflow">${p.workflow.map((v,i)=>`<li><span class="path-number" aria-hidden="true">${number(i)}</span><div><strong>${escape(v.name)}</strong><span>${escape(v.detail)}</span></div></li>`).join('')}</ol></div>
+        <div class="advisor-study"><ol class="design-path" aria-label="Research-design workflow">${p.workflow.map((v,i)=>`<li><span class="path-number" aria-hidden="true">${number(i)}</span><div><strong>${escape(v.name)}</strong><span>${escape(v.detail)}</span></div></li>`).join('')}</ol></div>
         <span class="open-line" id="advisor-action">${e.action}${arrow}</span>
       </a>
       ${disclosure('Inside Advisor', '<p>Start with your research question and data. The assessment connects your design to a methods toolkit and an interactive knowledge graph.</p><dl class="context-list"><div><dt>Develop</dt><dd>Identification, estimating equations and diagnostics.</dd></div><div><dt>Take away</dt><dd>A research-design brief, methods appendix or reviewer reference.</dd></div></dl>')}
     </article>`;
     case 'qst': return `<article class="qst destination" aria-labelledby="qst-title">
       <a class="destination-link" href="${e.url}" aria-labelledby="qst-title qst-action">
-        <div class="qst-introduction">${plate('qst-instruments','qst-device')}<div class="qst-top"><h3 id="qst-title"><span class="qst-initials">${e.shortName}</span><span class="qst-full">${e.name}</span></h3><span class="native-label">Quantitative practice</span></div>
+        <div class="qst-introduction"><div class="qst-top"><h3 id="qst-title"><span class="qst-initials">${e.shortName}</span><span class="qst-full">${e.name}</span></h3><span class="native-label">Quantitative practice</span></div>
         <p class="qst-description">${e.description}</p></div>
         <ul class="language-strip" aria-label="Available languages">${p.languages.map((v,i)=>`<li class="language language-${i}">${escape(v)}</li>`).join('')}</ul>
         <ol class="learning-sequence" aria-label="Learning sequence">${p.sequence.map((v,i)=>`<li><span class="phase-number" aria-hidden="true">${number(i)}</span><strong>${escape(v.name)}</strong><span class="phase-detail">${escape(v.detail)}</span></li>`).join('')}</ol>
@@ -68,7 +68,7 @@ const render = p => {
       ${disclosure('A way into the Atlas', '<p>Start with <strong>This Week</strong> to choose an outing. Open a full edition for the detail, use <strong>Atlas</strong> to explore and plan, and keep your own account of the visit in <strong>Field Log</strong>.</p>')}
     </article>`;
     case 'portfolio': return `<article class="portfolio" aria-labelledby="portfolio-title">
-      <div class="portfolio-identity">${plate('academic-arcade','portfolio-device')}<span class="native-label">${e.name}</span><h3 id="portfolio-title">${link(p.url,p.displayName)}</h3><p class="portfolio-affiliation">${e.affiliation}</p></div>
+      <div class="portfolio-identity"><span class="native-label">${e.name}</span><h3 id="portfolio-title">${link(p.url,p.displayName)}</h3><p class="portfolio-affiliation">${e.affiliation}</p></div>
       <div class="portfolio-focus"><span class="native-label">Research &amp; professional work</span><p>${e.description}</p><span class="portfolio-methods">Causal inference · Spatial analysis</span></div>
       <nav aria-label="Personal website sections">${link(p.url,p.action,'portfolio-open')}<div>${p.links.map(v=>link(v.url,v.name)).join('')}</div></nav>
     </article>`;
@@ -87,8 +87,8 @@ const html = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#eeeee6">
-  <meta name="description" content="${escape(config.description)} Desk. brings Iain Holmes’s applications, publications and projects together.">
+  <meta name="theme-color" content="#f3efe4">
+  <meta name="description" content="Iain Holmes’s applications, publications and projects.">
   <meta name="apple-mobile-web-app-title" content="desk.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -107,7 +107,7 @@ const html = `<!doctype html>
   <a class="skip-link" href="#destinations">Skip to destinations</a>
   <div class="desk-shell">
     <header class="desk-header">
-      <div class="masthead"><h1>desk<span>.</span></h1><p>${escape(config.description)}</p></div>
+      <div class="masthead"><h1>desk<span>.</span></h1></div>
       <div class="owner-mark">${identity.primary}</div>
     </header>
     <div class="desk-toolbar">
@@ -120,10 +120,10 @@ const html = `<!doctype html>
     </div>
     <main id="destinations" tabindex="-1">
       <div class="collections">
-        <section class="research-group" id="research" tabindex="-1" aria-labelledby="research-title"><div class="section-heading"><h2 id="research-title">Research &amp; practice</h2><span aria-hidden="true">01</span></div><div class="research-projects">${groups('research')}</div></section>
-        <section class="reading-group" id="reading" tabindex="-1" aria-labelledby="reading-title"><div class="section-heading"><h2 id="reading-title">Reading &amp; outdoors</h2><span aria-hidden="true">02</span></div><div class="reading-projects">${groups('reading')}</div></section>
+        <section class="research-group editorial-chapter" id="research" tabindex="-1" aria-labelledby="research-title"><div class="section-heading"><h2 id="research-title">Research &amp; practice</h2><span aria-hidden="true">01</span><div class="chapter-instruments" aria-hidden="true">${plate('advisor-dividers','advisor-device')}${plate('qst-instruments','qst-device')}</div></div><div class="research-projects">${groups('research')}</div></section>
+        <section class="reading-group editorial-chapter" id="reading" tabindex="-1" aria-labelledby="reading-title"><div class="section-heading"><h2 id="reading-title">Reading &amp; outdoors</h2><span aria-hidden="true">02</span></div><div class="reading-projects">${groups('reading')}</div></section>
       </div>
-      <section class="profile-group" id="profile" tabindex="-1" aria-labelledby="profile-title"><div class="section-heading"><h2 id="profile-title">Personal website</h2><span aria-hidden="true">03</span></div>${groups('profile')}</section>
+      <section class="profile-group editorial-chapter" id="profile" tabindex="-1" aria-labelledby="profile-title"><div class="section-heading"><h2 id="profile-title">Personal website</h2><span aria-hidden="true">03</span></div><div class="profile-composition">${plate('academic-arcade','portfolio-device')}${groups('profile')}</div></section>
     </main>
     <footer class="desk-footer"><div class="footer-utilities"><a href="#top" class="footer-wordmark" aria-label="desk. — back to top">desk.</a><p>Everything has its place.</p><details class="install-help"><summary>Keep desk. close<span class="disclosure-sign" aria-hidden="true"></span></summary><div>On iPhone, open desk. in Safari, tap Share, then Add to Home Screen.</div></details></div><div class="footer-signature" aria-hidden="true">${identity.period}</div></footer>
     <div id="section-scroll-room" aria-hidden="true"></div>

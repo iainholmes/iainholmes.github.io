@@ -2,16 +2,18 @@
 
 A self-contained organizational home at `https://iainholmes.github.io/desk/`.
 
-**Desk supplies the composition; its constituent applications supply much of the visual richness.** The owner has accepted the desktop and iPhone composition, application identities, archival artwork, optional introductions, lowercase italic wordmark, typography, navigation and appearance system at `df8c942`. The current pass refines the surrounding editorial composition and integrates the user’s final, fixed IH. artwork. The earlier hand-drawn identity is superseded.
+**Desk supplies the composition; its constituent applications supply much of the visual richness.** The owner has accepted the desktop and iPhone composition, application identities, archival artwork, optional introductions, lowercase italic wordmark, typography, navigation and appearance system at `df8c942`. The current pass introduces the home-to-chapter architecture while retaining the user’s final, fixed IH. artwork. The earlier hand-drawn identity is superseded.
 
 ## Architecture
 
 `index.html` is generated from `projects.json` by a dependency-free Node script and committed for the existing GitHub Pages/Jekyll pipeline. All assets and tools stay inside `desk/`. No root configuration, constituent application, publishing job or shared infrastructure changes are required.
 
-Native links and optional native disclosures keep every destination directly accessible. The small local `desk.js` adds only two behaviors:
+Native links and optional native disclosures keep every destination directly accessible. The small local `desk.js` provides three local behaviors:
 
 - A sticky day/night toggle. Automatic appearance follows `America/New_York`, including daylight-saving time: day from 07:00 through 20:59, night otherwise. It is set before the stylesheet and initial page paint. A choice overrides the clock in memory for the current visit; reloads, new visits and restored back/forward-cache visits reevaluate the clock. A scheduled boundary update keeps an open automatic visit current.
-- Measured section positioning and focus. All three section links land 12 CSS pixels below the sticky bar. The last section receives only the extra document length needed to reach that position. Native fragment URLs and history remain available.
+- Measured section positioning and focus. TOC requests scroll smoothly unless reduced motion is preferred; direct fragments and history restore immediately. All three section links land 12 CSS pixels below the sticky bar. The last section receives only the extra document length needed to reach that position. Native fragment URLs and history remain available.
+
+- Scroll-driven chapter identity: one active chapter gains its own surrounding frame, rules, ink and atmosphere. Passive, animation-frame-coalesced observation updates the active chapter and TOC location without changing history or moving focus. Returning to the top restores home. Chapter identity never overrides appearance choice.
 
 The script makes no network requests and reads no cookies, application data, browser storage, Field Log content or credentials. There is no service worker, backend, embedded app session or offline claim. With JavaScript unavailable, direct links/disclosures remain native and the page uses day appearance.
 
@@ -27,15 +29,15 @@ The final **IH.** signature is the exact supplied image, not a font substitution
 
 ## Editorial composition
 
-The page is treated as a collection with a beginning, distinct chapters and a quiet colophon. A narrower maximum measure, more generous outer margins and a slightly calmer wordmark scale balance the fixed personal signature. Dunhill Oblique gives the existing introductory sentence a clear secondary voice. On iPhone it occupies a full row below the wordmark and signature instead of being compressed alongside them.
+The tagline has been removed without replacement. The opening pairs the lowercase italic wordmark with the exact IH. logo on a warm ivory/forest/copper surround. The three existing groups are sequential editorial chapters on both desktop and phone; the navigation remains stable throughout.
 
-Numbered section headings, fine rules and wider gutters organize the collection. A vertical rule separates the two desktop groups; on narrow screens it gives way to spacing. Publication covers retain their complete archival artwork, with more deliberate paper margins and a light shadow. The Rupert plate gains a narrow cream mount inside its navy field. Advisor, QST and the academic profile retain their distinct palettes, content and working structures. The original illustrated period closes the page between equal rules; the existing footer phrase aligns beneath it on desktop, while phone controls remain a simple two-column row.
+Research uses a navy drafting field with fine grid lines and a shared instrument frontispiece. Advisor retains its dark methodology workflow, while QST retains its light/dark learning surface and three language identities. Reading uses archival paper, individual publication mastheads and prominent original covers, continuing into the Atlas's navy field-guide composition. Personal Website uses scholarly blue and a marginal architectural study, with the original academic identity and links.
 
-The [cross-site assessment](IDENTITY-INTEGRATION.md) remains historical placement guidance only. Any expansion of the identity is a separate future assignment.
+Only the active chapter receives the full atmospheric layer. Color and opacity transitions are restrained and disabled for reduced motion. These layers do not affect layout or anchor geometry. Day/night palettes are separate from chapter state.
 
-## Application illustrations
+The seven original [SVG illustrations](assets/illustrations/README.md) remain unchanged: the two instruments now introduce Research, the fish/pine/books sit beside publication titles on wide screens and beneath their covers on phone, the compass belongs to the Atlas heading, and the arcade frames the academic chapter. The arcade remains an original study rather than a named campus landmark. No new application feature or section is introduced.
 
-Seven original local SVG devices enrich the existing presentations: Field Brief’s natural-history fish, Loblolly & Logit’s pine sprig, The Workbook’s scholarly volumes, Advisor’s drafting dividers, QST’s measurement instruments, the Atlas compass/contours and the portfolio’s academic arcade. Their palette follows each destination in day/night. The arcade is an original architectural study, not a named campus building. No new copy, functionality or page section is introduced. See [illustration guidance](assets/illustrations/README.md).
+The [cross-site assessment](IDENTITY-INTEGRATION.md) remains historical guidance only. Expansion of the identity is a separate future assignment.
 
 ## Preserved material
 

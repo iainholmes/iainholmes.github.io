@@ -1,60 +1,43 @@
-# Review the desk. illustrated application identities
+# Review the home-to-chapter desk. build
 
-PR #4 stays draft and undeployed. This pass adds seven editorial illustrations to the accepted composition and preserves the exact supplied final IH. image. Review the 15-inch MacBook Air and iPhone portrait compositions in both appearances; source tests and asset proofs are not browser acceptance.
+PR #4 remains draft and undeployed. This revision introduces three continuous editorial chapters and removes the introductory tagline. Full browser acceptance has not occurred in Work.
 
-## Refresh a downloaded ZIP
+## Refresh the existing Mac preview
 
-1. Stop the old Python server with **Control-C** in its Terminal window.
-2. Download the updated branch: https://github.com/iainholmes/iainholmes.github.io/archive/refs/heads/desk/foundation-20261010.zip
-3. Extract it into a fresh folder. Keep the old copy separate so files from different revisions cannot mix.
-4. In Terminal, type `cd ` (including the space), drag the newly extracted repository folder from Finder into Terminal, and press Return. This must be the folder containing both the root `index.html` and the `desk` directory.
-5. Run:
-
-```sh
-python3 -m http.server 8000 --bind 0.0.0.0
-```
-
-Open http://localhost:8000/desk/ in Safari and Chrome. Reload without cache: Option-Command-R in Safari; Shift-Command-R in Chrome. The current version has the supplied **uncircled IH.** on a light paper mount at upper right, numbered section headings with fine rules, and the original copper-period image in the footer. A circular logo indicates an obsolete copy.
-
-If port 8000 is already in use, stop the existing preview server first. Keep this Terminal window running throughout the review.
-
-## Refresh a Git checkout instead
-
-From the existing repository folder, with your own local edits saved:
+Stop the old Python server with Control-C. Either pull the existing checkout (with your local edits saved):
 
 ```sh
 git switch desk/foundation-20261010
 git pull --ff-only origin desk/foundation-20261010
+```
+
+Or download and extract a fresh copy of the updated branch ZIP:
+https://github.com/iainholmes/iainholmes.github.io/archive/refs/heads/desk/foundation-20261010.zip
+
+In Terminal, `cd` to the extracted repository folder containing the root index.html and desk directory. Start your established server:
+
+```sh
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Stop any previously running preview server before the last command. If Git reports local changes or a divergent branch, retain them and use the fresh ZIP procedure rather than resetting them.
+Open http://localhost:8000/desk/?review=chapters in Safari and Chrome. Reload without cache with Option-Command-R in Safari or Shift-Command-R in Chrome. The header must show only desk. and the exact IH. logo, with no tagline. Research and Reading now follow one another vertically on desktop.
 
-## Physical iPhone
+## iPhone
 
-1. Connect the Mac and iPhone to the same Wi-Fi network.
-2. In a second Mac Terminal window, get its Wi-Fi address:
+Use the same Wi-Fi network as the Mac. Find the Mac's Wi-Fi address with `ipconfig getifaddr en0` (or System Settings if that returns nothing). Open `http://MAC_IP:8000/desk/?review=chapters` in iPhone Safari, replacing MAC_IP with that address. Keep the Mac awake and its server running. Use Safari rather than an older Home Screen shortcut. If necessary allow Python's incoming local-network connection when macOS asks.
 
-```sh
-ipconfig getifaddr en0
-```
+No package installation or build is needed. Preserve any local Git edits; if pull reports divergence, use the fresh ZIP instead of resetting them.
 
-3. In iPhone Safari, open `http://MAC_IP:8000/desk/`, replacing `MAC_IP` with that address (for example, `http://192.168.1.25:8000/desk/`). Do not use `localhost` on the iPhone: that refers to the phone itself.
-4. Reload the iPhone page after replacing the files. If an old copy persists, close that local-preview tab and reopen `http://MAC_IP:8000/desk/?review=illustrated-applications`. Open the page in Safari rather than an older Home Screen shortcut.
-5. If the Mac asks whether Python can accept incoming connections, allow it for this local review. If the address command returns nothing, use the Mac's Wi-Fi IP address shown in System Settings.
-6. Keep the Mac awake and the server running. Stop the server with Control-C when finished.
+## Visual and interaction acceptance
 
-No build, package installation or application credentials are needed. The direct destination links intentionally open the existing public applications; use Back to return to Desk.
+1. **Home:** At the top, check warm ivory/forest/copper balance, unchanged lowercase italic wordmark and exact personal logo. There is no new tagline or splash screen. The applications remain on the same page.
+2. **TOC:** Select each of the three options. The selected chapter should scroll smoothly into place beneath the sticky bar with 12px clearance. Its local atmosphere activates, and the current link is marked. Rapidly select another destination; the last choice should win. Interrupt scrolling with touch/wheel and verify ordinary scrolling takes over.
+3. **Ordinary scrolling:** Move between all three chapters without clicking. Only one surrounding frame should be fully active. Return to the beginning; all chapter atmospheres should recede to the home state. Manual scrolling should not change the URL or move keyboard focus.
+4. **Research:** Check the navy measured field, cream heading and shared instruments. Advisor and QST remain visually distinct, side by side on desktop and stacked on phone. Confirm methodology stages and Learn / Practice / Feedback remain readable.
+5. **Reading:** Check paper margins, authentic mastheads and large complete covers. Fish, pine and books should be subordinate to the covers. The Atlas should continue the chapter naturally, with its original uncropped Rupert plate, navy and three usable destinations.
+6. **Personal Website:** Check the scholarly blue setting, marginal arcade and academic information. On phone the architecture becomes a compact opening vignette. Research and CV links must remain immediate and readable.
+7. **Appearance:** Repeat in day and night. Selecting or scrolling to a chapter must never change the selected appearance. Reload to reevaluate Eastern time. The exact IH. image keeps its original colors and light mount in every state.
+8. **Navigation/accessibility:** Open direct #research, #reading and #profile URLs; test Back/Forward and back-to-top. Tab to TOC links, press Enter and check heading focus. Enable Reduce Motion: scrolling and chapter transitions should be immediate. Test enlarged text and narrow portrait widths for overflow or overlap. Decorative graphics should be ignored by VoiceOver.
+9. **Preservation:** Exercise all five optional introductions, application links and Home Screen installation help. Check the last section can align beneath the bar without repeated clicks accumulating blank space.
 
-## Review checks
-
-- **Exact identity:** Compare `/desk/assets/identity/ih-master.png` with your supplied original, then `/desk/assets/identity/ih-signature.png` at native size. The crop must preserve both initials, the H crossbar extension, period placement, colors and Rupert/loblolly detail. There is no circular enclosure, alternate lettering or simplified mobile mark.
-- **Desktop opening:** Check the balance of the italic desk. wordmark, Dunhill Oblique introduction and light-mounted personal signature at normal zoom on the 15-inch MacBook Air. Inspect the quiet vertical division and the breathing room before navigation.
-- **iPhone opening:** The wordmark and signature share the first row; the introduction occupies its own full-width row below. Check portrait, enlarged text, and 320–430 CSS-pixel widths for overlap or sideways scrolling. The complete image must remain visible. The tiny header scene is inherently miniature; the footer shows it more clearly.
-- **Seven illustrated identities:** Check Field Brief’s burgundy fish, Loblolly & Logit’s pine sprig, The Workbook’s books, Advisor’s dividers, QST’s set square/protractor, the Atlas compass/contours and the portfolio arcade. On phone, publication ornaments sit above their covers in the left column. Verify the existing titles and descriptions wrap comfortably alongside them; no ornament may obscure a link or canonical artwork. All seven must remain visible in both themes. The publication mastheads now use their own editorial faces; surrounding interface text remains Dunhill.
-- **Collection:** Check numbered section headings, fine rules, column spacing, the original publication covers and the cream-mounted Rupert plate. Advisor, QST, each publication and the academic profile should retain their identities. At narrow widths the desktop divider disappears; the groups remain clearly separated by spacing.
-- **Footer:** The original copper period should sit between equal rules, above the utility row. The closing phrase is centered on desktop and omitted on phone as before. Back-to-top and installation help must remain comfortably usable, with no overlap or safe-area clipping.
-- **Day/night:** Both themes must show the exact same green/copper logo on its light mount. Switch manually, scroll and reload; the accepted Eastern schedule and visit-only override remain unchanged. Inspect text contrast, focus outlines and night panel colors.
-- **Navigation/accessibility:** Exercise all three section links, especially Personal website, plus direct fragments and Back. Headings should still arrive 12px beneath the sticky toolbar. Tab/Enter through the page and use VoiceOver: the header image is named once; the footer ornament is skipped. Check every optional introduction and a direct application link.
-
-No build or dependency installation is needed to review the committed site. Report any defect with browser/device, viewport or zoom setting, and a screenshot. The supported managed browser remains unavailable; no substitute preview or deployment was used.
+Judge the complete editorial composition as well as the transition mechanics. Report issues with browser/device, viewport or text-size setting, and screenshots. Source and simulated-DOM tests do not establish final visual quality or physical-device acceptance.

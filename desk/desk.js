@@ -38,19 +38,31 @@
     const space = Math.max(0, Math.ceil(top + viewportHeight - (documentHeight - spacerHeight)));
     return { top, space };
   }
+  function chapterAt({ scrollY, toolbarHeight, viewportHeight, sections }) {
+    if (scrollY <= 2) return 'home';
+    // The reading line is just inside the usable viewport, not its midpoint.
+    // That keeps the current chapter stable while its successor approaches.
+    const line = toolbarHeight + 12 + Math.min(100, viewportHeight * .14);
+    let chapter = 'home';
+    for (const section of sections) {
+      if (section.top <= line) chapter = section.id;
+    }
+    return chapter;
+  }
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { appearanceAt, nextBoundary, sectionScrollPlan };
+    module.exports = { appearanceAt, nextBoundary, sectionScrollPlan, chapterAt };
   }
   if (typeof document === 'undefined') return;
 
   const root = document.documentElement;
+  root.dataset.chapter = 'home';
   const themeMeta = document.querySelector('meta[name="theme-color"]');
   let manual = false;
   let timer;
   let button;
   function applyAppearance(appearance) {
     root.dataset.appearance = appearance;
-    if (themeMeta) themeMeta.content = appearance === 'night' ? '#141f1b' : '#eeeee6';
+    if (themeMeta) themeMeta.content = appearance === 'night' ? '#141f1b' : '#f3efe4';
     if (button) {
       button.setAttribute('aria-pressed', String(appearance === 'night'));
       button.querySelector('.appearance-label').textContent = appearance === 'night' ? 'Night' : 'Day';
@@ -87,15 +99,64 @@
     const spacer = document.getElementById('section-scroll-room');
     const links = [...document.querySelectorAll('.desk-nav a')];
     const destinations = new Set(links.map(link => link.hash));
+    const sections = links.map(link => document.getElementById(link.hash.slice(1)));
     let navigationRequest = 0;
+    let frame = 0;
+    let navigationTarget = null;
+    let releaseTimer;
+    let toolbarHeight = 0;
+    function activateChapter(id) {
+      if (root.dataset.chapter === id && sections.every(section => section.dataset.active !== undefined)) return;
+      root.dataset.chapter = id;
+      sections.forEach(section => { section.dataset.active = String(section.id === id); });
+      links.forEach(link => {
+        if (link.hash === `#${id}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
+    function updateChapter() {
+      frame = 0;
+      if (navigationTarget && Math.abs(window.scrollY - navigationTarget.top) <= 2) {
+        navigationTarget = null;
+        clearTimeout(releaseTimer);
+      }
+      activateChapter(navigationTarget ? navigationTarget.id : chapterAt({
+        scrollY: window.scrollY, toolbarHeight, viewportHeight: root.clientHeight,
+        sections: sections.map(section => ({ id: section.id, top: section.getBoundingClientRect().top }))
+      }));
+    }
+    function scheduleChapter() {
+      if (!frame) frame = window.requestAnimationFrame(updateChapter);
+    }
+    function cancelJourney() {
+      navigationRequest += 1;
+      navigationTarget = null;
+      clearTimeout(releaseTimer);
+      scheduleChapter();
+    }
     function measureToolbar() {
-      const height = toolbar.getBoundingClientRect().height;
-      root.style.setProperty('--toolbar-height', `${height}px`);
-      return height;
+      toolbarHeight = toolbar.getBoundingClientRect().height;
+      root.style.setProperty('--toolbar-height', `${toolbarHeight}px`);
+      scheduleChapter();
+      return toolbarHeight;
     }
     measureToolbar();
     if (typeof ResizeObserver !== 'undefined') new ResizeObserver(measureToolbar).observe(toolbar);
-    window.addEventListener('resize', measureToolbar);
+    window.addEventListener('resize', () => { cancelJourney(); measureToolbar(); });
+    window.addEventListener('scroll', scheduleChapter, { passive: true });
+    window.addEventListener('scrollend', () => {
+      navigationTarget = null; clearTimeout(releaseTimer); scheduleChapter();
+    });
+    // User input wins immediately over an in-flight programmatic journey.
+    for (const event of ['wheel', 'touchstart', 'pointerdown']) {
+      window.addEventListener(event, cancelJourney, { passive: true });
+    }
+    window.addEventListener('keydown', event => {
+      if (['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].includes(event.key)) cancelJourney();
+    });
+    window.addEventListener('pageshow', scheduleChapter);
+    window.addEventListener('load', scheduleChapter);
+    if (document.fonts) document.fonts.ready.then(scheduleChapter);
 
     async function navigate(hash, updateHistory) {
       if (!destinations.has(hash)) return;
@@ -116,14 +177,29 @@
       spacer.style.height = `${plan.space}px`;
       if (updateHistory && window.location.hash !== hash) window.history.pushState(null, '', hash);
       target.focus({ preventScroll: true });
-      window.scrollTo({ top: plan.top, behavior: 'auto' });
+      const smooth = updateHistory && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      navigationTarget = { id: target.id, top: plan.top };
+      activateChapter(target.id);
+      clearTimeout(releaseTimer);
+      // scrollend is not universal. This bounded fallback releases the visual
+      // destination latch; it never scrolls, changes history or moves focus.
+      releaseTimer = setTimeout(() => {
+        navigationTarget = null; scheduleChapter();
+      }, 1600);
+      window.scrollTo({ top: plan.top, behavior: smooth ? 'smooth' : 'auto' });
+      scheduleChapter();
     }
     links.forEach(link => link.addEventListener('click', event => {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
       navigate(link.hash, true);
     }));
-    window.addEventListener('hashchange', () => navigate(window.location.hash, false));
+    function restoreFragment() {
+      if (destinations.has(window.location.hash)) navigate(window.location.hash, false);
+      else { cancelJourney(); scheduleChapter(); }
+    }
+    window.addEventListener('hashchange', restoreFragment);
+    window.addEventListener('popstate', restoreFragment);
     if (destinations.has(window.location.hash)) navigate(window.location.hash, false);
   });
 })();
