@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 130" width="160" height="130" fill="currentColor" aria-hidden="true" focusable="false">
+<defs><clipPath id="ih-river-i-cut"><path d="M0 0H50V80Q25 81 0 96Z"/></clipPath></defs><g clip-path="url(#ih-river-i-cut)"><path class="initial-i" transform="translate(5 98) scale(0.05466666666666667 -0.05466666666666667)" d="M57 0V39H278V1461H57V1500H741V1461H501V39H741V0Z"/></g><path class="initial-h river-stems" transform="translate(45 114) scale(0.05466666666666667 -0.05466666666666667)" d="M57 0V39H238V1461H57V1500H656V1461H462V39H656V0ZM893 0V39H1088V1461H893V1500H1491V1461H1311V39H1491V0Z"/><path class="river-crossbar" d="M5 92C30 72 45 73 70 88S109 113 133 94L133 98C108 121 87 108 68 94S30 76 5 94Z"/>
+<circle cx="143" cy="109" r="4" fill="#976144"/>
+</svg>

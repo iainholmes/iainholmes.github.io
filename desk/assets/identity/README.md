@@ -7,7 +7,7 @@ The user-supplied **IH_personal logo(1).png** is the sole authoritative logo. It
 | File | Purpose | Preparation |
 | --- | --- | --- |
 | `ih-master.png` | Unchanged source of record, 1254 × 1254 RGBA | Byte-for-byte copy of the upload. |
-| `ih-signature.png` | Header and chapter compositions, 466 × 438 RGBA | Integer crop `(400, 380, 866, 818)` of the master; surrounding whitespace only removed. |
+| `ih-signature.png` | Header, 466 × 438 RGBA | Integer crop `(400, 380, 866, 818)` of the master; surrounding whitespace only removed. |
 | `ih-period.png` | Secondary footer signature, 60 × 60 RGBA | Integer crop `(780, 723, 840, 783)` of the original illustrated period. |
 
 Crop coordinates use Pillow's left/top-inclusive, right/bottom-exclusive convention. Neither crop is resized, recolored, traced, sharpened or made transparent. Every RGBA pixel equals the corresponding original pixel. The primary crop preserves the complete I and H, the H's left-extending crossbar, their exact stagger, the copper period's position, and Rupert/loblolly illustration. The footer uses the original period rather than a recreated drawing.
@@ -26,7 +26,7 @@ At header sizes the period is approximately 10–15 CSS pixels across. Its compl
 
 The header image has one descriptive alt text and no added interaction. The footer repetition is decorative (`alt=""`, `aria-hidden="true"`). The existing desk. Home Screen icon, favicon and italic wordmark are unchanged.
 
-The three [chapter identities](../chapter-signatures/README.md) reuse the same complete signature image without any asset modification. Their surrounding engravings and layout vary; the canonical logo does not. Each decorative composition retains a white paper surround in both appearances. The footer attribution identifies Thom Yorke as Radiohead’s vocalist through its tooltip and accessible text; it makes no sole-songwriter credit claim.
+The original [chapter illustrations](../chapter-signatures/README.md) have been restored without canonical-logo composites. Three separately authorized [secondary IH. monograms](../monograms/README.md) use newly designed letterforms and integrated subjects elsewhere in the collection. They do not replace, imitate pixel-for-pixel or modify this canonical header identity. The footer attribution identifies Thom Yorke as Radiohead’s vocalist through its tooltip and accessible text; it makes no sole-songwriter credit claim.
 
 ## Maintenance
 

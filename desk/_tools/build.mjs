@@ -19,6 +19,12 @@ const illustrations = new Map(await Promise.all(illustrationNames.map(async name
 const plate = (name, cls) => `<div class="editorial-illustration ${cls}" data-illustration="${name}" aria-hidden="true">${illustrations.get(name)}</div>`;
 const publicationPlates = {'field-brief':'field-fish',loblolly:'loblolly-sprig',workbook:'workbook-volumes'};
 
+// Secondary monograms are original outlined designs, separate from the fixed
+// header identity. They belong only to the personal collection presentation.
+const monogramNames = {research:'ih-distribution',reading:'ih-river',profile:'ih-tree-dog'};
+const monogramAssets = new Map(await Promise.all(Object.entries(monogramNames).map(async ([chapter,name]) => [chapter, await readFile(new URL(`assets/monograms/${name}.svg`,root),'utf8')])));
+const monogram = chapter => `<div class="collection-monogram collection-monogram-${chapter}" data-collection-monogram="${chapter}" aria-hidden="true">${monogramAssets.get(chapter)}</div>`;
+
 const authenticPublication = p => `<article class="publication ${escape(p.id)}" aria-labelledby="${escape(p.id)}-title">
   <a class="publication-main" href="${escape(p.url)}" aria-labelledby="${escape(p.id)}-title ${escape(p.id)}-open">
     <div class="publication-heading"><span class="publication-cadence">${escape(p.schedule)}</span><h4 id="${escape(p.id)}-title">${escape(p.name)}</h4></div>
@@ -111,31 +117,21 @@ function work(p, chapter, authentic) {
   const id = escape(p.id), device = workIdentity[p.id];
   const name = escape(p.displayName || p.name);
   return `<div class="work-item work-${id}" id="work-${id}" data-work="${id}" data-name="${escape(p.name)}" data-chapter="${chapter}" tabindex="-1">
-    <article class="collection-entry collection-${id}" data-collection aria-labelledby="collection-${id}-title">
+    ${id === 'rupert' ? monogram('reading') : ''}<article class="collection-entry collection-${id}" data-collection aria-labelledby="collection-${id}-title">
       <div class="collection-folio"><span>${device.folio}</span><span>${escape(device.label)}</span></div>
       ${plate(device.plate,'collection-engraving')}
       <div class="collection-copy"><h3 id="collection-${id}-title">${name}</h3><p>${escape(p.description)}</p>${p.affiliation ? `<p class="collection-affiliation">${escape(p.affiliation)}</p>` : ''}</div>
-    </article>
+      ${id === 'portfolio' ? monogram('profile') : ''}</article>
     <div id="authentic-${id}" class="authentic-presentation" data-authentic hidden>${authentic}</div>
     <div class="work-actions"><button id="reveal-${id}" type="button" data-reveal="${id}" aria-expanded="false" aria-controls="authentic-${id}" aria-label="Reveal ${escape(p.name)} within desk." hidden><span>Reveal</span><span class="reveal-sign" aria-hidden="true">+</span></button>${link(p.url,'Open Website','collection-open').replace('<a ', `<a aria-label="Open ${escape(p.name)} website" `)}</div>
   </div>`;
 }
-const groups = group => config.projects.filter(p=>p.group===group).map(p=>p.presentation==='periodicals' ? render(p) : work(p,group,render(p))).join('\n');
+const groups = group => config.projects.filter(p=>p.group===group).map(p=>p.presentation==='periodicals' ? render(p) : work(p,group,render(p))).join(group === 'research' ? monogram('research') : '\n');
 const chapterReturn = id => `<button class="chapter-return" type="button" data-return="${id}" hidden>Return Chapter to Collection</button>`;
-// Compose the exact supplied raster with unchanged engraving paths. Only the
-// surrounding layout differs; no tracing, recoloring, clipping or substitutions.
+// Original chapter engravings remain unchanged in the title banners.
 const chapterIdentities = {research:['inquiry','Inquiry'], reading:['field-folio','Field & Folio'], profile:['scholar','Scholar']};
-const chapterLayouts = {
-  inquiry: {logo:[6,6], drawing:[100,5,110,82.5], frame:'<path d="M2 21V2H23 M2 76V94H204 M98 94v-5 M204 94v-5"/><path d="M97 30v40" stroke="#976144"/>'},
-  'field-folio': {logo:[117,3], drawing:[0,12,110,82.5], frame:'<path d="M113 88h94 M120 94h80"/><path d="M110 13v59" stroke="#976144"/>'},
-  scholar: {logo:[9,7], drawing:[100,2,108,81], frame:'<path d="M2 22V2H23 M187 2h21v20 M2 77v21h21 M187 98h21V77 M101 89h103"/><path d="M102 94h101" stroke="#976144"/>'}
-};
 const chapterMarks = new Map(await Promise.all(Object.entries(chapterIdentities).map(async ([id,[file,label]]) => [id,
-  await (async () => {
-    const {logo:[x,y], drawing:[dx,dy,dw,dh], frame} = chapterLayouts[file];
-    const illustration = (await readFile(new URL(`assets/chapter-signatures/${file}.svg`,root),'utf8')).replace('<svg ', `<svg x="${dx}" y="${dy}" width="${dw}" height="${dh}" `);
-    return `<div class="chapter-signature" data-chapter-signature="${id}" aria-hidden="true"><svg class="chapter-device chapter-device-${file}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 210 100" width="126" height="60" fill="none" aria-hidden="true" focusable="false"><rect x="${x-2}" y="${y-2}" width="90" height="84.833" fill="#fff"/><image href="assets/identity/ih-signature.png" xlink:href="assets/identity/ih-signature.png" x="${x}" y="${y}" width="86" height="80.833" preserveAspectRatio="xMidYMid meet"/>${illustration}<g stroke="currentColor" stroke-width=".8" stroke-linecap="round">${frame}</g></svg><span>${escape(label)}</span></div>`;
-  })()
+  `<div class="chapter-signature" data-chapter-signature="${id}" aria-hidden="true">${await readFile(new URL(`assets/chapter-signatures/${file}.svg`,root),'utf8')}<span>${escape(label)}</span></div>`
 ])));
 // The final identity is a fixed user-supplied raster master, never reconstructed.
 const identity = {
