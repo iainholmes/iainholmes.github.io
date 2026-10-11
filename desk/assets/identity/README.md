@@ -7,7 +7,7 @@ The user-supplied **IH_personal logo(1).png** is the sole authoritative logo. It
 | File | Purpose | Preparation |
 | --- | --- | --- |
 | `ih-master.png` | Unchanged source of record, 1254 × 1254 RGBA | Byte-for-byte copy of the upload. |
-| `ih-signature.png` | Header, 466 × 438 RGBA | Integer crop `(400, 380, 866, 818)` of the master; surrounding whitespace only removed. |
+| `ih-signature.png` | Header and chapter compositions, 466 × 438 RGBA | Integer crop `(400, 380, 866, 818)` of the master; surrounding whitespace only removed. |
 | `ih-period.png` | Secondary footer signature, 60 × 60 RGBA | Integer crop `(780, 723, 840, 783)` of the original illustrated period. |
 
 Crop coordinates use Pillow's left/top-inclusive, right/bottom-exclusive convention. Neither crop is resized, recolored, traced, sharpened or made transparent. Every RGBA pixel equals the corresponding original pixel. The primary crop preserves the complete I and H, the H's left-extending crossbar, their exact stagger, the copper period's position, and Rupert/loblolly illustration. The footer uses the original period rather than a recreated drawing.
@@ -25,6 +25,8 @@ The footer period crop displays at 32px between equal rules with 18px gaps. Its 
 At header sizes the period is approximately 10–15 CSS pixels across. Its complete illustration is retained, but tiny details are naturally difficult to distinguish at normal viewing distance. The larger footer impression makes the scene easier to examine.
 
 The header image has one descriptive alt text and no added interaction. The footer repetition is decorative (`alt=""`, `aria-hidden="true"`). The existing desk. Home Screen icon, favicon and italic wordmark are unchanged.
+
+The three [chapter identities](../chapter-signatures/README.md) reuse the same complete signature image without any asset modification. Their surrounding engravings and layout vary; the canonical logo does not. Each decorative composition retains a white paper surround in both appearances. The footer attribution identifies Thom Yorke as Radiohead’s vocalist through its tooltip and accessible text; it makes no sole-songwriter credit claim.
 
 ## Maintenance
 
