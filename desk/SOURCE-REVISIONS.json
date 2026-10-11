@@ -1,0 +1,166 @@
+{
+  "inspected_on": "2026-10-10",
+  "repositories": {
+    "iainholmes/iainholmes.github.io": "860c2e9d02cedebe90434cd70d99be5def1f94e8",
+    "iainholmes/econometric-advisor": "05aab812de1ea81c28680a028aed843796ba7905",
+    "iainholmes/quant-skills-trainer": "5302cc29c620aa778af58ba93e1fd4d8fb25ae6d"
+  },
+  "advisor_mark_sha256": "01d875b44b7aae7b547cfc0394cd42c21a79be28ed48e5e31aa1e9102b0fd397",
+  "refined_on": "2026-10-10",
+  "archival_covers": [
+    {
+      "asset": "assets/field-brief-archive.svg",
+      "source": "personal-updates/issue-mark-archive.js",
+      "archive_key": "fb:2026-10-09",
+      "sha256": "b2da8a8aa405046ff793bcf4f097b7a6e348249d9e3cef0f8f1003ea4ee2e4ef",
+      "reuse": "Unmodified frozen SVG; embedded inline to retain self-hosted editorial typography."
+    },
+    {
+      "asset": "assets/loblolly-archive.svg",
+      "source": "personal-updates/issue-mark-archive.js",
+      "archive_key": "sp:2026-10-09",
+      "sha256": "1b9313cc0cf70e7b7f161b93d122a4a91e8d9db727701fc669c358171e325638",
+      "reuse": "Unmodified frozen SVG; embedded inline to retain self-hosted editorial typography."
+    },
+    {
+      "asset": "assets/workbook-archive.svg",
+      "source": "personal-updates/issue-mark-archive.js",
+      "archive_key": "cp:2026-10-08",
+      "sha256": "f8262a3d024f816911497b1b9580af9888cf39737687d0052f17402009d45fbf",
+      "reuse": "Unmodified frozen SVG; embedded inline to retain self-hosted editorial typography."
+    }
+  ],
+  "additional_fonts": [
+    {
+      "asset": "assets/fonts/instrument-serif.woff",
+      "source": "https://github.com/google/fonts/tree/main/ofl/instrumentserif",
+      "sha256": "ec63577b012b94bc7a532e18326d2e5548d2db472c10b9c01161578f4d6941b7",
+      "license": "assets/fonts/OFL-Instrument-Serif.txt"
+    },
+    {
+      "asset": "assets/fonts/lmromandunh10-regular.otf",
+      "source": "https://www.gust.org.pl/projects/e-foundry/latin-modern/",
+      "sha256": "b3c753eb7d1bbcbee362e18d6dc9a24d1b384690789373cfba0973b8ba951878",
+      "license": "assets/fonts/GUST-FONT-LICENSE.txt",
+      "notes": "Unmodified font; exact copy of weekly-economics-environment/fonts/LMRomanDunhill-Regular.otf. Internal name LMRomanDunh10-Regular, version 1.106, weight 400."
+    },
+    {
+      "asset": "assets/fonts/lmromandunh10-oblique.otf",
+      "source": "https://www.gust.org.pl/projects/e-foundry/latin-modern/",
+      "sha256": "fddc4f01d5e2449963e6edcd4005c642fad9ca734665d068246264c34bcdde03",
+      "license": "assets/fonts/GUST-FONT-LICENSE.txt",
+      "notes": "Unmodified font; exact copy of weekly-economics-environment/fonts/LMRomanDunhill-Oblique.otf. Internal name LMRomanDunh10-Oblique, version 1.106, weight 400."
+    },
+    {
+      "asset": "assets/fonts/archivo-italic.woff",
+      "source": "https://github.com/google/fonts/blob/main/ofl/archivo/Archivo-Italic%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "646d8c2115f3c1630715b773885579587f85d0f7d2de6b10393ccc467426d069",
+      "license": "assets/fonts/OFL-Archivo.txt",
+      "notes": "Genuine italic, width axis instantiated at 100; weight axis 100\u2013900 retained, losslessly packaged as WOFF. Wordmark uses weight 650."
+    },
+    {
+      "asset": "assets/fonts/jetbrains-mono.woff",
+      "source": "https://github.com/google/fonts/blob/main/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf",
+      "source_sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+      "sha256": "060596a0b2cfb124f3a8d711d263beae069910458d93445c0c03998e32a65f61",
+      "license": "assets/fonts/OFL-JetBrains-Mono.txt",
+      "notes": "Unmodified variable outline data, weight axis 100\u2013800, losslessly packaged as WOFF with fontTools. Used only in the authentic QST reveal."
+    }
+  ],
+  "finishing_pass": "2026-10-10; accepted a90259a composition, five requested corrections and lowercase italic wordmark.",
+  "personal_signature": {
+    "finalized_on": "2026-10-11",
+    "source_filename": "IH_personal logo(1).png",
+    "master": "assets/identity/ih-master.png",
+    "master_sha256": "7e2dabb7244b44c8a582792f59ff3cb1fa0eb8e911a8a4e7c249d68c5ba0c619",
+    "policy": "Exact supplied master supersedes all prior vectors and typographic specifications. Derivatives are integer-coordinate, lossless whitespace crops only. No resizing, recoloring, transparency manipulation or reconstruction.",
+    "assets": [
+      {
+        "asset": "assets/identity/ih-master.png",
+        "sha256": "7e2dabb7244b44c8a582792f59ff3cb1fa0eb8e911a8a4e7c249d68c5ba0c619"
+      },
+      {
+        "asset": "assets/identity/ih-signature.png",
+        "sha256": "d069d41082adfe788c3dda539f2e20d4e9ba5173799b10dc408c115028e428f7",
+        "source_crop": [
+          400,
+          380,
+          866,
+          818
+        ]
+      },
+      {
+        "asset": "assets/identity/ih-period.png",
+        "sha256": "3ab32c2f0dd7e192b003ffa0a3813622299ef91b90029e1da162b0af2101a028",
+        "source_crop": [
+          780,
+          723,
+          840,
+          783
+        ]
+      }
+    ]
+  },
+  "editorial_illustrations": {
+    "authored_on": "2026-10-11",
+    "source": "Original vector line engravings authored for desk.; no third-party image sources.",
+    "generator": "_tools/build-illustrations.py",
+    "policy": "Decorative editorial devices, not scientific specimens, factual maps, research results or representations of a named real building. IH. identity and canonical artwork are separate and unchanged.",
+    "assets": [
+      {
+        "asset": "assets/illustrations/academic-arcade.svg",
+        "sha256": "bd73b283c8b7ac169d695556a1749adc78be64c29b76efcc776f08d061108489"
+      },
+      {
+        "asset": "assets/illustrations/advisor-dividers.svg",
+        "sha256": "40f63d7247375567af6c610740a46b0cb147b143a8fe2d371a115ad45b763078"
+      },
+      {
+        "asset": "assets/illustrations/atlas-bearing.svg",
+        "sha256": "9dc3b23f52ccc8bb76a625e63d00a667c3399e68b370b417c88eff8f7d6d0f63"
+      },
+      {
+        "asset": "assets/illustrations/field-fish.svg",
+        "sha256": "731cf3d3085e7567b69d5455edfc332f99d97e46d343b86ee5e708663c09757d"
+      },
+      {
+        "asset": "assets/illustrations/loblolly-sprig.svg",
+        "sha256": "8778e828c4baf417b42f17bd863d2c82c5a4680d15ce7e15857058f37d78b9c6"
+      },
+      {
+        "asset": "assets/illustrations/qst-instruments.svg",
+        "sha256": "53ce08e6711922b9ed7fef9eb84075b27a047fbb92f04f446a4b4be771564e1c"
+      },
+      {
+        "asset": "assets/illustrations/workbook-volumes.svg",
+        "sha256": "735d035f91b44dd889c3a206c229a281fb763b72d4c4163bf539d1b954410e49"
+      }
+    ]
+  },
+  "chapter_signatures": {
+    "authored_on": "2026-10-11",
+    "source": "Original hand-authored SVG companion devices for the IH. collection; no third-party art or reconstructed IH. initials.",
+    "policy": "Secondary chapter identities only. Hide on any chapter reveal; canonical personal logo and application artwork are unchanged.",
+    "assets": [
+      {
+        "asset": "assets/chapter-signatures/field-folio.svg",
+        "sha256": "18b7c63651dfa42065a1200cf0835732f53a1c992374814d7fd08f300dfad68a"
+      },
+      {
+        "asset": "assets/chapter-signatures/inquiry.svg",
+        "sha256": "21e095ac4fb1217a50e1ac09e2686be46ab5877c052fb9f388a8265d2563f192"
+      },
+      {
+        "asset": "assets/chapter-signatures/scholar.svg",
+        "sha256": "5d30ec290f1a3a2602bd3bee250b9ac293bbd671f9505d3161e09db44fd3672d"
+      }
+    ]
+  },
+  "qst_authentic_reveal": {
+    "corrected_on": "2026-10-11",
+    "visual_reference": "Owner screenshots: actual QST at 3.29.45 PM; former desk representation at 3.30.23 PM.",
+    "source": "https://github.com/iainholmes/quant-skills-trainer/blob/main/index.html",
+    "source_blob": "996e81759893c9046719dba5edcfb063a14ad271",
+    "policy": "Static local representation; no embedded application, progress values, module counts, credentials or simulated controls. Authentic application remains unchanged."
+  }
+}

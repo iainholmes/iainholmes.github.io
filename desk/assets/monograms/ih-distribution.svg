@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 130" width="160" height="130" fill="currentColor" aria-hidden="true" focusable="false">
+<path class="initial-i" transform="translate(5 98) scale(0.05466666666666667 -0.05466666666666667)" d="M57 0V39H278V1461H57V1500H741V1461H501V39H741V0Z"/><path class="initial-h distribution-crossbar" transform="translate(45 114) scale(0.05466666666666667 -0.05466666666666667)" d="M1491 1500V1461H1311V39H1491V0H893V39H1088V720C950 720 950 1120 780 1120S600 720 462 720V39H656V0H57V39H238V1461H57V1500H656V1461H462V760C610 760 610 1160 780 1160S940 760 1088 760V1461H893V1500Z"/>
+<circle cx="143" cy="109" r="4" fill="#976144"/>
+</svg>
