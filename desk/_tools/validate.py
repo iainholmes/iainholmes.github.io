@@ -50,7 +50,7 @@ class Page(HTMLParser):
         if tag == 'img':
             check('alt' in attrs, 'Every image needs an alt attribute')
             check('width' in attrs and 'height' in attrs, 'Image dimensions must reserve space')
-        for attribute in ['aria-labelledby', 'aria-describedby']:
+        for attribute in ['aria-labelledby', 'aria-describedby', 'aria-controls']:
             self.refs.extend(attrs.get(attribute, '').split())
 
     def handle_endtag(self, tag):
@@ -169,9 +169,9 @@ check(all(path.read_bytes() == data for path, data in identity_before.items()), 
 
 # Seven self-contained, decorative devices must remain attached to their destinations.
 illustration_targets = {
-    'field-fish':'field-brief', 'loblolly-sprig':'loblolly',
-    'workbook-volumes':'workbook', 'advisor-dividers':'research-group',
-    'qst-instruments':'research-group', 'atlas-bearing':'rupert', 'academic-arcade':'profile-group'
+    'field-fish':'collection-field-brief', 'loblolly-sprig':'collection-loblolly',
+    'workbook-volumes':'collection-workbook', 'advisor-dividers':'collection-advisor',
+    'qst-instruments':'collection-qst', 'atlas-bearing':'collection-rupert', 'academic-arcade':'collection-portfolio'
 }
 illustration_before = {}
 check(len(provenance['editorial_illustrations']['assets']) == 7, 'Exactly seven editorial devices required')
@@ -196,9 +196,43 @@ check(all(path.read_bytes() == data for path,data in illustration_before.items()
 check('A home for research, reading and getting outside.' not in source + json.dumps(config), 'Remove the introductory tagline from served markup and configuration')
 check('<div class="masthead"><h1>desk<span>.</span></h1></div>' in source, 'Home header must not replace the tagline with another sentence')
 check(sum(tag == 'section' and 'editorial-chapter' in attrs.get('class','').split() for tag,attrs in page.tags) == 3, 'Keep exactly three continuous editorial chapters')
-check('class="chapter-instruments" aria-hidden="true"' in source, 'Research instruments belong to the chapter opening')
+check('collection-advisor' in source and 'collection-qst' in source, 'Independent IH. research folios required')
 check('class="profile-composition"' in source, 'Architecture must frame the academic chapter')
 check('.editorial-chapter::before' in css and 'pointer-events:none' in css, 'Atmospheric layers must not block interaction')
+
+class PresentationAudit(HTMLParser):
+    void = {'img','meta','link','br','hr','input','source','wbr','area','base','embed','param','track','col'}
+    def __init__(self):
+        super().__init__()
+        self.stack = []
+        self.faces = {}
+    def handle_starttag(self, tag, attributes):
+        attrs = dict(attributes)
+        concealed = 'hidden' in attrs or any(hidden for _, _, hidden in self.stack)
+        work = attrs.get('data-work') or next((a['data-work'] for _,a,_ in reversed(self.stack) if 'data-work' in a), None)
+        if 'data-work' in attrs:
+            self.faces[work] = set()
+        if 'data-authentic' in attrs:
+            check(concealed, 'Every authentic presentation must be hidden in initial HTML')
+            self.faces[work].add('authentic')
+        if 'data-collection' in attrs:
+            check(not concealed, 'Every IH. collection face must be initially visible')
+            self.faces[work].add('collection')
+        if tag == 'article' and set(attrs.get('class','').split()) & {'advisor','qst','publication','rupert','portfolio'}:
+            check(concealed, 'Authentic application article exposed before selection')
+        if 'data-reveal' in attrs:
+            check(tag == 'button' and attrs.get('type') == 'button' and attrs.get('aria-expanded') == 'false' and attrs.get('aria-controls') == 'authentic-'+work, 'Reveal must be a separate accessible local control')
+        if tag not in self.void:
+            self.stack.append((tag,attrs,concealed))
+    def handle_endtag(self, tag):
+        for i in range(len(self.stack)-1,-1,-1):
+            if self.stack[i][0] == tag:
+                del self.stack[i:]
+                break
+presentation = PresentationAudit()
+presentation.feed(source)
+check(len(presentation.faces) == 7 and all(value == {'collection','authentic'} for value in presentation.faces.values()), 'Seven structurally separate collection/authentic presentation pairs required')
+check('[hidden] { display:none!important }' in css, 'Inactive presentations must leave layout and accessibility navigation')
 
 before = source
 subprocess.run(['node', str(ROOT / '_tools/build.mjs')], check=True, capture_output=True)

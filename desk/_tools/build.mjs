@@ -19,9 +19,8 @@ const illustrations = new Map(await Promise.all(illustrationNames.map(async name
 const plate = (name, cls) => `<div class="editorial-illustration ${cls}" data-illustration="${name}" aria-hidden="true">${illustrations.get(name)}</div>`;
 const publicationPlates = {'field-brief':'field-fish',loblolly:'loblolly-sprig',workbook:'workbook-volumes'};
 
-const publication = p => `<article class="publication ${escape(p.id)}" aria-labelledby="${escape(p.id)}-title">
+const authenticPublication = p => `<article class="publication ${escape(p.id)}" aria-labelledby="${escape(p.id)}-title">
   <a class="publication-main" href="${escape(p.url)}" aria-labelledby="${escape(p.id)}-title ${escape(p.id)}-open">
-    ${plate(publicationPlates[p.id],'publication-device')}
     <div class="publication-heading"><span class="publication-cadence">${escape(p.schedule)}</span><h4 id="${escape(p.id)}-title">${escape(p.name)}</h4></div>
     <figure class="publication-cover"><div class="cover-art">${covers.get(p.id)}</div><figcaption>Archive · <time datetime="${escape(p.archiveDate)}">${escape(p.archiveLabel)}</time></figcaption></figure>
     <p class="publication-description">${escape(p.description)}</p>
@@ -51,17 +50,17 @@ const render = p => {
       </a>
       ${disclosure('Explore the learning path', `<ol class="curriculum-list">${p.tiers.map(v=>`<li>${escape(v)}</li>`).join('')}</ol><p>Choose a language and module. Read the lesson, work in your own coding environment, then bring your code and output back for feedback.</p>`)}
     </article>`;
-    case 'periodicals': return `<article class="periodicals" aria-labelledby="periodicals-title">
-      <div class="publication-head"><div><h3 id="periodicals-title">${link(p.url, p.name)}</h3><p>${e.description}</p></div><span class="native-label">The reading shelf</span></div>
-      <div class="publication-shelf">${p.publications.map(publication).join('\n')}</div>
+    case 'periodicals': return `<div class="periodicals">
+      <div class="publication-head" data-publication-heading hidden><div><h3 id="periodicals-title">${link(p.url, p.name)}</h3><p>${e.description}</p></div><span class="native-label">The reading shelf</span></div>
+      <div class="publication-shelf">${p.publications.map(item => work(item, 'reading', authenticPublication(item))).join('\n')}</div>
       <div class="shelf-footer">${link(p.url, 'Browse Periodicals', 'shelf-link')}
-      ${disclosure('Publication notes', '<dl class="context-list"><div><dt>Field Brief · Every day</dt><dd>Five consequential developments, including weekends.</dd></div><div><dt>Loblolly &amp; Logit · Fridays</dt><dd>Research readings, synthesis and a cumulative methods notebook.</dd></div><div><dt>The Workbook · Weekdays</dt><dd>Economics problems with assistance and worked explanations.</dd></div></dl><p class="archive-note">The covers above are selections from the archive. Each publication opens at its home, where current and earlier editions are available.</p>')}
+      ${disclosure('Publication notes', '<dl class="context-list"><div><dt>Field Brief · Every day</dt><dd>Five consequential developments, including weekends.</dd></div><div><dt>Loblolly &amp; Logit · Fridays</dt><dd>Research readings, synthesis and a cumulative methods notebook.</dd></div><div><dt>The Workbook · Weekdays</dt><dd>Economics problems with assistance and worked explanations.</dd></div></dl><p class="archive-note">The publication covers are selections from the archive. Each publication opens at its home, where current and earlier editions are available.</p>')}
       </div>
-    </article>`;
+    </div>`;
     case 'rupert': return `<article class="rupert" aria-labelledby="rupert-title">
       <div class="rupert-layout">
         <figure class="rupert-artwork"><img class="rupert-art" src="${e.asset}" alt="${e.alt}" width="800" height="1000" loading="lazy"></figure>
-        <div class="rupert-content"><div class="rupert-heading">${plate('atlas-bearing','atlas-device')}<span class="native-label">A field guide</span><h3 id="rupert-title"><span>The</span> Rupert Atlas</h3><p>${e.description}</p></div>
+        <div class="rupert-content"><div class="rupert-heading"><span class="native-label">A field guide</span><h3 id="rupert-title"><span>The</span> Rupert Atlas</h3><p>${e.description}</p></div>
           <nav class="rupert-links" aria-label="Rupert Atlas sections"><a href="${e.url}"><span><strong>This Week</strong><span>Tuesday &amp; Thursday</span></span>${arrow}</a>${p.links.map(v=>`<a href="${escape(v.url)}"><span><strong>${escape(v.name)}</strong><span>${escape(v.detail)}</span></span>${arrow}</a>`).join('')}</nav>
         </div>
       </div>
@@ -75,7 +74,30 @@ const render = p => {
     default: return `<article class="additional-project"><h3>${link(p.url,p.name)}</h3><p>${e.description}</p></article>`;
   }
 };
-const groups = group => config.projects.filter(p=>p.group===group).map(render).join('\n');
+const workIdentity = {
+  advisor: {plate:'advisor-dividers',folio:'01 / I',label:'Research design'},
+  qst: {plate:'qst-instruments',folio:'01 / II',label:'Quantitative practice'},
+  'field-brief': {plate:'field-fish',folio:'02 / I',label:'Every day'},
+  loblolly: {plate:'loblolly-sprig',folio:'02 / II',label:'Fridays'},
+  workbook: {plate:'workbook-volumes',folio:'02 / III',label:'Weekdays'},
+  rupert: {plate:'atlas-bearing',folio:'02 / IV',label:'A field guide'},
+  portfolio: {plate:'academic-arcade',folio:'03 / I',label:'Personal Website'}
+};
+function work(p, chapter, authentic) {
+  const id = escape(p.id), device = workIdentity[p.id];
+  const name = escape(p.displayName || p.name);
+  return `<div class="work-item work-${id}" id="work-${id}" data-work="${id}" data-name="${escape(p.name)}" data-chapter="${chapter}" tabindex="-1">
+    <article class="collection-entry collection-${id}" data-collection aria-labelledby="collection-${id}-title">
+      <div class="collection-folio"><span>${device.folio}</span><span>${escape(device.label)}</span></div>
+      ${plate(device.plate,'collection-engraving')}
+      <div class="collection-copy"><h3 id="collection-${id}-title">${name}</h3><p>${escape(p.description)}</p>${p.affiliation ? `<p class="collection-affiliation">${escape(p.affiliation)}</p>` : ''}</div>
+    </article>
+    <div id="authentic-${id}" class="authentic-presentation" data-authentic hidden>${authentic}</div>
+    <div class="work-actions"><button id="reveal-${id}" type="button" data-reveal="${id}" aria-expanded="false" aria-controls="authentic-${id}" aria-label="Reveal ${escape(p.name)} within desk." hidden><span>Reveal</span><span class="reveal-sign" aria-hidden="true">+</span></button>${link(p.url,'Open website','collection-open').replace('<a ', `<a aria-label="Open ${escape(p.name)} website" `)}</div>
+  </div>`;
+}
+const groups = group => config.projects.filter(p=>p.group===group).map(p=>p.presentation==='periodicals' ? render(p) : work(p,group,render(p))).join('\n');
+const chapterReturn = id => `<button class="chapter-return" type="button" data-return="${id}" hidden>Return chapter to collection</button>`;
 // The final identity is a fixed user-supplied raster master, never reconstructed.
 const identity = {
   primary: '<img src="assets/identity/ih-signature.png" width="466" height="438" alt="Iain Holmes — IH. personal signature with Rupert beneath a loblolly pine" decoding="async">',
@@ -120,10 +142,10 @@ const html = `<!doctype html>
     </div>
     <main id="destinations" tabindex="-1">
       <div class="collections">
-        <section class="research-group editorial-chapter" id="research" tabindex="-1" aria-labelledby="research-title"><div class="section-heading"><h2 id="research-title">Research &amp; practice</h2><span aria-hidden="true">01</span><div class="chapter-instruments" aria-hidden="true">${plate('advisor-dividers','advisor-device')}${plate('qst-instruments','qst-device')}</div></div><div class="research-projects">${groups('research')}</div></section>
-        <section class="reading-group editorial-chapter" id="reading" tabindex="-1" aria-labelledby="reading-title"><div class="section-heading"><h2 id="reading-title">Reading &amp; outdoors</h2><span aria-hidden="true">02</span></div><div class="reading-projects">${groups('reading')}</div></section>
+        <section class="research-group editorial-chapter" id="research" tabindex="-1" aria-labelledby="research-title"><div class="section-heading"><h2 id="research-title">Research &amp; practice</h2><span aria-hidden="true">01</span></div>${chapterReturn('research')}<div class="research-projects">${groups('research')}</div></section>
+        <section class="reading-group editorial-chapter" id="reading" tabindex="-1" aria-labelledby="reading-title"><div class="section-heading"><h2 id="reading-title">Reading &amp; outdoors</h2><span aria-hidden="true">02</span></div>${chapterReturn('reading')}<div class="reading-projects">${groups('reading')}</div></section>
       </div>
-      <section class="profile-group editorial-chapter" id="profile" tabindex="-1" aria-labelledby="profile-title"><div class="section-heading"><h2 id="profile-title">Personal website</h2><span aria-hidden="true">03</span></div><div class="profile-composition">${plate('academic-arcade','portfolio-device')}${groups('profile')}</div></section>
+      <section class="profile-group editorial-chapter" id="profile" tabindex="-1" aria-labelledby="profile-title"><div class="section-heading"><h2 id="profile-title">Personal website</h2><span aria-hidden="true">03</span></div>${chapterReturn('profile')}<div class="profile-composition">${groups('profile')}</div></section>
     </main>
     <footer class="desk-footer"><div class="footer-utilities"><a href="#top" class="footer-wordmark" aria-label="desk. — back to top">desk.</a><p>Everything has its place.</p><details class="install-help"><summary>Keep desk. close<span class="disclosure-sign" aria-hidden="true"></span></summary><div>On iPhone, open desk. in Safari, tap Share, then Add to Home Screen.</div></details></div><div class="footer-signature" aria-hidden="true">${identity.period}</div></footer>
     <div id="section-scroll-room" aria-hidden="true"></div>

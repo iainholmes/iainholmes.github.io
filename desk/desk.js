@@ -38,24 +38,35 @@
     const space = Math.max(0, Math.ceil(top + viewportHeight - (documentHeight - spacerHeight)));
     return { top, space };
   }
-  function chapterAt({ scrollY, toolbarHeight, viewportHeight, sections }) {
-    if (scrollY <= 2) return 'home';
-    // The reading line is just inside the usable viewport, not its midpoint.
-    // That keeps the current chapter stable while its successor approaches.
-    const line = toolbarHeight + 12 + Math.min(100, viewportHeight * .14);
-    let chapter = 'home';
-    for (const section of sections) {
-      if (section.top <= line) chapter = section.id;
+  function revealSelection(current, action, works) {
+    const ids = new Set(works.map(work => work.id));
+    if (action.type === 'chapter') return works.filter(work => work.chapter === action.id).map(work => work.id);
+    if (action.type === 'reset') return [];
+    if (action.type === 'return') return current.filter(id => works.find(work => work.id === id)?.chapter !== action.id);
+    if (action.type === 'restore') {
+      const valid = [...new Set(action.ids || [])].filter(id => ids.has(id));
+      const chapter = works.find(work => work.id === valid[0])?.chapter;
+      return valid.filter(id => works.find(work => work.id === id)?.chapter === chapter);
     }
-    return chapter;
+    if (action.type === 'toggle' && ids.has(action.id)) {
+      if (current.includes(action.id)) return current.filter(id => id !== action.id);
+      const chapter = works.find(work => work.id === action.id).chapter;
+      return [...current.filter(id => works.find(work => work.id === id)?.chapter === chapter), action.id];
+    }
+    return current;
+  }
+  function selectionForHash(hash, works) {
+    if (hash.startsWith('#work-')) return works.filter(work => `#work-${work.id}` === hash).map(work => work.id);
+    return works.filter(work => `#${work.chapter}` === hash).map(work => work.id);
   }
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { appearanceAt, nextBoundary, sectionScrollPlan, chapterAt };
+    module.exports = { appearanceAt, nextBoundary, sectionScrollPlan, revealSelection, selectionForHash };
   }
   if (typeof document === 'undefined') return;
 
   const root = document.documentElement;
   root.dataset.chapter = 'home';
+  root.dataset.initialReveal = window.location.hash.slice(1);
   const themeMeta = document.querySelector('meta[name="theme-color"]');
   let manual = false;
   let timer;
@@ -98,108 +109,142 @@
     const toolbar = document.querySelector('.desk-toolbar');
     const spacer = document.getElementById('section-scroll-room');
     const links = [...document.querySelectorAll('.desk-nav a')];
-    const destinations = new Set(links.map(link => link.hash));
     const sections = links.map(link => document.getElementById(link.hash.slice(1)));
+    const items = [...document.querySelectorAll('[data-work]')].map(element => ({
+      id: element.dataset.work, chapter: element.dataset.chapter, name: element.dataset.name, element,
+      collection: element.querySelector('[data-collection]'), authentic: element.querySelector('[data-authentic]'),
+      button: element.querySelector('[data-reveal]')
+    }));
+    const returns = [...document.querySelectorAll('[data-return]')];
+    const publicationHeading = document.querySelector('[data-publication-heading]');
+    let revealed = [];
     let navigationRequest = 0;
-    let frame = 0;
-    let navigationTarget = null;
+    let navigating = false;
     let releaseTimer;
-    let toolbarHeight = 0;
-    function activateChapter(id) {
-      if (root.dataset.chapter === id && sections.every(section => section.dataset.active !== undefined)) return;
-      root.dataset.chapter = id;
-      sections.forEach(section => { section.dataset.active = String(section.id === id); });
+    let homeFrame = 0;
+    function paintSelection(ids) {
+      revealed = revealSelection([], { type:'restore', ids }, items);
+      items.forEach(item => {
+        const open = revealed.includes(item.id);
+        const changed = item.authentic.hidden === open;
+        item.collection.hidden = open;
+        item.authentic.hidden = !open;
+        item.element.dataset.revealed = String(open);
+        item.button.hidden = false;
+        item.button.setAttribute('aria-expanded', String(open));
+        item.button.setAttribute('aria-label', `${open ? 'Return' : 'Reveal'} ${item.name}${open ? ' to the collection' : ' within desk.'}`);
+        item.button.querySelector('span').textContent = open ? 'Return' : 'Reveal';
+        item.button.querySelector('.reveal-sign').textContent = open ? '−' : '+';
+        if (changed) (open ? item.authentic : item.collection).classList.add('face-enter');
+      });
+      const chapter = items.find(item => revealed.includes(item.id))?.chapter || 'home';
+      root.dataset.chapter = chapter;
+      sections.forEach(section => {
+        const children = items.filter(item => item.chapter === section.id);
+        section.dataset.active = String(children.some(item => revealed.includes(item.id)));
+        section.dataset.complete = String(children.every(item => revealed.includes(item.id)));
+      });
+      returns.forEach(control => { control.hidden = !items.some(item => item.chapter === control.dataset.return && revealed.includes(item.id)); });
       links.forEach(link => {
-        if (link.hash === `#${id}`) link.setAttribute('aria-current', 'location');
+        if (link.hash === `#${chapter}`) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       });
+      publicationHeading.hidden = !revealed.some(id => ['field-brief','loblolly','workbook'].includes(id));
     }
-    function updateChapter() {
-      frame = 0;
-      if (navigationTarget && Math.abs(window.scrollY - navigationTarget.top) <= 2) {
-        navigationTarget = null;
-        clearTimeout(releaseTimer);
-      }
-      activateChapter(navigationTarget ? navigationTarget.id : chapterAt({
-        scrollY: window.scrollY, toolbarHeight, viewportHeight: root.clientHeight,
-        sections: sections.map(section => ({ id: section.id, top: section.getBoundingClientRect().top }))
-      }));
+    function record(hash, anchor, replace = false) {
+      const snapshot = { ids:[...revealed], hash, anchor };
+      const previous = window.history.state?.deskReveal;
+      if (!replace && window.location.hash === hash && JSON.stringify(previous?.ids) === JSON.stringify(revealed)) return;
+      const url = hash || window.location.pathname + window.location.search;
+      window.history[replace ? 'replaceState' : 'pushState']({ deskReveal:snapshot }, '', url);
     }
-    function scheduleChapter() {
-      if (!frame) frame = window.requestAnimationFrame(updateChapter);
-    }
-    function cancelJourney() {
-      navigationRequest += 1;
-      navigationTarget = null;
-      clearTimeout(releaseTimer);
-      scheduleChapter();
+    function routeForSelection() {
+      if (!revealed.length) return '#collection';
+      const chapter = items.find(item => item.id === revealed[0]).chapter;
+      return items.filter(item => item.chapter === chapter).every(item => revealed.includes(item.id)) ? `#${chapter}` : `#work-${revealed.at(-1)}`;
     }
     function measureToolbar() {
-      toolbarHeight = toolbar.getBoundingClientRect().height;
-      root.style.setProperty('--toolbar-height', `${toolbarHeight}px`);
-      scheduleChapter();
-      return toolbarHeight;
+      const height = toolbar.getBoundingClientRect().height;
+      root.style.setProperty('--toolbar-height', `${height}px`);
+      return height;
     }
-    measureToolbar();
-    if (typeof ResizeObserver !== 'undefined') new ResizeObserver(measureToolbar).observe(toolbar);
-    window.addEventListener('resize', () => { cancelJourney(); measureToolbar(); });
-    window.addEventListener('scroll', scheduleChapter, { passive: true });
-    window.addEventListener('scrollend', () => {
-      navigationTarget = null; clearTimeout(releaseTimer); scheduleChapter();
-    });
-    // User input wins immediately over an in-flight programmatic journey.
-    for (const event of ['wheel', 'touchstart', 'pointerdown']) {
-      window.addEventListener(event, cancelJourney, { passive: true });
-    }
-    window.addEventListener('keydown', event => {
-      if (['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].includes(event.key)) cancelJourney();
-    });
-    window.addEventListener('pageshow', scheduleChapter);
-    window.addEventListener('load', scheduleChapter);
-    if (document.fonts) document.fonts.ready.then(scheduleChapter);
-
-    async function navigate(hash, updateHistory) {
-      if (!destinations.has(hash)) return;
+    function releaseJourney() { navigating = false; clearTimeout(releaseTimer); }
+    async function navigate(anchor, smooth) {
       const request = ++navigationRequest;
-      // Font loading changes line wrapping and section geometry on a fresh visit.
+      navigating = true;
+      clearTimeout(releaseTimer);
+      const target = document.getElementById(anchor.slice(1));
+      if (!target) { releaseJourney(); return; }
+      target.focus({ preventScroll:true });
       if (document.fonts) await document.fonts.ready;
       if (request !== navigationRequest) return;
-      const target = document.getElementById(hash.slice(1));
-      const toolbarHeight = measureToolbar();
       const plan = sectionScrollPlan({
-        targetTop: target.getBoundingClientRect().top + window.scrollY,
-        toolbarHeight,
-        viewportHeight: root.clientHeight,
-        documentHeight: root.scrollHeight,
-        spacerHeight: spacer.getBoundingClientRect().height
+        targetTop: anchor === '#top' ? 0 : target.getBoundingClientRect().top + window.scrollY,
+        toolbarHeight: measureToolbar(), viewportHeight: root.clientHeight,
+        documentHeight: root.scrollHeight, spacerHeight: spacer.getBoundingClientRect().height
       });
-      // The final short section needs extra document length to clear the sticky bar.
       spacer.style.height = `${plan.space}px`;
-      if (updateHistory && window.location.hash !== hash) window.history.pushState(null, '', hash);
-      target.focus({ preventScroll: true });
-      const smooth = updateHistory && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      navigationTarget = { id: target.id, top: plan.top };
-      activateChapter(target.id);
-      clearTimeout(releaseTimer);
-      // scrollend is not universal. This bounded fallback releases the visual
-      // destination latch; it never scrolls, changes history or moves focus.
-      releaseTimer = setTimeout(() => {
-        navigationTarget = null; scheduleChapter();
-      }, 1600);
-      window.scrollTo({ top: plan.top, behavior: smooth ? 'smooth' : 'auto' });
-      scheduleChapter();
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top:plan.top, behavior:smooth && !reduced ? 'smooth' : 'auto' });
+      // No repeated scroll correction or height animation. The fallback only
+      // ends the temporary top-reset guard on browsers without scrollend.
+      releaseTimer = setTimeout(releaseJourney, 1600);
     }
+    function restoreRoute() {
+      const hash = window.location.hash;
+      const recognized = !hash || ['#top','#collection'].includes(hash) || links.some(link => link.hash === hash) || items.some(item => `#work-${item.id}` === hash);
+      if (!recognized) return;
+      const saved = window.history.state?.deskReveal;
+      const valid = saved && saved.hash === hash;
+      paintSelection(valid ? saved.ids : selectionForHash(hash, items));
+      const anchor = valid ? saved.anchor : (!hash || ['#top','#collection'].includes(hash) ? '#top' : hash);
+      navigate(anchor, false);
+    }
+    paintSelection([]);
+    measureToolbar();
+    if (typeof ResizeObserver !== 'undefined') new ResizeObserver(measureToolbar).observe(toolbar);
+    window.addEventListener('resize', measureToolbar);
     links.forEach(link => link.addEventListener('click', event => {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
+      paintSelection(revealSelection(revealed, {type:'chapter',id:link.hash.slice(1)}, items));
+      record(link.hash, link.hash);
       navigate(link.hash, true);
     }));
-    function restoreFragment() {
-      if (destinations.has(window.location.hash)) navigate(window.location.hash, false);
-      else { cancelJourney(); scheduleChapter(); }
-    }
-    window.addEventListener('hashchange', restoreFragment);
-    window.addEventListener('popstate', restoreFragment);
-    if (destinations.has(window.location.hash)) navigate(window.location.hash, false);
+    items.forEach(item => item.button.addEventListener('click', () => {
+      paintSelection(revealSelection(revealed, {type:'toggle',id:item.id}, items));
+      const anchor = `#work-${item.id}`;
+      record(routeForSelection(), anchor);
+      navigate(anchor, false);
+    }));
+    returns.forEach(control => control.addEventListener('click', () => {
+      paintSelection(revealSelection(revealed, {type:'return',id:control.dataset.return}, items));
+      const anchor = `#${control.dataset.return}`;
+      record(routeForSelection(), anchor);
+      navigate(anchor, false);
+    }));
+    window.addEventListener('scrollend', releaseJourney);
+    for (const name of ['wheel','touchstart','pointerdown']) window.addEventListener(name, () => {
+      navigationRequest += 1; releaseJourney();
+    }, { passive:true });
+    window.addEventListener('keydown', event => {
+      if (['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].includes(event.key)) { navigationRequest += 1; releaseJourney(); }
+    });
+    // Ordinary scrolling never reveals or closes a selected work. Only the
+    // explicit return to the very beginning restores the complete collection.
+    window.addEventListener('scroll', () => {
+      if (homeFrame) return;
+      homeFrame = window.requestAnimationFrame(() => {
+        homeFrame = 0;
+        if (window.scrollY <= 2 && !navigating && revealed.length) {
+          paintSelection([]); record('', '#top', true);
+        }
+      });
+    }, { passive:true });
+    window.addEventListener('popstate', restoreRoute);
+    window.addEventListener('hashchange', restoreRoute);
+    if (window.location.hash) restoreRoute();
+    else record('', '#top', true);
+    root.dataset.revealReady = 'true';
   });
 })();

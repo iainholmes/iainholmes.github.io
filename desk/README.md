@@ -2,7 +2,7 @@
 
 A self-contained organizational home at `https://iainholmes.github.io/desk/`.
 
-**Desk supplies the composition; its constituent applications supply much of the visual richness.** The owner has accepted the desktop and iPhone composition, application identities, archival artwork, optional introductions, lowercase italic wordmark, typography, navigation and appearance system at `df8c942`. The current pass introduces the home-to-chapter architecture while retaining the user’s final, fixed IH. artwork. The earlier hand-drawn identity is superseded.
+**Desk supplies the composition; its constituent applications supply much of the visual richness.** The default IH. collection and the authentic application reveals are separate presentations. This pass continues `a90ab04`, preserving the exact supplied IH. artwork and established application content. Final browser and artistic acceptance remain with the owner.
 
 ## Architecture
 
@@ -13,7 +13,9 @@ Native links and optional native disclosures keep every destination directly acc
 - A sticky day/night toggle. Automatic appearance follows `America/New_York`, including daylight-saving time: day from 07:00 through 20:59, night otherwise. It is set before the stylesheet and initial page paint. A choice overrides the clock in memory for the current visit; reloads, new visits and restored back/forward-cache visits reevaluate the clock. A scheduled boundary update keeps an open automatic visit current.
 - Measured section positioning and focus. TOC requests scroll smoothly unless reduced motion is preferred; direct fragments and history restore immediately. All three section links land 12 CSS pixels below the sticky bar. The last section receives only the extra document length needed to reach that position. Native fragment URLs and history remain available.
 
-- Scroll-driven chapter identity: one active chapter gains its own surrounding frame, rules, ink and atmosphere. Passive, animation-frame-coalesced observation updates the active chapter and TOC location without changing history or moving focus. Returning to the top restores home. Chapter identity never overrides appearance choice.
+- Deliberate application reveals: each work has an independent IH. collection article and an authentic application article, sharing content and link data through the generator. Native `hidden` removes the inactive face from layout, keyboard navigation and the accessibility tree. TOC selection reveals its entire chapter and resets the others. Individual Reveal/Return controls change one work, preserving selected siblings in the same chapter. A chapter return restores that chapter's collection. Appearance and reveal state are independent.
+
+Ordinary scrolling never reveals or closes a work; returning to the very beginning restores the complete collection. History stores the exact selected subset and destination, including a closed collection. Direct `#research`, `#reading` and `#profile` URLs reveal their chapters; `#work-advisor`, `#work-qst`, `#work-field-brief`, `#work-loblolly`, `#work-workbook`, `#work-rupert` and `#work-portfolio` reveal individual works. `#collection` opens the collection. Open website links are separate from the local reveal controls.
 
 The script makes no network requests and reads no cookies, application data, browser storage, Field Log content or credentials. There is no service worker, backend, embedded app session or offline claim. With JavaScript unavailable, direct links/disclosures remain native and the page uses day appearance.
 
@@ -31,11 +33,15 @@ The final **IH.** signature is the exact supplied image, not a font substitution
 
 The tagline has been removed without replacement. The opening pairs the lowercase italic wordmark with the exact IH. logo on a warm ivory/forest/copper surround. The three existing groups are sequential editorial chapters on both desktop and phone; the navigation remains stable throughout.
 
-Research uses a navy drafting field with fine grid lines and a shared instrument frontispiece. Advisor retains its dark methodology workflow, while QST retains its light/dark learning surface and three language identities. Reading uses archival paper, individual publication mastheads and prominent original covers, continuing into the Atlas's navy field-guide composition. Personal Website uses scholarly blue and a marginal architectural study, with the original academic identity and links.
+| Chapter | Default IH. collection | Authentic reveal |
+| --- | --- | --- |
+| Research & practice | Paired, asymmetrical scholarly folios; drafting dividers and geometric instruments; forest serif type, numbered copper folios and ivory space. | Advisor's navy methodology interface beside QST's quantitative-learning interface and language identities. |
+| Reading & outdoors | Four illustrated catalogue entries in a two-column desktop arrangement: fish, pine, engraved books and a centered compass/contour study. | Three authentic publication mastheads and archival covers across the desktop shelf; the original navy Rupert Atlas follows at full width. Individual reveals keep the surrounding collection entries. |
+| Personal website | An architectural study beside large academic typography and the existing professional description/affiliation; stacked deliberately on phone. | The established scholarly-blue portfolio, research interests and Research/Academic CV links. |
 
-Only the active chapter receives the full atmospheric layer. Color and opacity transitions are restrained and disabled for reduced motion. These layers do not affect layout or anchor geometry. Day/night palettes are separate from chapter state.
+All seven [SVG illustrations](assets/illustrations/README.md) are unchanged and belong to the collection faces. They disappear when their corresponding authentic face appears. Authentic artwork is absent from the initial visible collection. The architecture study is original, not a named campus landmark.
 
-The seven original [SVG illustrations](assets/illustrations/README.md) remain unchanged: the two instruments now introduce Research, the fish/pine/books sit beside publication titles on wide screens and beneath their covers on phone, the compass belongs to the Atlas heading, and the arcade frames the academic chapter. The arcade remains an original study rather than a named campus landmark. No new application feature or section is introduced.
+Switches replace one layout with the other, then position and focus the stable work or chapter wrapper. A short incoming-face fade is disabled with reduced motion; there is no simultaneous interactive overlay or animated height. Complete chapter reveals receive their original surrounding palette; partial reveals retain IH. surroundings for the unrevealed siblings. These are genuinely different layouts, so final Safari scroll timing and responsive composition require physical review.
 
 The [cross-site assessment](IDENTITY-INTEGRATION.md) remains historical guidance only. Expansion of the identity is a separate future assignment.
 

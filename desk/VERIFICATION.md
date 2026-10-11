@@ -1,40 +1,47 @@
-# desk. home-to-chapter verification — 11 October 2026
+# desk. collection / application verification — 11 October 2026
 
 ## Recovery and scope
 
-Continued the clean existing branch `desk/foundation-20261010` at `670442a08a67fb0706315474fc2436aef228c1af`. This assignment introduces the requested home-to-chapter architecture within the continuous page. No new project, branch, constituent-application modification or deployment. PR #4 stays draft.
+Continued the existing `desk/foundation-20261010` branch at `a90ab040944e63089abfbc6da77c00052eeb91ba`. On resumption, six modified files contained the interrupted two-presentation implementation and its updated source/runtime checks. That work was preserved and completed. No new branch, workspace, constituent-application changes or deployment. PR #4 remains draft.
 
-## Editorial architecture
+## Two independently composed presentations
 
-The home uses warm ivory, forest ink, a restrained copper rule and the exact IH. artwork, alongside the unchanged lowercase italic wordmark. The introductory tagline has been removed from both page markup and project configuration, with no replacement sentence in the header.
+Every application has a collection article and a separate authentic presentation inside one stable work wrapper. Both are generated from the same project data. All seven authentic presentations initially have native `hidden`; only the illustrated IH. collection is visible. Inactive faces take no layout space and expose no keyboard or accessibility-tree controls. Reveal buttons are progressive enhancement; without JavaScript, the complete collection and direct Open website links remain available.
 
-The three chapters now follow one another vertically on desktop as well as phone. This makes each TOC target and natural-scroll boundary distinct. Persistent navigation retains desk.'s identity. Only the active chapter receives its full atmospheric layer; adjacent chapters retain recognizable application content without competing surroundings.
+| Chapter | IH. collection | Selected authentic presentation |
+| --- | --- | --- |
+| Research | Paired scholarly folios with drafting dividers and geometric instruments, asymmetrical columns, copper numbering and forest serif typography. | Dark navy Advisor with its original logo/methodology stages; QST with its original language colors and learning workflow. |
+| Reading | Four illustrated catalogue compositions using fish, pine, books and compass/contour artwork. | Original publication mastheads and complete archival covers in the desktop shelf; original navy Rupert Atlas and Rupert plate below. |
+| Personal | Architectural engraving and large academic typography, with existing professional description and affiliation. | Scholarly-blue academic portfolio with existing content and research/CV links. |
 
-- **Research & Practice:** deep navy drafting field, faint measured grid, cream heading, brass opening instruments; Advisor and QST appear side by side on desktop and sequentially on phone, retaining their separate surfaces, stages and language colors.
-- **Reading & Outdoors:** archival paper, botanical green and fine rules; larger original publication covers, authentic masthead faces and subordinate engravings. A full-width navy Atlas composition continues the reading room with its original 4:5 plate and compass/contour device.
-- **Personal Website:** scholarly blue, architectural ink and a large marginal arcade study, with affiliations, professional focus and direct research/CV links arranged as an academic chapter rather than a footer panel.
+The difference is structural, not a variable recoloring: collection and authentic articles have separate markup, imagery, layout and typographic rules. The original illustrations recede entirely from revealed faces. A short incoming-face fade avoids simultaneously active layers; reduced motion disables it. Mobile rules stack the research pair and catalogue, compose publication covers beside text and move the architectural engraving above the personal information.
 
-Research dividers and QST instruments moved to the shared chapter opening. Fish, pine and books remain tied to their individual publications: marginal title devices on wide screens and small devices beneath covers on phone. The Atlas compass remains with its field-guide heading. The arcade moved outside portfolio text to frame the entire academic composition. All seven SVG files are unchanged.
+## Interaction and accessibility
 
-## Runtime behavior
+- TOC selection reveals the requested chapter and closes unrelated chapters. Individual controls reveal/return one work; selected siblings in that chapter remain open. Opening a work in another chapter closes the previous chapter's selection. Separate Open website links preserve direct navigation.
+- Chapter return restores that chapter's collection. Ordinary scrolling changes no reveal state. Returning to the very beginning restores the complete collection and replaces the current history entry.
+- Chapter and individual fragment URLs reveal their destinations. History snapshots preserve selected subsets and closed collection destinations; Back/Forward restores them with immediate positioning. Repeated identical selections create no duplicate entry.
+- Stable work/section wrappers receive focus before font-dependent scroll positioning. TOC navigation requests native smooth scrolling with 12px sticky-toolbar clearance; individual switches and history use immediate positioning. Bottom spacing excludes existing spacer height. User input cancels pending navigation, and the bounded journey guard never issues a second scroll.
+- Reveal controls expose `aria-expanded` and `aria-controls`; current TOC location is marked. Touch controls have a 44px minimum height, visible focus styles remain, and decorative illustrations stay hidden from assistive technology. Source/simulated-DOM checks do not replace VoiceOver/device review.
+- Eastern time, DST boundaries, prepaint appearance and visit-only manual override are preserved. Day/night and reveal state remain independent.
 
-Chapter identity and day/night appearance are independent data attributes. The Eastern/DST clock and visit-only manual appearance selection remain intact. TOC clicks focus the destination, preserve the 12px sticky-toolbar clearance and request native smooth scrolling; reduced-motion preferences, direct fragments and history restoration use immediate positioning.
+## Validation evidence
 
-A passive scroll listener schedules at most one pending animation-frame observation. A reading line near the top of the usable viewport selects one sequential chapter; returning to the beginning restores home. Ordinary scrolling changes neither history nor focus. During a TOC journey the requested chapter remains selected, avoiding intermediate atmosphere flashes. Arrival, scrollend, user input or a bounded 1.6-second fallback releases that state. Observation never scrolls the page. The atmospheric pseudo-elements are paint-only layers: state changes do not alter padding, dimensions or document flow.
+- Final source/accessibility validation: **328 checks passed with `--online`**, including all 12 destination URLs and both portfolio fragments. The **302 offline checks** cover ID references, seven independent face pairs, initially hidden authentic articles, progressive controls, source provenance, exact identity crops and deterministic generation.
+- Simulated-DOM/runtime suite: **13 tests passed** after the final focus/direct-fragment initialization changes. Covers Eastern/DST scheduling, appearance independence, chapter controls, individual subsets/returns, ordinary scrolling/top reset, direct fragments, exact Back/Forward snapshots, reduced motion, rapid requests, interruption and scroll-room calculation.
+- Retrieval of a preceding online run was interrupted by a platform usage-limit approval-review error. A subsequent final validation ran successfully through the normal execution workflow; the earlier interrupted run is not the evidence for the result above.
+- JavaScript syntax and `git diff --check` passed. Preservation checks confirmed all **48 non-document assets**, all **12 established destination URLs**, all **five disclosures**, project data and exact header/footer markup are unchanged from `a90ab04`.
 
-## Validation
+## Preserved identity and assets
 
-- `python3 desk/_tools/validate.py --online`: **277 static/source/accessibility checks passed**, including all destination URLs and both portfolio fragments, unchanged canonical artwork, exact IH. master/crops, deterministic generation, safe decorative SVGs and their revised chapter placements.
-- `node --check desk/desk.js`: passed.
-- `node --test desk/_tools/test-runtime.cjs`: **14 tests passed**. The seven existing appearance/navigation tests remain, with added chapter selection, home restoration, appearance independence, smooth travel/interruption, reduced motion/history, rapid clicks, completion and bounded-fallback coverage.
-- All existing visible text other than the explicitly removed tagline and all anchor attributes are preserved. All **48 non-document assets** are byte-identical, including the final IH. artwork, seven illustrations, canonical covers, Rupert plate, fonts and installation icons.
-- Keyboard focus remains on the chosen section, with the existing visible heading outline. Active TOC links use `aria-current="location"`. Passive chapter observations do not announce or steal focus. No decorative element receives pointer input or a tab stop.
-- `git diff --check` passed. All candidate and complete PR files remain within `desk/`; remote/staged tree equality is checked before final handoff.
+The exact IH. master and lossless header/footer crops are unchanged; the light mount preserves their original colors at night. The lowercase italic wordmark, fonts/provenance, seven engravings, publication covers, Rupert artwork and Home Screen assets are unchanged. Project data, established destination/deep links and five optional native disclosures are preserved. The removed header tagline stays absent. Shared Publication notes now say “The publication covers are selections from the archive” because covers are deliberately absent from the initial collection.
+
+All implementation/documentation changes are confined to `desk/`. The final PR check must confirm the entire PR, not just this incremental commit, stays within that boundary.
 
 ## Visual evidence and acceptance limits
 
-The existing seven illustrations were previously rendered and inspected at desktop/phone ornament dimensions in both palettes; their artwork is unchanged. This pass reviewed generated structure, responsive grid rules, fixed geometry, palettes, layer ordering and interaction logic in source. It did **not** render the integrated revised page in a browser. Runtime tests use a simulated DOM; they do not establish Safari scroll timing, physical iPhone wrapping or final artistic quality.
+The unchanged illustrations have prior Inkscape day/night asset proofs. Those proofs do not show this new integrated layout. This pass reviewed generated markup, responsive rules, palettes, hidden-state semantics and interaction logic in source. **No integrated desktop/iPhone browser capture was produced.** Simulated-DOM tests cannot establish physical wrapping, Safari timing, visual stability or artistic quality.
 
-The previously failing managed preview was not retried. No substitute preview infrastructure was used, and no hosted preview is available. The exact earlier error remains `bwrap: Can't mount proc on /newroot/proc: Operation not permitted`.
+The managed preview was not retried after the earlier `bwrap: Can't mount proc on /newroot/proc: Operation not permitted` failures. No substitute preview infrastructure or deployment was used. No hosted preview link is available.
 
-**The implementation is prepared for visual review, not visually accepted.** The owner must inspect the overall composition and all four home/chapter states on MacBook and iPhone in both appearances, including enlarged text, transition pacing, precise navigation and cover prominence. See `LOCAL-REVIEW.md`. Do not merge or deploy without explicit approval.
+**Prepared for visual review, not visually accepted.** Mandatory default and before/after captures remain the owner's MacBook/iPhone review gate in both appearances. Follow `LOCAL-REVIEW.md`; do not merge or deploy without explicit approval.

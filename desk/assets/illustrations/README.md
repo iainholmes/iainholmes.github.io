@@ -6,22 +6,22 @@ These devices implement the fish, botanical pine, books and compass vocabulary o
 
 | Asset | Placement and purpose |
 | --- | --- |
-| `field-fish.svg` | Burgundy natural-history ornament beside the Field Brief masthead on wide screens; beneath its archival cover on phone. Not a statement that Field Brief specializes in fisheries. |
-| `loblolly-sprig.svg` | Forest-green botanical study of a long-needle pine sprig and cone, paired with Loblolly & Logit's cover. Decorative, not a scientific identification plate. |
-| `workbook-volumes.svg` | Three engraved scholarly volumes with page edges, cloth hatching and a geometric bookboard, paired with The Workbook's equation-bearing cover. |
-| `advisor-dividers.svg` | Warm brass drafting dividers and construction lines in the shared Research & Practice chapter opening. Not a new tool, data plot or model result. |
-| `qst-instruments.svg` | Set square and protractor in the shared Research & Practice chapter opening, introducing the unchanged language identities and Learn / Practice / Feedback sequence. |
-| `atlas-bearing.svg` | Small compass rose and abstract contour lines above the Atlas heading, leaving the original Rupert plate unobstructed. Not a geographic map. |
-| `academic-arcade.svg` | Original academic arcade vignette in the Personal Website chapter margin. It is not a depiction of UVA, NC State, Sewanee or any other named building. |
+| `field-fish.svg` | Forest-ink natural-history study in Field Brief's collection entry. Not a statement that Field Brief specializes in fisheries. |
+| `loblolly-sprig.svg` | Long-needle pine sprig and cone opposite Loblolly & Logit's collection typography. Decorative, not a scientific identification plate. |
+| `workbook-volumes.svg` | Scholarly volumes, page edges, cloth hatching and geometric bookboard in The Workbook's catalogue entry. |
+| `advisor-dividers.svg` | Drafting dividers and construction lines in Advisor's collection folio. Not a new tool, data plot or model result. |
+| `qst-instruments.svg` | Set square and protractor in QST's companion collection folio. |
+| `atlas-bearing.svg` | Centered compass rose and abstract contour lines above the Atlas collection title. Not a geographic map. |
+| `academic-arcade.svg` | Academic architectural study beside the personal collection text on desktop and above it on phone. Not a depiction of any named campus. |
 
 ## Display and accessibility
 
-The page embeds the canonical SVGs unchanged. Their `currentColor` ink inherits the destination's palette; explicit muted cream/ink treatments support night appearance. No filters, scripts, external resources, animation or text fonts occur inside these vectors. The exact personal logo is outside this color system and remains unchanged.
+The page embeds the canonical SVGs unchanged. Their `currentColor` ink follows the shared IH. forest/ivory palette, with muted light ink at night. No filters, scripts, external resources, animation or text fonts occur inside these vectors. The exact personal logo is outside this color system and remains unchanged.
 
-Wide-screen publication devices occupy small title margins; mobile devices sit beneath their covers, 42px high. Research instruments share a reserved chapter-opening position. The Atlas compass stays with its heading; the academic arcade occupies a chapter margin on desktop and a restrained opening vignette on phone. Fine engraving detail naturally reduces at phone sizes, but the principal silhouettes are retained. There is no separate simplified mobile asset.
+The engravings are primary imagery in the default collection faces, not ornaments attached to authentic application panels. Most occupy 130–200px-high viewports; the academic study uses 215px on desktop and 140px on phone, while the compass uses a wide 105px-high viewport. Narrow research folios move instruments above their typography. Each illustration disappears when its authentic application face is revealed. Fine detail naturally reduces at small sizes; no separate simplified mobile asset is used.
 
 All seven devices are decorative. Wrappers and SVGs use `aria-hidden="true"`; SVGs also use `focusable="false"`. They receive no pointer events, introduce no controls and add no repeated screen-reader description. Existing destination names, link labels and navigation remain authoritative.
 
 ## Review evidence
 
-Inkscape-rendered proofs were inspected at larger and intended desktop/phone ornament sizes against day/night surfaces. Source validation checks XML safety, placement in each correct application, accessible treatment, hashes and deterministic generation. These proofs do not establish integrated browser layout acceptance. See `../../LOCAL-REVIEW.md` for the physical Mac/iPhone review.
+Prior Inkscape-rendered proofs were inspected at larger and earlier desktop/phone ornament sizes against day/night surfaces. This pass changes their placement and scale without changing their artwork. Source validation checks XML safety, placement in each correct collection entry, accessible treatment, hashes and deterministic generation. Earlier proofs do not establish acceptance of the new integrated layout. See `../../LOCAL-REVIEW.md` for the physical Mac/iPhone review.

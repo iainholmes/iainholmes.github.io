@@ -798,6 +798,145 @@ body { background-image:repeating-linear-gradient(0deg,transparent 0 5px,#976144
   .editorial-chapter[data-active="true"] .section-heading>span,
   .research-group[data-active="true"] .chapter-instruments { color:CanvasText }
 }
+/* Two separate faces: the IH. catalogue is authored independently of the
+   preserved application articles. Hidden faces have no layout or focus space. */
+.editorial-chapter::before { opacity:1; background:var(--white); border-color:var(--rule) }
+.editorial-chapter[data-active="true"]::before { background:var(--white); border-color:var(--rule) }
+.editorial-chapter[data-active="true"] .section-heading h2 { color:var(--ink); border-color:var(--rule) }
+.editorial-chapter[data-active="true"] .section-heading>span { color:var(--accent) }
+.editorial-chapter[data-complete="true"]::before { background:var(--chapter-paper); border-color:var(--chapter-rule) }
+.editorial-chapter[data-complete="true"] .section-heading h2 { color:var(--chapter-ink); border-color:var(--chapter-rule) }
+.editorial-chapter[data-complete="true"] .section-heading>span { color:var(--chapter-accent) }
+.editorial-chapter .section-heading { grid-template-columns:38px minmax(0,1fr); min-height:0 }
+.chapter-return { appearance:none; border:0; border-bottom:1px solid var(--rule); color:var(--ink); background:transparent; font:400 15px/1.4 "Latin Modern Roman Dunhill",Georgia,serif; min-height:44px; padding:8px 0; margin:-10px 0 22px; cursor:pointer }
+.editorial-chapter[data-complete="true"] .chapter-return { color:var(--chapter-ink); border-color:var(--chapter-rule) }
+.work-item { min-width:0; align-self:start; scroll-margin-top:calc(var(--toolbar-height) + 12px) }
+.work-item:focus-visible { outline:3px solid var(--accent); outline-offset:5px }
+.collection-entry { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); grid-template-rows:auto 1fr; align-items:center; gap:24px; min-height:330px; padding:26px 24px 22px; color:var(--ink); border-top:1px solid var(--ink) }
+.collection-folio { grid-column:1/-1; display:flex; justify-content:space-between; align-items:baseline; gap:18px; color:var(--muted); font-size:14px; line-height:1.4 }
+.collection-folio>span:first-child { color:var(--accent); font-style:oblique; letter-spacing:.08em }
+.collection-engraving { grid-column:1; grid-row:2; width:100%; height:170px; color:var(--ink) }
+.collection-copy { grid-column:2; grid-row:2; min-width:0 }
+.collection-copy h3 { font:oblique 400 35px/1.12 "Latin Modern Roman Dunhill",Georgia,serif; letter-spacing:-.025em }
+.collection-copy p { font-size:17px; line-height:1.55; color:var(--muted); max-width:30ch; margin-top:16px }
+.collection-copy .collection-affiliation { font-size:15px; padding-top:14px; border-top:1px solid var(--rule) }
+.collection-qst .collection-copy,.collection-loblolly .collection-copy { grid-column:1 }
+.collection-qst .collection-engraving,.collection-loblolly .collection-engraving { grid-column:2 }
+.collection-qst { grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr) }
+.collection-loblolly .collection-engraving { height:200px }
+.collection-rupert { grid-template-columns:1fr; gap:12px; text-align:center }
+.collection-rupert .collection-folio { text-align:left }
+.collection-rupert .collection-engraving { grid-column:1; grid-row:2; height:105px; max-width:340px; justify-self:center }
+.collection-rupert .collection-copy { grid-column:1; grid-row:3 }
+.collection-rupert .collection-copy p { margin:10px auto 0 }
+.collection-portfolio { grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:24px 66px; min-height:290px; padding:28px 42px }
+.collection-portfolio .collection-engraving { height:215px }
+.collection-portfolio .collection-copy h3 { font-size:56px }
+.collection-portfolio .collection-copy p { max-width:42ch }
+.research-projects { grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) }
+.research-projects .collection-entry { min-height:410px }
+.research-projects .authentic-presentation>.destination { min-height:410px }
+.research-group[data-complete="true"] .research-projects { grid-template-columns:repeat(2,minmax(0,1fr)) }
+.work-actions { display:flex; align-items:center; justify-content:space-between; gap:20px; min-height:54px; padding:4px 24px; border-block:1px solid var(--rule); background:var(--white); color:var(--ink) }
+.work-actions button { display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:44px; min-width:94px; padding:9px 0; border:0; background:transparent; color:inherit; cursor:pointer; font:400 16px/1.3 "Latin Modern Roman Dunhill",Georgia,serif }
+.reveal-sign { color:var(--accent); font-size:23px; line-height:1 }
+.collection-open { display:flex; align-items:center; gap:12px; min-height:44px; font-size:15px; line-height:1.3 }
+.work-actions button:hover>span:first-child,.collection-open:hover { text-decoration:underline; text-underline-offset:4px }
+.reading-projects { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px }
+.periodicals,.publication-shelf { display:contents }
+.publication-head { grid-column:1/-1; order:0; margin:0 }
+.work-field-brief { order:1 }
+.work-loblolly { order:2 }
+.work-workbook { order:3 }
+.work-rupert { order:4 }
+.shelf-footer { grid-column:1/-1; order:5; margin-top:0 }
+.reading-group[data-complete="true"] .reading-projects { grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px }
+.reading-group[data-complete="true"] .work-rupert { grid-column:1/-1; order:6 }
+.authentic-presentation .publication-heading { padding-right:0; min-height:95px }
+.authentic-presentation .publication-main { background:#f7f5ed }
+.authentic-presentation .publication-cover .cover-art { max-width:230px }
+.reading-group:not([data-complete="true"]) .publication-main { display:grid; grid-template-columns:130px minmax(0,1fr); grid-template-rows:auto 1fr auto; gap:0 24px; min-height:330px; padding:24px }
+.reading-group:not([data-complete="true"]) .publication-cover { grid-column:1; grid-row:1/4; margin:0 }
+.reading-group:not([data-complete="true"]) .publication-heading { grid-column:2; grid-row:1; min-height:0 }
+.reading-group:not([data-complete="true"]) .publication-description { grid-column:2; grid-row:2 }
+.reading-group:not([data-complete="true"]) .publication-open { grid-column:2; grid-row:3 }
+.reading-group:not([data-complete="true"]) .rupert-layout { grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:20px; padding:22px 24px 0 }
+.reading-group:not([data-complete="true"]) .rupert-content { display:contents }
+.reading-group:not([data-complete="true"]) .rupert-heading { grid-column:2; grid-row:1 }
+.reading-group:not([data-complete="true"]) .rupert-heading h3 { font-size:34px }
+.reading-group:not([data-complete="true"]) .rupert-links { grid-column:1/-1; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px }
+.reading-group:not([data-complete="true"]) .rupert-links .arrow { display:none }
+.profile-composition { display:block; min-height:0 }
+.authentic-presentation>.portfolio { padding:30px; background:#e8edec; border-left:4px solid #1b3a5c; min-height:290px }
+:root[data-appearance="night"] .authentic-presentation .publication-main { background:#232e26 }
+:root[data-appearance="night"] .authentic-presentation>.portfolio { background:#202e35; border-left-color:#a9c4df }
+.face-enter { animation:folio-appear .22s ease-out both }
+@keyframes folio-appear { from { opacity:.25 } to { opacity:1 } }
+@media(max-width:1000px) {
+  .collection-entry { gap:18px; padding-inline:20px }
+  .collection-copy h3 { font-size:30px }
+  .collection-engraving { height:140px }
+  .collection-portfolio { gap:30px; padding-inline:30px }
+  .collection-portfolio .collection-copy h3 { font-size:46px }
+  .reading-group:not([data-complete="true"]) .publication-main { grid-template-columns:100px minmax(0,1fr); gap:0 18px; padding:18px }
+  .work-actions { padding-inline:18px; gap:12px }
+}
+@media(max-width:700px) {
+  .research-projects,.research-group[data-complete="true"] .research-projects,.reading-projects,.reading-group[data-complete="true"] .reading-projects { grid-template-columns:1fr; gap:22px }
+  .collection-entry,.research-projects .collection-entry { min-height:265px }
+  .collection-engraving { height:155px }
+  .collection-copy h3 { font-size:34px }
+  .collection-portfolio { min-height:300px; grid-template-columns:1fr; gap:20px; padding:22px }
+  .collection-portfolio .collection-engraving { grid-row:2; height:140px; max-width:280px; justify-self:center }
+  .collection-portfolio .collection-copy { grid-column:1; grid-row:3 }
+  .collection-portfolio .collection-copy h3 { font-size:42px }
+  .collection-loblolly .collection-engraving { height:165px }
+  .collection-copy p { font-size:16px; margin-top:12px }
+  .editorial-chapter .section-heading { grid-template-columns:26px minmax(0,1fr) }
+  .authentic-presentation .publication-main,.reading-group:not([data-complete="true"]) .publication-main { display:grid; grid-template-columns:108px minmax(0,1fr); grid-template-rows:auto 1fr auto; gap:0 18px; padding:16px; min-height:0 }
+  .authentic-presentation .publication-cover { grid-column:1; grid-row:1/4; margin:0 }
+  .authentic-presentation .publication-heading { grid-column:2; grid-row:1; min-height:0 }
+  .authentic-presentation .publication-description { grid-column:2; grid-row:2 }
+  .authentic-presentation .publication-open { grid-column:2; grid-row:3; min-height:48px }
+  .authentic-presentation>.portfolio { padding:22px 20px }
+  .work-actions { padding-inline:16px }
+  .reading-group[data-complete="true"] .work-rupert { grid-column:1 }
+  .chapter-return { font-size:14px }
+}
+@media(max-width:370px) {
+  .collection-entry { padding:18px 14px; gap:14px }
+  .collection-copy h3 { font-size:28px }
+  .collection-engraving { height:130px }
+  .collection-folio { font-size:13px; gap:12px }
+  .work-actions { gap:10px; padding-inline:14px }
+  .work-actions button { font-size:15px; min-width:86px; gap:10px }
+  .collection-open { font-size:14px; gap:8px }
+  .authentic-presentation .publication-main,.reading-group:not([data-complete="true"]) .publication-main { grid-template-columns:86px minmax(0,1fr); gap:0 12px; padding:12px }
+}
+@media(forced-colors:active) {
+  .editorial-chapter::before,.editorial-chapter[data-active="true"]::before,.editorial-chapter[data-complete="true"]::before { background:Canvas; border-color:CanvasText }
+  .editorial-chapter[data-complete="true"] .section-heading h2,.editorial-chapter[data-complete="true"] .section-heading>span,.editorial-chapter[data-complete="true"] .chapter-return { color:CanvasText }
+}
+@media(min-width:701px) and (max-width:900px) {
+  .research-projects,.research-group[data-complete="true"] .research-projects { grid-template-columns:1fr }
+  .research-projects .collection-entry { min-height:300px }
+}
+@media(max-width:370px) {
+  .collection-advisor,.collection-qst { grid-template-columns:1fr; text-align:left }
+  .collection-advisor .collection-engraving,.collection-qst .collection-engraving { grid-column:1; grid-row:2; height:125px; max-width:220px; justify-self:center }
+  .collection-advisor .collection-copy,.collection-qst .collection-copy { grid-column:1; grid-row:3 }
+}
+/* On a direct reveal URL, wait for synchronous DOM initialization rather than flashing the catalogue face. */
+:root[data-initial-reveal="research"]:not([data-reveal-ready]) #research .work-item,
+:root[data-initial-reveal="reading"]:not([data-reveal-ready]) #reading .work-item,
+:root[data-initial-reveal="profile"]:not([data-reveal-ready]) #profile .work-item,
+:root[data-initial-reveal="work-advisor"]:not([data-reveal-ready]) #work-advisor,
+:root[data-initial-reveal="work-qst"]:not([data-reveal-ready]) #work-qst,
+:root[data-initial-reveal="work-field-brief"]:not([data-reveal-ready]) #work-field-brief,
+:root[data-initial-reveal="work-loblolly"]:not([data-reveal-ready]) #work-loblolly,
+:root[data-initial-reveal="work-workbook"]:not([data-reveal-ready]) #work-workbook,
+:root[data-initial-reveal="work-rupert"]:not([data-reveal-ready]) #work-rupert,
+:root[data-initial-reveal="work-portfolio"]:not([data-reveal-ready]) #work-portfolio { visibility:hidden }
 @media(prefers-reduced-motion:reduce) {
   *,*::before,*::after { transition:none!important; animation:none!important; scroll-behavior:auto!important }
 }

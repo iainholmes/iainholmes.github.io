@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const runtime = fs.readFileSync(`${__dirname}/../desk.js`, 'utf8');
-const { appearanceAt, nextBoundary, sectionScrollPlan, chapterAt } = require('../desk.js');
+const { appearanceAt, nextBoundary, sectionScrollPlan, revealSelection, selectionForHash } = require('../desk.js');
 
 test('Eastern boundaries in standard and daylight time, independent of device zone', () => {
   for (const [date, expected] of [
@@ -42,185 +42,151 @@ test('Section plan reaches every destination including the bottom section', () =
   assert.deepEqual(sectionScrollPlan({ targetTop: 20, toolbarHeight: 72, viewportHeight: 800, documentHeight: 3000 }), { top: 0, space: 0 });
 });
 
+const catalogue = [
+  {id:'advisor',chapter:'research'},{id:'qst',chapter:'research'},
+  {id:'field-brief',chapter:'reading'},{id:'loblolly',chapter:'reading'},
+  {id:'workbook',chapter:'reading'},{id:'rupert',chapter:'reading'},
+  {id:'portfolio',chapter:'profile'}
+];
 function browserHarness(start) {
-  let now = Date.parse(start);
-  const events = {}, buttonEvents = {}, timers = new Map(), frames = new Map(), targets = {};
-  let frameId = 0, timerId = 0;
-  function listen(name, callback) { const previous = events[name]; events[name] = previous ? event => { previous(event); callback(event); } : callback; }
-  const style = { setProperty() {} };
-  const root = { dataset: {}, style, clientHeight: 874 };
-  const meta = {}, label = {}, button = {
-    hidden: true, attrs: {},
-    setAttribute(name, value) { this.attrs[name] = value; },
-    querySelector: () => label,
-    addEventListener(name, callback) { buttonEvents[name] = callback; }
-  };
-  const toolbar = { getBoundingClientRect: () => ({ height: 72 }) };
-  const spacer = { style: { height: '0px' }, getBoundingClientRect: () => ({ height: parseFloat(spacer.style.height) }) };
-  Object.defineProperty(root, 'scrollHeight', { get: () => 3020 + parseFloat(spacer.style.height) });
-  const links = ['research', 'reading', 'profile'].map((id, i) => {
-    targets[id] = { id, dataset: {}, getBoundingClientRect: () => ({ top: [250, 1300, 2700][i] - window.scrollY }), focus(opts) { this.focused = opts.preventScroll; } };
-    return { hash: `#${id}`, attrs: {}, setAttribute(k,v) { this.attrs[k]=v; }, removeAttribute(k) { delete this.attrs[k]; }, addEventListener(name, callback) { this.click = callback; } };
+  let now=Date.parse(start), timerId=0, frameId=0;
+  const events={}, timers=new Map(), frames=new Map(), targets={}, works={};
+  const listen=(name,fn)=>{const previous=events[name];events[name]=previous?e=>{previous(e);fn(e);}:fn;};
+  function node(id='') { return {id,dataset:{},attrs:{},hidden:false,style:{},handlers:{},classList:{add(){}},
+    setAttribute(k,v){this.attrs[k]=v;},removeAttribute(k){delete this.attrs[k];},
+    addEventListener(k,fn){this.handlers[k]=fn;},focus(options){this.focused=options.preventScroll;}}; }
+  const root={dataset:{},style:{setProperty(){}},clientHeight:874};
+  const label={},meta={},button=node();button.hidden=true;button.querySelector=()=>label;
+  const toolbar={getBoundingClientRect:()=>({height:72})};
+  const spacer={style:{height:'0px'},getBoundingClientRect:()=>({height:parseFloat(spacer.style.height)})};
+  Object.defineProperty(root,'scrollHeight',{get:()=>3020+parseFloat(spacer.style.height)});
+  const topFor=chapter=>({research:250,reading:1300,profile:2700}[chapter])+(chapter!=='research' && works.advisor && !works.advisor.authentic.hidden?120:0);
+  const links=['research','reading','profile'].map(id=>{
+    targets[id]=node(id);targets[id].getBoundingClientRect=()=>({top:topFor(id)-window.scrollY});
+    const link=node();link.hash=`#${id}`;return link;
   });
-  const document = {
-    documentElement: root, hidden: false, fonts: { ready: Promise.resolve() },
-    querySelector: selector => ({ 'meta[name="theme-color"]': meta, '.appearance-switch': button, '.desk-toolbar': toolbar }[selector]),
-    querySelectorAll: () => links,
-    getElementById: id => id === 'section-scroll-room' ? spacer : targets[id],
-    addEventListener: listen
-  };
-  const window = {
-    scrollY: 0, location: { hash: '' },
-    history: { pushState(a, b, hash) { window.location.hash = hash; } },
-    scrollCalls: [], reduced: false, deferSmooth: false,
-    matchMedia() { return { matches: this.reduced }; },
-    requestAnimationFrame(callback) { frames.set(++frameId, callback); return frameId; },
-    scrollTo(options) { this.scrollCalls.push(options); if (!(this.deferSmooth && options.behavior === 'smooth')) this.scrollY = options.top; },
-    addEventListener: listen
-  };
-  class Clock extends Date { constructor(...args) { super(...(args.length ? args : [now])); } }
-  vm.runInNewContext(runtime, {
-    document, window, Intl, Date: Clock,
-    setTimeout(fn, delay) { const id = ++timerId; timers.set(id, { fn, delay }); return id; },
-    clearTimeout(id) { timers.delete(id); }
+  const returns=links.map(link=>{const n=node();n.dataset.return=link.hash.slice(1);n.hidden=true;return n;});
+  catalogue.forEach((work,i)=>{
+    const n=node(`work-${work.id}`);n.dataset={work:work.id,name:work.id,chapter:work.chapter};
+    n.collection=node();n.authentic=node();n.authentic.hidden=true;n.button=node();n.button.hidden=true;
+    const text={},sign={};n.button.querySelector=selector=>selector==='span'?text:sign;
+    n.querySelector=selector=>({'[data-collection]':n.collection,'[data-authentic]':n.authentic,'[data-reveal]':n.button}[selector]);
+    n.getBoundingClientRect=()=>({top:topFor(work.chapter)+110+(i%2)*100-window.scrollY});
+    works[work.id]=n;targets[n.id]=n;
   });
-  return { root, meta, button, label, events, buttonEvents, links, targets, spacer, window, timers,
-    flush() { const callbacks = [...frames.values()]; frames.clear(); callbacks.forEach(fn => fn()); },
-    advance(date) { now = Date.parse(date); }, mount() { events.DOMContentLoaded(); } };
+  targets.top=node('top');targets.top.getBoundingClientRect=()=>({top:-window.scrollY});
+  const publicationHeading=node();publicationHeading.hidden=true;
+  const document={documentElement:root,hidden:false,fonts:{ready:Promise.resolve()},
+    querySelector:s=>({'meta[name="theme-color"]':meta,'.appearance-switch':button,'.desk-toolbar':toolbar,'[data-publication-heading]':publicationHeading}[s]),
+    querySelectorAll:s=>({'.desk-nav a':links,'[data-work]':Object.values(works),'[data-return]':returns}[s]),
+    getElementById:id=>id==='section-scroll-room'?spacer:targets[id],addEventListener:listen};
+  const entries=[];let index=-1;
+  function save(state,url,replace) {
+    window.location.hash=url.startsWith('#')?url:'';window.history.state=state;
+    const entry={state,hash:window.location.hash};
+    if(replace && index>=0)entries[index]=entry;else{entries.splice(index+1);entries.push(entry);index++;}
+  }
+  const window={scrollY:0,location:{hash:'',pathname:'/desk/',search:''},reduced:false,deferSmooth:false,scrollCalls:[],
+    history:{state:null,pushState(state,title,url){save(state,url,false);},replaceState(state,title,url){save(state,url,true);}},
+    matchMedia(){return{matches:this.reduced};},
+    requestAnimationFrame(fn){frames.set(++frameId,fn);return frameId;},
+    scrollTo(options){this.scrollCalls.push(options);if(!(this.deferSmooth && options.behavior==='smooth'))this.scrollY=options.top;},
+    addEventListener:listen};
+  class Clock extends Date {constructor(...args){super(...(args.length?args:[now]));}}
+  vm.runInNewContext(runtime,{document,window,Intl,Date:Clock,
+    setTimeout(fn,delay){const id=++timerId;timers.set(id,{fn,delay});return id;},clearTimeout(id){timers.delete(id);}});
+  return {root,meta,label,button,events,links,returns,targets,works,window,timers,spacer,entries,publicationHeading,
+    advance(date){now=Date.parse(date);},mount(){events.DOMContentLoaded();},
+    flush(){const pending=[...frames.values()];frames.clear();pending.forEach(fn=>fn());},
+    travel(delta){index+=delta;const entry=entries[index];window.history.state=entry.state;window.location.hash=entry.hash;events.popstate();events.hashchange();}};
 }
+const tick=()=>new Promise(setImmediate);
+const click=link=>link.handlers.click({button:0,preventDefault(){}});
+const visible=h=>Object.entries(h.works).filter(([,w])=>!w.authentic.hidden).map(([id])=>id);
 
-test('Initial appearance is applied before DOM initialization; manual choice lasts this visit', () => {
-  const h = browserHarness('2026-07-15T12:00:00Z');
-  assert.equal(h.root.dataset.appearance, 'day');
-  assert.equal(h.meta.content, '#f3efe4');
-  assert.equal(h.button.hidden, true);
-  h.mount();
-  assert.equal(h.button.hidden, false);
-  h.buttonEvents.click();
-  assert.equal(h.root.dataset.appearance, 'night');
-  assert.equal(h.button.attrs['aria-pressed'], 'true');
-  assert.equal(h.label.textContent, 'Night');
-  assert.equal(h.meta.content, '#141f1b');
-  assert.equal(h.timers.size, 0);
-  h.advance('2026-07-16T13:00:00Z');
-  h.events.visibilitychange();
-  assert.equal(h.root.dataset.appearance, 'night');
-  const fresh = browserHarness('2026-07-16T13:00:00Z');
-  assert.equal(fresh.root.dataset.appearance, 'day');
-  h.events.pageshow({ persisted: true });
-  assert.equal(h.root.dataset.appearance, 'day', 'A restored page visit recalculates time');
+test('Initial render has only collection faces; appearance is set before DOM paint',()=>{
+  const h=browserHarness('2026-07-15T12:00:00Z');assert.equal(h.root.dataset.appearance,'day');assert.equal(h.meta.content,'#f3efe4');
+  h.mount();assert.deepEqual(visible(h),[]);assert.ok(Object.values(h.works).every(w=>!w.collection.hidden && !w.button.hidden));
+  assert.equal(h.publicationHeading.hidden,true);assert.equal(h.root.dataset.chapter,'home');assert.equal(h.entries.length,1);
 });
 
-test('Automatic appearance changes on the scheduled boundary and after backgrounding', () => {
-  const h = browserHarness('2026-07-16T00:59:59Z'); h.mount();
-  assert.equal(h.root.dataset.appearance, 'day');
-  const scheduled = [...h.timers.values()][0];
-  assert.equal(scheduled.delay, 1030);
-  h.advance('2026-07-16T01:00:01Z'); scheduled.fn();
-  assert.equal(h.root.dataset.appearance, 'night');
-  h.advance('2026-07-16T11:00:00Z'); h.events.visibilitychange();
-  assert.equal(h.root.dataset.appearance, 'day');
+test('Visit-only appearance override and Eastern scheduling stay independent of reveals',async()=>{
+  const h=browserHarness('2026-07-16T00:59:59Z');h.mount();
+  const scheduled=[...h.timers.values()][0];assert.equal(scheduled.delay,1030);
+  h.advance('2026-07-16T01:00:01Z');scheduled.fn();assert.equal(h.root.dataset.appearance,'night');
+  click(h.links[0]);await tick();h.button.handlers.click();assert.equal(h.root.dataset.appearance,'day');
+  assert.deepEqual(visible(h),['advisor','qst']);assert.equal(h.button.attrs['aria-pressed'],'false');
+  h.advance('2026-07-17T02:00:00Z');h.events.visibilitychange();assert.equal(h.root.dataset.appearance,'day');
+  h.events.pageshow({persisted:true});assert.equal(h.root.dataset.appearance,'night');assert.deepEqual(visible(h),['advisor','qst']);
 });
 
-test('All three anchors move focus and land under the bar; modifier-click stays native', async () => {
-  const h = browserHarness('2026-07-15T12:00:00Z'); h.mount();
-  for (const link of h.links) {
-    let prevented = false;
-    link.click({ button: 0, preventDefault() { prevented = true; } });
-    await new Promise(setImmediate);
-    assert.equal(prevented, true);
-    assert.equal(h.window.location.hash, link.hash);
-    assert.equal(h.targets[link.hash.slice(1)].focused, true);
-    assert.equal(h.targets[link.hash.slice(1)].getBoundingClientRect().top, 84);
-    assert.ok(h.window.scrollY <= h.root.scrollHeight - h.root.clientHeight);
-  }
-  assert.ok(parseFloat(h.spacer.style.height) > 0);
-  h.links[0].click({ button: 0, metaKey: true, preventDefault() { assert.fail('Modifier click intercepted'); } });
-  h.links[0].click({ button: 0, preventDefault() {} });
-  await new Promise(setImmediate);
-  assert.equal(h.spacer.style.height, '0px');
-});
-
-test('Direct section URLs and Back/hash navigation use the same alignment', async () => {
-  const h = browserHarness('2026-07-15T12:00:00Z');
-  h.window.location.hash = '#profile'; h.mount(); await new Promise(setImmediate);
-  assert.equal(h.targets.profile.getBoundingClientRect().top, 84);
-  h.window.location.hash = '#reading'; h.events.hashchange(); await new Promise(setImmediate);
-  assert.equal(h.targets.reading.getBoundingClientRect().top, 84);
-});
-
-
-test('Reading line selects one sequential chapter and restores home at the top', () => {
-  const sections = [{id:'research',top:250},{id:'reading',top:1300},{id:'profile',top:2700}];
-  const at = y => chapterAt({scrollY:y,toolbarHeight:72,viewportHeight:874,sections:sections.map(s=>({...s,top:s.top-y}))});
-  assert.equal(at(0),'home'); assert.equal(at(50),'home');
-  assert.equal(at(100),'research'); assert.equal(at(1200),'reading'); assert.equal(at(2600),'profile');
-  assert.equal(at(1),'home');
-});
-
-test('Manual scrolling updates only chapter/current link, never history, focus or appearance', () => {
-  const h=browserHarness('2026-07-15T12:00:00Z'); h.mount(); h.flush();
-  assert.equal(h.root.dataset.chapter,'home');
-  h.buttonEvents.click();
-  for (const [top,expected] of [[100,'research'],[1200,'reading'],[2600,'profile'],[0,'home']]) {
-    h.window.scrollY=top; h.events.scroll(); h.flush();
-    assert.equal(h.root.dataset.chapter,expected);
-    assert.equal(Object.values(h.targets).filter(s=>s.dataset.active==='true').length,expected==='home'?0:1);
-    assert.equal(h.links.filter(l=>l.attrs['aria-current']==='location').length,expected==='home'?0:1);
-    assert.equal(h.root.dataset.appearance,'night');
-    assert.equal(h.window.location.hash,'');
-    assert.ok(Object.values(h.targets).every(s=>!s.focused));
-  }
-  assert.equal(h.window.scrollCalls.length,0,'Scroll observer must never scroll the page');
-});
-
-test('TOC journeys are smooth, destination stays stable in transit, and user input releases it', async () => {
-  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.flush();h.window.deferSmooth=true;
-  h.links[2].click({button:0,preventDefault(){}});await new Promise(setImmediate);
-  assert.equal(h.window.scrollCalls.at(-1).behavior,'smooth');
-  assert.equal(h.root.dataset.chapter,'profile');
-  h.window.scrollY=1200;h.events.scroll();h.flush();
-  assert.equal(h.root.dataset.chapter,'profile','No intermediate chapter flashing during TOC travel');
-  h.events.touchstart();h.flush();
-  assert.equal(h.root.dataset.chapter,'reading','Touch scrolling takes over');
-  h.events.resize();h.flush();
-  assert.equal(h.window.scrollCalls.length,1,'Resize and observation never create scroll loops');
-});
-
-test('Reduced motion, direct fragments and browser history use immediate exact positioning', async () => {
-  const h=browserHarness('2026-07-15T12:00:00Z');h.window.reduced=true;h.mount();h.flush();
-  h.links[2].click({button:0,preventDefault(){}});await new Promise(setImmediate);h.flush();
-  assert.equal(h.window.scrollCalls.at(-1).behavior,'auto');
-  assert.equal(h.root.dataset.chapter,'profile');
-  assert.equal(h.targets.profile.getBoundingClientRect().top,84);
-  h.buttonEvents.click();h.window.location.hash='#reading';h.events.popstate();await new Promise(setImmediate);h.flush();
-  assert.equal(h.targets.reading.getBoundingClientRect().top,84);
-  assert.equal(h.root.dataset.chapter,'reading');assert.equal(h.root.dataset.appearance,'night');
-  h.window.location.hash='';h.window.scrollY=0;h.events.popstate();h.flush();
-  assert.equal(h.root.dataset.chapter,'home');
-});
-
-test('Only the latest rapid TOC request moves focus and scrolls', async () => {
+test('Each TOC reveals exactly its chapter after layout changes and aligns at 12px clearance',async()=>{
   const h=browserHarness('2026-07-15T12:00:00Z');h.mount();
-  h.links[0].click({button:0,preventDefault(){}});h.links[1].click({button:0,preventDefault(){}});
-  await new Promise(setImmediate);h.flush();
-  assert.equal(h.window.scrollCalls.length,1);assert.equal(h.root.dataset.chapter,'reading');
-  assert.equal(h.targets.research.focused,undefined);assert.equal(h.targets.reading.focused,true);
+  for(const link of h.links){click(link);await tick();const id=link.hash.slice(1);
+    assert.deepEqual(visible(h),catalogue.filter(w=>w.chapter===id).map(w=>w.id));
+    assert.equal(h.targets[id].getBoundingClientRect().top,84);assert.equal(h.targets[id].focused,true);
+    assert.equal(h.targets[id].dataset.complete,'true');assert.equal(link.attrs['aria-current'],'location');
+    assert.equal(h.window.scrollCalls.at(-1).behavior,'smooth');
+  }
+  const count=h.entries.length;click(h.links[2]);await tick();assert.equal(h.entries.length,count,'No duplicate history entry');
+  assert.ok(parseFloat(h.spacer.style.height)>0);
+  h.links[0].handlers.click({button:0,metaKey:true,preventDefault(){assert.fail('Modifier click intercepted');}});
 });
 
-
-test('Completed journey releases the destination latch without relying on scrollend', async () => {
-  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.flush();
-  h.links[2].click({button:0,preventDefault(){}});await new Promise(setImmediate);h.flush();
-  assert.equal(h.root.dataset.chapter,'profile');
-  assert.equal([...h.timers.values()].filter(t=>t.delay===1600).length,0);
-  h.window.scrollY=1200;h.events.scroll();h.flush();assert.equal(h.root.dataset.chapter,'reading');
+test('Individual controls reveal only selected works, preserve siblings, and reverse accessibly',async()=>{
+  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.works.qst.button.handlers.click();await tick();
+  assert.deepEqual(visible(h),['qst']);assert.equal(h.works.qst.collection.hidden,true);assert.equal(h.works.qst.button.attrs['aria-expanded'],'true');
+  assert.equal(h.works.qst.focused,true);assert.equal(h.works.qst.getBoundingClientRect().top,84);
+  h.works.advisor.button.handlers.click();await tick();assert.deepEqual(visible(h),['advisor','qst']);
+  h.works.qst.button.handlers.click();await tick();assert.deepEqual(visible(h),['advisor']);assert.equal(h.works.qst.collection.hidden,false);
+  h.works['field-brief'].button.handlers.click();await tick();assert.deepEqual(visible(h),['field-brief']);assert.equal(h.publicationHeading.hidden,false);
+  h.works['field-brief'].button.handlers.click();await tick();assert.deepEqual(visible(h),[]);assert.equal(h.publicationHeading.hidden,true);
 });
 
-test('Bounded fallback clears interrupted smooth navigation without scrolling again', async () => {
-  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.flush();h.window.deferSmooth=true;
-  h.links[2].click({button:0,preventDefault(){}});await new Promise(setImmediate);
-  h.window.scrollY=1200;
-  [...h.timers.values()].find(t=>t.delay===1600).fn();h.flush();
-  assert.equal(h.root.dataset.chapter,'reading');assert.equal(h.window.scrollCalls.length,1);
+test('Chapter return restores collection without affecting appearance or losing focus',async()=>{
+  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.button.handlers.click();click(h.links[1]);await tick();
+  assert.equal(h.returns[1].hidden,false);h.returns[1].handlers.click();await tick();
+  assert.deepEqual(visible(h),[]);assert.equal(h.returns[1].hidden,true);assert.equal(h.targets.reading.focused,true);
+  assert.equal(h.root.dataset.appearance,'night');assert.equal(h.targets.reading.getBoundingClientRect().top,84);
+});
+
+test('Ordinary scrolling never reveals or undoes a reveal; returning to top resets everything',async()=>{
+  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();
+  for(const top of [100,1400,2800]){h.window.scrollY=top;h.events.scroll();h.flush();assert.deepEqual(visible(h),[]);}
+  h.works.workbook.button.handlers.click();await tick();h.events.scrollend();const count=h.entries.length;
+  h.window.scrollY=2500;h.events.scroll();h.flush();assert.deepEqual(visible(h),['workbook']);assert.equal(h.entries.length,count);
+  h.window.scrollY=0;h.events.scroll();h.flush();assert.deepEqual(visible(h),[]);assert.equal(h.window.location.hash,'');assert.equal(h.entries.length,count);
+});
+
+test('Direct chapter and individual fragments restore meaningful reveal states',async()=>{
+  for(const [hash,expected] of [['#reading',['field-brief','loblolly','workbook','rupert']],['#work-qst',['qst']],['#profile',['portfolio']]]){
+    const h=browserHarness('2026-07-15T12:00:00Z');h.window.location.hash=hash;h.mount();await tick();
+    assert.deepEqual(visible(h),expected);assert.equal(h.targets[hash.slice(1)].getBoundingClientRect().top,84);assert.equal(h.window.scrollCalls.at(-1).behavior,'auto');
+  }
+});
+
+test('Back/Forward restores precise individual selections and closed collection snapshots',async()=>{
+  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();
+  h.works['field-brief'].button.handlers.click();await tick();
+  h.works.loblolly.button.handlers.click();await tick();assert.deepEqual(visible(h),['field-brief','loblolly']);
+  h.travel(-1);await tick();assert.deepEqual(visible(h),['field-brief']);
+  h.travel(1);await tick();assert.deepEqual(visible(h),['field-brief','loblolly']);
+  h.returns[1].handlers.click();await tick();assert.deepEqual(visible(h),[]);
+  h.travel(-1);await tick();assert.deepEqual(visible(h),['field-brief','loblolly']);
+  h.travel(1);await tick();assert.deepEqual(visible(h),[]);assert.equal(h.targets.reading.getBoundingClientRect().top,84);
+});
+
+test('Reduced motion, rapid requests and journey interruption avoid scroll loops',async()=>{
+  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.window.reduced=true;
+  click(h.links[0]);click(h.links[1]);await tick();assert.equal(h.window.scrollCalls.length,1);assert.equal(h.window.scrollCalls[0].behavior,'auto');
+  assert.deepEqual(visible(h),['field-brief','loblolly','workbook','rupert']);
+  h.events.touchstart();h.events.resize();h.window.scrollY=1600;h.events.scroll();h.flush();
+  assert.equal(h.window.scrollCalls.length,1);assert.deepEqual(visible(h),['field-brief','loblolly','workbook','rupert']);
+});
+
+test('Reveal reducer sanitizes history and cannot activate unrelated chapters',()=>{
+  assert.deepEqual(revealSelection([],{type:'restore',ids:['qst','qst','bad','rupert']},catalogue),['qst']);
+  assert.deepEqual(selectionForHash('#work-advisor',catalogue),['advisor']);
+  assert.deepEqual(selectionForHash('#collection',catalogue),[]);
+  assert.deepEqual(revealSelection(['qst'],{type:'toggle',id:'bad'},catalogue),['qst']);
 });
