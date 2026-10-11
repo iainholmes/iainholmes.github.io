@@ -1,7 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Iain Holmes — copper-period signature" data-identity="ih-period">
   <title>IH. copper-period signature</title>
-  <desc>Rupert sitting below the left boughs of a pine within a copper circle.</desc>
-  <circle cx="50" cy="50" r="50" fill="#976144"/>
+  <desc>Rupert seated below the lowest left branches of a loblolly pine, looking upward within a copper circle.</desc>
+  <circle cx="50" cy="50" r="50" fill="#a45f35"/>
   <defs><clipPath id="ih-period-scene"><circle cx="50" cy="50" r="50"/></clipPath></defs>
-  <g clip-path="url(#ih-period-scene)" fill="#eeeee6"><path data-part="pine" d="M66 7L61 21L65 20C61 29 54 33 47 34L60 33C55 40 47 44 38 45L43 49C51 48 57 45 63 41L62 98H70L68 40C74 46 81 47 86 44L75 39L81 39C75 33 71 27 68 21L73 22Z"/><path data-part="rupert" d="M16 91C17 86 17 82 20 77C23 72 28 69 29 63L29 59C26 57 27 52 31 50C34 47 38 48 41 50L47 47L49 50L44 55L40 56C38 60 37 66 36 72L38 87C38 89 40 90 43 91V93H33L30 80L28 89C31 90 31 92 31 93H14C9 93 7 90 9 88C11 90 13 91 16 91Z"/></g>
+  <g clip-path="url(#ih-period-scene)" fill="#eeeee6"><path data-part="pine" d="M64 2H66L67 64C67 77 68 89 71 100H60C63 89 63 77 63 64Z M65 3C64 9 62 13 58 15L60 16L59 17C62 17 64 16 65 14C67 17 70 18 73 17L71 16L72 15C68 12 66 8 65 3Z
+M64 14C62 20 58 23 53 25L55 26L54 27L59 27L58 28C61 27 64 25 65 23C68 27 72 28 77 27L75 26L78 25C72 23 68 19 66 14Z
+M64 24C60 30 55 33 48 35L51 36L50 37L55 36L54 38C59 36 62 35 65 32C68 35 71 37 75 37L74 36L80 38L79 36L83 36C75 33 70 29 66 24Z
+M64 34C59 40 52 43 43 46L47 46L46 48L51 47L50 49C57 47 62 44 65 42C69 46 73 47 77 48L76 46L82 48L81 46L86 47C77 43 71 39 66 34Z
+M64 44C58 51 49 54 40 56L43 57L42 59L47 57L46 60C53 58 60 55 65 52C70 56 75 58 80 59L78 56L84 58L82 56L88 57C79 53 72 49 66 44Z
+M64 54C58 59 48 63 38 65L42 66L40 68L47 66L45 69C53 67 60 64 65 62C70 65 74 67 80 68L78 65L85 67L83 65L89 66C80 62 72 59 66 54Z"/><path data-part="rupert" transform="translate(-2 5) scale(.94)" d="M13 85C14 80 15 75 20 70C25 66 28 64 29 59L30 53C27 51 28 48 30 46C33 43 37 44 40 46L46 43Q48 42 48 45L44 49L40 50C38 54 37 57 37 63C37 67 36 70 37 75L39 86L44 87L44 90H35L32 77L30 71C27 71 25 74 26 77C29 78 30 82 29 86L32 88V90H14C10 90 7 88 7 85C9 87 11 87 13 85Z"/><path data-part="ground" d="M11 89C27 87 44 89 55 94C44 90 27 90 13 91Z"/><path data-part="ear" transform="translate(-2 5) scale(.94)" d="M32 46C35 45 36 48 34 53L32 56C33 51 30 49 32 46Z" fill="#a45f35"/></g>
 </svg>

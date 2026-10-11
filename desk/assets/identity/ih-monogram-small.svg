@@ -1,7 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img" aria-label="IH. — Iain Holmes" data-identity="ih-small">
   <title>IH. — Iain Holmes</title>
-  <desc>Staggered serif I and H within a fine circle, followed by a small copper period.</desc>
-  <circle class="ih-ring" cx="500" cy="500" r="466" fill="none" stroke="#263b33" stroke-width="14"/>
-  <g class="ih-ink" fill="#263b33"><path data-initial="I" d="M218 280H374V294C345 295 332 302 332 329V559C332 586 345 596 374 597V612H218V597C248 596 261 586 261 559V329C261 302 248 295 218 294Z"/><path data-initial="H" d="M356 398H490V412C464 414 456 422 456 449V552H584V449C584 422 576 414 544 412V398H688V412C656 414 648 422 648 449V669C648 696 656 706 688 707V722H544V707C576 706 584 696 584 669V572H456V669C456 696 464 706 490 707V722H356V707C388 706 396 696 396 669V449C396 422 388 414 356 412Z"/></g>
-  <circle data-part="period" cx="752" cy="672" r="50" fill="#976144"/>
+  <desc>Staggered serif I and H within a fine circle, followed by a small copper period containing Rupert seated left of a loblolly pine, looking up beneath its lowest branches; optically simplified for small display sizes.</desc>
+  <circle class="ih-ring" cx="500" cy="500" r="466" fill="none" stroke="#263b33" stroke-width="12"/>
+  <g class="ih-ink" fill="#263b33"><path data-initial="I" d="M221 292H377V304C348 305 334 313 334 341V574C334 603 347 614 377 615V626H221V615C251 614 262 603 262 574V341C262 313 251 305 221 304Z"/><path data-initial="H" d="M351 409H486V421C460 423 452 431 452 460V565H584V460C584 431 576 423 544 421V409H689V421C655 423 648 431 648 460V686C648 715 655 723 689 725V737H544V725C576 723 584 715 584 686V582H452V686C452 715 460 723 486 725V737H351V725C383 723 388 715 388 686V460C388 431 383 423 351 421Z"/></g>
+  <g data-part="period" transform="translate(702 633) scale(1.04)"><circle cx="50" cy="50" r="50" fill="#a45f35"/>
+  <defs><clipPath id="ih-small-scene"><circle cx="50" cy="50" r="50"/></clipPath></defs>
+  <g clip-path="url(#ih-small-scene)" fill="#eeeee6"><path data-part="pine" d="M64 2H66L67 64C67 77 68 89 71 100H60C63 89 63 77 63 64Z M65 3C63 11 60 15 55 18L60 19L65 16L71 20L75 18C70 14 67 9 65 3Z
+M64 20C60 28 54 31 48 33L53 36L59 33L65 30L72 35L81 35C76 31 69 27 66 20Z
+M64 34C58 42 50 45 43 47L48 50L56 47L64 43L73 49L85 49C77 44 70 40 66 34Z
+M64 48C57 55 48 59 39 61L43 65L52 62L64 57L73 62L79 61L88 64C80 58 72 54 66 48Z"/><path data-part="rupert" transform="translate(-2 5) scale(.94)" d="M12 87C13 79 16 73 22 68C27 64 29 61 30 56V52C27 49 29 45 33 44C36 43 38 44 41 46L47 42L49 45L44 50L40 51C38 57 37 62 37 68L40 86L45 88V91H34L30 76C26 75 25 79 28 82L29 87L32 89V91H13C9 91 6 88 7 85C9 88 11 88 12 87Z"/><path data-part="ground" d="M11 89C27 87 44 89 55 94C44 90 27 90 13 91Z"/></g></g>
 </svg>

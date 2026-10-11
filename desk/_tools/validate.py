@@ -151,7 +151,8 @@ for item in provenance['personal_signature']['assets']:
     check(all(not k.lower().startswith('on') and k.rsplit('}', 1)[-1] != 'href' for node in svg.iter() for k in node.attrib), 'No identity script or external resource')
     ids = {node.attrib['id'] for node in svg.iter() if 'id' in node.attrib}
     check(all(ref in ids for ref in re.findall(r'url\(#([^)]*)\)', data.decode())), 'Identity clipping references must resolve locally')
-    check(any(node.attrib.get('fill') == '#976144' for node in svg.iter()), 'Copper signature color must remain constant')
+    check(any(node.attrib.get('fill') == '#a45f35' for node in svg.iter()), 'Reference-matched copper signature color must remain constant')
+    check(all(any(node.attrib.get('data-part') == part and node.attrib.get('d') for node in svg.iter()) for part in ['pine', 'rupert']), 'Every identity variant must retain Rupert and the loblolly')
     if 'monogram' in item['asset']:
         initials = {node.attrib.get('data-initial'): node.attrib.get('d') for node in svg.iter() if 'data-initial' in node.attrib}
         check(set(initials) == {'I', 'H'} and initials['I'] != initials['H'], 'Both distinct initials are required')
@@ -160,7 +161,7 @@ primary = identity_assets['ih-monogram.svg'][1]
 night = identity_assets['ih-monogram-night.svg'][1]
 check([n.attrib.get('d') for n in primary.iter() if 'd' in n.attrib] == [n.attrib.get('d') for n in night.iter() if 'd' in n.attrib], 'Night treatment must preserve primary geometry')
 small = identity_assets['ih-monogram-small.svg'][1]
-check(not any(n.attrib.get('data-part') in ['pine', 'rupert'] for n in small.iter()), 'Small-format period must omit illegible miniature detail')
+check(any(n.attrib.get('data-part') == 'period' and n.attrib.get('transform') == 'translate(702 633) scale(1.04)' for n in small.iter()), 'Compact identity must preserve the reference period proportion and placement')
 check(sum(attrs.get('class') == 'owner-mark' and attrs.get('role') == 'img' and attrs.get('aria-label') == 'Iain Holmes — IH. personal monogram' for _, attrs in page.tags) == 1, 'Expose the personal identity once in the header')
 check(any(attrs.get('class') == 'footer-signature' and attrs.get('aria-hidden') == 'true' for _, attrs in page.tags), 'Repeated footer signature is decorative')
 check('A personal collection' not in source, 'Replace the old owner block rather than duplicating it')
