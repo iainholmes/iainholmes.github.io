@@ -17,7 +17,7 @@ The script makes no network requests and reads no cookies, application data, bro
 
 ## Typography and identity
 
-All interface text uses authentic Latin Modern Roman Dunhill Regular or Oblique, weight 400. The existing Archivo wordmark is now lowercase **desk.**, genuine italic, weight 650. No synthetic weights or styles are requested. Dunhill type sizes and wrapping are recalibrated across the existing desktop and phone compositions; lettering embedded in canonical artwork remains untouched.
+Navigation and explanatory interface text use authentic Latin Modern Roman Dunhill Regular or Oblique, weight 400. The three publication mastheads use their authentic editorial faces: Bodoni Moda (weight 500), Ectros and STIX Two Text, following the final application-identity direction. The existing Archivo wordmark is now lowercase **desk.**, genuine italic, weight 650. No synthetic weights or styles are requested. Dunhill type sizes and wrapping are recalibrated across the existing desktop and phone compositions; lettering embedded in canonical artwork remains untouched.
 
 Font sources, licenses, change notes and access to the complete Latin Modern distribution are documented in `assets/fonts/NOTICE.md`; hashes are in `SOURCE-REVISIONS.json`.
 
@@ -32,6 +32,10 @@ The page is treated as a collection with a beginning, distinct chapters and a qu
 Numbered section headings, fine rules and wider gutters organize the collection. A vertical rule separates the two desktop groups; on narrow screens it gives way to spacing. Publication covers retain their complete archival artwork, with more deliberate paper margins and a light shadow. The Rupert plate gains a narrow cream mount inside its navy field. Advisor, QST and the academic profile retain their distinct palettes, content and working structures. The original illustrated period closes the page between equal rules; the existing footer phrase aligns beneath it on desktop, while phone controls remain a simple two-column row.
 
 The [cross-site assessment](IDENTITY-INTEGRATION.md) remains historical placement guidance only. Any expansion of the identity is a separate future assignment.
+
+## Application illustrations
+
+Seven original local SVG devices enrich the existing presentations: Field Brief’s natural-history fish, Loblolly & Logit’s pine sprig, The Workbook’s scholarly volumes, Advisor’s drafting dividers, QST’s measurement instruments, the Atlas compass/contours and the portfolio’s academic arcade. Their palette follows each destination in day/night. The arcade is an original architectural study, not a named campus building. No new copy, functionality or page section is introduced. See [illustration guidance](assets/illustrations/README.md).
 
 ## Preserved material
 
@@ -50,6 +54,7 @@ From the repository root:
 
 ```sh
 python3 desk/_tools/prepare-identity.py
+python3 desk/_tools/build-illustrations.py
 node desk/_tools/build.mjs
 node --check desk/desk.js
 node --test desk/_tools/test-runtime.cjs

@@ -1,6 +1,6 @@
-# Review the desk. editorial refinement and final identity
+# Review the desk. illustrated application identities
 
-PR #4 stays draft and undeployed. This pass completes the broader visual refinement and uses the exact supplied final IH. image. Review the 15-inch MacBook Air and iPhone portrait compositions in both appearances; source tests and asset proofs are not browser acceptance.
+PR #4 stays draft and undeployed. This pass adds seven editorial illustrations to the accepted composition and preserves the exact supplied final IH. image. Review the 15-inch MacBook Air and iPhone portrait compositions in both appearances; source tests and asset proofs are not browser acceptance.
 
 ## Refresh a downloaded ZIP
 
@@ -40,7 +40,7 @@ ipconfig getifaddr en0
 ```
 
 3. In iPhone Safari, open `http://MAC_IP:8000/desk/`, replacing `MAC_IP` with that address (for example, `http://192.168.1.25:8000/desk/`). Do not use `localhost` on the iPhone: that refers to the phone itself.
-4. Reload the iPhone page after replacing the files. If an old copy persists, close that local-preview tab and reopen `http://MAC_IP:8000/desk/?review=final-identity`. Open the page in Safari rather than an older Home Screen shortcut.
+4. Reload the iPhone page after replacing the files. If an old copy persists, close that local-preview tab and reopen `http://MAC_IP:8000/desk/?review=illustrated-applications`. Open the page in Safari rather than an older Home Screen shortcut.
 5. If the Mac asks whether Python can accept incoming connections, allow it for this local review. If the address command returns nothing, use the Mac's Wi-Fi IP address shown in System Settings.
 6. Keep the Mac awake and the server running. Stop the server with Control-C when finished.
 
@@ -51,6 +51,7 @@ No build, package installation or application credentials are needed. The direct
 - **Exact identity:** Compare `/desk/assets/identity/ih-master.png` with your supplied original, then `/desk/assets/identity/ih-signature.png` at native size. The crop must preserve both initials, the H crossbar extension, period placement, colors and Rupert/loblolly detail. There is no circular enclosure, alternate lettering or simplified mobile mark.
 - **Desktop opening:** Check the balance of the italic desk. wordmark, Dunhill Oblique introduction and light-mounted personal signature at normal zoom on the 15-inch MacBook Air. Inspect the quiet vertical division and the breathing room before navigation.
 - **iPhone opening:** The wordmark and signature share the first row; the introduction occupies its own full-width row below. Check portrait, enlarged text, and 320–430 CSS-pixel widths for overlap or sideways scrolling. The complete image must remain visible. The tiny header scene is inherently miniature; the footer shows it more clearly.
+- **Seven illustrated identities:** Check Field Brief’s burgundy fish, Loblolly & Logit’s pine sprig, The Workbook’s books, Advisor’s dividers, QST’s set square/protractor, the Atlas compass/contours and the portfolio arcade. On phone, publication ornaments sit above their covers in the left column. Verify the existing titles and descriptions wrap comfortably alongside them; no ornament may obscure a link or canonical artwork. All seven must remain visible in both themes. The publication mastheads now use their own editorial faces; surrounding interface text remains Dunhill.
 - **Collection:** Check numbered section headings, fine rules, column spacing, the original publication covers and the cream-mounted Rupert plate. Advisor, QST, each publication and the academic profile should retain their identities. At narrow widths the desktop divider disappears; the groups remain clearly separated by spacing.
 - **Footer:** The original copper period should sit between equal rules, above the utility row. The closing phrase is centered on desktop and omitted on phone as before. Back-to-top and installation help must remain comfortably usable, with no overlap or safe-area clipping.
 - **Day/night:** Both themes must show the exact same green/copper logo on its light mount. Switch manually, scroll and reload; the accepted Eastern schedule and visit-only override remain unchanged. Inspect text contrast, focus outlines and night panel colors.

@@ -20,6 +20,12 @@
   font-display:swap
 }
 @font-face {
+  font-family:"Bodoni Moda";
+  src:url(assets/fonts/bodoni-moda.woff) format('woff');
+  font-weight:500;
+  font-display:swap
+}
+@font-face {
   font-family:Ectros;
   src:url(assets/fonts/ectros.ttf) format('truetype');
   font-display:swap
@@ -275,11 +281,11 @@ p+.context-list { margin-top:16px }
 .publication-open { display:flex; align-items:center; justify-content:space-between; gap:5px; min-height:46px; margin-top:8px; font-size:14px; border-top:1px solid #c5c6b8 }
 .publication-open .arrow { font-size:17px }
 .field-brief { color:#852d3b }
-.field-brief h4 { font-family:"Latin Modern Roman Dunhill",Georgia,serif; font-weight:400 }
+.field-brief h4 { font-family:"Bodoni Moda",Georgia,serif; font-weight:500 }
 .loblolly { color:#1f4a3b }
-.loblolly h4 { font-family:"Latin Modern Roman Dunhill",Georgia,serif; font-size:26px; line-height:1.13; letter-spacing:0 }
+.loblolly h4 { font-family:Ectros,Georgia,serif; font-size:26px; line-height:1.13; letter-spacing:0 }
 .workbook { color:#1c2f4a }
-.workbook h4 { font-family:"Latin Modern Roman Dunhill",Georgia,serif; font-size:27px }
+.workbook h4 { font-family:"STIX Two Text",Georgia,serif; font-size:27px }
 .publication-main:hover .publication-open { text-decoration:underline; text-underline-offset:4px }
 .shelf-footer { margin-top:4px }
 .shelf-link { display:flex; align-items:center; justify-content:space-between; gap:14px; min-height:48px; font-size:15px }
@@ -416,6 +422,26 @@ p+.context-list { margin-top:16px }
 :root[data-appearance="night"] .portfolio-focus,
 :root[data-appearance="night"] .portfolio nav,
 :root[data-appearance="night"] .portfolio nav .portfolio-open { border-color:#617586 }
+
+/* Complementary editorial devices. No image replaces or covers canonical art. */
+.editorial-illustration { pointer-events:none; user-select:none; min-width:0 }
+.editorial-illustration svg { width:100%; height:100%; overflow:visible }
+.publication-device { height:88px; width:100%; max-width:178px; margin:0 auto 12px; border-bottom:1px solid currentColor; padding-bottom:8px }
+.publication-heading { min-height:98px }
+.publication-cover .cover-art { max-width:170px }
+.advisor-study { display:grid; grid-template-columns:minmax(0,1fr) 106px; gap:8px; align-items:center }
+.advisor-device { grid-column:2; grid-row:1; color:#d8c19b; width:106px; height:136px }
+.advisor-study .design-path { grid-column:1; grid-row:1 }
+.qst-introduction { display:grid; grid-template-columns:minmax(0,1fr) 110px; gap:0 12px; align-items:center }
+.qst-device { grid-column:2; grid-row:1/3; width:110px; height:96px; color:#7d6547 }
+.qst-introduction .qst-top { grid-column:1; grid-row:1 }
+.qst-introduction .qst-top>.native-label { display:none }
+.qst-introduction .qst-description { grid-column:1; grid-row:2 }
+.atlas-device { width:min(100%,184px); height:66px; color:#d6c69f; margin-bottom:12px }
+.portfolio-identity { position:relative; padding-left:114px; min-height:116px; display:flex; flex-direction:column; justify-content:center }
+.portfolio-device { position:absolute; left:0; top:50%; transform:translateY(-50%); width:98px; height:104px; color:#637c87 }
+:root[data-appearance="night"] .qst-device { color:#d1ba91 }
+:root[data-appearance="night"] .portfolio-device { color:#b7cbd0 }
 
 @media(max-width:1200px) {
   .desk-shell { padding-inline:max(30px,env(safe-area-inset-left)) max(30px,env(safe-area-inset-right)) }
@@ -566,6 +592,50 @@ p+.context-list { margin-top:16px }
   .rupert-layout { gap:16px; padding-inline:17px }
   .rupert .context { margin-inline:17px }
   .rupert-heading h3 { font-size:27px }
+}
+@media(min-width:1001px) and (max-width:1200px) {
+  .advisor-study { grid-template-columns:minmax(0,1fr) 80px }
+  .advisor-device { width:80px }
+  .qst-introduction { grid-template-columns:minmax(0,1fr) 80px; gap:0 8px }
+  .qst-device { width:80px }
+  .portfolio-identity { padding-left:88px }
+  .portfolio-device { width:76px }
+  .portfolio h3 { font-size:35px }
+}
+@media(max-width:1000px) {
+  .publication-device { height:94px }
+  .publication-heading { min-height:80px }
+  .portfolio-identity { padding-left:108px }
+  .portfolio-device { width:94px }
+}
+@media(max-width:600px) {
+  .publication-main { grid-template-rows:auto auto 1fr auto; gap:0 18px }
+  .publication-device { grid-column:1; grid-row:1; height:64px; margin:0 0 12px; padding-bottom:6px }
+  .publication-cover { grid-column:1; grid-row:2/5 }
+  .publication-heading { grid-column:2; grid-row:1/3; min-height:0 }
+  .publication-description { grid-column:2; grid-row:3; margin-top:10px }
+  .publication-open { grid-column:2; grid-row:4 }
+  .advisor-study { grid-template-columns:minmax(0,1fr) 90px; gap:6px }
+  .advisor-device { width:90px; height:124px }
+  .qst-introduction { grid-template-columns:minmax(0,1fr) 96px; gap:0 9px }
+  .qst-device { width:96px; height:94px }
+  .qst-top h3 { flex-wrap:wrap; gap:7px 12px }
+  .atlas-device { width:100%; max-width:140px; height:47px; margin-bottom:10px }
+  .portfolio-identity { min-height:104px; padding-left:0; padding-right:94px }
+  .portfolio-device { left:auto; right:0; width:86px; height:100px }
+  .portfolio h3 { font-size:36px }
+  .portfolio h3 a { flex-wrap:wrap; gap:5px }
+}
+@media(max-width:370px) {
+  .publication-main { gap:0 12px }
+  .publication-device { height:56px }
+  .advisor-study { grid-template-columns:minmax(0,1fr) 68px }
+  .advisor-device { width:68px; height:110px }
+  .qst-introduction { grid-template-columns:minmax(0,1fr) 72px }
+  .qst-device { width:72px }
+  .portfolio-identity { padding-right:78px }
+  .portfolio-device { width:70px }
+  .portfolio h3 { font-size:32px }
 }
 @media(prefers-reduced-motion:reduce) {
   *,*::before,*::after { transition:none!important; animation:none!important; scroll-behavior:auto!important }

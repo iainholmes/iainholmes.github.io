@@ -167,6 +167,31 @@ check(not re.search(r'(?:filter|mix-blend-mode)\s*:', css), 'Never recolor or bl
 subprocess.run([sys.executable, str(ROOT / '_tools/prepare-identity.py')], check=True, capture_output=True)
 check(all(path.read_bytes() == data for path, data in identity_before.items()), 'Identity crop generation must be deterministic and preserve the master')
 
+# Seven self-contained, decorative devices must remain attached to their destinations.
+illustration_targets = {
+    'field-fish':'field-brief', 'loblolly-sprig':'loblolly',
+    'workbook-volumes':'workbook', 'advisor-dividers':'advisor',
+    'qst-instruments':'qst', 'atlas-bearing':'rupert', 'academic-arcade':'portfolio'
+}
+illustration_before = {}
+check(len(provenance['editorial_illustrations']['assets']) == 7, 'Exactly seven editorial devices required')
+for item in provenance['editorial_illustrations']['assets']:
+    file = ROOT / item['asset']
+    data = file.read_bytes()
+    illustration_before[file] = data
+    check(sha256(data).hexdigest() == item['sha256'], 'Editorial illustration provenance mismatch')
+    svg = ET.fromstring(data)
+    check(svg.attrib.get('aria-hidden') == 'true' and svg.attrib.get('focusable') == 'false', 'Decorative illustrations must not duplicate link labels or create tab stops')
+    check(all(node.tag.rsplit('}',1)[-1] in ['svg','g','path','circle'] for node in svg.iter()), 'Illustrations must remain static self-contained vectors')
+    check(all(not k.lower().startswith('on') and k.rsplit('}',1)[-1] != 'href' for node in svg.iter() for k in node.attrib), 'No active or remote illustration resources')
+    name = file.stem
+    target = illustration_targets[name]
+    article = re.search(r'<article class="[^"]*\b'+target+r'\b[^"]*".*?</article>', source, re.S)
+    check(article is not None and data.decode() in article.group(), f'Illustration missing from its own destination: {name}')
+    check(source.count('data-illustration="'+name+'"') == 1, 'Each destination needs its own single illustration')
+subprocess.run([sys.executable, str(ROOT / '_tools/build-illustrations.py')], check=True, capture_output=True)
+check(all(path.read_bytes() == data for path,data in illustration_before.items()), 'Illustration output must reproduce deterministically')
+
 before = source
 subprocess.run(['node', str(ROOT / '_tools/build.mjs')], check=True, capture_output=True)
 check((ROOT / 'index.html').read_text() == before, 'Committed HTML is out of sync with configuration')

@@ -12,8 +12,16 @@ const disclosure = (label, body) => `<details class="context"><summary>${escape(
 // archived SVG lets its original text use the page's self-hosted editorial fonts.
 const covers = new Map(await Promise.all(config.projects.flatMap(p => p.publications || []).map(async p => [p.id, await readFile(new URL(p.asset, root), 'utf8')])));
 
+// Original decorative engravings are local, script-free vectors. CurrentColor
+// connects each one to its application's palette without altering source artwork.
+const illustrationNames = ['field-fish','loblolly-sprig','workbook-volumes','advisor-dividers','qst-instruments','atlas-bearing','academic-arcade'];
+const illustrations = new Map(await Promise.all(illustrationNames.map(async name => [name, await readFile(new URL(`assets/illustrations/${name}.svg`,root),'utf8')])));
+const plate = (name, cls) => `<div class="editorial-illustration ${cls}" data-illustration="${name}" aria-hidden="true">${illustrations.get(name)}</div>`;
+const publicationPlates = {'field-brief':'field-fish',loblolly:'loblolly-sprig',workbook:'workbook-volumes'};
+
 const publication = p => `<article class="publication ${escape(p.id)}" aria-labelledby="${escape(p.id)}-title">
   <a class="publication-main" href="${escape(p.url)}" aria-labelledby="${escape(p.id)}-title ${escape(p.id)}-open">
+    ${plate(publicationPlates[p.id],'publication-device')}
     <div class="publication-heading"><span class="publication-cadence">${escape(p.schedule)}</span><h4 id="${escape(p.id)}-title">${escape(p.name)}</h4></div>
     <figure class="publication-cover"><div class="cover-art">${covers.get(p.id)}</div><figcaption>Archive · <time datetime="${escape(p.archiveDate)}">${escape(p.archiveLabel)}</time></figcaption></figure>
     <p class="publication-description">${escape(p.description)}</p>
@@ -28,15 +36,15 @@ const render = p => {
       <a class="destination-link" href="${e.url}" aria-labelledby="advisor-title advisor-action">
         <div class="advisor-top"><span class="native-label">Research design</span><img src="${e.asset}" width="52" height="52" alt="" aria-hidden="true"></div>
         <h3 id="advisor-title">Econometric<br>Advisor</h3><p class="advisor-description">${e.description}</p>
-        <ol class="design-path" aria-label="Research-design workflow">${p.workflow.map((v,i)=>`<li><span class="path-number" aria-hidden="true">${number(i)}</span><div><strong>${escape(v.name)}</strong><span>${escape(v.detail)}</span></div></li>`).join('')}</ol>
+        <div class="advisor-study">${plate('advisor-dividers','advisor-device')}<ol class="design-path" aria-label="Research-design workflow">${p.workflow.map((v,i)=>`<li><span class="path-number" aria-hidden="true">${number(i)}</span><div><strong>${escape(v.name)}</strong><span>${escape(v.detail)}</span></div></li>`).join('')}</ol></div>
         <span class="open-line" id="advisor-action">${e.action}${arrow}</span>
       </a>
       ${disclosure('Inside Advisor', '<p>Start with your research question and data. The assessment connects your design to a methods toolkit and an interactive knowledge graph.</p><dl class="context-list"><div><dt>Develop</dt><dd>Identification, estimating equations and diagnostics.</dd></div><div><dt>Take away</dt><dd>A research-design brief, methods appendix or reviewer reference.</dd></div></dl>')}
     </article>`;
     case 'qst': return `<article class="qst destination" aria-labelledby="qst-title">
       <a class="destination-link" href="${e.url}" aria-labelledby="qst-title qst-action">
-        <div class="qst-top"><h3 id="qst-title"><span class="qst-initials">${e.shortName}</span><span class="qst-full">${e.name}</span></h3><span class="native-label">Quantitative practice</span></div>
-        <p class="qst-description">${e.description}</p>
+        <div class="qst-introduction">${plate('qst-instruments','qst-device')}<div class="qst-top"><h3 id="qst-title"><span class="qst-initials">${e.shortName}</span><span class="qst-full">${e.name}</span></h3><span class="native-label">Quantitative practice</span></div>
+        <p class="qst-description">${e.description}</p></div>
         <ul class="language-strip" aria-label="Available languages">${p.languages.map((v,i)=>`<li class="language language-${i}">${escape(v)}</li>`).join('')}</ul>
         <ol class="learning-sequence" aria-label="Learning sequence">${p.sequence.map((v,i)=>`<li><span class="phase-number" aria-hidden="true">${number(i)}</span><strong>${escape(v.name)}</strong><span class="phase-detail">${escape(v.detail)}</span></li>`).join('')}</ol>
         <span class="open-line" id="qst-action">${e.action}${arrow}</span>
@@ -53,14 +61,14 @@ const render = p => {
     case 'rupert': return `<article class="rupert" aria-labelledby="rupert-title">
       <div class="rupert-layout">
         <figure class="rupert-artwork"><img class="rupert-art" src="${e.asset}" alt="${e.alt}" width="800" height="1000" loading="lazy"></figure>
-        <div class="rupert-content"><div class="rupert-heading"><span class="native-label">A field guide</span><h3 id="rupert-title"><span>The</span> Rupert Atlas</h3><p>${e.description}</p></div>
+        <div class="rupert-content"><div class="rupert-heading">${plate('atlas-bearing','atlas-device')}<span class="native-label">A field guide</span><h3 id="rupert-title"><span>The</span> Rupert Atlas</h3><p>${e.description}</p></div>
           <nav class="rupert-links" aria-label="Rupert Atlas sections"><a href="${e.url}"><span><strong>This Week</strong><span>Tuesday &amp; Thursday</span></span>${arrow}</a>${p.links.map(v=>`<a href="${escape(v.url)}"><span><strong>${escape(v.name)}</strong><span>${escape(v.detail)}</span></span>${arrow}</a>`).join('')}</nav>
         </div>
       </div>
       ${disclosure('A way into the Atlas', '<p>Start with <strong>This Week</strong> to choose an outing. Open a full edition for the detail, use <strong>Atlas</strong> to explore and plan, and keep your own account of the visit in <strong>Field Log</strong>.</p>')}
     </article>`;
     case 'portfolio': return `<article class="portfolio" aria-labelledby="portfolio-title">
-      <div class="portfolio-identity"><span class="native-label">${e.name}</span><h3 id="portfolio-title">${link(p.url,p.displayName)}</h3><p class="portfolio-affiliation">${e.affiliation}</p></div>
+      <div class="portfolio-identity">${plate('academic-arcade','portfolio-device')}<span class="native-label">${e.name}</span><h3 id="portfolio-title">${link(p.url,p.displayName)}</h3><p class="portfolio-affiliation">${e.affiliation}</p></div>
       <div class="portfolio-focus"><span class="native-label">Research &amp; professional work</span><p>${e.description}</p><span class="portfolio-methods">Causal inference · Spatial analysis</span></div>
       <nav aria-label="Personal website sections">${link(p.url,p.action,'portfolio-open')}<div>${p.links.map(v=>link(v.url,v.name)).join('')}</div></nav>
     </article>`;

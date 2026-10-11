@@ -92,5 +92,41 @@
         ]
       }
     ]
+  },
+  "editorial_illustrations": {
+    "authored_on": "2026-10-11",
+    "source": "Original vector line engravings authored for desk.; no third-party image sources.",
+    "generator": "_tools/build-illustrations.py",
+    "policy": "Decorative editorial devices, not scientific specimens, factual maps, research results or representations of a named real building. IH. identity and canonical artwork are separate and unchanged.",
+    "assets": [
+      {
+        "asset": "assets/illustrations/academic-arcade.svg",
+        "sha256": "bd73b283c8b7ac169d695556a1749adc78be64c29b76efcc776f08d061108489"
+      },
+      {
+        "asset": "assets/illustrations/advisor-dividers.svg",
+        "sha256": "40f63d7247375567af6c610740a46b0cb147b143a8fe2d371a115ad45b763078"
+      },
+      {
+        "asset": "assets/illustrations/atlas-bearing.svg",
+        "sha256": "9dc3b23f52ccc8bb76a625e63d00a667c3399e68b370b417c88eff8f7d6d0f63"
+      },
+      {
+        "asset": "assets/illustrations/field-fish.svg",
+        "sha256": "731cf3d3085e7567b69d5455edfc332f99d97e46d343b86ee5e708663c09757d"
+      },
+      {
+        "asset": "assets/illustrations/loblolly-sprig.svg",
+        "sha256": "8778e828c4baf417b42f17bd863d2c82c5a4680d15ce7e15857058f37d78b9c6"
+      },
+      {
+        "asset": "assets/illustrations/qst-instruments.svg",
+        "sha256": "53ce08e6711922b9ed7fef9eb84075b27a047fbb92f04f446a4b4be771564e1c"
+      },
+      {
+        "asset": "assets/illustrations/workbook-volumes.svg",
+        "sha256": "735d035f91b44dd889c3a206c229a281fb763b72d4c4163bf539d1b954410e49"
+      }
+    ]
   }
 }
