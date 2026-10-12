@@ -12,8 +12,9 @@ export function renderVeil(state, photos, base, trip = null, now = new Date()) {
     const link = !!e && (published || withdrawn);
     const missingPast = !e && groupKey === 'previous';
     const status = published ? 'Published' : withdrawn ? 'Withdrawn' : missingPast ? 'No Edition' : PENDING_TIME;
-    const name = `${DAY_LABEL[slot]}${e ? ' · '+titleCase(e.title) : ''} · ${published ? 'Published' : withdrawn ? 'Withdrawn' : missingPast ? 'No Edition' : 'Unpublished, '+PENDING_TIME}`;
-    const thumbnail = e
+    // Draft/future records are internal state, not preview content or accessible names.
+    const name = `${DAY_LABEL[slot]}${link ? ' · '+titleCase(e.title) : ''} · ${published ? 'Published' : withdrawn ? 'Withdrawn' : missingPast ? 'No Edition' : 'Unpublished, '+PENDING_TIME}`;
+    const thumbnail = link
       ? photo({id:e.photo_id},photos,base,{sizes:'(min-width: 760px) 92px, 54px',eager:true,cls:'veil-image'})
       : '<span class="veil-empty-art" aria-hidden="true"></span>';
     const tag = link ? 'a' : 'div';

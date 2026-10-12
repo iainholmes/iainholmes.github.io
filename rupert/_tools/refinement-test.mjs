@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
-import {renderOutingInfo,renderWeek,renderEdition,renderAtlas,chrome} from '../assets/js/core/render.js';
+import {renderOutingInfo,renderWeek,renderEdition,renderAtlas,chrome,photo,esc,titleCase} from '../assets/js/core/render.js';
 import {selectCurrentPair} from '../assets/js/core/editions.js';
 import {veilState} from '../assets/js/core/veil.js';
 import {renderVeil} from '../assets/js/veil-view.js';
@@ -47,9 +47,24 @@ check(()=>assert.ok(!veil.includes('Home')));
 const source=readFileSync(new URL('../assets/js/veil-view.js',import.meta.url),'utf8');
 check(()=>assert.doesNotMatch(source,/reviewMode|reviewNow|veil=review|rupert-veil-review|display-mode:\s*standalone/));
 // Golden markup from the physically approved acceptance commit 4a68d070.
-// Only the date-dependent almanac is authorized to change; all other Veil markup stays exact.
-for(const [time,digest] of [
-  ['2026-10-05T12:00:00-04:00','c3e889203580d4e8fe01c1da7f8fc9042d599c67675760d5e0f57cdbabcc8451'],
-  ['2026-10-07T12:00:00-04:00','e89a6ee875e09fd981edd3e93c9f9236b4229e437b82cd5b2a43fb7ea6e63ef2']
-])check(()=>assert.equal(createHash('sha256').update(renderVeil(veilState(manifest,new Date(time)),photos,'../',null,new Date(time)).replace(/<footer class="veil-almanac"[\s\S]*?<\/footer>/,'')).digest('hex'),digest));
+// Authorized differences: current-date almanac, and neutral/anonymous unreleased previews.
+// Lock the corrected markup AND prove all other markup matches the physically approved golden.
+for(const [time,approvedDigest,privateDigest] of [
+  ['2026-10-05T12:00:00-04:00','c3e889203580d4e8fe01c1da7f8fc9042d599c67675760d5e0f57cdbabcc8451','748702edb2af49cfb357699c0b9c69a73d097111c6f9ed3dfa1d3d3becc92042'],
+  ['2026-10-07T12:00:00-04:00','e89a6ee875e09fd981edd3e93c9f9236b4229e437b82cd5b2a43fb7ea6e63ef2','51df7426a5fb599f3ba742aba1f6f9821e38380bc4043952f80cada179ffc70c']
+]){
+  const state=veilState(manifest,new Date(time));
+  const current=renderVeil(state,photos,'../',null,new Date(time)).replace(/<footer class="veil-almanac"[\s\S]*?<\/footer>/,'');
+  const digest=html=>createHash('sha256').update(html).digest('hex');
+  check(()=>assert.equal(digest(current),privateDigest));
+  const pending=['tuesday','thursday'].filter(slot=>!state.current[slot].published);
+  let index=0;
+  const normalized=current.replace(/<div class="veil-tile is-pending"[\s\S]*?<\/div>/g,()=>{
+    const slot=pending[index++],e=state.current[slot].edition,day=slot==='tuesday'?'Tuesday':'Thursday';
+    const oldName=`${day} · ${titleCase(e.title)} · Unpublished, 7:00 AM ET`;
+    return `<div class="veil-tile is-pending" aria-label="${esc(oldName)}"><span class="veil-thumbnail">${photo({id:e.photo_id},photos,'../',{sizes:'(min-width: 760px) 92px, 54px',eager:true,cls:'veil-image'})}</span><span class="veil-tile-copy"><strong>${day}</strong><span>7:00 AM ET</span></span></div>`;
+  });
+  check(()=>assert.equal(index,pending.length));
+  check(()=>assert.equal(digest(normalized),approvedDigest));
+}
 console.log(`${checks} final refinement source checks passed.`);

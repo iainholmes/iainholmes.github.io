@@ -34,10 +34,10 @@ export function veilState(manifest, now = new Date()) {
 export function veilArtworkProblems(state, photos) {
   const issues = [];
   for (const group of ['current','previous']) for (const slot of SLOTS) {
-    const e = state[group][slot].edition;
-    // An unauthored slot has no artwork to validate. The frontispiece must still
-    // show its publication time, rather than disappearing for the entire week.
-    if (!e) continue;
+    const entry = state[group][slot], e = entry.edition;
+    // Unreleased and unauthored slots use neutral placeholders, never draft art.
+    // Validate only imagery the frontispiece is actually allowed to disclose.
+    if (!e || !entry.published && !entry.withdrawn) continue;
     const record = photos.photos.find(p => p.id === e.photo_id);
     if (!record || !record.widths?.length) issues.push(`${state.weekend.start}: missing ${group} ${slot} recommendation artwork`);
   }

@@ -11,7 +11,8 @@ import { renderWeek, renderArchive } from '../assets/js/core/render.js';
 let count=0;
 const check = fn => { fn(); count++; };
 const json = p => JSON.parse(readFileSync(new URL('../'+p,import.meta.url)));
-const manifest=pendingThursdayFixture(json('data/editions/index.json')), photos=json('data/photos.json');
+const productionManifest=json('data/editions/index.json');
+const manifest=pendingThursdayFixture(productionManifest), photos=json('data/photos.json');
 const at = (instant,m=manifest) => veilState(m,new Date(instant));
 for(const [day,roman] of [[3,'I'],[10,'II'],[17,'III'],[24,'IV'],[31,'V']])check(()=>assert.equal(cycleIdentity(`2026-10-${String(day).padStart(2,'0')}`).label,`October ${roman} · AUTUMN · 2026`));
 for(const [date,label] of [['2026-11-07','November I · AUTUMN · 2026'],['2027-01-02','January I · WINTER · 2027'],['2027-03-06','March I · SPRING · 2027'],['2027-06-05','June I · SUMMER · 2027']])check(()=>assert.equal(cycleIdentity(date).label,label));
@@ -36,11 +37,16 @@ check(()=>assert.notEqual(at('2026-10-05T12:00:00-04:00').dismissalKey,at('2026-
 check(()=>assert.notEqual(at('2026-10-05T12:00:00-04:00').dismissalKey,at('2026-10-12T12:00:00-04:00').dismissalKey));
 const monday=at('2026-10-05T12:00:00-04:00'), wednesday=at('2026-10-07T12:00:00-04:00');
 check(()=>assert.deepEqual(veilArtworkProblems(monday,photos),[]));
-check(()=>assert.ok(veilArtworkProblems(monday,{photos:[]}).length===4));
+check(()=>assert.ok(veilArtworkProblems(monday,{photos:[]}).length===2)); // Only the two genuinely released artworks are rendered.
 check(()=>assert.equal(monday.previous.tuesday.edition.id,'2026-W40-r1-tue'));
 check(()=>assert.equal(monday.previous.thursday.edition.id,'2026-W40-thu'));
 const html=renderVeil(monday,photos,'../');
-check(()=>assert.equal((html.match(/class="veil-image"/g)||[]).length,4));
+check(()=>assert.equal((html.match(/class="veil-image"/g)||[]).length,2));
+check(()=>assert.equal((html.match(/class="veil-empty-art"/g)||[]).length,2));
+for(const e of manifest.editions.filter(e=>e.weekend.start==='2026-10-10')){
+  check(()=>assert.ok(!html.includes(e.title)));
+  check(()=>assert.ok(!html.includes(e.photo_id)));
+}
 check(()=>assert.equal((html.match(/is-pending/g)||[]).length,2));
 check(()=>assert.equal((html.match(/is-published/g)||[]).length,2));
 check(()=>assert.equal((html.match(/7:00 AM ET/g)||[]).length,4)); // Visible time and accessible name on each pending tile.
@@ -59,7 +65,7 @@ const withdrawn=structuredClone(manifest);withdrawn.editions.find(e=>e.id==='202
 check(()=>{const s=at('2026-10-06T10:00:00-04:00',withdrawn);assert.equal(s.active,true);assert.equal(s.current.tuesday.withdrawn,true);assert.match(renderVeil(s,photos,''),/Withdrawn/);});
 const missing=structuredClone(manifest);missing.editions=missing.editions.filter(e=>e.id!=='2026-W41-tue');
 check(()=>{const s=at('2026-10-06T10:00:00-04:00',missing);assert.equal(s.active,true);assert.equal(s.current.tuesday.published,false);assert.deepEqual(veilArtworkProblems(s,photos),[]);assert.match(renderVeil(s,photos,''),/veil-empty-art/);});
-const nextMonday=at('2026-10-12T12:00:00-04:00');
+const nextMonday=at('2026-10-12T12:00:00-04:00',productionManifest);
 check(()=>assert.equal(nextMonday.active,true));
 check(()=>assert.equal(nextMonday.phase,'preTuesday'));
 check(()=>assert.deepEqual(veilArtworkProblems(nextMonday,photos),[]));
@@ -69,7 +75,7 @@ check(()=>assert.equal((nextVeil.match(/class="veil-image"/g)||[]).length,2));
 check(()=>assert.ok(!nextVeil.includes('href="../edition/2026-W42-')));
 check(()=>assert.match(nextVeil,/Previous Week/));
 check(()=>assert.match(nextVeil,/This Week/));
-const noHistory=structuredClone(manifest);
+const noHistory=structuredClone(productionManifest);
 noHistory.editions=noHistory.editions.filter(e=>e.weekend.start!=='2026-10-10');
 const noHistoryVeil=at('2026-10-12T12:00:00-04:00',noHistory);
 check(()=>assert.deepEqual(veilArtworkProblems(noHistoryVeil,photos),[]));
@@ -77,7 +83,21 @@ check(()=>assert.equal((renderVeil(noHistoryVeil,photos,'../').match(/class="vei
 check(()=>assert.match(renderVeil(noHistoryVeil,photos,'../'),/No Edition/));
 const badArtwork=structuredClone(manifest);
 badArtwork.editions.find(e=>e.id==='2026-W41-tue').photo_id='missing-artwork-id';
-check(()=>assert.ok(veilArtworkProblems(at('2026-10-05T12:00:00-04:00',badArtwork),photos).some(x=>x.includes('current tuesday'))));
+check(()=>assert.deepEqual(veilArtworkProblems(at('2026-10-05T12:00:00-04:00',badArtwork),photos),[]));
+check(()=>assert.ok(veilArtworkProblems(at('2026-10-07T12:00:00-04:00',badArtwork),photos).some(x=>x.includes('current tuesday'))));
+// A real draft and a nominally published future record both remain undisclosed.
+for(const status of ['draft','published']) {
+  const authored=structuredClone(productionManifest);
+  for(const [slot,id,day] of [['tuesday','tue','13'],['thursday','thu','15']]) authored.editions.push({
+    ...productionManifest.editions.find(e=>e.slot===slot&&e.weekend.start==='2026-10-10'),
+    id:'2026-W42-'+id,status,title:'PRIVATE DRAFT '+slot,photo_id:'private-draft-art-'+slot,
+    published_at:`2026-10-${day}T07:00:00-04:00`,weekend:{start:'2026-10-17',end:'2026-10-18'}
+  });
+  const state=at('2026-10-12T12:00:00-04:00',authored),preview=renderVeil(state,photos,'../');
+  check(()=>assert.deepEqual(veilArtworkProblems(state,photos),[]));
+  check(()=>assert.equal((preview.match(/class="veil-empty-art"/g)||[]).length,2));
+  check(()=>assert.ok(!/PRIVATE DRAFT|private-draft-art|edition\/2026-W42/.test(preview)));
+}
 for(const start of ['2026-11-07','2027-01-02','2027-03-13']){
   const shifted={editions:manifest.editions.filter(e=>e.weekend.start==='2026-10-10').map(e=>({...e,weekend:{start,end:addDays(start,1)},published_at:expectedPublish(e.slot,start).toISOString()}))};
   check(()=>assert.equal(veilState(shifted,new Date(expectedPublish('tuesday',start).valueOf()-1000)).active,true));

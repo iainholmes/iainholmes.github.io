@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Reading position not captured
+    at check (file:///tmp/atlas-veil-master/rupert/_tools/closure-browser-test.mjs:28:42)
+    at file:///tmp/atlas-veil-master/rupert/_tools/closure-browser-test.mjs:62:373 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
