@@ -310,7 +310,7 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
 <meta name="apple-mobile-web-app-title" content="Periodicals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-instrument">
-<link rel="stylesheet" href="../assets/identity/identity.css?v=20261011">
+<link rel="stylesheet" href="../assets/identity/identity.css?v=20261012-seamless2">
 </head>
 <body>
 <a class="skip" href="#briefing">Skip to the briefing</a>
@@ -341,7 +341,7 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
   <button class="ix-close" id="indexClose" type="button" aria-label="Close index">×</button>
   <div class="ix-head"><h2>In<i>dex</i></h2><div class="ix-count"><b id="ixTotal"></b>editions</div></div>
   <div class="ix-body" id="ixBody"></div>
-  <div class="ih-imprint ih-index-imprint"><a class="ih-imprint-label" href="../personal-updates/">Periodicals</a><span class="ih-imprint-divider" aria-hidden="true">|</span><img class="ih-personal-mark" src="../assets/identity/ih-signature.png" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"></div>
+  <div class="ih-imprint ih-index-imprint"><a class="ih-imprint-label" href="../personal-updates/">Periodicals</a><span class="ih-imprint-divider" aria-hidden="true">|</span><span class="ih-personal-mark"><img class="ih-mark-day" src="../assets/identity/ih-signature.png?v=20261012-seamless2" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"><img class="ih-mark-night" src="../assets/identity/ih-signature-night.png?v=20261012-seamless2" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"></span></div>
 </aside>
 
 <main class="main" id="briefing"><div id="editionMount"></div></main>
@@ -5537,7 +5537,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
       ${ed.stories.map((s,k)=>storyHTML(ed,s,k)).join('')}
       ${ed.signalTitle?`<section class="signal"><div><div class="k">Across today's five</div><h2>${esc(ed.signalTitle)}</h2></div><div>${(ed.signal||[]).map(p=>`<p>${esc(p)}</p>`).join('')}</div></section>`:''}
       <nav class="turn" aria-label="Adjacent editions">${prev?`<a class="prev" href="#${esc(prev.date)}"><small>← Nᵒ. ${issueLabel(prev)} · ${esc(prev.shortDate||prev.date)}</small><span>${esc(prev.issueTitle||prev.stories[0].title)}</span></a>`:'<span></span>'}<span class="mid">Field <i>Brief</i></span>${next?`<a class="next" href="#${esc(next.date)}"><small>Nᵒ. ${issueLabel(next)} · ${esc(next.shortDate||next.date)} →</small><span>${esc(next.issueTitle||next.stories[0].title)}</span></a>`:'<span></span>'}</nav>
-    <footer class="ih-edition-colophon"><div class="ih-imprint"><a class="ih-imprint-label" href="../personal-updates/">Periodicals</a><span class="ih-imprint-divider" aria-hidden="true">|</span><img class="ih-personal-mark" src="../assets/identity/ih-signature.png" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"></div></footer>
+    <footer class="ih-edition-colophon"><div class="ih-imprint"><a class="ih-imprint-label" href="../personal-updates/">Periodicals</a><span class="ih-imprint-divider" aria-hidden="true">|</span><span class="ih-personal-mark"><img class="ih-mark-day" src="../assets/identity/ih-signature.png?v=20261012-seamless2" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"><img class="ih-mark-night" src="../assets/identity/ih-signature-night.png?v=20261012-seamless2" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"></span></div></footer>
     </article>`;
     window.dispatchEvent(new CustomEvent('periodicals:edition',{detail:{current:ed.date,label:ed.shortDate||ed.displayDate,dates:ordered.map(e=>e.date),hash:d=>'#'+d}}));
     mount.querySelectorAll('.mode button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));

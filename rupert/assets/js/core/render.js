@@ -144,8 +144,7 @@ export function chrome({ active, base, weekLabel, site, body, pageClass = '', no
   return `<a class="skip" href="#main">Skip to content</a>
 <header class="masthead" id="masthead">
   <div class="wrap">
-    <div class="dateline"><span>Chapel Hill, N.C.</span><span>${esc(weekLabel)}</span></div>
-    <div class="ih-atlas-device"><img src="${base}../assets/identity/ih-period.png" width="60" height="60" alt="Iain Holmes’s copper-period signature: Rupert beneath a loblolly pine" decoding="async"></div>
+    <div class="dateline"><span>Chapel Hill, N.C.</span><div class="ih-atlas-device" aria-hidden="true"><img src="${base}../assets/identity/ih-period.png?v=20261012-seamless2" width="60" height="60" alt="" decoding="async"></div><span>${esc(weekLabel)}</span></div>
     <p class="wordmark"><a href="${base}">The Rupert Atlas</a></p>
     <nav class="primary" aria-label="Sections"><ul>${navItems('nav-link')}</ul><a class="nav-archive" href="${base}archive/"${active === 'archive' ? ' aria-current="page"' : ''}>Archive</a></nav>
   </div>
@@ -160,7 +159,7 @@ export function chrome({ active, base, weekLabel, site, body, pageClass = '', no
 <main id="main" class="${pageClass}" tabindex="-1">
 ${body}
 </main>
-<footer class="utility-footer"><div class="wrap ih-atlas-footer"><div class="ih-imprint ih-atlas-imprint"><span class="ih-imprint-label">The Rupert Atlas</span><span class="ih-imprint-divider" aria-hidden="true">|</span><img class="ih-personal-mark" src="${base}../assets/identity/ih-signature.png" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"></div><a href="${base}archive/">Archive</a><a href="${base}atlas/">Place Directory</a><span class="footer-identity">${esc((now || new Date()).getFullYear())}<img src="${base}assets/img/rupert-portrait-outline.svg" width="30" height="30" alt="" aria-hidden="true"></span></div></footer>
+<footer class="utility-footer"><div class="wrap ih-atlas-footer"><div class="ih-imprint ih-atlas-imprint"><span class="ih-imprint-label">The Rupert Atlas</span><span class="ih-imprint-divider" aria-hidden="true">|</span><span class="ih-personal-mark ih-on-dark"><img class="ih-mark-day" src="${base}../assets/identity/ih-signature.png?v=20261012-seamless2" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"><img class="ih-mark-night" src="${base}../assets/identity/ih-signature-night.png?v=20261012-seamless2" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"></span></div><a href="${base}archive/">Archive</a><a href="${base}atlas/">Place Directory</a><span class="footer-identity">${esc((now || new Date()).getFullYear())}<img src="${base}assets/img/rupert-portrait-outline.svg" width="30" height="30" alt="" aria-hidden="true"></span></div></footer>
 <nav class="dock" aria-label="Sections, bottom"><ul>${NAV.map(n =>
     `<li><a href="${base}${n.href}"${n.key === active ? ' aria-current="page"' : ''}>${esc(n.label)}</a></li>`).join('')}</ul></nav>`;
 }
