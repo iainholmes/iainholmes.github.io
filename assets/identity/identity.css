@@ -29,9 +29,17 @@
   width: 44px;
   height: auto;
   max-width: none;
-  /* The approved image includes its own paper ground. Keep its pixels intact. */
-  background: #fff;
+  margin: 0;
+  /* Original identity pixels on source-derived transparent surroundings. */
+  background: transparent;
 }
+.ih-personal-mark img { display:block; width:100%; height:auto; }
+.ih-imprint .ih-personal-mark { margin:0; }
+.ih-personal-mark .ih-mark-night { display:none; }
+.ih-personal-mark.ih-on-dark .ih-mark-day,
+[data-mode="night"] .ih-personal-mark .ih-mark-day { display:none; }
+.ih-personal-mark.ih-on-dark .ih-mark-night,
+[data-mode="night"] .ih-personal-mark .ih-mark-night { display:block; }
 .ih-colophon {
   flex-wrap: wrap;
   align-items: center;
@@ -74,7 +82,7 @@
   display: block;
   width: 24px;
   height: 24px;
-  background: #fff;
+  background: transparent;
 }
 .utility-footer .ih-atlas-footer { flex-wrap: wrap; }
 .utility-footer .ih-atlas-imprint { gap: 12px; }
@@ -87,5 +95,48 @@
     flex-basis: 100%;
     justify-content: center;
   }
-  .ih-atlas-device { padding-top: 10px; }
+}
+
+/* Place the original copper dot and heavier copper rules within the dateline. */
+@media (min-width:1024px) {
+  .masthead#masthead .dateline {
+    display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+    align-items:center;
+  }
+  .masthead#masthead .dateline > span:last-child {justify-self:end;text-align:right;}
+  .masthead#masthead .ih-atlas-device {
+    display:flex;align-items:center;gap:14px;padding:0;pointer-events:none;
+  }
+  .masthead#masthead .ih-atlas-device::before,
+  .masthead#masthead .ih-atlas-device::after {
+    content:"";width:clamp(48px,7vw,100px);height:2px;background:#c06c30;
+  }
+}
+/* The separate mobile header needs its own signature below the title. */
+@media (max-width:1023.98px) {
+  .bar#bar .bar-inner {
+    display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto 38px;
+    justify-items:center;gap:4px;min-height:0;padding-block:8px 0;
+  }
+  .bar#bar .bar-mark {grid-row:2;grid-column:1;text-align:center;}
+  .bar#bar .bar-week {grid-row:1;grid-column:1;}
+  .bar#bar .bar-nav {grid-row:1;grid-column:1;justify-self:end;}
+  .bar#bar .bar-inner::after {
+    content:"";grid-row:3;grid-column:1;justify-self:center;display:block;
+    width:min(210px,76vw);height:38px;pointer-events:none;
+    background:
+      url("ih-period.png?v=20261012-seamless2") center calc(50% - 2px) / 18px 18px no-repeat,
+      linear-gradient(#c06c30,#c06c30) left calc(50% - 2px) / calc(50% - 21px) 2px no-repeat,
+      linear-gradient(#c06c30,#c06c30) right calc(50% - 2px) / calc(50% - 21px) 2px no-repeat;
+  }
+}
+@media (max-width:759.98px) {
+  :root:has(.bar#bar) {--bar-h:calc(68px + clamp(29px,8.6vw,46px) * 1.1);}
+}
+@media (min-width:760px) and (max-width:1023.98px) {
+  :root:has(.bar#bar) {--bar-h:120px;}
+  .bar#bar .bar-week {display:inline;justify-self:start;margin-left:0;font-size:12px;letter-spacing:0;}
+  .bar#bar .bar-nav .nav-link {display:inline-flex;align-items:center;min-height:44px;padding-block:6px;box-sizing:border-box;}
+  .bar#bar .bar-inner {grid-template-rows:auto auto 32px;}
+  .bar#bar .bar-inner::after {height:32px;width:180px;background-size:16px 16px,calc(50% - 20px) 2px,calc(50% - 20px) 2px;}
 }
