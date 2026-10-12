@@ -92,19 +92,19 @@
 
 /* Place the original copper dot and heavier copper rules within the dateline. */
 @media (min-width:1024px) {
-  .masthead .wrap {position:relative;}
-  .masthead .ih-atlas-device {
+  .masthead#masthead .wrap {position:relative;}
+  .masthead#masthead .ih-atlas-device {
     position:absolute;top:13px;left:50%;transform:translateX(-50%);
     display:flex;align-items:center;gap:14px;padding:0;pointer-events:none;
   }
-  .masthead .ih-atlas-device::before,
-  .masthead .ih-atlas-device::after {
+  .masthead#masthead .ih-atlas-device::before,
+  .masthead#masthead .ih-atlas-device::after {
     content:"";width:clamp(48px,7vw,100px);height:2px;background:#c06c30;
   }
 }
 /* The separate mobile header needs its own signature below the title. */
 @media (max-width:759.98px) {
-  .bar-inner::after {
+  .bar#bar .bar-inner::after {
     content:"";grid-row:3;justify-self:center;display:block;
     width:min(210px,76vw);height:38px;pointer-events:none;
     background:
