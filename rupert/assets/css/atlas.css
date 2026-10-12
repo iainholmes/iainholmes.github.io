@@ -1520,3 +1520,21 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   .week .p-more a{font:400 24px/1.2 var(--f-secondary);text-transform:none;letter-spacing:0;min-height:44px;}
   .week .p-more a::after{content:' →';margin-left:12px;color:var(--accent);}
 }
+
+/* Desktop veil: leave room below the almanac's font ink; phone rules are unchanged. */
+@media(min-width:1024px){
+  .veil-almanac{bottom:max(12px,env(safe-area-inset-bottom,0px));}
+  .veil-plate{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 72px);}
+}
+@media(min-width:1024px) and (min-height:601px) and (max-height:850px){
+  .veil-lockup{transform:none;}
+  .veil-plate{gap:12px;}
+  .veil-center{grid-template-rows:auto minmax(0,1fr);padding-top:8px;gap:8px;}
+  .veil-recommendations{gap:12px;}
+  .veil-portrait-territory{padding:4px 0;}
+}
+@media(min-width:1024px) and (min-height:601px) and (max-height:700px){
+  .veil-center:has(.veil-travel) .veil-thumbnail,
+  .veil-center:has(.veil-travel) .veil-tile .veil-empty-art{height:48px;}
+  .veil-travel{padding-block:6px;}
+}
