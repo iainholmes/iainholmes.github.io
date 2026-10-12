@@ -1521,10 +1521,12 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   .week .p-more a::after{content:' →';margin-left:12px;color:var(--accent);}
 }
 
-/* Desktop veil: leave room below the almanac's font ink; phone rules are unchanged. */
+/* Desktop veil: comfortable almanac clearance and its original ochre symbols. */
 @media(min-width:1024px){
-  .veil-almanac{bottom:max(12px,env(safe-area-inset-bottom,0px));}
-  .veil-plate{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 72px);}
+  .veil-almanac{bottom:max(28px,env(safe-area-inset-bottom,0px));}
+  .veil-plate{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 88px);}
+  .veil-almanac-item dt{display:flex;align-items:center;gap:6px;}
+  .veil-almanac-symbol{display:block;order:-1;}
 }
 @media(min-width:1024px) and (min-height:601px) and (max-height:850px){
   .veil-lockup{transform:none;}
