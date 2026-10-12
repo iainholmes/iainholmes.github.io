@@ -220,6 +220,7 @@ ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta
 <link rel="preload" href="${base}assets/fonts/velenor-regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="icon" type="image/svg+xml" href="${base}assets/img/rupert-face.svg">
 <link rel="stylesheet" href="${base}assets/css/atlas.css">
+<link rel="stylesheet" href="${base}../assets/identity/identity.css?v=20261011">
 <script type="importmap">${JSON.stringify({imports:Object.fromEntries(moduleFiles.map(f=>[base+'assets/js/'+f,base+'assets/js/'+f+'?v='+assetVersion]))})}</script>
 ${scripts ? `<script type="module" src="${base}assets/js/site.js"></script>\n` : ''}${extra.map(x => `<script type="module" src="${base}${x}"></script>\n`).join('')}</head>
 <body data-base="${base}" data-section="${active}"${cycle ? ` data-cycle="${esc(cycle)}"` : ''}>
