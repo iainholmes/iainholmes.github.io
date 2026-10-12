@@ -29,8 +29,8 @@
   width: 44px;
   height: auto;
   max-width: none;
-  /* The approved image includes its own paper ground. Keep its pixels intact. */
-  background: #fff;
+  /* Original identity pixels on source-derived transparent surroundings. */
+  background: transparent;
 }
 .ih-colophon {
   flex-wrap: wrap;
@@ -74,7 +74,7 @@
   display: block;
   width: 24px;
   height: 24px;
-  background: #fff;
+  background: transparent;
 }
 .utility-footer .ih-atlas-footer { flex-wrap: wrap; }
 .utility-footer .ih-atlas-imprint { gap: 12px; }
@@ -88,4 +88,28 @@
     justify-content: center;
   }
   .ih-atlas-device { padding-top: 10px; }
+}
+
+/* Place the original copper dot and heavier copper rules within the dateline. */
+@media (min-width:1024px) {
+  .masthead .wrap {position:relative;}
+  .masthead .ih-atlas-device {
+    position:absolute;top:13px;left:50%;transform:translateX(-50%);
+    display:flex;align-items:center;gap:14px;padding:0;pointer-events:none;
+  }
+  .masthead .ih-atlas-device::before,
+  .masthead .ih-atlas-device::after {
+    content:"";width:clamp(48px,7vw,100px);height:2px;background:#c06c30;
+  }
+}
+/* The separate mobile header needs its own signature below the title. */
+@media (max-width:759.98px) {
+  .bar-inner::after {
+    content:"";grid-row:3;justify-self:center;display:block;
+    width:min(210px,76vw);height:38px;pointer-events:none;
+    background:
+      url("ih-period.png?v=20261012-alpha") center / 18px 18px no-repeat,
+      linear-gradient(#c06c30,#c06c30) left center / calc(50% - 21px) 2px no-repeat,
+      linear-gradient(#c06c30,#c06c30) right center / calc(50% - 21px) 2px no-repeat;
+  }
 }

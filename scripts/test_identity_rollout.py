@@ -38,15 +38,20 @@ def clean(source):
     source = source.replace('wrap ih-atlas-footer', 'wrap')
     return re.sub(r'\?v=[a-f0-9]{12}', '?v=ASSET', source)
 
-expected = {
-    'ih-master.png': '7e2dabb7244b44c8a582792f59ff3cb1fa0eb8e911a8a4e7c249d68c5ba0c619',
-    'ih-signature.png': 'd069d41082adfe788c3dda539f2e20d4e9ba5173799b10dc408c115028e428f7',
-    'ih-period.png': '3ab32c2f0dd7e192b003ffa0a3813622299ef91b90029e1da162b0af2101a028',
-}
-for name, digest in expected.items():
-    folder = 'desk/assets/identity' if name == 'ih-master.png' else 'assets/identity'
-    check(sha256((ROOT / folder / name).read_bytes()).hexdigest() == digest,
-          name + ' must remain the exact approved artwork')
+# Preserve the immutable master; check the exact binary blobs of approved
+# transparent exports without assuming their surrounding paper remains opaque.
+from hashlib import sha1
+check(sha256((ROOT / 'desk/assets/identity/ih-master.png').read_bytes()).hexdigest() ==
+      '7e2dabb7244b44c8a582792f59ff3cb1fa0eb8e911a8a4e7c249d68c5ba0c619',
+      'canonical IH. master must remain unchanged')
+for name, digest in {
+    'ih-signature.png': '6236e517a3f329837b0e1df68f27f609d1a306b4',
+    'ih-period.png': '9cc9d95b3c320ac505e0f1f1dc40db8e736e0b33',
+}.items():
+    data = (ROOT / 'assets/identity' / name).read_bytes()
+    blob = b'blob ' + str(len(data)).encode() + b'\x00' + data
+    check(sha1(blob).hexdigest() == digest, name + ': approved transparent derivative')
+    check(data[:8] == b'\x89PNG\r\n\x1a\n', name + ': valid PNG signature')
 
 atlas = sorted(str(p.relative_to(ROOT)) for p in (ROOT / 'rupert').rglob('index.html'))
 check(len(atlas) >= 11, 'Atlas coverage includes generated editions and archives')
