@@ -103,6 +103,7 @@
     display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
     align-items:center;
   }
+  .masthead#masthead .dateline > span:last-child {justify-self:end;text-align:right;}
   .masthead#masthead .ih-atlas-device {
     display:flex;align-items:center;gap:14px;padding:0;pointer-events:none;
   }
