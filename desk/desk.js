@@ -126,6 +126,7 @@
     window.history.scrollRestoration = 'manual';
     window.DeskPublications?.start();
     function paintSelection(ids) {
+      window.DeskPublications?.refresh?.();
       revealed = revealSelection([], { type:'restore', ids }, items);
       items.forEach(item => {
         const open = revealed.includes(item.id);

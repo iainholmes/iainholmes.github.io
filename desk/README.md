@@ -104,7 +104,7 @@ Withdrawals show a notice without a recommendation image or title.
 The generator produces `publication-snapshot.json` and corresponding HTML from
 those same adapters. Initial and unavailable-source previews are “Last Verified”,
 not an assertion that the offline data are current. Live checks run on opening,
-page restoration and return to visibility, with a five-minute refresh limit and
+page restoration, reveal selection and return to visibility, with a five-minute refresh limit and
 six-second request timeouts. There is no background polling, storage, service,
 credential access or new runtime dependency.
 

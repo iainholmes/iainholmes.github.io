@@ -104,6 +104,7 @@
       const read=async path=>{const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6000);try{const response=await fetch(path,{cache:'no-store',signal:controller.signal});if(!response.ok)throw Error('Source unavailable');return await response.text();}finally{clearTimeout(timer);}};
       try{const data=await snapshot(read);paint(data,true);latest=Date.now();}catch{}finally{running=false;}
     }
+    root.DeskPublications.refresh=refresh;
     document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
     window.addEventListener('pageshow',refresh);refresh();
   }
