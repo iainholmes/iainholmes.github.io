@@ -1,0 +1,91 @@
+/* Personal signatures only. Host publications retain their own type and palette. */
+.ih-imprint,
+.ih-copyright {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+.ih-imprint .ih-imprint-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  white-space: nowrap;
+}
+.ih-imprint .ih-imprint-divider {
+  display: inline-block;
+  flex: none;
+  margin: 0;
+  color: inherit;
+  opacity: .65;
+}
+.ih-personal-mark {
+  display: block;
+  flex: none;
+  width: 44px;
+  height: auto;
+  max-width: none;
+  /* The approved image includes its own paper ground. Keep its pixels intact. */
+  background: #fff;
+}
+.ih-colophon {
+  flex-wrap: wrap;
+  align-items: center;
+}
+.ih-edition-colophon {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 8px;
+  font: 500 11px/1.5 var(--sans);
+}
+.ih-index-imprint {
+  align-self: center;
+  margin: 12px 24px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  font: 500 11px/1.5 var(--sans);
+}
+.ih-workbook-meta {
+  flex-wrap: wrap;
+  align-items: center;
+}
+.ih-workbook-meta > span { flex: 1 1 420px; }
+.ih-journal-colophon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+.ih-dialog-imprint {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  font: 500 11px/1.5 var(--sans);
+}
+.ih-atlas-device {
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+}
+.ih-atlas-device img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+}
+.utility-footer .ih-atlas-footer { flex-wrap: wrap; }
+.utility-footer .ih-atlas-imprint { gap: 12px; }
+.ih-atlas-imprint .ih-imprint-label { text-transform: uppercase; }
+@media (max-width: 600px) {
+  .ih-colophon { align-items: flex-start; }
+  .ih-colophon > .ih-imprint { margin-bottom: 8px; }
+  .ih-copyright { gap: 10px; }
+  .utility-footer .ih-atlas-imprint {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+  .ih-atlas-device { padding-top: 10px; }
+}
