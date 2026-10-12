@@ -58,7 +58,26 @@ check(()=>assert.equal(at('2026-10-06T10:00:00-04:00',replacement).current.tuesd
 const withdrawn=structuredClone(manifest);withdrawn.editions.find(e=>e.id==='2026-W41-tue').status='withdrawn';
 check(()=>{const s=at('2026-10-06T10:00:00-04:00',withdrawn);assert.equal(s.active,true);assert.equal(s.current.tuesday.withdrawn,true);assert.match(renderVeil(s,photos,''),/Withdrawn/);});
 const missing=structuredClone(manifest);missing.editions=missing.editions.filter(e=>e.id!=='2026-W41-tue');
-check(()=>{const s=at('2026-10-06T10:00:00-04:00',missing);assert.equal(s.active,true);assert.equal(s.current.tuesday.published,false);assert.equal(veilArtworkProblems(s,photos).length,1);});
+check(()=>{const s=at('2026-10-06T10:00:00-04:00',missing);assert.equal(s.active,true);assert.equal(s.current.tuesday.published,false);assert.deepEqual(veilArtworkProblems(s,photos),[]);assert.match(renderVeil(s,photos,''),/veil-empty-art/);});
+const nextMonday=at('2026-10-12T12:00:00-04:00');
+check(()=>assert.equal(nextMonday.active,true));
+check(()=>assert.equal(nextMonday.phase,'preTuesday'));
+check(()=>assert.deepEqual(veilArtworkProblems(nextMonday,photos),[]));
+const nextVeil=renderVeil(nextMonday,photos,'../',null,new Date('2026-10-12T12:00:00-04:00'));
+check(()=>assert.equal((nextVeil.match(/class="veil-empty-art"/g)||[]).length,2));
+check(()=>assert.equal((nextVeil.match(/class="veil-image"/g)||[]).length,2));
+check(()=>assert.ok(!nextVeil.includes('href="../edition/2026-W42-')));
+check(()=>assert.match(nextVeil,/Previous Week/));
+check(()=>assert.match(nextVeil,/This Week/));
+const noHistory=structuredClone(manifest);
+noHistory.editions=noHistory.editions.filter(e=>e.weekend.start!=='2026-10-10');
+const noHistoryVeil=at('2026-10-12T12:00:00-04:00',noHistory);
+check(()=>assert.deepEqual(veilArtworkProblems(noHistoryVeil,photos),[]));
+check(()=>assert.equal((renderVeil(noHistoryVeil,photos,'../').match(/class="veil-empty-art"/g)||[]).length,4));
+check(()=>assert.match(renderVeil(noHistoryVeil,photos,'../'),/No Edition/));
+const badArtwork=structuredClone(manifest);
+badArtwork.editions.find(e=>e.id==='2026-W41-tue').photo_id='missing-artwork-id';
+check(()=>assert.ok(veilArtworkProblems(at('2026-10-05T12:00:00-04:00',badArtwork),photos).some(x=>x.includes('current tuesday'))));
 for(const start of ['2026-11-07','2027-01-02','2027-03-13']){
   const shifted={editions:manifest.editions.filter(e=>e.weekend.start==='2026-10-10').map(e=>({...e,weekend:{start,end:addDays(start,1)},published_at:expectedPublish(e.slot,start).toISOString()}))};
   check(()=>assert.equal(veilState(shifted,new Date(expectedPublish('tuesday',start).valueOf()-1000)).active,true));
