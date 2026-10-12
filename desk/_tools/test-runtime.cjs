@@ -59,7 +59,7 @@ function browserHarness(start) {
   const label={},meta={},button=node();button.hidden=true;button.querySelector=()=>label;
   const toolbar={getBoundingClientRect:()=>({height:72})};
   const spacer={style:{height:'0px'},getBoundingClientRect:()=>({height:parseFloat(spacer.style.height)})};
-  Object.defineProperty(root,'scrollHeight',{get:()=>3020+parseFloat(spacer.style.height)});
+  Object.defineProperty(root,'scrollHeight',{configurable:true,get:()=>3020+parseFloat(spacer.style.height)});
   const topFor=chapter=>({research:250,reading:1300,profile:2700}[chapter])+(chapter!=='research' && works.advisor && !works.advisor.authentic.hidden?120:0);
   const links=['research','reading','profile'].map(id=>{
     targets[id]=node(id);targets[id].getBoundingClientRect=()=>({top:topFor(id)-window.scrollY});
@@ -88,7 +88,7 @@ function browserHarness(start) {
   }
   const window={scrollY:0,location:{hash:'',pathname:'/desk/',search:''},reduced:false,deferSmooth:false,scrollCalls:[],
     history:{state:null,pushState(state,title,url){save(state,url,false);},replaceState(state,title,url){save(state,url,true);}},
-    matchMedia(){return{matches:this.reduced};},
+    matchMedia(query){return{matches:query.includes('max-width')?this.mobile===true:this.reduced};},
     requestAnimationFrame(fn){frames.set(++frameId,fn);return frameId;},
     scrollTo(options){this.scrollCalls.push(options);if(!(this.deferSmooth && options.behavior==='smooth'))this.scrollY=options.top;},
     addEventListener:listen};
@@ -101,6 +101,7 @@ function browserHarness(start) {
     travel(delta){index+=delta;const entry=entries[index];window.history.state=entry.state;window.location.hash=entry.hash;events.popstate();events.hashchange();}};
 }
 const tick=()=>new Promise(setImmediate);
+async function settle(h){await tick();h.flush();await tick();h.flush();await tick();}
 const click=link=>link.handlers.click({button:0,preventDefault(){}});
 const visible=h=>Object.entries(h.works).filter(([,w])=>!w.authentic.hidden).map(([id])=>id);
 
@@ -114,7 +115,7 @@ test('Visit-only appearance override and Eastern scheduling stay independent of 
   const h=browserHarness('2026-07-16T00:59:59Z');h.mount();
   const scheduled=[...h.timers.values()][0];assert.equal(scheduled.delay,1030);
   h.advance('2026-07-16T01:00:01Z');scheduled.fn();assert.equal(h.root.dataset.appearance,'night');
-  click(h.links[0]);await tick();h.button.handlers.click();assert.equal(h.root.dataset.appearance,'day');
+  click(h.links[0]);await settle(h);h.button.handlers.click();assert.equal(h.root.dataset.appearance,'day');
   assert.deepEqual(visible(h),['advisor','qst']);assert.equal(h.button.attrs['aria-pressed'],'false');
   h.advance('2026-07-17T02:00:00Z');h.events.visibilitychange();assert.equal(h.root.dataset.appearance,'day');
   h.events.pageshow({persisted:true});assert.equal(h.root.dataset.appearance,'night');assert.deepEqual(visible(h),['advisor','qst']);
@@ -122,30 +123,30 @@ test('Visit-only appearance override and Eastern scheduling stay independent of 
 
 test('Each TOC reveals exactly its chapter after layout changes and aligns at 12px clearance',async()=>{
   const h=browserHarness('2026-07-15T12:00:00Z');h.mount();
-  for(const link of h.links){click(link);await tick();const id=link.hash.slice(1);
+  for(const link of h.links){click(link);await settle(h);const id=link.hash.slice(1);
     assert.deepEqual(visible(h),catalogue.filter(w=>w.chapter===id).map(w=>w.id));
     assert.equal(h.targets[id].getBoundingClientRect().top,84);assert.equal(h.targets[id].focused,true);
     assert.equal(h.targets[id].dataset.complete,'true');assert.equal(link.attrs['aria-current'],'location');
     assert.equal(h.window.scrollCalls.at(-1).behavior,'smooth');
   }
-  const count=h.entries.length;click(h.links[2]);await tick();assert.equal(h.entries.length,count,'No duplicate history entry');
+  const count=h.entries.length;click(h.links[2]);await settle(h);assert.equal(h.entries.length,count,'No duplicate history entry');
   assert.ok(parseFloat(h.spacer.style.height)>0);
   h.links[0].handlers.click({button:0,metaKey:true,preventDefault(){assert.fail('Modifier click intercepted');}});
 });
 
 test('Individual controls reveal only selected works, preserve siblings, and reverse accessibly',async()=>{
-  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.works.qst.button.handlers.click();await tick();
+  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.works.qst.button.handlers.click();await settle(h);
   assert.deepEqual(visible(h),['qst']);assert.equal(h.works.qst.collection.hidden,true);assert.equal(h.works.qst.button.attrs['aria-expanded'],'true');
   assert.equal(h.works.qst.focused,true);assert.equal(h.works.qst.getBoundingClientRect().top,84);
-  h.works.advisor.button.handlers.click();await tick();assert.deepEqual(visible(h),['advisor','qst']);
-  h.works.qst.button.handlers.click();await tick();assert.deepEqual(visible(h),['advisor']);assert.equal(h.works.qst.collection.hidden,false);
-  h.works['field-brief'].button.handlers.click();await tick();assert.deepEqual(visible(h),['field-brief']);assert.equal(h.publicationHeading.hidden,false);
-  h.works['field-brief'].button.handlers.click();await tick();assert.deepEqual(visible(h),[]);assert.equal(h.publicationHeading.hidden,true);
+  h.works.advisor.button.handlers.click();await settle(h);assert.deepEqual(visible(h),['advisor','qst']);
+  h.works.qst.button.handlers.click();await settle(h);assert.deepEqual(visible(h),['advisor']);assert.equal(h.works.qst.collection.hidden,false);
+  h.works['field-brief'].button.handlers.click();await settle(h);assert.deepEqual(visible(h),['field-brief']);assert.equal(h.publicationHeading.hidden,false);
+  h.works['field-brief'].button.handlers.click();await settle(h);assert.deepEqual(visible(h),[]);assert.equal(h.publicationHeading.hidden,true);
 });
 
 test('Chapter return restores collection without affecting appearance or losing focus',async()=>{
-  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.button.handlers.click();click(h.links[1]);await tick();
-  assert.equal(h.returns[1].hidden,false);h.returns[1].handlers.click();await tick();
+  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.button.handlers.click();click(h.links[1]);await settle(h);
+  assert.equal(h.returns[1].hidden,false);h.returns[1].handlers.click();await settle(h);
   assert.deepEqual(visible(h),[]);assert.equal(h.returns[1].hidden,true);assert.equal(h.targets.reading.focused,true);
   assert.equal(h.root.dataset.appearance,'night');assert.equal(h.targets.reading.getBoundingClientRect().top,84);
 });
@@ -153,32 +154,32 @@ test('Chapter return restores collection without affecting appearance or losing 
 test('Ordinary scrolling never reveals or undoes a reveal; returning to top resets everything',async()=>{
   const h=browserHarness('2026-07-15T12:00:00Z');h.mount();
   for(const top of [100,1400,2800]){h.window.scrollY=top;h.events.scroll();h.flush();assert.deepEqual(visible(h),[]);}
-  h.works.workbook.button.handlers.click();await tick();h.events.scrollend();const count=h.entries.length;
+  h.works.workbook.button.handlers.click();await settle(h);h.events.scrollend();const count=h.entries.length;
   h.window.scrollY=2500;h.events.scroll();h.flush();assert.deepEqual(visible(h),['workbook']);assert.equal(h.entries.length,count);
   h.window.scrollY=0;h.events.scroll();h.flush();assert.deepEqual(visible(h),[]);assert.equal(h.window.location.hash,'');assert.equal(h.entries.length,count);
 });
 
 test('Direct chapter and individual fragments restore meaningful reveal states',async()=>{
   for(const [hash,expected] of [['#reading',['field-brief','loblolly','workbook','rupert']],['#work-qst',['qst']],['#profile',['portfolio']]]){
-    const h=browserHarness('2026-07-15T12:00:00Z');h.window.location.hash=hash;h.mount();await tick();
+    const h=browserHarness('2026-07-15T12:00:00Z');h.window.location.hash=hash;h.mount();await settle(h);
     assert.deepEqual(visible(h),expected);assert.equal(h.targets[hash.slice(1)].getBoundingClientRect().top,84);assert.equal(h.window.scrollCalls.at(-1).behavior,'auto');
   }
 });
 
 test('Back/Forward restores precise individual selections and closed collection snapshots',async()=>{
   const h=browserHarness('2026-07-15T12:00:00Z');h.mount();
-  h.works['field-brief'].button.handlers.click();await tick();
-  h.works.loblolly.button.handlers.click();await tick();assert.deepEqual(visible(h),['field-brief','loblolly']);
-  h.travel(-1);await tick();assert.deepEqual(visible(h),['field-brief']);
-  h.travel(1);await tick();assert.deepEqual(visible(h),['field-brief','loblolly']);
-  h.returns[1].handlers.click();await tick();assert.deepEqual(visible(h),[]);
-  h.travel(-1);await tick();assert.deepEqual(visible(h),['field-brief','loblolly']);
-  h.travel(1);await tick();assert.deepEqual(visible(h),[]);assert.equal(h.targets.reading.getBoundingClientRect().top,84);
+  h.works['field-brief'].button.handlers.click();await settle(h);
+  h.works.loblolly.button.handlers.click();await settle(h);assert.deepEqual(visible(h),['field-brief','loblolly']);
+  h.travel(-1);await settle(h);assert.deepEqual(visible(h),['field-brief']);
+  h.travel(1);await settle(h);assert.deepEqual(visible(h),['field-brief','loblolly']);
+  h.returns[1].handlers.click();await settle(h);assert.deepEqual(visible(h),[]);
+  h.travel(-1);await settle(h);assert.deepEqual(visible(h),['field-brief','loblolly']);
+  h.travel(1);await settle(h);assert.deepEqual(visible(h),[]);assert.equal(h.targets.reading.getBoundingClientRect().top,84);
 });
 
 test('Reduced motion, rapid requests and journey interruption avoid scroll loops',async()=>{
   const h=browserHarness('2026-07-15T12:00:00Z');h.mount();h.window.reduced=true;
-  click(h.links[0]);click(h.links[1]);await tick();assert.equal(h.window.scrollCalls.length,1);assert.equal(h.window.scrollCalls[0].behavior,'auto');
+  click(h.links[0]);click(h.links[1]);await settle(h);assert.equal(h.window.scrollCalls.length,1);assert.equal(h.window.scrollCalls[0].behavior,'auto');
   assert.deepEqual(visible(h),['field-brief','loblolly','workbook','rupert']);
   h.events.touchstart();h.events.resize();h.window.scrollY=1600;h.events.scroll();h.flush();
   assert.equal(h.window.scrollCalls.length,1);assert.deepEqual(visible(h),['field-brief','loblolly','workbook','rupert']);
@@ -189,4 +190,41 @@ test('Reveal reducer sanitizes history and cannot activate unrelated chapters',(
   assert.deepEqual(selectionForHash('#work-advisor',catalogue),['advisor']);
   assert.deepEqual(selectionForHash('#collection',catalogue),[]);
   assert.deepEqual(revealSelection(['qst'],{type:'toggle',id:'bad'},catalogue),['qst']);
+});
+
+
+test('Mobile Return keeps a visible work at the same viewport position and history restores it',async()=>{
+  const h=browserHarness('2026-07-15T12:00:00Z');h.window.mobile=true;h.mount();
+  h.works.qst.button.handlers.click();await settle(h);
+  h.window.scrollY+=h.works.qst.getBoundingClientRect().top-150;
+  h.works.qst.button.handlers.click();await settle(h);
+  assert.equal(h.works.qst.getBoundingClientRect().top,150);
+  assert.equal(h.window.history.state.deskReveal.offset,150);
+  h.travel(-1);await settle(h);assert.deepEqual(visible(h),['qst']);
+  h.travel(1);await settle(h);assert.equal(h.works.qst.getBoundingClientRect().top,150);
+  assert.equal(h.window.history.scrollRestoration,'manual');
+});
+
+test('Bottom collapse reserves height before hiding a face and leaves a reachable work',async()=>{
+  const h=browserHarness('2026-07-15T12:00:00Z');h.window.mobile=true;h.mount();
+  h.works.portfolio.button.handlers.click();await settle(h);
+  Object.defineProperty(h.root,'scrollHeight',{get:()=> (h.works.portfolio.authentic.hidden?3020:5000)+parseFloat(h.spacer.style.height)});
+  h.window.scrollY=4000;
+  let hidden=false,clamps=0;
+  Object.defineProperty(h.works.portfolio.authentic,'hidden',{get:()=>hidden,set:value=>{
+    hidden=value;if(h.window.scrollY>h.root.scrollHeight-h.root.clientHeight){clamps++;h.window.scrollY=h.root.scrollHeight-h.root.clientHeight;}
+  }});
+  h.works.portfolio.button.handlers.click();await settle(h);
+  assert.equal(clamps,0,'reserve precedes the layout collapse');
+  assert.equal(h.works.portfolio.getBoundingClientRect().top,84);
+  assert.ok(h.root.scrollHeight-h.root.clientHeight>=h.window.scrollY);
+  h.events.scrollend();assert.ok(parseFloat(h.spacer.style.height)<1000,'temporary reservation is released');
+});
+
+test('A touch during deferred font/layout settling cancels obsolete navigation',async()=>{
+  const h=browserHarness('2026-07-15T12:00:00Z');h.mount();
+  h.works.qst.button.handlers.click();await tick();
+  h.events.touchstart();h.window.scrollY=500;h.flush();await tick();h.flush();await tick();
+  assert.equal(h.window.scrollCalls.length,0);assert.deepEqual(visible(h),['qst']);
+  assert.ok(parseFloat(h.spacer.style.height)<1000);
 });

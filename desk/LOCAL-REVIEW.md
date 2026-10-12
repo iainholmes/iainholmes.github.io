@@ -7,11 +7,11 @@ PR #4 remains draft and undeployed. The two-state collection/application design 
 Stop the old Python server with Control-C. Pull the existing checkout with any local edits saved:
 
 ```sh
-git switch desk/foundation-20261010
-git pull --ff-only origin desk/foundation-20261010
+git switch desk/final-integration-20261012
+git pull --ff-only origin desk/final-integration-20261012
 ```
 
-Alternatively, download and extract the updated [branch ZIP](https://github.com/iainholmes/iainholmes.github.io/archive/refs/heads/desk/foundation-20261010.zip).
+Alternatively, download and extract the updated [branch ZIP](https://github.com/iainholmes/iainholmes.github.io/archive/refs/heads/desk/final-integration-20261012.zip).
 
 In Terminal, `cd` to the repository folder containing the root index.html and desk directory. Start your established server:
 
@@ -19,11 +19,11 @@ In Terminal, `cd` to the repository folder containing the root index.html and de
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Open [the local collection](http://localhost:8000/desk/?review=final-identities) in Safari and Chrome with **no fragment after the URL**. Reload without cache with Option-Command-R in Safari or Shift-Command-R in Chrome. No package installation or build is required. Preserve local edits; if Git reports divergence, use the fresh ZIP instead of resetting them.
+Open [the local collection](http://localhost:8000/desk/?review=maintenance-20261012) in Safari and Chrome with **no fragment after the URL**. Reload without cache with Option-Command-R in Safari or Shift-Command-R in Chrome. No package installation or build is required. Preserve local edits; if Git reports divergence, use the fresh ZIP instead of resetting them.
 
 ## iPhone
 
-Keep the Mac awake and server running on the same Wi-Fi network. Find its Wi-Fi address using `ipconfig getifaddr en0` (or System Settings if empty). Open `http://MAC_IP:8000/desk/?review=final-identities` in iPhone Safari, replacing MAC_IP. Use Safari rather than an older Home Screen shortcut. Allow Python's incoming local-network connection if macOS asks.
+Keep the Mac awake and server running on the same Wi-Fi network. Find its Wi-Fi address using `ipconfig getifaddr en0` (or System Settings if empty). Open `http://MAC_IP:8000/desk/?review=maintenance-20261012` in iPhone Safari, replacing MAC_IP. Use Safari rather than an older Home Screen shortcut. Allow Python's incoming local-network connection if macOS asks.
 
 ## Focus of this final review
 
@@ -58,3 +58,28 @@ The before/after compositions should be unmistakably different. Evaluate typogra
 8. Check original artwork is uncropped, application/deep links work, and all five optional disclosures remain available when relevant. Confirm Home Screen help and footer. Repeated bottom-section navigation should not accumulate blank space.
 
 Report discrepancies with browser/device, viewport or text-size setting, and before/after screenshots. Source and simulated-DOM tests do not establish visual or physical-device acceptance.
+
+
+## Final Maintenance Review
+
+Use the updated branch and the existing Mac/iPhone preview. Run the preview at
+the repository root so the source publications and `/rupert/` data are available.
+Hard-refresh Safari/Chrome; no dependency installation is needed.
+
+1. Reveal Field Brief, Workbook and Loblolly & Logit. Confirm dates/numbers/titles
+   and artwork match their source editions (the baseline is 016 / 010 / 003).
+   Online previews should change from Last Verified to Published. Offline or
+   unavailable sources must leave a dated verified fallback, never fabricated data.
+2. Reveal Atlas. Inspect both latest released slots, their original artwork and
+   destination/date. Current missing slots must be explicitly pending, with older
+   choices labeled Last Published. No draft or upcoming content should appear.
+3. On iPhone portrait, reveal/return each project, selected siblings and different
+   chapters. Test the last project near the page bottom, Back/Forward, direct
+   work/chapter fragments, rapid taps and a touch while layout is settling.
+   Repeat a small sample in landscape and desktop, with Reduce Motion enabled.
+4. Confirm the installation-help disclosure is absent. The accepted footer,
+   identity, chapter illustrations, authentic app representations and appearance
+   schedule should otherwise remain intact.
+
+Automated source/runtime verification is complete; integrated Safari rendering,
+scroll timing and physical acceptance remain the final review gate.

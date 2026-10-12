@@ -69,8 +69,8 @@ check(sum(tag == 'main' for tag, _ in page.tags) == 1, 'Exactly one main landmar
 check(sum(tag == 'h1' for tag, _ in page.tags) == 1, 'Exactly one page heading required')
 check('<title>desk.</title>' in source and '<h1>desk<span>.</span></h1>' in source, 'Lowercase desk. identity required')
 check(not any(tag in ['iframe', 'form'] for tag, _ in page.tags), 'No embedded application sessions')
-check([attrs.get('src') for tag, attrs in page.tags if tag == 'script'] == ['desk.js'], 'Only the local appearance/navigation script is permitted')
-check(source.index('<script src="desk.js">') < source.index('<link rel="stylesheet"'), 'Appearance must be set before stylesheet paint')
+check([attrs.get('src','').split('?')[0] for tag, attrs in page.tags if tag == 'script'] == ['publications.js', 'desk.js'], 'Only the local appearance/navigation script is permitted')
+check(source.index('<script src="desk.js') < source.index('<link rel="stylesheet"'), 'Appearance must be set before stylesheet paint')
 check(all(not key.lower().startswith('on') for _, attrs in page.tags for key in attrs), 'No inline event handlers')
 check('↗' not in source, 'Use SVG link icons, not emoji-dependent arrows')
 for tag, attrs in page.tags:
@@ -94,7 +94,7 @@ for tag, attrs in page.tags:
         if value.startswith('#'):
             check(value[1:] in page.ids, f'Broken local anchor: {value}')
         elif not value.startswith('https://'):
-            check((ROOT / value).is_file(), f'Missing local resource: {value}')
+            check(((REPO / value[1:]) if value.startswith('/') else (ROOT / value.split('?')[0])).is_file(), f'Missing local resource: {value}')
 for asset in re.findall(r'url\(([^)]+)\)', css):
     check((ROOT / asset).is_file(), f'Missing CSS resource: {asset}')
 for p in config['projects']:
@@ -125,7 +125,7 @@ for item in provenance['archival_covers']:
     cover = (ROOT / item['asset']).read_text()
     check(cover == archive[item['archive_key']]['frozen'], f'Canonical artwork changed: {item["asset"]}')
     check(sha256(cover.encode()).hexdigest() == item['sha256'], 'Cover provenance mismatch')
-    check(cover in source, 'Archived cover must be embedded without modification')
+    check('Archive ·' not in source, 'No archival-selection claim in synchronized previews')
     svg = ET.fromstring(cover)
     check(svg.attrib.get('viewBox') == '0 0 600 800', 'Preserve complete archival cover proportions')
     check(all(node.tag.rsplit('}', 1)[-1] not in ['script', 'foreignObject', 'image'] for node in svg.iter()), 'Cover must remain self-contained static vector artwork')
@@ -190,7 +190,8 @@ subprocess.run([sys.executable, str(ROOT / '_tools/build-monograms.py')], check=
 check(all(path.read_bytes() == data for path, data in monogram_before.items()), 'Secondary vector generation must be deterministic')
 check('<p>“Everything in its right place.”</p>' in source, 'Preserve the exact quotation with explicit punctuation')
 check('Thom Yorke<span class="sr-only">, vocalist</span>, Radiohead' in source and 'title="Radiohead vocalist"' in source, 'Attribute to Radiohead’s vocalist without a sole-songwriter claim')
-check('footer-utilities' in source and 'Keep desk. Close' in source and 'desk. — back to top' in source, 'Preserve footer controls')
+check('footer-utilities' in source and 'desk. — back to top' in source, 'Preserve footer wordmark')
+check('install-help' not in source + css + (ROOT / '_tools/build.mjs').read_text() and 'Keep desk. Close' not in source, 'Installation disclosure removed durably')
 check('identity-small' not in source + css and 'ih-monogram' not in source, 'Never switch back to a reconstructed or simplified logo')
 check(not re.search(r'(?:filter|mix-blend-mode)\s*:', css), 'Never recolor or blend the supplied identity')
 subprocess.run([sys.executable, str(ROOT / '_tools/prepare-identity.py')], check=True, capture_output=True)
