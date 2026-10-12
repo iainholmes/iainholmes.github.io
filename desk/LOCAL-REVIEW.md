@@ -1,85 +1,40 @@
-# Review the final editorial identity refinements
+# desk. — Final maintenance review (PR #9)
 
-PR #4 remains draft and undeployed. The two-state collection/application design is accepted. This finishing pass adds three chapter signatures, frames the unchanged IH. header artwork and replaces the footer line. Full browser inspection of this finishing pass has not occurred in Work.
+This guide applies to [draft PR #9](https://github.com/iainholmes/iainholmes.github.io/pull/9), implementing publication synchronization, iPhone Reveal/Return stabilization, and installation-help removal. It supersedes earlier PR #4 collection/identity review instructions. **Nothing is merged or deployed until approved.** Work's tests are not physical Safari acceptance.
 
 ## Refresh the existing Mac preview
 
-Stop the old Python server with Control-C. Pull the existing checkout with any local edits saved:
+Keep any unrelated local edits safe. In the existing repository checkout, stop the old preview server (Control-C), then:
 
 ```sh
+git fetch origin
 git switch desk/final-integration-20261012
 git pull --ff-only origin desk/final-integration-20261012
-```
-
-Alternatively, download and extract the updated [branch ZIP](https://github.com/iainholmes/iainholmes.github.io/archive/refs/heads/desk/final-integration-20261012.zip).
-
-In Terminal, `cd` to the repository folder containing the root index.html and desk directory. Start your established server:
-
-```sh
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Open [the local collection](http://localhost:8000/desk/?review=maintenance-20261012) in Safari and Chrome with **no fragment after the URL**. Reload without cache with Option-Command-R in Safari or Shift-Command-R in Chrome. No package installation or build is required. Preserve local edits; if Git reports divergence, use the fresh ZIP instead of resetting them.
+If local changes block the switch or pull, do **not** reset or overwrite them; instead use the [branch ZIP](https://github.com/iainholmes/iainholmes.github.io/archive/refs/heads/desk/final-integration-20261012.zip) in a new folder, then run the server from that repository's root (the directory containing the top-level `index.html` and `desk/`). No package installation is needed.
 
-## iPhone
+Open `http://localhost:8000/desk/?review=maintenance-20261012` in Mac Safari and Chrome, without a hash fragment. Hard refresh (Option-Command-R in Safari, Shift-Command-R in Chrome).
 
-Keep the Mac awake and server running on the same Wi-Fi network. Find its Wi-Fi address using `ipconfig getifaddr en0` (or System Settings if empty). Open `http://MAC_IP:8000/desk/?review=maintenance-20261012` in iPhone Safari, replacing MAC_IP. Use Safari rather than an older Home Screen shortcut. Allow Python's incoming local-network connection if macOS asks.
+For iPhone Safari, keep Mac and phone on the same Wi-Fi and leave the server running. Find the Mac's local address with `ipconfig getifaddr en0` (or System Settings) and open `http://MAC_IP:8000/desk/?review=maintenance-20261012`, replacing `MAC_IP`. Use Safari rather than a cached Home Screen shortcut. Approve the local network connection if prompted.
 
-## Focus of this final review
+## Three acceptance checks
 
-- Inspect the three companion signatures in Day and Night. Desktop placement is beside the heading; phone placement is a small running signature above the title. They should be legible without crowding titles or competing with the existing illustrations.
-- Reveal a whole chapter, then an individual application. Its chapter signature should disappear in either case and return when all works in that chapter return to the collection. The original application panels must remain unchanged.
-- Inspect the header's light, finely ruled bookplate alongside the italic wordmark. The artwork and its displayed size are unchanged; only the surrounding mount differs. Check narrow portrait widths and increased text size.
-- Confirm the exact centered footer line **“Everything in its right place.”** It now also appears beneath the existing footer controls on phone. Check the retained copper period, back-to-top link and Home Screen help.
+### 1. Genuine publication synchronization
 
-The [asset proof](./_review/identity-refinement.png) shows the new marks and mount in both palettes. It is not a page screenshot. The broader regression procedure below is retained as a reference; it does not reopen the accepted two-state design.
+Reveal the Periodicals chapter and each Field Brief, Workbook and Loblolly & Logit work. Confirm the date, number, title and cover match the latest *actually released* source edition; the reference snapshot from October 12 contains Field Brief 016, Workbook 010 and Loblolly & Logit 003. A successful live read should label the source **Published**, while a disconnected or unavailable source must retain a previously verified preview with **Last Verified**, not invent an edition. Check that each link opens the intended source.
 
-## Required before/after visual captures
+Reveal The Rupert Atlas and inspect the latest legitimately released Tuesday and Thursday options and artwork. Unpublished current-week slots must stay pending, with the older recommendation clearly marked **Last Published · Current Release Pending** when online. No scheduled-only title, unreleased destination or illustration should appear. Disconnecting the local preview from its data sources must not falsely promote releases.
 
-Inspect on the 15-inch MacBook Air and iPhone portrait, in both Day and Night. Capture the default page before selecting anything, then each chapter before and after its TOC selection.
+### 2. iPhone Reveal / Return
 
-| Capture | Default collection must show | Revealed chapter must show |
-| --- | --- | --- |
-| Research | Forest/ivory scholarly folios, drafting dividers and geometric instruments. No navy Advisor or QST interface. | Original navy Advisor and distinct QST learning presentation; collection illustrations gone. |
-| Reading | Four IH. catalogue entries: fish, pine, books and compass. No original publication covers or navy Rupert panel. | Three original covers/mastheads, followed by navy Rupert Atlas with original Rupert artwork. |
-| Personal | Architecture and forest academic typography. No existing blue portfolio panel. | Scholarly-blue portfolio, original information and research/CV links. |
+On iPhone portrait, Reveal and Return individual works across Research, Reading and Personal, including multiple siblings and the last work near the bottom of the page. Check that the relevant work stays comfortably in view rather than jumping to the page top or another chapter. Test Return Chapter, rapid successive taps, direct fragments (`#research`, `#reading`, `#profile`, `#work-field-brief`), Back/Forward, touch interruption during repositioning, and Reduce Motion. Repeat a smaller sample in landscape and on the Mac. Confirm accepted authentic reveals, accessibility labels, focus order and Day/Night compositions stay unchanged.
 
-The before/after compositions should be unmistakably different. Evaluate typography, negative space, proportions, illustration prominence and overall coherence as well as functionality. Exact IH. header artwork and quiet footer remain unchanged. No replacement tagline should appear.
+### 3. Footer and design preservation
 
-## Interaction and accessibility checks
+The entire **“Keep desk. Close +”** installation-help disclosure and hidden instructions must be absent. There must be **no replacement**. Confirm the existing desk. wordmark, copper mark, **“Everything in its right place.”** quotation and attribution, spacing, illustrations, logos, appearance switch and chapter structure remain intact.
 
-1. Scroll the untouched page from beginning to end. All seven works must stay in their IH. collection faces; no authentic panels should appear merely by scrolling.
-2. Select each TOC destination. Only that chapter reveals, its heading lands 12px below the sticky bar, and unrelated chapters return to their collection. Test the bottommost Personal Website destination and rapid consecutive selections.
-3. Reveal individual works. Only that work changes; open siblings in the same chapter remain open. Revealing a work in another chapter closes the prior chapter. Open website navigates externally, separately from Reveal.
-4. Use individual Return and Return chapter to collection. Focus should remain visible on a stable destination and controls should remain reachable. Scroll around an open chapter; it must remain open. Returning to the very top restores all collection faces.
-5. Test `#research`, `#reading`, `#profile` and an individual route such as `#work-field-brief`. Use Back/Forward through chapter, individual and return actions; exact selections should restore without duplicate entries or intermediate flashing. Direct `#collection` opens the collection.
-6. Switch Day/Night in each state. Selected works must not change. Reload to reevaluate Eastern time. The exact IH. image retains its original colors/light mount throughout.
-7. Tab through the page and use Enter/Space on controls. Hidden faces must expose no focusable links; VoiceOver should announce Reveal/Return and expanded state. Test Reduce Motion, increased text size, narrow portrait widths and Safari controls for overlap, clipping or unexpected scrolling.
-8. Check original artwork is uncropped, application/deep links work, and all five optional disclosures remain available when relevant. Confirm Home Screen help and footer. Repeated bottom-section navigation should not accumulate blank space.
+## Acceptance boundary
 
-Report discrepancies with browser/device, viewport or text-size setting, and before/after screenshots. Source and simulated-DOM tests do not establish visual or physical-device acceptance.
-
-
-## Final Maintenance Review
-
-Use the updated branch and the existing Mac/iPhone preview. Run the preview at
-the repository root so the source publications and `/rupert/` data are available.
-Hard-refresh Safari/Chrome; no dependency installation is needed.
-
-1. Reveal Field Brief, Workbook and Loblolly & Logit. Confirm dates/numbers/titles
-   and artwork match their source editions (the baseline is 016 / 010 / 003).
-   Online previews should change from Last Verified to Published. Offline or
-   unavailable sources must leave a dated verified fallback, never fabricated data.
-2. Reveal Atlas. Inspect both latest released slots, their original artwork and
-   destination/date. Current missing slots must be explicitly pending, with older
-   choices labeled Last Published. No draft or upcoming content should appear.
-3. On iPhone portrait, reveal/return each project, selected siblings and different
-   chapters. Test the last project near the page bottom, Back/Forward, direct
-   work/chapter fragments, rapid taps and a touch while layout is settling.
-   Repeat a small sample in landscape and desktop, with Reduce Motion enabled.
-4. Confirm the installation-help disclosure is absent. The accepted footer,
-   identity, chapter illustrations, authentic app representations and appearance
-   schedule should otherwise remain intact.
-
-Automated source/runtime verification is complete; integrated Safari rendering,
-scroll timing and physical acceptance remain the final review gate.
+The PR reports 342 source/accessibility checks, 16 interaction tests and 7 publication tests passing; these do not substitute for the physical review above. Report any discrepancy with the device/browser, approximate viewport, steps and before/after screenshots. After acceptance, deploy the reviewed PR once and transition desk. to maintenance mode rather than opening new design work.
