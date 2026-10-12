@@ -57,7 +57,7 @@ The [rendered proof](./_review/identity-refinement.png) shows the three signatur
 
 - Advisor's original mark, navy identity and research-design workflow.
 - QST's Python/R/Stata identities and Learn/Practice/Feedback sequence.
-- Three byte-identical frozen publication covers from `personal-updates/issue-mark-archive.js`, with their dates, canonical lettering and complete 3:4 artwork. They are explicitly archival selections, not synchronized issue choices.
+- Current publication covers come from the immutable `personal-updates/issue-mark-archive.js`, matched to canonical released edition content. Original lettering and complete 3:4 artwork remain intact; dated last-verified selections serve as the offline fallback.
 - The original byte-identical Rupert 4:5 plate, with This Week, Atlas and Field Log links.
 - The personal website's academic identity, Research and Academic CV anchors.
 - All 12 destination URLs and five initially closed native disclosures, separate from direct navigation.
@@ -79,3 +79,45 @@ git diff --check
 ```
 
 Read `LOCAL-REVIEW.md` to refresh the owner's established Mac/iPhone preview and review the editorial refinement and exact supplied identity. `VERIFICATION.md` records evidence and its limits. The managed Sites preview is not retried. PR #4 remains draft; this pass does not authorize merging or deployment.
+
+
+## Final Maintenance — 12 October 2026
+
+Production baseline: `afeb9dd`. Only `/desk/` changes.
+
+`publications.js` reads same-origin canonical Field Brief/Workbook JSON embedded
+in their publication pages, Loblolly & Logit edition sections, and the immutable
+Periodicals artwork registry. A preview requires both authored edition content
+and its matching published artwork pin; future dates, drafts, missing metadata
+and unsafe artwork are excluded. The Workbook uses its canonical cover phrase
+when the source set has no separate title. Successful updates do not require
+weekly desk. edits. No publication source or publishing schedule is changed.
+
+Atlas selection reads `rupert/data/editions/index.json`, then only released
+edition JSON and registered photographs. Status and `published_at` must confirm
+a release, and the full edition must agree with its manifest. Draft/scheduled
+recommendation payloads and artwork are never requested or displayed. The latest
+released Tuesday/Thursday selections are dated; when the current calendar slot
+is missing, they are labeled “Last Published · Current Release Pending”.
+Withdrawals show a notice without a recommendation image or title.
+
+The generator produces `publication-snapshot.json` and corresponding HTML from
+those same adapters. Initial and unavailable-source previews are “Last Verified”,
+not an assertion that the offline data are current. Live checks run on opening,
+page restoration, reveal selection and return to visibility, with a five-minute refresh limit and
+six-second request timeouts. There is no background polling, storage, service,
+credential access or new runtime dependency.
+
+Reveal/Return now guard state and reserve document height before changing faces,
+wait for fonts and two layout frames, and cancel obsolete requests on user input.
+Mobile Return preserves a visible project's position; offscreen targets align
+beneath the toolbar. History stores that offset and uses manual scroll restoration.
+Temporary bottom space is released without moving the current viewport.
+
+The installation-help disclosure and its dedicated CSS are completely removed.
+Footer wordmark, quotation/attribution and canonical period are unchanged.
+
+Validation: `node desk/_tools/build.mjs`, `python desk/_tools/validate.py`,
+`node desk/_tools/test-runtime.cjs`, and `node desk/_tools/test-publications.cjs`.
+342 source checks, 16 runtime tests and 7 publication tests pass. Browser control
+is unavailable in Work; no integrated browser or physical acceptance is claimed.

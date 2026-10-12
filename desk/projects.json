@@ -76,11 +76,7 @@
           "description": "Economics & Public Affairs",
           "url": "https://iainholmes.github.io/daily-watchlist-5/",
           "schedule": "Every Day",
-          "asset": "assets/field-brief-archive.svg",
-          "archiveKey": "fb:2026-10-09",
-          "archiveDate": "2026-10-09",
-          "archiveLabel": "09 Oct 2026",
-          "archiveNumber": "013"
+          "asset": "assets/field-brief-archive.svg"
         },
         {
           "id": "loblolly",
@@ -88,11 +84,7 @@
           "description": "Research & Environmental Economics",
           "url": "https://iainholmes.github.io/weekly-economics-environment/",
           "schedule": "Fridays",
-          "asset": "assets/loblolly-archive.svg",
-          "archiveKey": "sp:2026-10-09",
-          "archiveDate": "2026-10-09",
-          "archiveLabel": "09 Oct 2026",
-          "archiveNumber": "003"
+          "asset": "assets/loblolly-archive.svg"
         },
         {
           "id": "workbook",
@@ -100,11 +92,7 @@
           "description": "Questions, Methods & Practice",
           "url": "https://iainholmes.github.io/daily-econ-challenge/",
           "schedule": "Weekdays",
-          "asset": "assets/workbook-archive.svg",
-          "archiveKey": "cp:2026-10-08",
-          "archiveDate": "2026-10-08",
-          "archiveLabel": "08 Oct 2026",
-          "archiveNumber": "008"
+          "asset": "assets/workbook-archive.svg"
         }
       ]
     },

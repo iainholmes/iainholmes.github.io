@@ -1,4 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
+import { createHash } from 'node:crypto';
 
 const root = new URL('../', import.meta.url);
 const config = JSON.parse(await readFile(new URL('projects.json', root), 'utf8'));
@@ -8,9 +10,14 @@ const number = i => String(i + 1).padStart(2, '0');
 const link = (url, label, cls = '') => `<a class="${cls}" href="${escape(url)}">${escape(label)}${arrow}</a>`;
 const disclosure = (label, body) => `<details class="context"><summary>${escape(label)}<span class="disclosure-sign" aria-hidden="true"></span></summary><div class="context-body">${body}</div></details>`;
 
-// Pinned, trusted repository assets, not remote markup. Embedding the exact
-// archived SVG lets its original text use the page's self-hosted editorial fonts.
-const covers = new Map(await Promise.all(config.projects.flatMap(p => p.publications || []).map(async p => [p.id, await readFile(new URL(p.asset, root), 'utf8')])));
+// Canonical publication content plus immutable artwork pins establish releases.
+// Embed complete, validated source SVGs using existing self-hosted fonts.
+const sync = createRequire(import.meta.url)('../publications.js');
+const publicationData = await sync.snapshot(path => readFile(new URL(path.slice(1),new URL('../../',import.meta.url)),'utf8'));
+if(Object.keys(publicationData.publications).length!==3)throw Error('Missing verified Periodicals release');
+await writeFile(new URL('publication-snapshot.json',root),JSON.stringify(publicationData,null,2)+'\n');
+const covers = new Map(Object.entries(publicationData.publications).map(([id,e])=>[id,e.artwork]));
+const version = createHash('sha256').update(await readFile(new URL('desk.js',root))).update(await readFile(new URL('publications.js',root))).update(await readFile(new URL('desk.css',root))).digest('hex').slice(0,12);
 
 // Original decorative engravings are local, script-free vectors. CurrentColor
 // connects each one to its application's palette without altering source artwork.
@@ -25,14 +32,14 @@ const monogramNames = {research:'ih-distribution',reading:'ih-river',profile:'ih
 const monogramAssets = new Map(await Promise.all(Object.entries(monogramNames).map(async ([chapter,name]) => [chapter, await readFile(new URL(`assets/monograms/${name}.svg`,root),'utf8')])));
 const monogram = chapter => `<div class="collection-monogram collection-monogram-${chapter}" data-collection-monogram="${chapter}" aria-hidden="true">${monogramAssets.get(chapter)}</div>`;
 
-const authenticPublication = p => `<article class="publication ${escape(p.id)}" aria-labelledby="${escape(p.id)}-title">
-  <a class="publication-main" href="${escape(p.url)}" aria-labelledby="${escape(p.id)}-title ${escape(p.id)}-open">
+const authenticPublication = p => { const release=publicationData.publications[p.id]; return `<article data-publication="${escape(p.id)}" class="publication ${escape(p.id)}" aria-labelledby="${escape(p.id)}-title">
+  <a data-release-link class="publication-main" href="${escape(release.url)}" aria-labelledby="${escape(p.id)}-title ${escape(p.id)}-open">
     <div class="publication-heading"><span class="publication-cadence">${escape(p.schedule)}</span><h4 id="${escape(p.id)}-title">${escape(p.name)}</h4></div>
-    <figure class="publication-cover"><div class="cover-art">${covers.get(p.id)}</div><figcaption>Archive · <time datetime="${escape(p.archiveDate)}">${escape(p.archiveLabel)}</time></figcaption></figure>
-    <p class="publication-description">${escape(p.description)}</p>
+    <figure class="publication-cover"><div class="cover-art" data-release-art>${covers.get(p.id)}</div><figcaption><span data-release-state>Last Verified</span> · No. <span data-release-number>${escape(release.number)}</span> · <time data-release-date datetime="${escape(release.date)}">${escape(release.dateLabel)}</time></figcaption></figure>
+    <p class="publication-description" data-release-title>${escape(release.title)}</p><p class="release-detail" data-release-detail>${escape(release.detail)}</p>
     <span class="publication-open" id="${escape(p.id)}-open">Open Publication${arrow}</span>
   </a>
-</article>`;
+</article>`; };
 
 const render = p => {
   const e = Object.fromEntries(Object.entries(p).filter(([,v]) => typeof v === 'string').map(([k,v]) => [k,escape(v)]));
@@ -84,12 +91,12 @@ const render = p => {
       <div class="publication-head" data-publication-heading hidden><div><h3 id="periodicals-title">${link(p.url, p.name)}</h3><p>${e.description}</p></div><span class="native-label">The Reading Shelf</span></div>
       <div class="publication-shelf">${p.publications.map(item => work(item, 'reading', authenticPublication(item))).join('\n')}</div>
       <div class="shelf-footer">${link(p.url, 'Browse Periodicals', 'shelf-link')}
-      ${disclosure('Publication Notes', '<dl class="context-list"><div><dt>Field Brief · Every Day</dt><dd>Five consequential developments, including weekends.</dd></div><div><dt>Loblolly &amp; Logit · Fridays</dt><dd>Research readings, synthesis and a cumulative methods notebook.</dd></div><div><dt>The Workbook · Weekdays</dt><dd>Economics problems with assistance and worked explanations.</dd></div></dl><p class="archive-note">The publication covers are selections from the archive. Each publication opens at its home, where current and earlier editions are available.</p>')}
+      ${disclosure('Publication Notes', '<dl class="context-list"><div><dt>Field Brief · Every Day</dt><dd>Five consequential developments, including weekends.</dd></div><div><dt>Loblolly &amp; Logit · Fridays</dt><dd>Research readings, synthesis and a cumulative methods notebook.</dd></div><div><dt>The Workbook · Weekdays</dt><dd>Economics problems with assistance and worked explanations.</dd></div></dl><p class="archive-note">Previews follow released editions and their published artwork. If a source is unavailable, the dated last-verified selection remains visible. Each publication also opens at its home for current and earlier editions.</p>')}
       </div>
     </div>`;
     case 'rupert': return `<article class="rupert" aria-labelledby="rupert-title">
       <div class="rupert-layout">
-        <figure class="rupert-artwork"><img class="rupert-art" src="${e.asset}" alt="${e.alt}" width="800" height="1000" loading="lazy"></figure>
+        <div class="rupert-artwork atlas-release-pair">${['tuesday','thursday'].map(slot=>{const release=publicationData.atlas.find(v=>v.slot===slot)||{state:'pending'};return `<figure data-atlas-slot="${slot}"><a href="${escape(release.url||p.url)}"><img class="rupert-art" ${release.artwork?`src="${escape(release.artwork)}"`:'hidden'} alt="${escape(release.alt||'')}" width="800" height="1000" loading="lazy"><figcaption><strong>${slot==='tuesday'?'Tuesday':'Thursday'}</strong><span data-atlas-state>${release.state==='published'?'Last Verified':release.state==='withdrawn'?'Withdrawn':'Pending Publication'}</span><span data-atlas-title>${escape(release.title||'No Released Recommendation')}</span><time data-atlas-date>${escape(release.dateLabel||'')}</time></figcaption></a></figure>`;}).join('')}</div>
         <div class="rupert-content"><div class="rupert-heading"><span class="native-label">A Field Guide</span><h3 id="rupert-title"><span>The</span> Rupert Atlas</h3><p>${e.description}</p></div>
           <nav class="rupert-links" aria-label="Rupert Atlas sections"><a href="${e.url}"><span><strong>This Week</strong><span>Tuesday &amp; Thursday</span></span>${arrow}</a>${p.links.map(v=>`<a href="${escape(v.url)}"><span><strong>${escape(v.name)}</strong><span>${escape(v.detail)}</span></span>${arrow}</a>`).join('')}</nav>
         </div>
@@ -157,8 +164,9 @@ const html = `<!doctype html>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/fonts/archivo-italic.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="assets/fonts/lmromandunh10-regular.otf" as="font" type="font/otf" crossorigin>
-  <script src="desk.js"></script>
-  <link rel="stylesheet" href="desk.css">
+  <script src="publications.js?v=${version}"></script>
+  <script src="desk.js?v=${version}"></script>
+  <link rel="stylesheet" href="desk.css?v=${version}">
 </head>
 <body id="top">
   <a class="skip-link" href="#destinations">Skip to Destinations</a>
@@ -182,11 +190,11 @@ const html = `<!doctype html>
       </div>
       <section class="profile-group editorial-chapter" id="profile" tabindex="-1" aria-labelledby="profile-title"><div class="section-heading"><h2 id="profile-title">Personal Website</h2><span aria-hidden="true">03</span>${chapterMarks.get('profile')}</div>${chapterReturn('profile')}<div class="profile-composition">${groups('profile')}</div></section>
     </main>
-    <footer class="desk-footer"><div class="footer-utilities"><a href="#top" class="footer-wordmark" aria-label="desk. — back to top">desk.</a><blockquote class="footer-quotation"><p>“Everything in its right place.”</p><footer>— <span title="Radiohead vocalist">Thom Yorke<span class="sr-only">, vocalist</span>, Radiohead</span></footer></blockquote><details class="install-help"><summary>Keep desk. Close<span class="disclosure-sign" aria-hidden="true"></span></summary><div>On iPhone, open desk. in Safari, tap Share, then Add to Home Screen.</div></details></div><div class="footer-signature" aria-hidden="true">${identity.period}</div></footer>
+    <footer class="desk-footer"><div class="footer-utilities"><a href="#top" class="footer-wordmark" aria-label="desk. — back to top">desk.</a><blockquote class="footer-quotation"><p>“Everything in its right place.”</p><footer>— <span title="Radiohead vocalist">Thom Yorke<span class="sr-only">, vocalist</span>, Radiohead</span></footer></blockquote></div><div class="footer-signature" aria-hidden="true">${identity.period}</div></footer>
     <div id="section-scroll-room" aria-hidden="true"></div>
   </div>
 </body>
 </html>
 `;
 await writeFile(new URL('index.html',root),html);
-console.log(`Built Desk. with ${config.projects.length} destinations and ${covers.size} archival covers.`);
+console.log(`Built Desk. with ${config.projects.length} destinations and ${covers.size} verified publication covers.`);

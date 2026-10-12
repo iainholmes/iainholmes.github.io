@@ -122,7 +122,11 @@
     let navigating = false;
     let releaseTimer;
     let homeFrame = 0;
+    let layoutHold = false;
+    window.history.scrollRestoration = 'manual';
+    window.DeskPublications?.start();
     function paintSelection(ids) {
+      window.DeskPublications?.refresh?.();
       revealed = revealSelection([], { type:'restore', ids }, items);
       items.forEach(item => {
         const open = revealed.includes(item.id);
@@ -151,8 +155,8 @@
       });
       publicationHeading.hidden = !revealed.some(id => ['field-brief','loblolly','workbook'].includes(id));
     }
-    function record(hash, anchor, replace = false) {
-      const snapshot = { ids:[...revealed], hash, anchor };
+    function record(hash, anchor, replace = false, offset) {
+      const snapshot = { ids:[...revealed], hash, anchor, offset };
       const previous = window.history.state?.deskReveal;
       if (!replace && window.location.hash === hash && JSON.stringify(previous?.ids) === JSON.stringify(revealed)) return;
       const url = hash || window.location.pathname + window.location.search;
@@ -168,24 +172,41 @@
       root.style.setProperty('--toolbar-height', `${height}px`);
       return height;
     }
-    function releaseJourney() { navigating = false; clearTimeout(releaseTimer); }
-    async function navigate(anchor, smooth) {
+    function holdLayout() {
+      navigating = true;
+      if (layoutHold) return;
+      layoutHold = true;
+      // Reserve before hiding faces: Safari must not clamp the old viewport to
+      // a suddenly shorter document or run the top-reset handler during a swap.
+      spacer.style.height = `${root.scrollHeight}px`;
+    }
+    function releaseJourney() {
+      navigating = false; clearTimeout(releaseTimer); layoutHold = false;
+      const base = root.scrollHeight - spacer.getBoundingClientRect().height;
+      spacer.style.height = `${Math.max(0, Math.ceil(window.scrollY + root.clientHeight - base))}px`;
+    }
+    async function navigate(anchor, smooth, offset) {
       const request = ++navigationRequest;
       navigating = true;
       clearTimeout(releaseTimer);
       const target = document.getElementById(anchor.slice(1));
       if (!target) { releaseJourney(); return; }
-      target.focus({ preventScroll:true });
       if (document.fonts) await document.fonts.ready;
       if (request !== navigationRequest) return;
+      await new Promise(resolve => window.requestAnimationFrame(() => window.requestAnimationFrame(resolve)));
+      if (request !== navigationRequest) return;
+      const height = measureToolbar();
+      const clearance = Number.isFinite(offset) ? Math.max(height + 12, Math.min(offset, root.clientHeight * .75)) : height + 12;
       const plan = sectionScrollPlan({
-        targetTop: anchor === '#top' ? 0 : target.getBoundingClientRect().top + window.scrollY,
-        toolbarHeight: measureToolbar(), viewportHeight: root.clientHeight,
+        targetTop: anchor === '#top' ? 0 : target.getBoundingClientRect().top + window.scrollY + height + 12 - clearance,
+        toolbarHeight: height, viewportHeight: root.clientHeight,
         documentHeight: root.scrollHeight, spacerHeight: spacer.getBoundingClientRect().height
       });
       spacer.style.height = `${plan.space}px`;
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.scrollTo({ top:plan.top, behavior:smooth && !reduced ? 'smooth' : 'auto' });
+      target.focus({ preventScroll:true });
+      layoutHold = false;
       // No repeated scroll correction or height animation. The fallback only
       // ends the temporary top-reset guard on browsers without scrollend.
       releaseTimer = setTimeout(releaseJourney, 1600);
@@ -196,9 +217,17 @@
       if (!recognized) return;
       const saved = window.history.state?.deskReveal;
       const valid = saved && saved.hash === hash;
+      holdLayout();
       paintSelection(valid ? saved.ids : selectionForHash(hash, items));
       const anchor = valid ? saved.anchor : (!hash || ['#top','#collection'].includes(hash) ? '#top' : hash);
-      navigate(anchor, false);
+      navigate(anchor, false, valid ? saved.offset : undefined);
+    }
+    function transition(ids, anchor, hash, smooth, returning = false) {
+      const target = document.getElementById(anchor.slice(1));
+      const top = target?.getBoundingClientRect().top;
+      const offset = returning && window.matchMedia('(max-width:759.98px)').matches && top >= measureToolbar() + 12 ? top : undefined;
+      holdLayout(); paintSelection(ids);
+      record(hash, anchor, false, offset); navigate(anchor, smooth, offset);
     }
     paintSelection([]);
     measureToolbar();
@@ -207,17 +236,19 @@
     links.forEach(link => link.addEventListener('click', event => {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
-      paintSelection(revealSelection(revealed, {type:'chapter',id:link.hash.slice(1)}, items));
-      record(link.hash, link.hash);
-      navigate(link.hash, true);
+      transition(revealSelection(revealed, {type:'chapter',id:link.hash.slice(1)}, items), link.hash, link.hash, true);
     }));
     items.forEach(item => item.button.addEventListener('click', () => {
-      paintSelection(revealSelection(revealed, {type:'toggle',id:item.id}, items));
+      const returning = revealed.includes(item.id);
+      const ids = revealSelection(revealed, {type:'toggle',id:item.id}, items);
       const anchor = `#work-${item.id}`;
-      record(routeForSelection(), anchor);
-      navigate(anchor, false);
+      holdLayout();
+      const top = item.element.getBoundingClientRect().top;
+      const offset = returning && window.matchMedia('(max-width:759.98px)').matches && top >= measureToolbar() + 12 ? top : undefined;
+      paintSelection(ids); record(routeForSelection(), anchor, false, offset); navigate(anchor, false, offset);
     }));
     returns.forEach(control => control.addEventListener('click', () => {
+      holdLayout();
       paintSelection(revealSelection(revealed, {type:'return',id:control.dataset.return}, items));
       const anchor = `#${control.dataset.return}`;
       record(routeForSelection(), anchor);
