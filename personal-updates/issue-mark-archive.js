@@ -368,5 +368,20 @@
     "phrase": "Routes & enforcement",
     "seed": 1643603920,
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 015: Routes &amp; enforcement\"><title>Field Brief · 015 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M80 156H256V296H80ZM358 337H531V477H358Z\" fill=\"#221a14\"/><path d=\"M256 226H446V337\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"22\"/><circle cx=\"339\" cy=\"226\" r=\"70\" fill=\"#8a2a36\"/><path d=\"M304 191L374 261M374 191L304 261\" stroke=\"#f1e6d0\" stroke-width=\"16\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 015 / 2026-10-11</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
+  },
+  "fb:2026-10-12": {
+    "key": "fb",
+    "date": "2026-10-12",
+    "no": "016",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "Hall and Woodford receive the economics prize for research that reshaped stabilization policy, while the IMF describes AI investment as both a growth engine and a labor-market disruption. Fifteen economies begin coordinating action on industrial overcapacity, the European Union prepares an implementation-focused COP31 position, and central North Carolina assesses damage after at least five tornadoes. These developments concern different policy tools, evidence standards and time horizons. The economics prize concerns the foundations of stabilization analysis; the IMF is describing a current investment and labor transition; the manufacturing coalition is creating a trade-policy process; the European Union is preparing a climate negotiating position; and North Carolina is assessing physical damage. They should not be read as one causal trend. Their separate tests are whether models remain useful in new shocks, AI gains diffuse beyond infrastructure owners, trade coordination uses credible evidence, climate implementation receives adequate finance, and storm warnings translate into lower human loss and effective recovery.",
+    "version": 3,
+    "subject": "infrastructure",
+    "composition": "infrastructure-trunk",
+    "signature": "issue:infrastructure-trunk",
+    "phrase": "Connections & capacity",
+    "seed": 3204999326,
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 016: Connections &amp; capacity\"><title>Field Brief · 016 · Connections &amp; capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M120 460V160M80 220H160M91 183H149\" stroke=\"#221a14\" stroke-width=\"16\"/><path d=\"M120 373H300V266H375\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"22\"/><rect x=\"375\" y=\"156\" width=\"132\" height=\"305\" fill=\"#221a14\"/><path d=\"M395 207H487M395 268H487M395 329H487M395 390H487\" stroke=\"#f1e6d0\" stroke-width=\"17\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 016 / 2026-10-12</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Connections &amp; capacity</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
