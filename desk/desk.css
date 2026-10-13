@@ -1063,9 +1063,55 @@ body { background-image:repeating-linear-gradient(0deg,transparent 0 5px,#976144
 
 /* Publication metadata stays within the existing authentic preview surfaces. */
 .release-detail { font-size:12px; line-height:1.45; color:inherit; opacity:.8; margin-top:5px }
-.atlas-release-pair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px }
-.atlas-release-pair figure { min-width:0; margin:0 }
-.atlas-release-pair a { display:block; text-decoration:none }
-.atlas-release-pair figcaption { font-size:12px; line-height:1.4; margin-top:8px; overflow-wrap:anywhere }
-.atlas-release-pair figcaption>* { display:block; margin-top:4px }
+/* Atlas alone: two complete editorial plates, with legible captions on navy. */
+.authentic-presentation .rupert .rupert-release-layout {
+  display:grid; grid-template-columns:minmax(0,260px) minmax(0,1fr);
+  grid-template-rows:auto auto; gap:28px 40px; align-items:center;
+}
+.authentic-presentation .rupert .atlas-release-pair {
+  display:contents; padding:0; background:transparent; margin:0;
+}
+.authentic-presentation .rupert .atlas-release-pair figure {
+  grid-column:1; min-width:0; width:100%; margin:0;
+}
+.authentic-presentation .rupert [data-atlas-slot="tuesday"] { grid-row:1 }
+.authentic-presentation .rupert [data-atlas-slot="thursday"] { grid-row:2 }
+.authentic-presentation .rupert .atlas-release-pair a { display:block; text-decoration:none; color:#f3efe5 }
+.authentic-presentation .rupert .atlas-release-pair .rupert-art {
+  display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:contain;
+}
+.authentic-presentation .rupert .atlas-release-pair figcaption {
+  margin-top:12px; padding:0; background:transparent; color:#f3efe5;
+  font-size:16px; line-height:1.5; overflow-wrap:anywhere;
+}
+.authentic-presentation .rupert .atlas-release-pair figcaption>* { display:block; margin-top:4px }
+.authentic-presentation .rupert .atlas-release-pair [data-atlas-state],
+.authentic-presentation .rupert .atlas-release-pair [data-atlas-date] { color:#d9d5c9; font-size:14px }
+.authentic-presentation .rupert .rupert-content { display:contents }
+.authentic-presentation .rupert .rupert-heading { grid-column:2; grid-row:1; align-self:center }
+.authentic-presentation .rupert .rupert-links {
+  grid-column:2; grid-row:2; grid-template-columns:minmax(0,1fr); gap:0; margin-top:0; align-self:center;
+}
+@media (min-width:1001px) {
+  .reading-group:not([data-complete="true"]) .authentic-presentation .rupert .rupert-release-layout {
+    grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:28px 24px;
+  }
+  .reading-group:not([data-complete="true"]) .authentic-presentation .rupert .atlas-release-pair figure { max-width:260px; justify-self:center }
+}
+@media (min-width:701px) and (max-width:1000px) {
+  .authentic-presentation .rupert .rupert-release-layout { grid-template-columns:minmax(0,240px) minmax(0,1fr); gap:26px }
+}
+@media (max-width:700px) {
+  .authentic-presentation .rupert .rupert-release-layout {
+    grid-template-columns:minmax(0,1fr); grid-template-rows:auto auto auto;
+    gap:26px; padding:20px 18px 0;
+  }
+  .authentic-presentation .rupert .rupert-heading { grid-column:1; grid-row:1; align-self:start }
+  .authentic-presentation .rupert .atlas-release-pair {
+    display:grid; grid-column:1; grid-row:2; grid-template-columns:minmax(0,1fr); gap:28px;
+    width:100%; max-width:460px; justify-self:center;
+  }
+  .authentic-presentation .rupert .atlas-release-pair figure { grid-row:auto; max-width:none }
+  .authentic-presentation .rupert .rupert-links { grid-column:1; grid-row:3; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px }
+}
 .work-item { overflow-anchor:none }

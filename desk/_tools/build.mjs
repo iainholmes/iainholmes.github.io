@@ -95,7 +95,7 @@ const render = p => {
       </div>
     </div>`;
     case 'rupert': return `<article class="rupert" aria-labelledby="rupert-title">
-      <div class="rupert-layout">
+      <div class="rupert-layout rupert-release-layout">
         <div class="rupert-artwork atlas-release-pair">${['tuesday','thursday'].map(slot=>{const release=publicationData.atlas.find(v=>v.slot===slot)||{state:'pending'};return `<figure data-atlas-slot="${slot}"><a href="${escape(release.url||p.url)}"><img class="rupert-art" ${release.artwork?`src="${escape(release.artwork)}"`:'hidden'} alt="${escape(release.alt||'')}" width="800" height="1000" loading="lazy"><figcaption><strong>${slot==='tuesday'?'Tuesday':'Thursday'}</strong><span data-atlas-state>${release.state==='published'?'Last Verified':release.state==='withdrawn'?'Withdrawn':'Pending Publication'}</span><span data-atlas-title>${escape(release.title||'No Released Recommendation')}</span><time data-atlas-date>${escape(release.dateLabel||'')}</time></figcaption></a></figure>`;}).join('')}</div>
         <div class="rupert-content"><div class="rupert-heading"><span class="native-label">A Field Guide</span><h3 id="rupert-title"><span>The</span> Rupert Atlas</h3><p>${e.description}</p></div>
           <nav class="rupert-links" aria-label="Rupert Atlas sections"><a href="${e.url}"><span><strong>This Week</strong><span>Tuesday &amp; Thursday</span></span>${arrow}</a>${p.links.map(v=>`<a href="${escape(v.url)}"><span><strong>${escape(v.name)}</strong><span>${escape(v.detail)}</span></span>${arrow}</a>`).join('')}</nav>
