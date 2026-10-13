@@ -11,10 +11,11 @@ const mime = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.js
 createServer(async (req, res) => {
   try {
     const path = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    if(path.split('/').some(part=>part.startsWith('_')||part.startsWith('.')))throw Error('Private paths are not served');
     let file = resolve(root, '.' + path);
     if (!file.startsWith(root.endsWith(sep) ? root : root + sep)) throw Error('Outside preview root');
     if ((await stat(file)).isDirectory()) file = resolve(file, 'index.html');
     const body = await readFile(file);
     res.writeHead(200, {'Content-Type':mime[extname(file)] || 'application/octet-stream','Cache-Control':'no-store'}); res.end(body);
   } catch { res.writeHead(404); res.end('Not found'); }
-}).listen(port, host, () => console.log(`The Rupert Atlas preview listening on ${host}:${port}`));
+}).listen(port, host, function() { console.log(`The Rupert Atlas preview listening on ${host}:${this.address().port}`); });

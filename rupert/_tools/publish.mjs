@@ -12,6 +12,9 @@ import { cycleWeekend } from '../assets/js/core/cycles.js';
 import { reuseEligibility } from '../assets/js/core/recommendations.js';
 import { loadRecommendationHistory } from './history-input.mjs';
 import { releasePlan, missingReleaseMessage } from './release-plan.mjs';
+import { appendPins } from './artwork-lock.mjs';
+import { fingerprint, similar, publishedVisuals } from './private-staging.mjs';
+import { assignPlateNumbers } from './plate-numbers.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = async p => JSON.parse(await readFile(resolve(root,p),'utf8'));
@@ -60,18 +63,33 @@ if (args[0] === 'refresh') {
     return {id:ed.id,problem:releaseProblem(ed,{checks:checks.checks,officialHosts:checks.official_hosts,reviews:reviews.reviews,now})||(!reuse.eligible?'Recommendation reuse: '+reuse.reason:null)};
   }).filter(e=>e.problem);
   if (problems.length) { problems.forEach(e=>console.error(`${e.id}: ${e.problem}`)); process.exit(1); }
+  // Surprise is enforced even for a manual canonical release outside the reserve path.
+  const photos=await read('data/photos.json'),visuals=await publishedVisuals(root);
+  const recent=editions.map(({ed})=>ed).filter(ed=>['published','withdrawn'].includes(ed.status)).sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,3);
+  const compositions=new Set(recent.map(ed=>photos.photos.find(p=>p.id===(ed.flagship.artwork?.image_id||ed.flagship.photo?.id))?.generation?.composition_key).filter(Boolean));
+  for(const {ed}of due) {
+    const record=photos.photos.find(p=>p.id===ed.flagship.artwork?.image_id);
+    if(!record || Math.abs(record.width/record.height-.8)>.002)throw Error('New recommendation artwork must be portrait 4:5.');
+    const visual=fingerprint(await readFile(resolve(root,`photos/${record.file}-${record.widths[0]}.jpg`)),root);
+    if(visuals.some(v=>similar(v,visual)))throw Error('New artwork duplicates or closely resembles an already published plate.');visuals.push(visual);
+    const key=record.generation?.composition_key;if(key && compositions.has(key))throw Error('Artwork structural composition repeats a recent publication.');if(key)compositions.add(key);
+  }
   if (!args.includes('--apply')) { console.log('Ready: '+due.map(e=>e.ed.id).join(', ')+'. Use release --apply to record actual publication.'); process.exit(0); }
   const before = due.map(({path,ed})=>({path,ed:structuredClone(ed)}));
+  const previousPins=await readFile(resolve(root,'data/artwork-locks.json'),'utf8');
+  const previousPhotos=await readFile(resolve(root,'data/photos.json'),'utf8');
   const log = await optional('data/release-log.json',{releases:[]});
   const previousLog = structuredClone(log);
   for (const {path,ed} of due) { ed.status='published'; ed.published_at=nyTimestamp(now); await write(path,ed); }
-  try { check(); } catch (e) { for (const entry of before) await write(entry.path,entry.ed); throw e; }
+  try { await write('data/photos.json',assignPlateNumbers(editions.map(({ed})=>ed),await read('data/photos.json')));await appendPins(root,editions.map(({ed})=>ed),await read('data/photos.json'));check(); } catch (e) { for (const entry of before) await write(entry.path,entry.ed);await writeFile(resolve(root,'data/artwork-locks.json'),previousPins);await writeFile(resolve(root,'data/photos.json'),previousPhotos); throw e; }
   for (const {ed} of due) log.releases.push({edition_id:ed.id,scheduled_at:nyTimestamp(expectedPublish(ed.slot,ed.weekend.start)),published_at:ed.published_at,reviewed_at:reviews.reviews.filter(r=>r.edition_id===ed.id).at(-1).reviewed_at});
   await write('data/release-log.json',log);
   const build = spawnSync(process.execPath,[resolve(root,'_tools/rupert.mjs'),'build'],{stdio:'inherit'});
   if (build.status !== 0) {
     for (const entry of before) await write(entry.path,entry.ed);
     await write('data/release-log.json',previousLog);
+    await writeFile(resolve(root,'data/artwork-locks.json'),previousPins);
+    await writeFile(resolve(root,'data/photos.json'),previousPhotos);
     throw Error('Build failed; draft source restored. Do not deploy this working tree.');
   }
   console.log('Released at actual review time: '+due.map(e=>`${e.ed.id} ${e.ed.published_at}`).join(', '));

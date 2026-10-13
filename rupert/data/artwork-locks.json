@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "editions": {
+    "2026-W40-r1-tue": {
+      "image_id": "rupert-riverwalk-2026-w40-r1-tue",
+      "association": "6f1ed26abdbeb3cfd3c576be9c1239b8c7a13fbd0c93d43f1a8e0a28937563ae",
+      "record": "1cad9c9328fcc8a10fb40200857af837a62ad6324d79ed091be48aa5b385467d",
+      "files": {
+        "rupert-riverwalk-2026-w40-r1-tue-800.jpg": "69a10d2e16ecaeecf28745586b3e2648e41f976776517555dfb8f6d224c41ab1",
+        "rupert-riverwalk-2026-w40-r1-tue-1400.jpg": "a55a466286a0e638e586c95a73fb772335cae86a59a6733135ee5f199b153fd9",
+        "rupert-riverwalk-2026-w40-r1-tue-1536.jpg": "d6abe3ce7b5477a983c7b29a67a5a5f0d655adbc314dfe9cd7ed3d3cee7bfa34"
+      }
+    },
+    "2026-W40-thu": {
+      "image_id": "rupert-lawn-2023-01",
+      "association": "9c1e4dc936d9f391b3b05125dc2a63a1b12342707d7151e828601d218283cb6f",
+      "record": "eb092d685d4c2a9f8882aab8139b532ad97a49777ae091b89527337f5d97878b",
+      "files": {
+        "rupert-lawn-2023-01-800.jpg": "b9c6a7efa4f01f5d913d7e6e2fddca85b39276a0b6d0521624d5ae3f9c7f4afa",
+        "rupert-lawn-2023-01-1400.jpg": "f1393eb529480a624ffa9f0b9e458eff8a77f74b4626553f25d9e292399769dc",
+        "rupert-lawn-2023-01-2000.jpg": "c90b714d88b6a6624218a6700974da0dc32faa875a221fb761d302e707451dcf"
+      }
+    },
+    "2026-W40-tue": {
+      "image_id": "rupert-cox-mountain-2026-w40-tue",
+      "association": "381b5f1414f0aeb28ccc413bf45c3ecc6b64b02612f32edf72a83b52f3b07bc2",
+      "record": "a0484358d055e4a7ddf8cd90d9cdb57b9d3145a533f2f3b2372fd9281d93b9e7",
+      "files": {
+        "rupert-cox-mountain-2026-w40-tue-800.jpg": "9d287ef1f41f1946be1a52b4ef6984de5747b1e92d49606c074975860d0aa0ba",
+        "rupert-cox-mountain-2026-w40-tue-1400.jpg": "de01da29d0785d33debaa500c838138fcb8bb94d38513c9905ca0b21a9a29096",
+        "rupert-cox-mountain-2026-w40-tue-1536.jpg": "2d2f0279aa96c5f199a3fc5ae42cf46dc1d1f45004b1684d9106b29031feae17"
+      }
+    },
+    "2026-W41-thu": {
+      "image_id": "rupert-plate-bank-trail",
+      "association": "b465d778549d786ad8cfdbd1159e7321e2d9a41ead26dc87b6116c25a1b3c197",
+      "record": "8dc15f5e48746c66fc0f6c44c2975315d23113c7daa49fd08d6aabe019449963",
+      "files": {
+        "rupert-plate-bank-trail-700.jpg": "37807ba10f142d8dcf0c1d8536748f9381374a3ab770e5f4e4bd1e7196f1002d"
+      }
+    },
+    "2026-W41-tue": {
+      "image_id": "rupert-plate-eno-ledge",
+      "association": "5a802b03a0491e4a694cc2faca3842c94df4370da9649dafe67b041caa25b0f8",
+      "record": "110dac8482e258ab92e89bab86f725f521b713d221d56200881e42a5b12d5d99",
+      "files": {
+        "rupert-plate-eno-ledge-800.jpg": "5497cff38033d4bc484b6dc5eced3994eedc441333e68f7569cffe109c766375",
+        "rupert-plate-eno-ledge-1400.jpg": "dda77953be08916401c0c3e1511b1f48cdb9e9860b802eccbdba4a324b3283c2"
+      }
+    },
+    "2026-W42-tue": {
+      "image_id": "rupert-hanging-rock-2026-w42-tue",
+      "association": "e255683a455ca2691420adf8365e5a870bbebe52750283144af19b4548cae9b1",
+      "record": "8fc717e4e8e7721bc735734346bda94250349ce97d4a52696da9fbafdbc389ae",
+      "files": {
+        "rupert-hanging-rock-2026-w42-tue-800.jpg": "46990baa694e6e20717df7be94f6abce24143284e66d720cedcccb35047b9ef4",
+        "rupert-hanging-rock-2026-w42-tue-1122.jpg": "401a4e514953bc8e99eb4d40ae6b5bc6838e66544ba19c499169dee1c05f07e5"
+      }
+    }
+  }
+}

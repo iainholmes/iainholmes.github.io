@@ -102,6 +102,7 @@ function takenLabel(t) {
 export function credit(ref, photos, places) {
   const p = ref && photoById(photos, ref.id);
   if (!p) return '';
+  if(Number.isInteger(p.plate_no))return `<figcaption class="credit">TRA Plate No. ${String(p.plate_no).padStart(3,'0')}</figcaption>`;
   const when = takenLabel(p.taken_at);
   const print = p.kind === 'print';
   let line;

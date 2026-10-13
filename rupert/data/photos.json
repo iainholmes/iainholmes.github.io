@@ -18,7 +18,9 @@
         0.22,
         0.4
       ],
-      "taken_at": "2023-01"
+      "taken_at": "2023-01",
+      "plate_no": 3,
+      "caption": "TRA Plate No. 003"
     },
     {
       "id": "rupert-creek-2023-04",
@@ -76,8 +78,9 @@
         0.7,
         0.62
       ],
-      "caption": "Plate \u00b7 Rupert above the river",
-      "source_note": "Drawn for the Atlas: a block-print scene with Rupert from Iain's illustration. No photograph."
+      "caption": "TRA Plate No. 004",
+      "source_note": "Drawn for the Atlas: a block-print scene with Rupert from Iain's illustration. No photograph.",
+      "plate_no": 4
     },
     {
       "id": "rupert-plate-bank-trail",
@@ -94,8 +97,9 @@
         0.5,
         0.7
       ],
-      "caption": "Plate \u00b7 Rupert on the bank trail",
-      "source_note": "Editorial block-print illustration; no documentary location claim."
+      "caption": "TRA Plate No. 005",
+      "source_note": "Editorial block-print illustration; no documentary location claim.",
+      "plate_no": 5
     },
     {
       "id": "rupert-cox-mountain-2026-w40-tue",
@@ -114,13 +118,14 @@
         0.5,
         0.5
       ],
-      "caption": "Illustration \u00b7 Rupert",
+      "caption": "TRA Plate No. 001",
       "source_note": "Editorial screen-print illustration approved for this recommendation; no documentary location claim.",
       "generation": {
         "owner": "2026-W40-tue/flagship",
         "created_at": "2026-09-30",
         "style_version": "atlas-graphic-2"
-      }
+      },
+      "plate_no": 1
     },
     {
       "id": "rupert-riverwalk-2026-w40-r1-tue",
@@ -139,13 +144,14 @@
         0.5,
         0.5
       ],
-      "caption": "Illustration \u2014 Riverwalk outing",
+      "caption": "TRA Plate No. 002",
       "source_note": "New editorial illustration following the supplied print references; not a documentary view.",
       "generation": {
         "owner": "2026-W40-r1-tue/flagship",
         "created_at": "2026-09-30",
         "style_version": "atlas-engraved-3"
-      }
+      },
+      "plate_no": 2
     },
     {
       "id": "rupert-hanging-rock-2026-w42-tue",
@@ -163,13 +169,14 @@
         0.5,
         0.6
       ],
-      "caption": "Illustration \u2014 Hanging Rock outing",
+      "caption": "TRA Plate No. 006",
       "source_note": "Newly generated editorial engraved print for this recommendation; no documentary landmark claim.",
       "generation": {
         "owner": "2026-W42-tue/flagship",
         "created_at": "2026-10-13",
         "style_version": "atlas-engraved-3"
-      }
+      },
+      "plate_no": 6
     }
   ]
 }

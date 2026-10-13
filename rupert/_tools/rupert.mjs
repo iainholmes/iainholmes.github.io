@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import { loadRecommendationHistory } from './history-input.mjs';
+import { lockProblems } from './artwork-lock.mjs';
+import { plateNumberProblems } from './plate-numbers.mjs';
 import { previousSuggestions, reuseEligibility } from '../assets/js/core/recommendations.js';
 import { accessProblem } from '../assets/js/core/publication.js';
 import { artworkProblems } from '../assets/js/core/adventure.js';
@@ -248,6 +250,8 @@ async function build({ writeFiles }) {
   const data = await load();
   checkEditions(data);
   await checkPhotos(data);
+  for(const issue of plateNumberProblems(Object.values(data.editions),data.photos))err('plate numbers',issue);
+  for(const issue of await lockProblems(ROOT,Object.values(data.editions),data.photos))err('artwork locks',issue);
 
   const artworkHashes = new Map();
   for (const record of data.photos.photos) {
@@ -344,6 +348,8 @@ async function audit({ history }) {
   const problems = [], notes = [];
   const bad = (f, m) => problems.push(`${f}: ${m}`);
   await build({ writeFiles: false, quietExit: true });
+  const releaseData=await load();
+  for(const issue of await lockProblems(ROOT,Object.values(releaseData.editions),releaseData.photos,{publicTree:true}))bad('public release',issue);
   const places = await readJSON(P('data/places.json'));
   const allowed = new Set();
   const key = (la, lo) => `${Number(la).toFixed(3)},${Number(lo).toFixed(3)}`;
@@ -388,6 +394,7 @@ async function audit({ history }) {
       const walkKeys = (o, path) => { if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) {
         if (FORBIDDEN_KEYS.includes(k.toLowerCase())) bad(f, `forbidden key "${path}${k}"`); walkKeys(v, `${path}${k}.`); } };
       try { const value=JSON.parse(text); walkKeys(value, '');
+        if(value.type==='rupert-private-preparation' || value.status==='draft' || value.editions?.some?.(e=>e.status==='draft'))bad(f,'unpublished preparation in public assets');
         if(value.type==='rupert-recommendation-history'||[1,2].includes(value.version)&&Array.isArray(value.entries))bad(f,'personal-history export in public assets');
       } catch { bad(f, 'invalid JSON'); }
     }
@@ -406,6 +413,8 @@ async function audit({ history }) {
       const revs = git('rev-list', base ? `${base}..HEAD` : 'HEAD').stdout.trim().split('\n').filter(Boolean);
       const seen = new Map();
       for (const rev of revs) {
+        const editionPaths=git('ls-tree','-r','--name-only',rev,'--','data/editions').stdout.trim().split('\n').filter(p=>/\d{4}-W\d{2}-(?:r\d+-)?(?:tue|thu)\.json$/.test(p));
+        for(const path of editionPaths){const raw=git('show',`${rev}:./${path}`).stdout;try{if(JSON.parse(raw).status==='draft')bad(`${path} @${rev.slice(0,7)}`,'unpublished edition in public Git history');}catch{bad(path,'unreadable historical edition');}}
         for (const line of git('ls-tree', '-r', rev, '--', 'photos').stdout.trim().split('\n').filter(Boolean)) {
           const [, , sha, path] = line.split(/\s+/);
           if (!seen.has(sha)) seen.set(sha, { path, rev: rev.slice(0, 7) });

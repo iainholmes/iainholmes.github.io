@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { cp, mkdtemp, readFile, readdir, rm } from 'node:fs/promises';
+import { cp, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -33,11 +33,15 @@ try {
   await cp(fileURLToPath(new URL('../../assets/identity/',import.meta.url)),join(scratch,'assets/identity'),{recursive:true});
   const now = new Date(), plan = releasePlan([],now);
   const dir = join(fixture,'data/editions');
+  const pins=JSON.parse(await readFile(join(fixture,'data/artwork-locks.json'),'utf8'));
+  const photos=JSON.parse(await readFile(join(fixture,'data/photos.json'),'utf8'));
   for (const f of await readdir(dir)) {
     if (!/^\d{4}-W\d{2}-(?:r\d+-)?(tue|thu)\.json$/.test(f)) continue;
     const data = JSON.parse(await readFile(join(dir,f),'utf8'));
-    if (data.weekend.start === plan.weekend.start) await rm(join(dir,f));
+    if (data.weekend.start === plan.weekend.start) {await rm(join(dir,f));delete pins.editions[data.id];const id=data.flagship.artwork?.image_id||data.flagship.photo?.id;const record=photos.photos.find(p=>p.id===id);if(record)delete record.plate_no;}
   }
+  await writeFile(join(fixture,'data/artwork-locks.json'),JSON.stringify(pins));
+  await writeFile(join(fixture,'data/photos.json'),JSON.stringify(photos));
   const before = await readFile(join(fixture,'data/release-log.json'),'utf8');
   for (const args of [['release'],['release','--apply']]) {
     const run = spawnSync(process.execPath,[join(fixture,'_tools/publish.mjs'),...args],{encoding:'utf8'});
