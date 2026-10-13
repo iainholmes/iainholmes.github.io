@@ -414,8 +414,8 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 
 .foot{display:grid;grid-template-columns:1fr;align-items:start;gap:20px}
 .foot-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;width:100%;min-width:0}
-.foot .foot-mark{position:relative;left:auto;transform:none;justify-self:center;margin:4px auto 0;padding:2px 10px 9px;font-size:19px;text-align:center}
-.foot .foot-mark::after{left:28%;right:28%;bottom:2px}
+.foot .foot-mark,.foot .wb-signature{position:relative;left:auto;transform:none;justify-self:center;margin:4px auto 0;padding:2px 10px 9px;font-size:19px;text-align:center}
+.foot .foot-mark::after,.foot .wb-signature::after{left:28%;right:28%;bottom:2px}
 
 @media(max-width:600px){
   .wb-mark{font-size:15.5px;padding-inline:0}
@@ -429,7 +429,7 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
   .ledger-head{font-size:13.5px;padding:7px 9px 8px}
   .ps-head-actions .ps-folio{font-size:26px}
   .foot-meta{flex-direction:column;gap:10px}
-  .foot .foot-mark{font-size:18px;margin-top:8px;justify-self:center}
+  .foot .foot-mark,.foot .wb-signature{font-size:18px;margin-top:8px;justify-self:center}
 }
 </style>
 <link rel="manifest" href="/personal-updates/mobile/manifest.webmanifest">
@@ -439,6 +439,11 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-instrument">
 <link rel="stylesheet" href="../assets/identity/identity.css?v=20261012-seamless2">
+<style>
+/* Publication-specific authorship signatures; canonical IH. assets remain unchanged. */
+.foot .ih-workbook-signature{justify-self:center}
+.foot .ih-workbook-signature .wb-signature{margin:0;color:var(--muted)}
+</style>
 </head>
 <body>
 <a class="skip" href="#bench">Skip to the problem set</a>
@@ -466,11 +471,10 @@ html[data-mode="night"] .pd-drawer{background-color:var(--paper)}
 <main id="app"></main>
 
 <footer class="foot">
-  <div class="foot-meta ih-workbook-meta">
+  <div class="foot-meta">
     <span><i style="font:italic 400 15px var(--math);color:var(--ink)">The Workbook</i> · Economics &amp; Econometrics · weekdays, 10:00 AM ET · <a href="../personal-updates/commonplace/">Commonplace</a> · <a href="../personal-updates/handbook/">Handbook</a></span>
-    <div class="ih-imprint"><a class="ih-imprint-label" href="../personal-updates/">Periodicals</a><span class="ih-imprint-divider" aria-hidden="true">|</span><span class="ih-personal-mark"><img class="ih-mark-day" src="../assets/identity/ih-signature.png?v=20261012-seamless2" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"><img class="ih-mark-night" src="../assets/identity/ih-signature-night.png?v=20261012-seamless2" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"></span></div>
   </div>
-  <a class="wb-mark foot-mark" href="#" aria-label="The Workbook, latest set"><span class="wb-eq">Y<sub>i</sub> = β<sub>0</sub> + β<sub>1</sub>X<sub>i</sub> + ε<sub>i</sub></span></a>
+  <div class="ih-imprint ih-workbook-signature"><span class="wb-mark wb-signature"><span class="wb-eq">Y<sub>i</sub> = β<sub>0</sub> + β<sub>1</sub>X<sub>i</sub> + ε<sub>i</sub></span></span><span class="ih-imprint-divider" aria-hidden="true">|</span><span class="ih-personal-mark"><img class="ih-mark-day" src="../assets/identity/ih-signature.png?v=20261012-seamless2" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"><img class="ih-mark-night" src="../assets/identity/ih-signature-night.png?v=20261012-seamless2" width="466" height="438" alt="IH. — Iain Holmes" decoding="async"></span></div>
 </footer>
 
 <!--
