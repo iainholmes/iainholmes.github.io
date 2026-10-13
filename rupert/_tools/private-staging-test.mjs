@@ -49,6 +49,8 @@ try {
   const historicalPhotos=objectDigest(photos),historicalPins=objectDigest(locks);
   const work=join(root,'_private/attempt-primary');await stagePacket(root,packet,work,{now});ok(objectDigest(await readJSON(join(root,'data/photos.json')))===historicalPhotos,'Private assembly leaves public registry unchanged');
   ok(!await readFile(join(root,'data/editions',id+'.json')).then(()=>true).catch(()=>false),'Private draft is absent from public edition paths');
+  const cssPath=join(root,'assets/css/atlas.css'),originalCSS=await readFile(cssPath);await writeFile(cssPath,Buffer.concat([originalCSS,Buffer.from('\n/* Concurrent fixture edit */\n')]));
+  await assert.rejects(()=>promoteAssembly(root,work,{apply:true}),/files changed since private assembly/);checks++;await writeFile(cssPath,originalCSS);
   const preview=spawn(process.execPath,[join(root,'_tools/preview.mjs'),'--port','0'],{stdio:['ignore','pipe','pipe']});
   try {const port=await new Promise((done,fail)=>{const timer=setTimeout(()=>fail(Error('Preview startup timed out')),5000);preview.stdout.once('data',bytes=>{clearTimeout(timer);done(Number(bytes.toString().match(/:(\d+)/)[1]));});preview.once('error',e=>{clearTimeout(timer);fail(e);});preview.once('exit',()=>{clearTimeout(timer);fail(Error('Preview failed; localhost permission is required'));});});
     for(const path of ['/_private/packet.json','/%5Fprivate/packet.json','/_tools/private-staging.mjs','/photos/atlas-plate-000000000001-160.jpg'])ok((await fetch(`http://127.0.0.1:${port}${path}`)).status===404,'Unpublished/private assets cannot be served');

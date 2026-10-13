@@ -18,6 +18,7 @@ const sealedType='rupert-private-preparation';
 export function seal(payload) {return {...payload,checksum:objectDigest(payload)};}
 export function verifySeal(packet) {const {checksum,...payload}=packet;assert(checksum===objectDigest(payload),'Private packet checksum mismatch.');return payload;}
 export async function privatePath(root,path) {
+  assert(/^_private\/$/m.test(await readFile(join(root,'.gitignore'),'utf8')),'Private staging requires the canonical ignore rule.');
   const base=join(await realpath(root),'_private');await mkdir(base,{recursive:true,mode:0o700});await chmod(base,0o700);
   assert(await realpath(base)===base,'Private staging directory cannot be a symlink.');
   const requested=resolve(path),originalRoot=resolve(root),target=requested.startsWith(originalRoot+sep)?join(await realpath(root),relative(originalRoot,requested)):requested;
@@ -27,6 +28,20 @@ export async function privatePath(root,path) {
   assert(parent===actualBase || parent.startsWith(actualBase+sep),'Private output escapes through a symlink.');
   try {assert(!(await stat(target)).isSymbolicLink(),'Private output is a symlink.');assert((await realpath(target)).startsWith(base+sep),'Private output escapes.');}catch(e){if(e.code!=='ENOENT')throw e;}
   return target;
+}
+async function workspaceFiles(dir,prefix='',{publicOnly=false}={}) {
+  const out=[];for(const entry of await readdir(dir,{withFileTypes:true})) {
+    if(entry.name==='_private' || entry.name==='__pycache__' || entry.name==='node_modules' || entry.name.startsWith('.') && entry.name!=='.gitignore' || publicOnly && entry.name.startsWith('_'))continue;
+    const path=prefix?prefix+'/'+entry.name:entry.name;
+    if(entry.isDirectory())out.push(...await workspaceFiles(join(dir,entry.name),path,{publicOnly}));else out.push(path);
+  }return out.sort();
+}
+async function assemblyBaseline(root) {
+  const files=await workspaceFiles(root),identity=await workspaceFiles(resolve(root,'../assets/identity'));
+  files.push(...identity.map(path=>'../assets/identity/'+path));
+  const base={};for(const file of files.sort())base[file]=digest(await readFile(join(root,file)));
+  try{base['personal-history-input']=digest(await readFile(join(root,'_private/recommendation-history.json')));}catch(e){if(e.code!=='ENOENT')throw e;base['personal-history-input']=null;}
+  return base;
 }
 export function fingerprint(bytes,root=ROOT) {
   const r=spawnSync(process.env.ATLAS_PYTHON||'python3',[join(root,'_tools/artwork-fingerprint.py')],{input:bytes,maxBuffer:1024*1024});
@@ -103,6 +118,7 @@ export function chooseCandidate(packet,{checks,officialHosts,history,now=new Dat
   }return {candidate:null,rejected};
 }
 export async function stagePacket(root,packet,work,{candidateKey,now=new Date()}={}) {
+  const baseline=await assemblyBaseline(root);
   const p=await checkPacket(packet,root,{now}),history=await editionData(root);
   assert(!history.some(e=>e.id===p.edition_id),'This slot already exists; inspect master rather than overwrite it.');
   work=await privatePath(root,work);
@@ -127,17 +143,18 @@ export async function stagePacket(root,packet,work,{candidateKey,now=new Date()}
   const places=await readJSON(join(r,'data/places.json'));for(const place of c.places||[])if(!places.places.some(x=>x.id===place.id))places.places.push(place);
   await writeFile(join(r,'data/places.json'),JSON.stringify(places,null,2)+'\n');
   access.checks.push(...c.checks);await writeFile(join(r,'data/access-checks.json'),JSON.stringify(access,null,2)+'\n');
-  const baseline={};for(const file of ['data/photos.json','data/places.json','data/access-checks.json','data/conditions-history.json','data/editorial-reviews.json','data/release-log.json','data/artwork-locks.json'])baseline[file]=digest(await readFile(join(root,file)));
-  await writeFile(join(work,'assembly.json'),JSON.stringify({edition_id:ed.id,packet_checksum:packet.checksum,base:baseline,art_id:art.record.id,art_sha:objectDigest(art),created_at:now.toISOString()},null,2)+'\n',{mode:0o600});
+  assert(objectDigest(await assemblyBaseline(root))===objectDigest(baseline),'Atlas or identity files changed during private assembly; reassemble before release.');
+  await writeFile(join(work,'assembly.json'),JSON.stringify({version:2,edition_id:ed.id,packet_checksum:packet.checksum,base:baseline,art_id:art.record.id,art_sha:objectDigest(art),created_at:now.toISOString()},null,2)+'\n',{mode:0o600});
   // Do not build or commit this private draft into the public checkout.
   return {work,edition_id:ed.id,candidate_key:c.key};
 }
 
 export async function promoteAssembly(root,work,{apply=false}={}) {
   work=await privatePath(root,work);const state=await readJSON(join(work,'assembly.json')),r=join(work,'rupert');
+  assert(state.version===2,'Reassemble with the current private handoff contract before publishing.');
   const history=await editionData(root),already=history.find(e=>e.id===state.edition_id);
   if(already) {assert(['published','withdrawn'].includes(already.status) && imageId(already)===state.art_id,'Slot already exists with a different association.');assert(!(await lockProblems(root,history,await readJSON(join(root,'data/photos.json')),{publicTree:true})).length,'Published retry integrity failed.');return {already_released:true};}
-  for(const [file,hash]of Object.entries(state.base))assert(digest(await readFile(join(root,file)))===hash,'Master data changed since private assembly; refetch/reassemble before release.');
+  assert(objectDigest(await assemblyBaseline(root))===objectDigest(state.base),'Atlas or identity files changed since private assembly; refetch/reassemble before release.');
   const target=await readJSON(join(r,`data/editions/${state.edition_id}.json`)),now=new Date();
   assert(target.weekend.start===cycleWeekend(now).start && now>=expectedPublish(target.slot,target.weekend.start),'Guarded private release failed: target publication slot is not due; public checkout is unchanged.');
   const check=spawnSync(process.execPath,[join(r,'_tools/publish.mjs'),'release',...(apply?['--apply']:[])],{encoding:'utf8',maxBuffer:4*1024*1024});
@@ -150,10 +167,9 @@ export async function promoteAssembly(root,work,{apply=false}={}) {
   const audit=spawnSync(process.execPath,[join(r,'_tools/rupert.mjs'),'audit'],{encoding:'utf8',maxBuffer:4*1024*1024});
   await writeFile(join(work,'privacy-validation.log'),audit.stdout+audit.stderr,{mode:0o600});assert(audit.status===0,'Private release privacy audit failed; public checkout is unchanged.');
   // Copy only differences from the audited public tree; no private paths/tools or unrelated sites.
-  async function files(dir,prefix=''){const out=[];for(const name of await readdir(dir,{withFileTypes:true})){if(name.name.startsWith('_')||name.name.startsWith('.'))continue;const rel=prefix?prefix+'/'+name.name:name.name;if(name.isDirectory())out.push(...await files(join(dir,name.name),rel));else out.push(rel);}return out;}
-  const changed=[];for(const file of await files(r)) {const bytes=await readFile(join(r,file));let old;try{old=await readFile(join(root,file));}catch(e){if(e.code!=='ENOENT')throw e;}if(!old?.equals(bytes))changed.push({file,bytes});}
+  const changed=[];for(const file of await workspaceFiles(r,'',{publicOnly:true})) {if(file.startsWith('.'))continue;const bytes=await readFile(join(r,file));let old;try{old=await readFile(join(root,file));}catch(e){if(e.code!=='ENOENT')throw e;}if(!old?.equals(bytes))changed.push({file,bytes});}
   // No deletions, and recheck the base before the first public write. Commit/push remains a leased master transaction.
-  for(const [file,hash]of Object.entries(state.base))assert(digest(await readFile(join(root,file)))===hash,'Public data changed during release; nothing integrated.');
+  assert(objectDigest(await assemblyBaseline(root))===objectDigest(state.base),'Atlas or identity files changed during release; nothing integrated.');
   for(const {file,bytes}of changed){await mkdir(resolve(root,file,'..'),{recursive:true});await writeFile(join(root,file),bytes);}
   return {released:true,changed_files:changed.map(x=>x.file)};
 }
