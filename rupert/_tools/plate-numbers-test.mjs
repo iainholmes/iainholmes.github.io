@@ -21,6 +21,7 @@ assert.equal(continuation.photos.at(-1).plate_no,3);
 const corrected=structuredClone(numbered);corrected.photos[0].alt='Documented correction metadata; same illustration identity';
 assert.equal(assignPlateNumbers(es,corrected).photos[0].plate_no,numbered.photos[0].plate_no);
 assert.throws(()=>assignPlateNumbers(es,{photos:[{id:'a',plate_no:1},{id:'b',plate_no:1}]}),/duplicate/);
+assert.throws(()=>assignPlateNumbers(es,{photos:[{id:'a',plate_no:'XXX'},{id:'b'}]}),/Invalid/);
 assert.ok(plateNumberProblems(es,records).length);
 assert.deepEqual(plateNumberProblems(es,numbered),[]);
 assert.ok(plateNumberProblems(es,{photos:[...numbered.photos,{id:'unused',plate_no:3,caption:plateCaption(3)}]}).length);
