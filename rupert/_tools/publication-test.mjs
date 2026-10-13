@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { atlasModel } from '../assets/js/core/atlas.js';
 import { selectCurrentPair, isReleased, pairKey } from '../assets/js/core/editions.js';
 import { releaseProblem } from '../assets/js/core/publication.js';
-import { nwsWeekend, fetchWeekendForecast, unavailableForecast } from '../assets/js/core/forecast.js';
+import { nwsWeekend, fetchWeekendForecast, unavailableForecast, readerForecastSource } from '../assets/js/core/forecast.js';
 import { nyTimestamp } from '../assets/js/core/dates.js';
 import { renderWeek, renderAtlas, renderEdition, weatherProvenance } from '../assets/js/core/render.js';
 const json=p=>JSON.parse(readFileSync(new URL('../'+p,import.meta.url)));
@@ -36,6 +36,27 @@ check(()=>assert.equal(unavailable.kind,'unavailable'));check(()=>assert.ok(!una
 check(()=>assert.match(weatherProvenance(unavailable),/Forecast unavailable/));
 check(()=>assert.match(weatherProvenance({as_of:'2026-09-28T15:00:00-04:00',summary:'Outlook only'}),/Historical outlook/));
 check(()=>assert.match(weatherProvenance(conditions),/Forecast snapshot/));
+const publicPlace=places.places.find(p=>p.id==='hanging-rock-trail');
+const readerURL='https://forecast.weather.gov/MapClick.php?lat=36.3952&lon=-80.2665';
+check(()=>assert.equal(readerForecastSource(conditions.source,publicPlace).url,readerURL));
+check(()=>assert.equal(conditions.source.url,url)); // Keep the original grid endpoint as provenance.
+check(()=>assert.equal(readerForecastSource(conditions.source,{access:{...publicPlace.access,coords_verified:false}}).url,null));
+check(()=>assert.equal(readerForecastSource(conditions.source,{access:{...publicPlace.access,lat:NaN}}).url,null));
+check(()=>assert.equal(readerForecastSource(conditions.source,{lat:35,lng:-79}).url,null)); // No Home-point fallback.
+check(()=>assert.equal(readerForecastSource(conditions.source).url,null));
+const provenance=weatherProvenance(conditions,[],publicPlace);
+check(()=>assert.match(provenance,/Forecast snapshot · issued Thu 8 Oct, 16:48 ET/));
+check(()=>assert.match(provenance,/current point forecast/));
+check(()=>assert.ok(!provenance.includes('api.weather.gov')));
+const accepted=json('data/editions/2026-W42-tue.json'),unchanged=JSON.stringify(accepted);
+const acceptedHTML=renderEdition(accepted,{base:'../../',places,photos,now:new Date('2026-10-13T17:00:00-04:00')});
+check(()=>assert.equal((acceptedHTML.match(/forecast\.weather\.gov\/MapClick\.php\?lat=36\.3952&amp;lon=-80\.2665/g)||[]).length,2));
+check(()=>assert.match(acceptedHTML,/snapshot retrieved 2026-10-13 · link shows the current forecast/));
+check(()=>assert.equal(JSON.stringify(accepted),unchanged));
+for(const item of raw.editions){
+  const rendered=renderEdition(json(item.path),{base:'../../',places,photos,now:new Date('2026-10-13T17:00:00-04:00')});
+  check(()=>assert.ok(!/href="https:\/\/api\.weather\.gov/.test(rendered)));
+}
 for(const [date,expected] of [['2026-10-08T20:55:00Z','2026-10-08T16:55:00-04:00'],['2026-11-05T12:00:00Z','2026-11-05T07:00:00-05:00']])check(()=>assert.equal(nyTimestamp(new Date(date)),expected));
 const draft=json('data/editions/2026-W41-thu.json');draft.status='draft';draft.conditions=conditions;
 const checks=[{place_id:draft.flagship.place_id,status:'open',checked:'2026-10-08',checked_at:'2026-10-08T20:40:00Z',official_url:'https://www.ncparks.gov/state-parks/raven-rock-state-park',discrepancy:false}];

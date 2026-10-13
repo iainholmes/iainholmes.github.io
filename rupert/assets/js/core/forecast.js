@@ -2,6 +2,18 @@
 import { nyDateString, nyTimestamp } from './dates.js';
 import { validPoint } from './routing.js';
 
+// Reader links use verified public access points; API URLs remain archival provenance.
+// Accept a place record, never a user-supplied Home point.
+export function readerForecastSource(source, place) {
+  if (!source?.url) return source;
+  let url; try { url = new URL(source.url); } catch { return { ...source, url: null }; }
+  if (!['api.weather.gov', 'forecast.weather.gov', 'weather.gov', 'www.weather.gov'].includes(url.hostname)) return source;
+  const point = place?.access;
+  return { ...source, current: true, label: 'National Weather Service — current point forecast',
+    url: point?.coords_verified === true && validPoint(point)
+      ? `https://forecast.weather.gov/MapClick.php?lat=${point.lat}&lon=${point.lng}` : null };
+}
+
 export function nwsWeekend(data, weekend, { now = new Date(), url } = {}) {
   const p = data?.properties, issued = new Date(p?.updateTime);
   if (!Number.isFinite(+issued) || issued > now || now - issued > 3 * 86400000) throw Error('NWS forecast is stale or invalid.');

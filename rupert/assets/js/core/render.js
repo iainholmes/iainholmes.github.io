@@ -1,6 +1,7 @@
 import { pairKey } from './editions.js';
 import { labrador } from './labrador.js';
 import { weatherParts } from './weather.js';
+import { readerForecastSource } from './forecast.js';
 import { guidanceFor } from './adventure.js';
 import { fetchDock } from './fetch-drawing.js';
 import { CROWD_LEVELS, CROWD_TOLERANCES, crowdReadings } from './crowds.js';
@@ -191,18 +192,19 @@ function plate(slot, ed, pair, ctx) {
   <p class="p-eyebrow"><span class="p-day"><span class="edition-number">${slot==='tuesday'?'01':'02'}</span>${SLOT_LABEL[slot]}</span><span class="p-pub">${slotPublication(ed)}</span></p>
   <h2 class="p-title" id="${id}-h"><a href="${href}">${esc(titleCase(f.title))}</a></h2>
   <p class="p-stand">${esc(f.standfirst)}</p>
-    ${renderOutingInfo(ed)}
+    ${renderOutingInfo(ed, ctx.places)}
   <figure class="p-photo${f.artwork ? ' adventure-illustration' : ''}"${editorialPlate(f, photos) ? ' data-editorial-plate' : ''}>${photo(imageRef(f), photos, base, { sizes: '(min-width: 1024px) 20vw, (min-width: 760px) 46vw, 100vw', eager: slot === 'tuesday' })}${credit(imageRef(f), photos, ctx.places)}</figure>
 
   <p class="p-more"><a href="${href}">Full edition<span class="vh"> for ${esc(titleCase(f.title))}</span></a></p>
 </article>`;
 }
 
-export function renderOutingInfo(ed) {
+export function renderOutingInfo(ed, places) {
   const weather=weatherParts(ed), bits=routeBits(ed.flagship?.snapshot);
+  const place=places?.places.find(p=>p.id===ed.flagship?.place_id);
   return `<div class="outing-info">
     ${bits.length ? `<section class="outing-glance"><h3 class="outing-heading">Outing at a glance</h3><ul class="outing-metrics" aria-label="Outing logistics">${bits.map(b=>`<li>${b}</li>`).join('')}</ul></section>` : ''}
-    ${(weather.days.length||weather.forecast) ? `<section class="outing-weather${weather.adverse?' is-adverse':''}"><h3 class="outing-heading">${weather.adverse?'Weather warning':'Weather'}</h3>${weather.days.length?`<table class="outing-forecast"><thead><tr><th scope="col">Day</th><th scope="col">Forecast</th></tr></thead><tbody>${weather.days.map(d=>`<tr><th scope="row">${esc(d.day)}</th><td>${esc(d.forecast)}</td></tr>`).join('')}</tbody></table>`:''}${weather.forecast?`<p>${esc(weather.forecast)}</p>`:''}${weather.context?`<p class="weather-context">${esc(weather.context)}</p>`:''}${weatherProvenance(ed.conditions, ed.flagship?.sources)}</section>`:''}
+    ${(weather.days.length||weather.forecast) ? `<section class="outing-weather${weather.adverse?' is-adverse':''}"><h3 class="outing-heading">${weather.adverse?'Weather warning':'Weather'}</h3>${weather.days.length?`<table class="outing-forecast"><thead><tr><th scope="col">Day</th><th scope="col">Forecast</th></tr></thead><tbody>${weather.days.map(d=>`<tr><th scope="row">${esc(d.day)}</th><td>${esc(d.forecast)}</td></tr>`).join('')}</tbody></table>`:''}${weather.forecast?`<p>${esc(weather.forecast)}</p>`:''}${weather.context?`<p class="weather-context">${esc(weather.context)}</p>`:''}${weatherProvenance(ed.conditions, ed.flagship?.sources, place)}</section>`:''}
     ${weather.trail?`<section class="outing-trail"><h3 class="outing-heading">Trail note</h3><p>${esc(weather.trail)}</p></section>`:''}
   </div>`;
 }
@@ -316,7 +318,7 @@ export function renderEdition(ed, ctx, sibling) {
       <section><h2 class="sec-h">Why This Week</h2><p>${esc(f.why_this_week)}</p></section>
       <section class="ed-conditions"><h2 class="sec-h">Conditions</h2><p>${esc(ed.conditions?.summary)}</p>
         ${ed.conditions?.pivot ? `<div class="pivot${ed.flagship.condition_level === 'adverse' ? ' is-adverse' : ''}"><p class="pivot-k">If it turns</p><p><strong>${esc(ed.conditions.pivot.if)}:</strong> ${esc(ed.conditions.pivot.note)}${pivotTarget ? ` <span class="pivot-to">Go to: ${esc(pivotTarget.title)}</span>` : ''}</p></div>` : ''}
-        ${weatherProvenance(ed.conditions, ed.flagship?.sources)}</section>
+        ${weatherProvenance(ed.conditions, ed.flagship?.sources, place)}</section>
       <div class="ed-fun">
         ${panels.map(p => `<section><h2 class="sec-h">${esc(titleCase(p.label))}</h2><p class="fun-text">${esc(p.text)}</p></section>`).join('')}
 
@@ -324,7 +326,7 @@ export function renderEdition(ed, ctx, sibling) {
       <section class="contingency"><h2 class="sec-h">If Plans Change</h2><ul class="fallbacks">${outing('local_trail')}${outing('away_mission')}${outing('wildcard')}</ul></section>
       <section class="memory-prompt"><h2 class="sec-h">Memory Prompt</h2><p>${esc(ed.memory_prompt?.text)}</p></section>
       ${corrections}
-      <section class="ed-sources"><h2 class="sec-h">Sources</h2><ul>${(f.sources || []).map(x => `<li><a href="${esc(x.url)}" rel="noopener">${esc(x.label)}</a> <span class="data">retrieved ${esc(x.retrieved)}</span></li>`).join('')}</ul>
+      <section class="ed-sources"><h2 class="sec-h">Sources</h2><ul>${(f.sources || []).map(x => { const link=x.kind==='forecast'?readerForecastSource(x,place):x; return `<li>${link.url?`<a href="${esc(link.url)}" rel="noopener">${esc(link.label)}</a>`:esc(x.label)} <span class="data">${link.current?'snapshot retrieved':'retrieved'} ${esc(x.retrieved)}${link.current?' · link shows the current forecast':''}</span></li>`; }).join('')}</ul>
         <p class="as-of">Place details as recorded ${esc(shortDate(s.as_of))}. They stay as published even if the place's record is corrected later.</p></section>
     </div>
     <aside class="ed-sheet" aria-label="Outing facts">
@@ -455,10 +457,10 @@ export function renderTravel(ctx) {
 }
 
 // Dated snapshots never claim to be a current observation. Preserve their original source/issue time.
-export function weatherProvenance(conditions, sources = []) {
+export function weatherProvenance(conditions, sources = [], place) {
   if (!conditions?.as_of || !Number.isFinite(+new Date(conditions.as_of))) return '';
   const date = new Date(conditions.as_of);
-  const source = conditions.source || sources.find(s => s.kind === 'forecast');
+  const source = readerForecastSource(conditions.source || sources.find(s => s.kind === 'forecast'), place);
   const kind = conditions.kind || (/outlook/i.test(conditions.summary || '') ? 'outlook' : 'forecast');
   const label = kind === 'unavailable' ? 'Forecast unavailable · checked' : kind === 'outlook' ? 'Historical outlook · issued' : 'Forecast snapshot · issued';
   return `<p class="as-of">${label} ${esc(shortDate(nyDateString(date)))}, ${esc(nyTime(date))} ET${source?.url ? ` · <a href="${esc(source.url)}" rel="noopener">${esc(source.label)}</a>` : ''}</p>`;
