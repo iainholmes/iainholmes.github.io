@@ -11,6 +11,7 @@ import { expectedPublish } from '../assets/js/core/editions.js';
 import { cycleWeekend } from '../assets/js/core/cycles.js';
 import { reuseEligibility } from '../assets/js/core/recommendations.js';
 import { loadRecommendationHistory } from './history-input.mjs';
+import { releasePlan, missingReleaseMessage } from './release-plan.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = async p => JSON.parse(await readFile(resolve(root,p),'utf8'));
@@ -48,8 +49,10 @@ if (args[0] === 'refresh') {
   console.log(`${entry.ed.id}: ${conditions.kind}; source issue ${conditions.as_of}. Review the actual weather and safety guidance before release.`);
 } else {
   const checks = await read('data/access-checks.json'), reviews = await optional('data/editorial-reviews.json',{reviews:[]});
+  const plan = releasePlan(editions.map(({ed})=>ed),now);
+  if (plan.missing.length) { console.error(missingReleaseMessage(plan)); process.exit(1); }
   const due = editions.filter(({ed})=>ed.status==='draft' && ed.weekend.start===cycleWeekend(now).start && now>=expectedPublish(ed.slot,ed.weekend.start));
-  if (!due.length) { console.log('No due drafts. Already published editions remain unchanged.'); process.exit(0); }
+  if (!due.length) { console.log('No due drafts. Due slots are already released; nothing changed.'+(plan.next ? ` Next slot: ${plan.next.slot} ${nyTimestamp(plan.next.at)}. If this wake-up preceded that instant, publication has not run for that slot; recheck at or after the due time.` : '')); process.exit(0); }
   const places=await read('data/places.json');
   const personal=await loadRecommendationHistory(args,{places,manifest:{editions:editions.map(e=>e.ed)},now},root);
   const problems = due.map(({ed})=>{
