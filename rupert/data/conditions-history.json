@@ -17,7 +17,7 @@
       "forecast_sources": [
         {
           "kind": "forecast",
-          "label": "NOAA CPC 6\u201310 and 8\u201314 day outlooks, issued 28 Sep",
+          "label": "NOAA CPC 6–10 and 8–14 day outlooks, issued 28 Sep",
           "url": "https://www.cpc.ncep.noaa.gov/products/predictions/610day/fxus06.html",
           "retrieved": "2026-09-29"
         }
@@ -40,11 +40,97 @@
       "forecast_sources": [
         {
           "kind": "forecast",
-          "label": "NOAA CPC 6\u201310 and 8\u201314 day outlooks, issued 28 Sep",
+          "label": "NOAA CPC 6–10 and 8–14 day outlooks, issued 28 Sep",
           "url": "https://www.cpc.ncep.noaa.gov/products/predictions/610day/fxus06.html",
           "retrieved": "2026-09-29"
         }
       ]
+    },
+    {
+      "edition_id": "2026-W42-tue",
+      "replaced_at": "2026-10-13T17:48:20.422Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-10-13T13:30:37-04:00",
+        "checked_at": "2026-10-13T17:42:53.405Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RNK/67,29/forecast",
+          "issued_at": "2026-10-13T17:30:37.000Z",
+          "retrieved_at": "2026-10-13T17:42:53.405Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Sunny, with a high near 60."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "Sunny, with a high near 59."
+          }
+        ],
+        "summary": "Saturday: Sunny, with a high near 60. Sunday: Sunny, with a high near 59. Saturday night: Clear, with a low around 39. Sunday night: Mostly clear, with a low around 40.",
+        "alerts": [],
+        "alerts_checked_at": "2026-10-13T17:42:53.405Z",
+        "pivot": {
+          "if": "Thunder, rain, ice, dangerous wind, official closure or a tired dog",
+          "note": "Postpone or turn back before the upper stairs. Another exposed outdoor route is not a thunderstorm fallback. Check official park status and NWS again before leaving."
+        },
+        "trail_note": "Follow the orange circles and return the same way. Keep Rupert on a six-foot leash and at least one body length from every cliff edge. Do not climb unstable edge rocks. Stop before stairs become uncomfortable."
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — public visitor-center point forecast",
+          "url": "https://api.weather.gov/gridpoints/RNK/67,29/forecast",
+          "retrieved": "2026-10-13"
+        }
+      ],
+      "headline_condition": "Sunny and cool; dry rock only",
+      "condition_level": "normal"
+    },
+    {
+      "edition_id": "2026-W42-tue",
+      "replaced_at": "2026-10-13T19:16:15.773Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-10-13T13:30:37-04:00",
+        "checked_at": "2026-10-13T17:48:20.422Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RNK/67,29/forecast",
+          "issued_at": "2026-10-13T17:30:37.000Z",
+          "retrieved_at": "2026-10-13T17:48:20.422Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Sunny, with a high near 60."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "Sunny, with a high near 59."
+          }
+        ],
+        "summary": "Saturday: Sunny, with a high near 60. Sunday: Sunny, with a high near 59. Saturday night: Clear, with a low around 39. Sunday night: Mostly clear, with a low around 40.",
+        "alerts": [],
+        "alerts_checked_at": "2026-10-13T17:48:20.422Z",
+        "pivot": {
+          "if": "Thunder, rain, ice, dangerous wind, official closure or a tired dog",
+          "note": "Postpone or turn back before the upper stairs. Another exposed outdoor route is not a thunderstorm fallback. Check official park status and NWS again before leaving."
+        },
+        "trail_note": "Follow the orange circles and return the same way. Keep Rupert on a six-foot leash and at least one body length from every cliff edge. Do not climb unstable edge rocks. Stop before stairs become uncomfortable."
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — public visitor-center point forecast",
+          "url": "https://api.weather.gov/gridpoints/RNK/67,29/forecast",
+          "retrieved": "2026-10-13"
+        }
+      ],
+      "headline_condition": "Sunny and cool; dry rock only",
+      "condition_level": "normal"
     }
   ]
 }

@@ -57,6 +57,15 @@
       "official_url": "https://www.ncparks.gov/state-parks/occoneechee-mountain-state-natural-area",
       "discrepancy": false,
       "note": "Official home, trails and park rules reviewed. Hiking trails listed Open; Mountain Loop 2.2 miles; October hours 8 a.m.\u20138 p.m.; attended pets on a leash no longer than six feet. No active closure on reviewed official pages. Current NWS forecast requires dry-weather-only Saturday guidance; no Sunday thunderstorm outing."
+    },
+    {
+      "place_id": "hanging-rock-trail",
+      "status": "open",
+      "checked": "2026-10-13",
+      "checked_at": "2026-10-13T17:46:47.820690Z",
+      "official_url": "https://www.ncparks.gov/state-parks/hanging-rock-state-park",
+      "discrepancy": false,
+      "note": "Official home, trail descriptions, trail map and park rules reviewed. Hiking trails explicitly Open; Hanging Rock Trail is 1.8 miles each way (3.6 round trip), moderate, from the top of the visitor-center lot at 1005 Visitor Center Drive. Manager-linked parking coordinates verified. Main October gate hours 7 a.m.\u20139 p.m.; visitor center 9 a.m.\u20134:45 p.m.; free hiking day use; attended six-foot leash, pets excluded from buildings/swim beach. Campground construction lies off these visitor-center routes; swimming/boat rentals seasonally closed. Keep one body length from cliffs; no unsafe wet-rock or thunderstorm outing."
     }
   ],
   "official_hosts": [

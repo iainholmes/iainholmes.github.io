@@ -274,6 +274,60 @@
         "fields",
         "quiet early"
       ]
+    },
+    {
+      "id": "hanging-rock-trail",
+      "name": "Hanging Rock State Park \u2014 Hanging Rock Trail",
+      "short_name": "Hanging Rock Trail",
+      "kind": "trail",
+      "region": "Stokes County",
+      "access": {
+        "name": "Visitor center parking, 1005 Visitor Center Drive, Westfield",
+        "lat": 36.3952,
+        "lng": -80.2665,
+        "coords_verified": true,
+        "coords_checked": "2026-10-13",
+        "coords_source": "NC State Parks official Hanging Rock home page links the visitor-center parking point through https://goo.gl/maps/m7MBCXyP1gQVwj9n7; it resolves to the public trailhead at 36.3952, -80.2665. Official trail listing identifies this lot as the Hanging Rock Trail start."
+      },
+      "dog_policy": "Pets on an attended leash no longer than six feet; no buildings or swim beach (NC State Parks).",
+      "routes": [
+        {
+          "id": "hanging-rock-trail-out-and-back@1",
+          "distance_mi": 3.6,
+          "shape": "out and back",
+          "difficulty": "moderate",
+          "surface": "Paved start, gravel, dirt, rock, wood and stone stairs; keep back from cliff edges."
+        },
+        {
+          "id": "hanging-rock-rock-garden@1",
+          "distance_mi": 0.2,
+          "shape": "out and back",
+          "difficulty": "easy",
+          "surface": "Paved trail; cross Hanging Rock Park Road carefully."
+        },
+        {
+          "id": "hanging-rock-upper-cascades@1",
+          "distance_mi": 0.4,
+          "shape": "out and back",
+          "difficulty": "easy",
+          "surface": "Paved then gravel path to the observation deck; steps below the deck are optional and excluded here."
+        }
+      ],
+      "links": [
+        {
+          "label": "NC State Parks \u2014 Hanging Rock",
+          "url": "https://www.ncparks.gov/state-parks/hanging-rock-state-park"
+        },
+        {
+          "label": "NC State Parks \u2014 official trail descriptions",
+          "url": "https://www.ncparks.gov/state-parks/hanging-rock-state-park/trails"
+        }
+      ],
+      "tags": [
+        "ridge",
+        "stairs",
+        "day trip"
+      ]
     }
   ]
 }

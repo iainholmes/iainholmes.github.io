@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "id": "2026-W42-tue",
+  "slot": "tuesday",
+  "status": "published",
+  "published_at": "2026-10-13T15:17:42-04:00",
+  "weekend": {
+    "start": "2026-10-17",
+    "end": "2026-10-18"
+  },
+  "flagship": {
+    "place_id": "hanging-rock-trail",
+    "title": "Hanging Rock, at Rupert’s pace",
+    "standfirst": "A 3.6-mile round trip from the visitor-center lot to the quartzite outcrop, with a wooded climb, stairs and room to turn back before the top.",
+    "why_this_week": "Make this a deliberate day trip, not a quick local walk. The current NWS weekend forecast is sunny and cool. Aim for a dry morning, take the orange-circle trail at Rupert’s pace, and treat the view as optional: a comfortable dog matters more than reaching the rock. Allow roughly 2¼–2½ hours each way from the public Chapel Hill reference; this is a routing estimate without traffic, so leave time for the journey.",
+    "headline_condition": "Sunny and cool; dry rock only",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-10-13",
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "route": {
+        "distance_mi": 3.6,
+        "shape": "out and back",
+        "difficulty": "moderate",
+        "surface": "Paved start, gravel, dirt, rock, wood and stone stairs; keep back from cliff edges.",
+        "route_id": "hanging-rock-trail-out-and-back@1"
+      },
+      "access": {
+        "name": "Visitor center parking, 1005 Visitor Center Drive, Westfield",
+        "parking": "Use the designated visitor-center lot. The orange-circle trail starts at its upper edge; allow extra arrival time on a fair-weather weekend."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          135,
+          150
+        ]
+      },
+      "duration_h": [
+        2,
+        3
+      ],
+      "dog": {
+        "leash": "Attended leash, six feet maximum",
+        "water": "Carry drinking water for both; do not rely on creek or lake water.",
+        "shade": "Wooded lower trail; exposed upper rock",
+        "watch_for": [
+          "Wood and stone stairs: turn back if Rupert is tiring",
+          "Cliff edges and potentially unstable rock: stay at least one body length back",
+          "Wet rock and roots; postpone in rain, thunder, ice or unsafe wind"
+        ]
+      }
+    },
+    "photo": {
+      "id": "rupert-hanging-rock-2026-w42-tue",
+      "alt": "Engraved illustration: Rupert, a lean chocolate Labrador in a mustard collar, stands in right-facing profile above one fallen oak leaf on an olive field."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "NC State Parks — Hanging Rock access, current status, hours and pet rules",
+        "url": "https://www.ncparks.gov/state-parks/hanging-rock-state-park",
+        "retrieved": "2026-10-13"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — official trail lengths, trailheads and cliff safety",
+        "url": "https://www.ncparks.gov/state-parks/hanging-rock-state-park/trails",
+        "retrieved": "2026-10-13"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — park trail map",
+        "url": "https://www.ncparks.gov/maps/hanging-rock-state-park-map/open",
+        "retrieved": "2026-10-13"
+      },
+      {
+        "kind": "forecast",
+        "label": "National Weather Service — public visitor-center point forecast",
+        "url": "https://api.weather.gov/gridpoints/RNK/67,29/forecast",
+        "retrieved": "2026-10-13"
+      },
+      {
+        "kind": "park",
+        "label": "Town of Hillsborough — Riverwalk access for the local contingency",
+        "url": "https://www.hillsboroughnc.gov/community/public-spaces/recreation-facilities/riverwalk",
+        "retrieved": "2026-10-13"
+      },
+      {
+        "kind": "park",
+        "label": "Town of Hillsborough — Gold Park and dog rules",
+        "url": "https://www.hillsboroughnc.gov/community/public-spaces/recreation-facilities",
+        "retrieved": "2026-10-13"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "ridge",
+      "woodland",
+      "full-day"
+    ],
+    "experience_id": "hanging-rock-trail-out-and-back",
+    "artwork": {
+      "image_id": "rupert-hanging-rock-2026-w42-tue",
+      "characters": [
+        "rupert"
+      ],
+      "brief": "One full-body, right-facing Rupert standing calmly with his nose lifted, mustard collar, on a plain muted olive field with generous upper negative space and one ochre leaf. Fine cream engraved hatching and chocolate shapes. No mountain, river, circular sun, ball or companions. A quiet side profile and flat olive ground deliberately differ from the preceding frontal scenery portrait and running riverside compositions."
+    },
+    "panels": [
+      {
+        "label": "For Rupert",
+        "text": "Carry water and take breaks on the wooded approach. The full route has wood and stone stairs; turn around early if his pace or footing changes. Keep him on an attended leash no longer than six feet."
+      },
+      {
+        "label": "At the rock",
+        "text": "Stay at least one body length back from cliff edges and avoid unstable edge rocks. Wet rock, thunder, ice or unsafe wind means postpone. The swim beach is closed for the season and is not a dog stop."
+      }
+    ]
+  },
+  "local_trail": {
+    "place_id": "hillsborough-riverwalk",
+    "title": "A shorter Riverwalk from Gold Park",
+    "line": "For a local day instead, take a short paved out-and-back from Gold Park. Keep Rupert leashed and return when he has had enough; recheck town access and weather.",
+    "snapshot": {
+      "as_of": "2026-10-13",
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          20,
+          30
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1
+      ]
+    },
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "river",
+      "short-walk"
+    ]
+  },
+  "away_mission": {
+    "place_id": "hanging-rock-trail",
+    "title": "Rock Garden and a quiet park picnic",
+    "line": "Already at the park? The 0.2-mile round-trip paved Rock Garden path starts across the road from the same lot. Add a picnic and keep the day unhurried.",
+    "commitment": "Day trip",
+    "snapshot": {
+      "as_of": "2026-10-13",
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          135,
+          150
+        ]
+      },
+      "route": {
+        "distance_mi": 0.2,
+        "shape": "out and back",
+        "difficulty": "easy",
+        "surface": "Paved trail; cross Hanging Rock Park Road carefully.",
+        "route_id": "hanging-rock-rock-garden@1"
+      },
+      "duration_h": [
+        0.25,
+        0.5
+      ]
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk",
+      "picnic"
+    ]
+  },
+  "wildcard": {
+    "place_id": "hanging-rock-trail",
+    "title": "Upper Cascades from the observation deck",
+    "line": "A 0.4-mile round trip to the waterfall deck, from the same visitor-center lot. Cross the park road carefully; stay at the deck and skip the slippery pool and lower stairs.",
+    "snapshot": {
+      "as_of": "2026-10-13",
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          135,
+          150
+        ]
+      },
+      "route": {
+        "distance_mi": 0.4,
+        "shape": "out and back",
+        "difficulty": "easy",
+        "surface": "Paved then gravel path to the observation deck; steps below the deck are optional and excluded here.",
+        "route_id": "hanging-rock-upper-cascades@1"
+      },
+      "duration_h": [
+        0.5,
+        0.75
+      ]
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "tone": "explore",
+    "text": "Let Rupert choose one place to stop and investigate on the wooded approach. The summit is optional."
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "What catches Rupert’s nose before the stairs? Remember the moment from a safe, level stopping place."
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-10-13T15:00:35-04:00",
+    "checked_at": "2026-10-13T19:16:15.773Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RNK/67,29/forecast",
+      "issued_at": "2026-10-13T19:00:35.000Z",
+      "retrieved_at": "2026-10-13T19:16:15.773Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "Sunny, with a high near 57."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "Sunny, with a high near 57."
+      }
+    ],
+    "summary": "Saturday: Sunny, with a high near 57. Sunday: Sunny, with a high near 57. Saturday night: Clear, with a low around 38. Sunday night: Clear, with a low around 40.",
+    "alerts": [],
+    "alerts_checked_at": "2026-10-13T19:16:15.773Z",
+    "pivot": {
+      "if": "Thunder, rain, ice, dangerous wind, official closure or a tired dog",
+      "note": "Postpone or turn back before the upper stairs. Another exposed outdoor route is not a thunderstorm fallback. Check official park status and NWS again before leaving."
+    },
+    "trail_note": "Follow the orange circles and return the same way. Keep Rupert on a six-foot leash and at least one body length from every cliff edge. Do not climb unstable edge rocks. Stop before stairs become uncomfortable."
+  },
+  "practical": {
+    "best_window": "Dry Saturday or Sunday morning; recheck forecast before leaving",
+    "fees": "No day-use fee for hiking",
+    "bring": [
+      "Drinking water for both",
+      "Six-foot leash",
+      "Layers for a cool start",
+      "Traction suitable for rock and stairs",
+      "A picnic and waste bags"
+    ],
+    "closures_checked": "2026-10-13",
+    "closures_note": "Official hiking status Open on 13 October. Family campground construction closure does not lie on the Hanging Rock out-and-back or the visitor-center short paths described here. Swim lake and boat rentals are seasonally closed. Recheck before travel."
+  }
+}

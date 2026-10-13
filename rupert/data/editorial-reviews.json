@@ -6,6 +6,13 @@
       "conditions_as_of": "2026-10-08T16:48:13-04:00",
       "ready": true,
       "note": "Official main-access address, 2.6-mile loop, October hours, six-foot attended-leash policy and open hiking status checked. Existing editorial artwork and route data validated. NWS Saturday 50% rain, heavy overnight rain and Sunday thunderstorms reviewed: release only with explicit dry-Saturday/postpone guidance, no river entry or unsafe alternative-weather promise. No active point alerts returned by NWS at refresh."
+    },
+    {
+      "edition_id": "2026-W42-tue",
+      "reviewed_at": "2026-10-13T19:17:19.421136Z",
+      "conditions_as_of": "2026-10-13T15:00:35-04:00",
+      "ready": true,
+      "note": "Current official NC State Parks home, trail listing and manager-linked public parking verify open hiking, 1.8-mile one-way orange-circle Hanging Rock Trail (3.6 round trip), visitor lot at 1005 Visitor Center Drive, October gate 7 a.m.–9 p.m., free hiking, attended six-foot leash, no building/swim-beach pet access, and cliff-edge precautions. Campground and seasonal lake closures are disclosed; these visitor-center routes avoid the campground. Town Riverwalk and recreation-facilities pages verify Gold Park access, daylight hours and dog rules; the obsolete Gold Park URL returned 404 and was replaced with the current official facilities page before approval. Actual refreshed NWS 2026-10-13T15:00:35-04:00 reviewed: Saturday: Sunny, with a high near 57. Sunday: Sunny, with a high near 57. Saturday night: Clear, with a low around 38. Sunday night: Clear, with a low around 40. No returned active alerts. Wet-rock, thunder, ice, dangerous-wind and dog-fatigue pivots remain explicit. Public-reference OSRM estimate 137 minutes supports the labeled 135–150 minute range without traffic. Recovered original olive-field engraved print inspected: one lean chocolate Rupert, mustard collar, complete anatomy, no destination claim; byte-identical original retained privately, metadata-stripped JPEGs and unique owner registry verified. New trail experience is reuse-eligible; no personal completion history supplied. All evidence reviewed for this release, not inherited from the failed candidate."
     }
   ]
 }

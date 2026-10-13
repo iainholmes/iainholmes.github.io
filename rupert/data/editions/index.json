@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "168027b366f6a4da",
+  "revision": "c7ecaf83488a0861",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -255,6 +255,57 @@
       ],
       "photo_id": "rupert-plate-bank-trail",
       "path": "data/editions/2026-W41-thu.json"
+    },
+    {
+      "id": "2026-W42-tue",
+      "slot": "tuesday",
+      "status": "published",
+      "published_at": "2026-10-13T15:17:42-04:00",
+      "weekend": {
+        "start": "2026-10-17",
+        "end": "2026-10-18"
+      },
+      "title": "Hanging Rock, at Rupert’s pace",
+      "place_id": "hanging-rock-trail",
+      "experience_key": "hanging-rock-trail-out-and-back",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Hanging Rock, at Rupert’s pace",
+          "place_id": "hanging-rock-trail",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "ridge",
+            "woodland",
+            "full-day"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "hanging-rock-trail"
+      ],
+      "place_roles": [
+        {
+          "place_id": "hanging-rock-trail",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "rupert-hanging-rock-2026-w42-tue",
+      "path": "data/editions/2026-W42-tue.json"
     }
   ]
 }
