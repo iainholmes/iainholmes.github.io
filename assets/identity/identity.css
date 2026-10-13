@@ -97,7 +97,7 @@
   }
 }
 
-/* Place the original copper dot and heavier copper rules within the dateline. */
+/* Place the circular copper emblem and existing copper rules within the dateline. */
 @media (min-width:1024px) {
   .masthead#masthead .dateline {
     display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
@@ -125,7 +125,7 @@
     content:"";grid-row:3;grid-column:1;justify-self:center;display:block;
     width:min(210px,76vw);height:38px;pointer-events:none;
     background:
-      url("ih-period.png?v=20261012-seamless2") center calc(50% - 2px) / 18px 18px no-repeat,
+      url("ih-atlas-emblem.svg?v=20261013-circle1") center calc(50% - 2px) / 18px 18px no-repeat,
       linear-gradient(#c06c30,#c06c30) left calc(50% - 2px) / calc(50% - 21px) 2px no-repeat,
       linear-gradient(#c06c30,#c06c30) right calc(50% - 2px) / calc(50% - 21px) 2px no-repeat;
   }

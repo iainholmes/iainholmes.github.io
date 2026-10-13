@@ -144,7 +144,7 @@ export function chrome({ active, base, weekLabel, site, body, pageClass = '', no
   return `<a class="skip" href="#main">Skip to content</a>
 <header class="masthead" id="masthead">
   <div class="wrap">
-    <div class="dateline"><span>Chapel Hill, N.C.</span><div class="ih-atlas-device" aria-hidden="true"><img src="${base}../assets/identity/ih-period.png?v=20261012-seamless2" width="60" height="60" alt="" decoding="async"></div><span>${esc(weekLabel)}</span></div>
+    <div class="dateline"><span>Chapel Hill, N.C.</span><div class="ih-atlas-device" aria-hidden="true"><img src="${base}../assets/identity/ih-atlas-emblem.svg?v=20261013-circle1" width="60" height="60" alt="" decoding="async"></div><span>${esc(weekLabel)}</span></div>
     <p class="wordmark"><a href="${base}">The Rupert Atlas</a></p>
     <nav class="primary" aria-label="Sections"><ul>${navItems('nav-link')}</ul><a class="nav-archive" href="${base}archive/"${active === 'archive' ? ' aria-current="page"' : ''}>Archive</a></nav>
   </div>
