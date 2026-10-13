@@ -790,6 +790,68 @@
         "seed": 904546263,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A rotating storm path crosses a settled landscape\"><title>Flooding storm spawns at least five tornadoes across North Carolina</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-12-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-12-05)\"><path d=\"M95 505H705\" stroke=\"#7c5a3e\" stroke-width=\"25\"/><path d=\"M510 505V365L590 300L675 365V505Z\" fill=\"#2c241d\"/><path d=\"M125 145Q440 70 520 230Q570 330 445 365Q330 398 354 485\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"48\"/><path d=\"M190 205Q395 155 438 244Q464 303 386 326\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"22\"/><path d=\"M239 430L298 388M405 180L452 137M538 272L595 238\" stroke=\"#c4452c\" stroke-width=\"18\"/></g></svg>"
       }
+    },
+    "2026-10-13": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-13",
+        "number": "01",
+        "category": "Economics · financial stability",
+        "topic": "infrastructure",
+        "title": "IMF puts AI repricing, sovereign yields and cyber incidents inside one stress test",
+        "composition": "infrastructure-aisle",
+        "signature": "plate:infrastructure-aisle",
+        "seed": 2240479181,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A server aisle separates storage and service capacity\"><title>IMF puts AI repricing, sovereign yields and cyber incidents inside one stress test</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-13-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-13-01)\"><path d=\"M80 145H280V520H80ZM520 80H720V520H520Z\" fill=\"#2c241d\"/><path d=\"M115 200H245M115 290H245M115 380H245M555 135H685M555 225H685M555 315H685M555 405H685\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M320 550L405 210L480 550Z\" fill=\"#1b4a6b\"/><circle cx=\"402\" cy=\"145\" r=\"57\" fill=\"#c4452c\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-13",
+        "number": "02",
+        "category": "U.S. policy · financial regulation",
+        "topic": "finance",
+        "title": "CFTC starts writing a federal market framework for retail crypto trading",
+        "composition": "finance-blocked",
+        "signature": "plate:finance-blocked",
+        "seed": 4214415262,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Payment branches meet a blocking seal\"><title>CFTC starts writing a federal market framework for retail crypto trading</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-13-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-13-02)\"><path d=\"M120 150L365 315L120 485M365 315L665 160M365 315L665 490\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"31\"/><g fill=\"#c98a12\"><circle cx=\"120\" cy=\"150\" r=\"58\"/><circle cx=\"120\" cy=\"485\" r=\"58\"/><circle cx=\"665\" cy=\"160\" r=\"58\"/></g><rect x=\"565\" y=\"408\" width=\"158\" height=\"125\" fill=\"#7a1f33\"/><path d=\"M585 435L705 505M705 435L585 505\" stroke=\"#f4ead7\" stroke-width=\"18\"/><circle cx=\"365\" cy=\"315\" r=\"69\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-13",
+        "number": "03",
+        "category": "Technology · semiconductors",
+        "topic": "infrastructure",
+        "title": "Microsoft makes Maia its primary inference system in a multi-gigawatt buildout",
+        "composition": "trade-port",
+        "signature": "plate:trade-port",
+        "seed": 2149986842,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A cargo crane lifts a sealed crate at a port\"><title>Microsoft makes Maia its primary inference system in a multi-gigawatt buildout</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-13-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-13-03)\"><path d=\"M150 540V120H590M185 120L500 355M515 120V315\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"25\"/><path d=\"M445 350H610V475H445Z\" fill=\"#c4452c\"/><path d=\"M480 350V475M575 350V475\" stroke=\"#f4ead7\" stroke-width=\"12\"/><path d=\"M65 535H715L665 588H135Z\" fill=\"#1b4a6b\"/><path d=\"M365 138V237H645V138\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"12\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-13",
+        "number": "04",
+        "category": "Environment · transport economics",
+        "topic": "trade",
+        "title": "South Korea's Arctic shipping trial returns with no import cargo",
+        "composition": "government-stairs",
+        "signature": "plate:government-stairs",
+        "seed": 1569125259,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A petition ascends institutional steps\"><title>South Korea&#39;s Arctic shipping trial returns with no import cargo</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-13-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-13-04)\"><path d=\"M70 535V430H240V335H410V240H580V145H730V535Z\" fill=\"#1b4a6b\"/><path d=\"M106 140H302V290H106Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M138 184H267M138 226H241\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M330 295L410 200L489 238\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-13",
+        "number": "05",
+        "category": "North Carolina · housing",
+        "topic": "finance",
+        "title": "North Carolina moves housing-supply reforms from Raleigh experiments into state law",
+        "composition": "capacity-funnel",
+        "signature": "plate:capacity-funnel",
+        "seed": 3299773829,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A funnel channels many inputs into limited capacity\"><title>North Carolina moves housing-supply reforms from Raleigh experiments into state law</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-13-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-13-05)\"><path d=\"M90 150H710L450 390V525H350V390Z\" fill=\"#1d5f47\"/><g fill=\"#c98a12\"><circle cx=\"220\" cy=\"90\" r=\"29\"/><circle cx=\"400\" cy=\"90\" r=\"29\"/><circle cx=\"580\" cy=\"90\" r=\"29\"/></g><path d=\"M250 228H550L422 345H378Z\" fill=\"#f4ead7\"/><path d=\"M315 560H485\" stroke=\"#c4452c\" stroke-width=\"28\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
