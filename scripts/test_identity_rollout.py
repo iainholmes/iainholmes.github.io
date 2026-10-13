@@ -122,7 +122,7 @@ check('flex-wrap: wrap' in css and '@media (max-width: 600px)' in css, 'Narrow-s
 check('background: transparent' in css and 'background:#fff' not in css, 'no rectangular backing')
 check('grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)' in css and 'align-items:center' in css, 'desktop dateline alignment')
 check('@media (max-width:1023.98px)' in css and 'grid-row:3' in css and '18px 18px' in css and '16px 16px' in css, 'mobile portrait/landscape ornament rules')
-check('?v=20261012-seamless2' in css, 'mobile period cache refreshed')
+check('ih-atlas-emblem.svg?v=20261013-circle1' in css, 'mobile circular emblem cache refreshed')
 changed = subprocess.check_output(['git', 'diff', BASE, '--name-only'], cwd=ROOT, text=True).splitlines()
 check(not any(p.startswith('desk/') for p in changed), 'No desk changes')
 print(f'{checks} identity coverage/preservation checks passed across {len(PAGES + atlas)} pages.')

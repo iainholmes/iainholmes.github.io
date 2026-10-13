@@ -39,6 +39,9 @@ const assetHash = createHash('sha256');
 for (const file of [...moduleFiles.map(f=>'assets/js/'+f),'assets/css/atlas.css','assets/css/field-log.css']) assetHash.update(await readFile(P(file)));
 const assetVersion = assetHash.digest('hex').slice(0,12);
 const iconVersion = createHash('sha256').update(await readFile(P('assets/img/icons/apple-touch-icon.png'))).digest('hex').slice(0,12);
+const identityHash = createHash('sha256');
+for (const file of ['identity.css','ih-atlas-emblem.svg']) identityHash.update(await readFile(P('../assets/identity',file)));
+const identityVersion = identityHash.digest('hex').slice(0,12);
 
 const errors = [], warnings = [];
 const err = (where, msg) => errors.push(`${where}: ${msg}`);
@@ -220,7 +223,7 @@ ${site.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta
 <link rel="preload" href="${base}assets/fonts/velenor-regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="icon" type="image/svg+xml" href="${base}assets/img/rupert-face.svg">
 <link rel="stylesheet" href="${base}assets/css/atlas.css">
-<link rel="stylesheet" href="${base}../assets/identity/identity.css?v=20261012-seamless2">
+<link rel="stylesheet" href="${base}../assets/identity/identity.css?v=${identityVersion}">
 <script type="importmap">${JSON.stringify({imports:Object.fromEntries(moduleFiles.map(f=>[base+'assets/js/'+f,base+'assets/js/'+f+'?v='+assetVersion]))})}</script>
 ${scripts ? `<script type="module" src="${base}assets/js/site.js"></script>\n` : ''}${extra.map(x => `<script type="module" src="${base}${x}"></script>\n`).join('')}</head>
 <body data-base="${base}" data-section="${active}"${cycle ? ` data-cycle="${esc(cycle)}"` : ''}>
