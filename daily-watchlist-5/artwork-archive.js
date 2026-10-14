@@ -852,6 +852,68 @@
         "seed": 3299773829,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A funnel channels many inputs into limited capacity\"><title>North Carolina moves housing-supply reforms from Raleigh experiments into state law</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-13-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-13-05)\"><path d=\"M90 150H710L450 390V525H350V390Z\" fill=\"#1d5f47\"/><g fill=\"#c98a12\"><circle cx=\"220\" cy=\"90\" r=\"29\"/><circle cx=\"400\" cy=\"90\" r=\"29\"/><circle cx=\"580\" cy=\"90\" r=\"29\"/></g><path d=\"M250 228H550L422 345H378Z\" fill=\"#f4ead7\"/><path d=\"M315 560H485\" stroke=\"#c4452c\" stroke-width=\"28\"/></g></svg>"
       }
+    },
+    "2026-10-14": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-14",
+        "number": "01",
+        "category": "Economics · consumer prices",
+        "topic": "finance",
+        "title": "U.S. inflation reaches 3.7% as gasoline drives September’s increase",
+        "composition": "capacity-columns",
+        "signature": "plate:capacity-columns",
+        "seed": 544034306,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Unequal capacity columns carry a shared load\"><title>U.S. inflation reaches 3.7% as gasoline drives September’s increase</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-14-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-14-01)\"><path d=\"M85 140H715V202H85Z\" fill=\"#2c241d\"/><path d=\"M125 202V530H255V202M345 202V385H475V202M565 202V290H695V202\" fill=\"#1b4a6b\"/><path d=\"M345 465H475M565 375H695M565 465H695\" stroke=\"#7c5a3e\" stroke-width=\"27\"/><path d=\"M95 570H725\" stroke=\"#7a1f33\" stroke-width=\"17\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-14",
+        "number": "02",
+        "category": "Technology · semiconductor equipment",
+        "topic": "infrastructure",
+        "title": "ASML reports record quarterly sales and raises its full-year sales floor",
+        "composition": "infrastructure-wafer",
+        "signature": "plate:infrastructure-wafer",
+        "seed": 1408244697,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A wafer connects to separate production stages\"><title>ASML reports record quarterly sales and raises its full-year sales floor</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-14-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-14-02)\"><circle cx=\"265\" cy=\"310\" r=\"190\" fill=\"#1b4a6b\"/><path d=\"M142 175H388M108 267H422M108 359H422M142 452H388M175 143V477M267 121V500M359 143V477\" stroke=\"#f4ead7\" stroke-width=\"13\"/><path d=\"M470 190H690V295H470ZM520 410H735V515H520Z\" fill=\"#2c241d\"/><path d=\"M430 310H555V400\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-14",
+        "number": "03",
+        "category": "Environment · climate evidence",
+        "topic": "climate",
+        "title": "New climate assessment finds seven of 16 indicators at record extremes",
+        "composition": "climate-terraces",
+        "signature": "plate:climate-terraces",
+        "seed": 892504966,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Exposed terraces are monitored at different elevations\"><title>New climate assessment finds seven of 16 indicators at record extremes</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-14-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-14-03)\"><path d=\"M65 530V405H255V285H460V165H735V530Z\" fill=\"#1d5f47\"/><path d=\"M80 405H247M268 285H448M470 165H720\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M350 310V185M310 194H390\" stroke=\"#2c241d\" stroke-width=\"20\"/><circle cx=\"350\" cy=\"159\" r=\"41\" fill=\"#c4452c\"/><path d=\"M105 90Q270 20 440 90\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"32\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-14",
+        "number": "04",
+        "category": "U.S. policy · retirement incomes",
+        "topic": "finance",
+        "title": "Social Security announces a 3.6% benefit adjustment for 2027",
+        "composition": "institution-weave",
+        "signature": "plate:institution-weave",
+        "seed": 1454152993,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Interdependent institutions form a woven system\"><title>Social Security announces a 3.6% benefit adjustment for 2027</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-14-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-14-04)\"><path d=\"M100 170H700M100 320H700M100 470H700\" stroke=\"#1b4a6b\" stroke-width=\"72\"/><path d=\"M225 80V560M575 80V560\" stroke=\"#7a1f33\" stroke-width=\"69\"/><path d=\"M185 320H266M535 170H616M535 470H616\" stroke=\"#f4ead7\" stroke-width=\"73\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-14",
+        "number": "05",
+        "category": "North Carolina · election administration",
+        "topic": "government",
+        "title": "North Carolina will seek citizenship verification from 1,392 flagged registrants",
+        "composition": "observation-lens",
+        "signature": "plate:observation-lens",
+        "seed": 2921277239,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Observation links a broad field to a decision point\"><title>North Carolina will seek citizenship verification from 1,392 flagged registrants</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-14-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-14-05)\"><circle cx=\"294\" cy=\"285\" r=\"178\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"32\"/><path d=\"M180 285Q294 160 408 285Q294 410 180 285Z\" fill=\"#1b4a6b\"/><circle cx=\"294\" cy=\"285\" r=\"46\" fill=\"#7a1f33\"/><path d=\"M420 410L577 552\" stroke=\"#2c241d\" stroke-width=\"45\"/><path d=\"M560 120H710V295H560Z\" fill=\"#c4452c\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

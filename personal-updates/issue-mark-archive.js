@@ -418,5 +418,20 @@
     "phrase": "Exposure & resilience",
     "seed": 1561331922,
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 017: Exposure &amp; resilience\"><title>Field Brief · 017 · Exposure &amp; resilience</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M101 157Q221 101 341 157V452Q221 501 101 452Z\" fill=\"#221a14\"/><ellipse cx=\"221\" cy=\"157\" rx=\"120\" ry=\"42\" fill=\"#c5ad88\"/><path d=\"M341 326H448V471H526\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"26\"/><circle cx=\"448\" cy=\"326\" r=\"44\" fill=\"#c5ad88\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 017 / 2026-10-13</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Exposure &amp; resilience</text></g></svg>"
+  },
+  "fb:2026-10-14": {
+    "key": "fb",
+    "date": "2026-10-14",
+    "no": "018",
+    "identity": "Field Brief",
+    "theme": "identification",
+    "framing": "September’s consumer-price release and the 2027 benefit adjustment change the outlook for household budgets. ASML reports realized equipment sales and stronger forward demand; a new climate assessment updates physical-risk indicators; and North Carolina begins an individual review of flagged voter records. The five developments require distinct kinds of evidence and should not be read as one causal story. Read each result on its own terms The CPI release and Social Security adjustment are genuinely related, but their indexes and reference periods differ. September’s CPI-U reading is not the formula used to set next year’s benefit increase, and neither number describes every household’s purchasing power. The other readings answer different questions: ASML separates realized sales from customer forecasts; the climate assessment describes physical indicators rather than local damage estimates; and North Carolina’s notice starts verification rather than establishing ineligibility. Their next tests are implementation and further evidence, not an invented common trend.",
+    "version": 3,
+    "subject": "risk",
+    "composition": "risk-shelter",
+    "signature": "issue:risk-shelter",
+    "phrase": "Exposure & resilience",
+    "seed": 4198724189,
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 018: Exposure &amp; resilience\"><title>Field Brief · 018 · Exposure &amp; resilience</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M80 301L300 116L520 301Z\" fill=\"#221a14\"/><path d=\"M141 301V470M459 301V470\" stroke=\"#221a14\" stroke-width=\"23\"/><circle cx=\"300\" cy=\"360\" r=\"64\" fill=\"#8a2a36\"/><path d=\"M80 472Q190 420 300 472T520 472\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"20\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 018 / 2026-10-14</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Exposure &amp; resilience</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
