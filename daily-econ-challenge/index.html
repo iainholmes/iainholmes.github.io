@@ -1695,8 +1695,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Log OLS after dropping zero-visit observations, because this preserves the same conditional mean.",
             "Ordinary least squares in levels with homoskedastic standard errors, because the outcome is a count."
           ],
-          "correct": [0],
-          "concepts": ["Poisson QMLE", "Conditional-mean specification", "Robust inference"],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Poisson QMLE",
+            "Conditional-mean specification",
+            "Robust inference"
+          ],
           "assistance": "<p>Separate assumptions needed for consistency of a conditional-mean estimator from assumptions used to calculate its conventional variance. A likelihood objective can serve as a quasi-likelihood even when the full distribution is misspecified.</p><p>In a separate setting, suppose the mean of a count is exp(<i>x</i>β) while its variance is twice that mean. Ask whether the score still has expectation zero at the true β, then decide whether a variance formula imposing equality of mean and variance remains appropriate.</p>",
           "explanation": "<p><b>(A) is correct.</b> Poisson QMLE consistently estimates β when E(<i>Y</i>|<i>X</i>) = exp(<i>X</i>β) is correctly specified under standard regularity conditions, even if the conditional variance is not Poisson. Robust sandwich standard errors accommodate overdispersion. (B) wrongly retains the information-matrix variance formula, which relies on stronger distributional restrictions. (C) discards zeros and changes the estimand because E[log(<i>Y</i>)|<i>X</i>] is not log E(<i>Y</i>|<i>X</i>). (D) neither respects the exponential mean restriction nor supplies valid inference under the stated heteroskedasticity.</p>",
           "refs": "Gourieroux, Monfort & Trognon (1984), Econometrica; Wooldridge, Econometric Analysis of Cross Section and Panel Data, count-data models."
@@ -1712,8 +1718,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Total output and price are unchanged because marginal cost is unchanged.",
             "Total output falls by 20 and price rises by 20."
           ],
-          "correct": [1],
-          "concepts": ["Cournot competition", "Horizontal mergers", "Unilateral market power"],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Cournot competition",
+            "Horizontal mergers",
+            "Unilateral market power"
+          ],
           "assistance": "<p>Compute the symmetric quantity equilibrium before the ownership change, then solve the single-owner monopoly problem. Keep firm output, total output and price in separate lines.</p><p>For a separate market <i>P</i> = 70 − <i>Q</i> with marginal cost 10, each of two symmetric Cournot firms produces (70 − 10)/3 = 20, while a monopolist produces (70 − 10)/2 = 30. Use the actual intercept and cost here and compare totals.</p>",
           "explanation": "<p><b>(B) is correct.</b> With two identical Cournot firms, each produces (100 − 20)/(2 + 1) = 80/3, so total output is 160/3 and price is 140/3. A merged monopolist produces (100 − 20)/2 = 40 and charges 60. Output therefore falls by 160/3 − 40 = 40/3 = 13⅓, and price rises by the same amount. (A) reverses both effects. (C) ignores the change in internalized strategic interaction. (D) overstates the quantity and price changes.</p>",
           "refs": "Tirole, The Theory of Industrial Organization; Farrell & Shapiro (1990), American Economic Review."
@@ -1729,8 +1741,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "The appreciation tends to reduce net exports, holding foreign activity fixed.",
             "Uncovered interest parity requires the domestic currency to depreciate immediately whenever the domestic interest rate rises."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Uncovered interest parity", "Exchange-rate overshooting", "Expenditure switching"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Uncovered interest parity",
+            "Exchange-rate overshooting",
+            "Expenditure switching"
+          ],
           "assistance": "<p>Write the approximate parity condition using the exchange-rate convention in the stem. Then hold the expected future level fixed and solve for the direction of the current jump.</p><div class=\"eq\"><i>i</i><sub>t</sub> − <i>i</i><sub>t</sub>* ≈ [E<sub>t</sub><i>e</i><sub>t+1</sub> − <i>e</i><sub>t</sub>]/<i>e</i><sub>t</sub></div><p>After establishing appreciation or depreciation, trace how the domestic-currency price of foreign goods changes and what that does to exports and imports. Do not infer the sign from the word “higher” without using the stated convention.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> A higher domestic interest rate requires an expected domestic-currency depreciation to equalize expected returns. With the expected future exchange rate fixed, the current exchange rate must fall—an impact appreciation—so it can subsequently rise toward the expected future level. The stronger currency makes domestic goods relatively more expensive and foreign goods cheaper, tending to reduce net exports. (D) confuses the expected movement after the initial jump with the impact response; parity does not require immediate depreciation under these maintained expectations.</p>",
           "refs": "Dornbusch (1976), Journal of Political Economy; Obstfeld & Rogoff, Foundations of International Macroeconomics."
@@ -1746,8 +1766,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "The system can mimic a disposal incentive without requiring regulators to observe each illegal disposal event.",
             "The refund should be set to zero whenever returned containers have no resale value."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Deposit-refund systems", "Illegal disposal", "Observable policy margins"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Deposit-refund systems",
+            "Illegal disposal",
+            "Observable policy margins"
+          ],
           "assistance": "<p>Decompose the instrument into a charge on an observable upstream transaction and a payment for an observable downstream action. Compare the private payoff from returning the item with the payoff from discarding it.</p><p>In a separate example, a $12 deposit refunded upon battery return means illegal disposal sacrifices $12 even if inspectors never witness disposal. The refund's incentive value comes from the forgone payment, not necessarily from the scrap value of the returned object.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> The deposit prices the observable purchase, while the refund makes proper return privately valuable. Illegal disposal then sacrifices the refund, reproducing a disposal incentive without monitoring every disposal action. (D) is false: the optimal refund is tied to avoided external harm and enforcement or handling costs, not merely to the market resale value of the container. Even a valueless returned container may warrant a positive refund when proper collection prevents environmental damage.</p>",
           "refs": "Fullerton & Kinnaman (1995), American Economic Review; Walls (2011), OECD Environment Working Papers."
@@ -1763,8 +1791,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "The change in the outcome slope at 50 is scaled by the known change in the payment slope to obtain a local causal response.",
             "Continuity of the outcome level at 50 is sufficient even if another policy's slope changes at the same score."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Regression kink design", "Slope discontinuities", "Local causal responses"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Regression kink design",
+            "Slope discontinuities",
+            "Local causal responses"
+          ],
           "assistance": "<p>A kink design studies changes in derivatives rather than jumps in levels. Draw the policy schedule and a potential-outcome curve on either side of the threshold, marking their slopes.</p><p>In a separate schedule, the treatment slope changes from 1 to 3 while the outcome slope changes from −0.5 to −1.5. The relevant reduced-form change is a slope difference, divided by the treatment-slope difference. Then ask what else could create a derivative change at the same score.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> Identification requires the counterfactual outcome relationship and other determinants to be smooth in slope at the threshold. Sorting can change the types of farms just around the kink, undermining that comparison. The estimand is the outcome-slope change divided by the policy-slope change, yielding a local causal response for units near the threshold under the design's assumptions. (D) is false: an overlapping policy kink provides an alternative cause of the reduced-form slope change even if outcome levels remain continuous.</p>",
           "refs": "Card, Lee, Pei & Weber (2015), Econometrica; Nielsen, Sørensen & Taber (2010), American Economic Journal: Economic Policy."
@@ -1774,9 +1810,18 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "field": "Statistics & inference",
           "kind": "tf",
           "stem": "Suppose estimators Â = 4 and B̂ = 2 have estimated variances 0.16 and 0.04 and estimated covariance 0.02. For the ratio <i>g</i>(<i>A</i>,<i>B</i>) = <i>A</i>/<i>B</i>, the first-order delta-method standard error is approximately √0.06 ≈ 0.245. True or false?",
-          "options": ["True", "False"],
-          "correct": [0],
-          "concepts": ["Delta method", "Ratio estimators", "Covariance propagation"],
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Delta method",
+            "Ratio estimators",
+            "Covariance propagation"
+          ],
           "assistance": "<p>Differentiate the nonlinear function with respect to both inputs, evaluate the gradient at the estimates, and sandwich the covariance matrix between the gradient vectors.</p><div class=\"eq\">Var[<i>g</i>(θ̂)] ≈ ∇<i>g</i>′ Var(θ̂) ∇<i>g</i></div><p>For a ratio, the two derivatives generally have opposite signs. Keep the covariance cross-term and its factor of two; omitting it treats the numerator and denominator as independent without justification.</p>",
           "explanation": "<p><b>True.</b> At Â = 4 and B̂ = 2, the gradient of <i>A</i>/<i>B</i> is (1/<i>B</i>, −<i>A</i>/<i>B</i>²) = (0.5, −1). The approximate variance is (0.5)²(0.16) + (−1)²(0.04) + 2(0.5)(−1)(0.02) = 0.04 + 0.04 − 0.02 = 0.06. Its square root is about 0.245. The covariance lowers the variance here because the derivatives have opposite signs and the covariance is positive.</p>",
           "refs": "van der Vaart, Asymptotic Statistics; Casella & Berger, Statistical Inference."
@@ -1786,9 +1831,20 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "field": "Resource economics",
           "kind": "single",
           "stem": "A recreation-demand study estimates an individual's seasonal trips to a lake as <i>V</i>(<i>c</i>) = 12 − 0.2<i>c</i>, where <i>c</i> is generalized travel cost in dollars. At the current cost of $20, what is the seasonal consumer surplus from lake access under this linear demand curve?",
-          "options": ["$80", "$160", "$240", "$320"],
-          "correct": [1],
-          "concepts": ["Travel-cost demand", "Recreation value", "Consumer surplus"],
+          "options": [
+            "$80",
+            "$160",
+            "$240",
+            "$320"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Travel-cost demand",
+            "Recreation value",
+            "Consumer surplus"
+          ],
           "assistance": "<p>Find the choke travel cost at which predicted visits fall to zero. Consumer surplus is the area under the inverse trip-demand curve above the current generalized cost.</p><p>For a separate demand <i>V</i>(<i>c</i>) = 10 − 0.25<i>c</i> at cost $16, the choke cost is $40 and trips equal 6. The surplus triangle is one-half times the $24 cost gap times 6 trips. Repeat with this question's slope and intercept.</p>",
           "explanation": "<p><b>(B) is correct.</b> At <i>c</i> = 20, predicted visits are 12 − 0.2(20) = 8. The choke cost solves 0 = 12 − 0.2<i>c</i>, so it is $60. Consumer surplus is the triangle ½($60 − $20)(8) = $160 per season. (A) omits the full area. (C) and (D) do not follow from the demand geometry. The calculation values access under the maintained demand specification; it is not total trip expenditure.</p>",
           "refs": "Hotelling (1947), letter on recreation valuation; Phaneuf & Requate, A Course in Environmental Economics, recreation demand."
@@ -1804,8 +1860,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Investigate anticipation and dynamic effects around each district's rollout date.",
             "Compare all treated person-months with all untreated person-months without time controls because rollout dates were randomized."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Stepped-wedge designs", "Calendar-time confounding", "Cluster-randomized rollout"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Stepped-wedge designs",
+            "Calendar-time confounding",
+            "Cluster-randomized rollout"
+          ],
           "assistance": "<p>Draw a district-by-month grid and mark when each cluster crosses from control to treatment. Notice that treatment exposure and calendar time are mechanically related even under randomized rollout order.</p><p>Then identify the unit randomized, the unit observed and the possible timing of behavioral response. Randomization supports design-based comparisons only when estimation and inference respect the assignment and when the treatment contrast is not conflated with common time shocks.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> In a stepped wedge, treatment prevalence rises over calendar time, so secular shocks must be separated from the treatment contrast. Assignment occurs at the district level, requiring inference that respects cluster assignment and within-district dependence. Anticipation, ramp-up and treatment-effect dynamics can contaminate a single immediate-effect specification. (D) is false: random rollout order does not make pooled treated months comparable with pooled untreated months when those observations occupy systematically different calendar periods.</p>",
           "refs": "Hussey & Hughes (2007), Contemporary Clinical Trials; Hemming et al. (2015), BMJ; Roth et al. (2023), Journal of Econometrics."
@@ -1828,8 +1892,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "The unconditional median wage is necessarily 2.4 units higher among trained workers.",
             "The conditional mean wage differs by 2.4 units between the training groups."
           ],
-          "correct": [0],
-          "concepts": ["Quantile regression", "Conditional quantiles", "Coefficient interpretation"],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Quantile regression",
+            "Conditional quantiles",
+            "Coefficient interpretation"
+          ],
           "assistance": "<p>Identify the functional being modeled before interpreting its slope. Conditional means, conditional quantiles and unconditional distributional features answer different questions even when they use the same regressors.</p><p>In a separate example, a coefficient of 1.5 in a conditional 25th-percentile regression describes a 1.5-unit difference in that conditional percentile at fixed covariates. It does not by itself map individual ranks across treatment states or determine the population's unconditional percentile.</p>",
           "explanation": "<p><b>(A) is correct.</b> In the stated linear conditional-quantile specification, β = 2.4 is the difference in the conditional median associated with training at a fixed value of <i>X</i>. (B) imposes a constant individual treatment effect and causal rank mapping that quantile regression alone does not establish. (C) confuses a conditional quantile with the unconditional median; integrating conditional distributions over different covariate distributions need not preserve the same coefficient. (D) substitutes the conditional mean for the modeled median.</p>",
           "refs": "Koenker & Bassett (1978), Econometrica; Koenker, Quantile Regression."
@@ -1839,9 +1909,20 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "field": "Microeconomics",
           "kind": "single",
           "stem": "Two residents consume the same nonrival flood-warning service <i>G</i>. Their marginal willingness to pay is MB<sub>A</sub> = 10 − <i>G</i> and MB<sub>B</sub> = 6 − 0.5<i>G</i>. The constant marginal cost is 4. What level of <i>G</i> satisfies the Samuelson condition for an interior efficient allocation?",
-          "options": ["4", "6", "8", "12"],
-          "correct": [2],
-          "concepts": ["Public goods", "Samuelson condition", "Vertical summation"],
+          "options": [
+            "4",
+            "6",
+            "8",
+            "12"
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Public goods",
+            "Samuelson condition",
+            "Vertical summation"
+          ],
           "assistance": "<p>For a nonrival public good, one unit is enjoyed simultaneously by both residents. Add marginal willingness to pay vertically at a common quantity, then compare the sum with marginal cost.</p><p>For a separate service with marginal benefits 8 − <i>G</i> and 4 − <i>G</i> and marginal cost 2, the interior condition is 12 − 2<i>G</i> = 2. Check that the resulting quantity lies where the included marginal benefits are nonnegative before applying the same steps here.</p>",
           "explanation": "<p><b>(C) is correct.</b> The Samuelson condition sums marginal benefits across users: (10 − <i>G</i>) + (6 − 0.5<i>G</i>) = 4. Thus 16 − 1.5<i>G</i> = 4, so <i>G</i> = 8. At that quantity both marginal benefits remain nonnegative: 2 and 2. (A) equates neither the summed benefit nor an individual benefit correctly. (B) can arise from mishandling the slopes. (D) ignores marginal cost and would push one resident's marginal benefit below zero.</p>",
           "refs": "Samuelson (1954), Review of Economics and Statistics; Cornes & Sandler, The Theory of Externalities, Public Goods, and Club Goods."
@@ -1857,8 +1938,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "The vacancy-filling rate <i>M</i>/<i>V</i> rises.",
             "The Beveridge curve must shift outward because more unemployment is required for any vacancy rate."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Matching functions", "Job-finding rates", "Beveridge curve"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Matching functions",
+            "Job-finding rates",
+            "Beveridge curve"
+          ],
           "assistance": "<p>Begin with the impact experiment specified in the stem: treat unemployment and vacancies as fixed inputs and change only the efficiency shifter. Then divide the matching function by each stock in turn.</p><p>After deriving those mechanical changes, distinguish them from the later equilibrium response of vacancy creation and unemployment. A more productive matching technology changes the relationship between the two stocks; its graphical direction should agree with needing fewer searchers for a given hiring flow.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> With <i>U</i> and <i>V</i> fixed, <i>M</i> is proportional to μ, so matches rise. Dividing that larger flow by unchanged unemployment raises the worker job-finding rate, and dividing it by unchanged vacancies raises the firm's vacancy-filling rate. (D) reverses the Beveridge-curve implication: greater matching efficiency generally shifts the curve inward, allowing a given vacancy environment to coexist with lower unemployment, though the full equilibrium also depends on vacancy creation, separations and bargaining.</p>",
           "refs": "Pissarides, Equilibrium Unemployment Theory; Mortensen & Pissarides (1994), Review of Economic Studies."
@@ -1874,8 +1963,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Global emissions rise 18 tons; leakage is 160%.",
             "Global emissions fall 50 tons; leakage is 32%."
           ],
-          "correct": [0],
-          "concepts": ["Carbon leakage", "Emissions intensity", "Global policy incidence"],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Carbon leakage",
+            "Emissions intensity",
+            "Global policy incidence"
+          ],
           "assistance": "<p>Translate output changes into emissions changes separately for the regulated and unregulated locations. Keep the sign of each contribution visible before adding them.</p><p>In a separate case, a domestic contraction of 60 units at 0.4 ton per unit reduces 24 tons, while foreign expansion of 10 units at 0.6 adds 6 tons. Net global reduction is 18 and leakage is 6/24. Apply that sequence with the actual quantities and intensities.</p>",
           "explanation": "<p><b>(A) is correct.</b> Domestic emissions fall by 100(0.5) = 50 tons. Foreign emissions rise by 40(0.8) = 32 tons. The net global change is −50 + 32 = −18 tons, a reduction of 18. The leakage rate is 32/50 = 0.64, or 64%. (B) uses output shares rather than intensity-adjusted emissions. (C) reverses the net sign and misstates the ratio. (D) ignores most of the foreign response and divides by the wrong base.</p>",
           "refs": "Fowlie (2009), American Economic Review; Böhringer, Balistreri & Rutherford (2012), Energy Economics."
@@ -1891,8 +1986,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Inference should respect village-level saturation assignment and within-village dependence.",
             "The design identifies spillovers even if treatment in one village changes outcomes in every other village without restriction."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Randomized saturation", "Interference", "Direct and spillover effects"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Randomized saturation",
+            "Interference",
+            "Direct and spillover effects"
+          ],
           "assistance": "<p>Index a household's potential outcome by both its own offer and the treatment environment around it. Then identify which randomization changes each component while holding the other fixed.</p><p>For a separate two-stage design, clusters first receive low or high coverage and individuals are randomized within cluster. Untreated people across coverage arms reveal an environmental contrast; treated-versus-untreated people within one coverage arm reveal an own-offer contrast. State clearly where interference is allowed and where it is ruled out.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> Among households not offered treatment, random saturation assignment creates comparisons of exposure to treated neighbors. Within a saturation arm, household-level random offers identify a direct offer contrast for that environment. Because saturation is assigned by village and outcomes within villages share treatment exposure and shocks, inference must reflect clustering and the two-stage design. (D) is false: standard identification relies on partial interference or another structured exposure model; unrestricted cross-village interference destroys the clean mapping from assigned saturation to a village's treatment environment.</p>",
           "refs": "Hudgens & Halloran (2008), Journal of the American Statistical Association; Baird et al. (2018), Journal of Development Economics."
@@ -1902,9 +2005,18 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "field": "Statistics & inference",
           "kind": "tf",
           "stem": "A scalar parameter has prior θ ~ N(0, 1). An independent normal estimate <i>Y</i> = 1 is observed with sampling variance 1. The posterior is N(0.5, 0.5), so under the stated model a central 95% credible interval is approximately [−0.89, 1.89], and the posterior probability that θ lies in this realized interval is 0.95. True or false?",
-          "options": ["True", "False"],
-          "correct": [0],
-          "concepts": ["Bayesian updating", "Normal conjugacy", "Credible intervals"],
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Bayesian updating",
+            "Normal conjugacy",
+            "Credible intervals"
+          ],
           "assistance": "<p>Add prior and data precision to obtain posterior precision, and form the posterior mean as a precision-weighted average. Then use the posterior standard deviation for the interval.</p><div class=\"eq\">Precision<sub>post</sub> = Precision<sub>prior</sub> + Precision<sub>data</sub></div><p>Keep the probability statement conditional on the observed data and maintained prior-likelihood model. This differs from a frequentist coverage statement about the behavior of intervals over repeated samples.</p>",
           "explanation": "<p><b>True.</b> Both prior and sampling precisions equal 1, so posterior precision is 2, posterior variance is 1/2 and posterior mean is (0·1 + 1·1)/2 = 0.5. The posterior standard deviation is √0.5 ≈ 0.707, giving 0.5 ± 1.96(0.707) ≈ [−0.89, 1.89]. Conditional on the observed data and the stated model, θ is random under the posterior, so the realized central credible interval contains 95% posterior probability. That is not the usual frequentist interpretation of a realized confidence interval.</p>",
           "refs": "Gelman et al., Bayesian Data Analysis; Casella & Berger, Statistical Inference, conjugate normal models."
@@ -1914,9 +2026,20 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "field": "Resource economics",
           "kind": "single",
           "stem": "Two farmers simultaneously choose groundwater withdrawals <i>q</i><sub>i</sub>. Farmer <i>i</i>'s payoff is 12<i>q</i><sub>i</sub> − 0.5<i>q</i><sub>i</sub><sup>2</sup> − (<i>q</i><sub>1</sub> + <i>q</i><sub>2</sub>)<i>q</i><sub>i</sub>. What is each farmer's withdrawal in the symmetric Nash equilibrium?",
-          "options": ["2", "2.4", "3", "4"],
-          "correct": [2],
-          "concepts": ["Common-pool resources", "Groundwater extraction", "Nash equilibrium"],
+          "options": [
+            "2",
+            "2.4",
+            "3",
+            "4"
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Common-pool resources",
+            "Groundwater extraction",
+            "Nash equilibrium"
+          ],
           "assistance": "<p>When differentiating a farmer's pumping cost, remember that total withdrawal includes that farmer's own choice. Expand the cost term or use the product rule before imposing symmetry.</p><p>For a separate payoff 10<i>q</i><sub>i</sub> − 0.5<i>q</i><sub>i</sub>² − (<i>q</i><sub>i</sub> + <i>q</i><sub>j</sub>)<i>q</i><sub>i</sub>, the best-response condition includes both total withdrawal and an additional own-withdrawal term. Derive the analogous condition here, then set the two choices equal.</p>",
           "explanation": "<p><b>(C) is correct.</b> Expanding the payoff gives 12<i>q</i><sub>i</sub> − 1.5<i>q</i><sub>i</sub>² − <i>q</i><sub>i</sub><i>q</i><sub>j</sub>. The first-order condition is 12 − 3<i>q</i><sub>i</sub> − <i>q</i><sub>j</sub> = 0. Under symmetry, 12 − 4<i>q</i> = 0, so each farmer withdraws 3. (A) and (B) do not satisfy the private best response. (D) results from omitting part of the effect of own withdrawal on pumping cost. A planner would choose less because each farmer does not internalize the cost imposed on the other.</p>",
           "refs": "Provencher & Burt (1993), American Journal of Agricultural Economics; Ostrom, Governing the Commons."
@@ -1932,8 +2055,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Report corrected estimates or sensitivity bounds alongside the naïve survey-based effect.",
             "Treat high overall survey-record agreement as proof that treatment-effect bias is negligible."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Validation subsamples", "Differential misclassification", "Measurement-error sensitivity"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Validation subsamples",
+            "Differential misclassification",
+            "Measurement-error sensitivity"
+          ],
           "assistance": "<p>Separate the measurement process from the outcome-generating process. Construct a treatment-specific table comparing the survey classification with the validated status, and note how the validation cases were sampled.</p><p>Overall agreement can be dominated by the more common outcome category and can hide offsetting false positives and false negatives. Consider how even small differences in reporting error across randomized arms propagate into a difference in measured employment rates.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> Treatment may change reporting even when true employment is unaffected, so arm-specific sensitivity and specificity directly assess differential misclassification. If validation probabilities vary or the subsample is otherwise designed, appropriate weights or design-based transport are needed. Corrected estimates and sensitivity bounds show how measurement uncertainty affects the causal contrast. (D) is false: high aggregate agreement can coexist with treatment-differential errors, class imbalance or error rates large enough to bias a modest treatment effect.</p>",
           "refs": "Carroll et al., Measurement Error in Nonlinear Models; Battistin et al. (2003), Journal of Business & Economic Statistics."
@@ -1956,8 +2087,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Use weak-instrument-robust inference, such as an Anderson–Rubin confidence set, and disclose that the data may be weakly informative about the effect.",
             "Replace 2SLS with OLS of the outcome on participation, which becomes unbiased whenever the instrument is weak."
           ],
-          "correct": [2],
-          "concepts": ["Weak instruments", "Anderson–Rubin inference", "First-stage strength"],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Weak instruments",
+            "Anderson–Rubin inference",
+            "First-stage strength"
+          ],
           "assistance": "<p>Instrument validity and instrument strength are separate properties. Random assignment can support exogeneity, but it does not determine how much the instrument moves treatment.</p><p>When the first-stage signal is small relative to its sampling noise, the finite-sample distribution of a ratio-based IV estimator can be far from normal. Compare procedures by asking whether their size control remains valid when the first-stage coefficient is near zero, rather than by asking only whether the instrument is randomized.</p>",
           "explanation": "<p><b>(C) is correct.</b> The first-stage estimate is only 1.25 standard errors from zero, so conventional 2SLS normal approximations can be unreliable and the identified set may be wide or unbounded. An Anderson–Rubin test inverts the reduced-form null and remains valid under weak identification when the instrument itself is valid. (A) confuses exogeneity with relevance. (B) ignores uncertainty in the reduced form and does not deliver effect inference. (D) does not cure endogenous participation; weak IV does not make OLS unbiased.</p>",
           "refs": "Staiger & Stock (1997), Econometrica; Andrews, Stock & Sun (2019), Annual Review of Economics."
@@ -1973,8 +2110,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "2.68 units",
             "5 units"
           ],
-          "correct": [1],
-          "concepts": ["Hicks decomposition", "Hicksian demand", "Compensated price changes"],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Hicks decomposition",
+            "Hicksian demand",
+            "Compensated price changes"
+          ],
           "assistance": "<p>For equal-share Cobb–Douglas preferences, Marshallian demand spends half of income on each good. The compensated comparison instead holds utility fixed and minimizes expenditure at the new prices.</p><div class=\"eq\"><i>h</i><sub>x</sub>(<i>p</i>,<i>u</i>) = <i>u</i>√(<i>p</i><sub>y</sub>/<i>p</i><sub>x</sub>)</div><p>In a separate example, first compute the old bundle and its utility, then evaluate Hicksian demand at that utility under the new relative price. The difference between Hicksian quantities is the substitution effect; the remaining Marshallian change is the income effect.</p>",
           "explanation": "<p><b>(B) is correct.</b> Initially the consumer spends 60 on each good, so <i>x</i><sub>0</sub> = 15, <i>y</i><sub>0</sub> = 60 and <i>u</i><sub>0</sub> = √900 = 30. At the new prices, compensated demand is <i>h</i><sub>x</sub> = 30/√3 ≈ 17.32. The substitution effect is therefore 17.32 − 15 = 2.32 units. New Marshallian demand is 120/(2·3) = 20, so the total change is 5 and the income effect is about 2.68. (A) ignores substitution, (C) is the income effect, and (D) is the total effect.</p>",
           "refs": "Mas-Colell, Whinston & Green, Microeconomic Theory; Varian, Microeconomic Analysis."
@@ -1990,8 +2133,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "The economy accumulates foreign assets in period 1 and runs them down in period 2.",
             "Consumption must equal current output in each period because the world interest rate is zero."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Intertemporal consumption smoothing", "Current account", "Temporary output shocks"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Intertemporal consumption smoothing",
+            "Current account",
+            "Temporary output shocks"
+          ],
           "assistance": "<p>Combine the two period budget constraints into one present-value resource constraint. With equal log weights and a zero interest rate, the Euler condition equates consumption across dates.</p><p>Then use the national-income identity for this stripped-down economy: the current account equals output minus consumption. Keep flows and stocks distinct—the current-account flow changes the economy's net foreign asset position.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> Lifetime resources are 120 + 80 = 200, and equal log weights with <i>r</i> = 0 imply <i>c</i><sub>1</sub> = <i>c</i><sub>2</sub> = 100. Thus CA<sub>1</sub> = <i>y</i><sub>1</sub> − <i>c</i><sub>1</sub> = 20: the economy lends the temporary windfall abroad. In period 2 it consumes 20 more than output by drawing down those assets. (D) incorrectly imposes financial autarky; a zero interest rate does not prevent intertemporal trade.</p>",
           "refs": "Obstfeld & Rogoff, Foundations of International Macroeconomics; Sachs (1981), Brookings Papers on Economic Activity."
@@ -2007,8 +2158,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "The payment rule can affect strategic bidding, so bids need not equal true opportunity costs.",
             "Pre-specified random selection among parcels tied near the funding cutoff can create a credible comparison for estimating contract impacts."
           ],
-          "correct": [0, 2, 3],
-          "concepts": ["Conservation auctions", "Procurement mechanism design", "Impact evaluation"],
+          "correct": [
+            0,
+            2,
+            3
+          ],
+          "concepts": [
+            "Conservation auctions",
+            "Procurement mechanism design",
+            "Impact evaluation"
+          ],
           "assistance": "<p>Separate allocation, payment and evaluation. Allocation determines which ecological services are purchased; the payment rule shapes how privately informed sellers translate costs into bids; evaluation requires a counterfactual for what selected land would have done without a contract.</p><p>For heterogeneous projects, a low price is not synonymous with high value. A cutoff or tie-breaking rule can also be designed to preserve a comparison group, but only if it is documented before outcomes are known.</p>",
           "explanation": "<p><b>(A), (C), and (D) are correct.</b> When benefits vary, ranking verified benefit relative to bid can buy more habitat value for a fixed budget than ranking cost alone. Auction format and payment rules influence bid shading and information rents, so observed bids are not automatically truthful costs. Genuine random tie-breaking near a pre-specified cutoff can support causal impact estimation for marginal parcels. (B) ignores ecological heterogeneity and additionality: the cheapest parcel may protect little habitat or land that would have been conserved anyway.</p>",
           "refs": "Latacz-Lohmann & Van der Hamsvoort (1997), American Journal of Agricultural Economics; Ferraro (2008), Land Economics."
@@ -2024,8 +2183,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "[−0.20, 0.10]",
             "[0.48, 0.68]"
           ],
-          "correct": [0],
-          "concepts": ["Manski bounds", "Attrition", "Partial identification"],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Manski bounds",
+            "Attrition",
+            "Partial identification"
+          ],
           "assistance": "<p>For each arm, construct the smallest possible mean by assigning every missing binary outcome zero and the largest possible mean by assigning every missing outcome one. Use the original randomized arm size as the denominator.</p><p>To bound a difference, pair the treated arm's lower endpoint with the control arm's upper endpoint, then pair the treated upper endpoint with the control lower endpoint. Do not substitute observed-case rates unless missingness assumptions justify doing so.</p>",
           "explanation": "<p><b>(A) is correct.</b> The treated mean lies between 48/100 = 0.48 and (48 + 20)/100 = 0.68. The control mean lies between 45/100 = 0.45 and (45 + 10)/100 = 0.55. Therefore the treatment effect lies between 0.48 − 0.55 = −0.07 and 0.68 − 0.45 = 0.23. (B) treats observed-case differences as tightly identified, (C) does not use the feasible arm-specific endpoints, and (D) reports the treated mean's bounds rather than bounds on the contrast.</p>",
           "refs": "Manski, Partial Identification of Probability Distributions; Horowitz & Manski (2000), Journal of Econometrics."
@@ -2035,9 +2200,18 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "field": "Statistics & inference",
           "kind": "tf",
           "stem": "<p>A split-conformal prediction interval is calibrated at level 90% using exchangeable observations and a held-out calibration sample. Without additional assumptions, it can provide finite-sample marginal coverage for a new exchangeable observation, but it does not guarantee 90% conditional coverage at every covariate value. True or false?</p>",
-          "options": ["True", "False"],
-          "correct": [0],
-          "concepts": ["Conformal prediction", "Marginal coverage", "Exchangeability"],
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Conformal prediction",
+            "Marginal coverage",
+            "Exchangeability"
+          ],
           "assistance": "<p>State precisely what probability is averaged over. Exchangeability makes the new residual rank comparable with calibration residual ranks, which supports a statement averaged over the joint draw of covariates and outcomes.</p><p>A stronger guarantee would condition on a particular covariate value or subgroup. Ask whether finite-sample calibration alone supplies enough local information to deliver that stronger statement everywhere.</p>",
           "explanation": "<p><b>True.</b> Under exchangeability and the standard split-conformal construction, the rank argument yields finite-sample marginal coverage at or above the nominal level, up to the usual discreteness adjustment. That probability averages over the new observation's covariates and outcome. Exact distribution-free conditional coverage for every covariate value is generally impossible without further structure, and some regions can be undercovered even when overall coverage is correct.</p>",
           "refs": "Vovk, Gammerman & Shafer, Algorithmic Learning in a Random World; Lei et al. (2018), Journal of the American Statistical Association."
@@ -2053,8 +2227,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Consuming a temporary increase in the resource price automatically satisfies the rule because national income has risen.",
             "Unpriced environmental damage, poor investment returns, or institutional leakage can break the link between formal compliance and genuine sustainability."
           ],
-          "correct": [0, 1, 3],
-          "concepts": ["Hartwick rule", "Scarcity rent", "Weak sustainability"],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Hartwick rule",
+            "Scarcity rent",
+            "Weak sustainability"
+          ],
           "assistance": "<p>Distinguish resource rent from sales revenue: extraction and other costs must be netted out to isolate the return to the natural asset. The accounting question is whether depletion of natural capital is offset by accumulation of another productive asset.</p><p>Then separate the theorem's idealized assumptions from implementation. A rule derived for an efficient aggregate production economy need not account for ecological thresholds, governance losses or investments that fail to create durable productive capacity.</p>",
           "explanation": "<p><b>(A), (B), and (D) are correct.</b> Hartwick's rule reinvests the scarcity rent—the return attributable to depletion of the resource stock—rather than mechanically saving every dollar of gross sales. In the canonical efficient model, this investment offsets declining natural capital and can sustain constant consumption. (C) is false: consuming a price windfall rather than transforming the associated rent into productive assets is not the Hartwick prescription. (D) correctly marks the rule's limits as a weak-sustainability result under strong assumptions.</p>",
           "refs": "Hartwick (1977), American Economic Review; Solow (1986), Scandinavian Journal of Economics."
@@ -2070,8 +2252,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Conduct sensitivity analysis for unmeasured effect modifiers or violations of conditional sample exchangeability.",
             "Report the unweighted trial effect as the national effect because randomization guarantees external as well as internal validity."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Transportability", "Generalizability weighting", "Effect modification"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Transportability",
+            "Generalizability weighting",
+            "Effect modification"
+          ],
           "assistance": "<p>Randomization identifies causal effects for the experimental sample. Transporting them requires a second bridge between sample membership and the target population.</p><p>List plausible effect modifiers, determine whether they are measured in both data sources, and check support before weighting. Weighting can align observed distributions, while sensitivity analysis addresses the possibility that selection still depends on an unmeasured modifier of the treatment effect.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> Participation or calibration weights can reweight site-trial effects toward the target distribution when treatment-effect modifiers are observed and conditional sample exchangeability is plausible. Positivity is essential: no weighting method can learn effects for target profiles absent from the trial without extrapolation. Sensitivity analysis makes dependence on unmeasured modifiers explicit. (D) confuses internal validity with external validity; randomization balances treatment within the trial but does not make trial participants representative of the nation.</p>",
           "refs": "Stuart et al. (2011), Journal of the Royal Statistical Society A; Dahabreh et al. (2019), Biometrics."
@@ -2094,8 +2284,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Use shock-level or exposure-robust inference when many regions share the same industry shocks.",
             "Construct leave-one-region-out national shocks when the region's own outcomes mechanically enter the national growth measures."
           ],
-          "correct": [0, 2, 3],
-          "concepts": ["Shift-share instruments", "Shock-level identification", "Exposure-robust inference"],
+          "correct": [
+            0,
+            2,
+            3
+          ],
+          "concepts": [
+            "Shift-share instruments",
+            "Shock-level identification",
+            "Exposure-robust inference"
+          ],
           "assistance": "<p>Rewrite the instrument as exposure weights multiplied by common shocks. Then ask separately where identifying variation comes from, whether a region contributes mechanically to its own shock, and how many independent shocks—not merely regions—drive uncertainty.</p><p>In a different application, a county can appear to have many observations while all of its predicted change is generated by two national sector shocks. Standard errors and exclusion arguments must reflect that common source of variation.</p>",
           "explanation": "<p><b>(A), (C), and (D) are correct.</b> A shock-based justification requires credible quasi-randomness of the <i>g</i><sub>k</sub> conditional on controls, with predetermined shares defining exposure. Because the same shocks load into many regions, shock-level or exposure-robust inference addresses dependence that region-level sample size can conceal. Leave-one-out construction reduces mechanical correlation when region <i>i</i> contributes to its own national industry shock. (B) is false: many regions do not create many independent sources of identifying variation when a few endogenous shocks dominate.</p>",
           "refs": "Borusyak, Hull & Jaravel (2022), Review of Economic Studies; Adão, Kolesár & Morales (2019), Quarterly Journal of Economics."
@@ -2111,8 +2309,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Only the income effect can be identified; revealed preference places no restriction on these choices.",
             "The choices are rationalizable whenever both goods are normal."
           ],
-          "correct": [1],
-          "concepts": ["Revealed preference", "WARP", "Utility rationalization"],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Revealed preference",
+            "WARP",
+            "Utility rationalization"
+          ],
           "assistance": "<p>For each observation, price the other bundle using that observation's prices and compare it with expenditure on the chosen bundle. Affordability makes the chosen bundle directly revealed preferred to the alternative.</p><p>WARP rules out a two-way strict choice reversal: if one bundle is chosen while another is affordable, the second bundle cannot later be chosen while the first is strictly cheaper. The labels normal and inferior are not needed for this test.</p>",
           "explanation": "<p><b>(B) is correct.</b> At the first prices, <i>y</i> costs 2(3) + 1(1) = 7, so choosing <i>x</i> at expenditure 8 directly reveals <i>x</i> preferred to <i>y</i>. At the second prices, <i>x</i> costs 4(2) + 1(4) = 12, so choosing <i>y</i> at expenditure 13 directly reveals <i>y</i> preferred to <i>x</i>. This mutual strict revealed preference violates WARP. (A) ignores cross-budget affordability, (C) discards the revealed-preference restrictions, and (D) invokes a demand classification that cannot rationalize the cycle.</p>",
           "refs": "Samuelson (1938), Economica; Varian (1982), Econometrica."
@@ -2128,8 +2332,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "The general-equilibrium output effect still depends on monetary policy, resource slack, and how future fiscal adjustment is expected to occur.",
             "A large impact response proves that the transfer permanently raises productive capacity."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Heterogeneous-agent macroeconomics", "Marginal propensity to consume", "Fiscal multipliers"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Heterogeneous-agent macroeconomics",
+            "Marginal propensity to consume",
+            "Fiscal multipliers"
+          ],
           "assistance": "<p>Separate the partial-equilibrium spending response from the general-equilibrium multiplier and from long-run productive capacity. Household balance sheets and borrowing limits shape how much of a transfer is spent immediately.</p><p>Then trace the feedback through prices, interest rates, idle resources and expected future taxes. A representative household that freely smooths consumption suppresses precisely the heterogeneity highlighted in the stem.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> High-MPC recipients spend more of the transfer on impact, so targeting can amplify near-term demand. Borrowing constraints and heterogeneous MPCs break the frictionless consumption-smoothing logic behind a strong Ricardian-equivalence benchmark. The aggregate multiplier nevertheless depends on monetary accommodation, slack, price adjustment and the anticipated financing path. (D) is false: an impact demand response is not evidence of a permanent increase in technology, labor supply or productive capital.</p>",
           "refs": "Kaplan & Violante (2014), Econometrica; Auclert, Rognlie & Straub, The Intertemporal Keynesian Cross."
@@ -2145,8 +2357,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "The aggregate property-value increase necessarily equals total willingness to pay, regardless of migration, expectations, taxes, or housing supply.",
             "Sorting is irrelevant because households cannot change neighborhoods after an environmental improvement."
           ],
-          "correct": [0],
-          "concepts": ["Hedonic capitalization", "Environmental amenities", "Sorting and housing supply"],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Hedonic capitalization",
+            "Environmental amenities",
+            "Sorting and housing supply"
+          ],
           "assistance": "<p>Distinguish the reduced-form price effect from a welfare measure. Housing is a durable asset, so its price can capitalize anticipated future amenity flows as well as taxes, neighborhood change and supply constraints.</p><p>For causal identification, ask what would have happened to nearby prices without cleanup. For welfare, ask who moves, who owns the appreciating assets, and whether the housing stock can adjust.</p>",
           "explanation": "<p><b>(A) is correct.</b> A durable home's price can capitalize the present value of expected amenity changes. A comparison design with plausible untreated locations and supportive pre-trends improves the counterfactual, but endogenous sorting and supply responses complicate the mapping from prices to welfare. (B) confuses information aggregation with causal identification and ignores local trends or concurrent shocks. (C) overlooks expectations, mobility, ownership, taxes and supply elasticity. (D) is false because households can move and neighborhood composition can change after the amenity improves.</p>",
           "refs": "Rosen (1974), Journal of Political Economy; Kuminoff, Smith & Timmins (2013), Journal of Economic Literature."
@@ -2162,8 +2380,16 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "The causal interpretation still requires assumptions such as conditional exchangeability and overlap.",
             "High out-of-sample predictive accuracy of the nuisance models is sufficient to establish causal identification."
           ],
-          "correct": [0, 1, 2],
-          "concepts": ["Double machine learning", "Neyman orthogonality", "Cross-fitting"],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "concepts": [
+            "Double machine learning",
+            "Neyman orthogonality",
+            "Cross-fitting"
+          ],
           "assistance": "<p>Separate the statistical construction from the causal assumptions. Orthogonalization and sample splitting control how nuisance-model error enters the target estimator; they do not manufacture an unconfounded treatment assignment.</p><p>Inspect which observations train each nuisance model, then examine the score's derivative with respect to nuisance perturbations. Finally, state the identifying assumptions that connect the observed-data functional to the causal estimand.</p>",
           "explanation": "<p><b>(A), (B), and (C) are correct.</b> Cross-fitting prevents each observation from being evaluated with nuisance predictions trained on itself, helping control regularization and overfitting bias. Neyman orthogonality makes first-order perturbations in nuisance estimates have little effect on the target moment near the truth. Neither device replaces conditional exchangeability, overlap or a defensible treatment/outcome definition. (D) is false: prediction quality concerns observed associations, whereas causal identification concerns counterfactual comparability.</p>",
           "refs": "Chernozhukov et al. (2018), Econometrics Journal; Newey (1994), Econometrica."
@@ -2173,9 +2399,18 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "field": "Statistics & inference",
           "kind": "tf",
           "stem": "<p>In a cluster-randomized experiment, an exact randomization test of a sharp null should reassign treatment according to the original cluster-level randomization. Permuting labels independently across individuals generally changes the assignment mechanism and can understate uncertainty. True or false?</p>",
-          "options": ["True", "False"],
-          "correct": [0],
-          "concepts": ["Randomization tests", "Cluster assignment", "Design-based inference"],
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Randomization tests",
+            "Cluster assignment",
+            "Design-based inference"
+          ],
           "assistance": "<p>An exact randomization test compares the observed statistic with assignments that could have occurred under the actual experimental design. Identify the unit at which the treatment lottery operated before constructing the reference distribution.</p><p>When everyone in a cluster shares an assignment, individual permutations create hypothetical allocations that the design never allowed and treat correlated units as if their labels varied independently.</p>",
           "explanation": "<p><b>True.</b> Under the sharp null, outcomes are fixed and randomness comes from the known assignment mechanism. If clusters—not individuals—were randomized, the valid reference distribution reassigns whole clusters subject to the original design. Individual-level permutations introduce impossible within-cluster treatment patterns and exaggerate the effective number of independent assignments, often producing overly narrow inference.</p>",
           "refs": "Fisher, The Design of Experiments; Athey & Imbens (2017), American Economic Review."
@@ -2191,8 +2426,14 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Preserve: the expected discounted loss is about $18.6 million, slightly exceeding the development benefit.",
             "The two choices are exactly tied because 25% of $100 million is $25 million before discounting."
           ],
-          "correct": [2],
-          "concepts": ["Irreversibility", "Expected present value", "Safe minimum standard"],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Irreversibility",
+            "Expected present value",
+            "Safe minimum standard"
+          ],
           "assistance": "<p>Discount the future loss to the present and then weight it by its probability. Compare that expected present cost with the immediate development benefit using the same units and date.</p><div class=\"eq\">Expected PV loss = probability × loss / (1 + <i>r</i>)<sup><i>T</i></sup></div><p>Risk neutrality permits this expected-value comparison. Irreversibility may motivate additional caution in richer models, but do not add an unpriced premium to the numerical calculation.</p>",
           "explanation": "<p><b>(C) is correct.</b> The present value of a $100 million loss in ten years is 100/(1.03)<sup>10</sup> ≈ $74.41 million. Multiplying by 0.25 gives an expected present loss of about $18.60 million. Net expected value of conversion is therefore 18 − 18.60 ≈ −$0.60 million relative to preservation, so preservation is preferred. (A) miscalculates the discounting, (B) ignores expected damage, and (D) stops before discounting and then mistakes unequal values for a tie.</p>",
           "refs": "Arrow & Fisher (1974), Quarterly Journal of Economics; Bishop (1978), American Journal of Agricultural Economics."
@@ -2208,11 +2449,215 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
             "Apply an ordinary i.i.d. two-sample <i>t</i>-test without adjustment because every assignment still contains a random draw.",
             "Pre-specify the estimand, stopping rule, and reporting plan, and disclose the adaptation algorithm."
           ],
-          "correct": [0, 1, 3],
-          "concepts": ["Adaptive experiments", "Logged assignment probabilities", "Sequential inference"],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Adaptive experiments",
+            "Logged assignment probabilities",
+            "Sequential inference"
+          ],
           "assistance": "<p>Adaptive randomization remains randomized, but assignment probabilities depend on the evolving history. Record the information needed to reconstruct that history and distinguish a policy-value estimand from a fixed-arm treatment contrast.</p><p>Then choose an estimator whose weighting and variance account for unequal, time-varying propensities. Optional stopping and selective reporting are separate design choices that should be specified rather than hidden.</p>",
           "explanation": "<p><b>(A), (B), and (D) are correct.</b> Logged propensities and timing make the adaptive assignment mechanism auditable and enable appropriate weighting. Inverse-probability and doubly robust approaches can target fixed-arm or policy estimands when positivity and nuisance-model conditions hold, with sequentially valid or adaptation-aware uncertainty as needed. Pre-specifying the estimand, stopping rule and reporting plan limits researcher discretion. (C) is false: dependence on past outcomes and unequal propensities generally invalidate a naïve i.i.d. test's reference distribution.</p>",
           "refs": "Hadad et al. (2021), Proceedings of the National Academy of Sciences; Kasy & Sautmann (2021), Review of Economic Studies."
+        }
+      ]
+    },
+    {
+      "no": 11,
+      "date": "2026-10-14",
+      "minutes": 26,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>Researchers estimate separate local projections of the <i>cumulative</i> outcome change <i>y</i><sub>i,t+h</sub> − <i>y</i><sub>i,t−1</sub> on an as-good-as-random one-time shock at <i>t</i>, with appropriate controls. The estimated shock coefficients are −2 at horizon 0, −5 at horizon 1, and −3 at horizon 2. Which interpretations follow from this specification?</p>",
+          "options": [
+            "The estimated cumulative response through horizon 1 is −5 outcome units relative to the pre-shock period.",
+            "The incremental response from horizon 1 to horizon 2 is −3 units.",
+            "The estimated cumulative response through horizon 2 is −3 units, not the sum of all three coefficients.",
+            "The three horizon coefficients should be added to recover the total response because each regression estimates a distinct one-period increment."
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "concepts": [
+            "Local projections",
+            "Cumulative impulse responses",
+            "Horizon-specific estimands"
+          ],
+          "assistance": "<p>Begin by reading the dependent variable carefully: a level, a one-period difference, and a difference from the pre-shock period imply different interpretations. The horizon index changes the endpoint, not necessarily the base period.</p><p>For a separate illustration, cumulative responses of −1 at the first endpoint and −4 at the second imply a further movement between those endpoints. Decide whether adding both reported coefficients would count earlier movements twice.</p>",
+          "explanation": "<p><b>(A) and (C) are correct.</b> Because each dependent variable subtracts the same pre-shock level, the coefficient at horizon 1 already measures the cumulative response of −5. The coefficient at horizon 2 is −3 relative to that same base. The additional movement between those two endpoints is −3 − (−5) = +2, so (B) is false. Summing −2, −5 and −3 would double-count earlier movements, making (D) false.</p><p>The causal reading depends on the shock's identification and the maintained controls. Overlapping outcomes and correlated horizon estimates require appropriate inference; the separate horizon regressions do not create independent experiments.</p>",
+          "refs": "Jordà (2005), American Economic Review; Montiel Olea & Plagborg-Møller (2021), Econometrica."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>An upstream monopolist makes one input at constant marginal cost $10 and sells it to a downstream monopolist at wholesale price <i>w</i>. One input produces one unit of final output; downstream conversion cost is zero. Final inverse demand is <i>P</i> = 70 − <i>Q</i>. Both firms choose their prices or quantities sequentially to maximize their own profits. What happens if the firms integrate and jointly maximize profit, with no other efficiencies or costs?</p>",
+          "options": [
+            "Final output rises from 15 to 30, while the retail price falls from $55 to $40.",
+            "Final output falls from 30 to 15 because integration creates an additional monopoly markup.",
+            "Output remains at 15 because integration changes only how the existing profit is divided.",
+            "The integrated firm produces 60 units and charges $10, since a single markup disappears."
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Double marginalization",
+            "Vertical integration",
+            "Derived input demand"
+          ],
+          "assistance": "<p>Solve backward. At a given wholesale price, the downstream firm equates marginal revenue from final sales to its marginal input cost. The upstream firm then chooses the wholesale price anticipating that derived demand.</p><p>For comparison, when inverse demand is 50 − quantity and production cost is 6, an integrated monopolist equates 50 − 2 times quantity with 6. Integration removes a markup layer; it does not generally remove all market power.</p>",
+          "explanation": "<p><b>(A) is correct.</b> Downstream profit is (70 − <i>Q</i> − <i>w</i>)<i>Q</i>, giving <i>Q</i> = (70 − <i>w</i>)/2. The upstream monopolist maximizes (<i>w</i> − 10)(70 − <i>w</i>)/2; its first-order condition gives <i>w</i> = 40. Hence <i>Q</i> = 15 and retail <i>P</i> = 55. An integrated monopolist instead maximizes (70 − <i>Q</i> − 10)<i>Q</i>, choosing <i>Q</i> = 30 and <i>P</i> = 40.</p><p>(B) reverses the double-markup effect, (C) overlooks the changed marginal incentive, and (D) incorrectly treats integration as perfect competition. The result depends on linear demand, the sequential wholesale-price game, and the absence of contractual fixes such as two-part input tariffs.</p>",
+          "refs": "Spengler (1950), Journal of Political Economy; Tirole (1988), The Theory of Industrial Organization."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "<p>Consider a two-period overlapping-generations economy with constant wages, no labor-supply response, population growing 3% per generation, and a competitive real return on saving of 1% per generation. A balanced pay-as-you-go pension charges every young worker a fixed contribution and distributes all receipts equally to the current old. Which statements hold in this stylized setting?</p>",
+          "options": [
+            "The implicit gross return to a worker's contribution is 1.03 if the same per-worker contribution continues next generation.",
+            "The pension's implicit return exceeds the stated 1% market return, though broader welfare conclusions require care.",
+            "A pay-as-you-go pension must improve every generation's welfare whenever the market interest rate exceeds population growth.",
+            "The initial old can receive benefits without having paid contributions into the newly introduced system."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Overlapping generations",
+            "Pay-as-you-go pensions",
+            "Aaron condition"
+          ],
+          "assistance": "<p>Track the number of contributors relative to beneficiaries across generations. Under a fixed contribution per worker, the benefit paid to each old person depends on how many young workers are contributing when that person retires.</p><p>In a separate example with population growth of 2% and a financial return of 4%, compare the number of next-generation contributors per retiree with the gross return from saving. Then distinguish steady-state returns from the transitional transfer to the initial old.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> If each young worker contributes τ and the next generation is 3% larger, that worker's old-age benefit is τ(1.03). The scheme's implicit net return is 3%, above the available 1% saving return, so (A) and (B) follow under the stated wage and contribution assumptions. At introduction, the current old can receive a transfer despite never contributing, as (D) notes.</p><p>(C) reverses the comparison: when the market return exceeds population growth, the pension's steady-state implicit return is lower, and introducing it does not automatically create a Pareto improvement. Even when the Aaron condition favors pay-as-you-go, a complete welfare assessment must account for transition, capital accumulation, taxes and distortions.</p>",
+          "refs": "Samuelson (1958), Journal of Political Economy; Aaron (1966), Canadian Journal of Economics and Political Science."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>Two factories must reduce pollution reaching a downstream lake by 12 units. Abatement <i>a</i><sub>A</sub> at factory A reduces lake load by 2 units per unit of abatement; abatement <i>a</i><sub>B</sub> at B reduces it by 1. Marginal abatement costs are MAC<sub>A</sub> = 2<i>a</i><sub>A</sub> and MAC<sub>B</sub> = 2<i>a</i><sub>B</sub>, with no fixed costs or other constraints. What cost-minimizing abatement allocation meets the lake target?</p>",
+          "options": [
+            "Factory A abates 4.8 units and B abates 2.4 units.",
+            "Both factories abate 4 units because their marginal-cost functions are identical.",
+            "Factory A abates 6 units and B abates none because A has the higher delivery factor.",
+            "Factory A abates 2.4 units and B abates 4.8 units."
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Source–receptor coefficients",
+            "Delivered-load constraints",
+            "Cost-effective spatial abatement"
+          ],
+          "assistance": "<p>Define the policy target in terms of pollution arriving at the receptor, not pollution removed at the source. Use a Lagrange multiplier on the delivered-load constraint and compare the marginal cost of removing one unit <i>at the lake</i>.</p><p>As a separate illustration, if a source removes only half a lake-load unit for each unit abated, its cost per delivered unit is twice its marginal abatement cost. Equal source-level marginal costs need not be efficient when transport differs.</p>",
+          "explanation": "<p><b>(A) is correct.</b> The target is 2<i>a</i><sub>A</sub> + <i>a</i><sub>B</sub> = 12. Cost-effective allocation equalizes marginal cost per unit of <i>delivered</i> pollution reduction: MAC<sub>A</sub>/2 = MAC<sub>B</sub>/1. Thus (2<i>a</i><sub>A</sub>)/2 = 2<i>a</i><sub>B</sub>, implying <i>a</i><sub>A</sub> = 2<i>a</i><sub>B</sub>. Substituting gives 5<i>a</i><sub>B</sub> = 12, so <i>a</i><sub>B</sub> = 2.4 and <i>a</i><sub>A</sub> = 4.8.</p><p>(B) equates source-level rather than receptor-adjusted marginal costs and would deliver 12 but at higher cost. (C) ignores increasing marginal cost at A; (D) reverses the delivery advantage. The efficient shadow price is a price on lake-load reductions, with source-specific incentives scaled by delivery factors.</p>",
+          "refs": "Montgomery (1972), Journal of Economic Theory; Kolstad (2011), Environmental Economics."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>Patients can receive treatment at baseline (<i>A</i><sub>0</sub>) and again one year later (<i>A</i><sub>1</sub>). Intermediate health <i>L</i><sub>1</sub> is affected by baseline treatment, predicts later treatment, and predicts the final outcome. Researchers want the <i>total effect</i> of sustained treatment versus no treatment. Which claims are defensible?</p>",
+          "options": [
+            "Simply controlling for intermediate health in a conventional outcome regression can remove part of the earlier treatment's effect and fail to identify the desired total effect.",
+            "Under sequential exchangeability, consistency and positivity, a longitudinal g-formula or appropriately weighted marginal structural model can identify the treatment-regime contrast.",
+            "Random assignment of baseline treatment alone guarantees that the later treatment decision is unconfounded.",
+            "For inverse-probability weighting, examine treatment probabilities and extreme weights; near-zero probabilities threaten practical positivity."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Time-varying confounding",
+            "Marginal structural models",
+            "Sequential exchangeability"
+          ],
+          "assistance": "<p>Draw the causal ordering across time: initial treatment can alter an intermediate variable that both affects subsequent treatment and predicts the outcome. That variable plays two roles at once: part of a causal pathway and a confounder of later treatment.</p><p>Think through why a single conventional adjustment cannot automatically handle both roles. A longitudinal strategy must account for each treatment decision using information available before that decision, with adequate support for every regime being compared.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Intermediate health lies downstream of <i>A</i><sub>0</sub> but confounds the effect of <i>A</i><sub>1</sub>. Conditioning on it in a standard regression can block an earlier mediated effect while failing to recover the total sustained-regime contrast. Under consistency, sequential exchangeability and positivity, the longitudinal g-formula or an inverse-probability-weighted marginal structural model handles treatment-confounder feedback.</p><p>(C) is false: randomization at baseline does not randomize later treatment choices made in response to intermediate health. (D) matters because inverse probabilities explode when observed histories rarely receive one of the treatment options. These methods do not eliminate bias from unmeasured time-varying confounders.</p>",
+          "refs": "Robins, Hernán & Brumback (2000), Epidemiology; Hernán & Robins (2020), Causal Inference: What If."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "<p>Five proper multiple imputations are used for an estimand under a plausible missing-at-random model. The average within-imputation variance is <i>W</i> = 0.04 and the between-imputation variance of the five point estimates is <i>B</i> = 0.01. True or false: Rubin's total pooled variance is 0.052 rather than 0.050, and missing at random alone would not rescue inference from a badly misspecified imputation model.</p>",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Multiple imputation",
+            "Rubin's variance rules",
+            "Missing at random"
+          ],
+          "assistance": "<p>Separate uncertainty that appears within each completed dataset from uncertainty due to disagreement across imputed datasets. Finite numbers of imputations add a correction to the between-imputation component.</p><p>For a different example with ten imputations, average within variance 0.09 and between variance 0.02, the pooling formula is <i>T</i> = <i>W</i> + (1 + 1/<i>M</i>)<i>B</i>. Also distinguish an assumption about missingness from assumptions about the imputation and analysis models.</p>",
+          "explanation": "<p><b>True.</b> Rubin's pooling rule is <i>T</i> = <i>W</i> + (1 + 1/<i>M</i>)<i>B</i>. With five imputations, <i>T</i> = 0.04 + (1 + 1/5)(0.01) = 0.052, giving pooled standard error √0.052 ≈ 0.228. The naïve 0.050 omits the finite-imputation correction.</p><p>Missing at random means missingness can be conditionally independent of the missing values given observed information; it does not mean the imputation model is automatically correct. Poor functional form, omitted predictors, incompatible models or an uncongenial analysis can still bias estimates or invalidate variance calculations. Small-sample degrees-of-freedom corrections may also be relevant.</p>",
+          "refs": "Rubin (1987), Multiple Imputation for Nonresponse in Surveys; Little & Rubin (2019), Statistical Analysis with Missing Data."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A manager begins with 100 fish and chooses how many to leave as escapement <i>S</i> ∈ [0,100]. Current harvest is 100 − <i>S</i> and earns $1 per fish. Next period's terminal fish stock is <i>G</i>(<i>S</i>) = 2<i>S</i> − <i>S</i><sup>2</sup>/100, valued at $1 per fish then; the discount factor is 0.8. There are no other costs or future periods. What escapement maximizes discounted value?</p>",
+          "options": [
+            "37.5 fish",
+            "50 fish",
+            "0 fish",
+            "100 fish"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Optimal escapement",
+            "Intertemporal harvest trade-off",
+            "Marginal stock value"
+          ],
+          "assistance": "<p>Write total present value as current harvest revenue plus discounted terminal stock value. An extra fish left unharvested sacrifices one unit of current revenue but changes the next period's stock through the recruitment derivative.</p><p>In a separate two-period model with recruitment <i>G</i>(<i>S</i>) = 1.5<i>S</i> − <i>S</i><sup>2</sup>/200, compare the current marginal harvest value with discounted marginal future stock value. Check endpoints after solving the first-order condition.</p>",
+          "explanation": "<p><b>(A) is correct.</b> Present value is <i>V</i>(<i>S</i>) = (100 − <i>S</i>) + 0.8[2<i>S</i> − <i>S</i><sup>2</sup>/100]. Differentiating gives <i>V</i>′(<i>S</i>) = −1 + 0.8(2 − 2<i>S</i>/100) = 0.6 − 0.016<i>S</i>. Setting this to zero yields <i>S</i> = 37.5. The second derivative is −0.016, so this is the unique maximum on the feasible interval; current harvest is 62.5 fish.</p><p>(B) imposes a biological midpoint rather than the economic shadow-value condition. (C) ignores future stock value, while (D) ignores current harvest opportunity cost. The optimum balances today's marginal harvest revenue against the discounted marginal contribution of escapement to next period's stock.</p>",
+          "refs": "Clark (1990), Mathematical Bioeconomics; Reed (1979), Journal of Environmental Economics and Management."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "multi",
+          "stem": "<p>A fisheries agency conducts roving on-site interviews at randomly sampled site-time blocks to estimate total angler trips and trip characteristics. Anglers who remain at a site longer are more likely to be present during an interview sweep; interview counts and actual fishing effort are not the same quantity. Precision varies across site-time strata. Which design or analysis claims are sound?</p>",
+          "options": [
+            "Without an appropriate design correction, longer-duration trips can be overrepresented among anglers encountered during instantaneous sweeps.",
+            "Recording sampled site-time blocks, counts, trip duration and inclusion probabilities supports design-based weighting and estimation.",
+            "The number of completed interviews is an unbiased estimate of total fishing trips even when selection and nonresponse rates differ across sites.",
+            "Independent count calibration, coverage checks for unsampled site-time strata and uncertainty calculations help assess whether estimates generalize to the target fishery."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Roving creel surveys",
+            "Length-biased intercept sampling",
+            "Site-time sampling variance"
+          ],
+          "assistance": "<p>Define the target population and sampling unit before using the interview data. A snapshot of people present at a site is not automatically a random sample of trips: a long visit occupies more possible sampling instants than a short visit.</p><p>In another survey, a two-hour visit can appear in twice as many hourly sweeps as a one-hour visit. Distinguish the number of interviews, the number of anglers present, trip duration and total trips; then ask what weights and independent counts the design supplies.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> In a roving instantaneous-intercept design, a longer trip occupies more potential observation times and can therefore be overrepresented. Proper site-time sampling records, duration information, count expansion and inclusion-probability weights can correct selection and support design-based estimates. Independent counts and checks for omitted sites or hours help diagnose coverage and improve uncertainty assessment.</p><p>(C) is false: completed interviews measure survey contact, not the population total of trips, and unequal sampling or response rates defeat direct extrapolation. In practice, one must also distinguish trip-based effort from the agency's own sampling effort, account for completed versus incomplete trips, and match weights to the precise estimand and sampling design.</p>",
+          "refs": "Pollock et al. (1994), Angler Survey Methods and Their Applications in Fisheries Management, American Fisheries Society; Thompson (2012), Sampling."
         }
       ]
     }
