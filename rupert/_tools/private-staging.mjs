@@ -108,6 +108,16 @@ export async function checkPacket(packet,root,{now=new Date(),ready=true}={}) {
   }
   return p;
 }
+// Monday/Wednesday prepare recommendations; artwork is added by the due publisher.
+// This is not a release-ready check: stage/publish still require approved original art.
+export async function checkRecommendationsPacket(packet,root,{now=new Date()}={}) {
+  const p=await checkPacket(packet,root,{now,ready:false});
+  assert(p.candidates.length===2,'Recommendation preparation requires two independent verified candidates.');
+  const history=await editionData(root);
+  const personal=await loadRecommendationHistory([],{places:await readJSON(join(root,'data/places.json')),manifest:{editions:history},now},root);
+  for(const c of p.candidates)assert(reuseEligibility(c.edition,history,{at:now.toISOString(),log:personal}).eligible,'Prepared recommendation is not reuse-eligible.');
+  return p;
+}
 export function chooseCandidate(packet,{checks,officialHosts,history,now=new Date(),personal=null}={}) {
   const rejected=[];
   for(const c of packet.candidates) {
@@ -176,13 +186,15 @@ export async function promoteAssembly(root,work,{apply=false}={}) {
 
 if(process.argv[1] && resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const [cmd,input,output]=process.argv.slice(2);
+  const recommendations=process.argv.includes('--recommendations');
+  const validatePreparation=recommendations?checkRecommendationsPacket:checkPacket;
   try {
     if(cmd==='init') {const path=await privatePath(ROOT,input);await writeFile(path,JSON.stringify(seal({type:sealedType,version:1,prepared_at:new Date().toISOString(),edition_id:null,slot:null,weekend:null,candidates:[],artworks:[]}),null,2)+'\n',{mode:0o600,flag:'wx'});console.log('Private store initialized; not ready for publication.');}
-    else if(cmd==='seal') {const p=seal(await readJSON(input));await checkPacket(p,ROOT);const path=await privatePath(ROOT,output);await writeFile(path,JSON.stringify(p,null,2)+'\n',{mode:0o600});console.log('Private packet validated and sealed; two candidates and unused artwork remain undisclosed.');}
-    else if(cmd==='check') {await checkPacket(await readJSON(input),ROOT);console.log('Private preparation verified; contents withheld.');}
+    else if(cmd==='seal') {const p=seal(await readJSON(input));await validatePreparation(p,ROOT);const path=await privatePath(ROOT,output);await writeFile(path,JSON.stringify(p,null,2)+'\n',{mode:0o600});console.log(recommendations?'Recommendations validated and sealed; publisher artwork and release approval are still required.':'Private packet validated and sealed; two candidates and unused artwork remain undisclosed.');}
+    else if(cmd==='check') {await validatePreparation(await readJSON(input),ROOT);console.log(recommendations?'Recommendations verified; publisher artwork and release approval are still required.':'Private preparation verified; contents withheld.');}
     else if(cmd==='stage') {const r=await stagePacket(ROOT,await readJSON(input),output,{candidateKey:process.argv.includes('--alternative')?'alternative':undefined});console.log(JSON.stringify(r));}
     else if(cmd==='publish') {textResult(await promoteAssembly(ROOT,input,{apply:process.argv.includes('--apply')}));}
-    else throw Error('Usage: private-staging.mjs init PRIVATE_STORE | seal PRIVATE_INPUT PRIVATE_PACKET | check PRIVATE_PACKET | stage PRIVATE_PACKET PRIVATE_WORK [--alternative] | publish PRIVATE_WORK [--apply]');
+    else throw Error('Usage: private-staging.mjs init PRIVATE_STORE | seal PRIVATE_INPUT PRIVATE_PACKET [--recommendations] | check PRIVATE_PACKET [--recommendations] | stage PRIVATE_PACKET PRIVATE_WORK [--alternative] | publish PRIVATE_WORK [--apply]');
   }catch(e){console.error(e.message);process.exitCode=1;}
 }
 function textResult(result){console.log(JSON.stringify(result));}

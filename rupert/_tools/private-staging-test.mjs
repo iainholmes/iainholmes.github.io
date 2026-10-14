@@ -1,11 +1,11 @@
 // Synthetic packets only. No real upcoming editorial/artwork content is generated or exposed.
 import assert from 'node:assert/strict';
-import { mkdtemp, cp, mkdir, readFile, writeFile, rm, readdir } from 'node:fs/promises';
+import { mkdtemp, cp, mkdir, readFile, writeFile, rm, readdir, realpath } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync, spawn } from 'node:child_process';
-import { seal,verifySeal,checkPacket,stagePacket,promoteAssembly,fingerprint,chooseCandidate,similar,privatePath } from './private-staging.mjs';
+import { seal,verifySeal,checkPacket,checkRecommendationsPacket,stagePacket,promoteAssembly,fingerprint,chooseCandidate,similar,privatePath } from './private-staging.mjs';
 import { readJSON,editionData,digest,objectDigest,lockProblems } from './artwork-lock.mjs';
 import { reservePrompt } from './art-direction.mjs';
 import { cycleWeekend } from '../assets/js/core/cycles.js';
@@ -33,6 +33,22 @@ try {
   const art={record:{id:'atlas-plate-000000000001',file:'atlas-plate-000000000001',kind:'plate',provenance:'editorial',width:160,height:200,widths:[160],alt:'Synthetic test image; not editorial artwork',focal:[.5,.5],caption:'Illustration',generation:{owner:'reserve/atlas-plate-000000000001',created_at:nyDateString(now),style_version:'atlas-engraved-3'}},artwork:{image_id:'atlas-plate-000000000001',characters:['rupert'],brief:'Synthetic private test brief, never an upcoming illustration.'},composition_key:'fixture-original-layout-only',review:{likeness:true,style:true,composition:true,originality:true,reviewed_at:now.toISOString(),note:'Synthetic fixture review flags for integration testing only.'},files:{'atlas-plate-000000000001-160.jpg':{base64:image.toString('base64'),sha256:digest(image)}},visual:fingerprint(image,root)};
   const payload={type:'rupert-private-preparation',version:1,prepared_at:now.toISOString(),edition_id:id,slot,weekend,candidates:[makeCandidate('primary',1),makeCandidate('alternative',2)],artworks:[art]},packet=seal(payload);
   const p=join(root,'_private/packet.json');await writeFile(p,JSON.stringify(packet),{mode:0o600});
+  const recommendations={...structuredClone(payload),artworks:[]},recommendationPacket=seal(recommendations);
+  ok((await checkRecommendationsPacket(recommendationPacket,root,{now})).candidates.length===2,'Verified recommendations can be prepared without an artwork reserve');
+  await assert.rejects(()=>checkPacket(recommendationPacket,root,{now}),/approved unused artwork/);checks++;
+  await assert.rejects(()=>stagePacket(root,recommendationPacket,join(root,'_private/no-art'),{now}),/approved unused artwork/);checks++;
+  await assert.rejects(()=>checkRecommendationsPacket(seal({...recommendations,candidates:recommendations.candidates.slice(0,1)}),root,{now}),/two independent/);checks++;
+  const badRecommendation=structuredClone(recommendations);badRecommendation.candidates[0].places[0].access.coords_verified=false;
+  await assert.rejects(()=>checkRecommendationsPacket(seal(badRecommendation),root,{now}),/coordinates/);checks++;
+  const staleRecommendation=structuredClone(recommendations);staleRecommendation.candidates[0].verification.reviewed_at=new Date(+now-49*3600000).toISOString();
+  await assert.rejects(()=>checkRecommendationsPacket(seal(staleRecommendation),root,{now}),/48 hours/);checks++;
+  const recommendationPrivate=await realpath(join(root,'_private')),recommendationScript=await realpath(join(root,'_tools/private-staging.mjs'));
+  const recommendationInput=join(recommendationPrivate,'recommendations-input.json'),recommendationOutput=join(recommendationPrivate,'recommendations.json');await writeFile(recommendationInput,JSON.stringify(recommendations),{mode:0o600});
+  const recommendationCLI=(...args)=>spawnSync(process.execPath,[recommendationScript,...args],{encoding:'utf8'});
+  ok(recommendationCLI('seal',recommendationInput,recommendationOutput,'--recommendations').status===0,'Recommendation-only seal CLI succeeds');
+  ok(recommendationCLI('check',recommendationOutput,'--recommendations').status===0,'Recommendation-only check CLI succeeds');
+  const fullRecommendationCheck=recommendationCLI('check',recommendationOutput);
+  ok(fullRecommendationCheck.status===1 && fullRecommendationCheck.stderr.includes('approved unused artwork'),'Full CLI check still rejects missing artwork');
   ok(objectDigest(verifySeal(await readJSON(p)))===objectDigest(payload),'Sealed packet persists between reads');await checkPacket(await readJSON(p),root,{now});checks++;
   const corrupt=structuredClone(packet);corrupt.artworks[0].files['atlas-plate-000000000001-160.jpg'].base64+='x';assert.throws(()=>verifySeal(corrupt),/checksum/);checks++;
   const duplicate=structuredClone(payload);duplicate.candidates[1].independence_key=duplicate.candidates[0].independence_key;await assert.rejects(()=>checkPacket(seal(duplicate),root,{now}),/independent/);checks++;
