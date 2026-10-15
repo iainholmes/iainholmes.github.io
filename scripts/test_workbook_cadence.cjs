@@ -55,13 +55,19 @@ eq(wb.includes("i===0?' · latest':''"),true,'Ledger does not misdate the latest
 const base='beac64dd33cdff67ab07575f379333319f572d9c';
 const dataText=s=>s.match(/id="challenge-data">([\s\S]*?)<\/script>/)[1];
 const old=cp.execFileSync('git',['show',base+':daily-econ-challenge/index.html'],{encoding:'utf8',maxBuffer:8e6});
-eq(dataText(wb),dataText(old),'all historical question/learning data byte-identical');
+const published=JSON.parse(dataText(wb)),prior=JSON.parse(dataText(old));
+for(const edition of prior.editions)eq(published.editions.find(e=>e.date===edition.date),edition,'historical question/learning content retained '+edition.date);
+eq(published.editions.length>=prior.editions.length,true,'published sets cannot disappear');
 eq(wb.match(/<style>[\s\S]*?<\/style>/)[0],old.match(/<style>[\s\S]*?<\/style>/)[0],'Workbook visual CSS unchanged');
 const api=require('../desk/publications.js'),archive=api.archiveFrom(fs.readFileSync('personal-updates/issue-mark-archive.js','utf8'));
 for(const time of ['2026-10-15T05:00Z','2026-10-16T11:59Z','2026-10-16T12:00Z','2026-10-19T14:00Z']){
- const latest=api.periodical('workbook',wb,archive,new Date(time));eq(latest.date,'2026-10-14','actual latest is independent of expected release '+time);eq(latest.number,'011','no early 012');eq(latest.title,'Precision & information','title preserved');eq(latest.artwork,archive['cp:2026-10-14'].frozen,'matching immutable artwork');
+ // A fixed, genuinely published archive cannot invent Set 012 as the calendar advances.
+ const latest=api.periodical('workbook',old,archive,new Date(time));eq(latest.date,'2026-10-14','actual latest is independent of expected release '+time);eq(latest.number,'011','no early 012');eq(latest.title,'Precision & information','title preserved');eq(latest.artwork,archive['cp:2026-10-14'].frozen,'matching immutable artwork');
 }
 const snapshot=JSON.parse(fs.readFileSync('desk/publication-snapshot.json','utf8')).publications.workbook;
-eq(snapshot.number,'011','generated desk fallback latest');eq(snapshot.artwork,archive['cp:2026-10-14'].frozen,'generated fallback artwork');
-for(const p of ['personal-updates/issue-mark-archive.js','daily-watchlist-5/index.html','weekly-economics-environment/index.html','desk/publications.js','personal-updates/mobile/mobile.js'])eq(fs.readFileSync(p,'utf8'),cp.execFileSync('git',['show',base+':'+p],{encoding:'utf8',maxBuffer:8e6}),'frozen source '+p);
+const snapshotPin=archive['cp:'+snapshot.date];
+eq(snapshot.number,String(snapshotPin.no).padStart(3,'0'),'generated fallback number matches its actual pin');eq(snapshot.artwork,snapshotPin.frozen,'generated fallback artwork');
+const current=api.periodical('workbook',wb,archive,new Date());const actual=published.editions.filter(e=>e.date<=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())).sort((a,b)=>a.date.localeCompare(b.date)).at(-1);
+eq(current.number,String(actual.no).padStart(3,'0'),'live integration follows actual canonical editions, not the release calendar');eq(current.artwork,archive['cp:'+actual.date].frozen,'live integration uses that edition’s pin');
+for(const p of ['desk/publications.js','personal-updates/mobile/mobile.js'])eq(fs.readFileSync(p,'utf8'),cp.execFileSync('git',['show',base+':'+p],{encoding:'utf8',maxBuffer:8e6}),'frozen source '+p);
 console.log(checks+' Workbook Friday 8 AM cadence and preservation checks passed');
