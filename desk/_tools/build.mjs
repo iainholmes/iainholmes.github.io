@@ -114,9 +114,9 @@ const render = p => {
 const workIdentity = {
   advisor: {plate:'advisor-dividers',folio:'01 / I',label:'Research Design'},
   qst: {plate:'qst-instruments',folio:'01 / II',label:'Quantitative Practice'},
-  'field-brief': {plate:'field-fish',folio:'02 / I',label:'Every Day'},
-  loblolly: {plate:'loblolly-sprig',folio:'02 / II',label:'Fridays'},
-  workbook: {plate:'workbook-volumes',folio:'02 / III',label:'Fridays · 8:00 AM ET'},
+  'field-brief': {plate:'field-fish',folio:'02 / I'},
+  loblolly: {plate:'loblolly-sprig',folio:'02 / II'},
+  workbook: {plate:'workbook-volumes',folio:'02 / III'},
   rupert: {plate:'atlas-bearing',folio:'02 / IV',label:'A Field Guide'},
   portfolio: {plate:'academic-arcade',folio:'03 / I',label:'Personal Website'}
 };
@@ -125,7 +125,7 @@ function work(p, chapter, authentic) {
   const name = escape(p.displayName || p.name);
   return `<div class="work-item work-${id}" id="work-${id}" data-work="${id}" data-name="${escape(p.name)}" data-chapter="${chapter}" tabindex="-1">
     ${id === 'rupert' ? monogram('reading') : ''}<article class="collection-entry collection-${id}" data-collection aria-labelledby="collection-${id}-title">
-      <div class="collection-folio"><span>${device.folio}</span><span>${escape(device.label)}</span></div>
+      <div class="collection-folio"><span>${device.folio}</span><span>${escape(p.schedule || device.label)}</span></div>
       ${plate(device.plate,'collection-engraving')}
       <div class="collection-copy"><h3 id="collection-${id}-title">${name}</h3><p>${escape(p.description)}</p>${p.affiliation ? `<p class="collection-affiliation">${escape(p.affiliation)}</p>` : ''}</div>
       ${id === 'portfolio' ? monogram('profile') : ''}</article>

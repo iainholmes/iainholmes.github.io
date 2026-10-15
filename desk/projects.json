@@ -75,7 +75,7 @@
           "name": "Field Brief",
           "description": "Economics & Public Affairs",
           "url": "https://iainholmes.github.io/daily-watchlist-5/",
-          "schedule": "Every Day",
+          "schedule": "Daily · 8:00 AM ET",
           "asset": "assets/field-brief-archive.svg"
         },
         {
@@ -83,7 +83,7 @@
           "name": "Loblolly & Logit",
           "description": "Research & Environmental Economics",
           "url": "https://iainholmes.github.io/weekly-economics-environment/",
-          "schedule": "Fridays",
+          "schedule": "Fridays · 3:00 PM ET",
           "asset": "assets/loblolly-archive.svg"
         },
         {
