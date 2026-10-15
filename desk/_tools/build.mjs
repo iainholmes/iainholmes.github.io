@@ -91,7 +91,7 @@ const render = p => {
       <div class="publication-head" data-publication-heading hidden><div><h3 id="periodicals-title">${link(p.url, p.name)}</h3><p>${e.description}</p></div><span class="native-label">The Reading Shelf</span></div>
       <div class="publication-shelf">${p.publications.map(item => work(item, 'reading', authenticPublication(item))).join('\n')}</div>
       <div class="shelf-footer">${link(p.url, 'Browse Periodicals', 'shelf-link')}
-      ${disclosure('Publication Notes', '<dl class="context-list"><div><dt>Field Brief · Every Day</dt><dd>Five consequential developments, including weekends.</dd></div><div><dt>Loblolly &amp; Logit · Fridays</dt><dd>Research readings, synthesis and a cumulative methods notebook.</dd></div><div><dt>The Workbook · Mon · Wed · Fri</dt><dd>Economics problems with assistance and worked explanations.</dd></div></dl><p class="archive-note">Previews follow released editions and their published artwork. If a source is unavailable, the dated last-verified selection remains visible. Each publication also opens at its home for current and earlier editions.</p>')}
+      ${disclosure('Publication Notes', '<dl class="context-list"><div><dt>Field Brief · Every Day</dt><dd>Five consequential developments, including weekends.</dd></div><div><dt>Loblolly &amp; Logit · Fridays</dt><dd>Research readings, synthesis and a cumulative methods notebook.</dd></div><div><dt>The Workbook · Fridays · 8:00 AM ET</dt><dd>Economics problems with assistance and worked explanations.</dd></div></dl><p class="archive-note">Previews follow released editions and their published artwork. If a source is unavailable, the dated last-verified selection remains visible. Each publication also opens at its home for current and earlier editions.</p>')}
       </div>
     </div>`;
     case 'rupert': return `<article class="rupert" aria-labelledby="rupert-title">
@@ -116,7 +116,7 @@ const workIdentity = {
   qst: {plate:'qst-instruments',folio:'01 / II',label:'Quantitative Practice'},
   'field-brief': {plate:'field-fish',folio:'02 / I',label:'Every Day'},
   loblolly: {plate:'loblolly-sprig',folio:'02 / II',label:'Fridays'},
-  workbook: {plate:'workbook-volumes',folio:'02 / III',label:'Mon · Wed · Fri'},
+  workbook: {plate:'workbook-volumes',folio:'02 / III',label:'Fridays · 8:00 AM ET'},
   rupert: {plate:'atlas-bearing',folio:'02 / IV',label:'A Field Guide'},
   portfolio: {plate:'academic-arcade',folio:'03 / I',label:'Personal Website'}
 };

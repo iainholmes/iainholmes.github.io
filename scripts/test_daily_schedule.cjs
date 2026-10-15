@@ -6,7 +6,7 @@ let checks=0;function eq(a,b,message){assert.deepEqual(a,b,message);checks++}
 const code=hub.slice(hub.indexOf('  function nextRun('),hub.indexOf('  function paintSchedule('));
 const c={now:null,nyParts:d=>{const o={};new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(d).forEach(p=>o[p.type]=p.value);return o},DOW:['Sun','Mon','Tue','Wed','Thu','Fri','Sat']};vm.createContext(c);vm.runInContext(code,c);
 for(const [time,label] of [['2026-10-09T11:59:00Z','Today'],['2026-10-09T12:00:00Z','Tomorrow'],['2026-10-10T11:59:00Z','Today'],['2026-10-10T12:00:00Z','Tomorrow'],['2026-10-11T11:59:00Z','Today'],['2026-10-11T12:00:00Z','Tomorrow'],['2026-11-01T12:59:00Z','Today'],['2026-11-01T13:00:00Z','Tomorrow']]){c.now=new Date(time);eq(c.nextRun(...c.sched.fb),'<b>'+label+'</b>8:00 AM ET','daily weekend/DST boundary '+time)}
-c.now=new Date('2026-10-10T13:00:00Z');eq(c.nextRun(...c.sched.cp),'<b>Monday</b>10:00 AM ET','Workbook remains weekdays');eq(c.nextRun(...c.sched.sp),'<b>Friday</b>3:00 PM ET','L&L remains Fridays');
+c.now=new Date('2026-10-10T13:00:00Z');eq(c.nextRun(...c.sched.cp),'<b>Friday</b>8:00 AM ET','Workbook Friday mornings');eq(c.nextRun(...c.sched.sp),'<b>Friday</b>3:00 PM ET','L&L remains Fridays');
 eq(/<h2>Field Brief<\/h2><span>daily · 8:00/.test(hub),true,'hub daily metadata');
 eq(/Field Brief daily, seven days per week \(including weekends\), at 8 AM/.test(fs.readFileSync('personal-updates/PUBLISHING.md','utf8')),true,'contract');
 eq(/Schedule: daily, including Saturday and Sunday/.test(fb),true,'canonical maintenance');
