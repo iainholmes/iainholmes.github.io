@@ -66,6 +66,33 @@
       "official_url": "https://www.ncparks.gov/state-parks/hanging-rock-state-park",
       "discrepancy": false,
       "note": "Official home, trail descriptions, trail map and park rules reviewed. Hiking trails explicitly Open; Hanging Rock Trail is 1.8 miles each way (3.6 round trip), moderate, from the top of the visitor-center lot at 1005 Visitor Center Drive. Manager-linked parking coordinates verified. Main October gate hours 7 a.m.\u20139 p.m.; visitor center 9 a.m.\u20134:45 p.m.; free hiking day use; attended six-foot leash, pets excluded from buildings/swim beach. Campground construction lies off these visitor-center routes; swimming/boat rentals seasonally closed. Keep one body length from cliffs; no unsafe wet-rock or thunderstorm outing."
+    },
+    {
+      "place_id": "jordan-lake-new-hope",
+      "status": "open",
+      "checked": "2026-10-15",
+      "checked_at": "2026-10-15T11:05:05.572Z",
+      "official_url": "https://www.ncparks.gov/state-parks/jordan-lake-state-recreation-area",
+      "discrepancy": false,
+      "note": "Official home, trail table, New Hope Overlook map, general rules and news checked on 15 October. Hiking trails explicitly Open; New Hope trail and boat ramp open year-round. The official access map distinguishes the 2.7-mile moderate blue loop from the 5.4-mile red loop. Public access address and current manager GPS/directions pin verified; older PDF footer repeats the Crosswinds GPS and is not the routing source. October day-use hours 8 a.m.–8 p.m.; no October day-use entrance fee. Attended six-foot leash; no pets on swim beaches or in buildings. The active Parkers Creek comfort-station closure is at another access. NWS calls for Saturday showers and gusts to 26 mph: recommend only a dry, calmer Sunday window, postpone if conditions worsen."
+    },
+    {
+      "place_id": "jordan-lake-new-hope",
+      "status": "open",
+      "checked": "2026-10-15",
+      "checked_at": "2026-10-15T11:09:45.204Z",
+      "official_url": "https://www.ncparks.gov/state-parks/jordan-lake-state-recreation-area",
+      "discrepancy": false,
+      "note": "Publication-day direct HTTP 200 reads at 11:07:40 UTC of official home, trail table, news and general park rules; home explicitly Hiking Trails Open. New Hope map separately read: blue loop 2.7 miles moderate and red 5.4. Current official homepage and linked pin explicitly agree on public access GPS 35.6772, -79.0454; legacy PDF footer repeats Crosswinds and is not used. The only current alert concerns toilets at Parkers Creek, another access; no park news items. Day use October 8 a.m.–8 p.m., year-round New Hope trail access, no October entrance fee, attended six-foot leash and pet exclusions verified. NWS issue 06:53:31 ET reviewed: Saturday 40% showers, gusts 26 mph; Sunday slight showers, high 61 F, NE wind 13 mph. Only a dry daylight window with manageable wind is recommended; postpone for adverse conditions."
+    },
+    {
+      "place_id": "jordan-lake-new-hope",
+      "status": "open",
+      "checked": "2026-10-15",
+      "checked_at": "2026-10-15T16:39:58.870Z",
+      "official_url": "https://www.ncparks.gov/state-parks/jordan-lake-state-recreation-area",
+      "discrepancy": false,
+      "note": "Fresh publication-day direct reads of official home, trails, news and park rules at 2026-10-15T16:39:58.870Z reconfirm explicit Hiking Trails Open, New Hope access and October hours; only alert remains toilets at separate Parkers Creek. Public homepage GPS/directions, the 2.7-mile blue circuit, designated hiking parking, October free day use and six-foot attended leash remain as verified. Current NWS issue 2026-10-15T06:53:31-04:00 re-fetched at 2026-10-15T16:39:03.627Z: Saturday rain 40%/gusts 26 mph; Sunday slight rain, high 61 F. No returned active alerts. Conditional dry-Sunday guidance and adverse-weather postponement remain appropriate."
     }
   ],
   "official_hosts": [

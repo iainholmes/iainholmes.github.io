@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "id": "2026-W42-thu",
+  "slot": "thursday",
+  "status": "published",
+  "published_at": "2026-10-15T12:43:53-04:00",
+  "weekend": {
+    "start": "2026-10-17",
+    "end": "2026-10-18"
+  },
+  "flagship": {
+    "place_id": "jordan-lake-new-hope",
+    "title": "New Hope Overlook and the shorter lakeside loop",
+    "standfirst": "A 2.7-mile blue-blazed loop through the woods at Jordan Lake: a local counterpoint to Tuesday’s mountain day, with a return before the longer red circuit.",
+    "why_this_week": "Keep this one close to home and let the woodland walk set the pace. The blue loop offers a moderate outing without committing to New Hope’s full 5.4-mile red circuit. Thursday’s NWS outlook favors a dry Sunday window over a gusty, showery Saturday. Take Rupert on his six-foot leash, carry water, and enjoy the lake from the trail rather than making this a swimming stop.",
+    "headline_condition": "Favor dry Sunday; gusty, showery Saturday",
+    "condition_level": "adverse",
+    "snapshot": {
+      "as_of": "2026-10-15",
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          30,
+          40
+        ]
+      },
+      "route": {
+        "route_id": "jordan-lake-new-hope-blue-loop@1",
+        "distance_mi": 2.7,
+        "shape": "loop",
+        "difficulty": "moderate",
+        "surface": "Woodland footpath with roots and uneven ground; follow the blue loop on the official access map, not the longer red extension."
+      },
+      "duration_h": [
+        1.5,
+        2.5
+      ],
+      "access": {
+        "name": "New Hope Overlook access, 339 W.H. Jones Road, New Hill",
+        "parking": "Use the designated hiking trailhead parking shown on the New Hope Overlook map, not boat-trailer spaces. October day-use gates open 8 a.m.–8 p.m.; leave well before dusk."
+      },
+      "dog": {
+        "leash": "Attended leash, six feet maximum",
+        "water": "Bring drinking water for both; do not rely on lake, creek or wetland water.",
+        "shade": "Woodland shade with occasional openings",
+        "watch_for": [
+          "Wet roots and uneven footing",
+          "Wind and falling branches; postpone in unsafe conditions",
+          "Wildlife: stay on marked trails and do not allow chasing"
+        ]
+      }
+    },
+    "photo": {
+      "id": "atlas-plate-932b705eb345",
+      "alt": "Engraved editorial portrait of Rupert, a chocolate American Labrador with long drop ears and a mustard collar, resting with his head raised above his front paws on a plain cream field."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "NC State Parks — current access, hours and pet rules",
+        "url": "https://www.ncparks.gov/state-parks/jordan-lake-state-recreation-area",
+        "retrieved": "2026-10-15"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — official trail listing",
+        "url": "https://www.ncparks.gov/state-parks/jordan-lake-state-recreation-area/trails",
+        "retrieved": "2026-10-15"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — official access map",
+        "url": "https://www.ncparks.gov/maps/jordan-lake-state-recreation-area-new-hope-overlook-access-map/open",
+        "retrieved": "2026-10-15"
+      },
+      {
+        "kind": "forecast",
+        "label": "National Weather Service — verified public trailhead forecast",
+        "url": "https://api.weather.gov/gridpoints/RAH/60,51/forecast",
+        "retrieved": "2026-10-15"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ],
+    "experience_id": "jordan-lake-new-hope-blue-loop",
+    "panels": [
+      {
+        "label": "For Rupert",
+        "text": "Carry drinking water, take sniffing breaks and keep the attended leash no longer than six feet. The blue loop is 2.7 miles; turn back early if the footing or his pace calls for it."
+      },
+      {
+        "label": "Watch the wind",
+        "text": "Saturday’s forecast includes showers and gusts to 26 mph. Favor a dry, calmer Sunday window; postpone for thunder, strong wind, flooding or closure. This is a trail outing, not a dog-swim stop."
+      }
+    ],
+    "artwork": {
+      "image_id": "atlas-plate-932b705eb345",
+      "brief": "A restrained close three-quarter portrait of Rupert resting with his head raised above his two front paws. One lean chocolate American Labrador, unmistakable long muzzle and drop ears from the supplied photographs, mustard-orange collar. Crop below the forelegs with the entire head and both paws intact; no tail in the frame. The dog occupies the lower two-thirds of a plain warm cream field, with generous quiet space above; chocolate contours, fine engraved cream hatching and a few muted ochre marks. No scenery, water, mountain, sun, ball, furniture, frame or text. This resting pose, close scale, cream ground and almost empty surroundings deliberately differ from the immediately preceding full-body standing olive plate and earlier scenic navy/woodland prints.",
+      "characters": [
+        "rupert"
+      ]
+    }
+  },
+  "local_trail": {
+    "place_id": "jordan-lake-new-hope",
+    "title": "A shorter New Hope out-and-back",
+    "line": "Follow the start of the same blue-blazed trail, then return the way you came when Rupert has had enough. No commitment to the full loop; the same dry-weather and leash limits apply.",
+    "snapshot": {
+      "as_of": "2026-10-15",
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          30,
+          40
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1
+      ]
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ]
+  },
+  "away_mission": {
+    "place_id": "jordan-lake-new-hope",
+    "title": "The full New Hope red circuit",
+    "line": "The official map lists a 5.4-mile moderate red loop. Consider it only on a dry, calm day with time and water for a longer walk; it is not a bad-weather alternative.",
+    "snapshot": {
+      "as_of": "2026-10-15",
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          30,
+          40
+        ]
+      },
+      "route": {
+        "route_id": "jordan-lake-new-hope-red-loop@1",
+        "distance_mi": 5.4,
+        "shape": "loop",
+        "difficulty": "moderate"
+      },
+      "duration_h": [
+        3,
+        4
+      ]
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ]
+  },
+  "wildcard": {
+    "place_id": "jordan-lake-new-hope",
+    "title": "A quiet picnic after the walk",
+    "line": "Bring a small picnic for a designated day-use stop. Keep Rupert attended and leashed; use the trail and approved facilities, not the swim beach or boat-launch lanes.",
+    "snapshot": {
+      "as_of": "2026-10-15",
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          30,
+          40
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.5
+      ]
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "tone": "explore",
+    "text": "Let Rupert choose one safe stopping place to investigate. The full circuit is optional."
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "What catches his attention when you slow down? Remember it from a safe, level place on the marked trail."
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-10-15T06:53:31-04:00",
+    "checked_at": "2026-10-15T16:39:03.627Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RAH/60,51/forecast",
+      "issued_at": "2026-10-15T10:53:31.000Z",
+      "retrieved_at": "2026-10-15T16:39:03.627Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "A chance of rain showers. Partly sunny, with a high near 63. North wind 12 to 15 mph, with gusts as high as 26 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "A slight chance of rain showers. Mostly sunny, with a high near 61."
+      }
+    ],
+    "summary": "Saturday: A chance of rain showers. Partly sunny, with a high near 63. North wind 12 to 15 mph, with gusts as high as 26 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible. Sunday: A slight chance of rain showers. Mostly sunny, with a high near 61. Saturday night: A chance of rain showers. Partly cloudy, with a low around 44. Chance of precipitation is 30%. New rainfall amounts between a tenth and quarter of an inch possible. Sunday night: A slight chance of rain showers before 2am. Partly cloudy, with a low around 45.",
+    "alerts": [],
+    "alerts_checked_at": "2026-10-15T16:39:03.627Z",
+    "pivot": {
+      "if": "Thunder, unsafe wind, flooding, official closure or a tired dog",
+      "note": "Postpone or turn back. Another outdoor trail is not a thunderstorm fallback. Recheck official access and the current NWS forecast before leaving."
+    },
+    "trail_note": "Follow the 2.7-mile blue circuit on the access map. Wet roots and lakeside gusts are reasons to shorten or postpone; keep Rupert leashed and out of the water."
+  },
+  "practical": {
+    "best_window": "A dry, calmer Sunday daylight window; check wind and showers again before leaving",
+    "fees": "No October day-use entrance fee; camping and reservations are separate",
+    "bring": [
+      "Drinking water for both",
+      "Six-foot leash and waste bags",
+      "Layers and rain protection",
+      "Shoes with traction",
+      "Official access map and a small picnic"
+    ],
+    "closures_checked": "2026-10-15",
+    "closures_note": "Official home, trail table, New Hope Overlook map, general rules and news checked on 15 October. Hiking trails explicitly Open; New Hope trail and boat ramp open year-round. The official access map distinguishes the 2.7-mile moderate blue loop from the 5.4-mile red loop. Public access address and current manager GPS/directions pin verified; older PDF footer repeats the Crosswinds GPS and is not the routing source. October day-use hours 8 a.m.–8 p.m.; no October day-use entrance fee. Attended six-foot leash; no pets on swim beaches or in buildings. The active Parkers Creek comfort-station closure is at another access. NWS calls for Saturday showers and gusts to 26 mph: recommend only a dry, calmer Sunday window, postpone if conditions worsen."
+  }
+}

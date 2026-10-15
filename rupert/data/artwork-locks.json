@@ -56,6 +56,15 @@
         "rupert-hanging-rock-2026-w42-tue-800.jpg": "46990baa694e6e20717df7be94f6abce24143284e66d720cedcccb35047b9ef4",
         "rupert-hanging-rock-2026-w42-tue-1122.jpg": "401a4e514953bc8e99eb4d40ae6b5bc6838e66544ba19c499169dee1c05f07e5"
       }
+    },
+    "2026-W42-thu": {
+      "image_id": "atlas-plate-932b705eb345",
+      "association": "54773e818fbbfe381b70b5d76558744318f697929754224282a35f393ae0c22d",
+      "record": "cc5fd37dbd3ab8341c965d831f197c6bae37da1be41704ceef1a8364b883013f",
+      "files": {
+        "atlas-plate-932b705eb345-800.jpg": "f09a6b6492df040b4c2f83fe31b603013b9b00c3ab8b6889046746f074b6b927",
+        "atlas-plate-932b705eb345-1122.jpg": "26eb43df90622e08dcc029b411213bef7e5eaa418c41ae7149dadc24c99c5bae"
+      }
     }
   }
 }

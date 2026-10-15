@@ -131,6 +131,92 @@
       ],
       "headline_condition": "Sunny and cool; dry rock only",
       "condition_level": "normal"
+    },
+    {
+      "edition_id": "2026-W42-thu",
+      "replaced_at": "2026-10-15T11:07:36.941Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-10-15T06:53:31-04:00",
+        "checked_at": "2026-10-15T11:01:08.137Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RAH/60,51/forecast",
+          "issued_at": "2026-10-15T10:53:31.000Z",
+          "retrieved_at": "2026-10-15T11:01:08.137Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "A chance of rain showers. Partly sunny, with a high near 63. North wind 12 to 15 mph, with gusts as high as 26 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "A slight chance of rain showers. Mostly sunny, with a high near 61."
+          }
+        ],
+        "summary": "Saturday: A chance of rain showers. Partly sunny, with a high near 63. North wind 12 to 15 mph, with gusts as high as 26 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible. Sunday: A slight chance of rain showers. Mostly sunny, with a high near 61. Saturday night: A chance of rain showers. Partly cloudy, with a low around 44. Chance of precipitation is 30%. New rainfall amounts between a tenth and quarter of an inch possible. Sunday night: A slight chance of rain showers before 2am. Partly cloudy, with a low around 45.",
+        "alerts": [],
+        "alerts_checked_at": "2026-10-15T11:01:08.137Z",
+        "pivot": {
+          "if": "Thunder, unsafe wind, flooding, official closure or a tired dog",
+          "note": "Postpone or turn back. Another outdoor trail is not a thunderstorm fallback. Recheck official access and the current NWS forecast before leaving."
+        },
+        "trail_note": "Follow the 2.7-mile blue circuit on the access map. Wet roots and lakeside gusts are reasons to shorten or postpone; keep Rupert leashed and out of the water."
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — verified public trailhead forecast",
+          "url": "https://api.weather.gov/gridpoints/RAH/60,51/forecast",
+          "retrieved": "2026-10-15"
+        }
+      ],
+      "headline_condition": "Favor dry Sunday; gusty, showery Saturday",
+      "condition_level": "adverse"
+    },
+    {
+      "edition_id": "2026-W42-thu",
+      "replaced_at": "2026-10-15T16:39:03.627Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-10-15T06:53:31-04:00",
+        "checked_at": "2026-10-15T11:07:36.941Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RAH/60,51/forecast",
+          "issued_at": "2026-10-15T10:53:31.000Z",
+          "retrieved_at": "2026-10-15T11:07:36.941Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "A chance of rain showers. Partly sunny, with a high near 63. North wind 12 to 15 mph, with gusts as high as 26 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "A slight chance of rain showers. Mostly sunny, with a high near 61."
+          }
+        ],
+        "summary": "Saturday: A chance of rain showers. Partly sunny, with a high near 63. North wind 12 to 15 mph, with gusts as high as 26 mph. Chance of precipitation is 40%. New rainfall amounts between a tenth and quarter of an inch possible. Sunday: A slight chance of rain showers. Mostly sunny, with a high near 61. Saturday night: A chance of rain showers. Partly cloudy, with a low around 44. Chance of precipitation is 30%. New rainfall amounts between a tenth and quarter of an inch possible. Sunday night: A slight chance of rain showers before 2am. Partly cloudy, with a low around 45.",
+        "alerts": [],
+        "alerts_checked_at": "2026-10-15T11:07:36.941Z",
+        "pivot": {
+          "if": "Thunder, unsafe wind, flooding, official closure or a tired dog",
+          "note": "Postpone or turn back. Another outdoor trail is not a thunderstorm fallback. Recheck official access and the current NWS forecast before leaving."
+        },
+        "trail_note": "Follow the 2.7-mile blue circuit on the access map. Wet roots and lakeside gusts are reasons to shorten or postpone; keep Rupert leashed and out of the water."
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — verified public trailhead forecast",
+          "url": "https://api.weather.gov/gridpoints/RAH/60,51/forecast",
+          "retrieved": "2026-10-15"
+        }
+      ],
+      "headline_condition": "Favor dry Sunday; gusty, showery Saturday",
+      "condition_level": "adverse"
     }
   ]
 }

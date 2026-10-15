@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "c7ecaf83488a0861",
+  "revision": "82160eea6d265ae5",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -306,6 +306,56 @@
       ],
       "photo_id": "rupert-hanging-rock-2026-w42-tue",
       "path": "data/editions/2026-W42-tue.json"
+    },
+    {
+      "id": "2026-W42-thu",
+      "slot": "thursday",
+      "status": "published",
+      "published_at": "2026-10-15T12:43:53-04:00",
+      "weekend": {
+        "start": "2026-10-17",
+        "end": "2026-10-18"
+      },
+      "title": "New Hope Overlook and the shorter lakeside loop",
+      "place_id": "jordan-lake-new-hope",
+      "experience_key": "jordan-lake-new-hope-blue-loop",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "New Hope Overlook and the shorter lakeside loop",
+          "place_id": "jordan-lake-new-hope",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "jordan-lake-new-hope"
+      ],
+      "place_roles": [
+        {
+          "place_id": "jordan-lake-new-hope",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-932b705eb345",
+      "path": "data/editions/2026-W42-thu.json"
     }
   ]
 }

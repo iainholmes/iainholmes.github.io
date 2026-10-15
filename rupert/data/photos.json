@@ -177,6 +177,32 @@
         "style_version": "atlas-engraved-3"
       },
       "plate_no": 6
+    },
+    {
+      "id": "atlas-plate-932b705eb345",
+      "file": "atlas-plate-932b705eb345",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1122,
+      "height": 1402,
+      "widths": [
+        800,
+        1122
+      ],
+      "alt": "Engraved editorial portrait of Rupert, a chocolate American Labrador with long drop ears and a mustard collar, resting with his head raised above his front paws on a plain cream field.",
+      "focal": [
+        0.5,
+        0.55
+      ],
+      "caption": "TRA Plate No. 007",
+      "source_note": "Original native ChatGPT editorial image generated and visually reviewed for the Atlas using supplied identity photographs and the approved engraved-print reference; no documentary location claim.",
+      "generation": {
+        "owner": "2026-W42-thu/flagship",
+        "created_at": "2026-10-15",
+        "style_version": "atlas-engraved-3",
+        "composition_key": "resting-head-raised-front-paws-cream-close-20261015"
+      },
+      "plate_no": 7
     }
   ]
 }

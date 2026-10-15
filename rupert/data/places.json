@@ -328,6 +328,41 @@
         "stairs",
         "day trip"
       ]
+    },
+    {
+      "id": "jordan-lake-new-hope",
+      "name": "Jordan Lake State Recreation Area — New Hope Overlook",
+      "short_name": "New Hope Overlook",
+      "kind": "trail",
+      "region": "Chatham County",
+      "access": {
+        "name": "New Hope Overlook access, 339 W.H. Jones Road, New Hill",
+        "lat": 35.6772,
+        "lng": -79.0454,
+        "coords_verified": true,
+        "coords_checked": "2026-10-15",
+        "coords_source": "NC State Parks current home page explicitly gives New Hope Overlook public access GPS 35.6772, -79.0454 and its linked directions pin agrees. Use this current public access pin, not the legacy PDF footer, which repeats the Crosswinds campground coordinates."
+      },
+      "dog_policy": "Attended leash, six feet maximum; no pets inside buildings or designated swimming areas (NC State Parks)",
+      "routes": [
+        {
+          "id": "jordan-lake-new-hope-blue-loop@1",
+          "distance_mi": 2.7,
+          "shape": "loop",
+          "difficulty": "moderate"
+        }
+      ],
+      "links": [
+        {
+          "label": "NC State Parks — access, hours and current status",
+          "url": "https://www.ncparks.gov/state-parks/jordan-lake-state-recreation-area"
+        }
+      ],
+      "tags": [
+        "woodland",
+        "daylight",
+        "leashed dogs"
+      ]
     }
   ]
 }

@@ -13,6 +13,20 @@
       "conditions_as_of": "2026-10-13T15:00:35-04:00",
       "ready": true,
       "note": "Current official NC State Parks home, trail listing and manager-linked public parking verify open hiking, 1.8-mile one-way orange-circle Hanging Rock Trail (3.6 round trip), visitor lot at 1005 Visitor Center Drive, October gate 7 a.m.–9 p.m., free hiking, attended six-foot leash, no building/swim-beach pet access, and cliff-edge precautions. Campground and seasonal lake closures are disclosed; these visitor-center routes avoid the campground. Town Riverwalk and recreation-facilities pages verify Gold Park access, daylight hours and dog rules; the obsolete Gold Park URL returned 404 and was replaced with the current official facilities page before approval. Actual refreshed NWS 2026-10-13T15:00:35-04:00 reviewed: Saturday: Sunny, with a high near 57. Sunday: Sunny, with a high near 57. Saturday night: Clear, with a low around 38. Sunday night: Clear, with a low around 40. No returned active alerts. Wet-rock, thunder, ice, dangerous-wind and dog-fatigue pivots remain explicit. Public-reference OSRM estimate 137 minutes supports the labeled 135–150 minute range without traffic. Recovered original olive-field engraved print inspected: one lean chocolate Rupert, mustard collar, complete anatomy, no destination claim; byte-identical original retained privately, metadata-stripped JPEGs and unique owner registry verified. New trail experience is reuse-eligible; no personal completion history supplied. All evidence reviewed for this release, not inherited from the failed candidate."
+    },
+    {
+      "edition_id": "2026-W42-thu",
+      "reviewed_at": "2026-10-15T11:09:45.204Z",
+      "conditions_as_of": "2026-10-15T06:53:31-04:00",
+      "ready": true,
+      "note": "Personally read the exact publication-day NWS forecast and active-alert result refreshed at 2026-10-15T11:07:36.941Z. Saturday showers 40%, high 63 F, gusts to 26 mph; Sunday mostly sunny with slight showers, high 61 F, NE wind 13 mph. No returned active alerts; absence of alerts is not clearance. Authored adverse warning, conditional dry-Sunday preference, wind/wet-root cautions and postpone/turn-back pivot are consistent. Official current hiking Open, route/map lengths, public trailhead, October hours, parking, day-use fee and attended six-foot dog policy reverified. Legacy PDF GPS is not used; current manager homepage/pin is routing authority. Actual native image was viewed and compared with supplied photos and latest six plates: original, recognizable identity, correct collar, intentional composition and print style. New image checksums, stripped JPEGs and fingerprint validated. No personal history or Home information supplied or used."
+    },
+    {
+      "edition_id": "2026-W42-thu",
+      "reviewed_at": "2026-10-15T16:39:58.878Z",
+      "conditions_as_of": "2026-10-15T06:53:31-04:00",
+      "ready": true,
+      "note": "Reviewed the exact newly refreshed NWS result and active alerts after the browser delay. Source issue 2026-10-15T06:53:31-04:00, retrieval 2026-10-15T16:39:03.627Z. Forecast remains Saturday 40% showers/gusts 26 mph/high 63 F, Sunday slight showers/high 61 F; no returned active alerts. Adverse warning, conditional dry-Sunday window, wet-root/wind precautions and postponement pivot remain accurate; no weather safety inferred from missing alerts. Fresh official HTTP 200 evidence reconfirms hiking Open, route, public access, October hours, parking, fee and six-foot attended-leash policy. The original native image already visually reviewed against actual identity photographs and latest six prints is retained for this same slot, with unchanged valid fingerprint/stripped JPEGs. No Home or personal history used."
     }
   ]
 }
