@@ -914,6 +914,68 @@
         "seed": 2921277239,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Observation links a broad field to a decision point\"><title>North Carolina will seek citizenship verification from 1,392 flagged registrants</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-14-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-14-05)\"><circle cx=\"294\" cy=\"285\" r=\"178\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"32\"/><path d=\"M180 285Q294 160 408 285Q294 410 180 285Z\" fill=\"#1b4a6b\"/><circle cx=\"294\" cy=\"285\" r=\"46\" fill=\"#7a1f33\"/><path d=\"M420 410L577 552\" stroke=\"#2c241d\" stroke-width=\"45\"/><path d=\"M560 120H710V295H560Z\" fill=\"#c4452c\"/></g></svg>"
       }
+    },
+    "2026-10-15": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-15",
+        "number": "01",
+        "category": "Technology · financial systems",
+        "topic": "infrastructure",
+        "title": "FSB puts human control at the center of agentic-AI guidance",
+        "composition": "infrastructure-duct",
+        "signature": "plate:infrastructure-duct",
+        "seed": 2381846886,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Cooling infrastructure surrounds a capacity chamber\"><title>FSB puts human control at the center of agentic-AI guidance</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-15-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-15-01)\"><path d=\"M90 155H475V480H90Z\" fill=\"#2c241d\"/><path d=\"M130 202H432M130 270H432M130 338H432M130 406H432\" stroke=\"#f4ead7\" stroke-width=\"23\"/><path d=\"M520 510V185H690V410H600\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"51\"/><path d=\"M520 96V160M580 96V160M640 96V160\" stroke=\"#c4452c\" stroke-width=\"20\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-15",
+        "number": "02",
+        "category": "U.S. policy · health administration",
+        "topic": "finance",
+        "title": "CMS ends duplicate marketplace subsidies for 189,000 records",
+        "composition": "finance-ledger",
+        "signature": "plate:finance-ledger",
+        "seed": 2413893915,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A ledger is inspected beside a hidden transfer channel\"><title>CMS ends duplicate marketplace subsidies for 189,000 records</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-15-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-15-02)\"><path d=\"M85 130H360V540H85Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M125 200H325M125 270H325M125 340H260M125 410H300\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"548\" cy=\"284\" r=\"112\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"35\"/><path d=\"M624 367L718 489\" stroke=\"#7a1f33\" stroke-width=\"42\"/><path d=\"M402 530V425H475V345H548\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"21\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-15",
+        "number": "03",
+        "category": "Environment · forests and health",
+        "topic": "climate",
+        "title": "Amazonas forest-fire surge becomes a regional smoke emergency",
+        "composition": "climate-watershed",
+        "signature": "plate:climate-watershed",
+        "seed": 1087927055,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A high lake spills toward inhabited lower ground\"><title>Amazonas forest-fire surge becomes a regional smoke emergency</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-15-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-15-03)\"><path d=\"M50 425L235 130L398 385L530 215L750 525H50Z\" fill=\"#1d5f47\"/><ellipse cx=\"290\" cy=\"285\" rx=\"85\" ry=\"34\" fill=\"#1b4a6b\"/><path d=\"M340 295Q340 430 570 483\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"34\"/><path d=\"M584 410L650 355L716 410V510H584Z\" fill=\"#2c241d\"/><path d=\"M93 480H234\" stroke=\"#c98a12\" stroke-width=\"25\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-15",
+        "number": "04",
+        "category": "U.S. policy · administrative authority",
+        "topic": "government",
+        "title": "Court pauses USDA relocations and office closures",
+        "composition": "government-balance",
+        "signature": "plate:government-balance",
+        "seed": 4239949755,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Public funds are held in balance under a legal decision\"><title>Court pauses USDA relocations and office closures</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-15-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-15-04)\"><path d=\"M390 130V520M250 525H535M165 240H620\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M190 240L110 400H270ZM585 240L505 400H665Z\" fill=\"#1b4a6b\"/><path d=\"M135 401Q190 476 245 401M530 401Q585 476 640 401\" fill=\"#c98a12\"/><rect x=\"295\" y=\"90\" width=\"190\" height=\"105\" fill=\"#7a1f33\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-15",
+        "number": "05",
+        "category": "North Carolina · public finance",
+        "topic": "finance",
+        "title": "Early voting opens on Raleigh's $203 million housing and transportation bonds",
+        "composition": "trade-detour",
+        "signature": "plate:trade-detour",
+        "seed": 419965764,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Server cargo takes an indirect route around an inspection gate\"><title>Early voting opens on Raleigh&#39;s $203 million housing and transportation bonds</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-15-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-15-05)\"><path d=\"M65 480H240V180H490V480H715\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"38\"/><path d=\"M350 280V555\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M300 295H400\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M75 376H195V506H75ZM552 105H682V247H552Z\" fill=\"#2c241d\"/><path d=\"M99 410H173M99 451H173M578 146H658M578 194H658\" stroke=\"#f4ead7\" stroke-width=\"14\"/><path d=\"M490 180H545\" stroke=\"#c4452c\" stroke-width=\"24\"/><path d=\"M524 158L551 180L524 203\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"12\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

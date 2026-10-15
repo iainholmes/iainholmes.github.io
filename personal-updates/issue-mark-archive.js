@@ -452,5 +452,20 @@
       8
     ],
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"The Workbook, set 011: Precision &amp; information\"><title>The Workbook · 011 · Precision &amp; information</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f7f7f3\"/><g><path d=\"M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540M60 360H540M60 420H540M60 480H540M60 60V500M120 60V500M180 60V500M240 60V500M300 60V500M360 60V500M420 60V500M480 60V500M540 60V500\" fill=\"none\" stroke=\"#1c2f4a\" opacity=\".12\"/><path d=\"M100 330H500M300 130V480M180 480H420\" stroke=\"#1c2f4a\" stroke-width=\"8\"/><circle cx=\"150\" cy=\"280\" r=\"45\" fill=\"#b5ced1\"/><circle cx=\"450\" cy=\"260\" r=\"65\" fill=\"#0e5360\"/><path d=\"M150 225V155H450V185\" fill=\"none\" stroke=\"#1c2f4a\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#1c2f4a\" stroke-width=\"2\"/><g fill=\"#1c2f4a\"><text x=\"42\" y=\"634\" font-family=\"STIX Two Text,Georgia,serif\" font-size=\"48\">The Workbook</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">SET 011 / 2026-10-14</text><text x=\"42\" y=\"740\" font-family=\"STIX Two Text,Georgia,serif\" font-size=\"26\">Precision &amp; information</text></g></svg>"
+  },
+  "fb:2026-10-15": {
+    "key": "fb",
+    "date": "2026-10-15",
+    "no": "019",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "A global financial standard setter moves from describing artificial-intelligence risk to specifying operational controls. Federal health administrators and a district court test two different forms of administrative authority; Amazonas confronts an acute fire and air-quality emergency; and Raleigh voters begin deciding two long-lived capital programs. These developments do not constitute one trend. Five separate tests of operational capacity The FSB guidance and CMS record matching both concern control systems, but at different levels: one is a nonbinding global governance framework for future AI use, while the other is a live federal eligibility process with individual notice and appeal obligations. The remaining stories should stay distinct. Amazonas requires emergency response and land enforcement; the USDA case concerns legal authority and continuity of federal services; Raleigh's ballot asks voters to weigh local capital benefits against long-term debt. Their shared date does not make them one policy cycle.",
+    "version": 3,
+    "subject": "enforcement",
+    "composition": "enforcement-filter",
+    "signature": "issue:enforcement-filter",
+    "phrase": "Routes & enforcement",
+    "seed": 2249378378,
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 019: Routes &amp; enforcement\"><title>Field Brief · 019 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M90 132H510L350 312V471H250V312Z\" fill=\"#221a14\"/><path d=\"M178 200H422\" stroke=\"#c5ad88\" stroke-width=\"22\"/><path d=\"M210 388H390\" stroke=\"#8a2a36\" stroke-width=\"27\"/><circle cx=\"300\" cy=\"95\" r=\"32\" fill=\"#8a2a36\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 019 / 2026-10-15</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
