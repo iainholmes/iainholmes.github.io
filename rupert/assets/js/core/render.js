@@ -373,7 +373,7 @@ export const MARK_SVG = {
 
 /**
  * The Atlas page: a register that always works, plus a map slot the browser enhances.
- * model = { groups, statuses, counts, features, bounds } from core/atlas.js.
+ * model = { groups, directory, statuses, counts, features, bounds } from core/atlas.js.
  */
 export function renderAtlas(model, ctx) {
   const { base } = ctx;
@@ -390,9 +390,15 @@ export function renderAtlas(model, ctx) {
       <p class="reg-status">${p.closure?.status === 'closed' ? 'Closed · Official Status Checked ' + esc(p.closure.checked) : latest.status === 'withdrawn' ? 'Withdrawn historical publication; this is not a current recommendation.' : 'Published recommendation'}</p>
       <p class="reg-edition">${editionLink(latest)}</p>${st.editions.length > 1 ? `<details class="reg-history"><summary>Prior recommendations (${st.editions.length - 1})</summary>${st.editions.slice(1).map(editionLink).join('<br>')}</details>` : ''}</div></details></div></div></li>`;
   };
-  const groups = model.groups.map(g => `<section class="reg-group" data-region="${esc(g.region)}"><h3 class="reg-region vh">${esc(g.region)}</h3><ul class="reg">${g.places.map(row).join('')}</ul></section>`).join('');
+  // Preserve region context on each card without allowing region grouping to override chronology.
+  const runs = [];
+  for (const p of model.directory) {
+    if (runs.at(-1)?.region !== p.region) runs.push({ region: p.region, places: [] });
+    runs.at(-1).places.push(p);
+  }
+  const groups = runs.map(g => `<section class="reg-group" data-region="${esc(g.region)}"><h3 class="reg-region vh">${esc(g.region)}</h3><ul class="reg">${g.places.map(row).join('')}</ul></section>`).join('');
   const regions = model.groups.map(g => ({ label:g.region, ids:g.places.map(p=>p.id) }));
-  const places = model.groups.flatMap(g=>g.places), c = model.counts;
+  const places = model.directory, c = model.counts;
   const frameButton = (key, label) => `<button type="button" data-frame="${esc(key)}" disabled>${esc(label)}</button>`;
   const legend = ['recommended', ...(c.walked ? ['walked'] : []), 'withdrawn'].map(k => `<li>${MARK_SVG[k]}<span>${STAT[k]}</span></li>`).join('');
   return `<div class="atlas">

@@ -14,6 +14,12 @@ export const STATUS = {
 const SLOT_SHORT = { tuesday: "Tuesday's choice", thursday: "Thursday's choice" };
 const ROLE = { flagship: 'flagship', local_trail: 'Local Trail', away_mission: 'Away Mission', wildcard: 'Wildcard' };
 
+const publicationTime = edition => {
+  const time = Date.parse(edition?.published_at);
+  return Number.isFinite(time) ? time : -Infinity;
+};
+const publicationOrder = (a, b) => publicationTime(b) - publicationTime(a) || a.id.localeCompare(b.id);
+
 /**
  * For each place: its status and the editions / visits behind it.
  * Only primary recommendations earn a Directory entry; contingency and planning candidates stay out.
@@ -31,7 +37,7 @@ export function placeStatuses(places, manifest, { log = [], now = new Date() } =
   for (const [id, s] of out) {
     if (!s.editions.length) out.delete(id);
     else {
-      s.editions.sort((a, b) => b.published_at.localeCompare(a.published_at));
+      s.editions.sort(publicationOrder);
       s.status = s.editions[0].status === 'withdrawn' ? 'withdrawn' : 'recommended';
     }
   }
@@ -74,6 +80,13 @@ export function registerGroups(places, statuses) {
     .sort((a, b) => score(b.places) - score(a.places) || a.region.localeCompare(b.region));
 }
 
+/** One card per released place, newest appearance first; stable IDs break ties or missing dates. */
+export function directoryPlaces(places, statuses) {
+  return places.places.filter(p => statuses.has(p.id)).sort((a, b) =>
+    publicationTime(statuses.get(b.id).editions[0]) - publicationTime(statuses.get(a.id).editions[0])
+      || a.id.localeCompare(b.id));
+}
+
 export function counts(statuses) {
   const c = { all: statuses.size, recommended: 0, walked: 0, planned: 0, withdrawn: 0 };
   for (const s of statuses.values()) { if (c[s.status] != null) c[s.status]++; if (s.visited && s.status !== 'walked') c.walked++; }
@@ -83,7 +96,7 @@ export function counts(statuses) {
 export function atlasModel(places, manifest, { now = new Date(), log = [] } = {}) {
   const statuses = placeStatuses(places, manifest, { now, log });
   const groups = registerGroups(places, statuses);
-  return { statuses, groups, counts: counts(statuses), features: markerFeatures(places, statuses),
+  return { statuses, groups, directory: directoryPlaces(places, statuses), counts: counts(statuses), features: markerFeatures(places, statuses),
     bounds: boundsOf({ places: places.places.filter(p => statuses.has(p.id)) }),
     regions: groups.map(g => ({ label: g.region, ids: g.places.map(p => p.id) })) };
 }
