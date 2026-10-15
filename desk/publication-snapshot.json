@@ -48,15 +48,15 @@
     {
       "slot": "thursday",
       "state": "published",
-      "pending": true,
-      "id": "2026-W41-thu",
-      "date": "2026-10-08",
-      "dateLabel": "08 Oct 2026",
-      "title": "Raven Rock and the stairs down to the Cape Fear",
-      "destination": "Raven Rock State Park, 3009 Raven Rock Rd., Lillington",
-      "artwork": "/rupert/photos/rupert-plate-bank-trail-700.jpg",
-      "alt": "Block-print plate: Rupert walks on a bank trail with a tennis ball and a red leash, beside a dark river beneath a full moon and wooded cliffs.",
-      "url": "https://iainholmes.github.io/rupert/edition/2026-W41-thu/"
+      "pending": false,
+      "id": "2026-W42-thu",
+      "date": "2026-10-15",
+      "dateLabel": "15 Oct 2026",
+      "title": "New Hope Overlook and the shorter lakeside loop",
+      "destination": "New Hope Overlook access, 339 W.H. Jones Road, New Hill",
+      "artwork": "/rupert/photos/atlas-plate-932b705eb345-800.jpg",
+      "alt": "Engraved editorial portrait of Rupert, a chocolate American Labrador with long drop ears and a mustard collar, resting with his head raised above his front paws on a plain cream field.",
+      "url": "https://iainholmes.github.io/rupert/edition/2026-W42-thu/"
     }
   ]
 }
