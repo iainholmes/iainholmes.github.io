@@ -2411,6 +2411,144 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Pollock et al. (1994), Angler Survey Methods and Their Applications in Fisheries Management, American Fisheries Society; Thompson (2012), Sampling."
         }
       ]
+    },
+    {
+      "no": 12,
+      "date": "2026-10-16",
+      "minutes": 25,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>A researcher estimates <i>y</i><sub>it</sub> = ρ<i>y</i><sub>i,t−1</sub> + α<sub>i</sub> + ε<sub>it</sub> using a panel with many firms but only six annual observations per firm. Which statements about estimation are correct?</p>",
+          "options": [
+            "The within estimator can be biased in a short panel because the transformed lagged outcome is correlated with the transformed error.",
+            "Adding more firms eliminates this short-panel bias even if the number of periods stays fixed.",
+            "First-differencing removes the firm effect, and suitably lagged outcome levels may instrument the differenced lag under appropriate serial-correlation restrictions.",
+            "A serial-correlation diagnostic for the differenced residuals is relevant to the validity of the proposed lag instruments."
+          ],
+          "correct": [0, 2, 3],
+          "concepts": ["Dynamic panels", "Nickell bias", "Difference GMM"],
+          "assistance": "<p>Apply the within transformation symbolically to both the lagged dependent variable and the disturbance. Ask whether subtracting a unit mean introduces a shared disturbance component when the time dimension is short.</p><p>For a difference-GMM approach, first remove the fixed effect by differencing. Then map each candidate lag to the differenced error and state what restrictions on serial correlation make that lag orthogonal. More cross-sectional units improve precision but do not lengthen each unit's history.</p>",
+          "explanation": "<p><b>(A), (C), and (D) are correct.</b> In a dynamic fixed-effects model, demeaning makes <i>y</i><sub>i,t−1</sub>−ȳ<sub>i,−1</sub> correlated with ε<sub>it</sub>−ε̄<sub>i</sub>, producing Nickell bias of order 1/<i>T</i>. Increasing <i>N</i> with fixed <i>T</i> does not remove that bias, so (B) is false. Differencing eliminates α<sub>i</sub>; if the level errors are not serially correlated, levels dated <i>t</i>−2 and earlier can be valid instruments for Δ<i>y</i><sub>i,t−1</sub>. Residual serial-correlation tests help assess those moment conditions: first-order correlation in differences is expected, whereas second-order correlation threatens the usual instruments.</p>",
+          "refs": "Nickell (1981), Econometrica; Arellano & Bond (1991), Review of Economic Studies."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A risk-averse household has utility <i>u</i>(<i>w</i>) = √<i>w</i>, initial wealth 100, and a 25% probability of losing 64. An insurer offers full insurance at premium 16. Ignoring administrative costs, which statement is correct?</p>",
+          "options": [
+            "The household rejects because the premium exceeds the expected loss.",
+            "The household strictly prefers full insurance: the fair premium preserves expected wealth while removing risk.",
+            "The household strictly prefers insurance because expected utility without insurance exceeds √84.",
+            "The household strictly prefers no insurance because concavity makes gambles valuable."
+          ],
+          "correct": [1],
+          "concepts": ["Expected utility", "Actuarially fair insurance", "Risk aversion"],
+          "assistance": "<p>Compute the loss's expected value and the household's wealth in each state. Then compare expected utility under the risky allocation with utility at insured wealth; do not compare expected wealth alone.</p><p>For any strictly concave utility function, Jensen's inequality orders utility at mean wealth and expected utility from a nondegenerate gamble with that same mean. A fair full-insurance contract removes the dispersion without changing mean wealth.</p>",
+          "explanation": "<p><b>(B) is correct.</b> The expected loss is 0.25(64) = 16, so the premium is actuarially fair and insured wealth is 100 − 16 = 84 in either state. Without insurance, expected wealth is also 84, but expected utility is 0.75√100 + 0.25√36 = 9, while √84 ≈ 9.165. Strict concavity therefore makes full insurance strictly preferred. (A) is false because the premium equals, rather than exceeds, expected loss. (C) reverses the expected-utility comparison, and (D) reverses the implication of concavity.</p>",
+          "refs": "Arrow (1965), Aspects of the Theory of Risk-Bearing; Pratt (1964), Econometrica."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "<p>Inflation follows a New Keynesian Phillips curve π<sub>t</sub> = βE<sub>t</sub>π<sub>t+1</sub> + κ<i>x</i><sub>t</sub> + <i>u</i><sub>t</sub>, where <i>x</i><sub>t</sub> is the output gap and <i>u</i><sub>t</sub> is a cost-push shock. Which statements are defensible?</p>",
+          "options": [
+            "A positive cost-push shock creates a short-run stabilization tradeoff between inflation and the output gap.",
+            "If expected future inflation falls credibly, current inflation can fall even before the current output gap changes.",
+            "Setting the current output gap to zero guarantees zero inflation regardless of expectations and the cost-push shock.",
+            "The slope κ affects how much current economic slack is associated with a given change in inflation, holding expectations and the shock fixed."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["New Keynesian Phillips curve", "Cost-push shocks", "Expectations management"],
+          "assistance": "<p>Read the equation term by term. Hold two components fixed at a time and trace how the third changes current inflation. Then distinguish demand-driven inflation from an exogenous supply-side disturbance.</p><p>For policy intuition, ask whether eliminating the contemporaneous gap also eliminates the expectations term or the shock. Credibility matters only insofar as it changes the conditional expectation appearing in the equation.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> A positive <i>u</i><sub>t</sub> raises inflation at a given gap, so offsetting it requires a more negative gap, generating a stabilization tradeoff. Lower credible E<sub>t</sub>π<sub>t+1</sub> reduces current inflation through forward-looking price setting. Holding expectations and <i>u</i><sub>t</sub> fixed, κ maps the output gap into inflation. (C) is false: with <i>x</i><sub>t</sub> = 0, current inflation still equals βE<sub>t</sub>π<sub>t+1</sub> + <i>u</i><sub>t</sub>.</p>",
+          "refs": "Clarida, Galí & Gertler (1999), Journal of Economic Literature; Woodford (2003), Interest and Prices."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>Two neighboring jurisdictions independently choose pollution abatement. Each receives only $30 of local benefit from one more unit of its own abatement, while that unit also creates $20 of benefit across the border. Marginal abatement cost is $40 in each jurisdiction at the decentralized choice under consideration. What is the immediate implication?</p>",
+          "options": [
+            "Each jurisdiction abates too much because local marginal benefit is below marginal cost.",
+            "The decentralized choice is efficient because cross-border benefits cancel between jurisdictions.",
+            "Additional abatement is socially worthwhile but privately unattractive, so coordinated policy can raise welfare.",
+            "A cooperative agreement cannot help unless marginal abatement costs differ across jurisdictions."
+          ],
+          "correct": [2],
+          "concepts": ["Transboundary pollution", "Cross-border externalities", "Cooperative environmental policy"],
+          "assistance": "<p>Write two marginal-benefit tests for the same extra unit: one from the choosing jurisdiction's perspective and one from the joint perspective. Include every affected party exactly once in the joint calculation.</p><p>An external benefit creates a wedge even when technologies and marginal costs are identical. Coordination can internalize that wedge through a transfer, joint standard, or other agreement.</p>",
+          "explanation": "<p><b>(C) is correct.</b> The jurisdiction compares its local marginal benefit, $30, with marginal cost, $40, so it will not undertake the extra unit. Joint welfare counts both the local and cross-border benefits: $30 + $20 = $50, which exceeds the $40 cost. Decentralized abatement is therefore too low at this margin. (A) reverses the direction of the wedge, (B) treats a real external benefit as if it vanished, and (D) is false because cooperation can internalize cross-border benefits even with identical costs.</p>",
+          "refs": "Oates (1972), Fiscal Federalism; Mäler (1990), American Economic Review."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>A city introduces congestion pricing on 1 July. Monthly traffic has a declining pre-policy trend, drivers begin changing routes in May after the plan is announced, and a nearby untreated city has comparable data. Which practices strengthen an interrupted-time-series analysis?</p>",
+          "options": [
+            "Model the pre-policy level and trend rather than attributing the entire July break to the policy.",
+            "Pre-specify or probe announcement-period anticipation instead of forcing May and June into an untreated baseline.",
+            "Use the nearby city as a comparison series after assessing whether its pre-policy trajectory and contemporaneous shocks are informative.",
+            "Treat a statistically significant July coefficient as proof that no other event caused the change."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Interrupted time series", "Policy anticipation", "Comparative time series"],
+          "assistance": "<p>Draw the observed series and three counterfactual ingredients: the continuation of its prior trend, the timing at which behavior could first respond, and the path of an unaffected but exposed-to-common-shocks comparison.</p><p>A discontinuity coefficient is only as credible as the counterfactual continuation. Ask separately about functional form, anticipation, seasonality and coincident shocks; statistical significance does not answer those design questions.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> A segmented time-series model should account for the existing decline so that a July level or slope change is not confused with trend continuation. Because announcement can alter behavior before formal implementation, May and June may be anticipatory treatment periods. A credible comparison series can help absorb common shocks, but only after checking comparability and spillovers. (D) is false: a small standard error does not rule out a coincident event, misspecified seasonality, or an incorrect counterfactual trend.</p>",
+          "refs": "Bernal, Cummins & Gasparrini (2017), International Journal of Epidemiology; Linden (2015), Stata Journal."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "<p>A posterior predictive <i>p</i>-value is computed by comparing a discrepancy in replicated data with the same discrepancy in the observed data, averaging over the posterior. Under the fitted model it must be exactly Uniform(0,1), so the usual frequentist 5% cutoff has exact repeated-sampling size. True or false?</p>",
+          "options": ["True", "False"],
+          "correct": [1],
+          "concepts": ["Posterior predictive checks", "Model criticism", "Bayesian p-values"],
+          "assistance": "<p>Identify what is used twice: the observed data both update the parameter distribution and enter the discrepancy comparison. Contrast that construction with a classical test statistic whose null distribution is fixed before observing the data.</p><p>Posterior predictive checks are diagnostic tools for asking whether replicated data resemble observed data in substantively chosen respects. Calibration depends on the discrepancy and model; it is not inherited automatically from the word “<i>p</i>-value.”</p>",
+          "explanation": "<p><b>False.</b> Posterior predictive <i>p</i>-values generally are not exactly uniform under the null. The observed data influence both the posterior distribution used to generate replications and the observed discrepancy, often making the diagnostic conservative and concentrated toward 0.5. They are valuable for locating model–data mismatch, but a 0.05 threshold does not automatically have exact frequentist size. Exact or asymptotic calibration requires additional construction and analysis.</p>",
+          "refs": "Gelman, Meng & Stern (1996), Statistica Sinica; Bayarri & Berger (2000), Journal of the American Statistical Association."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "multi",
+          "stem": "<p>A resource-rich government receives a temporary oil-revenue windfall while commodity prices are volatile and domestic public-investment capacity is limited. Which policies are consistent with a permanent-income approach to managing the windfall?</p>",
+          "options": [
+            "Base sustainable spending on the annuity value of total resource wealth rather than current receipts alone.",
+            "Use a stabilization or sovereign wealth fund with transparent deposit and withdrawal rules to smooth revenue shocks.",
+            "Spend the entire windfall immediately because a temporary price increase permanently raises fiscal capacity one-for-one.",
+            "Account for absorptive-capacity constraints and the returns to public investment when choosing the saving path."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Permanent-income benchmark", "Sovereign wealth funds", "Fiscal procyclicality"],
+          "assistance": "<p>Convert the stock of below-ground wealth plus financial assets into a sustainable flow. Then distinguish a rule for long-run consumption from a buffer that absorbs temporary price and revenue fluctuations.</p><p>The benchmark is not mechanically optimal when productive public capital is scarce, but scaling investment too quickly can lower returns through capacity bottlenecks. Compare marginal returns, volatility and institutional constraints rather than equating cash receipts with permanent income.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> A permanent-income benchmark ties ongoing spending to the annuity value of comprehensive wealth, preventing a temporary receipts boom from being mistaken for permanent fiscal capacity. A rules-based fund can delink expenditure from volatile current revenue and reduce procyclicality. Where domestic capital is scarce, investment can justify departing from a pure foreign-saving rule, but absorptive capacity and project returns constrain the pace. (C) is false because a temporary price windfall does not permanently raise the resource stock or recurring revenue.</p>",
+          "refs": "van der Ploeg & Venables (2011), Economic Journal; IMF (2012), Macroeconomic Policy Frameworks for Resource-Rich Developing Countries."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "multi",
+          "stem": "<p>A correspondence audit study sends two otherwise equivalent job applications to each vacancy, randomly assigning a group-signaling name within vacancy. Which design and interpretation claims are sound?</p>",
+          "options": [
+            "Pairing within vacancy controls by design for vacancy-specific employer conditions, and inference should reflect that matched assignment structure.",
+            "Randomize résumé templates and application order independently of the signaled group, or balance them within the design.",
+            "The callback contrast identifies the effect of the name signal in this application environment, not every mechanism or all later hiring outcomes.",
+            "Sending many applications to the same employer cannot create interference because names are randomized."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Audit studies", "Matched randomization", "Construct validity"],
+          "assistance": "<p>Locate the randomization unit and the blocking variable. A within-vacancy contrast removes vacancy-level conditions only if other résumé features and ordering are not systematically attached to the signal.</p><p>Next separate the manipulated cue, the measured outcome and the target population. Finally ask whether one employer's response to an application could change its response to another, especially when applications are numerous or conspicuously similar.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> Within-vacancy pairing blocks on job and employer conditions; paired or randomization-based inference should preserve that design. Balancing templates and order prevents those features from confounding the randomized signal. The estimand is the causal effect of the name cue on callbacks in the sampled application environment, not a decomposition of employer motives or an effect on ultimate hiring. (D) is false: repeated applications can create detection, congestion or comparison effects, so interference and research burden require design limits and ethical review.</p>",
+          "refs": "Bertrand & Mullainathan (2004), American Economic Review; Kessler, Low & Sullivan (2019), American Economic Review."
+        }
+      ]
     }
   ]
 }
