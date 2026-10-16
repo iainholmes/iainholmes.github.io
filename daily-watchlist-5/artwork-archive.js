@@ -976,6 +976,68 @@
         "seed": 419965764,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Server cargo takes an indirect route around an inspection gate\"><title>Early voting opens on Raleigh&#39;s $203 million housing and transportation bonds</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-15-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-15-05)\"><path d=\"M65 480H240V180H490V480H715\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"38\"/><path d=\"M350 280V555\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M300 295H400\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M75 376H195V506H75ZM552 105H682V247H552Z\" fill=\"#2c241d\"/><path d=\"M99 410H173M99 451H173M578 146H658M578 194H658\" stroke=\"#f4ead7\" stroke-width=\"14\"/><path d=\"M490 180H545\" stroke=\"#c4452c\" stroke-width=\"24\"/><path d=\"M524 158L551 180L524 203\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"12\"/></g></svg>"
       }
+    },
+    "2026-10-16": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-16",
+        "number": "01",
+        "category": "Technology · trade controls",
+        "topic": "trade",
+        "title": "China proposes export controls across AI, biotech and solar know-how",
+        "composition": "trade-checkpoint",
+        "signature": "plate:trade-checkpoint",
+        "seed": 411822412,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A commercial route passes through a staffed checkpoint\"><title>China proposes export controls across AI, biotech and solar know-how</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-16-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-16-01)\"><path d=\"M80 400H720\" stroke=\"#7c5a3e\" stroke-width=\"58\"/><path d=\"M325 510V145H480V510\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M340 250H565\" stroke=\"#c4452c\" stroke-width=\"27\"/><rect x=\"110\" y=\"300\" width=\"142\" height=\"110\" fill=\"#1b4a6b\"/><path d=\"M140 300V410M216 300V410\" stroke=\"#f4ead7\" stroke-width=\"12\"/><circle cx=\"570\" cy=\"460\" r=\"31\" fill=\"#2c241d\"/><path d=\"M530 560V512Q570 480 610 512V560Z\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-16",
+        "number": "02",
+        "category": "U.S. policy · communications access",
+        "topic": "government",
+        "title": "Appeals court disrupts the legal machinery behind universal service",
+        "composition": "government-document",
+        "signature": "plate:government-document",
+        "seed": 4102031900,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A legal document meets a gate of authority\"><title>Appeals court disrupts the legal machinery behind universal service</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-16-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-16-02)\"><path d=\"M110 100H375L460 190V525H110Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M160 225H395M160 302H395M160 378H312\" stroke=\"#7c5a3e\" stroke-width=\"20\"/><path d=\"M530 535V185H690V535M490 260H728\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"30\"/><path d=\"M460 445H550\" stroke=\"#1b4a6b\" stroke-width=\"27\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-16",
+        "number": "03",
+        "category": "Environment · carbon markets",
+        "topic": "heat",
+        "title": "EU leaders keep carbon pricing but demand protection from volatility",
+        "composition": "heat-canopy",
+        "signature": "plate:heat-canopy",
+        "seed": 3802063773,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Heat waves above a shaded shelter and exposed ground\"><title>EU leaders keep carbon pricing but demand protection from volatility</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-16-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-16-03)\"><circle cx=\"605\" cy=\"160\" r=\"101\" fill=\"#c4452c\"/><path d=\"M70 155Q180 95 290 155T510 155M70 225Q180 165 290 225T510 225\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"25\"/><path d=\"M105 375L285 265L465 375Z\" fill=\"#1b4a6b\"/><path d=\"M140 375V540M430 375V540\" stroke=\"#2c241d\" stroke-width=\"23\"/><g fill=\"#2c241d\"><circle cx=\"230\" cy=\"417\" r=\"24\"/><circle cx=\"328\" cy=\"417\" r=\"24\"/><path d=\"M207 445H253V523H207ZM305 445H351V523H305Z\"/></g><path d=\"M508 520L561 451L600 500L651 427L718 485\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-16",
+        "number": "04",
+        "category": "Economy · development finance",
+        "topic": "finance",
+        "title": "World Bank scales private-capital model around an 800 million-job gap",
+        "composition": "finance-vault",
+        "signature": "plate:finance-vault",
+        "seed": 650663927,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A locked reserve encloses transfers\"><title>World Bank scales private-capital model around an 800 million-job gap</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-16-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-16-04)\"><rect x=\"110\" y=\"125\" width=\"430\" height=\"395\" rx=\"9\" fill=\"#2c241d\"/><circle cx=\"325\" cy=\"320\" r=\"122\" fill=\"#1b4a6b\" stroke=\"#f4ead7\" stroke-width=\"16\"/><path d=\"M325 235V405M240 320H410\" stroke=\"#f4ead7\" stroke-width=\"16\"/><path d=\"M540 245H690V465H615\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"32\"/><path d=\"M607 449L586 465L607 481\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"13\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-16",
+        "number": "05",
+        "category": "North Carolina · regional rail",
+        "topic": "government",
+        "title": "North Carolina secures $550 million for the Raleigh–Richmond S-Line",
+        "composition": "capacity-aperture",
+        "signature": "plate:capacity-aperture",
+        "seed": 3729155798,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A narrowing aperture restricts institutional throughput\"><title>North Carolina secures $550 million for the Raleigh–Richmond S-Line</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-16-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-16-05)\"><path d=\"M90 115L330 245V395L90 525ZM710 115L470 245V395L710 525Z\" fill=\"#2c241d\"/><path d=\"M155 320H310M490 320H650\" stroke=\"#1b4a6b\" stroke-width=\"42\"/><path d=\"M357 175V465M445 175V465\" stroke=\"#c4452c\" stroke-width=\"22\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
