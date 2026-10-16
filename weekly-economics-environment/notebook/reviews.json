@@ -81,6 +81,27 @@
         "location-specific-social-capital"
       ],
       "note": "Reviewed all five readings and incidence synthesis. Appended supported references and three distinct concepts on participation, spatial comparisons and local networks. Kept forecasts, model counterfactuals, prospective financing and identified exposure effects distinct."
+    },
+    "2026-10-16": {
+      "reviewedOn": "2026-10-16",
+      "readings": [
+        "2026-10-16-targeted-power",
+        "2026-10-16-pfas-agriculture",
+        "2026-10-16-ferc-review",
+        "2026-10-16-energy-macro",
+        "2026-10-16-climate-vitals"
+      ],
+      "synthesis": "2026-10-16-connections",
+      "revisited": [
+        "incidence",
+        "value-of-information",
+        "counterfactual-reasoning",
+        "identification"
+      ],
+      "added": [
+        "rare-exposure-power"
+      ],
+      "note": "Reviewed all five readings and the decision-rule synthesis. Appended one distinct concept on statistical power with rare exposure and added only supported references to incidence, information value, counterfactual reasoning, and identification. Kept power calculations, institutional arguments, proposals, projections, and descriptive indicators separate from causal estimates."
     }
   }
 }
