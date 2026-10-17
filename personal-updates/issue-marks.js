@@ -112,7 +112,7 @@
     var ink=p[1],accent=p[2],support=p[3],shift=m.seed%29-14;
     var grid=m.key==='cp'?'<path d="M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540M60 360H540M60 420H540M60 480H540M60 60V500M120 60V500M180 60V500M240 60V500M300 60V500M360 60V500M420 60V500M480 60V500M540 60V500" fill="none" stroke="'+ink+'" opacity=".12"/>':'';
     var contours=m.key==='sp'?'<g fill="none" stroke="'+ink+'" opacity=".16"><path d="M-20 460Q150 290 300 440T620 410M-20 480Q150 310 300 460T620 430M-20 500Q150 330 300 480T620 450M-20 520Q150 350 300 500T620 470"/></g>':'';
-    if(m.version===3&&m.key==='fb')return fbArtwork.issuePlate(m,p);
+    if((m.version===3||m.version===5)&&m.key==='fb')return fbArtwork.issuePlate(m,p);
     if(m.version===4&&m.key==='cp')return grid+workbookArtwork(m,p);
     if(m.version===2)return grid+contours+specificArtwork(m,p);
     var art;

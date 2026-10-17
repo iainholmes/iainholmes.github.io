@@ -101,16 +101,208 @@
     ['labor-aperture','labor',`<path d="M85 137L250 235V385L85 484ZM515 137L350 235V385L515 484Z" fill="$ink"/><path d="M270 186V448M331 186V448" stroke="$accent" stroke-width="21"/><path d="M120 310H230M370 310H481" stroke="$support" stroke-width="22"/>`]
   ].map(([id,topic,geometry])=>({id,topic,geometry,signature:'issue:'+id}));
   function markSignature(m){return m.signature||(m.version===2?'legacy-subject:'+m.subject:'legacy-theme:'+m.theme);}
-  function issueModel(info,archive){
-    const framing=String(info.framing||info.title||''),seed=hash(info.date+'|'+String(info.no).padStart(3,'0')+'|'+framing);
-    const order=[['capacity',/observe|common constraint is capacity|research systems|staffing/i,'Observe, enforce & adapt'],['enforcement',/enforc|evasion|sanction|export.control/i,'Routes & enforcement'],['risk',/risk|hazard|adaptation|heat/i,'Exposure & resilience'],['infrastructure',/compute|power|infrastructure|network/i,'Connections & capacity'],['labor',/labor|hiring|payroll|employment/i,'Work & adjustment'],['evidence',/data|evidence|research|measurement/i,'Observation & evidence']];
-    const selected=order.find(x=>x[1].test(framing))||order[5],candidates=issueScenes.filter(x=>x.topic===selected[0]).sort((a,b)=>{const preferred=/observe|observation/i.test(framing)?'capacity-observation':null;return Number(b.id===preferred)-Number(a.id===preferred)||hash(seed+'|'+a.id)-hash(seed+'|'+b.id)});
-    const history=Object.values(archive).filter(m=>m.key==='fb'&&m.date<info.date).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3);
-    if(info.previous&&!history.some(m=>m.date===info.previous.date))history.unshift(info.previous);
-    const avoid=new Set(history.map(markSignature)),prev=history[0]&&markSignature(history[0]);
-    const plate=candidates.find(x=>!avoid.has(x.signature))||candidates.find(x=>x.signature!==prev);if(!plate)throw Error('No distinct Field Brief issue composition');
-    return {version:3,subject:selected[0],composition:plate.id,signature:plate.signature,phrase:selected[2],seed};
+  // Prospective only: these 21 published issues, including duplicates, stay authoritative.
+  const issuePolicy=Object.freeze({version:1,historicalThrough:'2026-10-17',recentWindow:3,maxAttempts:96});
+  const coverFeatures=new Map();
+  function centralArtwork(value){
+    let s=String(typeof value==='string'?value:value.frozen||value.geometry||'');
+    if(s.includes('<svg')){
+      const background=s.match(/<rect\b[^>]*\bwidth=["']600["'][^>]*\bheight=["']800["'][^>]*\/?\s*>/);
+      if(background)s=s.slice(background.index+background[0].length);
+      const rule=s.search(/<path\b[^>]*\bd=["']M42[ ,]+570H558/);if(rule>=0)s=s.slice(0,rule);
+    }
+    return s.replace(/<(title|desc|metadata|text|defs)\b[^>]*>[\s\S]*?<\/\1>/g,'');
   }
-  function issuePlate(m,p){const c=issueScenes.find(x=>x.id===m.composition);if(!c)throw Error('Unknown Field Brief issue composition');return c.geometry.replace(/\$(ink|accent|support|paper)/g,(_,k)=>p[{paper:0,ink:1,accent:2,support:3}[k]]);}
-  const api={story,svg,edition,prepare,recent,validateEdition,scenes,issueModel,issuePlate,issueScenes,markSignature};if(typeof module==='object'&&module.exports)module.exports=api;else root.FieldBriefArtwork=api;
+  function attributes(s){const a={};for(const m of s.matchAll(/([\w:-]+)\s*=\s*(["'])(.*?)\2/g))a[m[1]]=m[3];return a;}
+  const identityMatrix=[1,0,0,1,0,0];
+  function multiply(a,b){return [a[0]*b[0]+a[2]*b[1],a[1]*b[0]+a[3]*b[1],a[0]*b[2]+a[2]*b[3],a[1]*b[2]+a[3]*b[3],a[0]*b[4]+a[2]*b[5]+a[4],a[1]*b[4]+a[3]*b[5]+a[5]];}
+  function transform(s){let out=identityMatrix;for(const m of String(s||'').matchAll(/(matrix|translate|scale|rotate)\s*\(([^)]+)\)/g)){
+    const v=m[2].trim().split(/[ ,]+/).map(Number);let t;
+    if(m[1]==='matrix')t=v;else if(m[1]==='translate')t=[1,0,0,1,v[0],v[1]||0];else if(m[1]==='scale')t=[v[0],0,0,v[1]===undefined?v[0]:v[1],0,0];
+    else{const r=v[0]*Math.PI/180,c=Math.cos(r),s=Math.sin(r);t=[c,s,-s,c,0,0];if(v.length===3)t=multiply(multiply([1,0,0,1,v[1],v[2]],t),[1,0,0,1,-v[1],-v[2]]);}
+    out=multiply(out,t);
+  }return out;}
+  function arcPoints(x,y,rx,ry,angle,large,sweep,nx,ny){
+    rx=Math.abs(rx);ry=Math.abs(ry);if(!rx||!ry||(x===nx&&y===ny))return [[nx,ny]];
+    const phi=angle*Math.PI/180,c=Math.cos(phi),s=Math.sin(phi),dx=(x-nx)/2,dy=(y-ny)/2;
+    const px=c*dx+s*dy,py=-s*dx+c*dy,k=px*px/(rx*rx)+py*py/(ry*ry);if(k>1){rx*=Math.sqrt(k);ry*=Math.sqrt(k);}
+    const f=(large===sweep?-1:1)*Math.sqrt(Math.max(0,(rx*rx*ry*ry-rx*rx*py*py-ry*ry*px*px)/(rx*rx*py*py+ry*ry*px*px)));
+    const cx=f*rx*py/ry,cy=-f*ry*px/rx,ox=c*cx-s*cy+(x+nx)/2,oy=s*cx+c*cy+(y+ny)/2;
+    const a=Math.atan2((py-cy)/ry,(px-cx)/rx);let d=Math.atan2((-py-cy)/ry,(-px-cx)/rx)-a;if(!sweep&&d>0)d-=2*Math.PI;if(sweep&&d<0)d+=2*Math.PI;
+    return Array.from({length:24},(_,i)=>{const q=a+d*(i+1)/24;return [ox+c*rx*Math.cos(q)-s*ry*Math.sin(q),oy+s*rx*Math.cos(q)+c*ry*Math.sin(q)]});
+  }
+  function pathPoints(d){
+    const t=String(d).match(/[a-df-z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:e[-+]?\d+)?/ig)||[],arity={M:2,L:2,H:1,V:1,C:6,S:4,Q:4,T:2,A:7};
+    let i=0,cmd='',x=0,y=0,start=[0,0],curve=null,previous='',part;const parts=[];
+    function add(p){part.points.push(p);[x,y]=p;}
+    while(i<t.length){
+      if(/^[a-z]$/i.test(t[i]))cmd=t[i++];
+      const op=cmd.toUpperCase(),relative=cmd!==op;
+      if(op==='Z'){if(!part)throw Error('Invalid cover path');part.closed=true;[x,y]=start;curve=null;previous=op;cmd='';continue;}
+      const n=arity[op];if(!n||i+n>t.length)throw Error('Unsupported or malformed Field Brief cover path');
+      const v=t.slice(i,i+n).map(Number);if(v.some(a=>!Number.isFinite(a)))throw Error('Invalid cover coordinate');i+=n;
+      const point=(a,b)=>[a+(relative?x:0),b+(relative?y:0)];
+      if(op==='M'){const p=point(...v);part={points:[p],closed:false};parts.push(part);[x,y]=p;start=p;cmd=relative?'l':'L';}
+      else if(!part)throw Error('Cover path must begin with M');
+      else if(op==='L')add(point(...v));else if(op==='H')add([v[0]+(relative?x:0),y]);else if(op==='V')add([x,v[0]+(relative?y:0)]);
+      else if(op==='A'){const end=point(v[5],v[6]);for(const p of arcPoints(x,y,...v.slice(0,5),...end))add(p);}
+      else{
+        const origin=[x,y];let a,b,end;
+        if(op==='C'){a=point(v[0],v[1]);b=point(v[2],v[3]);end=point(v[4],v[5]);}
+        if(op==='S'){a=/[CS]/.test(previous)&&curve?[2*x-curve[0],2*y-curve[1]]:origin;b=point(v[0],v[1]);end=point(v[2],v[3]);}
+        if(op==='Q'){a=point(v[0],v[1]);end=point(v[2],v[3]);}
+        if(op==='T'){a=/[QT]/.test(previous)&&curve?[2*x-curve[0],2*y-curve[1]]:origin;end=point(v[0],v[1]);}
+        for(let step=1;step<=16;step++){const u=step/16,z=1-u;add(b?[z*z*z*origin[0]+3*z*z*u*a[0]+3*z*u*u*b[0]+u*u*u*end[0],z*z*z*origin[1]+3*z*z*u*a[1]+3*z*u*u*b[1]+u*u*u*end[1]]:[z*z*origin[0]+2*z*u*a[0]+u*u*end[0],z*z*origin[1]+2*z*u*a[1]+u*u*end[1]]);}
+        curve=b||a;
+      }
+      if(!/[CSQT]/.test(op))curve=null;previous=op;
+    }
+    return parts;
+  }
+  function issueFeatures(value){
+    const art=centralArtwork(value);if(coverFeatures.has(art))return coverFeatures.get(art);
+    const shapes=[],keys=[],stack=[{matrix:identityMatrix,fill:'black',stroke:'none',width:1}],size=48;
+    for(const token of art.match(/<\/?[\w:-]+\b[^>]*>/g)||[]){
+      const name=token.match(/^<\/?([\w:-]+)/)[1];if(token.startsWith('</')){if(name==='g')stack.pop();continue;}
+      const a=attributes(token),parent=stack.at(-1);if(!parent)throw Error('Invalid cover groups');
+      const style={matrix:multiply(parent.matrix,transform(a.transform)),fill:a.fill||parent.fill,stroke:a.stroke||parent.stroke,width:a['stroke-width']===undefined?parent.width:+a['stroke-width'],rule:a['fill-rule']||parent.rule||'nonzero'};
+      if(name==='g'){stack.push(style);continue;}
+      if(!['path','rect','circle','ellipse','line','polygon','polyline'].includes(name))continue;
+      let parts;const n=k=>Number(a[k]||0);
+      if(name==='path')parts=pathPoints(a.d);
+      else if(name==='rect')parts=[{closed:true,points:[[n('x'),n('y')],[n('x')+n('width'),n('y')],[n('x')+n('width'),n('y')+n('height')],[n('x'),n('y')+n('height')]]}];
+      else if(name==='circle'||name==='ellipse')parts=[{closed:true,points:Array.from({length:48},(_,i)=>{const r=i*Math.PI/24;return [n('cx')+Math.cos(r)*(name==='circle'?n('r'):n('rx')),n('cy')+Math.sin(r)*(name==='circle'?n('r'):n('ry'))]})}];
+      else if(name==='line')parts=[{closed:false,points:[[n('x1'),n('y1')],[n('x2'),n('y2')]]}];
+      else{const v=(a.points||'').trim().split(/[ ,]+/).map(Number);parts=[{closed:name==='polygon',points:Array.from({length:v.length/2},(_,i)=>v.slice(i*2,i*2+2))}];}
+      // Ignore wording, color, group rotations and numeric formatting in the exact geometry key.
+      keys.push(name+':'+Object.keys(a).filter(k=>/^(d|x|y|x1|x2|y1|y2|width|height|r|rx|ry|cx|cy|points)$/.test(k)).sort().map(k=>k+'='+a[k].replace(/[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:e[-+]?\d+)?/ig,v=>String(+v)).replace(/[\s,]+/g,'')).join(';'));
+      const m=style.matrix;parts=parts.map(p=>({...p,points:p.points.map(([x,y])=>[m[0]*x+m[2]*y+m[4],m[1]*x+m[3]*y+m[5]])}));
+      shapes.push({...style,width:style.width*Math.sqrt(Math.abs(m[0]*m[3]-m[1]*m[2])),parts});
+    }
+    const points=shapes.flatMap(s=>s.parts.flatMap(p=>p.points));if(!points.length)throw Error('No central Field Brief artwork to validate');
+    const minX=Math.min(...points.map(p=>p[0])),maxX=Math.max(...points.map(p=>p[0])),minY=Math.min(...points.map(p=>p[1])),maxY=Math.max(...points.map(p=>p[1]));
+    const extent=Math.max(maxX-minX,maxY-minY);if(!Number.isFinite(extent)||extent<=0)throw Error('Invalid cover extent');
+    const scale=(size-4)/extent,dx=(size-(maxX-minX)*scale)/2-minX*scale,dy=(size-(maxY-minY)*scale)/2-minY*scale,mask=new Uint8Array(size*size);
+    function winding(points,x,y){let w=0;for(let j=0,k=points.length-1;j<points.length;k=j++){const a=points[k],b=points[j],cross=(b[0]-a[0])*(y-a[1])-(x-a[0])*(b[1]-a[1]);if(a[1]<=y&&b[1]>y&&cross>0)w++;if(a[1]>y&&b[1]<=y&&cross<0)w--;}return w;}
+    function distance(a,b,x,y){const vx=b[0]-a[0],vy=b[1]-a[1],d=vx*vx+vy*vy,t=d?Math.max(0,Math.min(1,((x-a[0])*vx+(y-a[1])*vy)/d)):0;return Math.hypot(x-a[0]-t*vx,y-a[1]-t*vy);}
+    for(const s of shapes){
+      const parts=s.parts.map(p=>({...p,points:p.points.map(([x,y])=>[x*scale+dx,y*scale+dy])})),ps=parts.flatMap(p=>p.points),half=s.stroke==='none'?0:Math.max(.45,s.width*scale/2);
+      const left=Math.max(0,Math.floor(Math.min(...ps.map(p=>p[0]))-half)),right=Math.min(size-1,Math.ceil(Math.max(...ps.map(p=>p[0]))+half)),top=Math.max(0,Math.floor(Math.min(...ps.map(p=>p[1]))-half)),bottom=Math.min(size-1,Math.ceil(Math.max(...ps.map(p=>p[1]))+half));
+      for(let y=top;y<=bottom;y++)for(let x=left;x<=right;x++){
+        const px=x+.5,py=y+.5,w=parts.reduce((sum,p)=>sum+winding(p.points,px,py),0),filled=s.fill!=='none'&&(s.rule==='evenodd'?Math.abs(w)%2===1:w!==0);
+        const stroked=half&&parts.some(p=>p.points.some((b,j)=>j?distance(p.points[j-1],b,px,py)<=half:p.closed&&distance(p.points.at(-1),b,px,py)<=half));
+        if(filled||stroked)mask[y*size+x]=1;
+      }
+    }
+    // Color-independent occupancy: filled paper cutouts remain geometry, never a color escape hatch.
+    const result={geometry:keys.sort().join('|'),mask,count:mask.reduce((a,b)=>a+b,0),shapes:shapes.length,size};if(!result.count)throw Error('Empty cover silhouette');
+    coverFeatures.set(art,result);return result;
+  }
+  function visualSimilarity(a,b){
+    let best=0;const n=a.size;
+    for(let flip=0;flip<2;flip++)for(let turns=0;turns<4;turns++){
+      let shared=0;for(let y=0;y<n;y++)for(let x=0;x<n;x++)if(a.mask[y*n+x]){let u=flip?n-1-x:x,v=y;for(let k=0;k<turns;k++){const t=u;u=n-1-v;v=t;}shared+=b.mask[v*n+u];}
+      best=Math.max(best,shared/(a.count+b.count-shared));
+    }
+    return best;
+  }
+  function issueHistory(archive,date){return Object.values(archive).filter(m=>m.key==='fb'&&m.date<date).sort((a,b)=>b.date.localeCompare(a.date));}
+  function issueOriginality(candidate,archive){
+    const a=issueFeatures(candidate),history=issueHistory(archive,candidate.date);let closest=null;
+    for(let i=0;i<history.length;i++){
+      const old=history[i],b=issueFeatures(old);let reason=null,similarity=0;
+      if(a.geometry===b.geometry)reason='identical central geometry';
+      else if(candidate.signature&&markSignature(candidate)===markSignature(old))reason='reused structural composition';
+      else{similarity=visualSimilarity(a,b);if(similarity>=.90)reason='materially similar silhouette';else if(i<issuePolicy.recentWindow&&similarity>=.82&&Math.min(a.shapes,b.shapes)/Math.max(a.shapes,b.shapes)>=.65)reason='insufficient recent visual separation';}
+      if(!closest||similarity>closest.similarity)closest={date:old.date,similarity};
+      if(reason)return {ok:false,reason,date:old.date,similarity,compared:history.length};
+    }
+    return {ok:true,compared:history.length,closest};
+  }
+  function validateIssue(candidate,archive){const result=issueOriginality(candidate,archive);if(!result.ok)throw Error('Field Brief cover originality: '+candidate.date+' repeats '+result.date+' ('+result.reason+'); author a different content-supported composition and validate again.');return result;}
+  // Small semantic motifs, not reduced copies of previously published covers.
+  // Their roles and relationships vary together; coordinates are authored, never seed-jittered.
+  const issueMotifs={
+    capacity:[
+      ['staffed-bench','<path d="M5 57H95V68H5ZM16 68V96M84 68V96" fill="$ink" stroke="$ink" stroke-width="6"/><circle cx="50" cy="22" r="16" fill="$accent"/><path d="M31 54V44Q50 29 69 44V54Z" fill="$support"/>'],
+      ['aperture-frame','<path d="M5 7H95V93H5ZM27 29V72H73V29Z" fill="$ink" fill-rule="evenodd"/><path d="M40 15V85M60 15V85" stroke="$accent" stroke-width="7"/>'],
+      ['shared-load','<path d="M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z" fill="$ink"/><path d="M43 35H57V60H43Z" fill="$accent"/><path d="M65 89H94" stroke="$support" stroke-width="9"/>']
+    ],
+    enforcement:[
+      ['inspection-screen','<path d="M7 8H93V92H7Z" fill="none" stroke="$ink" stroke-width="9"/><path d="M28 18V82M51 18V82M74 18V82" stroke="$support" stroke-width="6"/><path d="M10 56H90" stroke="$accent" stroke-width="13"/>'],
+      ['review-docket','<path d="M13 3H70L92 25V97H13Z" fill="$ink"/><path d="M28 35H76M28 54H76M28 73H55" stroke="$paper" stroke-width="7"/><path d="M62 79L73 90L94 64" fill="none" stroke="$accent" stroke-width="9"/>'],
+      ['licensed-opening','<path d="M5 96V14H95V96H75V35H25V96Z" fill="$ink"/><path d="M38 45H62V89H38Z" fill="$accent"/><path d="M2 97H98" stroke="$support" stroke-width="6"/>']
+    ],
+    risk:[
+      ['reserve-pool','<path d="M6 22Q50 0 94 22V80Q50 106 6 80Z" fill="$ink"/><ellipse cx="50" cy="22" rx="44" ry="16" fill="$support"/><path d="M18 59H82" stroke="$accent" stroke-width="12"/>'],
+      ['buffer-wall','<path d="M8 95L40 5L62 95Z" fill="$ink"/><path d="M70 20H96V95H70Z" fill="$accent"/><path d="M2 66Q18 51 35 66M2 83Q18 68 35 83" fill="none" stroke="$support" stroke-width="7"/>'],
+      ['exposure-field','<circle cx="50" cy="50" r="43" fill="none" stroke="$ink" stroke-width="10"/><path d="M16 20L81 85M8 45L56 93M42 8L93 59" stroke="$support" stroke-width="6"/><circle cx="51" cy="49" r="14" fill="$accent"/>']
+    ],
+    infrastructure:[
+      ['service-rack','<path d="M12 3H88V97H12Z" fill="$ink"/><path d="M25 24H75M25 49H75M25 74H75" stroke="$paper" stroke-width="10"/><path d="M90 27H99V81H90Z" fill="$accent"/>'],
+      ['power-junction','<path d="M45 3H57V98H45ZM5 34H97V46H5Z" fill="$ink"/><circle cx="51" cy="40" r="22" fill="$accent"/><path d="M51 56V84H93" fill="none" stroke="$support" stroke-width="10"/>'],
+      ['fabrication-disc','<circle cx="50" cy="50" r="44" fill="$accent"/><path d="M24 16V84M50 6V94M76 16V84M14 27H86M6 52H94M16 77H84" stroke="$paper" stroke-width="5"/>']
+    ],
+    labor:[
+      ['unfilled-station','<path d="M8 48H92V62H8ZM20 62V96M80 62V96" fill="$ink" stroke="$ink" stroke-width="7"/><path d="M34 42V7H68V42" fill="none" stroke="$accent" stroke-width="9"/>'],
+      ['working-hours','<circle cx="50" cy="50" r="44" fill="$ink"/><circle cx="50" cy="50" r="33" fill="$support"/><path d="M50 23V50L75 66" fill="none" stroke="$accent" stroke-width="9"/>'],
+      ['hiring-cohorts','<path d="M3 94V8H24V94M40 94V38H61V94M77 94V68H98V94" fill="$accent"/><path d="M2 98H99" stroke="$ink" stroke-width="6"/>']
+    ],
+    evidence:[
+      ['observation-window','<path d="M6 12H94V88H6Z" fill="none" stroke="$ink" stroke-width="10"/><path d="M17 50Q50 17 83 50Q50 83 17 50Z" fill="$support"/><circle cx="50" cy="50" r="16" fill="$accent"/>'],
+      ['comparison-pair','<path d="M5 16H35V85H5Z" fill="$ink"/><path d="M65 16H95V85H65Z" fill="$accent"/><path d="M43 39H57M43 61H57" stroke="$support" stroke-width="6"/>'],
+      ['measured-range','<path d="M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63" stroke="$ink" stroke-width="6"/><circle cx="50" cy="50" r="14" fill="$accent"/><path d="M50 6V30M50 70V94" stroke="$support" stroke-width="7"/>']
+    ]
+  };
+  const issueLayouts=[
+    ['separate-registers',[[65,105,195],[350,280,180],[365,105,112]],'<path d="M305 95V505" stroke="$support" stroke-width="5"/>'],
+    ['three-fields',[[65,115,145],[232,320,142],[397,115,145]],'<path d="M60 495H545M223 100V260M385 100V260" stroke="$support" stroke-width="6"/>'],
+    ['stepped-review',[[60,315,175],[245,220,160],[405,90,140]],'<path d="M60 510H242V410H415V245H550" fill="none" stroke="$support" stroke-width="9"/>'],
+    ['open-triangle',[[205,85,185],[65,340,160],[390,345,145]],'<path d="M80 295H205M410 295H535" stroke="$support" stroke-width="9"/>'],
+    ['central-boundary',[[65,175,180],[353,105,175],[395,365,115]],'<path d="M290 90V505M275 90H305M275 505H305" stroke="$support" stroke-width="7"/>'],
+    ['broad-and-narrow',[[75,100,245],[360,130,170],[350,355,145]],'<path d="M75 495H525M330 130V455" stroke="$support" stroke-width="6"/>'],
+    ['offset-frames',[[65,105,170],[350,310,180],[250,130,135]],'<path d="M55 300V490H260M340 85H550V265" fill="none" stroke="$support" stroke-width="9"/>'],
+    ['upper-and-lower',[[65,100,165],[360,100,170],[207,335,190]],'<path d="M65 298H535" stroke="$support" stroke-width="8"/>']
+  ];
+  const issueTopics=[
+    ['capacity',/observ|capacity|research systems|staffing|institution/i,'Observe, enforce & adapt'],
+    ['enforcement',/enforc|evasion|sanction|export.control|court|legal|regulat|voter/i,'Routes & enforcement'],
+    ['risk',/risk|hazard|adaptation|heat|climat|flood|storm|insurance/i,'Exposure & resilience'],
+    ['infrastructure',/comput|power|infrastructure|network|semiconductor|chip|energy/i,'Connections & capacity'],
+    ['labor',/\blabor\b|hiring|payroll|employment|wage|workforce/i,'Work & adjustment'],
+    ['evidence',/data|evidence|research|measurement|inflation|prices|survey/i,'Observation & evidence']
+  ];
+  function issueCandidates(info){
+    const framing=String(info.framing||info.title||''),stories=info.stories||[],plain=s=>String(s||'').replace(/<[^>]*>/g,' ');
+    const records=stories.map(s=>plain([s.title,s.why,...s.summary||[],JSON.stringify(s.editorial||{})].join(' ')));
+    const all=[info.title,framing,...records].join(' '),seed=hash(info.date+'|'+String(info.no).padStart(3,'0')+'|'+all);
+    let supported=issueTopics.map((t,i)=>({topic:t,positions:records.flatMap((s,j)=>t[1].test(s)?[stories[j].number||String(j+1).padStart(2,'0')]:[]),score:(t[1].test(framing)?5:0)+(t[1].test(info.title||'')?3:0)+records.filter(s=>t[1].test(s)).length,order:i})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||a.order-b.order);
+    if(!supported.length)throw Error('Field Brief cover needs a content-supported framing, not an unrelated novelty fallback: '+info.date);
+    const primary=supported[0],topic=primary.topic,options=[];
+    for(const scene of issueScenes.filter(s=>s.topic===topic[0]))options.push({id:scene.id,geometry:scene.geometry,rank:0});
+    // An editorial juxtaposition makes no causal claim between unrelated stories.
+    // A single-theme edition can instead examine its three distinct methodological facets.
+    const groups=[issueMotifs[topic[0]],issueMotifs[(supported[1]||primary).topic[0]],issueMotifs[(supported[2]||primary).topic[0]]];
+    for(const layout of issueLayouts)for(let a=0;a<3;a++)for(let b=0;b<3;b++)for(let c=0;c<3;c++){
+      const motifs=[groups[0][a],groups[1][b],groups[2][c]];if(new Set(motifs.map(m=>m[0])).size!==3)continue;
+      const geometry=motifs.map((m,i)=>{const [x,y,size]=layout[1][i];return '<g transform="translate('+x+' '+y+') scale('+(size/100)+')">'+m[1]+'</g>'}).join('')+layout[2];
+      options.push({id:'study-'+layout[0]+'-'+motifs.map(m=>m[0]).join('-'),geometry,rank:1});
+    }
+    options.sort((a,b)=>a.rank-b.rank||hash(seed+'|'+a.id)-hash(seed+'|'+b.id));
+    return {seed,subject:topic[0],phrase:topic[2],evidence:supported.map(x=>({concept:x.topic[0],storyNumbers:x.positions})),options};
+  }
+  function issueModel(info,archive){
+    const context=issueCandidates(info),history={...archive};
+    if(info.previous&&!history['fb:'+info.previous.date])history['fb:'+info.previous.date]=info.previous;
+    let rejected;
+    for(const option of context.options.slice(0,issuePolicy.maxAttempts)){
+      const model={version:5,date:info.date,subject:context.subject,composition:option.id,signature:'issue:'+option.id,phrase:context.phrase,seed:context.seed,geometry:option.geometry,supportedConcepts:context.evidence};
+      const rendered=issuePlate(model,['#f1e6d0','#221a14','#8a2a36','#c5ad88']),review=issueOriginality({...model,geometry:rendered},history);
+      if(review.ok)return {...model,originality:{policy:issuePolicy.version,compared:review.compared,recentWindow:issuePolicy.recentWindow}};
+      rejected=review;
+    }
+    throw Error('No original content-supported Field Brief cover after '+Math.min(context.options.length,issuePolicy.maxAttempts)+' candidates for '+info.date+'; closest collision '+(rejected&&rejected.date)+'. Author a new composition; do not bypass originality validation.');
+  }
+  function issuePlate(m,p){if(m.version===5){if(!m.geometry)throw Error('Missing Field Brief composition geometry');return m.geometry.replace(/\$(ink|accent|support|paper)/g,(_,k)=>p[{paper:0,ink:1,accent:2,support:3}[k]]);}const c=issueScenes.find(x=>x.id===m.composition);if(!c)throw Error('Unknown Field Brief issue composition');return c.geometry.replace(/\$(ink|accent|support|paper)/g,(_,k)=>p[{paper:0,ink:1,accent:2,support:3}[k]]);}
+  const api={story,svg,edition,prepare,recent,validateEdition,scenes,issueModel,issuePlate,issueScenes,markSignature,issuePolicy,centralArtwork,issueFeatures,visualSimilarity,issueOriginality,validateIssue};if(typeof module==='object'&&module.exports)module.exports=api;else root.FieldBriefArtwork=api;
 })(typeof window==='object'?window:{});

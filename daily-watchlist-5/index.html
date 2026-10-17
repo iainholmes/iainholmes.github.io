@@ -373,6 +373,7 @@ object to "editions" in #briefing-data; never delete, rewrite or renumber editio
 are derived from date order (skipped days do not skip numbers). Every story needs number, title,
 art, summary, why, implications, sources; "category" is retained in data but deliberately NOT
 rendered. Optional issueTitle must be factual and restrained; omit when no natural title exists.
+Issue covers after October 17, 2026 must pass the full-history central-geometry and silhouette originality check in artwork.js before freezing; follow personal-updates/PUBLISHING.md and run scripts/test_field_brief_cover_originality.cjs plus scripts/prepare_periodicals.cjs. All earlier frozen covers, including known repeats, are immutable. A failed originality check blocks publication; never bypass it or alter historical artwork.
 Story plates are pinned in artwork-archive.js. artwork.js selects distinct, story-specific
 linocut compositions; prepare_periodicals.cjs appends new plates before publication.
 Naming hierarchy: "Field Brief" is the publication (small Bodoni line above the masthead and in
@@ -7766,7 +7767,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
 }
 </script>
 <script src="artwork-archive.js?v=603a58d11a21"></script>
-<script src="artwork.js?v=20261003-diversity"></script>
+<script src="artwork.js?v=20261017-cover-originality"></script>
 <script>
 (function(){
   'use strict';

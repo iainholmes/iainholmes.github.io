@@ -229,8 +229,8 @@ a{color:inherit}
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-instrument">
 <link rel="stylesheet" href="issue-marks.css?v=20261002-instrument"><script src="issue-mark-archive.js?v=2026-10-17_2026-10-16_2026-10-16_834a3eeabbc4"></script>
-<script src="../daily-watchlist-5/artwork.js?v=20261003-diversity"></script>
-<script src="issue-marks.js?v=20261008-workbook-diversity"></script>
+<script src="../daily-watchlist-5/artwork.js?v=20261017-cover-originality"></script>
+<script src="issue-marks.js?v=20261017-cover-originality"></script>
 <link rel="stylesheet" href="../assets/identity/identity.css?v=20261012-seamless2">
 </head>
 <body>
@@ -367,7 +367,7 @@ Object.keys(sched).forEach(function(k){var v=nextRun(sched[k][0],sched[k][1]);do
     set('[data-fb="read"]',ed.readTime);set('[data-fb="head"]',ed.stories[0].title);
     set('[data-fb="line"]','N<sup>o</sup>. '+no+' · '+fmt(ed.date,{day:'numeric',month:'short',year:'numeric'}),true);set('[data-fb-depth]',eds.reduce(function(a,x){return a+(x.stories||[]).length},0));
     set('[data-fb="title"]',ed.issueTitle||ed.stories[0].title);
-    PeriodicalsIssueMarks.update({key:'fb',date:ed.date,no:no,title:ed.issueTitle,framing:[ed.deck,ed.signalTitle].concat(ed.signal||[]).join(' '),previous:prev?{key:'fb',date:prev.date,no:eds.length-1,framing:[prev.deck,prev.signalTitle].concat(prev.signal||[]).join(' ')}:null});
+    PeriodicalsIssueMarks.update({key:'fb',date:ed.date,no:no,title:ed.issueTitle,stories:ed.stories,framing:[ed.deck,ed.signalTitle].concat(ed.signal||[]).join(' '),previous:prev?{key:'fb',date:prev.date,no:eds.length-1,framing:[prev.deck,prev.signalTitle].concat(prev.signal||[]).join(' ')}:null});
     set('[data-fb="more"]',ed.stories.slice(1,5).map(function(x){return '<li>'+x.title.replace(/[<>&]/g,'')+'</li>'}).join(''),true);
   }).catch(function(){});
 
