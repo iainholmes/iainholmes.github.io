@@ -1038,6 +1038,68 @@
         "seed": 3729155798,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A narrowing aperture restricts institutional throughput\"><title>North Carolina secures $550 million for the Raleigh–Richmond S-Line</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-16-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-16-05)\"><path d=\"M90 115L330 245V395L90 525ZM710 115L470 245V395L710 525Z\" fill=\"#2c241d\"/><path d=\"M155 320H310M490 320H650\" stroke=\"#1b4a6b\" stroke-width=\"42\"/><path d=\"M357 175V465M445 175V465\" stroke=\"#c4452c\" stroke-width=\"22\"/></g></svg>"
       }
+    },
+    "2026-10-17": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-17",
+        "number": "01",
+        "category": "U.S. policy · sanctions and trade",
+        "topic": "trade",
+        "title": "White House waives the new Russia sanctions and tariff package",
+        "composition": "trade-port",
+        "signature": "plate:trade-port",
+        "seed": 804197571,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A cargo crane lifts a sealed crate at a port\"><title>White House waives the new Russia sanctions and tariff package</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-17-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-17-01)\"><path d=\"M150 540V120H590M185 120L500 355M515 120V315\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"25\"/><path d=\"M445 350H610V475H445Z\" fill=\"#c4452c\"/><path d=\"M480 350V475M575 350V475\" stroke=\"#f4ead7\" stroke-width=\"12\"/><path d=\"M65 535H715L665 588H135Z\" fill=\"#1b4a6b\"/><path d=\"M365 138V237H645V138\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"12\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-17",
+        "number": "02",
+        "category": "Economy · public finance",
+        "topic": "trade",
+        "title": "U.S. fiscal-year deficit reaches $1.99 trillion",
+        "composition": "government-stairs",
+        "signature": "plate:government-stairs",
+        "seed": 4160374444,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A petition ascends institutional steps\"><title>U.S. fiscal-year deficit reaches $1.99 trillion</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-17-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-17-02)\"><path d=\"M70 535V430H240V335H410V240H580V145H730V535Z\" fill=\"#1b4a6b\"/><path d=\"M106 140H302V290H106Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M138 184H267M138 226H241\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M330 295L410 200L489 238\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-17",
+        "number": "03",
+        "category": "Technology · education data security",
+        "topic": "research",
+        "title": "California begins notifications after education vendor breach",
+        "composition": "research-vacancy",
+        "signature": "plate:research-vacancy",
+        "seed": 3812321134,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Research benches lose staffed capacity\"><title>California begins notifications after education vendor breach</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-17-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-17-03)\"><path d=\"M75 525H730\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M95 235H300V285H95ZM385 385H715V435H385Z\" fill=\"#1b4a6b\"/><path d=\"M135 285V525M260 285V525M420 435V525M680 435V525\" stroke=\"#2c241d\" stroke-width=\"23\"/><path d=\"M170 214V160H207V113H245L270 177L233 210Z\" fill=\"#2c241d\"/><path d=\"M466 360V254H534V360M586 360V254H654V360\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/><path d=\"M548 105L548 190M510 153L548 195L586 153\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-17",
+        "number": "04",
+        "category": "Environment · maritime fuels",
+        "topic": "energy",
+        "title": "Marine biofuel demand falls while global shipping rules remain unsettled",
+        "composition": "energy-reserve",
+        "signature": "plate:energy-reserve",
+        "seed": 3718115741,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A storage tank feeds a finite reserve through a valve\"><title>Marine biofuel demand falls while global shipping rules remain unsettled</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-17-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-17-04)\"><path d=\"M105 170Q250 85 395 170V485Q250 555 105 485Z\" fill=\"#1b4a6b\"/><ellipse cx=\"250\" cy=\"170\" rx=\"145\" ry=\"48\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M395 380H555V520H710\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"32\"/><circle cx=\"555\" cy=\"380\" r=\"52\" fill=\"#c4452c\"/><path d=\"M555 338V422M513 380H597\" stroke=\"#f4ead7\" stroke-width=\"11\"/><path d=\"M155 315H345\" stroke=\"#c98a12\" stroke-width=\"26\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-17",
+        "number": "05",
+        "category": "North Carolina · environmental health",
+        "topic": "climate",
+        "title": "PFAS appear in 25 of 29 North Carolina waterways tested",
+        "composition": "climate-levee",
+        "signature": "plate:climate-levee",
+        "seed": 2315266407,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Water meets a protective levee beside a settlement\"><title>PFAS appear in 25 of 29 North Carolina waterways tested</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-17-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-17-05)\"><path d=\"M45 365Q180 280 300 365T540 365V565H45Z\" fill=\"#1b4a6b\"/><path d=\"M430 540L515 225L583 540Z\" fill=\"#7c5a3e\"/><path d=\"M620 365L675 310L730 365V495H620Z\" fill=\"#2c241d\"/><path d=\"M72 438Q170 380 270 438T470 438\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"20\"/><circle cx=\"165\" cy=\"154\" r=\"81\" fill=\"#c98a12\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
