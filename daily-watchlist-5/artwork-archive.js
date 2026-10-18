@@ -1100,6 +1100,68 @@
         "seed": 2315266407,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Water meets a protective levee beside a settlement\"><title>PFAS appear in 25 of 29 North Carolina waterways tested</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-17-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-17-05)\"><path d=\"M45 365Q180 280 300 365T540 365V565H45Z\" fill=\"#1b4a6b\"/><path d=\"M430 540L515 225L583 540Z\" fill=\"#7c5a3e\"/><path d=\"M620 365L675 310L730 365V495H620Z\" fill=\"#2c241d\"/><path d=\"M72 438Q170 380 270 438T470 438\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"20\"/><circle cx=\"165\" cy=\"154\" r=\"81\" fill=\"#c98a12\"/></g></svg>"
       }
+    },
+    "2026-10-18": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-18",
+        "number": "01",
+        "category": "Technology · financial cybersecurity",
+        "topic": "finance",
+        "title": "G7 finance authorities will drill for AI-enabled cyberattacks",
+        "composition": "finance-blocked",
+        "signature": "plate:finance-blocked",
+        "seed": 3400825751,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Payment branches meet a blocking seal\"><title>G7 finance authorities will drill for AI-enabled cyberattacks</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-18-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-18-01)\"><path d=\"M120 150L365 315L120 485M365 315L665 160M365 315L665 490\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"31\"/><g fill=\"#c98a12\"><circle cx=\"120\" cy=\"150\" r=\"58\"/><circle cx=\"120\" cy=\"485\" r=\"58\"/><circle cx=\"665\" cy=\"160\" r=\"58\"/></g><rect x=\"565\" y=\"408\" width=\"158\" height=\"125\" fill=\"#7a1f33\"/><path d=\"M585 435L705 505M705 435L585 505\" stroke=\"#f4ead7\" stroke-width=\"18\"/><circle cx=\"365\" cy=\"315\" r=\"69\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-18",
+        "number": "02",
+        "category": "U.S. government · court operations",
+        "topic": "finance",
+        "title": "Contractor cyber incident halts federal bankruptcy notices",
+        "composition": "capacity-columns",
+        "signature": "plate:capacity-columns",
+        "seed": 696207789,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Unequal capacity columns carry a shared load\"><title>Contractor cyber incident halts federal bankruptcy notices</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-18-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-18-02)\"><path d=\"M85 140H715V202H85Z\" fill=\"#2c241d\"/><path d=\"M125 202V530H255V202M345 202V385H475V202M565 202V290H695V202\" fill=\"#1b4a6b\"/><path d=\"M345 465H475M565 375H695M565 465H695\" stroke=\"#7c5a3e\" stroke-width=\"27\"/><path d=\"M95 570H725\" stroke=\"#7a1f33\" stroke-width=\"17\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-18",
+        "number": "03",
+        "category": "Environment · climate institutions",
+        "topic": "research",
+        "title": "IPCC suspends its plenary without an assessment timetable",
+        "composition": "research-bridge",
+        "signature": "plate:research-bridge",
+        "seed": 871768757,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separated evidence platforms are connected by a narrow research bridge\"><title>IPCC suspends its plenary without an assessment timetable</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-18-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-18-03)\"><rect x=\"85\" y=\"305\" width=\"185\" height=\"225\" fill=\"#1b4a6b\"/><rect x=\"530\" y=\"210\" width=\"185\" height=\"320\" fill=\"#1d5f47\"/><path d=\"M270 354Q400 195 530 260\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"30\"/><path d=\"M145 258V145H205V258M587 165V82H648V165\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"20\"/><path d=\"M305 420H490\" stroke=\"#7c5a3e\" stroke-width=\"15\" stroke-dasharray=\"26 20\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-18",
+        "number": "04",
+        "category": "Economy · energy and inflation",
+        "topic": "energy",
+        "title": "Oil shock forces a sharper Canadian inflation outlook",
+        "composition": "energy-turbine",
+        "signature": "plate:energy-turbine",
+        "seed": 2070389306,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Wind generation feeds a separate demand block\"><title>Oil shock forces a sharper Canadian inflation outlook</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-18-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-18-04)\"><path d=\"M285 245V540\" stroke=\"#2c241d\" stroke-width=\"26\"/><path d=\"M285 245L180 97L218 75L302 220L445 202L449 247L306 260L240 392L201 371Z\" fill=\"#1d5f47\"/><path d=\"M475 355H690V530H475Z\" fill=\"#1b4a6b\"/><path d=\"M510 392H655M510 447H655\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M316 476H445\" stroke=\"#c4452c\" stroke-width=\"28\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-18",
+        "number": "05",
+        "category": "North Carolina · advanced manufacturing",
+        "topic": "finance",
+        "title": "North Carolina backs a 423-job defense manufacturing expansion",
+        "composition": "institution-weave",
+        "signature": "plate:institution-weave",
+        "seed": 3929667400,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Interdependent institutions form a woven system\"><title>North Carolina backs a 423-job defense manufacturing expansion</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-18-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-18-05)\"><path d=\"M100 170H700M100 320H700M100 470H700\" stroke=\"#1b4a6b\" stroke-width=\"72\"/><path d=\"M225 80V560M575 80V560\" stroke=\"#7a1f33\" stroke-width=\"69\"/><path d=\"M185 320H266M535 170H616M535 470H616\" stroke=\"#f4ead7\" stroke-width=\"73\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

@@ -530,5 +530,73 @@
     "phrase": "Routes & enforcement",
     "seed": 1415105935,
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 021: Routes &amp; enforcement\"><title>Field Brief · 021 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M80 156H256V296H80ZM358 337H531V477H358Z\" fill=\"#221a14\"/><path d=\"M256 226H446V337\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"22\"/><circle cx=\"339\" cy=\"226\" r=\"70\" fill=\"#8a2a36\"/><path d=\"M304 191L374 261M374 191L304 261\" stroke=\"#f1e6d0\" stroke-width=\"16\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 021 / 2026-10-17</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
+  },
+  "fb:2026-10-18": {
+    "key": "fb",
+    "date": "2026-10-18",
+    "no": "022",
+    "identity": "Field Brief",
+    "theme": "change",
+    "framing": "G7 finance authorities move AI-enabled cyber risk into cross-border exercises, while a contractor incident interrupts the federal bankruptcy-notice system. The IPCC fails to settle its next assessment timetable; an oil shock worsens Canada’s inflation outlook; and North Carolina backs a large defense-manufacturing expansion. These are separate tests of institutional capacity rather than one shared story. Capacity depends on rehearsal, redundancy and verification The two cyber stories share a practical lesson but concern different systems: G7 authorities are testing a prospective financial shock, while the federal judiciary is managing a realized contractor failure with immediate procedural consequences. The remaining developments stand apart. The IPCC faces a legitimacy-and-timing problem, Canada faces an imported energy-price shock, and North Carolina is making a performance-contingent bet on manufacturing capacity.",
+    "version": 5,
+    "subject": "risk",
+    "composition": "study-offset-frames-reserve-pool-power-junction-shared-load",
+    "signature": "issue:study-offset-frames-reserve-pool-power-junction-shared-load",
+    "phrase": "Exposure & resilience",
+    "seed": 2266079592,
+    "geometry": "<g transform=\"translate(65 105) scale(1.7)\"><path d=\"M6 22Q50 0 94 22V80Q50 106 6 80Z\" fill=\"$ink\"/><ellipse cx=\"50\" cy=\"22\" rx=\"44\" ry=\"16\" fill=\"$support\"/><path d=\"M18 59H82\" stroke=\"$accent\" stroke-width=\"12\"/></g><g transform=\"translate(350 310) scale(1.8)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"$ink\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"$accent\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"$support\" stroke-width=\"10\"/></g><g transform=\"translate(250 130) scale(1.35)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"$ink\"/><path d=\"M43 35H57V60H43Z\" fill=\"$accent\"/><path d=\"M65 89H94\" stroke=\"$support\" stroke-width=\"9\"/></g><path d=\"M55 300V490H260M340 85H550V265\" fill=\"none\" stroke=\"$support\" stroke-width=\"9\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "03",
+          "05"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01",
+          "02",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "01",
+          "03",
+          "05"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "03",
+          "04"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "01",
+          "02"
+        ]
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "05"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 21,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 022: Exposure &amp; resilience\"><title>Field Brief · 022 · Exposure &amp; resilience</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 105) scale(1.7)\"><path d=\"M6 22Q50 0 94 22V80Q50 106 6 80Z\" fill=\"#221a14\"/><ellipse cx=\"50\" cy=\"22\" rx=\"44\" ry=\"16\" fill=\"#c5ad88\"/><path d=\"M18 59H82\" stroke=\"#8a2a36\" stroke-width=\"12\"/></g><g transform=\"translate(350 310) scale(1.8)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"#221a14\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"#8a2a36\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"10\"/></g><g transform=\"translate(250 130) scale(1.35)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"#221a14\"/><path d=\"M43 35H57V60H43Z\" fill=\"#8a2a36\"/><path d=\"M65 89H94\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M55 300V490H260M340 85H550V265\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 022 / 2026-10-18</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Exposure &amp; resilience</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
