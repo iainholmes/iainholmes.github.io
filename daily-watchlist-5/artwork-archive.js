@@ -1162,6 +1162,68 @@
         "seed": 3929667400,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Interdependent institutions form a woven system\"><title>North Carolina backs a 423-job defense manufacturing expansion</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-18-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-18-05)\"><path d=\"M100 170H700M100 320H700M100 470H700\" stroke=\"#1b4a6b\" stroke-width=\"72\"/><path d=\"M225 80V560M575 80V560\" stroke=\"#7a1f33\" stroke-width=\"69\"/><path d=\"M185 320H266M535 170H616M535 470H616\" stroke=\"#f4ead7\" stroke-width=\"73\"/></g></svg>"
       }
+    },
+    "2026-10-19": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-19",
+        "number": "01",
+        "category": "Technology · public procurement",
+        "topic": "government",
+        "title": "DHS orders DeepSeek out of federal civilian systems",
+        "composition": "government-balance",
+        "signature": "plate:government-balance",
+        "seed": 618697687,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Public funds are held in balance under a legal decision\"><title>DHS orders DeepSeek out of federal civilian systems</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-19-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-19-01)\"><path d=\"M390 130V520M250 525H535M165 240H620\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M190 240L110 400H270ZM585 240L505 400H665Z\" fill=\"#1b4a6b\"/><path d=\"M135 401Q190 476 245 401M530 401Q585 476 640 401\" fill=\"#c98a12\"/><rect x=\"295\" y=\"90\" width=\"190\" height=\"105\" fill=\"#7a1f33\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-19",
+        "number": "02",
+        "category": "Economy · demand and trade",
+        "topic": "research",
+        "title": "China’s growth improves, but households lag behind factories",
+        "composition": "research-observatory",
+        "signature": "plate:research-observatory",
+        "seed": 3239770356,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An observing instrument links separated research stations\"><title>China’s growth improves, but households lag behind factories</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-19-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-19-02)\"><path d=\"M175 255L440 100L490 185L225 341Z\" fill=\"#1b4a6b\"/><path d=\"M280 290L180 525M280 290L420 525\" stroke=\"#2c241d\" stroke-width=\"25\"/><circle cx=\"475\" cy=\"137\" r=\"58\" fill=\"#c98a12\"/><rect x=\"540\" y=\"350\" width=\"145\" height=\"170\" fill=\"#2c241d\"/><path d=\"M563 395H662M563 447H662\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M380 325H520\" stroke=\"#c4452c\" stroke-width=\"18\" stroke-dasharray=\"28 20\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-19",
+        "number": "03",
+        "category": "Environment · energy regulation",
+        "topic": "energy",
+        "title": "FERC proposes a tiered shortcut for LNG plant authorizations",
+        "composition": "energy-feeder",
+        "signature": "plate:energy-feeder",
+        "seed": 824289004,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A power feed crosses an interrupted grid\"><title>FERC proposes a tiered shortcut for LNG plant authorizations</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-19-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-19-03)\"><path d=\"M90 145H285V285H455V480H710\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"34\"/><path d=\"M90 145V490H285V390\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"23\"/><path d=\"M370 235V335M332 275H408\" stroke=\"#c4452c\" stroke-width=\"25\"/><circle cx=\"710\" cy=\"480\" r=\"53\" fill=\"#c98a12\"/><path d=\"M110 546H675\" stroke=\"#7c5a3e\" stroke-width=\"15\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-19",
+        "number": "04",
+        "category": "U.S. policy · labor institutions",
+        "topic": "government",
+        "title": "Supreme Court leaves Wilcox’s NLRB removal in place",
+        "composition": "finance-ledger",
+        "signature": "plate:finance-ledger",
+        "seed": 2842293970,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A ledger is inspected beside a hidden transfer channel\"><title>Supreme Court leaves Wilcox’s NLRB removal in place</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-19-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-19-04)\"><path d=\"M85 130H360V540H85Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M125 200H325M125 270H325M125 340H260M125 410H300\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"548\" cy=\"284\" r=\"112\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"35\"/><path d=\"M624 367L718 489\" stroke=\"#7a1f33\" stroke-width=\"42\"/><path d=\"M402 530V425H475V345H548\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"21\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-19",
+        "number": "05",
+        "category": "North Carolina · conservation finance",
+        "topic": "climate",
+        "title": "North Carolina awards $28 million for land and water protection",
+        "composition": "climate-watershed",
+        "signature": "plate:climate-watershed",
+        "seed": 1975029227,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A high lake spills toward inhabited lower ground\"><title>North Carolina awards $28 million for land and water protection</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-19-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-19-05)\"><path d=\"M50 425L235 130L398 385L530 215L750 525H50Z\" fill=\"#1d5f47\"/><ellipse cx=\"290\" cy=\"285\" rx=\"85\" ry=\"34\" fill=\"#1b4a6b\"/><path d=\"M340 295Q340 430 570 483\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"34\"/><path d=\"M584 410L650 355L716 410V510H584Z\" fill=\"#2c241d\"/><path d=\"M93 480H234\" stroke=\"#c98a12\" stroke-width=\"25\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

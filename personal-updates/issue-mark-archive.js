@@ -598,5 +598,64 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 022: Exposure &amp; resilience\"><title>Field Brief · 022 · Exposure &amp; resilience</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 105) scale(1.7)\"><path d=\"M6 22Q50 0 94 22V80Q50 106 6 80Z\" fill=\"#221a14\"/><ellipse cx=\"50\" cy=\"22\" rx=\"44\" ry=\"16\" fill=\"#c5ad88\"/><path d=\"M18 59H82\" stroke=\"#8a2a36\" stroke-width=\"12\"/></g><g transform=\"translate(350 310) scale(1.8)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"#221a14\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"#8a2a36\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"10\"/></g><g transform=\"translate(250 130) scale(1.35)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"#221a14\"/><path d=\"M43 35H57V60H43Z\" fill=\"#8a2a36\"/><path d=\"M65 89H94\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M55 300V490H260M340 85H550V265\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 022 / 2026-10-18</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Exposure &amp; resilience</text></g></svg>"
+  },
+  "fb:2026-10-19": {
+    "key": "fb",
+    "date": "2026-10-19",
+    "no": "023",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "A federal DeepSeek exclusion reaches embedded software, China’s new output figures reveal uneven demand, and FERC proposes a different route for LNG authorizations. A labor-board removal case and North Carolina conservation awards raise separate questions about institutional authority and public value. Different decisions, different evidence The procurement order and the LNG proposal both make the scope of a rule important, but they are at different stages: one is an issued exclusion, the other a proposal open to scrutiny. The labor-board case is a denial of review, not a new merits opinion. China’s national accounts and North Carolina’s grant awards stand apart from those legal decisions. The former require attention to the composition of growth; the latter require judging additional environmental benefits rather than equating expenditure with results.",
+    "version": 5,
+    "subject": "capacity",
+    "composition": "capacity-load",
+    "signature": "issue:capacity-load",
+    "phrase": "Observe, enforce & adapt",
+    "seed": 213908789,
+    "geometry": "<path d=\"M84 152H520V206H84Z\" fill=\"$ink\"/><path d=\"M115 206V480H205V206M265 206V361H355V206M415 206V280H505V206\" fill=\"$accent\"/><path d=\"M265 432H355M415 360H505M415 432H505\" stroke=\"$support\" stroke-width=\"24\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "03"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "03",
+          "04"
+        ]
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "04"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": []
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "03",
+          "04"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "01"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 22,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 023: Observe, enforce &amp; adapt\"><title>Field Brief · 023 · Observe, enforce &amp; adapt</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M84 152H520V206H84Z\" fill=\"#221a14\"/><path d=\"M115 206V480H205V206M265 206V361H355V206M415 206V280H505V206\" fill=\"#8a2a36\"/><path d=\"M265 432H355M415 360H505M415 432H505\" stroke=\"#c5ad88\" stroke-width=\"24\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 023 / 2026-10-19</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observe, enforce &amp; adapt</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
