@@ -363,6 +363,55 @@
         "daylight",
         "leashed dogs"
       ]
+    },
+    {
+      "id": "haw-river-iron-ore-belt",
+      "name": "Haw River State Park — Iron Ore Belt Access",
+      "short_name": "Iron Ore Belt",
+      "kind": "trail",
+      "region": "Guilford and Rockingham counties",
+      "access": {
+        "name": "Iron Ore Belt parking, 6068 N. Church St., Greensboro",
+        "lat": 36.2374,
+        "lng": -79.7855,
+        "coords_verified": true,
+        "coords_checked": "2026-10-20",
+        "coords_source": "Current NC State Parks home page explicitly lists Iron Ore Belt Access GPS 36.2374, -79.7855 and address 6068 N. Church St. The official April 2025 access map identifies the public parking, gate and Connector Trail; use this access, not The Summit."
+      },
+      "dog_policy": "Pets permitted on attended leashes no longer than 6 feet; not inside buildings.",
+      "routes": [
+        {
+          "id": "haw-river-great-blue-heron-with-connector@1",
+          "distance_mi": 3.9,
+          "shape": "lollipop",
+          "difficulty": "moderate",
+          "surface": "Woodland hiking trail; include the Connector Trail approach and return."
+        }
+      ],
+      "links": [
+        {
+          "label": "NC State Parks — official status, hours and access",
+          "url": "https://www.ncparks.gov/state-parks/haw-river-state-park"
+        },
+        {
+          "label": "Official trail table",
+          "url": "https://www.ncparks.gov/state-parks/haw-river-state-park/trails"
+        },
+        {
+          "label": "Official Iron Ore Belt access map",
+          "url": "https://www.ncparks.gov/maps/haw-river-state-park-iron-ore-belt-access-map/open"
+        }
+      ],
+      "tags": [
+        "woodland",
+        "wetlands",
+        "picnic"
+      ],
+      "closure": {
+        "status": "open",
+        "checked": "2026-10-20",
+        "source": "https://www.ncparks.gov/state-parks/haw-river-state-park"
+      }
     }
   ]
 }

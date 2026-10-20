@@ -203,6 +203,32 @@
         "composition_key": "resting-head-raised-front-paws-cream-close-20261015"
       },
       "plate_no": 7
+    },
+    {
+      "id": "atlas-plate-e4c7e11b6889",
+      "file": "atlas-plate-e4c7e11b6889",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1122,
+      "height": 1402,
+      "widths": [
+        800,
+        1122
+      ],
+      "alt": "Engraved portrait of Rupert, a chocolate American Labrador in his mustard collar, holding a worn green tennis ball against a plain ochre field.",
+      "focal": [
+        0.52,
+        0.56
+      ],
+      "caption": "TRA Plate No. 008",
+      "source_note": "Original native ChatGPT editorial illustration generated and visually reviewed on 20 October 2026; independent of the recommended destination.",
+      "generation": {
+        "owner": "2026-W43-tue/flagship",
+        "created_at": "2026-10-20",
+        "style_version": "atlas-engraved-3",
+        "composition_key": "head-shoulders-right-three-quarter-ball-ochre-20261020"
+      },
+      "plate_no": 8
     }
   ]
 }

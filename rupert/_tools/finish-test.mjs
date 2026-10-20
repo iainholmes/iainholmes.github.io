@@ -54,7 +54,7 @@ check(()=>assert.match(activityFromOSM({...sample,tags:{...sample.tags,dog:'yes'
 const result=await discoverActivities(origin,{request:async(url,options)=>{assert.equal(options.referrerPolicy,'origin');assert.equal(options.method,'POST');return {ok:true,json:async()=>({elements:[sample,sample]})};}});check(()=>assert.equal(result.length,1));
 check(()=>assert.ok(query.includes('[name]->.near;')));
 const alternatives=await drivingAlternatives(origin,{lat:36,lng:-78},{request:async url=>{assert.ok(String(url).includes('alternatives=true'));return {ok:true,json:async()=>({code:'Ok',routes:[{geometry:{type:'LineString',coordinates:[[-79,35],[-78,36]]},duration:3600,distance:16093.44,legs:[{steps:[{ref:'I-40',distance:15000}]}]}]})};}});check(()=>assert.equal(alternatives[0].corridor,'I-40'));
-const model={statuses:new Map(),groups:[],counts:{all:0},features:[],bounds:null};const atlas=renderAtlas(model,{base:'../'});
+const model={statuses:new Map(),groups:[],directory:[],counts:{all:0},features:[],bounds:null};const atlas=renderAtlas(model,{base:'../'});
 check(()=>assert.ok(!atlas.split('class="frame-options"')[1].split('</div></details>')[0].includes('id="recenter"')));
 check(()=>assert.match(atlas,/map-direct-controls.*id="recenter".*id="relief"/));check(()=>assert.match(atlas,/<small id="atlas-context" hidden><\/small>/));check(()=>assert.ok(!atlas.includes('North Carolina · Place Directory')));
 const travel=renderTravel({places:{places:[],reference_points:{}},history:[]});check(()=>assert.ok(travel.indexOf('id="trip-origin"')<travel.indexOf('id="trip-legs"')));check(()=>assert.ok(travel.indexOf('id="build-stage"')<travel.indexOf('Trip Table')));check(()=>assert.ok(!travel.includes('Break every')));

@@ -1,0 +1,362 @@
+{
+  "schema_version": 1,
+  "id": "2026-W43-tue",
+  "slot": "tuesday",
+  "status": "published",
+  "published_at": "2026-10-20T07:19:52-04:00",
+  "weekend": {
+    "start": "2026-10-24",
+    "end": "2026-10-25"
+  },
+  "flagship": {
+    "place_id": "haw-river-iron-ore-belt",
+    "title": "Great Blue Heron, at a Labrador’s pace",
+    "standfirst": "A woodland circuit and wetland edge at Iron Ore Belt: roughly four miles with the approach, a picnic if it suits, and time for Rupert to read the ground.",
+    "why_this_week": "After last week’s ridge and lakeshore, this is a different stretch of Piedmont woods: oak-hickory canopy, wetland margins and a loop with room for unhurried sniffing. Start at Iron Ore Belt, not The Summit. The official circuit is 3.2 miles; add the Connector Trail out and back for about 3.9 miles from the parking area. Allow two to three hours outside as a planning estimate, longer with a picnic. The publication-day forecast points to a sunny, cool weekend; take a layer for the morning and recheck the weather before leaving. There is no promise of seeing the bird in the trail’s name.",
+    "headline_condition": "Sunny weekend; cool mornings",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-10-20",
+      "access": {
+        "name": "Iron Ore Belt parking, 6068 N. Church St., Greensboro",
+        "parking": "Use the official Iron Ore Belt lot, reached from N. Church St.; the access map marks parking, picnic areas and restrooms. No day-use entry fee. October gate hours 8 a.m.–8 p.m. Park only in designated spaces."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          80,
+          95
+        ]
+      },
+      "duration_h": [
+        2,
+        3
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "The manager describes oak-hickory woods and wetlands; shade varies along the route.",
+        "watch_for": [
+          "Wet roots and leaf-covered footing",
+          "Keep clear of wildlife and water edges",
+          "Check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "route": {
+        "route_id": "haw-river-great-blue-heron-with-connector@1",
+        "distance_mi": 3.9,
+        "shape": "lollipop",
+        "difficulty": "moderate",
+        "surface": "Woodland hiking trail; include the Connector Trail approach and return."
+      }
+    },
+    "photo": {
+      "id": "atlas-plate-e4c7e11b6889",
+      "alt": "Engraved portrait of Rupert, a chocolate American Labrador in his mustard collar, holding a worn green tennis ball against a plain ochre field."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "NC State Parks — official status, public access, hours and pets",
+        "url": "https://www.ncparks.gov/state-parks/haw-river-state-park",
+        "retrieved": "2026-10-20"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — trail listing",
+        "url": "https://www.ncparks.gov/state-parks/haw-river-state-park/trails",
+        "retrieved": "2026-10-20"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — official access map",
+        "url": "https://www.ncparks.gov/maps/haw-river-state-park-iron-ore-belt-access-map/open",
+        "retrieved": "2026-10-20"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — park news",
+        "url": "https://www.ncparks.gov/state-parks/haw-river-state-park/news",
+        "retrieved": "2026-10-20"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — pet rules",
+        "url": "https://www.ncparks.gov/about-us/guidelines-park-rules-and-regulations",
+        "retrieved": "2026-10-20"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — safety and respect",
+        "url": "https://www.ncparks.gov/about-us/park-safety-and-respect",
+        "retrieved": "2026-10-20"
+      },
+      {
+        "kind": "forecast",
+        "label": "NWS — preparation forecast; publication-day refresh required",
+        "url": "https://api.weather.gov/gridpoints/RAH/31,73/forecast",
+        "retrieved": "2026-10-20"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland"
+    ],
+    "experience_id": "haw-river-great-blue-heron-with-connector",
+    "experience_basis": {
+      "activity_id": "leashed-woodland-hike",
+      "feature_id": "iron-ore-belt-wetland-edge",
+      "format_id": "daylight-loop-with-sniffing-breaks"
+    },
+    "panels": [
+      {
+        "label": "The whole distance",
+        "text": "The Great Blue Heron loop is 3.2 miles, but parking-to-parking includes the Connector Trail twice. Plan on about 3.9–4 miles and allow two to three hours outside."
+      },
+      {
+        "label": "For Rupert",
+        "text": "Keep the leash attended and no longer than six feet. Bring his drinking water, pause before the wetland edge, and shorten the walk if his pace or the footing calls for it."
+      }
+    ],
+    "qualities": {
+      "activity": "hike",
+      "expected_heat": "normal"
+    },
+    "artwork": {
+      "image_id": "atlas-plate-e4c7e11b6889",
+      "brief": "Close head-and-shoulders three-quarter portrait of Rupert facing right with one worn olive-green tennis ball held naturally in his mouth. One lean chocolate American Labrador, long muzzle, drop ears, amber-brown eyes and mustard-orange collar. Keep the full head, ears, muzzle, ball and collar inside the frame; crop at the upper chest. Large silhouette slightly below center on a plain muted ochre field, with quiet space above. Fine cream carved lines, chocolate hatching and subtle print grain; no scenery, horizon, sun, frame or lettering. The active close crop, ball and ochre ground differ from the preceding cream resting paws portrait and olive full-body standing plate, and the older wide running river scene. Preserve the approved October 13 likeness and print execution. No tail is depicted in this crop.",
+      "characters": [
+        "rupert"
+      ]
+    }
+  },
+  "local_trail": {
+    "place_id": "haw-river-iron-ore-belt",
+    "title": "Less walking, the same woods",
+    "line": "Use the Connector Trail and turn back before committing to the full loop. Set the turnaround by Rupert’s pace and the actual footing; no fixed distance is promised.",
+    "snapshot": {
+      "as_of": "2026-10-20",
+      "access": {
+        "name": "Iron Ore Belt parking, 6068 N. Church St., Greensboro",
+        "parking": "Use the official Iron Ore Belt lot, reached from N. Church St.; the access map marks parking, picnic areas and restrooms. No day-use entry fee. October gate hours 8 a.m.–8 p.m. Park only in designated spaces."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          80,
+          95
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "The manager describes oak-hickory woods and wetlands; shade varies along the route.",
+        "watch_for": [
+          "Wet roots and leaf-covered footing",
+          "Keep clear of wildlife and water edges",
+          "Check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ],
+    "commitment": "Shorten rather than press on"
+  },
+  "away_mission": {
+    "place_id": "haw-river-iron-ore-belt",
+    "title": "Make room for a picnic",
+    "line": "Walk the mapped circuit only if conditions and Rupert’s energy allow, then use a designated picnic area. This adds lingering time rather than another trail.",
+    "snapshot": {
+      "as_of": "2026-10-20",
+      "access": {
+        "name": "Iron Ore Belt parking, 6068 N. Church St., Greensboro",
+        "parking": "Use the official Iron Ore Belt lot, reached from N. Church St.; the access map marks parking, picnic areas and restrooms. No day-use entry fee. October gate hours 8 a.m.–8 p.m. Park only in designated spaces."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          80,
+          95
+        ]
+      },
+      "duration_h": [
+        3,
+        4
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "The manager describes oak-hickory woods and wetlands; shade varies along the route.",
+        "watch_for": [
+          "Wet roots and leaf-covered footing",
+          "Keep clear of wildlife and water edges",
+          "Check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "route": {
+        "route_id": "haw-river-great-blue-heron-with-connector@1",
+        "distance_mi": 3.9,
+        "shape": "lollipop",
+        "difficulty": "moderate",
+        "surface": "Woodland hiking trail; include the Connector Trail approach and return."
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "picnic"
+    ]
+  },
+  "wildcard": {
+    "place_id": "haw-river-iron-ore-belt",
+    "title": "Keep it to the picnic area",
+    "line": "On a safe, dry day, use the designated picnic area and a short leashed leg-stretch. Postpone entirely for thunder, flooding, strong wind or a closure.",
+    "snapshot": {
+      "as_of": "2026-10-20",
+      "access": {
+        "name": "Iron Ore Belt parking, 6068 N. Church St., Greensboro",
+        "parking": "Use the official Iron Ore Belt lot, reached from N. Church St.; the access map marks parking, picnic areas and restrooms. No day-use entry fee. October gate hours 8 a.m.–8 p.m. Park only in designated spaces."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          80,
+          95
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "The manager describes oak-hickory woods and wetlands; shade varies along the route.",
+        "watch_for": [
+          "Wet roots and leaf-covered footing",
+          "Keep clear of wildlife and water edges",
+          "Check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "picnic",
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "text": "Let Rupert choose a few sniffing pauses, then bring him calmly back onto the marked route. No racing at the water’s edge.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "What did Rupert stop to investigate, and did the full circuit or a shorter turn feel right?"
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-10-20T06:42:36-04:00",
+    "checked_at": "2026-10-20T11:13:03.056Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RAH/31,73/forecast",
+      "issued_at": "2026-10-20T10:42:36.000Z",
+      "retrieved_at": "2026-10-20T11:13:03.056Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "Sunny, with a high near 63."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "Sunny, with a high near 68."
+      }
+    ],
+    "summary": "Saturday: Sunny, with a high near 63. Sunday: Sunny, with a high near 68. Saturday night: Clear, with a low around 38. Sunday night: Mostly clear, with a low around 42.",
+    "alerts": [],
+    "alerts_checked_at": "2026-10-20T11:13:03.056Z",
+    "pivot": {
+      "if": "Thunder, strong wind, flooding, unsafe footing or an official closure",
+      "note": "Postpone rather than substituting another exposed walk or picnic. Recheck official access and the current NWS forecast before leaving."
+    },
+    "trail_note": "The orange-square circuit needs the white-circle Connector Trail approach. Take a layer for the cool start; wet leaves, roots or water on the trail are reasons to turn back. Keep Rupert leashed and out of the wetland."
+  },
+  "practical": {
+    "best_window": "Saturday or Sunday in daylight, after the cool start; allow two to three hours outside and finish before dusk.",
+    "fees": "No day-use entrance fee; reservations and special permits are separate.",
+    "bring": [
+      "Drinking water and bowl",
+      "Attended six-foot leash and waste bags",
+      "Shoes with traction",
+      "A layer and rain protection",
+      "Official map saved offline",
+      "A small picnic if the weather allows"
+    ],
+    "closures_checked": "2026-10-20",
+    "closures_note": "Official NC State Parks home/status, trail table, news, facilities, pet rules, safety guidance and April 2025 Iron Ore Belt map fetched and read on 20 October. Hiking Trails explicitly Open; no new closure in the official news listing. Verified public Iron Ore Belt access at 6068 N. Church St., Greensboro, GPS 36.2374,-79.7855, distinct from The Summit. The map is byte-identical to the visually reviewed preparation map and identifies designated parking, picnic areas and restrooms. October gate hours 8 a.m.–8 p.m.; free day use; pets on attended leashes no longer than six feet and outside buildings. Great Blue Heron is a moderate 3.2-mile orange-square loop plus the white-circle Connector Trail twice: the current map gives 0.33 mile per approach, about 3.9 miles parking-to-parking; the table rounds the connector to 0.4 mile. Use approximately four miles for planning. Stay on marked paths, do not enter wetlands or swim, and turn back for unsafe footing or water on the trail. Current forecast and safety guidance appear in the dated Weather and Trail Note sections."
+  }
+}

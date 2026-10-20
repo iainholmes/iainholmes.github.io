@@ -93,6 +93,24 @@
       "official_url": "https://www.ncparks.gov/state-parks/jordan-lake-state-recreation-area",
       "discrepancy": false,
       "note": "Fresh publication-day direct reads of official home, trails, news and park rules at 2026-10-15T16:39:58.870Z reconfirm explicit Hiking Trails Open, New Hope access and October hours; only alert remains toilets at separate Parkers Creek. Public homepage GPS/directions, the 2.7-mile blue circuit, designated hiking parking, October free day use and six-foot attended leash remain as verified. Current NWS issue 2026-10-15T06:53:31-04:00 re-fetched at 2026-10-15T16:39:03.627Z: Saturday rain 40%/gusts 26 mph; Sunday slight rain, high 61 F. No returned active alerts. Conditional dry-Sunday guidance and adverse-weather postponement remain appropriate."
+    },
+    {
+      "place_id": "haw-river-iron-ore-belt",
+      "status": "open",
+      "checked": "2026-10-19",
+      "checked_at": "2026-10-19T20:36:27.511Z",
+      "official_url": "https://www.ncparks.gov/state-parks/haw-river-state-park",
+      "discrepancy": false,
+      "note": "Official home, trail table, news, facilities, rules and April 2025 map read on 19 October. Hiking Trails explicitly Open. The news page lists two older items and no current closure notice; absence of news is not the opening evidence. Iron Ore Belt is a separate day-use access from The Summit. October hours 8 a.m.–8 p.m.; free day use; attended leash up to 6 feet and no pets inside buildings. The mapped 3.2-mile Great Blue Heron loop needs the Connector Trail from the lot: the current map gives 0.33 mile each way (about 3.9 miles total); the table rounds the connector to 0.4 mile. Follow the map and allow roughly four miles, rather than presenting 3.2 miles as the complete parking-to-parking outing. Current public access GPS and parking verified. Current NWS weekend periods and active alerts read; tomorrow requires new official access, NWS/alerts and substantive editorial approval."
+    },
+    {
+      "place_id": "haw-river-iron-ore-belt",
+      "checked": "2026-10-20",
+      "checked_at": "2026-10-20T11:13:02.924Z",
+      "status": "open",
+      "official_url": "https://www.ncparks.gov/state-parks/haw-river-state-park",
+      "discrepancy": false,
+      "note": "Official NC State Parks home/status, trail table, news, facilities, pet rules, safety guidance and April 2025 Iron Ore Belt map fetched and read on 20 October. Hiking Trails explicitly Open; no new closure in the official news listing. Verified public Iron Ore Belt access at 6068 N. Church St., Greensboro, GPS 36.2374,-79.7855, distinct from The Summit. The map is byte-identical to the visually reviewed preparation map and identifies designated parking, picnic areas and restrooms. October gate hours 8 a.m.–8 p.m.; free day use; pets on attended leashes no longer than six feet and outside buildings. Great Blue Heron is a moderate 3.2-mile orange-square loop plus the white-circle Connector Trail twice: the current map gives 0.33 mile per approach, about 3.9 miles parking-to-parking; the table rounds the connector to 0.4 mile. Use approximately four miles for planning. Stay on marked paths, do not enter wetlands or swim, and turn back for unsafe footing or water on the trail. Current NWS weekend forecast and active-alert responses were read separately; release refresh and artwork-specific editorial review follow."
     }
   ],
   "official_hosts": [

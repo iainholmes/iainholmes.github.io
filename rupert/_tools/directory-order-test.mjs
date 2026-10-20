@@ -4,8 +4,10 @@ import { atlasModel, directoryPlaces, registerGroups } from '../assets/js/core/a
 import { renderAtlas } from '../assets/js/core/render.js';
 
 const json = path => JSON.parse(readFileSync(new URL('../' + path, import.meta.url)));
-const places = json('data/places.json'), manifest = json('data/editions/index.json');
+const places = json('data/places.json'), currentManifest = json('data/editions/index.json');
 const now = new Date('2026-10-15T23:00:00-04:00');
+// Keep the historical scenario stable as genuine later editions are published.
+const manifest = { ...currentManifest, editions: currentManifest.editions.filter(e => new Date(e.published_at) <= now) };
 let checks = 0;
 const check = fn => { fn(); checks++; };
 const ids = model => model.directory.map(p => p.id);
@@ -55,4 +57,9 @@ check(() => assert.deepEqual(directoryPlaces(tiePlaces, incomplete).map(p => p.i
 offsets.editions.push(edition('missing', 'c', undefined));
 check(() => assert.ok(!atlasModel(tiePlaces, offsets, { now }).statuses.has('c')));
 check(() => assert.equal(JSON.stringify({ places, manifest }), before));
+const latest = currentManifest.editions.filter(e => ['published', 'withdrawn'].includes(e.status))
+  .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))[0];
+const currentModel = atlasModel(places, currentManifest, { now: new Date(latest.published_at) });
+check(() => assert.equal(ids(currentModel)[0], latest.place_id));
+check(() => assert.equal(renderedIds(currentModel)[0], latest.place_id));
 console.log(`${checks} chronological Directory, recurring-place, release-boundary, stable-fallback and map-history assertions PASS.`);

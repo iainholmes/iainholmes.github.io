@@ -217,6 +217,49 @@
       ],
       "headline_condition": "Favor dry Sunday; gusty, showery Saturday",
       "condition_level": "adverse"
+    },
+    {
+      "edition_id": "2026-W43-tue",
+      "replaced_at": "2026-10-20T11:13:03.056Z",
+      "conditions": {
+        "kind": "outlook",
+        "as_of": "2026-10-19T16:25:34-04:00",
+        "checked_at": "2026-10-19T20:31:17.883Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RAH/31,73/forecast",
+          "issued_at": "2026-10-19T20:25:34.000Z",
+          "retrieved_at": "2026-10-19T20:31:17.883Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Sunny, with a high near 64."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "Sunny, with a high near 68."
+          }
+        ],
+        "summary": "Preparation outlook checked 19 October, not publication-day approval. Mandatory NWS forecast and active-alert refresh before release. Saturday: Sunny, with a high near 64. Sunday: Sunny, with a high near 68. Saturday night: Clear, with a low around 42. Sunday night: Mostly clear, with a low around 44.",
+        "alerts": [],
+        "alerts_checked_at": "2026-10-19T20:31:17.883Z",
+        "trail_note": "The orange-square circuit needs the white-circle Connector Trail approach. Wet leaves, roots or water on the trail are reasons to turn back; this is not a swimming outing.",
+        "pivot": {
+          "if": "Thunder, strong wind, flooding, unsafe footing or an official closure",
+          "note": "Postpone rather than substituting another exposed walk or picnic. Recheck official access and the current NWS forecast before leaving."
+        }
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "NWS — preparation forecast; publication-day refresh required",
+          "url": "https://api.weather.gov/gridpoints/RAH/31,73/forecast",
+          "retrieved": "2026-10-20"
+        }
+      ],
+      "headline_condition": "Sunny weekend; cool mornings",
+      "condition_level": "normal"
     }
   ]
 }

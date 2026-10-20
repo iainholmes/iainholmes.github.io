@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "82160eea6d265ae5",
+  "revision": "327f940424bd0c45",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -356,6 +356,55 @@
       ],
       "photo_id": "atlas-plate-932b705eb345",
       "path": "data/editions/2026-W42-thu.json"
+    },
+    {
+      "id": "2026-W43-tue",
+      "slot": "tuesday",
+      "status": "published",
+      "published_at": "2026-10-20T07:19:52-04:00",
+      "weekend": {
+        "start": "2026-10-24",
+        "end": "2026-10-25"
+      },
+      "title": "Great Blue Heron, at a Labrador’s pace",
+      "place_id": "haw-river-iron-ore-belt",
+      "experience_key": "haw-river-great-blue-heron-with-connector",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Great Blue Heron, at a Labrador’s pace",
+          "place_id": "haw-river-iron-ore-belt",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "haw-river-iron-ore-belt"
+      ],
+      "place_roles": [
+        {
+          "place_id": "haw-river-iron-ore-belt",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-e4c7e11b6889",
+      "path": "data/editions/2026-W43-tue.json"
     }
   ]
 }
