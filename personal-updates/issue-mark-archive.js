@@ -657,5 +657,70 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 023: Observe, enforce &amp; adapt\"><title>Field Brief · 023 · Observe, enforce &amp; adapt</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M84 152H520V206H84Z\" fill=\"#221a14\"/><path d=\"M115 206V480H205V206M265 206V361H355V206M415 206V280H505V206\" fill=\"#8a2a36\"/><path d=\"M265 432H355M415 360H505M415 432H505\" stroke=\"#c5ad88\" stroke-width=\"24\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 023 / 2026-10-19</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observe, enforce &amp; adapt</text></g></svg>"
+  },
+  "fb:2026-10-20": {
+    "key": "fb",
+    "date": "2026-10-20",
+    "no": "024",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "Amazon lowers the software barrier to its Trainium chips, USDA creates an $8 billion harvest-fuel program, and COP17 begins with biodiversity targets largely off track. A White House order reorganizes women's-health research, while North Carolina approves 157 additional Duke hospital beds in Durham. Implementation, not announcement The five developments do not share a single policy thesis. They do share an evidentiary distinction: software availability, a payment program, a multilateral review, an executive reorganization and conditional hospital approvals are decisions at different stages, not completed outcomes. The next tests are empirical and specific—workload portability on Trainium, the distribution of farm payments, progress against biodiversity targets, appropriated support for women's-health research, and the conversion of authorized beds into staffed clinical capacity.",
+    "version": 5,
+    "subject": "infrastructure",
+    "composition": "infrastructure-chain",
+    "signature": "issue:infrastructure-chain",
+    "phrase": "Connections & capacity",
+    "seed": 3265978404,
+    "geometry": "<circle cx=\"142\" cy=\"235\" r=\"66\" fill=\"none\" stroke=\"$ink\" stroke-width=\"27\"/><circle cx=\"457\" cy=\"378\" r=\"66\" fill=\"none\" stroke=\"$accent\" stroke-width=\"27\"/><path d=\"M190 272L408 341\" stroke=\"$support\" stroke-width=\"32\"/><path d=\"M302 113V226M258 130L302 226L346 130\" fill=\"none\" stroke=\"$ink\" stroke-width=\"18\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01",
+          "02",
+          "05"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "02",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "02",
+          "03"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "05"
+        ]
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "05"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 23,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 024: Connections &amp; capacity\"><title>Field Brief · 024 · Connections &amp; capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><circle cx=\"142\" cy=\"235\" r=\"66\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"27\"/><circle cx=\"457\" cy=\"378\" r=\"66\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"27\"/><path d=\"M190 272L408 341\" stroke=\"#c5ad88\" stroke-width=\"32\"/><path d=\"M302 113V226M258 130L302 226L346 130\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"18\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 024 / 2026-10-20</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Connections &amp; capacity</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
