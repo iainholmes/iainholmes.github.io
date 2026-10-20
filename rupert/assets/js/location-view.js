@@ -19,7 +19,7 @@ export function setupLocation({ getMap, features, onClear, onRouteDisplay }) {
   function dossier(name, message, result, feature, notice='', {pending=false}={}) {
     const [lng,lat]=feature?.geometry.coordinates || [];
     const links=navigationLinks(point,{lng,lat});navigation.hidden=!result || !links.length;
-    navigation.innerHTML=`<summary>Open Live Navigation</summary><div class="navigation-choices">${links.map(v=>`<a href="${esc(v.href)}" target="_blank" rel="noopener noreferrer">${esc(v.label)}</a>`).join('')}</div><p>Shares coordinates with the chosen service only when opened. Apple and Google use Home; Waze starts from your current location.</p>`;
+    navigation.innerHTML=`<summary>Open Live Navigation</summary><div class="navigation-body"><div class="navigation-choices">${links.map(v=>`<a href="${esc(v.href)}" target="_blank" rel="noopener noreferrer">${esc(v.label)}</a>`).join('')}</div><p>Shares coordinates with the chosen service only when opened. Apple and Google use Home; Waze starts from your current location.</p></div>`;
     const selection=document.getElementById('atlas-selection'); if(selection) selection.textContent=name || 'Choose a Place';
     const context=document.getElementById('atlas-context'); if(context){const row=document.querySelector('.reg-row.is-selected'),region=row?.closest('.reg-group')?.dataset.region,access=row?.querySelector('.reg-start')?.textContent.replace(/^Start: /,'');context.textContent=name?[region,access].filter(Boolean).join(' · '):'';context.hidden=!context.textContent;}
     credits.hidden=result?.provider!=='tomtom';
