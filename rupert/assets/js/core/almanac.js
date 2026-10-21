@@ -1,5 +1,6 @@
 // Calendar-day almanac at the existing PUBLIC Franklin Street reference. No private location input.
-// Solar equations: https://gml.noaa.gov/grad/solcalc/solareqns.PDF (NOAA fractional-year approximation).
+// Solar equations: NOAA's Julian-century/Meeus calculation, including event-time refinement.
+// https://gml.noaa.gov/grad/solcalc/main.js and https://gml.noaa.gov/grad/solcalc/calcdetails.html
 // Lunar coordinates/illumination adapted from SunCalc 1.9.0, Copyright (c) 2014 Vladimir Agafonkin.
 // BSD-2-Clause terms are retained in SUNCALC-LICENSE.txt; based on Meeus, Astronomical Algorithms.
 import { nyInstant, nyDateString, parseDate, TZ } from './dates.js';
@@ -45,18 +46,42 @@ function moonPhase(instant) {
   return PHASES[Math.round(phase*8)%8];
 }
 
+function solarPosition(julianDay) {
+  const t = (julianDay-2451545)/36525;
+  const longitude = (280.46646+t*(36000.76983+.0003032*t))*RAD;
+  const anomaly = (357.52911+t*(35999.05029-.0001537*t))*RAD;
+  const eccentricity = .016708634-t*(.000042037+.0000001267*t);
+  const center = sin(anomaly)*(1.914602-t*(.004817+.000014*t))
+    +sin(2*anomaly)*(.019993-.000101*t)+.000289*sin(3*anomaly);
+  const omega = (125.04-1934.136*t)*RAD;
+  const apparentLongitude = longitude+(center-.00569-.00478*sin(omega))*RAD;
+  const obliquity = (23+(26+(21.448-t*(46.815+t*(.00059-.001813*t)))/60)/60+.00256*cos(omega))*RAD;
+  const decl = asin(sin(obliquity)*sin(apparentLongitude));
+  const v = tan(obliquity/2)**2;
+  const eqtime = 4/RAD*(v*sin(2*longitude)-2*eccentricity*sin(anomaly)
+    +4*eccentricity*v*sin(anomaly)*cos(2*longitude)-.5*v*v*sin(4*longitude)
+    -1.25*eccentricity*eccentricity*sin(2*anomaly));
+  return { decl, eqtime };
+}
+
+// UTC minutes from this calendar date's midnight; evaluate each event on the same day.
+// 90.833° preserves the standard apparent upper-limb, level-horizon convention.
+function solarEventMinutes(julianDay, setting) {
+  const estimate = jd => {
+    const { decl, eqtime } = solarPosition(jd), lat = PUBLIC_CHAPEL_HILL.lat*RAD;
+    const hourAngle = acos(cos(90.833*RAD)/(cos(lat)*cos(decl))-tan(lat)*tan(decl))/RAD;
+    return 720-4*PUBLIC_CHAPEL_HILL.lng+(setting ? 4 : -4)*hourAngle-eqtime;
+  };
+  return estimate(julianDay+estimate(julianDay)/1440);
+}
+
 export function dailyAlmanac(date) {
   const { y, m, d } = parseDate(date);
-  const dayOfYear = (Date.UTC(y,m-1,d)-Date.UTC(y,0,1))/DAY+1;
-  const yearDays = (Date.UTC(y+1,0,1)-Date.UTC(y,0,1))/DAY;
-  const gamma = 2*Math.PI/yearDays*(dayOfYear-1);
-  const eqtime = 229.18*(.000075+.001868*cos(gamma)-.032077*sin(gamma)-.014615*cos(2*gamma)-.040849*sin(2*gamma));
-  const decl = .006918-.399912*cos(gamma)+.070257*sin(gamma)-.006758*cos(2*gamma)+.000907*sin(2*gamma)-.002697*cos(3*gamma)+.00148*sin(3*gamma);
-  const lat = PUBLIC_CHAPEL_HILL.lat*RAD;
-  const hourAngle = acos(cos(90.833*RAD)/(cos(lat)*cos(decl))-tan(lat)*tan(decl))/RAD;
-  const sunsetMinutes = 720-4*PUBLIC_CHAPEL_HILL.lng+4*hourAngle-eqtime;
+  const julianDay = Date.UTC(y,m-1,d)/DAY+2440587.5;
+  const sunriseMinutes = solarEventMinutes(julianDay,false), sunsetMinutes = solarEventMinutes(julianDay,true);
   const sunset = new Date(Date.UTC(y,m-1,d)+Math.round(sunsetMinutes)*60000);
-  const daylightMinutes = Math.round(8*hourAngle);
+  // Round the interval once, not the two endpoints separately.
+  const daylightMinutes = Math.round(sunsetMinutes-sunriseMinutes);
   return { date, sunset: new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit',hour12:true}).format(sunset),
     daylight: `${Math.floor(daylightMinutes/60)}h ${String(daylightMinutes%60).padStart(2,'0')}m`,
     moon: moonPhase(nyInstant(date,'12:00:00')) };

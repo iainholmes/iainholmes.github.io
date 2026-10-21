@@ -37,18 +37,25 @@ for(const e of manifest.editions){
   const edition=json(e.path);
   for(const role of ['flagship','local_trail','away_mission','wildcard'])check(()=>assert.deepEqual(crowdReadings(edition[role].snapshot.crowd),{typical:null,perceived:null,facts:[]}));
 }
-// Expected date/value snapshots protect against accidentally reusing recommendation Saturday.
+// NOAA main.js calcSunriseSetUTC, with its second event-time evaluation, at 35.913, -79.056.
+// Independent reference calculation retrieved 2026-10-21; nearest-minute sunset and elapsed daylight.
+// Expected date/value snapshots also protect against accidentally reusing recommendation Saturday.
 const days=[
-  ['2026-10-05','6:56 PM','Waning Crescent','11h 43m'],
-  ['2026-10-06','6:54 PM','Waning Crescent','11h 40m'],
-  ['2026-10-07','6:53 PM','Waning Crescent','11h 38m'],
-  ['2026-10-08','6:52 PM','Waning Crescent','11h 36m'],
-  ['2026-10-31','6:23 PM','Last Quarter','10h 46m'],
-  ['2026-11-01','5:22 PM','Last Quarter','10h 44m'],
-  ['2026-03-07','6:16 PM','Waning Gibbous','11h 36m'],
-  ['2026-03-08','7:17 PM','Waning Gibbous','11h 38m'],
-  ['2026-12-31','5:11 PM','Last Quarter','9h 45m'],
-  ['2027-01-01','5:12 PM','Last Quarter','9h 46m']
+  ['2026-10-05','6:54 PM','Waning Crescent','11h 39m'],
+  ['2026-10-06','6:53 PM','Waning Crescent','11h 37m'],
+  ['2026-10-07','6:51 PM','Waning Crescent','11h 35m'],
+  ['2026-10-08','6:50 PM','Waning Crescent','11h 33m'],
+  ['2026-10-20','6:34 PM','Waxing Gibbous','11h 07m'],
+  ['2026-10-21','6:33 PM','Waxing Gibbous','11h 04m'],
+  ['2026-10-31','6:21 PM','Last Quarter','10h 44m'],
+  ['2026-11-01','5:20 PM','Last Quarter','10h 42m'],
+  ['2026-03-07','6:17 PM','Waning Gibbous','11h 39m'],
+  ['2026-03-08','7:18 PM','Waning Gibbous','11h 41m'],
+  ['2026-12-31','5:12 PM','Last Quarter','9h 46m'],
+  ['2027-01-01','5:13 PM','Last Quarter','9h 46m'],
+  ['2028-02-28','6:10 PM','Waxing Crescent','11h 22m'],
+  ['2028-02-29','6:11 PM','Waxing Crescent','11h 24m'],
+  ['2028-03-01','6:12 PM','Waxing Crescent','11h 26m']
 ];
 for(const [date,sunset,moon,daylight] of days){
   const now=nyInstant(date,'06:59:00'),almanac=currentAlmanac(now);
@@ -61,6 +68,20 @@ for(const [date,sunset,moon,daylight] of days){
   check(()=>assert.ok(html.includes(sunset+' ET')&&html.includes(moon)&&html.includes(daylight)));
 }
 for(const [instant,date] of [['2026-10-06T03:59:59Z','2026-10-05'],['2026-10-06T04:00:00Z','2026-10-06'],['2027-01-01T04:59:59Z','2026-12-31'],['2027-01-01T05:00:00Z','2027-01-01']])check(()=>assert.equal(currentAlmanac(new Date(instant)).date,date));
+for(const [instant,date] of [
+  ['2026-10-21T00:00:00Z','2026-10-20'],['2026-10-21T03:59:59Z','2026-10-20'],['2026-10-21T04:00:00Z','2026-10-21'],
+  ['2026-03-08T04:59:59Z','2026-03-07'],['2026-03-08T05:00:00Z','2026-03-08'],
+  ['2026-11-01T03:59:59Z','2026-10-31'],['2026-11-01T04:00:00Z','2026-11-01'],
+  ['2028-03-01T04:59:59Z','2028-02-29'],['2028-03-01T05:00:00Z','2028-03-01']
+]){
+  const [,sunset,moon,daylight]=days.find(row=>row[0]===date);
+  check(()=>assert.deepEqual(currentAlmanac(new Date(instant)),{date,sunset,moon,daylight}));
+}
+// Unrounded NOAA event minutes from UTC midnight: round the same day's interval only once.
+for(const [date,rise,set] of [['2026-10-20',687.4296039256516,1353.9617678172465],['2026-10-21',688.3335667507863,1352.7301625572172]]){
+  const minutes=Math.round(set-rise);
+  check(()=>assert.equal(dailyAlmanac(date).daylight,`${Math.floor(minutes/60)}h ${String(minutes%60).padStart(2,'0')}m`));
+}
 check(()=>assert.deepEqual(currentAlmanac(new Date('2026-11-01T01:30:00-04:00')),currentAlmanac(new Date('2026-11-01T01:30:00-05:00'))));
 for(const [date,offset] of [['2026-03-07',-300],['2026-03-08',-240],['2026-10-31',-240],['2026-11-01',-300]])check(()=>assert.equal(nyOffsetMinutes(nyInstant(date,'18:00:00')),offset));
 check(()=>assert.equal(nyDateString(nyInstant('2026-10-05','12:00:00')),'2026-10-05'));
