@@ -1286,6 +1286,68 @@
         "seed": 2121143999,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A time clock beside an interrupted production belt\"><title>North Carolina approves 157 additional Duke hospital beds</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-20-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-20-05)\"><circle cx=\"246\" cy=\"277\" r=\"165\" fill=\"#2c241d\"/><circle cx=\"246\" cy=\"277\" r=\"125\" fill=\"#f4ead7\"/><path d=\"M246 180V277L324 326\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M480 180H700V480H480Z\" fill=\"#1b4a6b\"/><path d=\"M517 228H663M517 297H663M517 366H604\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M80 532H348M443 532H720\" stroke=\"#7c5a3e\" stroke-width=\"30\"/></g></svg>"
       }
+    },
+    "2026-10-21": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-21",
+        "number": "01",
+        "category": "Technology · AI safety",
+        "topic": "infrastructure",
+        "title": "OpenAI agents disabled parts of their own safety monitoring",
+        "composition": "trade-port",
+        "signature": "plate:trade-port",
+        "seed": 771881966,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A cargo crane lifts a sealed crate at a port\"><title>OpenAI agents disabled parts of their own safety monitoring</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-21-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-21-01)\"><path d=\"M150 540V120H590M185 120L500 355M515 120V315\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"25\"/><path d=\"M445 350H610V475H445Z\" fill=\"#c4452c\"/><path d=\"M480 350V475M575 350V475\" stroke=\"#f4ead7\" stroke-width=\"12\"/><path d=\"M65 535H715L665 588H135Z\" fill=\"#1b4a6b\"/><path d=\"M365 138V237H645V138\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"12\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-21",
+        "number": "02",
+        "category": "Environment · climate mitigation",
+        "topic": "heat",
+        "title": "UNEP defines the path back from a 1.5°C overshoot",
+        "composition": "heat-exposure",
+        "signature": "plate:heat-exposure",
+        "seed": 3981337629,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An exposure field crossed by people and thermal bands\"><title>UNEP defines the path back from a 1.5°C overshoot</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-21-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-21-02)\"><path d=\"M90 115H710V510H90Z\" fill=\"#7a1f33\"/><path d=\"M90 205Q245 125 410 205T710 205M90 325Q245 245 410 325T710 325M90 445Q245 365 410 445T710 445\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"45\"/><g fill=\"#f4ead7\"><circle cx=\"255\" cy=\"283\" r=\"38\"/><path d=\"M205 450V355Q255 305 305 355V450Z\"/><circle cx=\"558\" cy=\"360\" r=\"38\"/><path d=\"M508 525V430Q558 380 608 430V525Z\"/></g></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-21",
+        "number": "03",
+        "category": "Economy · housing",
+        "topic": "finance",
+        "title": "Single-family permits fall to a three-and-a-half-year low",
+        "composition": "government-document",
+        "signature": "plate:government-document",
+        "seed": 1928583068,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A legal document meets a gate of authority\"><title>Single-family permits fall to a three-and-a-half-year low</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-21-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-21-03)\"><path d=\"M110 100H375L460 190V525H110Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M160 225H395M160 302H395M160 378H312\" stroke=\"#7c5a3e\" stroke-width=\"20\"/><path d=\"M530 535V185H690V535M490 260H728\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"30\"/><path d=\"M460 445H550\" stroke=\"#1b4a6b\" stroke-width=\"27\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-21",
+        "number": "04",
+        "category": "Health · biotechnology",
+        "topic": "infrastructure",
+        "title": "FDA approves a first-in-class hepatitis B treatment",
+        "composition": "research-vacancy",
+        "signature": "plate:research-vacancy",
+        "seed": 1640775676,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Research benches lose staffed capacity\"><title>FDA approves a first-in-class hepatitis B treatment</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-21-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-21-04)\"><path d=\"M75 525H730\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M95 235H300V285H95ZM385 385H715V435H385Z\" fill=\"#1b4a6b\"/><path d=\"M135 285V525M260 285V525M420 435V525M680 435V525\" stroke=\"#2c241d\" stroke-width=\"23\"/><path d=\"M170 214V160H207V113H245L270 177L233 210Z\" fill=\"#2c241d\"/><path d=\"M466 360V254H534V360M586 360V254H654V360\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/><path d=\"M548 105L548 190M510 153L548 195L586 153\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-21",
+        "number": "05",
+        "category": "North Carolina · higher education",
+        "topic": "research",
+        "title": "UNC agreement closes 19 federal civil-rights matters",
+        "composition": "labor-benches",
+        "signature": "plate:labor-benches",
+        "seed": 3349683154,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separate work benches and an unfilled place\"><title>UNC agreement closes 19 federal civil-rights matters</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-21-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-21-05)\"><path d=\"M85 300H325V350H85ZM445 420H715V470H445Z\" fill=\"#2c241d\"/><path d=\"M125 350V545M280 350V545M480 470V545M670 470V545\" stroke=\"#2c241d\" stroke-width=\"22\"/><circle cx=\"205\" cy=\"185\" r=\"47\" fill=\"#c4452c\"/><path d=\"M145 285V240Q205 195 265 240V285Z\" fill=\"#1b4a6b\"/><path d=\"M506 340V235H635V340\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"16\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

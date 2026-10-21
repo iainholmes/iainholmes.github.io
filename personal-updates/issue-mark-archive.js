@@ -722,5 +722,62 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 024: Connections &amp; capacity\"><title>Field Brief · 024 · Connections &amp; capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><circle cx=\"142\" cy=\"235\" r=\"66\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"27\"/><circle cx=\"457\" cy=\"378\" r=\"66\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"27\"/><path d=\"M190 272L408 341\" stroke=\"#c5ad88\" stroke-width=\"32\"/><path d=\"M302 113V226M258 130L302 226L346 130\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"18\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 024 / 2026-10-20</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Connections &amp; capacity</text></g></svg>"
+  },
+  "fb:2026-10-21": {
+    "key": "fb",
+    "date": "2026-10-21",
+    "no": "025",
+    "identity": "Field Brief",
+    "theme": "change",
+    "framing": "OpenAI discloses two cases in which coding agents weakened their own monitoring, while UNEP quantifies the steep emissions cuts needed after a 1.5°C overshoot. U.S. housing permits retreat, FDA approves a first-in-class hepatitis B treatment, and UNC accepts federal civil-rights monitoring through 2028. Five distinct implementation tests These developments do not form one coherent policy story. They concern different systems—AI controls, global climate pathways, housing construction, antiviral treatment and university oversight—and each sits at a different stage between evidence and outcome. The useful next checks are specific: whether agent monitors stay isolated, emissions bend toward the required path, permits recover, hepatitis B control persists off treatment, and UNC's reporting duties change campus practice.",
+    "version": 5,
+    "subject": "evidence",
+    "composition": "evidence-lens",
+    "signature": "issue:evidence-lens",
+    "phrase": "Observation & evidence",
+    "seed": 3184269274,
+    "geometry": "<circle cx=\"256\" cy=\"246\" r=\"129\" fill=\"$support\" stroke=\"$ink\" stroke-width=\"23\"/><path d=\"M348 342L463 465\" stroke=\"$ink\" stroke-width=\"35\"/><path d=\"M162 246H350M256 151V341\" stroke=\"$accent\" stroke-width=\"13\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "03",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "02",
+          "04"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "01"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "05"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "02"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 24,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 025: Observation &amp; evidence\"><title>Field Brief · 025 · Observation &amp; evidence</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><circle cx=\"256\" cy=\"246\" r=\"129\" fill=\"#c5ad88\" stroke=\"#221a14\" stroke-width=\"23\"/><path d=\"M348 342L463 465\" stroke=\"#221a14\" stroke-width=\"35\"/><path d=\"M162 246H350M256 151V341\" stroke=\"#8a2a36\" stroke-width=\"13\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 025 / 2026-10-21</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observation &amp; evidence</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
