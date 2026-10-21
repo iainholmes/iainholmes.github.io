@@ -465,6 +465,14 @@ html[data-mode="night"] .pd-drawer{background:var(--paper-2)}
 .heron-perch{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:end;width:100%;background:none;border:0;border-bottom:1px solid var(--hair);padding:0 0 8px;text-align:left;color:var(--ink);cursor:pointer}
 .heron-perch[hidden],.heron-toggle[hidden]{display:none!important}
 @media(min-width:1025px){.perch,.heron-toggle{display:none!important}}
+/* The existing 250px research margin can accommodate one selected desktop note.
+   Keep the single-column intermediate layout free of perches. */
+@media(min-width:1181px){
+ .perch.desktop-heron{display:block!important}
+ .heron-toggle{display:flex!important}
+ /* Let the selected note flow with its article, including panels taller than a laptop viewport. */
+ .margin:has(.desktop-heron){position:static}
+}
 .heron-perch svg{width:40px;height:66px;display:block;overflow:visible}
 .heron-perch .pose-inspect{display:none}
 .heron-perch[aria-expanded="true"] .pose-perched{display:none}
@@ -1045,7 +1053,7 @@ no speech bubbles, no chat. Schema:
 State (localStorage): economics-environment:companion = on|off (toolbar switch);
 economics-environment:companion:dismissed = [ids] (never shown again);
 economics-environment:companion:seen:<date> = [ids] opened (later visits perch quietly, no flight).
-Only mobile layouts (up to 1024px, including phone landscape) get the companion. Desktop/laptop have no perches or Heron control. Reduced-motion mobile readers get the same static standing perch. Opening bends the bird into its viewing pose. Closing removes that specific perch for this reading session. Seen and permanent dismissal state remain edition/item keyed.
+Mobile layouts (up to 1024px, including phone landscape) retain every configured appearance. Wide layouts (1181px and above) show only the first curated appearance beside its research note in the existing article margin. Intermediate widths remain companion-free. Keep the strongest desktop-suitable methodological note first when curating future editions. Reduced-motion mobile readers get the same static standing perch. Opening bends the bird into its viewing pose. Closing removes that specific perch for this reading session. Seen and permanent dismissal state remain edition/item keyed.
 -->
 <script type="application/json" id="companion-data">
 {
@@ -1535,6 +1543,7 @@ function companionOn(){return LS.get('economics-environment:companion','on')!=='
 function listKey(k){try{return JSON.parse(LS.get(k,'[]'))||[]}catch(e){return []}}
 function addTo(k,id){var l=listKey(k);if(l.indexOf(id)<0){l.push(id);LS.set(k,JSON.stringify(l))}}
 var companionViewport=matchMedia('(max-width:1024px)');
+var companionDesktopViewport=matchMedia('(min-width:1181px)');
 var reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
 var HERON={closed:{},edition:null,items:[],io:null,current:null,flyer:null,flown:{},busy:false,timer:0,raf:0,flight:0};
 function heronWide(){return innerWidth>1180}
@@ -1546,19 +1555,22 @@ function stopFlight(){
   if(HERON.flyer){HERON.flyer.style.display='none';HERON.flyer.classList.remove('flap')}
 }
 function companionMobile(){return companionViewport.matches}
+function companionAvailable(){return companionMobile()||companionDesktopViewport.matches}
 function settleHeron(){
   stopFlight();
-  HERON.items.forEach(function(it){it.btn.hidden=!companionMobile()||!companionOn()||it.state==='dismissed';it.btn.classList.toggle('vacant',it.state==='label-only')});
+  HERON.items.forEach(function(it){it.btn.hidden=!companionAvailable()||!companionOn()||it.state==='dismissed';it.btn.classList.toggle('vacant',it.state==='label-only')});
 }
 function teardownHeron(){HERON.items.forEach(function(it){HV.mark(it.art,it.a.visual,false);it.panel.hidden=true;it.btn.hidden=true;it.btn.setAttribute('aria-expanded','false')});stopFlight();if(HERON.io)HERON.io.disconnect();clearTimeout(HERON.timer);if(HERON.flyer)HERON.flyer.remove();HERON.flyer=null;HERON.current=null;HERON.busy=false;}
 function renderCompanion(active){
   teardownHeron();HERON.edition=active;HERON.items=[];
-  var toggle=document.querySelector('.heron-toggle');if(toggle)toggle.hidden=!companionMobile();
-  if(!companionMobile())return;
+  var toggle=document.querySelector('.heron-toggle');if(toggle)toggle.hidden=!companionAvailable();
+  if(!companionAvailable())return;
   var date=active.dataset.edition,all=readJSON('companion-data')||{},cfg=all[date];
   if(!cfg||!cfg.enabled)return;
   var gone=listKey('economics-environment:companion:dismissed'),seenKey='economics-environment:companion:seen:'+date;
-  (cfg.appearances||[]).slice(0,2).forEach(function(a){
+  (cfg.appearances||[]).slice(0,2).forEach(function(a,index){
+    // Desktop deliberately uses one curated note; mobile retains the published pair.
+    if(!companionMobile()&&index>0)return;
     if(gone.indexOf(a.id)>=0)return;
     var art=active.querySelector('#'+CSS.escape(a.target));if(!art)return;
     var grid=art.querySelector('.article-grid');if(!grid)return;
@@ -1575,7 +1587,7 @@ function renderCompanion(active){
       var btn=slot.querySelector('.heron-perch'),panel=slot.querySelector('.heron-panel');
       var itemOf=function(){return HERON.items.find(function(x){return x.slot===slot})};
       function openP(o,quiet){
-        var it=itemOf();if(!it||!companionMobile()||!companionOn()||it.state==='dismissed')return;
+        var it=itemOf();if(!it||!companionAvailable()||!companionOn()||it.state==='dismissed')return;
         var switching=o&&HERON.current&&HERON.current!==it;if(switching)HERON.current.closeNote();
         panel.hidden=!o;btn.setAttribute('aria-expanded',String(o));HV.mark(art,a.visual,o);
         if(o){addTo(seenKey,a.id);summon(it);panel.focus({preventScroll:true});if(switching)btn.scrollIntoView({block:'center',behavior:'instant'})}
@@ -1588,21 +1600,22 @@ function renderCompanion(active){
       slot.querySelector('.hp-dismiss').addEventListener('click',function(){var it=itemOf();if(!it)return;openP(false);dismissHeron(it);var heading=art.querySelector('h2');if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}});
       panel.addEventListener('keydown',function(e){if(e.key==='Escape'){e.stopPropagation();openP(false)}});
     }
+    slot.classList.toggle('desktop-heron',!companionMobile());
     var anchor=(a.anchor&&art.querySelector(a.anchor))||art.querySelector('.finding')||art;
     HERON.items.push({a:a,art:art,slot:slot,btn:slot.querySelector('.heron-perch'),panel:slot.querySelector('.heron-panel'),anchor:anchor,state:HERON.closed[date+':'+a.id]?'label-only':'perched',seen:listKey(seenKey).indexOf(a.id)>=0,closeNote:function(){slot.closeHeronNote()}});
   });
-  HERON.items.forEach(function(it){it.btn.hidden=!companionMobile()||!companionOn()||it.state==='dismissed';it.btn.classList.toggle('vacant',it.state==='label-only');it.panel.hidden=true;it.btn.setAttribute('aria-expanded','false')});
+  HERON.items.forEach(function(it){it.btn.hidden=!companionAvailable()||!companionOn()||it.state==='dismissed';it.btn.classList.toggle('vacant',it.state==='label-only');it.panel.hidden=true;it.btn.setAttribute('aria-expanded','false')});
 }
 /* Every configured, undismissed item has its own static standing perch. */
 function heronScroll(){}
 function heronTick(){settleHeron()}
 function summon(it){
- if(it.state==='dismissed'||!companionMobile()||!companionOn())return;
+ if(it.state==='dismissed'||!companionAvailable()||!companionOn())return;
  HERON.current=it;it.state='note';it.btn.hidden=false;it.btn.classList.remove('vacant');
 }
 function release(it){
  it.state='label-only';HERON.closed[HERON.edition.dataset.edition+':'+it.a.id]=true;
- it.btn.hidden=!companionMobile()||!companionOn();it.btn.classList.add('vacant');it.panel.hidden=true;it.btn.setAttribute('aria-expanded','false');
+ it.btn.hidden=!companionAvailable()||!companionOn();it.btn.classList.add('vacant');it.panel.hidden=true;it.btn.setAttribute('aria-expanded','false');
  if(HERON.current===it)HERON.current=null;
 }
 function dismissHeron(it){
@@ -1619,7 +1632,9 @@ function initCompanion(){
   addEventListener('scroll',heronScroll,{passive:true});
   addEventListener('resize',function(){if(HERON.busy)settleHeron();heronTick()});
   reduceMotion.addEventListener('change',function(){settleHeron();heronTick()});
-  companionViewport.addEventListener('change',function(){var cur=editions.find(function(e){return !e.hidden});if(cur){var focus=document.activeElement.closest?.('.perch,.heron-toggle'),heading=HERON.current?.art.querySelector('h2')||(focus&&(focus.closest('.entry')?.querySelector('h2')||cur.querySelector('.hero h1')));renderCompanion(cur);if(!companionMobile()&&heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}}});
+  function changeCompanionViewport(){var cur=editions.find(function(e){return !e.hidden});if(cur){var focus=document.activeElement.closest?.('.perch,.heron-toggle'),heading=HERON.current?.art.querySelector('h2')||(focus&&(focus.closest('.entry')?.querySelector('h2')||cur.querySelector('.hero h1')));renderCompanion(cur);if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}}}
+  companionViewport.addEventListener('change',changeCompanionViewport);
+  companionDesktopViewport.addEventListener('change',changeCompanionViewport);
 }
 
 initMode();initRegisterDialog();initCompanion();registerRoute();addEventListener('hashchange',registerRoute);
