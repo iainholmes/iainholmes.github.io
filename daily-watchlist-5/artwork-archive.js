@@ -1348,6 +1348,68 @@
         "seed": 3349683154,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separate work benches and an unfilled place\"><title>UNC agreement closes 19 federal civil-rights matters</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-21-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-21-05)\"><path d=\"M85 300H325V350H85ZM445 420H715V470H445Z\" fill=\"#2c241d\"/><path d=\"M125 350V545M280 350V545M480 470V545M670 470V545\" stroke=\"#2c241d\" stroke-width=\"22\"/><circle cx=\"205\" cy=\"185\" r=\"47\" fill=\"#c4452c\"/><path d=\"M145 285V240Q205 195 265 240V285Z\" fill=\"#1b4a6b\"/><path d=\"M506 340V235H635V340\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"16\"/></g></svg>"
       }
+    },
+    "2026-10-22": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-22",
+        "number": "01",
+        "category": "Technology · cybersecurity",
+        "topic": "infrastructure",
+        "title": "Agentic AI accelerates a state-linked supply-chain attack",
+        "composition": "trade-detour",
+        "signature": "plate:trade-detour",
+        "seed": 1494941009,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Server cargo takes an indirect route around an inspection gate\"><title>Agentic AI accelerates a state-linked supply-chain attack</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-22-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-22-01)\"><path d=\"M65 480H240V180H490V480H715\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"38\"/><path d=\"M350 280V555\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M300 295H400\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M75 376H195V506H75ZM552 105H682V247H552Z\" fill=\"#2c241d\"/><path d=\"M99 410H173M99 451H173M578 146H658M578 194H658\" stroke=\"#f4ead7\" stroke-width=\"14\"/><path d=\"M490 180H545\" stroke=\"#c4452c\" stroke-width=\"24\"/><path d=\"M524 158L551 180L524 203\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"12\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-22",
+        "number": "02",
+        "category": "Environment · methane regulation",
+        "topic": "heat",
+        "title": "European Parliament backs a three-year methane-rule delay",
+        "composition": "heat-riverbed",
+        "signature": "plate:heat-riverbed",
+        "seed": 598023719,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A receding river under a broad heat disc\"><title>European Parliament backs a three-year methane-rule delay</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-22-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-22-02)\"><circle cx=\"400\" cy=\"190\" r=\"143\" fill=\"#c98a12\"/><path d=\"M70 385Q260 295 420 395T740 385V555H70Z\" fill=\"#7c5a3e\"/><path d=\"M100 447Q245 369 375 463T704 453\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"42\"/><path d=\"M160 520L200 467M250 549L302 492M540 544L512 491M625 510L650 473\" stroke=\"#f4ead7\" stroke-width=\"13\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-22",
+        "number": "03",
+        "category": "Economy · pensions",
+        "topic": "infrastructure",
+        "title": "UK pension trustees are told to stress-test AI concentration",
+        "composition": "research-bridge",
+        "signature": "plate:research-bridge",
+        "seed": 757359580,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separated evidence platforms are connected by a narrow research bridge\"><title>UK pension trustees are told to stress-test AI concentration</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-22-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-22-03)\"><rect x=\"85\" y=\"305\" width=\"185\" height=\"225\" fill=\"#1b4a6b\"/><rect x=\"530\" y=\"210\" width=\"185\" height=\"320\" fill=\"#1d5f47\"/><path d=\"M270 354Q400 195 530 260\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"30\"/><path d=\"M145 258V145H205V258M587 165V82H648V165\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"20\"/><path d=\"M305 420H490\" stroke=\"#7c5a3e\" stroke-width=\"15\" stroke-dasharray=\"26 20\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-22",
+        "number": "04",
+        "category": "U.S. policy · defense procurement",
+        "topic": "research",
+        "title": "Pentagon and Lockheed set a decade-long F-35 production framework",
+        "composition": "labor-steps",
+        "signature": "plate:labor-steps",
+        "seed": 1100663658,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Hiring capacity narrows across workstations\"><title>Pentagon and Lockheed set a decade-long F-35 production framework</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-22-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-22-04)\"><path d=\"M85 510V185H255V510M300 510V285H470V510M515 510V395H685V510\" fill=\"#1b4a6b\"/><g fill=\"#f4ead7\"><circle cx=\"170\" cy=\"265\" r=\"28\"/><path d=\"M134 385V320Q170 286 206 320V385Z\"/><circle cx=\"385\" cy=\"356\" r=\"28\"/><path d=\"M349 476V410Q385 377 421 410V476Z\"/></g><path d=\"M535 440H665\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M75 548H725\" stroke=\"#2c241d\" stroke-width=\"18\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-22",
+        "number": "05",
+        "category": "North Carolina · housing",
+        "topic": "research",
+        "title": "Durham joins a 30-city housing-supply initiative",
+        "composition": "capacity-aperture",
+        "signature": "plate:capacity-aperture",
+        "seed": 2780419171,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A narrowing aperture restricts institutional throughput\"><title>Durham joins a 30-city housing-supply initiative</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-22-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-22-05)\"><path d=\"M90 115L330 245V395L90 525ZM710 115L470 245V395L710 525Z\" fill=\"#2c241d\"/><path d=\"M155 320H310M490 320H650\" stroke=\"#1b4a6b\" stroke-width=\"42\"/><path d=\"M357 175V465M445 175V465\" stroke=\"#c4452c\" stroke-width=\"22\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

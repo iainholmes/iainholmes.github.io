@@ -779,5 +779,60 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 025: Observation &amp; evidence\"><title>Field Brief · 025 · Observation &amp; evidence</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><circle cx=\"256\" cy=\"246\" r=\"129\" fill=\"#c5ad88\" stroke=\"#221a14\" stroke-width=\"23\"/><path d=\"M348 342L463 465\" stroke=\"#221a14\" stroke-width=\"35\"/><path d=\"M162 246H350M256 151V341\" stroke=\"#8a2a36\" stroke-width=\"13\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 025 / 2026-10-21</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observation &amp; evidence</text></g></svg>"
+  },
+  "fb:2026-10-22": {
+    "key": "fb",
+    "date": "2026-10-22",
+    "no": "026",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "A state-linked campaign uses agentic AI to accelerate a software supply-chain attack, European lawmakers back a three-year methane-rule delay, and Britain's pension regulator warns about concentrated AI exposure. The Pentagon sets a decade-long F-35 framework, while Durham joins a 30-city housing initiative. Five distinct tests of execution These developments do not form a single theme. They concern separate systems—cyber defense, methane regulation, pension governance, military procurement and local housing—and each is still between a decision or disclosure and its full consequences. The next evidence is specific: the reach of the ConnectWise compromise, the final EU negotiating text, pension stress-test findings, binding F-35 prices and schedules, and the number and affordability of homes Durham's initiative helps deliver.",
+    "version": 5,
+    "subject": "evidence",
+    "composition": "evidence-record",
+    "signature": "issue:evidence-record",
+    "phrase": "Observation & evidence",
+    "seed": 2648051553,
+    "geometry": "<path d=\"M112 100H342L412 170V480H112Z\" fill=\"$ink\"/><path d=\"M149 208H368M149 275H368M149 343H264\" stroke=\"$paper\" stroke-width=\"17\"/><circle cx=\"422\" cy=\"358\" r=\"75\" fill=\"$accent\"/><path d=\"M394 358L417 381L455 326\" fill=\"none\" stroke=\"$paper\" stroke-width=\"14\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "02",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "03",
+          "05"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "01",
+          "02",
+          "03",
+          "04"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "01",
+          "05"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 25,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 026: Observation &amp; evidence\"><title>Field Brief · 026 · Observation &amp; evidence</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M112 100H342L412 170V480H112Z\" fill=\"#221a14\"/><path d=\"M149 208H368M149 275H368M149 343H264\" stroke=\"#f1e6d0\" stroke-width=\"17\"/><circle cx=\"422\" cy=\"358\" r=\"75\" fill=\"#8a2a36\"/><path d=\"M394 358L417 381L455 326\" fill=\"none\" stroke=\"#f1e6d0\" stroke-width=\"14\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 026 / 2026-10-22</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observation &amp; evidence</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
