@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "327f940424bd0c45",
+  "revision": "bfd53b8ba0535e01",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -405,6 +405,56 @@
       ],
       "photo_id": "atlas-plate-e4c7e11b6889",
       "path": "data/editions/2026-W43-tue.json"
+    },
+    {
+      "id": "2026-W43-thu",
+      "slot": "thursday",
+      "status": "published",
+      "published_at": "2026-10-22T07:15:16-04:00",
+      "weekend": {
+        "start": "2026-10-24",
+        "end": "2026-10-25"
+      },
+      "title": "A small loop among the longleaf pines",
+      "place_id": "weymouth-woods-main-tract",
+      "experience_key": "weymouth-woods-pine-barrens-loop",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "A small loop among the longleaf pines",
+          "place_id": "weymouth-woods-main-tract",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "weymouth-woods-main-tract"
+      ],
+      "place_roles": [
+        {
+          "place_id": "weymouth-woods-main-tract",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-fee99281ed70",
+      "path": "data/editions/2026-W43-thu.json"
     }
   ]
 }

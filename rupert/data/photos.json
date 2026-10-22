@@ -60,7 +60,7 @@
         0.35
       ],
       "taken_at": "2023-10",
-      "caption": "Field print \u00b7 Rupert, October 2023"
+      "caption": "Field print · Rupert, October 2023"
     },
     {
       "id": "rupert-plate-eno-ledge",
@@ -229,6 +229,32 @@
         "composition_key": "head-shoulders-right-three-quarter-ball-ochre-20261020"
       },
       "plate_no": 8
+    },
+    {
+      "id": "atlas-plate-fee99281ed70",
+      "file": "atlas-plate-fee99281ed70",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1122,
+      "height": 1402,
+      "widths": [
+        800,
+        1122
+      ],
+      "alt": "Original engraved illustration of Rupert walking forward on a burgundy field.",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "caption": "TRA Plate No. 009",
+      "source_note": "Native original generated and visually reviewed 22 October 2026.",
+      "generation": {
+        "owner": "2026-W43-thu/flagship",
+        "created_at": "2026-10-22",
+        "style_version": "atlas-engraved-3",
+        "composition_key": "walking-toward-viewer-paw-lifted-burgundy-20261022"
+      },
+      "plate_no": 9
     }
   ]
 }

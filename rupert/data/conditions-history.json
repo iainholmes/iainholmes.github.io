@@ -260,6 +260,49 @@
       ],
       "headline_condition": "Sunny weekend; cool mornings",
       "condition_level": "normal"
+    },
+    {
+      "edition_id": "2026-W43-thu",
+      "replaced_at": "2026-10-22T11:14:07.062Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-10-22T11:08:28+00:00",
+        "checked_at": "2026-10-22T11:09:48.799Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RAH/51,26/forecast",
+          "issued_at": "2026-10-22T11:08:28+00:00",
+          "retrieved_at": "2026-10-22T11:09:48.799Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Sunny, with a high near 66. Northeast wind 7 to 13 mph."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "Sunny, with a high near 68."
+          }
+        ],
+        "summary": "Publication-day NWS forecast. Saturday: Sunny, with a high near 66. Northeast wind 7 to 13 mph. Sunday: Sunny, with a high near 68. Saturday night: Clear, with a low around 45. Sunday night: Mostly clear, with a low around 43.",
+        "alerts": [],
+        "alerts_checked_at": "2026-10-22T11:09:48.799Z",
+        "trail_note": "Stay with the blue-triangle Pine Barrens loop. Avoid the closed western Equestrian Trail, carry water through the open pine landscape and turn back for unsafe footing or weather.",
+        "pivot": {
+          "if": "Thunder, strong wind, flooding, unsafe footing or an official closure",
+          "note": "Postpone rather than substituting another exposed outing. Recheck official access and the current NWS forecast before leaving."
+        }
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — publication-day weekend forecast",
+          "url": "https://api.weather.gov/gridpoints/RAH/51,26/forecast",
+          "retrieved": "2026-10-22"
+        }
+      ],
+      "headline_condition": "Clear, cool and breezy",
+      "condition_level": "normal"
     }
   ]
 }

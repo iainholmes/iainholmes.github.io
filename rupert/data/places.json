@@ -11,7 +11,7 @@
   "places": [
     {
       "id": "eno-cox-mountain",
-      "name": "Eno River State Park \u2014 Cox Mountain Trail",
+      "name": "Eno River State Park — Cox Mountain Trail",
       "short_name": "Cox Mountain",
       "kind": "trail",
       "region": "Durham County",
@@ -35,7 +35,7 @@
       ],
       "links": [
         {
-          "label": "N.C. State Parks \u2014 Eno River",
+          "label": "N.C. State Parks — Eno River",
           "url": "https://www.ncparks.gov/state-parks/eno-river-state-park"
         }
       ],
@@ -52,7 +52,7 @@
     },
     {
       "id": "umstead-company-mill",
-      "name": "William B. Umstead State Park \u2014 Company Mill Trail",
+      "name": "William B. Umstead State Park — Company Mill Trail",
       "short_name": "Company Mill",
       "kind": "trail",
       "region": "Wake County",
@@ -76,7 +76,7 @@
       ],
       "links": [
         {
-          "label": "N.C. State Parks \u2014 Umstead",
+          "label": "N.C. State Parks — Umstead",
           "url": "https://www.ncparks.gov/state-parks/william-b-umstead-state-park"
         }
       ],
@@ -109,7 +109,7 @@
     },
     {
       "id": "hanging-rock-moores-wall",
-      "name": "Hanging Rock State Park \u2014 Moore's Wall Loop",
+      "name": "Hanging Rock State Park — Moore's Wall Loop",
       "short_name": "Moore's Wall",
       "kind": "trail",
       "region": "Stokes County",
@@ -132,7 +132,7 @@
       ],
       "links": [
         {
-          "label": "N.C. State Parks \u2014 Hanging Rock",
+          "label": "N.C. State Parks — Hanging Rock",
           "url": "https://www.ncparks.gov/state-parks/hanging-rock-state-park"
         }
       ],
@@ -184,7 +184,7 @@
         "coords_checked": "2026-09-29",
         "coords_source": "Gold Park address 415 Dimmocks Mill Rd. geocodes to the OpenStreetMap Gold Park parking lot beside the Riverwalk. (Previous pin was about 1.4 km off.)"
       },
-      "dog_policy": "Leashed on the greenway; off leash only inside Gold Park\u2019s fenced dog park. Maximum 6-foot leash entering and leaving it (Town rules).",
+      "dog_policy": "Leashed on the greenway; off leash only inside Gold Park’s fenced dog park. Maximum 6-foot leash entering and leaving it (Town rules).",
       "routes": [],
       "tags": [
         "paved",
@@ -193,14 +193,14 @@
       ],
       "links": [
         {
-          "label": "Town of Hillsborough \u2014 Riverwalk",
+          "label": "Town of Hillsborough — Riverwalk",
           "url": "https://www.hillsboroughnc.gov/community/public-spaces/recreation-facilities/riverwalk"
         }
       ]
     },
     {
       "id": "duke-forest-korstian",
-      "name": "Duke Forest \u2014 Korstian Division",
+      "name": "Duke Forest — Korstian Division",
       "short_name": "Korstian Division",
       "kind": "trail",
       "region": "Orange County",
@@ -221,7 +221,7 @@
     },
     {
       "id": "raven-rock",
-      "name": "Raven Rock State Park \u2014 Raven Rock Loop",
+      "name": "Raven Rock State Park — Raven Rock Loop",
       "short_name": "Raven Rock",
       "kind": "trail",
       "region": "Harnett County",
@@ -244,7 +244,7 @@
       ],
       "links": [
         {
-          "label": "N.C. State Parks \u2014 Raven Rock",
+          "label": "N.C. State Parks — Raven Rock",
           "url": "https://www.ncparks.gov/state-parks/raven-rock-state-park"
         }
       ],
@@ -277,7 +277,7 @@
     },
     {
       "id": "hanging-rock-trail",
-      "name": "Hanging Rock State Park \u2014 Hanging Rock Trail",
+      "name": "Hanging Rock State Park — Hanging Rock Trail",
       "short_name": "Hanging Rock Trail",
       "kind": "trail",
       "region": "Stokes County",
@@ -315,11 +315,11 @@
       ],
       "links": [
         {
-          "label": "NC State Parks \u2014 Hanging Rock",
+          "label": "NC State Parks — Hanging Rock",
           "url": "https://www.ncparks.gov/state-parks/hanging-rock-state-park"
         },
         {
-          "label": "NC State Parks \u2014 official trail descriptions",
+          "label": "NC State Parks — official trail descriptions",
           "url": "https://www.ncparks.gov/state-parks/hanging-rock-state-park/trails"
         }
       ],
@@ -411,6 +411,63 @@
         "status": "open",
         "checked": "2026-10-20",
         "source": "https://www.ncparks.gov/state-parks/haw-river-state-park"
+      }
+    },
+    {
+      "id": "weymouth-woods-main-tract",
+      "name": "Weymouth Woods Sandhills Nature Preserve — Main Tract",
+      "short_name": "Weymouth Woods",
+      "kind": "trail",
+      "region": "Moore County",
+      "access": {
+        "name": "Visitor-center parking, 1024 Fort Bragg Road, Southern Pines",
+        "lat": 35.147,
+        "lng": -79.3716,
+        "coords_verified": true,
+        "coords_checked": "2026-10-22",
+        "coords_source": "NC State Parks currently gives GPS 35.1470, -79.3716 at 1024 Fort Bragg Road; the official main-tract map marks visitor-center parking and the Pine Barrens trailhead. This is not Boyd or Paint Hill."
+      },
+      "dog_policy": "Pets permitted on attended leashes no longer than 6 feet; not inside buildings.",
+      "routes": [
+        {
+          "id": "weymouth-woods-pine-barrens-loop@1",
+          "distance_mi": 1,
+          "shape": "loop",
+          "difficulty": "easy",
+          "surface": "Sandy woodland trail; blue-triangle blazes."
+        },
+        {
+          "id": "weymouth-woods-bowers-bog-loop@1",
+          "distance_mi": 0.3,
+          "shape": "loop",
+          "difficulty": "easy",
+          "surface": "Short hiking loop beside the visitor-center parking; red-circle blazes."
+        }
+      ],
+      "links": [
+        {
+          "label": "NC State Parks — official status, hours and access",
+          "url": "https://www.ncparks.gov/state-parks/weymouth-woods-sandhills-nature-preserve"
+        },
+        {
+          "label": "Official trail table",
+          "url": "https://www.ncparks.gov/state-parks/weymouth-woods-sandhills-nature-preserve/trails"
+        },
+        {
+          "label": "Official tract map",
+          "url": "https://www.ncparks.gov/maps/weymouth-woods-sandhills-nature-preserve-map/open"
+        }
+      ],
+      "tags": [
+        "longleaf pine",
+        "woodland",
+        "short-walk",
+        "picnic"
+      ],
+      "closure": {
+        "status": "open",
+        "checked": "2026-10-22",
+        "source": "https://www.ncparks.gov/state-parks/weymouth-woods-sandhills-nature-preserve"
       }
     }
   ]

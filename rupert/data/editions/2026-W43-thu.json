@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "id": "2026-W43-thu",
+  "slot": "thursday",
+  "status": "published",
+  "published_at": "2026-10-22T07:15:16-04:00",
+  "weekend": {
+    "start": "2026-10-24",
+    "end": "2026-10-25"
+  },
+  "flagship": {
+    "place_id": "weymouth-woods-main-tract",
+    "title": "A small loop among the longleaf pines",
+    "standfirst": "One easy mile at Weymouth Woods: tall longleaf pines, sandy ground and a generous pace, with a shorter loop beside the parking if that is enough for Rupert.",
+    "why_this_week": "After Tuesday’s longer oak-hickory and wetland circuit, this is a different scale and landscape: one unhurried mile through the open longleaf pines of the main tract. Follow the blue-triangle Pine Barrens loop from visitor-center parking. Wildlife sightings are a possibility, not a promise. Allow an hour to an hour and a half for the walk and Rupert’s pauses. The western Equestrian Trail closure is separate from this route; do not extend onto that trail or assume the Boyd and Paint Hill tracts share this access. The publication-day NWS forecast is sunny and cool, with a northeast breeze on Saturday.",
+    "headline_condition": "Clear, cool and breezy",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-10-22",
+      "access": {
+        "name": "Visitor-center parking, 1024 Fort Bragg Road, Southern Pines",
+        "parking": "Use the visitor-center lot on the main tract; the official map marks parking, restrooms and the Pine Barrens trail start. No day-use entry fee. October park hours 8 a.m.–8 p.m.; visitor center 8 a.m.–5 p.m. Rupert must stay outside the building."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          90,
+          105
+        ]
+      },
+      "duration_h": [
+        1,
+        1.5
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "An open longleaf-pine landscape rather than continuous deep shade; carry water even in cool weather.",
+        "watch_for": [
+          "Dry sand, roots and pine litter underfoot",
+          "Give wildlife and protected habitat plenty of space",
+          "Check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "route": {
+        "route_id": "weymouth-woods-pine-barrens-loop@1",
+        "distance_mi": 1,
+        "shape": "loop",
+        "difficulty": "easy",
+        "surface": "Sandy woodland trail; blue-triangle blazes."
+      }
+    },
+    "photo": {
+      "id": "atlas-plate-fee99281ed70",
+      "alt": "Original engraved illustration of Rupert walking forward on a burgundy field."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "NC State Parks — official status, public access, hours and pets",
+        "url": "https://www.ncparks.gov/state-parks/weymouth-woods-sandhills-nature-preserve",
+        "retrieved": "2026-10-22"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — official trail listing",
+        "url": "https://www.ncparks.gov/state-parks/weymouth-woods-sandhills-nature-preserve/trails",
+        "retrieved": "2026-10-22"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — official access map",
+        "url": "https://www.ncparks.gov/maps/weymouth-woods-sandhills-nature-preserve-map/open",
+        "retrieved": "2026-10-22"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — park news",
+        "url": "https://www.ncparks.gov/state-parks/weymouth-woods-sandhills-nature-preserve/news",
+        "retrieved": "2026-10-22"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — pet rules",
+        "url": "https://www.ncparks.gov/about-us/guidelines-park-rules-and-regulations",
+        "retrieved": "2026-10-22"
+      },
+      {
+        "kind": "forecast",
+        "label": "National Weather Service — publication-day weekend forecast",
+        "url": "https://api.weather.gov/gridpoints/RAH/51,26/forecast",
+        "retrieved": "2026-10-22"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ],
+    "experience_id": "weymouth-woods-pine-barrens-loop",
+    "experience_basis": {
+      "activity_id": "leashed-woodland-hike",
+      "feature_id": "main-tract-longleaf-pines",
+      "format_id": "daylight-loop-with-sniffing-breaks"
+    },
+    "panels": [
+      {
+        "label": "A short main-tract loop",
+        "text": "The official Pine Barrens Trail is one mile, easy, and marked with blue triangles. Begin at visitor-center parking; the separate tracts are not part of this plan."
+      },
+      {
+        "label": "Keep the closure separate",
+        "text": "The western Equestrian Trail has a maintenance closure. The suggested hiking loop does not use that segment; obey all on-site signs and recheck the status before leaving."
+      }
+    ],
+    "qualities": {
+      "activity": "hike",
+      "expected_heat": "unknown"
+    },
+    "artwork": {
+      "image_id": "atlas-plate-fee99281ed70",
+      "brief": "One Rupert walking directly toward the viewer with his head lowered attentively and one forepaw lifted; full anatomically coherent body and slim tapered tail on a spare burgundy field. This differs from the recent olive standing profile, cream resting portrait and ochre ball-carrying close-up in action, frontal depth, full-body scale, negative space and dominant colour.",
+      "characters": [
+        "rupert"
+      ]
+    }
+  },
+  "local_trail": {
+    "place_id": "weymouth-woods-main-tract",
+    "title": "A smaller circuit beside the lot",
+    "line": "Use the official 0.3-mile Bower’s Bog loop, marked with red circles, instead of the longer walk. Stay on the marked path and stop if the footing is unsuitable.",
+    "snapshot": {
+      "as_of": "2026-10-22",
+      "access": {
+        "name": "Visitor-center parking, 1024 Fort Bragg Road, Southern Pines",
+        "parking": "Use the visitor-center lot on the main tract; the official map marks parking, restrooms and the Pine Barrens trail start. No day-use entry fee. October park hours 8 a.m.–8 p.m.; visitor center 8 a.m.–5 p.m. Rupert must stay outside the building."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          90,
+          105
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "An open longleaf-pine landscape rather than continuous deep shade; carry water even in cool weather.",
+        "watch_for": [
+          "Dry sand, roots and pine litter underfoot",
+          "Give wildlife and protected habitat plenty of space",
+          "Check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "route": {
+        "route_id": "weymouth-woods-bowers-bog-loop@1",
+        "distance_mi": 0.3,
+        "shape": "loop",
+        "difficulty": "easy",
+        "surface": "Short hiking loop beside the visitor-center parking; red-circle blazes."
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ]
+  },
+  "away_mission": {
+    "place_id": "weymouth-woods-main-tract",
+    "title": "Pines, then a picnic",
+    "line": "Keep the Pine Barrens loop as the outing and add a picnic if the refreshed forecast allows. No need to collect the whole trail network in one visit.",
+    "snapshot": {
+      "as_of": "2026-10-22",
+      "access": {
+        "name": "Visitor-center parking, 1024 Fort Bragg Road, Southern Pines",
+        "parking": "Use the visitor-center lot on the main tract; the official map marks parking, restrooms and the Pine Barrens trail start. No day-use entry fee. October park hours 8 a.m.–8 p.m.; visitor center 8 a.m.–5 p.m. Rupert must stay outside the building."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          90,
+          105
+        ]
+      },
+      "duration_h": [
+        1.5,
+        2
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "An open longleaf-pine landscape rather than continuous deep shade; carry water even in cool weather.",
+        "watch_for": [
+          "Dry sand, roots and pine litter underfoot",
+          "Give wildlife and protected habitat plenty of space",
+          "Check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "route": {
+        "route_id": "weymouth-woods-pine-barrens-loop@1",
+        "distance_mi": 1,
+        "shape": "loop",
+        "difficulty": "easy",
+        "surface": "Sandy woodland trail; blue-triangle blazes."
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "picnic"
+    ]
+  },
+  "wildcard": {
+    "place_id": "weymouth-woods-main-tract",
+    "title": "A quiet stop without the full loop",
+    "line": "Use the main-tract picnic area and a brief leashed walk only in safe conditions. This is not an indoor alternative for Rupert or a substitute during thunder.",
+    "snapshot": {
+      "as_of": "2026-10-22",
+      "access": {
+        "name": "Visitor-center parking, 1024 Fort Bragg Road, Southern Pines",
+        "parking": "Use the visitor-center lot on the main tract; the official map marks parking, restrooms and the Pine Barrens trail start. No day-use entry fee. October park hours 8 a.m.–8 p.m.; visitor center 8 a.m.–5 p.m. Rupert must stay outside the building."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          90,
+          105
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "An open longleaf-pine landscape rather than continuous deep shade; carry water even in cool weather.",
+        "watch_for": [
+          "Dry sand, roots and pine litter underfoot",
+          "Give wildlife and protected habitat plenty of space",
+          "Check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "picnic",
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "text": "Take the blue-triangle loop slowly enough for a few sniffing pauses; leave the pines, plants and wildlife exactly as found.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "Did Rupert enjoy the sandy ground and shorter circuit? Note what was actually walked rather than marking the whole preserve complete."
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-10-22T06:27:06-04:00",
+    "checked_at": "2026-10-22T11:14:07.062Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RAH/51,26/forecast",
+      "issued_at": "2026-10-22T10:27:06.000Z",
+      "retrieved_at": "2026-10-22T11:14:07.062Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "Sunny, with a high near 66. Northeast wind 7 to 13 mph."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "Sunny, with a high near 68."
+      }
+    ],
+    "summary": "Saturday: Sunny, with a high near 66. Northeast wind 7 to 13 mph. Sunday: Sunny, with a high near 68. Saturday night: Clear, with a low around 45. Sunday night: Mostly clear, with a low around 43.",
+    "alerts": [],
+    "alerts_checked_at": "2026-10-22T11:14:07.062Z",
+    "pivot": {
+      "if": "Thunder, strong wind, flooding, unsafe footing or an official closure",
+      "note": "Postpone rather than substituting another exposed outing. Recheck official access and the current NWS forecast before leaving."
+    },
+    "trail_note": "Stay with the blue-triangle Pine Barrens loop. Avoid the closed western Equestrian Trail, carry water through the open pine landscape and turn back for unsafe footing or weather."
+  },
+  "practical": {
+    "best_window": "Saturday morning after the cool start, or Sunday morning, in full daylight; expect a northeast breeze and finish well before the 8 p.m. gate.",
+    "fees": "No day-use entrance fee; reservations and special permits are separate.",
+    "bring": [
+      "Drinking water and bowl",
+      "Attended six-foot leash and waste bags",
+      "Shoes with traction",
+      "A layer and rain protection",
+      "Official map saved offline",
+      "A small picnic if the weather allows"
+    ],
+    "closures_checked": "2026-10-22",
+    "closures_note": "Official NC State Parks home/status, trail table, news, access map and pet rules read on 22 October. Hiking Trails explicitly Open. The western Equestrian Trail segment along Bethesda Road remains closed for maintenance; the suggested one-mile Pine Barrens blue-triangle loop starts at main-tract visitor-center parking and does not use that segment. Main tract public address and GPS 35.1470,-79.3716 verified; October hours 8 a.m.–8 p.m., visitor center 8 a.m.–5 p.m.; free day use; pets on attended leashes no longer than six feet and outside buildings. The current NWS forecast supplies Saturday and Sunday daytime periods and returned no active alerts; absence of an alert is not a safety guarantee."
+  }
+}
