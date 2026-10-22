@@ -18,6 +18,6 @@ for (const e of recent) {
   const photo = registry.photos.find(p => p.id === e.photo_id);
   console.log(`${e.id} (${e.status}) — ${photo ? `rupert/photos/${photo.file}-${Math.max(...photo.widths)}.jpg` : 'Inspect its Full Edition artwork'}`);
 }
-console.log('Favor a minimal portrait, simple action or distinctive crop. Record deliberate differences in pose, framing, subject scale, negative space, background and dominant color in artwork.brief. Elaborate scenery is occasional, not the default.\n');
+console.log('Review at least the latest six published recommendation illustrations, including withdrawn history where relevant. Choose deliberately among minimal portrait/action, restrained environmental scene and occasional detailed field-guide/landscape print within the approved TRA print family. Minimalism remains fully approved, not the default. Compare pose, framing, subject scale, background, negative space, palette, environmental complexity, visual density, spatial depth and engraving/hatching detail. Record the chosen mode, meaningful differences and any recent mode imbalance in the private artwork.brief. Prefer another mode after a sustained minimal flat-field run unless the concept strongly justifies another distinct minimalist plate; a background-color change alone is insufficient. No fixed rotation or quotas.\n');
 await writeFile(target,reservePrompt(brief)+'\n',{mode:0o600});
 console.log('Private destination-independent 4:5 brief saved. Do not preview or describe unused artwork in reports.');
