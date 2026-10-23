@@ -102,6 +102,29 @@
         "rare-exposure-power"
       ],
       "note": "Reviewed all five readings and the decision-rule synthesis. Appended one distinct concept on statistical power with rare exposure and added only supported references to incidence, information value, counterfactual reasoning, and identification. Kept power calculations, institutional arguments, proposals, projections, and descriptive indicators separate from causal estimates."
+    },
+    "2026-10-23": {
+      "reviewedOn": "2026-10-23",
+      "readings": [
+        "2026-10-23-paper-markups",
+        "2026-10-23-vehicle-mix",
+        "2026-10-23-emissions-gap",
+        "2026-10-23-adaptation-finance",
+        "2026-10-23-mobility-finance"
+      ],
+      "synthesis": "2026-10-23-connections",
+      "revisited": [
+        "incidence",
+        "identification",
+        "behavioral-substitution",
+        "counterfactual-reasoning",
+        "adoption-capital-constraints",
+        "financing-wedges",
+        "private-returns-social-value",
+        "complementarity"
+      ],
+      "added": [],
+      "note": "Reviewed all five readings and the capital-allocation synthesis. Existing entries already cover incidence, identification, substitution, counterfactuals, adoption constraints, financing wedges, private versus social value, and complementarity, so no distinct reusable concept was added. References were appended only where the new evidence materially revisits those ideas."
     }
   }
 }
