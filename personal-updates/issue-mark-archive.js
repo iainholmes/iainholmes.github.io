@@ -853,5 +853,68 @@
       6
     ],
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"The Workbook, set 013: Ranks &amp; distributions\"><title>The Workbook · 013 · Ranks &amp; distributions</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f7f7f3\"/><g><path d=\"M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540M60 360H540M60 420H540M60 480H540M60 60V500M120 60V500M180 60V500M240 60V500M300 60V500M360 60V500M420 60V500M480 60V500M540 60V500\" fill=\"none\" stroke=\"#1c2f4a\" opacity=\".12\"/><path d=\"M95 160H505V220H95ZM95 240H505V300H95ZM95 320H505V380H95ZM95 400H505V460H95Z\" fill=\"#b5ced1\"/><path d=\"M178 145V476M292 145V476M414 145V476\" stroke=\"#1c2f4a\" stroke-width=\"5\"/><path d=\"M95 310H505\" stroke=\"#0e5360\" stroke-width=\"14\"/></g><path d=\"M42 570H558\" stroke=\"#1c2f4a\" stroke-width=\"2\"/><g fill=\"#1c2f4a\"><text x=\"42\" y=\"634\" font-family=\"STIX Two Text,Georgia,serif\" font-size=\"48\">The Workbook</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">SET 013 / 2026-10-23</text><text x=\"42\" y=\"740\" font-family=\"STIX Two Text,Georgia,serif\" font-size=\"26\">Ranks &amp; distributions</text></g></svg>"
+  },
+  "fb:2026-10-23": {
+    "key": "fb",
+    "date": "2026-10-23",
+    "no": "027",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "Two critical PHP flaws trigger a worldwide patch wave, the European Investment Bank doubles its climate-adaptation commitment, and a White House order targets mortgage and manufactured-housing costs. Federal semiconductor funding reaches Spruce Pine quartz research, while Brent crude climbs to a five-month high. Distinct risks across shared systems T h e s e d e v e l o p m e n t s d o n o t f o r m o n e p o l i c y s t o r y . T h e y s e p a r a t e l y t e s t t h e u p k e e p o f s h a r e d d i g i t a l i n f r a s t r u c t u r e , t h e c a p a c i t y o f p u b l i c f i n a n c e t o f u n d c l i m a t e r e s i l i e n c e , t h e r e a c h o f f e d e r a l a c t i o n o n h o u s i n g c o s t s , t h e d u r a b i l i t y o f a m i n e r a l - d e p e n d e n t c h i p s u p p l y c h a i n a n d t h e e c o n o m y ' s e x p o s u r e t o a n o t h e r o i l s h o c k .",
+    "version": 5,
+    "subject": "risk",
+    "composition": "study-stepped-review-exposure-field-measured-range-fabrication-disc",
+    "signature": "issue:study-stepped-review-exposure-field-measured-range-fabrication-disc",
+    "phrase": "Exposure & resilience",
+    "seed": 1046757443,
+    "geometry": "<g transform=\"translate(60 315) scale(1.75)\"><circle cx=\"50\" cy=\"50\" r=\"43\" fill=\"none\" stroke=\"$ink\" stroke-width=\"10\"/><path d=\"M16 20L81 85M8 45L56 93M42 8L93 59\" stroke=\"$support\" stroke-width=\"6\"/><circle cx=\"51\" cy=\"49\" r=\"14\" fill=\"$accent\"/></g><g transform=\"translate(245 220) scale(1.6)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"$accent\"/><path d=\"M50 6V30M50 70V94\" stroke=\"$support\" stroke-width=\"7\"/></g><g transform=\"translate(405 90) scale(1.4)\"><circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"$accent\"/><path d=\"M24 16V84M50 6V94M76 16V84M14 27H86M6 52H94M16 77H84\" stroke=\"$paper\" stroke-width=\"5\"/></g><path d=\"M60 510H242V410H415V245H550\" fill=\"none\" stroke=\"$support\" stroke-width=\"9\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "02",
+          "03",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "02",
+          "03",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01",
+          "02",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "02"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "03"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 26,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 027: Exposure &amp; resilience\"><title>Field Brief · 027 · Exposure &amp; resilience</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 315) scale(1.75)\"><circle cx=\"50\" cy=\"50\" r=\"43\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><path d=\"M16 20L81 85M8 45L56 93M42 8L93 59\" stroke=\"#c5ad88\" stroke-width=\"6\"/><circle cx=\"51\" cy=\"49\" r=\"14\" fill=\"#8a2a36\"/></g><g transform=\"translate(245 220) scale(1.6)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"#8a2a36\"/><path d=\"M50 6V30M50 70V94\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><g transform=\"translate(405 90) scale(1.4)\"><circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"#8a2a36\"/><path d=\"M24 16V84M50 6V94M76 16V84M14 27H86M6 52H94M16 77H84\" stroke=\"#f1e6d0\" stroke-width=\"5\"/></g><path d=\"M60 510H242V410H415V245H550\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 027 / 2026-10-23</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Exposure &amp; resilience</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

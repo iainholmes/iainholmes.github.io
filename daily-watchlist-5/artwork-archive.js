@@ -1410,6 +1410,68 @@
         "seed": 2780419171,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A narrowing aperture restricts institutional throughput\"><title>Durham joins a 30-city housing-supply initiative</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-22-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-22-05)\"><path d=\"M90 115L330 245V395L90 525ZM710 115L470 245V395L710 525Z\" fill=\"#2c241d\"/><path d=\"M155 320H310M490 320H650\" stroke=\"#1b4a6b\" stroke-width=\"42\"/><path d=\"M357 175V465M445 175V465\" stroke=\"#c4452c\" stroke-width=\"22\"/></g></svg>"
       }
+    },
+    "2026-10-23": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-23",
+        "number": "01",
+        "category": "Technology · web security",
+        "topic": "research",
+        "title": "Critical PHP flaws force a worldwide patch wave",
+        "composition": "research-observatory",
+        "signature": "plate:research-observatory",
+        "seed": 441976080,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An observing instrument links separated research stations\"><title>Critical PHP flaws force a worldwide patch wave</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-23-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-23-01)\"><path d=\"M175 255L440 100L490 185L225 341Z\" fill=\"#1b4a6b\"/><path d=\"M280 290L180 525M280 290L420 525\" stroke=\"#2c241d\" stroke-width=\"25\"/><circle cx=\"475\" cy=\"137\" r=\"58\" fill=\"#c98a12\"/><rect x=\"540\" y=\"350\" width=\"145\" height=\"170\" fill=\"#2c241d\"/><path d=\"M563 395H662M563 447H662\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M380 325H520\" stroke=\"#c4452c\" stroke-width=\"18\" stroke-dasharray=\"28 20\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-23",
+        "number": "02",
+        "category": "Environment · adaptation finance",
+        "topic": "finance",
+        "title": "EIB doubles climate-adaptation finance to at least €30 billion",
+        "composition": "finance-blocked",
+        "signature": "plate:finance-blocked",
+        "seed": 953805237,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Payment branches meet a blocking seal\"><title>EIB doubles climate-adaptation finance to at least €30 billion</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-23-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-23-02)\"><path d=\"M120 150L365 315L120 485M365 315L665 160M365 315L665 490\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"31\"/><g fill=\"#c98a12\"><circle cx=\"120\" cy=\"150\" r=\"58\"/><circle cx=\"120\" cy=\"485\" r=\"58\"/><circle cx=\"665\" cy=\"160\" r=\"58\"/></g><rect x=\"565\" y=\"408\" width=\"158\" height=\"125\" fill=\"#7a1f33\"/><path d=\"M585 435L705 505M705 435L585 505\" stroke=\"#f4ead7\" stroke-width=\"18\"/><circle cx=\"365\" cy=\"315\" r=\"69\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-23",
+        "number": "03",
+        "category": "U.S. policy · housing",
+        "topic": "research",
+        "title": "White House orders mortgage-cost pilots and a manufactured-housing task force",
+        "composition": "capacity-columns",
+        "signature": "plate:capacity-columns",
+        "seed": 4243062556,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Unequal capacity columns carry a shared load\"><title>White House orders mortgage-cost pilots and a manufactured-housing task force</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-23-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-23-03)\"><path d=\"M85 140H715V202H85Z\" fill=\"#2c241d\"/><path d=\"M125 202V530H255V202M345 202V385H475V202M565 202V290H695V202\" fill=\"#1b4a6b\"/><path d=\"M345 465H475M565 375H695M565 465H695\" stroke=\"#7c5a3e\" stroke-width=\"27\"/><path d=\"M95 570H725\" stroke=\"#7a1f33\" stroke-width=\"17\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-23",
+        "number": "04",
+        "category": "North Carolina · semiconductor supply chain",
+        "topic": "infrastructure",
+        "title": "Spruce Pine quartz enters a $389 million CHIPS R&D package",
+        "composition": "trade-checkpoint",
+        "signature": "plate:trade-checkpoint",
+        "seed": 1280052267,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A commercial route passes through a staffed checkpoint\"><title>Spruce Pine quartz enters a $389 million CHIPS R&amp;D package</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-23-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-23-04)\"><path d=\"M80 400H720\" stroke=\"#7c5a3e\" stroke-width=\"58\"/><path d=\"M325 510V145H480V510\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M340 250H565\" stroke=\"#c4452c\" stroke-width=\"27\"/><rect x=\"110\" y=\"300\" width=\"142\" height=\"110\" fill=\"#1b4a6b\"/><path d=\"M140 300V410M216 300V410\" stroke=\"#f4ead7\" stroke-width=\"12\"/><circle cx=\"570\" cy=\"460\" r=\"31\" fill=\"#2c241d\"/><path d=\"M530 560V512Q570 480 610 512V560Z\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-23",
+        "number": "05",
+        "category": "Economy · energy markets",
+        "topic": "trade",
+        "title": "Brent reaches a five-month high as Middle East supply risk returns",
+        "composition": "government-stairs",
+        "signature": "plate:government-stairs",
+        "seed": 1315733544,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A petition ascends institutional steps\"><title>Brent reaches a five-month high as Middle East supply risk returns</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-23-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-23-05)\"><path d=\"M70 535V430H240V335H410V240H580V145H730V535Z\" fill=\"#1b4a6b\"/><path d=\"M106 140H302V290H106Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M138 184H267M138 226H241\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M330 295L410 200L489 238\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
