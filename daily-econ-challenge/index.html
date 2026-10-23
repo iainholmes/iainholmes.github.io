@@ -2549,6 +2549,144 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Bertrand & Mullainathan (2004), American Economic Review; Kessler, Low & Sullivan (2019), American Economic Review."
         }
       ]
+    },
+    {
+      "no": 13,
+      "date": "2026-10-23",
+      "minutes": 26,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>An economist estimates two structural parameters by GMM using three proposed moment conditions. The minimized Hansen <i>J</i> statistic is large relative to a chi-squared reference distribution. Which interpretations are defensible?</p>",
+          "options": [
+            "With three moments and two estimated parameters, the usual overidentification test has one degree of freedom under its regularity conditions.",
+            "A rejection shows that at least one tested moment restriction or another maintained specification condition is incompatible with the data, but does not identify the offending moment by itself.",
+            "Failure to reject proves that every instrument is valid and that the parameters are strongly identified.",
+            "Weak identification can make conventional GMM estimation and overidentification diagnostics unreliable even when the nominal moment count is unchanged."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["GMM", "Overidentifying restrictions", "Hansen J test"],
+          "assistance": "<p>Count the number of restrictions left after the moments are used to estimate the parameters. That difference determines the reference degrees of freedom only under the maintained regularity and identification conditions.</p><p>Separate a joint specification diagnostic from a locator test. A joint rejection says the full collection of restrictions does not fit; a non-rejection may also reflect low power, weak identification, or imprecise moments.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> With <i>q</i> = 3 moments and <i>k</i> = 2 parameters, the overidentifying restrictions number <i>q</i> − <i>k</i> = 1, giving a chi-squared reference with one degree of freedom under standard conditions. A large <i>J</i> rejects the joint validity of the overidentifying restrictions, but does not reveal which moment failed or whether another maintained feature is misspecified. Non-rejection is not proof of validity or strong identification. Weakly informative instruments can distort conventional asymptotics and reduce the diagnostic's usefulness.</p>",
+          "refs": "Hansen (1982), Econometrica; Stock, Wright & Yogo (2002), Journal of Business & Economic Statistics."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>Four risk-neutral bidders in a sealed-bid second-price auction have independent private values of $90, $70, $45 and $30. If each bids truthfully, what allocation and payoff result?</p>",
+          "options": [
+            "The $90 bidder wins, pays $90 and earns zero surplus.",
+            "The $90 bidder wins, pays $70 and earns $20 surplus.",
+            "The $70 bidder wins, pays $45 and earns $25 surplus.",
+            "The $90 bidder wins, pays $45 and earns $45 surplus."
+          ],
+          "correct": [1],
+          "concepts": ["Second-price auctions", "Dominant strategies", "Allocative efficiency"],
+          "assistance": "<p>Keep the allocation rule separate from the payment rule. Rank the submitted bids to identify the winner, then use the auction's pricing rule rather than the winner's own bid to determine payment.</p><p>For a bidder with private value <i>v</i>, compare the payoff from winning at the highest rival bid with the payoff from losing. Truthful bidding makes the win–lose threshold coincide with <i>v</i>.</p>",
+          "explanation": "<p><b>(B) is correct.</b> Truthful bidding is weakly dominant in the independent-private-values second-price auction. The highest-value bidder wins, while the payment equals the second-highest bid, $70. The winner's surplus is therefore $90 − $70 = $20. Charging $90 would describe a first-price outcome, and the other choices either assign the item inefficiently or use the wrong price-setting bid.</p>",
+          "refs": "Vickrey (1961), Journal of Finance; Milgrom (2004), Putting Auction Theory to Work."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "<p>A bank initially holds $100 of assets financed by $90 of debt and $10 of equity. Asset values then fall by $5 while debt is fixed in the short run. Which statements describe the balance-sheet and macro-financial implications?</p>",
+          "options": [
+            "Equity falls to $5 and leverage, measured as assets divided by equity, rises from 10 to 19.",
+            "If the bank targets its original leverage ratio, it may sell assets or raise equity rather than simply continue with the thinner capital cushion.",
+            "If many banks sell similar assets into an illiquid market, price declines can amplify losses and generate a fire-sale feedback loop.",
+            "Because the initial asset loss is only 5%, limited liability guarantees that credit supply and aggregate demand are unaffected."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Bank leverage", "Balance-sheet amplification", "Fire sales"],
+          "assistance": "<p>Rebuild the balance sheet after marking assets to market while holding the short-run debt claim fixed. Equity is the residual, so a modest percentage change in assets can be a much larger percentage change in capital.</p><p>Then move from one bank to equilibrium feedback: ask what happens to market prices when many leveraged intermediaries simultaneously try to shrink assets, and how those prices return to other balance sheets.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> Assets become $95, debt remains $90 and equity absorbs the loss, falling to $5. Leverage is therefore 95/5 = 19, compared with 100/10 = 10 initially. A bank seeking to restore capital ratios must deleverage or recapitalize. Synchronized sales can depress prices, impose further mark-to-market losses and trigger additional sales, amplifying the original shock. (D) is false: limited liability does not prevent capital constraints, lending contractions or aggregate-demand effects.</p>",
+          "refs": "Bernanke & Gertler (1989), American Economic Review; Brunnermeier & Pedersen (2009), Review of Financial Studies."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>A factory initially uses one unit of energy per unit of output and produces 100 units. An efficiency upgrade reduces energy required per unit of output by 20%, but the lower effective cost raises output by 10%. Relative to the original 100 units of energy, what is the realized energy saving?</p>",
+          "options": [
+            "10%, because output rose by 10%.",
+            "12%, because energy use becomes 0.8 × 110 = 88.",
+            "20%, because the engineering efficiency gain passes through one-for-one.",
+            "30%, because the efficiency and output changes should be added."
+          ],
+          "correct": [1],
+          "concepts": ["Rebound effect", "Energy efficiency", "Engineering versus realized savings"],
+          "assistance": "<p>Construct energy use as energy intensity multiplied by activity. Apply each proportional change to its own factor, then compare the resulting product with the original baseline.</p><p>The rebound is the portion of potential engineering savings offset by the behavioral or production response. It need not eliminate all savings, and percentage changes in multiplicative components should not simply be added.</p>",
+          "explanation": "<p><b>(B) is correct.</b> Initial energy use is 1 × 100 = 100. The upgrade lowers intensity to 0.8, while output rises to 110, so realized use is 0.8 × 110 = 88 and the saving is 12%. Without the output response, engineering savings would have been 20 units; the extra activity offsets 8 of them. This is a rebound effect, not backfire, because total energy use still falls.</p>",
+          "refs": "Khazzoom (1980), Energy Journal; Gillingham, Kotchen, Rapson & Wagner (2013), Review of Environmental Economics and Policy."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>A clinical treatment may affect one-year survival, and quality of life is defined only for people alive at one year. Researchers compare mean quality of life among observed survivors in the randomized treatment and control groups. Which claims are correct?</p>",
+          "options": [
+            "Random assignment alone does not make the two observed-survivor groups comparable, because treatment can change who survives.",
+            "An always-survivor causal effect compares quality of life under treatment and control among people who would survive under either assignment.",
+            "Membership in the always-survivor principal stratum is directly observed from each participant's realized survival status.",
+            "Identifying an always-survivor effect generally requires assumptions or bounds beyond randomization because joint potential survival outcomes are not observed."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Truncation by death", "Principal stratification", "Post-treatment selection"],
+          "assistance": "<p>Write two potential survival indicators for every participant before defining the quality-of-life comparison. Observed survival reveals only the indicator under the assigned treatment, not the pair of potential indicators.</p><p>Distinguish randomization of assignment from conditioning on a post-assignment event. The latter can select different latent types into the compared groups even when the original treatment groups were exchangeable.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> If treatment changes survival, conditioning on realized survival breaks the baseline comparability delivered by randomization: treated and control survivors may contain different mixes of latent survival types. The always-survivor estimand is well-defined for people with survival under both assignments, but each person reveals only one potential survival outcome, so stratum membership is not directly observed. Point identification therefore needs additional assumptions; otherwise researchers may report bounds or sensitivity analyses.</p>",
+          "refs": "Frangakis & Rubin (2002), Biometrics; Zhang & Rubin (2003), Journal of Educational and Behavioral Statistics."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "<p>For independent draws from a continuous distribution with a finite upper endpoint, the ordinary nonparametric bootstrap is automatically consistent for the sampling distribution of the properly scaled sample maximum because resampling consistently estimates the empirical distribution. True or false?</p>",
+          "options": ["True", "False"],
+          "correct": [1],
+          "concepts": ["Bootstrap consistency", "Extreme-value statistics", "Nonregular estimation"],
+          "assistance": "<p>Ask what values a resample drawn from the empirical distribution can exceed. Compare that support restriction with the fresh-sample uncertainty about observations beyond the largest value already seen.</p><p>Bootstrap validity is a property of a statistic and asymptotic problem, not only of empirical-distribution consistency. Extremes and boundary estimators can violate the smoothness conditions that support the ordinary bootstrap.</p>",
+          "explanation": "<p><b>False.</b> Every ordinary bootstrap draw comes from the observed sample, so its maximum cannot exceed the observed maximum and has positive probability of equaling it. A new sample from the population can exceed the observed maximum, and the properly scaled endpoint gap has a nondegenerate extreme-value limit. The empirical distribution's general consistency does not reproduce this local tail behavior. Remedies can include subsampling, an <i>m</i>-out-of-<i>n</i> bootstrap or a justified parametric tail model.</p>",
+          "refs": "Bickel & Freedman (1981), Annals of Statistics; Horowitz (2001), Handbook of Econometrics."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>An exhaustible resource has constant marginal extraction cost $20 and a current competitive price of $50. A perfect backstop is available at constant cost $80, the interest rate is 10%, and there are no switching costs or new discoveries. While the resource remains in use, what price does the Hotelling condition imply for next period?</p>",
+          "options": [
+            "$53, because the $30 scarcity rent grows by 10% while extraction cost stays $20.",
+            "$55, because the entire current price grows at the interest rate.",
+            "$80, because the backstop price must bind immediately in every period.",
+            "$50, because competition eliminates the scarcity rent."
+          ],
+          "correct": [0],
+          "concepts": ["Hotelling scarcity rent", "Backstop technology", "Resource transition"],
+          "assistance": "<p>Decompose the market price into marginal extraction cost and scarcity rent. Apply the intertemporal no-arbitrage condition to the rent, not mechanically to every component of price.</p><p>The backstop caps the resource's future competitive price when substitution becomes economical. It need not determine today's price if the resource is still cheaper and the implied rent path has not reached that cap.</p>",
+          "explanation": "<p><b>(A) is correct.</b> The current scarcity rent is price minus marginal extraction cost: $50 − $20 = $30. With constant extraction cost, Hotelling's rule grows that rent at 10%, to $33. Adding the unchanged $20 extraction cost gives a next-period resource price of $53. The $80 backstop is a ceiling the resource price eventually reaches; it does not force immediate switching under the stated path.</p>",
+          "refs": "Hotelling (1931), Journal of Political Economy; Heal (1976), Bell Journal of Economics."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "multi",
+          "stem": "<p>To estimate the prevalence of an illegal behavior, a survey randomly assigns respondents either a list of four innocuous statements or the same list plus one sensitive statement, asking only how many statements apply. Which design claims are sound?</p>",
+          "options": [
+            "Under random assignment, truthful counting and no design effects, the treatment-minus-control difference in mean counts estimates prevalence of the sensitive behavior.",
+            "The method identifies with certainty which individual respondents engaged in the sensitive behavior.",
+            "Severe floor or ceiling patterns can weaken privacy and precision, so the nonsensitive items should be piloted and deliberately composed.",
+            "A direct-question arm or validation exercise can help assess whether the list design reduces misreporting, although it does not by itself guarantee the identifying assumptions."
+          ],
+          "correct": [0, 2, 3],
+          "concepts": ["List experiments", "Sensitive-question methods", "Design effects"],
+          "assistance": "<p>Write the expected count in each randomized arm. The extra statement contributes its population prevalence to one arm only if adding it does not change how respondents evaluate the common items.</p><p>Assess both identification and respondent protection. Aggregate mean differences can identify prevalence without classifying people, while poorly chosen common items can create extreme counts, strategic responses or low statistical power.</p>",
+          "explanation": "<p><b>(A), (C), and (D) are correct.</b> With random assignment, truthful reports and no design effect on the common items, subtracting the control mean from the treatment mean isolates the sensitive item's prevalence. The design intentionally protects individual status, so it does not reveal with certainty which respondent contributes the sensitive item. Floor and ceiling risks can undermine perceived anonymity and increase variance, making piloting important. Additional arms and validation can test robustness or quantify gains over direct questioning, but cannot automatically establish all assumptions.</p>",
+          "refs": "Blair & Imai (2012), Political Analysis; Glynn (2013), Public Opinion Quarterly."
+        }
+      ]
     }
   ]
 }
