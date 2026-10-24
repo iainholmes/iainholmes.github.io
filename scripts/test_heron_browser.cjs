@@ -17,7 +17,7 @@ async function shot(p,name){const file=path.join(out,name+'.png');await p.screen
 (async()=>{const b=await webkit.launch({executablePath:process.env.WB_WEBKIT,headless:true});const evidence=[];try{
  for(const viewport of [{width:390,height:844},{width:844,height:390},{width:1024,height:768},{width:1100,height:800},{width:1181,height:850},{width:1280,height:720},{width:1440,height:900},{width:1536,height:960}]){
   const c=await context(b,viewport),p=await c.newPage();
-  await p.goto(origin+'/weekly-economics-environment/#2026-10-16',{waitUntil:'load',timeout:120000});await ready(p);
+  await p.goto(origin+'/weekly-economics-environment/#edition-2026-10-16',{waitUntil:'load',timeout:120000});await ready(p);
   const ed=p.locator('.edition:not([hidden])'),article=ed.locator('[id="2026-10-16-targeted-power"]');
   await article.scrollIntoViewIfNeeded();await article.evaluate(e=>e.scrollIntoView({block:'start'}));await shot(p,'article-'+viewport.width);
   const available=viewport.width<=1024||viewport.width>=1181;
@@ -41,7 +41,7 @@ async function shot(p,name){const file=path.join(out,name+'.png');await p.screen
   }await c.close();
  }
  const c=await context(b,{width:1440,height:900}),p=await c.newPage();
- for(const date of ['2026-09-25','2026-10-02','2026-10-09','2026-10-16']){await p.goto(origin+'/weekly-economics-environment/#edition-'+date,{waitUntil:'load',timeout:120000});await ready(p);const ed=p.locator('.edition:not([hidden])');equal(await ed.getAttribute('data-edition'),date,'correct edition');equal(await ed.locator('.heron-perch:visible').count(),1,'one selected desktop appearance in archive')}
+ for(const date of ['2026-09-25','2026-10-02','2026-10-09','2026-10-16','2026-10-23']){await p.goto(origin+'/weekly-economics-environment/#edition-'+date,{waitUntil:'load',timeout:120000});await ready(p);const ed=p.locator('.edition:not([hidden])');equal(await ed.getAttribute('data-edition'),date,'correct edition');equal(await ed.locator('.heron-perch:visible').count(),1,'one selected desktop appearance in archive')}
  for(const width of [1024,1100,1181,390,1440]){await p.setViewportSize({width,height:900});await ready(p);equal(await p.locator('.edition:not([hidden]) .heron-perch:visible').count(),width<=1024?2:width>=1181?1:0,'breakpoint resize '+width)}
  await p.emulateMedia({reducedMotion:'reduce'});const btn=p.locator('.edition:not([hidden]) .heron-perch:visible').first();await btn.click();equal(await p.locator('.edition:not([hidden]) .heron-panel:visible').count(),1,'reduced motion opens statically');await p.locator('.dn button[data-mode="night"]').click();await btn.scrollIntoViewIfNeeded();await shot(p,'desktop-night');check(await btn.isVisible(),'night visible');
  await p.locator('#glance-mode').click();equal(await p.locator('.edition:not([hidden]) .heron-perch:visible').count(),0,'At a glance quiet');await p.locator('#full-mode').click();equal(await p.locator('.edition:not([hidden]) .heron-perch:visible').count(),1,'Full edition restores margin');

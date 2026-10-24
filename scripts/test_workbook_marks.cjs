@@ -8,7 +8,7 @@ const marks=require('../personal-updates/issue-marks.js'),archive=require('../pe
 const data=JSON.parse(read('daily-econ-challenge/index.html').match(/id="challenge-data">([\s\S]*?)<\/script>/)[1]);
 let count=0;function equal(a,b,label){assert.deepEqual(a,b,label);count++}function check(a,label){assert(a,label);count++}
 const base=process.env.SHELF_BASE||'9e7c8f2fdaa26ae01f2988c0c062155baff399a5',old={module:{exports:{}}};
-vm.runInNewContext(cp.execFileSync('git',['show',base+':personal-updates/issue-mark-archive.js'],{cwd:root,encoding:'utf8'}),old);
+vm.runInNewContext(cp.execFileSync('git',['show',base+':personal-updates/issue-mark-archive.js'],{cwd:process.env.PERIODICALS_TEST_GIT_ROOT||root,encoding:'utf8'}),old);
 for(const [key,value] of Object.entries(old.module.exports))if(key!=='cp:2026-10-08')equal(JSON.stringify(archive[key]),JSON.stringify(value),'historical pin unchanged: '+key);
 const latest=archive['cp:2026-10-08'];equal(latest.version,4);equal(latest.composition,'quantile-bands');equal(latest.questionPositions,[1]);check(!latest.frozen.includes('rotate('),'new cover is not a rotated yesterday');
 for(const date of ['2026-10-05','2026-10-07'])check(marks.workbookSignature(latest)!==marks.workbookSignature(archive['cp:'+date]),'latest structural identity differs');
@@ -16,39 +16,26 @@ equal(marks.workbookSignature(archive['cp:2026-10-05']),marks.workbookSignature(
 equal(marks.svg(latest),latest.frozen,'pinned bytes authoritative');equal(marks.model({key:'cp',date:latest.date,no:999,questions:[]}),latest,'later edits cannot regenerate a pin');
 const published=data.editions.at(-1);
 check(read('personal-updates/index.html').includes(archive['cp:'+published.date].frozen),'embedded no-script cover agrees with latest actual set');
-const addDays=(date,n)=>new Date(Date.parse(date+'T12:00:00Z')+n*86400000).toISOString().slice(0,10);
-const temporary=[];
-try{
- const questions=[{field:'Econometrics',stem:'Interpret conditional median quantile regression.',concepts:['Conditional quantiles']}];
- const signatures=[];
- for(let i=0;i<12;i++){
-  const date='2027-01-'+String(i+10).padStart(2,'0'),info={key:'cp',date,no:9+i,questions},m=marks.model(info);
-  equal(marks.model(info),m,'deterministic same input');check(!signatures.slice(-3).includes(m.signature),'three preceding effective compositions excluded');
-  equal(m.subject,'quantiles','recurring topic stays content-supported');check(!marks.svg(m).includes('rotate('));signatures.push(m.signature);archive['cp:'+date]={...m,frozen:marks.svg(m)};temporary.push('cp:'+date);
- }
- equal(new Set(signatures).size,4,'one recurring topic has four different structural pictures');
-}finally{temporary.forEach(k=>delete archive[k])}
+const fx=require('./fixtures/art-originality.cjs'),controlled=fx.baselineHistory(),privateArchive=structuredClone(controlled.covers),privateMarks=fx.isolatedMarks(privateArchive),questions=[{field:'Econometrics',stem:'Interpret conditional median quantile regression.',concepts:['Conditional quantiles']}];
+const start=fx.addDays(fx.nextDate(controlled),14),signatures=[],inputs=[];let exhausted=false;
+for(let i=0;i<256;i++){
+ const date=fx.addDays(start,i),info={key:'cp',date,no:Object.keys(controlled.workbook).length+1+i,questions};let m;
+ try{m=privateMarks.model(info)}catch(e){check(/all \d+ supported authored scenes collide/.test(e.message),'actionable finite-pool exhaustion');exhausted=true;break;}
+ equal(privateMarks.model(info),m,'deterministic same input');check(!signatures.includes(m.signature),'all prior fixture compositions excluded');equal(m.subject,'quantiles');check(privateMarks.validateOriginality(m,privateArchive).ok);signatures.push(m.signature);inputs.push(info);privateArchive['cp:'+date]={...m,frozen:privateMarks.svg(m)};
+}
+check(signatures.length>=2,'controlled archive supports distinct repeated-concept treatments');check(exhausted,'full history never cycles');
+const first=privateArchive['cp:'+inputs[0].date],without=structuredClone(controlled.covers),withFirst={...without,['cp:'+first.date]:first},later=inputs[1];
+equal(fx.isolatedMarks(without).model({...later,history:[first]}),fx.isolatedMarks(withFirst).model(later),'restored client reconstructs complete prepared history');
 const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'workbook-publication-'));
 try{
- const files=['scripts/prepare_periodicals.cjs','daily-econ-challenge/learning-schema.cjs','daily-econ-challenge/index.html','daily-watchlist-5/index.html','daily-watchlist-5/artwork.js','daily-watchlist-5/artwork-archive.js','personal-updates/issue-marks.js','personal-updates/issue-mark-archive.js','personal-updates/index.html','weekly-economics-environment/index.html','weekly-economics-environment/field-study.js','weekly-economics-environment/notebook/validate.cjs','weekly-economics-environment/notebook/index.html','weekly-economics-environment/notebook/reviews.json'];
- for(const f of files){fs.mkdirSync(path.dirname(path.join(fixture,f)),{recursive:true});fs.copyFileSync(path.join(root,f),path.join(fixture,f))}
- const candidate=structuredClone(published);candidate.no=published.no+1;candidate.date=addDays(published.date,7);candidate.questions[0].field=candidate.questions[1].field;
- // Isolated metadata fixture, not a newly authored or publishable problem set.
- candidate.questions.forEach(q=>q.assistance+='<p>Unpublished pipeline fixture: '+candidate.date+' / '+q.id+'.</p>');
- const simulated=structuredClone(data);simulated.editions.push(candidate);const file=path.join(fixture,'daily-econ-challenge/index.html');fs.writeFileSync(file,read('daily-econ-challenge/index.html').replace(/(id="challenge-data">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+'\n'+JSON.stringify(simulated,null,2)+'\n'+b));
- const prepare=()=>cp.execFileSync(process.execPath,['scripts/prepare_periodicals.cjs'],{cwd:fixture,encoding:'utf8'});prepare();
- const first=Object.fromEntries(files.map(f=>[f,fs.readFileSync(path.join(fixture,f),'utf8')]));prepare();for(const f of files)equal(fs.readFileSync(path.join(fixture,f),'utf8'),first[f],'preparation rerun is byte-idempotent '+f);
- const generated={module:{exports:{}}};vm.runInNewContext(first['personal-updates/issue-mark-archive.js'],generated);const ar=generated.module.exports;
- for(const [key,value] of Object.entries(archive))equal(JSON.stringify(ar[key]),JSON.stringify(value),'preparation preserves published pin '+key);
- const m=ar['cp:'+candidate.date];check(m&&m.no===String(candidate.no).padStart(3,'0'));equal(JSON.stringify(marks.model({key:'cp',date:candidate.date,no:candidate.no,questions:candidate.questions})),JSON.stringify(Object.fromEntries(Object.entries(m).filter(([k])=>k!=='frozen'))),'client generator agrees with prepared future cover');
- const later={key:'cp',date:addDays(candidate.date,7),no:candidate.no+1,questions:candidate.questions};archive['cp:'+candidate.date]=m;let pipeline;try{pipeline=marks.model(later)}finally{delete archive['cp:'+candidate.date]}
- equal(marks.model({...later,recent:[...data.editions.slice(-2).map(e=>archive['cp:'+e.date]),m]}),pipeline,'a hub restored across two publications reconstructs the same recent context');
- const hub=first['personal-updates/index.html'],label=new Date(candidate.date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
- check(hub.includes(m.frozen),'future fallback cover matches');check(hub.includes('N<sup>o</sup>. '+m.no+' · '+label));check(hub.includes('data-cp="count">'+simulated.editions.length+'</b>'));check(hub.includes('data-cp-depth>'+simulated.editions.reduce((n,e)=>n+e.questions.length,0)+'</b>'));check(hub.includes('data-cp="title">'+candidate.questions.length+' questions · '+new Set(candidate.questions.map(q=>q.field)).size+' fields</p>'));check(hub.includes('_'+candidate.date+'_'),'new publication advances the shared cache key');
- if(process.env.SHELF_FIXTURE){fs.mkdirSync(process.env.SHELF_FIXTURE,{recursive:true});for(const f of files){fs.mkdirSync(path.dirname(path.join(process.env.SHELF_FIXTURE,f)),{recursive:true});fs.copyFileSync(path.join(fixture,f),path.join(process.env.SHELF_FIXTURE,f))}}
+ fx.copySite(root,fixture);const appended=fx.append(fixture,['cp']),ar=appended.after.covers,m=ar['cp:'+appended.date],simulated=fx.data(fx.read(fixture,'daily-econ-challenge/index.html'),'challenge-data');
+ check(m&&m.no===String(appended.workbook.no).padStart(3,'0'));check(marks.validateOriginality(m,archive).ok,'supplied authored test plate passes actual full live history');count+=fx.assertHistory(appended.after,appended.before);
+ const hub=fx.read(fixture,'personal-updates/index.html'),candidate=appended.workbook,label=new Date(candidate.date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
+ check(hub.includes(m.frozen),'fallback is the prepared pin');check(hub.includes('N<sup>o</sup>. '+m.no+' · '+label));check(hub.includes('data-cp="count">'+simulated.editions.length+'</b>'));check(hub.includes('data-cp-depth>'+simulated.editions.reduce((n,e)=>n+e.questions.length,0)+'</b>'));check(hub.includes('data-cp="title">'+candidate.questions.length+' questions · '+new Set(candidate.questions.map(q=>q.field)).size+' fields</p>'));check(hub.includes('_'+candidate.date+'_'),'append advances cache key');
+ if(process.env.SHELF_FIXTURE){fs.mkdirSync(process.env.SHELF_FIXTURE,{recursive:true});fx.copySite(fixture,process.env.SHELF_FIXTURE);}
 }finally{fs.rmSync(fixture,{recursive:true,force:true})}
 // Legitimate later releases may append source data; the test must never rewrite any current public byte.
 for(const f of protectedFiles)equal(read(f),sourceBefore[f],'current published source unchanged '+f);
-const oldData=JSON.parse(cp.execFileSync('git',['show',base+':daily-econ-challenge/index.html'],{cwd:root,encoding:'utf8'}).match(/id="challenge-data">([\s\S]*?)<\/script>/)[1]);
+const oldData=JSON.parse(cp.execFileSync('git',['show',base+':daily-econ-challenge/index.html'],{cwd:process.env.PERIODICALS_TEST_GIT_ROOT||root,encoding:'utf8'}).match(/id="challenge-data">([\s\S]*?)<\/script>/)[1]);
 for(const ed of oldData.editions)equal(data.editions.find(e=>e.date===ed.date),ed,'historical question set unchanged '+ed.date);
 console.log(count+' Workbook artwork/publication assertions passed; next-set fixture was never published.');
