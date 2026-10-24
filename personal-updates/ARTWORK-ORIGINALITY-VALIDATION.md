@@ -1,5 +1,72 @@
 # Artwork originality recovery — validation record, 24 October 2026
 
+## PR #18 revision — durable tests (24 October 2026)
+
+This revision changes tests and this record only, relative to reviewed head `8f0d345ee20f29fad9da3edd34295eaa891c5b3c`. The original review evidence below, including the October 23 full-file comparisons and SHA-256 table, is retained as **one-time evidence for that reviewed tree**, not an unconditional rule that growing publication files must remain byte-identical forever.
+
+### Exact files changed in this revision
+
+- `scripts/test_art_originality.cjs`
+- `scripts/test_workbook_marks.cjs`
+- `scripts/test_workbook_browser.cjs`
+- `scripts/test_shelf_browser.cjs`
+- `scripts/fixtures/art-originality.cjs` (new, test-only)
+- `scripts/test_art_append_growth.cjs` (new, test-only)
+- `personal-updates/ARTWORK-ORIGINALITY-VALIDATION.md`
+
+### Durable assertions and isolated fixtures
+
+The permanent preservation check compares historical covers, reading-art entries, canonical Field Brief/Workbook editions, complete individual L&L editions, Field Studies, companion configurations, register entries and notebook reviews **by immutable entry**, allowing new keys and editions. Existing notebook concept anchors remain present while substantive notebook prose/reference updates can grow normally. The October 23 Git anchor supplies historical entries and controlled test inputs; no permanent whole-file equality assertion against that commit remains in the corrected suites. Whole-file comparisons across a single preparation/retry invocation remain intentional idempotency checks.
+
+Explicit Workbook duplicate groups 002/003, 004/005/006/007 and 008/013, and L&L Issue 005's cover and Field Study, remain protected. Serialized historical mutations are tested by actually running the permanent test command against mutated copies, not merely asserting that a mock validator returned an error.
+
+Selection/exhaustion tests compile the actual unchanged marks module with a private cloned historical registry. They do not mutate Node's live archive export. Synthetic dates and numbers derive from the private history or the end of current canonical history; fixture keys never overwrite existing entries. Tests enumerate supported scenes until the real exhaustion error rather than assume exactly five quantile scenes or that quantile-crossings/incidence-ledgers/risk-pooling remain unused in production.
+
+Two independent preparation paths remain covered: actual automatic generation on a controlled historical site copy, and supplied authored test-only pins on a full copy of current history. Test-only histograms/interval diagrams use the unchanged real originality validators against every existing pin; collisions are rejected and alternatives tried without removing history or changing thresholds. This avoids coupling the append rehearsal to remaining capacity in a finite production scene pool. These temporary fixtures are unpublishable test inputs, not new editions or artwork assets in the repository.
+
+The Workbook browser suite compares browser editions/counts with canonical source data. Its report derives question totals from that same data. The restored-shelf fixture supplies its explicitly prepared private pin; deterministic reconstruction without a pin remains covered by the isolated source test, and the real automatic preparation path remains tested separately. No production generator, originality helper, preparation logic, threshold, page, content, artwork, layout or schedule changed.
+
+### Reproduced results
+
+| Check | Current history | History plus one new issue/set/edition |
+| --- | --- | --- |
+| `node scripts/test_art_originality.cjs` | 488 assertions passed | 497 assertions passed |
+| `node scripts/test_workbook_marks.cjs` | 261 assertions passed | 270 assertions passed |
+| `node scripts/test_workbook_browser.cjs` | 9,358 assertions passed; 13 sets / 104 questions | 10,065 assertions passed; 14 sets / 112 questions |
+| `node scripts/test_shelf_browser.cjs` | 1,491 assertions passed, including prepared future-pin refresh | 1,496 assertions passed; six L&L editions/Field Studies and new canonical metadata |
+
+`node scripts/test_art_append_growth.cjs` passed **193 preservation/growth/mutation checks** and ran both permanent source suites successfully on the augmented files. The rehearsal appended Field Brief Issue 028, Workbook Set 014 and L&L Issue 006 at a derived unused date (October 30 in this history). Both source suites also rehearse their next append on those already augmented files. The driver then independently altered (1) historical Workbook artwork, (2) a historical question, (3) Issue 005 edition markup and (4) Field Study 005; the actual permanent source test exited unsuccessfully for every unauthorized mutation. All copied inputs were restored, and original publication files were unchanged.
+
+Additional checks: `node scripts/test_issue_marks.cjs` and `node scripts/test_publishing.cjs` passed; `node scripts/test_field_brief_cover_originality.cjs` passed 395 checks; `node scripts/test_notebook.cjs` passed 101 assertions. Changed JavaScript syntax checks and `git diff --check` passed. A diff against the reviewed head is empty for the substantive originality implementation, production preparation code and every publication/artwork path. The original review's file hashes still match.
+
+Reproduction (WebKit launcher/cache paths are session environment, not repository dependencies):
+
+```sh
+node scripts/test_art_originality.cjs
+node scripts/test_workbook_marks.cjs
+ART_GROWTH_FIXTURE=/workspace/scratch/e27130331310/qa/futureproof/grown-final node scripts/test_art_append_growth.cjs
+SHELF_FIXTURE=/workspace/scratch/e27130331310/qa/futureproof/next-workbook node scripts/test_workbook_marks.cjs
+WB_WEBKIT=/workspace/scratch/e27130331310/qa/webkit.sh WB_QA_DIR=/workspace/scratch/e27130331310/qa/futureproof/browser-current node scripts/test_workbook_browser.cjs
+SHELF_FIXTURE=/workspace/scratch/e27130331310/qa/futureproof/next-workbook WB_WEBKIT=/workspace/scratch/e27130331310/qa/webkit.sh WB_QA_DIR=/workspace/scratch/e27130331310/qa/futureproof/shelf node scripts/test_shelf_browser.cjs
+cd /workspace/scratch/e27130331310/qa/futureproof/grown-final
+WB_WEBKIT=/workspace/scratch/e27130331310/qa/webkit.sh WB_QA_DIR=/workspace/scratch/e27130331310/qa/futureproof/browser-grown node scripts/test_workbook_browser.cjs
+WB_WEBKIT=/workspace/scratch/e27130331310/qa/webkit.sh WB_QA_DIR=/workspace/scratch/e27130331310/qa/futureproof/shelf-grown node scripts/test_shelf_browser.cjs
+```
+
+The full augmented Workbook browser run used an earlier copy with byte-identical Workbook canonical content and the same final browser test. The final augmented shelf/source runs used the exported fixture above. All fixtures were separate from production and no publication was performed.
+
+### Remaining limitations and release boundary
+
+One initial current-history browser run again timed out at the existing learning-panel wait. An instrumented diagnostic replay and the final normal repository command passed all 9,358 assertions; no timing checks or product behavior were weakened to obtain that result. This intermittent test behavior remains documented rather than claimed fixed.
+
+The four older snapshot-suite failures documented in the original review remain outside this narrow revision; their tests and first-failing production inputs are unchanged. They were not represented as newly passing checks. **Bundler is still unavailable (`command -v bundle` fails); no Jekyll build was performed or claimed successful in this revision.** The original build limitation below remains applicable.
+
+The existing PR remains draft and targets `master`. This revision authorizes no merge, auto-merge, production update or deployment.
+
+---
+
+## Original review evidence (reviewed head 8f0d345)
+
 ## Recovery and baseline
 
 Recovered the local `maintenance/artwork-full-history` branch and stash `bc1ccebc99a42d6028bf88c7a8f894e534dd097c` (`artwork-alignment-before-oct23-ll-reconcile`), based on `baea324ba6fbf0b0f1c2ff2d6792ea6d36ec31f6`. The original branch and stash remain intact. No relevant remote branch or open PR existed at preflight.

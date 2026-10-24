@@ -48,7 +48,8 @@ async function main(){
  try{
   let c=await context(browser,{width:390,height:844}),p=await c.newPage();await open(p);
   const data=await p.evaluate(()=>JSON.parse(document.getElementById('challenge-data').textContent)),editions=data.editions.slice().sort((a,b)=>a.date.localeCompare(b.date));
-  equal(editions.length,13);equal(editions.reduce((n,e)=>n+e.questions.length,0),104);
+  const canonical=JSON.parse(fs.readFileSync('daily-econ-challenge/index.html','utf8').match(/id="challenge-data">([\s\S]*?)<\/script>/)[1]).editions.slice().sort((a,b)=>a.date.localeCompare(b.date));
+  equal(editions,canonical,'browser loads current canonical editions');equal(editions.length,canonical.length);equal(editions.reduce((n,e)=>n+e.questions.length,0),canonical.reduce((n,e)=>n+e.questions.length,0));
   // Acceptance regression: non-adjacent saved answers, genuine reopen/Resume, and both reset scopes.
   const mapped=editions[1],other=editions[2];await ledger(p);await ledgerMap(p,'pristine');
   await p.locator('[data-date="'+mapped.date+'"].pd-edition-entry').click();await ready(p);
