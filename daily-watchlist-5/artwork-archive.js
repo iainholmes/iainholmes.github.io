@@ -1472,6 +1472,68 @@
         "seed": 1315733544,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A petition ascends institutional steps\"><title>Brent reaches a five-month high as Middle East supply risk returns</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-23-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-23-05)\"><path d=\"M70 535V430H240V335H410V240H580V145H730V535Z\" fill=\"#1b4a6b\"/><path d=\"M106 140H302V290H106Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M138 184H267M138 226H241\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M330 295L410 200L489 238\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
       }
+    },
+    "2026-10-24": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-24",
+        "number": "01",
+        "category": "Technology · AI security",
+        "topic": "infrastructure",
+        "title": "Britain commits £600 million to AI biosecurity and cyber defense",
+        "composition": "infrastructure-aisle",
+        "signature": "plate:infrastructure-aisle",
+        "seed": 2844031856,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A server aisle separates storage and service capacity\"><title>Britain commits £600 million to AI biosecurity and cyber defense</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-24-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-24-01)\"><path d=\"M80 145H280V520H80ZM520 80H720V520H520Z\" fill=\"#2c241d\"/><path d=\"M115 200H245M115 290H245M115 380H245M555 135H685M555 225H685M555 315H685M555 405H685\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M320 550L405 210L480 550Z\" fill=\"#1b4a6b\"/><circle cx=\"402\" cy=\"145\" r=\"57\" fill=\"#c4452c\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-24",
+        "number": "02",
+        "category": "Technology · biotechnology",
+        "topic": "research",
+        "title": "Personalized mRNA vaccine cuts melanoma recurrence or death risk by 42%",
+        "composition": "labor-clock",
+        "signature": "plate:labor-clock",
+        "seed": 2764234004,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A time clock beside an interrupted production belt\"><title>Personalized mRNA vaccine cuts melanoma recurrence or death risk by 42%</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-24-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-24-02)\"><circle cx=\"246\" cy=\"277\" r=\"165\" fill=\"#2c241d\"/><circle cx=\"246\" cy=\"277\" r=\"125\" fill=\"#f4ead7\"/><path d=\"M246 180V277L324 326\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M480 180H700V480H480Z\" fill=\"#1b4a6b\"/><path d=\"M517 228H663M517 297H663M517 366H604\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M80 532H348M443 532H720\" stroke=\"#7c5a3e\" stroke-width=\"30\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-24",
+        "number": "03",
+        "category": "Environment · energy infrastructure",
+        "topic": "research",
+        "title": "Snowy Hydro 2.0 cost estimate rises to as much as A$25 billion",
+        "composition": "infrastructure-duct",
+        "signature": "plate:infrastructure-duct",
+        "seed": 2330026466,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Cooling infrastructure surrounds a capacity chamber\"><title>Snowy Hydro 2.0 cost estimate rises to as much as A$25 billion</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-24-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-24-03)\"><path d=\"M90 155H475V480H90Z\" fill=\"#2c241d\"/><path d=\"M130 202H432M130 270H432M130 338H432M130 406H432\" stroke=\"#f4ead7\" stroke-width=\"23\"/><path d=\"M520 510V185H690V410H600\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"51\"/><path d=\"M520 96V160M580 96V160M640 96V160\" stroke=\"#c4452c\" stroke-width=\"20\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-24",
+        "number": "04",
+        "category": "U.S. policy · trade",
+        "topic": "trade",
+        "title": "White House narrows selected tariffs on Canadian goods",
+        "composition": "government-balance",
+        "signature": "plate:government-balance",
+        "seed": 630938316,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Public funds are held in balance under a legal decision\"><title>White House narrows selected tariffs on Canadian goods</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-24-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-24-04)\"><path d=\"M390 130V520M250 525H535M165 240H620\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M190 240L110 400H270ZM585 240L505 400H665Z\" fill=\"#1b4a6b\"/><path d=\"M135 401Q190 476 245 401M530 401Q585 476 640 401\" fill=\"#c98a12\"/><rect x=\"295\" y=\"90\" width=\"190\" height=\"105\" fill=\"#7a1f33\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-24",
+        "number": "05",
+        "category": "North Carolina · coastal resilience",
+        "topic": "climate",
+        "title": "Repeated storm damage turns emergency ferries into Hatteras Island's lifeline",
+        "composition": "climate-vortex",
+        "signature": "plate:climate-vortex",
+        "seed": 1226143569,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A rotating storm path crosses a settled landscape\"><title>Repeated storm damage turns emergency ferries into Hatteras Island&#39;s lifeline</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-24-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-24-05)\"><path d=\"M95 505H705\" stroke=\"#7c5a3e\" stroke-width=\"25\"/><path d=\"M510 505V365L590 300L675 365V505Z\" fill=\"#2c241d\"/><path d=\"M125 145Q440 70 520 230Q570 330 445 365Q330 398 354 485\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"48\"/><path d=\"M190 205Q395 155 438 244Q464 303 386 326\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"22\"/><path d=\"M239 430L298 388M405 180L452 137M538 272L595 238\" stroke=\"#c4452c\" stroke-width=\"18\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

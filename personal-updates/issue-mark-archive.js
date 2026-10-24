@@ -931,5 +931,64 @@
     "framing": "The synthesis / Editorial interpretationWhat connects this weekA pollution standard reaches consumers through both production cost and market power. A tax-credit expiration changes the price facing vehicle buyers, but the observed sales response mixes timing with other demand shifts. A global climate pathway tightens because delayed abatement compounds. A public bank tries to convert risk information into investable adaptation. Commercial riders can save on fuel and still be locked out by the interest rate.The common object is capital moving across an uneven landscape of costs. Technology prices matter, but so do entry, credit, collateral, project preparation, and expectations about future rules. Each institution chooses where risk sits: on consumers paying higher prices, firms complying or exiting, taxpayers backing a guarantee, communities exposed during overshoot, or workers handling spent batteries.That is why expenditure is not welfare and a commitment is not an outcome. The right ledger follows physical resources, transfers, externalities and market power separately. It asks whether public finance is additional, whether a price response is causal, whether standards concentrate an industry, and whether today’s adoption creates an unfunded liability tomorrow. The transition is not one cost curve; it is a set of contracts and institutions that decide which projects can cross the terrain.This week’s research question: when capital crosses a policy boundary, which risk moves with it—and who is left holding the residual?",
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Loblolly &amp; Logit, issue 005: Capital across terrain\"><title>Loblolly &amp; Logit · 005 · Capital across terrain</title><desc>A field transect shows two capital routes crossing layered terrain through three restrained financing gates. The illustration is conceptual, not a measured flow or geographic map.</desc><rect width=\"600\" height=\"800\" fill=\"#f3f0e6\"/><g fill=\"none\" stroke=\"#1f4a3b\" stroke-width=\"2\" opacity=\".18\"><path d=\"M38 116C129 72 215 128 301 96S470 71 562 118\"/><path d=\"M38 145C129 101 215 157 301 125S470 100 562 147\"/><path d=\"M38 174C129 130 215 186 301 154S470 129 562 176\"/></g><path d=\"M38 310C130 246 217 326 306 282S470 247 562 315V505H38Z\" fill=\"#c9cfb9\"/><path d=\"M38 395C145 336 226 407 314 372S473 342 562 399V505H38Z\" fill=\"#dfe0cb\"/><g fill=\"none\" stroke=\"#1f4a3b\" stroke-width=\"1.3\" opacity=\".28\"><path d=\"M38 429C145 370 226 441 314 406S473 376 562 433\"/><path d=\"M38 453C145 394 226 465 314 430S473 400 562 457\"/><path d=\"M38 477C145 418 226 489 314 454S473 424 562 481\"/></g><path d=\"M58 357C141 326 207 349 274 333S416 284 542 306\" fill=\"none\" stroke=\"#b4532e\" stroke-width=\"11\" stroke-linecap=\"round\"/><path d=\"M58 424C153 389 217 421 294 399S435 354 542 378\" fill=\"none\" stroke=\"#e3b456\" stroke-width=\"8\" stroke-linecap=\"round\"/><g fill=\"#f3f0e6\" stroke=\"#1f4a3b\" stroke-width=\"5\"><path d=\"M151 298H211V405H151Z\"/><path d=\"M285 303H345V450H285Z\"/><path d=\"M420 255H480V414H420Z\"/></g><g fill=\"#1f4a3b\"><path d=\"M163 315H199V345H163Z\"/><path d=\"M297 321H333V351H297Z\"/><path d=\"M432 273H468V303H432Z\"/></g><g font-family=\"IBM Plex Sans Condensed,sans-serif\" font-size=\"14\" letter-spacing=\"1.7\" fill=\"#1f4a3b\"><text x=\"58\" y=\"232\">RISK</text><text x=\"268\" y=\"232\">FINANCE</text><text x=\"456\" y=\"232\">PROJECT</text></g><path d=\"M42 570H558\" stroke=\"#1f4a3b\" stroke-width=\"2\"/><g fill=\"#1f4a3b\"><text x=\"42\" y=\"634\" font-family=\"Ectros,Georgia,serif\" font-size=\"43\">Loblolly &amp; Logit</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 005 / 2026-10-23</text><text x=\"42\" y=\"740\" font-family=\"Ectros,Georgia,serif\" font-size=\"26\">Capital across terrain</text></g></svg>",
     "signature": "loblolly:financing-transect"
+  },
+  "fb:2026-10-24": {
+    "key": "fb",
+    "date": "2026-10-24",
+    "no": "028",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "Britain commits £600 million to AI security and sovereign capability, while a late-stage personalized mRNA vaccine trial reports a 42% reduction in melanoma recurrence or death. Australia's largest renewable-energy project faces a twelve-fold cost escalation, the White House narrows selected Canadian tariffs, and repeated storm damage again severs Hatteras Island's only highway link. Public capacity meets execution risk The five developments are distinct. Britain's AI package and the melanoma trial expand technological capability; the Snowy Hydro review shows how difficult large infrastructure can be to deliver; tariff revisions and Hatteras ferries show governments adapting policy and logistics when broad strategies meet specific costs. The next evidence is operational: funded British institutions and safeguards, mature survival data and regulatory review for intismeran, Snowy 2.0 tunneling and spending, the incidence of revised Canadian duties, and a durable access plan for N.C. 12.",
+    "version": 5,
+    "subject": "infrastructure",
+    "composition": "infrastructure-aisle",
+    "signature": "issue:infrastructure-aisle",
+    "phrase": "Connections & capacity",
+    "seed": 3419320406,
+    "geometry": "<path d=\"M86 155H222V472H86ZM378 110H514V472H378Z\" fill=\"$ink\"/><path d=\"M108 209H200M108 287H200M108 365H200M400 164H492M400 242H492M400 320H492M400 398H492\" stroke=\"$paper\" stroke-width=\"18\"/><path d=\"M245 483L300 214L355 483Z\" fill=\"$accent\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01",
+          "03",
+          "05"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "02",
+          "03",
+          "05"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "01",
+          "03"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "02"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "02"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 27,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 028: Connections &amp; capacity\"><title>Field Brief · 028 · Connections &amp; capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M86 155H222V472H86ZM378 110H514V472H378Z\" fill=\"#221a14\"/><path d=\"M108 209H200M108 287H200M108 365H200M400 164H492M400 242H492M400 320H492M400 398H492\" stroke=\"#f1e6d0\" stroke-width=\"18\"/><path d=\"M245 483L300 214L355 483Z\" fill=\"#8a2a36\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 028 / 2026-10-24</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Connections &amp; capacity</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
