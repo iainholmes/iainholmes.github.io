@@ -4,6 +4,7 @@
   var identities={fb:'Field Brief',sp:'Loblolly & Logit',cp:'The Workbook'};
   var archive=typeof module==='object'&&module.exports?require('./issue-mark-archive.js'):(root.PeriodicalsMarkArchive||{});
   var fbArtwork=typeof module==='object'&&module.exports?require('../daily-watchlist-5/artwork.js'):root.FieldBriefArtwork;
+  var originality=typeof module==='object'&&module.exports?require('./art-originality.js'):root.PeriodicalsArtOriginality;
   var palettes={fb:['#f1e6d0','#221a14','#8a2a36','#c5ad88'],sp:['#f3f0e6','#1f4a3b','#b4532e','#e3b456'],cp:['#f7f7f3','#1c2f4a','#0e5360','#b5ced1']};
   var themes=[
     {id:'institutions',words:/institution|statutor|jurisdiction|legal|court|governance|credib|administrative|standards/ig,phrase:'Institutional constraints'},
@@ -38,6 +39,7 @@
     {id:'rank-stair',subject:'quantiles',phrase:'Order & estimation',words:/quantile|conditional median|percentile|distribution/i},
     {id:'distribution-slice',subject:'quantiles',phrase:'Location & dispersion',words:/quantile|conditional median|percentile|distribution/i},
     {id:'quantile-fan',subject:'quantiles',phrase:'Conditional distributions',words:/quantile|conditional median|percentile|distribution/i},
+    {id:'quantile-crossings',subject:'quantiles',phrase:'Ranks across covariates',words:/quantile|conditional median|percentile|distribution/i},
     {id:'public-sum',subject:'public-goods',phrase:'Shared goods & value',words:/public good|Samuelson|vertical summation|nonrival/i},
     {id:'matching-gate',subject:'matching',phrase:'Search & matching',words:/matching function|job.finding|Beveridge|vacancies/i},
     {id:'leakage-channel',subject:'leakage',phrase:'Leakage across borders',words:/carbon leakage|emissions intensity|unregulated foreign/i},
@@ -56,19 +58,26 @@
     return m.signature||'workbook:legacy:'+(m.subject||m.theme);
   }
   function workbookModel(info,chosen,seed,framing){
-    var recent=info.recent||Object.keys(archive).filter(function(k){return k.indexOf('cp:')===0&&k.slice(3)<info.date}).sort().reverse().slice(0,3).map(function(k){return archive[k]});
-    if(info.previous&&!recent.some(function(m){return m.date===info.previous.date}))recent.unshift(info.previous);
-    recent=recent.slice(0,3);
-    var used=recent.map(workbookSignature);
+    var history=markHistory(info,'cp'),used=Object.values(history).map(workbookSignature);
     var candidates=workbookScenes.map(function(scene){
       var supporting=(info.questions||[]).map(function(q,i){var s=text([q.stem,(q.concepts||[]).join(' ')].join(' '));return scene.words.test(s)?i+1:0}).filter(Boolean);
       // Broad course vocabulary is weaker evidence than a specific question concept.
       return {scene:scene,supporting:supporting,score:supporting.length*(scene.id==='paired-comparison'?.25:scene.id==='scarcity-wedge'?.5:1),tie:hash(seed+'|'+scene.id)};
     }).filter(function(x){return x.supporting.length}).sort(function(a,b){return b.score-a.score||a.tie-b.tie});
-    var pick=candidates.find(function(x){return used.indexOf('workbook:'+x.scene.id)<0});
-    if(!pick)throw Error('Workbook artwork needs an unused content-supported composition: '+info.date);
-    return {version:4,key:'cp',date:info.date,no:String(info.no).padStart(3,'0'),identity:identities.cp,theme:chosen.id,subject:pick.scene.subject,composition:pick.scene.id,signature:'workbook:'+pick.scene.id,phrase:pick.scene.phrase,seed:seed,framing:framing,questionPositions:pick.supporting};
+    for(var pick of candidates){
+      if(used.indexOf('workbook:'+pick.scene.id)>=0)continue;
+      var m={version:4,key:'cp',date:info.date,no:String(info.no).padStart(3,'0'),identity:identities.cp,theme:chosen.id,subject:pick.scene.subject,composition:pick.scene.id,signature:'workbook:'+pick.scene.id,phrase:pick.scene.phrase,seed:seed,framing:framing,questionPositions:pick.supporting};
+      if(originality.review({...m,frozen:svg(m)},history,'workbook').ok)return m;
+    }
+    throw Error('Workbook artwork needs a new unused content-supported composition for '+info.date+'; all '+candidates.length+' supported authored scenes collide with full published history. Author a distinct relevant scene; do not recycle a plate.');
   }
+  function markHistory(info,key){
+    var out={};Object.entries(archive).forEach(function([id,m]){if(id.indexOf(key+':')===0&&m.date<info.date)out[id]=m});
+    // Callers can add newly prepared pins, but cannot truncate frozen history.
+    Object.values(info.history||info.recent||[]).concat(info.previous||[]).forEach(function(m){if(m.key===key&&m.date<info.date&&!out[key+':'+m.date])out[key+':'+m.date]=m});
+    return out;
+  }
+  function validateOriginality(m,history){return originality.validate({...m,frozen:svg(m)},Object.fromEntries(Object.entries(history).filter(function([id]){return id.indexOf(m.key+':')===0})),m.key==='cp'?'workbook':'cover')}
   function workbookArtwork(m,p){
     var ink=p[1],a=p[2],b=p[3],paper=p[0],s='';
     // A conceptual plate, not data or the worked answer to any question.
@@ -77,6 +86,7 @@
       case 'rank-stair':s='<path d="M90 465H180V385H260V305H340V225H420V145H510" fill="none" stroke="'+a+'" stroke-width="20"/><path d="M90 490H520M90 110V490" fill="none" stroke="'+ink+'" stroke-width="4"/><g fill="'+ink+'"><circle cx="140" cy="415" r="12"/><circle cx="220" cy="335" r="12"/><circle cx="300" cy="255" r="12"/><circle cx="380" cy="175" r="12"/></g>';break;
       case 'distribution-slice':s='<path d="M85 470C140 470 175 125 300 125S460 470 515 470Z" fill="'+b+'"/><path d="M300 125C340 125 360 260 380 365V470H300Z" fill="'+a+'"/><path d="M85 470H515M300 105V490" stroke="'+ink+'" stroke-width="5"/>';break;
       case 'quantile-fan':s='<path d="M100 420L490 110V440Z" fill="'+b+'"/><path d="M100 420L490 110M100 420L490 265M100 420L490 440" stroke="'+a+'" stroke-width="8"/><path d="M80 100V485H520" fill="none" stroke="'+ink+'" stroke-width="4"/>';break;
+      case 'quantile-crossings':s='<path d="M85 470V110M85 470H520" fill="none" stroke="'+ink+'" stroke-width="4"/><path d="M120 395Q245 350 495 325M120 300Q300 320 495 205M120 210Q265 125 495 135" fill="none" stroke="'+a+'" stroke-width="11"/><path d="M230 160V390M390 135V350" stroke="'+ink+'" stroke-width="3" stroke-dasharray="7 8"/><circle cx="230" cy="305" r="15" fill="'+b+'"/><circle cx="390" cy="263" r="15" fill="'+b+'"/>';break;
       case 'public-sum':s='<path d="M110 340H235V470H110ZM110 180H235V320H110Z" fill="'+b+'"/><path d="M365 160H490V470H365Z" fill="'+a+'"/><path d="M270 250H330M300 220V280M255 470H510" stroke="'+ink+'" stroke-width="5"/>';break;
       case 'matching-gate':s='<g fill="'+ink+'"><rect x="85" y="135" width="80" height="80"/><rect x="85" y="325" width="80" height="80"/></g><g fill="'+b+'"><circle cx="485" cy="175" r="40"/><circle cx="485" cy="365" r="40"/></g><path d="M165 175C290 175 235 270 300 270S380 175 445 175M165 365C290 365 235 270 300 270S380 365 445 365" fill="none" stroke="'+a+'" stroke-width="18"/><path d="M290 220V320H330V220Z" fill="'+ink+'"/>';break;
       case 'leakage-channel':s='<path d="M75 160H245V470H75Z" fill="'+ink+'"/><path d="M355 160H525V470H355Z" fill="'+b+'"/><path d="M300 100V510" stroke="'+ink+'" stroke-width="4" stroke-dasharray="8 9"/><path d="M135 240H465M430 210L465 240L430 270" fill="none" stroke="'+a+'" stroke-width="16"/><path d="M145 375H455" stroke="'+paper+'" stroke-width="9"/>';break;
@@ -103,16 +113,35 @@
     var framing=sources.join(' '),seed=hash(info.key+'|'+info.date+'|'+String(info.no).padStart(3,'0')+'|'+framing.replace(/\W/g,''));
     if(info.key==='fb')return Object.assign({key:info.key,date:info.date,no:String(info.no).padStart(3,'0'),identity:identities.fb,theme:chosen.id,framing:framing},fbArtwork.issueModel(info,archive));
     if(info.key==='cp')return workbookModel(info,chosen,seed,framing);
-    var subject=concept(framing,info.key),previous=info.previous;
-    if(previous&&!previous.subject)previous=model(previous);
-    var composition=previous&&previous.subject===subject.id&&previous.composition==='section'?'plan':'section';
-    return {version:2,key:info.key,date:info.date,no:String(info.no).padStart(3,'0'),identity:identities[info.key],theme:chosen.id,subject:subject.id,composition:composition,phrase:subject.phrase,seed:seed,framing:framing};
+    return loblollyModel(info,chosen,seed,framing);
+  }
+  // Cover scenes describe economic relationships; they are independent of Field Study plates.
+  var loblollyScenes=[
+    ['burden-branches','incidence',/incidence|burden|pass.through|cost bearer/i,'Burden through institutions','<path d="M85 130H210V250H85Z" fill="$ink"/><path d="M210 190H300V410M300 190H440M300 300H440M300 410H440" fill="none" stroke="$accent" stroke-width="14"/><path d="M440 145H520V235H440ZM440 270H490V330H440ZM440 375H550V445H440Z" fill="$support"/>'],
+    ['incidence-wedges','incidence',/incidence|burden|pass.through|cost bearer/i,'Initial costs, final burdens','<path d="M80 160H520V220H80ZM80 290H390V350H80ZM80 420H240V480H80Z" fill="$ink"/><path d="M300 125V510" stroke="$accent" stroke-width="13"/><path d="M390 290H520V350H390ZM240 420H520V480H240Z" fill="$support"/>'],
+    ['network-cutsets','networks',/grid|network|transmission|complement|infrastructure/i,'Capacity across connections','<path d="M100 150L290 270L495 140M100 440L290 270L495 450" fill="none" stroke="$ink" stroke-width="18"/><path d="M290 270V480M350 180V360" stroke="$accent" stroke-width="17"/><g fill="$support"><circle cx="100" cy="150" r="38"/><circle cx="100" cy="440" r="38"/><circle cx="495" cy="140" r="38"/><circle cx="495" cy="450" r="38"/></g>'],
+    ['pooled-exposure','risk',/risk|insurance|resilien|uncertainty|loss/i,'Exposure & shared reserves','<circle cx="300" cy="290" r="155" fill="none" stroke="$ink" stroke-width="15"/><path d="M300 135V290L455 290M300 290L190 400" fill="none" stroke="$accent" stroke-width="16"/><circle cx="300" cy="290" r="44" fill="$support"/><path d="M105 125L160 170M490 460L440 410" stroke="$ink" stroke-width="12"/>'],
+    ['diverted-flow','water',/water|river|fish|flood|spillover/i,'Flows through competing uses','<path d="M90 115H270V265H500V340H205V190H90Z" fill="$ink"/><path d="M270 265V465H385" fill="none" stroke="$accent" stroke-width="36"/><circle cx="500" cy="302" r="43" fill="$support"/><circle cx="385" cy="465" r="32" fill="$support"/>'],
+    ['cohort-parcels','forest',/forest|timber|rotation|conservation|land/i,'Land, cohorts & time','<path d="M90 150H240V300H90ZM270 150H510V230H270ZM270 260H510V480H270ZM90 330H240V480H90Z" fill="$ink"/><path d="M165 175V275M115 225H215M300 300L475 440M475 300L300 440" stroke="$support" stroke-width="12"/><path d="M105 400H225" stroke="$accent" stroke-width="24"/>'],
+    ['jurisdiction-openings','boundaries',/border|trade|jurisdiction|institution|rule|authority|legal/i,'Boundaries & permitted exchange','<path d="M100 110H180V470H100ZM420 110H500V470H420Z" fill="$ink"/><path d="M70 290H530" stroke="$support" stroke-width="28"/><path d="M220 200V390H380V200" fill="none" stroke="$accent" stroke-width="15"/><path d="M260 130H340V220H260Z" fill="$ink"/>'],
+    ['observation-lattice','evidence',/evidence|measurement|identification|counterfactual|information|threshold/i,'Observation & inference','<path d="M100 140H500V470H100Z" fill="none" stroke="$ink" stroke-width="10"/><path d="M100 250H500M100 360H500M230 140V470M370 140V470" stroke="$support" stroke-width="7"/><circle cx="165" cy="195" r="35" fill="$accent"/><circle cx="300" cy="415" r="35" fill="$accent"/><path d="M405 275L465 335M465 275L405 335" stroke="$ink" stroke-width="10"/>']
+  ];
+  function loblollyModel(info,chosen,seed,framing){
+    var history=markHistory(info,'sp'),ranked=loblollyScenes.map(function(s,i){return {s:s,i:i,score:(framing.match(new RegExp(s[2].source,'ig'))||[]).length}}).filter(function(x){return x.score}).sort(function(a,b){return b.score-a.score||a.i-b.i});
+    // Keep the strongest supported concept; exhaustion never forces an unrelated subject.
+    var concept=ranked[0]&&ranked[0].s[1];
+    for(var x of ranked.filter(function(x){return x.s[1]===concept})){
+      var s=x.s,m={version:6,key:'sp',date:info.date,no:String(info.no).padStart(3,'0'),identity:identities.sp,theme:chosen.id,subject:s[1],composition:s[0],signature:'loblolly:'+s[0],phrase:s[3],seed:seed,framing:framing,geometry:s[4]};
+      if(originality.review({...m,frozen:svg(m)},history,'cover').ok)return m;
+    }
+    throw Error('L&L cover needs a new unused content-supported composition for '+info.date+' ('+(concept||'no supported concept')+'); author a genuinely different relevant scene, never a transformed historical plate.');
   }
   function artwork(m,p){
     var ink=p[1],accent=p[2],support=p[3],shift=m.seed%29-14;
     var grid=m.key==='cp'?'<path d="M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540M60 360H540M60 420H540M60 480H540M60 60V500M120 60V500M180 60V500M240 60V500M300 60V500M360 60V500M420 60V500M480 60V500M540 60V500" fill="none" stroke="'+ink+'" opacity=".12"/>':'';
     var contours=m.key==='sp'?'<g fill="none" stroke="'+ink+'" opacity=".16"><path d="M-20 460Q150 290 300 440T620 410M-20 480Q150 310 300 460T620 430M-20 500Q150 330 300 480T620 450M-20 520Q150 350 300 500T620 470"/></g>':'';
     if((m.version===3||m.version===5)&&m.key==='fb')return fbArtwork.issuePlate(m,p);
+    if(m.version===6&&m.key==='sp')return contours+m.geometry.replace(/\$(ink|accent|support|paper)/g,function(_,k){return p[{paper:0,ink:1,accent:2,support:3}[k]]});
     if(m.version===4&&m.key==='cp')return grid+workbookArtwork(m,p);
     if(m.version===2)return grid+contours+specificArtwork(m,p);
     var art;
@@ -162,5 +191,5 @@
     return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="'+esc(m.identity+', '+(m.key==='cp'?'set':'issue')+' '+m.no+': '+m.phrase)+'"><title>'+esc(m.identity+' · '+m.no+' · '+m.phrase)+'</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="'+p[0]+'"/><g>'+artwork(m,p)+'</g><path d="M42 570H558" stroke="'+p[1]+'" stroke-width="2"/><g fill="'+p[1]+'"><text x="42" y="634" font-family="'+family+'" font-size="'+(m.key==='sp'?43:48)+'">'+esc(m.identity)+'</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">'+(m.key==='cp'?'SET':'ISSUE')+' '+m.no+' / '+esc(m.date)+'</text><text x="42" y="740" font-family="'+family+'" font-size="26">'+esc(m.phrase)+'</text></g></svg>';
   }
   function update(info){var m=model(info),host=root.document.querySelector('[data-issue-mark="'+m.key+'"]');if(!host)return m;host.innerHTML=svg(m);host.dataset.edition=m.date;host.dataset.theme=m.theme;host.dataset.signature=String(m.seed);host.removeAttribute('aria-hidden');var link=host.closest('a');if(link)link.setAttribute('aria-label',m.identity+', '+(m.key==='cp'?'set':'issue')+' '+m.no+': '+m.phrase);return m}
-  var api={model:model,svg:svg,update:update,concept:concept,workbookSignature:workbookSignature};if(typeof module==='object'&&module.exports)module.exports=api;else root.PeriodicalsIssueMarks=api;
+  var api={model:model,svg:svg,update:update,concept:concept,workbookSignature:workbookSignature,validateOriginality:validateOriginality};if(typeof module==='object'&&module.exports)module.exports=api;else root.PeriodicalsIssueMarks=api;
 })(typeof window==='object'?window:{});

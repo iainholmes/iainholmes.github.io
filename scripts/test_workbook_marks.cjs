@@ -21,16 +21,17 @@ const temporary=[];
 try{
  const questions=[{field:'Econometrics',stem:'Interpret conditional median quantile regression.',concepts:['Conditional quantiles']}];
  const signatures=[];
- for(let i=0;i<12;i++){
-  const date='2027-01-'+String(i+10).padStart(2,'0'),info={key:'cp',date,no:9+i,questions},m=marks.model(info);
-  equal(marks.model(info),m,'deterministic same input');check(!signatures.slice(-3).includes(m.signature),'three preceding effective compositions excluded');
+ for(let i=0;i<4;i++){
+  const date='2027-01-'+String(i+10).padStart(2,'0'),info={key:'cp',date,no:14+i,questions},m=marks.model(info);
+  equal(marks.model(info),m,'deterministic same input');check(!signatures.includes(m.signature),'all prior effective compositions excluded');
   equal(m.subject,'quantiles','recurring topic stays content-supported');check(!marks.svg(m).includes('rotate('));signatures.push(m.signature);archive['cp:'+date]={...m,frozen:marks.svg(m)};temporary.push('cp:'+date);
  }
- equal(new Set(signatures).size,4,'one recurring topic has four different structural pictures');
+ equal(new Set(signatures).size,4,'four unused quantile pictures supplement the historically used bands');
+ assert.throws(()=>marks.model({key:'cp',date:'2027-02-01',no:18,questions}),/all 5 supported authored scenes collide/,'full-history exhaustion fails instead of cycling');count++;
 }finally{temporary.forEach(k=>delete archive[k])}
 const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'workbook-publication-'));
 try{
- const files=['scripts/prepare_periodicals.cjs','daily-econ-challenge/learning-schema.cjs','daily-econ-challenge/index.html','daily-watchlist-5/index.html','daily-watchlist-5/artwork.js','daily-watchlist-5/artwork-archive.js','personal-updates/issue-marks.js','personal-updates/issue-mark-archive.js','personal-updates/index.html','weekly-economics-environment/index.html','weekly-economics-environment/field-study.js','weekly-economics-environment/notebook/validate.cjs','weekly-economics-environment/notebook/index.html','weekly-economics-environment/notebook/reviews.json'];
+ const files=['scripts/prepare_periodicals.cjs','daily-econ-challenge/learning-schema.cjs','daily-econ-challenge/index.html','daily-watchlist-5/index.html','daily-watchlist-5/artwork.js','daily-watchlist-5/artwork-archive.js','personal-updates/issue-marks.js','personal-updates/art-originality.js','personal-updates/issue-mark-archive.js','personal-updates/index.html','weekly-economics-environment/index.html','weekly-economics-environment/field-study.js','weekly-economics-environment/notebook/validate.cjs','weekly-economics-environment/notebook/index.html','weekly-economics-environment/notebook/reviews.json'];
  for(const f of files){fs.mkdirSync(path.dirname(path.join(fixture,f)),{recursive:true});fs.copyFileSync(path.join(root,f),path.join(fixture,f))}
  const candidate=structuredClone(published);candidate.no=published.no+1;candidate.date=addDays(published.date,7);candidate.questions[0].field=candidate.questions[1].field;
  // Isolated metadata fixture, not a newly authored or publishable problem set.
@@ -42,7 +43,7 @@ try{
  for(const [key,value] of Object.entries(archive))equal(JSON.stringify(ar[key]),JSON.stringify(value),'preparation preserves published pin '+key);
  const m=ar['cp:'+candidate.date];check(m&&m.no===String(candidate.no).padStart(3,'0'));equal(JSON.stringify(marks.model({key:'cp',date:candidate.date,no:candidate.no,questions:candidate.questions})),JSON.stringify(Object.fromEntries(Object.entries(m).filter(([k])=>k!=='frozen'))),'client generator agrees with prepared future cover');
  const later={key:'cp',date:addDays(candidate.date,7),no:candidate.no+1,questions:candidate.questions};archive['cp:'+candidate.date]=m;let pipeline;try{pipeline=marks.model(later)}finally{delete archive['cp:'+candidate.date]}
- equal(marks.model({...later,recent:[...data.editions.slice(-2).map(e=>archive['cp:'+e.date]),m]}),pipeline,'a hub restored across two publications reconstructs the same recent context');
+ equal(marks.model({...later,recent:[...data.editions.slice(-2).map(e=>archive['cp:'+e.date]),m]}),pipeline,'a hub restored across two publications reconstructs the same full frozen context');
  const hub=first['personal-updates/index.html'],label=new Date(candidate.date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
  check(hub.includes(m.frozen),'future fallback cover matches');check(hub.includes('N<sup>o</sup>. '+m.no+' · '+label));check(hub.includes('data-cp="count">'+simulated.editions.length+'</b>'));check(hub.includes('data-cp-depth>'+simulated.editions.reduce((n,e)=>n+e.questions.length,0)+'</b>'));check(hub.includes('data-cp="title">'+candidate.questions.length+' questions · '+new Set(candidate.questions.map(q=>q.field)).size+' fields</p>'));check(hub.includes('_'+candidate.date+'_'),'new publication advances the shared cache key');
  if(process.env.SHELF_FIXTURE){fs.mkdirSync(process.env.SHELF_FIXTURE,{recursive:true});for(const f of files){fs.mkdirSync(path.dirname(path.join(process.env.SHELF_FIXTURE,f)),{recursive:true});fs.copyFileSync(path.join(fixture,f),path.join(process.env.SHELF_FIXTURE,f))}}

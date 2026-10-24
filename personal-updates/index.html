@@ -230,7 +230,8 @@ a{color:inherit}
 <link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-instrument">
 <link rel="stylesheet" href="issue-marks.css?v=20261002-instrument"><script src="issue-mark-archive.js?v=2026-10-23_2026-10-23_2026-10-23_abae6d5d1692"></script>
 <script src="../daily-watchlist-5/artwork.js?v=20261017-cover-originality"></script>
-<script src="issue-marks.js?v=20261017-cover-originality"></script>
+<script src="art-originality.js?v=20261023-full-history"></script>
+<script src="issue-marks.js?v=20261023-full-history"></script>
 <link rel="stylesheet" href="../assets/identity/identity.css?v=20261012-seamless2">
 </head>
 <body>
@@ -394,8 +395,8 @@ Object.keys(sched).forEach(function(k){var v=nextRun(sched[k][0],sched[k][1]);do
     set('[data-cp="title"]',ed.questions.length+' questions · '+fields.length+' fields');
     /* A restored hub may precede several new sets: reconstruct their deterministic
        recent context from canonical questions, while stored pins stay authoritative. */
-    var recent=[];data.editions.slice().sort(function(a,b){return a.date.localeCompare(b.date)}).forEach(function(x){recent.push(PeriodicalsIssueMarks.model({key:'cp',date:x.date,no:x.no,questions:x.questions,recent:recent.slice(-3)}))});
-    PeriodicalsIssueMarks.update({key:'cp',date:ed.date,no:ed.no,questions:ed.questions,recent:recent.slice(-4,-1)});
+    var recent=[];data.editions.slice().sort(function(a,b){return a.date.localeCompare(b.date)}).forEach(function(x){recent.push(PeriodicalsIssueMarks.model({key:'cp',date:x.date,no:x.no,questions:x.questions,history:recent}))});
+    PeriodicalsIssueMarks.update({key:'cp',date:ed.date,no:ed.no,questions:ed.questions,history:recent});
     /* the cover grid shows the reader's own record for the latest set, if any */
     try{var s=JSON.parse(localStorage.getItem('dec:v1:'+ed.date)||'null');
       set('[data-cp="grid"]',ed.questions.map(function(q,i){var a=s&&s.answers&&s.answers[q.id];var cls='';

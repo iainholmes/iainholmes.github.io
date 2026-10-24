@@ -32,28 +32,33 @@ const cp=data(read('daily-econ-challenge/index.html'),'challenge-data').editions
 require('../daily-econ-challenge/learning-schema.cjs').validate({editions:cp});
 for(const [key,editions] of [['fb',fb],['cp',cp]]){
  editions.forEach((e,i)=>{if(key==='cp'&&e.no!==i+1)throw Error('Nonsequential Workbook number');if(key==='fb'&&e.stories.length!==5)throw Error('Field Brief needs five stories');if(new Set(editions.map(x=>x.date)).size!==editions.length)throw Error('Duplicate publication date');
- const id=key+':'+e.date;if(archive[id]){if(key==='fb'&&e.date>storyArt.issuePolicy.historicalThrough){if(archive[id].date!==e.date||archive[id].key!=='fb'||archive[id].no!==String(e.no||i+1).padStart(3,'0'))throw Error('Field Brief cover does not match its canonical edition: '+e.date);storyArt.validateIssue(archive[id],archive);}return;}
+ const id=key+':'+e.date;if(archive[id]){if(key==='cp'&&e.date>'2026-10-23'){if(archive[id].date!==e.date||archive[id].key!=='cp'||archive[id].no!==String(e.no).padStart(3,'0'))throw Error('Workbook cover does not match its canonical set: '+e.date);marks.validateOriginality(archive[id],archive);}if(key==='fb'&&e.date>storyArt.issuePolicy.historicalThrough){if(archive[id].date!==e.date||archive[id].key!=='fb'||archive[id].no!==String(e.no||i+1).padStart(3,'0'))throw Error('Field Brief cover does not match its canonical edition: '+e.date);storyArt.validateIssue(archive[id],archive);}return;}
+ if(key==='cp'&&e.date<='2026-10-23')throw Error('Missing historical Workbook cover pin: '+e.date);
  if(key==='fb'&&(e.date<=storyArt.issuePolicy.historicalThrough||storyArchive.issues[e.date]))throw Error('Missing historical Field Brief cover pin: '+e.date);
  const m=marks.model({key,date:e.date,no:e.no||i+1,title:e.issueTitle,questions:e.questions,stories:e.stories,framing:[e.deck,e.signalTitle,...e.signal||[]].join(' '),previous:i?archive[key+':'+editions[i-1].date]:null});
- if(key==='cp'){const recent=editions.slice(Math.max(0,i-3),i).map(x=>archive['cp:'+x.date]);if(recent.some(x=>marks.workbookSignature(x)===marks.workbookSignature(m)))throw Error('Repeated Workbook issue composition');}
+ if(key==='cp')marks.validateOriginality(m,archive);
  if(key==='fb')storyArt.validateIssue({...m,frozen:marks.svg(m)},archive);
  archive[id]={...m,frozen:marks.svg(m)};
  });
 }
-write('daily-watchlist-5/artwork-archive.js',"/* Frozen published Field Brief plates. Legacy templates preserve their exact SVG bytes. Append only. */\n(function(root){const archive="+JSON.stringify(plates,null,2)+";if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});\n");
-let brief=read('daily-watchlist-5/index.html');
-brief=brief.replace(/artwork-archive\.js(?:\?v=[^"]*)?"/,'artwork-archive.js?v='+digest(read('daily-watchlist-5/artwork-archive.js'))+'"');
-write('daily-watchlist-5/index.html',brief);
 let ll=read('weekly-economics-environment/index.html');const field=data(ll,'field-studies');
 const editions=[...ll.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[^>]*data-title="([^"]+)"[^>]*>([\s\S]*?)(?=<section class="edition"|<\/main>)/g)].sort((a,b)=>a[1].localeCompare(b[1]));
 editions.forEach((e,i)=>{
  const synthesis=plain(e[3].match(/<section class="synthesis"[\s\S]*?<\/section>/)?.[0]||e[2]);
  const isNew=!field[e[1]];
- const id='sp:'+e[1];if(!archive[id]){const m=marks.model({key:'sp',date:e[1],no:i+1,framing:synthesis,previous:i?archive['sp:'+editions[i-1][1]]:null});archive[id]={...m,frozen:marks.svg(m)};}
- if(isNew){field[e[1]]=studies.artifact({date:e[1],no:i+1,synthesis,previous:i?field[editions[i-1][1]]:null,cover:archive[id]});if(!studies.distinctFromCover(field[e[1]],archive[id]))throw Error('Field Study duplicates its issue cover: '+e[1]);}
+ const id='sp:'+e[1];
+ if(!archive[id]){if(e[1]<='2026-10-23')throw Error('Missing historical L&L cover pin: '+e[1]);const m=marks.model({key:'sp',date:e[1],no:i+1,framing:synthesis,previous:i?archive['sp:'+editions[i-1][1]]:null});marks.validateOriginality(m,archive);archive[id]={...m,frozen:marks.svg(m)};}
+ else if(e[1]>'2026-10-23'||archive[id].version===6){if(archive[id].date!==e[1]||archive[id].key!=='sp'||archive[id].no!==String(i+1).padStart(3,'0'))throw Error('L&L cover does not match its canonical edition: '+e[1]);marks.validateOriginality(archive[id],archive);}
+ if(isNew){if(e[1]<='2026-10-23')throw Error('Missing historical Field Study pin: '+e[1]);field[e[1]]=studies.artifact({date:e[1],no:i+1,synthesis,history:field,cover:archive[id]});studies.validateOriginality(field[e[1]],field,archive[id]);}
+ else if(e[1]>'2026-10-23'||field[e[1]].version===4){if(field[e[1]].date!==e[1]||field[e[1]].no!==i+1)throw Error('Field Study does not match its canonical edition: '+e[1]);studies.validateOriginality(field[e[1]],field,archive[id]);}
  const figure='<figure class="hero-art" data-field-study="'+e[1]+'">'+field[e[1]].html+'</figure>';
  ll=ll.replace(e[0],e[0].replace(/<figure class="hero-art"[^>]*>[\s\S]*?<\/figure>/,figure));
 });
+// No artifact or hub writes until every new cover and Field Study has passed.
+write('daily-watchlist-5/artwork-archive.js',"/* Frozen published Field Brief plates. Legacy templates preserve their exact SVG bytes. Append only. */\n(function(root){const archive="+JSON.stringify(plates,null,2)+";if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});\n");
+let brief=read('daily-watchlist-5/index.html');
+brief=brief.replace(/artwork-archive\.js(?:\?v=[^"]*)?"/,'artwork-archive.js?v='+digest(read('daily-watchlist-5/artwork-archive.js'))+'"');
+write('daily-watchlist-5/index.html',brief);
 write('weekly-economics-environment/index.html',jsonReplace(ll,'field-studies',field));
 write('personal-updates/issue-mark-archive.js',"/* Published artwork is immutable. Append new editions; never overwrite an existing entry. */\n(function(root){var archive="+JSON.stringify(archive,null,2)+";if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});\n");
 let hub=read('personal-updates/index.html');

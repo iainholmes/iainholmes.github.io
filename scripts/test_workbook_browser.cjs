@@ -48,7 +48,7 @@ async function main(){
  try{
   let c=await context(browser,{width:390,height:844}),p=await c.newPage();await open(p);
   const data=await p.evaluate(()=>JSON.parse(document.getElementById('challenge-data').textContent)),editions=data.editions.slice().sort((a,b)=>a.date.localeCompare(b.date));
-  equal(editions.length,5);equal(editions.reduce((n,e)=>n+e.questions.length,0),40);
+  equal(editions.length,13);equal(editions.reduce((n,e)=>n+e.questions.length,0),104);
   // Acceptance regression: non-adjacent saved answers, genuine reopen/Resume, and both reset scopes.
   const mapped=editions[1],other=editions[2];await ledger(p);await ledgerMap(p,'pristine');
   await p.locator('[data-date="'+mapped.date+'"].pd-edition-entry').click();await ready(p);
@@ -113,9 +113,9 @@ async function main(){
   // Geometry and representative math/table/output content at each responsive size.
   for(const v of [{width:390,height:844},{width:320,height:568},{width:844,height:390},{width:768,height:1024},{width:1440,height:900}]){
    c=await context(browser,v);p=await c.newPage();await open(p,'#'+old.date+'/q4/solution');equal(await p.locator('details[data-learning="explanation"]').count(),0,'direct solution route cannot expose an uncommitted answer');await p.locator('details[data-learning="assistance"] summary').click();await ready(p);await overflow(p,'expanded table '+v.width);check(await p.locator('.learning-material table').isVisible());await shot(p,'table-'+v.width);
-   await open(p,'#'+editions[0].date+'/q7');await p.locator('details[data-learning="assistance"] summary').click();await overflow(p,'expanded output '+v.width);check(await p.locator('.learning-material pre').isVisible());await shot(p,'output-'+v.width);
+   await open(p,'#'+editions[0].date+'/q7');await p.locator('details[data-learning="assistance"] summary').click();await overflow(p,'expanded output '+v.width);check(await p.locator('.learning-material pre').isVisible());check((await p.locator('.learning-material pre').evaluate(el=>getComputedStyle(el).fontFamily)).includes('JetBrains Mono'));await shot(p,'output-'+v.width);
    await open(p,'#'+last.date+'/q2');await p.locator('details[data-learning="assistance"] summary').click();await p.locator('[data-opt="0"]').click();await p.locator('[data-act="answer"]').click();await p.locator('details[data-learning="explanation"] summary').click();await overflow(p,'expanded Explanation '+v.width);await shot(p,'explanation-'+v.width);
-   const fonts=await p.evaluate(()=>Object.fromEntries(['.ps-title h1','.ps-folio','.stem','.learning summary','.learning-material','.learning-material pre'].map(s=>[s,document.querySelector(s)?getComputedStyle(document.querySelector(s)).fontFamily:null])));check(fonts['.ps-title h1'].includes('STIX Two Text'));check(fonts['.ps-folio'].includes('STIX Two Text'));check(fonts['.stem'].includes('STIX Two Text'));check(fonts['.learning summary'].includes('Instrument Sans'));check(fonts['.learning-material pre'].includes('JetBrains Mono'));check(await p.evaluate(()=>document.fonts.check('16px "STIX Two Text"')&&document.fonts.check('12px "Instrument Sans"')));
+   const fonts=await p.evaluate(()=>Object.fromEntries(['.ps-title h1','.ps-folio','.stem','.learning summary','.learning-material','.learning-material pre'].map(s=>[s,document.querySelector(s)?getComputedStyle(document.querySelector(s)).fontFamily:null])));check(fonts['.ps-title h1'].includes('STIX Two Text'));check(fonts['.ps-folio'].includes('STIX Two Text'));check(fonts['.stem'].includes('STIX Two Text'));check(fonts['.learning summary'].includes('Instrument Sans'));check(await p.evaluate(()=>document.fonts.check('16px "STIX Two Text"')&&document.fonts.check('12px "Instrument Sans"')));
    const targets=await p.locator('.learning summary').evaluateAll(els=>els.map(el=>el.getBoundingClientRect().height));check(targets.every(h=>h>=44),'inline controls preserve touch height');
    await p.locator('button[data-mode="night"]').click();check(await p.locator('html').getAttribute('data-mode')==='night');await p.locator('button[data-mode="day"]').click();await p.locator('.pd-tools button').filter({hasText:'Share'}).click();check((await p.evaluate(()=>window.__copied)).some(url=>url.includes(last.date)));
    await p.locator('.pd-tools button').filter({hasText:'‹ Prev'}).click();await p.waitForFunction(d=>location.hash==='#'+d,editions.at(-2).date);await ready(p);equal((await saved(p)).edition,editions.at(-2).date);await p.locator('.pd-tools button').filter({hasText:'Next ›'}).click();await p.waitForFunction(d=>location.hash==='#'+d,last.date);await ready(p);equal((await saved(p)).edition,last.date);
@@ -124,7 +124,7 @@ async function main(){
    const ledgerText=await p.locator('table.index').textContent();check(ledgerText.includes('Assistance used 1×'));await c.close();console.log('Responsive Workbook checks passed at '+v.width+'×'+v.height);
   }
   equal(errors,[],'no JavaScript errors during all-question interaction');
-  fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({assertions,questions:40,engine:'WebKit',origin,viewports:['390×844','320×568','844×390','768×1024','1440×900'],standaloneEquivalent:true},null,2));console.log(assertions+' real-browser Workbook assertions passed.');
+  fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({assertions,questions:editions.reduce((n,e)=>n+e.questions.length,0),engine:'WebKit',origin,viewports:['390×844','320×568','844×390','768×1024','1440×900'],standaloneEquivalent:true},null,2));console.log(assertions+' real-browser Workbook assertions passed.');
  }finally{await browser.close()}
 }
 main().catch(e=>{console.error(e);process.exitCode=1});
