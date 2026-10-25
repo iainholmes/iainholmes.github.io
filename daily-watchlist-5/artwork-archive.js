@@ -1534,6 +1534,68 @@
         "seed": 1226143569,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A rotating storm path crosses a settled landscape\"><title>Repeated storm damage turns emergency ferries into Hatteras Island&#39;s lifeline</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-24-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-24-05)\"><path d=\"M95 505H705\" stroke=\"#7c5a3e\" stroke-width=\"25\"/><path d=\"M510 505V365L590 300L675 365V505Z\" fill=\"#2c241d\"/><path d=\"M125 145Q440 70 520 230Q570 330 445 365Q330 398 354 485\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"48\"/><path d=\"M190 205Q395 155 438 244Q464 303 386 326\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"22\"/><path d=\"M239 430L298 388M405 180L452 137M538 272L595 238\" stroke=\"#c4452c\" stroke-width=\"18\"/></g></svg>"
       }
+    },
+    "2026-10-25": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-25",
+        "number": "01",
+        "category": "Technology · satellite infrastructure",
+        "topic": "infrastructure",
+        "title": "Ukraine says Starlink and Starshield restrictions have been lifted",
+        "composition": "infrastructure-wafer",
+        "signature": "plate:infrastructure-wafer",
+        "seed": 2520423772,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A wafer connects to separate production stages\"><title>Ukraine says Starlink and Starshield restrictions have been lifted</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-25-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-25-01)\"><circle cx=\"265\" cy=\"310\" r=\"190\" fill=\"#1b4a6b\"/><path d=\"M142 175H388M108 267H422M108 359H422M142 452H388M175 143V477M267 121V500M359 143V477\" stroke=\"#f4ead7\" stroke-width=\"13\"/><path d=\"M470 190H690V295H470ZM520 410H735V515H520Z\" fill=\"#2c241d\"/><path d=\"M430 310H555V400\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-25",
+        "number": "02",
+        "category": "U.S. policy · election law",
+        "topic": "research",
+        "title": "Justice Department seeks conditional block on Alaska Senate certification",
+        "composition": "research-vacancy",
+        "signature": "plate:research-vacancy",
+        "seed": 35463368,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Research benches lose staffed capacity\"><title>Justice Department seeks conditional block on Alaska Senate certification</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-25-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-25-02)\"><path d=\"M75 525H730\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M95 235H300V285H95ZM385 385H715V435H385Z\" fill=\"#1b4a6b\"/><path d=\"M135 285V525M260 285V525M420 435V525M680 435V525\" stroke=\"#2c241d\" stroke-width=\"23\"/><path d=\"M170 214V160H207V113H245L270 177L233 210Z\" fill=\"#2c241d\"/><path d=\"M466 360V254H534V360M586 360V254H654V360\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/><path d=\"M548 105L548 190M510 153L548 195L586 153\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-25",
+        "number": "03",
+        "category": "Environment · marine pollution",
+        "topic": "energy",
+        "title": "Oil spill closes beaches across three northern UAE emirates",
+        "composition": "energy-reserve",
+        "signature": "plate:energy-reserve",
+        "seed": 3587751904,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A storage tank feeds a finite reserve through a valve\"><title>Oil spill closes beaches across three northern UAE emirates</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-25-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-25-03)\"><path d=\"M105 170Q250 85 395 170V485Q250 555 105 485Z\" fill=\"#1b4a6b\"/><ellipse cx=\"250\" cy=\"170\" rx=\"145\" ry=\"48\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M395 380H555V520H710\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"32\"/><circle cx=\"555\" cy=\"380\" r=\"52\" fill=\"#c4452c\"/><path d=\"M555 338V422M513 380H597\" stroke=\"#f4ead7\" stroke-width=\"11\"/><path d=\"M155 315H345\" stroke=\"#c98a12\" stroke-width=\"26\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-25",
+        "number": "04",
+        "category": "Economy · industrial investment",
+        "topic": "heat",
+        "title": "Audi plans its first U.S. factory in a $4 billion Georgia investment",
+        "composition": "heat-canopy",
+        "signature": "plate:heat-canopy",
+        "seed": 145399496,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Heat waves above a shaded shelter and exposed ground\"><title>Audi plans its first U.S. factory in a $4 billion Georgia investment</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-25-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-25-04)\"><circle cx=\"605\" cy=\"160\" r=\"101\" fill=\"#c4452c\"/><path d=\"M70 155Q180 95 290 155T510 155M70 225Q180 165 290 225T510 225\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"25\"/><path d=\"M105 375L285 265L465 375Z\" fill=\"#1b4a6b\"/><path d=\"M140 375V540M430 375V540\" stroke=\"#2c241d\" stroke-width=\"23\"/><g fill=\"#2c241d\"><circle cx=\"230\" cy=\"417\" r=\"24\"/><circle cx=\"328\" cy=\"417\" r=\"24\"/><path d=\"M207 445H253V523H207ZM305 445H351V523H305Z\"/></g><path d=\"M508 520L561 451L600 500L651 427L718 485\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-25",
+        "number": "05",
+        "category": "North Carolina · advanced manufacturing",
+        "topic": "research",
+        "title": "US Conec plans a $149.7 million optical-interconnect expansion in Hickory",
+        "composition": "labor-benches",
+        "signature": "plate:labor-benches",
+        "seed": 1282484635,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separate work benches and an unfilled place\"><title>US Conec plans a $149.7 million optical-interconnect expansion in Hickory</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-25-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-25-05)\"><path d=\"M85 300H325V350H85ZM445 420H715V470H445Z\" fill=\"#2c241d\"/><path d=\"M125 350V545M280 350V545M480 470V545M670 470V545\" stroke=\"#2c241d\" stroke-width=\"22\"/><circle cx=\"205\" cy=\"185\" r=\"47\" fill=\"#c4452c\"/><path d=\"M145 285V240Q205 195 265 240V285Z\" fill=\"#1b4a6b\"/><path d=\"M506 340V235H635V340\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"16\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

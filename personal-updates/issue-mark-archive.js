@@ -990,5 +990,69 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 028: Connections &amp; capacity\"><title>Field Brief · 028 · Connections &amp; capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M86 155H222V472H86ZM378 110H514V472H378Z\" fill=\"#221a14\"/><path d=\"M108 209H200M108 287H200M108 365H200M400 164H492M400 242H492M400 320H492M400 398H492\" stroke=\"#f1e6d0\" stroke-width=\"18\"/><path d=\"M245 483L300 214L355 483Z\" fill=\"#8a2a36\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 028 / 2026-10-24</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Connections &amp; capacity</text></g></svg>"
+  },
+  "fb:2026-10-25": {
+    "key": "fb",
+    "date": "2026-10-25",
+    "no": "029",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "Ukraine says restrictions on Starlink and Starshield have ended after disrupting military operations, while the Justice Department asks a court to condition Alaska's Senate certification on a same-name ballot dispute. An oil spill closes beaches across three UAE emirates, Audi plans its first U.S. factory, and a Hickory optical-components maker announces a $149.7 million expansion. Control, liability and localized capacity The five developments are distinct. The Starlink episode and Alaska lawsuit concern control over essential systems; the UAE spill turns source identification into an environmental-liability question; Audi and US Conec are long-horizon commitments to localized manufacturing capacity. The next evidence is concrete: durable satellite-service rules, the Alaska court's jurisdictional ruling, a measured spill footprint and responsible vessel, Volkswagen's final approval and construction milestones, and verified US Conec hiring and capital expenditure.",
+    "version": 5,
+    "subject": "capacity",
+    "composition": "study-broad-and-narrow-shared-load-working-hours-observation-window",
+    "signature": "issue:study-broad-and-narrow-shared-load-working-hours-observation-window",
+    "phrase": "Observe, enforce & adapt",
+    "seed": 3811731946,
+    "geometry": "<g transform=\"translate(75 100) scale(2.45)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"$ink\"/><path d=\"M43 35H57V60H43Z\" fill=\"$accent\"/><path d=\"M65 89H94\" stroke=\"$support\" stroke-width=\"9\"/></g><g transform=\"translate(360 130) scale(1.7)\"><circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"$ink\"/><circle cx=\"50\" cy=\"50\" r=\"33\" fill=\"$support\"/><path d=\"M50 23V50L75 66\" fill=\"none\" stroke=\"$accent\" stroke-width=\"9\"/></g><g transform=\"translate(350 355) scale(1.45)\"><path d=\"M6 12H94V88H6Z\" fill=\"none\" stroke=\"$ink\" stroke-width=\"10\"/><path d=\"M17 50Q50 17 83 50Q50 83 17 50Z\" fill=\"$support\"/><circle cx=\"50\" cy=\"50\" r=\"16\" fill=\"$accent\"/></g><path d=\"M75 495H525M330 130V455\" stroke=\"$support\" stroke-width=\"6\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "02"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "01",
+          "03"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01",
+          "05"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 28,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 029: Observe, enforce &amp; adapt\"><title>Field Brief · 029 · Observe, enforce &amp; adapt</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(75 100) scale(2.45)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"#221a14\"/><path d=\"M43 35H57V60H43Z\" fill=\"#8a2a36\"/><path d=\"M65 89H94\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><g transform=\"translate(360 130) scale(1.7)\"><circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"#221a14\"/><circle cx=\"50\" cy=\"50\" r=\"33\" fill=\"#c5ad88\"/><path d=\"M50 23V50L75 66\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"9\"/></g><g transform=\"translate(350 355) scale(1.45)\"><path d=\"M6 12H94V88H6Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><path d=\"M17 50Q50 17 83 50Q50 83 17 50Z\" fill=\"#c5ad88\"/><circle cx=\"50\" cy=\"50\" r=\"16\" fill=\"#8a2a36\"/></g><path d=\"M75 495H525M330 130V455\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 029 / 2026-10-25</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observe, enforce &amp; adapt</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
