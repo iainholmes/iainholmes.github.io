@@ -1054,5 +1054,58 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 029: Observe, enforce &amp; adapt\"><title>Field Brief · 029 · Observe, enforce &amp; adapt</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(75 100) scale(2.45)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"#221a14\"/><path d=\"M43 35H57V60H43Z\" fill=\"#8a2a36\"/><path d=\"M65 89H94\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><g transform=\"translate(360 130) scale(1.7)\"><circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"#221a14\"/><circle cx=\"50\" cy=\"50\" r=\"33\" fill=\"#c5ad88\"/><path d=\"M50 23V50L75 66\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"9\"/></g><g transform=\"translate(350 355) scale(1.45)\"><path d=\"M6 12H94V88H6Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><path d=\"M17 50Q50 17 83 50Q50 83 17 50Z\" fill=\"#c5ad88\"/><circle cx=\"50\" cy=\"50\" r=\"16\" fill=\"#8a2a36\"/></g><path d=\"M75 495H525M330 130V455\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 029 / 2026-10-25</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observe, enforce &amp; adapt</text></g></svg>"
+  },
+  "fb:2026-10-26": {
+    "key": "fb",
+    "date": "2026-10-26",
+    "no": "030",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "Meta launches as much as $95 billion of equity financing for its AI buildout, while Indian publishers ask the Supreme Court to narrow a privacy law they say threatens reporting and source confidentiality. U.S. regulators penalize conflict-zone codeshare flights, BP accelerates a Deepwater Horizon payment and resolves Louisiana coastal cases, and Durham reports measurable results from coordinated housing placements. Financing, enforcement and measurable delivery The five developments are distinct. Meta is externalizing part of an AI infrastructure bill to equity markets; Indian publishers are testing the boundary between privacy and reporting; U.S. aviation orders clarify codeshare safety duties; Louisiana and BP are closing long-tail spill liabilities; and Durham is reporting housing placements rather than plans. The next evidence is practical: pricing and use of Meta’s offerings, the Indian court’s treatment of public-interest journalism, airline route-control changes, Louisiana’s use of accelerated settlement funds, and durable housing retention at larger scale.",
+    "version": 5,
+    "subject": "enforcement",
+    "composition": "study-separate-registers-inspection-screen-measured-range-fabrication-disc",
+    "signature": "issue:study-separate-registers-inspection-screen-measured-range-fabrication-disc",
+    "phrase": "Routes & enforcement",
+    "seed": 4062610917,
+    "geometry": "<g transform=\"translate(65 105) scale(1.95)\"><path d=\"M7 8H93V92H7Z\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><path d=\"M28 18V82M51 18V82M74 18V82\" stroke=\"$support\" stroke-width=\"6\"/><path d=\"M10 56H90\" stroke=\"$accent\" stroke-width=\"13\"/></g><g transform=\"translate(350 280) scale(1.8)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"$accent\"/><path d=\"M50 6V30M50 70V94\" stroke=\"$support\" stroke-width=\"7\"/></g><g transform=\"translate(365 105) scale(1.12)\"><circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"$accent\"/><path d=\"M24 16V84M50 6V94M76 16V84M14 27H86M6 52H94M16 77H84\" stroke=\"$paper\" stroke-width=\"5\"/></g><path d=\"M305 95V505\" stroke=\"$support\" stroke-width=\"5\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "02",
+          "03",
+          "04"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "02",
+          "05"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01",
+          "02"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "01",
+          "03"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 29,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 030: Routes &amp; enforcement\"><title>Field Brief · 030 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 105) scale(1.95)\"><path d=\"M7 8H93V92H7Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M28 18V82M51 18V82M74 18V82\" stroke=\"#c5ad88\" stroke-width=\"6\"/><path d=\"M10 56H90\" stroke=\"#8a2a36\" stroke-width=\"13\"/></g><g transform=\"translate(350 280) scale(1.8)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"#8a2a36\"/><path d=\"M50 6V30M50 70V94\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><g transform=\"translate(365 105) scale(1.12)\"><circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"#8a2a36\"/><path d=\"M24 16V84M50 6V94M76 16V84M14 27H86M6 52H94M16 77H84\" stroke=\"#f1e6d0\" stroke-width=\"5\"/></g><path d=\"M305 95V505\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 030 / 2026-10-26</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

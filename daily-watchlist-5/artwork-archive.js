@@ -1596,6 +1596,68 @@
         "seed": 1282484635,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separate work benches and an unfilled place\"><title>US Conec plans a $149.7 million optical-interconnect expansion in Hickory</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-25-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-25-05)\"><path d=\"M85 300H325V350H85ZM445 420H715V470H445Z\" fill=\"#2c241d\"/><path d=\"M125 350V545M280 350V545M480 470V545M670 470V545\" stroke=\"#2c241d\" stroke-width=\"22\"/><circle cx=\"205\" cy=\"185\" r=\"47\" fill=\"#c4452c\"/><path d=\"M145 285V240Q205 195 265 240V285Z\" fill=\"#1b4a6b\"/><path d=\"M506 340V235H635V340\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"16\"/></g></svg>"
       }
+    },
+    "2026-10-26": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-26",
+        "number": "01",
+        "category": "Technology · AI finance",
+        "topic": "finance",
+        "title": "Meta turns to equity markets for as much as $95 billion of AI finance",
+        "composition": "finance-ledger",
+        "signature": "plate:finance-ledger",
+        "seed": 454278287,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A ledger is inspected beside a hidden transfer channel\"><title>Meta turns to equity markets for as much as $95 billion of AI finance</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-26-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-26-01)\"><path d=\"M85 130H360V540H85Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M125 200H325M125 270H325M125 340H260M125 410H300\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"548\" cy=\"284\" r=\"112\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"35\"/><path d=\"M624 367L718 489\" stroke=\"#7a1f33\" stroke-width=\"42\"/><path d=\"M402 530V425H475V345H548\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"21\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-26",
+        "number": "02",
+        "category": "Technology · data governance",
+        "topic": "government",
+        "title": "Indian publishers ask the Supreme Court to narrow the country's privacy law",
+        "composition": "government-document",
+        "signature": "plate:government-document",
+        "seed": 1580747344,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A legal document meets a gate of authority\"><title>Indian publishers ask the Supreme Court to narrow the country&#39;s privacy law</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-26-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-26-02)\"><path d=\"M110 100H375L460 190V525H110Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M160 225H395M160 302H395M160 378H312\" stroke=\"#7c5a3e\" stroke-width=\"20\"/><path d=\"M530 535V185H690V535M490 260H728\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"30\"/><path d=\"M460 445H550\" stroke=\"#1b4a6b\" stroke-width=\"27\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-26",
+        "number": "03",
+        "category": "U.S. policy · aviation safety",
+        "topic": "infrastructure",
+        "title": "U.S. fines Air France and KLM over codeshare flights through restricted Iraqi airspace",
+        "composition": "research-bridge",
+        "signature": "plate:research-bridge",
+        "seed": 3876122038,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separated evidence platforms are connected by a narrow research bridge\"><title>U.S. fines Air France and KLM over codeshare flights through restricted Iraqi airspace</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-26-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-26-03)\"><rect x=\"85\" y=\"305\" width=\"185\" height=\"225\" fill=\"#1b4a6b\"/><rect x=\"530\" y=\"210\" width=\"185\" height=\"320\" fill=\"#1d5f47\"/><path d=\"M270 354Q400 195 530 260\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"30\"/><path d=\"M145 258V145H205V258M587 165V82H648V165\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"20\"/><path d=\"M305 420H490\" stroke=\"#7c5a3e\" stroke-width=\"15\" stroke-dasharray=\"26 20\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-26",
+        "number": "04",
+        "category": "Environment · coastal liability",
+        "topic": "finance",
+        "title": "BP accelerates $350 million of Deepwater Horizon payments and settles Louisiana coastal cases",
+        "composition": "finance-vault",
+        "signature": "plate:finance-vault",
+        "seed": 813024536,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A locked reserve encloses transfers\"><title>BP accelerates $350 million of Deepwater Horizon payments and settles Louisiana coastal cases</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-26-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-26-04)\"><rect x=\"110\" y=\"125\" width=\"430\" height=\"395\" rx=\"9\" fill=\"#2c241d\"/><circle cx=\"325\" cy=\"320\" r=\"122\" fill=\"#1b4a6b\" stroke=\"#f4ead7\" stroke-width=\"16\"/><path d=\"M325 235V405M240 320H410\" stroke=\"#f4ead7\" stroke-width=\"16\"/><path d=\"M540 245H690V465H615\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"32\"/><path d=\"M607 449L586 465L607 481\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"13\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-26",
+        "number": "05",
+        "category": "North Carolina · housing operations",
+        "topic": "research",
+        "title": "Durham's housing sprints move 104 people out of homelessness",
+        "composition": "labor-steps",
+        "signature": "plate:labor-steps",
+        "seed": 3666226709,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Hiring capacity narrows across workstations\"><title>Durham&#39;s housing sprints move 104 people out of homelessness</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-26-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-26-05)\"><path d=\"M85 510V185H255V510M300 510V285H470V510M515 510V395H685V510\" fill=\"#1b4a6b\"/><g fill=\"#f4ead7\"><circle cx=\"170\" cy=\"265\" r=\"28\"/><path d=\"M134 385V320Q170 286 206 320V385Z\"/><circle cx=\"385\" cy=\"356\" r=\"28\"/><path d=\"M349 476V410Q385 377 421 410V476Z\"/></g><path d=\"M535 440H665\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M75 548H725\" stroke=\"#2c241d\" stroke-width=\"18\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
