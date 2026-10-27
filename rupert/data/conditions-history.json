@@ -303,6 +303,49 @@
       ],
       "headline_condition": "Clear, cool and breezy",
       "condition_level": "normal"
+    },
+    {
+      "edition_id": "2026-W44-tue",
+      "replaced_at": "2026-10-27T15:55:27.201Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-10-27T10:28:54-04:00",
+        "checked_at": "2026-10-27T15:49:55.073Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RAH/65,30/forecast",
+          "issued_at": "2026-10-27T14:28:54.000Z",
+          "retrieved_at": "2026-10-27T15:49:55.073Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Partly sunny, with a high near 77."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "A chance of rain showers. Mostly cloudy, with a high near 76. Chance of precipitation is 50%."
+          }
+        ],
+        "summary": "Saturday: Partly sunny, with a high near 77. Sunday: A chance of rain showers. Mostly cloudy, with a high near 76. Chance of precipitation is 50%. Saturday night: A slight chance of rain showers after 1am. Mostly cloudy, with a low around 56. Sunday night: A chance of rain showers. Mostly cloudy, with a low around 58. Chance of precipitation is 50%.",
+        "alerts": [],
+        "alerts_checked_at": "2026-10-27T15:49:55.073Z",
+        "trail_note": "Stay on the marked Long Valley Farm loop and give bicycles room. Carry water even in late October; wet sand, roots and leaves may be slippery. The millpond is scenery, not a swimming stop.",
+        "pivot": {
+          "if": "Thunder, unsafe wind, flooding, slippery footing or an official closure",
+          "note": "Postpone. A picnic or another outdoor trail is not a thunderstorm alternative; recheck official status and NWS before leaving."
+        }
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — dated weekend forecast",
+          "url": "https://api.weather.gov/gridpoints/RAH/65,30/forecast",
+          "retrieved": "2026-10-27"
+        }
+      ],
+      "headline_condition": "Saturday first; showers possible Sunday",
+      "condition_level": "normal"
     }
   ]
 }

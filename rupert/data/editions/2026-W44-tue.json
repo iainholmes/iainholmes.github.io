@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "id": "2026-W44-tue",
+  "slot": "tuesday",
+  "status": "published",
+  "published_at": "2026-10-27T11:57:16-04:00",
+  "weekend": {
+    "start": "2026-10-31",
+    "end": "2026-11-01"
+  },
+  "flagship": {
+    "place_id": "carvers-creek-long-valley-farm",
+    "title": "Long Valley Farm, beyond the field edge",
+    "standfirst": "An easy two-mile loop from old farm fields into longleaf pines, with an optional millpond detour and plenty of room in the plan for Rupert’s pauses.",
+    "why_this_week": "The attraction here is the change of scene within a modest walk: open field, the Rockefeller farmstead and a sandy return through the pines. Follow the white-circle Rockefeller Loop from the welcome-center fence opening; the official two miles describe the complete loop. This is a little more walking than last Thursday’s pine circuit, with farm history and an optional millpond peninsula rather than another forest-only plan. Keep the main loop as the default. Add Cypress Point only if Rupert and the footing are comfortable. Saturday is the better forecast starting point; Sunday currently carries a 50 percent chance of showers. Neither day is a weather clearance, and the forecast can change before the weekend.",
+    "headline_condition": "Saturday first; showers possible Sunday",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-10-27",
+      "access": {
+        "name": "Long Valley Farm parking, 2505 Long Valley Road, Spring Lake",
+        "parking": "Use the designated Long Valley Farm visitor lot at the park office and welcome center, 2505 Long Valley Road. The Rockefeller Loop begins at the opening in the fence near the welcome center. Free day use. Saturday October 31: 8 a.m.–8 p.m.; Sunday November 1: 8 a.m.–6 p.m. Finish in daylight, before either closing time."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          85,
+          105
+        ]
+      },
+      "duration_h": [
+        1.5,
+        2.5
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "The route moves between open field, longleaf pines and woodland; shade is not continuous.",
+        "watch_for": [
+          "Bicycles share the route; hikers with pets yield to other trail users",
+          "Sand, roots and wet leaves can make footing uneven",
+          "Stay away from pond edges and check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "route": {
+        "route_id": "carvers-creek-rockefeller-loop@1",
+        "distance_mi": 2,
+        "shape": "loop",
+        "difficulty": "easy",
+        "surface": "Natural sand and woodland surface; shared by hikers and bicyclists."
+      }
+    },
+    "photo": {
+      "id": "atlas-plate-e11e329c3a10",
+      "alt": "Original engraved print of Rupert seated among autumn leaves and layered woodland."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "NC State Parks — official status, public access, hours and pets",
+        "url": "https://www.ncparks.gov/state-parks/carvers-creek-state-park",
+        "retrieved": "2026-10-27"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — official trail listing",
+        "url": "https://www.ncparks.gov/state-parks/carvers-creek-state-park/trails",
+        "retrieved": "2026-10-27"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — official Long Valley Farm access map",
+        "url": "https://www.ncparks.gov/maps/carvers-creek-state-park-long-valley-farm-access-map/open",
+        "retrieved": "2026-10-27"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — park news",
+        "url": "https://www.ncparks.gov/state-parks/carvers-creek-state-park/news",
+        "retrieved": "2026-10-27"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — pet rules",
+        "url": "https://www.ncparks.gov/about-us/guidelines-park-rules-and-regulations",
+        "retrieved": "2026-10-27"
+      },
+      {
+        "kind": "forecast",
+        "label": "National Weather Service — dated weekend forecast",
+        "url": "https://api.weather.gov/gridpoints/RAH/65,30/forecast",
+        "retrieved": "2026-10-27"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ],
+    "experience_id": "carvers-creek-rockefeller-loop",
+    "experience_basis": {
+      "activity_id": "leashed-woodland-hike",
+      "feature_id": "long-valley-farm-and-longleaf-pines",
+      "format_id": "easy-loop-with-sniffing-breaks"
+    },
+    "panels": [
+      {
+        "label": "One complete loop",
+        "text": "The official Rockefeller Loop is two miles, easy, and begins at the opening in the fence near the welcome center. Stay with the marked Long Valley Farm route."
+      },
+      {
+        "label": "Share the trail",
+        "text": "Hikers and bicyclists use the loop. Keep Rupert on his attended six-foot leash, pause at the side when needed, and leave the farm structures undisturbed."
+      }
+    ],
+    "qualities": {
+      "activity": "hike",
+      "expected_heat": "normal"
+    },
+    "artwork": {
+      "image_id": "atlas-plate-e11e329c3a10",
+      "brief": "Restrained environmental mode after six-plate visual review: the last four prints use flat burgundy frontal walking, ochre ball close-up, cream reclining and olive standing profile; W41 uses landscape motifs. Choose a seated three-quarter Rupert framed by autumn oak leaves, layered trunks and carved woodland depth. Keep Plate 006 face/build, mustard collar and a slimmer tapered American Labrador tail. This breaks the four-plate minimal-field run through pose, subject scale, spatial layers, cream openings, engraving density and woodland framing; not a field-colour swap. No documentary destination or activity claim.",
+      "characters": [
+        "rupert"
+      ]
+    }
+  },
+  "local_trail": {
+    "place_id": "carvers-creek-long-valley-farm",
+    "title": "Turn back before the farmstead",
+    "line": "Use the beginning of the Rockefeller Loop as a short out-and-back and choose the turnaround by Rupert’s pace. Do not claim the full loop as completed.",
+    "snapshot": {
+      "as_of": "2026-10-27",
+      "access": {
+        "name": "Long Valley Farm parking, 2505 Long Valley Road, Spring Lake",
+        "parking": "Use the designated Long Valley Farm visitor lot at the park office and welcome center, 2505 Long Valley Road. The Rockefeller Loop begins at the opening in the fence near the welcome center. Free day use. Saturday October 31: 8 a.m.–8 p.m.; Sunday November 1: 8 a.m.–6 p.m. Finish in daylight, before either closing time."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          85,
+          105
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "The route moves between open field, longleaf pines and woodland; shade is not continuous.",
+        "watch_for": [
+          "Bicycles share the route; hikers with pets yield to other trail users",
+          "Sand, roots and wet leaves can make footing uneven",
+          "Stay away from pond edges and check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ],
+    "commitment": "Shorten rather than press on"
+  },
+  "away_mission": {
+    "place_id": "carvers-creek-long-valley-farm",
+    "title": "Add the millpond peninsula",
+    "line": "If everyone is comfortable, add the official 0.75-mile Cypress Point loop from the junction near the Rockefeller House, then finish the Rockefeller circuit.",
+    "snapshot": {
+      "as_of": "2026-10-27",
+      "access": {
+        "name": "Long Valley Farm parking, 2505 Long Valley Road, Spring Lake",
+        "parking": "Use the designated Long Valley Farm visitor lot at the park office and welcome center, 2505 Long Valley Road. The Rockefeller Loop begins at the opening in the fence near the welcome center. Free day use. Saturday October 31: 8 a.m.–8 p.m.; Sunday November 1: 8 a.m.–6 p.m. Finish in daylight, before either closing time."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          85,
+          105
+        ]
+      },
+      "duration_h": [
+        2.5,
+        3.5
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "The route moves between open field, longleaf pines and woodland; shade is not continuous.",
+        "watch_for": [
+          "Bicycles share the route; hikers with pets yield to other trail users",
+          "Sand, roots and wet leaves can make footing uneven",
+          "Stay away from pond edges and check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "route": {
+        "route_id": "carvers-creek-rockefeller-cypress-point@1",
+        "distance_mi": 2.75,
+        "shape": "lollipop",
+        "difficulty": "easy",
+        "surface": "Natural sand and woodland surface; shared by hikers and bicyclists."
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "full-day"
+    ]
+  },
+  "wildcard": {
+    "place_id": "carvers-creek-long-valley-farm",
+    "title": "A picnic and a brief leg-stretch",
+    "line": "Use the designated picnic area and only a short leashed walk in safe conditions. This is not an indoor or storm-weather substitute.",
+    "snapshot": {
+      "as_of": "2026-10-27",
+      "access": {
+        "name": "Long Valley Farm parking, 2505 Long Valley Road, Spring Lake",
+        "parking": "Use the designated Long Valley Farm visitor lot at the park office and welcome center, 2505 Long Valley Road. The Rockefeller Loop begins at the opening in the fence near the welcome center. Free day use. Saturday October 31: 8 a.m.–8 p.m.; Sunday November 1: 8 a.m.–6 p.m. Finish in daylight, before either closing time."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          85,
+          105
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than 6 feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl; no dog swimming is part of this outing.",
+        "shade": "The route moves between open field, longleaf pines and woodland; shade is not continuous.",
+        "watch_for": [
+          "Bicycles share the route; hikers with pets yield to other trail users",
+          "Sand, roots and wet leaves can make footing uneven",
+          "Stay away from pond edges and check for ticks after the walk"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "picnic",
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "text": "Let Rupert choose several slow sniffing pauses, then bring him close before bicycles pass.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "Which part held Rupert’s attention most: the field edge, the old farmstead or the pine woods?"
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-10-27T10:28:54-04:00",
+    "checked_at": "2026-10-27T15:55:27.201Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RAH/65,30/forecast",
+      "issued_at": "2026-10-27T14:28:54.000Z",
+      "retrieved_at": "2026-10-27T15:55:27.201Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "Partly sunny, with a high near 77."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "A chance of rain showers. Mostly cloudy, with a high near 76. Chance of precipitation is 50%."
+      }
+    ],
+    "summary": "Saturday: Partly sunny, with a high near 77. Sunday: A chance of rain showers. Mostly cloudy, with a high near 76. Chance of precipitation is 50%. Saturday night: A slight chance of rain showers after 1am. Mostly cloudy, with a low around 56. Sunday night: A chance of rain showers. Mostly cloudy, with a low around 58. Chance of precipitation is 50%.",
+    "alerts": [],
+    "alerts_checked_at": "2026-10-27T15:55:27.201Z",
+    "pivot": {
+      "if": "Thunder, unsafe wind, flooding, slippery footing or an official closure",
+      "note": "Postpone. A picnic or another outdoor trail is not a thunderstorm alternative; recheck official status and NWS before leaving."
+    },
+    "trail_note": "Stay on the marked Long Valley Farm loop and give bicycles room. Carry water even in late October; wet sand, roots and leaves may be slippery. The millpond is scenery, not a swimming stop."
+  },
+  "practical": {
+    "best_window": "Prefer Saturday morning in daylight, with water for the warm afternoon. Recheck Sunday’s shower forecast. Sunday closes at 6 p.m. and the clocks return to standard time; do not use Saturday’s 8 p.m. hours for both days.",
+    "fees": "No day-use entrance fee; reservations and special permits are separate.",
+    "bring": [
+      "Water and bowl",
+      "Attended six-foot leash and waste bags",
+      "Traction shoes",
+      "Rain layer",
+      "Official map saved offline"
+    ],
+    "closures_checked": "2026-10-27",
+    "closures_note": "Publication-day official home/status, trail listing and news re-read immediately before approval. Hiking trails explicitly Open; the dated August 6 Sandhills Wiregrass burn banner is separate from Long Valley Farm and is not represented as a new closure. Official map and rules confirm designated visitor parking at public 35.1970,-78.9767, the two-mile white-circle Rockefeller Loop, bicycle sharing, attended six-foot leash, no pets inside buildings and no swimming. October 31 hours 8 a.m.–8 p.m.; November 1 hours 8 a.m.–6 p.m.; plan finishes in daylight. No day-use entry fee. NWS issue 2026-10-27T10:28:54-04:00 read after canonical publication-day refresh: Saturday partly sunny near 77F, Sunday showers possible at 50 percent, no active alerts returned. Water, rain layer, yielding to bicycles, wet footing cautions and a postpone pivot retained; no safe-weather guarantee or swimming advice."
+  }
+}

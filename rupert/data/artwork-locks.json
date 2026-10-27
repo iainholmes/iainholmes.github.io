@@ -83,6 +83,15 @@
         "atlas-plate-fee99281ed70-800.jpg": "1038b547fd9a07d0165a74c550ad33205d6e5dd5e5afa86b3c191215cd1c5b9e",
         "atlas-plate-fee99281ed70-1122.jpg": "350c99b936925a442aff72bb271babf1517a94becc245600bfaa881ffda2c98d"
       }
+    },
+    "2026-W44-tue": {
+      "image_id": "atlas-plate-e11e329c3a10",
+      "association": "fe079f457b89ddddbd87b00f043063e7b05eaddc2004b02fdbfb641266ac210b",
+      "record": "70cfba7bac62b63a8c930f95ab5f89bb11e561ccc9085b8796ae19f104e5089d",
+      "files": {
+        "atlas-plate-e11e329c3a10-800.jpg": "2bcaceb0449d5dc4d461fe7dfb3cb9d2ba7c513f11cf08a61ad99e03bc54d640",
+        "atlas-plate-e11e329c3a10-1122.jpg": "bf016ac8bdcece567ba5e9275cdca189eabe9edb60b1abb0821af3afc46ee29f"
+      }
     }
   }
 }

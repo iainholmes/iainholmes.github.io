@@ -469,6 +469,63 @@
         "checked": "2026-10-22",
         "source": "https://www.ncparks.gov/state-parks/weymouth-woods-sandhills-nature-preserve"
       }
+    },
+    {
+      "id": "carvers-creek-long-valley-farm",
+      "name": "Carvers Creek State Park — Long Valley Farm",
+      "short_name": "Long Valley Farm",
+      "kind": "trail",
+      "region": "Cumberland County",
+      "access": {
+        "name": "Long Valley Farm parking, 2505 Long Valley Road, Spring Lake",
+        "lat": 35.197,
+        "lng": -78.9767,
+        "coords_verified": true,
+        "coords_checked": "2026-10-27",
+        "coords_source": "NC State Parks currently gives GPS 35.1970, -78.9767 at 2505 Long Valley Road for Long Valley Farm access and park office; the official access map marks the visitor parking and welcome center."
+      },
+      "dog_policy": "Pets permitted on attended leashes no longer than 6 feet; not inside buildings.",
+      "routes": [
+        {
+          "route_id": "carvers-creek-rockefeller-loop@1",
+          "distance_mi": 2,
+          "shape": "loop",
+          "difficulty": "easy",
+          "surface": "Natural sand and woodland surface; shared by hikers and bicyclists."
+        },
+        {
+          "route_id": "carvers-creek-rockefeller-cypress-point@1",
+          "distance_mi": 2.75,
+          "shape": "lollipop",
+          "difficulty": "easy",
+          "surface": "Natural sand and woodland surface; shared by hikers and bicyclists."
+        }
+      ],
+      "links": [
+        {
+          "label": "NC State Parks — official status, hours and access",
+          "url": "https://www.ncparks.gov/state-parks/carvers-creek-state-park"
+        },
+        {
+          "label": "Official trail table",
+          "url": "https://www.ncparks.gov/state-parks/carvers-creek-state-park/trails"
+        },
+        {
+          "label": "Official Long Valley Farm access map",
+          "url": "https://www.ncparks.gov/maps/carvers-creek-state-park-long-valley-farm-access-map/open"
+        }
+      ],
+      "tags": [
+        "longleaf pine",
+        "historic farm",
+        "woodland",
+        "short-walk"
+      ],
+      "closure": {
+        "status": "open",
+        "checked": "2026-10-27",
+        "source": "https://www.ncparks.gov/state-parks/carvers-creek-state-park"
+      }
     }
   ]
 }

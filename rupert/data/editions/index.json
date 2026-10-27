@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "bfd53b8ba0535e01",
+  "revision": "0c568decc9631aa8",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -455,6 +455,56 @@
       ],
       "photo_id": "atlas-plate-fee99281ed70",
       "path": "data/editions/2026-W43-thu.json"
+    },
+    {
+      "id": "2026-W44-tue",
+      "slot": "tuesday",
+      "status": "published",
+      "published_at": "2026-10-27T11:57:16-04:00",
+      "weekend": {
+        "start": "2026-10-31",
+        "end": "2026-11-01"
+      },
+      "title": "Long Valley Farm, beyond the field edge",
+      "place_id": "carvers-creek-long-valley-farm",
+      "experience_key": "carvers-creek-rockefeller-loop",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Long Valley Farm, beyond the field edge",
+          "place_id": "carvers-creek-long-valley-farm",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "carvers-creek-long-valley-farm"
+      ],
+      "place_roles": [
+        {
+          "place_id": "carvers-creek-long-valley-farm",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-e11e329c3a10",
+      "path": "data/editions/2026-W44-tue.json"
     }
   ]
 }
