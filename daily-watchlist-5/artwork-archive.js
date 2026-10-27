@@ -1658,6 +1658,68 @@
         "seed": 3666226709,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Hiring capacity narrows across workstations\"><title>Durham&#39;s housing sprints move 104 people out of homelessness</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-26-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-26-05)\"><path d=\"M85 510V185H255V510M300 510V285H470V510M515 510V395H685V510\" fill=\"#1b4a6b\"/><g fill=\"#f4ead7\"><circle cx=\"170\" cy=\"265\" r=\"28\"/><path d=\"M134 385V320Q170 286 206 320V385Z\"/><circle cx=\"385\" cy=\"356\" r=\"28\"/><path d=\"M349 476V410Q385 377 421 410V476Z\"/></g><path d=\"M535 440H665\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M75 548H725\" stroke=\"#2c241d\" stroke-width=\"18\"/></g></svg>"
       }
+    },
+    "2026-10-27": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-27",
+        "number": "01",
+        "category": "Public health · outbreak response",
+        "topic": "research",
+        "title": "Congo's Ebola outbreak passes 10,000 confirmed cases",
+        "composition": "research-observatory",
+        "signature": "plate:research-observatory",
+        "seed": 2874686651,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An observing instrument links separated research stations\"><title>Congo&#39;s Ebola outbreak passes 10,000 confirmed cases</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-27-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-27-01)\"><path d=\"M175 255L440 100L490 185L225 341Z\" fill=\"#1b4a6b\"/><path d=\"M280 290L180 525M280 290L420 525\" stroke=\"#2c241d\" stroke-width=\"25\"/><circle cx=\"475\" cy=\"137\" r=\"58\" fill=\"#c98a12\"/><rect x=\"540\" y=\"350\" width=\"145\" height=\"170\" fill=\"#2c241d\"/><path d=\"M563 395H662M563 447H662\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M380 325H520\" stroke=\"#c4452c\" stroke-width=\"18\" stroke-dasharray=\"28 20\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-27",
+        "number": "02",
+        "category": "Technology · platform labor",
+        "topic": "labor",
+        "title": "European complaints challenge surveillance of Scale AI's training workforce",
+        "composition": "finance-blocked",
+        "signature": "plate:finance-blocked",
+        "seed": 1326785388,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Payment branches meet a blocking seal\"><title>European complaints challenge surveillance of Scale AI&#39;s training workforce</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-27-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-27-02)\"><path d=\"M120 150L365 315L120 485M365 315L665 160M365 315L665 490\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"31\"/><g fill=\"#c98a12\"><circle cx=\"120\" cy=\"150\" r=\"58\"/><circle cx=\"120\" cy=\"485\" r=\"58\"/><circle cx=\"665\" cy=\"160\" r=\"58\"/></g><rect x=\"565\" y=\"408\" width=\"158\" height=\"125\" fill=\"#7a1f33\"/><path d=\"M585 435L705 505M705 435L585 505\" stroke=\"#f4ead7\" stroke-width=\"18\"/><circle cx=\"365\" cy=\"315\" r=\"69\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-27",
+        "number": "03",
+        "category": "Environment · clean-energy industry",
+        "topic": "energy",
+        "title": "IEA warns clean-energy manufacturing remains concentrated in a few countries",
+        "composition": "energy-turbine",
+        "signature": "plate:energy-turbine",
+        "seed": 4226356247,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Wind generation feeds a separate demand block\"><title>IEA warns clean-energy manufacturing remains concentrated in a few countries</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-27-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-27-03)\"><path d=\"M285 245V540\" stroke=\"#2c241d\" stroke-width=\"26\"/><path d=\"M285 245L180 97L218 75L302 220L445 202L449 247L306 260L240 392L201 371Z\" fill=\"#1d5f47\"/><path d=\"M475 355H690V530H475Z\" fill=\"#1b4a6b\"/><path d=\"M510 392H655M510 447H655\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M316 476H445\" stroke=\"#c4452c\" stroke-width=\"28\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-27",
+        "number": "04",
+        "category": "U.S. policy · health technology",
+        "topic": "research",
+        "title": "HHS removes 14 federal health-IT certification criteria",
+        "composition": "institution-wheel",
+        "signature": "plate:institution-wheel",
+        "seed": 4117723651,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Institutional cooperation connects a shared hub to distinct tasks\"><title>HHS removes 14 federal health-IT certification criteria</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-27-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-27-04)\"><circle cx=\"400\" cy=\"315\" r=\"118\" fill=\"#7a1f33\"/><path d=\"M400 185V82M530 315H710M400 445V552M270 315H88\" stroke=\"#2c241d\" stroke-width=\"28\"/><rect x=\"340\" y=\"55\" width=\"120\" height=\"92\" fill=\"#1b4a6b\"/><circle cx=\"680\" cy=\"315\" r=\"61\" fill=\"#c98a12\"/><path d=\"M330 550L400 468L470 550Z\" fill=\"#1d5f47\"/><rect x=\"56\" y=\"253\" width=\"113\" height=\"124\" fill=\"#7c5a3e\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-27",
+        "number": "05",
+        "category": "North Carolina · public procurement",
+        "topic": "research",
+        "title": "North Carolina opens a new small-business certification after ending HUB recognition",
+        "composition": "capacity-aperture",
+        "signature": "plate:capacity-aperture",
+        "seed": 2882315300,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A narrowing aperture restricts institutional throughput\"><title>North Carolina opens a new small-business certification after ending HUB recognition</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-27-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-27-05)\"><path d=\"M90 115L330 245V395L90 525ZM710 115L470 245V395L710 525Z\" fill=\"#2c241d\"/><path d=\"M155 320H310M490 320H650\" stroke=\"#1b4a6b\" stroke-width=\"42\"/><path d=\"M357 175V465M445 175V465\" stroke=\"#c4452c\" stroke-width=\"22\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

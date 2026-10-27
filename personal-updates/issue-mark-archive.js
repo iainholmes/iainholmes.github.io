@@ -1107,5 +1107,69 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 030: Routes &amp; enforcement\"><title>Field Brief · 030 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 105) scale(1.95)\"><path d=\"M7 8H93V92H7Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M28 18V82M51 18V82M74 18V82\" stroke=\"#c5ad88\" stroke-width=\"6\"/><path d=\"M10 56H90\" stroke=\"#8a2a36\" stroke-width=\"13\"/></g><g transform=\"translate(350 280) scale(1.8)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"#8a2a36\"/><path d=\"M50 6V30M50 70V94\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><g transform=\"translate(365 105) scale(1.12)\"><circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"#8a2a36\"/><path d=\"M24 16V84M50 6V94M76 16V84M14 27H86M6 52H94M16 77H84\" stroke=\"#f1e6d0\" stroke-width=\"5\"/></g><path d=\"M305 95V505\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 030 / 2026-10-26</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
+  },
+  "fb:2026-10-27": {
+    "key": "fb",
+    "date": "2026-10-27",
+    "no": "031",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "Congo’s Ebola outbreak passes 10,000 confirmed cases as containment grows harder. European complaints test the monitoring of AI-training workers, the IEA warns that clean-energy supply chains remain concentrated, HHS pares health-IT certification, and North Carolina replaces HUB recognition with a race- and gender-neutral small-business program. Five separate tests of institutional capacity These developments do not share a single cause. They test different institutions: outbreak response in Central and East Africa, privacy enforcement in distributed AI labor, industrial resilience in clean-energy supply chains, federal health-technology oversight, and state procurement access in North Carolina. The next evidence is operational: whether contact tracing catches up with transmission, how European regulators characterize platform monitoring, whether diversification policies produce capacity rather than duplication, what hospitals require after certification changes, and which North Carolina firms convert and win contracts.",
+    "version": 5,
+    "subject": "enforcement",
+    "composition": "study-central-boundary-licensed-opening-measured-range-staffed-bench",
+    "signature": "issue:study-central-boundary-licensed-opening-measured-range-staffed-bench",
+    "phrase": "Routes & enforcement",
+    "seed": 3451699932,
+    "geometry": "<g transform=\"translate(65 175) scale(1.8)\"><path d=\"M5 96V14H95V96H75V35H25V96Z\" fill=\"$ink\"/><path d=\"M38 45H62V89H38Z\" fill=\"$accent\"/><path d=\"M2 97H98\" stroke=\"$support\" stroke-width=\"6\"/></g><g transform=\"translate(353 105) scale(1.75)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"$accent\"/><path d=\"M50 6V30M50 70V94\" stroke=\"$support\" stroke-width=\"7\"/></g><g transform=\"translate(395 365) scale(1.15)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"$ink\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"$accent\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"$support\"/></g><path d=\"M290 90V505M275 90H305M275 505H305\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "02",
+          "03",
+          "04"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "02",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "01"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "03"
+        ]
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "02"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "03"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 30,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 031: Routes &amp; enforcement\"><title>Field Brief · 031 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 175) scale(1.8)\"><path d=\"M5 96V14H95V96H75V35H25V96Z\" fill=\"#221a14\"/><path d=\"M38 45H62V89H38Z\" fill=\"#8a2a36\"/><path d=\"M2 97H98\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><g transform=\"translate(353 105) scale(1.75)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"#8a2a36\"/><path d=\"M50 6V30M50 70V94\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><g transform=\"translate(395 365) scale(1.15)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><path d=\"M290 90V505M275 90H305M275 505H305\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 031 / 2026-10-27</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
