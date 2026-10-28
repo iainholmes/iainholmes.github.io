@@ -241,7 +241,9 @@
     items.forEach(item => item.button.addEventListener('click', () => {
       const returning = revealed.includes(item.id);
       const ids = revealSelection(revealed, {type:'toggle',id:item.id}, items);
-      const anchor = `#work-${item.id}`;
+      // Personal Website is a single-work chapter: reveal its heading too.
+      // Return keeps the existing work anchor and mobile position restoration.
+      const anchor = !returning && item.id === 'portfolio' ? '#profile' : `#work-${item.id}`;
       holdLayout();
       const top = item.element.getBoundingClientRect().top;
       const offset = returning && window.matchMedia('(max-width:759.98px)').matches && top >= measureToolbar() + 12 ? top : undefined;

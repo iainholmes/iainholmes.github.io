@@ -228,3 +228,25 @@ test('A touch during deferred font/layout settling cancels obsolete navigation',
   assert.equal(h.window.scrollCalls.length,0);assert.deepEqual(visible(h),['qst']);
   assert.ok(parseFloat(h.spacer.style.height)<1000);
 });
+
+test('Personal Website Reveal includes its chapter heading and history retains that destination',async()=>{
+  for(const [mobile,height] of [[false,900],[true,844],[true,874]]){
+    const h=browserHarness('2026-07-15T12:00:00Z');h.window.mobile=mobile;h.root.clientHeight=height;h.mount();
+    for(let repeat=0;repeat<3;repeat++){
+      h.works.portfolio.button.handlers.click();await settle(h);
+      assert.deepEqual(visible(h),['portfolio']);
+      assert.equal(h.targets.profile.getBoundingClientRect().top,84,'Chapter begins beneath toolbar');
+      assert.equal(h.targets.profile.focused,true);
+      assert.equal(h.window.history.state.deskReveal.anchor,'#profile');
+      assert.equal(h.window.scrollCalls.at(-1).behavior,'auto');
+      h.button.handlers.click();
+      h.works.portfolio.button.handlers.click();await settle(h);
+      assert.deepEqual(visible(h),[]);
+      assert.equal(h.window.history.state.deskReveal.anchor,'#work-portfolio','Return retains work anchor');
+      h.travel(-1);await settle(h);
+      assert.deepEqual(visible(h),['portfolio']);
+      assert.equal(h.targets.profile.getBoundingClientRect().top,84);
+      h.travel(1);await settle(h);assert.deepEqual(visible(h),[]);
+    }
+  }
+});
