@@ -1720,6 +1720,68 @@
         "seed": 2882315300,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A narrowing aperture restricts institutional throughput\"><title>North Carolina opens a new small-business certification after ending HUB recognition</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-27-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-27-05)\"><path d=\"M90 115L330 245V395L90 525ZM710 115L470 245V395L710 525Z\" fill=\"#2c241d\"/><path d=\"M155 320H310M490 320H650\" stroke=\"#1b4a6b\" stroke-width=\"42\"/><path d=\"M357 175V465M445 175V465\" stroke=\"#c4452c\" stroke-width=\"22\"/></g></svg>"
       }
+    },
+    "2026-10-28": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-28",
+        "number": "01",
+        "category": "Technology · AI infrastructure",
+        "topic": "infrastructure",
+        "title": "OpenAI plans to buy Google TPUs as accelerator competition widens",
+        "composition": "infrastructure-duct",
+        "signature": "plate:infrastructure-duct",
+        "seed": 4201196598,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Cooling infrastructure surrounds a capacity chamber\"><title>OpenAI plans to buy Google TPUs as accelerator competition widens</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-28-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-28-01)\"><path d=\"M90 155H475V480H90Z\" fill=\"#2c241d\"/><path d=\"M130 202H432M130 270H432M130 338H432M130 406H432\" stroke=\"#f4ead7\" stroke-width=\"23\"/><path d=\"M520 510V185H690V410H600\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"51\"/><path d=\"M520 96V160M580 96V160M640 96V160\" stroke=\"#c4452c\" stroke-width=\"20\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-28",
+        "number": "02",
+        "category": "Environment · atmospheric science",
+        "topic": "research",
+        "title": "WMO records new highs for all three major greenhouse gases",
+        "composition": "labor-clock",
+        "signature": "plate:labor-clock",
+        "seed": 3505012862,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A time clock beside an interrupted production belt\"><title>WMO records new highs for all three major greenhouse gases</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-28-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-28-02)\"><circle cx=\"246\" cy=\"277\" r=\"165\" fill=\"#2c241d\"/><circle cx=\"246\" cy=\"277\" r=\"125\" fill=\"#f4ead7\"/><path d=\"M246 180V277L324 326\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M480 180H700V480H480Z\" fill=\"#1b4a6b\"/><path d=\"M517 228H663M517 297H663M517 366H604\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M80 532H348M443 532H720\" stroke=\"#7c5a3e\" stroke-width=\"30\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-28",
+        "number": "03",
+        "category": "U.S. policy · methane regulation",
+        "topic": "energy",
+        "title": "EPA proposes sweeping rollback of oil-and-gas methane controls",
+        "composition": "energy-feeder",
+        "signature": "plate:energy-feeder",
+        "seed": 2105418934,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A power feed crosses an interrupted grid\"><title>EPA proposes sweeping rollback of oil-and-gas methane controls</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-28-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-28-03)\"><path d=\"M90 145H285V285H455V480H710\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"34\"/><path d=\"M90 145V490H285V390\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"23\"/><path d=\"M370 235V335M332 275H408\" stroke=\"#c4452c\" stroke-width=\"25\"/><circle cx=\"710\" cy=\"480\" r=\"53\" fill=\"#c98a12\"/><path d=\"M110 546H675\" stroke=\"#7c5a3e\" stroke-width=\"15\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-28",
+        "number": "04",
+        "category": "U.S. policy · nuclear finance",
+        "topic": "finance",
+        "title": "DOE offers Constellation up to $5 billion for nuclear uprates",
+        "composition": "trade-checkpoint",
+        "signature": "plate:trade-checkpoint",
+        "seed": 3511736132,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A commercial route passes through a staffed checkpoint\"><title>DOE offers Constellation up to $5 billion for nuclear uprates</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-28-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-28-04)\"><path d=\"M80 400H720\" stroke=\"#7c5a3e\" stroke-width=\"58\"/><path d=\"M325 510V145H480V510\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M340 250H565\" stroke=\"#c4452c\" stroke-width=\"27\"/><rect x=\"110\" y=\"300\" width=\"142\" height=\"110\" fill=\"#1b4a6b\"/><path d=\"M140 300V410M216 300V410\" stroke=\"#f4ead7\" stroke-width=\"12\"/><circle cx=\"570\" cy=\"460\" r=\"31\" fill=\"#2c241d\"/><path d=\"M530 560V512Q570 480 610 512V560Z\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-28",
+        "number": "05",
+        "category": "North Carolina · public health benefits",
+        "topic": "infrastructure",
+        "title": "Atrium returns to North Carolina's State Health Plan network",
+        "composition": "infrastructure-aisle",
+        "signature": "plate:infrastructure-aisle",
+        "seed": 726773250,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A server aisle separates storage and service capacity\"><title>Atrium returns to North Carolina&#39;s State Health Plan network</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-28-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-28-05)\"><path d=\"M80 145H280V520H80ZM520 80H720V520H520Z\" fill=\"#2c241d\"/><path d=\"M115 200H245M115 290H245M115 380H245M555 135H685M555 225H685M555 315H685M555 405H685\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M320 550L405 210L480 550Z\" fill=\"#1b4a6b\"/><circle cx=\"402\" cy=\"145\" r=\"57\" fill=\"#c4452c\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

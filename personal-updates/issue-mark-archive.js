@@ -1171,5 +1171,67 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 031: Routes &amp; enforcement\"><title>Field Brief · 031 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 175) scale(1.8)\"><path d=\"M5 96V14H95V96H75V35H25V96Z\" fill=\"#221a14\"/><path d=\"M38 45H62V89H38Z\" fill=\"#8a2a36\"/><path d=\"M2 97H98\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><g transform=\"translate(353 105) scale(1.75)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"#8a2a36\"/><path d=\"M50 6V30M50 70V94\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><g transform=\"translate(395 365) scale(1.15)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><path d=\"M290 90V505M275 90H305M275 505H305\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 031 / 2026-10-27</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
+  },
+  "fb:2026-10-28": {
+    "key": "fb",
+    "date": "2026-10-28",
+    "no": "032",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "The global greenhouse-gas record moves higher as EPA proposes a broad retreat from oil-and-gas methane controls. OpenAI's reported Google-chip purchase widens accelerator competition, a $5 billion federal loan commitment backs nuclear uprates, and Atrium returns to North Carolina's State Health Plan network. Measurement, regulation and capacity move on separate tracks The climate and energy developments are related but not one story: WMO measures the atmospheric stock, EPA proposes changing a near-term emissions control, and DOE uses public credit to expand firm electricity supply. Each operates on a different timescale and needs a different test of success. Separately, the reported OpenAI purchase could broaden the accelerator market, while North Carolina's signed health-plan agreement resolves an immediate access risk. The next evidence is contractual and operational: chip volumes, final methane-rule text, funded uprates, and actual member costs.",
+    "version": 5,
+    "subject": "infrastructure",
+    "composition": "study-stepped-review-power-junction-staffed-bench-measured-range",
+    "signature": "issue:study-stepped-review-power-junction-staffed-bench-measured-range",
+    "phrase": "Connections & capacity",
+    "seed": 3237269519,
+    "geometry": "<g transform=\"translate(60 315) scale(1.75)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"$ink\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"$accent\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"$support\" stroke-width=\"10\"/></g><g transform=\"translate(245 220) scale(1.6)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"$ink\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"$accent\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"$support\"/></g><g transform=\"translate(405 90) scale(1.4)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"$accent\"/><path d=\"M50 6V30M50 70V94\" stroke=\"$support\" stroke-width=\"7\"/></g><path d=\"M60 510H242V410H415V245H550\" fill=\"none\" stroke=\"$support\" stroke-width=\"9\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01",
+          "02",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "02",
+          "03",
+          "04"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "03",
+          "05"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "03",
+          "04"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "02",
+          "04"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 31,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 032: Connections &amp; capacity\"><title>Field Brief · 032 · Connections &amp; capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 315) scale(1.75)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"#221a14\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"#8a2a36\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"10\"/></g><g transform=\"translate(245 220) scale(1.6)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><g transform=\"translate(405 90) scale(1.4)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"#8a2a36\"/><path d=\"M50 6V30M50 70V94\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M60 510H242V410H415V245H550\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 032 / 2026-10-28</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Connections &amp; capacity</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
