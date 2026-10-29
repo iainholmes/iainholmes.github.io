@@ -1233,5 +1233,72 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 032: Connections &amp; capacity\"><title>Field Brief · 032 · Connections &amp; capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 315) scale(1.75)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"#221a14\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"#8a2a36\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"10\"/></g><g transform=\"translate(245 220) scale(1.6)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><g transform=\"translate(405 90) scale(1.4)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"#8a2a36\"/><path d=\"M50 6V30M50 70V94\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M60 510H242V410H415V245H550\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 032 / 2026-10-28</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Connections &amp; capacity</text></g></svg>"
+  },
+  "fb:2026-10-29": {
+    "key": "fb",
+    "date": "2026-10-29",
+    "no": "033",
+    "identity": "Field Brief",
+    "theme": "change",
+    "framing": "The Federal Reserve holds rates as two members seek another increase, while the White House opens Section 232 negotiations over robotics and industrial machinery. Chinese clean-technology exports widen their estimated emissions effect, Cisco documents key-stealing malware in SD-WAN controllers, and the UNC System sets campus rules for license-plate readers. Five separate decisions, five different tests These developments do not form one thesis. The Fed is choosing when to tighten, the White House is opening an industrial negotiation, clean-technology trade is changing deployment economics, Cisco is documenting a control-plane compromise, and the UNC System is setting surveillance rules. The next evidence is equally distinct: inflation and December guidance; negotiated machinery terms; independently tested emissions assumptions; clean SD-WAN rebuilds and key rotation; and campus compliance with retention, access and audit rules.",
+    "version": 5,
+    "subject": "evidence",
+    "composition": "evidence-split",
+    "signature": "issue:evidence-split",
+    "phrase": "Observation & evidence",
+    "seed": 683391038,
+    "geometry": "<path d=\"M300 115V237L148 365M300 237L452 365\" fill=\"none\" stroke=\"$ink\" stroke-width=\"23\"/><path d=\"M90 365H207V477H90Z\" fill=\"$accent\"/><path d=\"M386 365L452 300L518 365L452 476Z\" fill=\"$support\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "02",
+          "03",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "02",
+          "03",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "02",
+          "03"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "05"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "03"
+        ]
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "05"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 32,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 033: Observation &amp; evidence\"><title>Field Brief · 033 · Observation &amp; evidence</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M300 115V237L148 365M300 237L452 365\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"23\"/><path d=\"M90 365H207V477H90Z\" fill=\"#8a2a36\"/><path d=\"M386 365L452 300L518 365L452 476Z\" fill=\"#c5ad88\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 033 / 2026-10-29</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Observation &amp; evidence</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

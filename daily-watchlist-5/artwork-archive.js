@@ -1782,6 +1782,68 @@
         "seed": 726773250,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A server aisle separates storage and service capacity\"><title>Atrium returns to North Carolina&#39;s State Health Plan network</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-28-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-28-05)\"><path d=\"M80 145H280V520H80ZM520 80H720V520H520Z\" fill=\"#2c241d\"/><path d=\"M115 200H245M115 290H245M115 380H245M555 135H685M555 225H685M555 315H685M555 405H685\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M320 550L405 210L480 550Z\" fill=\"#1b4a6b\"/><circle cx=\"402\" cy=\"145\" r=\"57\" fill=\"#c4452c\"/></g></svg>"
       }
+    },
+    "2026-10-29": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-29",
+        "number": "01",
+        "category": "U.S. policy · monetary policy",
+        "topic": "finance",
+        "title": "Federal Reserve holds rates as two members vote for another increase",
+        "composition": "government-balance",
+        "signature": "plate:government-balance",
+        "seed": 2534174980,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Public funds are held in balance under a legal decision\"><title>Federal Reserve holds rates as two members vote for another increase</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-29-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-29-01)\"><path d=\"M390 130V520M250 525H535M165 240H620\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M190 240L110 400H270ZM585 240L505 400H665Z\" fill=\"#1b4a6b\"/><path d=\"M135 401Q190 476 245 401M530 401Q585 476 640 401\" fill=\"#c98a12\"/><rect x=\"295\" y=\"90\" width=\"190\" height=\"105\" fill=\"#7a1f33\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-29",
+        "number": "02",
+        "category": "U.S. policy · industrial trade",
+        "topic": "trade",
+        "title": "White House opens Section 232 talks over robotics and industrial machinery",
+        "composition": "trade-port",
+        "signature": "plate:trade-port",
+        "seed": 2969983280,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A cargo crane lifts a sealed crate at a port\"><title>White House opens Section 232 talks over robotics and industrial machinery</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-29-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-29-02)\"><path d=\"M150 540V120H590M185 120L500 355M515 120V315\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"25\"/><path d=\"M445 350H610V475H445Z\" fill=\"#c4452c\"/><path d=\"M480 350V475M575 350V475\" stroke=\"#f4ead7\" stroke-width=\"12\"/><path d=\"M65 535H715L665 588H135Z\" fill=\"#1b4a6b\"/><path d=\"M365 138V237H645V138\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"12\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-29",
+        "number": "03",
+        "category": "Environment · clean-technology trade",
+        "topic": "trade",
+        "title": "China's clean-technology exports widen their estimated emissions effect",
+        "composition": "trade-detour",
+        "signature": "plate:trade-detour",
+        "seed": 1747851842,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Server cargo takes an indirect route around an inspection gate\"><title>China&#39;s clean-technology exports widen their estimated emissions effect</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-29-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-29-03)\"><path d=\"M65 480H240V180H490V480H715\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"38\"/><path d=\"M350 280V555\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M300 295H400\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M75 376H195V506H75ZM552 105H682V247H552Z\" fill=\"#2c241d\"/><path d=\"M99 410H173M99 451H173M578 146H658M578 194H658\" stroke=\"#f4ead7\" stroke-width=\"14\"/><path d=\"M490 180H545\" stroke=\"#c4452c\" stroke-width=\"24\"/><path d=\"M524 158L551 180L524 203\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"12\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-29",
+        "number": "04",
+        "category": "Technology · network security",
+        "topic": "research",
+        "title": "Cisco finds key-stealing malware inside compromised SD-WAN controllers",
+        "composition": "research-vacancy",
+        "signature": "plate:research-vacancy",
+        "seed": 1419625370,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Research benches lose staffed capacity\"><title>Cisco finds key-stealing malware inside compromised SD-WAN controllers</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-29-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-29-04)\"><path d=\"M75 525H730\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M95 235H300V285H95ZM385 385H715V435H385Z\" fill=\"#1b4a6b\"/><path d=\"M135 285V525M260 285V525M420 435V525M680 435V525\" stroke=\"#2c241d\" stroke-width=\"23\"/><path d=\"M170 214V160H207V113H245L270 177L233 210Z\" fill=\"#2c241d\"/><path d=\"M466 360V254H534V360M586 360V254H654V360\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/><path d=\"M548 105L548 190M510 153L548 195L586 153\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-29",
+        "number": "05",
+        "category": "North Carolina · campus governance",
+        "topic": "research",
+        "title": "UNC System sets limits on campus license-plate readers",
+        "composition": "labor-benches",
+        "signature": "plate:labor-benches",
+        "seed": 4018218463,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separate work benches and an unfilled place\"><title>UNC System sets limits on campus license-plate readers</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-29-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-29-05)\"><path d=\"M85 300H325V350H85ZM445 420H715V470H445Z\" fill=\"#2c241d\"/><path d=\"M125 350V545M280 350V545M480 470V545M670 470V545\" stroke=\"#2c241d\" stroke-width=\"22\"/><circle cx=\"205\" cy=\"185\" r=\"47\" fill=\"#c4452c\"/><path d=\"M145 285V240Q205 195 265 240V285Z\" fill=\"#1b4a6b\"/><path d=\"M506 340V235H635V340\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"16\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
