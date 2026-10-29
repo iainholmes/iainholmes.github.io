@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "0c568decc9631aa8",
+  "revision": "2edc1d46870fea79",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -505,6 +505,56 @@
       ],
       "photo_id": "atlas-plate-e11e329c3a10",
       "path": "data/editions/2026-W44-tue.json"
+    },
+    {
+      "id": "2026-W44-thu",
+      "slot": "thursday",
+      "status": "published",
+      "published_at": "2026-10-29T07:07:15-04:00",
+      "weekend": {
+        "start": "2026-10-31",
+        "end": "2026-11-01"
+      },
+      "title": "Laurel, with room for a picnic",
+      "place_id": "morrow-mountain-laurel",
+      "experience_key": "morrow-mountain-laurel-loop",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Laurel, with room for a picnic",
+          "place_id": "morrow-mountain-laurel",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "morrow-mountain-laurel"
+      ],
+      "place_roles": [
+        {
+          "place_id": "morrow-mountain-laurel",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-33fe2974faa3",
+      "path": "data/editions/2026-W44-thu.json"
     }
   ]
 }

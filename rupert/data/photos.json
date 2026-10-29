@@ -280,6 +280,31 @@
         "composition_key": "seated-three-quarter-autumn-oak-frame-layered-trunks-20261027"
       },
       "plate_no": 10
+    },
+    {
+      "id": "atlas-plate-33fe2974faa3",
+      "file": "atlas-plate-33fe2974faa3",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1122,
+      "height": 1402,
+      "widths": [
+        800,
+        1122
+      ],
+      "alt": "Original engraved print of Rupert resting beside quiet water and reeds.",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "caption": "TRA Plate No. 011",
+      "generation": {
+        "owner": "2026-W44-thu/flagship",
+        "created_at": "2026-10-29",
+        "style_version": "atlas-engraved-3",
+        "composition_key": "side-on-resting-bank-reeds-navy-water-ivory-sky-20261029"
+      },
+      "plate_no": 11
     }
   ]
 }

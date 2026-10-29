@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "id": "2026-W44-thu",
+  "slot": "thursday",
+  "status": "published",
+  "published_at": "2026-10-29T07:07:15-04:00",
+  "weekend": {
+    "start": "2026-10-31",
+    "end": "2026-11-01"
+  },
+  "flagship": {
+    "place_id": "morrow-mountain-laurel",
+    "title": "Laurel, with room for a picnic",
+    "standfirst": "A short woodland loop and a leisurely picnic at Morrow Mountain: a deliberately gentle Uwharrie day, rather than a summit hike.",
+    "why_this_week": "Tuesday’s farm circuit stays closer to the Sandhills; this western option makes a longer day of a much shorter walk. Follow the red-hexagon Laurel loop opposite the park office and museum, then leave time for a picnic in an open designated area. The official 0.7 mile is the complete loop, not the longer Morrow Mountain Trail. It is a fairly long drive for a small walk, so choose this for an unhurried Uwharrie visit rather than a mileage goal. Rupert stays outside the museum. Hiking trails are marked open; the park now asks walkers to report downed trees, so an open status is not a promise of obstacle-free footing. This morning’s NWS forecast is mostly cloudy around 70F for both weekend days; recheck it before leaving.",
+    "headline_condition": "Cloudy, mild; watch the footing",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-10-29",
+      "access": {
+        "name": "Park office and museum parking, 49104 Morrow Mountain Road, Albemarle",
+        "parking": "Use designated parking at the park office/museum, then the signed Laurel Trail opposite this area on the official map. Do not park on road shoulders. Free day use. October gates 7 a.m.–9 p.m., November 7 a.m.–8 p.m.; day-use areas close one hour before the gate. Finish in daylight."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          145,
+          165
+        ]
+      },
+      "duration_h": [
+        0.75,
+        1.5
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet. Pets stay outside buildings, pool and vacation cabins.",
+        "water": "Carry drinking water and a bowl. No swimming is part of this outing.",
+        "shade": "Woodland shade on the walking loop; do not assume the parking or picnic area is shaded.",
+        "watch_for": [
+          "Roots, uneven ground and slippery wet leaves",
+          "Keep Rupert close beside the park road",
+          "Wildlife, ticks and autumn trail debris"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "route": {
+        "route_id": "morrow-mountain-laurel-loop@1",
+        "distance_mi": 0.7,
+        "shape": "loop",
+        "difficulty": "easy",
+        "surface": "Natural woodland path; red-hexagon blazes. Roots and wet leaves can be slippery."
+      }
+    },
+    "photo": {
+      "id": "atlas-plate-33fe2974faa3",
+      "alt": "Original engraved print of Rupert resting beside quiet water and reeds."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "NC State Parks — current status, access, hours and pets",
+        "url": "https://www.ncparks.gov/state-parks/morrow-mountain-state-park",
+        "retrieved": "2026-10-29"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — official trail lengths and difficulty",
+        "url": "https://www.ncparks.gov/state-parks/morrow-mountain-state-park/trails",
+        "retrieved": "2026-10-29"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — official trail and parking map",
+        "url": "https://www.ncparks.gov/maps/morrow-mountain-state-park-map/open",
+        "retrieved": "2026-10-29"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — current news",
+        "url": "https://www.ncparks.gov/state-parks/morrow-mountain-state-park/news",
+        "retrieved": "2026-10-29"
+      },
+      {
+        "kind": "park",
+        "label": "NC State Parks — dated facility construction notice",
+        "url": "https://www.ncparks.gov/state-parks/morrow-mountain-state-park/news/construction-closures",
+        "retrieved": "2026-10-29"
+      },
+      {
+        "kind": "forecast",
+        "label": "National Weather Service — dated weekend forecast",
+        "url": "https://api.weather.gov/gridpoints/RAH/25,33/forecast",
+        "retrieved": "2026-10-29"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ],
+    "experience_id": "morrow-mountain-laurel-loop",
+    "experience_basis": {
+      "activity_id": "leashed-woodland-hike",
+      "feature_id": "uwharrie-laurel-woodland",
+      "format_id": "short-loop-and-picnic"
+    },
+    "panels": [
+      {
+        "label": "The shorter woodland choice",
+        "text": "The official Laurel Trail is 0.7 mile, easy, and marked with red hexagons. Start at the park-office/museum area shown on the official map; this is not the 2.6-mile Morrow Mountain Trail."
+      },
+      {
+        "label": "Keep the day modest",
+        "text": "Allow time for Rupert’s pauses and a picnic if conditions permit. Pets cannot enter the museum. Skip the outing for unsafe weather or footing rather than adding a harder trail."
+      }
+    ],
+    "qualities": {
+      "activity": "hike",
+      "expected_heat": "unknown"
+    },
+    "artwork": {
+      "image_id": "atlas-plate-33fe2974faa3",
+      "brief": "Restrained environmental mode after direct review of the latest six plates: dense seated autumn oak scene, burgundy frontal walk, ochre ball close-up, cream frontal reclining, olive standing profile and older landscape. Choose side-on resting Rupert beside quiet water with sparse reeds, broad ivory upper space and horizontal navy ripples. Vary pose, viewpoint, scale, layer density and negative space from the dense oak frame and frontal cream portrait. Preserve Plate 006 likeness, chocolate American Labrador build, mustard collar and slim tapering tail. No documentary destination or suggested-activity claim.",
+      "characters": [
+        "rupert"
+      ]
+    }
+  },
+  "local_trail": {
+    "place_id": "morrow-mountain-laurel",
+    "title": "A brief out-and-back",
+    "line": "Use only the start of the signed Laurel Trail, turning back at Rupert’s pace. This does not count as completing the whole loop.",
+    "snapshot": {
+      "as_of": "2026-10-29",
+      "access": {
+        "name": "Park office and museum parking, 49104 Morrow Mountain Road, Albemarle",
+        "parking": "Use designated parking at the park office/museum, then the signed Laurel Trail opposite this area on the official map. Do not park on road shoulders. Free day use. October gates 7 a.m.–9 p.m., November 7 a.m.–8 p.m.; day-use areas close one hour before the gate. Finish in daylight."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          145,
+          165
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.5
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet. Pets stay outside buildings, pool and vacation cabins.",
+        "water": "Carry drinking water and a bowl. No swimming is part of this outing.",
+        "shade": "Woodland shade on the walking loop; do not assume the parking or picnic area is shaded.",
+        "watch_for": [
+          "Roots, uneven ground and slippery wet leaves",
+          "Keep Rupert close beside the park road",
+          "Wildlife, ticks and autumn trail debris"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ]
+  },
+  "away_mission": {
+    "place_id": "morrow-mountain-laurel",
+    "title": "The loop and a picnic",
+    "line": "Keep Laurel as the entire walk, then use an open designated picnic area if the weather allows. This plan does not depend on shelter reservations or indoor access.",
+    "snapshot": {
+      "as_of": "2026-10-29",
+      "access": {
+        "name": "Park office and museum parking, 49104 Morrow Mountain Road, Albemarle",
+        "parking": "Use designated parking at the park office/museum, then the signed Laurel Trail opposite this area on the official map. Do not park on road shoulders. Free day use. October gates 7 a.m.–9 p.m., November 7 a.m.–8 p.m.; day-use areas close one hour before the gate. Finish in daylight."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          145,
+          165
+        ]
+      },
+      "duration_h": [
+        1.5,
+        2.5
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet. Pets stay outside buildings, pool and vacation cabins.",
+        "water": "Carry drinking water and a bowl. No swimming is part of this outing.",
+        "shade": "Woodland shade on the walking loop; do not assume the parking or picnic area is shaded.",
+        "watch_for": [
+          "Roots, uneven ground and slippery wet leaves",
+          "Keep Rupert close beside the park road",
+          "Wildlife, ticks and autumn trail debris"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      },
+      "route": {
+        "route_id": "morrow-mountain-laurel-loop@1",
+        "distance_mi": 0.7,
+        "shape": "loop",
+        "difficulty": "easy",
+        "surface": "Natural woodland path; red-hexagon blazes. Roots and wet leaves can be slippery."
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "picnic"
+    ]
+  },
+  "wildcard": {
+    "place_id": "morrow-mountain-laurel",
+    "title": "Keep the visit short",
+    "line": "A brief leashed leg-stretch and picnic can be enough in safe conditions. This is not a storm-weather alternative or an indoor outing for Rupert.",
+    "snapshot": {
+      "as_of": "2026-10-29",
+      "access": {
+        "name": "Park office and museum parking, 49104 Morrow Mountain Road, Albemarle",
+        "parking": "Use designated parking at the park office/museum, then the signed Laurel Trail opposite this area on the official map. Do not park on road shoulders. Free day use. October gates 7 a.m.–9 p.m., November 7 a.m.–8 p.m.; day-use areas close one hour before the gate. Finish in daylight."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          145,
+          165
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.5
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet. Pets stay outside buildings, pool and vacation cabins.",
+        "water": "Carry drinking water and a bowl. No swimming is part of this outing.",
+        "shade": "Woodland shade on the walking loop; do not assume the parking or picnic area is shaded.",
+        "watch_for": [
+          "Roots, uneven ground and slippery wet leaves",
+          "Keep Rupert close beside the park road",
+          "Wildlife, ticks and autumn trail debris"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "picnic",
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "text": "Follow the red hexagons at an easy pace; pause for sniffing without leaving the trail or disturbing wildlife.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "Record how much of Laurel you actually walked and whether the long drive suited such a short outing."
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-10-29T06:45:28-04:00",
+    "checked_at": "2026-10-29T11:05:55.430Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RAH/25,33/forecast",
+      "issued_at": "2026-10-29T10:45:28.000Z",
+      "retrieved_at": "2026-10-29T11:05:55.430Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "Mostly cloudy, with a high near 70. Northeast wind 5 to 8 mph."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "Mostly cloudy, with a high near 70."
+      }
+    ],
+    "summary": "Saturday: Mostly cloudy, with a high near 70. Northeast wind 5 to 8 mph. Sunday: Mostly cloudy, with a high near 70. Saturday night: Mostly cloudy, with a low around 48. Sunday night: A slight chance of rain showers after 1am. Mostly cloudy, with a low around 50.",
+    "alerts": [],
+    "alerts_checked_at": "2026-10-29T11:05:55.430Z",
+    "pivot": {
+      "if": "Thunder, strong wind, flooding, unsafe footing or an official closure",
+      "note": "Postpone. Another exposed trail or a picnic is not a storm alternative; recheck official status and NWS before leaving."
+    },
+    "trail_note": "Stay on the red-hexagon Laurel loop. Wet leaves, roots and downed branches may obstruct the path; turn back rather than climbing around an unsafe obstacle. Finish in daylight, and keep pets out of buildings."
+  },
+  "practical": {
+    "best_window": "Saturday or Sunday morning in full daylight, after checking the latest forecast and trail status. Sunday returns to standard time; daylight ends earlier by the clock. Day-use areas close one hour before the gate.",
+    "fees": "Free ordinary day use; facility reservations, boat rentals and swim passes are separate.",
+    "bring": [
+      "Water and bowl",
+      "Attended six-foot leash and waste bags",
+      "Traction shoes",
+      "Rain layer",
+      "Official map offline"
+    ],
+    "closures_checked": "2026-10-29",
+    "closures_note": "Publication-day official home/status, trail table and news re-read before approval. Hiking explicitly Open, with downed-tree reporting notice; open does not promise clear footing. Official map and public park-office GPS 35.3737,-80.0735 identify the visitor access opposite Laurel Trail. Easy 0.7-mile red-hexagon loop, designated parking; no roadside parking. Six-foot attended leash, pets outside buildings/pool/cabins. Free day use. October gates 7 a.m.–9 p.m., November 7 a.m.–8 p.m.; day-use closes one hour earlier. Plan finishes daylight and accounts for Sunday clock change. Dated facility construction notice excludes no part of this loop; no camping, shelter A or pool is required. Canonical NWS issue 2026-10-29T06:45:28-04:00 read: both daytime periods mostly cloudy near 70F, Saturday northeast wind 5–8 mph, Sunday-night slight shower chance; no active alerts returned, not a guarantee. Footing/downed-branch cautions, water/rain layer and postpone-for-thunder/unsafe-conditions pivot remain appropriate. The long drive for a short walk is explicitly disclosed; this is an optional leisurely picnic day, not a summit or mileage claim."
+  }
+}

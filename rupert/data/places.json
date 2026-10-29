@@ -526,6 +526,55 @@
         "checked": "2026-10-27",
         "source": "https://www.ncparks.gov/state-parks/carvers-creek-state-park"
       }
+    },
+    {
+      "id": "morrow-mountain-laurel",
+      "name": "Morrow Mountain State Park — Laurel Trail",
+      "short_name": "Laurel Trail",
+      "kind": "trail",
+      "region": "Stanly County",
+      "access": {
+        "name": "Park office and museum parking, 49104 Morrow Mountain Road, Albemarle",
+        "lat": 35.3737,
+        "lng": -80.0735,
+        "coords_verified": true,
+        "coords_checked": "2026-10-29",
+        "coords_source": "NC State Parks gives public park-office GPS 35.3737,-80.0735 at 49104 Morrow Mountain Road; the official map identifies office/museum visitor parking and the Laurel loop opposite that area. Follow the signed internal access, not a roadside parking pin."
+      },
+      "dog_policy": "Attended leash no longer than six feet. Pets stay outside buildings, pool and vacation cabins.",
+      "routes": [
+        {
+          "route_id": "morrow-mountain-laurel-loop@1",
+          "distance_mi": 0.7,
+          "shape": "loop",
+          "difficulty": "easy",
+          "surface": "Natural woodland path; red-hexagon blazes. Roots and wet leaves can be slippery."
+        }
+      ],
+      "links": [
+        {
+          "label": "Official status, hours and access",
+          "url": "https://www.ncparks.gov/state-parks/morrow-mountain-state-park"
+        },
+        {
+          "label": "Official trails",
+          "url": "https://www.ncparks.gov/state-parks/morrow-mountain-state-park/trails"
+        },
+        {
+          "label": "Official park map",
+          "url": "https://www.ncparks.gov/maps/morrow-mountain-state-park-map/open"
+        }
+      ],
+      "tags": [
+        "woodland",
+        "short-walk",
+        "picnic"
+      ],
+      "closure": {
+        "status": "open",
+        "checked": "2026-10-29",
+        "source": "https://www.ncparks.gov/state-parks/morrow-mountain-state-park"
+      }
     }
   ]
 }

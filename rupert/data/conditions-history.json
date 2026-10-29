@@ -346,6 +346,49 @@
       ],
       "headline_condition": "Saturday first; showers possible Sunday",
       "condition_level": "normal"
+    },
+    {
+      "edition_id": "2026-W44-thu",
+      "replaced_at": "2026-10-29T11:05:55.430Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-10-29T06:45:28-04:00",
+        "checked_at": "2026-10-29T11:01:55.523Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RAH/25,33/forecast",
+          "issued_at": "2026-10-29T10:45:28.000Z",
+          "retrieved_at": "2026-10-29T11:01:55.523Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Mostly cloudy, with a high near 70. Northeast wind 5 to 8 mph."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "Mostly cloudy, with a high near 70."
+          }
+        ],
+        "summary": "Saturday: Mostly cloudy, with a high near 70. Northeast wind 5 to 8 mph. Sunday: Mostly cloudy, with a high near 70. Saturday night: Mostly cloudy, with a low around 48. Sunday night: A slight chance of rain showers after 1am. Mostly cloudy, with a low around 50.",
+        "alerts": [],
+        "alerts_checked_at": "2026-10-29T11:01:55.523Z",
+        "trail_note": "Stay on the red-hexagon Laurel loop. Wet leaves, roots and downed branches may obstruct the path; turn back rather than climbing around an unsafe obstacle. Finish in daylight, and keep pets out of buildings.",
+        "pivot": {
+          "if": "Thunder, strong wind, flooding, unsafe footing or an official closure",
+          "note": "Postpone. Another exposed trail or a picnic is not a storm alternative; recheck official status and NWS before leaving."
+        }
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — dated weekend forecast",
+          "url": "https://api.weather.gov/gridpoints/RAH/25,33/forecast",
+          "retrieved": "2026-10-29"
+        }
+      ],
+      "headline_condition": "Cloudy, mild; watch the footing",
+      "condition_level": "normal"
     }
   ]
 }
