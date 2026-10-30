@@ -2687,6 +2687,144 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Blair & Imai (2012), Political Analysis; Glynn (2013), Public Opinion Quarterly."
         }
       ]
+    },
+    {
+      "no": 14,
+      "date": "2026-10-30",
+      "minutes": 27,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>A researcher estimates a binary-outcome panel model with individual fixed effects, 20,000 people and four annual observations per person. Which statements about fixed-effects logit estimation are correct?</p>",
+          "options": [
+            "Estimating every individual effect jointly with the slope can leave the slope biased when the number of periods is fixed, even as the number of people grows.",
+            "Increasing the number of people from 20,000 to 200,000 necessarily removes the incidental-parameters bias while the panel remains four periods long.",
+            "Under the logit model and suitable strict-exogeneity conditions, conditioning on each person's total number of positive outcomes can eliminate the individual effect from the likelihood used to estimate slopes.",
+            "A coefficient on a regressor that never changes within a person is not separately identified from that person's fixed effect."
+          ],
+          "correct": [0, 2, 3],
+          "concepts": ["Incidental parameters", "Conditional fixed-effects logit", "Within-unit identification"],
+          "assistance": "<p>Distinguish the cross-sectional dimension from the time dimension. Count how many nuisance parameters are added when another person enters the sample and ask whether each nuisance parameter receives more observations.</p><p>For logit, examine the likelihood conditional on a sufficient statistic for the individual effect. Then separate variables that vary over time within a person from variables that remain constant for that person.</p>",
+          "explanation": "<p><b>(A), (C), and (D) are correct.</b> With fixed <i>T</i>, adding people also adds fixed effects, each estimated from only four observations; the nonlinear maximum-likelihood slope can therefore retain incidental-parameters bias, so (B) is false. In the logit model, conditioning on the unit total removes the fixed effect from the conditional likelihood under the maintained assumptions. Identification then comes from within-person outcome and regressor variation. A time-invariant regressor is perfectly confounded with the individual effect, so its coefficient cannot be estimated separately.</p>",
+          "refs": "Neyman & Scott (1948), Econometrica; Chamberlain (1980), Review of Economic Studies."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>Two parties bargain over feasible utility pairs satisfying <i>u</i><sub>1</sub> + <i>u</i><sub>2</sub> = 80. Their disagreement utilities are 10 and 20. With symmetric Nash bargaining weights, which agreement is selected?</p>",
+          "options": [
+            "(30, 50), because the total utility level is divided in proportion to disagreement utilities.",
+            "(35, 45), because the 50 units of surplus above disagreement are divided equally.",
+            "(40, 40), because symmetric bargaining always equalizes final utility levels.",
+            "(50, 30), because party 1 has the lower disagreement utility and therefore receives the larger final payoff."
+          ],
+          "correct": [1],
+          "concepts": ["Nash bargaining solution", "Disagreement payoffs", "Bargaining surplus"],
+          "assistance": "<p>Translate final utilities into gains above the disagreement point. The bargaining product is formed from those gains, subject to their sum equaling the feasible surplus.</p><p>Symmetric bargaining weights equalize surplus gains when the frontier is linear; they do not generally equalize final utility levels when disagreement utilities differ.</p>",
+          "explanation": "<p><b>(B) is correct.</b> The disagreement point uses 10 + 20 = 30 utility units, leaving 80 − 30 = 50 units of feasible bargaining surplus. The symmetric Nash product maximizes (<i>u</i><sub>1</sub> − 10)(<i>u</i><sub>2</sub> − 20), so each party receives 25 surplus units. Final utilities are therefore (10 + 25, 20 + 25) = (35, 45). Symmetry applies to gains over disagreement, not to final utilities or shares based on disagreement levels.</p>",
+          "refs": "Nash (1950), Econometrica; Rubinstein (1982), Econometrica."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "<p>The current one-year risk-free yield is 3.0%, the expected one-year yield beginning next year is 3.8%, and the observed two-year zero-coupon yield is 4.0%. Using the log-linear approximation, which statements are defensible?</p>",
+          "options": [
+            "The average expected short yield is 3.4%, implying an approximate two-year term premium of 0.6 percentage points.",
+            "If expected future short yields were unchanged, a rise in the term premium could still raise the two-year yield.",
+            "An inverted yield curve proves that a recession will occur because term premia cannot vary.",
+            "Under the pure expectations hypothesis, the term premium is set to zero and longer yields reflect averages of expected future short yields."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Expectations hypothesis", "Term premium", "Yield-curve decomposition"],
+          "assistance": "<p>First average the current short yield and the expected future short yield over the two-year horizon. Treat the gap between that average and the observed longer yield as the residual compensation for duration risk.</p><p>Then distinguish a forecasting relationship from an accounting implication of a maintained model. Longer yields can move because expected policy rates, term compensation, or both have changed.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> The expected average short yield is (3.0% + 3.8%)/2 = 3.4%. The observed two-year yield is 4.0%, so the approximate term premium is 0.6 percentage points. A higher term premium can raise longer yields without any revision to expected short rates. The pure expectations hypothesis is the special case with a zero term premium. (C) is false: an inversion can be informative, but variable term premia and forecast uncertainty prevent it from being logical proof of a recession.</p>",
+          "refs": "Campbell & Shiller (1991), Review of Economic Studies; Adrian, Crump & Moench (2013), Journal of Financial Economics."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "multi",
+          "stem": "<p>Nutrient loading leaves a lake clear below an uncertain ecological threshold, but crossing that threshold can shift the lake into a persistent turbid regime with large welfare losses and costly restoration. Which policy conclusions are defensible?</p>",
+          "options": [
+            "Evaluating only the lake's current clear-regime marginal damages can understate the expected cost of additional loading near the threshold.",
+            "A static Pigouvian charge based on current clear-regime damages necessarily implements the global optimum despite uncertainty and hysteresis.",
+            "Uncertainty about the threshold can create precautionary value from holding loading farther below its estimated location.",
+            "Because measured damages are small before the threshold is crossed, the probability and persistence of a regime shift are irrelevant to expected welfare."
+          ],
+          "correct": [0, 2],
+          "concepts": ["Ecological tipping points", "Nonconvex damages", "Precaution under threshold uncertainty"],
+          "assistance": "<p>Compare a smooth marginal calculation within the current regime with the expected loss from moving into another regime. Weight the size and persistence of that loss by the probability that an extra unit changes the regime.</p><p>Hysteresis matters because reversing the pressure may not immediately restore the original state. Ask whether a locally calibrated instrument accounts for that global and dynamic consequence.</p>",
+          "explanation": "<p><b>(A) and (C) are correct.</b> Near an uncertain tipping point, another unit of loading can increase the probability of entering a persistent high-damage regime. Expected marginal damage must include that discrete risk, not only the smooth damage observed while the lake remains clear. Uncertainty and costly reversibility can therefore justify a precautionary loading margin. (B) is false because a charge calibrated only to current-regime damages can miss multiple basins of attraction and future restoration costs. (D) ignores both the probability and duration of the regime-shift loss.</p>",
+          "refs": "Mäler, Xepapadeas & de Zeeuw (2003), Resource and Energy Economics; Brock & Starrett (2003), Econometrica."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>Advertising exposure <i>A</i> may affect purchases <i>Y</i> through brand search <i>M</i>. An unobserved preference confounds <i>A</i> and <i>Y</i>. Which conditions are part of a valid front-door identification argument for the total causal effect of <i>A</i> on <i>Y</i>?</p>",
+          "options": [
+            "Brand search intercepts every directed causal path from advertising exposure to purchases.",
+            "There is no unblocked back-door path from advertising exposure to brand search.",
+            "Advertising exposure blocks every back-door path from brand search to purchases.",
+            "Advertising exposure must itself be randomized; otherwise the front-door criterion can never address unobserved exposure–outcome confounding."
+          ],
+          "correct": [0, 1, 2],
+          "concepts": ["Front-door criterion", "Mediation identification", "Graphical causal models"],
+          "assistance": "<p>Draw the directed graph and inspect three path families separately: directed paths from exposure to outcome, back-door paths from exposure to mediator, and back-door paths from mediator to outcome.</p><p>The criterion is useful precisely when the exposure–outcome relation is confounded. Its identifying power comes from the mediator structure, not from simply conditioning on any post-exposure variable.</p>",
+          "explanation": "<p><b>(A), (B), and (C) are correct.</b> The front-door criterion requires the mediator to intercept all directed paths from <i>A</i> to <i>Y</i>, no unblocked back-door path from <i>A</i> to <i>M</i>, and all back-door paths from <i>M</i> to <i>Y</i> to be blocked by <i>A</i>. Under those conditions, the effect can be identified even when an unobserved variable confounds <i>A</i> and <i>Y</i>. Thus (D) is false: randomization of <i>A</i> is sufficient for many designs but is not required by the front-door argument.</p>",
+          "refs": "Pearl (1995), Biometrika; Pearl (2009), Causality."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "<p>An analyst searches 100 candidate linear models, chooses the model giving the largest absolute coefficient on <i>x</i>, and then reports the ordinary 95% confidence interval from that selected model as though it had been specified in advance. The interval retains 95% unconditional coverage merely because every candidate model used the same sample. True or false?</p>",
+          "options": ["True", "False"],
+          "correct": [1],
+          "concepts": ["Post-selection inference", "Winner's curse", "Confidence-interval coverage"],
+          "assistance": "<p>Treat model selection as part of the random procedure. Ask how choosing an extreme estimated coefficient changes its sampling behavior relative to a coefficient from a prespecified model.</p><p>Using one sample throughout does not remove selection; it couples the reported estimate to the same noise that made the model appear attractive.</p>",
+          "explanation": "<p><b>False.</b> Selecting the largest absolute estimate favors models whose coefficients contain unusually large sampling noise. The ordinary interval conditions on a prespecified model and ignores this search, so its center is subject to a winner's curse and its nominal coverage generally fails. Valid approaches must account for selection, use honest sample splitting, or target a prespecified estimand. The fact that every candidate used the same sample intensifies dependence; it does not restore 95% coverage.</p>",
+          "refs": "Berk et al. (2013), Annals of Statistics; Lee et al. (2016), Annals of Statistics."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A forest project documents 100 tonnes of additional carbon storage. A permanence buffer withholds 20% of issued credits, each saleable credit earns $15, and monitoring and verification cost $300. Ignoring other costs, what is the project's net revenue?</p>",
+          "options": [
+            "$900, because 80 credits are sold for $1,200 before the $300 cost.",
+            "$1,000, because the 20-credit buffer is valued at the monitoring cost.",
+            "$1,200, because monitoring costs are deducted before applying the buffer.",
+            "$1,500, because withheld credits remain immediately saleable by the project."
+          ],
+          "correct": [0],
+          "concepts": ["Carbon permanence", "Buffer pools", "Net credit revenue"],
+          "assistance": "<p>Apply the buffer percentage to documented carbon before calculating saleable credits. Treat withheld credits as insurance against reversal rather than current project revenue.</p><p>After valuing the credits that can actually be sold, subtract the fixed monitoring and verification expense once. Keep physical tonnes, issued credits and dollars in separate steps.</p>",
+          "explanation": "<p><b>(A) is correct.</b> The 20% buffer withholds 20 of the 100 credits, leaving 80 saleable credits. Gross revenue is 80 × $15 = $1,200. Subtracting $300 of monitoring and verification cost gives net revenue of $900. (B) assigns an unsupported value relationship to the buffer, (C) applies the operations in the wrong order, and (D) treats insurance credits as if the project could sell them immediately.</p>",
+          "refs": "Kim, McCarl & Murray (2008), Ecological Economics; Murray, Sohngen & Ross (2007), Mitigation and Adaptation Strategies for Global Change."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "single",
+          "stem": "<p>A randomized 2 × 2 factorial experiment reports mean outcomes of 10 with neither intervention, 14 with <i>A</i> only, 13 with <i>B</i> only, and 20 with both. On the additive outcome scale, what is the interaction effect?</p>",
+          "options": [
+            "−3, because the two individual effects sum to more than the joint outcome.",
+            "0, because randomization rules out interactions by design.",
+            "3, because 20 − 14 − 13 + 10 = 3.",
+            "7, because the joint arm exceeds the <i>B</i>-only arm by 7."
+          ],
+          "correct": [2],
+          "concepts": ["Factorial experiments", "Interaction contrasts", "Difference-in-differences algebra"],
+          "assistance": "<p>Compute the effect of <i>A</i> when <i>B</i> is present and when <i>B</i> is absent, then subtract those two effects. The same contrast results if the roles of <i>A</i> and <i>B</i> are reversed.</p><p>Random assignment identifies the cell means under the design; it does not impose additivity. Keep the interaction contrast distinct from either intervention's conditional effect.</p>",
+          "explanation": "<p><b>(C) is correct.</b> The effect of <i>A</i> without <i>B</i> is 14 − 10 = 4, while its effect with <i>B</i> is 20 − 13 = 7. Their difference is 7 − 4 = 3, equivalently 20 − 14 − 13 + 10. A positive interaction means the joint outcome exceeds the sum implied by the two separate additive effects. Randomization supports causal interpretation of the assigned-cell contrasts but does not force the interaction to zero.</p>",
+          "refs": "Dasgupta, Pillai & Rubin (2015), Journal of the Royal Statistical Society: Series B; Gerber & Green (2012), Field Experiments."
+        }
+      ]
     }
   ]
 }
