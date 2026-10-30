@@ -125,6 +125,27 @@
       ],
       "added": [],
       "note": "Reviewed all five readings and the capital-allocation synthesis. Existing entries already cover incidence, identification, substitution, counterfactuals, adoption constraints, financing wedges, private versus social value, and complementarity, so no distinct reusable concept was added. References were appended only where the new evidence materially revisits those ideas."
+    },
+    "2026-10-30": {
+      "reviewedOn": "2026-10-30",
+      "readings": [
+        "2026-10-30-coal-country",
+        "2026-10-30-household-climate",
+        "2026-10-30-methane-rule",
+        "2026-10-30-solar-storage",
+        "2026-10-30-moves6"
+      ],
+      "synthesis": "2026-10-30-connections",
+      "revisited": [
+        "complementarity",
+        "incidence",
+        "counterfactual-reasoning",
+        "identification",
+        "spatial-equilibrium-migration",
+        "private-returns-social-value"
+      ],
+      "added": [],
+      "note": "Reviewed both complete research readings, all three institutional items, and the baseline-and-model synthesis. Existing entries already cover complementarity, incidence, counterfactual reasoning, identification, spatial equilibrium, and social-value accounting, so no distinct reusable concept was added. References were appended only where the new evidence substantively revisits those ideas; modeled, descriptive, proposed, and causal claims remain separated."
     }
   }
 }
