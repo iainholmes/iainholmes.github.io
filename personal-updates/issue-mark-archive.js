@@ -1318,5 +1318,69 @@
       4
     ],
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"The Workbook, set 014: Thresholds &amp; response\"><title>The Workbook · 014 · Thresholds &amp; response</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f7f7f3\"/><g><path d=\"M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540M60 360H540M60 420H540M60 480H540M60 60V500M120 60V500M180 60V500M240 60V500M300 60V500M360 60V500M420 60V500M480 60V500M540 60V500\" fill=\"none\" stroke=\"#1c2f4a\" opacity=\".12\"/><path d=\"M95 440L290 310L495 150L495 465H95Z\" fill=\"#b5ced1\"/><path d=\"M95 440L290 310L495 150\" fill=\"none\" stroke=\"#0e5360\" stroke-width=\"12\"/><path d=\"M290 110V490\" stroke=\"#1c2f4a\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#1c2f4a\" stroke-width=\"2\"/><g fill=\"#1c2f4a\"><text x=\"42\" y=\"634\" font-family=\"STIX Two Text,Georgia,serif\" font-size=\"48\">The Workbook</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">SET 014 / 2026-10-30</text><text x=\"42\" y=\"740\" font-family=\"STIX Two Text,Georgia,serif\" font-size=\"26\">Thresholds &amp; response</text></g></svg>"
+  },
+  "fb:2026-10-30": {
+    "key": "fb",
+    "date": "2026-10-30",
+    "no": "034",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "U.S. compensation costs rise 0.8% in the third quarter, while a federal court rejects a restriction on Medicaid exemptions for serious illness. G20 divisions disrupt the Atlanta meeting's opening, AI services pursue lower airfares for passengers, and North Carolina's latest assessment shows severe drought spreading in the Piedmont and coastal plain. What the new evidence changes These stories concern different decisions: measuring labor costs, verifying health-coverage exemptions, sustaining international cooperation, reclaiming airfare declines and managing scarce water. The evidence ranges from official statistics and a court order to reported company claims and a weekly environmental assessment. Watch the separate next steps: compensation and price data; Medicaid implementation under the surviving rules; concrete G20 agreements; airline rebooking conditions; and local reservoir levels and conservation stages. None of today's reports settles all of those questions.",
+    "version": 5,
+    "subject": "labor",
+    "composition": "labor-stair",
+    "signature": "issue:labor-stair",
+    "phrase": "Work & adjustment",
+    "seed": 1079259082,
+    "geometry": "<path d=\"M83 465V135H191V465M246 465V255H354V465M409 465V369H517V465\" fill=\"$accent\"/><path d=\"M82 495H521\" stroke=\"$ink\" stroke-width=\"18\"/><path d=\"M124 217H152M287 337H315M450 411H478\" stroke=\"$paper\" stroke-width=\"26\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "01"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "03",
+          "04"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "02",
+          "04"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "02",
+          "05"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "03",
+          "04"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "02"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 33,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 034: Work &amp; adjustment\"><title>Field Brief · 034 · Work &amp; adjustment</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M83 465V135H191V465M246 465V255H354V465M409 465V369H517V465\" fill=\"#8a2a36\"/><path d=\"M82 495H521\" stroke=\"#221a14\" stroke-width=\"18\"/><path d=\"M124 217H152M287 337H315M450 411H478\" stroke=\"#f1e6d0\" stroke-width=\"26\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 034 / 2026-10-30</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Work &amp; adjustment</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

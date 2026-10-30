@@ -1844,6 +1844,68 @@
         "seed": 4018218463,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separate work benches and an unfilled place\"><title>UNC System sets limits on campus license-plate readers</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-29-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-29-05)\"><path d=\"M85 300H325V350H85ZM445 420H715V470H445Z\" fill=\"#2c241d\"/><path d=\"M125 350V545M280 350V545M480 470V545M670 470V545\" stroke=\"#2c241d\" stroke-width=\"22\"/><circle cx=\"205\" cy=\"185\" r=\"47\" fill=\"#c4452c\"/><path d=\"M145 285V240Q205 195 265 240V285Z\" fill=\"#1b4a6b\"/><path d=\"M506 340V235H635V340\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"16\"/></g></svg>"
       }
+    },
+    "2026-10-30": {
+      "01": {
+        "version": 2,
+        "date": "2026-10-30",
+        "number": "01",
+        "category": "Economy · labor costs",
+        "topic": "labor",
+        "title": "U.S. compensation costs rise 0.8% as benefits outpace wages",
+        "composition": "labor-steps",
+        "signature": "plate:labor-steps",
+        "seed": 1782763421,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Hiring capacity narrows across workstations\"><title>U.S. compensation costs rise 0.8% as benefits outpace wages</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-30-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-30-01)\"><path d=\"M85 510V185H255V510M300 510V285H470V510M515 510V395H685V510\" fill=\"#1b4a6b\"/><g fill=\"#f4ead7\"><circle cx=\"170\" cy=\"265\" r=\"28\"/><path d=\"M134 385V320Q170 286 206 320V385Z\"/><circle cx=\"385\" cy=\"356\" r=\"28\"/><path d=\"M349 476V410Q385 377 421 410V476Z\"/></g><path d=\"M535 440H665\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M75 548H725\" stroke=\"#2c241d\" stroke-width=\"18\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-10-30",
+        "number": "02",
+        "category": "U.S. policy · healthcare access",
+        "topic": "government",
+        "title": "Court rejects an extra work-capacity test for Medicaid medical exemptions",
+        "composition": "government-document",
+        "signature": "plate:government-document",
+        "seed": 1369245946,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A legal document meets a gate of authority\"><title>Court rejects an extra work-capacity test for Medicaid medical exemptions</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-30-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-30-02)\"><path d=\"M110 100H375L460 190V525H110Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M160 225H395M160 302H395M160 378H312\" stroke=\"#7c5a3e\" stroke-width=\"20\"/><path d=\"M530 535V185H690V535M490 260H728\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"30\"/><path d=\"M460 445H550\" stroke=\"#1b4a6b\" stroke-width=\"27\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-10-30",
+        "number": "03",
+        "category": "U.S. policy · international economic cooperation",
+        "topic": "general",
+        "title": "G20 opens in Atlanta with a canceled photo and divisions over participation",
+        "composition": "institution-weave",
+        "signature": "plate:institution-weave",
+        "seed": 1063550438,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Interdependent institutions form a woven system\"><title>G20 opens in Atlanta with a canceled photo and divisions over participation</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-30-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-30-03)\"><path d=\"M100 170H700M100 320H700M100 470H700\" stroke=\"#1b4a6b\" stroke-width=\"72\"/><path d=\"M225 80V560M575 80V560\" stroke=\"#7a1f33\" stroke-width=\"69\"/><path d=\"M185 320H266M535 170H616M535 470H616\" stroke=\"#f4ead7\" stroke-width=\"73\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-10-30",
+        "number": "04",
+        "category": "Technology · consumer pricing",
+        "topic": "general",
+        "title": "AI airfare services pursue passenger savings as airlines change repricing rules",
+        "composition": "observation-lens",
+        "signature": "plate:observation-lens",
+        "seed": 1448301308,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Observation links a broad field to a decision point\"><title>AI airfare services pursue passenger savings as airlines change repricing rules</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-30-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-30-04)\"><circle cx=\"294\" cy=\"285\" r=\"178\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"32\"/><path d=\"M180 285Q294 160 408 285Q294 410 180 285Z\" fill=\"#1b4a6b\"/><circle cx=\"294\" cy=\"285\" r=\"46\" fill=\"#7a1f33\"/><path d=\"M420 410L577 552\" stroke=\"#2c241d\" stroke-width=\"45\"/><path d=\"M560 120H710V295H560Z\" fill=\"#c4452c\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-10-30",
+        "number": "05",
+        "category": "Environment · North Carolina water supply",
+        "topic": "climate",
+        "title": "Severe drought spreads across North Carolina's Piedmont and coastal plain",
+        "composition": "climate-watershed",
+        "signature": "plate:climate-watershed",
+        "seed": 481108870,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A high lake spills toward inhabited lower ground\"><title>Severe drought spreads across North Carolina&#39;s Piedmont and coastal plain</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-30-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-30-05)\"><path d=\"M50 425L235 130L398 385L530 215L750 525H50Z\" fill=\"#1d5f47\"/><ellipse cx=\"290\" cy=\"285\" rx=\"85\" ry=\"34\" fill=\"#1b4a6b\"/><path d=\"M340 295Q340 430 570 483\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"34\"/><path d=\"M584 410L650 355L716 410V510H584Z\" fill=\"#2c241d\"/><path d=\"M93 480H234\" stroke=\"#c98a12\" stroke-width=\"25\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
