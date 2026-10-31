@@ -71,7 +71,7 @@ try{
    check(await component.locator('.crowd-scale').count()===available,`${name}: missing metric drew a scale`);
    check(await component.locator('.is-observed').count()===available,`${name}: incorrect observation markers`);
    check(await component.locator('.is-unassessed').count()===2-available,`${name}: missing state incorrect`);
-   check((await component.innerText()).includes('No crowd data recorded.')===(available===0),`${name}: contradictory no-data message`);
+   check((await component.innerText()).includes('No verified trail-level crowd information was recorded for this edition.')===(available===0),`${name}: contradictory no-data message`);
    const indexes=await component.locator('.crowd-scale').evaluateAll(ns=>ns.map(n=>[...n.children].findIndex(c=>c.classList.contains('is-observed'))));
    const expected=[crowd?.typical_level,crowd?.perceived_crowding].filter(Boolean).map(v=>['Low','Moderate','Busy','Very Busy'].indexOf(v));
    check(JSON.stringify(indexes)===JSON.stringify(expected),`${name}: observation at wrong ordinal position`);

@@ -19,6 +19,8 @@ Tuesday and Thursday are due at 07:00 America/New_York. The slot is attached to 
 
 The connected scheduled publisher performs this procedure, with hourly retry opportunities after the nominal release. It is an editorial automation, not a GitHub Actions workflow. Timing is a wake-up, not a publication signal. An early wake-up must recheck the actual clock at or after 07:00 before claiming that slot has run. A due slot with neither a draft nor a released edition makes `release` exit nonzero with preparation instructions, even if another slot has a draft. Previously released withdrawal notices remain history under the existing publication contract. The site remains pending until actual validated publication.
 
+When normal source review yields credible crowd guidance, follow [CROWD-METADATA.md](../CROWD-METADATA.md): attribute its geography, period and limits in the existing descriptive fields and sources. Retain null when unverified; this optional enrichment is not a new release gate. Never translate park-wide annual visitation into trail-level crowd predictions.
+
 ## Preparation before the release window
 
 The existing Monday/Wednesday Chat schedule may research two independent destinations with its actual connected capabilities. It is read-only toward the packet and must label its output advisory, never claim a sealed packet or request a checkout from the user as a prerequisite for tomorrow's publisher. Do not fabricate an executable environment or write unvalidated research over the last valid packet. The Work publisher does not depend on these notes being available.

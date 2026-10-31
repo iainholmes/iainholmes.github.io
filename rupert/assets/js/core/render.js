@@ -14,6 +14,7 @@ import { PENDING_TIME } from './veil.js';
 
 import { expectedPublish } from './editions.js';
 import { previousSuggestions } from './recommendations.js';
+import { publishedPlates } from './plates.js';
 // Editorial slot and real publication date are separate; the timestamp stays machine-readable.
 function slotPublication(ed) {
   const date = publishedLabel(ed.published_at).replace(/^\S+\s/, '');
@@ -253,10 +254,12 @@ function interlude(ed, ctx) {
 
 export function crowdVisual(crowd) {
   const { typical, perceived, facts } = crowdReadings(crowd);
+  if (!typical && !perceived && !facts.length) return '<div class="crowd-visual"><p class="crowd-note">No verified trail-level crowd information was recorded for this edition.</p></div>';
   const scale = (label, description, reading) => {
+    if (!reading) return '';
     return `<div class="crowd-line${reading ? '' : ' is-unassessed'}"><div class="crowd-heading"><span>${label}</span><strong class="crowd-value">${esc(reading?.value || 'Not recorded')}</strong></div><p class="crowd-description">${description}</p>${reading ? `<div class="crowd-scale" role="img" aria-label="${esc(label)}: ${esc(reading.value)} on the Quiet to Busy scale">${CROWD_LEVELS.map((x,i)=>`<i${reading.index === i ? ' class="is-observed"' : ''} aria-hidden="true"></i>`).join('')}</div><div class="crowd-key" aria-hidden="true"><span>Quiet</span><span>Busy</span></div>` : ''}</div>`;
   };
-  return `<div class="crowd-visual">${scale('Typical crowd','Usual number of visitors',typical)}${scale('Perceived crowding','How busy the space feels',perceived)}${facts.length ? `<dl class="facts">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}${!typical && !perceived && !facts.length ? '<p class="as-of">No crowd data recorded.</p>' : ''}</div>`;
+  return `<div class="crowd-visual">${scale('Typical crowd','Usual number of visitors',typical)}${scale('Perceived crowding','How busy the space feels',perceived)}${facts.length ? `<dl class="facts">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}</div>`;
 }
 
 /* ---------- full edition ---------- */
@@ -343,6 +346,24 @@ ${fetchDock(f.experiences?.some(x => ['river','swim'].includes(x)) ? 'water' : f
 
 /* ---------- archive ---------- */
 
+function archiveNavigation(current) {
+  const root = current === 'plates' ? '../' : '';
+  return `<nav class="archive-switch" aria-label="Archive collections"><a href="${root || './'}"${current === 'editions' ? ' aria-current="page"' : ''}>Editions</a><a href="${root}plates/"${current === 'plates' ? ' aria-current="page"' : ''}>Plates</a></nav>`;
+}
+
+export function renderPlateRegister(manifest, ctx) {
+  const entries = publishedPlates(manifest, ctx.photos, ctx.now);
+  return `<div class="plate-register wrap"><header class="page-head"><h1>Archive</h1></header>${archiveNavigation('plates')}
+  <header class="register-intro"><div><p class="register-count">${entries.length} collected prints</p><h2>Plate Register</h2></div><p>Original editorial illustrations, in order of publication. These prints accompany the outings; they are not documentary records of places or visits. Select a print to look closer.</p></header>
+  <div class="register-grid">${entries.map(({image:p,edition:e}) => {
+    const no = `TRA Plate No. ${String(p.plate_no).padStart(3,'0')}`, widths = [...p.widths].sort((a,b)=>a-b);
+    const src = w => `${ctx.base}photos/${p.file}-${w}.jpg`;
+    return `<figure class="register-print" id="plate-${String(p.plate_no).padStart(3,'0')}" data-plate="${p.plate_no}" data-edition="${esc(e.id)}">
+      <a class="register-art" href="${esc(src(widths.at(-1)))}" aria-label="Inspect ${no}"><img src="${esc(src(widths.at(-1)))}" srcset="${widths.map(w=>`${esc(src(w))} ${w}w`).join(', ')}" sizes="(min-width: 1024px) 30vw, (min-width: 600px) 45vw, 90vw" width="${p.width}" height="${p.height}" alt="${esc(p.alt)}" loading="lazy" decoding="async"></a>
+      <figcaption><div class="register-ident"><p class="register-number">${no}</p><time datetime="${esc(e.published_at)}">${esc(shortDate(nyDateString(new Date(e.published_at))))} ${esc(nyDateString(new Date(e.published_at)).slice(0,4))}</time></div><h3><a class="register-edition" href="${ctx.base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3>${e.status === 'withdrawn' ? '<p class="register-status">Recommendation withdrawn · Historical plate</p>' : ''}</figcaption></figure>`;
+  }).join('') || '<p>No plates published.</p>'}</div></div>`;
+}
+
 export function renderArchive(groups, ctx) {
   const { base, photos, places } = ctx;
   const cards = groups.map(g => `<section class="archive-week${g.editions.some(e=>e.current)?' is-current':''}"><h2>${esc(weekendRange(g.weekend.start,g.weekend.end))}${g.editions.some(e=>e.current)?'<span class="arch-now">This Week</span>':''}</h2><div class="archive-results">${['tuesday','thursday'].flatMap(slot=>{const entries=g.editions.filter(e=>e.slot===slot);return entries.length?entries.map(e=>({slot,e})):[{slot,e:null}];}).map(({slot,e})=>{
@@ -352,7 +373,7 @@ export function renderArchive(groups, ctx) {
     const option={...(e.options?.find(o=>o.role==='flagship') || {}),title:e.title,place_name:(places?.places||[]).find(p=>p.id===e.place_id)?.name || ''};
     return `<article class="archive-card" data-edition="${esc(e.id)}" data-option="${esc(JSON.stringify(option))}"><a href="${base}edition/${esc(e.id)}/" class="archive-image" tabindex="-1" aria-hidden="true">${photo(e.photo_id?{id:e.photo_id}:null,photos,base,{sizes:'(max-width: 759px) 88px, 118px'})}</a><div><p class="p-day">${slotPublication(e)}</p><h3><a href="${base}edition/${esc(e.id)}/">${esc(titleCase(e.title))}</a></h3><p class="arch-meta">${esc(option.place_name)}</p></div></article>`;
   }).join('')}</div></section>`).join('');
-  return `<div class="archive wrap"><header class="page-head"><h1>Archive</h1></header><div class="archive-layout"><aside class="archive-rail"><form class="archive-filters" hidden role="search"><label>Search<input type="search" name="query" placeholder="Place or activity"></label><label>Season<select name="season"><option value="">All seasons</option>${Object.entries(SEASONS).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Activity<select name="experience"><option value="">All activities</option>${Object.entries(EXPERIENCES).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Crowd<select name="crowd">${Object.entries(CROWD_TOLERANCES).map(([v,l])=>`<option value="${v}"${v==='any'?' selected':''}>${l}</option>`).join('')}</select></label><button type="reset">Clear</button></form><p class="archive-count" role="status" aria-live="polite"></p></aside><div class="archive-index"><p class="archive-empty" hidden>No editions match these filters.</p>${cards || '<p>No editions published.</p>'}</div></div></div>`;
+  return `<div class="archive wrap"><header class="page-head"><h1>Archive</h1></header>${archiveNavigation('editions')}<div class="archive-layout"><aside class="archive-rail"><form class="archive-filters" hidden role="search"><label>Search<input type="search" name="query" placeholder="Place or activity"></label><label>Season<select name="season"><option value="">All seasons</option>${Object.entries(SEASONS).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Activity<select name="experience"><option value="">All activities</option>${Object.entries(EXPERIENCES).map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></label><label>Crowd<select name="crowd">${Object.entries(CROWD_TOLERANCES).map(([v,l])=>`<option value="${v}"${v==='any'?' selected':''}>${l}</option>`).join('')}</select></label><button type="reset">Clear</button></form><p class="archive-count" role="status" aria-live="polite"></p></aside><div class="archive-index"><p class="archive-empty" hidden>No editions match these filters.</p>${cards || '<p>No editions published.</p>'}</div></div></div>`;
 }
 
 /* ---------- section placeholders (milestone 1 honesty pages) ---------- */

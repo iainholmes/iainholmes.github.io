@@ -27,7 +27,7 @@ import { parseDate, nyDateString } from '../assets/js/core/dates.js';
 import { cycleWeekend } from '../assets/js/core/cycles.js';
 import { veilState, veilArtworkProblems } from '../assets/js/core/veil.js';
 import { veilArrivalBoot } from '../assets/js/core/veil-arrival.js';
-import { chrome, renderWeek, renderEdition, renderArchive, renderAtlas, renderComing, renderTravel, weekLabelFor, esc } from '../assets/js/core/render.js';
+import { chrome, renderWeek, renderEdition, renderArchive, renderPlateRegister, renderAtlas, renderComing, renderTravel, weekLabelFor, esc } from '../assets/js/core/render.js';
 import { placeStatuses, markerFeatures, boundsOf, registerGroups, counts, atlasModel } from '../assets/js/core/atlas.js';
 import { trafficConfig } from '../assets/js/traffic-config.js';
 import { trafficAvailable } from '../assets/js/core/traffic.js';
@@ -310,6 +310,11 @@ async function build({ writeFiles }) {
       title: 'Archive · The Rupert Atlas', description: 'Every edition, by weekend.',
       depth: 1, active: 'archive', site: data.site, weekLabel,
       body: renderArchive(archiveGroups(manifest, now, pair), { ...ctx0, base: '../' }),
+    }));
+    await w('archive/plates/index.html', page({
+      title: 'Plate Register · The Rupert Atlas', description: 'The collected published TRA Plates, in their permanent sequence.',
+      depth: 2, active: 'archive', site: data.site, weekLabel, extra: ['assets/js/plate-register-view.js'],
+      body: renderPlateRegister(manifest, { ...ctx0, base: '../../' }),
     }));
     const directoryModel = atlasModel(data.places, manifest, { now });
     await w('atlas/index.html', page({

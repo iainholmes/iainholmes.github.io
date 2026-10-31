@@ -12,9 +12,9 @@ let checks=0;const check=fn=>{fn();checks++;};
 for(const crowd of [undefined,null,{}, {typical_level:null,perceived_crowding:null}, {typical_level:0,perceived_crowding:'Unverified'}]){
   const html=crowdVisual(crowd),state=crowdReadings(crowd);
   check(()=>assert.deepEqual(state,{typical:null,perceived:null,facts:[]}));
-  check(()=>assert.equal((html.match(/Not recorded/g)||[]).length,2));
+  check(()=>assert.equal((html.match(/Not recorded/g)||[]).length,0));
   check(()=>assert.doesNotMatch(html,/crowd-scale|is-observed|Quiet<|Busy</));
-  check(()=>assert.match(html,/No crowd data recorded/));
+  check(()=>assert.match(html,/No verified trail-level crowd information/));
 }
 for(const [index,value] of CROWD_LEVELS.entries()){
   const crowd={typical_level:value,perceived_crowding:value},html=crowdVisual(crowd);
@@ -27,15 +27,18 @@ for(const crowd of [{typical_level:'Low',perceived_crowding:'Very Busy'},{typica
   const state=crowdReadings(crowd),html=crowdVisual(crowd),available=Number(!!state.typical)+Number(!!state.perceived);
   check(()=>assert.equal((html.match(/class="is-observed"/g)||[]).length,available));
   check(()=>assert.equal((html.match(/class="crowd-scale"/g)||[]).length,available));
-  check(()=>assert.equal((html.match(/Not recorded/g)||[]).length,2-available));
-  check(()=>assert.doesNotMatch(html,/No crowd data recorded/));
+  check(()=>assert.equal((html.match(/Not recorded/g)||[]).length,0));
+  check(()=>assert.doesNotMatch(html,/No verified trail-level crowd information/));
 }
 check(()=>assert.deepEqual(crowdReadings({attendance:0,foot_traffic:'Recorded foot traffic'}).facts,[['Attendance',0],['Foot traffic','Recorded foot traffic']]));
-check(()=>assert.doesNotMatch(crowdVisual({foot_traffic:'Recorded foot traffic'}),/No crowd data recorded/));
+check(()=>assert.doesNotMatch(crowdVisual({foot_traffic:'Recorded foot traffic'}),/No verified trail-level crowd information/));
 check(()=>assert.match(crowdVisual({typical_level:'Low',foot_traffic:'<script>'}),/&lt;script&gt;/));
 for(const e of manifest.editions){
   const edition=json(e.path);
-  for(const role of ['flagship','local_trail','away_mission','wildcard'])check(()=>assert.deepEqual(crowdReadings(edition[role].snapshot.crowd),{typical:null,perceived:null,facts:[]}));
+  for(const role of ['flagship','local_trail','away_mission','wildcard']) {
+    const state=crowdReadings(edition[role].snapshot.crowd),html=crowdVisual(edition[role].snapshot.crowd);
+    check(()=>assert.equal(html.includes('No verified trail-level crowd information'),!state.typical&&!state.perceived&&!state.facts.length));
+  }
 }
 // NOAA main.js calcSunriseSetUTC, with its second event-time evaluation, at 35.913, -79.056.
 // Independent reference calculation retrieved 2026-10-21; nearest-minute sunset and elapsed daylight.
