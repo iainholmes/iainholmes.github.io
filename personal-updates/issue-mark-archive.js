@@ -1398,5 +1398,62 @@
     "framing": "The synthesis / Editorial interpretationWhat connects this weekA dispatch model converts power-plant demand into a coal-country shock. A calibrated household model ranks subsidy designs. A regulatory-impact model compares methane rules. A generator inventory distinguishes operating batteries from planned projects. An emissions model becomes part of the legal test for transportation plans.The common object is the baseline that turns observation into a decision. None of these baselines is simply “the data.” Each joins measurements to assumptions about markets, technology, behavior, and rules. That construction can reveal effects that raw before-and-after comparisons miss. It can also move the answer: which county counts as exposed, which household would adopt without a subsidy, how much gas would be captured, whether planned capacity arrives, or what the future vehicle fleet looks like.Good policy analysis therefore keeps three ledgers. The evidence ledger records what was observed. The model ledger states which relationships and counterfactuals were imposed. The welfare ledger follows resources, transfers, externalities, and distribution without treating a compliance saving or fiscal outlay as the whole social total. Models are indispensable here, but their authority comes from transparent assumptions, sensitivity, and disciplined comparison—not from the label “state of the art.”This week’s research question: which decision changes when the baseline changes—and which conclusion survives every defensible version?",
     "geometry": "<path d=\"M100 110H180V470H100ZM420 110H500V470H420Z\" fill=\"$ink\"/><path d=\"M70 290H530\" stroke=\"$support\" stroke-width=\"28\"/><path d=\"M220 200V390H380V200\" fill=\"none\" stroke=\"$accent\" stroke-width=\"15\"/><path d=\"M260 130H340V220H260Z\" fill=\"$ink\"/>",
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Loblolly &amp; Logit, issue 006: Boundaries &amp; permitted exchange\"><title>Loblolly &amp; Logit · 006 · Boundaries &amp; permitted exchange</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f3f0e6\"/><g><g fill=\"none\" stroke=\"#1f4a3b\" opacity=\".16\"><path d=\"M-20 460Q150 290 300 440T620 410M-20 480Q150 310 300 460T620 430M-20 500Q150 330 300 480T620 450M-20 520Q150 350 300 500T620 470\"/></g><path d=\"M100 110H180V470H100ZM420 110H500V470H420Z\" fill=\"#1f4a3b\"/><path d=\"M70 290H530\" stroke=\"#e3b456\" stroke-width=\"28\"/><path d=\"M220 200V390H380V200\" fill=\"none\" stroke=\"#b4532e\" stroke-width=\"15\"/><path d=\"M260 130H340V220H260Z\" fill=\"#1f4a3b\"/></g><path d=\"M42 570H558\" stroke=\"#1f4a3b\" stroke-width=\"2\"/><g fill=\"#1f4a3b\"><text x=\"42\" y=\"634\" font-family=\"Ectros,Georgia,serif\" font-size=\"43\">Loblolly &amp; Logit</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 006 / 2026-10-30</text><text x=\"42\" y=\"740\" font-family=\"Ectros,Georgia,serif\" font-size=\"26\">Boundaries &amp; permitted exchange</text></g></svg>"
+  },
+  "fb:2026-10-31": {
+    "key": "fb",
+    "date": "2026-10-31",
+    "no": "035",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "Binance commits more than $6.34 billion after an attack, while the Green Climate Fund approves its largest single package. New federal rules reshape organ procurement and Treasury repo clearing, and a state audit measures Chapel Hill's affordable-housing bond against both units delivered and a missed tax requirement. What the new evidence changes These developments do not share a single policy thesis. They change five different ledgers: the cost of an exchange breach, the scale of approved climate finance, the rules governing organ-procurement performance, the perimeter of Treasury clearing and the delivery record of a local housing bond. The next evidence is equally distinct: Binance's post-mortem and proof of reserves; climate-project disbursements and results; transplant service-area transitions; compliance behavior in repo markets; and the completion and occupancy of Chapel Hill's remaining units.",
+    "version": 5,
+    "subject": "risk",
+    "composition": "study-three-fields-buffer-wall-comparison-pair-power-junction",
+    "signature": "issue:study-three-fields-buffer-wall-comparison-pair-power-junction",
+    "phrase": "Exposure & resilience",
+    "seed": 1891004247,
+    "geometry": "<g transform=\"translate(65 115) scale(1.45)\"><path d=\"M8 95L40 5L62 95Z\" fill=\"$ink\"/><path d=\"M70 20H96V95H70Z\" fill=\"$accent\"/><path d=\"M2 66Q18 51 35 66M2 83Q18 68 35 83\" fill=\"none\" stroke=\"$support\" stroke-width=\"7\"/></g><g transform=\"translate(232 320) scale(1.42)\"><path d=\"M5 16H35V85H5Z\" fill=\"$ink\"/><path d=\"M65 16H95V85H65Z\" fill=\"$accent\"/><path d=\"M43 39H57M43 61H57\" stroke=\"$support\" stroke-width=\"6\"/></g><g transform=\"translate(397 115) scale(1.45)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"$ink\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"$accent\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"$support\" stroke-width=\"10\"/></g><path d=\"M60 495H545M223 100V260M385 100V260\" stroke=\"$support\" stroke-width=\"6\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "02",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "03"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "02",
+          "04"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "02"
+        ]
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "05"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 34,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 035: Exposure &amp; resilience\"><title>Field Brief · 035 · Exposure &amp; resilience</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(1.45)\"><path d=\"M8 95L40 5L62 95Z\" fill=\"#221a14\"/><path d=\"M70 20H96V95H70Z\" fill=\"#8a2a36\"/><path d=\"M2 66Q18 51 35 66M2 83Q18 68 35 83\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><g transform=\"translate(232 320) scale(1.42)\"><path d=\"M5 16H35V85H5Z\" fill=\"#221a14\"/><path d=\"M65 16H95V85H65Z\" fill=\"#8a2a36\"/><path d=\"M43 39H57M43 61H57\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><g transform=\"translate(397 115) scale(1.45)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"#221a14\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"#8a2a36\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"10\"/></g><path d=\"M60 495H545M223 100V260M385 100V260\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 035 / 2026-10-31</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Exposure &amp; resilience</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
