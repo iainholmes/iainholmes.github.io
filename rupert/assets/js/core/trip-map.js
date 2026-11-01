@@ -46,11 +46,36 @@ export function nominatimLookup(url,{signal,request=fetch}={}) {
   });
   lookupQueue=job;return job;
 }
-export async function geocodeLocation(label,{signal,request=fetch}={}) {
-  const url=new URL('https://nominatim.openstreetmap.org/search');url.search=new URLSearchParams({q:label,format:'jsonv2',limit:'1'});
-  const response=await nominatimLookup(url,{signal,request});if(!response.ok)throw Error('Location lookup unavailable. Use a directory place or latitude, longitude.');
-  const match=(await response.json())[0],point=match&&{lat:Number(match.lat),lng:Number(match.lon)};
-  if(!validPoint(point))throw Error(`Location not found: ${label}`);return {...point,display:match.display_name};
+// Never assume that Nominatim's first-ranked result is the place the traveler meant.
+// The Travel UI presents these candidates for explicit selection before routing.
+export async function geocodeCandidates(label,{signal,request=fetch,limit=5}={}) {
+  if(typeof label!=='string'||!label.trim()||label.length>200)throw Error('Enter a location to resolve.');
+  const url=new URL('https://nominatim.openstreetmap.org/search');
+  url.search=new URLSearchParams({q:label.trim(),format:'jsonv2',addressdetails:'1',limit:String(Math.max(1,Math.min(5,limit)))});
+  const response=await nominatimLookup(url,{signal,request});
+  if(!response.ok)throw Error('Location lookup unavailable. Use a directory place or latitude, longitude.');
+  const matches=await response.json();
+  if(!Array.isArray(matches))throw Error('Location lookup returned an invalid result.');
+  const seen=new Set();
+  const candidates=matches.map(match=>{
+    const point={lat:Number(match.lat),lng:Number(match.lon)};
+    if(!validPoint(point)||typeof match.display_name!=='string'||!match.display_name.trim())return null;
+    const display=match.display_name.trim().slice(0,300);
+    const key=point.lat.toFixed(5)+','+point.lng.toFixed(5)+':'+display.toLowerCase();
+    if(seen.has(key))return null;
+    seen.add(key);
+    return {...point,display,country:typeof match.address?.country==='string'?match.address.country:'',
+      state:typeof match.address?.state==='string'?match.address.state:'',
+      country_code:typeof match.address?.country_code==='string'?match.address.country_code:''};
+  }).filter(Boolean);
+  if(!candidates.length)throw Error(`Location not found: ${label}`);
+  return candidates;
+}
+// Legacy consumers receive the same point shape. New Travel routing must instead
+// use geocodeCandidates and require explicit selection.
+export async function geocodeLocation(label,options={}) {
+  const [candidate]=await geocodeCandidates(label,options);
+  return {lat:candidate.lat,lng:candidate.lng,display:candidate.display};
 }
 export async function nearbyParks(point,{signal,request=fetch}={}) {
   if(!validPoint(point))throw Error('Invalid destination');

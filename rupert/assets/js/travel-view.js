@@ -1,7 +1,7 @@
 import { automaticPostcard } from './core/postcard.js';
 import { createMap } from './map/maplibre-provider.js';
-import { validPoint, drivingRoute, drivingAlternatives } from './core/routing.js';
-import { pointFeature, distanceMiles, distanceToRoute, routeBounds, geocodeLocation } from './core/trip-map.js';
+import { validPoint, drivingRoute, drivingAlternatives, validateDrivingGeometry } from './core/routing.js';
+import { pointFeature, distanceMiles, distanceToRoute, routeBounds, geocodeCandidates } from './core/trip-map.js';
 import { cleanPlan, readBackup, TRAVEL_STORAGE_KEY } from './core/travel.js';
 import { durationLabel, routeFamilies, routePoint, routeProgress, wholeJourneyBounds, opportunityZones, overnightZones, journeyLegs, journeySchedule } from './core/journey.js';
 import { discoverActivities, areaName } from './core/discovery.js';
@@ -12,6 +12,18 @@ const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!=null)n.te
 const button=(text,action)=>{const n=el('button',text);n.type='button';n.addEventListener('click',action);return n;};
 const field=(label,input)=>{const n=el('label',label);n.append(input);return n;};
 const status=text=>{$('trip-status').textContent=text;};
+const reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+function stageTo(id,{move=true}={}){
+  const section=$(id),link=document.querySelector('.journey-stages a[href="#'+id+'"]');
+  if(!section)return;
+  document.querySelectorAll('.journey-stages a').forEach(a=>{if(a===link)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});
+  if(move){section.scrollIntoView({behavior:reducedMotion()?'auto':'smooth',block:'start'});const h=section.querySelector('h2');if(h){h.tabIndex=-1;h.focus({preventScroll:true});}}
+}
+document.querySelectorAll('.journey-stages a').forEach(a=>a.addEventListener('click',()=>stageTo(a.hash.slice(1),{move:false})));
+if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(visible.length)stageTo(visible[0].target.id,{move:false});},{rootMargin:'-12% 0px -65% 0px',threshold:[0,.1,.3]});
+  document.querySelectorAll('.journey-stage[id]').forEach(e=>observer.observe(e));
+}
 const emptyState=()=>({origin:null,destination:null,families:[],family:null,stops:[],destinationActivities:[],legs:[],results:[],manual:false,legacyStops:[]});
 let captionEdited=false;
 let state=emptyState(),plans=[],activeId=null,dirty=false,postcard=null,canPersist=true,map=null,version=0,controller=null,discoveryController=null,building=false;
@@ -45,7 +57,7 @@ function save(){try{if(building||controller)throw Error('Wait for the route upda
 function savedList(){
   const box=$('saved-trips');box.replaceChildren();if(!plans.length)box.append(el('p','No saved trips.'));
   for(const p of plans){const row=el('article',null,'saved-trip'),info=el('div');info.append(el('h3',p.title),el('p',`${p.legs[0].from.label} → ${p.legs.at(-1).to.label}`));if(p.dates.start)info.append(el('small',[p.dates.start,p.dates.end].filter(Boolean).join(' – ')));row.classList.toggle('is-active',p.id===activeId);
-    row.append(info,button('Open',()=>{if(dirty&&!confirm('Open this journey and discard unsaved edits?'))return;load(p);savedList();status('Trip opened. Saved route geometry is available without another lookup.');}),button('Delete',()=>{if(row.querySelector('.trip-delete-confirm'))return;const confirmation=el('div',null,'trip-delete-confirm');confirmation.append(el('p',`Delete “${p.title}” from this browser? Export a backup first to keep a copy.`),button('Confirm Delete',()=>{if(persist(plans.filter(x=>x.id!==p.id))){if(activeId===p.id){activeId=null;dirty=true;}savedList();status('Saved trip deleted. The editor is kept as an unsaved draft.');}}),button('Keep Trip',()=>confirmation.remove()));row.append(confirmation);confirmation.querySelector('button').focus();}));box.append(row);
+    row.append(info,button('Open',()=>{if(dirty&&!confirm('Open this journey and discard unsaved edits?'))return;load(p);savedList();status('Trip opened. Saved route geometry is available without another lookup.');stageTo('route-stage');}),button('Delete',()=>{if(row.querySelector('.trip-delete-confirm'))return;const confirmation=el('div',null,'trip-delete-confirm');confirmation.append(el('p',`Delete “${p.title}” from this browser? Export a backup first to keep a copy.`),button('Confirm Delete',()=>{if(persist(plans.filter(x=>x.id!==p.id))){if(activeId===p.id){activeId=null;dirty=true;}savedList();status('Saved trip deleted. The editor is kept as an unsaved draft.');}}),button('Keep Trip',()=>confirmation.remove()));row.append(confirmation);confirmation.querySelector('button').focus();}));box.append(row);
   }
   if(plans.length)box.append(button('Clear All Saved Trips',()=>{if(box.querySelector('.clear-trips-confirm'))return;const confirmation=el('div',null,'clear-trips-confirm'),input=el('input');input.autocomplete='off';const remove=button('Delete All Trips',()=>{if(input.value!=='DELETE ALL')return;if(persist([])){activeId=null;dirty=true;savedList();status('All saved trips cleared. The editor is kept as an unsaved draft.');}});remove.disabled=true;input.addEventListener('input',()=>remove.disabled=input.value!=='DELETE ALL');confirmation.append(el('p',`Delete all ${plans.length} saved trips? Export a backup first.`),field('Type DELETE ALL to confirm',input),remove,button('Keep Trips',()=>confirmation.remove()));box.append(confirmation);input.focus();}));
 }
@@ -63,14 +75,56 @@ function load(plan){
   if(state.family){$('anchor-form').hidden=false;$('journey-discovery-status').textContent='Saved activities are restored. Find Routes to refresh public place suggestions.';}
   dirty=false;
 }
-async function resolveLocation(endpoint,signal){
+// A typed place is not an approved coordinate. Confirm Nominatim candidates before
+// allowing a destination to control routing, overnight areas, or saved geometry.
+function chooseGeocodeCandidate(label,candidates,signal,role='location'){
+  return new Promise((resolve,reject)=>{
+    if(signal?.aborted){reject(new DOMException('Lookup cancelled','AbortError'));return;}
+    const dialog=el('dialog',null,'travel-place-dialog'),heading=el('h2','Confirm the '+role),
+      intro=el('p','Choose the intended location before any route is calculated. The search provider returned these possible places.'),
+      list=el('div',null,'travel-place-options'),
+      actions=el('div',null,'travel-place-actions'),cancel=button('Cancel lookup',()=>finish(null));
+    intro.className='travel-place-intro';
+    heading.id='travel-place-dialog-title';dialog.setAttribute('aria-labelledby',heading.id);
+    const query=el('p','Entered: '+label,'travel-place-query');
+    function finish(candidate){
+      signal?.removeEventListener('abort',abort);
+      dialog.close();dialog.remove();
+      if(candidate)resolve(candidate);
+      else reject(new Error('Location not confirmed. Correct the place or try another search.'));
+    }
+    function abort(){
+      signal?.removeEventListener('abort',abort);dialog.close();dialog.remove();
+      reject(new DOMException('Lookup cancelled','AbortError'));
+    }
+    candidates.forEach((candidate,i)=>{
+      const choice=button(candidate.display,()=>finish(candidate));
+      choice.className='travel-place-option';
+      choice.setAttribute('aria-label','Use '+candidate.display);
+      list.append(choice);
+    });
+    actions.append(cancel);dialog.append(heading,query,intro,list,actions);
+    dialog.addEventListener('cancel',e=>{e.preventDefault();finish(null)});
+    document.body.append(dialog);signal?.addEventListener('abort',abort,{once:true});
+    dialog.showModal();
+    list.querySelector('button')?.focus();
+  });
+}
+async function resolveLocation(endpoint,signal,role='location'){
   const label=endpoint.label.trim();if(!label)throw Error('Enter an origin and destination.');
   if(label.toLowerCase()==='home'){let home;try{home=JSON.parse(localStorage.getItem('rupert-location-v1'));}catch{}if(!validPoint(home?.point))throw Error('Set home in Atlas, or enter an origin here.');return {label:'Home',...home.point};}
   if(validPoint(endpoint))return endpoint;
   const known=places.find(p=>[p.name,p.short_name,p.access?.name].some(s=>s?.toLowerCase()===label.toLowerCase())),ref=Object.values(references).find(p=>p.label.toLowerCase()===label.toLowerCase());
   if(known)return {label,lat:known.access.lat,lng:known.access.lng};if(ref)return {label,lat:ref.lat,lng:ref.lng};
   const parts=label.split(',').map(s=>s.trim());if(parts.length===2&&parts.every(s=>s!==''&&Number.isFinite(Number(s)))){const point={lat:Number(parts[0]),lng:Number(parts[1])};if(validPoint(point))return {label,...point};}
-  if(locations.has(label))return {label,...locations.get(label)};const point=await geocodeLocation(label,{signal});locations.set(label,point);return {label,lat:point.lat,lng:point.lng};
+  if(/^new\s+orleans\s*,\s*ls\s*$/i.test(label))
+    throw Error('“LS” is not the Louisiana abbreviation. Did you mean “New Orleans, LA”? Correct the destination and confirm the matching location.');
+  if(locations.has(label))return {label,...locations.get(label)};
+  const candidates=await geocodeCandidates(label,{signal});
+  const selected=await chooseGeocodeCandidate(label,candidates,signal,role);
+  const point={lat:selected.lat,lng:selected.lng,display:selected.display};
+  locations.set(label,point);
+  return {label,...point};
 }
 function renderFamilies(){
   const box=$('route-families');box.replaceChildren();
@@ -78,7 +132,7 @@ function renderFamilies(){
   const fastest=Math.min(...state.families.map(r=>r.minutes));
   for(const family of state.families){const card=el('article',null,'route-family');card.classList.toggle('is-selected',family.id===state.family?.id);card.append(el('h3',family.label),el('p',`${Math.round(Number(family.miles)).toLocaleString()} mi · ${durationLabel(family.minutes)} drive`,'route-figures'),el('p',family.minutes===fastest?'Fastest mapped route':`+${durationLabel(family.minutes-fastest)} vs fastest`),el('p',family.corridor?`Corridor: ${family.corridor}`:'Road corridor returned by OSRM'));
     const mix=el('p',family.mix||'Discover walks, treats, outdoor meals and scenic pauses.','route-mix');card.append(mix);
-    const choose=button(family.id===state.family?.id?'Route Selected':'Choose This Route',async()=>{if(building)return;if(state.stops.length&&!confirm('Switch routes and clear the selected along-route stops? Destination activities will be kept.'))return;cancelRequests();state.family=family;state.stops=[];state.legs=journeyLegs(state.origin,state.destination);state.results=[family];state.manual=false;dirty=true;renderFamilies();renderItinerary();paintMap(true);headerState();syncManual();await discoverJourney();});choose.setAttribute('aria-pressed',String(family.id===state.family?.id));card.append(choose);box.append(card);
+    const choose=button(family.id===state.family?.id?'Route Selected':'Choose This Route',async()=>{if(building)return;if(state.stops.length&&!confirm('Switch routes and clear the selected along-route stops? Destination activities will be kept.'))return;cancelRequests();state.family=family;state.stops=[];state.legs=journeyLegs(state.origin,state.destination);state.results=[family];state.manual=false;dirty=true;renderFamilies();renderItinerary();paintMap(true);headerState();syncManual();stageTo('build-stage');await discoverJourney();});choose.setAttribute('aria-pressed',String(family.id===state.family?.id));card.append(choose);box.append(card);
   }
 }
 function fitRoute(){if(!map)return;const bounds=wholeJourneyBounds(state.results.filter(Boolean),state.origin,state.destination);if(bounds){map.select(null);map.fit(bounds,{padding:matchMedia('(max-width:759.98px)').matches?36:60,maxZoom:12});}$('close-activity').hidden=true;}
@@ -110,37 +164,54 @@ function renderItinerary(){
   for(const activity of schedule.activities){const tr=el('tr',null,'destination-table-row');for(const value of ['—',activity.name,'Destination activity',durationLabel(activity.minutes),'Local travel not included',activity.arrival])tr.append(el('td',value));table.append(tr);}
   const miles=state.results.reduce((sum,r)=>sum+Number(r?.miles||0),0),unknown=state.legs.some((l,i)=>l.mode==='car'?!state.results[i]:!Number.isFinite(l.minutes));
   $('trip-summary').textContent=`${Math.round(miles).toLocaleString()} mapped mi · ${durationLabel(schedule.driveMinutes)} driving${unknown?' (some travel times unavailable)':''} · ${state.stops.length} selected stops${state.stops.some(s=>s.overnight)?` · ${state.stops.filter(s=>s.overnight).length} overnight stays`:''}. ${schedule.elapsedMinutes==null?'':`Planned elapsed time ${durationLabel(schedule.elapsedMinutes)}; finish ${schedule.arrival}.`} ${state.destinationActivities.length?'Destination activities follow arrival; local transfers are not included.':''}`;
-  const needsNight=state.results.some(r=>r?.minutes>540);$('overnight-warning').hidden=!needsNight;$('overnight-warning').textContent='An uninterrupted leg exceeds a sensible travel day. Add an overnight stop above; these estimates do not assume continuous driving is a practical plan.';
+  const needsNight=state.results.some(r=>r?.minutes>540);
+  const start=$('trip-start').value,end=$('trip-end').value;
+  const daySpan=start&&end?Math.round((Date.parse(end+'T00:00:00Z')-Date.parse(start+'T00:00:00Z'))/86400000):null;
+  const departure=$('trip-depart').value.split(':').map(Number);
+  const finishDay=schedule.elapsedMinutes==null?null:Math.floor((departure[0]*60+departure[1]+schedule.elapsedMinutes)/1440);
+  const exceedsWindow=daySpan!=null&&finishDay!=null&&finishDay>daySpan;
+  $('overnight-warning').hidden=!(needsNight||exceedsWindow);
+  $('overnight-warning').textContent=[needsNight?'An uninterrupted leg exceeds a sensible travel day. Add an overnight stop above; uninterrupted driving is not a practical plan.':'',exceedsWindow?'This itinerary extends beyond your selected end date. Add travel days or revise the dates.':''].filter(Boolean).join(' ');
   headerState();
 }
 async function rebuild(nextStops){
   if(!state.family||building)return;if(!$('trip-routing').checked){status('Enable route & place lookup to rebuild the journey.');return;}if(nextStops.length>38){status('A journey can hold up to 38 intermediate stops.');return;}
-  building=true;discoveryController?.abort();const current=++version,abort=new AbortController();controller?.abort();controller=abort;const timer=setTimeout(()=>abort.abort(),60000);
+  building=true;document.querySelectorAll('[data-add-activity]').forEach(b=>b.disabled=true);discoveryController?.abort();const current=++version,abort=new AbortController();controller?.abort();controller=abort;const timer=setTimeout(()=>abort.abort(),60000);
   status('Rebuilding route legs and arrival times…');
   try{const legs=journeyLegs(state.origin,state.destination,nextStops),results=[];
     if(!nextStops.length)results.push(state.family);
     else for(let i=0;i<legs.length;i++){
       const leg=legs[i],a=i===0?0:routeProgress(leg.from,state.family),b=i===legs.length-1?1:routeProgress(leg.to,state.family),defining=nextStops[i]?.defining||nextStops[i-1]?.defining;
       const via=!nextStops.some(s=>s.defining)&&!defining&&b>a?Array.from({length:3},(_,j)=>routePoint(state.family,a+(b-a)*(j+1)/4)):[];
-      const result=await drivingRoute(leg.from,leg.to,{signal:abort.signal,via});result.feature.properties.mode='drive';results.push(result);
+      const result=validateDrivingGeometry(await drivingRoute(leg.from,leg.to,{signal:abort.signal,via}),leg.from,leg.to);result.feature.properties.mode='drive';results.push(result);
     }
-    if(current!==version)return;state.stops=nextStops;state.legs=legs;state.results=results;state.manual=false;dirty=true;renderItinerary();paintMap(true);syncManual();ensurePostcard(collect());status('Itinerary rebuilt. Save Trip to keep the new route and timing.');updateActivityButtons();
+    if(current!==version)return;state.stops=nextStops;state.legs=legs;state.results=results;state.manual=false;dirty=true;renderItinerary();paintMap(true);syncManual();ensurePostcard(collect());status('Itinerary rebuilt. Save Trip to keep the new route and timing.');updateActivityButtons();stageTo('itinerary-stage');
   }catch(error){if(current===version)status(error.name==='AbortError'?'Route rebuild timed out. The previous itinerary has been kept.':error.message+' The previous itinerary has been kept.');}
-  finally{clearTimeout(timer);if(current===version){building=false;controller=null;}}
+  finally{clearTimeout(timer);if(current===version){building=false;controller=null;updateActivityButtons();}}
   if(current===version&&state.stops===nextStops)await discoverJourney();
 }
 $('journey-form').addEventListener('submit',async e=>{
   e.preventDefault();if(!$('trip-routing').checked){status('Enable route & place lookup before sending locations to the providers.');return;}
-  cancelRequests();const current=version,abort=new AbortController();controller=abort;const timer=setTimeout(()=>abort.abort(),60000);$('map-trip').disabled=true;
+  cancelRequests();const current=version,abort=new AbortController();controller=abort;let timer;$('map-trip').disabled=true;
   try{
     cleanPlan({title:title(),dates:{start:$('trip-start').value,end:$('trip-end').value},legs:[{mode:'car',from:inputPoint($('trip-origin')),to:inputPoint($('trip-destination'))}]});
-    status('Locating your origin and destination…');const origin=await resolveLocation(inputPoint($('trip-origin')),abort.signal),destination=await resolveLocation(inputPoint($('trip-destination')),abort.signal);
+    status('Locating your origin and destination…');const origin=await resolveLocation(inputPoint($('trip-origin')),abort.signal,'origin'),destination=await resolveLocation(inputPoint($('trip-destination')),abort.signal,'destination');
+    if(current!==version)return;
+    // The traveler may need time to inspect the geographic candidates. Apply the
+    // 60-second timeout only to the routing provider, not the confirmation dialog.
+    timer=setTimeout(()=>abort.abort(),60000);
     status('Comparing driving corridors…');let routes;
     try{routes=await drivingAlternatives(origin,destination,{signal:abort.signal});}catch(error){if(abort.signal.aborted)throw error;routes=[await drivingRoute(origin,destination,{signal:abort.signal})];}
     if(!routes.length)throw Error('No usable driving route found.');
-    if(current!==version)return;const families=routeFamilies(routes);state={...emptyState(),origin,destination,families,family:families[0],legs:journeyLegs(origin,destination),results:[families[0]]};
+    const credible=[],rejected=[];
+    for(const route of routes){
+      try{credible.push(validateDrivingGeometry(route,origin,destination));}
+      catch(error){rejected.push(error.message);}
+    }
+    if(!credible.length)throw Error(rejected[0]||'No geographically credible route found. Recheck both places.');
+    if(current!==version)return;const families=routeFamilies(credible);state={...emptyState(),origin,destination,families,family:families[0],legs:journeyLegs(origin,destination),results:[families[0]]};
     putPoint($('trip-origin'),origin);putPoint($('trip-destination'),destination);dirty=true;$('anchor-form').hidden=false;$('fit-trip').disabled=false;
-    renderFamilies();renderItinerary();paintMap(true);syncManual();ensurePostcard(collect());status(`${families.length} distinct ${families.length===1?'route':'routes'} found. Choose activities to build your journey.`);
+    renderFamilies();renderItinerary();paintMap(true);syncManual();ensurePostcard(collect());status(`${families.length} distinct ${families.length===1?'route':'routes'} found. Choose activities to build your journey.`);stageTo('route-stage');
     controller=null;clearTimeout(timer);$('map-trip').disabled=false;await discoverJourney();
   }catch(error){if(current===version)status(error.name==='AbortError'?'Route lookup cancelled or timed out.':error.message);}
   finally{clearTimeout(timer);if(current===version){controller=null;$('map-trip').disabled=false;}}
@@ -164,10 +235,10 @@ function activityCard(activity,zone,destination=false){
   if(!destination)card.append(el('small','Detour estimates use distance from the corridor. Adding the stop calculates the actual road route.'));
   for(const source of activity.links||[]){const link=el('a',source.label);link.href=source.url;link.target='_blank';link.rel='noopener';card.append(link);}
   if(activity.previous){const link=el('a','Previously in The Atlas');link.href=`${base}edition/${activity.previous}/`;card.append(link);}
-  const add=button(selected(activity)?'Added to Trip':'Add to Trip',()=>{if(selected(activity)||building)return;if(destination){if(state.destinationActivities.length>=40){status('A journey can hold up to 40 destination activities.');return;}state.destinationActivities.push({...activity});dirty=true;renderItinerary();paintMap();updateActivityButtons();status('Destination activity appended after arrival. Local transfers are not included.');}else rebuild([...state.stops,{...activity}].sort((a,b)=>a.progress-b.progress));});add.dataset.addActivity=activity.id;add.disabled=selected(activity);card.append(add);
-  const preview=button('Show on Map',()=>{if(!map)return;map.setMarkers([pointFeature('origin',state.origin.label,state.origin),pointFeature('destination',state.destination.label,state.destination),...state.stops.map(s=>pointFeature(s.id,s.name,s.location)),pointFeature(activity.id,activity.name,activity.location)]);map.focus(activity.id);$('close-activity').hidden=false;});card.append(preview);return card;
+  const add=button(selected(activity)?'Added to Trip':'Add to Trip',()=>{if(selected(activity)||building)return;if(destination){if(state.destinationActivities.length>=40){status('A journey can hold up to 40 destination activities.');return;}state.destinationActivities.push({...activity});dirty=true;renderItinerary();paintMap();updateActivityButtons();status('Destination activity appended after arrival. Local transfers are not included.');stageTo('itinerary-stage');}else{add.disabled=true;add.textContent='Adding to Trip…';rebuild([...state.stops,{...activity}].sort((a,b)=>a.progress-b.progress)).finally(updateActivityButtons);}});add.dataset.addActivity=activity.id;add.disabled=selected(activity);card.append(add);
+  const preview=button('Show on Map',()=>{if(!map)return;map.setMarkers([pointFeature('origin',state.origin.label,state.origin),pointFeature('destination',state.destination.label,state.destination),...state.stops.map(s=>pointFeature(s.id,s.name,s.location)),pointFeature(activity.id,activity.name,activity.location)]);map.focus(activity.id);$('close-activity').hidden=false;stageTo('route-stage');});card.append(preview);return card;
 }
-async function cachedDiscovery(point,options){const cacheKey=[point.lat.toFixed(2),point.lng.toFixed(2),options.overnight||false].join(':');if(discoveryCache.has(cacheKey))return discoveryCache.get(cacheKey);const result=await discoverActivities(point,options);discoveryCache.set(cacheKey,result);return result;}
+async function cachedDiscovery(point,options){const cacheKey=[point.lat.toFixed(2),point.lng.toFixed(2),options.overnight||false,options.radius||7500].join(':');if(discoveryCache.has(cacheKey))return discoveryCache.get(cacheKey);const result=await discoverActivities(point,options);discoveryCache.set(cacheKey,result);return result;}
 async function discoverJourney(){
   if(!state.family||!$('trip-routing').checked)return;discoveryController?.abort();const abort=new AbortController();discoveryController=abort;const current=version,journey=journeyRoute();
   resetDiscovery();$('anchor-form').hidden=false;$('journey-discovery-status').textContent='Looking for walks, treats, patios, markets and scenic stops…';
@@ -185,18 +256,19 @@ async function discoverJourney(){
   const routeBox=$('route-activities');routeBox.replaceChildren();
   for(const zone of zones){
     if(current!==version||abort.signal.aborted)break;
+    if(failures>=2){routeBox.append(el('p','Public place discovery is temporarily unavailable. Previously found activities remain below; retry later rather than repeating failed provider requests.'));break;}
     const section=el('section',null,'journey-segment'),heading=el('h4',`Around ${durationLabel(zone.minute)} into the drive`),cards=el('div',null,'activity-cards');section.append(heading,cards);cards.append(el('p','Checking nearby places…'));routeBox.append(section);
     try{const nearby=await cachedDiscovery(zone.point,{signal:abort.signal});if(current!==version||abort.signal.aborted)break;
       const activities=nearby.map(a=>({...a})).filter(a=>{activityDetails(a,zone);return a.detourMinutes<=Number($('trip-detour').value)&&!seen.has(a.id)&&a.progress>.02&&a.progress<.98;}).slice(0,6);activities.forEach(a=>seen.add(a.id));cards.replaceChildren(...(activities.length?activities.map(a=>activityCard(a,zone)):[el('p','No named activities within this detour tolerance in the public data.')]));found+=activities.length;
       const town=nearby.find(a=>a.category==='town');if(town)heading.textContent=`${town.name} area · around ${durationLabel(zone.minute)} into the drive`;
-    }catch{if(current!==version||abort.signal.aborted)break;failures++;cards.replaceChildren(el('p','Public place lookup is temporarily unavailable for this segment.'));}
+    }catch{if(current!==version||abort.signal.aborted)break;failures++;cards.replaceChildren(el('p','No place data available for this segment.'));}
   }
   if(!zones.length)routeBox.append(el('p','A short journey: destination activities are likely the most useful stops.'));
   await Promise.all([destinationTask,overnightTask]);if(current!==version||abort.signal.aborted)return;
-  const summary=`${found} activity leads found${failures?' · some search areas are temporarily unavailable':''}. Dog policies and opening hours need checking; nothing is added to the published Directory.`;$('journey-discovery-status').textContent=summary;if(failures)$('journey-discovery-status').append(' ',button('Retry Discovery',()=>discoverJourney()));
+  const summary=`${found} activity leads found${failures?' · public discovery is partially unavailable':''}. Dog policies and opening hours need checking; nothing is added to the published Directory.`;$('journey-discovery-status').textContent=summary;if(failures)$('journey-discovery-status').append(' ',button('Retry Discovery',()=>discoverJourney()));
   const categories=[...new Set([...document.querySelectorAll('.activity-kind')].map(n=>n.textContent))].slice(0,4);state.family.mix=categories.length?`Activity mix: ${categories.join(' · ')}`:'No public activity leads found yet.';renderFamilies();
 }
-$('anchor-form').addEventListener('submit',async e=>{e.preventDefault();if(building)return;if(!$('trip-routing').checked){status('Enable lookup to locate the added town.');return;}const current=version,abort=new AbortController();try{status('Locating the added stop…');const point=await resolveLocation({label:$('trip-anchor').value},AbortSignal.timeout(20000));if(current!==version)return;const stop={id:`anchor-${crypto.randomUUID?.()||Date.now().toString(36)}`,name:point.label,location:point,minutes:45,category:'town',categoryLabel:'Route-defining stop',defining:true,overnight:$('anchor-overnight').checked,dog:'Check the specific dog-access rules of activities and accommodation.',why:'A town you chose to shape this journey.',links:[],progress:routeProgress(point,state.family)};await rebuild([...state.stops,stop].sort((a,b)=>a.progress-b.progress));$('trip-anchor').value='';}catch(error){status(error.message);}});
+$('anchor-form').addEventListener('submit',async e=>{e.preventDefault();if(building)return;if(!$('trip-routing').checked){status('Enable lookup to locate the added town.');return;}const current=version,abort=new AbortController();try{status('Locating the added stop…');const point=await resolveLocation({label:$('trip-anchor').value},abort.signal,'stop');if(current!==version)return;const stop={id:`anchor-${crypto.randomUUID?.()||Date.now().toString(36)}`,name:point.label,location:point,minutes:45,category:'town',categoryLabel:'Route-defining stop',defining:true,overnight:$('anchor-overnight').checked,dog:'Check the specific dog-access rules of activities and accommodation.',why:'A town you chose to shape this journey.',links:[],progress:routeProgress(point,state.family)};await rebuild([...state.stops,stop].sort((a,b)=>a.progress-b.progress));$('trip-anchor').value='';}catch(error){status(error.message);}});
 $('fit-trip').addEventListener('click',()=>{paintMap();fitRoute();});$('close-activity').addEventListener('click',()=>{paintMap();fitRoute();});
 $('save-trip').addEventListener('click',save);$('new-trip').addEventListener('click',()=>{if(dirty&&!confirm('Start a new trip and discard unsaved edits?'))return;load();status('New trip.');});
 $('export-trips').addEventListener('click',()=>{try{if(building||controller)throw Error('Wait for the route update to finish before exporting.');let exportPlans=plans;if(dirty){const draft=collect();exportPlans=plans.filter(p=>p.id!==draft.id).concat(draft);}const blob=new Blob([JSON.stringify({schema_version:1,plans:exportPlans},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='rupert-travel-backup.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);status('Backup exported, including the current draft.');}catch(error){status(error.message);}});
@@ -222,8 +294,8 @@ $('apply-legs').addEventListener('click',async()=>{
   if(!$('trip-routing').checked){status('Enable lookup to resolve and route manual legs.');return;}cancelRequests();const current=version,abort=new AbortController();controller=abort;const timer=setTimeout(()=>abort.abort(),60000);
   try{const rows=[...$('trip-legs').children],manual_stops=[];const legs=rows.map((row,i)=>{const note=row.querySelector('.leg-note').value,mode=row.querySelector('.leg-mode').value;let stored;try{stored=JSON.parse(row.dataset.stop);}catch{}if(mode==='car'&&note)manual_stops.push({leg:i+1,note,minutes:Number(row.querySelector('.leg-pause').value),...(stored?.location?{location:stored.location,place_id:stored.place_id}:{})});return {mode,from:inputPoint(row.querySelector('.leg-from')),to:inputPoint(row.querySelector('.leg-to')),minutes:row.querySelector('.leg-duration').value};});
     const plan=cleanPlan({title:title(),dates:{start:$('trip-start').value,end:$('trip-end').value},legs,manual_stops}),results=[];
-    for(let i=0;i<plan.legs.length;i++){const leg=plan.legs[i];status(`Mapping manual leg ${i+1}…`);leg.from=await resolveLocation(leg.from,abort.signal);leg.to=await resolveLocation(leg.to,abort.signal);if(leg.mode==='car'){const stop=manual_stops.find(s=>s.leg===i+1);results[i]=await drivingRoute(leg.from,leg.to,{signal:abort.signal,via:stop?.location?[stop.location]:[]});results[i].feature.properties.mode='drive';}else results[i]={feature:{type:'Feature',properties:{mode:leg.mode},geometry:{type:'LineString',coordinates:[[leg.from.lng,leg.from.lat],[leg.to.lng,leg.to.lat]]}},minutes:leg.minutes||0,miles:'0'};}
-    if(current!==version)return;state={...emptyState(),manual:true,legs:plan.legs,results,legacyStops:plan.manual_stops,origin:plan.legs[0].from,destination:plan.legs.at(-1).to};putPoint($('trip-origin'),state.origin);putPoint($('trip-destination'),state.destination);dirty=true;renderFamilies();renderItinerary();paintMap(true);resetDiscovery();ensurePostcard(collect());$('fit-trip').disabled=false;status('Manual itinerary mapped. Transit connectors are schematic; transit times are entered manually.');
+    for(let i=0;i<plan.legs.length;i++){const leg=plan.legs[i];status(`Mapping manual leg ${i+1}…`);leg.from=await resolveLocation(leg.from,abort.signal);leg.to=await resolveLocation(leg.to,abort.signal);if(leg.mode==='car'){const stop=manual_stops.find(s=>s.leg===i+1);results[i]=validateDrivingGeometry(await drivingRoute(leg.from,leg.to,{signal:abort.signal,via:stop?.location?[stop.location]:[]}),leg.from,leg.to);results[i].feature.properties.mode='drive';}else results[i]={feature:{type:'Feature',properties:{mode:leg.mode},geometry:{type:'LineString',coordinates:[[leg.from.lng,leg.from.lat],[leg.to.lng,leg.to.lat]]}},minutes:leg.minutes||0,miles:'0'};}
+    if(current!==version)return;state={...emptyState(),manual:true,legs:plan.legs,results,legacyStops:plan.manual_stops,origin:plan.legs[0].from,destination:plan.legs.at(-1).to};putPoint($('trip-origin'),state.origin);putPoint($('trip-destination'),state.destination);dirty=true;renderFamilies();renderItinerary();paintMap(true);resetDiscovery();ensurePostcard(collect());$('fit-trip').disabled=false;status('Manual itinerary mapped. Transit connectors are schematic; transit times are entered manually.');stageTo('itinerary-stage');
   }catch(error){if(current===version)status(error.message);}finally{clearTimeout(timer);if(current===version)controller=null;}
 });
 $('postcard-file').addEventListener('change',async e=>{try{const file=e.target.files[0];if(!file)return;if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>10000000)throw Error('Choose a JPEG, PNG or WebP illustration under 10 MB.');const bitmap=await createImageBitmap(file),scale=Math.min(1,1000/bitmap.width,1000/bitmap.height),canvas=document.createElement('canvas');canvas.width=Math.round(bitmap.width*scale);canvas.height=Math.round(bitmap.height*scale);const c=canvas.getContext('2d');c.fillStyle='#F3EFE5';c.fillRect(0,0,canvas.width,canvas.height);c.drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();const image=canvas.toDataURL('image/jpeg',.82);if(image.length>1500000)throw Error('That picture is too large; use a simpler illustration.');postcard={image,caption:$('postcard-caption').value.trim()||title().slice(0,160)};$('postcard-caption').value=postcard.caption;paintPostcard();dirty=true;status('Artwork replaced. Save Trip to keep it.');}catch(error){status(error.message);}finally{e.target.value='';}});

@@ -54,7 +54,7 @@ export function opportunityZones(route) {
   const opportunities=[];
   for(let minute=interval;minute<route.minutes-30;minute+=interval) opportunities.push(minute);
   // Continental journeys expose representative segments, not dozens of repetitive breaks.
-  const count=Math.min(8,opportunities.length);
+  const count=Math.min(route.minutes>720?6:4,opportunities.length);
   const minutes=Array.from({length:count},(_,i)=>opportunities[Math.round(i*(opportunities.length-1)/Math.max(1,count-1))]);
   if(!minutes.length && route.minutes>45) minutes.push(route.minutes*.5);
   return [...new Set(minutes)].map((minute,i)=>({id:`segment-${i}`,minute,progress:minute/route.minutes,point:routePoint(route,minute/route.minutes)}));
