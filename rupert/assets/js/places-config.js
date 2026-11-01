@@ -4,6 +4,7 @@
 // free tier and confirm Search API entitlement and attribution before enabling.
 export const placesConfig=Object.freeze({
   provider:'tomtom-search',
+  enabled:false, // Activate only after Search entitlement, copyright and terms verification.
   apiKey:'',
   allowedOrigins:['https://iainholmes.github.io'],
 });
