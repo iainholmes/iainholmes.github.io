@@ -335,30 +335,32 @@ test('All four Travel chapters share the accepted Step 03 heading size and font'
     'new stylesheet should not use stale cached URL');
 });
 
-test('Travel display font is reserved for the masthead and four numbered stages',()=>{
+test('Only the four numbered Travel headings use the Atlas wordmark face',()=>{
   const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
   const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
-  assert.ok(css.includes('--f-editorial: "VELENOR"'), 'display typeface must be the canonical Atlas typeface');
-  assert.ok(css.includes('--f-secondary:"Latin Modern Roman Dunhill"'), 'secondary display face must be defined');
-  assert.ok(css.includes('--f-text: "Latin Modern Roman"'), 'body reading face must be defined');
-  for(const id of ['plan-stage','route-stage','build-stage','itinerary-stage'])
-    assert.ok(html.includes('id="'+id+'"'), id+' missing');
+  assert.ok(css.includes('--f-editorial: "VELENOR"'));
+  assert.ok(css.includes('--f-text: "Latin Modern Roman"'));
   assert.ok(css.includes('font:400 clamp(41px,3.55vw,55px)/1.09 var(--f-editorial)'),
-    'retain four stage headers at their accepted size');
-  assert.ok(css.includes('.page-travel h2:not(.sec-h),'));
-  assert.ok(css.includes('.page-travel h3,'));
-  assert.ok(css.includes('.page-travel h4,'));
-  assert.ok(css.includes('font-family:var(--f-secondary)'), 'subheadings should use companion typeface');
-  assert.ok(css.includes('#trip-context-route{font:400 clamp(27px,2.35vw,38px)/1.22 var(--f-secondary)'),
-    'route name must not borrow masthead font');
-  assert.ok(css.includes('font:400 clamp(29px,2.4vw,37px)/1.2 var(--f-secondary)'),
-    'Trip Table must use the secondary face');
+    'preserve the approved size of all four chapter titles');
+  const boundary=css.slice(css.indexOf('Exact Travel typography rule, 2026-11-01'));
+  assert.ok(boundary.includes('.page-travel .travel :is(h1,h2,h3,h4,h5,h6'),
+    'every other Travel heading, including the page title, uses original Latin Modern Roman');
+  assert.ok(boundary.includes('font-family:var(--f-text)'), 'use the original text family');
+  assert.ok(boundary.includes(':is(#plan-h,#route-h,#build-h,#itinerary-h)'),
+    'only these four headings are exceptions');
+  assert.ok(boundary.includes(':is(#plan-h,#route-h,#build-h,#itinerary-h) > span'),
+    'the step numerals must also use the title face');
+  assert.ok(boundary.includes('font-family:var(--f-editorial)'), 'the numbered headings use VELENOR');
+  for(const id of ['plan-h','route-h','build-h','itinerary-h'])
+    assert.ok(html.includes('id="'+id+'"'),id+' missing');
+  assert.ok(css.includes('font:400 clamp(29px,2.4vw,37px)/1.2 var(--f-text)'),
+    'Trip Table uses Latin Modern Roman, not Dunhill or VELENOR');
   assert.ok(css.includes('font:400 clamp(17px,1.1vw,19px)/1.5 var(--f-text)'),
-    'itinerary introduction must return to normal body type');
-  assert.ok(!css.includes('var(--f-disp)'), 'remove undefined display-family token');
-  assert.ok(!css.includes('var(--f-body)'), 'remove undefined body-family token');
-  assert.ok(html.includes('atlas.css?v=20261101-travel-type-boundary01'),
-    'the page must reference the refreshed stylesheet');
+    'the itinerary introduction remains regular text');
+  assert.ok(css.includes('atlas.css') && html.includes('atlas.css?v=20261101-only-stage-title-velenor01'),
+    'fresh stylesheet URL');
+  assert.ok(!boundary.includes('var(--f-secondary)'), 'no alternative heading face in the Travel override');
+  assert.equal((css.match(/[{]/g)||[]).length,(css.match(/[}]/g)||[]).length);
 });
 
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
