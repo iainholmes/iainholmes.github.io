@@ -1719,3 +1719,15 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
  .page-travel .route-area-choices{gap:8px}
  .page-travel .route-area-button{flex:1 1 130px}
 }
+
+/* Progressive disclosure for optional Travel options and activity notes. */
+.page-travel .route-anchor-tools{border:1px solid #F3EFE550;margin:22px 0;padding:14px 16px}
+.page-travel .route-anchor-tools[hidden]{display:none}
+.page-travel .route-anchor-tools summary{cursor:pointer;color:var(--paper);font-size:16px}
+.page-travel .route-anchor-tools .anchor-form{margin:18px 0 4px}
+.page-travel .trip-activity-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.page-travel .trip-activity-actions button{margin:0;min-height:42px;font-size:15px}
+.page-travel .trip-activity .activity-more{margin-top:16px;border-top:1px solid var(--rule);padding-top:12px}
+.page-travel .trip-activity .activity-more summary{cursor:pointer;font-size:14px;font-weight:600;color:#375569}
+.page-travel .trip-activity .activity-more p{font-size:14px;line-height:1.5;margin:10px 0}
+.page-travel .trip-activity .activity-more a{font-size:14px;min-height:34px}
