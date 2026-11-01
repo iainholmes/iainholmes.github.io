@@ -1,6 +1,6 @@
 /* The edition's reading folio. Opening pages and shared Periodicals UI keep
    their own canvas. All reading and closing layout rules live here. */
-.edition-body{display:grid;grid-template-columns:184px minmax(0,1fr);column-gap:44px;row-gap:0;align-items:start;overflow-wrap:anywhere}
+.edition-body{display:grid;grid-template-columns:184px minmax(0,1fr);column-gap:44px;row-gap:0;align-items:start;overflow-wrap:anywhere;counter-reset:research-reading}
 .contents-boundary{grid-column:1;grid-row:1;align-self:stretch;min-width:0}
 .reading-column{grid-column:2;grid-row:1;min-width:0}
 .edition-body>.synthesis,.edition-body>.knowledge,.edition-body>.editorial-note{grid-column:1/-1;min-width:0}
@@ -23,7 +23,7 @@
 .contents .small-rule{display:none}
 
 /* Each reading opens as a chapter, with a separate lead and analytical body. */
-.entry{position:relative;overflow-wrap:anywhere;padding:45px 0 54px;border-top:1px solid var(--ink);scroll-margin-top:0}
+.entry{position:relative;overflow-wrap:anywhere;padding:45px 0 54px;border-top:1px solid var(--ink);scroll-margin-top:0;counter-increment:research-reading}
 .entry-head{display:grid;grid-template-columns:minmax(84px,max-content) minmax(0,1fr);column-gap:24px;align-items:start;margin-bottom:24px}
 .reading-folio{padding-top:4px;min-width:0;border-top:4px solid var(--clay)}
 .reading-folio::after{content:"Reading";display:block;margin-top:12px;font:500 10px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -54,8 +54,8 @@
 .sources a:hover{text-decoration:underline;color:var(--clay)}
 
 /* Research apparatus shares the analytical baseline, never a float or card. */
-.research-note{position:relative;min-width:0;align-self:start;border-top:3px solid var(--river);padding-top:16px}
-.research-heading .eyebrow{font:600 11px/1.6 var(--sans);letter-spacing:.1em;color:var(--river);text-transform:uppercase}
+.research-note{position:relative;min-width:0;align-self:start;border-top:2px solid var(--river);border-left:2px solid var(--clay);padding:16px 0 2px 20px}
+.research-heading .eyebrow{font:600 11px/1.6 var(--sans);letter-spacing:.1em;color:var(--river);text-transform:uppercase}.research-heading .eyebrow::after{content:' / Reading ' counter(research-reading,decimal-leading-zero);color:var(--clay)}
 .research-note h3{margin:16px 0 22px;font:400 29px/1.12 var(--headline);letter-spacing:-.015em;color:var(--ink);text-wrap:pretty}
 .research-agenda p{font:400 17px/1.65 var(--serif);margin:0;color:var(--text)}
 .research-agenda .concepts{margin-top:22px;padding-top:14px;border-top:1px solid var(--hair);font:500 12px/1.65 var(--sans);color:var(--river);letter-spacing:.02em}
@@ -66,9 +66,9 @@
 
 /* Synthesis: the issue's argument, set as an asymmetric editorial spread. */
 .synthesis{margin:20px 0 0;padding:42px 48px 38px;background:var(--river-deep);color:#e2e9e9;position:relative}
-.synthesis .closing-heading{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr);gap:36px;align-items:start;border-bottom:1px solid #6e8b94;padding-bottom:28px;margin-bottom:28px}
-.synthesis .eyebrow{font:500 12px/1.6 var(--sans);color:#e6c67a;max-width:18ch;letter-spacing:.1em}
-.synthesis h2{font:400 clamp(38px,4vw,60px)/1.05 var(--headline);letter-spacing:-.03em;color:#fff;margin:0;max-width:15ch}
+.synthesis .closing-heading{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;border-bottom:1px solid #6e8b94;padding-bottom:28px;margin-bottom:28px}
+.synthesis .eyebrow{font:500 12px/1.6 var(--sans);color:#e6c67a;max-width:none;letter-spacing:.1em}
+.synthesis h2{font:400 clamp(42px,5.1vw,70px)/1.04 var(--headline);letter-spacing:-.03em;color:#fff;margin:0;max-width:23ch;text-wrap:balance}
 .synthesis-argument{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px 48px}
 .synthesis p{margin:0;font:400 18px/1.65 var(--serif);color:#dce6e8}
 .synthesis-argument>p:first-child{grid-column:1/-1;max-width:78ch;font-size:21px;line-height:1.55}
@@ -123,7 +123,6 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .research-note h3{font-size:28px;margin-bottom:0}
  .research-agenda p{font-size:17px}
  .synthesis,.knowledge{padding-inline:32px}
- .synthesis .closing-heading{grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr)}
  .synthesis-argument{gap:24px 32px}
  .knowledge{gap:28px 32px}
  .knowledge h2{font-size:31px}
@@ -146,9 +145,9 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .analysis-block h3{font-size:24px}
  .limitation p{font-size:16px}
  .synthesis{margin:12px -18px 0;padding:30px 24px}
- .synthesis .closing-heading{gap:18px;grid-template-columns:1fr}
+ .synthesis .closing-heading{gap:12px}
  .synthesis .eyebrow{max-width:none}
- .synthesis h2{font-size:43px;max-width:16ch}
+ .synthesis h2{font-size:clamp(36px,6vw,48px);max-width:23ch}
  .synthesis-argument{grid-template-columns:1fr;gap:22px}
  .synthesis-argument>p:first-child{font-size:19px}
  .synthesis-argument>p:nth-child(2){font-size:23px}
