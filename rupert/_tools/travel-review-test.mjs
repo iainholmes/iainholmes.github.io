@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { durationLabel, opportunityZones, routeFamilies, journeySchedule, wholeJourneyBounds } from '../assets/js/core/journey.js';
 import { validateDrivingGeometry } from '../assets/js/core/routing.js';
 import { discoveryQuery, discoverActivities, activityFromOSM } from '../assets/js/core/discovery.js';
+import { npsPlaceFromFeature, npsPOIQuery, discoverNpsActivities } from '../assets/js/core/nps-places.js';
 import { tomtomPlacesAvailable, tomtomPlaceRecord, discoverTomTomPlaces } from '../assets/js/core/tomtom-places.js';
 import { placesConfig } from '../assets/js/places-config.js';
 
@@ -225,6 +226,64 @@ await testAsync('TomTom Orbis Places parser handles a real-schema mock with POI 
  assert.match(result[0].dog,/unverified/);
  assert.equal(tomtomPlaceRecord({id:'bad',type:'address',title:'Not a POI',
    position:{coordinates:[-79,35]}},{key:'walk'}),null);
+});
+
+
+test('Travel stage transition is compact and the Google fallback is absent',()=>{
+  const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+  const render=readFileSync(new URL('../assets/js/core/render.js',import.meta.url),'utf8');
+  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  assert.ok(html.includes('class="route-next"')&&render.includes('class="route-next"'));
+  assert.ok(!html.includes('class="route-followup"'));
+  assert.ok(!view.includes('google.com/maps/search'));
+  assert.ok(!view.includes('externalPlaceFallback'));
+});
+test('NPS POI queries are bounded near the explicitly chosen area',()=>{
+  const params=npsPOIQuery(chapelHill,{radius:20000});
+  assert.equal(params.get('f'),'geojson');
+  assert.equal(params.get('distance'),'20000');
+  assert.equal(params.get('returnGeometry'),'true');
+  assert.deepEqual(JSON.parse(params.get('geometry')).x,-79.056);
+  assert.equal(npsPOIQuery(chapelHill,{radius:100000}).get('distance'),'25000');
+});
+test('NPS POI parser preserves provenance, rejects closed and irrelevant features',()=>{
+  const feature={type:'Feature',geometry:{type:'Point',coordinates:[-79.08,35.91]},properties:{
+    OBJECTID:123,POINAME:'Riverside Overlook',POITYPE:'Scenic Overlook',POISTATUS:'Active',
+    UNITNAME:'Test National Park',UNITCODE:'TEST',OPENTOPUBLIC:'Yes',PUBLICDISPLAY:'Yes'
+  }};
+  const park=npsPlaceFromFeature(feature);
+  assert.equal(park.name,'Riverside Overlook');
+  assert.equal(park.source,'National Park Service public POI');
+  assert.match(park.dog,/NOT verified/);
+  assert.equal(park.links[0].url,'https://www.nps.gov/test/index.htm');
+  assert.equal(npsPlaceFromFeature({...feature,properties:{...feature.properties,POINAME:'Parking Lot'}}),null);
+  assert.equal(npsPlaceFromFeature({...feature,properties:{...feature.properties,OPENTOPUBLIC:'No'}}),null);
+  assert.equal(npsPlaceFromFeature({...feature,properties:{...feature.properties,POISTATUS:'Closed'}}),null);
+});
+await testAsync('Official NPS GeoJSON gives real source-labeled activity cards',async()=>{
+  let requested=0;
+  const results=await discoverNpsActivities(chapelHill,{request:async(url,opts)=>{
+    requested++;
+    assert.ok(url.includes('NPS_Public_POIs_Geographic'));
+    assert.equal(opts.credentials,'omit');
+    return {ok:true,json:async()=>({type:'FeatureCollection',features:[{
+      type:'Feature',geometry:{type:'Point',coordinates:[-79.08,35.91]},properties:{
+        OBJECTID:123,POINAME:'Riverside Overlook',POITYPE:'Scenic Overlook',
+        OPENTOPUBLIC:'Yes',UNITCODE:'TEST'
+      }
+    }]})};
+  }});
+  assert.equal(requested,1);
+  assert.equal(results.length,1);
+  assert.equal(results[0].category,'picnic');
+  assert.equal(results[0].confidence,'official-location');
+});
+test('Chain restaurants are not promoted as Rupert adventure suggestions',()=>{
+  const sample={type:'node',id:99,lat:35.91,lon:-79.05,tags:{name:'Starbucks',amenity:'cafe'}};
+  assert.equal(activityFromOSM(sample),null);
+  assert.equal(activityFromOSM({...sample,tags:{name:'Dunkin',amenity:'cafe'}}),null);
+  assert.equal(activityFromOSM({...sample,tags:{name:'Chapel Hill Ice Cream',amenity:'ice_cream'}}).category,'treat');
+  assert.equal(activityFromOSM({...sample,tags:{name:'Chain',amenity:'cafe',brand:'National Coffee'}}),null);
 });
 
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);

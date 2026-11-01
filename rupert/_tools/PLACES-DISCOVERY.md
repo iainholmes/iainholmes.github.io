@@ -7,7 +7,16 @@ Overpass instances. Those servers have returned HTTP 502, timeouts and temporary
 rate limits during actual route planning; this must NOT be reported as "zero
 activities". The user has repeatedly received no suggestions across long routes.
 
-This release:
+This release (updated after the November 1 editorial and NPS POI follow-up):
+- Prioritizes **National Park Service public points of interest** (official
+  mapped trailheads, overlooks, public visitor sites) near searched areas.
+  These points are source-attributed, but are NOT verified entrance locations,
+  open-now guarantees, or dog-permitted trails; consult park-specific rules.
+- Suppresses branded chain-food recommendations and restaurants without mapped
+  outdoor/dog-access evidence. User deliberately rejected the generic Google
+  Maps search exit; it has been removed from Travel entirely.
+- Separately pursues public OpenStreetMap leads for independent treats,
+  cafés, markets and nearby local walks. Provider failures remain possible.
 - Stops an automatic route failure from preventing the user's explicit town
   search, while still respecting genuine 429/406 service limits.
 - Lets town searches continue when the dialog closes; keeps results in Build
@@ -53,11 +62,11 @@ the OpenStreetMap discovery function.
 ## Fallback and limits
 
 With TomTom access disabled, public Overpass can remain unavailable.
-An outbound Google Maps search link appears only after a failed/empty town
-search, and only sends the query when the user clicks it. The user can then
-add a found named place using Nominatim geographic confirmation and the
-existing **Review Trip Change** step. No place is invented or automatically
-marked dog-friendly.
+No generic Google Maps search link is offered. When public discovery
+returns no activity leads, the traveler can still add a named place through
+Nominatim geographic confirmation and the existing **Review Trip Change**
+flow. The NPS source and community POIs are different provenance tiers.
+No place is invented or automatically labeled dog-friendly.
 
 A successful code/mock test is not a verified public API result. Production
 acceptance of reliable discovery REQUIRES live testing of the separately

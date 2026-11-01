@@ -32,8 +32,13 @@ let lookupQueue=Promise.resolve(),unavailableUntil=0,hardRateLimitUntil=0;
 export function activityFromOSM(element) {
   const t=element.tags||{}, dog=t.dog??t.dogs;
   if(!t.name || ['private','no'].includes(t.access) || dog==='no') return null;
+  // The Atlas is a trip journal for Rupert, not a syndicated chain-food
+  // directory. Avoid obvious national chains and generic restaurants without
+  // evidence of outdoor or dog-access options.
+  if(t.brand || t['brand:wikidata'] || /^(starbucks|dunkin('?|g)?|mcdonald'?s|wendy'?s|burger king|taco bell|subway|panera bread|chick[- ]?fil[- ]?a|domino'?s|kfc|sonic drive[- ]?in|tim hortons|chipotle|panda express)(\b|\s|$)/i.test(t.name))return null;
   const type=ACTIVITY_TYPES.find(x=>new RegExp(`^(${x.values})$`).test(t[x.tag]||''));
   if(!type || (restricted.has(type.key) && !['yes','leashed','designated'].includes(dog) && t.outdoor_seating!=='yes' && t['dog:conditional']==null)) return null;
+  if(type.key==='meal' && t.outdoor_seating!=='yes' && !['yes','leashed','designated'].includes(dog) && !t['dog:conditional'])return null;
   const location={lat:element.lat??element.center?.lat,lng:element.lon??element.center?.lon,label:t.name};
   if(!validPoint(location)) return null;
   const explicit=['yes','leashed','designated'].includes(dog);
@@ -120,7 +125,9 @@ export async function discoverActivities(point,{signal,request=fetch,overnight=f
   });
   lookupQueue=task;
   const elements=await task;
+  const priority={walk:0,picnic:0,water:1,market:2,farm:2,treat:3,bakery:4,cafe:4,meal:5};
   const candidates=elements.map(activityFromOSM).filter(Boolean).sort((a,b)=>
+    ((priority[a.category]??6)-(priority[b.category]??6)) ||
     (a.confidence==='unverified')-(b.confidence==='unverified') ||
     distanceMiles(point,a.location)-distanceMiles(point,b.location));
   const out=[],counts=new Map(),seen=new Set();

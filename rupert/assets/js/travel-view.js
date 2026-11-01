@@ -5,6 +5,7 @@ import { pointFeature, distanceMiles, distanceToRoute, routeBounds, geocodeCandi
 import { cleanPlan, readBackup, TRAVEL_STORAGE_KEY } from './core/travel.js';
 import { durationLabel, routeFamilies, routePoint, routeProgress, wholeJourneyBounds, opportunityZones, overnightZones, journeyLegs, journeySchedule } from './core/journey.js';
 import { discoverActivities, areaName } from './core/discovery.js';
+import { discoverNpsActivities } from './core/nps-places.js';
 
 const key=TRAVEL_STORAGE_KEY, base=document.body.dataset.base||'', $=id=>document.getElementById(id);
 const places=JSON.parse($('travel-places').textContent),references=JSON.parse($('travel-references').textContent),publications=JSON.parse($('travel-publications').textContent);
@@ -359,9 +360,12 @@ function reviewActivityAddition(activity,destination=false){
 }
 function activityCard(activity,zone,destination=false){
   const card=el('article',null,'trip-activity'),detail=activityDetails(activity,zone,destination);
-  card.append(el('p',activity.categoryLabel,'activity-kind'),el('h4',activity.name),el('p',detail,'activity-measures'));
+  card.append(el('p',activity.categoryLabel,'activity-kind'),el('h4',activity.name));
+  if(activity.source==='National Park Service public POI')card.append(el('p','National Park Service · official mapped location','activity-source'));
+  card.append(el('p',detail,'activity-measures'));
   const disclosure=el('details',null,'activity-more');
-  disclosure.append(el('summary','Dog access & visit details'),el('p',activity.dog,'activity-dog'),el('p',activity.why));
+  disclosure.append(el('summary','Access, dog rules & visit details'),el('p',activity.dog,'activity-dog'),el('p',activity.why));
+  if(activity.notes)disclosure.append(el('p',activity.notes,'activity-accuracy'));
   if(!destination)disclosure.append(el('small','Detour times are approximate. Adding the place calculates a real driving route.'));
   for(const source of activity.links||[]){const link=el('a',source.label);link.href=source.url;link.target='_blank';link.rel='noopener';disclosure.append(link);}
   if(activity.previous){const link=el('a','Previously in The Atlas');link.href=`${base}edition/${activity.previous}/`;disclosure.append(link);}
@@ -382,7 +386,27 @@ function activityCard(activity,zone,destination=false){
   const actions=el('div',null,'trip-activity-actions');actions.append(add,preview);card.append(actions,disclosure);
   return card;
 }
-async function cachedDiscovery(point,options){const cacheKey=[point.lat.toFixed(3),point.lng.toFixed(3),options.overnight||false,options.radius||6000].join(':');if(discoveryCache.has(cacheKey))return discoveryCache.get(cacheKey);const result=await discoverActivities(point,options);if(result.length)discoveryCache.set(cacheKey,result);return result;}
+async function cachedDiscovery(point,options={}){
+  const cacheKey=[point.lat.toFixed(3),point.lng.toFixed(3),options.overnight||false,options.radius||6000].join(':');
+  if(discoveryCache.has(cacheKey))return discoveryCache.get(cacheKey);
+  // Official NPS visitor-facing locations come first: they are meaningful,
+  // source-attributed outdoor discoveries, not chain-store business matches.
+  let official=[],npsError=null;
+  try{
+    official=await discoverNpsActivities(point,{signal:options.signal,radius:20000});
+  }catch(error){if(options.signal?.aborted)throw error;npsError=error;}
+  if(official.length>=4){discoveryCache.set(cacheKey,official);return official;}
+  try{
+    const publicPlaces=await discoverActivities(point,options);
+    const ids=new Set(official.map(a=>a.id));
+    const combined=[...official,...publicPlaces.filter(a=>!ids.has(a.id))].slice(0,18);
+    if(combined.length)discoveryCache.set(cacheKey,combined);
+    return combined;
+  }catch(error){
+    if(official.length){discoveryCache.set(cacheKey,official);return official;}
+    throw npsError?Error('NPS and local place providers could not be reached. '+error.message):error;
+  }
+}
 async function discoverJourney(){
   if(!state.family||!$('trip-routing').checked)return;
   discoveryController?.abort();areaSearchController?.abort();areaSearchController=null;
@@ -422,7 +446,11 @@ async function discoverJourney(){
       if(!fresh())return;
       const leads=nearby.map(a=>({...a})).filter(a=>{
         activityDetails(a,zone);
-        return a.detourMinutes<=Number($('trip-detour').value)&&a.progress>.02&&a.progress<.98;
+        // Official park overlooks and trailheads can be worthwhile optional detours:
+        // show a few even when they exceed a tight default detour tolerance,
+        // with the extra driving time stated plainly on their cards.
+        const limit=Number($('trip-detour').value);
+        return (a.detourMinutes<=limit||(a.confidence==='official-location'&&a.detourMinutes<=Math.max(60,limit)))&&a.progress>.02&&a.progress<.98;
       }).slice(0,8);
       resultBox.replaceChildren(...(leads.length?leads.map(a=>activityCard(a,zone)):[
         el('p',nearby.length?'Places were found, but outside your detour limit. Increase the limit in Plan or try another area.':'No named places in this area. Try another part of the drive or search a town.','discovery-message')
@@ -501,15 +529,6 @@ $('retry-discovery').addEventListener('click',()=>{
   if(!$('trip-routing').checked){status('Enable route & place lookup to search public place data.');return;}
   discoverJourney();
 });
-function externalPlaceFallback(town){
-  // Explicit outbound link only. Never send a typed location to a third-party
-  // search provider without the traveler clicking through.
-  const url='https://www.google.com/maps/search/?api=1&query='+
-    encodeURIComponent('parks trails ice cream cafes near '+town);
-  const link=el('a','Browse places in Google Maps (opens new tab)','external-place-fallback');
-  link.href=url;link.target='_blank';link.rel='noopener noreferrer';
-  return link;
-}
 $('stop-search-form').addEventListener('submit',async e=>{
   e.preventDefault();
   if(!state.family){$('stop-search-status').textContent='Choose a route first.';return;}
@@ -542,10 +561,8 @@ $('stop-search-form').addEventListener('submit',async e=>{
     const buildCards=()=>activities.map(a=>activityCard({...a},zone,nearDestination));
     persisted.replaceChildren(...buildCards());
     if($('stop-search-dialog').open)$('stop-search-results').replaceChildren(...buildCards());
-    if(!activities.length){
-      persisted.append(externalPlaceFallback(point.label));
-      if($('stop-search-dialog').open)$('stop-search-results').append(externalPlaceFallback(point.label));
-    }
+    // No outbound generic search or syndicated business listings. Only
+    // grounded POIs from NPS or OSM appear as candidate activity cards.
     const outcome=activities.length?
       activities.length+' places near '+point.label+'. Review any stop to add it; pet access still needs checking.':
       'No named places were returned near '+point.label+'. Try another town or add a known place directly.';
@@ -557,9 +574,9 @@ $('stop-search-form').addEventListener('submit',async e=>{
     if(!abort.signal.aborted&&current===version){
       const message='Town search could not finish: '+error.message;
       stateLine.textContent=message;$('stop-search-status').textContent=message;
-      persisted.replaceChildren(externalPlaceFallback(search));
-      if($('stop-search-dialog').open)$('stop-search-results').replaceChildren(externalPlaceFallback(search));
-      $('journey-discovery-status').textContent='Town search unavailable. You can still browse external places and review a known stop.';
+      persisted.replaceChildren();
+      $('stop-search-results').replaceChildren();
+      $('journey-discovery-status').textContent='Place sources are temporarily unavailable. You can still review a named place with the tool inside Explore a Town.';
     }
   }finally{if(areaSearchController===abort){areaSearchController=null;submit.disabled=false;}}
 });
