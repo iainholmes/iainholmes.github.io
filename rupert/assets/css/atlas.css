@@ -1851,14 +1851,14 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel .route-next #explore-route:focus-visible{outline:2px solid #F3EFE5;outline-offset:2px}
 .page-travel .route-next #explore-route:disabled{opacity:.46}
 .page-travel #build-stage{margin-top:35px;padding-top:29px;border-top:1px solid #F3EFE52B}
-.page-travel #build-stage > .sec-h{margin-bottom:21px;letter-spacing:-.014em}
-.page-travel #build-stage > .sec-h span{font-size:.4em;letter-spacing:.05em}
+.page-travel #build-stage > .sec-h{margin-bottom:24px;letter-spacing:-.016em;font:400 clamp(41px,3.55vw,55px)/1.09 var(--f-editorial);font-synthesis:none}
+.page-travel #build-stage > .sec-h span{font:700 .34em/1.2 var(--f-text);letter-spacing:.06em}
 .page-travel .trip-context{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(230px,.65fr);gap:15px 28px;align-items:center;margin:9px 0 20px;padding:0 0 20px}
 .page-travel .trip-context > div{min-width:0}
-.page-travel .context-eyebrow{font-size:12px;letter-spacing:.12em;margin-bottom:7px}
-.page-travel #trip-context-route{font:400 clamp(22px,2vw,31px)/1.24 var(--f-disp);letter-spacing:-.02em}
-.page-travel #trip-context-detail{justify-self:end;text-align:right;max-width:390px;font-size:clamp(13px,1.1vw,16px);line-height:1.5}
-.page-travel .discovery-intro{max-width:920px;font-size:clamp(17px,1.32vw,20px);line-height:1.55;margin:0 0 22px}
+.page-travel .context-eyebrow{font-size:15px;line-height:1.35;letter-spacing:.1em;margin-bottom:9px;font-weight:700}
+.page-travel #trip-context-route{font:400 clamp(27px,2.35vw,38px)/1.22 var(--f-editorial);letter-spacing:-.018em}
+.page-travel #trip-context-detail{justify-self:end;text-align:right;max-width:520px;font:400 clamp(16px,1.2vw,19px)/1.5 var(--f-text)}
+.page-travel .discovery-intro{max-width:1080px;font:400 clamp(19px,1.5vw,23px)/1.5 var(--f-text);margin:0 0 23px}
 .page-travel .discovery-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 25px;align-items:center;margin:14px 0 24px;padding:14px 18px;border-left:3px solid #C98B4B}
 .page-travel #journey-discovery-status{max-width:720px;font-size:clamp(14px,1.02vw,16px);line-height:1.5}
 .page-travel .discovery-actions{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap}
@@ -1891,7 +1891,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel .route-next #explore-route{min-height:44px;padding:9px 14px;font-size:15px}
 .page-travel #build-stage{margin-top:23px;padding-top:25px}
 .page-travel .trip-context{padding-bottom:16px}
-.page-travel .discovery-intro{font-size:17px}
+.page-travel .discovery-intro{font-size:18px}
 .page-travel .discovery-toolbar{grid-template-columns:1fr;gap:13px;padding:15px}
 .page-travel .discovery-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .page-travel .discovery-actions button{width:100%}
