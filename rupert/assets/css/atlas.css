@@ -1759,3 +1759,6 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
  .page-travel dialog.travel-change-dialog .change-actions{display:grid;grid-template-columns:1fr;width:100%}
  .page-travel dialog.travel-change-dialog .change-actions button{width:100%}
 }
+
+.page-travel .journey-change-status{font-size:14px;line-height:1.5;margin:0 0 12px;color:#E5C597}
+.page-travel .journey-change-status:empty{display:none}
