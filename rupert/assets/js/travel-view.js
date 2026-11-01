@@ -236,10 +236,11 @@ $('journey-form').addEventListener('submit',async e=>{
   finally{clearTimeout(timer);if(current===version){controller=null;$('map-trip').disabled=false;}}
 });
 function resetDiscovery(){
-  $('route-activities').replaceChildren(el('p','Useful stops will appear around natural journey segments.'));
+  $('route-activities').replaceChildren(el('p','Choose a part of your drive to find stops.'));
   $('destination-activities').replaceChildren(el('p','Explore the destination after choosing a route.'));
   $('overnight-opportunities').hidden=true;$('overnight-areas').replaceChildren();
   $('anchor-form').hidden=!state.family;
+  $('route-anchor-tools').hidden=!state.family;
   $('explore-route').disabled=!state.family;
   $('retry-discovery').disabled=!state.family||!$('trip-routing').checked;
   $('open-town-search').disabled=!state.family||!$('trip-routing').checked;
