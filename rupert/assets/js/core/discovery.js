@@ -1,5 +1,7 @@
 import { validPoint } from './routing.js';
 import { distanceMiles, nominatimLookup } from './trip-map.js';
+import { placesConfig } from '../places-config.js';
+import { discoverTomTomPlaces, tomtomPlacesAvailable } from './tomtom-places.js';
 
 // Community data is a lead, not official dog-access evidence. Never infer indoor access.
 export const ACTIVITY_TYPES = [
@@ -26,7 +28,7 @@ export const ACTIVITY_TYPES = [
 // Unverified restaurants and patios are leads, not promises of dog access.
 // Exclude explicit dog=no, and retain strict dog-evidence for overnight lodging.
 const restricted=new Set(['overnight']);
-let lookupQueue=Promise.resolve(),unavailableUntil=0;
+let lookupQueue=Promise.resolve(),unavailableUntil=0,hardRateLimitUntil=0;
 export function activityFromOSM(element) {
   const t=element.tags||{}, dog=t.dog??t.dogs;
   if(!t.name || ['private','no'].includes(t.access) || dog==='no') return null;
@@ -64,10 +66,19 @@ function providerProblem(status){
   if(status===502||status===503||status===504)return 'The public place provider is busy. Try searching a smaller town area later.';
   return `Public place search returned HTTP ${status}.`;
 }
-export async function discoverActivities(point,{signal,request=fetch,overnight=false,radius=3500}={}) {
+export async function discoverActivities(point,{signal,request=fetch,overnight=false,radius=3500,interactive=false,config=placesConfig,origin=typeof location==='object'?location.origin:''}={}) {
+  // TomTom Search is used only after its *separate* product entitlement has been
+  // verified and explicitly enabled. Never reuse the traffic-only browser key.
+  if(tomtomPlacesAvailable(config,origin)){
+    try{
+      const leads=await discoverTomTomPlaces(point,{config,origin,request,signal,radius});
+      if(leads.length)return leads;
+    }catch(error){if(signal?.aborted)throw error;/* Continue to OSM fallback. */}
+  }
   const task=lookupQueue.catch(()=>{}).then(async()=>{
     signal?.throwIfAborted();
-    if(Date.now()<unavailableUntil)throw Error('Public place lookup is temporarily limited. Please retry later.');
+    if(Date.now()<hardRateLimitUntil)throw Error('Public place lookup is rate-limited. Please retry later.');
+    if(!interactive&&Date.now()<unavailableUntil)throw Error('Automatic place lookup is cooling down. You can still request a town search.');
     const body=new URLSearchParams({data:discoveryQuery(point,{overnight,radius})});
     // A second public instance is tried once only on provider-side failure, never
     // to bypass a 429/406 limit. No parallel requests or unbounded retry loops.
@@ -78,7 +89,8 @@ export async function discoverActivities(point,{signal,request=fetch,overnight=f
         const lookupSignal=signal?AbortSignal.any([signal,AbortSignal.timeout(15000)]):AbortSignal.timeout(15000);
         const response=await request(endpoint,{method:'POST',body,signal:lookupSignal,referrerPolicy:'origin'});
         if(response.status===429||response.status===406){
-          unavailableUntil=Date.now()+60000;
+          hardRateLimitUntil=Date.now()+60000;
+          unavailableUntil=hardRateLimitUntil;
           throw Error(providerProblem(response.status));
         }
         if(!response.ok){
@@ -103,7 +115,7 @@ export async function discoverActivities(point,{signal,request=fetch,overnight=f
       }
     }
     // Avoid turning repeated refresh clicks into a stream of failed public requests.
-    unavailableUntil=Math.max(unavailableUntil,Date.now()+30000);
+    unavailableUntil=Math.max(unavailableUntil,Date.now()+15000);
     throw lastError||Error('Public place lookup unavailable.');
   });
   lookupQueue=task;

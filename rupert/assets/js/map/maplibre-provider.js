@@ -188,7 +188,7 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
     map.addLayer({id:'travel-route-options',type:'line',source:'routes',
       filter:['all',['==',['get','mode'],'drive'],['==',['get','comparison'],'alternative']],
       layout:{'line-cap':'round','line-join':'round'},
-      paint:{'line-color':'#6E8998','line-width':3,'line-opacity':0.78,'line-dasharray':[2.3,1.6]}
+      paint:{'line-color':['match',['get','comparisonIndex'],0,'#568A99',1,'#8C728D','#568A99'],'line-width':3.6,'line-opacity':0.94,'line-dasharray':[2.7,1.3]}
     },'route-halo');
     const selectedDrive=['all',['==',['get','mode'],'drive'],['!=',['get','comparison'],'alternative']];
     map.setFilter('route-halo',selectedDrive);
@@ -272,11 +272,47 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   }}
   map.on('move',positionLabels);map.on('resize',positionLabels);
   const duration = n => matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : n;
+  // Travel-only appearance. The original directory/traffic map and all tile
+  // attribution remain untouched. Changing palettes changes paint, not geometry.
+  function setTravelTheme(mode){
+    if(!travel)return;
+    const choice=['day','dusk','night'].includes(mode)?mode:'day';
+    const palette=atlasStyle(choice==='day'?'light':'traffic');
+    const dusk={
+      bg:'#303946',wood:'#435246',grass:'#414B43',park:'#516651',water:'#3A5B69',waterway:'#709CAC',
+      boundary:'#7F8B87','road-minor-case':'#424E55','road-minor':'#7F8B8F',
+      'road-major-case':'#535158','road-major':'#B8A187',trail:'#D8BA8F',
+      'place-town':'#F1E5CF','place-village':'#DED7C9','water-name':'#B7D7DE','trail-name':'#D8BA8F'
+    };
+    const day={bg:'#E5E0D5',wood:'#D9DFC9',grass:'#E6E6D6',park:'#CED8C4',water:'#AEC6D0'};
+    for(const layer of palette.layers){
+      if(!map.getLayer(layer.id))continue;
+      for(const [property,value] of Object.entries(layer.paint||{})){
+        if(!property.endsWith('-color'))continue;
+        let next=value;
+        if(choice==='day'&&day[layer.id]&&(property==='background-color'||property==='fill-color'))next=day[layer.id];
+        if(choice==='dusk'&&dusk[layer.id]&&(property==='background-color'||property==='fill-color'||property==='line-color'||property==='text-color'))next=dusk[layer.id];
+        map.setPaintProperty(layer.id,property,next);
+      }
+    }
+    const selected=choice==='day'?'#9C5E23':choice==='dusk'?'#FFD080':'#FFD66E';
+    const altA=choice==='day'?'#477C8B':choice==='dusk'?'#9DDEEC':'#A0E2F1';
+    const altB=choice==='day'?'#856E93':choice==='dusk'?'#DFB8D4':'#E1B4DE';
+    map.setPaintProperty('route-line','line-color',selected);
+    map.setPaintProperty('route-line','line-width',5);
+    map.setPaintProperty('route-halo','line-color',choice==='day'?'#FFFDF5':'#142231');
+    map.setPaintProperty('route-halo','line-width',8);
+    map.setPaintProperty('travel-route-options','line-color',['match',['get','comparisonIndex'],0,altA,1,altB,altA]);
+    map.setPaintProperty('travel-route-options','line-width',4);
+    diag.theme='travel-'+choice;
+    map.triggerRepaint();
+  }
   const api = {
     raw: map,
     resize() { map.resize(); },
     setMarkers(features) { marks = features; map.getSource('marks').setData({ type: 'FeatureCollection', features });labelLayer.replaceChildren();labelNodes=features.map(feature=>{const node=document.createElement('span');node.textContent=feature.properties.name;labelLayer.append(node);return {feature,node};});positionLabels(); },
     setRoutes(features) { map.getSource('routes').setData({ type: 'FeatureCollection', features }); },
+    setTravelTheme(mode){setTravelTheme(mode);},
     setTrafficAttribution(caption) {
       if(travel || caption===trafficAttribution)return;
       trafficAttribution=caption;
