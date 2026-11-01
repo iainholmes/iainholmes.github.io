@@ -274,21 +274,24 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
   <p>Help text usually arrives as a tooltip or a bubble: easy to ignore when it is everywhere, and easy to resent when it interrupts. The Heron is embodied so that its presence carries information: when it is perched, a passage has been judged worth a second look. A heron fits the journal’s subject and its margins: a patient wading bird, narrow and upright, that watches before it acts.</p>
 
   <figure>
-    <svg viewBox="0 0 700 190" role="img" aria-labelledby="hT hD"><title id="hT">The Heron’s cycle</title><desc id="hD">Standing at a configured item; bent to view an opened note; absent after closing.</desc>
+    <svg viewBox="0 0 700 190" role="img" aria-labelledby="hT hD"><title id="hT">The Heron’s cycle: standing, viewing and after closing</title><desc id="hD">Standing: an upright Heron waits beside a selected passage. Viewing: its bill lowers when the note is opened. After closing: the bird is absent and the note is collapsed, but its labelled reopening control remains. Dismissing the appearance removes both bird and control.</desc>
       <g fill="none" stroke="#efe9dc" stroke-linecap="round" stroke-linejoin="round">
         <g transform="translate(100 36) scale(1.05)"><path d="M27.2 45 L26.6 60.5 L26.2 77 M30.2 45 L31 60.5 L32 77" stroke-width="1.1"/><path d="M20.6 77 H28.2 M26.6 77 H35.6" stroke-width="1"/><path d="M19 29.4 C26.4 27.4 34.6 34.4 41.4 46.4 L36 46.2 C29.6 46 21.8 43.8 18.2 38.2 C16.9 35.4 17.2 31.4 19 29.4 Z" fill="#131210" stroke-width="1.3"/><path d="M19.2 30.4 C12.2 26.6 20.4 18.6 15.4 12.4 C13.9 10.4 14 8.8 15.4 7.8" stroke-width="2.2"/><ellipse cx="16.6" cy="7.2" rx="2.6" ry="1.8" fill="#131210" stroke-width="1.1"/><path d="M14.4 6.7 L.8 8.9 L14.4 7.9 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/><path d="M-6 80H56" stroke-width="2"/></g>
         <g transform="translate(300 36) scale(1.05)"><path d="M27.2 45 L26.6 60.5 L26.2 77 M30.2 45 L31 60.5 L32 77" stroke-width="1.1"/><path d="M20.6 77 H28.2 M26.6 77 H35.6" stroke-width="1"/><path d="M19 29.4 C26.4 27.4 34.6 34.4 41.4 46.4 L36 46.2 C29.6 46 21.8 43.8 18.2 38.2 C16.9 35.4 17.2 31.4 19 29.4 Z" fill="#131210" stroke-width="1.3"/><path d="M19.4 30.6 C14.4 27.2 10.6 27.4 7.6 30.6" stroke-width="2.2"/><ellipse cx="6.2" cy="31.8" rx="2.6" ry="1.8" transform="rotate(28 6.2 31.8)" fill="#131210" stroke-width="1.1"/><path d="M5.2 33 L-5.6 40.6 L6 34 Z" fill="#e0915f" stroke="#e0915f" stroke-width=".5"/><path d="M-10 80H56" stroke-width="2"/></g>
         <rect x="366" y="46" width="72" height="44" stroke="#a9a397"/><path d="M374 60h52M374 70h40M374 80h46" stroke="#a9a397"/>
       </g>
-      <path d="M562 120H622" stroke="#a9a397" stroke-dasharray="3 4"/><g font-family="Instrument Sans,sans-serif" font-size="12" fill="#efe9dc" text-anchor="middle"><text x="128" y="160">STANDING</text><text x="365" y="160">VIEWING</text><text x="590" y="160">CLOSED</text></g>
-      <g font-family="Instrument Sans,sans-serif" font-size="10" fill="#a9a397" text-anchor="middle"><text x="128" y="176">already beside the item</text><text x="365" y="176">when you open its note</text><text x="590" y="176">perch disappears</text></g>
+      <g font-family="Instrument Sans,sans-serif"><path d="M526 120H654" stroke="#efe9dc"/><text x="534" y="94" font-size="9" letter-spacing="1" fill="#e0915f">ON METHOD</text><text x="534" y="111" font-size="12" fill="#efe9dc">Reopen note</text><path d="M642 103l4 4-4 4" fill="none" stroke="#e0915f" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <g font-family="Instrument Sans,sans-serif" font-size="12" fill="#efe9dc" text-anchor="middle"><text x="128" y="160">STANDING</text><text x="365" y="160">VIEWING</text><text x="590" y="160">AFTER CLOSING</text></g>
+      <g font-family="Instrument Sans,sans-serif" font-size="10" fill="#a9a397" text-anchor="middle"><text x="128" y="176">waiting beside the passage</text><text x="365" y="176">when you open its note</text><text x="590" y="176">label stays; note collapsed</text></g>
     </svg>
-    <figcaption>Poses carry meaning: upright and still means waiting; leaning forward with the bill lowered means it is looking at the passage with you (on hover, focus, or while its note is open); wings out means arriving or leaving.</figcaption>
+    <figcaption>Poses carry meaning: upright and still means waiting; the lowered bill means the note is open. After closing, the bird is absent but its labelled control remains, ready to reopen the same note. Dismissing an appearance removes both the bird and its control.</figcaption>
   </figure>
 
   <h3>How it behaves</h3>
-  <p>Each Friday issue programs a few appearances, usually two or three, with a maximum of four, each tied to a specific passage: a figure, a finding, an identification caveat. On mobile layouts, each configured item has a standing Heron in its margin from the moment the issue loads. Desktop and laptop layouts do not show the companion or its control. It stays still until you open its note, when it bends to look with you. Its perch is labelled with the kind of intervention and a one-line title, so what it has to say is visible without any motion.</p>
-  <p>Choose the Heron (click, tap, or <span class="mono">Tab</span> to it and press <span class="mono">Enter</span>) and a compact note opens directly beneath it in the margin: a few sentences, at most one compact analytical sketch or figure annotation, and often a link to the relevant entry in the methods notebook. <span class="mono">Esc</span> or <b>Close</b> returns you to where you were. Closing the note removes that perch for this reading session; it does not immediately return. Other configured perches remain beside their own items.</p>
+  <p>Each Friday issue can configure up to two appearances, each tied to a specific passage: a figure, a finding, an identification caveat. Wide desktop layouts show one curated appearance; mobile and tablet layouts can show both. The companion and its switch are available at widths of 1024px and below, and from 1181px upwards; the intermediate layouts leave them out. An issue may have fewer appearances, or none.</p>
+  <p>When available, enabled and not dismissed, the Heron already stands beside its selected passage. It does not wait for scrolling to arrive. Its control is labelled with the kind of intervention and a one-line title, so what it has to say is visible without any motion. It bends to inspect the passage only when you open the note; hovering or focusing the control does not change its pose.</p>
+  <p>Choose the Heron by click, tap or keyboard and a compact note opens beneath its control: a few sentences, an optional analytical sketch or figure annotation, and sometimes a link to the methods notebook. Only one note is open at a time. Opening another collapses the previous note and moves focus into the new one.</p>
+  <p><b>Close</b>, or <span class="mono">Esc</span> while focus is inside the note, collapses it and hides the bird. The labelled control stays in place and receives focus, ready to reopen the same note without a new arrival. This closed state lasts while the page remains open; reloading may restore the standing bird. Other configured appearances remain available.</p>
 
   <h3>What it can do</h3>
   <ul class="can">
@@ -305,7 +308,7 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
     <li>It is not a chatbot. It does not converse, generate answers on demand or pretend to be a person; every note is written and checked with the issue.</li>
     <li>It does not follow the cursor, animate while idle, or appear beside every article.</li>
     <li>It never covers body text, blocks navigation, or opens anything you did not ask for.</li>
-    <li>It does not repeat itself: once you have opened a note, later visits show it perched quietly without a flight.</li>
+    <li>It does not open a note automatically or perform an arrival or departure flight. A return visit does not demand your attention.</li>
   </ul>
 
   <h3>Why silence is part of the design</h3>
@@ -318,18 +321,20 @@ Update it by hand when a title's behaviour changes (names, navigation, modes, Fi
   <p>The notes are timed to the moment of difficulty, when a question is most useful, and they usually ask before they tell, so you have a chance to reason first. Links into the methods notebook connect a single example to a reusable idea. Over many issues the same few questions (the counterfactual, the identifying variation, who ultimately pays) become habits.</p>
 
   <h3>How each issue programs it</h3>
-  <p>The appearances live as structured data inside each issue (<span class="mono">#companion-data</span>, keyed by the issue’s date). Each entry names the target article and the passage that should trigger it, the kind of intervention (<i>question, definition, intuition, method, caution, figure</i>), a title, the note text, an optional diagram and an optional link. An issue with no entries is a silent issue.</p>
+  <p>The appearances live as structured data inside each issue (<span class="mono">#companion-data</span>, keyed by the issue’s date). Each entry names the target article and associated passage, the kind of intervention (<i>question, definition, intuition, method, caution, figure</i>), a title, the note text, an optional diagram and an optional link. An issue with no entries is a silent issue.</p>
 
   <h3>You stay in control</h3>
   <ul class="can">
     <li><b>Off:</b> the Heron switch in Loblolly &amp; Logit’s reading toolbar turns it off everywhere in the journal until you turn it back on.</li>
-    <li><b>Dismiss:</b> “Don’t show this again” in any note retires that one appearance permanently.</li>
-    <li><b>Seen:</b> notes you have opened are remembered for that issue, so it will not fly in to show them again.</li>
+    <li><b>Close and reopen:</b> closing hides the bird and collapses the note, while its labelled control keeps the note within reach.</li>
+    <li><b>Dismiss:</b> “Don’t show this again” removes that individual appearance, including its reopening control, and remembers the dismissal across visits.</li>
+    <li><b>Seen:</b> the journal remembers which notes you have opened for each issue; this record does not make a note open itself.</li>
   </ul>
-  <p>These choices are stored in this browser only.</p>
+  <p>The on/off choice, individual dismissals and opened-note history are saved in this browser’s local storage when available. They do not sync to another browser or device; clearing the saved site data resets them. Simply closing a note is a page-session choice, not a permanent dismissal.</p>
 
   <h3>Accessibility and reduced motion</h3>
-  <p>The perched Heron is an ordinary button with a full spoken label (for example, “The heron asks: What is the counterfactual here? Open note”), reachable by keyboard in reading order beside its article. Notes are regions that receive focus when opened; closing returns focus to the article heading. On mobile layouts, the Heron appears statically beside its configured passage, including when your system asks for reduced motion. Nothing it offers depends on seeing it move.</p>
+  <p>The Heron’s labelled control is an ordinary button, reachable by <span class="mono">Tab</span> and activated with <span class="mono">Enter</span> or <span class="mono">Space</span>. Its spoken label identifies the intervention and its title, and its expanded state tells you whether the note is open. Opening focuses the note’s labelled region. <span class="mono">Esc</span> from within that region or <b>Close</b> returns focus to the reopening control; dismissing the appearance instead returns focus to the article heading.</p>
+  <p>The standing and viewing poses are static on every supported layout, including with reduced motion enabled. Links to an associated figure respect the reduced-motion preference. Nothing the companion offers depends on flight, hovering or watching an animation.</p>
 
   <h3>Heron and Field Register</h3>
   <p>They are related but do different jobs. Field Notes and the Field Register introduce <i>who</i> does environmental economics, the people and institutions behind the week’s evidence, and accumulate into a directory. The Heron works on <i>how</i> to read the evidence, one passage at a time, and keeps nothing but your preferences.</p>
