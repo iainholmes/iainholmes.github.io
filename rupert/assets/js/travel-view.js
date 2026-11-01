@@ -210,6 +210,8 @@ async function rebuild(nextStops){
   if(!state.family||building)return;if(!$('trip-routing').checked){status('Enable route & place lookup to rebuild the journey.');return;}if(nextStops.length>38){status('A journey can hold up to 38 intermediate stops.');return;}
   building=true;document.querySelectorAll('[data-add-activity]').forEach(b=>b.disabled=true);discoveryController?.abort();const current=++version,abort=new AbortController();controller?.abort();controller=abort;const timer=setTimeout(()=>abort.abort(),60000);
   status('Rebuilding route legs and arrival times…');
+  $('journey-change-status').textContent='Updating driving directions and arrival times for this journey…';
+  let updated=false;
   try{const legs=journeyLegs(state.origin,state.destination,nextStops),results=[];
     if(!nextStops.length)results.push(state.family);
     else for(let i=0;i<legs.length;i++){
@@ -217,10 +219,16 @@ async function rebuild(nextStops){
       const via=!nextStops.some(s=>s.defining)&&!defining&&b>a?Array.from({length:3},(_,j)=>routePoint(state.family,a+(b-a)*(j+1)/4)):[];
       const result=validateDrivingGeometry(await drivingRoute(leg.from,leg.to,{signal:abort.signal,via}),leg.from,leg.to);result.feature.properties.mode='drive';results.push(result);
     }
-    if(current!==version)return;state.stops=nextStops;state.legs=legs;state.results=results;state.manual=false;dirty=true;renderItinerary();paintMap(true);syncManual();ensurePostcard(collect());status('Itinerary rebuilt. Save Trip to keep the new route and timing.');updateActivityButtons();stageTo('itinerary-stage');
-  }catch(error){if(current===version)status(error.name==='AbortError'?'Route rebuild timed out. The previous itinerary has been kept.':error.message+' The previous itinerary has been kept.');}
+    if(current!==version)return;state.stops=nextStops;state.legs=legs;state.results=results;state.manual=false;dirty=true;renderItinerary();paintMap(true);syncManual();ensurePostcard(collect());status('Itinerary rebuilt. Save Trip to keep the new route and timing.');
+    $('journey-change-status').textContent='Route updated. The new stop and driving times are in your itinerary. Save Trip when ready.';
+    updated=true;updateActivityButtons();stageTo('itinerary-stage');
+  }catch(error){if(current===version){
+    const message=error.name==='AbortError'?'Route rebuild timed out. Your previous itinerary is unchanged.':error.message+' Your previous itinerary is unchanged.';
+    status(message);$('journey-change-status').textContent=message;
+  }}
   finally{clearTimeout(timer);if(current===version){building=false;controller=null;updateActivityButtons();}}
-  if(current===version&&state.stops===nextStops)await discoverJourney();
+  if(updated&&current===version&&state.stops===nextStops)await discoverJourney();
+  return updated;
 }
 $('journey-form').addEventListener('submit',async e=>{
   e.preventDefault();if(!$('trip-routing').checked){status('Enable route & place lookup before sending locations to the providers.');return;}
@@ -329,10 +337,11 @@ function reviewActivityAddition(activity,destination=false){
     buttonLabel:isOvernight?'Add Overnight Break':destination?'Add Destination Activity':'Add Drive Stop',
     action:async()=>{
       if(destination){
-        if(state.destinationActivities.length>=40){status('A journey can hold up to 40 destination activities.');return;}
+        if(state.destinationActivities.length>=40){status('A journey can hold up to 40 destination activities.');$('journey-change-status').textContent='This journey has reached the destination activity limit.';return;}
         state.destinationActivities.push({...activity});dirty=true;
         renderItinerary();paintMap();updateActivityButtons();
         status('Destination activity added. Save Trip to keep it. Local transfers are not included.');
+        $('journey-change-status').textContent=activity.name+' added after arrival. Save Trip to keep this choice.';
         stageTo('itinerary-stage');
       }else{
         if(building)return;
@@ -519,7 +528,7 @@ $('anchor-form').addEventListener('submit',async e=>{
         overnight?'Also split the journey into travel days here; no lodging will be booked.':'Include a '+durationLabel(stop.minutes)+' stop in the itinerary.',
         'You can remove or reorder the waypoint in the itinerary afterward.'],
       buttonLabel:'Recalculate via This Town',
-      action:async()=>{await rebuild([...state.stops,stop].sort((a,b)=>a.progress-b.progress));$('trip-anchor').value='';}
+      action:async()=>{const applied=await rebuild([...state.stops,stop].sort((a,b)=>a.progress-b.progress));if(applied)$('trip-anchor').value='';}
     });
     status('Review the route change before applying it.');
   }catch(error){status(error.message);}
