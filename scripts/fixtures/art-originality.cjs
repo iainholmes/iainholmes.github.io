@@ -27,13 +27,35 @@ function replaceData(s,id,value){return s.replace(new RegExp('(id="'+id+'">)[\\s
 const write=(dir,p,s)=>fs.writeFileSync(path.join(dir,p),s);
 function writeRegistry(dir,p,value){const s=read(dir,p),prefix=s.slice(0,s.indexOf('=',s.indexOf('(function(root)'))+1),suffix=s.slice(s.lastIndexOf(';if(typeof module'));assert(prefix&&suffix);write(dir,p,prefix+JSON.stringify(value,null,2)+suffix);}
 function copySite(from,to){for(const p of ['personal-updates','daily-watchlist-5','daily-econ-challenge','weekly-economics-environment','scripts','assets'])fs.cpSync(path.join(from,p),path.join(to,p),{recursive:true});}
+// Adapt historical test inputs to the current notebook presentation contract.
+// Only private fixture files change; historical links, bodies and production guards remain authoritative.
+function notebookFixture(legacy,current){
+ const templates=new Map([...current.matchAll(/<article class="concept" id="([^"]+)"[\s\S]*?<\/article>/g)].map(m=>[m[1],m[0]]));
+ return legacy.replace('<nav class="concept-index" aria-label=','<nav class="concept-index" id="concept-index" aria-label=').replace(/<article class="concept" id="([^"]+)"[\s\S]*?<\/article>/g,(raw,id)=>{
+  let template=templates.get(id);assert(template,'Historical concept has a current template: '+id);
+  const seen=template.match(/<section class="seen"[\s\S]*?<\/section>/)[0],groups=[];
+  for(const g of raw.matchAll(/<a href="\.\.\/#edition-([^"]+)">[\s\S]*?<\/a><p>([\s\S]*?)<\/p>/g)){
+   const group=seen.match(new RegExp('<li class="appearance" data-edition="'+g[1]+'">([\\s\\S]*?)(?=<li class="appearance"|<\\/ol>)'))[0];
+   const links=[...g[2].matchAll(/<a href="[^"]+">[\s\S]*?<\/a>/g)].map(m=>m[0]);
+   groups.push(group.replace(/<li data-kind="(?:reading|synthesis)">[\s\S]*?<\/li>/g,row=>links.some(a=>row.includes(a))?row:''));
+  }
+  const date=[...raw.matchAll(/href="\.\.\/#edition-([^"]+)"/g)].map(m=>m[1]).sort().at(-1),stamp=raw.match(/<span>Last revisited · ([^<]+)<\/span>/)[1];
+  const newSeen=seen.replace(/<ol class="appearance-register">[\s\S]*?<\/ol>/,'<ol class="appearance-register">'+groups.join('')+'</ol>').replace(/<p class="revisited">[\s\S]*?<\/p>/,'<p class="revisited">Last revisited · <time datetime="'+date+'">'+stamp+'</time></p>');
+  template=template.replace(seen,newSeen);
+  for(const pattern of [/<p class="canonical">[\s\S]*?<\/p>/,/<figure[\s\S]*?<\/figure>/]){const content=raw.match(pattern);if(content)template=template.replace(pattern,content[0]);}
+  return template;
+ });
+}
 function copyControlledSite(from,to){
  copySite(from,to);
  // Historical source is input to a private fixture, not a whole-file assertion
  // about the growing real publication. Keep the actual current runtime modules.
  for(const p of ['personal-updates/index.html','personal-updates/issue-mark-archive.js','daily-watchlist-5/index.html','daily-watchlist-5/artwork-archive.js','daily-econ-challenge/index.html','weekly-economics-environment/index.html','weekly-economics-environment/notebook/index.html','weekly-economics-environment/notebook/reviews.json'])write(to,p,old(p));
+ write(to,'weekly-economics-environment/notebook/index.html',notebookFixture(old('weekly-economics-environment/notebook/index.html'),read(from,'weekly-economics-environment/notebook/index.html')));
+ const register=data(read(to,'weekly-economics-environment/index.html'),'field-register'),schema=require('../../weekly-economics-environment/field-register-schema.cjs');
+ write(to,'weekly-economics-environment/field-register-history.json',JSON.stringify({version:1,entries:Object.fromEntries(register.entries.map(e=>[e.no,{issue:e.issue,sha256:schema.hash(e)}]))},null,2)+'\n');
 }
-const outputPaths=['daily-watchlist-5/index.html','daily-watchlist-5/artwork-archive.js','personal-updates/issue-mark-archive.js','personal-updates/index.html','weekly-economics-environment/index.html'];
+const outputPaths=['daily-watchlist-5/index.html','daily-watchlist-5/artwork-archive.js','personal-updates/issue-mark-archive.js','personal-updates/index.html','weekly-economics-environment/index.html','weekly-economics-environment/field-register-history.json'];
 const snap=dir=>outputPaths.map(p=>read(dir,p));
 const prepare=dir=>cp.execFileSync(process.execPath,['scripts/prepare_periodicals.cjs'],{cwd:dir,encoding:'utf8',stdio:'pipe'});
 const roman=n=>{let s='';for(const [v,c]of [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']])while(n>=v){s+=c;n-=v;}return s;};
@@ -73,7 +95,9 @@ function append(dir,keys=['fb','cp','sp'],{automatic=false}={}){
   const p='weekly-economics-environment/index.html',doc=read(dir,p),latest=Object.entries(before.journal).sort().at(-1),no=Object.keys(before.journal).length+1,year=+date.slice(0,4),annual=Object.keys(before.journal).filter(d=>d.startsWith(String(year))).length+1;
   let ed=latest[1].replaceAll(latest[0],date);const label='Volume '+roman(year-2025)+' <span class="sep">/</span> N<sup>o</sup>. '+String(annual).padStart(3,'0')+' <span class="sep">/</span> '+new Date(date+'T12:00:00Z').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
   ed=ed.replace(/(<div class="eyebrow edition-label">)[\s\S]*?(<\/div>)/,(_,a,b)=>a+label+b).replace(/(<section class="synthesis"[^>]*>)[\s\S]*?<\/section>/,(_,a)=>a+'<h2>Unpublished fixture</h2><p>Evidence and measurement describe distributions and interval uncertainty.</p></section>');
-  if(!automatic)pins['sp:'+date]=freshPin('sp',date,no,before);const field=automatic?{...before.studies}:{...before.studies,[date]:freshPin('study',date,no,before,pins['sp:'+date])};let updated=doc.replace('</main>',ed+'\n</main>');updated=replaceData(updated,'field-studies',field);write(dir,p,updated);
+  if(!automatic)pins['sp:'+date]=freshPin('sp',date,no,before);const field=automatic?{...before.studies}:{...before.studies,[date]:freshPin('study',date,no,before,pins['sp:'+date])};let updated=doc.replace('</main>',ed+'\n</main>');updated=replaceData(updated,'field-studies',field);
+  const register=data(doc,'field-register'),profiles=register.entries.filter(e=>e.issue===latest[0]).slice(0,3).map((e,i)=>({...e,no:register.entries.length+i+1,issue:date,related:e.related.replace(latest[0],date),fieldNote:true}));
+  register.entries.push(...profiles);updated=replaceData(updated,'field-register',register);write(dir,p,updated);
   const rp='weekly-economics-environment/notebook/reviews.json',reviews=JSON.parse(read(dir,rp));reviews.reviews[date]={reviewedOn:date,readings:[...ed.matchAll(/<article class="entry"[^>]*id="([^"]+)"/g)].map(m=>m[1]),synthesis:ed.match(/<section class="synthesis"[^>]*id="([^"]+)"/)[1],revisited:[],added:[],note:'Unpublished append-only pipeline fixture; not an editorial review or publication.'};write(dir,rp,JSON.stringify(reviews,null,2));out.journal=ed;
  }
  writeRegistry(dir,'personal-updates/issue-mark-archive.js',pins);prepare(dir);out.after=currentHistory(dir);assertHistory(out.after,before);const first=snap(dir);prepare(dir);assert.deepEqual(snap(dir),first,'append retry is byte-idempotent');return out;

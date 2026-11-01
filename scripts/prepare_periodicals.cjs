@@ -12,6 +12,7 @@ const fb=data(read('daily-watchlist-5/index.html'),'briefing-data').editions.sor
 for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])throw Error('Published Field Brief is missing its story artwork pin: '+ed.date);
 // Validate L&L companions before any publication artifacts are written.
 const llSource=read('weekly-economics-environment/index.html'),companions=data(llSource,'companion-data');
+const registerHistory=require('../weekly-economics-environment/field-register-schema.cjs').validate({journal:llSource}).history;
 // A present edition without its cumulative notebook review is not a completed publication.
 require('../weekly-economics-environment/notebook/validate.cjs').validate({journal:llSource});
 // Labels follow the selected edition's annual volume/issue, preserving the existing superscript apparatus.
@@ -55,6 +56,7 @@ editions.forEach((e,i)=>{
  ll=ll.replace(e[0],e[0].replace(/<figure class="hero-art"[^>]*>[\s\S]*?<\/figure>/,figure));
 });
 // No artifact or hub writes until every new cover and Field Study has passed.
+write('weekly-economics-environment/field-register-history.json',JSON.stringify(registerHistory,null,2)+'\n');
 write('daily-watchlist-5/artwork-archive.js',"/* Frozen published Field Brief plates. Legacy templates preserve their exact SVG bytes. Append only. */\n(function(root){const archive="+JSON.stringify(plates,null,2)+";if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});\n");
 let brief=read('daily-watchlist-5/index.html');
 brief=brief.replace(/artwork-archive\.js(?:\?v=[^"]*)?"/,'artwork-archive.js?v='+digest(read('daily-watchlist-5/artwork-archive.js'))+'"');

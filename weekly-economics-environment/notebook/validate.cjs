@@ -15,28 +15,59 @@ function validate(input={}){
  if(!main)fail('canonical edition archive is missing');
  const editions=[...main.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[^>]*>([\s\S]*?)(?=<section class="edition"|$)/g)];
  if(!editions.length||new Set(editions.map(e=>e[1])).size!==editions.length)fail('edition dates are missing or duplicated');
- const targets=new Map(),dates=editions.map(e=>e[1]).sort();
+ const targets=new Map(),metadata=new Map(),dates=editions.map(e=>e[1]).sort();
  for(const e of editions){
   if(!validDate(e[1]))fail('invalid edition date '+e[1]);
   for(const m of e[0].matchAll(/\bid="([^"]+)"/g))targets.set(m[1],e[1]);
+  const label=plain(e[0].match(/<div class="eyebrow edition-label">([\s\S]*?)<\/div>/)?.[1]||'');
+  metadata.set(e[1],{title:plain(e[0].match(/data-title="([^"]+)"/)?.[1]||''),no:label.match(/No?\.\s*(\d+)/)?.[1],
+   readings:new Set([...e[0].matchAll(/<article class="entry"[^>]*id="([^"]+)"/g)].map(m=>m[1])),
+   synthesis:e[0].match(/<section class="synthesis"[^>]*id="([^"]+)"/)?.[1]});
  }
  const concepts=new Map();
  for(const m of notebook.matchAll(/<article class="concept" id="([^"]+)"[\s\S]*?<\/article>/g)){
   if(concepts.has(m[1]))fail('duplicate concept '+m[1]);
-  const html=m[0],seen=html.match(/<div class="seen">([\s\S]*?)<\/div>/)?.[1];
-  if(!/<p class="canonical">[\s\S]+?<\/p>/.test(html)||!/<h3>Why it matters<\/h3><p>[\s\S]+?<\/p>/.test(html)||!/<h3>A caution<\/h3><p>[\s\S]+?<\/p>/.test(html)||!seen)fail('incomplete concept '+m[1]);
+  const html=m[0],seen=html.match(/<section class="seen"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+  if(!/<p class="canonical">[\s\S]+?<\/p>/.test(html)||!/<h3[^>]*>Why it matters<\/h3><p>[\s\S]+?<\/p>/.test(html)||!/<h3[^>]*>A caution<\/h3><p>[\s\S]+?<\/p>/.test(html)||!seen)fail('incomplete concept '+m[1]);
+  for(const part of ['<header class="concept-heading">','<div class="concept-body">','<div class="concept-analysis">','<section class="application"','<section class="caution"','<header class="seen-heading">','<ol class="appearance-register">'])if(!html.includes(part))fail('missing companion-volume structure in '+m[1]);
   const links=[...seen.matchAll(/href="\.\.\/#([^"]+)"/g)].map(x=>x[1]);
   if(!links.length||new Set(links).size!==links.length)fail('missing or duplicate references in '+m[1]);
   for(const id of links)if(!targets.has(id))fail('unresolved journal reference #'+id+' in '+m[1]);
+  if(/href="(?!\.\.\/#)[^"]*"/.test(seen)||links.some(id=>id.startsWith('edition-')))fail('appearance register links only to specific readings or labelled synthesis in '+m[1]);
+  const groups=[...seen.matchAll(/<li class="appearance" data-edition="([^"]+)">([\s\S]*?)(?=<li class="appearance"|<\/ol>)/g)];
+  if(!groups.length||!unique(groups.map(g=>g[1]))||JSON.stringify(groups.map(g=>g[1]))!==JSON.stringify(groups.map(g=>g[1]).sort()))fail('appearance groups must be unique and chronological in '+m[1]);
+  const grouped=[];
+  for(const g of groups){
+   const date=g[1],meta=metadata.get(date),body=g[2];
+   if(!meta)fail('unpublished appearance group '+date+' in '+m[1]);
+   const stamp=new Date(date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
+   if(!meta.no||plain(body.match(/<p class="edition-folio">([\s\S]*?)<\/p>/)?.[1]||'')!=='No. '+meta.no+' · '+stamp||plain(body.match(/<p class="edition-title">([\s\S]*?)<\/p>/)?.[1]||'')!==meta.title||!body.includes('<time datetime="'+date+'">'+stamp+'</time>'))fail('appearance metadata must match its published edition in '+m[1]);
+   const entries=[...body.matchAll(/<li data-kind="(reading|synthesis)">([\s\S]*?)<\/li>/g)];
+   if(!entries.length)fail('empty appearance group in '+m[1]);
+   for(const entry of entries){
+    const refs=[...entry[2].matchAll(/href="\.\.\/#([^"]+)"/g)].map(a=>a[1]);
+    if(refs.length!==1||targets.get(refs[0])!==date)fail('reading is associated with the wrong edition in '+m[1]);
+    const id=refs[0];
+    if(entry[1]==='reading'?!meta.readings.has(id):id!==meta.synthesis||!entry[2].includes('<span class="reference-kind">Synthesis</span>'))fail('reference kind must match reading or labelled synthesis in '+m[1]);
+    grouped.push(id);
+   }
+  }
+  if(JSON.stringify(grouped)!==JSON.stringify(links))fail('all references must belong to a registered appearance in '+m[1]);
   const referenced=links.map(id=>targets.get(id)).sort(),last=referenced.at(-1);
   const stamp=new Date(last+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
-  if(!seen.includes('<span>Last revisited · '+stamp+'</span>'))fail('Last revisited must match actual references in '+m[1]);
+  if(!seen.includes('<p class="revisited">Last revisited · <time datetime="'+last+'">'+stamp+'</time></p>'))fail('Last revisited must match actual references in '+m[1]);
   concepts.set(m[1],{dates:new Set(referenced),first:referenced[0]});
  }
  if(!concepts.size)fail('no cumulative concepts');
+ if(!unique([...notebook.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1])))fail('duplicate notebook element IDs');
  const index=notebook.match(/<nav class="concept-index"[^>]*>([\s\S]*?)<\/nav>/)?.[1]||'';
  const indexed=[...index.matchAll(/href="#([^"]+)"/g)].map(x=>x[1]);
  if(!unique(indexed)||indexed.length!==concepts.size||indexed.some(id=>!concepts.has(id)))fail('concept index and permanent entries disagree');
+ if(!/<nav class="concept-index" id="concept-index"/.test(notebook))fail('return-to-index destination is missing');
+ for(const [i,m] of [...notebook.matchAll(/<article class="concept" id="([^"]+)"[\s\S]*?<\/article>/g)].entries()){
+  if(m[1]!==indexed[i]||m[0].match(/<div class="concept-number">([^<]+)<\/div>/)?.[1]!==String(i+1).padStart(2,'0'))fail('concept order and folio numbers must match the index');
+  if(!m[0].includes('href="#concept-index"'))fail('return-to-index link missing in '+m[1]);
+ }
  if(reviews.version!==1||!reviews.reviews||typeof reviews.reviews!=='object')fail('invalid review registry');
  for(const date of Object.keys(reviews.reviews))if(!dates.includes(date))fail('review has no published edition '+date);
  for(const e of editions){

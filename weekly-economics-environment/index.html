@@ -646,6 +646,7 @@ html[data-mode="night"] .register{background:#10231d!important}
 /* Publication-specific authorship signatures; canonical IH. assets remain unchanged. */
 .ih-imprint .ih-native-wordmark{display:block;margin:0;padding:0;max-width:none;white-space:nowrap}
 </style>
+<link rel="stylesheet" href="field-notes.css?v=20261101-editorial-register">
 </head><body><a class="skip" href="#edition">Skip to the edition</a>
 <header class="masthead" id="top">
   <div class="mh-top"><span class="vn" id="volno"><b>Vol. 1</b> · 2 October 2026</span><span class="right"><span class="fri">Fridays</span><span class="dn" role="group" aria-label="Reading mode, shared by all Periodicals"><button type="button" data-mode="day" aria-pressed="true">Day</button><span class="sl" aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="false">Night</button></span></span></div>
@@ -1589,6 +1590,7 @@ function selectEdition(date){
   if(READY)afterSelect(active);
 }
 function syncAnchorOffset(){
+  document.querySelectorAll('.register').forEach(host=>host.style.setProperty('--field-half-width',(document.documentElement.clientWidth/2)+'px'));
   const bar=document.querySelector('.toolbar');if(!bar)return;
   const inset=parseFloat(getComputedStyle(bar).top)||0;
   document.documentElement.style.setProperty('--ll-anchor-top',(Math.ceil(bar.getBoundingClientRect().height+inset)+16)+'px');
@@ -1599,6 +1601,13 @@ function route(){let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{
   if(id.indexOf('cp-ll-')===0){var md=id.match(/^cp-ll-(\d{4}-\d{2}-\d{2})-/);if(md){selectEdition(md[1]);mode(false)}return}
   if(id.indexOf('heron-')===0){var hid=id.slice(6),cd;try{cd=JSON.parse(document.getElementById('companion-data').textContent)}catch(e){cd={}};var d=Object.keys(cd).find(function(k){return (cd[k].appearances||[]).some(function(a){return a.id===hid})});if(d){selectEdition(d);mode(false)}return}
   if(id.indexOf('field-register-')===0){openRegister();setTimeout(function(){var r=document.getElementById(id);if(r)r.scrollIntoView({block:'center'})},0);return}
+  const fieldNotes=id.match(/^field-notes-(\d{4}-\d{2}-\d{2})(?:-profile-(\d{3,}))?$/);
+  if(fieldNotes){
+    const edition=chron.find(e=>e.dataset.edition===fieldNotes[1]);if(!edition)return;
+    const registerDialog=$('register-dialog');if(registerDialog.open)registerDialog.close();
+    selectEdition(fieldNotes[1]);mode(false);
+    requestAnimationFrame(()=>{const target=document.getElementById(id)||document.getElementById('field-notes-'+fieldNotes[1]);if(!target)return;syncAnchorOffset();target.scrollIntoView({block:'start',behavior:'instant'});const heading=target.querySelector('.fr-name,h2');if(heading)heading.focus({preventScroll:true})});return;
+  }
   const t=document.getElementById(id);if(!t)return;const ed=t.closest('[data-edition]');if(ed&&ed.hidden)selectEdition(ed.dataset.edition);
   if(t.closest('.entry,.knowledge,.synthesis'))mode(false);requestAnimationFrame(function(){syncAnchorOffset();t.scrollIntoView({block:'start',behavior:'instant'})})}
 editions.forEach((e,n)=>{
@@ -1613,7 +1622,7 @@ $('open-archive').addEventListener('click',()=>{dialog.showModal();search.focus(
 $('close-archive').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
 search.addEventListener('input',()=>{let v=0;const q=search.value.toLowerCase();list.querySelectorAll('a').forEach(a=>{a.hidden=!a.textContent.toLowerCase().includes(q);if(!a.hidden)v++});$('archive-empty').hidden=v!==0});
-document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const t=document.getElementById(a.hash.slice(1));if(!t||!t.closest('.entry'))return;e.preventDefault();if(location.hash!==a.hash)history.pushState(null,'',a.hash);route()});
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;if(/^#field-notes-/.test(a.hash)||a.classList.contains('rg-related')){e.preventDefault();const registerDialog=$('register-dialog');if(registerDialog.open)registerDialog.close();const active=editions.find(ed=>!ed.hidden);if(!location.hash&&active)history.replaceState(history.state,'','#edition-'+active.dataset.edition);if(location.hash!==a.hash)history.pushState(null,'',a.hash);route();if(a.classList.contains('rg-related'))requestAnimationFrame(()=>{const heading=document.getElementById(a.hash.slice(1))?.querySelector('h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true})}});return}const t=document.getElementById(a.hash.slice(1));if(!t||!t.closest('.entry'))return;e.preventDefault();if(location.hash!==a.hash)history.pushState(null,'',a.hash);route()});
 addEventListener('popstate',route);
 function updateProgress(){const x=document.documentElement.scrollHeight-innerHeight;$('progress').style.width=(x>0?Math.min(100,scrollY/x*100):0)+'%';document.body.classList.toggle('scrolled',scrollY>180)}
 addEventListener('scroll',updateProgress,{passive:true});addEventListener('resize',updateProgress);
@@ -1674,30 +1683,38 @@ function notePlate(e,i){
     '<text x="60" y="69" text-anchor="middle" style="fill:currentColor;font-family:var(--serif);font-style:'+(person?'italic':'normal')+';letter-spacing:'+(person?'0':'.06em')+'" font-size="'+(ini.length>2?27:34)+'">'+esc(ini)+'</text></svg>';
 }
 function renderRegister(active){
-  var all=regData();if(!all.length)return;
-  var date=active.dataset.edition;
-  var issue=all.filter(function(e){return e.issue===date});
-  if(!issue.length){var last=all[all.length-1].issue;issue=all.filter(function(e){return e.issue===last})}
-  var picks=issue.filter(function(e){return e.fieldNote});if(!picks.length)picks=issue;picks=picks.slice(0,3);
+  var all=regData(),date=active.dataset.edition,issue=all.filter(function(e){return e.issue===date}),picks=issue.filter(function(e){return e.fieldNote});
+  if(!picks.length)return; // Never substitute another edition's profiles or infer selections.
   var host=active.querySelector('.register');
   if(!host){host=document.createElement('section');host.className='register';host.setAttribute('aria-labelledby','fn-h-'+date);
     var ov=active.querySelector('.overview');if(!ov)return;ov.after(host);
     host.addEventListener('click',function(ev){if(ev.target.closest('[data-fr="all"]'))openRegister()})}
-  host.innerHTML='<div class="register-head"><h2 id="fn-h-'+date+'">Field Notes</h2><p>'+(picks.length===1?'One person or institution':(picks.length===2?'Two':'Three')+' of the people and institutions')+' behind this week’s evidence.</p><button type="button" class="fr-browse" data-fr="all">Field Register · '+all.length+' '+(all.length===1?'entry':'entries')+' →</button></div>'+
-    '<div class="fn-grid">'+picks.map(function(e,i){
+  host.id='field-notes-'+date;
+  host.style.setProperty('--field-half-width',(document.documentElement.clientWidth/2)+'px');
+  host.innerHTML='<div class="register-head"><h2 id="fn-h-'+date+'" tabindex="-1">Field Notes</h2><p>'+(picks.length===2?'Two':'Three')+' of the people and institutions behind this week’s evidence.</p><button type="button" class="fr-browse" data-fr="all">Field Register · '+all.length+' '+(all.length===1?'entry':'entries')+' →</button></div>'+
+    '<div class="fn-grid" data-count="'+picks.length+'">'+picks.map(function(e,i){
       var relEl=e.related&&active.querySelector('#'+CSS.escape(e.related)+' h2');
-      return '<article class="fn"><figure class="fn-plate">'+notePlate(e,i)+(e.image&&e.image.credit?'<figcaption>'+esc(e.image.credit)+(e.image.license?' · '+esc(e.image.license):'')+'</figcaption>':'')+'</figure>'+
-        '<div class="fr-kind">'+(e.kind==='person'?'Economist · researcher':'Institution')+(e.place?' · '+esc(e.place):'')+'</div><h3 class="fr-name">'+esc(e.name)+'</h3><p class="fr-role">'+esc(e.role)+(e.org&&e.org!==e.name?', '+esc(e.org):'')+'</p>'+
-        '<p class="fr-does">'+esc(e.does)+'</p><div class="fr-econ"><h4>Where economics enters</h4><p>'+esc(e.economics)+'</p><a href="'+esc(e.source.url)+'" target="_blank" rel="noopener">'+esc(e.source.label)+' ↗</a>'+(relEl?'<a class="fr-rel" href="#'+esc(e.related)+'">In this edition: '+esc(relEl.textContent)+' ↓</a>':'')+'</div></article>'}).join('')+'</div>';
+      return '<article class="fn" id="field-notes-'+date+'-profile-'+pad3(e.no)+'" aria-labelledby="fn-name-'+pad3(e.no)+'"><figure class="fn-plate">'+notePlate(e,i)+(e.image&&e.image.credit?'<figcaption>'+esc(e.image.credit)+(e.image.license?' · '+esc(e.image.license):'')+'</figcaption>':'')+'</figure>'+
+        '<div class="fr-kind">'+(e.kind==='person'?'Economist · researcher':'Institution')+(e.place?' · '+esc(e.place):'')+'</div><h3 class="fr-name" id="fn-name-'+pad3(e.no)+'" tabindex="-1">'+esc(e.name)+'</h3><p class="fr-role">'+esc(e.role)+(e.org&&e.org!==e.name?', '+esc(e.org):'')+'</p>'+
+        '<p class="fr-does">'+esc(e.does)+'</p><div class="fr-econ"><h4>Where economics enters</h4><p>'+esc(e.economics)+'</p></div><div class="fn-links"><a class="fn-source" href="'+esc(e.source.url)+'" target="_blank" rel="noopener"><span class="fn-link-label">Source</span><span>'+esc(e.source.label)+' ↗</span></a>'+(relEl?'<a class="fr-rel" href="#'+esc(e.related)+'"><span class="fn-link-label">In this edition</span><span>'+esc(relEl.textContent)+' ↓</span></a>':'')+'</div></article>'}).join('')+'</div>';
 }
 document.querySelectorAll('a[href="#field-register"]').forEach(function(a){a.addEventListener('click',function(e){if(location.hash==='#field-register'){e.preventDefault();openRegister()}})});
-function registerRoute(){if(location.hash==='#field-register'){openRegister();return}if(/^#field-register-\d{3}$/.test(location.hash)){openRegister();setTimeout(function(){var r=document.querySelector(location.hash);if(r)r.scrollIntoView({block:'center'})},0)}}
+function registerRoute(){if(location.hash==='#field-register'){openRegister();return}if(/^#field-register-\d{3,}$/.test(location.hash)){openRegister();setTimeout(function(){var r=document.querySelector(location.hash);if(r)r.scrollIntoView({block:'center'})},0)}}
+function registerIssueNo(date){
+  var edition=chron.find(function(x){return x.dataset.edition===date}),label=edition&&edition.querySelector('.edition-label'),match=label&&label.textContent.match(/No\.\s*(\d+)/);return match?match[1]:null;
+}
+function registerProvenance(e){
+  var no=registerIssueNo(e.issue),target='field-notes-'+e.issue+(e.fieldNote?'-profile-'+pad3(e.no):'');
+  return '<div class="rg-history"><p class="rg-provenance">First registered · No. '+pad3(no)+' · <time datetime="'+esc(e.issue)+'">'+fmt(e.issue,{day:'numeric',month:'long',year:'numeric'})+'</time></p>'+
+    (!e.fieldNote?'<p class="rg-status">Register record; not featured in Field Notes.</p>':'')+
+    '<a data-field-notes href="#'+target+'">'+(e.fieldNote?'View this profile in Field Notes':'View this edition’s Field Notes (context)')+' →</a>'+(!e.fieldNote?'<a class="rg-related" href="#'+esc(e.related)+'">Associated reading →</a>':'')+'</div>';
+}
 function openRegister(){
   var dlg=document.getElementById('register-dialog'),all=regData(),list=dlg.querySelector('.rg-list');
   var byIssue={};all.forEach(function(e){(byIssue[e.issue]=byIssue[e.issue]||[]).push(e)});
-  list.innerHTML=Object.keys(byIssue).sort().reverse().map(function(d){var no=chron.findIndex(function(x){return x.dataset.edition===d})+1;
+  list.innerHTML=Object.keys(byIssue).sort().reverse().map(function(d){var no=registerIssueNo(d);
     return '<div class="rg-issue">'+(no?'<span class="issue-no">N<sup>o</sup>. '+pad3(no)+'</span> · ':'')+fmt(d,{day:'numeric',month:'long',year:'numeric'})+'</div>'+byIssue[d].map(function(e){
-      return '<div class="rg-row" id="field-register-'+pad3(e.no)+'" data-reg-no="'+e.no+'" data-q="'+esc((e.name+' '+e.org+' '+e.role+' '+e.place+' '+e.economics).toLowerCase())+'"><span class="fr-no"><span class="no">N<sup>o</sup>.</span>'+pad3(e.no)+'</span>'+notePlate(e,0)+'<div><h3>'+esc(e.name)+'</h3><p class="fr-role">'+esc(e.role)+(e.org&&e.org!==e.name?', '+esc(e.org):'')+'</p><p>'+esc(e.does)+'</p><p><b>Economics</b>'+esc(e.economics)+'</p><a href="'+esc(e.source.url)+'" target="_blank" rel="noopener">'+esc(e.source.label)+' ↗</a></div></div>'}).join('')}).join('');
+      return '<div class="rg-row" id="field-register-'+pad3(e.no)+'" data-reg-no="'+e.no+'" data-q="'+esc((e.name+' '+e.org+' '+e.role+' '+e.place+' '+e.economics).toLowerCase())+'"><span class="fr-no"><span class="no">N<sup>o</sup>.</span>'+pad3(e.no)+'</span>'+notePlate(e,0)+'<div><h3>'+esc(e.name)+'</h3><p class="fr-role">'+esc(e.role)+(e.org&&e.org!==e.name?', '+esc(e.org):'')+'</p><p>'+esc(e.does)+'</p><p><b>Economics</b>'+esc(e.economics)+'</p><a href="'+esc(e.source.url)+'" target="_blank" rel="noopener">'+esc(e.source.label)+' ↗</a>'+registerProvenance(e)+'</div></div>'}).join('')}).join('');
   dlg.querySelector('.rg-count').textContent='Loblolly & Logit · '+all.length+' '+(all.length===1?'entry':'entries')+' · '+Object.keys(byIssue).length+' '+(Object.keys(byIssue).length===1?'edition':'editions');
   dlg.showModal();dlg.querySelector('input').focus();
 }
