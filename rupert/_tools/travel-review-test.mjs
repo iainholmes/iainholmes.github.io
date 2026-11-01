@@ -335,4 +335,30 @@ test('All four Travel chapters share the accepted Step 03 heading size and font'
     'new stylesheet should not use stale cached URL');
 });
 
+test('Travel display font is reserved for the masthead and four numbered stages',()=>{
+  const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
+  const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+  assert.ok(css.includes('--f-editorial: "VELENOR"'), 'display typeface must be the canonical Atlas typeface');
+  assert.ok(css.includes('--f-secondary:"Latin Modern Roman Dunhill"'), 'secondary display face must be defined');
+  assert.ok(css.includes('--f-text: "Latin Modern Roman"'), 'body reading face must be defined');
+  for(const id of ['plan-stage','route-stage','build-stage','itinerary-stage'])
+    assert.ok(html.includes('id="'+id+'"'), id+' missing');
+  assert.ok(css.includes('font:400 clamp(41px,3.55vw,55px)/1.09 var(--f-editorial)'),
+    'retain four stage headers at their accepted size');
+  assert.ok(css.includes('.page-travel h2:not(.sec-h),'));
+  assert.ok(css.includes('.page-travel h3,'));
+  assert.ok(css.includes('.page-travel h4,'));
+  assert.ok(css.includes('font-family:var(--f-secondary)'), 'subheadings should use companion typeface');
+  assert.ok(css.includes('#trip-context-route{font:400 clamp(27px,2.35vw,38px)/1.22 var(--f-secondary)'),
+    'route name must not borrow masthead font');
+  assert.ok(css.includes('font:400 clamp(29px,2.4vw,37px)/1.2 var(--f-secondary)'),
+    'Trip Table must use the secondary face');
+  assert.ok(css.includes('font:400 clamp(17px,1.1vw,19px)/1.5 var(--f-text)'),
+    'itinerary introduction must return to normal body type');
+  assert.ok(!css.includes('var(--f-disp)'), 'remove undefined display-family token');
+  assert.ok(!css.includes('var(--f-body)'), 'remove undefined body-family token');
+  assert.ok(html.includes('atlas.css?v=20261101-travel-type-boundary01'),
+    'the page must reference the refreshed stylesheet');
+});
+
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
