@@ -1972,3 +1972,112 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   font-family:var(--f-secondary);
   font-synthesis:none;
 }
+
+
+/* Travel supportive text scale · 2026-11-01.
+   Preserve the four VELENOR chapter headings, Dunhill secondary headings and
+   Atlas reading face. Lift subordinate text without flattening the hierarchy. */
+
+/* 01 — Plan: labels and remote-lookup guidance should remain easy to scan. */
+.page-travel #plan-stage .journey-endpoints label,
+.page-travel #plan-stage .journey-options label,
+.page-travel #plan-stage .routing-choice{
+  font-size:clamp(17px,1.2vw,20px);
+  line-height:1.45;
+}
+.page-travel #plan-stage .journey-endpoints input,
+.page-travel #plan-stage .journey-options input,
+.page-travel #plan-stage .journey-options select{
+  font-size:clamp(17px,1.1vw,19px);
+}
+.page-travel #plan-stage .lookup-disclosure{
+  font-size:clamp(15px,1vw,17px);
+  line-height:1.6;
+}
+.page-travel #plan-stage #trip-status,
+.page-travel #plan-stage #map-trip{
+  font-size:clamp(17px,1.15vw,19px);
+}
+
+/* 02 — Choose a Route: explanatory copy and actions, not map data labels. */
+.page-travel #route-stage #route-families > p,
+.page-travel #route-stage .route-family p{
+  font-size:clamp(17px,1.17vw,19px);
+  line-height:1.5;
+}
+.page-travel #route-stage .route-family .route-mix{
+  font-size:clamp(16px,1.1vw,18px);
+  line-height:1.5;
+}
+.page-travel #route-stage .travel-map-toolbar p{
+  font-size:clamp(16px,1.08vw,18px);
+  line-height:1.45;
+}
+.page-travel #route-stage .travel-map-modes button,
+.page-travel #route-stage #fit-trip,
+.page-travel #route-stage .route-next #explore-route{
+  font-size:clamp(16px,1.05vw,18px);
+}
+
+/* 03 — Build the Journey: meaningful choices should not look like footnotes. */
+.page-travel #build-stage .journey-discovery .discovery-help,
+.page-travel #build-stage .route-area-choices > p,
+.page-travel #build-stage #destination-activities > p,
+.page-travel #build-stage .discovery-message{
+  font-size:clamp(17px,1.16vw,19px);
+  line-height:1.55;
+}
+.page-travel #build-stage #journey-discovery-status,
+.page-travel #build-stage #town-results-state{
+  font-size:clamp(17px,1.12vw,19px);
+  line-height:1.5;
+}
+.page-travel #build-stage .discovery-actions button,
+.page-travel #build-stage .route-area-button,
+.page-travel #build-stage #return-town-results{
+  font-size:clamp(16px,1.05vw,18px);
+  line-height:1.4;
+}
+.page-travel #build-stage .route-anchor-tools summary,
+.page-travel #build-stage #overnight-opportunities summary{
+  font-size:clamp(17px,1.14vw,19px);
+}
+.page-travel #build-stage .trip-activity .activity-measures,
+.page-travel #build-stage .trip-activity .activity-more summary,
+.page-travel #build-stage .trip-activity-actions button{
+  font-size:clamp(16px,1.05vw,18px);
+}
+
+/* 04 — Itinerary: keep the table, labels and small print legible, without
+   giving the introduction or Trip Table the chapter-title treatment. */
+.page-travel #itinerary-stage .clock-note,
+.page-travel #itinerary-stage .travel-advanced > p{
+  font-size:clamp(16px,1.12vw,18px);
+  line-height:1.55;
+}
+.page-travel #itinerary-stage .table-scroll table{
+  font-size:clamp(16px,1.12vw,18px);
+  line-height:1.5;
+}
+.page-travel #itinerary-stage .table-scroll th{
+  font-size:clamp(17px,1.16vw,19px);
+  line-height:1.4;
+}
+.page-travel #itinerary-stage .table-scroll td{
+  font-size:clamp(16px,1.12vw,18px);
+  line-height:1.5;
+}
+.page-travel #itinerary-stage .journey-save > label,
+.page-travel #itinerary-stage .travel-advanced > summary{
+  font-size:clamp(17px,1.17vw,19px);
+  line-height:1.45;
+}
+.page-travel #itinerary-stage #trip-title,
+.page-travel #itinerary-stage .travel-actions button{
+  font-size:clamp(17px,1.12vw,19px);
+}
+@media(max-width:759.98px){
+  .page-travel #build-stage .discovery-actions button{font-size:16px;}
+  .page-travel #build-stage .route-area-button{font-size:16px;}
+  .page-travel #itinerary-stage .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+}
