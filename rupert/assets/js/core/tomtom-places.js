@@ -6,7 +6,7 @@ import { distanceMiles } from './trip-map.js';
 // a dedicated, restricted browser key AND verify required attribution first.
 export function tomtomPlacesAvailable(config,origin){
   return config?.provider==='tomtom-search' && config.enabled===true &&
-    /^[\\w-]{16,128}$/.test(config.apiKey||'') &&
+    /^[\w-]{16,128}$/.test(config.apiKey||'') &&
     config.allowedOrigins?.includes(origin)===true;
 }
 const topics=[
