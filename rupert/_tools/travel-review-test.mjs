@@ -286,4 +286,30 @@ test('Chain restaurants are not promoted as Rupert adventure suggestions',()=>{
   assert.equal(activityFromOSM({...sample,tags:{name:'Chain',amenity:'cafe',brand:'National Coffee'}}),null);
 });
 
+test('Step 03 typography scales using defined Atlas typefaces and remains mobile-readable',()=>{
+  const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
+  assert.ok(css.includes('--f-editorial:'));
+  assert.ok(css.includes('--f-text:'));
+  assert.ok(css.includes('font:400 clamp(41px,3.55vw,55px)/1.09 var(--f-editorial)'));
+  assert.ok(css.includes('font:400 clamp(27px,2.35vw,38px)/1.22 var(--f-editorial)'));
+  assert.ok(css.includes('font:400 clamp(16px,1.2vw,19px)/1.5 var(--f-text)'));
+  assert.ok(css.includes('.page-travel .discovery-intro{font-size:18px}'));
+});
+test('NPS filters out generic numbered pavilions but preserves distinctive named places',()=>{
+  const base={type:'Feature',geometry:{type:'Point',coordinates:[-79.08,35.91]},properties:{
+    OBJECTID:123,POINAME:'Pavilion 4',POITYPE:'Picnic Site',POISTATUS:'Active',
+    OPENTOPUBLIC:'Yes',PUBLICDISPLAY:'Yes'
+  }};
+  assert.equal(npsPlaceFromFeature(base),null);
+  assert.equal(npsPlaceFromFeature({...base,properties:{...base.properties,POINAME:'Picnic Shelter #12'}}),null);
+  const named=npsPlaceFromFeature({...base,properties:{...base.properties,POINAME:'Riverside Pavilion'}});
+  assert.equal(named.name,'Riverside Pavilion');
+});
+test('Town search makes substantial off-route distances explicit',()=>{
+  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  assert.ok(view.includes('townOffset>25&&!nearDestination'));
+  assert.ok(view.includes('Treat these as side-trip ideas, not convenient roadside stops.'));
+  assert.ok(view.includes('new Set(official.map(a=>a.category)).size>=2'));
+});
+
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
