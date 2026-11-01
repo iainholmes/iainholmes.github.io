@@ -1962,17 +1962,6 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 }
 
 
-/* Travel typography boundary: VELENOR belongs to the page title and the four
-   numbered chapter headings only. Keep all secondary headings in the Atlas
-   companion editorial face; body copy stays in the reading face. */
-.page-travel h2:not(.sec-h),
-.page-travel h3,
-.page-travel h4,
-.page-travel .postcard-panel > summary{
-  font-family:var(--f-text);
-  font-synthesis:none;
-}
-
 /* Exact Travel typography rule, 2026-11-01.
    VELENOR is reserved for the site's separate brand and the four numbered
    Travel step titles, INCLUDING their numerals. Every other Travel word uses
@@ -1982,7 +1971,8 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 }
 .page-travel .travel :is(h1,h2,h3,h4,h5,h6,p,small,label,button,input,select,textarea,th,td,summary,figcaption,li,a,span),
 .page-travel .travel .sec-h,
-.page-travel .travel .head-note{
+.page-travel .travel .head-note,
+.page-travel .travel .head-note :is(.lbl,.banner-copy,div){
   font-family:var(--f-text);
 }
 .page-travel .travel :is(#plan-h,#route-h,#build-h,#itinerary-h),
