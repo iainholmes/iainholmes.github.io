@@ -544,6 +544,33 @@ $('stop-search-form').addEventListener('submit',async e=>{
     }
   }finally{if(areaSearchController===abort){areaSearchController=null;submit.disabled=false;}}
 });
+$('known-place-form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!state.family||!$('trip-routing').checked){$('known-place-status').textContent='Choose a route and enable place lookup first.';return;}
+  const field=$('known-place-input'),name=field.value.trim(),placement=$('known-place-placement').value;
+  if(!name)return;
+  const abort=new AbortController();const current=version;
+  areaSearchController?.abort();areaSearchController=abort;
+  const submit=$('known-place-form').querySelector('button[type="submit"]');
+  submit.disabled=true;$('known-place-status').textContent='Confirming the location of '+name+'…';
+  try{
+    const point=await resolveLocation({label:name},abort.signal,'custom travel stop');
+    if(current!==version||abort.signal.aborted)return;
+    const progress=routeProgress(point,state.family);
+    const detourMiles=distanceToRoute(point,state.family.feature.geometry.coordinates)*2*1.35;
+    const stop={
+      id:'custom-'+(crypto.randomUUID?.()||Date.now().toString(36)),name:point.label,
+      location:point,minutes:40,category:'custom',categoryLabel:'Place you selected',
+      dog:'Dog policy is unverified. Check access and opening hours before visiting.',
+      why:'A place selected by you, not a verified public recommendation.',links:[],
+      progress,detourMinutes:Math.ceil(detourMiles/35*60),detourMiles
+    };
+    $('known-place-status').textContent='Location confirmed. Review its effect before adding.';
+    reviewActivityAddition(stop,placement==='destination');
+  }catch(error){
+    if(current===version&&!abort.signal.aborted)$('known-place-status').textContent='Could not confirm this place: '+error.message;
+  }finally{if(areaSearchController===abort){areaSearchController=null;submit.disabled=false;}}
+});
 $('anchor-form').addEventListener('submit',async e=>{
   e.preventDefault();if(building||!state.family)return;
   if(!$('trip-routing').checked){status('Enable lookup to locate the route-defining town.');return;}
