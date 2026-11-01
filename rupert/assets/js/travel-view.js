@@ -151,8 +151,8 @@ function fitRoute(announce=false){
 function journeyRoute(){return state.results.length>1?{...state.family,minutes:state.results.reduce((n,r)=>n+r.minutes,0),miles:String(state.results.reduce((n,r)=>n+Number(r.miles),0)),feature:{type:'Feature',properties:{mode:'drive'},geometry:{type:'LineString',coordinates:state.results.flatMap(r=>r.feature.geometry.coordinates)}}}:state.results[0]||state.family;}
 function paintMap(fit=false){
   if(!map)return;
-  const alternatives=!state.manual&&state.family?state.families.filter(r=>r.id!==state.family.id).map(r=>({
-    ...r.feature,properties:{...r.feature.properties,mode:'drive',comparison:'alternative',routeLabel:r.label}
+  const alternatives=!state.manual&&state.family?state.families.filter(r=>r.id!==state.family.id).map((r,i)=>({
+    ...r.feature,properties:{...r.feature.properties,mode:'drive',comparison:'alternative',comparisonIndex:i,routeLabel:r.label}
   })):[];
   const selected=state.results.filter(Boolean).map(r=>({
     ...r.feature,properties:{...r.feature.properties,mode:r.feature.properties.mode||'drive',comparison:'selected'}
@@ -268,6 +268,9 @@ function resetDiscovery(){
   const dialog=$('stop-search-dialog');if(dialog.open)dialog.close();
   $('stop-search-results').replaceChildren();
   $('stop-search-status').textContent='';
+  $('town-results-section').hidden=true;
+  $('town-results-cards').replaceChildren();
+  $('town-results-state').textContent='';
   $('route-activity-results').replaceChildren();
   $('journey-discovery-status').textContent=state.family?'Choose an area below or search near a town.':'Choose a route to find stops.';
 }
@@ -464,13 +467,31 @@ async function discoverJourney(){
   updateSummary();
 }
 $('explore-route').addEventListener('click',()=>{if(state.family)stageTo('build-stage');});
-$('open-town-search').addEventListener('click',()=>{
+const mapThemeKey='rupert-travel-map-theme-v1';
+let travelMapTheme='day';
+try{const saved=localStorage.getItem(mapThemeKey);if(['day','dusk','night'].includes(saved))travelMapTheme=saved;}catch{}
+function setMapAppearance(choice){
+  if(!['day','dusk','night'].includes(choice))return;
+  travelMapTheme=choice;
+  document.querySelectorAll('[data-travel-theme]').forEach(btn=>
+    btn.setAttribute('aria-pressed',String(btn.dataset.travelTheme===choice)));
+  $('route-stage').dataset.mapTheme=choice;
+  map?.setTravelTheme?.(choice);
+  try{localStorage.setItem(mapThemeKey,choice);}catch{}
+}
+document.querySelectorAll('[data-travel-theme]').forEach(btn=>
+  btn.addEventListener('click',()=>setMapAppearance(btn.dataset.travelTheme)));
+setMapAppearance(travelMapTheme);
+function openTownSearch(){
   if(!state.family||!$('trip-routing').checked)return;
   $('stop-search-dialog').showModal();
   $('stop-search-place').focus();
-});
+}
+$('open-town-search').addEventListener('click',openTownSearch);
+$('return-town-results').addEventListener('click',openTownSearch);
 $('close-town-search').addEventListener('click',()=>$('stop-search-dialog').close());
-$('stop-search-dialog').addEventListener('close',()=>areaSearchController?.abort());
+// Closing the town dialog does not abort discovery. The results are retained
+// in the Build the Journey section and can be revisited at any point.
 $('retry-discovery').addEventListener('click',()=>{
   if(!state.family)return;
   if(!$('trip-routing').checked){status('Enable route & place lookup to search public place data.');return;}
@@ -479,31 +500,48 @@ $('retry-discovery').addEventListener('click',()=>{
 $('stop-search-form').addEventListener('submit',async e=>{
   e.preventDefault();
   if(!state.family){$('stop-search-status').textContent='Choose a route first.';return;}
-  if(!$('trip-routing').checked){$('stop-search-status').textContent='Enable route & place lookup in Plan to search public map data.';return;}
+  if(!$('trip-routing').checked){$('stop-search-status').textContent='Enable route & place lookup in Plan to search public place data.';return;}
   const search=$('stop-search-place').value.trim(),submit=$('stop-search-form').querySelector('button[type="submit"]');
   if(!search)return;
   areaSearchController?.abort();
+  // A user-initiated town search takes priority over slow automatic discovery.
+  // It may be closed without losing the query or results.
+  discoveryController?.abort();
+  $('journey-discovery-status').textContent='Town search requested. Automatic route suggestions paused.';
   const abort=new AbortController();areaSearchController=abort;const current=version;
+  const stateLine=$('town-results-state'),title=$('town-results-title'),persisted=$('town-results-cards');
+  $('town-results-section').hidden=false;
+  title.textContent='Places near '+search;
+  stateLine.textContent='Searching near '+search+'… You can close the popup; this search continues.';
+  $('stop-search-status').textContent=stateLine.textContent;
+  persisted.replaceChildren();$('stop-search-results').replaceChildren();
   submit.disabled=true;
-  $('stop-search-status').textContent='Locating '+search+'…';
-  $('stop-search-results').replaceChildren();
   try{
-    // A named area is confirmed rather than silently choosing the wrong city.
     const point=await resolveLocation({label:search},abort.signal,'activity search area');
     if(current!==version||abort.signal.aborted)return;
-    $('stop-search-status').textContent='Looking for places near '+point.label+'…';
-    const activities=await cachedDiscovery(point,{signal:abort.signal,radius:6500});
+    stateLine.textContent='Looking for places around '+point.label+'…';
+    $('stop-search-status').textContent=stateLine.textContent;
+    const activities=await cachedDiscovery(point,{signal:abort.signal,radius:4500,interactive:true});
     if(current!==version||abort.signal.aborted)return;
     const nearDestination=distanceMiles(point,state.destination)<=10;
     const progress=routeProgress(point,state.family);
     const zone={point,progress,minute:state.family.minutes*progress};
-    $('stop-search-results').replaceChildren(...activities.map(a=>activityCard({...a},zone,nearDestination)));
-    $('stop-search-status').textContent=activities.length?
-      `${activities.length} leads near ${point.label}. Choose Add to Trip to include a stop; check dog rules and hours first.`:
-      'No named activity leads returned for this area. Try a nearby town or add a route-defining stop manually.';
+    const buildCards=()=>activities.map(a=>activityCard({...a},zone,nearDestination));
+    persisted.replaceChildren(...buildCards());
+    if($('stop-search-dialog').open)$('stop-search-results').replaceChildren(...buildCards());
+    const outcome=activities.length?
+      activities.length+' places near '+point.label+'. Review any stop to add it; pet access still needs checking.':
+      'No named places were returned near '+point.label+'. Try another town or add a known place directly.';
+    stateLine.textContent=outcome;
+    $('stop-search-status').textContent=outcome;
+    $('journey-discovery-status').textContent=activities.length?
+      activities.length+' town suggestions are ready below.':'No places found near '+point.label+'. Try another town.';
   }catch(error){
-    if(!abort.signal.aborted&&current===version)
-      $('stop-search-status').textContent='Search could not finish: '+error.message;
+    if(!abort.signal.aborted&&current===version){
+      const message='Town search could not finish: '+error.message;
+      stateLine.textContent=message;$('stop-search-status').textContent=message;
+      $('journey-discovery-status').textContent='Town search unavailable. You can still add a known place to the itinerary.';
+    }
   }finally{if(areaSearchController===abort){areaSearchController=null;submit.disabled=false;}}
 });
 $('anchor-form').addEventListener('submit',async e=>{
@@ -580,7 +618,7 @@ if(new URLSearchParams(location.search).has('qa')){
     readout.textContent=JSON.stringify({families:state.families.length,legs:state.legs.length,stops:state.stops.length,bounds,coordinates:points.length,completeGeometryCovered:!!bounds&&points.every(([x,y])=>x>=bounds[0][0]&&x<=bounds[1][0]&&y>=bounds[0][1]&&y<=bounds[1][1]),mapAvailable:!!map,camera:map?.raw.getBounds().toArray()||null,minimumZoom:map?.raw.getMinZoom()??null},null,2);
   }),readout);$('route-stage').append(details);
 }
-(async()=>{try{const initial=routeBounds(places.map(p=>pointFeature(p.id,p.name,p.access)));map=await createMap($('travel-map'),{base,theme:'light',travel:true,touch:matchMedia('(pointer:coarse)').matches,bounds:initial});$('trip-map-status').textContent='';map.on('select',id=>{const activity=[...state.stops,...state.destinationActivities].find(s=>s.id===id);if(activity){map.focus(id);$('close-activity').hidden=false;status(activity.name+' · '+activity.dog);}else fitRoute();});map.on('trouble',text=>$('trip-map-status').textContent=text);map.on('lost',()=>{$('trip-map-status').textContent='The browser released the map graphics. Reload to restore the map; the itinerary stays usable.';map.destroy();map=null;});new ResizeObserver(()=>map?.resize()).observe($('travel-map'));paintMap(true);
+(async()=>{try{const initial=routeBounds(places.map(p=>pointFeature(p.id,p.name,p.access)));map=await createMap($('travel-map'),{base,theme:'light',travel:true,touch:matchMedia('(pointer:coarse)').matches,bounds:initial});$('trip-map-status').textContent='';setMapAppearance(travelMapTheme);map.on('select',id=>{const activity=[...state.stops,...state.destinationActivities].find(s=>s.id===id);if(activity){map.focus(id);$('close-activity').hidden=false;status(activity.name+' · '+activity.dog);}else fitRoute();});map.on('trouble',text=>$('trip-map-status').textContent=text);map.on('lost',()=>{$('trip-map-status').textContent='The browser released the map graphics. Reload to restore the map; the itinerary stays usable.';map.destroy();map=null;});new ResizeObserver(()=>map?.resize()).observe($('travel-map'));paintMap(true);
     // Read-only QA evidence: route bounds, camera and itinerary; never publish the user's locations.
     if(new URLSearchParams(location.search).has('qa'))window.__travelQA=()=>({families:state.families.length,legs:state.legs.length,stops:state.stops.length,destinationActivities:state.destinationActivities.length,bounds:wholeJourneyBounds(state.results.filter(Boolean),state.origin,state.destination),camera:map?.raw.getBounds().toArray(),zoom:map?.raw.getZoom(),minZoom:map?.raw.getMinZoom()});
   }catch(error){$('trip-map-status').textContent='Map unavailable. Route choices and the itinerary remain usable.';}})();
