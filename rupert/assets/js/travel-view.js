@@ -1,6 +1,6 @@
 import { automaticPostcard } from './core/postcard.js';
 import { createMap } from './map/maplibre-provider.js';
-import { validPoint, drivingRoute, drivingAlternatives } from './core/routing.js';
+import { validPoint, drivingRoute, drivingAlternatives, validateDrivingGeometry } from './core/routing.js';
 import { pointFeature, distanceMiles, distanceToRoute, routeBounds, geocodeCandidates } from './core/trip-map.js';
 import { cleanPlan, readBackup, TRAVEL_STORAGE_KEY } from './core/travel.js';
 import { durationLabel, routeFamilies, routePoint, routeProgress, wholeJourneyBounds, opportunityZones, overnightZones, journeyLegs, journeySchedule } from './core/journey.js';
@@ -173,14 +173,24 @@ async function rebuild(nextStops){
 }
 $('journey-form').addEventListener('submit',async e=>{
   e.preventDefault();if(!$('trip-routing').checked){status('Enable route & place lookup before sending locations to the providers.');return;}
-  cancelRequests();const current=version,abort=new AbortController();controller=abort;const timer=setTimeout(()=>abort.abort(),60000);$('map-trip').disabled=true;
+  cancelRequests();const current=version,abort=new AbortController();controller=abort;let timer;$('map-trip').disabled=true;
   try{
     cleanPlan({title:title(),dates:{start:$('trip-start').value,end:$('trip-end').value},legs:[{mode:'car',from:inputPoint($('trip-origin')),to:inputPoint($('trip-destination'))}]});
     status('Locating your origin and destination…');const origin=await resolveLocation(inputPoint($('trip-origin')),abort.signal,'origin'),destination=await resolveLocation(inputPoint($('trip-destination')),abort.signal,'destination');
+    if(current!==version)return;
+    // The traveler may need time to inspect the geographic candidates. Apply the
+    // 60-second timeout only to the routing provider, not the confirmation dialog.
+    timer=setTimeout(()=>abort.abort(),60000);
     status('Comparing driving corridors…');let routes;
     try{routes=await drivingAlternatives(origin,destination,{signal:abort.signal});}catch(error){if(abort.signal.aborted)throw error;routes=[await drivingRoute(origin,destination,{signal:abort.signal})];}
     if(!routes.length)throw Error('No usable driving route found.');
-    if(current!==version)return;const families=routeFamilies(routes);state={...emptyState(),origin,destination,families,family:families[0],legs:journeyLegs(origin,destination),results:[families[0]]};
+    const credible=[],rejected=[];
+    for(const route of routes){
+      try{credible.push(validateDrivingGeometry(route,origin,destination));}
+      catch(error){rejected.push(error.message);}
+    }
+    if(!credible.length)throw Error(rejected[0]||'No geographically credible route found. Recheck both places.');
+    if(current!==version)return;const families=routeFamilies(credible);state={...emptyState(),origin,destination,families,family:families[0],legs:journeyLegs(origin,destination),results:[families[0]]};
     putPoint($('trip-origin'),origin);putPoint($('trip-destination'),destination);dirty=true;$('anchor-form').hidden=false;$('fit-trip').disabled=false;
     renderFamilies();renderItinerary();paintMap(true);syncManual();ensurePostcard(collect());status(`${families.length} distinct ${families.length===1?'route':'routes'} found. Choose activities to build your journey.`);
     controller=null;clearTimeout(timer);$('map-trip').disabled=false;await discoverJourney();
