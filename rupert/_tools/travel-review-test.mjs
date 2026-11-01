@@ -388,7 +388,7 @@ test('Travel supporting text is legible across the four steps without changing c
     'Trip Table must retain companion heading font');
   assert.ok(html.includes('atlas.css?v=20261101-support-legibility01'),
     'the browser must receive the new typography stylesheet');
-  assert.equal((css.match(/\\{/g)||[]).length,(css.match(/\\}/g)||[]).length);
+  assert.equal((css.match(/[{]/g)||[]).length,(css.match(/[}]/g)||[]).length);
 });
 
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
