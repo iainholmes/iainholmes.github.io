@@ -87,6 +87,20 @@ test('Unverified outdoor meal is a lead, not a dog-access claim',()=>{
   assert.equal(activityFromOSM({id:100,type:'node',lat:35.91,lon:-79.05,tags:{name:'No Dogs',amenity:'cafe',dog:'no'}}),null);
 });
 const testAsync=async(name,fn)=>{await fn();tests++;console.log('PASS',name);};
+await testAsync('Provider-side 502 fails over once to an alternative public instance',async()=>{
+  const fake={type:'node',id:88,lat:35.912,lon:-79.055,tags:{name:'A Test Garden',leisure:'garden'}};
+  const urls=[];
+  const result=await discoverActivities(chapelHill,{request:async(url)=>{
+    urls.push(url);
+    if(urls.length===1)return {ok:false,status:502};
+    return {ok:true,status:200,json:async()=>({elements:[fake]})};
+  }});
+  assert.equal(urls.length,2);
+  assert.ok(urls[0].includes('private.coffee'));
+  assert.ok(urls[1].includes('overpass-api.de'));
+  assert.equal(result[0].name,'A Test Garden');
+});
+
 await testAsync('DiscoverActivities accepts real-style OSM records and reports Overpass 200 runtime errors',async()=>{
   const fake={type:'node',id:11,lat:35.913,lon:-79.056,tags:{name:'A Test Ice Cream Shop',amenity:'ice_cream'}};
   const good=await discoverActivities(chapelHill,{radius:4000,request:async(_url,args)=>{
@@ -115,17 +129,36 @@ test('Route-area chooser does not flood the screen with individual waiting panel
   assert.ok(!view.includes("journey-segment'),heading"));
   assert.ok(view.includes("function fitRoute(announce=false)"));
 });
-await testAsync('Provider-side 502 fails over once to an alternative public instance',async()=>{
-  const fake={type:'node',id:88,lat:35.912,lon:-79.055,tags:{name:'A Test Garden',leisure:'garden'}};
-  const urls=[];
-  const result=await discoverActivities(chapelHill,{request:async(url)=>{
-    urls.push(url);
-    if(urls.length===1)return {ok:false,status:502};
-    return {ok:true,status:200,json:async()=>({elements:[fake]})};
-  }});
-  assert.equal(urls.length,2);
-  assert.ok(urls[0].includes('private.coffee'));
-  assert.ok(urls[1].includes('overpass-api.de'));
-  assert.equal(result[0].name,'A Test Garden');
+
+test('Exploring places does not change a trip before confirmation',()=>{
+  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+  const render=readFileSync(new URL('../assets/js/core/render.js',import.meta.url),'utf8');
+  for(const id of ['trip-context','trip-context-route','trip-context-detail',
+     'trip-change-dialog','trip-change-title','trip-change-route','trip-change-details',
+     'confirm-trip-change','cancel-trip-change'])
+    assert.ok(html.includes('id="'+id+'"')&&render.includes('id="'+id+'"'),id);
+  assert.ok(view.includes('function reviewTripChange('));
+  assert.ok(view.includes('function reviewActivityAddition('));
+  assert.ok(view.includes("el('details',null,'activity-more')"));
+  assert.ok(view.includes('if(approved)'));
+  const action=view.slice(view.indexOf('function activityCard('),view.indexOf('async function cachedDiscovery('));
+  assert.ok(action.includes('reviewActivityAddition(activity,destination)'));
+  assert.ok(!action.includes('rebuild([...state.stops'), 'card clicks must not rebuild without a review');
 });
+test('Route-shaping waypoints are reviewed instead of added immediately',()=>{
+  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  const anchor=view.slice(view.indexOf("$('anchor-form').addEventListener"),view.indexOf("$('fit-trip').addEventListener"));
+  assert.ok(anchor.includes('reviewTripChange('));
+  assert.ok(anchor.includes('Recalculate via This Town'));
+  assert.ok(anchor.includes('action:async()=>{await rebuild('));
+});
+test('Travel highlights the current corridor and clearly labels search as non-destructive',()=>{
+  const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+  assert.ok(html.includes('Currently editing'));
+  assert.ok(html.includes('Searching never changes your trip'));
+  assert.ok(html.includes('Change the driving route via a town'));
+  assert.ok(html.includes('Browse an area of your selected route'));
+});
+
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
