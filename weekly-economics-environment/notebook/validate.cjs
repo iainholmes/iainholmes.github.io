@@ -28,7 +28,7 @@ function validate(input={}){
  for(const m of notebook.matchAll(/<article class="concept" id="([^"]+)"[\s\S]*?<\/article>/g)){
   if(concepts.has(m[1]))fail('duplicate concept '+m[1]);
   const html=m[0],seen=html.match(/<section class="seen"[^>]*>([\s\S]*?)<\/section>/)?.[1];
-  if(!/<p class="canonical">[\s\S]+?<\/p>/.test(html)||!/<h3[^>]*>Why it matters<\/h3><p>[\s\S]+?<\/p>/.test(html)||!/<h3[^>]*>A caution<\/h3><p>[\s\S]+?<\/p>/.test(html)||!seen)fail('incomplete concept '+m[1]);
+  if(!/<p class="canonical">[\s\S]+?<\/p>/.test(html)||!/<h3[^>]*>Why it matters<\/h3><p>[\s\S]+?<\/p>/.test(html)||!/<h3[^>]*>Key Qualification<\/h3><p>[\s\S]+?<\/p>/.test(html)||!seen)fail('incomplete concept '+m[1]);
   for(const part of ['<header class="concept-heading">','<div class="concept-body">','<div class="concept-analysis">','<section class="application"','<section class="caution"','<header class="seen-heading">','<ol class="appearance-register">'])if(!html.includes(part))fail('missing companion-volume structure in '+m[1]);
   const links=[...seen.matchAll(/href="\.\.\/#([^"]+)"/g)].map(x=>x[1]);
   if(!links.length||new Set(links).size!==links.length)fail('missing or duplicate references in '+m[1]);

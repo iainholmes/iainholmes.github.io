@@ -17,7 +17,15 @@ function history(reader){
   notebookAnchors:Object.fromEntries([...book.matchAll(/<article class="concept" id="([^"]+)"/g)].map(m=>[m[1],true]))};
 }
 const currentHistory=dir=>history(p=>read(dir,p)),baselineHistory=()=>history(old);
-function assertHistory(now,prior){let count=0;for(const [kind,entries]of Object.entries(prior))for(const [id,value]of Object.entries(entries)){assert.deepEqual(now[kind]?.[id],value,'immutable '+kind+' '+id);count++;}return count;}
+function assertHistory(now,prior){
+ // Canonicalize only the authorized editorial wrappers. All published text,
+ // metadata, figures, pins and associations are still compared per edition.
+ const compose=require('../../weekly-economics-environment/editorial-folio.cjs').compose;
+ const journal=value=>typeof value==='string'?compose('<main id="edition">'+value+'</main>'):value;
+ let count=0;for(const [kind,entries]of Object.entries(prior))for(const [id,value]of Object.entries(entries)){
+  assert.deepEqual(kind==='journal'?journal(now[kind]?.[id]):now[kind]?.[id],kind==='journal'?journal(value):value,'immutable '+kind+' '+id);count++;
+ }return count;
+}
 function isolatedMarks(archive){
  const filename=path.join(root,'personal-updates/issue-marks.js'),m=new Module(filename,module),req=Module.createRequire(filename);m.filename=filename;m.paths=module.paths;m.require=id=>id==='./issue-mark-archive.js'?archive:req(id);m._compile(read(root,'personal-updates/issue-marks.js'),filename);return m.exports;
 }
@@ -94,7 +102,7 @@ function append(dir,keys=['fb','cp','sp'],{automatic=false}={}){
  if(keys.includes('sp')){
   const p='weekly-economics-environment/index.html',doc=read(dir,p),latest=Object.entries(before.journal).sort().at(-1),no=Object.keys(before.journal).length+1,year=+date.slice(0,4),annual=Object.keys(before.journal).filter(d=>d.startsWith(String(year))).length+1;
   let ed=latest[1].replaceAll(latest[0],date);const label='Volume '+roman(year-2025)+' <span class="sep">/</span> N<sup>o</sup>. '+String(annual).padStart(3,'0')+' <span class="sep">/</span> '+new Date(date+'T12:00:00Z').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
-  ed=ed.replace(/(<div class="eyebrow edition-label">)[\s\S]*?(<\/div>)/,(_,a,b)=>a+label+b).replace(/(<section class="synthesis"[^>]*>)[\s\S]*?<\/section>/,(_,a)=>a+'<h2>Unpublished fixture</h2><p>Evidence and measurement describe distributions and interval uncertainty.</p></section>');
+  ed=ed.replace(/(<div class="eyebrow edition-label">)[\s\S]*?(<\/div>)/,(_,a,b)=>a+label+b).replace(/(<section class="synthesis"[^>]*>)[\s\S]*?<\/section>/,(_,a)=>a.replace(' data-editorial-folio="1"','')+'<div class="eyebrow">The synthesis / Unpublished fixture</div><h2>Unpublished fixture</h2><p>Evidence and measurement describe distributions and interval uncertainty.</p></section>');
   if(!automatic)pins['sp:'+date]=freshPin('sp',date,no,before);const field=automatic?{...before.studies}:{...before.studies,[date]:freshPin('study',date,no,before,pins['sp:'+date])};let updated=doc.replace('</main>',ed+'\n</main>');updated=replaceData(updated,'field-studies',field);
   const register=data(doc,'field-register'),profiles=register.entries.filter(e=>e.issue===latest[0]).slice(0,3).map((e,i)=>({...e,no:register.entries.length+i+1,issue:date,related:e.related.replace(latest[0],date),fieldNote:true}));
   register.entries.push(...profiles);updated=replaceData(updated,'field-register',register);write(dir,p,updated);

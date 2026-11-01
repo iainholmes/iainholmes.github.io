@@ -1,11 +1,11 @@
 @font-face{font-family:Menor;src:url('fonts/Menor-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
 :root{--headline:'LM Roman Dunhill','Source Serif 4',Georgia,serif}
-.hero h1,.overview-item h3,.entry h2{font-family:var(--headline);font-weight:400;font-synthesis:none;letter-spacing:0;line-height:1.14}
-.hero h1 em{font-style:normal}.overview-item h3{font-size:23px;line-height:1.2}.entry h2{line-height:1.17}
+.hero h1,.overview-item h3{font-family:var(--headline);font-weight:400;font-synthesis:none;letter-spacing:0;line-height:1.14}
+.hero h1 em{font-style:normal}.overview-item h3{font-size:23px;line-height:1.2}
 .closing-wordmark{max-width:1320px;margin:40px auto 0;padding:0 44px 8px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;font:italic 400 20px/1 var(--editorial-title);color:var(--ink);letter-spacing:0}
 .footer{align-items:baseline;flex-wrap:wrap;padding-top:12px;padding-bottom:14px}.footer .footer-brand{max-width:none;min-width:0}.footer nav{flex-wrap:wrap}
-.notebook-preview{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin-top:20px}.notebook-preview a{padding:12px 0;border-bottom:1px solid var(--hair);text-decoration:none}
-.synthesis p a{color:inherit;text-decoration-color:var(--pollen);text-underline-offset:4px}.synthesis p a:hover,.synthesis p a:focus-visible{color:var(--pollen)}
+
+
 /* Literal night-register colours keep nested theme tokens from dimming names. */
 
 
@@ -19,21 +19,21 @@
 
 body.glance .perch,body.glance .heron-flyer{display:none!important}
 .heron-perch{min-height:66px}.hp-actions button,.hp-actions a{min-height:44px;display:inline-flex;align-items:center}.heron-flyer{transform-origin:center}
-@media(max-width:600px){.closing-wordmark{margin-top:38px;padding:0 18px 8px}.footer nav{gap:8px 18px}.footer nav a{min-height:44px;display:inline-flex;align-items:center}.notebook-preview{grid-template-columns:1fr}.overview-item h3{font-size:21px}.hero h1{font-size:clamp(32px,8vw,48px)}}
+@media(max-width:600px){.closing-wordmark{margin-top:38px;padding:0 18px 8px}.footer nav{gap:8px 18px}.footer nav a{min-height:44px;display:inline-flex;align-items:center}.overview-item h3{font-size:21px}.hero h1{font-size:clamp(32px,8vw,48px)}}
 
 
 
-/* Keep the synthesis full width, with its heading above balanced reading columns. */
-.synthesis{display:block;column-count:2;column-gap:40px;padding:34px 40px 30px!important}
-.synthesis .eyebrow,.synthesis h2,.synthesis .closing{column-span:all}
-.synthesis h2{margin:10px 0 24px}.synthesis p{orphans:3;widows:3}
-@media(max-width:820px){.synthesis{column-count:1;padding:26px 20px!important}}
+
+
+
+
+
 
 @font-face{font-family:'LM Roman Dunhill';src:url('fonts/LMRomanDunhill-Regular.otf') format('opentype');font-style:normal;font-weight:400;font-display:swap}
 @font-face{font-family:'LM Roman Dunhill';src:url('fonts/LMRomanDunhill-Oblique.otf') format('opentype');font-style:oblique;font-weight:400;font-display:swap}
-.hero h1,.overview-item h3,.entry h2{font-family:'LM Roman Dunhill','Source Serif 4',Georgia,serif;font-weight:400;font-style:normal;font-synthesis:none;text-transform:none;line-height:1.2}
+.hero h1,.overview-item h3{font-family:'LM Roman Dunhill','Source Serif 4',Georgia,serif;font-weight:400;font-style:normal;font-synthesis:none;text-transform:none;line-height:1.2}
 html{scroll-padding-top:var(--ll-anchor-top,64px)}
-.entry{scroll-margin-top:0}
+
 
 /* Field Notes uses a dark ground in both modes; never inherit the night paper token. */
 
@@ -45,9 +45,9 @@ html{scroll-padding-top:var(--ll-anchor-top,64px)}
 
 
 
-/* The article grid stacks below 1180px: ordinary notes must lose their old top offset. */
+/* Preserve compact Heron controls in the stacked reading layout. */
 @media(max-width:1180px){
-  .article-grid>.research-note{position:static;top:auto}
+
   .margin{position:static;top:auto;gap:12px}
   .perch:has(>.heron-perch[hidden]):has(>.heron-panel[hidden]){display:none}
   .heron-perch{min-height:44px;grid-template-columns:24px minmax(0,1fr);align-items:center}
