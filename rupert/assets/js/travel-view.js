@@ -257,7 +257,7 @@ function activityCard(activity,zone,destination=false){
 async function cachedDiscovery(point,options){const cacheKey=[point.lat.toFixed(3),point.lng.toFixed(3),options.overnight||false,options.radius||6000].join(':');if(discoveryCache.has(cacheKey))return discoveryCache.get(cacheKey);const result=await discoverActivities(point,options);if(result.length)discoveryCache.set(cacheKey,result);return result;}
 async function discoverJourney(){
   if(!state.family||!$('trip-routing').checked)return;
-  discoveryController?.abort();
+  discoveryController?.abort();areaSearchController?.abort();areaSearchController=null;
   const abort=new AbortController();discoveryController=abort;
   const current=version,journey=journeyRoute();
   resetDiscovery();$('anchor-form').hidden=false;
