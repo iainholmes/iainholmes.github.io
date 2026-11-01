@@ -260,13 +260,35 @@ function selected(activity){return [...state.stops,...state.destinationActivitie
 function updateActivityButtons(){document.querySelectorAll('[data-add-activity]').forEach(b=>{const chosen=[...state.stops,...state.destinationActivities].some(s=>s.id===b.dataset.addActivity);b.textContent=chosen?'Added to Trip':'Add to Trip';b.disabled=chosen;});}
 function activityCard(activity,zone,destination=false){
   const card=el('article',null,'trip-activity'),detail=activityDetails(activity,zone,destination);
-  card.append(el('p',activity.categoryLabel,'activity-kind'),el('h4',activity.name),el('p',detail,'activity-measures'),el('p',activity.dog,'activity-dog'),el('p',activity.why));
-  if(!destination)card.append(el('p',activity.overnight?'This stay starts a new travel day.':Math.abs(activity.progress-zone.progress)*journeyRoute().minutes<=45?'This activity can serve as a natural break.':'A worthwhile corridor stop.'));
-  if(!destination)card.append(el('small','Detour estimates use distance from the corridor. Adding the stop calculates the actual road route.'));
-  for(const source of activity.links||[]){const link=el('a',source.label);link.href=source.url;link.target='_blank';link.rel='noopener';card.append(link);}
-  if(activity.previous){const link=el('a','Previously in The Atlas');link.href=`${base}edition/${activity.previous}/`;card.append(link);}
-  const add=button(selected(activity)?'Added to Trip':'Add to Trip',()=>{if(selected(activity)||building)return;if(destination){if(state.destinationActivities.length>=40){status('A journey can hold up to 40 destination activities.');return;}state.destinationActivities.push({...activity});dirty=true;renderItinerary();paintMap();updateActivityButtons();status('Destination activity appended after arrival. Local transfers are not included.');stageTo('itinerary-stage');}else{add.disabled=true;add.textContent='Adding to Trip…';rebuild([...state.stops,{...activity}].sort((a,b)=>a.progress-b.progress)).finally(updateActivityButtons);}});add.dataset.addActivity=activity.id;add.disabled=selected(activity);card.append(add);
-  const preview=button('Show on Map',()=>{if(!map)return;map.setMarkers([pointFeature('origin',state.origin.label,state.origin),pointFeature('destination',state.destination.label,state.destination),...state.stops.map(s=>pointFeature(s.id,s.name,s.location)),pointFeature(activity.id,activity.name,activity.location)]);map.focus(activity.id);$('close-activity').hidden=false;stageTo('route-stage');});card.append(preview);return card;
+  card.append(el('p',activity.categoryLabel,'activity-kind'),el('h4',activity.name),el('p',detail,'activity-measures'));
+  const disclosure=el('details',null,'activity-more');
+  disclosure.append(el('summary','Dog access & visit details'),el('p',activity.dog,'activity-dog'),el('p',activity.why));
+  if(!destination)disclosure.append(el('small','Detour times are approximate. Adding the place calculates a real driving route.'));
+  for(const source of activity.links||[]){const link=el('a',source.label);link.href=source.url;link.target='_blank';link.rel='noopener';disclosure.append(link);}
+  if(activity.previous){const link=el('a','Previously in The Atlas');link.href=`${base}edition/${activity.previous}/`;disclosure.append(link);}
+  const add=button(selected(activity)?'Added to Trip':'Add to Trip',()=>{
+    if(selected(activity)||building)return;
+    if($('stop-search-dialog').open)$('stop-search-dialog').close();
+    if(destination){
+      if(state.destinationActivities.length>=40){status('A journey can hold up to 40 destination activities.');return;}
+      state.destinationActivities.push({...activity});dirty=true;renderItinerary();paintMap();updateActivityButtons();
+      status('Destination activity appended after arrival. Local transfers are not included.');
+      stageTo('itinerary-stage');
+    }else{
+      add.disabled=true;add.textContent='Adding to Trip…';
+      rebuild([...state.stops,{...activity}].sort((a,b)=>a.progress-b.progress)).finally(updateActivityButtons);
+    }
+  });
+  add.dataset.addActivity=activity.id;add.disabled=selected(activity);
+  const preview=button('Show on Map',()=>{
+    if(!map)return;
+    if($('stop-search-dialog').open)$('stop-search-dialog').close();
+    map.setMarkers([pointFeature('origin',state.origin.label,state.origin),pointFeature('destination',state.destination.label,state.destination),
+      ...state.stops.map(s=>pointFeature(s.id,s.name,s.location)),pointFeature(activity.id,activity.name,activity.location)]);
+    map.focus(activity.id);$('close-activity').hidden=false;stageTo('route-stage');
+  });
+  const actions=el('div',null,'trip-activity-actions');actions.append(add,preview);card.append(actions,disclosure);
+  return card;
 }
 async function cachedDiscovery(point,options){const cacheKey=[point.lat.toFixed(3),point.lng.toFixed(3),options.overnight||false,options.radius||6000].join(':');if(discoveryCache.has(cacheKey))return discoveryCache.get(cacheKey);const result=await discoverActivities(point,options);if(result.length)discoveryCache.set(cacheKey,result);return result;}
 async function discoverJourney(){
@@ -363,6 +385,7 @@ $('open-town-search').addEventListener('click',()=>{
   $('stop-search-place').focus();
 });
 $('close-town-search').addEventListener('click',()=>$('stop-search-dialog').close());
+$('stop-search-dialog').addEventListener('close',()=>areaSearchController?.abort());
 $('retry-discovery').addEventListener('click',()=>{
   if(!state.family)return;
   if(!$('trip-routing').checked){status('Enable route & place lookup to search public place data.');return;}
