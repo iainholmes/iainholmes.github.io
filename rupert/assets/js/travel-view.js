@@ -105,7 +105,7 @@ async function resolveLocation(endpoint,signal,role='location'){
   const known=places.find(p=>[p.name,p.short_name,p.access?.name].some(s=>s?.toLowerCase()===label.toLowerCase())),ref=Object.values(references).find(p=>p.label.toLowerCase()===label.toLowerCase());
   if(known)return {label,lat:known.access.lat,lng:known.access.lng};if(ref)return {label,lat:ref.lat,lng:ref.lng};
   const parts=label.split(',').map(s=>s.trim());if(parts.length===2&&parts.every(s=>s!==''&&Number.isFinite(Number(s)))){const point={lat:Number(parts[0]),lng:Number(parts[1])};if(validPoint(point))return {label,...point};}
-  if(/^new\\s+orleans\\s*,\\s*ls\\s*$/i.test(label))
+  if(/^new\s+orleans\s*,\s*ls\s*$/i.test(label))
     throw Error('“LS” is not the Louisiana abbreviation. Did you mean “New Orleans, LA”? Correct the destination and confirm the matching location.');
   if(locations.has(label))return {label,...locations.get(label)};
   const candidates=await geocodeCandidates(label,{signal});
