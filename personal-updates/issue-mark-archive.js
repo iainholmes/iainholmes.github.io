@@ -1455,5 +1455,55 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 035: Exposure &amp; resilience\"><title>Field Brief · 035 · Exposure &amp; resilience</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(1.45)\"><path d=\"M8 95L40 5L62 95Z\" fill=\"#221a14\"/><path d=\"M70 20H96V95H70Z\" fill=\"#8a2a36\"/><path d=\"M2 66Q18 51 35 66M2 83Q18 68 35 83\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><g transform=\"translate(232 320) scale(1.42)\"><path d=\"M5 16H35V85H5Z\" fill=\"#221a14\"/><path d=\"M65 16H95V85H65Z\" fill=\"#8a2a36\"/><path d=\"M43 39H57M43 61H57\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><g transform=\"translate(397 115) scale(1.45)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"#221a14\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"#8a2a36\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"10\"/></g><path d=\"M60 495H545M223 100V260M385 100V260\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 035 / 2026-10-31</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Exposure &amp; resilience</text></g></svg>"
+  },
+  "fb:2026-11-01": {
+    "key": "fb",
+    "date": "2026-11-01",
+    "no": "036",
+    "identity": "Field Brief",
+    "theme": "change",
+    "framing": "China's October factory survey slips below the expansion threshold. California proposes a developmental-toxicity listing for PFHxA, and FDA approves a new DNA-based treatment under its accelerated pathway. In North Carolina, Hendersonville completes a floodplain restoration while voters move from early voting to Tuesday's assigned precincts. Separate tests of evidence and implementation These developments operate on different clocks: a monthly business survey, a proposed chemical listing based on older science, an accelerated clinical approval, completed flood works and an election still ahead. Their dates and evidentiary status matter more than a forced common theme. Watch the next evidence in each case: actual production and sales, California's final listing decision, confirmatory clinical results, storm performance at Mud Creek and North Carolina's completed counting and certification. Announcements, projections and early indicators should not be mistaken for those outcomes.",
+    "version": 5,
+    "subject": "enforcement",
+    "composition": "study-offset-frames-licensed-opening-reserve-pool-comparison-pair",
+    "signature": "issue:study-offset-frames-licensed-opening-reserve-pool-comparison-pair",
+    "phrase": "Routes & enforcement",
+    "seed": 2870119707,
+    "geometry": "<g transform=\"translate(65 105) scale(1.7)\"><path d=\"M5 96V14H95V96H75V35H25V96Z\" fill=\"$ink\"/><path d=\"M38 45H62V89H38Z\" fill=\"$accent\"/><path d=\"M2 97H98\" stroke=\"$support\" stroke-width=\"6\"/></g><g transform=\"translate(350 310) scale(1.8)\"><path d=\"M6 22Q50 0 94 22V80Q50 106 6 80Z\" fill=\"$ink\"/><ellipse cx=\"50\" cy=\"22\" rx=\"44\" ry=\"16\" fill=\"$support\"/><path d=\"M18 59H82\" stroke=\"$accent\" stroke-width=\"12\"/></g><g transform=\"translate(250 130) scale(1.35)\"><path d=\"M5 16H35V85H5Z\" fill=\"$ink\"/><path d=\"M65 16H95V85H65Z\" fill=\"$accent\"/><path d=\"M43 39H57M43 61H57\" stroke=\"$support\" stroke-width=\"6\"/></g><path d=\"M55 300V490H260M340 85H550V265\" fill=\"none\" stroke=\"$support\" stroke-width=\"9\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "02",
+          "05"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "02",
+          "04"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "02"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "04"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 35,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 036: Routes &amp; enforcement\"><title>Field Brief · 036 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 105) scale(1.7)\"><path d=\"M5 96V14H95V96H75V35H25V96Z\" fill=\"#221a14\"/><path d=\"M38 45H62V89H38Z\" fill=\"#8a2a36\"/><path d=\"M2 97H98\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><g transform=\"translate(350 310) scale(1.8)\"><path d=\"M6 22Q50 0 94 22V80Q50 106 6 80Z\" fill=\"#221a14\"/><ellipse cx=\"50\" cy=\"22\" rx=\"44\" ry=\"16\" fill=\"#c5ad88\"/><path d=\"M18 59H82\" stroke=\"#8a2a36\" stroke-width=\"12\"/></g><g transform=\"translate(250 130) scale(1.35)\"><path d=\"M5 16H35V85H5Z\" fill=\"#221a14\"/><path d=\"M65 16H95V85H65Z\" fill=\"#8a2a36\"/><path d=\"M43 39H57M43 61H57\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M55 300V490H260M340 85H550V265\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 036 / 2026-11-01</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

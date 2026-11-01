@@ -1968,6 +1968,68 @@
         "seed": 2363312199,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A wafer connects to separate production stages\"><title>Chapel Hill housing bond delivers 124 units and a $389,293 tax bill</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-10-31-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-10-31-05)\"><circle cx=\"265\" cy=\"310\" r=\"190\" fill=\"#1b4a6b\"/><path d=\"M142 175H388M108 267H422M108 359H422M142 452H388M175 143V477M267 121V500M359 143V477\" stroke=\"#f4ead7\" stroke-width=\"13\"/><path d=\"M470 190H690V295H470ZM520 410H735V515H520Z\" fill=\"#2c241d\"/><path d=\"M430 310H555V400\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
       }
+    },
+    "2026-11-01": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-01",
+        "number": "01",
+        "category": "Economy · global production",
+        "topic": "trade",
+        "title": "China's manufacturing survey falls back below 50",
+        "composition": "trade-checkpoint",
+        "signature": "plate:trade-checkpoint",
+        "seed": 2772144142,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A commercial route passes through a staffed checkpoint\"><title>China&#39;s manufacturing survey falls back below 50</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-01-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-01-01)\"><path d=\"M80 400H720\" stroke=\"#7c5a3e\" stroke-width=\"58\"/><path d=\"M325 510V145H480V510\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M340 250H565\" stroke=\"#c4452c\" stroke-width=\"27\"/><rect x=\"110\" y=\"300\" width=\"142\" height=\"110\" fill=\"#1b4a6b\"/><path d=\"M140 300V410M216 300V410\" stroke=\"#f4ead7\" stroke-width=\"12\"/><circle cx=\"570\" cy=\"460\" r=\"31\" fill=\"#2c241d\"/><path d=\"M530 560V512Q570 480 610 512V560Z\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-01",
+        "number": "02",
+        "category": "Environment · chemical regulation",
+        "topic": "research",
+        "title": "California proposes a developmental-toxicity listing for PFHxA",
+        "composition": "infrastructure-duct",
+        "signature": "plate:infrastructure-duct",
+        "seed": 3433228591,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Cooling infrastructure surrounds a capacity chamber\"><title>California proposes a developmental-toxicity listing for PFHxA</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-01-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-01-02)\"><path d=\"M90 155H475V480H90Z\" fill=\"#2c241d\"/><path d=\"M130 202H432M130 270H432M130 338H432M130 406H432\" stroke=\"#f4ead7\" stroke-width=\"23\"/><path d=\"M520 510V185H690V410H600\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"51\"/><path d=\"M520 96V160M580 96V160M640 96V160\" stroke=\"#c4452c\" stroke-width=\"20\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-01",
+        "number": "03",
+        "category": "Technology · biotechnology and regulation",
+        "topic": "government",
+        "title": "FDA grants accelerated approval to a DNA-based airway-disease treatment",
+        "composition": "government-stairs",
+        "signature": "plate:government-stairs",
+        "seed": 3165487403,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A petition ascends institutional steps\"><title>FDA grants accelerated approval to a DNA-based airway-disease treatment</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-01-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-01-03)\"><path d=\"M70 535V430H240V335H410V240H580V145H730V535Z\" fill=\"#1b4a6b\"/><path d=\"M106 140H302V290H106Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M138 184H267M138 226H241\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M330 295L410 200L489 238\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-01",
+        "number": "04",
+        "category": "Environment · North Carolina flood resilience",
+        "topic": "climate",
+        "title": "Hendersonville completes a 27-acre floodplain restoration",
+        "composition": "climate-vortex",
+        "signature": "plate:climate-vortex",
+        "seed": 3399161882,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A rotating storm path crosses a settled landscape\"><title>Hendersonville completes a 27-acre floodplain restoration</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-01-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-01-04)\"><path d=\"M95 505H705\" stroke=\"#7c5a3e\" stroke-width=\"25\"/><path d=\"M510 505V365L590 300L675 365V505Z\" fill=\"#2c241d\"/><path d=\"M125 145Q440 70 520 230Q570 330 445 365Q330 398 354 485\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"48\"/><path d=\"M190 205Q395 155 438 244Q464 303 386 326\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"22\"/><path d=\"M239 430L298 388M405 180L452 137M538 272L595 238\" stroke=\"#c4452c\" stroke-width=\"18\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-01",
+        "number": "05",
+        "category": "North Carolina · election administration",
+        "topic": "research",
+        "title": "North Carolina moves from early voting to assigned Election Day precincts",
+        "composition": "labor-clock",
+        "signature": "plate:labor-clock",
+        "seed": 2456183898,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A time clock beside an interrupted production belt\"><title>North Carolina moves from early voting to assigned Election Day precincts</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-01-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-01-05)\"><circle cx=\"246\" cy=\"277\" r=\"165\" fill=\"#2c241d\"/><circle cx=\"246\" cy=\"277\" r=\"125\" fill=\"#f4ead7\"/><path d=\"M246 180V277L324 326\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M480 180H700V480H480Z\" fill=\"#1b4a6b\"/><path d=\"M517 228H663M517 297H663M517 366H604\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M80 532H348M443 532H720\" stroke=\"#7c5a3e\" stroke-width=\"30\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
