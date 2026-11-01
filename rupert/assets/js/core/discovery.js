@@ -102,6 +102,8 @@ export async function discoverActivities(point,{signal,request=fetch,overnight=f
         if(index===SERVERS.length-1)break;
       }
     }
+    // Avoid turning repeated refresh clicks into a stream of failed public requests.
+    unavailableUntil=Math.max(unavailableUntil,Date.now()+30000);
     throw lastError||Error('Public place lookup unavailable.');
   });
   lookupQueue=task;
