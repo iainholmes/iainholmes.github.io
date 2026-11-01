@@ -312,4 +312,27 @@ test('Town search makes substantial off-route distances explicit',()=>{
   assert.ok(view.includes('new Set(official.map(a=>a.category)).size>=2'));
 });
 
+test('All four Travel chapters share the accepted Step 03 heading size and font',()=>{
+  const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
+  const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+  const headings=['plan-stage','route-stage','build-stage','itinerary-stage'];
+  for(const id of headings){
+    assert.ok(html.includes('id="'+id+'"'),id+' missing');
+    assert.ok(css.includes('.page-travel #'+id),id+' styling missing');
+  }
+  assert.ok(css.includes('Shared four-chapter typography'));
+  assert.ok(css.includes('font:400 clamp(41px,3.55vw,55px)/1.09 var(--f-editorial)'),
+    'retain Step 03 accepted 41–55px heading and established Atlas editorial font');
+  assert.ok(css.includes('font:700 .34em/1.2 var(--f-text)'),
+    'consistent step-number treatments');
+  assert.ok(css.includes('.page-travel #route-stage > .stage-head > .sec-h'),
+    'Step 02 nested heading must use the same style');
+  assert.ok(css.includes('.page-travel #itinerary-stage #trip-summary'),
+    'Step 04 supporting text needs proportional hierarchy');
+  assert.ok(css.includes('.page-travel #plan-stage .journey-endpoints label'),
+    'Step 01 field labels must be legible');
+  assert.ok(html.includes('atlas.css?v=20261101-four-stage-type01'),
+    'new stylesheet should not use stale cached URL');
+});
+
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
