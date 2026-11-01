@@ -1,4 +1,4 @@
-/* Run after appending canonical content, before committing. Never changes an existing edition. */
+/* Run after appending canonical content, before committing. Preserves published scholarship and pins. */
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');const read=p=>fs.readFileSync(path.join(root,p),'utf8');const write=(p,s)=>fs.writeFileSync(path.join(root,p),s);
 const crypto=require('node:crypto');
@@ -42,7 +42,9 @@ for(const [key,editions] of [['fb',fb],['cp',cp]]){
  archive[id]={...m,frozen:marks.svg(m)};
  });
 }
-let ll=read('weekly-economics-environment/index.html');const field=data(ll,'field-studies');
+// Compose new authored editions into the same semantic folio before any writes.
+// This is idempotent and does not rewrite text, figures, identifiers or citations.
+let ll=require('../weekly-economics-environment/editorial-folio.cjs').compose(llSource);const field=data(ll,'field-studies');
 const editions=[...ll.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[^>]*data-title="([^"]+)"[^>]*>([\s\S]*?)(?=<section class="edition"|<\/main>)/g)].sort((a,b)=>a[1].localeCompare(b[1]));
 editions.forEach((e,i)=>{
  const synthesis=plain(e[3].match(/<section class="synthesis"[\s\S]*?<\/section>/)?.[0]||e[2]);

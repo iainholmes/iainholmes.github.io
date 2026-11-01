@@ -47,7 +47,9 @@ for(const date of ['2026-10-02','2026-10-09']){
  const review=reviews.reviews[date];ok(review.revisited.length>0&&review.added.length>0,'substantive coverage '+date);
  for(const reading of review.readings)ok(notebook.includes('href="../#'+reading+'"'),'every reading has supported notebook coverage '+reading);
 }
-for(const m of old('weekly-economics-environment/index.html').matchAll(/<article class="entry"[\s\S]*?<\/article>/g))ok(journal.includes(m[0]),'published article preserved');
+const {readingRecord}=require('../weekly-economics-environment/editorial-folio.cjs');
+const journalArticles=new Map([...journal.matchAll(/<article class="entry" id="([^"]+)"[\s\S]*?<\/article>/g)].map(m=>[m[1],m[0]]));
+for(const m of old('weekly-economics-environment/index.html').matchAll(/<article class="entry" id="([^"]+)"[\s\S]*?<\/article>/g))eq(readingRecord(journalArticles.get(m[1])),readingRecord(m[0]),'published article scholarship preserved independently of layout');
 const snapshot=JSON.stringify(input);validate(input);validate(input);eq(JSON.stringify(input),snapshot,'validation is read-only and idempotent');
 for(const date of ['2026-09-25',dates.at(-1)]){const r=copy();delete r.reviews[date];rejected({reviews:r},/missing documented review/);}
 {const r=copy();r.reviews['2026-10-09'].readings.pop();rejected({reviews:r},/all five readings/);}
