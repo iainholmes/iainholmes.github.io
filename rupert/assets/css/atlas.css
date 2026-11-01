@@ -1765,7 +1765,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 
 /* Travel route-mode cartography and calmer discovery hierarchy · November 2026 */
 .page-travel .travel-map-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;margin:22px 0 12px;padding:13px 18px;background:#F3EFE5;color:#1D2A3A;border-left:4px solid #C98B4B}
-.page-travel .travel-map-toolbar h3{font-size:clamp(21px,1.7vw,27px);font-family:var(--f-secondary);font-weight:400;margin:0 0 3px}
+.page-travel .travel-map-toolbar h3{font-size:clamp(21px,1.7vw,27px);font-family:var(--f-text);font-weight:400;margin:0 0 3px}
 .page-travel .travel-map-toolbar p{font-size:14px;color:#465865;margin:0;line-height:1.35}
 .page-travel .travel-map-modes{display:flex;gap:4px;background:#DAD9D2;padding:4px}
 .page-travel .travel-map-modes button{margin:0;min-height:42px;min-width:72px;border:0;background:transparent;color:#243847;font:600 14px/1.2 var(--f-text);padding:9px 13px}
@@ -1865,13 +1865,13 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel #route-stage > .stage-head > .sec-h > span,
 .page-travel #build-stage > .sec-h > span,
 .page-travel #itinerary-stage > .sec-h > span{
-  font:700 .34em/1.2 var(--f-text);letter-spacing:.06em;color:var(--gold);
+  font:700 .34em/1.2 var(--f-editorial);letter-spacing:.06em;color:var(--gold);
 }
 .page-travel #route-stage > .stage-head > .sec-h{margin-bottom:0}
 .page-travel .trip-context{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(230px,.65fr);gap:15px 28px;align-items:center;margin:9px 0 20px;padding:0 0 20px}
 .page-travel .trip-context > div{min-width:0}
 .page-travel .context-eyebrow{font-size:15px;line-height:1.35;letter-spacing:.1em;margin-bottom:9px;font-weight:700}
-.page-travel #trip-context-route{font:400 clamp(27px,2.35vw,38px)/1.22 var(--f-secondary);letter-spacing:-.018em}
+.page-travel #trip-context-route{font:400 clamp(27px,2.35vw,38px)/1.22 var(--f-text);letter-spacing:-.018em}
 .page-travel #trip-context-detail{justify-self:end;text-align:right;max-width:520px;font:400 clamp(16px,1.2vw,19px)/1.5 var(--f-text)}
 .page-travel .discovery-intro{max-width:1080px;font:400 clamp(19px,1.5vw,23px)/1.5 var(--f-text);margin:0 0 23px}
 .page-travel .discovery-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 25px;align-items:center;margin:14px 0 24px;padding:14px 18px;border-left:3px solid #C98B4B}
@@ -1881,13 +1881,13 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel .route-anchor-tools,.page-travel #overnight-opportunities{margin:15px 0 0;padding:14px 18px}
 .page-travel .route-anchor-tools summary,.page-travel #overnight-opportunities summary{font-size:clamp(15px,1.15vw,18px);line-height:1.45}
 .page-travel .journey-discovery{gap:clamp(22px,3.7vw,55px);margin-top:30px;align-items:start}
-.page-travel .journey-discovery > section > h3{font:400 clamp(29px,2.75vw,40px)/1.12 var(--f-secondary);letter-spacing:-.018em;margin:2px 0 13px}
+.page-travel .journey-discovery > section > h3{font:400 clamp(29px,2.75vw,40px)/1.12 var(--f-text);letter-spacing:-.018em;margin:2px 0 13px}
 .page-travel .journey-discovery .discovery-help{font-size:clamp(14px,1.1vw,16px);line-height:1.52;max-width:620px;margin:0 0 17px}
 .page-travel .route-area-choices{gap:9px;margin:0 0 20px}
 .page-travel .route-area-button{min-height:46px;padding:10px 14px;font-size:clamp(13px,1.02vw,15px)}
 .page-travel #route-activity-results,.page-travel #town-results-cards{gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
 .page-travel .trip-activity{padding:19px 20px;min-height:195px;gap:4px}
-.page-travel .trip-activity h4{font:400 clamp(23px,1.92vw,30px)/1.2 var(--f-secondary);letter-spacing:-.012em;margin:0 0 7px}
+.page-travel .trip-activity h4{font:400 clamp(23px,1.92vw,30px)/1.2 var(--f-text);letter-spacing:-.012em;margin:0 0 7px}
 .page-travel .trip-activity .activity-kind{font-size:11px;letter-spacing:.105em;text-transform:uppercase;font-weight:750;margin:0 0 5px}
 .page-travel .trip-activity .activity-source{font-size:13px;font-weight:700;line-height:1.4;color:#CC9D67;margin:0 0 7px}
 .page-travel .trip-activity .activity-measures{font-size:14px;line-height:1.55;margin:0 0 5px}
@@ -1895,10 +1895,10 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel .trip-activity-actions{margin-top:auto;padding-top:17px;gap:9px}
 .page-travel .trip-activity-actions button{min-height:43px;padding:8px 13px;font-size:14px}
 .page-travel .route-family{padding:20px 22px;gap:6px}
-.page-travel .route-family h3{font:400 clamp(25px,2vw,32px)/1.14 var(--f-secondary);letter-spacing:-.014em}
+.page-travel .route-family h3{font:400 clamp(25px,2vw,32px)/1.14 var(--f-text);letter-spacing:-.014em}
 .page-travel .route-family .route-figures{font-size:clamp(18px,1.45vw,22px)}
 .page-travel .route-family .route-mix{font-size:14px;line-height:1.5;margin-top:10px;margin-bottom:13px}
-.page-travel .town-results-head h3{font:400 clamp(30px,2.5vw,38px)/1.13 var(--f-secondary)}
+.page-travel .town-results-head h3{font:400 clamp(30px,2.5vw,38px)/1.13 var(--f-text)}
 @media(max-width:950px){.page-travel .trip-context{grid-template-columns:1fr;gap:7px}.page-travel #trip-context-detail{justify-self:start;text-align:left;max-width:100%}}
 @media(max-width:759.98px){
 .page-travel .route-next{margin-top:13px}
@@ -1935,7 +1935,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel #route-stage #fit-trip{min-height:44px;font-size:clamp(14px,1vw,16px)}
 .page-travel #route-stage #route-families > p{font-size:clamp(17px,1.2vw,20px);line-height:1.5}
 .page-travel #route-stage .travel-map-toolbar h3{
-  font:400 clamp(25px,2vw,31px)/1.17 var(--f-secondary);
+  font:400 clamp(25px,2vw,31px)/1.17 var(--f-text);
 }
 .page-travel #route-stage .travel-map-toolbar p{font-size:clamp(14px,1.05vw,16px);line-height:1.45}
 
@@ -1945,7 +1945,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   font:400 clamp(17px,1.1vw,19px)/1.5 var(--f-text);max-width:84ch;
 }
 .page-travel #itinerary-stage > h3{
-  font:400 clamp(29px,2.4vw,37px)/1.2 var(--f-secondary);
+  font:400 clamp(29px,2.4vw,37px)/1.2 var(--f-text);
   margin:28px 0 12px;
 }
 .page-travel #itinerary-stage .clock-note{font-size:clamp(14px,1.03vw,16px);line-height:1.5}
@@ -1969,6 +1969,24 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel h3,
 .page-travel h4,
 .page-travel .postcard-panel > summary{
-  font-family:var(--f-secondary);
+  font-family:var(--f-text);
+  font-synthesis:none;
+}
+
+/* Exact Travel typography rule, 2026-11-01.
+   VELENOR is reserved for the site's separate brand and the four numbered
+   Travel step titles, INCLUDING their numerals. Every other Travel word uses
+   the original Latin Modern Roman text family. Do not alter other Atlas pages. */
+.page-travel .travel{
+  font-family:var(--f-text);
+}
+.page-travel .travel :is(h1,h2,h3,h4,h5,h6,p,small,label,button,input,select,textarea,th,td,summary,figcaption,li,a,span),
+.page-travel .travel .sec-h,
+.page-travel .travel .head-note{
+  font-family:var(--f-text);
+}
+.page-travel .travel :is(#plan-h,#route-h,#build-h,#itinerary-h),
+.page-travel .travel :is(#plan-h,#route-h,#build-h,#itinerary-h) > span{
+  font-family:var(--f-editorial);
   font-synthesis:none;
 }
