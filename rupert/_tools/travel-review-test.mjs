@@ -361,4 +361,34 @@ test('Travel display font is reserved for the masthead and four numbered stages'
     'the page must reference the refreshed stylesheet');
 });
 
+test('Travel supporting text is legible across the four steps without changing chapter typography',()=>{
+  const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
+  const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+  const start=css.indexOf('Travel supportive text scale · 2026-11-01');
+  assert.ok(start>=0, 'supporting text rules missing');
+  const support=css.slice(start);
+  for(const step of ['plan-stage','route-stage','build-stage','itinerary-stage'])
+    assert.ok(support.includes('#'+step),step+' supporting text missing');
+  for(const selector of [
+    '#build-stage .journey-discovery .discovery-help',
+    '#build-stage .route-area-choices > p',
+    '#build-stage #destination-activities > p',
+    '#build-stage #journey-discovery-status',
+    '#itinerary-stage .table-scroll th',
+    '#itinerary-stage .table-scroll td',
+    '#itinerary-stage .clock-note',
+    '#itinerary-stage .journey-save > label'
+  ]) assert.ok(support.includes(selector),selector+' should scale');
+  assert.ok(support.includes('font-size:clamp(17px,1.16vw,19px)'));
+  assert.ok(support.includes('font-size:clamp(16px,1.12vw,18px)'));
+  assert.ok(!support.includes('font-family:var(--f-editorial)'), 'supporting text must not use VELENOR');
+  assert.ok(css.includes('font:400 clamp(41px,3.55vw,55px)/1.09 var(--f-editorial)'),
+    'the four numbered chapter headers must keep their accepted scale');
+  assert.ok(css.includes('font:400 clamp(29px,2.4vw,37px)/1.2 var(--f-secondary)'),
+    'Trip Table must retain companion heading font');
+  assert.ok(html.includes('atlas.css?v=20261101-support-legibility01'),
+    'the browser must receive the new typography stylesheet');
+  assert.equal((css.match(/\\{/g)||[]).length,(css.match(/\\}/g)||[]).length);
+});
+
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
