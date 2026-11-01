@@ -39,6 +39,9 @@
 .history-review legend { font:400 24px/1.2 var(--f-secondary); padding:0 12px 0 0; }
 .history-review .memory-notes { overflow-wrap:anywhere; }
 @media(max-width:759.98px) {
+ .field-log .page-head {grid-template-columns:minmax(0,1fr) min(88px,22vw);}
+ .field-log .page-head h1 {font-size:clamp(38px,10.7vw,46px);}
+ .field-log .head-note .lab-outline {width:100%;height:64px;}
  .field-log #memories { grid-template-columns:1fr; }
  .field-log #log-editor,.field-log .log-actions { padding:20px; }
 }
