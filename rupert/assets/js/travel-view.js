@@ -171,7 +171,20 @@ function selectedControl(activity,index,destination=false){
   const earlier=button('Move Earlier',()=>move(-1)),later=button('Move Later',()=>move(1));earlier.disabled=index===0;later.disabled=index===items.length-1;
   actions.append(earlier,later,button('Remove',()=>{if(building)return;const next=items.filter((_,i)=>i!==index);if(destination){state.destinationActivities=next;dirty=true;renderItinerary();paintMap();}else rebuild(next);}));item.append(actions);return item;
 }
+function updateTripContext(){
+  const panel=$('trip-context'),active=!!state.family||!!state.manual;
+  panel.hidden=!active;
+  if(!active)return;
+  const origin=state.origin?.label||'Origin',destination=state.destination?.label||'Destination';
+  $('trip-context-route').textContent=origin+' → '+destination;
+  const corridor=state.manual?'Manual itinerary':state.family?.label||'Selected driving route';
+  const stops=state.stops.length,destinationVisits=state.destinationActivities.length;
+  $('trip-context-detail').textContent=corridor+' · '+stops+' drive '+(stops===1?'stop':'stops')+
+    ' · '+destinationVisits+' destination '+(destinationVisits===1?'activity':'activities')+
+    ' · Updates apply to this journey only';
+}
 function renderItinerary(){
+  updateTripContext();
   const list=$('selected-stops');list.replaceChildren(...state.stops.map((s,i)=>selectedControl(s,i)),...state.destinationActivities.map((s,i)=>selectedControl(s,i,true)));updateActivityButtons();
   const table=$('trip-table'),cards=$('itinerary-legs');table.replaceChildren();cards.replaceChildren();
   if(!state.legs.length){const row=el('tr'),cell=el('td','Map a trip to calculate drive times.');cell.colSpan=6;row.append(cell);table.append(row);$('trip-summary').textContent='Your selected activities will build the itinerary here.';$('overnight-warning').hidden=true;return;}
@@ -259,6 +272,68 @@ function activityDetails(activity,zone,destination=false){
 }
 function selected(activity){return [...state.stops,...state.destinationActivities].some(s=>s.id===activity.id);}
 function updateActivityButtons(){document.querySelectorAll('[data-add-activity]').forEach(b=>{const chosen=[...state.stops,...state.destinationActivities].some(s=>s.id===b.dataset.addActivity);b.textContent=chosen?'Added to Trip':'Add to Trip';b.disabled=chosen;});}
+// One confirmation point for every itinerary mutation. Place searches, previews,
+// and map focus never modify the saved journey. The actual road route is rebuilt
+// only after explicit confirmation.
+let proposedChange=null;
+function reviewTripChange({heading,explanation,details=[],action,buttonLabel='Apply Change'}){
+  if(!state.family){status('Choose a driving route first.');return;}
+  const town=$('stop-search-dialog'),fromTown=town.open;
+  if(fromTown)town.close();
+  const dialog=$('trip-change-dialog');
+  $('trip-change-title').textContent=heading;
+  $('trip-change-route').textContent='Your journey: '+state.origin.label+' → '+state.destination.label+' · '+state.family.label;
+  $('trip-change-details').replaceChildren(el('p',explanation,'change-description'),...details.map(x=>el('p',x,'change-detail')));
+  $('confirm-trip-change').textContent=buttonLabel;
+  proposedChange={action,fromTown};
+  dialog.showModal();
+  $('cancel-trip-change').focus();
+}
+function closeTripReview(approved=false){
+  const proposal=proposedChange;
+  proposedChange=null;
+  const dialog=$('trip-change-dialog');
+  if(dialog.open)dialog.close();
+  if(!proposal)return;
+  if(approved){
+    Promise.resolve().then(proposal.action).catch(error=>status('Could not update this trip: '+error.message));
+  }else if(proposal.fromTown&&state.family&&$('trip-routing').checked){
+    const town=$('stop-search-dialog');
+    if(!town.open)town.showModal();
+  }
+}
+$('cancel-trip-change').addEventListener('click',()=>closeTripReview(false));
+$('confirm-trip-change').addEventListener('click',()=>closeTripReview(true));
+$('trip-change-dialog').addEventListener('cancel',e=>{e.preventDefault();closeTripReview(false);});
+function reviewActivityAddition(activity,destination=false){
+  const isOvernight=!!activity.overnight;
+  const heading=isOvernight?'Add an Overnight Break?':destination?'Add a Destination Activity?':'Add a Stop to the Drive?';
+  const explanation=isOvernight?
+    activity.name+' will divide your driving into travel days. No accommodation will be reserved.':
+    destination?activity.name+' will be placed after arrival. The driving corridor stays unchanged.':
+    activity.name+' will become a stop on your selected route. Driving legs and arrival times will be recalculated.';
+  const details=[
+    isOvernight?'Rest starts a new travel day; check lodging and dog access separately.':
+    destination?'Duration: '+durationLabel(activity.minutes)+'. Local transport after arrival is not routed.':
+    'Planned visit: '+durationLabel(activity.minutes)+'. Estimated extra driving: about '+durationLabel(activity.detourMinutes||0)+'.',
+    !destination&&!isOvernight?'The road route may differ from the estimate after the stop is inserted.':'Nothing is booked or added to the Atlas Directory.'
+  ];
+  reviewTripChange({heading,explanation,details,
+    buttonLabel:isOvernight?'Add Overnight Break':destination?'Add Destination Activity':'Add Drive Stop',
+    action:async()=>{
+      if(destination){
+        if(state.destinationActivities.length>=40){status('A journey can hold up to 40 destination activities.');return;}
+        state.destinationActivities.push({...activity});dirty=true;
+        renderItinerary();paintMap();updateActivityButtons();
+        status('Destination activity added. Save Trip to keep it. Local transfers are not included.');
+        stageTo('itinerary-stage');
+      }else{
+        if(building)return;
+        await rebuild([...state.stops,{...activity}].sort((a,b)=>a.progress-b.progress));
+      }
+    }
+  });
+}
 function activityCard(activity,zone,destination=false){
   const card=el('article',null,'trip-activity'),detail=activityDetails(activity,zone,destination);
   card.append(el('p',activity.categoryLabel,'activity-kind'),el('h4',activity.name),el('p',detail,'activity-measures'));
@@ -267,18 +342,9 @@ function activityCard(activity,zone,destination=false){
   if(!destination)disclosure.append(el('small','Detour times are approximate. Adding the place calculates a real driving route.'));
   for(const source of activity.links||[]){const link=el('a',source.label);link.href=source.url;link.target='_blank';link.rel='noopener';disclosure.append(link);}
   if(activity.previous){const link=el('a','Previously in The Atlas');link.href=`${base}edition/${activity.previous}/`;disclosure.append(link);}
-  const add=button(selected(activity)?'Added to Trip':'Add to Trip',()=>{
+  const add=button(selected(activity)?'Already Added':activity.overnight?'Review Overnight':destination?'Review Activity':'Review Stop',()=>{
     if(selected(activity)||building)return;
-    if($('stop-search-dialog').open)$('stop-search-dialog').close();
-    if(destination){
-      if(state.destinationActivities.length>=40){status('A journey can hold up to 40 destination activities.');return;}
-      state.destinationActivities.push({...activity});dirty=true;renderItinerary();paintMap();updateActivityButtons();
-      status('Destination activity appended after arrival. Local transfers are not included.');
-      stageTo('itinerary-stage');
-    }else{
-      add.disabled=true;add.textContent='Adding to Trip…';
-      rebuild([...state.stops,{...activity}].sort((a,b)=>a.progress-b.progress)).finally(updateActivityButtons);
-    }
+    reviewActivityAddition(activity,destination);
   });
   add.dataset.addActivity=activity.id;add.disabled=selected(activity);
   const preview=button('Show on Map',()=>{
@@ -422,7 +488,33 @@ $('stop-search-form').addEventListener('submit',async e=>{
       $('stop-search-status').textContent='Search could not finish: '+error.message;
   }finally{if(areaSearchController===abort){areaSearchController=null;submit.disabled=false;}}
 });
-$('anchor-form').addEventListener('submit',async e=>{e.preventDefault();if(building)return;if(!$('trip-routing').checked){status('Enable lookup to locate the added town.');return;}const current=version,abort=new AbortController();try{status('Locating the added stop…');const point=await resolveLocation({label:$('trip-anchor').value},abort.signal,'stop');if(current!==version)return;const stop={id:`anchor-${crypto.randomUUID?.()||Date.now().toString(36)}`,name:point.label,location:point,minutes:45,category:'town',categoryLabel:'Route-defining stop',defining:true,overnight:$('anchor-overnight').checked,dog:'Check the specific dog-access rules of activities and accommodation.',why:'A town you chose to shape this journey.',links:[],progress:routeProgress(point,state.family)};await rebuild([...state.stops,stop].sort((a,b)=>a.progress-b.progress));$('trip-anchor').value='';}catch(error){status(error.message);}});
+$('anchor-form').addEventListener('submit',async e=>{
+  e.preventDefault();if(building||!state.family)return;
+  if(!$('trip-routing').checked){status('Enable lookup to locate the route-defining town.');return;}
+  const current=version,abort=new AbortController();
+  try{
+    status('Finding the town to route through…');
+    const point=await resolveLocation({label:$('trip-anchor').value},abort.signal,'route waypoint');
+    if(current!==version)return;
+    const overnight=$('anchor-overnight').checked;
+    const stop={id:`anchor-${crypto.randomUUID?.()||Date.now().toString(36)}`,
+      name:point.label,location:point,minutes:overnight?0:45,category:'town',
+      categoryLabel:'Route-defining town',defining:true,overnight,
+      dog:'Check the specific dog-access rules of activities and accommodation.',
+      why:'A town chosen to shape the road route.',links:[],progress:routeProgress(point,state.family)};
+    const offset=distanceToRoute(point,state.family.feature.geometry.coordinates);
+    reviewTripChange({
+      heading:'Route Through '+point.label+'?',
+      explanation:'This makes '+point.label+' a required waypoint. The driving corridor and estimated arrival times will be recalculated.',
+      details:['Current corridor: '+state.family.label+'. Distance from its current line: about '+offset.toFixed(1)+' mi.',
+        overnight?'Also split the journey into travel days here; no lodging will be booked.':'Include a '+durationLabel(stop.minutes)+' stop in the itinerary.',
+        'You can remove or reorder the waypoint in the itinerary afterward.'],
+      buttonLabel:'Recalculate via This Town',
+      action:async()=>{await rebuild([...state.stops,stop].sort((a,b)=>a.progress-b.progress));$('trip-anchor').value='';}
+    });
+    status('Review the route change before applying it.');
+  }catch(error){status(error.message);}
+});
 $('fit-trip').addEventListener('click',()=>{paintMap();fitRoute(true);});
 $('close-activity').addEventListener('click',()=>{paintMap();fitRoute(true);});
 $('save-trip').addEventListener('click',save);$('new-trip').addEventListener('click',()=>{if(dirty&&!confirm('Start a new trip and discard unsaved edits?'))return;load();status('New trip.');});
