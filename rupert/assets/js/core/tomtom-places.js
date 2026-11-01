@@ -5,7 +5,7 @@ import { distanceMiles } from './trip-map.js';
 // integration. Requests are deliberately disabled until a dedicated,
  // domain- and Search-product-restricted browser key is configured.
 export function tomtomPlacesAvailable(config,origin){
-  return config?.provider==='tomtom-search' &&
+  return config?.provider==='tomtom-search' && config.enabled===true &&
     /^[\\w-]{16,128}$/.test(config.apiKey||'') &&
     config.allowedOrigins?.includes(origin)===true;
 }
