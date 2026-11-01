@@ -274,90 +274,87 @@ async function discoverJourney(){
   discoveryController?.abort();areaSearchController?.abort();areaSearchController=null;
   const abort=new AbortController();discoveryController=abort;
   const current=version,journey=journeyRoute();
-  resetDiscovery();$('anchor-form').hidden=false;
-  $('journey-discovery-status').textContent='Searching stops near the destination and representative sections of your route…';
-  const zones=opportunityZones(journey),nights=overnightZones(journey),seen=new Set();
-  let found=0,failures=0,completed=0;
-  const routeBox=$('route-activities');routeBox.replaceChildren();
-  // Offer the complete drive in the UI without sending seven automatic queries
-  // whenever a continental journey opens. Other areas are one click away.
-  const automatic=new Set(zones.length<=4?zones.map((_,i)=>i):[0,Math.floor((zones.length-1)/2),zones.length-1]);
-  const summary=()=>{
-    if(current!==version||abort.signal.aborted)return;
-    $('journey-discovery-status').textContent=
-      `${found} activity leads found · ${completed} area searches completed${failures?' · some searches were unavailable':''}. Select Add to Trip below, search a town above, or search another route section. Dog policies and hours require verification.`;
+  resetDiscovery();
+  const zones=opportunityZones(journey),nights=overnightZones(journey);
+  const routeBox=$('route-activities'),resultBox=$('route-activity-results');
+  let found=0,lookups=0,failed=0;
+  const fresh=()=>current===version&&!abort.signal.aborted;
+  const updateSummary=()=>{
+    if(!fresh())return;
+    $('journey-discovery-status').textContent=found?
+      `${found} places found. Choose one to add to your trip, or explore another area.`:
+      failed?'Place suggestions are temporarily unavailable. Search a town or try again later.':
+      lookups?'No places found here. Try another part of your drive or a town search.':
+      'Choose an area of the drive or search a town for places to stop.';
   };
-  // Overnight markers are route-derived, not invented hotels; keep them available
-  // even if public discovery is offline.
-  const overnightTask=(async()=>{
-    if(!nights.length)return;
-    $('overnight-opportunities').hidden=false;const box=$('overnight-areas');
+  // Show potential overnight areas as a single collapsed optional panel.
+  // They are corridor locations, not verified hotels.
+  if(nights.length){
+    $('overnight-opportunities').hidden=false;$('overnight-opportunities').open=false;
+    const box=$('overnight-areas');
     for(const zone of nights){
-      if(current!==version||abort.signal.aborted)break;
-      let name;try{name=await areaName(zone.point,{signal:AbortSignal.any([abort.signal,AbortSignal.timeout(10000)])});}catch{}
-      if(current!==version||abort.signal.aborted)break;
-      const activity={id:zone.id,name:name?`${name} area`:`Overnight area ${zone.day}`,location:{...zone.point,label:name||`Overnight area ${zone.day}`},minutes:0,overnight:true,category:'overnight',categoryLabel:'Overnight area',dog:'Accommodation dog policies are unverified — confirm before booking.',why:`Around ${durationLabel(zone.minute)} into the drive. A possible base between travel days; the mapped point is on the corridor, not a hotel.`,links:[],progress:zone.progress};
-      box.append(activityCard(activity,zone));
+      const name=`Overnight area ${zone.day}`;
+      const item={id:zone.id,name,location:{...zone.point,label:name},minutes:0,overnight:true,category:'overnight',categoryLabel:'Overnight area',dog:'Accommodation dog policies are unverified — confirm before booking.',why:`Around ${durationLabel(zone.minute)} into the drive. A corridor reference point, not a hotel.`,links:[],progress:zone.progress};
+      box.append(activityCard(item,zone));
     }
-  })();
-  const destinationTask=(async()=>{
+  }
+  async function searchSection(zone,buttonEl){
+    if(!fresh())return;
+    routeBox.querySelectorAll('button').forEach(btn=>btn.setAttribute('aria-pressed',String(btn===buttonEl)));
+    resultBox.replaceChildren(el('p',`Searching near ${durationLabel(zone.minute)} into the drive…`,'discovery-message'));
+    buttonEl.disabled=true;
     try{
-      const activities=await cachedDiscovery(state.destination,{signal:abort.signal,radius:9000});
-      if(current!==version||abort.signal.aborted)return;
-      $('destination-activities').replaceChildren(...(activities.length?
-        activities.map(a=>activityCard({...a},null,true)):
-        [el('p','No named activity leads returned near the destination. Search a nearby town above to explore another area.')]));
-      found+=activities.length;completed++;summary();
-    }catch(error){
-      if(current===version&&!abort.signal.aborted){
-        failures++;
-        $('destination-activities').replaceChildren(el('p','Destination search unavailable: '+error.message));
-      }
-    }
-  })();
-  async function searchSection(zone,cards,heading){
-    if(current!==version||abort.signal.aborted)return;
-    cards.replaceChildren(el('p','Looking for named places nearby…'));
-    try{
-      const nearby=await cachedDiscovery(zone.point,{signal:abort.signal,radius:6000});
-      if(current!==version||abort.signal.aborted)return;
-      const activities=nearby.map(a=>({...a})).filter(a=>{
+      const nearby=await cachedDiscovery(zone.point,{signal:abort.signal,radius:3500});
+      if(!fresh())return;
+      const leads=nearby.map(a=>({...a})).filter(a=>{
         activityDetails(a,zone);
-        return a.detourMinutes<=Number($('trip-detour').value)&&!seen.has(a.id)&&a.progress>.02&&a.progress<.98;
-      }).slice(0,7);
-      activities.forEach(a=>seen.add(a.id));
-      cards.replaceChildren(...(activities.length?
-        activities.map(a=>activityCard(a,zone)):
-        [el('p',nearby.length?
-          'Nearby places were found, but none met the current detour limit. Increase the detour tolerance in Plan, or search a town directly above.':
-          'No named activity leads returned for this section. Try searching a nearby town above.')]));
-      const town=nearby.find(a=>a.category==='town');
-      if(town)heading.textContent=`${town.name} area · around ${durationLabel(zone.minute)} into the drive`;
-      found+=activities.length;completed++;summary();
+        return a.detourMinutes<=Number($('trip-detour').value)&&a.progress>.02&&a.progress<.98;
+      }).slice(0,8);
+      resultBox.replaceChildren(...(leads.length?leads.map(a=>activityCard(a,zone)):[
+        el('p',nearby.length?'Places were found, but outside your detour limit. Increase the limit in Plan or try another area.':'No named places in this area. Try another part of the drive or search a town.','discovery-message')
+      ]));
+      found+=leads.length;lookups++;
     }catch(error){
-      if(current!==version||abort.signal.aborted)return;
-      failures++;
-      cards.replaceChildren(el('p','Search unavailable here: '+error.message));
-      summary();
+      if(!fresh())return;
+      failed++;
+      resultBox.replaceChildren(el('p','Place search is unavailable for this area. Choose another area or try again later.','discovery-message'));
+    }finally{if(fresh()){buttonEl.disabled=false;updateSummary();}}
+  }
+  if(zones.length){
+    for(const [i,zone] of zones.entries()){
+      const choice=button(`${durationLabel(zone.minute)} into the drive`,()=>searchSection(zone,choice));
+      choice.className='route-area-button';
+      choice.setAttribute('aria-pressed','false');
+      routeBox.append(choice);
     }
+  }else routeBox.append(el('p','This is a shorter drive. Explore places at your destination or search a town.'));
+  $('journey-discovery-status').textContent='Looking for a few good stopping points…';
+  // At most one automatic corridor query. The remaining parts are user-initiated,
+  // rather than a barrage of overlapping searches against public infrastructure.
+  if(zones.length){
+    const middle=Math.floor((zones.length-1)/2);
+    await searchSection(zones[middle],routeBox.children[middle]);
   }
-  for(const [i,zone] of zones.entries()){
-    if(current!==version||abort.signal.aborted)break;
-    const section=el('section',null,'journey-segment'),heading=el('h4',`Around ${durationLabel(zone.minute)} into the drive`),cards=el('div',null,'activity-cards');
-    section.append(heading,cards);routeBox.append(section);
-    if(!automatic.has(i)||failures>=2){
-      const launch=button('Find Stops in This Area',()=>{launch.disabled=true;searchSection(zone,cards,heading);});
-      cards.append(el('p','Explore parks, cafés and other activities near this part of the journey.'),launch);
-    }else await searchSection(zone,cards,heading);
+  if(!fresh())return;
+  const destBox=$('destination-activities');
+  if(failed){
+    destBox.replaceChildren(el('p','Public discovery is currently busy. You can search a town using the button above.','discovery-message'));
+    updateSummary();return;
   }
-  if(!zones.length)routeBox.append(el('p','On a shorter drive, destination activities may be the best starting point. You can also search a town above.'));
-  await Promise.all([destinationTask,overnightTask]);
-  if(current!==version||abort.signal.aborted)return;
-  summary();
-  if(failures)$('journey-discovery-status').append(' ',button('Retry Discovery',()=>discoverJourney()));
-  const categories=[...new Set([...document.querySelectorAll('.activity-kind')].map(n=>n.textContent))].slice(0,4);
-  state.family.mix=categories.length?`Activity mix: ${categories.join(' · ')}`:'Explore stops by searching a town in Build the Journey.';
-  renderFamilies();
+  destBox.replaceChildren(el('p','Checking the destination…','discovery-message'));
+  try{
+    const activities=await cachedDiscovery(state.destination,{signal:abort.signal,radius:3500});
+    if(!fresh())return;
+    destBox.replaceChildren(...(activities.length?activities.map(a=>activityCard({...a},null,true)):[
+      el('p','No named places returned here. Search a nearby town for more options.','discovery-message')
+    ]));
+    found+=activities.length;lookups++;
+  }catch(error){
+    if(!fresh())return;
+    failed++;
+    destBox.replaceChildren(el('p','Destination suggestions are currently unavailable.','discovery-message'));
+  }
+  updateSummary();
 }
 $('explore-route').addEventListener('click',()=>{if(state.family)stageTo('build-stage');});
 $('open-town-search').addEventListener('click',()=>{
