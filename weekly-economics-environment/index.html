@@ -1569,7 +1569,12 @@ const studies=JSON.parse($('field-studies').textContent);
 PeriodicalsFieldStudies.mount(chron,studies);
 const fmt=(d,o)=>new Date(d+'T12:00:00').toLocaleDateString('en-GB',o);
 function mode(brief){document.body.classList.toggle('glance',brief);if(typeof HERON!=='undefined'&&HERON){settleHeron();if(!brief)heronTick()}full.setAttribute('aria-pressed',String(!brief));glance.setAttribute('aria-pressed',String(brief));updateProgress()}
-full.addEventListener('click',()=>mode(false));glance.addEventListener('click',()=>mode(true));
+full.addEventListener('click',()=>mode(false));glance.addEventListener('click',()=>{
+  mode(true);
+  // Bring the contents into view even when the full edition was scrolled deep.
+  syncAnchorOffset();
+  document.querySelector('.edition:not([hidden]) .overview')?.scrollIntoView({block:'start',behavior:'instant'});
+});
 function selectEdition(date){
   const active=editions.find(e=>e.dataset.edition===date)||editions[0];if(!active)return;
   editions.forEach(e=>e.hidden=e!==active);
