@@ -271,7 +271,14 @@ function activityDetails(activity,zone,destination=false){
   return destination?`${distanceMiles(state.destination,activity.location).toFixed(1)} mi from arrival · ${stay} · local drive not yet routed`:`Around ${durationLabel(route.minutes*progress)} into the drive · ≈${durationLabel(detourMinutes)} extra drive / ≈${detourMiles.toFixed(1)} mi · ${stay}`;
 }
 function selected(activity){return [...state.stops,...state.destinationActivities].some(s=>s.id===activity.id);}
-function updateActivityButtons(){document.querySelectorAll('[data-add-activity]').forEach(b=>{const chosen=[...state.stops,...state.destinationActivities].some(s=>s.id===b.dataset.addActivity);b.textContent=chosen?'Added to Trip':'Add to Trip';b.disabled=chosen;});}
+function updateActivityButtons(){
+  document.querySelectorAll('[data-add-activity]').forEach(b=>{
+    const chosen=[...state.stops,...state.destinationActivities].some(s=>s.id===b.dataset.addActivity);
+    const labels={drive:'Review Stop',destination:'Review Activity',overnight:'Review Overnight'};
+    b.textContent=chosen?'Added to Journey':labels[b.dataset.changeKind]||'Review Stop';
+    b.disabled=chosen||building;
+  });
+}
 // One confirmation point for every itinerary mutation. Place searches, previews,
 // and map focus never modify the saved journey. The actual road route is rebuilt
 // only after explicit confirmation.
@@ -346,7 +353,9 @@ function activityCard(activity,zone,destination=false){
     if(selected(activity)||building)return;
     reviewActivityAddition(activity,destination);
   });
-  add.dataset.addActivity=activity.id;add.disabled=selected(activity);
+  add.dataset.addActivity=activity.id;
+  add.dataset.changeKind=activity.overnight?'overnight':destination?'destination':'drive';
+  add.disabled=selected(activity);
   const preview=button('Show on Map',()=>{
     if(!map)return;
     if($('stop-search-dialog').open)$('stop-search-dialog').close();
