@@ -353,7 +353,7 @@ function archiveNavigation(current) {
 
 export function renderPlateRegister(manifest, ctx) {
   const entries = publishedPlates(manifest, ctx.photos, ctx.now);
-  return `<div class="plate-register wrap"><header class="page-head"><h1>Archive</h1></header>${archiveNavigation('plates')}
+  return `<div class="plate-register wrap"><header class="page-head"><h1>Archive</h1>${archiveNavigation('plates')}</header>
   <header class="register-intro"><div><p class="register-count">${entries.length} collected prints</p><h2>Plate Register</h2></div><p>Original editorial illustrations, in order of publication. These prints accompany the outings; they are not documentary records of places or visits. Select a print to look closer.</p></header>
   <div class="register-grid">${entries.map(({image:p,edition:e}) => {
     const no = `TRA Plate No. ${String(p.plate_no).padStart(3,'0')}`, widths = [...p.widths].sort((a,b)=>a-b);
