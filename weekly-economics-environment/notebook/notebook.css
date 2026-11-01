@@ -42,25 +42,30 @@ main>.intro,main>.concept-index{grid-column:2}
 .concept-nav a{display:inline-flex;gap:12px;align-items:center;min-height:44px;padding:8px 0;font:500 13px/1.5 var(--sans);color:var(--river);text-decoration:none}
 .concept-nav a:hover,.concept-nav a:active{color:var(--ink);text-decoration:underline}
 #concept-index{scroll-margin-top:24px}
-/* Research Desk: a static scholarly spread. Each entry ends after its longer column. */
+/* Adaptive Research Desk: edition groups avoid the floated explanation, then
+   reclaim the full canvas once clear of it. No measured heights or duplicate lists. */
 @media(min-width:1200px){
- .concept{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);grid-template-rows:auto 1fr auto;grid-template-areas:"heading references" "analysis references" "return return";column-gap:clamp(40px,4vw,64px);padding:48px 0 34px;align-items:start}
- .concept-heading{grid-area:heading;grid-template-columns:minmax(100px,max-content) minmax(0,1fr);gap:24px;margin-bottom:0}
- .concept-body{grid-area:analysis;min-width:0;margin:26px 0 0 124px;container-type:inline-size}
+ .concept{display:flow-root;padding:48px 0 34px}
+ .concept-primary{float:left;width:calc(58% - 24px);margin-right:48px;margin-bottom:24px;container-type:inline-size}
+ .concept-heading{grid-template-columns:minmax(100px,max-content) minmax(0,1fr);gap:24px;margin-bottom:26px}
+ .concept-body{min-width:0;margin-left:0}
  .canonical{max-width:36em}
  .concept-analysis{grid-template-columns:minmax(0,1fr);gap:24px}
  .caution{padding-left:22px}
- .seen{grid-area:references;min-width:0;margin:0;padding:4px 0 0 32px;border-top:0;border-left:1px solid var(--hair)}
- .seen-heading{display:block;margin-bottom:22px}
+ .seen{margin:0;padding:4px 0 0;border:0}
+ .seen-heading{display:flow-root;margin-bottom:22px}
  .revisited{margin-top:8px}
- .appearance{display:block;padding:16px 0}
+ .appearance-register{overflow:visible}
+ .appearance{display:flow-root;container-type:inline-size;padding:16px 0}
  .appearance-edition{margin-bottom:7px}
  .appearance-readings{display:block}
  .appearance-readings a{padding:6px 0;line-height:1.45}
- .concept-nav{grid-area:return;margin-top:24px}
+ .concept-nav{clear:both;padding-top:20px;margin-top:0}
  @container(min-width:640px){
   .concept-analysis{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
   .caution{padding-left:24px}
+  .appearance-edition{float:left;width:30%;margin:0 32px 0 0}
+  .appearance-readings{display:flex;flex-wrap:wrap;column-gap:28px}
  }
 }
 @media(max-width:1000px){
