@@ -181,7 +181,22 @@ export async function createMap(el, { base = '', theme = 'light', bounds, relief
   map.addLayer({ id: 'route-halo', type: 'line', source: 'routes', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#F3EFE5', 'line-width': travel ? 7 : 6, 'line-opacity': 0.9 } });
   map.addLayer({ id: 'route-line', type: 'line', source: 'routes',
     layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#C98B4B', 'line-width': travel ? 3 : 3, 'line-opacity': 0.95 } });
-  if(travel){map.setFilter('route-halo',['==',['get','mode'],'drive']);map.setFilter('route-line',['==',['get','mode'],'drive']);for(const [mode,color,dash] of [['air','#40616A',[5,3]],['ferry','#47604D',[2,2]],['rail','#1D2A3A',[1,2]],['walk','#C98B4B',[1,1]]])map.addLayer({id:'transit-'+mode,type:'line',source:'routes',filter:['==',['get','mode'],mode],paint:{'line-color':color,'line-width':2.5,'line-dasharray':dash}});}
+  if(travel){
+    // One quiet comparison line per unselected corridor; the chosen itinerary
+    // remains copper above it. The routes source is shared with other Atlas maps,
+    // but these layers and filters are strictly Travel-only.
+    map.addLayer({id:'travel-route-options',type:'line',source:'routes',
+      filter:['all',['==',['get','mode'],'drive'],['==',['get','comparison'],'alternative']],
+      layout:{'line-cap':'round','line-join':'round'},
+      paint:{'line-color':'#6E8998','line-width':3,'line-opacity':0.78,'line-dasharray':[2.3,1.6]}
+    },'route-halo');
+    const selectedDrive=['all',['==',['get','mode'],'drive'],['!=',['get','comparison'],'alternative']];
+    map.setFilter('route-halo',selectedDrive);
+    map.setFilter('route-line',selectedDrive);
+    map.setPaintProperty('route-line','line-width',4);
+    for(const [mode,color,dash] of [['air','#40616A',[5,3]],['ferry','#47604D',[2,2]],['rail','#1D2A3A',[1,2]],['walk','#C98B4B',[1,1]]])
+      map.addLayer({id:'transit-'+mode,type:'line',source:'routes',filter:['==',['get','mode'],mode],paint:{'line-color':color,'line-width':2.5,'line-dasharray':dash}});
+  }
   if(!travel){
     map.setFilter('route-line',['!', ['in',['get','traffic'],['literal',['closure','unknown']]]]);
     map.setPaintProperty('route-line','line-color',['match',['get','traffic'],...Object.entries(TRAFFIC_COLORS).flat(),'#C98B4B']);

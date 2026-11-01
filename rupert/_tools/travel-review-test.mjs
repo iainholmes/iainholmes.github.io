@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { durationLabel, opportunityZones, routeFamilies, journeySchedule, wholeJourneyBounds } from '../assets/js/core/journey.js';
 import { validateDrivingGeometry } from '../assets/js/core/routing.js';
+import { discoveryQuery, discoverActivities, activityFromOSM } from '../assets/js/core/discovery.js';
 
 const point = (lat,lng,label='Place') => ({lat,lng,label});
 const chapelHill=point(35.913,-79.056,'Chapel Hill, NC');
@@ -54,4 +55,49 @@ test('Travel code retains local trip save, export/import and automatic postcard 
   const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
   for(const feature of ['save-trip','export-trips','import-trips','automaticPostcard','chooseGeocodeCandidate','validateDrivingGeometry','stageTo'])assert.ok(view.includes(feature),feature);
 });
+
+test('Travel comparing routes never jumps past the map',()=>{
+  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  const provider=readFileSync(new URL('../assets/js/map/maplibre-provider.js',import.meta.url),'utf8');
+  assert.ok(view.includes("comparison:'alternative'"),'alternative features must remain on the map');
+  assert.ok(provider.includes("id:'travel-route-options'"),'alternatives must have a distinct visual layer');
+  assert.ok(view.includes("stageTo('build-stage');"),'Build remains a deliberate user action');
+  const choose=view.slice(view.indexOf('const choose=button('),view.indexOf('function fitRoute()'));
+  assert.ok(!choose.includes("stageTo('build-stage')"),'choosing a route must not scroll beyond the map');
+});
+test('Selective discovery query searches named feature tags in one result block',()=>{
+  const query=discoveryQuery(chapelHill,{radius:6500});
+  assert.ok(query.includes('around:6500,35.913,-79.056'));
+  assert.equal((query.match(/out center/g)||[]).length,1);
+  assert.ok(query.includes('[amenity~'));
+  assert.ok(query.includes('[leisure~'));
+  assert.ok(!query.includes('->.near'), 'avoid building an expensive unfiltered POI set');
+  assert.ok(query.endsWith('out center 240;'));
+});
+test('Travel markup exposes explicit area search and a route comparison continuation',()=>{
+  const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+  const render=readFileSync(new URL('../assets/js/core/render.js',import.meta.url),'utf8');
+  for(const id of ['stop-search-form','stop-search-results','stop-search-status','retry-discovery','explore-route'])
+    assert.ok(html.includes('id="'+id+'"') && render.includes('id="'+id+'"'),id);
+});
+test('Unverified outdoor meal is a lead, not a dog-access claim',()=>{
+  const a=activityFromOSM({id:99,type:'node',lat:35.91,lon:-79.05,tags:{name:'Test Cafe',amenity:'restaurant'}});
+  assert.equal(a.category,'meal');
+  assert.match(a.dog,/unverified/i);
+  assert.equal(activityFromOSM({id:100,type:'node',lat:35.91,lon:-79.05,tags:{name:'No Dogs',amenity:'cafe',dog:'no'}}),null);
+});
+const testAsync=async(name,fn)=>{await fn();tests++;console.log('PASS',name);};
+await testAsync('DiscoverActivities accepts real-style OSM records and reports Overpass 200 runtime errors',async()=>{
+  const fake={type:'node',id:11,lat:35.913,lon:-79.056,tags:{name:'A Test Ice Cream Shop',amenity:'ice_cream'}};
+  const good=await discoverActivities(chapelHill,{radius:4000,request:async(_url,args)=>{
+    assert.equal(args.method,'POST');
+    assert.match(String(args.body.get('data')),/out center 240/);
+    return {ok:true,status:200,json:async()=>({elements:[fake]})};
+  }});
+  assert.equal(good.length,1);
+  assert.equal(good[0].name,'A Test Ice Cream Shop');
+  await assert.rejects(discoverActivities(chapelHill,{request:async()=>({ok:true,status:200,json:async()=>({
+    remark:'runtime error: Query timed out',elements:[]})})}),/processing limit/);
+});
+
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
