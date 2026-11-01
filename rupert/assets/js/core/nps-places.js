@@ -8,6 +8,9 @@ import { distanceMiles } from './trip-map.js';
 export const NPS_POI_LAYER='https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/query';
 
 const unsuitable=/restroom|comfort station|toilet|parking|maintenance|staff only|employee|administration|utility|sewer|pump station|fee collection|storage|staff housing|residence|radio tower|service road/i;
+// Numbered facilities are often legitimate POIs but not compelling destinations.
+// Preserve distinct named pavilions and landmarks; suppress generic numbered sites.
+const genericFacility=/^(?:pavilion|picnic shelter|picnic site|shelter|site|campsite|camp site|group shelter)\s*(?:#|no\.?\s*)?\d+[a-z]?$/i;
 const categories=[
   {match:/overlook|viewpoint|scenic|vista|panorama|waterfall|falls/i,category:'picnic',label:'Scenic overlooks',minutes:35,why:'A scenic viewpoint to consider along the road.'},
   {match:/trailhead|trail|greenway|boardwalk|nature walk|footpath|hiking/i,category:'walk',label:'Trails & walks',minutes:50,why:'A potential walking stop. Confirm leash rules and whether this particular trail permits dogs.'},
@@ -26,7 +29,7 @@ export function npsPlaceFromFeature(feature){
   const type=String(a.POITYPE||'');
   const status=String(a.POISTATUS||'');
   if(!name||name.length>210||!validPoint(location))return null;
-  if(unsuitable.test(name+' '+type) || /closed|inactive|removed|proposed|demolished/i.test(status))return null;
+  if(unsuitable.test(name+' '+type) || genericFacility.test(name) || /closed|inactive|removed|proposed|demolished/i.test(status))return null;
   if(/^(no|false|0)$/i.test(String(a.OPENTOPUBLIC||''))||
      /^(no|false|0)$/i.test(String(a.PUBLICDISPLAY||'')))return null;
   const group=categories.find(t=>t.match.test(type+' '+name));

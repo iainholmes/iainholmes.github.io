@@ -395,7 +395,7 @@ async function cachedDiscovery(point,options={}){
   try{
     official=await discoverNpsActivities(point,{signal:options.signal,radius:20000});
   }catch(error){if(options.signal?.aborted)throw error;npsError=error;}
-  if(official.length>=4){discoveryCache.set(cacheKey,official);return official;}
+  if(official.length>=4&&new Set(official.map(a=>a.category)).size>=2){discoveryCache.set(cacheKey,official);return official;}
   try{
     const publicPlaces=await discoverActivities(point,options);
     const ids=new Set(official.map(a=>a.id));
@@ -556,6 +556,9 @@ $('stop-search-form').addEventListener('submit',async e=>{
     const activities=await cachedDiscovery(point,{signal:abort.signal,radius:4500,interactive:true});
     if(current!==version||abort.signal.aborted)return;
     const nearDestination=distanceMiles(point,state.destination)<=10;
+    const townOffset=distanceToRoute(point,state.family.feature.geometry.coordinates);
+    const offCorridor=townOffset>25&&!nearDestination?
+      ' This town is about '+Math.round(townOffset)+' mi from your selected route (straight-line). Treat these as side-trip ideas, not convenient roadside stops.':'';
     const progress=routeProgress(point,state.family);
     const zone={point,progress,minute:state.family.minutes*progress};
     const buildCards=()=>activities.map(a=>activityCard({...a},zone,nearDestination));
@@ -563,9 +566,9 @@ $('stop-search-form').addEventListener('submit',async e=>{
     if($('stop-search-dialog').open)$('stop-search-results').replaceChildren(...buildCards());
     // No outbound generic search or syndicated business listings. Only
     // grounded POIs from NPS or OSM appear as candidate activity cards.
-    const outcome=activities.length?
-      activities.length+' places near '+point.label+'. Review any stop to add it; pet access still needs checking.':
-      'No named places were returned near '+point.label+'. Try another town or add a known place directly.';
+    const outcome=(activities.length?
+      activities.length+' mapped places near '+point.label+'. Review a stop before adding it; check dog access.':
+      'No suitable named places were returned near '+point.label+'. Try another town or add a known place directly.')+offCorridor;
     stateLine.textContent=outcome;
     $('stop-search-status').textContent=outcome;
     $('journey-discovery-status').textContent=activities.length?
