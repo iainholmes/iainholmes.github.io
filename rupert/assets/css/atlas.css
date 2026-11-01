@@ -1841,3 +1841,8 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel #route-stage[data-map-theme="dusk"] .route-family[data-route-style="option-a"]{border-top-color:#78BBCC}
 .page-travel #route-stage[data-map-theme="night"] .route-family[data-route-style="option-b"],
 .page-travel #route-stage[data-map-theme="dusk"] .route-family[data-route-style="option-b"]{border-top-color:#C897BD}
+
+/* Visible only after an unsuccessful public POI query; Google is opt-in. */
+.page-travel .external-place-fallback{grid-column:1/-1;display:inline-flex;align-items:center;align-self:start;width:max-content;max-width:100%;min-height:43px;padding:10px 14px;border:1px solid #CF9C67;color:var(--paper);font-size:15px;font-weight:650;text-decoration:underline;text-underline-offset:3px}
+.page-travel dialog.travel-search-dialog .external-place-fallback{color:#1D2A3A}
+.page-travel .external-place-fallback:hover{background:#C98B4B;color:#1D2A3A}
