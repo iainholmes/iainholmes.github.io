@@ -1830,3 +1830,14 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
  .page-travel #known-place-form{grid-template-columns:minmax(0,1fr)}
  .page-travel #known-place-status{grid-column:1}
 }
+
+/* Route-card accent stripes track the alternatives on the map. */
+.page-travel .route-family[data-route-style="selected"]{border-top:5px solid #A66A32}
+.page-travel .route-family[data-route-style="option-a"]{border-top:5px solid #477C8B}
+.page-travel .route-family[data-route-style="option-b"]{border-top:5px solid #856E93}
+.page-travel #route-stage[data-map-theme="night"] .route-family[data-route-style="selected"],
+.page-travel #route-stage[data-map-theme="dusk"] .route-family[data-route-style="selected"]{border-top-color:#F4BE62}
+.page-travel #route-stage[data-map-theme="night"] .route-family[data-route-style="option-a"],
+.page-travel #route-stage[data-map-theme="dusk"] .route-family[data-route-style="option-a"]{border-top-color:#78BBCC}
+.page-travel #route-stage[data-map-theme="night"] .route-family[data-route-style="option-b"],
+.page-travel #route-stage[data-map-theme="dusk"] .route-family[data-route-style="option-b"]{border-top-color:#C897BD}
