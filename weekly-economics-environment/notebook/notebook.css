@@ -42,31 +42,18 @@ main>.intro,main>.concept-index{grid-column:2}
 .concept-nav a{display:inline-flex;gap:12px;align-items:center;min-height:44px;padding:8px 0;font:500 13px/1.5 var(--sans);color:var(--river);text-decoration:none}
 .concept-nav a:hover,.concept-nav a:active{color:var(--ink);text-decoration:underline}
 #concept-index{scroll-margin-top:24px}
-/* Adaptive Research Desk: edition groups avoid the floated explanation, then
-   reclaim the full canvas once clear of it. No measured heights or duplicate lists. */
+/* Scholarly folio: one vertical reading sequence and one consistent bibliography.
+   The entry canvas stays wide; prose measures remain controlled independently. */
 @media(min-width:1200px){
- .concept{display:flow-root;padding:48px 0 34px}
- .concept-primary{float:left;width:calc(58% - 24px);margin-right:48px;margin-bottom:24px;container-type:inline-size}
+ .concept{padding:44px 0 30px}
  .concept-heading{grid-template-columns:minmax(100px,max-content) minmax(0,1fr);gap:24px;margin-bottom:26px}
- .concept-body{min-width:0;margin-left:0}
+ .concept-heading h2{max-width:32ch}
+ .concept-body{margin-left:0;max-width:1120px}
  .canonical{max-width:36em}
- .concept-analysis{grid-template-columns:minmax(0,1fr);gap:24px}
- .caution{padding-left:22px}
- .seen{margin:0;padding:4px 0 0;border:0}
- .seen-heading{display:flow-root;margin-bottom:22px}
- .revisited{margin-top:8px}
- .appearance-register{overflow:visible}
- .appearance{display:flow-root;container-type:inline-size;padding:16px 0}
- .appearance-edition{margin-bottom:7px}
- .appearance-readings{display:block}
- .appearance-readings a{padding:6px 0;line-height:1.45}
- .concept-nav{clear:both;padding-top:20px;margin-top:0}
- @container(min-width:640px){
-  .concept-analysis{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
-  .caution{padding-left:24px}
-  .appearance-edition{float:left;width:30%;margin:0 32px 0 0}
-  .appearance-readings{display:flex;flex-wrap:wrap;column-gap:28px}
- }
+ .concept-analysis{gap:40px}
+ .seen{margin-top:30px;padding-top:22px}
+ .appearance{grid-template-columns:minmax(240px,.8fr) minmax(0,1.7fr);gap:40px}
+ .concept-nav{margin-top:12px}
 }
 @media(max-width:1000px){
  .concept-heading{grid-template-columns:minmax(72px,max-content) minmax(0,1fr);gap:28px}
