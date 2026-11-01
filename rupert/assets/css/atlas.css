@@ -1851,8 +1851,23 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel .route-next #explore-route:focus-visible{outline:2px solid #F3EFE5;outline-offset:2px}
 .page-travel .route-next #explore-route:disabled{opacity:.46}
 .page-travel #build-stage{margin-top:35px;padding-top:29px;border-top:1px solid #F3EFE52B}
-.page-travel #build-stage > .sec-h{margin-bottom:24px;letter-spacing:-.016em;font:400 clamp(41px,3.55vw,55px)/1.09 var(--f-editorial);font-synthesis:none}
-.page-travel #build-stage > .sec-h span{font:700 .34em/1.2 var(--f-text);letter-spacing:.06em}
+/* Shared four-chapter typography. Step 03's accepted headline size is the baseline;
+   keep its same Atlas editorial face and extend it to the other chapter headings. */
+.page-travel #plan-stage > .sec-h,
+.page-travel #route-stage > .stage-head > .sec-h,
+.page-travel #build-stage > .sec-h,
+.page-travel #itinerary-stage > .sec-h{
+  margin:0 0 24px;letter-spacing:-.016em;
+  font:400 clamp(41px,3.55vw,55px)/1.09 var(--f-editorial);
+  font-synthesis:none;
+}
+.page-travel #plan-stage > .sec-h > span,
+.page-travel #route-stage > .stage-head > .sec-h > span,
+.page-travel #build-stage > .sec-h > span,
+.page-travel #itinerary-stage > .sec-h > span{
+  font:700 .34em/1.2 var(--f-text);letter-spacing:.06em;color:var(--gold);
+}
+.page-travel #route-stage > .stage-head > .sec-h{margin-bottom:0}
 .page-travel .trip-context{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(230px,.65fr);gap:15px 28px;align-items:center;margin:9px 0 20px;padding:0 0 20px}
 .page-travel .trip-context > div{min-width:0}
 .page-travel .context-eyebrow{font-size:15px;line-height:1.35;letter-spacing:.1em;margin-bottom:9px;font-weight:700}
@@ -1897,4 +1912,51 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel .discovery-actions button{width:100%}
 .page-travel .journey-discovery{margin-top:25px}
 .page-travel .trip-activity{padding:17px;min-height:0}
+}
+
+
+/* Step 01: generous form framing, legible labels, and room for decisions. */
+.page-travel #plan-stage{padding:clamp(22px,2.4vw,34px) clamp(22px,3vw,42px)}
+.page-travel #plan-stage .journey-endpoints label,
+.page-travel #plan-stage .journey-options label,
+.page-travel #plan-stage .routing-choice{
+  font-size:clamp(16px,1.18vw,19px);line-height:1.45;
+}
+.page-travel #plan-stage .journey-endpoints input,
+.page-travel #plan-stage .journey-options input,
+.page-travel #plan-stage .journey-options select{
+  min-height:46px;font-size:clamp(16px,1.08vw,18px);
+}
+.page-travel #plan-stage .lookup-disclosure{font-size:clamp(14px,1vw,16px);line-height:1.55;max-width:100ch}
+.page-travel #plan-stage #trip-status{font-size:clamp(16px,1.08vw,18px);line-height:1.5}
+
+/* Step 02: the title and map controls share the same editorial scale. */
+.page-travel #route-stage > .stage-head{margin-bottom:24px;flex-wrap:wrap;gap:12px 22px}
+.page-travel #route-stage #fit-trip{min-height:44px;font-size:clamp(14px,1vw,16px)}
+.page-travel #route-stage #route-families > p{font-size:clamp(17px,1.2vw,20px);line-height:1.5}
+.page-travel #route-stage .travel-map-toolbar h3{
+  font:400 clamp(25px,2vw,31px)/1.17 var(--f-editorial);
+}
+.page-travel #route-stage .travel-map-toolbar p{font-size:clamp(14px,1.05vw,16px);line-height:1.45}
+
+/* Step 04: the chapter title leads, followed by a readable itinerary summary. */
+.page-travel #itinerary-stage{padding:clamp(22px,2.4vw,34px) clamp(22px,3vw,42px)}
+.page-travel #itinerary-stage #trip-summary{
+  font:400 clamp(19px,1.45vw,23px)/1.5 var(--f-text);max-width:84ch;
+}
+.page-travel #itinerary-stage > h3{
+  font:400 clamp(29px,2.4vw,37px)/1.2 var(--f-editorial);
+  margin:28px 0 12px;
+}
+.page-travel #itinerary-stage .clock-note{font-size:clamp(14px,1.03vw,16px);line-height:1.5}
+.page-travel #itinerary-stage .journey-save > label{font-size:clamp(16px,1.14vw,18px);line-height:1.45}
+@media(max-width:759.98px){
+  .page-travel #plan-stage,.page-travel #itinerary-stage{padding:20px 18px}
+  .page-travel #plan-stage > .sec-h,
+  .page-travel #route-stage > .stage-head > .sec-h,
+  .page-travel #build-stage > .sec-h,
+  .page-travel #itinerary-stage > .sec-h{margin-bottom:19px}
+  .page-travel #route-stage > .stage-head > .sec-h{margin-bottom:0}
+  .page-travel #route-stage > .stage-head #fit-trip{margin-left:auto}
+  .page-travel #route-stage .travel-map-toolbar h3{font-size:25px}
 }
