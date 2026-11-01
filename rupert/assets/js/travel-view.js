@@ -1,7 +1,7 @@
 import { automaticPostcard } from './core/postcard.js';
 import { createMap } from './map/maplibre-provider.js';
 import { validPoint, drivingRoute, drivingAlternatives } from './core/routing.js';
-import { pointFeature, distanceMiles, distanceToRoute, routeBounds, geocodeLocation } from './core/trip-map.js';
+import { pointFeature, distanceMiles, distanceToRoute, routeBounds, geocodeCandidates } from './core/trip-map.js';
 import { cleanPlan, readBackup, TRAVEL_STORAGE_KEY } from './core/travel.js';
 import { durationLabel, routeFamilies, routePoint, routeProgress, wholeJourneyBounds, opportunityZones, overnightZones, journeyLegs, journeySchedule } from './core/journey.js';
 import { discoverActivities, areaName } from './core/discovery.js';
@@ -63,14 +63,56 @@ function load(plan){
   if(state.family){$('anchor-form').hidden=false;$('journey-discovery-status').textContent='Saved activities are restored. Find Routes to refresh public place suggestions.';}
   dirty=false;
 }
-async function resolveLocation(endpoint,signal){
+// A typed place is not an approved coordinate. Confirm Nominatim candidates before
+// allowing a destination to control routing, overnight areas, or saved geometry.
+function chooseGeocodeCandidate(label,candidates,signal,role='location'){
+  return new Promise((resolve,reject)=>{
+    if(signal?.aborted){reject(new DOMException('Lookup cancelled','AbortError'));return;}
+    const dialog=el('dialog',null,'travel-place-dialog'),heading=el('h2','Confirm the '+role),
+      intro=el('p','Choose the intended location before any route is calculated. The search provider returned these possible places.'),
+      list=el('div',null,'travel-place-options'),
+      actions=el('div',null,'travel-place-actions'),cancel=button('Cancel lookup',()=>finish(null));
+    intro.className='travel-place-intro';
+    heading.id='travel-place-dialog-title';dialog.setAttribute('aria-labelledby',heading.id);
+    const query=el('p','Entered: '+label,'travel-place-query');
+    function finish(candidate){
+      signal?.removeEventListener('abort',abort);
+      dialog.close();dialog.remove();
+      if(candidate)resolve(candidate);
+      else reject(new Error('Location not confirmed. Correct the place or try another search.'));
+    }
+    function abort(){
+      signal?.removeEventListener('abort',abort);dialog.close();dialog.remove();
+      reject(new DOMException('Lookup cancelled','AbortError'));
+    }
+    candidates.forEach((candidate,i)=>{
+      const choice=button(candidate.display,()=>finish(candidate));
+      choice.className='travel-place-option';
+      choice.setAttribute('aria-label','Use '+candidate.display);
+      list.append(choice);
+    });
+    actions.append(cancel);dialog.append(heading,query,intro,list,actions);
+    dialog.addEventListener('cancel',e=>{e.preventDefault();finish(null)});
+    document.body.append(dialog);signal?.addEventListener('abort',abort,{once:true});
+    dialog.showModal();
+    list.querySelector('button')?.focus();
+  });
+}
+async function resolveLocation(endpoint,signal,role='location'){
   const label=endpoint.label.trim();if(!label)throw Error('Enter an origin and destination.');
   if(label.toLowerCase()==='home'){let home;try{home=JSON.parse(localStorage.getItem('rupert-location-v1'));}catch{}if(!validPoint(home?.point))throw Error('Set home in Atlas, or enter an origin here.');return {label:'Home',...home.point};}
   if(validPoint(endpoint))return endpoint;
   const known=places.find(p=>[p.name,p.short_name,p.access?.name].some(s=>s?.toLowerCase()===label.toLowerCase())),ref=Object.values(references).find(p=>p.label.toLowerCase()===label.toLowerCase());
   if(known)return {label,lat:known.access.lat,lng:known.access.lng};if(ref)return {label,lat:ref.lat,lng:ref.lng};
   const parts=label.split(',').map(s=>s.trim());if(parts.length===2&&parts.every(s=>s!==''&&Number.isFinite(Number(s)))){const point={lat:Number(parts[0]),lng:Number(parts[1])};if(validPoint(point))return {label,...point};}
-  if(locations.has(label))return {label,...locations.get(label)};const point=await geocodeLocation(label,{signal});locations.set(label,point);return {label,lat:point.lat,lng:point.lng};
+  if(/^new\\s+orleans\\s*,\\s*ls\\s*$/i.test(label))
+    throw Error('“LS” is not the Louisiana abbreviation. Did you mean “New Orleans, LA”? Correct the destination and confirm the matching location.');
+  if(locations.has(label))return {label,...locations.get(label)};
+  const candidates=await geocodeCandidates(label,{signal});
+  const selected=await chooseGeocodeCandidate(label,candidates,signal,role);
+  const point={lat:selected.lat,lng:selected.lng,display:selected.display};
+  locations.set(label,point);
+  return {label,...point};
 }
 function renderFamilies(){
   const box=$('route-families');box.replaceChildren();
@@ -134,7 +176,7 @@ $('journey-form').addEventListener('submit',async e=>{
   cancelRequests();const current=version,abort=new AbortController();controller=abort;const timer=setTimeout(()=>abort.abort(),60000);$('map-trip').disabled=true;
   try{
     cleanPlan({title:title(),dates:{start:$('trip-start').value,end:$('trip-end').value},legs:[{mode:'car',from:inputPoint($('trip-origin')),to:inputPoint($('trip-destination'))}]});
-    status('Locating your origin and destination…');const origin=await resolveLocation(inputPoint($('trip-origin')),abort.signal),destination=await resolveLocation(inputPoint($('trip-destination')),abort.signal);
+    status('Locating your origin and destination…');const origin=await resolveLocation(inputPoint($('trip-origin')),abort.signal,'origin'),destination=await resolveLocation(inputPoint($('trip-destination')),abort.signal,'destination');
     status('Comparing driving corridors…');let routes;
     try{routes=await drivingAlternatives(origin,destination,{signal:abort.signal});}catch(error){if(abort.signal.aborted)throw error;routes=[await drivingRoute(origin,destination,{signal:abort.signal})];}
     if(!routes.length)throw Error('No usable driving route found.');
