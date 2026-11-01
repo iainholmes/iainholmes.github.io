@@ -43,49 +43,80 @@ export function activityFromOSM(element) {
 // Search directly for named activity types within a bounded area. The previous
 // query assembled *every* named object before filtering ~19 sets and repeatedly
 // emitted results, which can exhaust public Overpass query slots in busy cities.
-export function discoveryQuery(point,{radius=6000,overnight=false}={}) {
+// Keep public discovery deliberately small and selective. Overpass is a shared
+// resource: heavy, repeated city-scale scans are neither reliable nor considerate.
+const SERVERS=['https://overpass.private.coffee/api/interpreter','https://overpass-api.de/api/interpreter'];
+const compactTypes=[
+  ['amenity','ice_cream|cafe|restaurant|marketplace'],
+  ['shop','bakery|farm'],
+  ['leisure','park|garden|nature_reserve|dog_park'],
+  ['tourism','viewpoint|picnic_site'],
+];
+export function discoveryQuery(point,{radius=3500,overnight=false}={}) {
   if(!validPoint(point)) throw Error('Resolve a discovery area first.');
-  const metres=Math.max(1500,Math.min(12000,Math.round(Number(radius)||6000)));
-  const types=ACTIVITY_TYPES.filter(t=>overnight?['town','overnight','meal','walk'].includes(t.key):t.key!=='overnight');
-  const tags=new Map();
-  for(const type of types)tags.set(type.tag,[...(tags.get(type.tag)||[]),...type.values.split('|')]);
-  const lines=[...tags].map(([tag,values])=>{
-    const pattern=[...new Set(values)].join('|');
-    return `nwr(around:${metres},${point.lat},${point.lng})[${tag}~"^(${pattern})$"][name];`;
-  });
-  return `[out:json][timeout:22];(\n${lines.join('\n')}\n);out center 240;`;
+  const metres=Math.max(1200,Math.min(5000,Math.round(Number(radius)||3500)));
+  const groups=overnight?[['place','town|village'],['leisure','park'],['tourism','hotel|motel|camp_site']]:compactTypes;
+  const lines=groups.map(([tag,values])=>`nwr(around:${metres},${point.lat},${point.lng})["${tag}"~"^(${values})$"]["name"];`);
+  return `[out:json][timeout:12];(\n${lines.join('\n')}\n);out center 90;`;
 }
-export async function discoverActivities(point,{signal,request=fetch,overnight=false,radius=6000}={}) {
+function providerProblem(status){
+  if(status===429||status===406)return 'Public place search is rate-limited. Please try again later.';
+  if(status===502||status===503||status===504)return 'The public place provider is busy. Try searching a smaller town area later.';
+  return `Public place search returned HTTP ${status}.`;
+}
+export async function discoverActivities(point,{signal,request=fetch,overnight=false,radius=3500}={}) {
   const task=lookupQueue.catch(()=>{}).then(async()=>{
     signal?.throwIfAborted();
-    if(Date.now()<unavailableUntil)throw Error('Public place provider is rate-limited. Please retry after a minute, or add a town manually.');
-    const lookupSignal=signal?AbortSignal.any([signal,AbortSignal.timeout(25000)]):AbortSignal.timeout(25000);
-    const response=await request('https://overpass-api.de/api/interpreter',{method:'POST',body:new URLSearchParams({data:discoveryQuery(point,{overnight,radius})}),signal:lookupSignal,referrerPolicy:'origin'});
-    if([406,429,503,504].includes(response.status))unavailableUntil=Date.now()+60000;
-    return response;
+    if(Date.now()<unavailableUntil)throw Error('Public place lookup is temporarily limited. Please retry later.');
+    const body=new URLSearchParams({data:discoveryQuery(point,{overnight,radius})});
+    // A second public instance is tried once only on provider-side failure, never
+    // to bypass a 429/406 limit. No parallel requests or unbounded retry loops.
+    let lastError=null;
+    for(const [index,endpoint] of SERVERS.entries()){
+      signal?.throwIfAborted();
+      try{
+        const lookupSignal=signal?AbortSignal.any([signal,AbortSignal.timeout(15000)]):AbortSignal.timeout(15000);
+        const response=await request(endpoint,{method:'POST',body,signal:lookupSignal,referrerPolicy:'origin'});
+        if(response.status===429||response.status===406){
+          unavailableUntil=Date.now()+60000;
+          throw Error(providerProblem(response.status));
+        }
+        if(!response.ok){
+          lastError=Error(providerProblem(response.status));
+          if(![502,503,504].includes(response.status)||index===SERVERS.length-1)break;
+          continue;
+        }
+        let data;
+        try{data=await response.json();}catch{lastError=Error('Public place search returned unreadable data.');if(index<SERVERS.length-1)continue;break;}
+        if(data.remark && /runtime error|timed out|out of memory|error/i.test(data.remark)){
+          lastError=Error('The public place search timed out. Try a smaller area.');
+          if(index<SERVERS.length-1)continue;
+          break;
+        }
+        if(!Array.isArray(data.elements))throw Error('Public place search returned an invalid response.');
+        return data.elements;
+      }catch(error){
+        if(signal?.aborted)throw error;
+        lastError=error.name==='TimeoutError'?Error('Public place search timed out. Try a smaller area.'):error;
+        if([/rate-limited/,/invalid response/].some(re=>re.test(lastError.message)))break;
+        if(index===SERVERS.length-1)break;
+      }
+    }
+    // Avoid turning repeated refresh clicks into a stream of failed public requests.
+    unavailableUntil=Math.max(unavailableUntil,Date.now()+30000);
+    throw lastError||Error('Public place lookup unavailable.');
   });
   lookupQueue=task;
-  let response;
-  try{response=await task;}catch(error){
-    if(error.name==='TimeoutError')throw Error('Public place search timed out. Try a named town or retry later.');
-    throw error;
-  }
-  if(!response.ok)throw Error(response.status===429||response.status===503||response.status===504?
-    'OpenStreetMap discovery is busy or rate-limited. Try again in a minute.':
-    `OpenStreetMap discovery returned HTTP ${response.status}; places could not be searched.`);
-  const data=await response.json();
-  // Overpass can return HTTP 200 plus a runtime error and an empty/partial list.
-  if(data.remark && /runtime error|timed out|out of memory|error/i.test(data.remark))
-    throw Error('OpenStreetMap discovery exceeded its processing limit. Try a smaller or different area.');
-  if(!Array.isArray(data.elements))throw Error('Public place discovery returned an invalid response.');
-  const candidates=data.elements.map(activityFromOSM).filter(Boolean).sort((a,b)=>
+  const elements=await task;
+  const candidates=elements.map(activityFromOSM).filter(Boolean).sort((a,b)=>
     (a.confidence==='unverified')-(b.confidence==='unverified') ||
     distanceMiles(point,a.location)-distanceMiles(point,b.location));
   const out=[],counts=new Map(),seen=new Set();
-  for(const activity of candidates){const n=counts.get(activity.category)||0;
+  for(const activity of candidates){
+    const n=counts.get(activity.category)||0;
     if(n>=3||seen.has(activity.id))continue;
     seen.add(activity.id);counts.set(activity.category,n+1);out.push(activity);
-    if(out.length>=18)break;
+    if(out.length>=14)break;
   }
   return out;
 }

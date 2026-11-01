@@ -62,17 +62,17 @@ test('Travel comparing routes never jumps past the map',()=>{
   assert.ok(view.includes("comparison:'alternative'"),'alternative features must remain on the map');
   assert.ok(provider.includes("id:'travel-route-options'"),'alternatives must have a distinct visual layer');
   assert.ok(view.includes("stageTo('build-stage');"),'Build remains a deliberate user action');
-  const choose=view.slice(view.indexOf('const choose=button('),view.indexOf('function fitRoute()'));
+  const choose=view.slice(view.indexOf('const choose=button('),view.indexOf('function fitRoute('));
   assert.ok(!choose.includes("stageTo('build-stage')"),'choosing a route must not scroll beyond the map');
 });
 test('Selective discovery query searches named feature tags in one result block',()=>{
-  const query=discoveryQuery(chapelHill,{radius:6500});
-  assert.ok(query.includes('around:6500,35.913,-79.056'));
+  const query=discoveryQuery(chapelHill,{radius:3500});
+  assert.ok(query.includes('around:3500,35.913,-79.056'));
   assert.equal((query.match(/out center/g)||[]).length,1);
-  assert.ok(query.includes('[amenity~'));
-  assert.ok(query.includes('[leisure~'));
+  assert.ok(query.includes('["amenity"~'));
+  assert.ok(query.includes('["leisure"~'));
   assert.ok(!query.includes('->.near'), 'avoid building an expensive unfiltered POI set');
-  assert.ok(query.endsWith('out center 240;'));
+  assert.ok(query.endsWith('out center 90;'));
 });
 test('Travel markup exposes explicit area search and a route comparison continuation',()=>{
   const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
@@ -91,13 +91,41 @@ await testAsync('DiscoverActivities accepts real-style OSM records and reports O
   const fake={type:'node',id:11,lat:35.913,lon:-79.056,tags:{name:'A Test Ice Cream Shop',amenity:'ice_cream'}};
   const good=await discoverActivities(chapelHill,{radius:4000,request:async(_url,args)=>{
     assert.equal(args.method,'POST');
-    assert.match(String(args.body.get('data')),/out center 240/);
+    assert.match(String(args.body.get('data')),/out center 90/);
     return {ok:true,status:200,json:async()=>({elements:[fake]})};
   }});
   assert.equal(good.length,1);
   assert.equal(good[0].name,'A Test Ice Cream Shop');
   await assert.rejects(discoverActivities(chapelHill,{request:async()=>({ok:true,status:200,json:async()=>({
-    remark:'runtime error: Query timed out',elements:[]})})}),/processing limit/);
+    remark:'runtime error: Query timed out',elements:[]})})}),/timed out/);
 });
 
+test('Calm planner markup has search dialog, area chooser and whole-map feedback',()=>{
+  const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+  const source=readFileSync(new URL('../assets/js/core/render.js',import.meta.url),'utf8');
+  for(const id of ['stop-search-dialog','open-town-search','route-activity-results','map-fit-feedback'])
+    assert.ok(html.includes('id="'+id+'"')&&source.includes('id="'+id+'"'),id);
+  assert.ok(html.includes('Show Entire Journey'));
+  assert.ok(!html.includes('Fit Route</button>'));
+});
+test('Route-area chooser does not flood the screen with individual waiting panels',()=>{
+  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  assert.ok(view.includes("route-area-button"));
+  assert.ok(view.includes("route-activity-results"));
+  assert.ok(!view.includes("journey-segment'),heading"));
+  assert.ok(view.includes("function fitRoute(announce=false)"));
+});
+await testAsync('Provider-side 502 fails over once to an alternative public instance',async()=>{
+  const fake={type:'node',id:88,lat:35.912,lon:-79.055,tags:{name:'A Test Garden',leisure:'garden'}};
+  const urls=[];
+  const result=await discoverActivities(chapelHill,{request:async(url)=>{
+    urls.push(url);
+    if(urls.length===1)return {ok:false,status:502};
+    return {ok:true,status:200,json:async()=>({elements:[fake]})};
+  }});
+  assert.equal(urls.length,2);
+  assert.ok(urls[0].includes('private.coffee'));
+  assert.ok(urls[1].includes('overpass-api.de'));
+  assert.equal(result[0].name,'A Test Garden');
+});
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
