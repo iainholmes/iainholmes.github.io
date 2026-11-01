@@ -501,6 +501,15 @@ $('retry-discovery').addEventListener('click',()=>{
   if(!$('trip-routing').checked){status('Enable route & place lookup to search public place data.');return;}
   discoverJourney();
 });
+function externalPlaceFallback(town){
+  // Explicit outbound link only. Never send a typed location to a third-party
+  // search provider without the traveler clicking through.
+  const url='https://www.google.com/maps/search/?api=1&query='+
+    encodeURIComponent('parks trails ice cream cafes near '+town);
+  const link=el('a','Browse places in Google Maps (opens new tab)','external-place-fallback');
+  link.href=url;link.target='_blank';link.rel='noopener noreferrer';
+  return link;
+}
 $('stop-search-form').addEventListener('submit',async e=>{
   e.preventDefault();
   if(!state.family){$('stop-search-status').textContent='Choose a route first.';return;}
@@ -533,6 +542,10 @@ $('stop-search-form').addEventListener('submit',async e=>{
     const buildCards=()=>activities.map(a=>activityCard({...a},zone,nearDestination));
     persisted.replaceChildren(...buildCards());
     if($('stop-search-dialog').open)$('stop-search-results').replaceChildren(...buildCards());
+    if(!activities.length){
+      persisted.append(externalPlaceFallback(point.label));
+      if($('stop-search-dialog').open)$('stop-search-results').append(externalPlaceFallback(point.label));
+    }
     const outcome=activities.length?
       activities.length+' places near '+point.label+'. Review any stop to add it; pet access still needs checking.':
       'No named places were returned near '+point.label+'. Try another town or add a known place directly.';
@@ -544,7 +557,9 @@ $('stop-search-form').addEventListener('submit',async e=>{
     if(!abort.signal.aborted&&current===version){
       const message='Town search could not finish: '+error.message;
       stateLine.textContent=message;$('stop-search-status').textContent=message;
-      $('journey-discovery-status').textContent='Town search unavailable. You can still add a known place to the itinerary.';
+      persisted.replaceChildren(externalPlaceFallback(search));
+      if($('stop-search-dialog').open)$('stop-search-results').replaceChildren(externalPlaceFallback(search));
+      $('journey-discovery-status').textContent='Town search unavailable. You can still browse external places and review a known stop.';
     }
   }finally{if(areaSearchController===abort){areaSearchController=null;submit.disabled=false;}}
 });
