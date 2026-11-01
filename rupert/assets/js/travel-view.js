@@ -284,12 +284,48 @@ async function discoverJourney(){
   const summary=`${found} activity leads found${failures?' · public discovery is partially unavailable':''}. Dog policies and opening hours need checking; nothing is added to the published Directory.`;$('journey-discovery-status').textContent=summary;if(failures)$('journey-discovery-status').append(' ',button('Retry Discovery',()=>discoverJourney()));
   const categories=[...new Set([...document.querySelectorAll('.activity-kind')].map(n=>n.textContent))].slice(0,4);state.family.mix=categories.length?`Activity mix: ${categories.join(' · ')}`:'No public activity leads found yet.';renderFamilies();
 }
+$('explore-route').addEventListener('click',()=>{if(state.family)stageTo('build-stage');});
+$('retry-discovery').addEventListener('click',()=>{
+  if(!state.family)return;
+  if(!$('trip-routing').checked){status('Enable route & place lookup to search public place data.');return;}
+  discoverJourney();
+});
+$('stop-search-form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!state.family){$('stop-search-status').textContent='Choose a route first.';return;}
+  if(!$('trip-routing').checked){$('stop-search-status').textContent='Enable route & place lookup in Plan to search public map data.';return;}
+  const search=$('stop-search-place').value.trim(),submit=$('stop-search-form').querySelector('button[type="submit"]');
+  if(!search)return;
+  areaSearchController?.abort();
+  const abort=new AbortController();areaSearchController=abort;const current=version;
+  submit.disabled=true;
+  $('stop-search-status').textContent='Locating '+search+'…';
+  $('stop-search-results').replaceChildren();
+  try{
+    // A named area is confirmed rather than silently choosing the wrong city.
+    const point=await resolveLocation({label:search},abort.signal,'activity search area');
+    if(current!==version||abort.signal.aborted)return;
+    $('stop-search-status').textContent='Looking for places near '+point.label+'…';
+    const activities=await cachedDiscovery(point,{signal:abort.signal,radius:6500});
+    if(current!==version||abort.signal.aborted)return;
+    const nearDestination=distanceMiles(point,state.destination)<=10;
+    const progress=routeProgress(point,state.family);
+    const zone={point,progress,minute:state.family.minutes*progress};
+    $('stop-search-results').replaceChildren(...activities.map(a=>activityCard({...a},zone,nearDestination)));
+    $('stop-search-status').textContent=activities.length?
+      `${activities.length} leads near ${point.label}. Choose Add to Trip to include a stop; check dog rules and hours first.`:
+      'No named activity leads returned for this area. Try a nearby town or add a route-defining stop manually.';
+  }catch(error){
+    if(!abort.signal.aborted&&current===version)
+      $('stop-search-status').textContent='Search could not finish: '+error.message;
+  }finally{if(areaSearchController===abort){areaSearchController=null;submit.disabled=false;}}
+});
 $('anchor-form').addEventListener('submit',async e=>{e.preventDefault();if(building)return;if(!$('trip-routing').checked){status('Enable lookup to locate the added town.');return;}const current=version,abort=new AbortController();try{status('Locating the added stop…');const point=await resolveLocation({label:$('trip-anchor').value},abort.signal,'stop');if(current!==version)return;const stop={id:`anchor-${crypto.randomUUID?.()||Date.now().toString(36)}`,name:point.label,location:point,minutes:45,category:'town',categoryLabel:'Route-defining stop',defining:true,overnight:$('anchor-overnight').checked,dog:'Check the specific dog-access rules of activities and accommodation.',why:'A town you chose to shape this journey.',links:[],progress:routeProgress(point,state.family)};await rebuild([...state.stops,stop].sort((a,b)=>a.progress-b.progress));$('trip-anchor').value='';}catch(error){status(error.message);}});
 $('fit-trip').addEventListener('click',()=>{paintMap();fitRoute();});$('close-activity').addEventListener('click',()=>{paintMap();fitRoute();});
 $('save-trip').addEventListener('click',save);$('new-trip').addEventListener('click',()=>{if(dirty&&!confirm('Start a new trip and discard unsaved edits?'))return;load();status('New trip.');});
 $('export-trips').addEventListener('click',()=>{try{if(building||controller)throw Error('Wait for the route update to finish before exporting.');let exportPlans=plans;if(dirty){const draft=collect();exportPlans=plans.filter(p=>p.id!==draft.id).concat(draft);}const blob=new Blob([JSON.stringify({schema_version:1,plans:exportPlans},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='rupert-travel-backup.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);status('Backup exported, including the current draft.');}catch(error){status(error.message);}});
 $('import-trips').addEventListener('change',async e=>{try{const file=e.target.files[0];if(!file)return;const incoming=readBackup(await file.text()),next=[...plans];for(const p of incoming)if(!next.some(x=>x.id===p.id))next.push(p);if(next.length>100)throw Error('Too many journeys.');const added=next.length-plans.length;if(persist(next)){savedList();status(`Imported ${added} journeys; existing plans were kept.`);}}catch(error){status('Import failed: '+error.message);}finally{e.target.value='';}});
-$('trip-routing').addEventListener('change',()=>{if(!$('trip-routing').checked){cancelRequests();status('Lookup disabled. The mapped itinerary stays local; no further locations will be sent.');}});
+$('trip-routing').addEventListener('change',()=>{$('retry-discovery').disabled=!state.family||!$('trip-routing').checked;if(!$('trip-routing').checked){cancelRequests();status('Lookup disabled. The mapped itinerary stays local; no further locations will be sent.');}});
 for(const id of ['trip-start','trip-end','trip-depart','trip-title'])$(id).addEventListener('input',()=>{dirty=true;renderItinerary();});
 for(const id of ['trip-origin','trip-destination'])$(id).addEventListener('input',()=>{cancelRequests();dirty=true;if(state.family)status('Endpoints changed. Find Routes to update this journey.');});
 $('trip-detour').addEventListener('change',()=>{dirty=true;if(state.family)discoverJourney();});
