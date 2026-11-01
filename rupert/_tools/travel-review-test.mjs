@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 import { durationLabel, opportunityZones, routeFamilies, journeySchedule, wholeJourneyBounds } from '../assets/js/core/journey.js';
 import { validateDrivingGeometry } from '../assets/js/core/routing.js';
 import { discoveryQuery, discoverActivities, activityFromOSM } from '../assets/js/core/discovery.js';
+import { tomtomPlacesAvailable, tomtomPlaceRecord, discoverTomTomPlaces } from '../assets/js/core/tomtom-places.js';
+import { placesConfig } from '../assets/js/places-config.js';
 
 const point = (lat,lng,label='Place') => ({lat,lng,label});
 const chapelHill=point(35.913,-79.056,'Chapel Hill, NC');
@@ -159,6 +161,70 @@ test('Travel highlights the current corridor and clearly labels search as non-de
   assert.ok(html.includes('Searching never changes your trip'));
   assert.ok(html.includes('Change the driving route via a town'));
   assert.ok(html.includes('Browse an area of your selected route'));
+});
+
+
+test('Travel map modes, explicit route navigation and noninteractive legend are in generated source',()=>{
+ const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+ const canonical=readFileSync(new URL('../assets/js/core/render.js',import.meta.url),'utf8');
+ const provider=readFileSync(new URL('../assets/js/map/maplibre-provider.js',import.meta.url),'utf8');
+ for(const name of ['day','dusk','night']){
+   assert.ok(html.includes('data-travel-theme="'+name+'"'),name);
+   assert.ok(canonical.includes('data-travel-theme="'+name+'"'),name);
+ }
+ assert.ok(provider.includes('setTravelTheme(mode)'));
+ assert.ok(html.includes('role="note" aria-label="Map legend"'));
+ assert.ok(html.includes('Step 03 · Build the Journey'));
+ assert.ok(html.includes('Refresh Route Suggestions'));
+});
+test('Town search continues after popup close and keeps a persistent results section',()=>{
+ const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+ const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+ for(const id of ['town-results-section','town-results-cards','town-results-state','return-town-results'])
+   assert.ok(html.includes('id="'+id+'"'),id);
+ assert.ok(view.includes('persisted.replaceChildren(...buildCards())'));
+ assert.ok(!view.includes("addEventListener('close',()=>areaSearchController?.abort())"));
+ assert.ok(view.includes('interactive:true'));
+ assert.ok(view.includes('function setMapAppearance(choice)'));
+});
+test('Manual place addition requires location confirmation and review before route mutation',()=>{
+ const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+ const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+ assert.ok(html.includes('id="known-place-form"'));
+ const snippet=view.slice(view.indexOf("$('known-place-form').addEventListener"),view.indexOf("$('anchor-form').addEventListener"));
+ assert.ok(snippet.includes('resolveLocation('));
+ assert.ok(snippet.includes('reviewActivityAddition(stop,'));
+ assert.ok(!snippet.includes('rebuild(['));
+});
+test('Dedicated TomTom Search access is OFF until product, key and origin are verified',()=>{
+ assert.equal(placesConfig.enabled,false);
+ assert.equal(placesConfig.apiKey,'');
+ assert.equal(tomtomPlacesAvailable(placesConfig,'https://iainholmes.github.io'),false);
+ const mock={provider:'tomtom-search',enabled:true,apiKey:'example-dedicated-search-key-1234',allowedOrigins:['https://example.org']};
+ assert.equal(tomtomPlacesAvailable(mock,'https://iainholmes.github.io'),false);
+ assert.equal(tomtomPlacesAvailable(mock,'https://example.org'),true);
+});
+await testAsync('TomTom Orbis Places parser handles a real-schema mock with POI classification',async()=>{
+ const config={provider:'tomtom-search',enabled:true,apiKey:'synthetic-search-key-0000001',allowedOrigins:['https://example.org']};
+ let calls=0;const result=await discoverTomTomPlaces(chapelHill,{config,origin:'https://example.org',
+  request:async(url,options)=>{
+    calls++;
+    assert.ok(url.endsWith('/maps/orbis/places/discover'));
+    assert.equal(options.method,'POST');
+    assert.equal(options.headers['TomTom-Api-Version'],'3');
+    assert.equal(options.headers['TomTom-Api-Key'],config.apiKey);
+    assert.ok(!url.includes(config.apiKey));
+    const body=JSON.parse(options.body);
+    assert.deepEqual(body.origin.coordinates,[-79.056,35.913]);
+    return {ok:true,json:async()=>({results:[{id:'park-'+calls,type:'poi',title:'A Real Park',
+      position:{type:'Point',coordinates:[-79.04,35.92]},poiTypes:[{id:'park',name:'Park'}]}]})};
+  }});
+ assert.equal(calls,3);
+ assert.equal(result.length,3);
+ assert.equal(result[0].name,'A Real Park');
+ assert.match(result[0].dog,/unverified/);
+ assert.equal(tomtomPlaceRecord({id:'bad',type:'address',title:'Not a POI',
+   position:{coordinates:[-79,35]}},{key:'walk'}),null);
 });
 
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
