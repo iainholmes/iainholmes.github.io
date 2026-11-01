@@ -48,7 +48,7 @@ test('Travel HTML exposes four stages and opt-in routing, with no break-cadence 
   for(const id of ['plan-stage','route-stage','build-stage','itinerary-stage'])assert.ok(html.includes('id="'+id+'"'));
   assert.ok(html.includes('id="trip-routing"'));
   assert.ok(!html.includes('id="trip-break"'));
-  assert.ok(html.includes('travel-review02'));
+  assert.ok(html.includes('../assets/js/travel-view.js'), 'Travel module should be present in generated page');
 });
 test('Travel code retains local trip save, export/import and automatic postcard features',()=>{
   const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
