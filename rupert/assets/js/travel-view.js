@@ -26,7 +26,7 @@ if('IntersectionObserver' in window){
 }
 const emptyState=()=>({origin:null,destination:null,families:[],family:null,stops:[],destinationActivities:[],legs:[],results:[],manual:false,legacyStops:[]});
 let captionEdited=false;
-let state=emptyState(),plans=[],activeId=null,dirty=false,postcard=null,canPersist=true,map=null,version=0,controller=null,discoveryController=null,building=false;
+let state=emptyState(),plans=[],activeId=null,dirty=false,postcard=null,canPersist=true,map=null,version=0,controller=null,discoveryController=null,areaSearchController=null,building=false;
 const locations=new Map(),discoveryCache=new Map();
 try{const text=localStorage.getItem(key);if(text)plans=readBackup(text);}catch{canPersist=false;status('Saved plans could not be opened. Existing data has been left intact. Export or restore a backup.');}
 function persist(next){try{if(!canPersist)throw Error();localStorage.setItem(key,JSON.stringify({schema_version:1,plans:next}));plans=next;return true;}catch{status('This browser could not save the plan. Export a backup before leaving.');return false;}}
@@ -61,7 +61,7 @@ function savedList(){
   }
   if(plans.length)box.append(button('Clear All Saved Trips',()=>{if(box.querySelector('.clear-trips-confirm'))return;const confirmation=el('div',null,'clear-trips-confirm'),input=el('input');input.autocomplete='off';const remove=button('Delete All Trips',()=>{if(input.value!=='DELETE ALL')return;if(persist([])){activeId=null;dirty=true;savedList();status('All saved trips cleared. The editor is kept as an unsaved draft.');}});remove.disabled=true;input.addEventListener('input',()=>remove.disabled=input.value!=='DELETE ALL');confirmation.append(el('p',`Delete all ${plans.length} saved trips? Export a backup first.`),field('Type DELETE ALL to confirm',input),remove,button('Keep Trips',()=>confirmation.remove()));box.append(confirmation);input.focus();}));
 }
-function cancelRequests(){version++;controller?.abort();controller=null;discoveryController?.abort();discoveryController=null;building=false;$('map-trip').disabled=false;}
+function cancelRequests(){version++;controller?.abort();controller=null;discoveryController?.abort();discoveryController=null;areaSearchController?.abort();areaSearchController=null;building=false;$('map-trip').disabled=false;}
 window.addEventListener('storage',event=>{if(event.key!==key)return;try{plans=event.newValue?readBackup(event.newValue):[];canPersist=true;savedList();}catch{canPersist=false;status('Another tab changed saved trips to unreadable data. Export the current draft before restoring a backup.');}});
 function load(plan){
   cancelRequests();state=emptyState();activeId=plan?.id||null;$('trip-title').value=plan?.title||'';$('trip-start').value=plan?.dates.start||'';$('trip-end').value=plan?.dates.end||'';$('trip-depart').value=plan?.planning.departure||'09:00';$('trip-detour').value=String(plan?.planning.detour??20);$('trip-legs').replaceChildren();
@@ -72,7 +72,7 @@ function load(plan){
   document.querySelector('.travel-advanced').open=!!plan&&!plan.journey;
   postcard=plan?.postcard||null;captionEdited=!!postcard&&postcard.caption!==plan.legs.at(-1).to.label;$('postcard-caption').value=postcard?.caption||'';if(plan)ensurePostcard(plan);paintPostcard();
   renderFamilies();renderItinerary();paintMap(true);headerState();resetDiscovery();$('fit-trip').disabled=!state.results.length;
-  if(state.family){$('anchor-form').hidden=false;$('journey-discovery-status').textContent='Saved activities are restored. Find Routes to refresh public place suggestions.';}
+  if(state.family){$('anchor-form').hidden=false;$('journey-discovery-status').textContent='Saved activities restored. Search a town or select Search the Route Again to refresh public suggestions.';}
   dirty=false;
 }
 // A typed place is not an approved coordinate. Confirm Nominatim candidates before
@@ -132,13 +132,20 @@ function renderFamilies(){
   const fastest=Math.min(...state.families.map(r=>r.minutes));
   for(const family of state.families){const card=el('article',null,'route-family');card.classList.toggle('is-selected',family.id===state.family?.id);card.append(el('h3',family.label),el('p',`${Math.round(Number(family.miles)).toLocaleString()} mi · ${durationLabel(family.minutes)} drive`,'route-figures'),el('p',family.minutes===fastest?'Fastest mapped route':`+${durationLabel(family.minutes-fastest)} vs fastest`),el('p',family.corridor?`Corridor: ${family.corridor}`:'Road corridor returned by OSRM'));
     const mix=el('p',family.mix||'Discover walks, treats, outdoor meals and scenic pauses.','route-mix');card.append(mix);
-    const choose=button(family.id===state.family?.id?'Route Selected':'Choose This Route',async()=>{if(building)return;if(state.stops.length&&!confirm('Switch routes and clear the selected along-route stops? Destination activities will be kept.'))return;cancelRequests();state.family=family;state.stops=[];state.legs=journeyLegs(state.origin,state.destination);state.results=[family];state.manual=false;dirty=true;renderFamilies();renderItinerary();paintMap(true);headerState();syncManual();stageTo('build-stage');await discoverJourney();});choose.setAttribute('aria-pressed',String(family.id===state.family?.id));card.append(choose);box.append(card);
+    const choose=button(family.id===state.family?.id?'Route Selected':'Compare This Route',async()=>{if(building||family.id===state.family?.id)return;if(state.stops.length&&!confirm('Switch routes and clear the selected along-route stops? Destination activities will be kept.'))return;cancelRequests();state.family=family;state.stops=[];state.legs=journeyLegs(state.origin,state.destination);state.results=[family];state.manual=false;dirty=true;renderFamilies();renderItinerary();paintMap(true);headerState();syncManual();status('Route highlighted on the map. Explore Stops on This Route to continue.');await discoverJourney();});choose.setAttribute('aria-pressed',String(family.id===state.family?.id));choose.disabled=family.id===state.family?.id;card.append(choose);box.append(card);
   }
 }
-function fitRoute(){if(!map)return;const bounds=wholeJourneyBounds(state.results.filter(Boolean),state.origin,state.destination);if(bounds){map.select(null);map.fit(bounds,{padding:matchMedia('(max-width:759.98px)').matches?36:60,maxZoom:12});}$('close-activity').hidden=true;}
+function fitRoute(){if(!map)return;const bounds=wholeJourneyBounds([...state.families.filter(Boolean),...state.results.filter(Boolean)],state.origin,state.destination);if(bounds){map.select(null);map.fit(bounds,{padding:matchMedia('(max-width:759.98px)').matches?36:60,maxZoom:12});}$('close-activity').hidden=true;}
 function journeyRoute(){return state.results.length>1?{...state.family,minutes:state.results.reduce((n,r)=>n+r.minutes,0),miles:String(state.results.reduce((n,r)=>n+Number(r.miles),0)),feature:{type:'Feature',properties:{mode:'drive'},geometry:{type:'LineString',coordinates:state.results.flatMap(r=>r.feature.geometry.coordinates)}}}:state.results[0]||state.family;}
 function paintMap(fit=false){
-  if(!map)return;map.setRoutes(state.results.filter(Boolean).map(r=>({...r.feature,properties:{...r.feature.properties,mode:r.feature.properties.mode||'drive'}})));
+  if(!map)return;
+  const alternatives=!state.manual&&state.family?state.families.filter(r=>r.id!==state.family.id).map(r=>({
+    ...r.feature,properties:{...r.feature.properties,mode:'drive',comparison:'alternative',routeLabel:r.label}
+  })):[];
+  const selected=state.results.filter(Boolean).map(r=>({
+    ...r.feature,properties:{...r.feature.properties,mode:r.feature.properties.mode||'drive',comparison:'selected'}
+  }));
+  map.setRoutes([...alternatives,...selected]);
   const markers=[];if(validPoint(state.origin))markers.push(pointFeature('origin',state.origin.label,state.origin));if(validPoint(state.destination))markers.push(pointFeature('destination',state.destination.label,state.destination));
   for(const stop of state.stops)markers.push(pointFeature(stop.id,stop.name,stop.location));
   for(const activity of state.destinationActivities)markers.push(pointFeature(activity.id,activity.name,activity.location,'register'));
@@ -217,7 +224,16 @@ $('journey-form').addEventListener('submit',async e=>{
   finally{clearTimeout(timer);if(current===version){controller=null;$('map-trip').disabled=false;}}
 });
 function resetDiscovery(){
-  $('route-activities').replaceChildren(el('p','Useful stops will appear around natural journey segments.'));$('destination-activities').replaceChildren(el('p','Explore the destination after choosing a route.'));$('overnight-opportunities').hidden=true;$('overnight-areas').replaceChildren();$('anchor-form').hidden=!state.family;$('journey-discovery-status').textContent='Choose a route to discover places for Rupert along the way.';
+  $('route-activities').replaceChildren(el('p','Useful stops will appear around natural journey segments.'));
+  $('destination-activities').replaceChildren(el('p','Explore the destination after choosing a route.'));
+  $('overnight-opportunities').hidden=true;$('overnight-areas').replaceChildren();
+  $('anchor-form').hidden=!state.family;
+  $('explore-route').disabled=!state.family;
+  $('retry-discovery').disabled=!state.family||!$('trip-routing').checked;
+  $('stop-search-form').hidden=!state.family;
+  $('stop-search-results').replaceChildren();
+  $('stop-search-status').textContent=state.family?'Search any town along your drive, or choose from the suggestions below.':'';
+  $('journey-discovery-status').textContent='Choose a route to discover places for Rupert along the way.';
 }
 function activityDetails(activity,zone,destination=false){
   const route=journeyRoute(),progress=routeProgress(activity.location,route),offset=distanceToRoute(activity.location,route.feature.geometry.coordinates),detourMiles=offset*2*1.35,detourMinutes=Math.ceil(detourMiles/35*60);
