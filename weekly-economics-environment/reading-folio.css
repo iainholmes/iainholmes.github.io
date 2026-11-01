@@ -69,14 +69,14 @@
 .synthesis .closing-heading{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;border-bottom:1px solid #6e8b94;padding-bottom:28px;margin-bottom:28px}
 .synthesis .eyebrow{font:500 12px/1.6 var(--sans);color:#e6c67a;max-width:none;letter-spacing:.1em}
 .synthesis h2{font:400 clamp(42px,5.1vw,70px)/1.04 var(--headline);letter-spacing:-.03em;color:#fff;margin:0;max-width:23ch;text-wrap:balance}
-.synthesis-argument{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px 48px}
+.synthesis-argument{display:flex;flex-direction:column;gap:24px;width:100%;max-width:1040px;margin:0 auto}
 .synthesis p{margin:0;font:400 18px/1.65 var(--serif);color:#dce6e8}
-.synthesis-argument>p:first-child{grid-column:1/-1;max-width:78ch;font-size:21px;line-height:1.55}
-.synthesis-argument>p:nth-child(2){font-size:24px;line-height:1.5;color:#fff}
+.synthesis-argument>p{max-width:none;font-size:20px;line-height:1.64}.synthesis-argument>p:first-child{font-size:21px;line-height:1.57;padding-bottom:24px;border-bottom:1px solid #6e8b94}
+.synthesis-argument>p:nth-child(2){color:#fff}
 .synthesis strong{font-weight:600;color:#f3dfae}
 .synthesis a{color:inherit;text-decoration-color:#e6c67a}
 .synthesis a:hover,.synthesis a:focus-visible{color:#f3dfae}
-.synthesis-conclusion{margin-top:30px;padding-top:24px;border-top:1px solid #6e8b94}
+.synthesis-conclusion{max-width:1040px;margin:30px auto 0;padding-top:24px;border-top:1px solid #6e8b94}
 .synthesis .closing{font:italic 400 25px/1.45 var(--serif);max-width:72ch;color:#f3dfae}
 
 /* Methods is a reference directory, with native details supported where authored. */
@@ -123,7 +123,7 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .research-note h3{font-size:28px;margin-bottom:0}
  .research-agenda p{font-size:17px}
  .synthesis,.knowledge{padding-inline:32px}
- .synthesis-argument{gap:24px 32px}
+ .synthesis-argument{gap:22px}
  .knowledge{gap:28px 32px}
  .knowledge h2{font-size:31px}
  .notebook-preview>a,.method-directory summary{font-size:23px}
@@ -148,9 +148,8 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .synthesis .closing-heading{gap:12px}
  .synthesis .eyebrow{max-width:none}
  .synthesis h2{font-size:clamp(36px,6vw,48px);max-width:23ch}
- .synthesis-argument{grid-template-columns:1fr;gap:22px}
- .synthesis-argument>p:first-child{font-size:19px}
- .synthesis-argument>p:nth-child(2){font-size:23px}
+ .synthesis-argument{gap:19px}
+ .synthesis-argument>p:first-child{font-size:19px;padding-bottom:19px}
  .synthesis p{font-size:17px}
  .synthesis .closing{font-size:22px}
  .knowledge{margin:0 -18px;padding:30px 24px 20px;grid-template-columns:1fr;gap:24px}
