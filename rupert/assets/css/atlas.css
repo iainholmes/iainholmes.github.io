@@ -1816,3 +1816,17 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
  .page-travel .town-results-head{align-items:start}
  .page-travel #return-town-results{width:100%}
 }
+
+/* Manual-place recovery remains tucked away until the user asks for it. */
+.page-travel .known-place-tools{margin:22px 0 0;padding:16px 0 0;border-top:1px solid #CFC7B8}
+.page-travel .known-place-tools summary{cursor:pointer;font-size:16px;line-height:1.4;color:#1D2A3A;font-weight:700}
+.page-travel .known-place-tools > p{max-width:700px;font-size:14px;line-height:1.5;color:#455664}
+.page-travel #known-place-form{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(160px,.8fr) auto;gap:12px;align-items:end}
+.page-travel #known-place-form label{font-size:14px;line-height:1.5;display:grid;gap:7px;font-weight:650;color:#1D2A3A}
+.page-travel #known-place-form input,.page-travel #known-place-form select{min-height:45px;width:100%;padding:9px 12px;border:1px solid #8F9A9E;background:#FFF;color:#1D2A3A;font:inherit}
+.page-travel #known-place-form button{min-height:45px;padding:8px 13px;background:#1D2A3A;color:#F3EFE5;border-color:#1D2A3A;white-space:normal}
+.page-travel #known-place-status{grid-column:1/-1;font-size:14px;line-height:1.5;color:#455664}
+@media(max-width:759.98px){
+ .page-travel #known-place-form{grid-template-columns:minmax(0,1fr)}
+ .page-travel #known-place-status{grid-column:1}
+}
