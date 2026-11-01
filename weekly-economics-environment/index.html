@@ -159,7 +159,7 @@ body.scrolled .tb-name{opacity:1}
 .figure .eyebrow,.funding .eyebrow{color:var(--ink);font-weight:600}
 .figure h4{margin:6px 0 2px;font:500 21px/1.3 var(--serif);color:var(--ink)}
 .figure-unit{margin:0 0 14px;font:400 12.5px/1.5 var(--sans);color:var(--muted)}
-.bar-row{display:grid;grid-template-columns:170px 1fr 44px;align-items:center;gap:12px;margin:12px 0;font:500 13px/1.3 var(--sans);color:var(--ink)}
+.bar-row{display:grid;grid-template-columns:170px minmax(0,1fr) minmax(44px,max-content);align-items:center;gap:12px;margin:12px 0;font:500 13px/1.3 var(--sans);color:var(--ink)}
 .bar-row small{display:block;font:400 11.5px/1.3 var(--sans);color:var(--muted);margin-top:2px}
 .bar-track{height:16px;border-left:1.5px solid var(--ink);background:repeating-linear-gradient(90deg,transparent 0 calc(25% - 1px),var(--hair) calc(25% - 1px) 25%)}
 .bar-track span{display:block;height:100%;background:var(--forest)}
@@ -265,7 +265,7 @@ label.eyebrow{display:block;margin-top:16px}
   .entry h2{font-size:29px}
   .prose{font-size:17px}
   .prose .finding{font-size:18.5px}
-  .bar-row{grid-template-columns:110px 1fr 38px;gap:8px;font-size:12px}
+  .bar-row{grid-template-columns:110px minmax(0,1fr) minmax(38px,max-content);gap:8px;font-size:12px}
   .axis{margin-left:118px;margin-right:46px}
   .synthesis{grid-template-columns:1fr;padding:26px 20px;margin-inline:-18px}
   .synthesis h2,.synthesis p{grid-column:1;grid-row:auto}
@@ -441,9 +441,9 @@ html[data-mode="night"] .pd-drawer{background:var(--paper-2)}
 .figure,.funding{background:var(--lichen-wash)!important;padding:16px 18px 14px!important;border-top:0!important;border-bottom:0!important;position:relative}
 .figure>.eyebrow:first-child,.funding>.eyebrow:first-child{display:block;padding-top:8px;background:repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 18px) left top/100% 5px no-repeat}
 .bar-track span{background:var(--spruce)}
-/* identification caveat extends into the margin as a clay plate */
-@media (min-width:1181px){.limitation{margin-left:-96px!important;padding-left:96px!important;position:relative}
-  .limitation::before{content:"Limits";position:absolute;left:18px;top:17px;font:600 10.5px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--clay);padding-top:8px;border-top:2px solid var(--clay);width:52px}}
+/* Evidence limits stay inside the article column, with their clay kicker. */
+@media (min-width:1181px){.limitation{position:relative}
+  .limitation::before{content:"Limits";display:block;margin-bottom:10px;font:600 12px/1.4 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--clay);padding-top:6px;border-top:2px solid var(--clay);width:fit-content}}
 /* research note: pollen notch */
 .research-note{position:relative}
 .research-note::before{content:"";position:absolute;left:-2px;top:-8px;width:10px;height:6px;background:var(--pollen)}
