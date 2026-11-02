@@ -11,12 +11,12 @@
 @media(min-width:821px){
  .contents-boundary{position:relative}
  .contents-boundary::after{
-  content:"";position:absolute;top:0;bottom:0;right:-25px;width:6px;
-  background:linear-gradient(to bottom,var(--clay) 0 76px,var(--river) 76px 100%);
+  content:"";position:absolute;top:0;bottom:0;right:-25px;width:4px;
+  background:linear-gradient(to bottom,var(--clay) 0 40px,var(--river) 40px 100%);
   pointer-events:none
  }
 }
-@media(min-width:821px) and (max-width:1180px){.contents-boundary::after{right:-18px;width:5px}}
+@media(min-width:821px) and (max-width:1180px){.contents-boundary::after{right:-18px;width:4px}}
 body.glance .contents-boundary::after{display:none}
 
 /* Chapter navigator: a numbered reading register, then the issue's apparatus. */
