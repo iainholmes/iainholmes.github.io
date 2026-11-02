@@ -73,7 +73,7 @@ function placeExhibit(s){
  const media=flow.children.slice(2);
  if(media.some(n=>!has(n,'figure')&&!has(n,'funding')))throw Error('Unsupported inline media placement '+article.id);
  const kind=exhibit.attrs.match(/data-exhibit-kind="([^"]+)"/)?.[1];
- if(!['ledger','cabinet','long'].includes(kind))throw Error('Missing exhibit type '+article.id);
+ if(!['ledger','test','decision','long'].includes(kind))throw Error('Missing exhibit type '+article.id);
  const finding=ns.find(n=>has(n,'finding'));
  if(!finding)throw Error('Missing published finding for exhibit '+article.id);
  // Re-render curated exhibit with its current layout and exact original lead.
@@ -89,23 +89,25 @@ function placeExhibit(s){
 /* Finish the settled chapter spread with fully explained exhibits and a
  * horizontal Why it matters treatment. Both are presentation-only; the
  * original authored paragraph and heading bytes stay untouched. */
+/* Fifth-stage editorial treatment restores normal Why-it-matters flow,
+ * swaps the source dossier for curated research/decision exhibits and reserves
+ * the horizontal post-reading treatment for the actual source apparatus. */
 function finishReading(s){
- if(s.includes('data-reading-finish="4"'))return s;
+ if(s.includes('data-reading-finish="5"'))return s;
  const ns=nodes(s),art=ns.find(n=>n.tag==='article'),ex=ns.find(n=>has(n,'reading-exhibit')),
-   finding=ns.find(n=>has(n,'finding')),opening=ns.find(n=>has(n,'reading-opening'));
- if(!art||!ex||!finding||!opening)throw Error('Incomplete finished reading '+(art?.id||'?'));
+   finding=ns.find(n=>has(n,'finding'));
+ if(!art||!ex||!finding)throw Error('Incomplete finished reading '+(art?.id||'?'));
  const newer=readingExhibits.render(art.id,{finding:inside(s,finding)});
  let result=s.slice(0,ex.start)+newer+s.slice(ex.end);
- // A local layout class replaces no editorial prose and never renames the
- // research / model / policy openings in the other four readings.
- const heading=opening.children.find(n=>n.tag==='section')?.children.find(n=>n.tag==='h3');
- if(heading&&inside(s,heading).replace(/<[^>]*>/g,'').trim().toLowerCase()==='why it matters'){
-  const needle='<div class="reading-opening">';
-  if(!result.includes(needle))throw Error('Missing Why it matters opening '+art.id);
-  result=result.replace(needle,'<div class="reading-opening reading-opening--why">');
+ const kind=readingExhibits.select(art.id).kind;
+ result=result.replace(/(<div class="feature-spread" data-feature=")[^"]+(")/,(_,a,b)=>a+kind+b);
+ result=result.replace(/class="reading-opening reading-opening--why"/g,'class="reading-opening"');
+ if(result.includes('data-reading-finish="4"')){
+  return result.replace('data-reading-finish="4"','data-reading-finish="5"');
  }
- return result.replace(/(<article class="entry"[^>]*)(>)/,(_,attrs,close)=>attrs+' data-reading-finish="4"'+close);
+ return result.replace(/(<article class="entry"[^>]*)(>)/,(_,attrs,close)=>attrs+' data-reading-finish="5"'+close);
 }
+
 function closing(s,type){
  if(s.includes('data-editorial-folio="1"'))return s;
  const ns=nodes(s),section=ns[0],children=section.children,eyebrow=children.find(n=>has(n,'eyebrow')),h=children.find(n=>n.tag==='h2');
