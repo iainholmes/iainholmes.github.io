@@ -1,4 +1,5 @@
 'use strict';
+const economicHinge=require('./economic-hinge.cjs');
 // Publication-time presentation only. Original text, links and figures are sliced
 // from the author's markup, never serialized or rewritten. No browser dependency.
 const voids=new Set('area base br col embed hr img input link meta param source track wbr'.split(' '));
@@ -31,6 +32,24 @@ function article(s){
   s.slice(head.start,head.open)+'<div class="reading-folio">'+raw(s,number)+'</div>'+(title.classes[0]?titleOpen:titleOpen.slice(0,-1)+' class="reading-title">')+inside(s,title)+'</div></header>'+
   '<div class="reading-deck">'+raw(s,lead)+'</div>'+s.slice(grid.start,grid.open)+s.slice(prose.start,prose.open)+analysis+'</div>'+newNote+'</div></article>';
 }
+/* A reading is a sequential analysis followed by an aligned evidence register.
+ * Original author-supplied HTML nodes are sliced exactly, not re-authored. */
+function readingLayout(s){
+ if(s.includes('data-reading-layout="2"'))return s;
+ const ns=nodes(s),a=ns.find(n=>n.tag==='article'),grid=ns.find(n=>has(n,'article-grid')),prose=ns.find(n=>has(n,'prose')),note=ns.find(n=>has(n,'research-note'));
+ if(!a||!grid||!prose||!note||grid.children.length!==2||!grid.children.includes(prose)||!grid.children.includes(note))throw Error('Unexpected reading grid: '+(a?.id||'?'));
+ const limit=prose.children.find(n=>has(n,'limitation')),sources=prose.children.find(n=>has(n,'sources'));
+ if(!limit||!sources||prose.children.indexOf(limit)>prose.children.indexOf(sources))throw Error('Missing limitation / sources: '+a.id);
+ const narrative=prose.children.filter(n=>n!==limit&&n!==sources).map(n=>raw(s,n)).join('');
+ const title=ns.find(n=>n.tag==='h2') ,finding=ns.find(n=>has(n,'finding')),analyses=ns.filter(n=>has(n,'analysis-block')),interpretation=analyses[1],limitP=limit.children.find(n=>n.tag==='p');
+ const material={title:title?inside(s,title):'',finding:finding?inside(s,finding):'',interpretation:interpretation?inside(s,interpretation):'',limitations:limitP?inside(s,limitP):''};
+ const lens=economicHinge.render(a.id,material);
+ const newGrid='<div class="article-grid"><div class="prose analysis-flow">'+narrative+'</div>'+lens+
+   '<div class="evidence-pair">'+raw(s,limit)+raw(s,note)+'</div>'+
+   '<div class="reading-sources">'+raw(s,sources)+'</div></div>';
+ const result=s.slice(0,grid.start)+newGrid+s.slice(grid.end);
+ return result.replace('<article class="entry"','<article class="entry" data-reading-layout="2"');
+}
 function closing(s,type){
  if(s.includes('data-editorial-folio="1"'))return s;
  const ns=nodes(s),section=ns[0],children=section.children,eyebrow=children.find(n=>has(n,'eyebrow')),h=children.find(n=>n.tag==='h2');
@@ -48,7 +67,7 @@ function closing(s,type){
  return s.slice(0,section.open-1)+' data-editorial-folio="1">'+content+'</section>';
 }
 function edition(s){
- s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,article);
+ s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>readingLayout(article(m)));
  // Only uncomposed sections are matched; composed colophons contain nested sections.
  for(const type of ['synthesis','knowledge','editorial-note'])s=s.replace(new RegExp('<section class="'+type+'"(?![^>]*data-editorial-folio)[^>]*>[\\s\\S]*?</section>','g'),m=>closing(m,type));
  const date=s.match(/data-edition="([^"]+)"/)?.[1];
@@ -74,13 +93,19 @@ function compose(source){
 // Scholarship comparison deliberately ignores presentation wrappers, while
 // retaining exact paragraph/heading/figure bytes and every original link/ID.
 function readingRecord(s){
- const ns=nodes(s);
+ // Compare the entire authored scholarship with the original historical record.
+ // The newly-authored interpretive lens is a separate, clearly attributed layer.
+ const clean=s.replace(/<div class="economic-hinge"[\s\S]*?<\/small><\/div>/g,'');
+ const ns=nodes(clean), blocks=ns.filter(n=>['h2','h3','p','figure'].includes(n.tag)).map(n=>raw(clean,n));
+ const meta=ns.filter(n=>has(n,'eyebrow')||has(n,'status')||has(n,'concepts')).map(n=>raw(clean,n));
  return {
-  text:s.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim(),
-  blocks:ns.filter(n=>['h2','h3','p','figure'].includes(n.tag)).map(n=>raw(s,n)),
-  links:ns.filter(n=>n.tag==='a').map(n=>raw(s,n)),
+  text:blocks.map(x=>x.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim()).join(' | '),
+  blocks,
+  meta,
+  links:ns.filter(n=>n.tag==='a').map(n=>raw(clean,n)),
   ids:ns.filter(n=>n.id).map(n=>[n.tag,n.id]),
-  folio:ns.filter(n=>has(n,'entry-number')).map(n=>raw(s,n)),
+  folio:ns.filter(n=>has(n,'entry-number')).map(n=>raw(clean,n))
  };
 }
-module.exports={compose,nodes,article,closing,readingRecord};
+
+module.exports={compose,nodes,article,closing,readingLayout,readingRecord};
