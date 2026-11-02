@@ -194,6 +194,15 @@ function selectedControl(activity,index,destination=false){
   const item=el('li',null,'selected-stop'),head=el('div');head.append(el('h3',activity.name),el('small',activity.overnight?'Overnight · next travel day':destination?'Destination activity':activity.defining?'Route-defining stop':'Route-adjacent activity'));item.append(head);
   if(!activity.overnight){const duration=el('select');for(const n of [15,20,30,40,45,60,90,120,180,activity.minutes].filter((x,i,all)=>all.indexOf(x)===i).sort((a,b)=>a-b)){const option=el('option',durationLabel(n));option.value=n;duration.append(option);}duration.value=activity.minutes;duration.addEventListener('change',()=>{activity.minutes=Number(duration.value);dirty=true;renderItinerary();});item.append(field('Activity duration',duration));}
   const items=destination?state.destinationActivities:state.stops,actions=el('div',null,'stop-actions');
+  actions.append(button('Show on Map',()=>{
+    if(!map){status('The map is currently unavailable; your selected stop remains in the itinerary.');return;}
+    // Both routed stops and destination activities already have map markers.
+    // Restore the real itinerary geometry before focusing the selected pin.
+    paintMap();
+    map.focus(activity.id);
+    $('close-activity').hidden=false;
+    showTravelMap();
+  }));
   const move=direction=>{if(building)return;const next=[...items],other=index+direction;if(other<0||other>=next.length)return;[next[index],next[other]]=[next[other],next[index]];if(destination){state.destinationActivities=next;dirty=true;renderItinerary();}else rebuild(next);};
   const earlier=button('Move Earlier',()=>move(-1)),later=button('Move Later',()=>move(1));earlier.disabled=index===0;later.disabled=index===items.length-1;
   actions.append(earlier,later,button('Remove',()=>{if(building)return;const next=items.filter((_,i)=>i!==index);if(destination){state.destinationActivities=next;dirty=true;renderItinerary();paintMap();}else rebuild(next);}));item.append(actions);return item;
@@ -253,7 +262,7 @@ async function rebuild(nextStops){
       const result=validateDrivingGeometry(await drivingRoute(leg.from,leg.to,{signal:abort.signal,via}),leg.from,leg.to);result.feature.properties.mode='drive';results.push(result);
     }
     if(current!==version)return;state.stops=nextStops;state.legs=legs;state.results=results;state.manual=false;dirty=true;renderItinerary();paintMap(true);syncManual();ensurePostcard(collect());status('Itinerary rebuilt. Save Trip to keep the new route and timing.');
-    $('journey-change-status').textContent='Route updated. The new stop and driving times are in your itinerary. Save Trip when ready.';
+    $('journey-change-status').textContent='Stop added to the map and driving route. New legs and arrival times are in your itinerary. Select Show on Map beside any planned stop to view it. Save Trip when ready.';
     updated=true;updateActivityButtons();stageTo('itinerary-stage');
   }catch(error){if(current===version){
     const message=error.name==='AbortError'?'Route rebuild timed out. Your previous itinerary is unchanged.':error.message+' Your previous itinerary is unchanged.';
