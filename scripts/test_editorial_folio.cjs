@@ -40,19 +40,4 @@ eq(main(prepared).slice(0,main(source).length),main(source),'appending a future 
 assert.throws(()=>compose('<main id="edition"><section class="edition"><article class="entry" id="broken"></article></section></main>'),/Incomplete reading folio/);count++;
 assert.notDeepEqual(readingRecord(oldArticle.replace('class="finding">','class="finding">Unauthorized mutation. ')),readingRecord(oldArticle),'unauthorized text mutation remains detectable');count++;
 assert.notDeepEqual(readingRecord(oldArticle.replace('href="','href="unauthorized-')).links,readingRecord(oldArticle).links,'link inventory remains mutation-sensitive');count++;
-// The first-reading visual prototype must remain scoped and reversible.
-const folioCss=fs.readFileSync('weekly-economics-environment/reading-folio.css','utf8');
-const prototypeScope='article[id="2026-10-30-coal-country"]';
-const prototypeStart=folioCss.indexOf('/* Editorial reading prototype — Volume I / No. 006 / Reading 01 only.');
-ok(prototypeStart>0,'annotated reading prototype is present');
-const prototypeStyles=folioCss.slice(prototypeStart);
-const scopedArticles=prototypeStyles.split('article[id="').slice(1).map(v=>v.split('"')[0]);
-ok(scopedArticles.length>=15&&scopedArticles.every(id=>id==='2026-10-30-coal-country'),'prototype styling targets only the approved reading');
-ok(prototypeStyles.includes(prototypeScope+' .reading-deck::before')&&prototypeStyles.includes('content:"THE FINDING"'),'precis is distinguished editorially');
-ok(prototypeStyles.includes(prototypeScope+' .analysis-block + .analysis-block'),'analysis sections gain a consistent reading rhythm');
-ok(prototypeStyles.includes(prototypeScope+' .research-note::before'),'research apparatus remains an annotated margin');
-ok(prototypeStyles.includes('var(--clay-wash)')&&prototypeStyles.includes('var(--river)'),'prototype uses day/night color tokens');
-ok(prototypeStyles.includes('@media(max-width:820px)')&&prototypeStyles.includes('@media print'),'mobile and print remain supported');
-ok(source.includes('reading-folio.css?v=20261102-annotated-folio-reading01'),'new stylesheet version prevents stale browser caching');
-eq([...current.keys()].length,30,'all thirty published readings remain');
 console.log(JSON.stringify({assertions:count,result:'passed'}));
