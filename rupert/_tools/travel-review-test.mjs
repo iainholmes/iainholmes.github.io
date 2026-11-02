@@ -323,7 +323,7 @@ test('All four Travel chapters share the accepted Step 03 heading size and font'
   assert.ok(css.includes('Shared four-chapter typography'));
   assert.ok(css.includes('font:400 clamp(41px,3.55vw,55px)/1.09 var(--f-editorial)'),
     'retain Step 03 accepted 41–55px heading and established Atlas editorial font');
-  assert.ok(css.includes('font:700 .34em/1.2 var(--f-text)'),
+  assert.ok(css.includes('font:700 .34em/1.2 var(--f-editorial)'),
     'consistent step-number treatments');
   assert.ok(css.includes('.page-travel #route-stage > .stage-head > .sec-h'),
     'Step 02 nested heading must use the same style');
@@ -331,7 +331,7 @@ test('All four Travel chapters share the accepted Step 03 heading size and font'
     'Step 04 supporting text needs proportional hierarchy');
   assert.ok(css.includes('.page-travel #plan-stage .journey-endpoints label'),
     'Step 01 field labels must be legible');
-  assert.ok(html.includes('atlas.css?v=20261101-four-stage-type01'),
+  assert.ok(html.includes('atlas.css?v=20261101-only-stage-title-velenor01'),
     'new stylesheet should not use stale cached URL');
 });
 
@@ -361,6 +361,83 @@ test('Only the four numbered Travel headings use the Atlas wordmark face',()=>{
     'fresh stylesheet URL');
   assert.ok(!boundary.includes('var(--f-secondary)'), 'no alternative heading face in the Travel override');
   assert.equal((css.match(/[{]/g)||[]).length,(css.match(/[}]/g)||[]).length);
+});
+
+
+await testAsync('Drive-section buttons remain live after town search and ignore stale overlapping results',async()=>{
+  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  const start=view.indexOf('async function discoverJourney(){');
+  const end=view.indexOf("$('explore-route').addEventListener",start);
+  assert.ok(start>=0&&end>start,'discovery function was not found');
+  assert.ok(view.includes('pauseAutomaticDiscovery?.();'),
+    'town lookup must pause background requests without disabling route buttons');
+  const segment=view.slice(start,end);
+  const elements=new Map(),requests=[];
+  const $=id=>{
+    if(!elements.has(id))elements.set(id,{
+      children:[],attributes:{},checked:true,value:id==='trip-detour'?'45':'',
+      replaceChildren(...items){this.children=items;},
+      append(...items){this.children.push(...items);},
+      setAttribute(key,value){this.attributes[key]=value;},
+      querySelectorAll(tag){return this.children.filter(item=>item.tag===tag);}
+    });
+    return elements.get(id);
+  };
+  const el=(tag,text,kind)=>({tag,text,kind});
+  const button=(text,onClick)=>({
+    tag:'button',text,click:onClick,attributes:{},
+    setAttribute(key,value){this.attributes[key]=value;}
+  });
+  const zones=[
+    {minute:115,point:{lat:1,lng:0}},
+    {minute:230,point:{lat:2,lng:0}},
+    {minute:345,point:{lat:3,lng:0}}
+  ];
+  const cachedDiscovery=(point,options)=>new Promise((resolve,reject)=>
+    requests.push({point,options,resolve,reject}));
+  const factory=new Function(String.fromCharCode(36),'state','journeyRoute','resetDiscovery',
+    'opportunityZones','overnightZones','el','activityCard','button',
+    'durationLabel','cachedDiscovery','activityDetails','AbortController','AbortSignal',
+    `let discoveryController=null,areaSearchController=null,pauseAutomaticDiscovery=null,version=0;
+      ${segment}
+      return {discoverJourney,getPause:()=>pauseAutomaticDiscovery};`);
+  const demo=factory($,{family:{label:'Example'},destination:{lat:9,lng:0}},
+    ()=>({}),()=>{},()=>zones,()=>[],el,
+    activity=>({tag:'article',name:activity.name}),
+    button,minute=>minute+' min',cachedDiscovery,
+    activity=>{activity.detourMinutes=15;activity.progress=.5;},
+    AbortController,AbortSignal);
+  const flush=async()=>{for(let i=0;i<5;i++)await Promise.resolve();};
+  const running=demo.discoverJourney();
+  await flush();
+  const choices=$('route-activities').children;
+  assert.equal(choices.length,3);
+  assert.equal(requests[0].point.lat,2,'one middle-zone automatic request starts');
+  choices[2].click();
+  await flush();
+  assert.equal(requests[1].point.lat,3,'clicking another area starts its search immediately');
+  assert.equal(requests[0].options.signal.aborted,true,'previous lookup is canceled');
+  assert.equal(choices[2].attributes['aria-pressed'],'true');
+  requests[1].resolve([{id:'new',name:'New area park',location:{lat:3,lng:0},minutes:40}]);
+  await flush();
+  assert.equal($('route-activity-results').children[0].name,'New area park');
+  requests[0].resolve([{id:'old',name:'Old area park',location:{lat:2,lng:0},minutes:40}]);
+  await flush();
+  assert.equal($('route-activity-results').children[0].name,'New area park',
+    'stale results must not replace the most recent selection');
+  demo.getPause()();
+  choices[0].click();
+  await flush();
+  assert.ok(requests.some(r=>r.point.lat===1),
+    'town lookup must not make the segment buttons nonresponsive');
+  const last=requests.find(r=>r.point.lat===1);
+  last.resolve([{id:'post-town',name:'Another area park',location:{lat:1,lng:0},minutes:40}]);
+  await flush();
+  assert.equal($('route-activity-results').children[0].name,'Another area park');
+  assert.equal($('route-activity-results').attributes['aria-busy'],'false');
+  const destination=requests.find(r=>r.point.lat===9);
+  if(destination)destination.resolve([]);
+  await running;
 });
 
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
