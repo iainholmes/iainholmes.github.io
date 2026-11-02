@@ -44,7 +44,7 @@ ok(!fragment.includes('FROM THE ANNEX'),'exhibit identified solely by its actual
   const guide=readingGuides[id];
   ok(!!guide&&guide.intro.length>120,'standalone contextual introduction '+id);
   ok(guide.read.length>80,'reader instructions supported by the article '+id);
-  ok(Array.isArray(guide.term)&&guide.term.every(x=>x.length>10),'key economic concept defined '+id);
+  ok(Array.isArray(guide.term)&&guide.term.length===2&&guide.term[0].length>=2&&guide.term[1].length>30,'key economic concept defined '+id);
   ok(fragment.includes('class="exhibit-primer"')&&fragment.includes('class="exhibit-concept"'),'guides visible without interaction '+id);
  }
  if(e.kind==='ledger'){
