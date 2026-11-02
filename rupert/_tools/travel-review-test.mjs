@@ -495,4 +495,48 @@ test('Route cards use the full Journey width, not an empty right-hand column',()
   assert.ok(html.includes('atlas.css?v=20261101-stable-journey-grid01'));
 });
 
+
+test('Added driving stops are rerouted, mapped and reachable from Itinerary',()=>{
+ const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+ const start=view.indexOf('async function rebuild(nextStops){');
+ const stop=view.indexOf("$('journey-form').addEventListener",start);
+ const code=view.slice(start,stop);
+ assert.ok(code.includes('journeyLegs(state.origin,state.destination,nextStops)'),
+   'inserting a stop must divide the planned drive into distinct legs');
+ assert.ok(code.includes('drivingRoute(leg.from,leg.to,'),
+   'each drive leg must be independently routed to the selected stop');
+ assert.ok(code.includes('state.stops=nextStops;state.legs=legs;state.results=results'),
+   'successful route must commit the new legs and stops together');
+ assert.ok(code.includes('paintMap(true)'),
+   'new route lines and markers must be redrawn');
+ assert.ok(code.includes('if(updated&&current===version&&state.stops===nextStops)await discoverJourney({preserveSection:true})'),
+   'discovery stays on the chosen window after route insertion');
+ const paint=view.slice(view.indexOf('function paintMap('),view.indexOf('function selectedControl('));
+ assert.ok(paint.includes('map.setRoutes([...alternatives,...selected])'));
+ assert.ok(paint.includes('for(const stop of state.stops)markers.push(pointFeature(stop.id,stop.name,stop.location))'));
+ assert.ok(paint.includes('map.setMarkers(markers)'));
+ const selected=view.slice(view.indexOf('function selectedControl('),view.indexOf('function updateTripContext('));
+ assert.ok(selected.includes("button('Show on Map',"));
+ assert.ok(selected.includes('paintMap();'));
+ assert.ok(selected.includes('map.focus(activity.id);'));
+ assert.ok(selected.includes('showTravelMap();'));
+});
+test('Show on Map and all step links scroll to their actual targets below the navigation',()=>{
+ const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+ const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
+ const start=view.indexOf('function travelNavigationOffset(){');
+ const end=view.indexOf("if('IntersectionObserver' in window)",start);
+ assert.ok(start>=0&&end>start,'targeted scroll helpers missing');
+ const fragment=view.slice(start,end);
+ assert.ok(fragment.includes("getComputedStyle(header).position==='fixed'"));
+ assert.ok(fragment.includes('target.getBoundingClientRect().top+window.scrollY-travelNavigationOffset()'));
+ assert.ok(fragment.includes('window.scrollTo({top,behavior:'));
+ assert.ok(fragment.includes("const surface=$('travel-map')?.closest('.trip-map')"));
+ assert.ok(fragment.includes('requestAnimationFrame(()=>scrollToTravelTarget(surface,{focus:true}))'));
+ assert.ok(view.includes("map.focus(activity.id);$('close-activity').hidden=false;showTravelMap();"));
+ assert.ok(fragment.includes("event.preventDefault();stageTo(a.hash.slice(1))"),
+   'stage links should use the same calculated scroll offset');
+ assert.ok(css.includes('#route-stage .trip-map{')&&css.includes('scroll-margin-top:calc(var(--bar-h)'));
+});
+
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
