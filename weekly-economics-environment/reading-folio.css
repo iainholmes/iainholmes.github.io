@@ -553,24 +553,7 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  content:"";position:absolute;left:0;bottom:-2px;width:16px;height:3px;
  background:var(--clay);pointer-events:none
 }
-/* 'Why it matters' becomes a horizontally oriented introduction only when
-   the author used precisely that heading. Other design headings are intact. */
-.entry[data-reading-finish="4"] .reading-opening--why{width:100%;max-width:none;margin:0 0 21px}
-.entry[data-reading-finish="4"] .reading-opening--why>.analysis-block{
- max-width:none;width:100%;display:grid;
- grid-template-columns:minmax(160px,.38fr) minmax(0,1.62fr);
- column-gap:clamp(22px,3vw,44px);align-items:start;
- margin:0;padding:10px 0 14px
-}
-.entry[data-reading-finish="4"] .reading-opening--why h3{
- grid-column:1;margin:0;font:400 clamp(24px,2.15vw,30px)/1.14 var(--headline)
-}
-.entry[data-reading-finish="4"] .reading-opening--why h3::before{
- background:none;border-top:2px solid var(--clay);width:34px;margin:0 0 12px
-}
-.entry[data-reading-finish="4"] .reading-opening--why p{
- grid-column:2;margin:0;max-width:65ch;font:400 17px/1.68 var(--serif)
-}
+/* Normal authored first-analysis sections remain stacked, as originally designed. */
 /* A coherent frame inside every two-column editorial spread: left and right
    are differentiated by a fine seam, not individual rectangular cards. */
 .entry[data-reading-finish="4"] .feature-spread{
@@ -707,20 +690,6 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  border-top:2px solid var(--river)
 }
 .reading-exhibit .longview-takeaway p{font-size:14.5px;line-height:1.53}
-@media(max-width:1100px){
- .entry[data-reading-finish="4"] .feature-spread .interpretive-essay,
- .entry[data-reading-finish="4"] .feature-spread[data-feature="cabinet"] .interpretive-essay{
-  border:0;border-bottom:1px solid var(--hair);
-  padding:0 0 16px;min-height:0
- }
- .entry[data-reading-finish="4"] .reading-opening--why>.analysis-block{grid-template-columns:minmax(135px,.4fr) minmax(0,1.6fr)}
-}
-@media(max-width:820px){
- .entry[data-reading-finish="4"] .reading-opening--why>.analysis-block{
-  grid-template-columns:minmax(0,1fr);gap:13px
- }
- .entry[data-reading-finish="4"] .reading-opening--why p{grid-column:1}
-}
 @media(max-width:620px){
  .reading-exhibit .exhibit-concept{grid-template-columns:1fr}
  .reading-exhibit .longview-point{padding-bottom:18px}
@@ -733,4 +702,254 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
   border:0;padding:0 0 10px
  }
  .reading-exhibit[data-exhibit-kind="ledger"]{background:none}
+}
+
+
+/* Reading finish V — substantial journal craft, not isolated hairlines.
+   Established page boundaries, typography and palette are unchanged. */
+.entry[data-reading-finish="5"]{
+ position:relative;isolation:isolate;
+ margin-top:34px;padding-top:68px;padding-bottom:54px;border-top:0;
+}
+.entry[data-reading-finish="5"]:first-child{margin-top:0}
+.entry[data-reading-finish="5"]::before{
+ content:"";position:absolute;top:0;left:0;right:0;height:6px;
+ background:linear-gradient(to right,var(--clay) 0 72px,var(--forest) 72px 94%,var(--sage) 94%);
+ box-shadow:0 4px 0 color-mix(in srgb,var(--forest) 15%,transparent);
+ pointer-events:none
+}
+.entry[data-reading-finish="5"]::after{
+ content:"";position:absolute;top:17px;right:0;width:46px;height:3px;
+ background:var(--clay);pointer-events:none
+}
+/* Restore the author's natural vertical Why-it-matters rhythm. */
+.entry[data-reading-finish="5"] .reading-opening{
+ width:100%;max-width:66ch;margin:0 0 24px
+}
+.entry[data-reading-finish="5"] .reading-opening>.analysis-block{
+ display:block;max-width:66ch;margin:0 0 19px;padding:0
+}
+.entry[data-reading-finish="5"] .reading-opening h3,
+.entry[data-reading-finish="5"] .reading-opening p{display:block;width:auto}
+.entry[data-reading-finish="5"] .reading-opening h3{margin:0 0 12px}
+.entry[data-reading-finish="5"] .reading-opening p{margin:0}
+/* Bolder folio framing: surround paired material with continuous 4px
+   structural rails, then use a 5px internal colored partition. */
+.entry[data-reading-finish="5"] .feature-spread{
+ position:relative;display:grid;grid-template-columns:minmax(0,.91fr) minmax(0,1.09fr);
+ grid-template-areas:"essay exhibit";gap:0;
+ padding:0!important;margin:0 0 29px!important;
+ border:3px solid var(--forest)!important;border-top:6px solid var(--forest)!important;
+ border-bottom:4px solid var(--forest)!important;
+ background:var(--paper);box-shadow:0 5px 0 color-mix(in srgb,var(--forest) 10%,transparent);
+}
+.entry[data-reading-finish="5"] .feature-spread::before{
+ content:"";position:absolute;top:-6px;left:0;width:77px;height:6px;
+ background:var(--clay);z-index:1;pointer-events:none
+}
+.entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
+ grid-area:essay;align-self:stretch;min-height:0;
+ padding:23px 23px 19px!important;margin:0!important;
+ border:0!important;border-right:5px solid var(--clay)!important;
+ background:color-mix(in srgb,var(--paper) 95%,var(--forest) 5%)
+}
+.entry[data-reading-finish="5"] .feature-spread .reading-exhibit{
+ grid-area:exhibit;align-self:stretch;min-width:0;
+ margin:0!important;padding:22px 23px 19px!important;
+ border:0!important;background:var(--paper)
+}
+/* Ledger: related figure in the interpretation panel and the incidence
+   register in the other panel. No huge second chart at the top of ledger. */
+.entry[data-reading-finish="5"] .feature-spread[data-feature="ledger"]{
+ grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr)
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="ledger"] .reading-exhibit{
+ background:linear-gradient(145deg,color-mix(in srgb,var(--paper) 89%,var(--clay) 11%),color-mix(in srgb,var(--paper) 97%,var(--river) 3%))
+}
+.entry[data-reading-finish="5"] .essay-graphic{
+ margin:22px 0 0;padding:13px 10px 9px;
+ border:2px solid var(--forest);border-top:5px solid var(--forest);
+ background:color-mix(in srgb,var(--paper) 87%,var(--river) 13%)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic{
+ margin:0;padding:0;border:0;background:none
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-head{display:grid;grid-template-columns:1fr;gap:3px}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-note{font-size:12px}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="ledger"] .exhibit-primer{
+ border-left:4px solid var(--river);padding-left:12px
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="ledger"] .ledger-line{
+ border-left-width:4px;padding:10px 7px 9px 12px
+}
+/* A distinct open research brief: Assumption Test. Substantial copper
+   field header and two real, unequal reasoning compartments. */
+.entry[data-reading-finish="5"] .feature-spread[data-feature="test"]{
+ grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="test"] .interpretive-essay{
+ border-right-color:var(--river)!important
+}
+.reading-exhibit[data-exhibit-kind="test"] .exhibit-head{
+ padding:0 0 15px;border-bottom:3px solid var(--river);margin-bottom:15px
+}
+.reading-exhibit .exhibit-introduction{
+ margin:0 0 18px;font:400 15px/1.55 var(--serif);color:var(--text)
+}
+.reading-exhibit .exhibit-field-label{
+ display:block;font:600 10px/1.45 var(--sans);letter-spacing:.08em;
+ text-transform:uppercase;color:var(--river)
+}
+.reading-exhibit .test-research-question{
+ padding:14px 15px;margin:0 0 16px;
+ background:color-mix(in srgb,var(--paper) 84%,var(--river) 16%);
+ border-left:5px solid var(--river)
+}
+.reading-exhibit .test-research-question p{
+ margin:6px 0 0;font:400 17px/1.43 var(--serif);color:var(--ink)
+}
+.reading-exhibit .test-challenge{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.reading-exhibit .test-challenge section{
+ min-width:0;padding:13px 12px;
+ background:color-mix(in srgb,var(--paper) 91%,var(--forest) 9%);
+ border-top:4px solid var(--forest)
+}
+.reading-exhibit .test-challenge section+section{border-top-color:var(--clay)}
+.reading-exhibit .test-challenge section+section .exhibit-field-label{color:var(--clay)}
+.reading-exhibit .test-challenge p{margin:7px 0 0;font:400 14px/1.52 var(--serif)}
+.reading-exhibit .test-scope{
+ margin:12px 0 0;padding-top:10px;border-top:2px solid var(--hair);
+ font:italic 12px/1.5 var(--serif);color:var(--muted)
+}
+/* Decision Margin: a genuinely horizontal policy comparison after its
+   interpretive essay. Full issue width prevents squeezed alternatives. */
+.entry[data-reading-finish="5"] .feature-spread[data-feature="decision"]{
+ grid-template-areas:"essay" "exhibit";grid-template-columns:minmax(0,1fr)
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="decision"] .interpretive-essay{
+ border-right:0!important;border-bottom:5px solid var(--clay)!important;padding:19px 24px 15px!important
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="decision"] .reading-exhibit{
+ padding:19px 24px 22px!important
+}
+.reading-exhibit[data-exhibit-kind="decision"] .exhibit-head{
+ display:grid;grid-template-columns:max-content minmax(0,1fr);
+ gap:18px;align-items:baseline
+}
+.reading-exhibit[data-exhibit-kind="decision"] .exhibit-heading{font-size:17px}
+.reading-exhibit .decision-question{
+ margin:14px 0 0;padding:11px 16px;border-left:5px solid var(--clay);
+ background:color-mix(in srgb,var(--paper) 89%,var(--clay) 11%);
+ font:italic 17px/1.5 var(--serif);color:var(--ink)
+}
+.reading-exhibit .decision-branches{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:14px;margin-top:17px
+}
+.reading-exhibit .decision-option{
+ position:relative;padding:18px 19px 16px;min-width:0;
+ border:2px solid var(--forest);border-top:6px solid var(--forest);
+ background:color-mix(in srgb,var(--paper) 92%,var(--forest) 8%)
+}
+.reading-exhibit .decision-option:nth-child(2){
+ border-color:var(--river);
+ background:color-mix(in srgb,var(--paper) 91%,var(--river) 9%)
+}
+.reading-exhibit .decision-index{display:block;color:var(--clay);font:400 21px/1 var(--headline)}
+.reading-exhibit .decision-option strong{display:block;margin:7px 0;font:400 21px/1.2 var(--headline)}
+.reading-exhibit .decision-option p{margin:0;font:400 15px/1.55 var(--serif)}
+.reading-exhibit .decision-criterion{
+ display:grid;grid-template-columns:110px minmax(0,1fr);gap:8px 14px;
+ border-top:3px solid var(--forest);margin:18px 0 0;padding:13px 0 0
+}
+.reading-exhibit .decision-criterion p{margin:0;font:400 15px/1.52 var(--serif)}
+.reading-exhibit .decision-criterion small{grid-column:2;font:italic 12px/1.4 var(--serif);color:var(--muted)}
+/* Long View remains detailed but becomes a horizontal illustrated chronology
+   after the essay, with a strong connecting rail rather than isolated points. */
+.entry[data-reading-finish="5"] .feature-spread[data-feature="long"]{
+ grid-template-areas:"essay" "exhibit";grid-template-columns:minmax(0,1fr)
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="long"] .interpretive-essay{
+ border-right:0!important;border-bottom:5px solid var(--river)!important;
+ padding:19px 24px 15px!important
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="long"] .reading-exhibit{padding:21px 24px 23px!important}
+.reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{
+ display:grid;grid-template-columns:repeat(var(--stage-cols,4),minmax(0,1fr));
+ gap:12px;margin:24px 0 14px;padding:19px 0 0;
+ border-left:0;border-top:4px solid var(--river)
+}
+.reading-exhibit[data-exhibit-kind="long"] .longview-point{
+ display:block;padding:8px 11px 13px!important;
+ border-left:3px solid var(--hair);min-width:0
+}
+.reading-exhibit[data-exhibit-kind="long"] .longview-point::before{
+ left:8px;top:-28px;width:11px;height:11px;border:3px solid var(--river)
+}
+.reading-exhibit[data-exhibit-kind="long"] .longview-index{display:block;margin:0 0 5px;color:var(--clay)}
+.reading-exhibit[data-exhibit-kind="long"] .longview-date{display:block;margin-bottom:6px}
+.reading-exhibit[data-exhibit-kind="long"] .longview-event{display:block;font-size:15px}
+.reading-exhibit[data-exhibit-kind="long"] .longview-status{display:block;margin-top:5px}
+.reading-exhibit[data-exhibit-kind="long"] .longview-explain{display:block;margin-top:10px}
+/* Horizontal source register = intentionally compact material beneath the
+   reading, not a forced side-by-side Why-it-matters paragraph. */
+.entry[data-reading-finish="5"] .reading-sources{
+ width:100%;max-width:none;margin:17px 0 0;padding:0;
+ border-top:4px solid var(--forest);border-bottom:1px solid var(--hair)
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources{
+ max-width:none!important;display:grid;
+ grid-template-columns:minmax(125px,.28fr) minmax(0,1.72fr);
+ gap:12px 18px;align-items:start;
+ margin:0;padding:11px 0 12px!important;border:0
+}
+.entry[data-reading-finish="5"] .reading-sources .eyebrow{
+ grid-column:1;grid-row:1;margin:2px 0 0;padding-left:12px;
+ border-left:4px solid var(--clay);line-height:1.4
+}
+.entry[data-reading-finish="5"] .reading-sources .sources a{
+ grid-column:2;margin:0;padding:3px 4px 3px 27px!important;
+ min-height:0!important;line-height:1.35;
+ font-size:13px;overflow-wrap:anywhere;border-bottom:1px solid color-mix(in srgb,var(--hair) 55%,transparent)
+}
+.entry[data-reading-finish="5"] .reading-sources .sources a:first-of-type{grid-row:1}
+.entry[data-reading-finish="5"] .reading-sources .sources a:last-of-type{border-bottom:0}
+/* Responsive: panels become stacked, but retain intentional thick shared
+   section borders instead of collapsing into detached faint hairlines. */
+@media(max-width:1180px){
+ .entry[data-reading-finish="5"] .feature-spread,
+ .entry[data-reading-finish="5"] .feature-spread[data-feature="ledger"],
+ .entry[data-reading-finish="5"] .feature-spread[data-feature="test"]{
+  grid-template-areas:"essay" "exhibit";grid-template-columns:minmax(0,1fr)
+ }
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
+  border-right:0!important;border-bottom:5px solid var(--clay)!important
+ }
+ .entry[data-reading-finish="5"] .feature-spread[data-feature="test"] .interpretive-essay{
+  border-bottom-color:var(--river)!important
+ }
+ .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:750px){
+ .reading-exhibit .test-challenge,.reading-exhibit .decision-branches{grid-template-columns:minmax(0,1fr)}
+ .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{grid-template-columns:minmax(0,1fr)}
+ .reading-exhibit[data-exhibit-kind="long"] .longview-point{padding-bottom:18px!important}
+ .entry[data-reading-finish="5"] .reading-sources>.sources{
+  grid-template-columns:minmax(0,1fr);gap:7px
+ }
+ .entry[data-reading-finish="5"] .reading-sources .eyebrow{grid-column:1;grid-row:auto}
+ .entry[data-reading-finish="5"] .reading-sources .sources a{grid-column:1!important;grid-row:auto!important}
+}
+@media(max-width:560px){
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay,
+ .entry[data-reading-finish="5"] .feature-spread .reading-exhibit{padding:16px 13px!important}
+ .reading-exhibit .decision-criterion{grid-template-columns:1fr}
+ .reading-exhibit .decision-criterion small{grid-column:1}
+ .reading-exhibit[data-exhibit-kind="decision"] .exhibit-head{grid-template-columns:1fr;gap:5px}
+}
+@media print{
+ .entry[data-reading-finish="5"] .feature-spread{display:block!important;box-shadow:none}
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay{border-right:0!important}
+ .entry[data-reading-finish="5"] .feature-spread .reading-exhibit{break-inside:avoid}
+ .entry[data-reading-finish="5"] .reading-sources>.sources{display:block}
 }
