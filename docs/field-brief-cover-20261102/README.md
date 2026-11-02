@@ -1,7 +1,9 @@
-# Field Brief cover selection — review, not release
+# Field Brief cover selection — review and approved issue 037 correction
+
+> **Correction status:** The version-6 “Robotics / adaptable capability” artwork was explicitly authorized to replace the issue 037 landing-page cover on November 2, 2026. The original frozen pin is retained as `original-published-pin.json`; the approved artwork source remains `proposal.svg`. The code and cover updates are separate from the original PR #39 review. See the follow-up PR for release/deployment status.
 
 Baseline: `2926414b6233f738795180b40a1475444b609467` (37 Field Brief editions).
-Neither the systemic correction nor the proposed November 2 cover is deployed.
+At the original review baseline, neither correction was deployed. The systemic correction has since been merged through PR #39. On November 2, the user explicitly authorized installing the prepared artwork for issue 037. The follow-up change applies it to the canonical Field Brief pin and Periodicals shelf while preserving the original in `original-published-pin.json`. Merge/deployment status is tracked by the follow-up PR, not assumed by this report.
 
 ## Findings
 
@@ -21,13 +23,13 @@ New models use version 6 and editorial policy 2. In addition to unchanged full-h
 
 The maximum of 96 expensive geometry reviews remains. Cheap treatment filtering happens first, so rejected caption/layout combinations do not consume that budget. Exhaustion stops clearly and requires another authored treatment. No duplicate fallback, approval gate, paid service, network dependency, schedule change or automation modification is introduced. Existing preparation validates before writing; the simulated failure test verifies the authored draft, all registries and hub remain byte-identical after failure. A blocked release is still possible with a finite vocabulary; uninterrupted future publication cannot be guaranteed indefinitely.
 
-## Proposed November 2 correction — separate approval
+## November 2 artwork correction — explicitly approved
 
 [Comparison](comparison.jpg): November 1 original, November 2 original, proposed November 2 correction.
 
 ![Published originals and uninstalled proposal](comparison.jpg)
 
-`proposal.json` records an uninstalled, versioned model and baseline provenance. `proposal.svg` is its rendering. They are **not canonical pins** and are never read by preparation. Published November 2 remains unchanged. The systemic correction can be released independently; replacing the published pin requires separate authorization and an explicit correction/provenance procedure.
+`proposal.json` records the approved versioned model and original baseline. `proposal.svg` now matches the corrected frozen pin in `personal-updates/issue-mark-archive.js` and the Periodicals landing-page fallback. The exact previously published pin is preserved in `original-published-pin.json`; Git history also retains it. The correction was explicitly authorized on November 2, 2026 and does not change any Field Brief story, number, publication timestamp, or historic unrelated artwork.
 
 Proposed caption: **Robotics / adaptable capability**. Normalized silhouette maximum against 36 earlier issues: 0.2880. Independent Sharp SVG rasterization against all 37 covers (144×144 palette-aware foreground masks): proposal/November 1 IoU 0.0990, proposal/November 2 0.0936; original adjacent-pair IoU 0.2547; maximum proposal/archive IoU 0.2643. These are complementary diagnostics, not a perceptual guarantee or newly relaxed production thresholds.
 
