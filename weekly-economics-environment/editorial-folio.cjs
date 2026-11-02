@@ -60,7 +60,15 @@ function edition(s){
   const as=[...links.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].map(m=>m[0]),readings=as.filter(a=>a.includes('<span>')),closingLinks=as.filter(a=>!a.includes('<span>'));
   if(noteId&&!closingLinks.some(a=>a.includes('#'+noteId+'"')))closingLinks.push('<a href="#'+noteId+'">Editorial &amp; source note</a>');
   return '<nav aria-label="Edition contents"><div class="chapter-readings" aria-label="Readings">'+readings.join('')+'</div><div class="chapter-closing" aria-label="Closing sections">'+closingLinks.join('')+'</div></nav>';
- });return s;
+ });
+ // A small edition register occupies the future editorial rail; no invented analysis.
+ const label=s.match(/<div class="eyebrow edition-label">([\s\S]*?)<\/div>/)?.[1];
+ if(label&&s.includes('<div class="reading-column">')){
+  const rail='<aside class="editorial-rail" aria-label="Edition record"><div class="rail-kicker">Edition record</div><p class="rail-edition">'+label+'</p><p class="rail-count">'+String((s.match(/<article class="entry"/g)||[]).length).padStart(2,'0')+'<span>readings</span></p></aside>';
+  if(s.includes('<aside class="editorial-rail"'))s=s.replace(/<aside class="editorial-rail"[\s\S]*?<\/aside>/,rail);
+  else s=s.replace('<div class="reading-column">',rail+'<div class="reading-column">');
+ }
+ return s;
 }
 function compose(source){
  const main=source.match(/(<main\b[^>]*id="edition"[^>]*>)([\s\S]*?)(<\/main>)/);if(!main)throw Error('Missing journal edition region');

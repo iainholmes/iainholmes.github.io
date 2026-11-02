@@ -6,6 +6,21 @@
 .edition-body>.synthesis,.edition-body>.knowledge,.edition-body>.editorial-note{grid-column:1/-1;min-width:0}
 @media(min-width:1181px){.edition-body{width:min(1462px,calc(100vw - 88px));margin-left:calc((100% - min(1462px,calc(100vw - 88px)))/2)}}
 
+/* Reserved editorial rail, populated only with existing edition metadata.
+   Two-column reading remains the default where a third track would crowd prose. */
+.editorial-rail{display:none}
+@media(min-width:1440px){
+ .edition-body{grid-template-columns:184px 112px minmax(0,1fr);column-gap:28px}
+ .editorial-rail{display:block;grid-column:2;grid-row:1;min-width:0;align-self:stretch;padding:46px 0 24px 18px;border-left:1px solid var(--river);border-top:3px double var(--clay)}
+ .reading-column{grid-column:3}
+ .rail-kicker{font:500 10px/1.5 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--river);margin-bottom:28px}
+ .rail-edition{margin:0;font:400 16px/1.5 var(--serif);color:var(--muted)}
+ .rail-edition .sep{display:block;height:12px;font-size:0}
+ .rail-count{margin:30px 0 0;padding-top:14px;border-top:3px double var(--hair);font:400 32px/1.1 var(--headline);color:var(--clay)}
+ .rail-count span{display:block;margin-top:6px;font:400 11px/1.5 var(--sans);letter-spacing:.06em;color:var(--muted)}
+}
+body.glance .editorial-rail{display:none}
+
 /* Chapter navigator: a numbered reading register, then the issue's apparatus. */
 .contents{position:sticky;top:70px;padding:48px 0 28px;border-top:1px solid var(--ink)}
 .contents>.eyebrow{font:400 25px/1.15 var(--headline);letter-spacing:0;text-transform:none;color:var(--ink)}
@@ -173,4 +188,4 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .notebook-preview>a{min-height:90px;font-size:27px;padding-top:36px}
  .editorial-note h2{font-size:30px}
 }
-@media print{.edition-body{display:block;width:auto;margin:0}.contents-boundary{display:none}.article-grid{grid-template-columns:1fr}.research-note{position:static}.synthesis{background:none;color:var(--ink)}.synthesis *{color:var(--ink)}.entry{break-inside:auto}}
+@media print{.edition-body{display:block;width:auto;margin:0}.contents-boundary,.editorial-rail{display:none}.article-grid{grid-template-columns:1fr}.research-note{position:static}.synthesis{background:none;color:var(--ink)}.synthesis *{color:var(--ink)}.entry{break-inside:auto}}
