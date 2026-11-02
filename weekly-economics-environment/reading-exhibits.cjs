@@ -482,3 +482,44 @@ const catalog={
     ]
   }
 };
+
+const names=Object.freeze({ledger:'The Incidence Ledger',cabinet:'The Evidence Cabinet',long:'The Long View'});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const plain=s=>String(s||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
+function specimen(source){
+ const prose=plain(source);
+ if(!prose)return '';
+ const first=prose.match(/^[\s\S]*?[.!?](?=\s|$)/);
+ return first?first[0]:prose;
+}
+function select(id){
+ const entry=catalog[id];
+ if(entry)return {...entry,id,curated:true};
+ // Safe future fallback: only repeat the direct published lead, never
+ // infer distributional outcomes or construct imaginary dated milestones.
+ return {kind:'cabinet',heading:'The published record',key:'The published finding is reproduced here for close examination.',limit:'This excerpt alone is not an independently identified causal claim.',id,curated:false};
+}
+function render(id,source={}){
+ const e=select(id),kind=e.kind;
+ const head='<header class="exhibit-head"><div class="exhibit-kicker">L&L · READING EXHIBIT</div><strong>'+esc(names[kind])+'</strong><span class="exhibit-heading">'+esc(e.heading)+'</span></header>';
+ let content='';
+ if(kind==='ledger'){
+   content='<div class="exhibit-ledger"><div class="ledger-headings" aria-hidden="true"><span>Affected party</span><span>Economic consequence</span><span>Evidence status</span></div>'+e.rows.map(([party,impact,status],i)=>'<div class="ledger-line"><div class="ledger-party"><span class="ledger-no">'+String(i+1).padStart(2,'0')+'</span>'+esc(party)+'</div><div class="ledger-effect">'+esc(impact)+'</div><div class="ledger-status">'+esc(status)+'</div></div>').join('')+'</div>';
+ }else if(kind==='cabinet'){
+   const excerpt=specimen(source.finding||source.title||'');
+   if(!excerpt)throw Error('Evidence Cabinet requires published source text: '+id);
+   content='<div class="exhibit-cabinet"><div class="cabinet-record"><div class="cabinet-label">A LINE FROM THE PUBLISHED READING</div><blockquote>'+esc(excerpt)+'</blockquote><div class="cabinet-provenance">Verbatim excerpt · linked sources follow the reading</div></div><div class="cabinet-reading"><div class="cabinet-label">READER’S KEY</div><div class="cabinet-note">'+esc(e.key)+'</div><div class="cabinet-label">WHAT THIS CANNOT ESTABLISH</div><div class="cabinet-note">'+esc(e.limit)+'</div></div></div>';
+ }else if(kind==='long'){
+   content='<ol class="exhibit-longview">'+e.points.map(([when,desc,status])=>'<li class="longview-point"><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span></li>').join('')+'</ol>';
+ }else throw Error('Unsupported exhibit kind '+kind);
+ const footer='<footer class="exhibit-footer"><span>'+esc(e.curated?'Reading-specific editorial interpretation':'Published source excerpt · further editorial annotation pending')+'</span><span>See the evidence limits and sources below</span></footer>';
+ return '<section class="reading-exhibit" data-exhibit-kind="'+kind+'" data-curated="'+e.curated+'" aria-label="'+esc(names[kind])+'">'+head+content+footer+'</section>';
+}
+function audit(ids){
+ const sequence=ids.map(id=>select(id).kind);
+ const frequency=sequence.reduce((acc,kind)=>(acc[kind]=(acc[kind]||0)+1,acc),{});
+ const longRuns=[];
+ for(let i=2;i<sequence.length;i++)if(sequence[i]===sequence[i-1]&&sequence[i]===sequence[i-2])longRuns.push({at:i,kind:sequence[i]});
+ return {sequence,frequency,longRuns};
+}
+module.exports={catalog,names,specimen,select,render,audit};
