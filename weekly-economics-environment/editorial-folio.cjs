@@ -60,6 +60,27 @@ function readingLayout(s){
  const result=s.slice(0,grid.start)+newGrid+s.slice(grid.end);
  return result.replace(/(<article class="entry"[^>]*)(>)/,(_,attrs,close)=>attrs+' data-reading-layout="2" data-reading-exhibit="1"'+close);
 }
+/* v3: compose a chapter as an opening analysis and an adjacent, subject-specific
+ * feature spread. Figures retain their authored order after both analysis
+ * sections. Evidence limitations and research notebook remain top aligned. */
+function placeExhibit(s){
+ if(s.includes('data-reading-stage="3"'))return s;
+ const ns=nodes(s),article=ns.find(n=>n.tag==='article'),flow=ns.find(n=>has(n,'analysis-flow')),
+   exhibit=ns.find(n=>has(n,'reading-exhibit'));
+ if(!article||!flow||!exhibit)throw Error('Cannot place reading exhibit '+(article?.id||'?'));
+ const sections=flow.children.filter(n=>has(n,'analysis-block'));
+ if(sections.length!==2||flow.children[0]!==sections[0]||flow.children[1]!==sections[1])throw Error('Unexpected analysis sequence '+article.id);
+ const media=flow.children.slice(2);
+ if(media.some(n=>!has(n,'figure')&&!has(n,'funding')))throw Error('Unsupported inline media placement '+article.id);
+ const kind=exhibit.attrs.match(/data-exhibit-kind="([^"]+)"/)?.[1];
+ if(!['ledger','cabinet','long'].includes(kind))throw Error('Missing exhibit type '+article.id);
+ const opener='<div class="reading-opening">'+raw(s,sections[0])+'</div>';
+ const spread='<div class="feature-spread" data-feature="'+kind+'"><div class="interpretive-essay">'+raw(s,sections[1])+'</div>'+raw(s,exhibit)+'</div>';
+ const figures=media.length?'<div class="reading-media">'+media.map(n=>raw(s,n)).join('')+'</div>':'';
+ const assembled=opener+spread+figures;
+ const result=s.slice(0,flow.start)+assembled+s.slice(exhibit.end);
+ return result.replace(/(<article class="entry"[^>]*)(>)/,(_,attrs,close)=>attrs+' data-reading-stage="3"'+close);
+}
 function closing(s,type){
  if(s.includes('data-editorial-folio="1"'))return s;
  const ns=nodes(s),section=ns[0],children=section.children,eyebrow=children.find(n=>has(n,'eyebrow')),h=children.find(n=>n.tag==='h2');
@@ -77,7 +98,7 @@ function closing(s,type){
  return s.slice(0,section.open-1)+' data-editorial-folio="1">'+content+'</section>';
 }
 function edition(s){
- s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>readingLayout(article(m)));
+ s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>placeExhibit(readingLayout(article(m))));
  // Only uncomposed sections are matched; composed colophons contain nested sections.
  for(const type of ['synthesis','knowledge','editorial-note'])s=s.replace(new RegExp('<section class="'+type+'"(?![^>]*data-editorial-folio)[^>]*>[\\s\\S]*?</section>','g'),m=>closing(m,type));
  const date=s.match(/data-edition="([^"]+)"/)?.[1];
@@ -118,4 +139,4 @@ function readingRecord(s){
  };
 }
 
-module.exports={compose,nodes,article,closing,readingLayout,readingRecord};
+module.exports={compose,nodes,article,closing,readingLayout,placeExhibit,readingRecord};
