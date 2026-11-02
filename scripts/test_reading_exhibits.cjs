@@ -116,7 +116,9 @@ ok(!fallback.includes('Affected party'),'future edition does not invent incidenc
 ok(!page.includes('The Source Dossier'),'deprecated Dossier not present in the journal');
 ok(!fallback.includes('exhibit-longview'),'future edition does not invent dates');
 eq(compose(page),page,'publication preparation idempotent');
-ok(css.includes('.exhibit-ledger')&&css.includes('.exhibit-cabinet')&&css.includes('.exhibit-longview'),'three distinct physical treatments');
+ok(css.includes('.exhibit-ledger')&&css.includes('.test-challenge')&&css.includes('.decision-branches')&&css.includes('.exhibit-longview'),'four live editorial treatments with no Dossier dependency');
+ok(css.includes('grid-template-columns:25px minmax(0,1fr)'),'narrow surplus figures use readable three-row layout');
+ok(css.includes('grid-template-columns:minmax(112px,.23fr)'),'source register keeps horizontal desktop arrangement');
 ok(css.includes('.evidence-pair>.margin'),'Heron can wrap Research Notebook in aligned evidence section');
 ok(css.includes('pointer-events:none'),'decorative frames do not intercept controls');
 console.log(checks+' article-specific exhibit selection, source integrity and rendering checks passed.');
