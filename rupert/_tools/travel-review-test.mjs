@@ -337,7 +337,7 @@ test('All four Travel chapters share the accepted Step 03 heading size and font'
     'new stylesheet should not use stale cached URL');
 });
 
-test('Only the four numbered Travel headings use the Atlas wordmark face',()=>{
+test('Travel page title and four numbered headings use the Atlas title face',()=>{
   const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
   const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
   assert.ok(css.includes('--f-editorial: "VELENOR"'));
@@ -346,13 +346,14 @@ test('Only the four numbered Travel headings use the Atlas wordmark face',()=>{
     'preserve the approved size of all four chapter titles');
   const boundary=css.slice(css.indexOf('Exact Travel typography rule, 2026-11-01'));
   assert.ok(boundary.includes('.page-travel .travel :is(h1,h2,h3,h4,h5,h6'),
-    'every other Travel heading, including the page title, uses original Latin Modern Roman');
+    'ordinary Travel headings use original Latin Modern Roman');
   assert.ok(boundary.includes('font-family:var(--f-text)'), 'use the original text family');
   assert.ok(boundary.includes(':is(#plan-h,#route-h,#build-h,#itinerary-h)'),
-    'only these four headings are exceptions');
+    'the four chapter headings retain their title-face exceptions');
   assert.ok(boundary.includes(':is(#plan-h,#route-h,#build-h,#itinerary-h) > span'),
     'the step numerals must also use the title face');
   assert.ok(boundary.includes('font-family:var(--f-editorial)'), 'the numbered headings use VELENOR');
+  assert.ok(boundary.includes('.page-travel .travel .page-head h1,'), 'Travel page title retains the shared Atlas face');
   for(const id of ['plan-h','route-h','build-h','itinerary-h'])
     assert.ok(html.includes('id="'+id+'"'),id+' missing');
   assert.ok(css.includes('font:400 clamp(29px,2.4vw,37px)/1.2 var(--f-text)'),

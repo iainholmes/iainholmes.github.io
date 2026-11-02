@@ -1963,9 +1963,9 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 
 
 /* Exact Travel typography rule, 2026-11-01.
-   VELENOR is reserved for the site's separate brand and the four numbered
-   Travel step titles, INCLUDING their numerals. Every other Travel word uses
-   the original Latin Modern Roman text family. Do not alter other Atlas pages. */
+   The page title retains the shared Atlas face. The four numbered Travel
+   step titles, INCLUDING their numerals, also use VELENOR. All other Travel
+   text uses Latin Modern Roman. Do not alter other Atlas pages. */
 .page-travel .travel{
   font-family:var(--f-text);
 }
@@ -1975,6 +1975,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel .travel .head-note :is(.lbl,.banner-copy,div){
   font-family:var(--f-text);
 }
+.page-travel .travel .page-head h1,
 .page-travel .travel :is(#plan-h,#route-h,#build-h,#itinerary-h),
 .page-travel .travel :is(#plan-h,#route-h,#build-h,#itinerary-h) > span{
   font-family:var(--f-editorial);
