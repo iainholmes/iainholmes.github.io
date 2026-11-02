@@ -33,8 +33,10 @@ test('Duplicate route families are removed',()=>{
 });
 test('Discovery offers representative segments, not dozens of mandatory breaks',()=>{
   const zones=opportunityZones(route(chapelHill,newOrleans,3200,2600));
-  assert.ok(zones.length>0 && zones.length<=6);
-  assert.ok(zones.every(z=>z.progress>0&&z.progress<1));
+  assert.equal(zones.length,3,'continental trips should need only three representative regions');
+  assert.ok(zones.every(z=>z.progress>0&&z.progress<1&&z.regionEnd>z.regionStart));
+  assert.equal(opportunityZones(route(chapelHill,newOrleans,180,220)).length,1);
+  assert.equal(opportunityZones(route(chapelHill,newOrleans,480,420)).length,2);
 });
 test('Full-route bounds retain both endpoints',()=>{
   const b=wholeJourneyBounds([route(chapelHill,newOrleans,840,840)],chapelHill,newOrleans);
@@ -161,7 +163,7 @@ test('Travel highlights the current corridor and clearly labels search as non-de
   assert.ok(html.includes('Currently editing'));
   assert.ok(html.includes('Searching never changes your trip'));
   assert.ok(html.includes('Change the driving route via a town'));
-  assert.ok(html.includes('Browse an area of your selected route'));
+  assert.ok(html.includes('The Atlas looks across your entire route automatically'));
 });
 
 
@@ -364,15 +366,14 @@ test('Only the four numbered Travel headings use the Atlas wordmark face',()=>{
 });
 
 
-await testAsync('Drive-section buttons remain live after town search and ignore stale overlapping results',async()=>{
-  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
-  const start=view.indexOf('async function discoverJourney(){');
-  const end=view.indexOf("$('explore-route').addEventListener",start);
-  assert.ok(start>=0&&end>start,'discovery function was not found');
-  assert.ok(view.includes('pauseAutomaticDiscovery?.();'),
-    'town lookup must pause background requests without disabling route buttons');
-  const segment=view.slice(start,end);
-  const elements=new Map(),requests=[];
+await testAsync('Route discovery searches all broad regions progressively without overwriting a selected region',async()=>{
+  const source=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  const start=source.indexOf('async function discoverJourney(');
+  const end=source.indexOf("$('explore-route').addEventListener",start);
+  assert.ok(start>=0&&end>start);
+  assert.ok(!source.includes('pauseAutomaticDiscovery?.()'),
+    'a town search must never stop the route-wide discovery process');
+  const segment=source.slice(start,end),elements=new Map(),calls=[];
   const $=id=>{
     if(!elements.has(id))elements.set(id,{
       children:[],attributes:{},checked:true,value:id==='trip-detour'?'45':'',
@@ -384,77 +385,57 @@ await testAsync('Drive-section buttons remain live after town search and ignore 
     return elements.get(id);
   };
   const el=(tag,text,kind)=>({tag,text,kind});
-  const button=(text,onClick)=>({
-    tag:'button',text,click:onClick,attributes:{},
-    setAttribute(key,value){this.attributes[key]=value;}
-  });
+  const button=(text,click)=>({tag:'button',text,click,attributes:{},
+    setAttribute(k,v){this.attributes[k]=v;}});
   const zones=[
-    {minute:115,progress:.25,point:{lat:1,lng:0}},
-    {minute:230,progress:.50,point:{lat:2,lng:0}},
-    {minute:345,progress:.75,point:{lat:3,lng:0}}
+    {id:'segment-0',minute:180,progress:1/6,point:{lat:1,lng:0}},
+    {id:'segment-1',minute:540,progress:.5,point:{lat:2,lng:0}},
+    {id:'segment-2',minute:900,progress:5/6,point:{lat:3,lng:0}}
   ];
-  const cachedDiscovery=(point,options)=>new Promise((resolve,reject)=>
-    requests.push({point,options,resolve,reject}));
+  const cachedDiscovery=(point,options)=>new Promise((resolve,reject)=>calls.push({point,options,resolve,reject}));
   const factory=new Function(String.fromCharCode(36),'state','journeyRoute','resetDiscovery',
     'opportunityZones','overnightZones','el','activityCard','button',
     'durationLabel','cachedDiscovery','activityDetails','AbortController','AbortSignal',
-    `let discoveryController=null,areaSearchController=null,pauseAutomaticDiscovery=null,lastSelectedSectionProgress=null,version=0;
-      ${segment}
-      return {discoverJourney,getPause:()=>pauseAutomaticDiscovery};`);
-  const demo=factory($,{family:{label:'Example'},destination:{lat:9,lng:0}},
+    'let discoveryController=null,areaSearchController=null,lastSelectedSectionProgress=null,version=0;'+
+    segment+';return {discoverJourney};');
+  const demo=factory($,{family:{id:'route'},destination:{lat:9,lng:0}},
     ()=>({}),()=>{},()=>zones,()=>[],el,
-    activity=>({tag:'article',name:activity.name}),
-    button,minute=>minute+' min',cachedDiscovery,
-    activity=>{activity.detourMinutes=15;activity.progress=.5;},
+    a=>({tag:'article',name:a.name}),button,
+    minute=>Math.round(minute)+' min',cachedDiscovery,
+    lead=>{lead.detourMinutes=15;lead.progress=.5;},
     AbortController,AbortSignal);
-  const flush=async()=>{for(let i=0;i<5;i++)await Promise.resolve();};
-  const running=demo.discoverJourney();
+  const flush=async()=>{for(let i=0;i<9;i++)await Promise.resolve();};
+  await demo.discoverJourney();
   await flush();
-  const choices=$('route-activities').children;
-  assert.equal(choices.length,3);
-  assert.equal(requests[0].point.lat,2,'one middle-zone automatic request starts');
-  choices[2].click();
+  assert.equal($('route-activities').children.length,4,'All plus three regions');
+  assert.equal(calls.length,3,'two route lookups plus independent destination');
+  assert.deepEqual(calls.map(r=>r.point.lat),[1,2,9]);
+  assert.ok($('journey-discovery-status').textContent.includes('0 of 3 route regions searched'));
+  calls[0].resolve([{id:'trail',name:'Trailhead',category:'walk',location:{lat:1,lng:0}}]);
   await flush();
-  assert.equal(requests[1].point.lat,3,'clicking another area starts its search immediately');
-  assert.equal(requests[0].options.signal.aborted,true,'previous lookup is canceled');
-  assert.equal(choices[2].attributes['aria-pressed'],'true');
-  requests[1].resolve([{id:'new',name:'New area park',location:{lat:3,lng:0},minutes:40}]);
+  assert.equal($('route-activity-results').children[0].name,'Trailhead',
+    'first completed region should display immediately');
+  assert.ok(calls.some(r=>r.point.lat===3),'third region begins after one worker finishes');
+  calls[1].reject(Error('502'));
   await flush();
-  assert.equal($('route-activity-results').children[0].name,'New area park');
-  requests[0].resolve([{id:'old',name:'Old area park',location:{lat:2,lng:0},minutes:40}]);
+  assert.equal($('route-activity-results').children[0].name,'Trailhead',
+    'a failed region must not erase earlier successful discoveries');
+  assert.ok($('journey-discovery-status').textContent.includes('1 search unavailable'));
+  calls.find(r=>r.point.lat===3).resolve([
+    {id:'overlook',name:'Overlook',category:'picnic',location:{lat:3,lng:0}}
+  ]);
+  calls.find(r=>r.point.lat===9).resolve([]);
   await flush();
-  assert.equal($('route-activity-results').children[0].name,'New area park',
-    'stale results must not replace the most recent selection');
-  demo.getPause()();
-  choices[0].click();
-  await flush();
-  assert.ok(requests.some(r=>r.point.lat===1),
-    'town lookup must not make the segment buttons nonresponsive');
-  const last=requests.find(r=>r.point.lat===1);
-  last.resolve([{id:'post-town',name:'Another area park',location:{lat:1,lng:0},minutes:40}]);
-  await flush();
-  assert.equal($('route-activity-results').children[0].name,'Another area park');
-  assert.equal($('route-activity-results').attributes['aria-busy'],'false');
-  const destination=requests.find(r=>r.point.lat===9);
-  if(destination)destination.resolve([]);
-  await running;
-  // This mirrors adding a stop: a new journey geometry is constructed, and
-  // discovery must return to the selected section (lat=1), not the middle.
-  const rebuilt=demo.discoverJourney({preserveSection:true});
-  await flush();
-  const resumed=requests.at(-1);
-  assert.equal(resumed.point.lat,1,
-    'route rebuild must preserve the last selected relative drive window');
-  assert.equal(resumed.options.interactive,true,
-    'reopened selected window should favor immediate NPS leads');
-  resumed.resolve([{id:'preserved',name:'Preserved area',location:{lat:1,lng:0},minutes:30}]);
-  await flush();
-  assert.equal($('route-activity-results').children[0].name,'Preserved area');
-  const destinationAfterRebuild=requests.findLast(r=>r.point.lat===9);
-  if(destinationAfterRebuild&&destinationAfterRebuild!==destination)destinationAfterRebuild.resolve([]);
-  await rebuilt;
+  assert.equal($('route-activity-results').children.length,2,'multiple regions combine');
+  assert.ok($('journey-discovery-status').textContent.includes('3 of 3 route regions searched'));
+  const [,first,second,third]=$('route-activities').children;
+  third.click();await flush();
+  assert.equal(third.attributes['aria-pressed'],'true');
+  assert.equal($('route-activity-results').children[0].name,'Overlook');
+  $('route-activities').children[0].click();await flush();
+  assert.equal($('route-activity-results').children.length,2,'all discoveries returns to progressive collection');
+  assert.ok(calls.filter(r=>r.point.lat!==9).length<=3,'no redundant searches on ordinary region clicks');
 });
-
 
 await testAsync('Interactive POI search returns official mapped places without waiting for OSM',async()=>{
   const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
@@ -481,7 +462,7 @@ test('Activity card timing remains anchored to selected drive window after addin
     'a local stop must not jump to an overlapping later section of a rebuilt route');
   assert.ok(view.includes('discoverJourney({preserveSection:true})'),
     'route stop insertion should preserve the current window');
-  assert.ok(view.includes('AbortSignal.timeout(14000)'),
+  assert.ok(view.includes('AbortSignal.timeout(13500)'),
     'a slow public source should give explicit searches a bounded wait');
 });
 test('Route cards use the full Journey width, not an empty right-hand column',()=>{
@@ -537,6 +518,39 @@ test('Show on Map and all step links scroll to their actual targets below the na
  assert.ok(fragment.includes("event.preventDefault();stageTo(a.hash.slice(1))"),
    'stage links should use the same calculated scroll offset');
  assert.ok(css.includes('#route-stage .trip-map{')&&css.includes('scroll-margin-top:calc(var(--bar-h)'));
+});
+
+test('Original MapLibre map floats alongside Step 03 and returns to its original canvas',()=>{
+  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  const render=readFileSync(new URL('../assets/js/core/render.js',import.meta.url),'utf8');
+  const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+  const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
+  for(const id of ['travel-map-float-toggle','travel-map-float-close','travel-map-float-head']){
+    assert.ok(html.includes('id="'+id+'"'));
+    assert.ok(render.includes('id="'+id+'"'));
+  }
+  assert.ok(view.includes("const mapSurface=$('travel-map')?.closest('.trip-map')"));
+  assert.ok(view.includes("mapSurface.classList.toggle('is-floating',shouldOpen)"));
+  assert.ok(view.includes("mapPlaceholder.hidden=!shouldOpen"));
+  assert.ok(view.includes('map?.resize()'));
+  assert.ok(view.includes('window.innerWidth>=1120&&!mapFollowDismissed'));
+  assert.ok(view.includes("event.key==='Escape'&&mapFloatOpen"));
+  assert.ok(view.includes('if(id===\'route-stage\')floatMap(false)'),
+    'returning to route selection must restore the large original map');
+  assert.ok(css.includes('#route-stage .trip-map.is-floating'));
+  assert.ok(css.includes('.travel.has-floating-map #build-stage'));
+  assert.ok(css.includes('@media(max-width:1119.98px)'),
+    'mobile floating map must be explicitly optional and size constrained');
+});
+test('Route-wide automatic lookups are capped and keep explicit consent',()=>{
+  const source=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  assert.ok(source.includes('void Promise.all([worker(),worker()])'));
+  assert.ok(source.includes('radius:3500,interactive:manual,autoRoute:!manual'));
+  assert.ok(source.includes("if(!state.family||!$('trip-routing').checked)return;"));
+  assert.ok(source.includes('destinationState=\'done\''));
+  assert.ok(source.includes('resultBox.replaceChildren('));
+  assert.ok(source.includes('selectedRegion=\'all\''));
+  assert.ok(source.includes('discoveryCache.set(cacheKey,official);return official;'));
 });
 
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
