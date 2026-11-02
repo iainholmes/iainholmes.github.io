@@ -520,7 +520,8 @@ async function discoverJourney({preserveSection=false}={}){
   resetDiscovery();
   const zones=opportunityZones(journey),nights=overnightZones(journey);
   const routeBox=$('route-activities'),resultBox=$('route-activity-results'),destBox=$('destination-activities');
-  const records=new Map(),choices=new Map();
+  const records=new Map(),choices=new Map(),cardCache=new Map();
+  let renderedRegion=null;
   let selectedRegion=previousFocus!=null&&zones.length?
     zones.reduce((best,zone)=>Math.abs(zone.progress-previousFocus)<Math.abs(best.progress-previousFocus)?zone:best,zones[0]).id:
     'all';
@@ -589,16 +590,30 @@ async function discoverJourney({preserveSection=false}={}){
     if(!fresh())return;
     const entries=selectedRegion==='all'?collected():
       zones.filter(z=>z.id===selectedRegion).flatMap(z=>perRegion(z).map(activity=>({activity,zone:z})));
-    resultBox.replaceChildren(...(entries.length?entries.map(({activity,zone})=>activityCard({...activity},zone)):[
-      el('p',selectedRegion==='all'?
+    const cards=entries.map(({activity,zone})=>{
+      const key=(activity.id||activity.name)+'::'+zone.id;
+      if(!cardCache.has(key))cardCache.set(key,activityCard({...activity},zone));
+      return cardCache.get(key);
+    });
+    if(cards.length){
+      // Retain existing card DOM nodes as results arrive; avoid making the
+      // user's currently examined stop disappear during background searches.
+      const children=[...resultBox.children];
+      if(renderedRegion===selectedRegion&&children.length<=cards.length&&
+        children.every((node,i)=>node===cards[i])){
+        resultBox.append(...cards.slice(children.length));
+      }else resultBox.replaceChildren(...cards);
+    }else{
+      resultBox.replaceChildren(el('p',selectedRegion==='all'?
         (zones.length?[...records.values()].some(r=>r.status==='loading')||records.size<zones.length?
           'The Atlas is searching across the drive. Results appear as each region finishes.':
           'No suitable mapped route discoveries returned from these regions. Explore a town or retry.':
           'A short drive—explore places at your destination or near a town.'):
         records.get(selectedRegion)?.status==='loading'?'Searching this region for places Rupert might enjoy…':
         records.get(selectedRegion)?.status==='error'?'This region’s public sources could not respond. Try it again or explore a town.':
-        'No suitable suggestions in this region yet. Try another region or a nearby town.','discovery-message')
-    ]));
+        'No suitable suggestions in this region yet. Try another region or a nearby town.','discovery-message'));
+    }
+    renderedRegion=selectedRegion;
     const searching=[...records.values()].some(r=>r.status==='loading');
     resultBox.setAttribute('aria-busy',String(searching&&selectedRegion==='all'||
       selectedRegion!=='all'&&records.get(selectedRegion)?.status==='loading'));
