@@ -395,8 +395,7 @@ await testAsync('Drive-section buttons remain live after town search and ignore 
   ];
   const cachedDiscovery=(point,options)=>new Promise((resolve,reject)=>
     requests.push({point,options,resolve,reject}));
-  const factory=new Function('
-,'state','journeyRoute','resetDiscovery',
+  const factory=new Function(String.fromCharCode(36),'state','journeyRoute','resetDiscovery',
     'opportunityZones','overnightZones','el','activityCard','button',
     'durationLabel','cachedDiscovery','activityDetails','AbortController','AbortSignal',
     `let discoveryController=null,areaSearchController=null,pauseAutomaticDiscovery=null,version=0;
