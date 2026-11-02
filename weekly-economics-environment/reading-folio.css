@@ -953,3 +953,127 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .entry[data-reading-finish="5"] .feature-spread .reading-exhibit{break-inside:avoid}
  .entry[data-reading-finish="5"] .reading-sources>.sources{display:block}
 }
+
+
+/* L&L full-screen editorial finishing pass · 2026-11-02 */
+/* Desktop is the reference composition. Earlier accepted palette, spines,
+   typography and narrative contents remain unchanged. */
+.entry[data-reading-finish="5"]{
+ margin-top:16px;padding-top:52px;padding-bottom:28px
+}
+.entry[data-reading-finish="5"]::before{
+ height:9px;
+ background:linear-gradient(to right,var(--clay) 0 92px,var(--forest) 92px 96%,var(--sage) 96%);
+ box-shadow:0 3px 0 color-mix(in srgb,var(--forest) 18%,transparent)
+}
+.entry[data-reading-finish="5"]::after{
+ top:13px;left:0;right:0;width:auto;height:2px;
+ background:linear-gradient(to right,var(--clay) 0 92px,var(--forest) 92px 100%)
+}
+/* Restore the opening sections as conventional stacked prose, with a
+   comfortable but less cramped line measure in a full desktop reading. */
+.entry[data-reading-finish="5"] .reading-opening,
+.entry[data-reading-finish="5"] .reading-opening>.analysis-block{
+ width:100%;max-width:80ch
+}
+.entry[data-reading-finish="5"] .reading-opening{margin-bottom:22px}
+/* Substantial joint framing: continuous outer walls, one central seam,
+   differentiated fields. The 8px upper ribbon has a copper terminal. */
+.entry[data-reading-finish="5"] .feature-spread{
+ margin-bottom:23px!important;
+ border:4px solid var(--forest)!important;
+ border-top-width:8px!important;border-bottom-width:6px!important;
+ box-shadow:0 5px 0 color-mix(in srgb,var(--forest) 12%,transparent)
+}
+.entry[data-reading-finish="5"] .feature-spread::before{
+ top:-8px;width:96px;height:8px
+}
+.entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
+ border-right-width:7px!important;padding:23px 24px 20px!important
+}
+.entry[data-reading-finish="5"] .feature-spread .reading-exhibit{
+ padding:22px 24px 20px!important
+}
+.entry[data-reading-finish="5"] .essay-graphic{
+ margin-top:21px;padding:14px 13px 12px;
+ border:3px solid var(--forest);border-top-width:6px
+}
+/* Use stacked accounting rows in the narrow interpretation panel, retaining
+   the mathematical operators and full source labels. Prevent flex collision. */
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation{
+ display:grid;grid-template-columns:25px minmax(0,1fr);
+ gap:0 5px;align-items:baseline
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>div{
+ display:grid;grid-template-columns:minmax(76px,max-content) minmax(0,1fr);
+ gap:10px;align-items:baseline;min-width:0;
+ padding:8px 7px;border-bottom:1px solid var(--hair)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>div:first-child{grid-column:2;grid-row:1}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>.calc-sign:nth-child(2){grid-column:1;grid-row:2}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>div:nth-child(3){grid-column:2;grid-row:2}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>.calc-sign:nth-child(4){grid-column:1;grid-row:3}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>.calc-total{grid-column:2;grid-row:3;border-bottom:3px solid var(--clay)}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation b{
+ font-size:clamp(19px,1.85vw,25px);white-space:nowrap
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation small{font-size:11.5px;line-height:1.4}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation .calc-sign{
+ justify-self:center;color:var(--clay);font-size:23px
+}
+/* Evidence limits and Research Notebook: visibly connected paired sections. */
+.entry[data-reading-finish="5"] .evidence-pair{
+ border-top:5px solid var(--forest);padding-top:17px;margin-top:4px
+}
+.entry[data-reading-finish="5"] .evidence-pair::before{top:-5px;width:76px;height:5px}
+.entry[data-reading-finish="5"] .evidence-pair>.limitation{
+ border-left:5px solid var(--clay)!important;padding:9px 17px 4px!important
+}
+.entry[data-reading-finish="5"] .evidence-pair>.research-note,
+.entry[data-reading-finish="5"] .evidence-pair>.margin>.research-note{
+ border-left:5px solid var(--river)!important;padding:9px 17px 4px!important
+}
+/* Compact horizontal sources: their label sits beside the link register.
+   Link text, URLs and reading anchors remain unchanged. */
+.entry[data-reading-finish="5"] .reading-sources{
+ margin-top:12px;border-top:5px solid var(--forest);border-bottom:2px solid var(--hair)
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources{
+ grid-template-columns:minmax(112px,.23fr) minmax(0,1.77fr);
+ gap:0 17px;padding:8px 0 9px!important
+}
+.entry[data-reading-finish="5"] .reading-sources .eyebrow{margin-top:0}
+.entry[data-reading-finish="5"] .reading-sources .sources a{line-height:1.25}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="decision"] .interpretive-essay{
+ border-right:0!important;border-bottom:7px solid var(--clay)!important
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="long"] .interpretive-essay{
+ border-right:0!important;border-bottom:7px solid var(--river)!important
+}
+/* On narrow screens, keep generous tap targets and fully joined stacked frames. */
+@media(max-width:1180px){
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
+  border-right:0!important;border-bottom:7px solid var(--clay)!important
+ }
+ .entry[data-reading-finish="5"] .feature-spread[data-feature="test"] .interpretive-essay{
+  border-bottom-color:var(--river)!important
+ }
+}
+@media(max-width:750px){
+ .entry[data-reading-finish="5"] .reading-sources .sources a{
+  min-height:44px!important;padding-top:9px!important;padding-bottom:9px!important
+ }
+}
+@media(max-width:560px){
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay,
+ .entry[data-reading-finish="5"] .feature-spread .reading-exhibit{padding:16px 13px!important}
+ .entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>div{
+  grid-template-columns:minmax(0,1fr);gap:2px
+ }
+}
+@media print{
+ .entry[data-reading-finish="5"] .feature-spread{box-shadow:none!important}
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
+  border-right:0!important
+ }
+}
