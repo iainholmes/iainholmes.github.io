@@ -293,7 +293,7 @@ test('Step 03 typography scales using defined Atlas typefaces and remains mobile
   assert.ok(css.includes('--f-editorial:'));
   assert.ok(css.includes('--f-text:'));
   assert.ok(css.includes('font:400 clamp(41px,3.55vw,55px)/1.09 var(--f-editorial)'));
-  assert.ok(css.includes('font:400 clamp(27px,2.35vw,38px)/1.22 var(--f-editorial)'));
+  assert.ok(css.includes('font:400 clamp(27px,2.35vw,38px)/1.22 var(--f-text)'));
   assert.ok(css.includes('font:400 clamp(16px,1.2vw,19px)/1.5 var(--f-text)'));
   assert.ok(css.includes('.page-travel .discovery-intro{font-size:18px}'));
 });
@@ -333,7 +333,7 @@ test('All four Travel chapters share the accepted Step 03 heading size and font'
     'Step 04 supporting text needs proportional hierarchy');
   assert.ok(css.includes('.page-travel #plan-stage .journey-endpoints label'),
     'Step 01 field labels must be legible');
-  assert.ok(html.includes('atlas.css?v=20261101-only-stage-title-velenor01'),
+  assert.ok(html.includes('atlas.css?v=20261101-routewide-float01'),
     'new stylesheet should not use stale cached URL');
 });
 
@@ -359,7 +359,7 @@ test('Only the four numbered Travel headings use the Atlas wordmark face',()=>{
     'Trip Table uses Latin Modern Roman, not Dunhill or VELENOR');
   assert.ok(css.includes('font:400 clamp(17px,1.1vw,19px)/1.5 var(--f-text)'),
     'the itinerary introduction remains regular text');
-  assert.ok(css.includes('atlas.css') && html.includes('atlas.css?v=20261101-only-stage-title-velenor01'),
+  assert.ok(css.includes('atlas.css') && html.includes('atlas.css?v=20261101-routewide-float01'),
     'fresh stylesheet URL');
   assert.ok(!boundary.includes('var(--f-secondary)'), 'no alternative heading face in the Travel override');
   assert.equal((css.match(/[{]/g)||[]).length,(css.match(/[}]/g)||[]).length);
@@ -473,7 +473,7 @@ test('Route cards use the full Journey width, not an empty right-hand column',()
   assert.ok(css.includes('.page-travel #build-stage #route-activity-results{'));
   assert.ok(css.includes('grid-template-columns:repeat(auto-fit,minmax(min(100%,275px),1fr))'));
   assert.ok(css.includes('.page-travel #build-stage .destination-discovery{'));
-  assert.ok(html.includes('atlas.css?v=20261101-stable-journey-grid01'));
+  assert.ok(html.includes('atlas.css?v=20261101-routewide-float01'));
 });
 
 
