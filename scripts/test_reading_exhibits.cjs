@@ -2,7 +2,7 @@
 /* Execute from the repo root: node scripts/test_reading_exhibits.cjs */
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
-const {catalog,visualData,select,render,specimen,audit}=require('../weekly-economics-environment/reading-exhibits.cjs');
+const {catalog,visualData,readingGuides,select,render,specimen,audit}=require('../weekly-economics-environment/reading-exhibits.cjs');
 const {compose,nodes,readingRecord}=require('../weekly-economics-environment/editorial-folio.cjs');
 const page=fs.readFileSync('weekly-economics-environment/index.html','utf8');
 const css=fs.readFileSync('weekly-economics-environment/reading-folio.css','utf8');
@@ -30,6 +30,9 @@ for(const [id,reading] of articles){
  ok(body&&lim?.parent===body&&rn?.parent===body,'evidence/RN top-aligned structure '+id);
  ok(reading.includes('data-reading-exhibit="1"'),'future preparation stable '+id);
  ok(reading.includes('data-reading-stage="3"'),'third-stage article layout remains idempotent '+id);
+ok(reading.includes('data-reading-finish="4"'),'fourth-stage complete editorial layout '+id);
+ok(!fragment.includes('FROM THE ANNEX'),'exhibit identified solely by its actual name '+id);
+
  const spread=tree.find(x=>x.classes.includes('feature-spread'));
  const readingOpening=tree.find(x=>x.classes.includes('reading-opening'));
  const interpreted=tree.find(x=>x.classes.includes('interpretive-essay'));
@@ -37,6 +40,13 @@ for(const [id,reading] of articles){
  ok(spread&&readingOpening&&interpreted&&exhibit,'composed analytical spread '+id);
  ok(exhibit.parent===spread&&interpreted.parent===spread,'economic interpretation and exhibit paired '+id);
  ok(readingOpening.start<spread.start&&spread.start<body.start,'analytical narrative precedes lower evidence register '+id);
+ if(e.kind!=='cabinet'){
+  const guide=readingGuides[id];
+  ok(!!guide&&guide.intro.length>120,'standalone contextual introduction '+id);
+  ok(guide.read.length>80,'reader instructions supported by the article '+id);
+  ok(Array.isArray(guide.term)&&guide.term.every(x=>x.length>10),'key economic concept defined '+id);
+  ok(fragment.includes('class="exhibit-primer"')&&fragment.includes('class="exhibit-concept"'),'guides visible without interaction '+id);
+ }
  if(e.kind==='ledger'){
   ok(e.rows.length>=3,'ledger includes affected parties '+id);
   ok(e.rows.every(x=>x.length===3&&x.every(y=>y)),'ledger rows have consequence and evidence classification '+id);
@@ -45,6 +55,8 @@ for(const [id,reading] of articles){
   ok(fragment.includes('class="ledger-graphic"'),'ledger graph/model present '+id);
   ok(fragment.includes('data-visual-kind="'+visualData[id].type+'"'),'appropriate graphic type '+id);
   ok(fragment.includes(visualData[id].note),'graphic carries evidence/causal qualifier '+id);
+ok(fragment.includes('class="ledger-how-to-read"'),'model or calculation interpreted explicitly '+id);
+  ok(css.includes('.ledger-line:nth-of-type(3n+1)')&&css.includes('.ledger-line:nth-of-type(3n+2)'),'ledger row colors distinguish groups '+id);
  }else if(e.kind==='cabinet'){
   const quote=specimen(extracted);
   ok(quote.length>=15,'verbatim specimen from authored lead '+id);
@@ -56,9 +68,19 @@ for(const [id,reading] of articles){
   ok(e.points.every(x=>x.length===3&&x.every(y=>y)),'timeline distinguishes observation from projection '+id);
   ok(fragment.includes('longview-guide')&&fragment.includes('longview-takeaway'),'timeline explains sequence and its meaning '+id);
   ok((fragment.match(/class="longview-point"/g)||[]).length===e.points.length,'each timeline milestone rendered '+id);
+ok((fragment.match(/class="longview-explain"/g)||[]).length===e.points.length,'every milestone explained in novice-friendly prose '+id);
+  ok(readingGuides[id].steps.length===e.points.length&&readingGuides[id].steps.every(x=>x.length>=100),'all milestone explanations are substantive '+id);
  }
 }
 eq(totals,{ledger:11,cabinet:12,long:7},'balance across the published archive');
+eq(Object.keys(readingGuides).length,18,'all 11 Ledgers and 7 Long Views have learning guides');
+eq([...articles.values()].filter(a=>a.includes('class="reading-opening reading-opening--why"')).length,26,'only original Why-it-matters sections become horizontal');
+const headlineSample=articles.get('2026-10-30-coal-country');
+ok(headlineSample.includes('Research question and design'),'specialized first-section heading preserved');
+const guidedStages=Object.entries(catalog).filter(([,entry])=>entry.kind==='long').reduce((n,[id])=>n+readingGuides[id].steps.length,0);
+eq(guidedStages,23,'twenty-three timeline milestones receive separate explanatory text');
+ok(!page.includes('FROM THE ANNEX'),'no Annex kicker anywhere in the published review');
+
 eq(Object.keys(visualData).length,11,'all eleven ledgers contain a verified graph/model spec');
 const projected=visualData['2026-10-30-methane-rule'];
 eq(projected.terms.map(x=>x[1]),[2.5,'0.2–0.3','2.7–2.8'],'EPA reported subtotal and range, not invented net welfare');
