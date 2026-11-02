@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-five-reading-finishing';
+const currentKey='reading-folio.css?v=20261102-full-screen-finishing';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -69,10 +69,14 @@ ok(!source.includes('class="economic-hinge"'),'generic Economic Hinge is gone');
 ok(css.includes('.exhibit-ledger')&&css.includes('.test-challenge')&&css.includes('.decision-branches')&&css.includes('.exhibit-longview'),'four distinct rendering systems included');
 eq((source.match(/class="evidence-pair"/g)||[]).length,30,'all thirty have evidence register');
 
-ok(css.includes('height:6px')&&css.includes('padding-top:68px'),'substantial boundaries make chapter transitions visible');
-ok(css.includes('border:3px solid var(--forest)')&&css.includes('border-right:5px solid var(--clay)'),'paired spread framed by structural borders');
-ok(css.includes('.reading-sources>.sources')&&css.includes('grid-template-columns:minmax(125px,.28fr)'),'post-reading sources occupy a compact horizontal register');
+ok(css.includes('height:9px')&&css.includes('padding-top:52px'),'finished substantial chapter bands and condensed entry spacing');
+ok(css.includes('border:4px solid var(--forest)')&&css.includes('border-right-width:7px!important'),'paired spread has continuous structural frame and heavy internal seam');
+ok(css.includes('.reading-sources>.sources')&&css.includes('grid-template-columns:minmax(112px,.23fr)'),'post-reading sources occupy a tighter horizontal register');
 ok(css.includes('.essay-graphic'),'ledger source figure moved to interpretive panel');
+ok(css.includes('max-width:80ch'),'opening prose remains stacked but has a fuller desktop measure');
+ok(css.includes('grid-template-columns:25px minmax(0,1fr)'),'surplus calculation aligns terms as distinct readable rows');
+ok(css.includes('min-height:44px!important'),'compact source links retain mobile tap targets');
+ok(css.includes('.evidence-pair>.limitation')&&css.includes('border-left:5px solid var(--river)!important'),'evidence and notebook use stronger paired rails');
 eq((source.match(/class="essay-graphic"/g)||[]).length,11,'eleven economic figures paired with their interpretation');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
 console.log(checks+' single-divider reading layout checks passed.');
