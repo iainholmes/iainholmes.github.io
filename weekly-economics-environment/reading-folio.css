@@ -21,6 +21,23 @@
 @media(min-width:821px) and (max-width:1180px){.contents-boundary::after{right:-21px}}
 body.glance .contents-boundary::after{display:none}
 
+/* The reading sheet's single outer closing rule: one uninterrupted boundary
+   around all five readings, not a per-article border or third column.
+   Copper end caps recall the folio spine without competing with it. */
+@media(min-width:821px){
+ .reading-column{position:relative}
+ .reading-column::after{
+  content:"";position:absolute;top:0;bottom:0;right:-18px;width:18px;
+  pointer-events:none;
+  background:
+   linear-gradient(var(--clay),var(--clay)) right top/18px 2px no-repeat,
+   linear-gradient(var(--clay),var(--clay)) right bottom/18px 2px no-repeat,
+   linear-gradient(var(--forest),var(--forest)) right top/2px 100% no-repeat;
+ }
+}
+body.glance .reading-column::after{display:none}
+@media print{.reading-column::after{display:none}}
+
 /* Chapter navigator: a numbered reading register, then the issue's apparatus. */
 .contents{position:sticky;top:70px;padding:48px 0 28px;border-top:1px solid var(--ink)}
 .contents>.eyebrow{font:400 25px/1.15 var(--headline);letter-spacing:0;text-transform:none;color:var(--ink)}
