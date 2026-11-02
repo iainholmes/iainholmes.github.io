@@ -629,6 +629,15 @@ const visualData={
     "note": "Equivalent annual projections over 2027–2050, relative to the 2024-rule baseline. Extra emissions damages are not fully included: subtotal ≠ social welfare."
   }
 };
+const longViewTakeaways={
+  "electrification": "Observed share, competitive potential and a future scenario are different objects; they should not be read as points on one forecast line.",
+  "grid": "Project selection precedes commissioning. Projected network capability does not establish realized bill or reliability impacts.",
+  "2026-10-02-amoc": "The long-horizon welfare loss is a scenario-based model counterfactual, not observed climate damage.",
+  "2026-10-09-nuclear-finance": "Conditional financing, possible uprates and extended operation are distinct milestones, each contingent on the previous one.",
+  "2026-10-23-vehicle-mix": "The observed shift in quarterly sales cannot, by itself, identify the effect of the expired vehicle credit.",
+  "2026-10-23-emissions-gap": "Pathway requirements are not a forecast; the later temperature trajectory depends on abatement and carbon removal.",
+  "2026-10-30-solar-storage": "Reported co-location is already increasing, but later-year shares reflect proposed projects rather than completed additions."
+};
 const names=Object.freeze({ledger:'The Incidence Ledger',cabinet:'The Source Dossier',long:'The Long View'});
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const plain=s=>String(s||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
@@ -694,7 +703,12 @@ function render(id,source={}){
    if(!excerpt)throw Error('Evidence Cabinet requires published source text: '+id);
    content='<div class="exhibit-cabinet"><div class="cabinet-record"><div class="cabinet-label">THE CLAIM, IN ITS OWN WORDS</div><blockquote>'+esc(excerpt)+'</blockquote><div class="cabinet-provenance">Verbatim excerpt · linked sources follow the reading</div></div><div class="cabinet-reading"><div class="cabinet-label">WHAT THE SOURCE CONTRIBUTES</div><div class="cabinet-note">'+esc(e.key)+'</div><div class="cabinet-label">WHAT REMAINS UNRESOLVED</div><div class="cabinet-note">'+esc(e.limit)+'</div></div></div>';
  }else if(kind==='long'){
-   content='<ol class="exhibit-longview" style="--stops:'+e.points.length+'">'+e.points.map(([when,desc,status])=>'<li class="longview-point"><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span></li>').join('')+'</ol>';
+   const takeaway=longViewTakeaways[id];
+   if(!takeaway)throw Error('Missing curated Long View interpretation '+id);
+   content='<div class="longview-guide"><span>READ LEFT TO RIGHT IN TIME</span><span>Each stop identifies what is observed or conditional</span></div><ol class="exhibit-longview">'+e.points.map(([when,desc,status],i)=>{
+     const statusType=/historical|observation|reported|policy date/i.test(status)?'observed':'conditional';
+     return '<li class="longview-point" data-stage-class="'+statusType+'"><span class="longview-index">'+String(i+1).padStart(2,'0')+'</span><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span></li>';
+   }).join('')+'</ol><div class="longview-takeaway"><span>THE POINT</span><p>'+esc(takeaway)+'</p></div>';
  }else throw Error('Unsupported exhibit kind '+kind);
  const footer='<footer class="exhibit-footer"><span>'+esc(e.curated?'Reading-specific editorial interpretation':'Published source excerpt · further editorial annotation pending')+'</span><span>See the evidence limits and sources below</span></footer>';
  return '<section class="reading-exhibit" data-exhibit-kind="'+kind+'" data-curated="'+e.curated+'" aria-label="'+esc(names[kind])+'">'+head+content+footer+'</section>';
