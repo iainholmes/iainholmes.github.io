@@ -6,7 +6,7 @@ Baseline: `2926414b6233f738795180b40a1475444b609467`. Independent of the Field B
 
 At 1440px and above: existing 184px chapter sidebar | 112px editorial rail | main readings, separated by 28px grid gaps. The existing 1462px maximum canvas is unchanged; the opening, hero, overview, closing sections and global navigation retain their presentation.
 
-The rail contains only the existing volume/edition/date label and a derived reading count. No analysis, findings, new editorial claims or links are invented. It is static, with a hairline boundary and the journal's existing typography/tokens; there is no new sticky/floating behavior, scripting, dependency or font. Future substantive content can occupy this same grid track. Current research notes stay within the main reading column in their original position.
+The rail contains only the existing volume/edition/date label and a derived reading count. No analysis, findings, new editorial claims or links are invented. It is static, with a river-ink vertical boundary, a fine double copper head rule, and a double hairline above the reading count, using the journal's existing typography/tokens; there is no new sticky/floating behavior, scripting, dependency or font. Future substantive content can occupy this same grid track. Current research notes stay within the main reading column in their original position.
 
 Below 1440px the rail disappears and the established layout resumes. Existing tablet/phone and research-note breakpoints are untouched. Glance and print hide the rail. The publication-time composer derives the register for every edition and refreshes it idempotently when preparing future content.
 
