@@ -389,16 +389,16 @@ await testAsync('Drive-section buttons remain live after town search and ignore 
     setAttribute(key,value){this.attributes[key]=value;}
   });
   const zones=[
-    {minute:115,point:{lat:1,lng:0}},
-    {minute:230,point:{lat:2,lng:0}},
-    {minute:345,point:{lat:3,lng:0}}
+    {minute:115,progress:.25,point:{lat:1,lng:0}},
+    {minute:230,progress:.50,point:{lat:2,lng:0}},
+    {minute:345,progress:.75,point:{lat:3,lng:0}}
   ];
   const cachedDiscovery=(point,options)=>new Promise((resolve,reject)=>
     requests.push({point,options,resolve,reject}));
   const factory=new Function(String.fromCharCode(36),'state','journeyRoute','resetDiscovery',
     'opportunityZones','overnightZones','el','activityCard','button',
     'durationLabel','cachedDiscovery','activityDetails','AbortController','AbortSignal',
-    `let discoveryController=null,areaSearchController=null,pauseAutomaticDiscovery=null,version=0;
+    `let discoveryController=null,areaSearchController=null,pauseAutomaticDiscovery=null,lastSelectedSectionProgress=null,version=0;
       ${segment}
       return {discoverJourney,getPause:()=>pauseAutomaticDiscovery};`);
   const demo=factory($,{family:{label:'Example'},destination:{lat:9,lng:0}},
@@ -438,6 +438,105 @@ await testAsync('Drive-section buttons remain live after town search and ignore 
   const destination=requests.find(r=>r.point.lat===9);
   if(destination)destination.resolve([]);
   await running;
+  // This mirrors adding a stop: a new journey geometry is constructed, and
+  // discovery must return to the selected section (lat=1), not the middle.
+  const rebuilt=demo.discoverJourney({preserveSection:true});
+  await flush();
+  const resumed=requests.at(-1);
+  assert.equal(resumed.point.lat,1,
+    'route rebuild must preserve the last selected relative drive window');
+  assert.equal(resumed.options.interactive,true,
+    'reopened selected window should favor immediate NPS leads');
+  resumed.resolve([{id:'preserved',name:'Preserved area',location:{lat:1,lng:0},minutes:30}]);
+  await flush();
+  assert.equal($('route-activity-results').children[0].name,'Preserved area');
+  const destinationAfterRebuild=requests.findLast(r=>r.point.lat===9);
+  if(destinationAfterRebuild&&destinationAfterRebuild!==destination)destinationAfterRebuild.resolve([]);
+  await rebuilt;
+});
+
+
+await testAsync('Interactive POI search returns official mapped places without waiting for OSM',async()=>{
+  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  const start=view.indexOf('async function cachedDiscovery(');
+  const end=view.indexOf('async function discoverJourney(',start);
+  assert.ok(start>=0&&end>start);
+  let fallbackCalls=0,officialCalls=0;
+  const query=new Function('discoverNpsActivities','discoverActivities','discoveryCache',
+    view.slice(start,end)+';return cachedDiscovery;')(
+    async()=>{officialCalls++;return [{id:'nps-1',category:'walk',name:'Riverside trail'}];},
+    async()=>{fallbackCalls++;throw Error('OpenStreetMap timeout');},new Map());
+  const point={lat:35.90,lng:-79.05};
+  const found=await query(point,{interactive:true,radius:3500});
+  assert.equal(found[0].name,'Riverside trail');
+  assert.equal(officialCalls,1);
+  assert.equal(fallbackCalls,0,
+    'An explicit window selection should not wait for a broken secondary provider');
+});
+test('Activity card timing remains anchored to selected drive window after adding stops',()=>{
+  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+  const start=view.indexOf('function activityDetails('),end=view.indexOf('function selected(',start);
+  const functionText=view.slice(start,end);
+  assert.ok(functionText.includes('zone&&!destination?zone.progress:routeProgress('),
+    'a local stop must not jump to an overlapping later section of a rebuilt route');
+  assert.ok(view.includes('discoverJourney({preserveSection:true})'),
+    'route stop insertion should preserve the current window');
+  assert.ok(view.includes('AbortSignal.timeout(14000)'),
+    'a slow public source should give explicit searches a bounded wait');
+});
+test('Route cards use the full Journey width, not an empty right-hand column',()=>{
+  const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
+  const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
+  assert.ok(css.includes('.page-travel #build-stage .journey-discovery{'));
+  assert.ok(css.includes('grid-template-columns:minmax(0,1fr)'));
+  assert.ok(css.includes('.page-travel #build-stage #route-activity-results{'));
+  assert.ok(css.includes('grid-template-columns:repeat(auto-fit,minmax(min(100%,275px),1fr))'));
+  assert.ok(css.includes('.page-travel #build-stage .destination-discovery{'));
+  assert.ok(html.includes('atlas.css?v=20261101-stable-journey-grid01'));
+});
+
+
+test('Added driving stops are rerouted, mapped and reachable from Itinerary',()=>{
+ const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+ const start=view.indexOf('async function rebuild(nextStops){');
+ const stop=view.indexOf("$('journey-form').addEventListener",start);
+ const code=view.slice(start,stop);
+ assert.ok(code.includes('journeyLegs(state.origin,state.destination,nextStops)'),
+   'inserting a stop must divide the planned drive into distinct legs');
+ assert.ok(code.includes('drivingRoute(leg.from,leg.to,'),
+   'each drive leg must be independently routed to the selected stop');
+ assert.ok(code.includes('state.stops=nextStops;state.legs=legs;state.results=results'),
+   'successful route must commit the new legs and stops together');
+ assert.ok(code.includes('paintMap(true)'),
+   'new route lines and markers must be redrawn');
+ assert.ok(code.includes('if(updated&&current===version&&state.stops===nextStops)await discoverJourney({preserveSection:true})'),
+   'discovery stays on the chosen window after route insertion');
+ const paint=view.slice(view.indexOf('function paintMap('),view.indexOf('function selectedControl('));
+ assert.ok(paint.includes('map.setRoutes([...alternatives,...selected])'));
+ assert.ok(paint.includes('for(const stop of state.stops)markers.push(pointFeature(stop.id,stop.name,stop.location))'));
+ assert.ok(paint.includes('map.setMarkers(markers)'));
+ const selected=view.slice(view.indexOf('function selectedControl('),view.indexOf('function updateTripContext('));
+ assert.ok(selected.includes("button('Show on Map',"));
+ assert.ok(selected.includes('paintMap();'));
+ assert.ok(selected.includes('map.focus(activity.id);'));
+ assert.ok(selected.includes('showTravelMap();'));
+});
+test('Show on Map and all step links scroll to their actual targets below the navigation',()=>{
+ const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
+ const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
+ const start=view.indexOf('function travelNavigationOffset(){');
+ const end=view.indexOf("if('IntersectionObserver' in window)",start);
+ assert.ok(start>=0&&end>start,'targeted scroll helpers missing');
+ const fragment=view.slice(start,end);
+ assert.ok(fragment.includes("getComputedStyle(header).position==='fixed'"));
+ assert.ok(fragment.includes('target.getBoundingClientRect().top+window.scrollY-travelNavigationOffset()'));
+ assert.ok(fragment.includes('window.scrollTo({top,behavior:'));
+ assert.ok(fragment.includes("const surface=$('travel-map')?.closest('.trip-map')"));
+ assert.ok(fragment.includes('requestAnimationFrame(()=>scrollToTravelTarget(surface,{focus:true}))'));
+ assert.ok(view.includes("map.focus(activity.id);$('close-activity').hidden=false;showTravelMap();"));
+ assert.ok(fragment.includes("event.preventDefault();stageTo(a.hash.slice(1))"),
+   'stage links should use the same calculated scroll offset');
+ assert.ok(css.includes('#route-stage .trip-map{')&&css.includes('scroll-margin-top:calc(var(--bar-h)'));
 });
 
 console.log(`Travel review: ${tests} focused checks passed; no live provider requests were made.`);
