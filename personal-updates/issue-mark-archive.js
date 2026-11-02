@@ -1,4 +1,4 @@
-/* Published artwork is immutable. Append new editions; never overwrite an existing entry. */
+/* Published artwork is pinned. Append new editions; only explicit, provenance-preserved editorial corrections may replace an existing pin. */
 (function(root){var archive={
   "fb:2026-09-26": {
     "key": "fb",
