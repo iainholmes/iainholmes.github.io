@@ -238,70 +238,148 @@ const catalog={
     ]
   },
   "carbon-border": {
-    "kind": "cabinet",
-    "heading": "The procedural record",
-    "key": "Establishing a trade-dispute panel is not a ruling on the merits.",
-    "limit": "The announcement provides neither a legal verdict nor an emissions-effect estimate."
+    "kind": "decision",
+    "heading": "How should a border carbon charge be administered?",
+    "intro": "A carbon border adjustment attempts to limit incentives to move emissions-intensive production abroad. Designing it requires balancing emissions coverage, trade friction and the burden of documenting embedded emissions.",
+    "choice": "Regulators can prioritize breadth of coverage or simpler verifiable rules; the current WTO panel does not choose between them.",
+    "options": [
+      [
+        "Broad emissions accounting",
+        "More precise product-specific coverage could reduce circumvention, but increases verification burdens and disputes."
+      ],
+      [
+        "Simpler default benchmarks",
+        "Clear benchmarks may lower administrative costs, but could misclassify firms with unusually clean or dirty production."
+      ]
+    ],
+    "check": "Compare measured import emissions, exporter compliance costs, supplier switching and international legal outcomes—not merely the filing of a dispute panel.",
+    "note": "Illustrative administrative tradeoff, not a claim about an adopted EU reform."
   },
   "glyphosate": {
-    "kind": "cabinet",
-    "heading": "The memorandum versus the evidence",
-    "key": "The agreement coordinates evidence gathering without changing EPA registration authority.",
-    "limit": "It does not establish a new health effect or predetermine the review."
+    "kind": "decision",
+    "heading": "What should the next review measure?",
+    "intro": "The interagency memorandum organizes a regulatory evidence-gathering process. The most consequential choice is not simply whether to collect more studies, but which uncertainty new evidence is designed to resolve.",
+    "choice": "Prioritize different kinds of uncertainty before the next human-health assessment.",
+    "options": [
+      [
+        "Real-world exposure",
+        "Improve occupational and formulation-specific measurement; captures who encounters what, but requires careful field observation."
+      ],
+      [
+        "Comparative alternatives",
+        "Evaluate substitution into other herbicides and cultivation practices; reflects broader harms and costs, but involves more complex comparisons."
+      ]
+    ],
+    "check": "Ask whether the new evidence could change an actual regulatory decision once uncertainty, alternatives and delay are considered.",
+    "note": "Research priorities are examples, not new EPA mandates or established health findings."
   },
   "2026-10-02-green-spending": {
-    "kind": "cabinet",
-    "heading": "Behind the reported fiscal shock",
-    "key": "The authors construct residual-based environmental-expenditure shocks before estimating macro responses.",
-    "limit": "A cross-country short-run average is not the return on every green project."
+    "kind": "test",
+    "heading": "Does spending itself slow growth?",
+    "intro": "The paper finds a negative average short-run output response after econometrically constructed increases in environmental spending. The design is intended to separate unexpected policy changes from predictable fiscal choices, but that separation remains an identifying assumption.",
+    "premise": "Residual spending shocks should reflect unexpected environmental expenditure rather than other shocks that were already affecting growth.",
+    "stress": "Governments may increase or reclassify environmental spending during downturns, reconstruction, or changes in fiscal capacity. Those influences could enter both the shock measure and subsequent GDP growth.",
+    "observe": "Check pre-trends, alternative spending classifications, country-specific estimates and whether results change when construction capacity, imports, or macroeconomic conditions are controlled.",
+    "note": "Identification stress test — the average association is not a universal multiplier."
   },
   "2026-10-02-tax-bias": {
-    "kind": "cabinet",
-    "heading": "The hidden financing distortion",
-    "key": "The article studies debt deductibility and firm emissions intensity.",
-    "limit": "A modeled tax reform is not an observed economy-wide intervention."
+    "kind": "test",
+    "heading": "Is debt deductibility the operative channel?",
+    "intro": "A uniform corporate tax treatment can affect firms differently because leverage varies across industries. The paper combines empirical evidence with an equilibrium model that removes the debt tax advantage.",
+    "premise": "Differences in debt use and emissions intensity help identify a financing distortion rather than simply reflecting unrelated industry characteristics.",
+    "stress": "Capital intensity, regulation, risk, and access to credit can influence debt and emissions simultaneously. An economy-wide reform could also change prices and investment in ways the model must approximate.",
+    "observe": "Compare otherwise similar firms, alternative emissions measures, and model predictions for sectors with different debt dependence. Distinguish observed corporate responses from modeled aggregate emissions.",
+    "note": "Mechanism test — a model counterfactual is not an observed tax reform."
   },
   "2026-10-09-landslides": {
-    "kind": "cabinet",
-    "heading": "Following displaced people",
-    "key": "The researchers traced households displaced by six landslides rather than surveying only original locations.",
-    "limit": "The spatial comparison is informative but disaster exposure is not randomized."
+    "kind": "test",
+    "heading": "Are neighboring households a credible comparison?",
+    "intro": "A landslide damages households in a narrow physical path while nearby households on similar slopes may escape. The study uses detailed geography and follow-up surveys to make that local comparison informative.",
+    "premise": "Absent the disaster, households just inside and just outside the path would have followed similar economic trajectories.",
+    "stress": "Micro-geography, preexisting land values, household selection, and indirect disruption to nearby communities might differ systematically across the path boundary.",
+    "observe": "Inspect pre-event balance, alternative nearby comparison groups, spillover checks, selective migration and the stability of estimates with spatially correlated uncertainty.",
+    "note": "Spatial comparison provides evidence, but exposure was not randomly assigned."
   },
   "2026-10-09-climate-liability": {
-    "kind": "cabinet",
-    "heading": "The legal record and the economic conjecture",
-    "key": "Jurisdictional proceedings establish which court may consider the case.",
-    "limit": "Procedural developments alone do not measure climate damages or capital-market effects."
+    "kind": "decision",
+    "heading": "What changes with the Court's jurisdictional answer?",
+    "intro": "The pending case concerns whether state-law climate-damages claims may proceed, not whether the companies are liable for the alleged injuries. The legal forum determines which later economic questions can be litigated.",
+    "choice": "Two procedural possibilities have different implications for where claims can be heard.",
+    "options": [
+      [
+        "State-law claims may proceed",
+        "Plaintiffs could continue pursuing evidence on causation and damages; no liability or compensation is yet established."
+      ],
+      [
+        "Federal preemption prevails",
+        "This route could constrain state-law recovery and shift attention toward federal standards or political remedies."
+      ]
+    ],
+    "check": "Follow the holding, remand, later liability findings and eventual damages—not speculative market responses to oral argument.",
+    "note": "Contingent legal pathways; not a prediction of the Court's judgment."
   },
   "2026-10-16-targeted-power": {
-    "kind": "cabinet",
-    "heading": "The sample is not the exposed population",
-    "key": "The study uses stylized statistical-power calculations for narrowly exposed groups.",
-    "limit": "Such exercises are not empirical effects of the environmental policies they illustrate."
+    "kind": "test",
+    "heading": "Can the dataset detect the policy effect?",
+    "intro": "A policy can matter enormously to a small subgroup and still barely move population-level averages. The study asks whether common survey sizes and variances provide enough statistical power to detect effects.",
+    "premise": "A plausible first-stage change in the exposed subgroup must be large enough, after dilution, to register in the wider sample.",
+    "stress": "Narrowing the sample increases exposure concentration but discards observations. Geographic clustering, imperfect treatment assignment, and heterogeneous effects can lower effective power further.",
+    "observe": "Vary exposed-group prevalence, first-stage magnitude, outcome variance, significance level and effective sample size; examine minimum detectable effects before choosing a design.",
+    "note": "Power exercise, not an estimated causal effect of the policy."
   },
   "2026-10-16-ferc-review": {
-    "kind": "cabinet",
-    "heading": "Categorical authorization, conditional review",
-    "key": "The LNG proposal creates differentiated review tiers based on project characteristics.",
-    "limit": "The proposal does not supply measured permitting-time or emissions effects."
+    "kind": "decision",
+    "heading": "When should LNG work receive an individualized review?",
+    "intro": "FERC's proposal creates authorization tiers for LNG-facility work. The economic challenge is deciding which projects are sufficiently routine to receive standardized treatment and which risks require closer scrutiny.",
+    "choice": "The policy proposes different degrees of review intensity according to project attributes.",
+    "options": [
+      [
+        "Categorical authorization",
+        "Speeds repeatable low-change work within defined limits, but depends on thresholds that reliably capture material risks."
+      ],
+      [
+        "Prior notice and review",
+        "Allows review of more consequential capacity or facility changes, but adds delay and developer carrying costs."
+      ]
+    ],
+    "check": "Measure actual permitting delay, compliance cost, emissions, safety events and investment—not just proposed review deadlines.",
+    "note": "The three-tier proposal is not a final rule or an evaluated effect."
   },
   "2026-10-16-climate-vitals": {
-    "kind": "cabinet",
-    "heading": "From physical monitoring to economic evidence",
-    "key": "The report monitors physical climate indicators with differing frequencies.",
-    "limit": "A record extreme is not a causal policy estimate or monetized welfare effect."
+    "kind": "test",
+    "heading": "What does a record indicator actually prove?",
+    "intro": "The report tracks many climate-system indicators, some measured annually and others through provisional year-to-date data. A new record is important evidence about the physical system, but it has a narrower interpretation than a welfare or causal-policy estimate.",
+    "premise": "Comparable measurement definitions and sufficiently complete records must support a claim that an indicator reached a new extreme.",
+    "stress": "Short or revised series, year-to-date comparisons, correlated indicators, and varying reporting frequencies can overstate the significance of a simple count of records.",
+    "observe": "Compare common time windows, measurement revisions, uncertainty ranges and long-run trends. Assess regional exposure separately before translating global indicators into economic damages.",
+    "note": "Physical monitoring does not identify policy-caused changes in welfare."
   },
   "2026-10-30-household-climate": {
-    "kind": "cabinet",
-    "heading": "Inside the household-production model",
-    "key": "The model combines survey information and national energy-use data to examine equipment complementarities.",
-    "limit": "Its counterfactual subsidy results are model-dependent rather than experimentally identified."
+    "kind": "test",
+    "heading": "How much do modeled complements matter?",
+    "intro": "The calibrated household-production model links rooftop solar to other clean equipment. Its policy simulations suggest that excluding solar raises the cost of meeting a fixed emissions objective.",
+    "premise": "The model's substitution and complementarity patterns must approximate how real households would adopt technologies when subsidies change.",
+    "stress": "Stated environmental preferences may correlate with wealth, ownership, access to rooftops or unobserved motivations. Estimated complementarities can shift under different grid emissions, credit constraints or landlord-tenant arrangements.",
+    "observe": "Recompute the same 10% emissions-reduction target under alternative preferences and solar availability; compare out-of-sample adoption predictions with observed program responses.",
+    "note": "Calibration and subsidy counterfactuals are not randomized treatment effects."
   },
   "2026-10-30-moves6": {
-    "kind": "cabinet",
-    "heading": "A model revision is not an emissions change",
-    "key": "MOVES6 revises fleet activity, energy consumption assumptions and emission rates.",
-    "limit": "A changed modeled baseline is not itself a measured change in pollution."
+    "kind": "decision",
+    "heading": "How should planners adopt a revised emissions model?",
+    "intro": "A new model version can change whether a transport plan appears to satisfy an air-quality budget even before any road or vehicle changes. Adoption requires choices about the timing of new assumptions and the quality of local inputs.",
+    "choice": "Planners can manage both model-version transition and local input quality; these are complementary implementation margins.",
+    "options": [
+      [
+        "Use updated national defaults",
+        "Offers a standardized baseline and timely conformity work, but may poorly match a locality's vehicle fleet or travel patterns."
+      ],
+      [
+        "Strengthen local inputs",
+        "May improve the relevance of forecasts, but requires resources, consistent documentation and comparable assumptions."
+      ]
+    ],
+    "check": "Examine how results change under alternative fleet, travel and EV assumptions, while separating modeled changes from observed emissions.",
+    "note": "Implementation analysis; a model update is not itself an emissions effect."
   },
   "electrification": {
     "kind": "long",
@@ -435,10 +513,22 @@ const catalog={
     ]
   },
   "2026-10-23-adaptation-finance": {
-    "kind": "cabinet",
-    "heading": "A commitment is not a resilience outcome",
-    "key": "The EIB’s plan sets a financing commitment alongside project preparation and advisory support.",
-    "limit": "The announced amount is not completed investment, and avoided losses have not yet been measured."
+    "kind": "decision",
+    "heading": "What turns climate-finance commitments into protection?",
+    "intro": "The EIB has set a large adaptation-finance commitment. But more finance does not automatically translate into projects that reduce climate losses for vulnerable places.",
+    "choice": "Project pipelines need both affordable capital and credible risk appraisal; neither alone guarantees useful adaptation.",
+    "options": [
+      [
+        "Increase accessible capital",
+        "Loans and guarantees may accelerate projects, but face additionality and crowding-out questions."
+      ],
+      [
+        "Build bankable preparation",
+        "Risk data, engineering and advisory work can improve selection, but do not by themselves finance completed infrastructure."
+      ]
+    ],
+    "check": "Track completed investments, private finance mobilized net of displacement, and avoided disruption relative to credible no-project baselines.",
+    "note": "Complementary implementation margins, not mutually exclusive spending choices."
   },
   "2026-10-30-solar-storage": {
     "kind": "long",
