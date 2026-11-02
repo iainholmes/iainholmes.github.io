@@ -1,13 +1,37 @@
 'use strict';
-const fs=require('fs'),cp=require('child_process'),assert=require('node:assert/strict'),{compose,nodes}=require('../weekly-economics-environment/editorial-folio.cjs');
-const p='weekly-economics-environment/index.html',source=fs.readFileSync(p,'utf8'),baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+p],{encoding:'utf8',maxBuffer:4e6});let count=0;
-function eq(a,b,label){assert.deepEqual(a,b,label);count++}
-const rails=/<aside class="editorial-rail"[\s\S]*?<\/aside>/g;
-eq(source.replace(rails,'').replace('reading-folio.css?v=20261102-editorial-rail-border02','reading-folio.css?v=20261101-synthesis-flow'),baseline,'all original content, scripts, anchors, artwork and opening/closing markup unchanged');
-eq(compose(source),source,'repeated publication is byte-idempotent');
-const main=source.match(/<main[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)[1],ns=nodes(main);
-for(const ed of ns.filter(n=>n.classes.includes('edition'))){const s=main.slice(ed.start,ed.end);eq((s.match(rails)||[]).length,1,'one rail per edition');const body=nodes(s).find(n=>n.classes.includes('edition-body'));eq(body.children.slice(0,3).map(n=>n.classes[0]),['contents-boundary','editorial-rail','reading-column'],'actual three-track DOM order');const label=s.match(/<div class="eyebrow edition-label">([\s\S]*?)<\/div>/)[1];assert(s.match(rails)[0].includes(label));count++;}
-// Future additions refresh metadata from their actual label and article inventory.
-const changed=source.replace('Volume I <span class="sep">/</span>','Volume II <span class="sep">/</span>');const next=compose(changed);assert(next.match(rails)[0].includes('Volume II'));count++;eq(compose(next),next,'future preparation remains idempotent');
-const css=fs.readFileSync('weekly-economics-environment/reading-folio.css','utf8');assert(css.includes('@media(min-width:1440px)'));count++;assert(css.includes('border-right:1px solid var(--hair)'),'editorial rail remains visibly bounded against readings');count++;assert(css.includes('body.glance .editorial-rail{display:none}'));count++;
-console.log(count+' editorial rail preservation, structure and future-publication checks passed.');
+/* Regression for the single-rule Loblolly & Logit reading layout.
+   No third column, extra aside, or changes to authored scholarship. */
+const fs=require('fs'),cp=require('child_process'),assert=require('node:assert/strict');
+const {compose,nodes}=require('../weekly-economics-environment/editorial-folio.cjs');
+const file='weekly-economics-environment/index.html';
+const source=fs.readFileSync(file,'utf8');
+const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
+const previousKey='reading-folio.css?v=20261101-synthesis-flow';
+const currentKey='reading-folio.css?v=20261102-single-editorial-divider';
+let checks=0;
+function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
+function ok(actual,why){assert(actual,why);checks++}
+eq(source.replace(currentKey,previousKey),baseline,'historical authored readings and markup are unchanged');
+eq(compose(source),source,'publication composer is byte-idempotent without a panel');
+const main=source.match(/<main[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)[1];
+const ns=nodes(main),editions=ns.filter(n=>n.classes.includes('edition'));
+eq(editions.length,6,'six editions preserved');
+for(const ed of editions){
+ const content=main.slice(ed.start,ed.end),tree=nodes(content);
+ const body=tree.find(n=>n.classes.includes('edition-body'));
+ eq(body.children.slice(0,2).map(n=>n.classes[0]),['contents-boundary','reading-column'],'two semantic reading tracks only');
+ ok(!content.includes('editorial-rail'),'no extraneous metadata panel');
+ ok(content.includes('class="chapter-readings"'),'existing sidebar remains');
+}
+const injected=source.replace('<div class="reading-column">','<aside class="editorial-rail" aria-label="Edition record"><p>Retired duplicate</p></aside><div class="reading-column">');
+eq(compose(injected),source,'preparation removes a legacy metadata rail safely');
+const css=fs.readFileSync('weekly-economics-environment/reading-folio.css','utf8');
+ok(css.includes('.edition-body{display:grid;grid-template-columns:184px minmax(0,1fr)'),'original two-column desktop grid restored');
+ok(css.includes('.contents-boundary::after'),'single sidebar divider in original gap');
+ok(css.includes('width:6px'),'divider noticeably thicker without consuming a column');
+ok(css.includes('linear-gradient(to bottom,var(--clay) 0 76px,var(--river) 76px 100%)'),'subtle copper-to-river art direction');
+ok(css.includes('@media(min-width:821px) and (max-width:1180px)'),'divider adapts to narrower laptop');
+ok(css.includes('body.glance .contents-boundary::after{display:none}'),'glance has no hanging border');
+ok(css.includes('@media(max-width:820px)')&&css.includes('.contents-boundary{display:none}'),'mobile sidebar remains absent');
+ok(!css.includes('.editorial-rail'),'retired rail has no styling');
+console.log(checks+' single-divider reading layout checks passed.');
