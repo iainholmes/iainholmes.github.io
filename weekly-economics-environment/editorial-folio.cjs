@@ -74,8 +74,13 @@ function placeExhibit(s){
  if(media.some(n=>!has(n,'figure')&&!has(n,'funding')))throw Error('Unsupported inline media placement '+article.id);
  const kind=exhibit.attrs.match(/data-exhibit-kind="([^"]+)"/)?.[1];
  if(!['ledger','cabinet','long'].includes(kind))throw Error('Missing exhibit type '+article.id);
+ const finding=ns.find(n=>has(n,'finding'));
+ if(!finding)throw Error('Missing published finding for exhibit '+article.id);
+ // Re-render curated exhibit with its current layout and exact original lead.
+ // Original scholarship is never rewritten, only the generated exhibit.
+ const featured=readingExhibits.render(article.id,{finding:inside(s,finding)});
  const opener='<div class="reading-opening">'+raw(s,sections[0])+'</div>';
- const spread='<div class="feature-spread" data-feature="'+kind+'"><div class="interpretive-essay">'+raw(s,sections[1])+'</div>'+raw(s,exhibit)+'</div>';
+ const spread='<div class="feature-spread" data-feature="'+kind+'"><div class="interpretive-essay">'+raw(s,sections[1])+'</div>'+featured+'</div>';
  const figures=media.length?'<div class="reading-media">'+media.map(n=>raw(s,n)).join('')+'</div>':'';
  const assembled=opener+spread+figures;
  const result=s.slice(0,flow.start)+assembled+s.slice(exhibit.end);
