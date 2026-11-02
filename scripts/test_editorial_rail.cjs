@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-guided-exhibits-refined-rails';
+const currentKey='reading-folio.css?v=20261102-five-reading-finishing';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -45,26 +45,34 @@ ok(css.includes('body.glance .reading-column::after{display:none}'),'right rule 
 ok(css.includes('@media print{.reading-column::after{display:none}}'),'outer border hidden in print');
 ok(css.includes('.entry[data-reading-layout="2"] .evidence-pair'),'paired evidence and RN');
 ok(css.includes('flex-direction:column'),'single main reading track');
-ok(css.includes('.feature-spread[data-feature="cabinet"]')||css.includes('.feature-spread[data-feature="cabinet"]'),'Source Dossier swaps placement with interpretation');
+ok(css.includes('.feature-spread[data-feature="test"]')&&css.includes('.feature-spread[data-feature="decision"]'),'two alternative feature panels styled');
 ok(css.includes('.ledger-plot')&&css.includes('.ledger-calculation')&&css.includes('.ledger-mechanism'),'numeric graphics and conceptual models have distinct CSS');
 ok(css.includes('.entry[data-reading-finish="4"] .entry-head::after'),'polished chapter title-to-lead keyline');
 ok(css.includes('.entry[data-reading-finish="4"] .reading-deck::after'),'refined lead-to-analysis separator');
-ok(css.includes('.reading-opening--why>.analysis-block')&&css.includes('grid-template-columns:minmax(160px,.38fr)'),'horizontal Why-it-matters design');
+ok(css.includes('.entry[data-reading-finish="5"] .reading-opening>.analysis-block'),'normal stacked Why it matters and research introductions restored');
 ok(css.includes('.feature-spread .interpretive-essay')&&css.includes('border-right:1px solid var(--hair)'),'paired interpretive border');
 ok(css.includes('.evidence-pair::before')&&css.includes('border-top:1px solid var(--forest)'),'coordinated evidence paired rule');
 eq((source.match(/data-reading-stage="3"/g)||[]).length,30,'thirty composed reading spreads');
-eq((source.match(/data-reading-finish="4"/g)||[]).length,30,'finished designs applied in all thirty readings');
-eq((source.match(/class="reading-opening reading-opening--why"/g)||[]).length,26,'twenty-six original Why-it-matters sections receive horizontal layout');
+eq((source.match(/data-reading-finish="5"/g)||[]).length,30,'finished designs applied in all thirty readings');
+eq((source.match(/class="reading-opening reading-opening--why"/g)||[]).length,0,'no unintended horizontal Why-it-matters sections');
 
 ok(css.includes('.evidence-pair>.margin')&&source.includes("var grid=art.querySelector('.article-grid')"),'Heron wrapper remains compatible');
 eq((source.match(/data-reading-layout="2"/g)||[]).length,30,'all thirty reading layouts');
 eq((source.match(/class="reading-exhibit"/g)||[]).length,30,'all thirty have reading-specific exhibits');
 eq((source.match(/data-reading-exhibit="1"/g)||[]).length,30,'all thirty have publisher-stable exhibit markers');
 eq((source.match(/data-exhibit-kind="ledger"/g)||[]).length,11,'11 Incidence Ledgers');
-eq((source.match(/data-exhibit-kind="cabinet"/g)||[]).length,12,'12 Evidence Cabinets');
+eq((source.match(/data-exhibit-kind="test"/g)||[]).length,6,'six Assumption Tests');
+eq((source.match(/data-exhibit-kind="decision"/g)||[]).length,6,'six Decision Margins');
+eq((source.match(/data-exhibit-kind="cabinet"/g)||[]).length,0,'Source Dossier completely removed');
 eq((source.match(/data-exhibit-kind="long"/g)||[]).length,7,'7 Long Views');
 ok(!source.includes('class="economic-hinge"'),'generic Economic Hinge is gone');
-ok(css.includes('.exhibit-ledger')&&css.includes('.exhibit-cabinet')&&css.includes('.exhibit-longview'),'three distinct rendering systems included');
+ok(css.includes('.exhibit-ledger')&&css.includes('.test-challenge')&&css.includes('.decision-branches')&&css.includes('.exhibit-longview'),'four distinct rendering systems included');
 eq((source.match(/class="evidence-pair"/g)||[]).length,30,'all thirty have evidence register');
+
+ok(css.includes('height:6px')&&css.includes('padding-top:68px'),'substantial boundaries make chapter transitions visible');
+ok(css.includes('border:3px solid var(--forest)')&&css.includes('border-right:5px solid var(--clay)'),'paired spread framed by structural borders');
+ok(css.includes('.reading-sources>.sources')&&css.includes('grid-template-columns:minmax(125px,.28fr)'),'post-reading sources occupy a compact horizontal register');
+ok(css.includes('.essay-graphic'),'ledger source figure moved to interpretive panel');
+eq((source.match(/class="essay-graphic"/g)||[]).length,11,'eleven economic figures paired with their interpretation');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
 console.log(checks+' single-divider reading layout checks passed.');
