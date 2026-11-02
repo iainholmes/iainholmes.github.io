@@ -913,7 +913,7 @@ const readingGuides={
     ]
   }
 };
-const names=Object.freeze({ledger:'The Incidence Ledger',cabinet:'The Source Dossier',long:'The Long View'});
+const names=Object.freeze({ledger:'The Incidence Ledger',test:'The Assumption Test',decision:'The Decision Margin',long:'The Long View'});
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const plain=s=>String(s||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
 function specimen(source){
@@ -930,7 +930,7 @@ function select(id){
  if(entry)return {...entry,id,curated:true};
  // Safe future fallback: only repeat the direct published lead, never
  // infer distributional outcomes or construct imaginary dated milestones.
- return {kind:'cabinet',heading:'The published record',key:'The published finding is reproduced here for close examination.',limit:'This excerpt alone is not an independently identified causal claim.',id,curated:false};
+ return {kind:'test',heading:'An uncurated reading',intro:'This reading has not yet received an editorial research test. The original finding appears here as a reference, not as a verified causal assertion.',premise:'An editorial assumption has not been assigned.',stress:'No claim-specific challenge has been approved.',observe:'See the source and Research Notebook for the original evidence.',note:'Editorial interpretation pending',id,curated:false};
 }
 
 function graphic(id){
@@ -977,10 +977,10 @@ function render(id,source={}){
  let content='';
  if(kind==='ledger'){
    content=primer+'<div class="exhibit-ledger">'+graphic(id)+'<p class="ledger-how-to-read"><strong>How to read this</strong> '+esc(g?.read||'')+'</p><div class="ledger-headings" aria-hidden="true"><span>Affected party</span><span>Economic consequence</span><span>Evidence status</span></div>'+e.rows.map(([party,impact,status],i)=>'<div class="ledger-line"><div class="ledger-party"><span class="ledger-no">'+String(i+1).padStart(2,'0')+'</span>'+esc(party)+'</div><div class="ledger-effect">'+esc(impact)+'</div><div class="ledger-status">'+esc(status)+'</div></div>').join('')+'</div>';
- }else if(kind==='cabinet'){
-   const excerpt=specimen(source.finding||source.title||'');
-   if(!excerpt)throw Error('Evidence Cabinet requires published source text: '+id);
-   content='<div class="exhibit-cabinet"><div class="cabinet-record"><div class="cabinet-label">FROM THE PUBLISHED READING</div><blockquote>'+esc(excerpt)+'</blockquote><div class="cabinet-provenance">Verbatim editorial excerpt · source citations follow below</div></div><div class="cabinet-reading"><section class="dossier-note"><div class="cabinet-label">WHAT SUPPORTS IT</div><p class="cabinet-note">'+esc(e.key)+'</p></section><section class="dossier-note"><div class="cabinet-label">WHERE THE CLAIM STOPS</div><p class="cabinet-note">'+esc(e.limit)+'</p></section></div></div>';
+ }else if(kind==='test'){
+   content='<p class="exhibit-introduction">'+esc(e.intro)+'</p><div class="test-research-question"><span class="exhibit-field-label">THE ASSUMPTION</span><p>'+esc(e.premise)+'</p></div><div class="test-challenge"><section><span class="exhibit-field-label">PRESS ON THE CLAIM</span><p>'+esc(e.stress)+'</p></section><section><span class="exhibit-field-label">WHAT WOULD HELP DECIDE?</span><p>'+esc(e.observe)+'</p></section></div><div class="test-scope">'+esc(e.note)+'</div>';
+ }else if(kind==='decision'){
+   content='<p class="exhibit-introduction">'+esc(e.intro)+'</p><div class="decision-question">'+esc(e.choice)+'</div><div class="decision-branches">'+e.options.map((option,i)=>'<section class="decision-option" data-path="'+(i+1)+'"><span class="decision-index">'+String(i+1).padStart(2,'0')+'</span><strong>'+esc(option[0])+'</strong><p>'+esc(option[1])+'</p></section>').join('')+'</div><div class="decision-criterion"><span class="exhibit-field-label">WHAT TO WATCH</span><p>'+esc(e.check)+'</p><small>'+esc(e.note)+'</small></div>';
  }else if(kind==='long'){
    const takeaway=longViewTakeaways[id];
    if(!takeaway)throw Error('Missing curated Long View interpretation '+id);
@@ -990,7 +990,7 @@ function render(id,source={}){
      return '<li class="longview-point" data-stage-class="'+statusType+'"><span class="longview-index">'+String(i+1).padStart(2,'0')+'</span><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span><p class="longview-explain">'+esc(g.steps[i])+'</p></li>';
    }).join('')+'</ol><div class="longview-takeaway"><span>WHY THIS MATTERS</span><p>'+esc(takeaway)+'</p></div>';
  }else throw Error('Unsupported exhibit kind '+kind);
- const footer='<footer class="exhibit-footer"><span>'+esc(e.curated?'Reading-specific editorial interpretation':'Published source excerpt · further editorial annotation pending')+'</span><span>See the evidence limits and sources below</span></footer>';
+ const footer='<footer class="exhibit-footer"><span>'+esc(e.curated?'Reading-specific editorial interpretation':'Editorial verification pending')+'</span><span>See the evidence limits and sources below</span></footer>';
  return '<section class="reading-exhibit" data-exhibit-kind="'+kind+'" data-curated="'+e.curated+'" aria-label="'+esc(names[kind])+'">'+head+content+term+footer+'</section>';
 }
 function audit(ids){
