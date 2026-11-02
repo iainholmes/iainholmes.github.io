@@ -27,7 +27,7 @@ if('IntersectionObserver' in window){
 }
 const emptyState=()=>({origin:null,destination:null,families:[],family:null,stops:[],destinationActivities:[],legs:[],results:[],manual:false,legacyStops:[]});
 let captionEdited=false;
-let state=emptyState(),plans=[],activeId=null,dirty=false,postcard=null,canPersist=true,map=null,version=0,controller=null,discoveryController=null,areaSearchController=null,pauseAutomaticDiscovery=null,building=false;
+let state=emptyState(),plans=[],activeId=null,dirty=false,postcard=null,canPersist=true,map=null,version=0,controller=null,discoveryController=null,areaSearchController=null,pauseAutomaticDiscovery=null,lastSelectedSectionProgress=null,building=false;
 const locations=new Map(),discoveryCache=new Map();
 try{const text=localStorage.getItem(key);if(text)plans=readBackup(text);}catch{canPersist=false;status('Saved plans could not be opened. Existing data has been left intact. Export or restore a backup.');}
 function persist(next){try{if(!canPersist)throw Error();localStorage.setItem(key,JSON.stringify({schema_version:1,plans:next}));plans=next;return true;}catch{status('This browser could not save the plan. Export a backup before leaving.');return false;}}
@@ -62,7 +62,7 @@ function savedList(){
   }
   if(plans.length)box.append(button('Clear All Saved Trips',()=>{if(box.querySelector('.clear-trips-confirm'))return;const confirmation=el('div',null,'clear-trips-confirm'),input=el('input');input.autocomplete='off';const remove=button('Delete All Trips',()=>{if(input.value!=='DELETE ALL')return;if(persist([])){activeId=null;dirty=true;savedList();status('All saved trips cleared. The editor is kept as an unsaved draft.');}});remove.disabled=true;input.addEventListener('input',()=>remove.disabled=input.value!=='DELETE ALL');confirmation.append(el('p',`Delete all ${plans.length} saved trips? Export a backup first.`),field('Type DELETE ALL to confirm',input),remove,button('Keep Trips',()=>confirmation.remove()));box.append(confirmation);input.focus();}));
 }
-function cancelRequests(){version++;controller?.abort();controller=null;discoveryController?.abort();discoveryController=null;pauseAutomaticDiscovery=null;areaSearchController?.abort();areaSearchController=null;building=false;$('map-trip').disabled=false;}
+function cancelRequests(){version++;controller?.abort();controller=null;discoveryController?.abort();discoveryController=null;pauseAutomaticDiscovery=null;lastSelectedSectionProgress=null;areaSearchController?.abort();areaSearchController=null;building=false;$('map-trip').disabled=false;}
 window.addEventListener('storage',event=>{if(event.key!==key)return;try{plans=event.newValue?readBackup(event.newValue):[];canPersist=true;savedList();}catch{canPersist=false;status('Another tab changed saved trips to unreadable data. Export the current draft before restoring a backup.');}});
 function load(plan){
   cancelRequests();state=emptyState();activeId=plan?.id||null;$('trip-title').value=plan?.title||'';$('trip-start').value=plan?.dates.start||'';$('trip-end').value=plan?.dates.end||'';$('trip-depart').value=plan?.planning.departure||'09:00';$('trip-detour').value=String(plan?.planning.detour??20);$('trip-legs').replaceChildren();
@@ -232,7 +232,7 @@ async function rebuild(nextStops){
     status(message);$('journey-change-status').textContent=message;
   }}
   finally{clearTimeout(timer);if(current===version){building=false;controller=null;updateActivityButtons();}}
-  if(updated&&current===version&&state.stops===nextStops)await discoverJourney();
+  if(updated&&current===version&&state.stops===nextStops)await discoverJourney({preserveSection:true});
   return updated;
 }
 $('journey-form').addEventListener('submit',async e=>{
@@ -280,7 +280,7 @@ function resetDiscovery(){
   $('journey-discovery-status').textContent=state.family?'Choose an area below or search near a town.':'Choose a route to find stops.';
 }
 function activityDetails(activity,zone,destination=false){
-  const route=journeyRoute(),progress=routeProgress(activity.location,route),offset=distanceToRoute(activity.location,route.feature.geometry.coordinates),detourMiles=offset*2*1.35,detourMinutes=Math.ceil(detourMiles/35*60);
+  const route=journeyRoute(),progress=zone&&!destination?zone.progress:routeProgress(activity.location,route),offset=distanceToRoute(activity.location,route.feature.geometry.coordinates),detourMiles=offset*2*1.35,detourMinutes=Math.ceil(detourMiles/35*60);
   activity.progress=progress;activity.detourMinutes=detourMinutes;activity.detourMiles=detourMiles;
   const known=places.find(p=>distanceMiles(activity.location,p.access)<.3&&p.closure?.status!=='closed'),previous=known&&publications.find(e=>e.place_id===known.id);if(previous)activity.previous=previous.id;
   const stay=activity.overnight?'Overnight stay':`${durationLabel(activity.minutes)} activity`;
@@ -395,7 +395,11 @@ async function cachedDiscovery(point,options={}){
   try{
     official=await discoverNpsActivities(point,{signal:options.signal,radius:20000});
   }catch(error){if(options.signal?.aborted)throw error;npsError=error;}
-  if(official.length>=4&&new Set(official.map(a=>a.category)).size>=2){discoveryCache.set(cacheKey,official);return official;}
+  // An explicit drive-window click should show actual NPS locations promptly.
+  // Do not hold useful cards for a serial/slow OpenStreetMap enrichment call.
+  if(official.length&&(options.interactive||(official.length>=4&&new Set(official.map(a=>a.category)).size>=2))){
+    discoveryCache.set(cacheKey,official);return official;
+  }
   try{
     const publicPlaces=await discoverActivities(point,options);
     const ids=new Set(official.map(a=>a.id));
@@ -407,8 +411,11 @@ async function cachedDiscovery(point,options={}){
     throw npsError?Error('NPS and local place providers could not be reached. '+error.message):error;
   }
 }
-async function discoverJourney(){
+async function discoverJourney({preserveSection=false}={}){
   if(!state.family||!$('trip-routing').checked)return;
+  // Route rebuilds must retain the traveler's chosen discovery window.
+  // A new route search or a manual refresh may return to the central section.
+  if(!preserveSection)lastSelectedSectionProgress=null;
   discoveryController?.abort();areaSearchController?.abort();areaSearchController=null;
   const abort=new AbortController();discoveryController=abort;
   const current=version,journey=journeyRoute();
@@ -453,6 +460,16 @@ async function discoverJourney(){
   }
   async function searchSection(zone,buttonEl,{automatic=false}={}){
     if(!fresh())return;
+    lastSelectedSectionProgress=zone.progress;
+    if(!automatic){
+      // Manual exploration takes precedence over queued automatic lookups.
+      automaticPaused=true;
+      if(destinationLoading){
+        destinationController.abort();
+        destBox.replaceChildren(el('p','Destination search paused while you explore the route. Refresh suggestions to resume.','discovery-message'));
+        destinationLoading=false;
+      }
+    }
     // Switching sections is immediate. Abort the previous request and prevent
     // its late response from overwriting the latest selected area's cards.
     sectionController?.abort();
@@ -467,7 +484,9 @@ async function discoverJourney(){
     updateSummary();
     try{
       const nearby=await cachedDiscovery(zone.point,{
-        signal:AbortSignal.any([abort.signal,selected.signal]),
+        // Bound an explicit selection: public providers may be slow or offline,
+        // but the control must not remain indefinitely in "Searching…" state.
+        signal:AbortSignal.any([abort.signal,selected.signal,AbortSignal.timeout(14000)]),
         radius:3500,interactive:!automatic
       });
       if(!active())return;
@@ -504,7 +523,9 @@ async function discoverJourney(){
   // Only one automatic corridor search; every other section is always clickable
   // (including while a previous search or town lookup is in progress).
   if(zones.length){
-    const middle=Math.floor((zones.length-1)/2);
+    const middle=preserveSection&&Number.isFinite(lastSelectedSectionProgress)?
+      zones.reduce((best,zone,i)=>Math.abs(zone.progress-lastSelectedSectionProgress)<Math.abs(zones[best].progress-lastSelectedSectionProgress)?i:best,0):
+      Math.floor((zones.length-1)/2);
     await searchSection(zones[middle],routeBox.children[middle],{automatic:true});
   }
   if(!fresh()||automaticPaused)return;
