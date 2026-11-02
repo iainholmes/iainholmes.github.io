@@ -701,11 +701,11 @@ function render(id,source={}){
  }else if(kind==='cabinet'){
    const excerpt=specimen(source.finding||source.title||'');
    if(!excerpt)throw Error('Evidence Cabinet requires published source text: '+id);
-   content='<div class="exhibit-cabinet"><div class="cabinet-record"><div class="cabinet-label">THE CLAIM, IN ITS OWN WORDS</div><blockquote>'+esc(excerpt)+'</blockquote><div class="cabinet-provenance">Verbatim excerpt · linked sources follow the reading</div></div><div class="cabinet-reading"><div class="cabinet-label">WHAT THE SOURCE CONTRIBUTES</div><div class="cabinet-note">'+esc(e.key)+'</div><div class="cabinet-label">WHAT REMAINS UNRESOLVED</div><div class="cabinet-note">'+esc(e.limit)+'</div></div></div>';
+   content='<div class="exhibit-cabinet"><div class="cabinet-record"><div class="cabinet-label">FROM THE PUBLISHED READING</div><blockquote>'+esc(excerpt)+'</blockquote><div class="cabinet-provenance">Verbatim editorial excerpt · source citations follow below</div></div><div class="cabinet-reading"><section class="dossier-note"><div class="cabinet-label">WHAT SUPPORTS IT</div><p class="cabinet-note">'+esc(e.key)+'</p></section><section class="dossier-note"><div class="cabinet-label">WHERE THE CLAIM STOPS</div><p class="cabinet-note">'+esc(e.limit)+'</p></section></div></div>';
  }else if(kind==='long'){
    const takeaway=longViewTakeaways[id];
    if(!takeaway)throw Error('Missing curated Long View interpretation '+id);
-   content='<div class="longview-guide"><span>READ LEFT TO RIGHT IN TIME</span><span>Each stop identifies what is observed or conditional</span></div><ol class="exhibit-longview">'+e.points.map(([when,desc,status],i)=>{
+   content='<div class="longview-guide"><span>FOLLOW THE SEQUENCE</span><span>Each stop identifies what is observed or conditional</span></div><ol class="exhibit-longview">'+e.points.map(([when,desc,status],i)=>{
      const statusType=/historical|observation|reported|policy date/i.test(status)?'observed':'conditional';
      return '<li class="longview-point" data-stage-class="'+statusType+'"><span class="longview-index">'+String(i+1).padStart(2,'0')+'</span><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span></li>';
    }).join('')+'</ol><div class="longview-takeaway"><span>THE POINT</span><p>'+esc(takeaway)+'</p></div>';
