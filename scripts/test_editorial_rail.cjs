@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-economic-hinge-evidence-register';
+const currentKey='reading-folio.css?v=20261102-three-rotating-exhibits';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -47,7 +47,13 @@ ok(css.includes('.entry[data-reading-layout="2"] .evidence-pair'),'paired eviden
 ok(css.includes('flex-direction:column'),'single main reading track');
 ok(css.includes('.evidence-pair>.margin')&&source.includes("var grid=art.querySelector('.article-grid')"),'Heron wrapper remains compatible');
 eq((source.match(/data-reading-layout="2"/g)||[]).length,30,'all thirty reading layouts');
-eq((source.match(/class="economic-hinge"/g)||[]).length,30,'all thirty have Economic Hinge');
+eq((source.match(/class="reading-exhibit"/g)||[]).length,30,'all thirty have reading-specific exhibits');
+eq((source.match(/data-reading-exhibit="1"/g)||[]).length,30,'all thirty have publisher-stable exhibit markers');
+eq((source.match(/data-exhibit-kind="ledger"/g)||[]).length,11,'11 Incidence Ledgers');
+eq((source.match(/data-exhibit-kind="cabinet"/g)||[]).length,12,'12 Evidence Cabinets');
+eq((source.match(/data-exhibit-kind="long"/g)||[]).length,7,'7 Long Views');
+ok(!source.includes('class="economic-hinge"'),'generic Economic Hinge is gone');
+ok(css.includes('.exhibit-ledger')&&css.includes('.exhibit-cabinet')&&css.includes('.exhibit-longview'),'three distinct rendering systems included');
 eq((source.match(/class="evidence-pair"/g)||[]).length,30,'all thirty have evidence register');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
 console.log(checks+' single-divider reading layout checks passed.');
