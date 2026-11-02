@@ -1505,5 +1505,72 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 036: Routes &amp; enforcement\"><title>Field Brief · 036 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 105) scale(1.7)\"><path d=\"M5 96V14H95V96H75V35H25V96Z\" fill=\"#221a14\"/><path d=\"M38 45H62V89H38Z\" fill=\"#8a2a36\"/><path d=\"M2 97H98\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><g transform=\"translate(350 310) scale(1.8)\"><path d=\"M6 22Q50 0 94 22V80Q50 106 6 80Z\" fill=\"#221a14\"/><ellipse cx=\"50\" cy=\"22\" rx=\"44\" ry=\"16\" fill=\"#c5ad88\"/><path d=\"M18 59H82\" stroke=\"#8a2a36\" stroke-width=\"12\"/></g><g transform=\"translate(250 130) scale(1.35)\"><path d=\"M5 16H35V85H5Z\" fill=\"#221a14\"/><path d=\"M65 16H95V85H65Z\" fill=\"#8a2a36\"/><path d=\"M43 39H57M43 61H57\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M55 300V490H260M340 85H550V265\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 036 / 2026-11-01</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
+  },
+  "fb:2026-11-02": {
+    "key": "fb",
+    "date": "2026-11-02",
+    "no": "037",
+    "identity": "Field Brief",
+    "theme": "allocation",
+    "framing": "Chinese robotics capital shifts from machines to adaptable intelligence. A federal rule exposes pharmacy-benefit compensation, while OPEC+ defers its harder 2027 supply choice. Europe tests new space partnerships, and Raleigh voters weigh $203 million for housing and transport. Capital and information before outcomes These stories share no single policy thesis. They do share an evidentiary boundary: investment, disclosure, quotas, partnership talks and bond authority are inputs or commitments, not demonstrated outcomes. The next tests are operational: robots working reliably across tasks, employers renegotiating PBM contracts, actual Gulf exports and 2027 quotas, European funding decisions, and Raleigh projects delivered within debt and construction constraints.",
+    "version": 5,
+    "subject": "enforcement",
+    "composition": "study-separate-registers-inspection-screen-shared-load-service-rack",
+    "signature": "issue:study-separate-registers-inspection-screen-shared-load-service-rack",
+    "phrase": "Routes & enforcement",
+    "seed": 1716885388,
+    "geometry": "<g transform=\"translate(65 105) scale(1.95)\"><path d=\"M7 8H93V92H7Z\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><path d=\"M28 18V82M51 18V82M74 18V82\" stroke=\"$support\" stroke-width=\"6\"/><path d=\"M10 56H90\" stroke=\"$accent\" stroke-width=\"13\"/></g><g transform=\"translate(350 280) scale(1.8)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"$ink\"/><path d=\"M43 35H57V60H43Z\" fill=\"$accent\"/><path d=\"M65 89H94\" stroke=\"$support\" stroke-width=\"9\"/></g><g transform=\"translate(365 105) scale(1.12)\"><path d=\"M12 3H88V97H12Z\" fill=\"$ink\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"$paper\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"$accent\"/></g><path d=\"M305 95V505\" stroke=\"$support\" stroke-width=\"5\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "02",
+          "05"
+        ]
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "02",
+          "03",
+          "05"
+        ]
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01",
+          "03",
+          "04",
+          "05"
+        ]
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "02",
+          "03"
+        ]
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "03"
+        ]
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "02"
+        ]
+      }
+    ],
+    "originality": {
+      "policy": 1,
+      "compared": 36,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 037: Routes &amp; enforcement\"><title>Field Brief · 037 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 105) scale(1.95)\"><path d=\"M7 8H93V92H7Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M28 18V82M51 18V82M74 18V82\" stroke=\"#c5ad88\" stroke-width=\"6\"/><path d=\"M10 56H90\" stroke=\"#8a2a36\" stroke-width=\"13\"/></g><g transform=\"translate(350 280) scale(1.8)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"#221a14\"/><path d=\"M43 35H57V60H43Z\" fill=\"#8a2a36\"/><path d=\"M65 89H94\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><g transform=\"translate(365 105) scale(1.12)\"><path d=\"M12 3H88V97H12Z\" fill=\"#221a14\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"#f1e6d0\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"#8a2a36\"/></g><path d=\"M305 95V505\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 037 / 2026-11-02</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
