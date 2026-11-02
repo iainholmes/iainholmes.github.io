@@ -1,70 +1,56 @@
-# Loblolly & Logit — Guided Reading Spreads (draft PR #49)
+# Loblolly & Logit — Reading Composition V (review draft PR #49)
 
-**Status: review branch only. No merge or deployment.** This update responds to the user's direct inspection and preserves the current admired typography, palette, page width, and overall publication architecture.
+**Status:** Draft branch only; not merged or deployed. This revision follows the user's November 2 evening visual inspection. The accepted forest, river-blue, copper, paper, typography and outer two-track page structure remain intact.
 
-## The reading sequence
+## Corrections made in response to the screenshots
 
-1. **Original chapter title and evidence status** → a thin graduated horizontal rule with restrained copper/forest registration details.
-2. **Original finding / lead** → a separate delicate rule, connecting the headline to the research rather than boxing it into a card.
-3. **First research section** → if its authored heading is literally *Why it matters* (26 readings), the heading becomes a wide left title with its untouched explanatory paragraph to the right. The four other openings retain their specialized headings and existing sequential treatment.
-4. **Paired analytical spread** → original *Economic interpretation* and one appropriate reading exhibit. A subtly ruled seam gives the two sections separate editorial identities without another heavy panel. The Source Dossier, when selected, appears on the opposite side.
-5. **Original article figure(s)** → nine source-author visual/media sections retain their published markup after the spread.
-6. **Aligned evidence register** → *What the evidence does—and does not—say* and the *Research Notebook* begin on the same horizontal line, with complementary forest/copper/river borders. The existing Heron wrapper is nonsticky inside this specific pair.
-7. **Original source links**, unchanged.
+- Restored the authored **Why it matters** section to its original, vertically flowing heading and paragraph layout in all 26 applicable readings. No sideways title and giant empty first column.
+- The actual post-reading **Read the Source** register is now compact and horizontal: a left-hand label and a narrow-spaced stack of source links, with all original URLs and accessible link text preserved.
+- Every chapter has a stronger, deliberate **6px forest/copper top transition** with supporting registration mark and more coherent top spacing. This clarifies transitions between successive readings without inserting an extra content column.
+- Each analytical pairing uses a **3px outer frame / 6px top / 4px bottom / 5px internal colored partition**, not a floating 1px hairline. The paired layouts collapse to strongly separated horizontal sections on narrower screens.
+- The **Incidence Ledger** now has its source-grounded chart in the **left Economic interpretation panel**. The ledger's explanation and incidence rows stay on the **right** with approved forest/river/copper rows. The economic graphic no longer doubles the height of the right side while leaving most of the left empty.
+- **The Long View** now uses a more spacious, coherent *horizontal chronological rail* at desktop width below the economic interpretation, shifting to two columns and then one on smaller screens. All seven original primers, 23 step explanations and status qualifiers remain.
+- The rejected **Source Dossier** has been fully replaced in rendered articles by two substantive alternatives. This is a user-facing **preview of options**, not final editorial acceptance.
 
-These changes affect presentation rather than rewriting the 30 published author-supplied readings.
+## The two replacement concepts (12 readings)
 
-## Three recurring, article-specific exhibits
+### The Assumption Test · six research-focused readings
 
-### The Incidence Ledger (11 readings)
+An analytical exhibit with an opening orientation, the key **identifying or modeling assumption**, a plausible **challenge to that assumption**, and a concrete **empirical check that could help adjudicate the claim**. It does not treat unresolved threats as proven bias or claim that the original authors omitted their robustness checks.
 
-Every Ledger now opens with an **authored beginner-friendly explanation of the economic question**, followed by its **source-grounded numerical figure, accounting identity, or explicitly non-numerical model**, a **How to read this** interpretation, the **incidence entries**, and one **defined key concept**.
+Examples:
+- **Clean Equipment and Rooftop Solar Work Together** (October 30 reading 02): Are estimated household technology complementarities stable under alternative preferences, access constraints and grid assumptions?
+- **Rarely Exposed Groups Can Vanish in Population Averages** (October 16): Would dilution and statistical power permit the dataset to detect a meaningful effect?
+- **Disaster Losses Persist When Displacement Breaks Local Ties** (October 9): Do households on either side of the narrow landslide path supply a credible comparison?
+- Green spending, corporate debt-tax bias, and monitored climate vital signs each receive their own source-specific tests.
 
-The ledger is tight: numerical figure in a subtle colored surface; compressed lines carry both the impact and evidence status; forest, river-blue and copper highlight separate parties/channels without changing the approved journal palette. Every graphic explicitly identifies whether it is an estimate, forecast, model mechanism or agency-projected quantity.
+### The Decision Margin · six policy/institutional readings
 
-Verified against the published original journal copy (not yet individually against all primary-source documents):
+An editorial comparison of **two real decision or implementation margins**, framed as possible paths or considerations rather than a simplistic vote. The exhibit explains both implications, gives a question or measurement that would help evaluate the approaches, and clearly labels non-final or conditional status.
 
-- Coal employment decline: 0.94 and 1.15 **percentage points** in different sources, not additive.
-- EPA methane rule: about **$2.5bn annual compliance savings plus $0.2–$0.3bn energy-market surplus = $2.7–$2.8bn projected subtotal** versus the 2024-rule baseline. Extra climate/health damages are **not** completely included. This is **not total social welfare**.
-- EIA winter fuels: conditional +21% heating oil, +4% electricity, −9% natural gas and −3% propane expenditure forecasts.
-- Pollution-rule price decomposition: estimated marginal-cost 17.7 and markup 5.2 log points ≈ 23 log points, distinct from the estimated 5.6% markup increase.
-- Rider credit: 45–90% and 4–8% borrowing-rate ranges are *different markets*, not a causal comparison.
-- Six remaining Ledgers show labeled economic transmission models without invented data points.
+Examples:
+- **A New Emissions Model Changes the Baseline** (October 30 reading 05): standard national defaults versus investment in better local inputs, noted explicitly as *complementary* rather than mutually exclusive.
+- **Carbon-Border Policy Enters a New Institutional Test**: detailed product emissions accounting versus administratively simpler benchmarks; no claim of WTO merits decision.
+- **FERC Proposes Trading Case-Specific Review for Categorical Rules**: categorical treatment versus prior-notice review, where the real choice involves risk thresholds.
+- Glyphosate review, climate-liability litigation and EIB adaptation finance receive separate tailored versions.
 
-### The Source Dossier (12 readings)
+No Source Dossier, Evidence Cabinet, “From the Annex,” or generic Economic Hinge remains in the published preview.
 
-The former Evidence Cabinet keeps its clearer name. It displays a verbatim excerpt **from L&L's own published finding**, with **What supports it** and **Where the claim stops** annotations. It does not masquerade as a facsimile of a primary-source document, and published citations remain below the reading. No generic **“From the Annex”** or similar kicker remains in any exhibit.
+## What stayed intact
 
-### The Long View (7 readings)
+- All **30 original author-written reading records**: headline, finding, Why it matters / specialist first heading, economic interpretation, limitation, Research Notebook, figures, source citations, link URLs, issue metadata, and article IDs.
+- The left 14px tapered spine and right **8px geometrically matching** spine, with matched 70px top/bottom copper terminals.
+- The original Heron and Keep scripts, edition navigation, publication scheduling, published artwork and all non-reading pages.
+- Incidence Ledgers: 11 custom graphs/models/calculations with source-grounded evidence qualifiers.
+- Long Views: seven annotated series with 23 individually authored explanatory steps and uncertainty labels.
+- Publication composer works deterministically and is idempotent; future uncurated readings receive a clearly flagged provisional Assumption Test, *not* a fabricated causal mechanism.
 
-All seven Long Views are now self-explanatory even when encountered before the main story:
+## Checks and acceptance conditions
 
-- A **plain-language orientation** says what the timeline is about and which quantities should not be confused.
-- The timeline identifies a **reported observation, policy/proposal, modeled counterfactual or conditional projection** at every stage.
-- Each of the **23 milestones** now has its own explanatory paragraph describing why it matters, not just a label.
-- One **key concept** is defined in accessible language, and the original concluding interpretation is preserved in a clearer **Why this matters** area.
+Source-level JavaScript checks from the connected GitHub branch passed: **159** historical-edition assertions, **125** structural/layout assertions and **714** exhibits/editorial assertions = **998** checks. Original scholarly-content records compare equal 30/30. Exactly 11 Ledger figures occupy the economic-interpretation side; there are six Assumption Tests, six Decision Margins and seven Long Views. Stylesheet braces are balanced.
 
-Do not treat speculative steps as inevitable historical developments. Percent reductions referring to the same baseline are not additive. An observed sales share is not the fleet composition; a policy proposal is not implementation; a modeled welfare counterfactual is not an observed impact.
+These are **source-level tests using isolated JavaScript and read-only filesystem/Git mocks**, not a complete Jekyll/Node run or actual Safari render. Do not merge based on source checks alone.
 
-## Framing details
+**Visual review:** In the October 30 issue compare reading 02 (*The Assumption Test*) and reading 05 (*The Decision Margin*) before deciding which new feature family is most compelling. For the stronger frame check reading 03's Ledger and reading 04's Long View; check reading boundaries above/below and the compact source register at the foot of each. Check wider MacBook view, narrow laptop/tablet, iPhone portrait, light/night, full/Glance/print, actual expanded/dismissed Heron and Keep buttons. Verify all source-specific numbers against original linked primary documents before live publication.
 
-- The left spine is still **14px wide**, with symmetrical **70px copper** top and bottom terminals and the established tapered transition.
-- The right spine is now **8px wide**, horizontally scaled from the left: **exact same 70px copper lengths and taper geometry**, same colors and mirrored placement. Not a differently proportioned end cap.
-- On desktop, thin graduated lines separate the title from the lead, lead from analysis, and the essay from the selected exhibit; the lower evidence register has a shared heading rule and two distinct accent seams.
-- On narrow desktop, the paired interpretation and exhibit stack before columns become cramped. The horizontal Why-it-matters opening stacks on tablet/mobile. Print removes unnecessary decorative treatment.
-
-## Selection, publishing, and source discipline
-
-Exhibit type is chosen by reading-specific relevance, not an arbitrary 1–2–3 sequence. The archive currently has 11 Ledgers, 12 Dossiers, and seven Long Views; each six-edition run uses more than one type and avoids three identical types in a row.
-
-Publish-time rendering is deterministic and local. A future reading without a curated entry receives a clearly labeled source-exact Source Dossier instead of invented incidence, dates or graphs. The source-preservation comparator ignores only separately generated exhibits; it still compares author-supplied paragraphs, headings, figures, source links, identifiers and research notes.
-
-## Verification and release gate
-
-**Passed:** 159 historical-edition, 118 page-layout, and 715 guided-exhibit source-level assertions: **992 total**. All 30 original article records compare equal; 30 reading stages finish; 26 Why-it-matters openings are horizontal; 18 new exhibit primers and economic concept definitions exist; all 23 Long View milestones have separate explanations; 11 Ledgers retain unique source-specific graphics. Recomposition is idempotent, and stylesheet braces are balanced.
-
-These checks were run with repository source retrieved through GitHub and isolated JavaScript using read-only filesystem/Git mocks. They do **not** demonstrate a full Node/Jekyll test run, Safari rendering, actual interaction testing or independent numerical-source verification.
-
-**Before merge:** Inspect representative exhibits and first-reader comprehension, right-hand tapered ends at both page extremes, larger laptop and phone widths, light/night/Glance/print, Keep controls, expanded/dismissed Heron, source figures and original links. Final numbers should be checked against linked primary sources. Seek explicit visual approval.
-
-**Local preview:** Existing locally cloned draft branch can be refreshed using `git pull --ff-only` in the cloned site directory, then reloading the localhost browser page; a fresh running preview server will serve updated files automatically.
+**To refresh the already-open local Safari preview:** Run `git pull --ff-only` from the existing temporary preview clone, then force reload `http://localhost:8765/weekly-economics-environment/` (restarting the local Python server only if it has stopped).
