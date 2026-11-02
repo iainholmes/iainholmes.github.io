@@ -467,7 +467,169 @@ const catalog={
     ]
   }
 };
-const names=Object.freeze({ledger:'The Incidence Ledger',cabinet:'The Evidence Cabinet',long:'The Long View'});
+const visualData={
+  "insurance": {
+    "type": "mechanism",
+    "title": "Housing-cost transmission",
+    "stages": [
+      "Insurance strain",
+      "Higher user costs",
+      "Location and prices"
+    ],
+    "note": "Conceptual spatial-equilibrium channel; not an estimated causal path."
+  },
+  "2026-10-02-policy-mix": {
+    "type": "mechanism",
+    "title": "Cross-border leakage channel",
+    "stages": [
+      "Domestic demand falls",
+      "World fuel price adjusts",
+      "Foreign fuel use responds"
+    ],
+    "note": "Qualitative mechanism from the policy framework; no estimated magnitude."
+  },
+  "2026-10-02-storage": {
+    "type": "mechanism",
+    "title": "The private–social return wedge",
+    "stages": [
+      "Storage entry",
+      "Price spreads compress",
+      "Private revenue declines"
+    ],
+    "note": "Price-feedback mechanism in the structural model, not a measured time series."
+  },
+  "2026-10-09-trade-climate": {
+    "type": "mechanism",
+    "title": "Terms-of-trade redistribution",
+    "stages": [
+      "Carbon price",
+      "Trade prices shift",
+      "Transfers enable bargains"
+    ],
+    "note": "Calibrated international-policy model, not observed agreement outcomes."
+  },
+  "2026-10-09-winter-bills": {
+    "type": "signed-bar",
+    "title": "Forecast household heating expenditure change",
+    "units": "% versus previous winter",
+    "min": -10,
+    "max": 25,
+    "values": [
+      [
+        "Heating oil",
+        21
+      ],
+      [
+        "Electricity",
+        4
+      ],
+      [
+        "Natural gas",
+        -9
+      ],
+      [
+        "Propane",
+        -3
+      ]
+    ],
+    "note": "EIA conditional winter forecasts; not observed household expenditures."
+  },
+  "2026-10-16-pfas-agriculture": {
+    "type": "mechanism",
+    "title": "Potential cost transmission",
+    "stages": [
+      "Contaminated inputs",
+      "Farm exposure",
+      "Testing and market costs"
+    ],
+    "note": "Conceptual pathway; article reports no estimated incidence magnitudes."
+  },
+  "2026-10-16-energy-macro": {
+    "type": "mechanism",
+    "title": "Energy-shock exposure",
+    "stages": [
+      "Fuel-price shock",
+      "Importer or exporter",
+      "Growth and inflation"
+    ],
+    "note": "Qualitative channel; IMF figures are conditional projections, not causal estimates."
+  },
+  "2026-10-23-paper-markups": {
+    "type": "decomposition",
+    "title": "Estimated price effect by channel",
+    "components": [
+      [
+        "Marginal cost",
+        17.7
+      ],
+      [
+        "Markup",
+        5.2
+      ]
+    ],
+    "units": "log points",
+    "roundedTotal": 23,
+    "note": "Components sum to 22.9 log points; published price coefficient is rounded to 23. Study estimates, not an accounting identity."
+  },
+  "2026-10-23-mobility-finance": {
+    "type": "range",
+    "title": "Reported annual borrowing rates",
+    "units": "%",
+    "min": 0,
+    "max": 100,
+    "ranges": [
+      [
+        "Some African riders",
+        45,
+        90
+      ],
+      [
+        "China",
+        4,
+        8
+      ]
+    ],
+    "note": "Market observations from different contexts, not a controlled causal comparison."
+  },
+  "2026-10-30-coal-country": {
+    "type": "bar",
+    "title": "Estimated decline in mining employment",
+    "values": [
+      [
+        "Mine records",
+        0.94
+      ],
+      [
+        "Labor statistics",
+        1.15
+      ]
+    ],
+    "units": "percentage points",
+    "max": 1.2,
+    "note": "Two estimated measures of mining-employment decline following a one-standard-deviation coal-demand shock; not additive."
+  },
+  "2026-10-30-methane-rule": {
+    "type": "calculation",
+    "title": "EPA’s projected annual surplus ledger",
+    "terms": [
+      [
+        "Compliance savings",
+        2.5
+      ],
+      [
+        "Energy-market surplus",
+        "0.2–0.3"
+      ],
+      [
+        "Reported subtotal",
+        "2.7–2.8"
+      ]
+    ],
+    "units": "$ billion per year",
+    "note": "Equivalent annual projections over 2027–2050, relative to the 2024-rule baseline. Extra emissions damages are not fully included: subtotal ≠ social welfare."
+  }
+};
+const names=Object.freeze({ledger:'The Incidence Ledger',cabinet:'The Source Dossier',long:'The Long View'});
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const plain=s=>String(s||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
 function specimen(source){
@@ -486,16 +648,51 @@ function select(id){
  // infer distributional outcomes or construct imaginary dated milestones.
  return {kind:'cabinet',heading:'The published record',key:'The published finding is reproduced here for close examination.',limit:'This excerpt alone is not an independently identified causal claim.',id,curated:false};
 }
+
+function graphic(id){
+ const v=visualData[id];if(!v)return '';
+ const head='<div class="ledger-graphic-head"><span class="ledger-graphic-label">ECONOMIC FIGURE</span><strong>'+esc(v.title)+'</strong></div>';
+ const note='<p class="ledger-graphic-note">'+esc(v.note)+'</p>';
+ let content='';
+ if(v.type==='mechanism'){
+   content='<div class="ledger-mechanism" aria-label="'+esc(v.title)+' — conceptual model">'+v.stages.map((label,i)=>'<div class="mechanism-node"><span class="mechanism-index">'+String(i+1).padStart(2,'0')+'</span><span>'+esc(label)+'</span></div>').join('<span class="mechanism-arrow" aria-hidden="true">→</span>')+'</div>';
+ }else if(v.type==='calculation'){
+   const [a,b,c]=v.terms;
+   content='<div class="ledger-calculation" aria-label="'+esc(v.title)+'"><div><b>'+esc(a[1])+'</b><small>'+esc(a[0])+'</small></div><span class="calc-sign">+</span><div><b>'+esc(b[1])+'</b><small>'+esc(b[0])+'</small></div><span class="calc-sign">=</span><div class="calc-total"><b>'+esc(c[1])+'</b><small>'+esc(c[0])+'</small></div></div><div class="ledger-units">'+esc(v.units)+'</div>';
+ }else if(v.type==='decomposition'){
+   const sum=v.components.reduce((a,x)=>a+x[1],0);
+   const segments=v.components.map(([label,val],i)=>'<div class="decomp-part decomp-'+i+'" style="width:'+((val/sum)*100).toFixed(3)+'%" title="'+esc(label+': '+val+' log points')+'"></div>').join('');
+   content='<div class="decomp-metric"><strong>'+esc(v.roundedTotal)+'</strong><span>reported log-point price coefficient</span></div><div class="decomp-track" role="img" aria-label="'+esc(v.components.map(x=>x[0]+': '+x[1]+' log points').join(', '))+'">'+segments+'</div><div class="decomp-legend">'+v.components.map(([label,val],i)=>'<span><i class="decomp-key decomp-'+i+'"></i>'+esc(label)+' <b>'+esc(val)+'</b></span>').join('')+'</div>';
+ }else{
+   // All quantitative visuals use a zero-based or signed linear scale. Figures
+   // come only from source-verified, explicit visualData above.
+   const width=520, plotLeft=185, plotRight=465, length=plotRight-plotLeft, rows=(v.values||v.ranges||[]);
+   const low=v.min??0,high=v.max??Math.max(1,...rows.map(x=>Math.abs(x[1])));
+   const px=value=>plotLeft+((value-low)/(high-low))*length;
+   const zero=px(0), height=58+rows.length*43;
+   const base='<line x1="'+zero.toFixed(1)+'" y1="28" x2="'+zero.toFixed(1)+'" y2="'+(height-20)+'" class="plot-zero" />';
+   const items=rows.map((row,i)=>{
+     const y=49+i*43, label=esc(row[0]),range=v.type==='range',value=row[1];
+     const min=range?row[1]:Math.min(0,value),max=range?row[2]:Math.max(0,value);
+     const x=px(min),right=px(max);
+     const rect='<rect x="'+x.toFixed(2)+'" y="'+(y-13)+'" width="'+Math.max(1,right-x).toFixed(2)+'" height="16" rx="2" class="plot-bar bar-'+i+'"/>';
+     const printed=range?row[1]+'–'+row[2]+'%':(v.type==='signed-bar'?(value>0?'+':'')+value+'%':value.toFixed(2)+' pp');
+     return '<text x="'+(plotLeft-12)+'" y="'+y+'" text-anchor="end" class="plot-label">'+label+'</text>'+rect+'<text x="'+Math.min(width-4,Math.max(12,right+7)).toFixed(1)+'" y="'+(y+1)+'" class="plot-value">'+esc(printed)+'</text>';
+   }).join('');
+   content='<svg class="ledger-plot" viewBox="0 0 '+width+' '+height+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+esc(v.title+'. '+rows.map(x=>x[0]+': '+(v.type==='range'?x[1]+' to '+x[2]:x[1])+' '+v.units).join('; '))+'">'+base+items+'</svg><div class="ledger-units">'+esc(v.units)+'</div>';
+ }
+ return '<figure class="ledger-graphic" data-visual-kind="'+esc(v.type)+'">'+head+content+note+'</figure>';
+}
 function render(id,source={}){
  const e=select(id),kind=e.kind;
- const head='<header class="exhibit-head"><div class="exhibit-kicker">L&L · READING EXHIBIT</div><strong>'+esc(names[kind])+'</strong><span class="exhibit-heading">'+esc(e.heading)+'</span></header>';
+ const head='<header class="exhibit-head"><div class="exhibit-kicker">FROM THE ANNEX</div><strong>'+esc(names[kind])+'</strong><span class="exhibit-heading">'+esc(e.heading)+'</span></header>';
  let content='';
  if(kind==='ledger'){
-   content='<div class="exhibit-ledger"><div class="ledger-headings" aria-hidden="true"><span>Affected party</span><span>Economic consequence</span><span>Evidence status</span></div>'+e.rows.map(([party,impact,status],i)=>'<div class="ledger-line"><div class="ledger-party"><span class="ledger-no">'+String(i+1).padStart(2,'0')+'</span>'+esc(party)+'</div><div class="ledger-effect">'+esc(impact)+'</div><div class="ledger-status">'+esc(status)+'</div></div>').join('')+'</div>';
+   content='<div class="exhibit-ledger">'+graphic(id)+'<div class="ledger-headings" aria-hidden="true"><span>Affected party</span><span>Economic consequence</span><span>Evidence status</span></div>'+e.rows.map(([party,impact,status],i)=>'<div class="ledger-line"><div class="ledger-party"><span class="ledger-no">'+String(i+1).padStart(2,'0')+'</span>'+esc(party)+'</div><div class="ledger-effect">'+esc(impact)+'</div><div class="ledger-status">'+esc(status)+'</div></div>').join('')+'</div>';
  }else if(kind==='cabinet'){
    const excerpt=specimen(source.finding||source.title||'');
    if(!excerpt)throw Error('Evidence Cabinet requires published source text: '+id);
-   content='<div class="exhibit-cabinet"><div class="cabinet-record"><div class="cabinet-label">A LINE FROM THE PUBLISHED READING</div><blockquote>'+esc(excerpt)+'</blockquote><div class="cabinet-provenance">Verbatim excerpt · linked sources follow the reading</div></div><div class="cabinet-reading"><div class="cabinet-label">READER’S KEY</div><div class="cabinet-note">'+esc(e.key)+'</div><div class="cabinet-label">WHAT THIS CANNOT ESTABLISH</div><div class="cabinet-note">'+esc(e.limit)+'</div></div></div>';
+   content='<div class="exhibit-cabinet"><div class="cabinet-record"><div class="cabinet-label">THE CLAIM, IN ITS OWN WORDS</div><blockquote>'+esc(excerpt)+'</blockquote><div class="cabinet-provenance">Verbatim excerpt · linked sources follow the reading</div></div><div class="cabinet-reading"><div class="cabinet-label">WHAT THE SOURCE CONTRIBUTES</div><div class="cabinet-note">'+esc(e.key)+'</div><div class="cabinet-label">WHAT REMAINS UNRESOLVED</div><div class="cabinet-note">'+esc(e.limit)+'</div></div></div>';
  }else if(kind==='long'){
    content='<ol class="exhibit-longview" style="--stops:'+e.points.length+'">'+e.points.map(([when,desc,status])=>'<li class="longview-point"><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span></li>').join('')+'</ol>';
  }else throw Error('Unsupported exhibit kind '+kind);
@@ -509,4 +706,4 @@ function audit(ids){
  for(let i=2;i<sequence.length;i++)if(sequence[i]===sequence[i-1]&&sequence[i]===sequence[i-2])longRuns.push({at:i,kind:sequence[i]});
  return {sequence,frequency,longRuns};
 }
-module.exports={catalog,names,specimen,select,render,audit};
+module.exports={catalog,visualData,names,specimen,select,render,audit,graphic};
