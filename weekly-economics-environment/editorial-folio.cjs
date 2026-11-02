@@ -86,6 +86,26 @@ function placeExhibit(s){
  const result=s.slice(0,flow.start)+assembled+s.slice(exhibit.end);
  return result.replace(/(<article class="entry"[^>]*)(>)/,(_,attrs,close)=>attrs+' data-reading-stage="3"'+close);
 }
+/* Finish the settled chapter spread with fully explained exhibits and a
+ * horizontal Why it matters treatment. Both are presentation-only; the
+ * original authored paragraph and heading bytes stay untouched. */
+function finishReading(s){
+ if(s.includes('data-reading-finish="4"'))return s;
+ const ns=nodes(s),art=ns.find(n=>n.tag==='article'),ex=ns.find(n=>has(n,'reading-exhibit')),
+   finding=ns.find(n=>has(n,'finding')),opening=ns.find(n=>has(n,'reading-opening'));
+ if(!art||!ex||!finding||!opening)throw Error('Incomplete finished reading '+(art?.id||'?'));
+ const newer=readingExhibits.render(art.id,{finding:inside(s,finding)});
+ let result=s.slice(0,ex.start)+newer+s.slice(ex.end);
+ // A local layout class replaces no editorial prose and never renames the
+ // research / model / policy openings in the other four readings.
+ const heading=opening.children.find(n=>n.tag==='section')?.children.find(n=>n.tag==='h3');
+ if(heading&&inside(s,heading).replace(/<[^>]*>/g,'').trim().toLowerCase()==='why it matters'){
+  const needle='<div class="reading-opening">';
+  if(!result.includes(needle))throw Error('Missing Why it matters opening '+art.id);
+  result=result.replace(needle,'<div class="reading-opening reading-opening--why">');
+ }
+ return result.replace(/(<article class="entry"[^>]*)(>)/,(_,attrs,close)=>attrs+' data-reading-finish="4"'+close);
+}
 function closing(s,type){
  if(s.includes('data-editorial-folio="1"'))return s;
  const ns=nodes(s),section=ns[0],children=section.children,eyebrow=children.find(n=>has(n,'eyebrow')),h=children.find(n=>n.tag==='h2');
@@ -103,7 +123,7 @@ function closing(s,type){
  return s.slice(0,section.open-1)+' data-editorial-folio="1">'+content+'</section>';
 }
 function edition(s){
- s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>placeExhibit(readingLayout(article(m))));
+ s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>finishReading(placeExhibit(readingLayout(article(m)))));
  // Only uncomposed sections are matched; composed colophons contain nested sections.
  for(const type of ['synthesis','knowledge','editorial-note'])s=s.replace(new RegExp('<section class="'+type+'"(?![^>]*data-editorial-folio)[^>]*>[\\s\\S]*?</section>','g'),m=>closing(m,type));
  const date=s.match(/data-edition="([^"]+)"/)?.[1];
@@ -148,4 +168,4 @@ function readingRecord(s){
  };
 }
 
-module.exports={compose,nodes,article,closing,readingLayout,placeExhibit,readingRecord};
+module.exports={compose,nodes,article,closing,readingLayout,placeExhibit,finishReading,readingRecord};
