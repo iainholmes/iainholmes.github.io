@@ -499,10 +499,9 @@ test('Added driving stops are rerouted, mapped and reachable from Itinerary',()=
  const selected=view.slice(view.indexOf('function selectedControl('),view.indexOf('function updateTripContext('));
  assert.ok(selected.includes("button('Show on Map',"));
  assert.ok(selected.includes('paintMap();'));
- assert.ok(selected.includes('map.focus(activity.id);'));
- assert.ok(selected.includes('showTravelMap();'));
+ assert.ok(selected.includes('focusMapActivity(activity);'));
 });
-test('Show on Map and all step links scroll to their actual targets below the navigation',()=>{
+test('Show on Map preserves the companion while step links retain their navigation offsets',()=>{
  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
  const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
  const start=view.indexOf('function travelNavigationOffset(){');
@@ -514,7 +513,9 @@ test('Show on Map and all step links scroll to their actual targets below the na
  assert.ok(fragment.includes('window.scrollTo({top,behavior:'));
  assert.ok(fragment.includes("const surface=$('travel-map')?.closest('.trip-map')"));
  assert.ok(fragment.includes('requestAnimationFrame(()=>scrollToTravelTarget(surface,{focus:true}))'));
- assert.ok(view.includes("map.focus(activity.id);$('close-activity').hidden=false;showTravelMap();"));
+ assert.ok(fragment.includes('if(mapFloatOpen)return;'));
+ assert.ok(fragment.includes('mapFollowDismissed=false;floatMap(true);return;'));
+ assert.ok(view.includes('focusMapActivity(activity);'));
  assert.ok(fragment.includes("event.preventDefault();stageTo(a.hash.slice(1))"),
    'stage links should use the same calculated scroll offset');
  assert.ok(css.includes('#route-stage .trip-map{')&&css.includes('scroll-margin-top:calc(var(--bar-h)'));
