@@ -97,10 +97,23 @@ function finishReading(s){
  const ns=nodes(s),art=ns.find(n=>n.tag==='article'),ex=ns.find(n=>has(n,'reading-exhibit')),
    finding=ns.find(n=>has(n,'finding'));
  if(!art||!ex||!finding)throw Error('Incomplete finished reading '+(art?.id||'?'));
- const newer=readingExhibits.render(art.id,{finding:inside(s,finding)});
- let result=s.slice(0,ex.start)+newer+s.slice(ex.end);
+ let newer=readingExhibits.render(art.id,{finding:inside(s,finding)});
  const kind=readingExhibits.select(art.id).kind;
+ let chart='';
+ if(kind==='ledger'){
+  // Pair the source-grounded figure with the interpretation rather than
+  // extending a tall ledger beside an empty essay column.
+  chart=readingExhibits.graphic(art.id);
+  if(!chart||!newer.includes(chart))throw Error('Ledger graphic missing '+art.id);
+  newer=newer.replace(chart,'');
+ }
+ let result=s.slice(0,ex.start)+newer+s.slice(ex.end);
  result=result.replace(/(<div class="feature-spread" data-feature=")[^"]+(")/,(_,a,b)=>a+kind+b);
+ if(chart){
+  const essay=nodes(result).find(n=>has(n,'interpretive-essay'));
+  if(!essay)throw Error('Interpretation absent '+art.id);
+  result=result.slice(0,essay.close)+'<div class="essay-graphic">'+chart+'</div>'+result.slice(essay.close);
+ }
  result=result.replace(/class="reading-opening reading-opening--why"/g,'class="reading-opening"');
  if(result.includes('data-reading-finish="4"')){
   return result.replace('data-reading-finish="4"','data-reading-finish="5"');
@@ -155,7 +168,7 @@ function readingRecord(s){
  // The newly-authored interpretive lens is a separate, clearly attributed layer.
  // Remove generated exhibits by parsed element boundaries so a curated
  // dossier can safely contain nested annotation sections.
- const exhibits=nodes(s).filter(n=>has(n,'reading-exhibit')||has(n,'economic-hinge')).sort((a,b)=>b.start-a.start);
+ const exhibits=nodes(s).filter(n=>has(n,'reading-exhibit')||has(n,'economic-hinge')||has(n,'essay-graphic')).sort((a,b)=>b.start-a.start);
  let clean=s;
  for(const n of exhibits)clean=clean.slice(0,n.start)+clean.slice(n.end);
  const ns=nodes(clean), blocks=ns.filter(n=>['h2','h3','p','figure'].includes(n.tag)).map(n=>raw(clean,n));
