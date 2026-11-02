@@ -77,9 +77,9 @@ function floatMap(open,{dismiss=false}={}){
 }
 function updateFloatingMap(){
   if(!mapSurface||!state.family){floatMap(false);return;}
-  const build=$('build-stage'),itinerary=$('itinerary-stage');
+  const build=$('build-stage');
   const inJourney=build.getBoundingClientRect().top<window.innerHeight*.48 &&
-    itinerary.getBoundingClientRect().bottom>120;
+    build.getBoundingClientRect().bottom>120;
   // Desktop auto-follow. On smaller touch screens floating is opt-in so
   // it cannot cover the entire reading and decision surface.
   if(!inJourney){floatMap(false);return;}
@@ -573,7 +573,10 @@ async function discoverJourney({preserveSection=false}={}){
       zones.filter(z=>z.id===selectedRegion).flatMap(z=>perRegion(z).map(activity=>({activity,zone:z})));
     resultBox.replaceChildren(...(entries.length?entries.map(({activity,zone})=>activityCard({...activity},zone)):[
       el('p',selectedRegion==='all'?
-        (zones.length?'The Atlas is searching across the drive. Results appear here as each region finishes.':'A short drive—explore places at your destination or near a town.'):
+        (zones.length?[...records.values()].some(r=>r.status==='loading')||records.size<zones.length?
+          'The Atlas is searching across the drive. Results appear as each region finishes.':
+          'No suitable mapped route discoveries returned from these regions. Explore a town or retry.':
+          'A short drive—explore places at your destination or near a town.'):
         records.get(selectedRegion)?.status==='loading'?'Searching this region for places Rupert might enjoy…':
         records.get(selectedRegion)?.status==='error'?'This region’s public sources could not respond. Try it again or explore a town.':
         'No suitable suggestions in this region yet. Try another region or a nearby town.','discovery-message')
@@ -627,7 +630,7 @@ async function discoverJourney({preserveSection=false}={}){
       draw();const record=records.get(zone.id);
       // Existing results appear instantly. Manually retry failed/empty areas
       // with the provider's interactive priority.
-      if(!record||record.status==='error'||record.status==='done'&&!record.items.length)
+      if(!record||record.status==='loading'||record.status==='error'||record.status==='done'&&!record.items.length)
         void loadRegion(zone,{manual:true});
     });
     choice.className='route-area-button';
