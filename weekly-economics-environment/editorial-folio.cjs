@@ -131,7 +131,11 @@ function compose(source){
 function readingRecord(s){
  // Compare the entire authored scholarship with the original historical record.
  // The newly-authored interpretive lens is a separate, clearly attributed layer.
- const clean=s.replace(/<section class="reading-exhibit"[\s\S]*?<\/section>/g,'').replace(/<div class="economic-hinge"[\s\S]*?<\/small><\/div>/g,'');
+ // Remove generated exhibits by parsed element boundaries so a curated
+ // dossier can safely contain nested annotation sections.
+ const exhibits=nodes(s).filter(n=>has(n,'reading-exhibit')||has(n,'economic-hinge')).sort((a,b)=>b.start-a.start);
+ let clean=s;
+ for(const n of exhibits)clean=clean.slice(0,n.start)+clean.slice(n.end);
  const ns=nodes(clean), blocks=ns.filter(n=>['h2','h3','p','figure'].includes(n.tag)).map(n=>raw(clean,n));
  const meta=ns.filter(n=>has(n,'eyebrow')||has(n,'status')||has(n,'concepts')).map(n=>raw(clean,n)).sort(); // invariant to reflow of existing apparatus
  return {
