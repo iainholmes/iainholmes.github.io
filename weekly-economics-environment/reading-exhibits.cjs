@@ -879,10 +879,14 @@ function graphic(id){
 }
 function render(id,source={}){
  const e=select(id),kind=e.kind;
- const head='<header class="exhibit-head"><div class="exhibit-kicker">FROM THE ANNEX</div><strong>'+esc(names[kind])+'</strong><span class="exhibit-heading">'+esc(e.heading)+'</span></header>';
+ const head='<header class="exhibit-head"><strong>'+esc(names[kind])+'</strong><span class="exhibit-heading">'+esc(e.heading)+'</span></header>';
+ const g=readingGuides[id];
+ const primer=g?'<div class="exhibit-primer"><p>'+esc(g.intro)+'</p></div>':'';
+ const term=g&&g.term?'<aside class="exhibit-concept"><strong>'+esc(g.term[0])+'</strong><span>'+esc(g.term[1])+'</span></aside>':'';
+
  let content='';
  if(kind==='ledger'){
-   content='<div class="exhibit-ledger">'+graphic(id)+'<div class="ledger-headings" aria-hidden="true"><span>Affected party</span><span>Economic consequence</span><span>Evidence status</span></div>'+e.rows.map(([party,impact,status],i)=>'<div class="ledger-line"><div class="ledger-party"><span class="ledger-no">'+String(i+1).padStart(2,'0')+'</span>'+esc(party)+'</div><div class="ledger-effect">'+esc(impact)+'</div><div class="ledger-status">'+esc(status)+'</div></div>').join('')+'</div>';
+   content=primer+'<div class="exhibit-ledger">'+graphic(id)+'<p class="ledger-how-to-read"><strong>How to read this</strong> '+esc(g?.read||'')+'</p><div class="ledger-headings" aria-hidden="true"><span>Affected party</span><span>Economic consequence</span><span>Evidence status</span></div>'+e.rows.map(([party,impact,status],i)=>'<div class="ledger-line"><div class="ledger-party"><span class="ledger-no">'+String(i+1).padStart(2,'0')+'</span>'+esc(party)+'</div><div class="ledger-effect">'+esc(impact)+'</div><div class="ledger-status">'+esc(status)+'</div></div>').join('')+'</div>';
  }else if(kind==='cabinet'){
    const excerpt=specimen(source.finding||source.title||'');
    if(!excerpt)throw Error('Evidence Cabinet requires published source text: '+id);
@@ -890,13 +894,14 @@ function render(id,source={}){
  }else if(kind==='long'){
    const takeaway=longViewTakeaways[id];
    if(!takeaway)throw Error('Missing curated Long View interpretation '+id);
-   content='<div class="longview-guide"><span>FOLLOW THE SEQUENCE</span><span>Each stop identifies what is observed or conditional</span></div><ol class="exhibit-longview">'+e.points.map(([when,desc,status],i)=>{
+   if(!g||g.steps.length!==e.points.length)throw Error('Missing Long View guidance '+id);
+   content=primer+'<div class="longview-guide"><span>THE SEQUENCE</span><span>'+esc(g.read)+'</span></div><ol class="exhibit-longview">'+e.points.map(([when,desc,status],i)=>{
      const statusType=/historical|observation|reported|policy date/i.test(status)?'observed':'conditional';
-     return '<li class="longview-point" data-stage-class="'+statusType+'"><span class="longview-index">'+String(i+1).padStart(2,'0')+'</span><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span></li>';
-   }).join('')+'</ol><div class="longview-takeaway"><span>THE POINT</span><p>'+esc(takeaway)+'</p></div>';
+     return '<li class="longview-point" data-stage-class="'+statusType+'"><span class="longview-index">'+String(i+1).padStart(2,'0')+'</span><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span><p class="longview-explain">'+esc(g.steps[i])+'</p></li>';
+   }).join('')+'</ol><div class="longview-takeaway"><span>WHY THIS MATTERS</span><p>'+esc(takeaway)+'</p></div>';
  }else throw Error('Unsupported exhibit kind '+kind);
  const footer='<footer class="exhibit-footer"><span>'+esc(e.curated?'Reading-specific editorial interpretation':'Published source excerpt · further editorial annotation pending')+'</span><span>See the evidence limits and sources below</span></footer>';
- return '<section class="reading-exhibit" data-exhibit-kind="'+kind+'" data-curated="'+e.curated+'" aria-label="'+esc(names[kind])+'">'+head+content+footer+'</section>';
+ return '<section class="reading-exhibit" data-exhibit-kind="'+kind+'" data-curated="'+e.curated+'" aria-label="'+esc(names[kind])+'">'+head+content+term+footer+'</section>';
 }
 function audit(ids){
  const sequence=ids.map(id=>select(id).kind);
@@ -905,4 +910,4 @@ function audit(ids){
  for(let i=2;i<sequence.length;i++)if(sequence[i]===sequence[i-1]&&sequence[i]===sequence[i-2])longRuns.push({at:i,kind:sequence[i]});
  return {sequence,frequency,longRuns};
 }
-module.exports={catalog,visualData,names,specimen,select,render,audit,graphic};
+module.exports={catalog,visualData,readingGuides,names,specimen,select,render,audit,graphic};
