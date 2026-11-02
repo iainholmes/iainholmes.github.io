@@ -2,7 +2,7 @@
 /* Execute from the repo root: node scripts/test_reading_exhibits.cjs */
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
-const {catalog,select,render,specimen,audit}=require('../weekly-economics-environment/reading-exhibits.cjs');
+const {catalog,visualData,select,render,specimen,audit}=require('../weekly-economics-environment/reading-exhibits.cjs');
 const {compose,nodes,readingRecord}=require('../weekly-economics-environment/editorial-folio.cjs');
 const page=fs.readFileSync('weekly-economics-environment/index.html','utf8');
 const css=fs.readFileSync('weekly-economics-environment/reading-folio.css','utf8');
@@ -29,22 +29,47 @@ for(const [id,reading] of articles){
  const rn=tree.find(x=>x.classes.includes('research-note'));
  ok(body&&lim?.parent===body&&rn?.parent===body,'evidence/RN top-aligned structure '+id);
  ok(reading.includes('data-reading-exhibit="1"'),'future preparation stable '+id);
+ ok(reading.includes('data-reading-stage="3"'),'third-stage article layout remains idempotent '+id);
+ const spread=tree.find(x=>x.classes.includes('feature-spread'));
+ const readingOpening=tree.find(x=>x.classes.includes('reading-opening'));
+ const interpreted=tree.find(x=>x.classes.includes('interpretive-essay'));
+ const exhibit=tree.find(x=>x.classes.includes('reading-exhibit'));
+ ok(spread&&readingOpening&&interpreted&&exhibit,'composed analytical spread '+id);
+ ok(exhibit.parent===spread&&interpreted.parent===spread,'economic interpretation and exhibit paired '+id);
+ ok(readingOpening.start<spread.start&&spread.start<body.start,'analytical narrative precedes lower evidence register '+id);
  if(e.kind==='ledger'){
   ok(e.rows.length>=3,'ledger includes affected parties '+id);
   ok(e.rows.every(x=>x.length===3&&x.every(y=>y)),'ledger rows have consequence and evidence classification '+id);
   ok(fragment.includes('ledger-status'),'ledger qualifies evidence '+id);
+  ok(!!visualData[id],'all ledgers have custom source-grounded economic visual '+id);
+  ok(fragment.includes('class="ledger-graphic"'),'ledger graph/model present '+id);
+  ok(fragment.includes('data-visual-kind="'+visualData[id].type+'"'),'appropriate graphic type '+id);
+  ok(fragment.includes(visualData[id].note),'graphic carries evidence/causal qualifier '+id);
  }else if(e.kind==='cabinet'){
   const quote=specimen(extracted);
   ok(quote.length>=15,'verbatim specimen from authored lead '+id);
   ok(fragment.includes('cabinet-provenance'),'origin stated '+id);
-  ok(fragment.includes('cabinet-note'),'reading annotation and limitation '+id);
+  ok(fragment.includes('dossier-note'),'clear source annotation and limitation '+id);
+  ok(fragment.includes('The Source Dossier'),'renamed Source Dossier '+id);
  }else{
   ok(e.points.length>=3,'timeline has substantive chronological stages '+id);
   ok(e.points.every(x=>x.length===3&&x.every(y=>y)),'timeline distinguishes observation from projection '+id);
-  ok(fragment.includes('style="--stops:'+e.points.length+'"'),'timeline layout adapts to dated steps '+id);
+  ok(fragment.includes('longview-guide')&&fragment.includes('longview-takeaway'),'timeline explains sequence and its meaning '+id);
+  ok((fragment.match(/class="longview-point"/g)||[]).length===e.points.length,'each timeline milestone rendered '+id);
  }
 }
 eq(totals,{ledger:11,cabinet:12,long:7},'balance across the published archive');
+eq(Object.keys(visualData).length,11,'all eleven ledgers contain a verified graph/model spec');
+const projected=visualData['2026-10-30-methane-rule'];
+eq(projected.terms.map(x=>x[1]),[2.5,'0.2–0.3','2.7–2.8'],'EPA reported subtotal and range, not invented net welfare');
+const coal=visualData['2026-10-30-coal-country'];
+eq(coal.values,[['Mine records',0.94],['Labor statistics',1.15]],'two source-specific mining employment estimates, not additive');
+const winter=visualData['2026-10-09-winter-bills'];
+eq(winter.values,[['Heating oil',21],['Electricity',4],['Natural gas',-9],['Propane',-3]],'reported four-fuel forecast contrasts');
+const paper=visualData['2026-10-23-paper-markups'];
+ok(Math.abs(paper.components.reduce((x,row)=>x+row[1],0)-22.9)<1e-8&&paper.roundedTotal===23,'markup and cost shares add up to rounded 23 log points');
+const visualTypes=new Set(Object.values(visualData).map(x=>x.type));
+ok(visualTypes.size>=5,'diverse empirical graphics, calculations, and conceptual models');
 const issueSets=[
 ['electrification','grid','carbon-border','insurance','glyphosate'],
 ['2026-10-02-green-spending','2026-10-02-policy-mix','2026-10-02-amoc','2026-10-02-storage','2026-10-02-tax-bias'],
