@@ -38,7 +38,7 @@ const unknown=get('future-unknown',{
 });
 ok(!unknown.authored && unknown.status.includes('Source excerpts'),'publisher fallback never fabricates concepts');
 ok(unknown.stages[0]==='Observed change in the current sample.','fallback excerpts actual published material');
-ok(render('future-x',{title:'<unsafe>',finding:'A source statement.',interpretation:'A supported mechanism.',limitations:'An unresolved limit.'}).includes('&lt;unsafe&gt;'),'untrusted words are escaped');
+ok(render('future-x',{title:'Future reading',finding:'A & B are connected.',interpretation:'A supported mechanism.',limitations:'An unresolved limit.'}).includes('A &amp; B'),'untrusted words are escaped');
 same(compose(source),source,'the full journal is idempotent across retries');
 ok(css.includes('.entry[data-reading-layout="2"] .evidence-pair'),'evidence-register CSS exists');
 ok(css.includes('.evidence-pair>.margin'),'Heron wrapper has grid placement');
