@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-tapered-folio-spine';
+const currentKey='reading-folio.css?v=20261102-outer-rule-with-caps';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -34,5 +34,14 @@ ok(css.includes('clip-path:polygon(0 0,100% 0,100% 52px,75% 70px,75% 100%,25% 10
 ok(css.includes('@media(min-width:821px) and (max-width:1180px){.contents-boundary::after{right:-21px}}'),'tapered spine remains centered within the 30px laptop gutter');
 ok(css.includes('body.glance .contents-boundary::after{display:none}'),'glance has no hanging border');
 ok(css.includes('@media(max-width:820px)')&&css.includes('.contents-boundary{display:none}'),'mobile sidebar remains absent');
+ok(css.includes('.reading-column{position:relative}'),'right-hand boundary anchors to the complete five-reading column');
+ok(css.includes('.reading-column::after'),'one continuous right-hand border, not an article-by-article treatment');
+ok(css.includes('right:-18px;width:18px'),'right rule occupies existing outer margin without narrowing the article');
+ok(css.includes('linear-gradient(var(--forest),var(--forest)) right top/2px 100% no-repeat'),'continuous forest-green edge');
+ok(css.includes('linear-gradient(var(--clay),var(--clay)) right top/18px 2px no-repeat'),'copper upper end cap');
+ok(css.includes('linear-gradient(var(--clay),var(--clay)) right bottom/18px 2px no-repeat'),'copper lower end cap');
+ok(css.includes('pointer-events:none'),'visual border cannot intercept Keep or Heron');
+ok(css.includes('body.glance .reading-column::after{display:none}'),'no empty rule in glance');
+ok(css.includes('@media print{.reading-column::after{display:none}}'),'outer rule excluded from print');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
 console.log(checks+' single-divider reading layout checks passed.');
