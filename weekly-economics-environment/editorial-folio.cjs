@@ -97,7 +97,7 @@ function readingRecord(s){
  // The newly-authored interpretive lens is a separate, clearly attributed layer.
  const clean=s.replace(/<div class="economic-hinge"[\s\S]*?<\/small><\/div>/g,'');
  const ns=nodes(clean), blocks=ns.filter(n=>['h2','h3','p','figure'].includes(n.tag)).map(n=>raw(clean,n));
- const meta=ns.filter(n=>has(n,'eyebrow')||has(n,'status')||has(n,'concepts')).map(n=>raw(clean,n));
+ const meta=ns.filter(n=>has(n,'eyebrow')||has(n,'status')||has(n,'concepts')).map(n=>raw(clean,n)).sort(); // invariant to reflow of existing apparatus
  return {
   text:blocks.map(x=>x.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim()).join(' | '),
   blocks,
