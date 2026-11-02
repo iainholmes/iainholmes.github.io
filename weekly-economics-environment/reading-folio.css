@@ -483,6 +483,15 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 }
 
 
+/* Heron still creates the original .margin wrapper around Research Notebook.
+   Turn off its historical sticky sidebar behavior within the new lower register,
+   so both evidence sections genuinely start at the same vertical baseline. */
+.entry[data-reading-stage="3"] .evidence-pair>.margin{
+ position:static;top:auto;align-self:start;min-width:0;overflow:visible
+}
+@media(max-width:620px){
+ .entry[data-reading-stage="3"] .reading-exhibit{margin:0}
+}
 /* Stage III responsiveness deliberately breaks the split spread into a
    readable sequence before either column becomes cramped. */
 @media(max-width:1100px){
