@@ -1,62 +1,76 @@
-# Loblolly & Logit — Three rotating reading exhibits
+# Loblolly & Logit — Integrated Reading Spreads (PR #49)
 
-**Status:** draft PR #49, review only. Not merged, not deployed, and not yet visually accepted.
+**Review-only.** The draft branch is not the live periodical. Never merge until the actual page has been visually inspected and the article-specific figures have received editorial confirmation.
 
-## Editorial decision
+## Editorial design
 
-Replace the retired Economic Hinge with **one** substantial, reading-specific feature chosen from:
+The journal retains its outer page width, edition navigation, left and right vertical boundaries, enlarged mirrored copper terminals, typography, site identity, Research Notebook, Heron and Commonplace/Keep controls. All original author-written article text, figures and sources are preserved.
 
-- **The Incidence Ledger:** A carefully ruled table explaining affected groups, the economic consequence, and whether that consequence is estimated, projected, modeled, or merely plausible. Never add unrelated monetary quantities into a fictitious welfare total.
-- **The Evidence Cabinet:** A source-exact excerpt from the existing published finding, paired with a curated interpretive key and a prominently identified evidentiary boundary. It is a reading of the record, not a new claim about what the original source proves.
-- **The Long View:** A horizontal chronology or explicitly labeled scenario sequence. Each dated station distinguishes observed history, forecasts, proposals, or modeled counterfactuals.
+Each reading now follows a more intentionally composed rhythm:
 
-The three experiences have distinct HTML structures and visual treatments, not interchangeable labels applied to a single component.
+1. **Chapter header and finding:** clear typography and subtle horizontal rules.
+2. **Research / design / initial argument:** readable full-width narrative with a controlled line measure.
+3. **Asymmetrical analytical spread:** the existing *Economic interpretation* shares a composed editorial surface with one article-specific feature. The Source Dossier sits to the left; the Incidence Ledger or Long View sits to the right. The two sections form one spread rather than separate consecutive blocks.
+4. **Original figures** (where authored): retained after the interpretive stage, never replaced by the feature.
+5. **Evidence Register:** *What the evidence does—and does not—say* and *Research Notebook* share a horizontal starting line. When the Heron creates a `.margin` wrapper, the notebook remains in the same column.
+6. **Original source links:** unchanged.
 
-**Selection rule:** suitability to the reading is primary. Diversity across successive readings is secondary. A 1–2–3 rotation must not turn a non-temporal paper into a fabricated timeline or assign imaginary gains/losses to actors. An audit of the six current editions finds no run of three identical formats in an edition. Over 30 published readings: **11 ledgers, 12 cabinets, 7 long views**.
+At narrower viewports the analytical spread stacks instead of squeezing prose into tiny columns. At phone width it remains vertically legible. Print omits decorative framing and preserves actual content.
 
-## Published edition choices
+## Three independently designed reading features
 
-| Edition | Reading 1 | Reading 2 | Reading 3 | Reading 4 | Reading 5 |
-|---|---|---|---|---|---|
-| September 2026 | Long View | Long View | Cabinet | Ledger | Cabinet |
-| October 2 | Cabinet | Ledger | Long View | Ledger | Cabinet |
-| October 9 | Ledger | Cabinet | Long View | Ledger | Cabinet |
-| October 16 | Cabinet | Ledger | Cabinet | Ledger | Cabinet |
-| October 23 | Ledger | Long View | Long View | Cabinet | Ledger |
-| October 30 | Ledger | Cabinet | Ledger | Long View | Cabinet |
+### The Incidence Ledger — 11 readings
 
-All 30 have individually curated metadata in `weekly-economics-environment/reading-exhibits.cjs`. The material uses the original published reading, not generated numerical estimates. Each feature has its own visible context and uncertainty classification.
+**A tight, source-grounded economic graphic plus a compact two-part ledger**: affected party / actual or plausible incidence, with an evidence-status qualification on each entry. The chart/model is integral to the Ledger rather than an unrelated decoration.
 
-### Future editions and unattended publication
+The eleven custom graphics include:
 
-- Editors may append an explicit, source-grounded entry keyed to the stable reading ID. Prefer this for every Friday issue.
-- If an unfamiliar reading is published without an approved entry, publication continues using a clearly labeled **Evidence Cabinet** drawn directly from that reading's lead. This avoids fabricating parties, causal effects, prices, or dates in an unattended pipeline.
-- The rotation audit detects sameness but does not force unsuitable formats for novelty.
-- The exhibit renderer is deterministic and local: no external requests, image generation, subscription or new permission dependency.
-- Original issue IDs and accepted artwork are untouched.
+| Reading | Visual type | Evidence basis |
+|---|---|---|
+| Coal demand | Two-bar comparison | Mining-employment declines of 0.94 and 1.15 percentage points (different measures, not additive) |
+| Methane-rule reconsideration | Economic accounting equation | EPA's projected $2.5bn annual compliance savings and $0.2–0.3bn annual market-surplus change, yielding $2.7–2.8bn reported subtotal, **excluding some external damages** |
+| Winter heating | Signed bar chart | EIA conditional forecasts: +21% oil, +4% electricity, −9% gas, −3% propane |
+| Paper markups | Segmented decomposition | 17.7 marginal-cost + 5.2 markup log points ≈ 23 reported price-coefficient log points; distinct from the estimated 5.6% markup change |
+| Mobility finance | Two interval ranges | Reported borrowing-rate ranges of 45–90% versus 4–8%, explicitly not a controlled comparison |
+| Insurance, policy mix, storage, trade cooperation, PFAS farming, energy macro | Six distinct titled mechanism pathways | Conceptual illustrations based on the reading, with no invented magnitudes and explicit caveats |
 
-## Structural reading redesign retained in draft
+All data graphics are generated locally as deterministic, labeled HTML/SVG, with evidence caveats and no external plotting service. Their axes and numerical values derive from the published readings and should be spot-checked against the linked primary sources before release.
 
-1. Chapter metadata/title and finely ruled finding.
-2. Continuous prose and research/economic interpretation, not a permanent split-column article.
-3. One rotating exhibit in the newly opened width.
-4. A shared lower **Evidence Register**, with *What the evidence does—and does not—say* horizontally aligned with the Research Notebook. If Heron moves the notebook into a `.margin` wrapper, that wrapper occupies the same grid track.
-5. Existing original source links.
+### The Source Dossier — 12 readings
 
-The existing two-column sidebar/reading structure remains. The left tapered spine gains a mirrored copper lower terminal. The continuous right-side perimeter gains larger paired copper tapered terminals; pointer-events are disabled for the decoration. Day/night uses existing theme tokens, while tablet/mobile stacks the features and evidence area. Keep, Heron, Field Notes and publisher scheduling stay unchanged.
+**Renamed from Evidence Cabinet.** It is now intelligible as an examination of a specific source-supported claim: a verbatim excerpt from L&L's published finding, a short note on what supports the claim, and a clear note on where the claim stops. Compact archival-paper styling and two annotations make it distinct from the general limitations section and easy to inspect.
 
-## Source and validation evidence
+This does not impersonate a primary-source facsimile. The excerpt is explicitly attributed to the original L&L reading, with linked primary sources retained below.
 
-- Existing original article text, headings, figures, author-supplied evidence limitations, Research Notebook content, links, source citations and identifiers compare equal before and after composition for all 30 readings.
-- Composer output is idempotent, with a stable `data-reading-exhibit="1"` marker and all 30 exhibit instances present.
-- Existing editorial-folio suite: **159 checks passed** in isolated JavaScript with GitHub-backed source mocks.
-- Existing layout suite: **108 checks passed**.
-- New rotating-exhibit suite: **353 checks passed**, including exact render equality, semantic format metadata, six-edition variation, mobile/layout rules and safe fallback.
-- These are **source-level JavaScript checks**, not a complete Node/Jekyll build, automated browser run, or physical Safari test.
-- Former Economic Hinge module, test and documentation are removed from this PR branch, and all canonical generated HTML blocks are replaced.
+### The Long View — 7 readings
 
-## Before release
+A **connected vertical chronological track** with numbered stations, visible date/event/status groupings, filled versus open milestone markers distinguishing observations from conditional stages, and an authored one-sentence takeaway explaining why the sequence matters. Timelines no longer assume all data points are historical; scenarios, plans and projections are labeled as such. Uses the reading's published evidence.
 
-Evaluate a representative ledger, cabinet and timeline in full-page browser rendering at 1704, 1512, 1440, 1280, 1180, 820 and 393px. Also verify night mode, print, Glance, Research Notebook layout, actual expanded/dismissed Heron, Keep controls, source links, figures, long date labels, four-stop timelines, top/bottom copper symmetry, right-edge clipping and publication preparation on a new issue.
+## Editorial selection and future issues
 
-Inspect the curated interpretations individually for accuracy and suitability before they become published editorial content. Do not merge this draft purely on static checks.
+Selection prioritizes the reading's actual economic question and evidence type. Variety is monitored but **not forced**: all six editions use more than one feature, none contains three consecutive identical treatments. Across 30 readings there are 11 Ledgers, 12 Source Dossiers and seven Long Views.
+
+Editors should author an appropriate item for a new reading, including a Ledger graphic with verifiable provenance or a timeline with defensible dates. The no-mapping fallback is a clearly labeled Source Dossier quoting the new reading's own finding, without invented numerical estimates, parties or dates. Publisher generation is synchronous, deterministic, offline and idempotent.
+
+## Verification performed, and limits
+
+- All **30 original scholarship records** remain identical under the source-preservation comparison, including article headlines, source links, figures and research notes.
+- Layout composer repeated on the current document produces identical output.
+- Reviewed source-level JavaScript test runs: **159 historical-edition, 111 reading-layout and 542 rotating-exhibit checks passed (812 total)**.
+- All 11 source-specific visuals, 12 Dossiers, seven timelines, nine original visual/media blocks, and 30 evidence/notebook pairs appear in the generated document.
+- This was tested with repository sources retrieved from GitHub and isolated JS execution using read-only mocks. It is **not equivalent to executing the full repository Node/Jekyll workflow**.
+- **No physical Safari screenshot, browser-measured fit, or production deployment has yet been independently verified.**
+
+## Required visual and editorial acceptance before merge
+
+View actual branch in Safari using the existing local preview:
+
+- Coal reading: source-derived bar comparison and no giant unused Ledger space.
+- Methane reading: the EPA equation is legible and doesn't suggest complete social welfare.
+- Household-climate reading: the renamed **Source Dossier** has clear purpose and hierarchy.
+- Solar + storage: timeline dates, event sequence and conditional future milestones are immediately distinguishable.
+- Figure-rich articles: source graphics still fit and are not squeezed into the interpretive stage.
+- Check laptop/desktop at 1704, 1512, 1440, 1280, 1180; iPad at 820; phone around 393 CSS pixels; night and light modes, Glance, print, real Heron expanded/collapsed/dismissed, Keep controls and clipping.
+- Read every graphic's source/qualifier and all curated Dossier annotations before editorial approval. The test verifies internal consistency; it does not independently substantiate every primary-source number.
+
+Changes remain on **draft PR #49**, unmerged.
