@@ -1,5 +1,5 @@
 {
-  "status": "PROPOSED — NOT PUBLISHED; explicit approval required",
+  "status": "APPROVED — installed as versioned canonical Field Brief issue 037 artwork (merge/deployment tracked separately)",
   "replaces": "fb:2026-11-02",
   "baseline": "2926414b6233f738795180b40a1475444b609467",
   "model": {
@@ -198,5 +198,11 @@
       "date": "2026-09-26",
       "score": 0.11857707509881422
     }
-  ]
+  ],
+  "approval": {
+    "date": "2026-11-02",
+    "scope": "Issue 037 Periodicals landing-page cover, not its article or story art",
+    "previousPin": "docs/field-brief-cover-20261102/original-published-pin.json",
+    "replacedArtwork": "explicit user-authorized correction"
+  }
 }

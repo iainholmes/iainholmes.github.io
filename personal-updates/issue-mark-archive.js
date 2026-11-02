@@ -1,4 +1,4 @@
-/* Published artwork is immutable. Append new editions; never overwrite an existing entry. */
+/* Published artwork is pinned. Append new editions; only explicit, provenance-preserved editorial corrections may replace an existing pin. */
 (function(root){var archive={
   "fb:2026-09-26": {
     "key": "fb",
@@ -1513,64 +1513,49 @@
     "identity": "Field Brief",
     "theme": "allocation",
     "framing": "Chinese robotics capital shifts from machines to adaptable intelligence. A federal rule exposes pharmacy-benefit compensation, while OPEC+ defers its harder 2027 supply choice. Europe tests new space partnerships, and Raleigh voters weigh $203 million for housing and transport. Capital and information before outcomes These stories share no single policy thesis. They do share an evidentiary boundary: investment, disclosure, quotas, partnership talks and bond authority are inputs or commitments, not demonstrated outcomes. The next tests are operational: robots working reliably across tasks, employers renegotiating PBM contracts, actual Gulf exports and 2027 quotas, European funding decisions, and Raleigh projects delivered within debt and construction constraints.",
-    "version": 5,
-    "subject": "enforcement",
-    "composition": "study-separate-registers-inspection-screen-shared-load-service-rack",
-    "signature": "issue:study-separate-registers-inspection-screen-shared-load-service-rack",
-    "phrase": "Routes & enforcement",
-    "seed": 1716885388,
-    "geometry": "<g transform=\"translate(65 105) scale(1.95)\"><path d=\"M7 8H93V92H7Z\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><path d=\"M28 18V82M51 18V82M74 18V82\" stroke=\"$support\" stroke-width=\"6\"/><path d=\"M10 56H90\" stroke=\"$accent\" stroke-width=\"13\"/></g><g transform=\"translate(350 280) scale(1.8)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"$ink\"/><path d=\"M43 35H57V60H43Z\" fill=\"$accent\"/><path d=\"M65 89H94\" stroke=\"$support\" stroke-width=\"9\"/></g><g transform=\"translate(365 105) scale(1.12)\"><path d=\"M12 3H88V97H12Z\" fill=\"$ink\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"$paper\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"$accent\"/></g><path d=\"M305 95V505\" stroke=\"$support\" stroke-width=\"5\"/>",
+    "version": 6,
+    "subject": "capacity",
+    "composition": "capability-transfer",
+    "signature": "issue:capability-transfer",
+    "phrase": "Robotics / adaptable capability",
+    "seed": 93148654,
+    "geometry": "<path d=\"M70 480H305V435H70Z\" fill=\"$ink\"/><path d=\"M145 435V336L285 242L374 318\" fill=\"none\" stroke=\"$ink\" stroke-width=\"32\"/><circle cx=\"145\" cy=\"336\" r=\"35\" fill=\"$accent\"/><circle cx=\"285\" cy=\"242\" r=\"31\" fill=\"$support\"/><path d=\"M353 300L374 318L357 354M374 318L407 305\" fill=\"none\" stroke=\"$accent\" stroke-width=\"15\"/><path d=\"M362 480H540\" stroke=\"$ink\" stroke-width=\"8\"/><path d=\"M380 450L408 393L436 450Z\" fill=\"$support\"/><circle cx=\"484\" cy=\"423\" r=\"28\" fill=\"$accent\"/><path d=\"M90 172H450V255M430 234L450 255L470 234\" fill=\"none\" stroke=\"$support\" stroke-width=\"7\"/><path d=\"M98 135V205M123 149V191M148 160V180\" stroke=\"$accent\" stroke-width=\"7\"/>",
     "supportedConcepts": [
-      {
-        "concept": "enforcement",
-        "storyNumbers": [
-          "02",
-          "05"
-        ]
-      },
       {
         "concept": "capacity",
         "storyNumbers": [
-          "02",
-          "03",
-          "05"
-        ]
-      },
-      {
-        "concept": "infrastructure",
-        "storyNumbers": [
-          "01",
-          "03",
-          "04",
-          "05"
-        ]
-      },
-      {
-        "concept": "risk",
-        "storyNumbers": [
-          "02",
-          "03"
-        ]
+          "01"
+        ],
+        "score": 25
       },
       {
         "concept": "evidence",
         "storyNumbers": [
-          "01",
-          "03"
-        ]
+          "02"
+        ],
+        "score": 15
       },
       {
         "concept": "labor",
         "storyNumbers": [
           "02"
-        ]
+        ],
+        "score": 1
       }
     ],
     "originality": {
-      "policy": 1,
+      "policy": 2,
       "compared": 36,
       "recentWindow": 3
     },
-    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 037: Routes &amp; enforcement\"><title>Field Brief · 037 · Routes &amp; enforcement</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 105) scale(1.95)\"><path d=\"M7 8H93V92H7Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M28 18V82M51 18V82M74 18V82\" stroke=\"#c5ad88\" stroke-width=\"6\"/><path d=\"M10 56H90\" stroke=\"#8a2a36\" stroke-width=\"13\"/></g><g transform=\"translate(350 280) scale(1.8)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"#221a14\"/><path d=\"M43 35H57V60H43Z\" fill=\"#8a2a36\"/><path d=\"M65 89H94\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><g transform=\"translate(365 105) scale(1.12)\"><path d=\"M12 3H88V97H12Z\" fill=\"#221a14\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"#f1e6d0\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"#8a2a36\"/></g><path d=\"M305 95V505\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 037 / 2026-11-02</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Routes &amp; enforcement</text></g></svg>"
+    "correction": {
+      "kind": "explicit editorial artwork replacement",
+      "authorizedOn": "2026-11-02",
+      "originalDate": "2026-11-02",
+      "originalPin": "docs/field-brief-cover-20261102/original-published-pin.json",
+      "proposal": "docs/field-brief-cover-20261102/proposal.svg",
+      "originalRelease": "2926414b6233f738795180b40a1475444b609467"
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 037: Robotics / adaptable capability\"><title>Field Brief · 037 · Robotics / adaptable capability</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M70 480H305V435H70Z\" fill=\"#221a14\"/><path d=\"M145 435V336L285 242L374 318\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"32\"/><circle cx=\"145\" cy=\"336\" r=\"35\" fill=\"#8a2a36\"/><circle cx=\"285\" cy=\"242\" r=\"31\" fill=\"#c5ad88\"/><path d=\"M353 300L374 318L357 354M374 318L407 305\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"15\"/><path d=\"M362 480H540\" stroke=\"#221a14\" stroke-width=\"8\"/><path d=\"M380 450L408 393L436 450Z\" fill=\"#c5ad88\"/><circle cx=\"484\" cy=\"423\" r=\"28\" fill=\"#8a2a36\"/><path d=\"M90 172H450V255M430 234L450 255L470 234\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"7\"/><path d=\"M98 135V205M123 149V191M148 160V180\" stroke=\"#8a2a36\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 037 / 2026-11-02</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Robotics / adaptable capability</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

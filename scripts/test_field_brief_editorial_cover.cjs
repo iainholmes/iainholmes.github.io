@@ -5,7 +5,10 @@ const art=require('../daily-watchlist-5/artwork'),marks=require('../personal-upd
 let count=0;function check(ok,label){assert(ok,label);count++}function eq(a,b,label){assert.deepEqual(a,b,label);count++}
 const html=fs.readFileSync('daily-watchlist-5/index.html','utf8'),data=JSON.parse(html.match(/id="briefing-data">([\s\S]*?)<\/script>/)[1]);
 const input=e=>({key:'fb',date:e.date,no:data.editions.findIndex(x=>x.date===e.date)+1,title:e.issueTitle,stories:e.stories,framing:[e.deck,e.signalTitle,...e.signal||[]].join(' ')});
-const nov2=data.editions.find(x=>x.date==='2026-11-02'),old=archive['fb:'+nov2.date];
+const nov2=data.editions.find(x=>x.date==='2026-11-02'),old=require('../docs/field-brief-cover-20261102/original-published-pin.json'),corrected=archive['fb:'+nov2.date];
+eq(corrected.version,6,'approved editorial correction is installed as a version-six pin');
+eq(corrected.phrase,'Robotics / adaptable capability','published caption comes from lead story');
+eq(corrected.frozen,fs.readFileSync('docs/field-brief-cover-20261102/proposal.svg','utf8'),'published pin matches approved proposal exactly');
 check(art.issueOriginality(old,archive).ok,'published geometry was accepted by old policy and remains readable');
 eq(art.issueTreatment(old,archive).reason,'repeated recent editorial caption','reported failure explicitly detected');
 const candidate={...marks.model(input(nov2)),...art.issueModel(input(nov2),archive)};
