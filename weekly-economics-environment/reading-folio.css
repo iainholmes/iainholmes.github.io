@@ -23,14 +23,14 @@ body.glance .contents-boundary::after{display:none}
 
 /* The reading sheet's single outer closing rule: one uninterrupted boundary
    around all five readings, not a per-article border or third column.
-   Copper end caps recall the folio spine without competing with it. */
+   The copper ends and taper are an exact, thinner mirror of the left spine. */
 @media(min-width:821px){
  .reading-column{position:relative}
  .reading-column::after{
-  content:"";position:absolute;top:0;bottom:0;right:-26px;width:18px;
+  content:"";position:absolute;top:0;bottom:0;right:-21px;width:8px;
   pointer-events:none;
-  background:linear-gradient(to bottom,var(--clay) 0 90px,var(--forest) 90px calc(100% - 90px),var(--clay) calc(100% - 90px) 100%);
-  clip-path:polygon(0 0,100% 0,100% 68px,56% 90px,56% calc(100% - 90px),100% calc(100% - 68px),100% 100%,0 100%,0 calc(100% - 68px),44% calc(100% - 90px),44% 90px,0 68px);
+  background:linear-gradient(to bottom,var(--clay) 0 70px,var(--forest) 70px calc(100% - 70px),var(--clay) calc(100% - 70px) 100%);
+  clip-path:polygon(0 0,100% 0,100% 54px,72% 72px,72% calc(100% - 72px),100% calc(100% - 54px),100% 100%,0 100%,0 calc(100% - 54px),28% calc(100% - 72px),28% 72px,0 54px);
  }
 }
 body.glance .reading-column::after{display:none}
@@ -525,4 +525,212 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  }
  .entry[data-reading-stage="3"] .reading-exhibit{margin-top:15px;break-inside:avoid}
  .reading-exhibit .cabinet-record{background:none}
+}
+
+
+/* Reading finish IV — purposeful rules, paired frames and self-contained
+   exhibits. Preserve the existing surface, palette, and chapter width. */
+
+/* Subtle journal rules between title -> lead -> argument -> apparatus.
+   Copper registration marks add craft without boxing in the paragraphs. */
+.entry[data-reading-finish="4"] .entry-head{
+ position:relative;border-bottom:0;padding-bottom:28px
+}
+.entry[data-reading-finish="4"] .entry-head::after{
+ content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+ background:linear-gradient(to right,var(--clay) 0 38px,var(--forest) 38px 43%,var(--hair) 82%,transparent 100%);
+ pointer-events:none
+}
+.entry[data-reading-finish="4"] .reading-deck{
+ position:relative;border:0;padding:21px 0 25px;margin:0 0 26px
+}
+.entry[data-reading-finish="4"] .reading-deck::after{
+ content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
+ background:linear-gradient(to right,var(--clay) 0 45px,var(--hair) 45px 82%,transparent 100%);
+ pointer-events:none
+}
+.entry[data-reading-finish="4"] .reading-deck::before{
+ content:"";position:absolute;left:0;bottom:-2px;width:16px;height:3px;
+ background:var(--clay);pointer-events:none
+}
+/* 'Why it matters' becomes a horizontally oriented introduction only when
+   the author used precisely that heading. Other design headings are intact. */
+.entry[data-reading-finish="4"] .reading-opening--why{width:100%;max-width:none;margin:0 0 21px}
+.entry[data-reading-finish="4"] .reading-opening--why>.analysis-block{
+ max-width:none;width:100%;display:grid;
+ grid-template-columns:minmax(160px,.38fr) minmax(0,1.62fr);
+ column-gap:clamp(22px,3vw,44px);align-items:start;
+ margin:0;padding:10px 0 14px
+}
+.entry[data-reading-finish="4"] .reading-opening--why h3{
+ grid-column:1;margin:0;font:400 clamp(24px,2.15vw,30px)/1.14 var(--headline)
+}
+.entry[data-reading-finish="4"] .reading-opening--why h3::before{
+ background:none;border-top:2px solid var(--clay);width:34px;margin:0 0 12px
+}
+.entry[data-reading-finish="4"] .reading-opening--why p{
+ grid-column:2;margin:0;max-width:65ch;font:400 17px/1.68 var(--serif)
+}
+/* A coherent frame inside every two-column editorial spread: left and right
+   are differentiated by a fine seam, not individual rectangular cards. */
+.entry[data-reading-finish="4"] .feature-spread{
+ position:relative;border-top:0;
+ padding-top:25px;padding-bottom:24px;margin-bottom:26px
+}
+.entry[data-reading-finish="4"] .feature-spread::before{
+ content:"";position:absolute;top:0;left:0;right:0;height:2px;
+ background:linear-gradient(to right,var(--clay) 0 32px,var(--forest) 32px 63%,var(--hair) 92%,transparent 100%);
+ pointer-events:none
+}
+.entry[data-reading-finish="4"] .feature-spread .interpretive-essay{
+ border-right:1px solid var(--hair);padding:7px 22px 5px 0;
+ min-height:100%
+}
+.entry[data-reading-finish="4"] .feature-spread[data-feature="cabinet"] .interpretive-essay{
+ border-right:0;border-left:1px solid var(--hair);
+ padding:7px 0 5px 22px
+}
+.entry[data-reading-finish="4"] .feature-spread .reading-exhibit{align-self:start}
+.entry[data-reading-finish="4"] .feature-spread[data-feature="ledger"] .reading-exhibit{
+ border-left:1px solid color-mix(in srgb,var(--forest) 35%,transparent)
+}
+/* Parallel sections share an editorial head rule and paired inset accent
+   marks; the notebook's Heron wrapper never floats over the evidence. */
+.entry[data-reading-finish="4"] .evidence-pair{
+ position:relative;border-top:1px solid var(--forest);
+ padding-top:15px;margin-top:5px
+}
+.entry[data-reading-finish="4"] .evidence-pair::before{
+ content:"";position:absolute;left:0;top:-2px;width:38px;height:3px;
+ background:var(--clay);pointer-events:none
+}
+.entry[data-reading-finish="4"] .evidence-pair>.limitation{
+ border-top:0;border-left:2px solid var(--clay);
+ padding:6px 15px 2px!important
+}
+.entry[data-reading-finish="4"] .evidence-pair>.research-note,
+.entry[data-reading-finish="4"] .evidence-pair>.margin>.research-note{
+ border-top:0;border-left:2px solid var(--river);
+ padding:6px 15px 2px
+}
+.entry[data-reading-finish="4"] .evidence-pair>.margin{
+ border-top:0;padding:0;position:static;top:auto
+}
+/* Teaching copy is part of the exhibit, not hidden in a hover tooltip. */
+.reading-exhibit .exhibit-kicker{display:none}
+.reading-exhibit .exhibit-primer{border-left:2px solid var(--river);padding:0 0 0 13px;margin:0 0 16px}
+.reading-exhibit .exhibit-primer p{
+ margin:0;font:400 15px/1.57 var(--serif);color:var(--text)
+}
+.reading-exhibit .exhibit-concept{
+ display:grid;grid-template-columns:minmax(75px,.3fr) minmax(0,1.7fr);
+ gap:6px 12px;align-items:baseline;
+ padding:9px 0 0;margin-top:13px;border-top:1px solid var(--hair)
+}
+.reading-exhibit .exhibit-concept strong{
+ font:600 11px/1.45 var(--sans);color:var(--forest);letter-spacing:.015em
+}
+.reading-exhibit .exhibit-concept span{
+ font:400 12px/1.46 var(--serif);color:var(--muted)
+}
+/* A richer but still compact financial graphic: three accents, restrained
+   row tints, and strong visual separation of source quantities from models. */
+.reading-exhibit[data-exhibit-kind="ledger"]{
+ background:linear-gradient(130deg,
+ color-mix(in srgb,var(--forest) 6%,var(--paper)),
+ color-mix(in srgb,var(--clay) 7%,var(--paper)) 75%,var(--paper));
+ border-top:3px solid var(--forest)
+}
+.reading-exhibit[data-exhibit-kind="ledger"] .exhibit-primer{
+ border-left-color:var(--clay);margin-bottom:12px
+}
+.reading-exhibit .ledger-graphic{
+ padding:12px 11px;
+ background:linear-gradient(115deg,
+ color-mix(in srgb,var(--river) 7%,var(--paper)),
+ color-mix(in srgb,var(--clay) 5%,var(--paper)));
+ border-top:1px solid var(--river)
+}
+.reading-exhibit .ledger-how-to-read{
+ margin:0 0 13px;padding:0;
+ font:400 12.5px/1.5 var(--serif);color:var(--text)
+}
+.reading-exhibit .ledger-how-to-read strong{
+ font:600 11px/1.45 var(--sans);color:var(--river);margin-right:4px
+}
+.reading-exhibit .ledger-line{border-left:2px solid transparent;padding-left:8px;padding-right:4px}
+.reading-exhibit .ledger-line:nth-of-type(3n+1){
+ border-left-color:var(--forest);
+ background:color-mix(in srgb,var(--forest) 6%,transparent)
+}
+.reading-exhibit .ledger-line:nth-of-type(3n+2){
+ border-left-color:var(--river);
+ background:color-mix(in srgb,var(--river) 5%,transparent)
+}
+.reading-exhibit .ledger-line:nth-of-type(3n){
+ border-left-color:var(--clay);
+ background:color-mix(in srgb,var(--clay) 7%,transparent)
+}
+.reading-exhibit .mechanism-node{
+ border-top-width:3px;padding:9px 6px 5px;
+ background:color-mix(in srgb,var(--forest) 6%,transparent)
+}
+.reading-exhibit .mechanism-node:nth-of-type(2){
+ border-top-color:var(--river);
+ background:color-mix(in srgb,var(--river) 6%,transparent)
+}
+.reading-exhibit .mechanism-node:nth-of-type(3){
+ border-top-color:var(--clay);
+ background:color-mix(in srgb,var(--clay) 8%,transparent)
+}
+.reading-exhibit .calc-total{
+ background:color-mix(in srgb,var(--clay) 9%,transparent);
+ border-bottom:2px solid var(--clay);padding:3px 4px 6px
+}
+/* A Long View you can enter first: introduction, chronological explanation,
+   source status at every stop, and a real concluding interpretation. */
+.reading-exhibit[data-exhibit-kind="long"] .exhibit-primer{border-left-color:var(--river)}
+.reading-exhibit .longview-guide{display:block;margin:0 0 15px}
+.reading-exhibit .longview-guide>span:first-child{display:block;margin-bottom:4px}
+.reading-exhibit .longview-guide>span:last-child{font:italic 12.5px/1.5 var(--serif)}
+.reading-exhibit .longview-point{padding-bottom:21px;row-gap:4px}
+.reading-exhibit .longview-explain{
+ grid-column:2;grid-row:auto;margin:4px 0 0;
+ font:400 13.5px/1.58 var(--serif);color:var(--text)
+}
+.reading-exhibit .longview-point[data-stage-class="observed"] .longview-status{color:var(--forest)}
+.reading-exhibit .longview-point[data-stage-class="conditional"] .longview-status{color:var(--clay)}
+.reading-exhibit .longview-takeaway{
+ grid-template-columns:minmax(0,1fr);gap:5px;
+ padding:12px 12px 14px;
+ background:color-mix(in srgb,var(--river) 8%,transparent);
+ border-top:2px solid var(--river)
+}
+.reading-exhibit .longview-takeaway p{font-size:14.5px;line-height:1.53}
+@media(max-width:1100px){
+ .entry[data-reading-finish="4"] .feature-spread .interpretive-essay,
+ .entry[data-reading-finish="4"] .feature-spread[data-feature="cabinet"] .interpretive-essay{
+  border:0;border-bottom:1px solid var(--hair);
+  padding:0 0 16px;min-height:0
+ }
+ .entry[data-reading-finish="4"] .reading-opening--why>.analysis-block{grid-template-columns:minmax(135px,.4fr) minmax(0,1.6fr)}
+}
+@media(max-width:820px){
+ .entry[data-reading-finish="4"] .reading-opening--why>.analysis-block{
+  grid-template-columns:minmax(0,1fr);gap:13px
+ }
+ .entry[data-reading-finish="4"] .reading-opening--why p{grid-column:1}
+}
+@media(max-width:620px){
+ .reading-exhibit .exhibit-concept{grid-template-columns:1fr}
+ .reading-exhibit .longview-point{padding-bottom:18px}
+ .entry[data-reading-finish="4"] .evidence-pair>.limitation{
+  padding:6px 12px 2px!important
+ }
+}
+@media print{
+ .entry[data-reading-finish="4"] .feature-spread .interpretive-essay{
+  border:0;padding:0 0 10px
+ }
+ .reading-exhibit[data-exhibit-kind="ledger"]{background:none}
 }
