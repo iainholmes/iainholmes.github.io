@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-integrated-exhibit-spreads';
+const currentKey='reading-folio.css?v=20261102-guided-exhibits-refined-rails';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -38,8 +38,8 @@ ok(css.includes('var(--clay) 0 70px,var(--forest) 70px calc(100% - 70px),var(--c
 ok(css.includes('calc(100% - 54px)'),'left lower taper mirrors upper');
 ok(css.includes('body.glance .contents-boundary::after{display:none}'),'left spine hidden in glance');
 ok(css.includes('.reading-column::after'),'right boundary remains whole-edition');
-ok(css.includes('right:-26px;width:18px'),'right terminal is larger');
-ok(css.includes('var(--clay) 0 90px,var(--forest) 90px calc(100% - 90px),var(--clay)'),'right tassels mirror');
+ok(css.includes('right:-21px;width:8px'),'right spine is thinner than left, same mirrored taper');
+ok((css.match(/var\(--clay\) 0 70px,var\(--forest\) 70px calc\(100% - 70px\),var\(--clay\)/g)||[]).length===2,'both vertical spine tassels have identical 70px geometry');
 ok(css.includes('pointer-events:none'),'boundaries do not intercept controls');
 ok(css.includes('body.glance .reading-column::after{display:none}'),'right rule hidden in glance');
 ok(css.includes('@media print{.reading-column::after{display:none}}'),'outer border hidden in print');
@@ -47,7 +47,15 @@ ok(css.includes('.entry[data-reading-layout="2"] .evidence-pair'),'paired eviden
 ok(css.includes('flex-direction:column'),'single main reading track');
 ok(css.includes('.feature-spread[data-feature="cabinet"]')||css.includes('.feature-spread[data-feature="cabinet"]'),'Source Dossier swaps placement with interpretation');
 ok(css.includes('.ledger-plot')&&css.includes('.ledger-calculation')&&css.includes('.ledger-mechanism'),'numeric graphics and conceptual models have distinct CSS');
+ok(css.includes('.entry[data-reading-finish="4"] .entry-head::after'),'polished chapter title-to-lead keyline');
+ok(css.includes('.entry[data-reading-finish="4"] .reading-deck::after'),'refined lead-to-analysis separator');
+ok(css.includes('.reading-opening--why>.analysis-block')&&css.includes('grid-template-columns:minmax(160px,.38fr)'),'horizontal Why-it-matters design');
+ok(css.includes('.feature-spread .interpretive-essay')&&css.includes('border-right:1px solid var(--hair)'),'paired interpretive border');
+ok(css.includes('.evidence-pair::before')&&css.includes('border-top:1px solid var(--forest)'),'coordinated evidence paired rule');
 eq((source.match(/data-reading-stage="3"/g)||[]).length,30,'thirty composed reading spreads');
+eq((source.match(/data-reading-finish="4"/g)||[]).length,30,'finished designs applied in all thirty readings');
+eq((source.match(/class="reading-opening reading-opening--why"/g)||[]).length,26,'twenty-six original Why-it-matters sections receive horizontal layout');
+
 ok(css.includes('.evidence-pair>.margin')&&source.includes("var grid=art.querySelector('.article-grid')"),'Heron wrapper remains compatible');
 eq((source.match(/data-reading-layout="2"/g)||[]).length,30,'all thirty reading layouts');
 eq((source.match(/class="reading-exhibit"/g)||[]).length,30,'all thirty have reading-specific exhibits');
