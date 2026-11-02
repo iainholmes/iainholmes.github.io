@@ -638,6 +638,191 @@ const longViewTakeaways={
   "2026-10-23-emissions-gap": "Pathway requirements are not a forecast; the later temperature trajectory depends on abatement and carbon removal.",
   "2026-10-30-solar-storage": "Reported co-location is already increasing, but later-year shares reflect proposed projects rather than completed additions."
 };
+
+/* Authored reading primers: accessible from the exhibit before the full story. */
+const readingGuides={
+  "electrification": {
+    "intro": "Electrification means using electricity to provide services such as transport and heating that often depend on direct fuel combustion. The three percentages below describe different questions: what happens now, what appears economical with current technology, and what could happen under a particular future scenario.",
+    "read": "Do not interpret 23%, 33%, and 35% as three measurements of the same trend. Only the first is an observed share.",
+    "term": [
+      "Final energy",
+      "Energy delivered to end users, rather than the amount of fuel used to generate electricity."
+    ],
+    "steps": [
+      "The starting point measures electricity's actual share of energy delivered to end users. It does not count every service that could be electrified economically.",
+      "The study asks how much larger electricity's role might be if cost-competitive switching opportunities were fully adopted. Financing and incentives can prevent those switches, so this is not the observed present.",
+      "The 2035 figure depends on the report's assumed adoption and power-system changes. It is an internally consistent scenario, not a promise that the share will reach 35%."
+    ]
+  },
+  "grid": {
+    "intro": "An electricity grid can have plenty of generating plants yet still struggle to move power from where it is produced to where it is needed. Grid upgrades may relieve those bottlenecks, but an announced project is several steps away from an actual change in consumer bills.",
+    "read": "Follow the distinction between a selected investment, its expected engineering capacity, and eventual measured economic outcomes.",
+    "term": [
+      "GW",
+      "Gigawatts: a measure of power capacity, not electricity generated over time or dollars saved."
+    ],
+    "steps": [
+      "DOE's selection announcement identifies the intended group of projects and funding support. It does not mean that construction, financing, permitting, or interconnection are complete.",
+      "Engineering studies project that the investments could make more transmission capability available. The reported gigawatts describe potential network capacity, not new power plants or guaranteed usage.",
+      "Only after the projects operate can analysts compare dispatch, congestion, reliability, prices, and costs with a credible counterfactual. That last evaluation has not happened in this report."
+    ]
+  },
+  "2026-10-02-amoc": {
+    "intro": "The Atlantic Meridional Overturning Circulation (AMOC) is an ocean circulation system that helps redistribute heat. This study does not observe a future collapse; it asks what would happen to economic welfare if such a collapse occurred in a long-run model of climate, geography, trade, and migration.",
+    "read": "The milestones are steps inside a model comparison, not a prediction that a collapse will occur by a specified date.",
+    "term": [
+      "Counterfactual",
+      "A modeled alternative world used for comparison; neither path is an observed future."
+    ],
+    "steps": [
+      "The researchers first establish a warming scenario in which the circulation continues. Economic welfare under this path is the benchmark, not a world without climate change.",
+      "They then introduce an AMOC collapse into the model. Changing regional temperature patterns affects where it is attractive or productive to live and work, creating further adjustments through migration and trade.",
+      "The 1.9% figure compares modeled global welfare under collapse with welfare under warming without collapse in the specified scenario by 2200. It is not an observed loss and remains sensitive to modeling assumptions."
+    ]
+  },
+  "2026-10-09-nuclear-finance": {
+    "intro": "A nuclear 'uprate' increases electrical output from an existing reactor without building an entirely new station. Federal financing could help fund those modifications, but an initial loan commitment, construction, and decades of future operation are different decisions.",
+    "read": "Each step depends on legal, engineering, financing, and regulatory conditions that have not all been met.",
+    "term": [
+      "Uprate",
+      "An engineered increase in the output capability of an existing generating unit."
+    ],
+    "steps": [
+      "DOE's conditional commitment describes potential financing. The proposal may still change or fail to close after further diligence and agreements.",
+      "The proposed plant modifications could add 433 MW of capacity across the sites. This is engineering capability if the projects proceed, not production already reaching the grid.",
+      "Keeping reactors open twenty additional years requires investment, licenses, and other conditions. The longer operating life is a plan, not a measured future outcome."
+    ]
+  },
+  "2026-10-23-vehicle-mix": {
+    "intro": "A tax credit can change when people buy vehicles as well as which powertrains they choose. But the number of new hybrids or electric cars sold in a quarter is not the same as the composition of all vehicles already on the road.",
+    "read": "Read the first stop as a policy date, the second as a sales observation, and the third as the slower adjustment of the vehicle stock.",
+    "term": [
+      "Stock versus flow",
+      "New vehicle sales are a flow; the cars and trucks already in service make up the much larger stock."
+    ],
+    "steps": [
+      "The federal credits ended on September 30, 2025. Buyers may have advanced some purchases before that date, but the expiration alone does not establish how much of the later change it caused.",
+      "In the third quarter of 2026, hybrid, battery-electric, and plug-in hybrid vehicles together accounted for 23% of new light-duty sales. The composition shifted toward conventional hybrids.",
+      "Older vehicles remain in service for years. Even a pronounced shift in this quarter's new sales reaches the total fleet gradually, so energy demand and emissions do not change one-for-one with sales shares."
+    ]
+  },
+  "2026-10-23-emissions-gap": {
+    "intro": "Climate 'overshoot' means temperatures temporarily rise above a target before potentially returning below it. This timeline is a model pathway describing the emissions cuts and later carbon removal needed to limit overshoot; it is not an official forecast of what governments will actually achieve.",
+    "read": "The percentages are cumulative reductions from the 2025 emissions reference level, not consecutive cuts to be added together.",
+    "term": [
+      "Overshoot",
+      "A period above a temperature threshold, followed by a possible return toward it under future mitigation and carbon removal."
+    ],
+    "steps": [
+      "The pathway begins with emissions in 2025 as a common numerical reference. This starting point is needed to interpret subsequent percentage reductions.",
+      "By 2030, the model pathway requires emissions to be 18% lower than in 2025. This is an emissions requirement of the scenario, not a report that the reduction has already happened.",
+      "By 2040, the same pathway requires 69% lower emissions than in 2025. The 69% already incorporates the earlier change; it should not be added to 18%.",
+      "Even with steep cuts, warming may peak above 1.5°C before returning toward it later in the century. This trajectory depends on large-scale mitigation and carbon removal actually occurring."
+    ]
+  },
+  "2026-10-30-solar-storage": {
+    "intro": "Co-location means building a battery at the same project as a solar generating facility. Instead of selling all solar output when the sun shines, the combined project can store some electricity and deliver it later. The key statistic here is the share of *new solar capacity* installed with an operating battery.",
+    "read": "The early stops are reported additions; the final stops depend on projects still in the development pipeline.",
+    "term": [
+      "Co-located",
+      "Solar generating capacity and battery storage operating together at the same site."
+    ],
+    "steps": [
+      "In 2017, pairing new utility-scale solar with storage was relatively uncommon: the reported share of added capacity was about 2%.",
+      "Through September 2026, more than 16% of solar capacity added was paired with an operating battery. This is evidence of rising adoption, not a measured estimate of the technology's financial benefits.",
+      "Projects planned for the remaining months of 2026 could lift the full-year share to 19%. Because these are reported plans, the final observed percentage could differ.",
+      "Planned 2027–2028 projects imply shares above 30%. Some projects may be delayed, resized, canceled, or reconfigured, so the future bars are not established installations."
+    ]
+  },
+  "insurance": {
+    "intro": "Insurance 'strain' can show up through unaffordable premiums, limited availability, or weak insurer finances. These pressures need not line up exactly with mapped natural hazards. The central economic question is how the added cost of insuring a home is eventually borne.",
+    "read": "The arrows depict possible economic adjustments, not three measured causal treatment effects.",
+    "term": [
+      "Capitalization",
+      "When expected future costs or benefits become reflected in the price of an asset such as a home."
+    ]
+  },
+  "2026-10-02-policy-mix": {
+    "intro": "A carbon price imposed in one country can affect fossil-fuel markets elsewhere. Reducing domestic demand may lower the world fuel price and make consumption cheaper abroad, offsetting some domestic emissions savings. The Ledger separates those market channels.",
+    "read": "The diagram is qualitative: no leakage percentage or distributional total is estimated by this graphic.",
+    "term": [
+      "Leakage",
+      "An emissions change outside the regulating jurisdiction that offsets part of the policy's domestic reduction."
+    ]
+  },
+  "2026-10-02-storage": {
+    "intro": "Battery storage can buy electricity when prices are low and sell when prices are high. But as more storage enters, it reduces the very price gaps that pay storage owners. That means the investment's private revenue can move differently from its value to consumers and the wider electricity system.",
+    "read": "These are model-based price-feedback channels, not three quantities to add together.",
+    "term": [
+      "Arbitrage spread",
+      "The difference between prices at times when electricity is bought and sold, before accounting for costs and losses."
+    ]
+  },
+  "2026-10-09-trade-climate": {
+    "intro": "International carbon pricing creates winners and losers through trade prices, even before accounting for climate benefits. A policy can improve aggregate welfare and still fail to secure cooperation if exporting countries expect concentrated losses.",
+    "read": "The schematic separates who faces the price change from how transfers might alter the incentive to join an agreement.",
+    "term": [
+      "Terms of trade",
+      "The price of what a country sells abroad relative to what it buys from other countries."
+    ]
+  },
+  "2026-10-09-winter-bills": {
+    "intro": "Households do not all heat their homes with the same fuel. A forecast winter spending change reflects expected prices, weather-driven energy use, and the type of heating equipment a household owns. One national average would hide these sharply different burdens.",
+    "read": "Bars above zero indicate forecast spending increases; bars below zero indicate decreases, each relative to the previous winter. These are conditional forecasts, not observed bills.",
+    "term": [
+      "Expenditure versus price",
+      "Spending changes when either the price of energy or the quantity used changes."
+    ]
+  },
+  "2026-10-16-pfas-agriculture": {
+    "intro": "PFAS can reach farms through water and other materials supplied from outside agriculture. The farm may incur testing, market, or remediation costs even if it did not create the contamination. This is an environmental-incidence problem: the source of pollution and the party bearing the cost differ.",
+    "read": "The arrows show plausible exposure and cost transmission; no quantified farm-loss estimate is supplied by the article.",
+    "term": [
+      "Incidence",
+      "Who ultimately bears a cost, which may differ from who first pays or who caused it."
+    ]
+  },
+  "2026-10-16-energy-macro": {
+    "intro": "An increase in world energy prices does not hit every economy the same way. Countries that purchase fuel abroad face higher input bills, while those selling it may receive higher export income. Governments and households then adjust through prices, spending, inventories, and fiscal support.",
+    "read": "This mechanism explains why a common energy shock can be associated with different macroeconomic outcomes. It is not a causal cross-country estimate.",
+    "term": [
+      "Net energy importer",
+      "A country that buys more energy from abroad than it sells; exporters face a different terms-of-trade exposure."
+    ]
+  },
+  "2026-10-23-paper-markups": {
+    "intro": "When pollution rules become stricter, regulated firms may face higher production costs. But they can also gain market power if competition weakens. This study separates those two channels in the price response rather than assuming the entire increase is compliance cost.",
+    "read": "The 17.7 and 5.2 log-point components add to 22.9 log points, rounding to the reported 23-log-point price coefficient. That decomposition is distinct from the study's roughly 5.6% markup estimate.",
+    "term": [
+      "Markup",
+      "The amount by which a firm's selling price exceeds its marginal production cost, expressed according to the study's estimation method."
+    ]
+  },
+  "2026-10-23-mobility-finance": {
+    "intro": "A motorcycle or three-wheeler that is cheaper to operate can still be unaffordable if buyers face extremely expensive loans. Credit terms can therefore block adoption even when fuel savings make the vehicle attractive in the long run.",
+    "read": "The two intervals show reported annual borrowing-rate ranges in different market contexts. They are not an estimate of what moving a borrower between markets would cause.",
+    "term": [
+      "Financing wedge",
+      "The added cost or constraint created when upfront capital is difficult or expensive to borrow."
+    ]
+  },
+  "2026-10-30-coal-country": {
+    "intro": "A loss of demand for coal first hits mines, but workers and firms outside mining can also be affected. Less mine activity can reduce local transport business, public revenue, housing demand, and incentives to move into the region.",
+    "read": "The two bars report alternative estimates of the *mining-employment* decline, measured in percentage points. They are not two separate losses that should be added together, and they do not quantify total regional spillovers.",
+    "term": [
+      "Percentage point",
+      "The arithmetic difference between two rates: a change from 5% to 4% is a decline of 1 percentage point."
+    ]
+  },
+  "2026-10-30-methane-rule": {
+    "intro": "EPA's proposed relaxation of parts of its methane rule may save firms compliance resources and change energy-market outcomes. But a regulatory cost saving is not automatically a net benefit to society if the change also increases emissions and their external damages.",
+    "read": "The equation reproduces EPA's projected annual accounting subtotal relative to its 2024-rule baseline. It omits some climate and health damages; the result should not be called total social welfare.",
+    "term": [
+      "External damage",
+      "A cost borne by others, such as climate or health harm, that is not fully included in the private market transaction."
+    ]
+  }
+};
 const names=Object.freeze({ledger:'The Incidence Ledger',cabinet:'The Source Dossier',long:'The Long View'});
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const plain=s=>String(s||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
