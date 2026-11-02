@@ -228,23 +228,49 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 .entry[data-reading-layout="2"] .analysis-flow>.figure,.entry[data-reading-layout="2"] .analysis-flow>.funding{
  width:100%;max-width:100%;margin:14px 0 30px
 }
-/* New journal apparatus: a reading-specific pathway, not a purported estimate. */
-.entry[data-reading-layout="2"] .economic-hinge{
- display:grid;grid-template-columns:minmax(160px,.47fr) minmax(0,1.53fr);
- gap:16px 28px;align-items:start;position:relative;
- margin:22px 0 44px;padding:22px 0 20px;border-top:1px solid var(--forest);border-bottom:1px solid var(--hair);
- color:var(--ink)
+/* A recurring editorial room with three distinct physical grammars.
+   These are evidence-based apparatus, not a generic three-step summary. */
+.entry[data-reading-layout="2"] .reading-exhibit{
+ width:100%;min-width:0;margin:22px 0 44px;padding:18px 0 20px;
+ border-top:2px solid var(--forest);border-bottom:1px solid var(--hair);color:var(--ink)
 }
-.economic-hinge .hinge-heading{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0}
-.economic-hinge .hinge-kicker{font:600 10px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--clay)}
-.economic-hinge .hinge-heading strong{font:400 clamp(24px,2.4vw,33px)/1.1 var(--headline);letter-spacing:-.01em;color:var(--ink)}
-.economic-hinge .hinge-status{font:400 12px/1.5 var(--sans);color:var(--muted);max-width:30ch}
-.economic-hinge .hinge-stages{min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.economic-hinge .hinge-stage{min-width:0;padding:0 6px 8px 14px;border-left:1px solid var(--hair);display:flex;flex-direction:column;gap:8px}
-.economic-hinge .hinge-index{font:400 22px/1 var(--headline);color:var(--clay)}
-.economic-hinge .hinge-label{font:600 10px/1.35 var(--sans);letter-spacing:.09em;color:var(--river)}
-.economic-hinge .hinge-phrase{font:400 17px/1.38 var(--serif);color:var(--ink)}
-.economic-hinge .hinge-disclaimer{grid-column:2;font:italic 11px/1.5 var(--serif);color:var(--muted)}
+.reading-exhibit .exhibit-head{display:grid;grid-template-columns:minmax(170px,.44fr) minmax(0,1.56fr);gap:6px 24px;align-items:baseline;padding:0 0 18px}
+.reading-exhibit .exhibit-kicker{grid-column:1/-1;font:600 10px/1.45 var(--sans);letter-spacing:.12em;color:var(--clay)}
+.reading-exhibit .exhibit-head strong{font:400 clamp(24px,2.4vw,34px)/1.12 var(--headline);letter-spacing:-.012em;color:var(--ink)}
+.reading-exhibit .exhibit-heading{font:italic 400 clamp(17px,1.6vw,22px)/1.3 var(--serif);color:var(--muted)}
+.reading-exhibit .exhibit-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 28px;margin-top:18px;padding-top:12px;border-top:1px solid var(--hair);font:400 11px/1.5 var(--sans);color:var(--muted)}
+/* Incidence Ledger: ruled entries, actual beneficiaries/cost bearers and
+   an explicit uncertainty column, no implicit monetary totals. */
+.reading-exhibit[data-exhibit-kind="ledger"] .exhibit-ledger{border-top:1px solid var(--hair)}
+.reading-exhibit .ledger-headings,.reading-exhibit .ledger-line{display:grid;grid-template-columns:minmax(145px,.95fr) minmax(0,1.45fr) minmax(145px,.9fr);column-gap:22px;align-items:start}
+.reading-exhibit .ledger-headings{padding:9px 0 10px;font:600 10px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--river)}
+.reading-exhibit .ledger-line{padding:15px 0 17px;border-top:1px solid var(--hair)}
+.reading-exhibit .ledger-party{font:400 18px/1.35 var(--serif);color:var(--ink)}
+.reading-exhibit .ledger-no{display:inline-block;margin-right:10px;font:400 17px/1 var(--headline);color:var(--clay)}
+.reading-exhibit .ledger-effect{font:400 16px/1.5 var(--serif);color:var(--text)}
+.reading-exhibit .ledger-status{font:italic 13px/1.5 var(--serif);color:var(--muted);padding-left:12px;border-left:2px solid var(--river)}
+/* Evidence Cabinet: an archival specimen on paper, with separate
+   interpretive and evidentiary annotations rather than repeated synopsis. */
+.reading-exhibit[data-exhibit-kind="cabinet"] .exhibit-cabinet{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(230px,.85fr);gap:26px;align-items:stretch}
+.reading-exhibit .cabinet-record{padding:21px 26px 23px;border:1px solid var(--hair);border-left:4px solid var(--clay);background:var(--clay-wash);min-width:0;position:relative}
+.reading-exhibit .cabinet-record:after{content:"";position:absolute;right:0;top:0;border-top:13px solid var(--paper);border-left:13px solid transparent;pointer-events:none}
+.reading-exhibit .cabinet-label{display:block;margin:0 0 12px;font:600 10px/1.4 var(--sans);letter-spacing:.11em;color:var(--river)}
+.reading-exhibit .cabinet-record blockquote{margin:0 0 16px;font:italic 400 clamp(19px,1.6vw,24px)/1.43 var(--serif);color:var(--ink)}
+.reading-exhibit .cabinet-provenance{font:400 11px/1.5 var(--sans);color:var(--muted)}
+.reading-exhibit .cabinet-reading{min-width:0;border-top:1px solid var(--river);padding:17px 0 0}
+.reading-exhibit .cabinet-note{font:400 16px/1.55 var(--serif);color:var(--text);margin:0 0 22px}
+/* Long View: a measured chronological track; each station explicitly
+   distinguishes observations from scenarios, plans or projections. */
+.reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{
+ list-style:none;margin:8px 0 0;padding:20px 0 0;display:grid;
+ grid-template-columns:repeat(var(--stops,3),minmax(0,1fr));gap:16px;
+ border-top:1px solid var(--hair)
+}
+.reading-exhibit .longview-point{min-width:0;position:relative;padding:12px 9px 4px 15px;border-left:1px solid var(--hair);display:flex;flex-direction:column;gap:9px}
+.reading-exhibit .longview-point:before{content:"";position:absolute;left:-4px;top:-24px;width:7px;height:7px;border-radius:50%;background:var(--clay);outline:3px solid var(--paper)}
+.reading-exhibit .longview-date{font:600 12px/1.35 var(--sans);letter-spacing:.035em;color:var(--river)}
+.reading-exhibit .longview-event{font:400 17px/1.43 var(--serif);color:var(--ink)}
+.reading-exhibit .longview-status{font:italic 13px/1.45 var(--serif);color:var(--muted)}
 /* Both headers begin at the same vertical baseline, including when Heron
    wraps the RN in its existing .margin container. */
 .entry[data-reading-layout="2"] .evidence-pair{
@@ -272,8 +298,8 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 /* Narrow screens preserve the continuous reading and stack the evidence
    register without relying on column or side-by-side text placement. */
 @media(max-width:1180px){
- .entry[data-reading-layout="2"] .economic-hinge{grid-template-columns:1fr}
- .entry[data-reading-layout="2"] .economic-hinge .hinge-disclaimer{grid-column:1}
+ .reading-exhibit .ledger-headings,.reading-exhibit .ledger-line{column-gap:14px}
+ .reading-exhibit .exhibit-longview{gap:10px}
  .entry[data-reading-layout="2"] .evidence-pair{grid-template-columns:minmax(0,1fr) minmax(260px,.85fr);gap:24px}
 }
 @media(max-width:900px){
@@ -282,13 +308,32 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .entry[data-reading-layout="2"] .evidence-pair>.margin{margin-top:30px}
 }
 @media(max-width:620px){
- .entry[data-reading-layout="2"] .hinge-stages{grid-template-columns:1fr;gap:13px}
- .entry[data-reading-layout="2"] .hinge-stage{padding:0 0 12px 14px}
- .entry[data-reading-layout="2"] .economic-hinge{margin-bottom:32px}
+ .entry[data-reading-layout="2"] .reading-exhibit{margin-bottom:30px}
+ .reading-exhibit .exhibit-head{grid-template-columns:1fr}
+ .reading-exhibit .ledger-headings{display:none}
+ .reading-exhibit .ledger-line{grid-template-columns:1fr;gap:7px}
+ .reading-exhibit .ledger-status{padding-left:9px}
+ .reading-exhibit .exhibit-cabinet{grid-template-columns:1fr;gap:18px}
+ .reading-exhibit .cabinet-record{padding:18px}
+ .reading-exhibit .exhibit-longview{grid-template-columns:1fr;gap:14px}
+ .reading-exhibit .longview-point{padding-bottom:18px}
 }
 @media print{
  .entry[data-reading-layout="2"] .evidence-pair{display:block}
  .entry[data-reading-layout="2"] .evidence-pair>.research-note,
  .entry[data-reading-layout="2"] .evidence-pair>.margin{margin-top:20px}
- .entry[data-reading-layout="2"] .economic-hinge{break-inside:avoid}
+ .entry[data-reading-layout="2"] .reading-exhibit{break-inside:avoid}
+}
+
+
+@media(max-width:1024px) and (min-width:621px){
+ .reading-exhibit .ledger-headings,.reading-exhibit .ledger-line{grid-template-columns:minmax(120px,.85fr) minmax(0,1.2fr)}
+ .reading-exhibit .ledger-headings>span:last-child{display:none}
+ .reading-exhibit .ledger-status{grid-column:2;grid-row:2;margin-top:7px}
+ .reading-exhibit .exhibit-cabinet{grid-template-columns:1fr}
+ .reading-exhibit .exhibit-longview{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+}
+@media print{
+ .reading-exhibit .cabinet-record{background:none}
+ .reading-exhibit .longview-point{break-inside:avoid}
 }
