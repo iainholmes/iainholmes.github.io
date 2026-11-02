@@ -435,25 +435,10 @@ const catalog={
     ]
   },
   "2026-10-23-adaptation-finance": {
-    "kind": "long",
-    "heading": "Finance before protection",
-    "points": [
-      [
-        "2026 to 2030",
-        "EIB commits at least €30 billion to adaptation",
-        "Finance plan"
-      ],
-      [
-        "Project preparation",
-        "Risk data and project appraisal shape uptake",
-        "Implementation stage"
-      ],
-      [
-        "After investment",
-        "Avoided losses must be independently assessed",
-        "Unmeasured outcome"
-      ]
-    ]
+    "kind": "cabinet",
+    "heading": "A commitment is not a resilience outcome",
+    "key": "The EIB’s plan sets a financing commitment alongside project preparation and advisory support.",
+    "limit": "The announced amount is not completed investment, and avoided losses have not yet been measured."
   },
   "2026-10-30-solar-storage": {
     "kind": "long",
@@ -482,7 +467,6 @@ const catalog={
     ]
   }
 };
-
 const names=Object.freeze({ledger:'The Incidence Ledger',cabinet:'The Evidence Cabinet',long:'The Long View'});
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const plain=s=>String(s||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
@@ -510,7 +494,7 @@ function render(id,source={}){
    if(!excerpt)throw Error('Evidence Cabinet requires published source text: '+id);
    content='<div class="exhibit-cabinet"><div class="cabinet-record"><div class="cabinet-label">A LINE FROM THE PUBLISHED READING</div><blockquote>'+esc(excerpt)+'</blockquote><div class="cabinet-provenance">Verbatim excerpt · linked sources follow the reading</div></div><div class="cabinet-reading"><div class="cabinet-label">READER’S KEY</div><div class="cabinet-note">'+esc(e.key)+'</div><div class="cabinet-label">WHAT THIS CANNOT ESTABLISH</div><div class="cabinet-note">'+esc(e.limit)+'</div></div></div>';
  }else if(kind==='long'){
-   content='<ol class="exhibit-longview">'+e.points.map(([when,desc,status])=>'<li class="longview-point"><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span></li>').join('')+'</ol>';
+   content='<ol class="exhibit-longview" style="--stops:'+e.points.length+'">'+e.points.map(([when,desc,status])=>'<li class="longview-point"><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span></li>').join('')+'</ol>';
  }else throw Error('Unsupported exhibit kind '+kind);
  const footer='<footer class="exhibit-footer"><span>'+esc(e.curated?'Reading-specific editorial interpretation':'Published source excerpt · further editorial annotation pending')+'</span><span>See the evidence limits and sources below</span></footer>';
  return '<section class="reading-exhibit" data-exhibit-kind="'+kind+'" data-curated="'+e.curated+'" aria-label="'+esc(names[kind])+'">'+head+content+footer+'</section>';
