@@ -1,0 +1,202 @@
+{
+  "status": "PROPOSED — NOT PUBLISHED; explicit approval required",
+  "replaces": "fb:2026-11-02",
+  "baseline": "2926414b6233f738795180b40a1475444b609467",
+  "model": {
+    "key": "fb",
+    "date": "2026-11-02",
+    "no": "037",
+    "identity": "Field Brief",
+    "theme": "allocation",
+    "framing": "Chinese robotics capital shifts from machines to adaptable intelligence. A federal rule exposes pharmacy-benefit compensation, while OPEC+ defers its harder 2027 supply choice. Europe tests new space partnerships, and Raleigh voters weigh $203 million for housing and transport. Capital and information before outcomes These stories share no single policy thesis. They do share an evidentiary boundary: investment, disclosure, quotas, partnership talks and bond authority are inputs or commitments, not demonstrated outcomes. The next tests are operational: robots working reliably across tasks, employers renegotiating PBM contracts, actual Gulf exports and 2027 quotas, European funding decisions, and Raleigh projects delivered within debt and construction constraints.",
+    "version": 6,
+    "subject": "capacity",
+    "composition": "capability-transfer",
+    "signature": "issue:capability-transfer",
+    "phrase": "Robotics / adaptable capability",
+    "seed": 93148654,
+    "geometry": "<path d=\"M70 480H305V435H70Z\" fill=\"$ink\"/><path d=\"M145 435V336L285 242L374 318\" fill=\"none\" stroke=\"$ink\" stroke-width=\"32\"/><circle cx=\"145\" cy=\"336\" r=\"35\" fill=\"$accent\"/><circle cx=\"285\" cy=\"242\" r=\"31\" fill=\"$support\"/><path d=\"M353 300L374 318L357 354M374 318L407 305\" fill=\"none\" stroke=\"$accent\" stroke-width=\"15\"/><path d=\"M362 480H540\" stroke=\"$ink\" stroke-width=\"8\"/><path d=\"M380 450L408 393L436 450Z\" fill=\"$support\"/><circle cx=\"484\" cy=\"423\" r=\"28\" fill=\"$accent\"/><path d=\"M90 172H450V255M430 234L450 255L470 234\" fill=\"none\" stroke=\"$support\" stroke-width=\"7\"/><path d=\"M98 135V205M123 149V191M148 160V180\" stroke=\"$accent\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "01"
+        ],
+        "score": 25
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "02"
+        ],
+        "score": 15
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "02"
+        ],
+        "score": 1
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 36,
+      "recentWindow": 3
+    }
+  },
+  "review": {
+    "ok": true,
+    "compared": 36,
+    "closest": {
+      "date": "2026-09-30",
+      "similarity": 0.2879914984059511
+    }
+  },
+  "pairs": [
+    {
+      "date": "2026-09-30",
+      "score": 0.2879914984059511
+    },
+    {
+      "date": "2026-09-27",
+      "score": 0.2878787878787879
+    },
+    {
+      "date": "2026-09-28",
+      "score": 0.2878787878787879
+    },
+    {
+      "date": "2026-10-19",
+      "score": 0.2794279427942794
+    },
+    {
+      "date": "2026-10-29",
+      "score": 0.24615384615384617
+    },
+    {
+      "date": "2026-10-05",
+      "score": 0.23904382470119523
+    },
+    {
+      "date": "2026-10-16",
+      "score": 0.23904382470119523
+    },
+    {
+      "date": "2026-10-13",
+      "score": 0.23669724770642203
+    },
+    {
+      "date": "2026-10-25",
+      "score": 0.23392612859097128
+    },
+    {
+      "date": "2026-10-07",
+      "score": 0.2315270935960591
+    },
+    {
+      "date": "2026-10-11",
+      "score": 0.2315270935960591
+    },
+    {
+      "date": "2026-10-17",
+      "score": 0.2315270935960591
+    },
+    {
+      "date": "2026-10-12",
+      "score": 0.22264631043256997
+    },
+    {
+      "date": "2026-10-21",
+      "score": 0.22117847993168233
+    },
+    {
+      "date": "2026-10-10",
+      "score": 0.2178329571106095
+    },
+    {
+      "date": "2026-10-15",
+      "score": 0.2178329571106095
+    },
+    {
+      "date": "2026-10-02",
+      "score": 0.21557719054242003
+    },
+    {
+      "date": "2026-10-28",
+      "score": 0.21301775147928995
+    },
+    {
+      "date": "2026-10-30",
+      "score": 0.21299254526091588
+    },
+    {
+      "date": "2026-09-29",
+      "score": 0.20657894736842106
+    },
+    {
+      "date": "2026-11-01",
+      "score": 0.20469798657718122
+    },
+    {
+      "date": "2026-10-03",
+      "score": 0.20425531914893616
+    },
+    {
+      "date": "2026-10-09",
+      "score": 0.20305164319248825
+    },
+    {
+      "date": "2026-10-14",
+      "score": 0.20305164319248825
+    },
+    {
+      "date": "2026-10-04",
+      "score": 0.19978165938864628
+    },
+    {
+      "date": "2026-10-01",
+      "score": 0.19973890339425587
+    },
+    {
+      "date": "2026-10-22",
+      "score": 0.19681177191906807
+    },
+    {
+      "date": "2026-10-24",
+      "score": 0.19433198380566802
+    },
+    {
+      "date": "2026-10-18",
+      "score": 0.16727941176470587
+    },
+    {
+      "date": "2026-10-26",
+      "score": 0.1644295302013423
+    },
+    {
+      "date": "2026-10-31",
+      "score": 0.16292134831460675
+    },
+    {
+      "date": "2026-10-08",
+      "score": 0.1595900439238653
+    },
+    {
+      "date": "2026-10-23",
+      "score": 0.15889464594127806
+    },
+    {
+      "date": "2026-10-27",
+      "score": 0.15120274914089346
+    },
+    {
+      "date": "2026-10-20",
+      "score": 0.13898305084745763
+    },
+    {
+      "date": "2026-09-26",
+      "score": 0.11857707509881422
+    }
+  ]
+}

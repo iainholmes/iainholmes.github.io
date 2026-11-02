@@ -83,7 +83,7 @@ function freshPin(key,date,no,h,cover){
   }
   const signature='test-only:'+key+':'+date+':'+variant;
   const svg='<svg role="img" viewBox="0 0 600 '+(key==='study'?'390':'800')+'"><title>Unpublished distribution fixture</title><rect width="600" height="'+(key==='study'?'390':'800')+'" fill="#f3f0e6"/>'+geometry+(key==='study'?'':'<path d="M42 570H558"/>')+'</svg>';
-  const m=key==='study'?{date,no,version:4,concept:'evidence',composition:signature,signature,html:svg+'<figcaption>Unpublished interval fixture</figcaption>'}:{key,date,no:String(no).padStart(3,'0'),version:key==='fb'?5:key==='cp'?4:6,subject:'evidence',theme:'identification',identity:key==='cp'?'The Workbook':key==='sp'?'Loblolly & Logit':'Field Brief',composition:signature,signature,phrase:'Unpublished distribution fixture',seed:variant,geometry,frozen:svg};
+  const m=key==='study'?{date,no,version:4,concept:'evidence',composition:signature,signature,html:svg+'<figcaption>Unpublished interval fixture</figcaption>'}:{key,date,no:String(no).padStart(3,'0'),version:key==='fb'?5:key==='cp'?4:6,subject:'evidence',theme:'identification',identity:key==='cp'?'The Workbook':key==='sp'?'Loblolly & Logit':'Field Brief',composition:signature,signature,phrase:'Unpublished distribution fixture '+date,seed:variant,geometry,frozen:svg};
   try{if(key==='fb')vectors.validateIssue(m,prior);else if(key==='study')studies.validateOriginality(m,prior,cover);else art.validate(m,prior,layer);return m;}catch(e){if(!/originality|same-edition/.test(e.message))throw e;}
  }
  throw Error('Test-only distribution fixtures exhausted; author another test diagram without changing validation thresholds.');
