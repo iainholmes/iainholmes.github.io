@@ -31,11 +31,12 @@ function stageTo(id,{move=true}={}){
   const section=$(id),link=document.querySelector('.journey-stages a[href="#'+id+'"]');
   if(!section)return;
   document.querySelectorAll('.journey-stages a').forEach(a=>{if(a===link)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});
-  if(move)scrollToTravelTarget(section,{focus:true});
+  if(move){if(id==='route-stage')floatMap(false);scrollToTravelTarget(section,{focus:true});}
 }
 function showTravelMap(){
   // Align the MAP, not Step 02's route cards/title several hundred pixels
   // above it. The toolbar remains just above the visible map canvas.
+  floatMap(false);
   stageTo('route-stage',{move:false});
   const surface=$('travel-map')?.closest('.trip-map');
   if(surface)requestAnimationFrame(()=>scrollToTravelTarget(surface,{focus:true}));
@@ -51,6 +52,67 @@ const emptyState=()=>({origin:null,destination:null,families:[],family:null,stop
 let captionEdited=false;
 let state=emptyState(),plans=[],activeId=null,dirty=false,postcard=null,canPersist=true,map=null,version=0,controller=null,discoveryController=null,areaSearchController=null,pauseAutomaticDiscovery=null,lastSelectedSectionProgress=null,building=false;
 const locations=new Map(),discoveryCache=new Map();
+
+/* In-page map companion, derived from the attached PFAS Explorer's focus
+   behavior. This moves the SAME MapLibre map surface into a fixed visual
+   position; no duplicate map instance, detached window, or new data source. */
+let mapFollowDismissed=false,mapFloatOpen=false,mapScrollScheduled=false;
+const mapSurface=$('travel-map')?.closest('.trip-map');
+const mapPlaceholder=el('div',null,'travel-map-placeholder');
+mapPlaceholder.hidden=true;
+if(mapSurface)mapSurface.before(mapPlaceholder);
+function floatMap(open,{dismiss=false}={}){
+  if(!mapSurface)return;
+  if(dismiss)mapFollowDismissed=true;
+  const shouldOpen=Boolean(open&&state.family&&map);
+  if(mapFloatOpen===shouldOpen)return;
+  mapFloatOpen=shouldOpen;
+  if(shouldOpen)mapPlaceholder.style.height=mapSurface.getBoundingClientRect().height+'px';
+  mapPlaceholder.hidden=!shouldOpen;
+  mapSurface.classList.toggle('is-floating',shouldOpen);
+  document.querySelector('.travel')?.classList.toggle('has-floating-map',shouldOpen);
+  $('travel-map-float-head').hidden=!shouldOpen;
+  $('travel-map-float-toggle').setAttribute('aria-pressed',String(shouldOpen));
+  $('travel-map-float-toggle').textContent=shouldOpen?'Map Is Following':'Keep Map in View';
+  requestAnimationFrame(()=>{
+    map?.resize();
+    // The compact aspect ratio needs a fresh whole-journey fit. Docking must
+    // NOT refit: Show on Map may have just focused a particular stop.
+    if(shouldOpen&&state.family)fitRoute();
+  });
+}
+function updateFloatingMap(){
+  if(!mapSurface||!state.family){floatMap(false);return;}
+  const build=$('build-stage');
+  const inJourney=build.getBoundingClientRect().top<window.innerHeight*.48 &&
+    build.getBoundingClientRect().bottom>120;
+  // Desktop auto-follow. On smaller touch screens floating is opt-in so
+  // it cannot cover the entire reading and decision surface.
+  if(!inJourney){floatMap(false);return;}
+  if(window.innerWidth>=1120&&!mapFollowDismissed)floatMap(true);
+}
+$('travel-map-float-toggle').addEventListener('click',()=>{
+  if(mapFloatOpen){floatMap(false,{dismiss:true});return;}
+  mapFollowDismissed=false;floatMap(true);
+});
+$('travel-map-float-close').addEventListener('click',()=>floatMap(false,{dismiss:true}));
+window.addEventListener('scroll',()=>{
+  if(mapScrollScheduled)return;
+  mapScrollScheduled=true;
+  requestAnimationFrame(()=>{mapScrollScheduled=false;updateFloatingMap();});
+},{passive:true});
+window.addEventListener('resize',()=>{
+  if(window.innerWidth<1120&&mapFloatOpen){
+    // Keep manual mobile popouts, but dismiss desktop-auto map when changing
+    // device orientation into narrow portrait.
+    floatMap(false);
+  }
+  updateFloatingMap();
+},{passive:true});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&mapFloatOpen)floatMap(false,{dismiss:true});
+});
+
 try{const text=localStorage.getItem(key);if(text)plans=readBackup(text);}catch{canPersist=false;status('Saved plans could not be opened. Existing data has been left intact. Export or restore a backup.');}
 function persist(next){try{if(!canPersist)throw Error();localStorage.setItem(key,JSON.stringify({schema_version:1,plans:next}));plans=next;return true;}catch{status('This browser could not save the plan. Export a backup before leaving.');return false;}}
 function inputPoint(input){const label=input.value.trim();let point;try{if(input.dataset.label===label)point=JSON.parse(input.dataset.point);}catch{}return {label,...(validPoint(point)?{lat:point.lat,lng:point.lng}:{})};}
@@ -437,7 +499,7 @@ async function cachedDiscovery(point,options={}){
   }catch(error){if(options.signal?.aborted)throw error;npsError=error;}
   // An explicit drive-window click should show actual NPS locations promptly.
   // Do not hold useful cards for a serial/slow OpenStreetMap enrichment call.
-  if(official.length&&(options.interactive||(official.length>=4&&new Set(official.map(a=>a.category)).size>=2))){
+  if(official.length&&(options.interactive||options.autoRoute||(official.length>=4&&new Set(official.map(a=>a.category)).size>=2))){
     discoveryCache.set(cacheKey,official);return official;
   }
   try{
@@ -453,8 +515,9 @@ async function cachedDiscovery(point,options={}){
 }
 async function discoverJourney({preserveSection=false}={}){
   if(!state.family||!$('trip-routing').checked)return;
-  // Route rebuilds must retain the traveler's chosen discovery window.
-  // A new route search or a manual refresh may return to the central section.
+  // One route-wide scan is initiated for every new route and after a stop is
+  // added. The user can focus individual regions without canceling the scan.
+  const previousFocus=preserveSection?lastSelectedSectionProgress:null;
   if(!preserveSection)lastSelectedSectionProgress=null;
   discoveryController?.abort();areaSearchController?.abort();areaSearchController=null;
   const abort=new AbortController();discoveryController=abort;
@@ -462,33 +525,129 @@ async function discoverJourney({preserveSection=false}={}){
   resetDiscovery();
   const zones=opportunityZones(journey),nights=overnightZones(journey);
   const routeBox=$('route-activities'),resultBox=$('route-activity-results'),destBox=$('destination-activities');
-  let sectionController=null,sectionLoading=false,automaticPaused=false,destinationLoading=false;
-  const destinationController=new AbortController();
+  const records=new Map(),choices=new Map(),cardCache=new Map();
+  let renderedRegion=null;
+  let selectedRegion=previousFocus!=null&&zones.length?
+    zones.reduce((best,zone)=>Math.abs(zone.progress-previousFocus)<Math.abs(best.progress-previousFocus)?zone:best,zones[0]).id:
+    'all';
+  let destinationState='searching',destinationCount=0;
   const fresh=()=>current===version&&!abort.signal.aborted;
-  let sectionMessage='Choose a part of the drive or search a town to find stops.';
-  const updateSummary=()=>{if(fresh())$('journey-discovery-status').textContent=sectionMessage;};
-  // A town search pauses only automatic lookups, NOT the route-section controls.
-  // Previously aborting discoveryController permanently disabled every
-  // visible segment button, because their closures shared its aborted signal.
-  pauseAutomaticDiscovery=()=>{
-    if(!fresh())return;
-    automaticPaused=true;
-    if(sectionLoading){
-      sectionController?.abort();
-      sectionLoading=false;
-      resultBox.setAttribute('aria-busy','false');
-      routeBox.querySelectorAll('button').forEach(btn=>btn.setAttribute('aria-pressed','false'));
-      resultBox.replaceChildren(el('p','Automatic route search paused for your town search. Choose any drive section to search there.','discovery-message'));
-    }
-    if(destinationLoading){
-      destinationController.abort();
-      destBox.replaceChildren(el('p','Destination search paused. Refresh Route Suggestions to resume.','discovery-message'));
-      destinationLoading=false;
-    }
-    sectionMessage='Town search is underway. You can select any part of the drive to search it instead.';
-    updateSummary();
+  const relevant=(activity,zone)=>{
+    const lead={...activity};activityDetails(lead,zone);
+    const limit=Number($('trip-detour').value);
+    return (lead.detourMinutes<=limit||(lead.confidence==='official-location'&&lead.detourMinutes<=Math.max(60,limit)))&&
+      lead.progress>.02&&lead.progress<.98?lead:null;
   };
-  // Show overnight areas as optional choices, not verified accommodation.
+  const perRegion=zone=>{
+    const items=records.get(zone.id)?.items||[];
+    const groups=new Map();
+    for(const item of items){
+      const type=item.category||'other';
+      if(!groups.has(type))groups.set(type,[]);
+      groups.get(type).push(item);
+    }
+    const diversified=[];
+    // Show a walk, an overlook and a treat before showing three lookalike
+    // results from the same category, when diverse leads actually exist.
+    while(diversified.length<4&&[...groups.values()].some(group=>group.length)){
+      for(const group of groups.values()){
+        if(group.length&&diversified.length<4)diversified.push(group.shift());
+      }
+    }
+    return diversified;
+  };
+  function collected(){
+    const out=[],seen=new Set();
+    // Allocate a few leads to every geographic section before considering
+    // further results: no city or POI category dominates a long journey.
+    for(const zone of zones){
+      for(const activity of perRegion(zone)){
+        const key=activity.id||[activity.name?.trim().toLowerCase(),activity.location?.lat?.toFixed(3),activity.location?.lng?.toFixed(3)].join(':');
+        if(seen.has(key))continue;
+        seen.add(key);out.push({activity,zone});
+      }
+    }
+    return out.slice(0,12);
+  }
+  function countStatus(){
+    const complete=[...records.values()].filter(r=>r.status==='done'||r.status==='error').length;
+    const failures=[...records.values()].filter(r=>r.status==='error').length;
+    const n=collected().length,all=zones.length;
+    const suffix=destinationState==='searching'?' · destination searching':
+      destinationState==='done'?' · '+destinationCount+' destination ideas':' · destination unavailable';
+    $('journey-discovery-status').textContent=
+      complete+' of '+all+' route regions searched · '+n+' suggestions'+(failures?' · '+failures+' search unavailable':'')+suffix+
+      '. Select a region to look more closely; your trip is unchanged.';
+  }
+  function renderZoneButtons(){
+    for(const zone of zones){
+      const b=choices.get(zone.id),record=records.get(zone.id);
+      if(!b)continue;
+      const label='Region '+(zones.indexOf(zone)+1)+' · around '+durationLabel(zone.minute);
+      const status=record?.status==='done'?' · '+record.items.length+' places':
+        record?.status==='error'?' · unavailable':record?.status==='loading'?' · searching':'';
+      b.textContent=label+status;
+      b.setAttribute('aria-pressed',String(selectedRegion===zone.id));
+    }
+    allButton.setAttribute('aria-pressed',String(selectedRegion==='all'));
+  }
+  function draw(){
+    if(!fresh())return;
+    const entries=selectedRegion==='all'?collected():
+      zones.filter(z=>z.id===selectedRegion).flatMap(z=>perRegion(z).map(activity=>({activity,zone:z})));
+    const cards=entries.map(({activity,zone})=>{
+      const key=(activity.id||activity.name)+'::'+zone.id;
+      if(!cardCache.has(key))cardCache.set(key,activityCard({...activity},zone));
+      return cardCache.get(key);
+    });
+    if(cards.length){
+      // Retain existing card DOM nodes as results arrive; avoid making the
+      // user's currently examined stop disappear during background searches.
+      const children=[...resultBox.children];
+      if(renderedRegion===selectedRegion&&children.length<=cards.length&&
+        children.every((node,i)=>node===cards[i])){
+        resultBox.append(...cards.slice(children.length));
+      }else resultBox.replaceChildren(...cards);
+    }else{
+      resultBox.replaceChildren(el('p',selectedRegion==='all'?
+        (zones.length?[...records.values()].some(r=>r.status==='loading')||records.size<zones.length?
+          'The Atlas is searching across the drive. Results appear as each region finishes.':
+          'No suitable mapped route discoveries returned from these regions. Explore a town or retry.':
+          'A short drive—explore places at your destination or near a town.'):
+        records.get(selectedRegion)?.status==='loading'?'Searching this region for places Rupert might enjoy…':
+        records.get(selectedRegion)?.status==='error'?'This region’s public sources could not respond. Try it again or explore a town.':
+        'No suitable suggestions in this region yet. Try another region or a nearby town.','discovery-message'));
+    }
+    renderedRegion=selectedRegion;
+    const searching=[...records.values()].some(r=>r.status==='loading');
+    resultBox.setAttribute('aria-busy',String(searching&&selectedRegion==='all'||
+      selectedRegion!=='all'&&records.get(selectedRegion)?.status==='loading'));
+    renderZoneButtons();countStatus();
+  }
+  async function loadRegion(zone,{manual=false}={}){
+    if(!fresh())return;
+    const existing=records.get(zone.id);
+    if(existing?.status==='done'&&!manual)return existing.items;
+    if(existing?.status==='loading'&&!manual)return existing.promise;
+    existing?.controller?.abort();
+    const controller=new AbortController(),entry={controller,status:'loading',items:[]};
+    records.set(zone.id,entry);draw();
+    const work=(async()=>{
+      try{
+        const found=await cachedDiscovery(zone.point,{
+          signal:AbortSignal.any([abort.signal,controller.signal,AbortSignal.timeout(13500)]),
+          radius:3500,interactive:manual,autoRoute:!manual
+        });
+        if(!fresh()||controller.signal.aborted||records.get(zone.id)!==entry)return [];
+        const items=found.map(activity=>relevant(activity,zone)).filter(Boolean).slice(0,8);
+        entry.items=items;entry.status='done';draw();return items;
+      }catch(error){
+        if(!fresh()||controller.signal.aborted||records.get(zone.id)!==entry)return [];
+        entry.status='error';entry.error=error.message;draw();return [];
+      }
+    })();
+    entry.promise=work;return work;
+  }
   if(nights.length){
     $('overnight-opportunities').hidden=false;$('overnight-opportunities').open=false;
     const box=$('overnight-areas');
@@ -498,91 +657,53 @@ async function discoverJourney({preserveSection=false}={}){
       box.append(activityCard(item,zone));
     }
   }
-  async function searchSection(zone,buttonEl,{automatic=false,preferFast=false}={}){
-    if(!fresh())return;
-    lastSelectedSectionProgress=zone.progress;
-    if(!automatic){
-      // Manual exploration takes precedence over queued automatic lookups.
-      automaticPaused=true;
-      if(destinationLoading){
-        destinationController.abort();
-        destBox.replaceChildren(el('p','Destination search paused while you explore the route. Refresh suggestions to resume.','discovery-message'));
-        destinationLoading=false;
-      }
-    }
-    // Switching sections is immediate. Abort the previous request and prevent
-    // its late response from overwriting the latest selected area's cards.
-    sectionController?.abort();
-    const selected=new AbortController();sectionController=selected;
-    const active=()=>fresh()&&!selected.signal.aborted&&sectionController===selected;
-    const sectionName=durationLabel(zone.minute)+' into the drive';
-    routeBox.querySelectorAll('button').forEach(btn=>btn.setAttribute('aria-pressed',String(btn===buttonEl)));
-    sectionLoading=true;
-    resultBox.setAttribute('aria-busy','true');
-    resultBox.replaceChildren(el('p','Searching for stops around '+sectionName+'…','discovery-message'));
-    sectionMessage='Searching the selected section: '+sectionName+'…';
-    updateSummary();
-    try{
-      const nearby=await cachedDiscovery(zone.point,{
-        // Bound an explicit selection: public providers may be slow or offline,
-        // but the control must not remain indefinitely in "Searching…" state.
-        signal:AbortSignal.any([abort.signal,selected.signal,AbortSignal.timeout(14000)]),
-        radius:3500,interactive:!automatic||preferFast
-      });
-      if(!active())return;
-      const leads=nearby.map(a=>({...a})).filter(a=>{
-        activityDetails(a,zone);
-        // Show verified-source overlooks within a reasonable optional detour;
-        // all displayed times remain estimates until a stop is added.
-        const limit=Number($('trip-detour').value);
-        return (a.detourMinutes<=limit||(a.confidence==='official-location'&&a.detourMinutes<=Math.max(60,limit)))&&a.progress>.02&&a.progress<.98;
-      }).slice(0,8);
-      resultBox.replaceChildren(...(leads.length?leads.map(a=>activityCard(a,zone)):[
-        el('p',nearby.length?'Places were found here, but exceed your detour tolerance. Increase it in Plan or choose another area.':'No named places found near this section. Choose another part of your drive or explore a town.','discovery-message')
-      ]));
-      sectionMessage=leads.length?
-        leads.length+' suggested stops around '+sectionName+'. Review any place before adding it.':
-        'No suitable stops found around '+sectionName+'. Choose another section or explore a town.';
-    }catch(error){
-      if(!active())return;
-      const detail=error?.name==='TimeoutError'?'The public place search took too long.':error?.message||'The place provider did not respond.';
-      resultBox.replaceChildren(el('p','Search unavailable around '+sectionName+': '+detail+' Select another section or try again.','discovery-message'));
-      sectionMessage='Place search could not finish for '+sectionName+'. Select another section or try again.';
-    }finally{
-      if(active()){sectionLoading=false;resultBox.setAttribute('aria-busy','false');updateSummary();}
-    }
-  }
-  if(zones.length){
-    for(const zone of zones){
-      const choice=button(`${durationLabel(zone.minute)} into the drive`,()=>searchSection(zone,choice));
-      choice.className='route-area-button';
-      choice.setAttribute('aria-pressed','false');
-      routeBox.append(choice);
-    }
-  }else routeBox.append(el('p','This is a shorter drive. Explore places at your destination or search a town.'));
-  // Only one automatic corridor search; every other section is always clickable
-  // (including while a previous search or town lookup is in progress).
-  if(zones.length){
-    const middle=preserveSection&&Number.isFinite(lastSelectedSectionProgress)?
-      zones.reduce((best,zone,i)=>Math.abs(zone.progress-lastSelectedSectionProgress)<Math.abs(zones[best].progress-lastSelectedSectionProgress)?i:best,0):
-      Math.floor((zones.length-1)/2);
-    await searchSection(zones[middle],routeBox.children[middle],{automatic:true,preferFast:preserveSection});
-  }
-  if(!fresh()||automaticPaused)return;
-  destinationLoading=true;
-  destBox.replaceChildren(el('p','Checking the destination…','discovery-message'));
-  try{
-    const activities=await cachedDiscovery(state.destination,{
-      signal:AbortSignal.any([abort.signal,destinationController.signal]),radius:3500
+  const allButton=button('All Route Discoveries',()=>{
+    selectedRegion='all';lastSelectedSectionProgress=null;draw();
+  });
+  allButton.className='route-area-button is-all-regions';
+  routeBox.append(allButton);
+  for(const zone of zones){
+    const choice=button('Region '+(zones.indexOf(zone)+1),()=>{
+      selectedRegion=zone.id;lastSelectedSectionProgress=zone.progress;
+      draw();const record=records.get(zone.id);
+      // Existing results appear instantly. Manually retry failed/empty areas
+      // with the provider's interactive priority.
+      if(!record||record.status==='loading'||record.status==='error'||record.status==='done'&&!record.items.length)
+        void loadRegion(zone,{manual:true});
     });
-    if(!fresh()||destinationController.signal.aborted)return;
-    destBox.replaceChildren(...(activities.length?activities.map(a=>activityCard({...a},null,true)):[
-      el('p','No named places returned here. Search a nearby town for more options.','discovery-message')
-    ]));
-  }catch(error){
-    if(!fresh()||destinationController.signal.aborted)return;
-    destBox.replaceChildren(el('p','Destination suggestions are currently unavailable.','discovery-message'));
-  }finally{destinationLoading=false;}
+    choice.className='route-area-button';
+    choices.set(zone.id,choice);routeBox.append(choice);
+  }
+  draw();
+  // Parallelism is intentionally capped at TWO geographic searches. An
+  // isolated provider error leaves successful discoveries on screen.
+  let next=0;
+  const worker=async()=>{
+    while(fresh()&&next<zones.length){
+      const zone=zones[next++];
+      await loadRegion(zone);
+    }
+  };
+  void Promise.all([worker(),worker()]);
+  // Destination is independent: never held hostage by the last route region.
+  void (async()=>{
+    destBox.replaceChildren(el('p','Finding activities at your destination…','discovery-message'));
+    try{
+      const activities=await cachedDiscovery(state.destination,{
+        signal:AbortSignal.any([abort.signal,AbortSignal.timeout(13500)]),
+        radius:3500,autoRoute:true
+      });
+      if(!fresh())return;
+      destinationState='done';destinationCount=activities.length;
+      destBox.replaceChildren(...(activities.length?activities.map(a=>activityCard({...a},null,true)):[
+        el('p','No suitable named destination places returned. Explore a nearby town.','discovery-message')
+      ]));
+    }catch(error){
+      if(!fresh())return;
+      destinationState='error';destinationCount=0;
+      destBox.replaceChildren(el('p','Destination sources are temporarily unavailable. You can still search near a town.','discovery-message'));
+    }finally{if(fresh())countStatus();}
+  })();
 }
 $('explore-route').addEventListener('click',()=>{if(state.family)stageTo('build-stage');});
 const mapThemeKey='rupert-travel-map-theme-v1';
@@ -624,8 +745,8 @@ $('stop-search-form').addEventListener('submit',async e=>{
   areaSearchController?.abort();
   // Pause background lookups, but leave all the drive-segment buttons alive.
   // Closing the town dialog still does not cancel its own search.
-  pauseAutomaticDiscovery?.();
-  $('journey-discovery-status').textContent='Town search requested. Choose a route section at any time to look there instead.';
+  // The separate town panel runs without canceling the route-wide scan.
+  // Automatic suggestions continue arriving in Build the Journey.
   const abort=new AbortController();areaSearchController=abort;const current=version;
   const stateLine=$('town-results-state'),title=$('town-results-title'),persisted=$('town-results-cards');
   $('town-results-section').hidden=false;
@@ -770,7 +891,7 @@ if(new URLSearchParams(location.search).has('qa')){
     readout.textContent=JSON.stringify({families:state.families.length,legs:state.legs.length,stops:state.stops.length,bounds,coordinates:points.length,completeGeometryCovered:!!bounds&&points.every(([x,y])=>x>=bounds[0][0]&&x<=bounds[1][0]&&y>=bounds[0][1]&&y<=bounds[1][1]),mapAvailable:!!map,camera:map?.raw.getBounds().toArray()||null,minimumZoom:map?.raw.getMinZoom()??null},null,2);
   }),readout);$('route-stage').append(details);
 }
-(async()=>{try{const initial=routeBounds(places.map(p=>pointFeature(p.id,p.name,p.access)));map=await createMap($('travel-map'),{base,theme:'light',travel:true,touch:matchMedia('(pointer:coarse)').matches,bounds:initial});$('trip-map-status').textContent='';setMapAppearance(travelMapTheme);map.on('select',id=>{const activity=[...state.stops,...state.destinationActivities].find(s=>s.id===id);if(activity){map.focus(id);$('close-activity').hidden=false;status(activity.name+' · '+activity.dog);}else fitRoute();});map.on('trouble',text=>$('trip-map-status').textContent=text);map.on('lost',()=>{$('trip-map-status').textContent='The browser released the map graphics. Reload to restore the map; the itinerary stays usable.';map.destroy();map=null;});new ResizeObserver(()=>map?.resize()).observe($('travel-map'));paintMap(true);
+(async()=>{try{const initial=routeBounds(places.map(p=>pointFeature(p.id,p.name,p.access)));map=await createMap($('travel-map'),{base,theme:'light',travel:true,touch:matchMedia('(pointer:coarse)').matches,bounds:initial});$('trip-map-status').textContent='';setMapAppearance(travelMapTheme);map.on('select',id=>{const activity=[...state.stops,...state.destinationActivities].find(s=>s.id===id);if(activity){map.focus(id);$('close-activity').hidden=false;status(activity.name+' · '+activity.dog);}else fitRoute();});map.on('trouble',text=>$('trip-map-status').textContent=text);map.on('lost',()=>{$('trip-map-status').textContent='The browser released the map graphics. Reload to restore the map; the itinerary stays usable.';map.destroy();map=null;});new ResizeObserver(()=>map?.resize()).observe($('travel-map'));paintMap(true);updateFloatingMap();
     // Read-only QA evidence: route bounds, camera and itinerary; never publish the user's locations.
     if(new URLSearchParams(location.search).has('qa'))window.__travelQA=()=>({families:state.families.length,legs:state.legs.length,stops:state.stops.length,destinationActivities:state.destinationActivities.length,bounds:wholeJourneyBounds(state.results.filter(Boolean),state.origin,state.destination),camera:map?.raw.getBounds().toArray(),zoom:map?.raw.getZoom(),minZoom:map?.raw.getMinZoom()});
   }catch(error){$('trip-map-status').textContent='Map unavailable. Route choices and the itinerary remain usable.';}})();
