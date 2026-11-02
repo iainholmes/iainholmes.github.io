@@ -48,7 +48,7 @@ function readingLayout(s){
    '<div class="evidence-pair">'+raw(s,limit)+raw(s,note)+'</div>'+
    '<div class="reading-sources">'+raw(s,sources)+'</div></div>';
  const result=s.slice(0,grid.start)+newGrid+s.slice(grid.end);
- return result.replace('<article class="entry"','<article class="entry" data-reading-layout="2"');
+ return result.replace(/(<article class="entry"[^>]*)(>)/,(_,attrs,close)=>attrs+' data-reading-layout="2"'+close);
 }
 function closing(s,type){
  if(s.includes('data-editorial-folio="1"'))return s;
