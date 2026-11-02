@@ -11,7 +11,7 @@
 .editorial-rail{display:none}
 @media(min-width:1440px){
  .edition-body{grid-template-columns:184px 112px minmax(0,1fr);column-gap:28px}
- .editorial-rail{display:block;grid-column:2;grid-row:1;min-width:0;align-self:stretch;padding:46px 0 24px 18px;border-left:1px solid var(--river);border-top:3px double var(--clay)}
+ .editorial-rail{display:block;grid-column:2;grid-row:1;min-width:0;align-self:stretch;padding:46px 0 24px 18px;border-left:1px solid var(--river);border-right:1px solid var(--hair);border-top:3px double var(--clay)}
  .reading-column{grid-column:3}
  .rail-kicker{font:500 10px/1.5 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--river);margin-bottom:28px}
  .rail-edition{margin:0;font:400 16px/1.5 var(--serif);color:var(--muted)}
