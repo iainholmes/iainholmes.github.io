@@ -59,6 +59,7 @@ const locations=new Map(),discoveryCache=new Map();
 let mapFollowDismissed=false,mapFloatOpen=false,mapScrollScheduled=false;
 const mapSurface=$('travel-map')?.closest('.trip-map');
 const mapPlaceholder=el('div',null,'travel-map-placeholder');
+mapPlaceholder.hidden=true;
 if(mapSurface)mapSurface.before(mapPlaceholder);
 function floatMap(open,{dismiss=false}={}){
   if(!mapSurface)return;
