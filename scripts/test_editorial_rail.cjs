@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-divider-weight-accent-polish';
+const currentKey='reading-folio.css?v=20261102-tapered-folio-spine';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -27,10 +27,11 @@ const injected=source.replace('<div class="reading-column">','<aside class="edit
 eq(compose(injected),source,'preparation removes a legacy metadata rail safely');
 const css=fs.readFileSync('weekly-economics-environment/reading-folio.css','utf8');
 ok(css.includes('.edition-body{display:grid;grid-template-columns:184px minmax(0,1fr)'),'original two-column desktop grid restored');
-ok(css.includes('.contents-boundary::after'),'single sidebar divider in original gap');
-ok(css.includes('width:4px'),'divider maintains a restrained 4px rule without consuming a column');
-ok(css.includes('linear-gradient(to bottom,var(--clay) 0 40px,var(--river) 40px 100%)'),'short copper-to-river accent');
-ok(css.includes('@media(min-width:821px) and (max-width:1180px){.contents-boundary::after{right:-18px;width:4px}}'),'divider adapts to narrower laptop at the same 4px width');
+ok(css.includes('.contents-boundary::after'),'single decorative pseudo-element in existing gutter');
+ok(css.includes('right:-28px;width:12px'),'12px copper head centered in the original 44px gutter');
+ok(css.includes('var(--clay) 0 52px,var(--forest) 52px 100%'),'copper head transitions to forest spine');
+ok(css.includes('clip-path:polygon(0 0,100% 0,100% 52px,75% 70px,75% 100%,25% 100%,25% 70px,0 52px)'),'one tapered form, not two decorative borders');
+ok(css.includes('@media(min-width:821px) and (max-width:1180px){.contents-boundary::after{right:-21px}}'),'tapered spine remains centered within the 30px laptop gutter');
 ok(css.includes('body.glance .contents-boundary::after{display:none}'),'glance has no hanging border');
 ok(css.includes('@media(max-width:820px)')&&css.includes('.contents-boundary{display:none}'),'mobile sidebar remains absent');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
