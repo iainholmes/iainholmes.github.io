@@ -514,7 +514,7 @@ async function discoverJourney({preserveSection=false}={}){
         'No suitable stops found around '+sectionName+'. Choose another section or explore a town.';
     }catch(error){
       if(!active())return;
-      const detail=error?.message||'The place provider did not respond.';
+      const detail=error?.name==='TimeoutError'?'The public place search took too long.':error?.message||'The place provider did not respond.';
       resultBox.replaceChildren(el('p','Search unavailable around '+sectionName+': '+detail+' Select another section or try again.','discovery-message'));
       sectionMessage='Place search could not finish for '+sectionName+'. Select another section or try again.';
     }finally{
