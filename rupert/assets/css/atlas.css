@@ -1963,9 +1963,9 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 
 
 /* Exact Travel typography rule, 2026-11-01.
-   VELENOR is reserved for the site's separate brand and the four numbered
-   Travel step titles, INCLUDING their numerals. Every other Travel word uses
-   the original Latin Modern Roman text family. Do not alter other Atlas pages. */
+   The page title retains the shared Atlas face. The four numbered Travel
+   step titles, INCLUDING their numerals, also use VELENOR. All other Travel
+   text uses Latin Modern Roman. Do not alter other Atlas pages. */
 .page-travel .travel{
   font-family:var(--f-text);
 }
@@ -1975,6 +1975,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel .travel .head-note :is(.lbl,.banner-copy,div){
   font-family:var(--f-text);
 }
+.page-travel .travel .page-head h1,
 .page-travel .travel :is(#plan-h,#route-h,#build-h,#itinerary-h),
 .page-travel .travel :is(#plan-h,#route-h,#build-h,#itinerary-h) > span{
   font-family:var(--f-editorial);
@@ -2049,6 +2050,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel #build-stage .route-area-button{flex:1 1 180px;max-width:320px;line-height:1.35}
 .page-travel #build-stage .route-area-button.is-all-regions{border-color:#D6A575;font-weight:750}
 .page-travel #build-stage .route-area-button.is-all-regions[aria-pressed="true"]{background:#B87E49;color:#132739}
+.page-travel .travel{--travel-float-width:clamp(480px,43vw,680px);--travel-float-top:max(76px,calc(var(--bar-h) + 16px))}
 .page-travel .travel-map-placeholder[hidden],.page-travel .travel-map-float-head[hidden]{display:none!important}
 .page-travel .travel-map-placeholder{width:100%;background:#253C4733;border:1px solid #F3EFE526}
 .page-travel .travel-map-float-head{
@@ -2057,14 +2059,16 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
  padding:5px 10px 5px 14px;background:#152C39;color:#F3EFE5;
  border-bottom:2px solid #C98B4B;
 }
-.page-travel .travel-map-float-head strong{font:650 15px/1.2 var(--f-text);letter-spacing:.01em}
+.page-travel .travel-map-float-head strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:650 15px/1.2 var(--f-text);letter-spacing:.01em}
+.page-travel .travel-map-float-actions{display:flex;flex-shrink:0;gap:7px}
 .page-travel .travel-map-float-head button{
  border:1px solid #C69A6B;color:#F4E5D1;background:transparent;
  min-height:30px;padding:4px 9px;font:500 13px/1.2 var(--f-text);
 }
 .page-travel #route-stage .trip-map.is-floating{
- position:fixed;inset:max(76px,calc(var(--bar-h) + 16px)) max(18px,calc((100vw - 1500px)/2 + 16px)) auto auto;
- width:min(365px,32vw);height:306px;
+ position:fixed;inset:var(--travel-float-top) max(18px,calc((100vw - 1500px)/2 + 16px)) auto auto;
+ width:var(--travel-float-width);height:clamp(500px,62dvh,620px);
+ max-height:calc(100dvh - var(--travel-float-top) - 18px);
  border:2px solid #B57C4E;box-shadow:0 13px 48px #07141CB8;
  z-index:70;background:#D9E1D8;overflow:hidden;
 }
@@ -2073,14 +2077,14 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 .page-travel #route-stage .trip-map.is-floating #close-activity{top:51px;left:10px;font-size:12px;min-height:34px}
 .page-travel #route-stage .trip-map.is-floating #trip-map-status{top:52px;left:10px;font-size:12px}
 @media(min-width:1120px){
- .page-travel .travel.has-floating-map #build-stage{padding-right:clamp(385px,34vw,430px)}
+ .page-travel .travel.has-floating-map #build-stage{padding-right:calc(var(--travel-float-width) + 20px)}
  .page-travel .travel.has-floating-map #build-stage .trip-activity h4{font-size:clamp(22px,1.7vw,29px)}
 }
 @media(max-width:1119.98px){
  .page-travel #build-stage .journey-map-follow{align-items:flex-start;flex-wrap:wrap}
  .page-travel #route-stage .trip-map.is-floating{
   inset:auto 12px calc(12px + env(safe-area-inset-bottom, 0px)) auto;
-  width:min(400px,calc(100vw - 24px));height:min(330px,48dvh);
+  width:min(400px,calc(100vw - 24px));height:min(330px,48dvh);max-height:calc(100dvh - 24px - env(safe-area-inset-bottom, 0px));
   box-shadow:0 8px 32px #081A23A8;
  }
 }

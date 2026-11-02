@@ -337,7 +337,7 @@ test('All four Travel chapters share the accepted Step 03 heading size and font'
     'new stylesheet should not use stale cached URL');
 });
 
-test('Only the four numbered Travel headings use the Atlas wordmark face',()=>{
+test('Travel page title and four numbered headings use the Atlas title face',()=>{
   const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
   const html=readFileSync(new URL('../travel/index.html',import.meta.url),'utf8');
   assert.ok(css.includes('--f-editorial: "VELENOR"'));
@@ -346,13 +346,14 @@ test('Only the four numbered Travel headings use the Atlas wordmark face',()=>{
     'preserve the approved size of all four chapter titles');
   const boundary=css.slice(css.indexOf('Exact Travel typography rule, 2026-11-01'));
   assert.ok(boundary.includes('.page-travel .travel :is(h1,h2,h3,h4,h5,h6'),
-    'every other Travel heading, including the page title, uses original Latin Modern Roman');
+    'ordinary Travel headings use original Latin Modern Roman');
   assert.ok(boundary.includes('font-family:var(--f-text)'), 'use the original text family');
   assert.ok(boundary.includes(':is(#plan-h,#route-h,#build-h,#itinerary-h)'),
-    'only these four headings are exceptions');
+    'the four chapter headings retain their title-face exceptions');
   assert.ok(boundary.includes(':is(#plan-h,#route-h,#build-h,#itinerary-h) > span'),
     'the step numerals must also use the title face');
   assert.ok(boundary.includes('font-family:var(--f-editorial)'), 'the numbered headings use VELENOR');
+  assert.ok(boundary.includes('.page-travel .travel .page-head h1,'), 'Travel page title retains the shared Atlas face');
   for(const id of ['plan-h','route-h','build-h','itinerary-h'])
     assert.ok(html.includes('id="'+id+'"'),id+' missing');
   assert.ok(css.includes('font:400 clamp(29px,2.4vw,37px)/1.2 var(--f-text)'),
@@ -499,10 +500,9 @@ test('Added driving stops are rerouted, mapped and reachable from Itinerary',()=
  const selected=view.slice(view.indexOf('function selectedControl('),view.indexOf('function updateTripContext('));
  assert.ok(selected.includes("button('Show on Map',"));
  assert.ok(selected.includes('paintMap();'));
- assert.ok(selected.includes('map.focus(activity.id);'));
- assert.ok(selected.includes('showTravelMap();'));
+ assert.ok(selected.includes('focusMapActivity(activity);'));
 });
-test('Show on Map and all step links scroll to their actual targets below the navigation',()=>{
+test('Show on Map preserves the companion while step links retain their navigation offsets',()=>{
  const view=readFileSync(new URL('../assets/js/travel-view.js',import.meta.url),'utf8');
  const css=readFileSync(new URL('../assets/css/atlas.css',import.meta.url),'utf8');
  const start=view.indexOf('function travelNavigationOffset(){');
@@ -514,7 +514,9 @@ test('Show on Map and all step links scroll to their actual targets below the na
  assert.ok(fragment.includes('window.scrollTo({top,behavior:'));
  assert.ok(fragment.includes("const surface=$('travel-map')?.closest('.trip-map')"));
  assert.ok(fragment.includes('requestAnimationFrame(()=>scrollToTravelTarget(surface,{focus:true}))'));
- assert.ok(view.includes("map.focus(activity.id);$('close-activity').hidden=false;showTravelMap();"));
+ assert.ok(fragment.includes('if(mapFloatOpen)return;'));
+ assert.ok(fragment.includes('mapFollowDismissed=false;floatMap(true);return;'));
+ assert.ok(view.includes('focusMapActivity(activity);'));
  assert.ok(fragment.includes("event.preventDefault();stageTo(a.hash.slice(1))"),
    'stage links should use the same calculated scroll offset');
  assert.ok(css.includes('#route-stage .trip-map{')&&css.includes('scroll-margin-top:calc(var(--bar-h)'));

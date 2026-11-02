@@ -34,6 +34,13 @@ function stageTo(id,{move=true}={}){
   if(move){if(id==='route-stage')floatMap(false);scrollToTravelTarget(section,{focus:true});}
 }
 function showTravelMap(){
+  // An explicit preview opens the companion in Build the Journey, including
+  // on mobile. It never navigates away from the user's discovery position.
+  if(mapFloatOpen)return;
+  const build=$('build-stage').getBoundingClientRect();
+  if(build.top<innerHeight&&build.bottom>travelNavigationOffset()){
+    mapFollowDismissed=false;floatMap(true);return;
+  }
   // Align the MAP, not Step 02's route cards/title several hundred pixels
   // above it. The toolbar remains just above the visible map canvas.
   floatMap(false);
@@ -57,6 +64,7 @@ const locations=new Map(),discoveryCache=new Map();
    behavior. This moves the SAME MapLibre map surface into a fixed visual
    position; no duplicate map instance, detached window, or new data source. */
 let mapFollowDismissed=false,mapFloatOpen=false,mapScrollScheduled=false;
+let mapFocus=null,mapViewportFrame=0;
 const mapSurface=$('travel-map')?.closest('.trip-map');
 const mapPlaceholder=el('div',null,'travel-map-placeholder');
 mapPlaceholder.hidden=true;
@@ -74,12 +82,26 @@ function floatMap(open,{dismiss=false}={}){
   $('travel-map-float-head').hidden=!shouldOpen;
   $('travel-map-float-toggle').setAttribute('aria-pressed',String(shouldOpen));
   $('travel-map-float-toggle').textContent=shouldOpen?'Map Is Following':'Keep Map in View';
-  requestAnimationFrame(()=>{
-    map?.resize();
-    // The compact aspect ratio needs a fresh whole-journey fit. Docking must
-    // NOT refit: Show on Map may have just focused a particular stop.
-    if(shouldOpen&&state.family)fitRoute();
+  syncMapViewport();
+}
+function syncMapViewport(){
+  cancelAnimationFrame(mapViewportFrame);
+  mapViewportFrame=requestAnimationFrame(()=>{
+    if(!map)return;
+    // Resizing alone preserves the old zoom: expanding a compact canvas then
+    // exposes an ocean-wide extent. Refit only after its new size is measured.
+    map.raw.stop();map.resize();
+    if(mapFocus)map.focus(mapFocus.id);
+    else fitRoute(false,{immediate:true});
   });
+}
+function focusMapActivity(activity){
+  showTravelMap();
+  mapFocus=activity;
+  $('travel-map-title').textContent=activity.name;
+  $('travel-map-title').title=[activity.name,activity.categoryLabel].filter(Boolean).join(' · ');
+  map.focus(activity.id);$('close-activity').hidden=false;
+  status(activity.name+' · '+activity.dog);
 }
 function updateFloatingMap(){
   if(!mapSurface||!state.family){floatMap(false);return;}
@@ -96,6 +118,7 @@ $('travel-map-float-toggle').addEventListener('click',()=>{
   mapFollowDismissed=false;floatMap(true);
 });
 $('travel-map-float-close').addEventListener('click',()=>floatMap(false,{dismiss:true}));
+$('travel-map-fit').addEventListener('click',()=>{paintMap();fitRoute(true);});
 window.addEventListener('scroll',()=>{
   if(mapScrollScheduled)return;
   mapScrollScheduled=true;
@@ -107,7 +130,7 @@ window.addEventListener('resize',()=>{
     // device orientation into narrow portrait.
     floatMap(false);
   }
-  updateFloatingMap();
+  updateFloatingMap();syncMapViewport();
 },{passive:true});
 document.addEventListener('keydown',event=>{
   if(event.key==='Escape'&&mapFloatOpen)floatMap(false,{dismiss:true});
@@ -224,18 +247,19 @@ function renderFamilies(){
     const choose=button(family.id===state.family?.id?'Route Selected':'Compare This Route',async()=>{if(building||family.id===state.family?.id)return;if(state.stops.length&&!confirm('Switch routes and clear the selected along-route stops? Destination activities will be kept.'))return;cancelRequests();state.family=family;state.stops=[];state.legs=journeyLegs(state.origin,state.destination);state.results=[family];state.manual=false;dirty=true;renderFamilies();renderItinerary();paintMap(true);headerState();syncManual();status('Route highlighted on the map. Explore Stops on This Route to continue.');await discoverJourney();});choose.setAttribute('aria-pressed',String(family.id===state.family?.id));choose.disabled=family.id===state.family?.id;card.append(choose);box.append(card);
   }
 }
-function fitRoute(announce=false){
+function fitRoute(announce=false,{immediate=false}={}){
   if(!map){if(announce)$('map-fit-feedback').textContent='The map is unavailable. Your itinerary is still here.';return;}
-  const bounds=wholeJourneyBounds([...state.families.filter(Boolean),...state.results.filter(Boolean)],state.origin,state.destination);
+  const bounds=wholeJourneyBounds(state.results.filter(Boolean),state.origin,state.destination);
   if(!bounds){if(announce)$('map-fit-feedback').textContent='Map a journey first.';return;}
   let alreadyVisible=false;
   try{const visible=map.raw.getBounds();alreadyVisible=visible.contains(bounds[0])&&visible.contains(bounds[1]);}catch{}
-  map.resize();map.select(null);
-  map.fit(bounds,{padding:matchMedia('(max-width:759.98px)').matches?36:60,maxZoom:12});
+  mapFocus=null;$('travel-map-title').textContent='Journey map';$('travel-map-title').removeAttribute('title');
+  map.raw.stop();map.resize();map.select(null);
+  map.fit(bounds,{retainPadding:false,...(immediate?{duration:0}:{}),padding:matchMedia('(max-width:759.98px)').matches?36:60,maxZoom:12});
   $('close-activity').hidden=true;
   if(announce)$('map-fit-feedback').textContent=alreadyVisible?
     'The entire journey is already visible. Pan or zoom in, then use this to return.':
-    'Map reset to show the full journey and all alternative routes.';
+    'Map reset to show the full selected journey.';
 }
 function journeyRoute(){return state.results.length>1?{...state.family,minutes:state.results.reduce((n,r)=>n+r.minutes,0),miles:String(state.results.reduce((n,r)=>n+Number(r.miles),0)),feature:{type:'Feature',properties:{mode:'drive'},geometry:{type:'LineString',coordinates:state.results.flatMap(r=>r.feature.geometry.coordinates)}}}:state.results[0]||state.family;}
 function paintMap(fit=false){
@@ -261,9 +285,7 @@ function selectedControl(activity,index,destination=false){
     // Both routed stops and destination activities already have map markers.
     // Restore the real itinerary geometry before focusing the selected pin.
     paintMap();
-    map.focus(activity.id);
-    $('close-activity').hidden=false;
-    showTravelMap();
+    focusMapActivity(activity);
   }));
   const move=direction=>{if(building)return;const next=[...items],other=index+direction;if(other<0||other>=next.length)return;[next[index],next[other]]=[next[other],next[index]];if(destination){state.destinationActivities=next;dirty=true;renderItinerary();}else rebuild(next);};
   const earlier=button('Move Earlier',()=>move(-1)),later=button('Move Later',()=>move(1));earlier.disabled=index===0;later.disabled=index===items.length-1;
@@ -483,7 +505,7 @@ function activityCard(activity,zone,destination=false){
     if($('stop-search-dialog').open)$('stop-search-dialog').close();
     map.setMarkers([pointFeature('origin',state.origin.label,state.origin),pointFeature('destination',state.destination.label,state.destination),
       ...state.stops.map(s=>pointFeature(s.id,s.name,s.location)),pointFeature(activity.id,activity.name,activity.location)]);
-    map.focus(activity.id);$('close-activity').hidden=false;showTravelMap();
+    focusMapActivity(activity);
   });
   const actions=el('div',null,'trip-activity-actions');actions.append(add,preview);card.append(actions,disclosure);
   return card;
@@ -891,7 +913,7 @@ if(new URLSearchParams(location.search).has('qa')){
     readout.textContent=JSON.stringify({families:state.families.length,legs:state.legs.length,stops:state.stops.length,bounds,coordinates:points.length,completeGeometryCovered:!!bounds&&points.every(([x,y])=>x>=bounds[0][0]&&x<=bounds[1][0]&&y>=bounds[0][1]&&y<=bounds[1][1]),mapAvailable:!!map,camera:map?.raw.getBounds().toArray()||null,minimumZoom:map?.raw.getMinZoom()??null},null,2);
   }),readout);$('route-stage').append(details);
 }
-(async()=>{try{const initial=routeBounds(places.map(p=>pointFeature(p.id,p.name,p.access)));map=await createMap($('travel-map'),{base,theme:'light',travel:true,touch:matchMedia('(pointer:coarse)').matches,bounds:initial});$('trip-map-status').textContent='';setMapAppearance(travelMapTheme);map.on('select',id=>{const activity=[...state.stops,...state.destinationActivities].find(s=>s.id===id);if(activity){map.focus(id);$('close-activity').hidden=false;status(activity.name+' · '+activity.dog);}else fitRoute();});map.on('trouble',text=>$('trip-map-status').textContent=text);map.on('lost',()=>{$('trip-map-status').textContent='The browser released the map graphics. Reload to restore the map; the itinerary stays usable.';map.destroy();map=null;});new ResizeObserver(()=>map?.resize()).observe($('travel-map'));paintMap(true);updateFloatingMap();
+(async()=>{try{const initial=routeBounds(places.map(p=>pointFeature(p.id,p.name,p.access)));map=await createMap($('travel-map'),{base,theme:'light',travel:true,touch:matchMedia('(pointer:coarse)').matches,bounds:initial});$('trip-map-status').textContent='';setMapAppearance(travelMapTheme);map.on('select',id=>{const activity=mapFocus?.id===id?mapFocus:[...state.stops,...state.destinationActivities].find(s=>s.id===id);if(activity){focusMapActivity(activity);}else fitRoute();});map.on('trouble',text=>$('trip-map-status').textContent=text);map.on('lost',()=>{$('trip-map-status').textContent='The browser released the map graphics. Reload to restore the map; the itinerary stays usable.';map.destroy();map=null;});new ResizeObserver(syncMapViewport).observe($('travel-map'));paintMap(true);updateFloatingMap();
     // Read-only QA evidence: route bounds, camera and itinerary; never publish the user's locations.
     if(new URLSearchParams(location.search).has('qa'))window.__travelQA=()=>({families:state.families.length,legs:state.legs.length,stops:state.stops.length,destinationActivities:state.destinationActivities.length,bounds:wholeJourneyBounds(state.results.filter(Boolean),state.origin,state.destination),camera:map?.raw.getBounds().toArray(),zoom:map?.raw.getZoom(),minZoom:map?.raw.getMinZoom()});
   }catch(error){$('trip-map-status').textContent='Map unavailable. Route choices and the itinerary remain usable.';}})();
