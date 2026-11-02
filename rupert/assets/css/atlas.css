@@ -2017,3 +2017,10 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   .page-travel #build-stage #route-activity-results,
   .page-travel #build-stage #destination-activities{grid-template-columns:minmax(0,1fr);gap:14px;}
 }
+
+
+/* Native-anchor fallback and focused map navigation: do not land above the map
+   under the compact fixed masthead. JS additionally measures the live header. */
+.page-travel #route-stage .trip-map{
+  scroll-margin-top:calc(var(--bar-h) + env(safe-area-inset-top, 0px) + 18px);
+}
