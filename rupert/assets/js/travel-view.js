@@ -14,13 +14,35 @@ const button=(text,action)=>{const n=el('button',text);n.type='button';n.addEven
 const field=(label,input)=>{const n=el('label',label);n.append(input);return n;};
 const status=text=>{$('trip-status').textContent=text;};
 const reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+// The compact masthead becomes fixed on larger screens once scrolled.
+// Measure its real rendered height rather than guessing a scroll-margin offset.
+function travelNavigationOffset(){
+  const header=$('bar');
+  return header&&getComputedStyle(header).position==='fixed'?
+    Math.ceil(header.getBoundingClientRect().height)+16:16;
+}
+function scrollToTravelTarget(target,{focus=false}={}){
+  if(!target)return;
+  const top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-travelNavigationOffset());
+  window.scrollTo({top,behavior:reducedMotion()?'auto':'smooth'});
+  if(focus){target.tabIndex=-1;target.focus({preventScroll:true});}
+}
 function stageTo(id,{move=true}={}){
   const section=$(id),link=document.querySelector('.journey-stages a[href="#'+id+'"]');
   if(!section)return;
   document.querySelectorAll('.journey-stages a').forEach(a=>{if(a===link)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});
-  if(move){section.scrollIntoView({behavior:reducedMotion()?'auto':'smooth',block:'start'});const h=section.querySelector('h2');if(h){h.tabIndex=-1;h.focus({preventScroll:true});}}
+  if(move)scrollToTravelTarget(section,{focus:true});
 }
-document.querySelectorAll('.journey-stages a').forEach(a=>a.addEventListener('click',()=>stageTo(a.hash.slice(1),{move:false})));
+function showTravelMap(){
+  // Align the MAP, not Step 02's route cards/title several hundred pixels
+  // above it. The toolbar remains just above the visible map canvas.
+  stageTo('route-stage',{move:false});
+  const surface=$('travel-map')?.closest('.trip-map');
+  if(surface)requestAnimationFrame(()=>scrollToTravelTarget(surface,{focus:true}));
+}
+document.querySelectorAll('.journey-stages a').forEach(a=>a.addEventListener('click',event=>{
+  event.preventDefault();stageTo(a.hash.slice(1));
+}));
 if('IntersectionObserver' in window){
   const observer=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(visible.length)stageTo(visible[0].target.id,{move:false});},{rootMargin:'-12% 0px -65% 0px',threshold:[0,.1,.3]});
   document.querySelectorAll('.journey-stage[id]').forEach(e=>observer.observe(e));
@@ -390,7 +412,7 @@ function activityCard(activity,zone,destination=false){
     if($('stop-search-dialog').open)$('stop-search-dialog').close();
     map.setMarkers([pointFeature('origin',state.origin.label,state.origin),pointFeature('destination',state.destination.label,state.destination),
       ...state.stops.map(s=>pointFeature(s.id,s.name,s.location)),pointFeature(activity.id,activity.name,activity.location)]);
-    map.focus(activity.id);$('close-activity').hidden=false;stageTo('route-stage');
+    map.focus(activity.id);$('close-activity').hidden=false;showTravelMap();
   });
   const actions=el('div',null,'trip-activity-actions');actions.append(add,preview);card.append(actions,disclosure);
   return card;
