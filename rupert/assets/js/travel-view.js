@@ -31,11 +31,12 @@ function stageTo(id,{move=true}={}){
   const section=$(id),link=document.querySelector('.journey-stages a[href="#'+id+'"]');
   if(!section)return;
   document.querySelectorAll('.journey-stages a').forEach(a=>{if(a===link)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});
-  if(move)scrollToTravelTarget(section,{focus:true});
+  if(move){if(id==='route-stage')floatMap(false);scrollToTravelTarget(section,{focus:true});}
 }
 function showTravelMap(){
   // Align the MAP, not Step 02's route cards/title several hundred pixels
   // above it. The toolbar remains just above the visible map canvas.
+  floatMap(false);
   stageTo('route-stage',{move:false});
   const surface=$('travel-map')?.closest('.trip-map');
   if(surface)requestAnimationFrame(()=>scrollToTravelTarget(surface,{focus:true}));
@@ -51,6 +52,61 @@ const emptyState=()=>({origin:null,destination:null,families:[],family:null,stop
 let captionEdited=false;
 let state=emptyState(),plans=[],activeId=null,dirty=false,postcard=null,canPersist=true,map=null,version=0,controller=null,discoveryController=null,areaSearchController=null,pauseAutomaticDiscovery=null,lastSelectedSectionProgress=null,building=false;
 const locations=new Map(),discoveryCache=new Map();
+
+/* In-page map companion, derived from the attached PFAS Explorer's focus
+   behavior. This moves the SAME MapLibre map surface into a fixed visual
+   position; no duplicate map instance, detached window, or new data source. */
+let mapFollowDismissed=false,mapFloatOpen=false,mapScrollScheduled=false;
+const mapSurface=$('travel-map')?.closest('.trip-map');
+const mapPlaceholder=el('div',null,'travel-map-placeholder');
+if(mapSurface)mapSurface.before(mapPlaceholder);
+function floatMap(open,{dismiss=false}={}){
+  if(!mapSurface)return;
+  if(dismiss)mapFollowDismissed=true;
+  const shouldOpen=Boolean(open&&state.family&&map);
+  if(mapFloatOpen===shouldOpen)return;
+  mapFloatOpen=shouldOpen;
+  if(shouldOpen)mapPlaceholder.style.height=mapSurface.getBoundingClientRect().height+'px';
+  mapPlaceholder.hidden=!shouldOpen;
+  mapSurface.classList.toggle('is-floating',shouldOpen);
+  document.querySelector('.travel')?.classList.toggle('has-floating-map',shouldOpen);
+  $('travel-map-float-head').hidden=!shouldOpen;
+  $('travel-map-float-toggle').setAttribute('aria-pressed',String(shouldOpen));
+  $('travel-map-float-toggle').textContent=shouldOpen?'Map Is Following':'Keep Map in View';
+  requestAnimationFrame(()=>{map?.resize();if(shouldOpen)map?.resize();});
+}
+function updateFloatingMap(){
+  if(!mapSurface||!state.family){floatMap(false);return;}
+  const build=$('build-stage'),itinerary=$('itinerary-stage');
+  const inJourney=build.getBoundingClientRect().top<window.innerHeight*.48 &&
+    itinerary.getBoundingClientRect().bottom>120;
+  // Desktop auto-follow. On smaller touch screens floating is opt-in so
+  // it cannot cover the entire reading and decision surface.
+  if(!inJourney){floatMap(false);return;}
+  if(window.innerWidth>=1120&&!mapFollowDismissed)floatMap(true);
+}
+$('travel-map-float-toggle').addEventListener('click',()=>{
+  if(mapFloatOpen){floatMap(false,{dismiss:true});return;}
+  mapFollowDismissed=false;floatMap(true);
+});
+$('travel-map-float-close').addEventListener('click',()=>floatMap(false,{dismiss:true}));
+window.addEventListener('scroll',()=>{
+  if(mapScrollScheduled)return;
+  mapScrollScheduled=true;
+  requestAnimationFrame(()=>{mapScrollScheduled=false;updateFloatingMap();});
+},{passive:true});
+window.addEventListener('resize',()=>{
+  if(window.innerWidth<1120&&mapFloatOpen){
+    // Keep manual mobile popouts, but dismiss desktop-auto map when changing
+    // device orientation into narrow portrait.
+    floatMap(false);
+  }
+  updateFloatingMap();
+},{passive:true});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&mapFloatOpen)floatMap(false,{dismiss:true});
+});
+
 try{const text=localStorage.getItem(key);if(text)plans=readBackup(text);}catch{canPersist=false;status('Saved plans could not be opened. Existing data has been left intact. Export or restore a backup.');}
 function persist(next){try{if(!canPersist)throw Error();localStorage.setItem(key,JSON.stringify({schema_version:1,plans:next}));plans=next;return true;}catch{status('This browser could not save the plan. Export a backup before leaving.');return false;}}
 function inputPoint(input){const label=input.value.trim();let point;try{if(input.dataset.label===label)point=JSON.parse(input.dataset.point);}catch{}return {label,...(validPoint(point)?{lat:point.lat,lng:point.lng}:{})};}
@@ -770,7 +826,7 @@ if(new URLSearchParams(location.search).has('qa')){
     readout.textContent=JSON.stringify({families:state.families.length,legs:state.legs.length,stops:state.stops.length,bounds,coordinates:points.length,completeGeometryCovered:!!bounds&&points.every(([x,y])=>x>=bounds[0][0]&&x<=bounds[1][0]&&y>=bounds[0][1]&&y<=bounds[1][1]),mapAvailable:!!map,camera:map?.raw.getBounds().toArray()||null,minimumZoom:map?.raw.getMinZoom()??null},null,2);
   }),readout);$('route-stage').append(details);
 }
-(async()=>{try{const initial=routeBounds(places.map(p=>pointFeature(p.id,p.name,p.access)));map=await createMap($('travel-map'),{base,theme:'light',travel:true,touch:matchMedia('(pointer:coarse)').matches,bounds:initial});$('trip-map-status').textContent='';setMapAppearance(travelMapTheme);map.on('select',id=>{const activity=[...state.stops,...state.destinationActivities].find(s=>s.id===id);if(activity){map.focus(id);$('close-activity').hidden=false;status(activity.name+' · '+activity.dog);}else fitRoute();});map.on('trouble',text=>$('trip-map-status').textContent=text);map.on('lost',()=>{$('trip-map-status').textContent='The browser released the map graphics. Reload to restore the map; the itinerary stays usable.';map.destroy();map=null;});new ResizeObserver(()=>map?.resize()).observe($('travel-map'));paintMap(true);
+(async()=>{try{const initial=routeBounds(places.map(p=>pointFeature(p.id,p.name,p.access)));map=await createMap($('travel-map'),{base,theme:'light',travel:true,touch:matchMedia('(pointer:coarse)').matches,bounds:initial});$('trip-map-status').textContent='';setMapAppearance(travelMapTheme);map.on('select',id=>{const activity=[...state.stops,...state.destinationActivities].find(s=>s.id===id);if(activity){map.focus(id);$('close-activity').hidden=false;status(activity.name+' · '+activity.dog);}else fitRoute();});map.on('trouble',text=>$('trip-map-status').textContent=text);map.on('lost',()=>{$('trip-map-status').textContent='The browser released the map graphics. Reload to restore the map; the itinerary stays usable.';map.destroy();map=null;});new ResizeObserver(()=>map?.resize()).observe($('travel-map'));paintMap(true);updateFloatingMap();
     // Read-only QA evidence: route bounds, camera and itinerary; never publish the user's locations.
     if(new URLSearchParams(location.search).has('qa'))window.__travelQA=()=>({families:state.families.length,legs:state.legs.length,stops:state.stops.length,destinationActivities:state.destinationActivities.length,bounds:wholeJourneyBounds(state.results.filter(Boolean),state.origin,state.destination),camera:map?.raw.getBounds().toArray(),zoom:map?.raw.getZoom(),minZoom:map?.raw.getMinZoom()});
   }catch(error){$('trip-map-status').textContent='Map unavailable. Route choices and the itinerary remain usable.';}})();
