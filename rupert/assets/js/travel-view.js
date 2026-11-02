@@ -74,7 +74,12 @@ function floatMap(open,{dismiss=false}={}){
   $('travel-map-float-head').hidden=!shouldOpen;
   $('travel-map-float-toggle').setAttribute('aria-pressed',String(shouldOpen));
   $('travel-map-float-toggle').textContent=shouldOpen?'Map Is Following':'Keep Map in View';
-  requestAnimationFrame(()=>{map?.resize();if(shouldOpen)map?.resize();});
+  requestAnimationFrame(()=>{
+    map?.resize();
+    // The compact aspect ratio needs a fresh whole-journey fit. Docking must
+    // NOT refit: Show on Map may have just focused a particular stop.
+    if(shouldOpen&&state.family)fitRoute();
+  });
 }
 function updateFloatingMap(){
   if(!mapSurface||!state.family){floatMap(false);return;}
