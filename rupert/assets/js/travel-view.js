@@ -532,7 +532,24 @@ async function discoverJourney({preserveSection=false}={}){
     return (lead.detourMinutes<=limit||(lead.confidence==='official-location'&&lead.detourMinutes<=Math.max(60,limit)))&&
       lead.progress>.02&&lead.progress<.98?lead:null;
   };
-  const perRegion=zone=>(records.get(zone.id)?.items||[]).slice(0,4);
+  const perRegion=zone=>{
+    const items=records.get(zone.id)?.items||[];
+    const groups=new Map();
+    for(const item of items){
+      const type=item.category||'other';
+      if(!groups.has(type))groups.set(type,[]);
+      groups.get(type).push(item);
+    }
+    const diversified=[];
+    // Show a walk, an overlook and a treat before showing three lookalike
+    // results from the same category, when diverse leads actually exist.
+    while(diversified.length<4&&[...groups.values()].some(group=>group.length)){
+      for(const group of groups.values()){
+        if(group.length&&diversified.length<4)diversified.push(group.shift());
+      }
+    }
+    return diversified;
+  };
   function collected(){
     const out=[],seen=new Set();
     // Allocate a few leads to every geographic section before considering
