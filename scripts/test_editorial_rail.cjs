@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-three-rotating-exhibits';
+const currentKey='reading-folio.css?v=20261102-integrated-exhibit-spreads';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -45,6 +45,9 @@ ok(css.includes('body.glance .reading-column::after{display:none}'),'right rule 
 ok(css.includes('@media print{.reading-column::after{display:none}}'),'outer border hidden in print');
 ok(css.includes('.entry[data-reading-layout="2"] .evidence-pair'),'paired evidence and RN');
 ok(css.includes('flex-direction:column'),'single main reading track');
+ok(css.includes('.feature-spread[data-feature="cabinet"]')||css.includes('.feature-spread[data-feature="cabinet"]'),'Source Dossier swaps placement with interpretation');
+ok(css.includes('.ledger-plot')&&css.includes('.ledger-calculation')&&css.includes('.ledger-mechanism'),'numeric graphics and conceptual models have distinct CSS');
+eq((source.match(/data-reading-stage="3"/g)||[]).length,30,'thirty composed reading spreads');
 ok(css.includes('.evidence-pair>.margin')&&source.includes("var grid=art.querySelector('.article-grid')"),'Heron wrapper remains compatible');
 eq((source.match(/data-reading-layout="2"/g)||[]).length,30,'all thirty reading layouts');
 eq((source.match(/class="reading-exhibit"/g)||[]).length,30,'all thirty have reading-specific exhibits');
