@@ -1,5 +1,5 @@
 'use strict';
-const economicHinge=require('./economic-hinge.cjs');
+const readingExhibits=require('./reading-exhibits.cjs');
 // Publication-time presentation only. Original text, links and figures are sliced
 // from the author's markup, never serialized or rewritten. No browser dependency.
 const voids=new Set('area base br col embed hr img input link meta param source track wbr'.split(' '));
@@ -35,7 +35,17 @@ function article(s){
 /* A reading is a sequential analysis followed by an aligned evidence register.
  * Original author-supplied HTML nodes are sliced exactly, not re-authored. */
 function readingLayout(s){
- if(s.includes('data-reading-layout="2"'))return s;
+ if(s.includes('data-reading-exhibit="1"'))return s;
+ // Upgrade the reviewed v2 sequential layout in-place without reflowing the
+ // already preserved article, evidence register, notebook or source anchors.
+ if(s.includes('data-reading-layout="2"')){
+  const tree=nodes(s),article=tree.find(n=>n.tag==='article'),finding=tree.find(n=>has(n,'finding'));
+  if(!article||!finding)throw Error('Cannot upgrade reading exhibit');
+  const next=readingExhibits.render(article.id,{finding:inside(s,finding)});
+  const old=/<div class="economic-hinge"[\s\S]*?<\/small><\/div>/;
+  if(!old.test(s))throw Error('Expected legacy Economic Hinge for '+article.id);
+  return s.replace(old,next).replace(/(<article class="entry"[^>]*)(>)/,(_,attrs,close)=>attrs+' data-reading-exhibit="1"'+close);
+ }
  const ns=nodes(s),a=ns.find(n=>n.tag==='article'),grid=ns.find(n=>has(n,'article-grid')),prose=ns.find(n=>has(n,'prose')),note=ns.find(n=>has(n,'research-note'));
  if(!a||!grid||!prose||!note||grid.children.length!==2||!grid.children.includes(prose)||!grid.children.includes(note))throw Error('Unexpected reading grid: '+(a?.id||'?'));
  const limit=prose.children.find(n=>has(n,'limitation')),sources=prose.children.find(n=>has(n,'sources'));
@@ -43,12 +53,12 @@ function readingLayout(s){
  const narrative=prose.children.filter(n=>n!==limit&&n!==sources).map(n=>raw(s,n)).join('');
  const title=ns.find(n=>n.tag==='h2') ,finding=ns.find(n=>has(n,'finding')),analyses=ns.filter(n=>has(n,'analysis-block')),interpretation=analyses[1],limitP=limit.children.find(n=>n.tag==='p');
  const material={title:title?inside(s,title):'',finding:finding?inside(s,finding):'',interpretation:interpretation?inside(s,interpretation):'',limitations:limitP?inside(s,limitP):''};
- const lens=economicHinge.render(a.id,material);
- const newGrid='<div class="article-grid"><div class="prose analysis-flow">'+narrative+'</div>'+lens+
+ const exhibit=readingExhibits.render(a.id,material);
+ const newGrid='<div class="article-grid"><div class="prose analysis-flow">'+narrative+'</div>'+exhibit+
    '<div class="evidence-pair">'+raw(s,limit)+raw(s,note)+'</div>'+
    '<div class="reading-sources">'+raw(s,sources)+'</div></div>';
  const result=s.slice(0,grid.start)+newGrid+s.slice(grid.end);
- return result.replace(/(<article class="entry"[^>]*)(>)/,(_,attrs,close)=>attrs+' data-reading-layout="2"'+close);
+ return result.replace(/(<article class="entry"[^>]*)(>)/,(_,attrs,close)=>attrs+' data-reading-layout="2" data-reading-exhibit="1"'+close);
 }
 function closing(s,type){
  if(s.includes('data-editorial-folio="1"'))return s;
@@ -95,7 +105,7 @@ function compose(source){
 function readingRecord(s){
  // Compare the entire authored scholarship with the original historical record.
  // The newly-authored interpretive lens is a separate, clearly attributed layer.
- const clean=s.replace(/<div class="economic-hinge"[\s\S]*?<\/small><\/div>/g,'');
+ const clean=s.replace(/<section class="reading-exhibit"[\s\S]*?<\/section>/g,'').replace(/<div class="economic-hinge"[\s\S]*?<\/small><\/div>/g,'');
  const ns=nodes(clean), blocks=ns.filter(n=>['h2','h3','p','figure'].includes(n.tag)).map(n=>raw(clean,n));
  const meta=ns.filter(n=>has(n,'eyebrow')||has(n,'status')||has(n,'concepts')).map(n=>raw(clean,n)).sort(); // invariant to reflow of existing apparatus
  return {
