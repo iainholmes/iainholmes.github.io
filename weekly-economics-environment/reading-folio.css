@@ -6,17 +6,19 @@
 .edition-body>.synthesis,.edition-body>.knowledge,.edition-body>.editorial-note{grid-column:1/-1;min-width:0}
 @media(min-width:1181px){.edition-body{width:min(1462px,calc(100vw - 88px));margin-left:calc((100% - min(1462px,calc(100vw - 88px)))/2)}}
 
-/* One editorial divider, not a separate column. Its copper opening transitions
-   into the journal's river tone, with no repeated rails or boxed-in metadata. */
+/* A single tapered folio spine in the existing reading gutter: one shape,
+   not a third column or a pair of rules. Its copper head tapers into forest.
+   Reading measures, navigation and all article components remain untouched. */
 @media(min-width:821px){
  .contents-boundary{position:relative}
  .contents-boundary::after{
-  content:"";position:absolute;top:0;bottom:0;right:-25px;width:4px;
-  background:linear-gradient(to bottom,var(--clay) 0 40px,var(--river) 40px 100%);
+  content:"";position:absolute;top:0;bottom:0;right:-28px;width:12px;
+  background:linear-gradient(to bottom,var(--clay) 0 52px,var(--forest) 52px 100%);
+  clip-path:polygon(0 0,100% 0,100% 52px,75% 70px,75% 100%,25% 100%,25% 70px,0 52px);
   pointer-events:none
  }
 }
-@media(min-width:821px) and (max-width:1180px){.contents-boundary::after{right:-18px;width:4px}}
+@media(min-width:821px) and (max-width:1180px){.contents-boundary::after{right:-21px}}
 body.glance .contents-boundary::after{display:none}
 
 /* Chapter navigator: a numbered reading register, then the issue's apparatus. */
