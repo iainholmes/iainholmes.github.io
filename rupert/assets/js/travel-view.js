@@ -213,7 +213,13 @@ function renderItinerary(){
 }
 async function rebuild(nextStops){
   if(!state.family||building)return;if(!$('trip-routing').checked){status('Enable route & place lookup to rebuild the journey.');return;}if(nextStops.length>38){status('A journey can hold up to 38 intermediate stops.');return;}
-  building=true;document.querySelectorAll('[data-add-activity]').forEach(b=>b.disabled=true);discoveryController?.abort();pauseAutomaticDiscovery=null;const current=++version,abort=new AbortController();controller?.abort();controller=abort;const timer=setTimeout(()=>abort.abort(),60000);
+  building=true;document.querySelectorAll('[data-add-activity]').forEach(b=>b.disabled=true);
+  // A recalculating route has no valid clickable discovery windows until the
+  // revised legs are ready. State this instead of leaving inert controls.
+  $('route-activities').querySelectorAll('button').forEach(b=>b.disabled=true);
+  $('route-activity-results').setAttribute('aria-busy','true');
+  $('journey-discovery-status').textContent='Recalculating the drive with your new stop; route windows will refresh when it finishes.';
+  discoveryController?.abort();pauseAutomaticDiscovery=null;const current=++version,abort=new AbortController();controller?.abort();controller=abort;const timer=setTimeout(()=>abort.abort(),60000);
   status('Rebuilding route legs and arrival times…');
   $('journey-change-status').textContent='Updating driving directions and arrival times for this journey…';
   let updated=false;
@@ -231,7 +237,10 @@ async function rebuild(nextStops){
     const message=error.name==='AbortError'?'Route rebuild timed out. Your previous itinerary is unchanged.':error.message+' Your previous itinerary is unchanged.';
     status(message);$('journey-change-status').textContent=message;
   }}
-  finally{clearTimeout(timer);if(current===version){building=false;controller=null;updateActivityButtons();}}
+  finally{clearTimeout(timer);if(current===version){building=false;controller=null;updateActivityButtons();
+    $('route-activities').querySelectorAll('button').forEach(b=>b.disabled=false);
+    $('route-activity-results').setAttribute('aria-busy','false');
+  }}
   if(updated&&current===version&&state.stops===nextStops)await discoverJourney({preserveSection:true});
   return updated;
 }
@@ -458,7 +467,7 @@ async function discoverJourney({preserveSection=false}={}){
       box.append(activityCard(item,zone));
     }
   }
-  async function searchSection(zone,buttonEl,{automatic=false}={}){
+  async function searchSection(zone,buttonEl,{automatic=false,preferFast=false}={}){
     if(!fresh())return;
     lastSelectedSectionProgress=zone.progress;
     if(!automatic){
@@ -487,7 +496,7 @@ async function discoverJourney({preserveSection=false}={}){
         // Bound an explicit selection: public providers may be slow or offline,
         // but the control must not remain indefinitely in "Searching…" state.
         signal:AbortSignal.any([abort.signal,selected.signal,AbortSignal.timeout(14000)]),
-        radius:3500,interactive:!automatic
+        radius:3500,interactive:!automatic||preferFast
       });
       if(!active())return;
       const leads=nearby.map(a=>({...a})).filter(a=>{
@@ -526,7 +535,7 @@ async function discoverJourney({preserveSection=false}={}){
     const middle=preserveSection&&Number.isFinite(lastSelectedSectionProgress)?
       zones.reduce((best,zone,i)=>Math.abs(zone.progress-lastSelectedSectionProgress)<Math.abs(zones[best].progress-lastSelectedSectionProgress)?i:best,0):
       Math.floor((zones.length-1)/2);
-    await searchSection(zones[middle],routeBox.children[middle],{automatic:true});
+    await searchSection(zones[middle],routeBox.children[middle],{automatic:true,preferFast:preserveSection});
   }
   if(!fresh()||automaticPaused)return;
   destinationLoading=true;
