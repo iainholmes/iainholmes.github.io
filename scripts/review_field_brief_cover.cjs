@@ -1,0 +1,18 @@
+/* Read-only, reproducible visual audit. Never installs a correction into production pins. */
+'use strict';
+const fs=require('fs'),path=require('path');
+const art=require('../daily-watchlist-5/artwork'),marks=require('../personal-updates/issue-marks'),archive=require('../personal-updates/issue-mark-archive');
+const doc=fs.readFileSync(path.join(__dirname,'../daily-watchlist-5/index.html'),'utf8');
+const editions=JSON.parse(doc.match(/id="briefing-data">([\s\S]*?)<\/script>/)[1]).editions;
+const e=editions.find(x=>x.date==='2026-11-02'),info={key:'fb',date:e.date,no:editions.indexOf(e)+1,title:e.issueTitle,stories:e.stories,framing:[e.deck,e.signalTitle,...e.signal].join(' ')};
+// model() returns the published pin; deliberately create an uninstalled proposal separately.
+const proposal={...marks.model(info),...art.issueModel(info,archive)};delete proposal.frozen;
+const svg=marks.svg(proposal),review=art.validateIssue({...proposal,frozen:svg},archive);
+const all=Object.values(archive).filter(m=>m.key==='fb').sort((a,b)=>a.date.localeCompare(b.date));
+const pairs=all.filter(x=>x.date<e.date).map(m=>({date:m.date,score:art.visualSimilarity(art.issueFeatures(svg),art.issueFeatures(m))})).sort((a,b)=>b.score-a.score);
+const out=process.argv[2];if(!out)throw Error('Supply an output directory outside publication archives');
+const destination=path.resolve(out);for(const p of ['personal-updates','daily-watchlist-5'])if(destination===path.resolve(p)||destination.startsWith(path.resolve(p)+path.sep))throw Error('Review output must not enter publication paths');
+fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'proposal.json'),JSON.stringify({status:'PROPOSED — NOT PUBLISHED; explicit approval required',replaces:'fb:2026-11-02',baseline:'2926414b6233f738795180b40a1475444b609467',model:proposal,review,pairs},null,2)+'\n');fs.writeFileSync(path.join(out,'proposal.svg'),svg);
+const panels=[['November 1 · published',archive['fb:2026-11-01'].frozen],['November 2 · published',archive['fb:2026-11-02'].frozen],['November 2 · proposed correction',svg]];
+fs.writeFileSync(path.join(out,'index.html'),'<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Field Brief cover review — not published</title><style>body{background:#ece6da;color:#221a14;font:18px Georgia,serif;margin:28px auto;max-width:1380px;padding:0 24px}h1{font-weight:400}p{max-width:85ch;line-height:1.5}.comparison,.archive{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}figure{margin:0}svg{width:100%;height:auto}figcaption{font:16px system-ui;margin:12px 0 20px}.archive{grid-template-columns:repeat(5,minmax(0,1fr))}h2{margin-top:48px}@media(max-width:700px){.comparison{grid-template-columns:1fr}.archive{grid-template-columns:repeat(2,minmax(0,1fr))}}</style><h1>Field Brief · editorial cover review</h1><p>Historical originals remain unchanged. The proposed correction is a separate, uninstalled model requiring approval. A robotic tool faces unlike tasks, with a feedback channel: capability rather than a claim of demonstrated performance.</p><div class="comparison">'+panels.map(([label,svg])=>'<figure>'+svg+'<figcaption>'+label+'</figcaption></figure>').join('')+'</div><h2>Full published cover archive</h2><p>All '+all.length+' frozen originals, including historical duplicates, shown as evidence.</p><div class="archive">'+all.map(m=>'<figure>'+m.frozen+'<figcaption>'+m.date+'</figcaption></figure>').join('')+'</div></html>');
+console.log(JSON.stringify({proposal:proposal.composition,phrase:proposal.phrase,review,nearest:pairs.slice(0,3),output:path.resolve(out)},null,2));

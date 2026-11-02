@@ -58,7 +58,7 @@ try{
  const before=snap();prep();eq(snap(),before,'known historical duplicates do not invalidate or regenerate the archive');
  const candidate=structuredClone(latest);candidate.date='2028-01-01';candidate.issueTitle='Court review and enforcement capacity';candidate.deck='Court enforcement and export controls';candidate.signalTitle='Review and verification';candidate.signal=['Legal enforcement depends on evidence.'];
  const source=path.join(dir,'daily-watchlist-5/index.html'),doc=read('daily-watchlist-5/index.html'),payload=data(doc);payload.editions.push(candidate);fs.writeFileSync(source,doc.replace(/(id="briefing-data">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(payload)+b));prep();
- const newArchive=registry(fs.readFileSync(path.join(dir,'personal-updates/issue-mark-archive.js'),'utf8')),pin=newArchive['fb:'+candidate.date];eq(pin.no,String(payload.editions.length).padStart(3,'0'),'sequential numbering');eq(pin.version,5,'new originality-aware cover');check(art.validateIssue(pin,archive).ok,'publisher validates before freezing');
+ const newArchive=registry(fs.readFileSync(path.join(dir,'personal-updates/issue-mark-archive.js'),'utf8')),pin=newArchive['fb:'+candidate.date];eq(pin.no,String(payload.editions.length).padStart(3,'0'),'sequential numbering');eq(pin.version,6,'new originality-aware cover');check(art.validateIssue(pin,archive).ok,'publisher validates before freezing');
  for(const [k,v]of Object.entries(archive))eq(newArchive[k],v,'append-only '+k);
  eq(fs.readFileSync(path.join(dir,'personal-updates/index.html'),'utf8').match(/data-issue-mark="fb"[^>]*>([\s\S]*?)<\/div>/)[1],pin.frozen,'new embedded cover matches frozen pin');
  const stable=snap();prep();eq(snap(),stable,'repeat publication is byte-idempotent');

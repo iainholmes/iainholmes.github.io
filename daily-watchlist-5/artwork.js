@@ -102,7 +102,7 @@
   ].map(([id,topic,geometry])=>({id,topic,geometry,signature:'issue:'+id}));
   function markSignature(m){return m.signature||(m.version===2?'legacy-subject:'+m.subject:'legacy-theme:'+m.theme);}
   // Prospective only: these 21 published issues, including duplicates, stay authoritative.
-  const issuePolicy=Object.freeze({version:1,historicalThrough:'2026-10-17',recentWindow:3,maxAttempts:96});
+  const issuePolicy=Object.freeze({version:1,historicalThrough:'2026-10-17',recentWindow:3,maxAttempts:96,editorialVersion:2,editorialHistoricalThrough:'2026-11-02'});
   const coverFeatures=new Map();
   function centralArtwork(value){
     let s=String(typeof value==='string'?value:value.frozen||value.geometry||'');
@@ -217,6 +217,7 @@
       if(!closest||similarity>closest.similarity)closest={date:old.date,similarity};
       if(reason)return {ok:false,reason,date:old.date,similarity,compared:history.length};
     }
+    if(candidate.version===6||candidate.date>issuePolicy.editorialHistoricalThrough){const treatment=issueTreatment(candidate,archive);if(!treatment.ok)return {...treatment,compared:history.length};}
     return {ok:true,compared:history.length,closest};
   }
   function validateIssue(candidate,archive){const result=issueOriginality(candidate,archive);if(!result.ok)throw Error('Field Brief cover originality: '+candidate.date+' repeats '+result.date+' ('+result.reason+'); author a different content-supported composition and validate again.');return result;}
@@ -254,6 +255,16 @@
       ['measured-range','<path d="M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63" stroke="$ink" stroke-width="6"/><circle cx="50" cy="50" r="14" fill="$accent"/><path d="M50 6V30M50 70V94" stroke="$support" stroke-width="7"/>']
     ]
   };
+  // Additional authored mechanisms: each has a different topology, not coordinate jitter.
+  const issueMotifExtensions={
+    capacity:[['control-loop','<path d="M15 70V22H78V70H50" fill="none" stroke="$ink" stroke-width="9"/><circle cx="50" cy="70" r="19" fill="$accent"/><path d="M50 45V12M34 28L50 12L66 28" fill="none" stroke="$support" stroke-width="6"/>'],['idle-stock','<path d="M8 30H92V90H8Z" fill="$ink"/><path d="M20 42H80M20 56H80M20 70H80" stroke="$paper" stroke-width="5"/><path d="M40 5H60V25H40Z" fill="$accent"/>']],
+    enforcement:[['threshold-gate','<path d="M12 90V10H88V90M50 10V55" fill="none" stroke="$ink" stroke-width="8"/><path d="M5 70H40M60 70H95" stroke="$accent" stroke-width="8"/>'],['appeal-route','<path d="M10 85H45V20H88M72 4L88 20L72 36" fill="none" stroke="$ink" stroke-width="8"/><circle cx="15" cy="30" r="14" fill="$accent"/>']],
+    risk:[['exposure-gradient','<path d="M8 90L50 8L92 90Z" fill="$ink"/><path d="M25 72H75M35 53H65" stroke="$paper" stroke-width="6"/><circle cx="80" cy="20" r="11" fill="$accent"/>'],['escape-channel','<path d="M10 10V90H90V10" fill="none" stroke="$ink" stroke-width="9"/><path d="M28 62Q50 85 74 45L90 25M70 25H90V45" fill="none" stroke="$accent" stroke-width="7"/>']],
+    infrastructure:[['trunk-branches','<path d="M15 90V15H90M15 50H70V90M50 15V35" fill="none" stroke="$ink" stroke-width="10"/><circle cx="70" cy="90" r="9" fill="$accent"/>'],['coupled-grid','<path d="M5 10H40V90H5ZM60 10H95V90H60Z" fill="$ink"/><path d="M40 32H60M40 68H60" stroke="$accent" stroke-width="10"/>']],
+    labor:[['task-handoff','<path d="M5 60H35V90H5ZM65 10H95V40H65Z" fill="$ink"/><path d="M35 75H50V25H65" fill="none" stroke="$accent" stroke-width="8"/>'],['vacancy-gap','<path d="M5 20H30V85H5ZM70 20H95V85H70Z" fill="$ink"/><path d="M42 20H58V85H42Z" fill="none" stroke="$accent" stroke-width="4"/>']],
+    evidence:[['sampling-window','<circle cx="50" cy="50" r="40" fill="none" stroke="$ink" stroke-width="9"/><path d="M12 50H50V12" fill="none" stroke="$accent" stroke-width="8"/><circle cx="66" cy="66" r="9" fill="$support"/>'],['disclosure-ledger','<path d="M8 8H92V92H8Z" fill="$ink"/><path d="M22 25H78M22 45H78M22 65H48" stroke="$paper" stroke-width="7"/><path d="M60 64H96V96H60Z" fill="$accent"/>']]
+  };
+  for(const [topic,motifs]of Object.entries(issueMotifExtensions))issueMotifs[topic].push(...motifs);
   const issueLayouts=[
     ['separate-registers',[[65,105,195],[350,280,180],[365,105,112]],'<path d="M305 95V505" stroke="$support" stroke-width="5"/>'],
     ['three-fields',[[65,115,145],[232,320,142],[397,115,145]],'<path d="M60 495H545M223 100V260M385 100V260" stroke="$support" stroke-width="6"/>'],
@@ -272,37 +283,83 @@
     ['labor',/\blabor\b|hiring|payroll|employment|wage|workforce/i,'Work & adjustment'],
     ['evidence',/data|evidence|research|measurement|inflation|prices|survey/i,'Observation & evidence']
   ];
+  // Treatment metadata is recoverable from legacy IDs, not retroactively written into pins.
+  function treatmentOf(m){
+    const id=m.composition||'',layout=issueLayouts.find(l=>id.startsWith('study-'+l[0]+'-'));
+    const motifs=Object.values(issueMotifs).flat().map(x=>x[0]).filter(x=>id.includes(x));
+    return {family:layout?layout[0]:id.startsWith('spread-')?['unequal-dialogue','long-section','facing-measures'].find(x=>id.startsWith('spread-'+x+'-')):id,motifs};
+  }
+  function issueTreatment(candidate,archive){
+    const current=treatmentOf(candidate),phrase=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+    const history=issueHistory(archive,candidate.date);
+    for(let i=0;i<history.length;i++){
+      const old=history[i],prior=treatmentOf(old),shared=current.motifs.filter(x=>prior.motifs.includes(x)).length;
+      const sameSubject=candidate.subject===old.subject,sameCaption=phrase(candidate.phrase)===phrase(old.phrase);
+      let reason;
+      if(i<3&&sameCaption)reason='repeated recent editorial caption';
+      else if(i<3&&current.family===prior.family)reason='repeated recent composition family';
+      else if(shared>=2&&(i<3||sameSubject&&current.family===prior.family))reason='repeated motif treatment';
+      if(reason)return {ok:false,reason,date:old.date};
+    }
+    return {ok:true};
+  }
   function issueCandidates(info){
-    const framing=String(info.framing||info.title||''),stories=info.stories||[],plain=s=>String(s||'').replace(/<[^>]*>/g,' ');
-    const records=stories.map(s=>plain([s.title,s.why,...s.summary||[],JSON.stringify(s.editorial||{})].join(' ')));
-    const all=[info.title,framing,...records].join(' '),seed=hash(info.date+'|'+String(info.no).padStart(3,'0')+'|'+all);
-    let supported=issueTopics.map((t,i)=>({topic:t,positions:records.flatMap((s,j)=>t[1].test(s)?[stories[j].number||String(j+1).padStart(2,'0')]:[]),score:(t[1].test(framing)?5:0)+(t[1].test(info.title||'')?3:0)+records.filter(s=>t[1].test(s)).length,order:i})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||a.order-b.order);
+    const plain=s=>String(s||'').replace(/<[^>]*>/g,' ').replace(/&amp;/g,'&');
+    const title=plain(info.title),framing=plain(info.framing),stories=info.stories||[];
+    // Reported headlines outrank synthesis prose; nested source/editorial records are not prose.
+    const records=stories.map(s=>plain(s.title)),lead=records[0]||'';
+    const seed=hash(info.date+'|'+String(info.no).padStart(3,'0')+'|'+title+'|'+framing+'|'+records.join('|'));
+    const topics=issueTopics.map(t=>[...t]);
+    topics[0][1]=/capacity|research systems|staffing|institution|robot|intelligence|investment|capital|capability/i;
+    topics[5][1]=/data|evidence|research|measurement|inflation|prices|survey|disclos|compensation|medicine costs/i;
+    topics[1][1]=/enforc|evasion|sanction|export.control|court|compliance|inspection/i;
+    const supported=topics.map((t,i)=>({topic:t,positions:records.flatMap((s,j)=>t[1].test(s)?[stories[j].number||String(j+1).padStart(2,'0')]:[]),score:(t[1].test(title)?12:0)+(t[1].test(lead)?10:0)+(t[1].test(framing)?2:0)+records.filter(s=>t[1].test(s)).length,order:i})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||a.order-b.order);
     if(!supported.length)throw Error('Field Brief cover needs a content-supported framing, not an unrelated novelty fallback: '+info.date);
     const primary=supported[0],topic=primary.topic,options=[];
-    for(const scene of issueScenes.filter(s=>s.topic===topic[0]))options.push({id:scene.id,geometry:scene.geometry,rank:0});
-    // An editorial juxtaposition makes no causal claim between unrelated stories.
-    // A single-theme edition can instead examine its three distinct methodological facets.
+    const label=plain(title||lead||topic[2]).split(/,|\s+and\s+/i)[0].trim();
+    const concepts={'unequal-dialogue':'capacity & comparison','long-section':'commitments & use','facing-measures':'contrasting scales','separate-registers':'separate decisions','three-fields':'parallel questions','stepped-review':'stages of delivery','open-triangle':'interdependent choices','central-boundary':'limits & scope','broad-and-narrow':'unequal capacity','offset-frames':'overlapping constraints','upper-and-lower':'inputs & outcomes'};
+    const motifLabels={'staffed-bench':'productive capacity','aperture-frame':'capability limits','shared-load':'shared capacity','control-loop':'feedback','idle-stock':'idle capital','observation-window':'observation','comparison-pair':'comparison','measured-range':'measurement','sampling-window':'sampling','disclosure-ledger':'disclosure'};
+    const caption=kind=>{const words=label.split(/\s+/),limit=Math.max(12,42-kind.length-3);let prefix='';for(const word of words){if((prefix+' '+word).trim().length>limit)break;prefix=(prefix+' '+word).trim();}return (prefix||topic[0])+' / '+kind;};
+    for(const scene of issueScenes.filter(s=>s.topic===topic[0]))options.push({id:scene.id,geometry:scene.geometry,phrase:caption(scene.id.split('-').slice(1).join(' ')),rank:0});
     const groups=[issueMotifs[topic[0]],issueMotifs[(supported[1]||primary).topic[0]],issueMotifs[(supported[2]||primary).topic[0]]];
-    for(const layout of issueLayouts)for(let a=0;a<3;a++)for(let b=0;b<3;b++)for(let c=0;c<3;c++){
+    for(const layout of issueLayouts)for(let a=0;a<groups[0].length;a++)for(let b=0;b<groups[1].length;b++)for(let c=0;c<groups[2].length;c++){
       const motifs=[groups[0][a],groups[1][b],groups[2][c]];if(new Set(motifs.map(m=>m[0])).size!==3)continue;
       const geometry=motifs.map((m,i)=>{const [x,y,size]=layout[1][i];return '<g transform="translate('+x+' '+y+') scale('+(size/100)+')">'+m[1]+'</g>'}).join('')+layout[2];
-      options.push({id:'study-'+layout[0]+'-'+motifs.map(m=>m[0]).join('-'),geometry,rank:1});
+      options.push({id:'study-'+layout[0]+'-'+motifs.map(m=>m[0]).join('-'),geometry,phrase:caption(concepts[layout[0]]),rank:1});
     }
+    // Two-part spreads are authored relationships, not another rearranged three-symbol study.
+    // A magnified primary concept is read beside a subordinate second, without claiming causation.
+    for(const layout of [
+      ['unequal-dialogue',[[65,115,315],[412,365,120]],'<path d="M65 490H380M420 105V315" stroke="$support" stroke-width="7"/>'],
+      ['long-section',[[70,110,175],[265,270,275]],'<path d="M70 310H225M70 330H225" stroke="$support" stroke-width="7"/>'],
+      ['facing-measures',[[60,175,240],[345,175,195]],'<path d="M315 100V500" stroke="$support" stroke-width="5"/>']
+    ])for(const a of groups[0])for(const b of groups[1]){
+      if(a[0]===b[0])continue;
+      const geometry=[a,b].map((m,i)=>{const [x,y,size]=layout[1][i];return '<g transform="translate('+x+' '+y+') scale('+(size/100)+')">'+m[1]+'</g>'}).join('')+layout[2];
+      options.push({id:'spread-'+layout[0]+'-'+a[0]+'-'+b[0],geometry,phrase:caption(motifLabels[b[0]]||concepts[layout[0]]),rank:0});
+    }
+    if(/robot/i.test(title+' '+lead))options.push({
+      id:'capability-transfer',rank:-1,phrase:'Robotics / adaptable capability',
+      geometry:'<path d="M70 480H305V435H70Z" fill="$ink"/><path d="M145 435V336L285 242L374 318" fill="none" stroke="$ink" stroke-width="32"/><circle cx="145" cy="336" r="35" fill="$accent"/><circle cx="285" cy="242" r="31" fill="$support"/><path d="M353 300L374 318L357 354M374 318L407 305" fill="none" stroke="$accent" stroke-width="15"/><path d="M362 480H540" stroke="$ink" stroke-width="8"/><path d="M380 450L408 393L436 450Z" fill="$support"/><circle cx="484" cy="423" r="28" fill="$accent"/><path d="M90 172H450V255M430 234L450 255L470 234" fill="none" stroke="$support" stroke-width="7"/><path d="M98 135V205M123 149V191M148 160V180" stroke="$accent" stroke-width="7"/>'
+    });
     options.sort((a,b)=>a.rank-b.rank||hash(seed+'|'+a.id)-hash(seed+'|'+b.id));
-    return {seed,subject:topic[0],phrase:topic[2],evidence:supported.map(x=>({concept:x.topic[0],storyNumbers:x.positions})),options};
+    return {seed,subject:topic[0],evidence:supported.map(x=>({concept:x.topic[0],storyNumbers:x.positions,score:x.score})),options};
   }
   function issueModel(info,archive){
     const context=issueCandidates(info),history={...archive};
     if(info.previous&&!history['fb:'+info.previous.date])history['fb:'+info.previous.date]=info.previous;
     let rejected;
-    for(const option of context.options.slice(0,issuePolicy.maxAttempts)){
-      const model={version:5,date:info.date,subject:context.subject,composition:option.id,signature:'issue:'+option.id,phrase:context.phrase,seed:context.seed,geometry:option.geometry,supportedConcepts:context.evidence};
+    let attempts=0;
+    for(const option of context.options){
+      const model={version:6,date:info.date,subject:context.subject,composition:option.id,signature:'issue:'+option.id,phrase:option.phrase,seed:context.seed,geometry:option.geometry,supportedConcepts:context.evidence};
+      if(!issueTreatment(model,history).ok)continue;
+      if(attempts++>=issuePolicy.maxAttempts)break;
       const rendered=issuePlate(model,['#f1e6d0','#221a14','#8a2a36','#c5ad88']),review=issueOriginality({...model,geometry:rendered},history);
-      if(review.ok)return {...model,originality:{policy:issuePolicy.version,compared:review.compared,recentWindow:issuePolicy.recentWindow}};
+      if(review.ok)return {...model,originality:{policy:issuePolicy.editorialVersion,compared:review.compared,recentWindow:issuePolicy.recentWindow}};
       rejected=review;
     }
-    throw Error('No original content-supported Field Brief cover after '+Math.min(context.options.length,issuePolicy.maxAttempts)+' candidates for '+info.date+'; closest collision '+(rejected&&rejected.date)+'. Author a new composition; do not bypass originality validation.');
+    throw Error('No original content-supported Field Brief cover after '+Math.min(attempts,issuePolicy.maxAttempts)+' candidates for '+info.date+'; closest collision '+(rejected&&rejected.date)+'. Author a new composition; do not bypass originality validation.');
   }
-  function issuePlate(m,p){if(m.version===5){if(!m.geometry)throw Error('Missing Field Brief composition geometry');return m.geometry.replace(/\$(ink|accent|support|paper)/g,(_,k)=>p[{paper:0,ink:1,accent:2,support:3}[k]]);}const c=issueScenes.find(x=>x.id===m.composition);if(!c)throw Error('Unknown Field Brief issue composition');return c.geometry.replace(/\$(ink|accent|support|paper)/g,(_,k)=>p[{paper:0,ink:1,accent:2,support:3}[k]]);}
-  const api={story,svg,edition,prepare,recent,validateEdition,scenes,issueModel,issuePlate,issueScenes,markSignature,issuePolicy,centralArtwork,issueFeatures,visualSimilarity,issueOriginality,validateIssue};if(typeof module==='object'&&module.exports)module.exports=api;else root.FieldBriefArtwork=api;
+  function issuePlate(m,p){if(m.version===5||m.version===6){if(!m.geometry)throw Error('Missing Field Brief composition geometry');return m.geometry.replace(/\$(ink|accent|support|paper)/g,(_,k)=>p[{paper:0,ink:1,accent:2,support:3}[k]]);}const c=issueScenes.find(x=>x.id===m.composition);if(!c)throw Error('Unknown Field Brief issue composition');return c.geometry.replace(/\$(ink|accent|support|paper)/g,(_,k)=>p[{paper:0,ink:1,accent:2,support:3}[k]]);}
+  const api={story,svg,edition,prepare,recent,validateEdition,scenes,issueModel,issuePlate,issueScenes,markSignature,issuePolicy,centralArtwork,issueFeatures,visualSimilarity,issueOriginality,issueTreatment,issueCandidates,validateIssue};if(typeof module==='object'&&module.exports)module.exports=api;else root.FieldBriefArtwork=api;
 })(typeof window==='object'?window:{});
