@@ -50,14 +50,16 @@ export function wholeJourneyBounds(routes, origin, destination) {
   return routeBounds([...routes.map(r=>r.feature),...[origin,destination].filter(validPoint).map(p=>({geometry:{type:'Point',coordinates:[p.lng,p.lat]}}))]);
 }
 export function opportunityZones(route) {
-  const interval=Math.min(120,100/(Number(route.miles)/route.minutes || 1));
-  const opportunities=[];
-  for(let minute=interval;minute<route.minutes-30;minute+=interval) opportunities.push(minute);
-  // Continental journeys expose representative segments, not dozens of repetitive breaks.
-  const count=Math.min(route.minutes>720?6:4,opportunities.length);
-  const minutes=Array.from({length:count},(_,i)=>opportunities[Math.round(i*(opportunities.length-1)/Math.max(1,count-1))]);
-  if(!minutes.length && route.minutes>45) minutes.push(route.minutes*.5);
-  return [...new Set(minutes)].map((minute,i)=>({id:`segment-${i}`,minute,progress:minute/route.minutes,point:routePoint(route,minute/route.minutes)}));
+  // Broad search REGIONS rather than a two-hour stop-search at every interval.
+  // A three-region continental drive takes at most three route lookups, plus
+  // one destination search. Manually exploring a region uses its midpoint.
+  if(!Number.isFinite(route?.minutes)||route.minutes<=45)return [];
+  const count=route.minutes<=240?1:route.minutes<=600?2:3;
+  return Array.from({length:count},(_,i)=>{
+    const progress=(i+.5)/count,minute=route.minutes*progress;
+    return {id:`segment-${i}`,minute,progress,regionStart:route.minutes*i/count,
+      regionEnd:route.minutes*(i+1)/count,point:routePoint(route,progress)};
+  });
 }
 export function overnightZones(route) {
   if(route.minutes<=540) return [];
