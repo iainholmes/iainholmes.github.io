@@ -473,8 +473,11 @@ const plain=s=>String(s||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replac
 function specimen(source){
  const prose=plain(source);
  if(!prose)return '';
- const first=prose.match(/^[\s\S]*?[.!?](?=\s|$)/);
- return first?first[0]:prose;
+ // Skip early stops caused by abbreviations such as U.S. and abbreviatory
+ // policy identifiers. The exact source substring remains unchanged.
+ const ends=[...prose.matchAll(/[.!?](?=\s|$)/g)];
+ const stop=ends.find(x=>x.index>=45)||ends.at(-1);
+ return stop?prose.slice(0,stop.index+1):prose;
 }
 function select(id){
  const entry=catalog[id];
