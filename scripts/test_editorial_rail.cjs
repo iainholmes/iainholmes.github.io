@@ -2,20 +2,36 @@
 /* Regression for the single-rule Loblolly & Logit reading layout.
    No third column, extra aside, or changes to authored scholarship. */
 const fs=require('fs'),cp=require('child_process'),assert=require('node:assert/strict');
-const {compose,nodes}=require('../weekly-economics-environment/editorial-folio.cjs');
+const {compose,nodes,readingRecord}=require('../weekly-economics-environment/editorial-folio.cjs');
 const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-outer-rule-with-caps';
+const currentKey='reading-folio.css?v=20261102-publisher-durable';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
-eq(source.replace(currentKey,previousKey),baseline,'historical authored readings and markup are unchanged');
+const articles=s=>[...s.matchAll(/<article class="entry"[^>]*id="([^"]+)"[\s\S]*?<\/article>/g)].map(m=>[m[1],m[0]]);
+const prior=new Map(articles(baseline)),current=new Map(articles(source));
+ok(current.size>=prior.size,'the thirty founding readings survive future issues');
+for(const [id,old] of prior){ok(current.has(id),'reading retained '+id);eq(readingRecord(current.get(id)),readingRecord(old),'authored article unchanged '+id)}
+const stripArticles=s=>s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>'<article id="'+m.match(/\bid="([^"]+)"/)?.[1]+'"></article>');
+// The original archive is a permanent subset. A later issue may legitimately
+// extend the main publication region without changing those six editions.
+const editionParts=s=>{
+ const main=s.match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)?.[1]||'';
+ return new Map([...main.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[\s\S]*?(?=<section class="edition"|$)/g)].map(m=>[m[1],m[0]]));
+};
+const priorEditions=editionParts(baseline),currentEditions=editionParts(source);
+for(const [date,priorEdition] of priorEditions){
+ ok(currentEditions.has(date),'founding edition retained '+date);
+ eq(stripArticles(currentEditions.get(date)),stripArticles(priorEdition),'non-reading founding edition content unchanged '+date);
+}
+if(current.size===prior.size)eq(stripArticles(source.replace(currentKey,previousKey)),stripArticles(baseline),'entire unchanged six-edition archive matches baseline');
 eq(compose(source),source,'publication composer is byte-idempotent without a panel');
 const main=source.match(/<main[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)[1];
 const ns=nodes(main),editions=ns.filter(n=>n.classes.includes('edition'));
-eq(editions.length,6,'six editions preserved');
+ok(editions.length>=6,'six founding editions plus future editions supported');
 for(const ed of editions){
  const content=main.slice(ed.start,ed.end),tree=nodes(content);
  const body=tree.find(n=>n.classes.includes('edition-body'));
@@ -27,21 +43,63 @@ const injected=source.replace('<div class="reading-column">','<aside class="edit
 eq(compose(injected),source,'preparation removes a legacy metadata rail safely');
 const css=fs.readFileSync('weekly-economics-environment/reading-folio.css','utf8');
 ok(css.includes('.edition-body{display:grid;grid-template-columns:184px minmax(0,1fr)'),'original two-column desktop grid restored');
-ok(css.includes('.contents-boundary::after'),'single decorative pseudo-element in existing gutter');
-ok(css.includes('right:-28px;width:12px'),'12px copper head centered in the original 44px gutter');
-ok(css.includes('var(--clay) 0 52px,var(--forest) 52px 100%'),'copper head transitions to forest spine');
-ok(css.includes('clip-path:polygon(0 0,100% 0,100% 52px,75% 70px,75% 100%,25% 100%,25% 70px,0 52px)'),'one tapered form, not two decorative borders');
-ok(css.includes('@media(min-width:821px) and (max-width:1180px){.contents-boundary::after{right:-21px}}'),'tapered spine remains centered within the 30px laptop gutter');
-ok(css.includes('body.glance .contents-boundary::after{display:none}'),'glance has no hanging border');
-ok(css.includes('@media(max-width:820px)')&&css.includes('.contents-boundary{display:none}'),'mobile sidebar remains absent');
-ok(css.includes('.reading-column{position:relative}'),'right-hand boundary anchors to the complete five-reading column');
-ok(css.includes('.reading-column::after'),'one continuous right-hand border, not an article-by-article treatment');
-ok(css.includes('right:-18px;width:18px'),'right rule occupies existing outer margin without narrowing the article');
-ok(css.includes('linear-gradient(var(--forest),var(--forest)) right top/2px 100% no-repeat'),'continuous forest-green edge');
-ok(css.includes('linear-gradient(var(--clay),var(--clay)) right top/18px 2px no-repeat'),'copper upper end cap');
-ok(css.includes('linear-gradient(var(--clay),var(--clay)) right bottom/18px 2px no-repeat'),'copper lower end cap');
-ok(css.includes('pointer-events:none'),'visual border cannot intercept Keep or Heron');
-ok(css.includes('body.glance .reading-column::after{display:none}'),'no empty rule in glance');
-ok(css.includes('@media print{.reading-column::after{display:none}}'),'outer rule excluded from print');
+ok(css.includes('.contents-boundary::after'),'left spine remains');
+ok(css.includes('right:-29px;width:14px'),'left spine width revised');
+ok(css.includes('var(--clay) 0 70px,var(--forest) 70px calc(100% - 70px),var(--clay)'),'left spine two copper ends');
+ok(css.includes('calc(100% - 54px)'),'left lower taper mirrors upper');
+ok(css.includes('body.glance .contents-boundary::after{display:none}'),'left spine hidden in glance');
+ok(css.includes('.reading-column::after'),'right boundary remains whole-edition');
+ok(css.includes('right:-21px;width:8px'),'right spine is thinner than left, same mirrored taper');
+ok((css.match(/var\(--clay\) 0 70px,var\(--forest\) 70px calc\(100% - 70px\),var\(--clay\)/g)||[]).length===2,'both vertical spine tassels have identical 70px geometry');
+ok(css.includes('pointer-events:none'),'boundaries do not intercept controls');
+ok(css.includes('body.glance .reading-column::after{display:none}'),'right rule hidden in glance');
+ok(css.includes('@media print{.reading-column::after{display:none}}'),'outer border hidden in print');
+ok(css.includes('.entry[data-reading-layout="2"] .evidence-pair'),'paired evidence and RN');
+ok(css.includes('flex-direction:column'),'single main reading track');
+ok(css.includes('.feature-spread[data-feature="test"]')&&css.includes('.feature-spread[data-feature="decision"]'),'two alternative feature panels styled');
+ok(css.includes('.ledger-plot')&&css.includes('.ledger-calculation')&&css.includes('.ledger-mechanism'),'numeric graphics and conceptual models have distinct CSS');
+ok(css.includes('.entry[data-reading-finish="4"] .entry-head::after'),'polished chapter title-to-lead keyline');
+ok(css.includes('.entry[data-reading-finish="4"] .reading-deck::after'),'refined lead-to-analysis separator');
+ok(css.includes('.entry[data-reading-finish="5"] .reading-opening>.analysis-block'),'normal stacked Why it matters and research introductions restored');
+ok(css.includes('.feature-spread .interpretive-essay')&&css.includes('border-right:1px solid var(--hair)'),'paired interpretive border');
+ok(css.includes('.evidence-pair::before')&&css.includes('border-top:1px solid var(--forest)'),'coordinated evidence paired rule');
+eq((source.match(/data-reading-stage="3"/g)||[]).length,current.size,'each published reading receives the third-stage composition');
+eq((source.match(/data-reading-finish="5"/g)||[]).length,current.size,'finished styles apply to all readings, including future additions');
+eq((source.match(/class="reading-opening reading-opening--why"/g)||[]).length,0,'no unintended horizontal Why-it-matters sections');
+
+ok(css.includes('.evidence-pair>.margin')&&source.includes("var grid=art.querySelector('.article-grid')"),'Heron wrapper remains compatible');
+eq((source.match(/data-reading-layout="2"/g)||[]).length,current.size,'all readings use the stable layout markers');
+eq((source.match(/class="reading-exhibit"/g)||[]).length,current.size,'all published readings have editorial exhibits');
+eq((source.match(/data-reading-exhibit="1"/g)||[]).length,current.size,'all reading exhibits have publisher-stable markers');
+ok((source.match(/data-exhibit-kind="ledger"/g)||[]).length>=11,'historical Incidence Ledgers retained');
+ok((source.match(/data-exhibit-kind="test"/g)||[]).length>=6,'historical Assumption Tests retained');
+ok((source.match(/data-exhibit-kind="decision"/g)||[]).length>=6,'historical Decision Margins retained');
+eq((source.match(/data-exhibit-kind="cabinet"/g)||[]).length,0,'Source Dossier completely removed');
+ok((source.match(/data-exhibit-kind="long"/g)||[]).length>=7,'historical Long Views retained');
+ok(!source.includes('class="economic-hinge"'),'generic Economic Hinge is gone');
+ok(css.includes('.exhibit-ledger')&&css.includes('.test-challenge')&&css.includes('.decision-branches')&&css.includes('.exhibit-longview'),'four distinct rendering systems included');
+eq((source.match(/class="evidence-pair"/g)||[]).length,current.size,'all readings retain the paired evidence register');
+
+ok(css.includes('height:9px')&&css.includes('padding-top:52px'),'finished substantial chapter bands and condensed entry spacing');
+ok(css.includes('border:4px solid var(--forest)')&&css.includes('border-right-width:7px!important'),'paired spread has continuous structural frame and heavy internal seam');
+ok(css.includes('.reading-sources>.sources')&&css.includes('grid-template-columns:minmax(112px,.23fr)'),'post-reading sources occupy a tighter horizontal register');
+ok(css.includes('.essay-graphic'),'ledger source figure moved to interpretive panel');
+ok(css.includes('Full-width reading and source-driven graphics'),'new width and figure design applied');
+ok(css.includes('Source trail: same unboxed'),'reading references use open rather than boxed source treatment');
+ok(css.includes('border:0!important;border-top:2px solid var(--hair)!important'),'sources register keeps a thin shared rule, not a surrounding frame');
+ok(css.includes('.reading-deck .finding,')&&css.includes('max-width:none!important'),'lead and first analysis use full reading column');
+ok(css.includes(':has(>a:nth-of-type(3):last-of-type)'),'three-source register allocates full width evenly');
+ok(css.includes('.essay-graphic .plot-bar')&&css.includes('.plot-grid-zero'),'figures are styled in their actual interpretation container');
+ok(css.includes('.model-stage')&&css.includes('.surplus-band'),'model and accounting graphics have distinct physical treatments');
+ok((source.match(/class="ledger-plot"/g)||[]).length>=3,'historical quantified charts retained');
+ok((source.match(/class="model-flow"/g)||[]).length>=6,'historical model diagrams retained');
+ok((source.match(/class="surplus-visual"/g)||[]).length>=1,'historical surplus composition retained');
+ok((source.match(/class="decomp-track"/g)||[]).length>=1,'historical cost decomposition retained');
+
+ok(css.includes('max-width:80ch'),'opening prose remains stacked but has a fuller desktop measure');
+ok(css.includes('grid-template-columns:25px minmax(0,1fr)'),'surplus calculation aligns terms as distinct readable rows');
+ok(css.includes('min-height:44px!important'),'compact source links retain mobile tap targets');
+ok(css.includes('.evidence-pair>.limitation')&&css.includes('border-left:5px solid var(--river)!important'),'evidence and notebook use stronger paired rails');
+eq((source.match(/class="essay-graphic"/g)||[]).length,(source.match(/data-exhibit-kind="ledger"/g)||[]).length,'all published Ledgers pair a figure with their interpretation');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
 console.log(checks+' single-divider reading layout checks passed.');

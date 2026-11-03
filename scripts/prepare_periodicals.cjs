@@ -44,7 +44,16 @@ for(const [key,editions] of [['fb',fb],['cp',cp]]){
 }
 // Compose new authored editions into the same semantic folio before any writes.
 // This is idempotent and does not rewrite text, figures, identifiers or citations.
-let ll=require('../weekly-economics-environment/editorial-folio.cjs').compose(llSource);const field=data(ll,'field-studies');
+let ll=require('../weekly-economics-environment/editorial-folio.cjs').compose(llSource);
+// Fail before *any* archive/artwork/hub write if a future issue loses its
+// finished layout, source register, notebook structure or authored exhibit.
+require('../weekly-economics-environment/reading-layout-guard.cjs').validate({
+ journal:ll,
+ notebook:read('weekly-economics-environment/notebook/index.html'),
+ folioCss:read('weekly-economics-environment/reading-folio.css'),
+ notebookCss:read('weekly-economics-environment/notebook/notebook.css')
+});
+const field=data(ll,'field-studies');
 const editions=[...ll.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[^>]*data-title="([^"]+)"[^>]*>([\s\S]*?)(?=<section class="edition"|<\/main>)/g)].sort((a,b)=>a[1].localeCompare(b[1]));
 editions.forEach((e,i)=>{
  const synthesis=plain(e[3].match(/<section class="synthesis"[\s\S]*?<\/section>/)?.[0]||e[2]);

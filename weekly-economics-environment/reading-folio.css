@@ -12,9 +12,9 @@
 @media(min-width:821px){
  .contents-boundary{position:relative}
  .contents-boundary::after{
-  content:"";position:absolute;top:0;bottom:0;right:-28px;width:12px;
-  background:linear-gradient(to bottom,var(--clay) 0 52px,var(--forest) 52px 100%);
-  clip-path:polygon(0 0,100% 0,100% 52px,75% 70px,75% 100%,25% 100%,25% 70px,0 52px);
+  content:"";position:absolute;top:0;bottom:0;right:-29px;width:14px;
+  background:linear-gradient(to bottom,var(--clay) 0 70px,var(--forest) 70px calc(100% - 70px),var(--clay) calc(100% - 70px) 100%);
+  clip-path:polygon(0 0,100% 0,100% 54px,72% 72px,72% calc(100% - 72px),100% calc(100% - 54px),100% 100%,0 100%,0 calc(100% - 54px),28% calc(100% - 72px),28% 72px,0 54px);
   pointer-events:none
  }
 }
@@ -23,16 +23,14 @@ body.glance .contents-boundary::after{display:none}
 
 /* The reading sheet's single outer closing rule: one uninterrupted boundary
    around all five readings, not a per-article border or third column.
-   Copper end caps recall the folio spine without competing with it. */
+   The copper ends and taper are an exact, thinner mirror of the left spine. */
 @media(min-width:821px){
  .reading-column{position:relative}
  .reading-column::after{
-  content:"";position:absolute;top:0;bottom:0;right:-18px;width:18px;
+  content:"";position:absolute;top:0;bottom:0;right:-21px;width:8px;
   pointer-events:none;
-  background:
-   linear-gradient(var(--clay),var(--clay)) right top/18px 2px no-repeat,
-   linear-gradient(var(--clay),var(--clay)) right bottom/18px 2px no-repeat,
-   linear-gradient(var(--forest),var(--forest)) right top/2px 100% no-repeat;
+  background:linear-gradient(to bottom,var(--clay) 0 70px,var(--forest) 70px calc(100% - 70px),var(--clay) calc(100% - 70px) 100%);
+  clip-path:polygon(0 0,100% 0,100% 54px,72% 72px,72% calc(100% - 72px),100% calc(100% - 54px),100% 100%,0 100%,0 calc(100% - 54px),28% calc(100% - 72px),28% 72px,0 54px);
  }
 }
 body.glance .reading-column::after{display:none}
@@ -206,3 +204,1143 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .editorial-note h2{font-size:30px}
 }
 @media print{.edition-body{display:block;width:auto;margin:0}.contents-boundary{display:none}.article-grid{grid-template-columns:1fr}.research-note{position:static}.synthesis{background:none;color:var(--ink)}.synthesis *{color:var(--ink)}.entry{break-inside:auto}}
+
+
+/* Reading architecture v2 — full reading flow, then a paired evidence register.
+   No story text or original source is rewritten. Not a new permanent sidebar. */
+.entry[data-reading-layout="2"] .entry-head{
+ padding-bottom:24px;margin-bottom:0;border-bottom:1px solid var(--hair)
+}
+.entry[data-reading-layout="2"] .reading-deck{
+ position:relative;border-top:0;padding-top:25px;padding-bottom:30px;margin-bottom:34px
+}
+.entry[data-reading-layout="2"] .reading-deck::after{
+ content:"";position:absolute;left:0;bottom:-1px;width:60px;height:2px;background:var(--clay)
+}
+.entry[data-reading-layout="2"] .article-grid{
+ display:flex;flex-direction:column;gap:0;align-items:stretch
+}
+.entry[data-reading-layout="2"] .analysis-flow{width:100%;max-width:72ch;min-width:0}
+.entry[data-reading-layout="2"] .analysis-flow>.analysis-block{max-width:66ch;margin-bottom:28px}
+.entry[data-reading-layout="2"] .analysis-flow>.analysis-block + .analysis-block{
+ border-top:1px solid var(--hair);padding-top:24px;margin-top:6px
+}
+.entry[data-reading-layout="2"] .analysis-flow>.figure,.entry[data-reading-layout="2"] .analysis-flow>.funding{
+ width:100%;max-width:100%;margin:14px 0 30px
+}
+/* Reading stage III: the analytical argument and its chosen editorial exhibit
+   form a deliberate spread rather than one long, uniform column of paper.
+   The outer issue architecture and all author-authored content stay intact. */
+.entry[data-reading-stage="3"] .article-grid{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.entry[data-reading-stage="3"] .reading-opening{
+ margin:0 0 17px;max-width:66ch;min-width:0
+}
+.entry[data-reading-stage="3"] .reading-opening>.analysis-block{
+ margin:0 0 20px;max-width:66ch
+}
+.entry[data-reading-stage="3"] .feature-spread{
+ display:grid;grid-template-areas:"essay exhibit";
+ grid-template-columns:minmax(0,.87fr) minmax(0,1.13fr);
+ gap:clamp(20px,2.7vw,42px);align-items:start;
+ padding:24px 0 28px;margin:0 0 28px;
+ border-top:2px solid var(--forest);border-bottom:1px solid var(--hair)
+}
+.entry[data-reading-stage="3"] .feature-spread[data-feature="ledger"]{
+ grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)
+}
+.entry[data-reading-stage="3"] .feature-spread[data-feature="cabinet"]{
+ grid-template-areas:"exhibit essay";grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr)
+}
+.entry[data-reading-stage="3"] .feature-spread[data-feature="long"]{
+ grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)
+}
+.entry[data-reading-stage="3"] .interpretive-essay{
+ grid-area:essay;min-width:0;padding:8px 0 0
+}
+.entry[data-reading-stage="3"] .interpretive-essay .analysis-block{
+ margin:0;max-width:none
+}
+.entry[data-reading-stage="3"] .interpretive-essay .analysis-block h3{
+ font:400 clamp(24px,2.2vw,29px)/1.15 var(--headline);
+ margin-bottom:15px
+}
+.entry[data-reading-stage="3"] .interpretive-essay .analysis-block p{
+ font:400 17px/1.68 var(--serif);max-width:65ch
+}
+.entry[data-reading-stage="3"] .reading-media{
+ display:block;max-width:100%;margin:0 0 32px
+}
+.entry[data-reading-stage="3"] .reading-media>.figure,
+.entry[data-reading-stage="3"] .reading-media>.funding{
+ width:100%;max-width:100%;margin:0
+}
+/* Shared museum-label typography without a heavy bounding card. */
+.entry[data-reading-stage="3"] .reading-exhibit{
+ grid-area:exhibit;min-width:0;margin:0;padding:0;border:0;
+ color:var(--ink);background:transparent
+}
+.reading-exhibit .exhibit-head{
+ display:flex;flex-direction:column;align-items:flex-start;
+ gap:5px;margin:0;padding:0 0 14px
+}
+.reading-exhibit .exhibit-kicker{
+ font:600 10px/1.5 var(--sans);letter-spacing:.11em;
+ text-transform:uppercase;color:var(--clay)
+}
+.reading-exhibit .exhibit-head strong{
+ font:400 clamp(25px,2.3vw,32px)/1.1 var(--headline);letter-spacing:-.02em;
+ color:var(--ink)
+}
+.reading-exhibit .exhibit-heading{
+ font:italic 400 16px/1.4 var(--serif);color:var(--muted)
+}
+.reading-exhibit .exhibit-footer{
+ display:flex;flex-wrap:wrap;gap:5px 18px;justify-content:space-between;
+ margin:12px 0 0;padding:9px 0 0;border-top:1px solid var(--hair);
+ font:400 10.5px/1.55 var(--sans);color:var(--muted)
+}
+/* Incidence Ledger: a compact, trustworthy chart/model above highly compressed
+   affected-party entries. A status is shown with every consequence. */
+.reading-exhibit[data-exhibit-kind="ledger"]{
+ padding:16px 19px 13px;background:color-mix(in srgb,var(--paper) 91%,var(--forest) 9%);
+ border-top:3px solid var(--forest)
+}
+.reading-exhibit[data-exhibit-kind="ledger"] .exhibit-head{padding-bottom:10px}
+.reading-exhibit[data-exhibit-kind="ledger"] .exhibit-ledger{border:0}
+.reading-exhibit .ledger-headings{display:none}
+.reading-exhibit .ledger-line{
+ display:grid;grid-template-columns:minmax(115px,.86fr) minmax(0,1.14fr);
+ column-gap:14px;row-gap:3px;align-items:start;
+ padding:9px 0;border-top:1px solid var(--hair)
+}
+.reading-exhibit .ledger-party{grid-column:1;grid-row:1/3;font:600 13.5px/1.35 var(--serif);color:var(--ink)}
+.reading-exhibit .ledger-no{display:inline-block;margin-right:8px;font:400 13px/1 var(--headline);color:var(--clay)}
+.reading-exhibit .ledger-effect{grid-column:2;grid-row:1;font:400 14px/1.4 var(--serif);color:var(--text)}
+.reading-exhibit .ledger-status{
+ grid-column:2;grid-row:2;font:italic 11.5px/1.4 var(--serif);
+ color:var(--muted);padding:0;border:0
+}
+.reading-exhibit .ledger-graphic{
+ margin:0 0 12px;padding:10px 0 11px;border-top:1px solid var(--hair);
+ border-bottom:1px solid var(--hair);background:transparent;max-width:100%
+}
+.reading-exhibit .ledger-graphic-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:0 0 7px}
+.reading-exhibit .ledger-graphic-label{
+ font:600 9px/1.4 var(--sans);letter-spacing:.09em;color:var(--river)
+}
+.reading-exhibit .ledger-graphic-head strong{font:600 12px/1.45 var(--sans);color:var(--ink)}
+.reading-exhibit .ledger-graphic-note{margin:8px 0 0;font:italic 11.5px/1.45 var(--serif);color:var(--muted)}
+.reading-exhibit .ledger-plot{display:block;width:100%;height:auto;max-height:185px;overflow:visible}
+.reading-exhibit .plot-zero{stroke:var(--muted);stroke-width:1}
+.reading-exhibit .plot-label{font:15px var(--sans);fill:var(--ink)}
+.reading-exhibit .plot-value{font:600 15px var(--sans);fill:var(--forest)}
+.reading-exhibit .plot-bar{fill:var(--forest)}
+.reading-exhibit .plot-bar.bar-1{fill:var(--river)}
+.reading-exhibit .plot-bar.bar-2{fill:var(--clay)}
+.reading-exhibit .plot-bar.bar-3{fill:var(--sage)}
+.reading-exhibit .ledger-units{font:400 10px/1.4 var(--sans);color:var(--muted);text-align:right}
+.reading-exhibit .ledger-mechanism{display:flex;align-items:center;gap:5px}
+.reading-exhibit .mechanism-node{
+ flex:1;min-width:0;border-top:2px solid var(--forest);padding:7px 2px 3px;
+ display:flex;flex-direction:column;gap:4px;font:400 12px/1.35 var(--serif);color:var(--ink)
+}
+.reading-exhibit .mechanism-index{font:400 11px/1.2 var(--headline);color:var(--clay)}
+.reading-exhibit .mechanism-arrow{flex:0 0 auto;color:var(--clay);font:18px/1 var(--serif)}
+.reading-exhibit .ledger-calculation{
+ display:flex;flex-wrap:nowrap;align-items:flex-start;justify-content:space-between;gap:7px
+}
+.reading-exhibit .ledger-calculation>div{min-width:0;flex:1;display:flex;flex-direction:column;gap:5px}
+.reading-exhibit .ledger-calculation b{font:400 clamp(19px,2vw,28px)/1 var(--headline);color:var(--forest);letter-spacing:-.025em}
+.reading-exhibit .ledger-calculation small{font:400 11px/1.4 var(--sans);color:var(--muted)}
+.reading-exhibit .ledger-calculation .calc-sign{font:400 19px/1 var(--headline);color:var(--clay)}
+.reading-exhibit .ledger-calculation .calc-total b{color:var(--clay)}
+.reading-exhibit .decomp-metric{display:flex;align-items:baseline;gap:8px}
+.reading-exhibit .decomp-metric strong{font:400 31px/1 var(--headline);color:var(--forest)}
+.reading-exhibit .decomp-metric span{font:400 11.5px/1.4 var(--sans);color:var(--muted)}
+.reading-exhibit .decomp-track{display:flex;overflow:hidden;height:14px;width:100%;margin:7px 0;border-radius:2px}
+.reading-exhibit .decomp-part.decomp-0,.reading-exhibit .decomp-key.decomp-0{background:var(--forest)}
+.reading-exhibit .decomp-part.decomp-1,.reading-exhibit .decomp-key.decomp-1{background:var(--clay)}
+.reading-exhibit .decomp-legend{display:flex;flex-wrap:wrap;gap:8px 15px}
+.reading-exhibit .decomp-legend span{display:flex;align-items:center;gap:6px;font:400 12px/1.4 var(--serif)}
+.reading-exhibit .decomp-key{display:inline-block;width:8px;height:8px;border-radius:50%}
+/* Source Dossier: the claim is a pinned paper excerpt, followed by two
+   concise annotations. This removes the old vague cabinet metaphor. */
+.reading-exhibit[data-exhibit-kind="cabinet"]{padding:13px 0 0;border-top:3px solid var(--clay)}
+.reading-exhibit .exhibit-cabinet{display:block}
+.reading-exhibit .cabinet-record{
+ position:relative;min-width:0;padding:16px 18px 15px;margin:0;
+ border:1px solid var(--hair);border-left:4px solid var(--clay);
+ background:color-mix(in srgb,var(--paper) 94%,var(--clay) 6%)
+}
+.reading-exhibit .cabinet-record::after{
+ content:"";position:absolute;top:0;right:0;
+ border-top:12px solid var(--paper);border-left:12px solid transparent;pointer-events:none
+}
+.reading-exhibit .cabinet-label{margin:0 0 7px;font:600 9px/1.45 var(--sans);letter-spacing:.1em;color:var(--river)}
+.reading-exhibit .cabinet-record blockquote{
+ margin:0 0 9px;font:italic 400 clamp(17px,1.5vw,21px)/1.48 var(--serif);color:var(--ink)
+}
+.reading-exhibit .cabinet-provenance{font:400 10px/1.4 var(--sans);color:var(--muted)}
+.reading-exhibit .cabinet-reading{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:15px 0 0;padding:0;border:0}
+.reading-exhibit .dossier-note{min-width:0;padding-top:9px;border-top:1px solid var(--hair)}
+.reading-exhibit .cabinet-note{margin:0;font:400 13px/1.45 var(--serif);color:var(--text)}
+/* The Long View: visually connected stations in sequence, with a legible
+   distinction between a documented event and a conditional future. */
+.reading-exhibit[data-exhibit-kind="long"]{padding:13px 0 0;border-top:3px solid var(--river)}
+.reading-exhibit .longview-guide{display:flex;flex-wrap:wrap;gap:3px 10px;align-items:baseline;margin:0 0 10px}
+.reading-exhibit .longview-guide>span:first-child{font:600 10px/1.5 var(--sans);letter-spacing:.09em;color:var(--river)}
+.reading-exhibit .longview-guide>span:last-child{font:400 11px/1.4 var(--serif);color:var(--muted)}
+.reading-exhibit .exhibit-longview{
+ position:relative;display:flex;flex-direction:column;gap:0;
+ margin:0 0 0 7px;padding:0 0 0 19px;list-style:none;border:0;
+ border-left:2px solid var(--hair)
+}
+.reading-exhibit .longview-point{
+ position:relative;min-width:0;padding:0 0 16px 7px;margin:0;border:0;
+ display:grid;grid-template-columns:31px minmax(0,1fr);gap:2px 9px;
+}
+.reading-exhibit .longview-point:last-child{padding-bottom:3px}
+.reading-exhibit .longview-point::before{
+ content:"";position:absolute;left:-26px;top:4px;width:10px;height:10px;
+ border:2px solid var(--river);border-radius:50%;background:var(--paper);outline:0
+}
+.reading-exhibit .longview-point[data-stage-class="observed"]::before{background:var(--river)}
+.reading-exhibit .longview-index{grid-row:1/4;grid-column:1;font:400 19px/1 var(--headline);color:var(--clay)}
+.reading-exhibit .longview-date{grid-column:2;font:600 12px/1.4 var(--sans);color:var(--river)}
+.reading-exhibit .longview-event{grid-column:2;font:400 15px/1.45 var(--serif);color:var(--ink)}
+.reading-exhibit .longview-status{grid-column:2;font:italic 11.5px/1.4 var(--serif);color:var(--muted)}
+.reading-exhibit .longview-takeaway{
+ display:grid;grid-template-columns:65px minmax(0,1fr);gap:12px;align-items:start;
+ margin-top:14px;padding:12px 0 0;border-top:1px solid var(--river)
+}
+.reading-exhibit .longview-takeaway>span{font:600 10px/1.4 var(--sans);color:var(--clay)}
+.reading-exhibit .longview-takeaway p{margin:0;font:italic 400 14px/1.48 var(--serif);color:var(--ink)}
+/* Both headers begin at the same vertical baseline, including when Heron
+   wraps the RN in its existing .margin container. */
+.entry[data-reading-layout="2"] .evidence-pair{
+ width:100%;min-width:0;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(290px,.87fr);
+ column-gap:clamp(26px,3.3vw,52px);align-items:start;margin:0;padding:0
+}
+.entry[data-reading-layout="2"] .evidence-pair>.limitation{
+ min-width:0;max-width:none;margin:0;padding:20px 0 0;border-top:2px solid var(--clay);border-left:0
+}
+.entry[data-reading-layout="2"] .evidence-pair>.research-note,
+.entry[data-reading-layout="2"] .evidence-pair>.margin{
+ min-width:0;grid-column:2;grid-row:1;align-self:start;margin:0
+}
+.entry[data-reading-layout="2"] .evidence-pair>.research-note{
+ padding-top:20px;border-top:2px solid var(--river)
+}
+.entry[data-reading-layout="2"] .evidence-pair>.margin>.research-note{
+ padding-top:20px;border-top:2px solid var(--river)
+}
+.entry[data-reading-layout="2"] .evidence-pair .margin .perch{margin-top:16px}
+.entry[data-reading-layout="2"] .reading-sources{
+ width:100%;margin-top:38px;border-top:1px solid var(--hair)
+}
+.entry[data-reading-layout="2"] .reading-sources>.sources{max-width:66ch;margin:0;border-top:0;padding-top:18px}
+/* Narrow screens preserve the continuous reading and stack the evidence
+   register without relying on column or side-by-side text placement. */
+@media(max-width:1180px){
+ .reading-exhibit .ledger-headings,.reading-exhibit .ledger-line{column-gap:14px}
+ .reading-exhibit .exhibit-longview{gap:10px}
+ .entry[data-reading-layout="2"] .evidence-pair{grid-template-columns:minmax(0,1fr) minmax(260px,.85fr);gap:24px}
+}
+@media(max-width:900px){
+ .entry[data-reading-layout="2"] .evidence-pair{display:block}
+ .entry[data-reading-layout="2"] .evidence-pair>.research-note,
+ .entry[data-reading-layout="2"] .evidence-pair>.margin{margin-top:30px}
+}
+@media(max-width:620px){
+ .entry[data-reading-layout="2"] .reading-exhibit{margin-bottom:30px}
+ .reading-exhibit .exhibit-head{grid-template-columns:1fr}
+ .reading-exhibit .ledger-headings{display:none}
+ .reading-exhibit .ledger-line{grid-template-columns:1fr;gap:7px}
+ .reading-exhibit .ledger-status{padding-left:9px}
+ .reading-exhibit .exhibit-cabinet{grid-template-columns:1fr;gap:18px}
+ .reading-exhibit .cabinet-record{padding:18px}
+ .reading-exhibit .exhibit-longview{grid-template-columns:1fr;gap:14px}
+ .reading-exhibit .longview-point{padding-bottom:18px}
+}
+@media print{
+ .entry[data-reading-layout="2"] .evidence-pair{display:block}
+ .entry[data-reading-layout="2"] .evidence-pair>.research-note,
+ .entry[data-reading-layout="2"] .evidence-pair>.margin{margin-top:20px}
+ .entry[data-reading-layout="2"] .reading-exhibit{break-inside:avoid}
+}
+
+
+@media(max-width:1024px) and (min-width:621px){
+ .reading-exhibit .ledger-headings,.reading-exhibit .ledger-line{grid-template-columns:minmax(120px,.85fr) minmax(0,1.2fr)}
+ .reading-exhibit .ledger-headings>span:last-child{display:none}
+ .reading-exhibit .ledger-status{grid-column:2;grid-row:2;margin-top:7px}
+ .reading-exhibit .exhibit-cabinet{grid-template-columns:1fr}
+ .reading-exhibit .exhibit-longview{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+}
+@media print{
+ .reading-exhibit .cabinet-record{background:none}
+ .reading-exhibit .longview-point{break-inside:avoid}
+}
+
+
+/* Heron still creates the original .margin wrapper around Research Notebook.
+   Turn off its historical sticky sidebar behavior within the new lower register,
+   so both evidence sections genuinely start at the same vertical baseline. */
+.entry[data-reading-stage="3"] .evidence-pair>.margin{
+ position:static;top:auto;align-self:start;min-width:0;overflow:visible
+}
+@media(max-width:620px){
+ .entry[data-reading-stage="3"] .reading-exhibit{margin:0}
+}
+/* Stage III responsiveness deliberately breaks the split spread into a
+   readable sequence before either column becomes cramped. */
+@media(max-width:1100px){
+ .entry[data-reading-stage="3"] .feature-spread,
+ .entry[data-reading-stage="3"] .feature-spread[data-feature="ledger"],
+ .entry[data-reading-stage="3"] .feature-spread[data-feature="cabinet"],
+ .entry[data-reading-stage="3"] .feature-spread[data-feature="long"]{
+  grid-template-areas:"essay" "exhibit";grid-template-columns:minmax(0,1fr);
+  gap:18px;margin-bottom:24px
+ }
+ .entry[data-reading-stage="3"] .interpretive-essay{padding-top:0}
+ .entry[data-reading-stage="3"] .reading-exhibit{max-width:100%}
+ .reading-exhibit .ledger-line{grid-template-columns:minmax(135px,.85fr) minmax(0,1.4fr)}
+ .reading-exhibit .cabinet-reading{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+ .entry[data-reading-stage="3"] .feature-spread{padding-block:20px}
+ .reading-exhibit[data-exhibit-kind="ledger"]{padding:14px 12px 12px}
+ .reading-exhibit .ledger-line{grid-template-columns:minmax(0,1fr);gap:3px}
+ .reading-exhibit .ledger-party,.reading-exhibit .ledger-effect,.reading-exhibit .ledger-status{grid-column:1;grid-row:auto}
+ .reading-exhibit .cabinet-reading{grid-template-columns:1fr}
+ .reading-exhibit .ledger-mechanism{flex-direction:column;align-items:stretch}
+ .reading-exhibit .mechanism-arrow{transform:rotate(90deg);align-self:center}
+ .reading-exhibit .ledger-calculation{gap:4px}
+ .reading-exhibit .ledger-calculation b{font-size:18px}
+ .reading-exhibit .ledger-calculation small{font-size:10px}
+}
+@media print{
+ .entry[data-reading-stage="3"] .feature-spread{
+  display:block;border-color:var(--ink);break-inside:auto
+ }
+ .entry[data-reading-stage="3"] .reading-exhibit{margin-top:15px;break-inside:avoid}
+ .reading-exhibit .cabinet-record{background:none}
+}
+
+
+/* Reading finish IV — purposeful rules, paired frames and self-contained
+   exhibits. Preserve the existing surface, palette, and chapter width. */
+
+/* Subtle journal rules between title -> lead -> argument -> apparatus.
+   Copper registration marks add craft without boxing in the paragraphs. */
+.entry[data-reading-finish="4"] .entry-head{
+ position:relative;border-bottom:0;padding-bottom:28px
+}
+.entry[data-reading-finish="4"] .entry-head::after{
+ content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+ background:linear-gradient(to right,var(--clay) 0 38px,var(--forest) 38px 43%,var(--hair) 82%,transparent 100%);
+ pointer-events:none
+}
+.entry[data-reading-finish="4"] .reading-deck{
+ position:relative;border:0;padding:21px 0 25px;margin:0 0 26px
+}
+.entry[data-reading-finish="4"] .reading-deck::after{
+ content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
+ background:linear-gradient(to right,var(--clay) 0 45px,var(--hair) 45px 82%,transparent 100%);
+ pointer-events:none
+}
+.entry[data-reading-finish="4"] .reading-deck::before{
+ content:"";position:absolute;left:0;bottom:-2px;width:16px;height:3px;
+ background:var(--clay);pointer-events:none
+}
+/* Normal authored first-analysis sections remain stacked, as originally designed. */
+/* A coherent frame inside every two-column editorial spread: left and right
+   are differentiated by a fine seam, not individual rectangular cards. */
+.entry[data-reading-finish="4"] .feature-spread{
+ position:relative;border-top:0;
+ padding-top:25px;padding-bottom:24px;margin-bottom:26px
+}
+.entry[data-reading-finish="4"] .feature-spread::before{
+ content:"";position:absolute;top:0;left:0;right:0;height:2px;
+ background:linear-gradient(to right,var(--clay) 0 32px,var(--forest) 32px 63%,var(--hair) 92%,transparent 100%);
+ pointer-events:none
+}
+.entry[data-reading-finish="4"] .feature-spread .interpretive-essay{
+ border-right:1px solid var(--hair);padding:7px 22px 5px 0;
+ min-height:100%
+}
+.entry[data-reading-finish="4"] .feature-spread[data-feature="cabinet"] .interpretive-essay{
+ border-right:0;border-left:1px solid var(--hair);
+ padding:7px 0 5px 22px
+}
+.entry[data-reading-finish="4"] .feature-spread .reading-exhibit{align-self:start}
+.entry[data-reading-finish="4"] .feature-spread[data-feature="ledger"] .reading-exhibit{
+ border-left:1px solid color-mix(in srgb,var(--forest) 35%,transparent)
+}
+/* Parallel sections share an editorial head rule and paired inset accent
+   marks; the notebook's Heron wrapper never floats over the evidence. */
+.entry[data-reading-finish="4"] .evidence-pair{
+ position:relative;border-top:1px solid var(--forest);
+ padding-top:15px;margin-top:5px
+}
+.entry[data-reading-finish="4"] .evidence-pair::before{
+ content:"";position:absolute;left:0;top:-2px;width:38px;height:3px;
+ background:var(--clay);pointer-events:none
+}
+.entry[data-reading-finish="4"] .evidence-pair>.limitation{
+ border-top:0;border-left:2px solid var(--clay);
+ padding:6px 15px 2px!important
+}
+.entry[data-reading-finish="4"] .evidence-pair>.research-note,
+.entry[data-reading-finish="4"] .evidence-pair>.margin>.research-note{
+ border-top:0;border-left:2px solid var(--river);
+ padding:6px 15px 2px
+}
+.entry[data-reading-finish="4"] .evidence-pair>.margin{
+ border-top:0;padding:0;position:static;top:auto
+}
+/* Teaching copy is part of the exhibit, not hidden in a hover tooltip. */
+.reading-exhibit .exhibit-kicker{display:none}
+.reading-exhibit .exhibit-primer{border-left:2px solid var(--river);padding:0 0 0 13px;margin:0 0 16px}
+.reading-exhibit .exhibit-primer p{
+ margin:0;font:400 15px/1.57 var(--serif);color:var(--text)
+}
+.reading-exhibit .exhibit-concept{
+ display:grid;grid-template-columns:minmax(75px,.3fr) minmax(0,1.7fr);
+ gap:6px 12px;align-items:baseline;
+ padding:9px 0 0;margin-top:13px;border-top:1px solid var(--hair)
+}
+.reading-exhibit .exhibit-concept strong{
+ font:600 11px/1.45 var(--sans);color:var(--forest);letter-spacing:.015em
+}
+.reading-exhibit .exhibit-concept span{
+ font:400 12px/1.46 var(--serif);color:var(--muted)
+}
+/* A richer but still compact financial graphic: three accents, restrained
+   row tints, and strong visual separation of source quantities from models. */
+.reading-exhibit[data-exhibit-kind="ledger"]{
+ background:linear-gradient(130deg,
+ color-mix(in srgb,var(--forest) 6%,var(--paper)),
+ color-mix(in srgb,var(--clay) 7%,var(--paper)) 75%,var(--paper));
+ border-top:3px solid var(--forest)
+}
+.reading-exhibit[data-exhibit-kind="ledger"] .exhibit-primer{
+ border-left-color:var(--clay);margin-bottom:12px
+}
+.reading-exhibit .ledger-graphic{
+ padding:12px 11px;
+ background:linear-gradient(115deg,
+ color-mix(in srgb,var(--river) 7%,var(--paper)),
+ color-mix(in srgb,var(--clay) 5%,var(--paper)));
+ border-top:1px solid var(--river)
+}
+.reading-exhibit .ledger-how-to-read{
+ margin:0 0 13px;padding:0;
+ font:400 12.5px/1.5 var(--serif);color:var(--text)
+}
+.reading-exhibit .ledger-how-to-read strong{
+ font:600 11px/1.45 var(--sans);color:var(--river);margin-right:4px
+}
+.reading-exhibit .ledger-line{border-left:2px solid transparent;padding-left:8px;padding-right:4px}
+.reading-exhibit .ledger-line:nth-of-type(3n+1){
+ border-left-color:var(--forest);
+ background:color-mix(in srgb,var(--forest) 6%,transparent)
+}
+.reading-exhibit .ledger-line:nth-of-type(3n+2){
+ border-left-color:var(--river);
+ background:color-mix(in srgb,var(--river) 5%,transparent)
+}
+.reading-exhibit .ledger-line:nth-of-type(3n){
+ border-left-color:var(--clay);
+ background:color-mix(in srgb,var(--clay) 7%,transparent)
+}
+.reading-exhibit .mechanism-node{
+ border-top-width:3px;padding:9px 6px 5px;
+ background:color-mix(in srgb,var(--forest) 6%,transparent)
+}
+.reading-exhibit .mechanism-node:nth-of-type(2){
+ border-top-color:var(--river);
+ background:color-mix(in srgb,var(--river) 6%,transparent)
+}
+.reading-exhibit .mechanism-node:nth-of-type(3){
+ border-top-color:var(--clay);
+ background:color-mix(in srgb,var(--clay) 8%,transparent)
+}
+.reading-exhibit .calc-total{
+ background:color-mix(in srgb,var(--clay) 9%,transparent);
+ border-bottom:2px solid var(--clay);padding:3px 4px 6px
+}
+/* A Long View you can enter first: introduction, chronological explanation,
+   source status at every stop, and a real concluding interpretation. */
+.reading-exhibit[data-exhibit-kind="long"] .exhibit-primer{border-left-color:var(--river)}
+.reading-exhibit .longview-guide{display:block;margin:0 0 15px}
+.reading-exhibit .longview-guide>span:first-child{display:block;margin-bottom:4px}
+.reading-exhibit .longview-guide>span:last-child{font:italic 12.5px/1.5 var(--serif)}
+.reading-exhibit .longview-point{padding-bottom:21px;row-gap:4px}
+.reading-exhibit .longview-explain{
+ grid-column:2;grid-row:auto;margin:4px 0 0;
+ font:400 13.5px/1.58 var(--serif);color:var(--text)
+}
+.reading-exhibit .longview-point[data-stage-class="observed"] .longview-status{color:var(--forest)}
+.reading-exhibit .longview-point[data-stage-class="conditional"] .longview-status{color:var(--clay)}
+.reading-exhibit .longview-takeaway{
+ grid-template-columns:minmax(0,1fr);gap:5px;
+ padding:12px 12px 14px;
+ background:color-mix(in srgb,var(--river) 8%,transparent);
+ border-top:2px solid var(--river)
+}
+.reading-exhibit .longview-takeaway p{font-size:14.5px;line-height:1.53}
+@media(max-width:620px){
+ .reading-exhibit .exhibit-concept{grid-template-columns:1fr}
+ .reading-exhibit .longview-point{padding-bottom:18px}
+ .entry[data-reading-finish="4"] .evidence-pair>.limitation{
+  padding:6px 12px 2px!important
+ }
+}
+@media print{
+ .entry[data-reading-finish="4"] .feature-spread .interpretive-essay{
+  border:0;padding:0 0 10px
+ }
+ .reading-exhibit[data-exhibit-kind="ledger"]{background:none}
+}
+
+
+/* Reading finish V — substantial journal craft, not isolated hairlines.
+   Established page boundaries, typography and palette are unchanged. */
+.entry[data-reading-finish="5"]{
+ position:relative;isolation:isolate;
+ margin-top:34px;padding-top:68px;padding-bottom:54px;border-top:0;
+}
+.entry[data-reading-finish="5"]:first-child{margin-top:0}
+.entry[data-reading-finish="5"]::before{
+ content:"";position:absolute;top:0;left:0;right:0;height:6px;
+ background:linear-gradient(to right,var(--clay) 0 72px,var(--forest) 72px 94%,var(--sage) 94%);
+ box-shadow:0 4px 0 color-mix(in srgb,var(--forest) 15%,transparent);
+ pointer-events:none
+}
+.entry[data-reading-finish="5"]::after{
+ content:"";position:absolute;top:17px;right:0;width:46px;height:3px;
+ background:var(--clay);pointer-events:none
+}
+/* Restore the author's natural vertical Why-it-matters rhythm. */
+.entry[data-reading-finish="5"] .reading-opening{
+ width:100%;max-width:66ch;margin:0 0 24px
+}
+.entry[data-reading-finish="5"] .reading-opening>.analysis-block{
+ display:block;max-width:66ch;margin:0 0 19px;padding:0
+}
+.entry[data-reading-finish="5"] .reading-opening h3,
+.entry[data-reading-finish="5"] .reading-opening p{display:block;width:auto}
+.entry[data-reading-finish="5"] .reading-opening h3{margin:0 0 12px}
+.entry[data-reading-finish="5"] .reading-opening p{margin:0}
+/* Bolder folio framing: surround paired material with continuous 4px
+   structural rails, then use a 5px internal colored partition. */
+.entry[data-reading-finish="5"] .feature-spread{
+ position:relative;display:grid;grid-template-columns:minmax(0,.91fr) minmax(0,1.09fr);
+ grid-template-areas:"essay exhibit";gap:0;
+ padding:0!important;margin:0 0 29px!important;
+ border:3px solid var(--forest)!important;border-top:6px solid var(--forest)!important;
+ border-bottom:4px solid var(--forest)!important;
+ background:var(--paper);box-shadow:0 5px 0 color-mix(in srgb,var(--forest) 10%,transparent);
+}
+.entry[data-reading-finish="5"] .feature-spread::before{
+ content:"";position:absolute;top:-6px;left:0;width:77px;height:6px;
+ background:var(--clay);z-index:1;pointer-events:none
+}
+.entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
+ grid-area:essay;align-self:stretch;min-height:0;
+ padding:23px 23px 19px!important;margin:0!important;
+ border:0!important;border-right:5px solid var(--clay)!important;
+ background:color-mix(in srgb,var(--paper) 95%,var(--forest) 5%)
+}
+.entry[data-reading-finish="5"] .feature-spread .reading-exhibit{
+ grid-area:exhibit;align-self:stretch;min-width:0;
+ margin:0!important;padding:22px 23px 19px!important;
+ border:0!important;background:var(--paper)
+}
+/* Ledger: related figure in the interpretation panel and the incidence
+   register in the other panel. No huge second chart at the top of ledger. */
+.entry[data-reading-finish="5"] .feature-spread[data-feature="ledger"]{
+ grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr)
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="ledger"] .reading-exhibit{
+ background:linear-gradient(145deg,color-mix(in srgb,var(--paper) 89%,var(--clay) 11%),color-mix(in srgb,var(--paper) 97%,var(--river) 3%))
+}
+.entry[data-reading-finish="5"] .essay-graphic{
+ margin:22px 0 0;padding:13px 10px 9px;
+ border:2px solid var(--forest);border-top:5px solid var(--forest);
+ background:color-mix(in srgb,var(--paper) 87%,var(--river) 13%)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic{
+ margin:0;padding:0;border:0;background:none
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-head{display:grid;grid-template-columns:1fr;gap:3px}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-note{font-size:12px}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="ledger"] .exhibit-primer{
+ border-left:4px solid var(--river);padding-left:12px
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="ledger"] .ledger-line{
+ border-left-width:4px;padding:10px 7px 9px 12px
+}
+/* A distinct open research brief: Assumption Test. Substantial copper
+   field header and two real, unequal reasoning compartments. */
+.entry[data-reading-finish="5"] .feature-spread[data-feature="test"]{
+ grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="test"] .interpretive-essay{
+ border-right-color:var(--river)!important
+}
+.reading-exhibit[data-exhibit-kind="test"] .exhibit-head{
+ padding:0 0 15px;border-bottom:3px solid var(--river);margin-bottom:15px
+}
+.reading-exhibit .exhibit-introduction{
+ margin:0 0 18px;font:400 15px/1.55 var(--serif);color:var(--text)
+}
+.reading-exhibit .exhibit-field-label{
+ display:block;font:600 10px/1.45 var(--sans);letter-spacing:.08em;
+ text-transform:uppercase;color:var(--river)
+}
+.reading-exhibit .test-research-question{
+ padding:14px 15px;margin:0 0 16px;
+ background:color-mix(in srgb,var(--paper) 84%,var(--river) 16%);
+ border-left:5px solid var(--river)
+}
+.reading-exhibit .test-research-question p{
+ margin:6px 0 0;font:400 17px/1.43 var(--serif);color:var(--ink)
+}
+.reading-exhibit .test-challenge{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.reading-exhibit .test-challenge section{
+ min-width:0;padding:13px 12px;
+ background:color-mix(in srgb,var(--paper) 91%,var(--forest) 9%);
+ border-top:4px solid var(--forest)
+}
+.reading-exhibit .test-challenge section+section{border-top-color:var(--clay)}
+.reading-exhibit .test-challenge section+section .exhibit-field-label{color:var(--clay)}
+.reading-exhibit .test-challenge p{margin:7px 0 0;font:400 14px/1.52 var(--serif)}
+.reading-exhibit .test-scope{
+ margin:12px 0 0;padding-top:10px;border-top:2px solid var(--hair);
+ font:italic 12px/1.5 var(--serif);color:var(--muted)
+}
+/* Decision Margin: a genuinely horizontal policy comparison after its
+   interpretive essay. Full issue width prevents squeezed alternatives. */
+.entry[data-reading-finish="5"] .feature-spread[data-feature="decision"]{
+ grid-template-areas:"essay" "exhibit";grid-template-columns:minmax(0,1fr)
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="decision"] .interpretive-essay{
+ border-right:0!important;border-bottom:5px solid var(--clay)!important;padding:19px 24px 15px!important
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="decision"] .reading-exhibit{
+ padding:19px 24px 22px!important
+}
+.reading-exhibit[data-exhibit-kind="decision"] .exhibit-head{
+ display:grid;grid-template-columns:max-content minmax(0,1fr);
+ gap:18px;align-items:baseline
+}
+.reading-exhibit[data-exhibit-kind="decision"] .exhibit-heading{font-size:17px}
+.reading-exhibit .decision-question{
+ margin:14px 0 0;padding:11px 16px;border-left:5px solid var(--clay);
+ background:color-mix(in srgb,var(--paper) 89%,var(--clay) 11%);
+ font:italic 17px/1.5 var(--serif);color:var(--ink)
+}
+.reading-exhibit .decision-branches{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:14px;margin-top:17px
+}
+.reading-exhibit .decision-option{
+ position:relative;padding:18px 19px 16px;min-width:0;
+ border:2px solid var(--forest);border-top:6px solid var(--forest);
+ background:color-mix(in srgb,var(--paper) 92%,var(--forest) 8%)
+}
+.reading-exhibit .decision-option:nth-child(2){
+ border-color:var(--river);
+ background:color-mix(in srgb,var(--paper) 91%,var(--river) 9%)
+}
+.reading-exhibit .decision-index{display:block;color:var(--clay);font:400 21px/1 var(--headline)}
+.reading-exhibit .decision-option strong{display:block;margin:7px 0;font:400 21px/1.2 var(--headline)}
+.reading-exhibit .decision-option p{margin:0;font:400 15px/1.55 var(--serif)}
+.reading-exhibit .decision-criterion{
+ display:grid;grid-template-columns:110px minmax(0,1fr);gap:8px 14px;
+ border-top:3px solid var(--forest);margin:18px 0 0;padding:13px 0 0
+}
+.reading-exhibit .decision-criterion p{margin:0;font:400 15px/1.52 var(--serif)}
+.reading-exhibit .decision-criterion small{grid-column:2;font:italic 12px/1.4 var(--serif);color:var(--muted)}
+/* Long View remains detailed but becomes a horizontal illustrated chronology
+   after the essay, with a strong connecting rail rather than isolated points. */
+.entry[data-reading-finish="5"] .feature-spread[data-feature="long"]{
+ grid-template-areas:"essay" "exhibit";grid-template-columns:minmax(0,1fr)
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="long"] .interpretive-essay{
+ border-right:0!important;border-bottom:5px solid var(--river)!important;
+ padding:19px 24px 15px!important
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="long"] .reading-exhibit{padding:21px 24px 23px!important}
+.reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{
+ display:grid;grid-template-columns:repeat(var(--stage-cols,4),minmax(0,1fr));
+ gap:12px;margin:24px 0 14px;padding:19px 0 0;
+ border-left:0;border-top:4px solid var(--river)
+}
+.reading-exhibit[data-exhibit-kind="long"] .longview-point{
+ display:block;padding:8px 11px 13px!important;
+ border-left:3px solid var(--hair);min-width:0
+}
+.reading-exhibit[data-exhibit-kind="long"] .longview-point::before{
+ left:8px;top:-28px;width:11px;height:11px;border:3px solid var(--river)
+}
+.reading-exhibit[data-exhibit-kind="long"] .longview-index{display:block;margin:0 0 5px;color:var(--clay)}
+.reading-exhibit[data-exhibit-kind="long"] .longview-date{display:block;margin-bottom:6px}
+.reading-exhibit[data-exhibit-kind="long"] .longview-event{display:block;font-size:15px}
+.reading-exhibit[data-exhibit-kind="long"] .longview-status{display:block;margin-top:5px}
+.reading-exhibit[data-exhibit-kind="long"] .longview-explain{display:block;margin-top:10px}
+/* Horizontal source register = intentionally compact material beneath the
+   reading, not a forced side-by-side Why-it-matters paragraph. */
+.entry[data-reading-finish="5"] .reading-sources{
+ width:100%;max-width:none;margin:17px 0 0;padding:0;
+ border-top:4px solid var(--forest);border-bottom:1px solid var(--hair)
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources{
+ max-width:none!important;display:grid;
+ grid-template-columns:minmax(125px,.28fr) minmax(0,1.72fr);
+ gap:12px 18px;align-items:start;
+ margin:0;padding:11px 0 12px!important;border:0
+}
+.entry[data-reading-finish="5"] .reading-sources .eyebrow{
+ grid-column:1;grid-row:1;margin:2px 0 0;padding-left:12px;
+ border-left:4px solid var(--clay);line-height:1.4
+}
+.entry[data-reading-finish="5"] .reading-sources .sources a{
+ grid-column:2;margin:0;padding:3px 4px 3px 27px!important;
+ min-height:0!important;line-height:1.35;
+ font-size:13px;overflow-wrap:anywhere;border-bottom:1px solid color-mix(in srgb,var(--hair) 55%,transparent)
+}
+.entry[data-reading-finish="5"] .reading-sources .sources a:first-of-type{grid-row:1}
+.entry[data-reading-finish="5"] .reading-sources .sources a:last-of-type{border-bottom:0}
+/* Responsive: panels become stacked, but retain intentional thick shared
+   section borders instead of collapsing into detached faint hairlines. */
+@media(max-width:1180px){
+ .entry[data-reading-finish="5"] .feature-spread,
+ .entry[data-reading-finish="5"] .feature-spread[data-feature="ledger"],
+ .entry[data-reading-finish="5"] .feature-spread[data-feature="test"]{
+  grid-template-areas:"essay" "exhibit";grid-template-columns:minmax(0,1fr)
+ }
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
+  border-right:0!important;border-bottom:5px solid var(--clay)!important
+ }
+ .entry[data-reading-finish="5"] .feature-spread[data-feature="test"] .interpretive-essay{
+  border-bottom-color:var(--river)!important
+ }
+ .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:750px){
+ .reading-exhibit .test-challenge,.reading-exhibit .decision-branches{grid-template-columns:minmax(0,1fr)}
+ .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{grid-template-columns:minmax(0,1fr)}
+ .reading-exhibit[data-exhibit-kind="long"] .longview-point{padding-bottom:18px!important}
+ .entry[data-reading-finish="5"] .reading-sources>.sources{
+  grid-template-columns:minmax(0,1fr);gap:7px
+ }
+ .entry[data-reading-finish="5"] .reading-sources .eyebrow{grid-column:1;grid-row:auto}
+ .entry[data-reading-finish="5"] .reading-sources .sources a{grid-column:1!important;grid-row:auto!important}
+}
+@media(max-width:560px){
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay,
+ .entry[data-reading-finish="5"] .feature-spread .reading-exhibit{padding:16px 13px!important}
+ .reading-exhibit .decision-criterion{grid-template-columns:1fr}
+ .reading-exhibit .decision-criterion small{grid-column:1}
+ .reading-exhibit[data-exhibit-kind="decision"] .exhibit-head{grid-template-columns:1fr;gap:5px}
+}
+@media print{
+ .entry[data-reading-finish="5"] .feature-spread{display:block!important;box-shadow:none}
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay{border-right:0!important}
+ .entry[data-reading-finish="5"] .feature-spread .reading-exhibit{break-inside:avoid}
+ .entry[data-reading-finish="5"] .reading-sources>.sources{display:block}
+}
+
+
+/* L&L full-screen editorial finishing pass · 2026-11-02 */
+/* Desktop is the reference composition. Earlier accepted palette, spines,
+   typography and narrative contents remain unchanged. */
+.entry[data-reading-finish="5"]{
+ margin-top:16px;padding-top:52px;padding-bottom:28px
+}
+.entry[data-reading-finish="5"]::before{
+ height:9px;
+ background:linear-gradient(to right,var(--clay) 0 92px,var(--forest) 92px 96%,var(--sage) 96%);
+ box-shadow:0 3px 0 color-mix(in srgb,var(--forest) 18%,transparent)
+}
+.entry[data-reading-finish="5"]::after{
+ top:13px;left:0;right:0;width:auto;height:2px;
+ background:linear-gradient(to right,var(--clay) 0 92px,var(--forest) 92px 100%)
+}
+/* Restore the opening sections as conventional stacked prose, with a
+   comfortable but less cramped line measure in a full desktop reading. */
+.entry[data-reading-finish="5"] .reading-opening,
+.entry[data-reading-finish="5"] .reading-opening>.analysis-block{
+ width:100%;max-width:80ch
+}
+.entry[data-reading-finish="5"] .reading-opening{margin-bottom:22px}
+/* Substantial joint framing: continuous outer walls, one central seam,
+   differentiated fields. The 8px upper ribbon has a copper terminal. */
+.entry[data-reading-finish="5"] .feature-spread{
+ margin-bottom:23px!important;
+ border:4px solid var(--forest)!important;
+ border-top-width:8px!important;border-bottom-width:6px!important;
+ box-shadow:0 5px 0 color-mix(in srgb,var(--forest) 12%,transparent)
+}
+.entry[data-reading-finish="5"] .feature-spread::before{
+ top:-8px;width:96px;height:8px
+}
+.entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
+ border-right-width:7px!important;padding:23px 24px 20px!important
+}
+.entry[data-reading-finish="5"] .feature-spread .reading-exhibit{
+ padding:22px 24px 20px!important
+}
+.entry[data-reading-finish="5"] .essay-graphic{
+ margin-top:21px;padding:14px 13px 12px;
+ border:3px solid var(--forest);border-top-width:6px
+}
+/* Use stacked accounting rows in the narrow interpretation panel, retaining
+   the mathematical operators and full source labels. Prevent flex collision. */
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation{
+ display:grid;grid-template-columns:25px minmax(0,1fr);
+ gap:0 5px;align-items:baseline
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>div{
+ display:grid;grid-template-columns:minmax(76px,max-content) minmax(0,1fr);
+ gap:10px;align-items:baseline;min-width:0;
+ padding:8px 7px;border-bottom:1px solid var(--hair)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>div:first-child{grid-column:2;grid-row:1}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>.calc-sign:nth-child(2){grid-column:1;grid-row:2}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>div:nth-child(3){grid-column:2;grid-row:2}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>.calc-sign:nth-child(4){grid-column:1;grid-row:3}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>.calc-total{grid-column:2;grid-row:3;border-bottom:3px solid var(--clay)}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation b{
+ font-size:clamp(19px,1.85vw,25px);white-space:nowrap
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation small{font-size:11.5px;line-height:1.4}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-calculation .calc-sign{
+ justify-self:center;color:var(--clay);font-size:23px
+}
+/* Evidence limits and Research Notebook: visibly connected paired sections. */
+.entry[data-reading-finish="5"] .evidence-pair{
+ border-top:5px solid var(--forest);padding-top:17px;margin-top:4px
+}
+.entry[data-reading-finish="5"] .evidence-pair::before{top:-5px;width:76px;height:5px}
+.entry[data-reading-finish="5"] .evidence-pair>.limitation{
+ border-left:5px solid var(--clay)!important;padding:9px 17px 4px!important
+}
+.entry[data-reading-finish="5"] .evidence-pair>.research-note,
+.entry[data-reading-finish="5"] .evidence-pair>.margin>.research-note{
+ border-left:5px solid var(--river)!important;padding:9px 17px 4px!important
+}
+/* Compact horizontal sources: their label sits beside the link register.
+   Link text, URLs and reading anchors remain unchanged. */
+.entry[data-reading-finish="5"] .reading-sources{
+ margin-top:12px;border-top:5px solid var(--forest);border-bottom:2px solid var(--hair)
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources{
+ grid-template-columns:minmax(112px,.23fr) minmax(0,1.77fr);
+ gap:0 17px;padding:8px 0 9px!important
+}
+.entry[data-reading-finish="5"] .reading-sources .eyebrow{margin-top:0}
+.entry[data-reading-finish="5"] .reading-sources .sources a{line-height:1.25}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="decision"] .interpretive-essay{
+ border-right:0!important;border-bottom:7px solid var(--clay)!important
+}
+.entry[data-reading-finish="5"] .feature-spread[data-feature="long"] .interpretive-essay{
+ border-right:0!important;border-bottom:7px solid var(--river)!important
+}
+/* On narrow screens, keep generous tap targets and fully joined stacked frames. */
+@media(max-width:1180px){
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
+  border-right:0!important;border-bottom:7px solid var(--clay)!important
+ }
+ .entry[data-reading-finish="5"] .feature-spread[data-feature="test"] .interpretive-essay{
+  border-bottom-color:var(--river)!important
+ }
+}
+@media(max-width:750px){
+ .entry[data-reading-finish="5"] .reading-sources .sources a{
+  min-height:44px!important;padding-top:9px!important;padding-bottom:9px!important
+ }
+}
+@media(max-width:560px){
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay,
+ .entry[data-reading-finish="5"] .feature-spread .reading-exhibit{padding:16px 13px!important}
+ .entry[data-reading-finish="5"] .essay-graphic .ledger-calculation>div{
+  grid-template-columns:minmax(0,1fr);gap:2px
+ }
+}
+@media print{
+ .entry[data-reading-finish="5"] .feature-spread{box-shadow:none!important}
+ .entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
+  border-right:0!important
+ }
+}
+
+
+/* Full-width reading and source-driven graphics · November 2 review */
+/* The reading's lead and first analysis consume the actual reading sheet.
+   Width is determined by the parent column, not a fixed 65–80ch ceiling. */
+.entry[data-reading-finish="5"] .reading-deck .finding,
+.entry[data-reading-finish="5"] .reading-opening,
+.entry[data-reading-finish="5"] .reading-opening>.analysis-block,
+.entry[data-reading-finish="5"] .reading-opening>.analysis-block p{
+ width:100%;max-width:none!important
+}
+.entry[data-reading-finish="5"] .reading-opening>.analysis-block p{
+ font-size:18px;line-height:1.65;text-wrap:pretty
+}
+/* Any full-row interpretation likewise uses the width of its section.
+   Paired Ledger/Test sections keep their intentional shared columns. */
+.entry[data-reading-finish="5"] .feature-spread[data-feature="long"] .interpretive-essay .analysis-block p,
+.entry[data-reading-finish="5"] .feature-spread[data-feature="decision"] .interpretive-essay .analysis-block p{
+ max-width:none!important;width:100%
+}
+.entry[data-reading-finish="5"] .reading-exhibit .exhibit-introduction,
+.entry[data-reading-finish="5"] .reading-exhibit .exhibit-primer{max-width:none;width:100%}
+/* Source trail: same unboxed, typography-led treatment as the continuing
+   notebook. Each link uses its share of the full-width reading register;
+   avoid enclosing bands and tinted cards. */
+.entry[data-reading-finish="5"] .reading-sources{
+ position:relative;margin:17px 0 0;
+ border:0!important;border-top:2px solid var(--hair)!important;
+ background:transparent!important
+}
+.entry[data-reading-finish="5"] .reading-sources::before{
+ content:"";position:absolute;top:-2px;left:0;
+ width:65px;height:3px;background:var(--clay);pointer-events:none
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources{
+ display:grid!important;width:100%;max-width:none!important;
+ grid-template-columns:148px minmax(0,1fr);
+ gap:0 clamp(15px,1.6vw,27px)!important;
+ align-items:start;margin:0!important;padding:10px 0 6px!important
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(2):last-of-type){
+ grid-template-columns:148px repeat(2,minmax(0,1fr))
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(3):last-of-type){
+ grid-template-columns:148px repeat(3,minmax(0,1fr))
+}
+.entry[data-reading-finish="5"] .reading-sources .eyebrow{
+ grid-column:1!important;grid-row:1!important;
+ display:block;margin:0!important;padding:11px 0!important;
+ border:0!important;background:none!important;
+ font:600 11px/1.5 var(--sans);letter-spacing:.08em;
+ text-transform:uppercase;color:var(--ink)
+}
+.entry[data-reading-finish="5"] .reading-sources .sources>a{
+ grid-column:auto!important;grid-row:1!important;min-width:0;
+ display:block;position:relative;margin:0!important;
+ min-height:48px!important;padding:8px 0 8px 30px!important;
+ border:0!important;background:transparent!important;
+ font:400 clamp(14px,1.22vw,17px)/1.45 var(--serif);
+ color:var(--river);text-decoration:none;overflow-wrap:anywhere
+}
+.entry[data-reading-finish="5"] .reading-sources .sources>a::before{
+ left:0;top:10px;transform:none;
+ font:500 12px/1.4 var(--sans);color:var(--clay)
+}
+.entry[data-reading-finish="5"] .reading-sources .sources>a:hover{
+ color:var(--clay);text-decoration:underline;text-underline-offset:4px
+}
+.entry[data-reading-finish="5"] .reading-sources .sources>a:focus-visible{
+ color:var(--ink);outline:2px solid var(--river);
+ outline-offset:3px;background:transparent!important
+}
+/* Economic figures are now inside .essay-graphic, not .reading-exhibit.
+   Apply proper styling in the actual component location. */
+.entry[data-reading-finish="5"] .essay-graphic{
+ padding:19px 18px 17px;
+ background:color-mix(in srgb,var(--paper) 82%,var(--river) 18%);
+ border:3px solid var(--forest);border-top-width:8px
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic{
+ display:block;margin:0;padding:0;background:none;min-width:0
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-head{
+ display:grid;grid-template-columns:minmax(0,1fr);
+ gap:6px;margin-bottom:18px;padding-bottom:13px;
+ border-bottom:2px solid color-mix(in srgb,var(--forest) 25%,transparent)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-label{
+ font:700 11px/1.25 var(--sans);letter-spacing:.13em;color:var(--river)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-head strong{
+ font:400 clamp(21px,2.1vw,28px)/1.17 var(--headline);color:var(--ink)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-note{
+ margin:17px 0 0;padding-top:12px;border-top:2px solid color-mix(in srgb,var(--forest) 22%,transparent);
+ font:italic 13.5px/1.5 var(--serif);color:var(--text)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-plot{
+ display:block;width:100%;max-height:none;height:auto;overflow:visible
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-axis{stroke:var(--forest);stroke-width:2}
+.entry[data-reading-finish="5"] .essay-graphic .plot-grid{
+ stroke:color-mix(in srgb,var(--forest) 26%,transparent);stroke-width:1;stroke-dasharray:4 5
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-grid-zero{
+ stroke:var(--forest);stroke-width:2.5;stroke-dasharray:none
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-row-guide{
+ stroke:color-mix(in srgb,var(--forest) 18%,transparent);stroke-width:1
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-label{
+ fill:var(--ink);font:600 21px var(--serif)
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-value{
+ fill:var(--ink);font:700 23px var(--sans);font-variant-numeric:tabular-nums
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-axis-title{
+ fill:var(--river);font:700 16px var(--sans)
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-tick{
+ fill:var(--text);font:16px var(--sans)
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-bar{fill:var(--forest)}
+.entry[data-reading-finish="5"] .essay-graphic .plot-bar.bar-1{fill:var(--river)}
+.entry[data-reading-finish="5"] .essay-graphic .plot-bar.bar-2{fill:var(--clay)}
+.entry[data-reading-finish="5"] .essay-graphic .plot-bar.bar-3{fill:var(--sage)}
+/* Model exhibits are diagrams, not pseudo-quantified bar charts. */
+.entry[data-reading-finish="5"] .essay-graphic .model-flow{
+ display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr) 24px minmax(0,1fr);
+ gap:5px;align-items:stretch
+}
+.entry[data-reading-finish="5"] .model-stage{
+ min-width:0;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;
+ padding:13px 12px;border:2px solid var(--forest);border-top:6px solid var(--forest);
+ background:color-mix(in srgb,var(--paper) 88%,var(--forest) 12%)
+}
+.entry[data-reading-finish="5"] .model-stage:nth-of-type(2){border-color:var(--river);background:color-mix(in srgb,var(--paper) 89%,var(--river) 11%)}
+.entry[data-reading-finish="5"] .model-stage:nth-of-type(3){border-color:var(--clay);background:color-mix(in srgb,var(--paper) 89%,var(--clay) 11%)}
+.entry[data-reading-finish="5"] .model-stage-number{
+ display:block;font:400 22px/1 var(--headline);color:var(--clay);margin-bottom:12px
+}
+.entry[data-reading-finish="5"] .model-stage strong{
+ font:600 13.5px/1.35 var(--serif);color:var(--ink)
+}
+.entry[data-reading-finish="5"] .model-connector{
+ align-self:center;text-align:center;font:400 26px/1 var(--headline);color:var(--clay)
+}
+.entry[data-reading-finish="5"] .model-kind{
+ margin:13px 0 0;font:italic 12px/1.4 var(--serif);color:var(--muted)
+}
+/* Source-grounded surplus is both an explicit accounting identity and
+   a visual decomposition; the shaded tip indicates its reported range. */
+.entry[data-reading-finish="5"] .surplus-visual{margin-top:20px}
+.entry[data-reading-finish="5"] .surplus-visual-title,
+.entry[data-reading-finish="5"] .decomp-title{
+ margin-bottom:10px;font:700 10px/1.35 var(--sans);
+ letter-spacing:.08em;color:var(--river)
+}
+.entry[data-reading-finish="5"] .surplus-band{
+ height:30px;width:100%;display:flex;overflow:hidden;
+ border:2px solid var(--forest);background:var(--paper)
+}
+.entry[data-reading-finish="5"] .surplus-fixed{display:block;background:var(--forest);height:100%}
+.entry[data-reading-finish="5"] .surplus-variable{display:block;background:var(--clay);height:100%}
+.entry[data-reading-finish="5"] .surplus-upper{
+ display:block;height:100%;
+ background:repeating-linear-gradient(135deg,var(--clay),var(--clay) 5px,var(--paper) 5px,var(--paper) 8px)
+}
+.entry[data-reading-finish="5"] .surplus-axis,
+.entry[data-reading-finish="5"] .decomp-axis{
+ display:flex;justify-content:space-between;gap:8px;margin:7px 0 0;
+ font:500 11px/1.3 var(--sans);color:var(--ink)
+}
+.entry[data-reading-finish="5"] .surplus-key,
+.entry[data-reading-finish="5"] .decomp-legend{
+ display:flex;gap:9px 18px;flex-wrap:wrap;margin-top:16px;
+ font:400 12px/1.35 var(--sans);color:var(--text)
+}
+.entry[data-reading-finish="5"] .surplus-key span,
+.entry[data-reading-finish="5"] .decomp-legend span{display:inline-flex;gap:7px;align-items:center}
+.entry[data-reading-finish="5"] .surplus-key i{
+ display:inline-block;width:13px;height:13px;border:1px solid var(--ink)
+}
+.entry[data-reading-finish="5"] .surplus-key-fixed{background:var(--forest)}
+.entry[data-reading-finish="5"] .surplus-key-variable{background:var(--clay)}
+.entry[data-reading-finish="5"] .decomp-track{
+ height:29px;border:2px solid var(--forest);border-radius:0;margin:12px 0 0
+}
+.entry[data-reading-finish="5"] .decomp-part.decomp-0{background:var(--forest)}
+.entry[data-reading-finish="5"] .decomp-part.decomp-1{background:var(--clay)}
+.entry[data-reading-finish="5"] .decomp-metric{margin:8px 0 20px}
+.entry[data-reading-finish="5"] .decomp-metric strong{
+ font:400 46px/1 var(--headline);color:var(--forest)
+}
+@media(max-width:1180px){
+ .entry[data-reading-finish="5"] .reading-sources>.sources,
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(2):last-of-type),
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(3):last-of-type){
+  grid-template-columns:115px minmax(0,1fr)
+ }
+ .entry[data-reading-finish="5"] .reading-sources .eyebrow{
+  grid-column:1!important;grid-row:1/-1!important
+ }
+ .entry[data-reading-finish="5"] .reading-sources .sources>a{
+  grid-column:2!important;grid-row:auto!important;
+  min-height:44px!important;
+  padding:7px 0 7px 30px!important
+ }
+ .entry[data-reading-finish="5"] .reading-sources .sources>a+a{
+  border-top:1px solid var(--hair)!important
+ }
+}
+@media(max-width:620px){
+ .entry[data-reading-finish="5"] .reading-sources>.sources,
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(2):last-of-type),
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(3):last-of-type){
+  grid-template-columns:minmax(0,1fr)
+ }
+ .entry[data-reading-finish="5"] .reading-sources .eyebrow{
+  grid-column:1!important;grid-row:auto!important;
+  padding:9px 0 2px!important
+ }
+ .entry[data-reading-finish="5"] .reading-sources .sources>a{
+  grid-column:1!important;grid-row:auto!important;
+  min-height:48px!important;font-size:15px
+ }
+ .entry[data-reading-finish="5"] .model-flow{grid-template-columns:minmax(0,1fr)}
+ .entry[data-reading-finish="5"] .model-connector{transform:rotate(90deg)}
+ .entry[data-reading-finish="5"] .model-stage{min-height:80px}
+ .entry[data-reading-finish="5"] .essay-graphic{padding:15px 12px}
+}
+@media print{
+ .entry[data-reading-finish="5"] .reading-sources>.sources{
+  display:grid!important
+ }
+ .entry[data-reading-finish="5"] .essay-graphic .plot-bar{fill:var(--ink)}
+}
+
+
+/* Future source-count resilience: four or more references */
+/* The editorial source register is data-driven: first three references may
+   share a desktop row, additional references form quiet full-width lines
+   beneath that row. This avoids implicit CSS columns/overlap. */
+.entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4)){
+ grid-template-columns:148px repeat(3,minmax(0,1fr))
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4))>a:nth-of-type(n+4){
+ grid-column:2 / -1!important;grid-row:auto!important;
+ border-top:1px solid var(--hair)!important;
+ min-height:44px!important
+}
+@media(max-width:1180px){
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4)){
+  grid-template-columns:115px minmax(0,1fr)
+ }
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4))>a:nth-of-type(n+4){
+  grid-column:2!important
+ }
+}
+@media(max-width:620px){
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4)){
+  grid-template-columns:minmax(0,1fr)
+ }
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4))>a:nth-of-type(n+4){
+  grid-column:1!important
+ }
+}

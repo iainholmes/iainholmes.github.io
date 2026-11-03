@@ -37,6 +37,31 @@ eq(readingRecord(articles(prepared).get('private-reading-fixture')),readingRecor
 ok(prepared.includes('<details id="private-concept"><summary>Authored concept</summary><p>Existing authored explanation, not a generated summary.</p></details>'),'native accordion and its authored content preserved');
 eq(compose(prepared),prepared,'new edition retry is idempotent');
 eq(main(prepared).slice(0,main(source).length),main(source),'appending a future edition does not recompose existing history');
+
+/* Future-layout stress case: a new reading with >3 sources must receive the
+   same finished analytical design, a safe uncurated fallback and a stable
+   source register. No fixture content is published to the live archive. */
+{
+ const sourceNode=nodes(oldArticle).find(n=>n.classes.includes('sources'));
+ ok(!!sourceNode,'original authoring structure contains a source apparatus');
+ const newId='private-layout-future-reading',extra=Array.from({length:4},(_,i)=>
+  '<a href="https://example.org/private-reference-'+i+'">Private future citation '+i+'</a>').join('');
+ let draft=oldArticle.replace(/(<article class="entry" id=")[^"]+/, '$1'+newId);
+ const draftedSources=nodes(draft).find(n=>n.classes.includes('sources'));
+ draft=draft.slice(0,draftedSources.close)+extra+draft.slice(draftedSources.close);
+ const futureMarkup='<section class="edition" id="edition-9999-12-30" data-edition="9999-12-30" data-title="Private future issue">'+draft+'</section>';
+ const proposed=source.replace('</main>',futureMarkup+'</main>');
+ const rendered=compose(proposed),next=articles(rendered).get(newId);
+ ok(!!next&&next.includes('data-reading-layout="2"')&&next.includes('data-reading-stage="3"')&&next.includes('data-reading-finish="5"'),'future draft receives final reading layout without bespoke HTML');
+ ok(next.includes('class="reading-opening"')&&next.includes('class="feature-spread"'),'future reading follows full-width opening and editorial spread architecture');
+ ok(next.includes('class="reading-sources"')&&extra.split('https://example.org/').length-1===4,'future multi-source register preserved');
+ for(let i=0;i<4;i++)ok(next.includes('https://example.org/private-reference-'+i),'future source link retained '+i);
+ ok(next.includes('data-exhibit-kind="test"')&&next.includes('data-curated="false"'),'uncurated fixture carries honest provisional label, never an invented claim');
+ eq(readingRecord(next),readingRecord(draft),'future reading scholarship and links unchanged by composition');
+ eq(compose(rendered),rendered,'future complete design is byte-idempotent on subsequent publish attempts');
+ eq(main(rendered).slice(0,main(source).length),main(source),'historical archive remains unmodified by future full-layout preparation');
+}
+
 assert.throws(()=>compose('<main id="edition"><section class="edition"><article class="entry" id="broken"></article></section></main>'),/Incomplete reading folio/);count++;
 assert.notDeepEqual(readingRecord(oldArticle.replace('class="finding">','class="finding">Unauthorized mutation. ')),readingRecord(oldArticle),'unauthorized text mutation remains detectable');count++;
 assert.notDeepEqual(readingRecord(oldArticle.replace('href="','href="unauthorized-')).links,readingRecord(oldArticle).links,'link inventory remains mutation-sensitive');count++;
