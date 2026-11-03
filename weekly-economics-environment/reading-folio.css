@@ -1838,131 +1838,69 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .entry[data-reading-finish="5"] .rcf-head h3{font-size:26px}
 }
 
-/* Stage count follows actual authored items, not the historical four-column
-   fallback that left a blank fourth track in three-stage readings. */
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{
- grid-template-columns:repeat(3,minmax(0,1fr));
- width:100%;gap:12px;
+
+/* L&L accepted correction: Incidence Ledger is a horizontal three-column
+   comparison on wide screens; stack only where the viewport requires it.
+   Restore one authoritative override; do not add another vertical fallback. */
+.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:0!important;align-items:stretch!important;width:100%;margin:0 0 12px!important;
+ padding:0!important;
 }
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview:has(>li:nth-child(4)){
- grid-template-columns:repeat(4,minmax(0,1fr));
+.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger>li{
+ display:block!important;min-width:0;width:auto!important;
+ margin:0!important;padding:13px 17px 14px!important;
+ border:0!important;border-top:2px solid var(--clay)!important;
+ border-right:1px solid var(--hair)!important;background:transparent!important;
 }
-/* The Incidence Ledger has one vertical list across ALL authored variants. */
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .exhibit-ledger .ledger-line{
- display:grid;grid-template-columns:minmax(0,41%) minmax(0,1fr);
- width:100%;gap:8px 15px;min-width:0;
-}
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .ledger-line .ledger-party{
- grid-column:1;grid-row:1 / span 2;
-}
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .ledger-line .ledger-effect,
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .ledger-line .ledger-status{
- grid-column:2;
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger{
- display:flex!important;flex-direction:column!important;gap:0!important;
- width:100%!important;
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger>li{
- display:grid!important;grid-template-columns:minmax(0,41%) minmax(0,1fr)!important;
- width:100%!important;align-items:start;gap:15px!important;
- border-left:5px solid var(--forest)!important;border-top:1px solid var(--hair)!important;
- margin:0!important;padding:13px 15px!important;
- background:color-mix(in srgb,var(--forest) 6%,var(--paper));
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger>li:nth-child(3n+2){
- border-left-color:var(--clay)!important;background:color-mix(in srgb,var(--clay) 6%,var(--paper));
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger>li:nth-child(3n+3){
- border-left-color:var(--river)!important;background:color-mix(in srgb,var(--river) 6%,var(--paper));
+.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger>li:last-child{
+ border-right:0!important;
 }
 .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party{
- display:flex;align-items:baseline;gap:9px;min-width:0;
+ display:block!important;margin:0 0 10px!important;
 }
 .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party .rcf-index{
- flex:none;margin:0;
+ display:block!important;margin:0 0 7px!important;
 }
 .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party strong{
- margin:0;font:600 14px/1.4 var(--sans);
+ display:block!important;margin:0;font:600 14px/1.4 var(--sans);
 }
 .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-effect p{
- margin:0;font:400 15px/1.5 var(--serif);
+ margin:0!important;font:400 15px/1.55 var(--serif);
 }
-/* Content-led, no fixed empty tracks or artificially tall feature cards. */
+/* Three stages use three fully expanded flex items. Flex layout prevents
+   a ghost fourth grid track and distributes available width evenly. */
+.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview{
+ display:flex!important;flex-flow:row nowrap!important;
+ gap:12px!important;width:100%!important;max-width:none!important;
+ margin:22px 0 14px!important;
+}
+.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview>li{
+ flex:1 1 0!important;min-width:0!important;width:auto!important;
+ max-width:none!important;
+}
+/* Content-led spacing without fixed-height shells or unused tracks. */
 .entry[data-reading-finish="5"] .reading-companion-feature{
  height:auto!important;min-height:0!important;
- margin:18px 0 20px!important;padding:18px 22px!important;
+ margin:18px 0 22px!important;padding:18px 22px!important;
 }
 .entry[data-reading-finish="5"] .reading-companion-feature .rcf-head{margin-bottom:12px!important}
 .entry[data-reading-finish="5"] .reading-companion-feature .rcf-caveat{
  margin-top:12px!important;padding-top:10px!important;
 }
-@media(max-width:970px){
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{
-  grid-template-columns:repeat(2,minmax(0,1fr));
+@media(max-width:850px){
+ .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger{
+  grid-template-columns:minmax(0,1fr)!important;
  }
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview:has(>li:nth-child(4)){
-  grid-template-columns:repeat(2,minmax(0,1fr));
- }
-}
-@media(max-width:650px){
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview,
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview:has(>li:nth-child(4)){
-  grid-template-columns:minmax(0,1fr);
- }
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .exhibit-ledger .ledger-line,
- .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger>li{
-  grid-template-columns:minmax(0,1fr)!important;gap:5px!important;
- }
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .ledger-line .ledger-party,
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .ledger-line .ledger-effect,
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .ledger-line .ledger-status{
-  grid-column:1;grid-row:auto;
- }
-}
-
-/* Re-issue 2026-11-03: One Incidence Ledger grammar at every viewport.
-   A ledger is a vertical register of affected parties, never a set of
-   horizontal cards. Preserve the original primary ledger treatment. */
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger{
- display:flex!important;flex-direction:column!important;gap:0!important;
- margin:0 0 12px!important;padding:0!important;
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger>li{
- display:grid!important;grid-template-columns:minmax(0,41%) minmax(0,59%)!important;
- align-items:start;gap:16px;padding:15px 16px!important;
- border:0!important;border-left:5px solid var(--forest)!important;
- border-top:1px solid var(--hair)!important;
- background:color-mix(in srgb,var(--forest) 7%,var(--paper));
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger>li:nth-child(3n+2){
- border-left-color:var(--clay)!important;background:color-mix(in srgb,var(--clay) 8%,var(--paper));
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger>li:nth-child(3n+3){
- border-left-color:var(--river)!important;background:color-mix(in srgb,var(--river) 6%,var(--paper));
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger .rcf-index{
- display:inline-block;margin:0 12px 0 0;color:var(--clay);vertical-align:baseline;
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party{
- display:flex;align-items:baseline;gap:0;min-width:0;
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party strong{
- display:inline;margin:0;line-height:1.45;
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-effect p{
- margin:0;line-height:1.52;
-}
-/* Whitespace is budgeted by the content, not a fixed empty apparatus box. */
-.entry[data-reading-finish="5"] .reading-companion-feature{
- margin-block:18px 22px!important;padding-block:21px 18px!important;
-}
-.entry[data-reading-finish="5"] .rcf-head{margin-bottom:15px!important}
-.entry[data-reading-finish="5"] .rcf-caveat{margin-top:12px!important;padding-top:11px!important}
-.entry[data-reading-finish="5"] .rcf-points.rcf-flow{margin-bottom:12px!important}
-@media(max-width:650px){
  .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger>li{
-  grid-template-columns:minmax(0,1fr)!important;gap:7px!important;padding:13px 12px!important;
+  border-right:0!important;border-bottom:1px solid var(--hair)!important;
  }
- .entry[data-reading-finish="5"] .reading-companion-feature{padding:17px 15px!important}
+ .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview{flex-wrap:wrap!important}
+ .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview>li{flex:1 1 calc(50% - 12px)!important}
+}
+@media(max-width:650px){
+ .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview{flex-flow:column nowrap!important}
+ .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview>li{
+  flex:none!important;width:100%!important;
+ }
 }
