@@ -1099,17 +1099,23 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 }
 .entry[data-reading-finish="5"] .reading-exhibit .exhibit-introduction,
 .entry[data-reading-finish="5"] .reading-exhibit .exhibit-primer{max-width:none;width:100%}
-/* Source register: the available width is divided between its actual
-   1, 2, or 3 references. No giant blank right-hand field. */
+/* Source trail: same unboxed, typography-led treatment as the continuing
+   notebook. Each link uses its share of the full-width reading register;
+   avoid enclosing bands and tinted cards. */
 .entry[data-reading-finish="5"] .reading-sources{
- margin:14px 0 0;border-top:6px solid var(--forest);
- border-bottom:3px solid var(--forest);background:color-mix(in srgb,var(--paper) 97%,var(--forest) 3%)
+ position:relative;margin:17px 0 0;
+ border:0!important;border-top:2px solid var(--hair)!important;
+ background:transparent!important
+}
+.entry[data-reading-finish="5"] .reading-sources::before{
+ content:"";position:absolute;top:-2px;left:0;
+ width:65px;height:3px;background:var(--clay);pointer-events:none
 }
 .entry[data-reading-finish="5"] .reading-sources>.sources{
  display:grid!important;width:100%;max-width:none!important;
  grid-template-columns:148px minmax(0,1fr);
- gap:0!important;margin:0!important;padding:0!important;
- align-items:stretch;grid-auto-flow:row
+ gap:0 clamp(15px,1.6vw,27px)!important;
+ align-items:start;margin:0!important;padding:10px 0 6px!important
 }
 .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(2):last-of-type){
  grid-template-columns:148px repeat(2,minmax(0,1fr))
@@ -1119,33 +1125,29 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 }
 .entry[data-reading-finish="5"] .reading-sources .eyebrow{
  grid-column:1!important;grid-row:1!important;
- display:flex;align-items:center;margin:0!important;
- padding:15px 16px!important;border-left:6px solid var(--clay);
- font:600 11px/1.45 var(--sans);letter-spacing:.11em;
+ display:block;margin:0!important;padding:11px 0!important;
+ border:0!important;background:none!important;
+ font:600 11px/1.5 var(--sans);letter-spacing:.08em;
  text-transform:uppercase;color:var(--ink)
 }
 .entry[data-reading-finish="5"] .reading-sources .sources>a{
- grid-column:auto!important;grid-row:1!important;
- display:flex;align-items:center;min-width:0;margin:0!important;
- min-height:64px!important;padding:11px 18px 11px 48px!important;
- border-left:3px solid var(--hair);border-bottom:0!important;
- background:color-mix(in srgb,var(--paper) 95%,var(--river) 5%);
- font:400 clamp(13px,1.2vw,16px)/1.4 var(--serif);
- color:var(--river);text-decoration:none
-}
-.entry[data-reading-finish="5"] .reading-sources .sources>a:nth-of-type(2){
- background:color-mix(in srgb,var(--paper) 95%,var(--forest) 5%)
-}
-.entry[data-reading-finish="5"] .reading-sources .sources>a:nth-of-type(3){
- background:color-mix(in srgb,var(--paper) 95%,var(--clay) 5%)
+ grid-column:auto!important;grid-row:1!important;min-width:0;
+ display:block;position:relative;margin:0!important;
+ min-height:48px!important;padding:8px 0 8px 30px!important;
+ border:0!important;background:transparent!important;
+ font:400 clamp(14px,1.22vw,17px)/1.45 var(--serif);
+ color:var(--river);text-decoration:none;overflow-wrap:anywhere
 }
 .entry[data-reading-finish="5"] .reading-sources .sources>a::before{
- left:17px;top:50%;transform:translateY(-50%);font-size:12px
+ left:0;top:10px;transform:none;
+ font:500 12px/1.4 var(--sans);color:var(--clay)
 }
-.entry[data-reading-finish="5"] .reading-sources .sources>a:hover,
+.entry[data-reading-finish="5"] .reading-sources .sources>a:hover{
+ color:var(--clay);text-decoration:underline;text-underline-offset:4px
+}
 .entry[data-reading-finish="5"] .reading-sources .sources>a:focus-visible{
- outline:2px solid var(--river);outline-offset:-2px;
- background:color-mix(in srgb,var(--paper) 86%,var(--river) 14%)
+ color:var(--ink);outline:2px solid var(--river);
+ outline-offset:3px;background:transparent!important
 }
 /* Economic figures are now inside .essay-graphic, not .reading-exhibit.
    Apply proper styling in the actual component location. */
@@ -1273,15 +1275,18 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .entry[data-reading-finish="5"] .reading-sources>.sources,
  .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(2):last-of-type),
  .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(3):last-of-type){
-  grid-template-columns:120px minmax(0,1fr)
+  grid-template-columns:115px minmax(0,1fr)
  }
  .entry[data-reading-finish="5"] .reading-sources .eyebrow{
   grid-column:1!important;grid-row:1/-1!important
  }
  .entry[data-reading-finish="5"] .reading-sources .sources>a{
-  grid-column:2!important;grid-row:auto!important;min-height:44px!important;
-  border-left:3px solid var(--hair);
-  padding-top:8px!important;padding-bottom:8px!important
+  grid-column:2!important;grid-row:auto!important;
+  min-height:44px!important;
+  padding:7px 0 7px 30px!important
+ }
+ .entry[data-reading-finish="5"] .reading-sources .sources>a+a{
+  border-top:1px solid var(--hair)!important
  }
 }
 @media(max-width:620px){
@@ -1292,11 +1297,11 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  }
  .entry[data-reading-finish="5"] .reading-sources .eyebrow{
   grid-column:1!important;grid-row:auto!important;
-  min-height:42px!important;padding:10px 14px!important
+  padding:9px 0 2px!important
  }
  .entry[data-reading-finish="5"] .reading-sources .sources>a{
   grid-column:1!important;grid-row:auto!important;
-  padding-left:46px!important;font-size:15px;min-height:48px!important
+  min-height:48px!important;font-size:15px
  }
  .entry[data-reading-finish="5"] .model-flow{grid-template-columns:minmax(0,1fr)}
  .entry[data-reading-finish="5"] .model-connector{transform:rotate(90deg)}
