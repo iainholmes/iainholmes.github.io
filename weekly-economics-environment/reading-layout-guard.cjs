@@ -67,7 +67,7 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
     throw Error('L&L publication layout: horizontal desktop Incidence Ledger layout rule missing '+id);
    if(kind==='long'){
     const stages=[...markup.matchAll(/class="longview-point"/g)].length;
-    const declared=Number(markup.match(/class="exhibit-longview" data-stage-count="(\\d+)"/)?.[1]||0);
+    const declared=Number(markup.match(/class="exhibit-longview" data-stage-count="(\d+)"/)?.[1]||0);
     if(stages!==declared||stages<2)throw Error('L&L publication layout: Long View stage-count mismatch '+id);
     if(!folioCss.includes('ol.exhibit-longview>li'))throw Error('L&L publication layout: full-width stage layout missing '+id);
    }
