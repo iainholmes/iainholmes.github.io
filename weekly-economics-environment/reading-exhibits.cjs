@@ -560,7 +560,78 @@ const catalog={
 const visualData={
   "insurance": {
     "type": "mechanism",
-    "plot": {"title":"Insurance costs and housing capitalization","x":"Expected insurance expense →","y":"Housing bid / property value","lines":[["Conditional capitalization",[[0.05,0.88],[0.28,0.76],[0.52,0.6],[0.75,0.4],[0.95,0.24]]]],"explain":"An increase in expected ownership costs can lower bids for an otherwise comparable property. The direction is a theoretical channel, not an estimate of capitalization."},
+    "plot": {
+      "model": "market",
+      "title": "Insurance costs and the housing market",
+      "x": "Housing quantity Q →",
+      "y": "Housing price P",
+      "lines": [
+        [
+          "Housing demand · before higher insurance costs",
+          [
+            [
+              0.12,
+              0.91
+            ],
+            [
+              0.34,
+              0.76
+            ],
+            [
+              0.57,
+              0.55
+            ],
+            [
+              0.87,
+              0.23
+            ]
+          ]
+        ],
+        [
+          "Housing demand · after higher insurance costs",
+          [
+            [
+              0.08,
+              0.74
+            ],
+            [
+              0.3,
+              0.58
+            ],
+            [
+              0.55,
+              0.35
+            ],
+            [
+              0.78,
+              0.14
+            ]
+          ]
+        ],
+        [
+          "Housing supply",
+          [
+            [
+              0.16,
+              0.13
+            ],
+            [
+              0.37,
+              0.3
+            ],
+            [
+              0.61,
+              0.56
+            ],
+            [
+              0.89,
+              0.86
+            ]
+          ]
+        ]
+      ],
+      "explain": "Conditional comparative statics: higher expected insurance expense may lower buyers' net bids, shifting housing demand inward. Equilibrium price and quantity depend on local supply elasticity; no capitalization coefficient is estimated by this diagram."
+    },
     "title": "Housing-cost transmission",
     "stages": [
       "Insurance strain",
@@ -571,7 +642,78 @@ const visualData={
   },
   "2026-10-02-policy-mix": {
     "type": "mechanism",
-    "plot": {"title":"Domestic demand and the world-fuel price","x":"World fossil-fuel quantity →","y":"World fuel price","lines":[["Demand before policy",[[0.12,0.9],[0.35,0.74],[0.62,0.46],[0.9,0.16]]],["Demand after policy",[[0.05,0.73],[0.28,0.54],[0.55,0.27],[0.7,0.09]]],["World supply",[[0.14,0.11],[0.33,0.29],[0.6,0.59],[0.89,0.87]]]],"explain":"A leftward demand shift can lower the world price and partially offset domestic abatement through foreign demand. These are comparative-statics curves, not estimated world-market elasticities."},
+    "plot": {
+      "title": "Domestic demand and the world-fuel price",
+      "x": "World fossil-fuel quantity Q →",
+      "y": "World fuel price P",
+      "lines": [
+        [
+          "Demand before policy",
+          [
+            [
+              0.12,
+              0.9
+            ],
+            [
+              0.35,
+              0.74
+            ],
+            [
+              0.62,
+              0.46
+            ],
+            [
+              0.9,
+              0.16
+            ]
+          ]
+        ],
+        [
+          "Demand after policy",
+          [
+            [
+              0.05,
+              0.73
+            ],
+            [
+              0.28,
+              0.54
+            ],
+            [
+              0.55,
+              0.27
+            ],
+            [
+              0.7,
+              0.09
+            ]
+          ]
+        ],
+        [
+          "World supply",
+          [
+            [
+              0.14,
+              0.11
+            ],
+            [
+              0.33,
+              0.29
+            ],
+            [
+              0.6,
+              0.59
+            ],
+            [
+              0.89,
+              0.87
+            ]
+          ]
+        ]
+      ],
+      "explain": "A reduction in domestic fuel demand may shift world demand inward, reducing the world price and potentially increasing consumption elsewhere. The two equilibria are schematic, not empirical global-market estimates.",
+      "model": "market"
+    },
     "title": "Cross-border leakage channel",
     "stages": [
       "Domestic demand falls",
@@ -582,7 +724,64 @@ const visualData={
   },
   "2026-10-02-storage": {
     "type": "mechanism",
-    "plot": {"title":"Storage entry and diminishing arbitrage value","x":"Storage penetration →","y":"Marginal value","lines":[["Private arbitrage return",[[0.06,0.91],[0.27,0.76],[0.5,0.52],[0.73,0.3],[0.95,0.14]]],["Other system value",[[0.06,0.78],[0.29,0.71],[0.55,0.58],[0.77,0.47],[0.95,0.39]]]],"explain":"Additional storage can compress price spreads that earn private arbitrage revenue, even while other system benefits remain. Curves illustrate possible feedback, not estimated marginal values or an optimal capacity."},
+    "plot": {
+      "title": "Storage entry and diminishing arbitrage value",
+      "x": "Storage penetration →",
+      "y": "Marginal value",
+      "lines": [
+        [
+          "Private arbitrage return",
+          [
+            [
+              0.06,
+              0.91
+            ],
+            [
+              0.27,
+              0.76
+            ],
+            [
+              0.5,
+              0.52
+            ],
+            [
+              0.73,
+              0.3
+            ],
+            [
+              0.95,
+              0.14
+            ]
+          ]
+        ],
+        [
+          "Other system value",
+          [
+            [
+              0.06,
+              0.78
+            ],
+            [
+              0.29,
+              0.71
+            ],
+            [
+              0.55,
+              0.58
+            ],
+            [
+              0.77,
+              0.47
+            ],
+            [
+              0.95,
+              0.39
+            ]
+          ]
+        ]
+      ],
+      "explain": "Additional storage can compress price spreads that earn private arbitrage revenue, even while other system benefits remain. Curves illustrate possible feedback, not estimated marginal values or an optimal capacity."
+    },
     "title": "The private–social return wedge",
     "stages": [
       "Storage entry",
@@ -593,7 +792,65 @@ const visualData={
   },
   "2026-10-09-trade-climate": {
     "type": "mechanism",
-    "plot": {"title":"Transfers and the participation constraint","x":"Carbon-policy ambition →","y":"Net payoff from joining","neutral":true,"lines":[["Without compensation",[[0.06,0.77],[0.33,0.56],[0.56,0.35],[0.78,0.21],[0.95,0.1]]],["With transfers",[[0.06,0.94],[0.33,0.81],[0.56,0.67],[0.78,0.51],[0.95,0.36]]]],"explain":"Compensation can relax a participant's willingness-to-join constraint. Actual payoffs and feasible transfers depend on the calibrated model, trade exposure and agreement design."},
+    "plot": {
+      "title": "Transfers and the participation constraint",
+      "x": "Carbon-policy ambition →",
+      "y": "Net payoff from joining",
+      "neutral": true,
+      "lines": [
+        [
+          "Without compensation",
+          [
+            [
+              0.06,
+              0.77
+            ],
+            [
+              0.33,
+              0.56
+            ],
+            [
+              0.56,
+              0.35
+            ],
+            [
+              0.78,
+              0.21
+            ],
+            [
+              0.95,
+              0.1
+            ]
+          ]
+        ],
+        [
+          "With transfers",
+          [
+            [
+              0.06,
+              0.94
+            ],
+            [
+              0.33,
+              0.81
+            ],
+            [
+              0.56,
+              0.67
+            ],
+            [
+              0.78,
+              0.51
+            ],
+            [
+              0.95,
+              0.36
+            ]
+          ]
+        ]
+      ],
+      "explain": "Compensation can relax a participant's willingness-to-join constraint. Actual payoffs and feasible transfers depend on the calibrated model, trade exposure and agreement design."
+    },
     "title": "Terms-of-trade redistribution",
     "stages": [
       "Carbon price",
@@ -630,9 +887,10 @@ const visualData={
   },
   "2026-10-16-pfas-agriculture": {
     "type": "mechanism",
-    "plot": {"title":"Prevention costs and downstream exposure burden","x":"Upstream prevention effort →","y":"Illustrative costs","lines":[["Downstream burden",[[0.05,0.93],[0.28,0.68],[0.53,0.47],[0.75,0.3],[0.94,0.19]]],["Prevention resources",[[0.05,0.09],[0.28,0.2],[0.53,0.37],[0.75,0.6],[0.94,0.83]]]],"explain":"A hypothetical prevention trade-off: upstream action uses resources but could reduce downstream costs. No farm-loss function, mitigation-cost curve, or optimum is estimated in the cited article."},
-    "placement": "ledger",
-    "intervention": ["Public agencies", "Upstream prevention may change who ultimately bears costs"],
+    "intervention": [
+      "Public agencies",
+      "Upstream prevention may change who ultimately bears costs"
+    ],
     "title": "Potential cost transmission",
     "stages": [
       "Contaminated inputs",
@@ -643,7 +901,65 @@ const visualData={
   },
   "2026-10-16-energy-macro": {
     "type": "mechanism",
-    "plot": {"title":"Importer and exporter exposure to fuel shocks","x":"Global fuel-price increase →","y":"Terms-of-trade contribution","neutral":true,"lines":[["Net energy exporter",[[0.04,0.49],[0.27,0.59],[0.52,0.69],[0.76,0.82],[0.95,0.91]]],["Net energy importer",[[0.04,0.49],[0.27,0.39],[0.52,0.29],[0.76,0.18],[0.95,0.09]]]],"explain":"Opposing terms-of-trade channels can affect importers and exporters differently. Fiscal policy, quantities and growth responses are omitted; slopes are illustrative, not IMF estimates."},
+    "plot": {
+      "title": "Importer and exporter exposure to fuel shocks",
+      "x": "Global fuel-price increase →",
+      "y": "Terms-of-trade contribution",
+      "neutral": true,
+      "lines": [
+        [
+          "Net energy exporter",
+          [
+            [
+              0.04,
+              0.49
+            ],
+            [
+              0.27,
+              0.59
+            ],
+            [
+              0.52,
+              0.69
+            ],
+            [
+              0.76,
+              0.82
+            ],
+            [
+              0.95,
+              0.91
+            ]
+          ]
+        ],
+        [
+          "Net energy importer",
+          [
+            [
+              0.04,
+              0.49
+            ],
+            [
+              0.27,
+              0.39
+            ],
+            [
+              0.52,
+              0.29
+            ],
+            [
+              0.76,
+              0.18
+            ],
+            [
+              0.95,
+              0.09
+            ]
+          ]
+        ]
+      ],
+      "explain": "Opposing terms-of-trade channels can affect importers and exporters differently. Fiscal policy, quantities and growth responses are omitted; slopes are illustrative, not IMF estimates."
+    },
     "title": "Energy-shock exposure",
     "stages": [
       "Fuel-price shock",
@@ -944,26 +1260,62 @@ function select(id){
 
 /* Every qualitative Incidence Ledger gets a real economics diagram with
    axes, visibly differentiated curves, and no fictitious numeric scale. */
+/* Schematic microeconomic graphs have no numeric ticks or estimated slopes.
+   Only market diagrams with economically justified demand/supply shifts
+   show notional equilibria. Other mechanisms remain transparently qualitative. */
 function economicPlot(id){
  const p=visualData[id]?.plot;
  if(!p)return '';
  const X=x=>(70+x*480).toFixed(1),Y=y=>(222-y*168).toFixed(1);
  const d=pts=>pts.map(([x,y],i)=>(i?'L':'M')+X(x)+' '+Y(y)).join(' ');
- const alt=p.title+'. '+p.y+' against '+p.x+'. '+p.lines.map(([name])=>name).join(' versus ')+'. '+p.explain;
- const curves=p.lines.map(([name,pts],i)=>'<path class="economic-curve economic-curve-'+i+'" d="'+d(pts)+'" aria-hidden="true"/>').join('');
- const neutral=p.neutral?'<line x1="70" y1="'+Y(.49)+'" x2="550" y2="'+Y(.49)+'" class="economic-neutral"/><text x="78" y="'+(Number(Y(.49))-7)+'" class="economic-neutral-label">neutral</text>':'';
+ const lines=p.lines.map(([name,pts],i)=>'<path class="economic-curve economic-curve-'+i+'" d="'+d(pts)+'" aria-hidden="true"/>').join('');
+ const neutral=p.neutral?'<line x1="70" y1="'+Y(.49)+'" x2="550" y2="'+Y(.49)+'" class="economic-neutral"/><text x="78" y="'+(Number(Y(.49))-7)+'" class="economic-neutral-label">neutral baseline</text>':'';
  const legend=p.lines.map(([name],i)=>'<span class="economic-legend-item"><i class="economic-legend-key economic-legend-key-'+i+'"></i>'+esc(name)+'</span>').join('');
- return '<div class="economic-plot" data-economic-evidence="schematic"><div class="economic-plot-kicker">ECONOMIC GRAPH · CONCEPTUAL</div>'+
- '<h5>'+esc(p.title)+'</h5>'+
+ const alt=p.title+'. '+p.y+' against '+p.x+'. '+p.lines.map(([name])=>name).join('; ')+'. '+p.explain;
+ let marks='';
+ if(p.model==='market'){
+   const crossing=(a,b,c,d)=>{
+     const rx=b[0]-a[0],ry=b[1]-a[1],sx=d[0]-c[0],sy=d[1]-c[1],den=rx*sy-ry*sx;
+     if(Math.abs(den)<1e-9)return null;
+     const t=((c[0]-a[0])*sy-(c[1]-a[1])*sx)/den,u=((c[0]-a[0])*ry-(c[1]-a[1])*rx)/den;
+     return t>=0&&t<=1&&u>=0&&u<=1?[a[0]+t*rx,a[1]+t*ry]:null;
+   };
+   const intersect=(first,second)=>{
+     for(let i=1;i<first.length;i++)for(let j=1;j<second.length;j++){
+       const q=crossing(first[i-1],first[i],second[j-1],second[j]);
+       if(q)return q;
+     }
+     return null;
+   };
+   const supply=p.lines[2]?.[1],demand0=p.lines[0]?.[1],demand1=p.lines[1]?.[1];
+   if(!supply||!demand0||!demand1)throw Error('Incomplete authored market-shift graph '+id);
+   const eq=[intersect(demand0,supply),intersect(demand1,supply)];
+   if(eq.some(q=>!q))throw Error('Market equilibrium must be on actual authored curves '+id);
+   marks=eq.map(([x,y],i)=>{
+     const xx=X(x),yy=Y(y),index=i===0?'₀':'₁',offset=i===0?-14:15;
+     return '<line x1="70" y1="'+yy+'" x2="'+xx+'" y2="'+yy+'" class="economic-eq-guide"/>'+
+     '<line x1="'+xx+'" y1="'+yy+'" x2="'+xx+'" y2="222" class="economic-eq-guide"/>'+
+     '<circle cx="'+xx+'" cy="'+yy+'" r="5.5" class="economic-eq-point economic-eq-point-'+i+'"/>'+
+     '<text x="'+(Number(xx)+offset)+'" y="'+(Number(yy)-12)+'" class="economic-eq-label">E'+index+'</text>'+
+     '<text x="58" y="'+(Number(yy)+4)+'" text-anchor="end" class="economic-eq-value">P'+index+'</text>'+
+     '<text x="'+xx+'" y="240" text-anchor="middle" class="economic-eq-value">Q'+index+'</text>';
+   }).join('');
+   const tags=['D₀','D₁','S'];
+   marks+=p.lines.map(([,pts],i)=>{
+     const end=pts[pts.length-1],x=Number(X(end[0]))+8,y=Number(Y(end[1]))+(i===2?-4:4);
+     return '<text x="'+x+'" y="'+y+'" class="economic-curve-label"> '+tags[i]+'</text>';
+   }).join('');
+ }
+ return '<div class="economic-plot" data-economic-evidence="schematic" data-economic-model="'+esc(p.model||'qualitative')+'">'+
+ '<div class="economic-plot-kicker">ECONOMIC GRAPH · CONCEPTUAL</div><h5>'+esc(p.title)+'</h5>'+
  '<div class="economic-y-axis">'+esc(p.y)+'</div>'+
  '<svg class="economic-plot-svg" viewBox="0 0 620 257" role="img" aria-label="'+esc(alt)+'" xmlns="http://www.w3.org/2000/svg">'+
  '<line x1="70" y1="54" x2="70" y2="222" class="economic-axis"/><line x1="70" y1="222" x2="550" y2="222" class="economic-axis"/>'+
- '<line x1="70" y1="139" x2="550" y2="139" class="economic-guide"/>'+neutral+curves+'</svg>'+
+ '<line x1="70" y1="139" x2="550" y2="139" class="economic-guide"/>'+neutral+lines+marks+'</svg>'+
  '<div class="economic-x-axis">'+esc(p.x)+'</div><div class="economic-legend">'+legend+'</div>'+
  '<p class="economic-plot-explain">'+esc(p.explain)+'</p>'+
- '<p class="economic-plot-status">Schematic comparative statics · neither plotted slopes nor intersection points are empirical estimates</p></div>';
+ '<p class="economic-plot-status">Theoretical comparative statics · axes and intersections are illustrative, not fitted estimates</p></div>';
 }
-
 function graphic(id){
  const v=visualData[id];if(!v)return '';
  const label=v.type==='mechanism'?'ECONOMIC MODEL':v.type==='calculation'?'ECONOMIC ACCOUNTING':v.type==='decomposition'?'ESTIMATED DECOMPOSITION':'ECONOMIC FIGURE';
@@ -971,8 +1323,11 @@ function graphic(id){
  const note='<figcaption class="ledger-graphic-note">'+esc(v.note)+'</figcaption>';
  let content='';
  if(v.type==='mechanism'){
-   if(!v.plot)throw Error('Incidence Ledger needs a source-specific economic plot '+id);
-   content=economicPlot(id)+(v.intervention?'<div class="model-intervention"><span>'+esc(v.intervention[0])+'</span><p>'+esc(v.intervention[1])+'</p></div>':'');
+   if(v.plot)content=economicPlot(id);
+   else content='<div class="model-flow" role="img" aria-label="'+esc(v.title+'. '+v.stages.join('; ')+'. Conceptual transmission, no estimated magnitude.')+'">'+
+      v.stages.map((stage,i)=>'<div class="model-stage"><span class="model-stage-number">'+String(i+1).padStart(2,'0')+'</span><strong>'+esc(stage)+'</strong></div>').join('<span class="model-connector" aria-hidden="true">→</span>')+'</div>'+
+      '<p class="model-kind">Exposure and possible incidence · conceptual pathway, not a measured response</p>';
+   if(v.intervention)content+='<div class="model-intervention"><span>'+esc(v.intervention[0])+'</span><p>'+esc(v.intervention[1])+'</p></div>';
  }else if(v.type==='calculation'){
    const [a,b,c]=v.terms;
    const min=Number(String(b[1]).split('–')[0]),max=Number(String(b[1]).split('–')[1]),base=Number(a[1]),total=base+max;
@@ -1014,7 +1369,7 @@ function graphic(id){
  }
  return '<figure class="ledger-graphic" data-visual-kind="'+esc(v.type)+'">'+head+content+note+'</figure>';
 }
-function graphicPlacement(id){return visualData[id]?.placement==='interpretation'?'interpretation':'ledger';}
+function graphicPlacement(id){return visualData[id]?.placement==='ledger'?'ledger':'interpretation';}
 function render(id,source={}){
  const e=select(id),kind=e.kind;
  const head='<header class="exhibit-head"><strong>'+esc(names[kind])+'</strong><span class="exhibit-heading">'+esc(e.heading)+'</span></header>';
