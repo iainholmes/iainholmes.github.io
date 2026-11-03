@@ -132,25 +132,36 @@ ok(css.includes('grid-template-columns:25px minmax(0,1fr)'),'narrow surplus figu
 ok(css.includes('grid-template-columns:minmax(112px,.23fr)'),'source register keeps horizontal desktop arrangement');
 const archivalFigures=[...articles.values()].filter(a=>a.includes('class="essay-graphic"'));
 const relocated=[...articles.keys()].filter(id=>select(id).kind==='ledger'&&graphicPlacement(id)==='ledger');
-eq(archivalFigures.length,0,'all Incidence Ledger visuals now attach to their affected-party tables');
-eq(relocated.length,totals.ledger,'all curated Incidence Ledgers have in-ledger economic graphs');
+eq(archivalFigures.length,totals.ledger,'all eleven figures again stand beside their Incidence Ledgers');
+eq(relocated.length,0,'no economic graphic remains embedded inside the Ledger rows');
 for(const [id,reading] of articles){
  if(select(id).kind!=='ledger')continue;
  const g=visualData[id],plot=reading.includes('class="economic-plot-svg"');
- if(g.type==='mechanism'){
-  ok(plot&&reading.includes('data-economic-evidence="schematic"'),'conceptual graph has plot and explicit uncertainty '+id);
-  ok(g.plot.lines.length>=1&&g.plot.lines.every(line=>line[1].length>=2),'each qualitative economic curve individually authored '+id);
-  ok(reading.includes('Schematic comparative statics'),'qualitative graph never masquerades as an estimated effect '+id);
+ const tree=require('../weekly-economics-environment/editorial-folio.cjs').nodes(reading);
+ const block=tree.find(n=>n.classes.includes('reading-exhibit'));
+ ok(!reading.slice(block.start,block.end).includes('class="ledger-graphic"'),'the Ledger remains a self-contained textual incidence register '+id);
+ if(g.type==='mechanism'&&g.plot){
+  ok(plot&&reading.includes('data-economic-evidence="schematic"'),'theoretical graph explicitly qualified '+id);
+  ok(g.plot.lines.length>=1&&g.plot.lines.every(line=>line[1].length>=2),'curves are individually specified '+id);
+  ok(reading.includes('Theoretical comparative statics'),'illustrative slopes never presented as empirical estimates '+id);
+ }else if(g.type==='mechanism'){
+  ok(!plot&&reading.includes('class="model-flow"'),'PFAS uses a truthful unestimated incidence mechanism instead of an artificial optimum '+id);
  }else{
-  ok(!plot&&reading.includes('class="ledger-graphic"'),'source-backed numeric presentation stays numeric '+id);
+  ok(!plot&&reading.includes('class="ledger-graphic"'),'source-derived numeric presentation remains intact '+id);
  }
 }
+for(const id of ['insurance','2026-10-02-policy-mix']){
+ const markup=articles.get(id);
+ ok(markup.includes('data-economic-model="market"')&&markup.includes('economic-eq-point-0')&&markup.includes('economic-eq-point-1'),'a market graph contains calculated symbolic equilibrium markers '+id);
+}
+
 
 ok(articles.get('2026-10-16-pfas-agriculture').includes('model-intervention'),'PFAS pathway preserves conditional intervention distinction');
-ok([...articles.values()].filter(a=>a.includes('class="ledger-plot"')).length>=3,'quantitative source graphs retained in their Ledgers');
-eq([...articles.values()].filter(a=>a.includes('class="economic-plot-svg"')).length,6,'six mechanisms now use explicitly labeled economic graphs rather than flow diagrams');
-ok([...articles.values()].filter(a=>a.includes('class="surplus-visual"')).length>=1,'historical methane accounting graph retained within its Ledger');
-ok([...articles.values()].filter(a=>a.includes('class="decomp-track"')).length>=1,'historical paper-markup decomposition retained within its Ledger');
+ok([...articles.values()].filter(a=>a.includes('class="ledger-plot"')).length>=3,'quantitative source charts remain next to their Ledgers');
+eq([...articles.values()].filter(a=>a.includes('class="economic-plot-svg"')).length,5,'five conventional theory plots retained where economically justified');
+eq([...articles.values()].filter(a=>a.includes('class="model-flow"')).length,1,'PFAS incidence graph is a mechanism, not an invented welfare model');
+ok([...articles.values()].filter(a=>a.includes('class="surplus-visual"')).length>=1,'methane accounting display remains beside its Ledger');
+ok([...articles.values()].filter(a=>a.includes('class="decomp-track"')).length>=1,'paper markup decomposition remains beside its Ledger');
 ok(articles.get('2026-10-30-coal-country').includes('class="plot-tick"')&&articles.get('2026-10-30-coal-country').includes('class="plot-grid'), 'coal chart has labeled quantitative scale and guides');
 ok(articles.get('2026-10-30-methane-rule').includes('class="surplus-upper"'),'reported range distinguished visually from its lower bound');
 const sourceCounts=[...articles.values()].map(a=>{const x=a.match(/<div class="reading-sources">([\s\S]*?)<\/div><\/div>/);return x?(x[1].match(/<a /g)||[]).length:0});
