@@ -1077,3 +1077,235 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
   border-right:0!important
  }
 }
+
+
+/* Full-width reading and source-driven graphics · November 2 review */
+/* The reading's lead and first analysis consume the actual reading sheet.
+   Width is determined by the parent column, not a fixed 65–80ch ceiling. */
+.entry[data-reading-finish="5"] .reading-deck .finding,
+.entry[data-reading-finish="5"] .reading-opening,
+.entry[data-reading-finish="5"] .reading-opening>.analysis-block,
+.entry[data-reading-finish="5"] .reading-opening>.analysis-block p{
+ width:100%;max-width:none!important
+}
+.entry[data-reading-finish="5"] .reading-opening>.analysis-block p{
+ font-size:18px;line-height:1.65;text-wrap:pretty
+}
+/* Any full-row interpretation likewise uses the width of its section.
+   Paired Ledger/Test sections keep their intentional shared columns. */
+.entry[data-reading-finish="5"] .feature-spread[data-feature="long"] .interpretive-essay .analysis-block p,
+.entry[data-reading-finish="5"] .feature-spread[data-feature="decision"] .interpretive-essay .analysis-block p{
+ max-width:none!important;width:100%
+}
+.entry[data-reading-finish="5"] .reading-exhibit .exhibit-introduction,
+.entry[data-reading-finish="5"] .reading-exhibit .exhibit-primer{max-width:none;width:100%}
+/* Source register: the available width is divided between its actual
+   1, 2, or 3 references. No giant blank right-hand field. */
+.entry[data-reading-finish="5"] .reading-sources{
+ margin:14px 0 0;border-top:6px solid var(--forest);
+ border-bottom:3px solid var(--forest);background:color-mix(in srgb,var(--paper) 97%,var(--forest) 3%)
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources{
+ display:grid!important;width:100%;max-width:none!important;
+ grid-template-columns:148px minmax(0,1fr);
+ gap:0!important;margin:0!important;padding:0!important;
+ align-items:stretch;grid-auto-flow:row
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(2):last-of-type){
+ grid-template-columns:148px repeat(2,minmax(0,1fr))
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(3):last-of-type){
+ grid-template-columns:148px repeat(3,minmax(0,1fr))
+}
+.entry[data-reading-finish="5"] .reading-sources .eyebrow{
+ grid-column:1!important;grid-row:1!important;
+ display:flex;align-items:center;margin:0!important;
+ padding:15px 16px!important;border-left:6px solid var(--clay);
+ font:600 11px/1.45 var(--sans);letter-spacing:.11em;
+ text-transform:uppercase;color:var(--ink)
+}
+.entry[data-reading-finish="5"] .reading-sources .sources>a{
+ grid-column:auto!important;grid-row:1!important;
+ display:flex;align-items:center;min-width:0;margin:0!important;
+ min-height:64px!important;padding:11px 18px 11px 48px!important;
+ border-left:3px solid var(--hair);border-bottom:0!important;
+ background:color-mix(in srgb,var(--paper) 95%,var(--river) 5%);
+ font:400 clamp(13px,1.2vw,16px)/1.4 var(--serif);
+ color:var(--river);text-decoration:none
+}
+.entry[data-reading-finish="5"] .reading-sources .sources>a:nth-of-type(2){
+ background:color-mix(in srgb,var(--paper) 95%,var(--forest) 5%)
+}
+.entry[data-reading-finish="5"] .reading-sources .sources>a:nth-of-type(3){
+ background:color-mix(in srgb,var(--paper) 95%,var(--clay) 5%)
+}
+.entry[data-reading-finish="5"] .reading-sources .sources>a::before{
+ left:17px;top:50%;transform:translateY(-50%);font-size:12px
+}
+.entry[data-reading-finish="5"] .reading-sources .sources>a:hover,
+.entry[data-reading-finish="5"] .reading-sources .sources>a:focus-visible{
+ outline:2px solid var(--river);outline-offset:-2px;
+ background:color-mix(in srgb,var(--paper) 86%,var(--river) 14%)
+}
+/* Economic figures are now inside .essay-graphic, not .reading-exhibit.
+   Apply proper styling in the actual component location. */
+.entry[data-reading-finish="5"] .essay-graphic{
+ padding:19px 18px 17px;
+ background:color-mix(in srgb,var(--paper) 82%,var(--river) 18%);
+ border:3px solid var(--forest);border-top-width:8px
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic{
+ display:block;margin:0;padding:0;background:none;min-width:0
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-head{
+ display:grid;grid-template-columns:minmax(0,1fr);
+ gap:6px;margin-bottom:18px;padding-bottom:13px;
+ border-bottom:2px solid color-mix(in srgb,var(--forest) 25%,transparent)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-label{
+ font:700 11px/1.25 var(--sans);letter-spacing:.13em;color:var(--river)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-head strong{
+ font:400 clamp(21px,2.1vw,28px)/1.17 var(--headline);color:var(--ink)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic-note{
+ margin:17px 0 0;padding-top:12px;border-top:2px solid color-mix(in srgb,var(--forest) 22%,transparent);
+ font:italic 13.5px/1.5 var(--serif);color:var(--text)
+}
+.entry[data-reading-finish="5"] .essay-graphic .ledger-plot{
+ display:block;width:100%;max-height:none;height:auto;overflow:visible
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-axis{stroke:var(--forest);stroke-width:2}
+.entry[data-reading-finish="5"] .essay-graphic .plot-grid{
+ stroke:color-mix(in srgb,var(--forest) 26%,transparent);stroke-width:1;stroke-dasharray:4 5
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-grid-zero{
+ stroke:var(--forest);stroke-width:2.5;stroke-dasharray:none
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-row-guide{
+ stroke:color-mix(in srgb,var(--forest) 18%,transparent);stroke-width:1
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-label{
+ fill:var(--ink);font:600 21px var(--serif)
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-value{
+ fill:var(--ink);font:700 23px var(--sans);font-variant-numeric:tabular-nums
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-axis-title{
+ fill:var(--river);font:700 16px var(--sans)
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-tick{
+ fill:var(--text);font:16px var(--sans)
+}
+.entry[data-reading-finish="5"] .essay-graphic .plot-bar{fill:var(--forest)}
+.entry[data-reading-finish="5"] .essay-graphic .plot-bar.bar-1{fill:var(--river)}
+.entry[data-reading-finish="5"] .essay-graphic .plot-bar.bar-2{fill:var(--clay)}
+.entry[data-reading-finish="5"] .essay-graphic .plot-bar.bar-3{fill:var(--sage)}
+/* Model exhibits are diagrams, not pseudo-quantified bar charts. */
+.entry[data-reading-finish="5"] .model-flow{
+ display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr) 24px minmax(0,1fr);
+ gap:5px;align-items:stretch
+}
+.entry[data-reading-finish="5"] .model-stage{
+ min-width:0;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;
+ padding:13px 12px;border:2px solid var(--forest);border-top:6px solid var(--forest);
+ background:color-mix(in srgb,var(--paper) 88%,var(--forest) 12%)
+}
+.entry[data-reading-finish="5"] .model-stage:nth-of-type(2){border-color:var(--river);background:color-mix(in srgb,var(--paper) 89%,var(--river) 11%)}
+.entry[data-reading-finish="5"] .model-stage:nth-of-type(3){border-color:var(--clay);background:color-mix(in srgb,var(--paper) 89%,var(--clay) 11%)}
+.entry[data-reading-finish="5"] .model-stage-number{
+ display:block;font:400 22px/1 var(--headline);color:var(--clay);margin-bottom:12px
+}
+.entry[data-reading-finish="5"] .model-stage strong{
+ font:600 13.5px/1.35 var(--serif);color:var(--ink)
+}
+.entry[data-reading-finish="5"] .model-connector{
+ align-self:center;text-align:center;font:400 26px/1 var(--headline);color:var(--clay)
+}
+.entry[data-reading-finish="5"] .model-kind{
+ margin:13px 0 0;font:italic 12px/1.4 var(--serif);color:var(--muted)
+}
+/* Source-grounded surplus is both an explicit accounting identity and
+   a visual decomposition; the shaded tip indicates its reported range. */
+.entry[data-reading-finish="5"] .surplus-visual{margin-top:20px}
+.entry[data-reading-finish="5"] .surplus-visual-title,
+.entry[data-reading-finish="5"] .decomp-title{
+ margin-bottom:10px;font:700 10px/1.35 var(--sans);
+ letter-spacing:.08em;color:var(--river)
+}
+.entry[data-reading-finish="5"] .surplus-band{
+ height:30px;width:100%;display:flex;overflow:hidden;
+ border:2px solid var(--forest);background:var(--paper)
+}
+.entry[data-reading-finish="5"] .surplus-fixed{display:block;background:var(--forest);height:100%}
+.entry[data-reading-finish="5"] .surplus-variable{display:block;background:var(--clay);height:100%}
+.entry[data-reading-finish="5"] .surplus-upper{
+ display:block;height:100%;
+ background:repeating-linear-gradient(135deg,var(--clay),var(--clay) 5px,var(--paper) 5px,var(--paper) 8px)
+}
+.entry[data-reading-finish="5"] .surplus-axis,
+.entry[data-reading-finish="5"] .decomp-axis{
+ display:flex;justify-content:space-between;gap:8px;margin:7px 0 0;
+ font:500 11px/1.3 var(--sans);color:var(--ink)
+}
+.entry[data-reading-finish="5"] .surplus-key,
+.entry[data-reading-finish="5"] .decomp-legend{
+ display:flex;gap:9px 18px;flex-wrap:wrap;margin-top:16px;
+ font:400 12px/1.35 var(--sans);color:var(--text)
+}
+.entry[data-reading-finish="5"] .surplus-key span,
+.entry[data-reading-finish="5"] .decomp-legend span{display:inline-flex;gap:7px;align-items:center}
+.entry[data-reading-finish="5"] .surplus-key i{
+ display:inline-block;width:13px;height:13px;border:1px solid var(--ink)
+}
+.entry[data-reading-finish="5"] .surplus-key-fixed{background:var(--forest)}
+.entry[data-reading-finish="5"] .surplus-key-variable{background:var(--clay)}
+.entry[data-reading-finish="5"] .decomp-track{
+ height:29px;border:2px solid var(--forest);border-radius:0;margin:12px 0 0
+}
+.entry[data-reading-finish="5"] .decomp-part.decomp-0{background:var(--forest)}
+.entry[data-reading-finish="5"] .decomp-part.decomp-1{background:var(--clay)}
+.entry[data-reading-finish="5"] .decomp-metric{margin:8px 0 20px}
+.entry[data-reading-finish="5"] .decomp-metric strong{
+ font:400 46px/1 var(--headline);color:var(--forest)
+}
+@media(max-width:1180px){
+ .entry[data-reading-finish="5"] .reading-sources>.sources,
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(2):last-of-type),
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(3):last-of-type){
+  grid-template-columns:120px minmax(0,1fr)
+ }
+ .entry[data-reading-finish="5"] .reading-sources .eyebrow{
+  grid-column:1!important;grid-row:1/-1!important
+ }
+ .entry[data-reading-finish="5"] .reading-sources .sources>a{
+  grid-column:2!important;grid-row:auto!important;min-height:44px!important;
+  border-left:3px solid var(--hair);
+  padding-top:8px!important;padding-bottom:8px!important
+ }
+}
+@media(max-width:620px){
+ .entry[data-reading-finish="5"] .reading-sources>.sources,
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(2):last-of-type),
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(3):last-of-type){
+  grid-template-columns:minmax(0,1fr)
+ }
+ .entry[data-reading-finish="5"] .reading-sources .eyebrow{
+  grid-column:1!important;grid-row:auto!important;
+  min-height:42px!important;padding:10px 14px!important
+ }
+ .entry[data-reading-finish="5"] .reading-sources .sources>a{
+  grid-column:1!important;grid-row:auto!important;
+  padding-left:46px!important;font-size:15px;min-height:48px!important
+ }
+ .entry[data-reading-finish="5"] .model-flow{grid-template-columns:minmax(0,1fr)}
+ .entry[data-reading-finish="5"] .model-connector{transform:rotate(90deg)}
+ .entry[data-reading-finish="5"] .model-stage{min-height:80px}
+ .entry[data-reading-finish="5"] .essay-graphic{padding:15px 12px}
+}
+@media print{
+ .entry[data-reading-finish="5"] .reading-sources>.sources{
+  display:grid!important
+ }
+ .entry[data-reading-finish="5"] .essay-graphic .plot-bar{fill:var(--ink)}
+}
