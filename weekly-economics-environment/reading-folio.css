@@ -1314,3 +1314,33 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  }
  .entry[data-reading-finish="5"] .essay-graphic .plot-bar{fill:var(--ink)}
 }
+
+
+/* Future source-count resilience: four or more references */
+/* The editorial source register is data-driven: first three references may
+   share a desktop row, additional references form quiet full-width lines
+   beneath that row. This avoids implicit CSS columns/overlap. */
+.entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4)){
+ grid-template-columns:148px repeat(3,minmax(0,1fr))
+}
+.entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4))>a:nth-of-type(n+4){
+ grid-column:2 / -1!important;grid-row:auto!important;
+ border-top:1px solid var(--hair)!important;
+ min-height:44px!important
+}
+@media(max-width:1180px){
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4)){
+  grid-template-columns:115px minmax(0,1fr)
+ }
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4))>a:nth-of-type(n+4){
+  grid-column:2!important
+ }
+}
+@media(max-width:620px){
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4)){
+  grid-template-columns:minmax(0,1fr)
+ }
+ .entry[data-reading-finish="5"] .reading-sources>.sources:has(>a:nth-of-type(n+4))>a:nth-of-type(n+4){
+  grid-column:1!important
+ }
+}
