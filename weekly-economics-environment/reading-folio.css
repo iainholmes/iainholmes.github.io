@@ -1582,17 +1582,17 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 .entry[data-reading-finish="5"] .reading-deck{
  position:relative;
  border:0!important;
- padding:22px 0 76px!important;
- margin:0 0 19px!important
+ padding:22px 0 52px!important;
+ margin:0 0 12px!important
 }
 .entry[data-reading-finish="5"] .reading-deck::after{
  content:"";position:absolute;
- left:0;right:0;bottom:14px;
- width:100%;height:29px;
+ left:0;right:0;bottom:10px;
+ width:100%;height:19px;
  background:
-  linear-gradient(var(--forest),var(--forest)) center top / 44% 1.5px no-repeat,
-  linear-gradient(var(--forest),var(--forest)) center top 12px / 28% 1.5px no-repeat,
-  linear-gradient(var(--forest),var(--forest)) center top 24px / 16% 1.5px no-repeat;
+  linear-gradient(var(--forest),var(--forest)) center top / 30% 1.25px no-repeat,
+  linear-gradient(var(--forest),var(--forest)) center top 8px / 19% 1.25px no-repeat,
+  linear-gradient(var(--forest),var(--forest)) center top 16px / 10% 1.25px no-repeat;
  pointer-events:none
 }
 .entry[data-reading-finish="5"] .reading-deck::before{
@@ -1698,14 +1698,14 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
   padding-bottom:28px!important
  }
  .entry[data-reading-finish="5"] .reading-deck{
-  padding:17px 0 60px!important;margin-bottom:15px!important
+  padding:17px 0 43px!important;margin-bottom:10px!important
  }
  .entry[data-reading-finish="5"] .reading-deck::after{
-  bottom:12px;height:25px;
+  bottom:9px;height:17px;
   background:
-   linear-gradient(var(--forest),var(--forest)) center top / 44% 1.25px no-repeat,
-   linear-gradient(var(--forest),var(--forest)) center top 10px / 28% 1.25px no-repeat,
-   linear-gradient(var(--forest),var(--forest)) center top 20px / 16% 1.25px no-repeat
+   linear-gradient(var(--forest),var(--forest)) center top / 30% 1px no-repeat,
+   linear-gradient(var(--forest),var(--forest)) center top 7px / 19% 1px no-repeat,
+   linear-gradient(var(--forest),var(--forest)) center top 14px / 10% 1px no-repeat
  }
  .entry[data-reading-finish="5"] .economic-plot h5{font-size:20px}
  .entry[data-reading-finish="5"] .economic-y-axis,
