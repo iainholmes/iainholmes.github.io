@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-publisher-durable';
+const currentKey='reading-folio.css?v=20261102-folio-heron-pathways';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -15,7 +15,9 @@ const articles=s=>[...s.matchAll(/<article class="entry"[^>]*id="([^"]+)"[\s\S]*
 const prior=new Map(articles(baseline)),current=new Map(articles(source));
 ok(current.size>=prior.size,'the thirty founding readings survive future issues');
 for(const [id,old] of prior){ok(current.has(id),'reading retained '+id);eq(readingRecord(current.get(id)),readingRecord(old),'authored article unchanged '+id)}
-const stripArticles=s=>s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>'<article id="'+m.match(/\bid="([^"]+)"/)?.[1]+'"></article>');
+// Only the synthesis overline has changed; all other closing copy is locked.
+const stripArticles=s=>s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>'<article id="'+m.match(/\bid="([^"]+)"/)?.[1]+'"></article>')
+ .replace(/<div class="eyebrow">(?:The synthesis \/ Editorial interpretation|Editor's synthesis)<\/div>/g,'<div class="eyebrow">[SYNTHESIS OVERLINE]</div>');
 // The original archive is a permanent subset. A later issue may legitimately
 // extend the main publication region without changing those six editions.
 const editionParts=s=>{
@@ -27,7 +29,10 @@ for(const [date,priorEdition] of priorEditions){
  ok(currentEditions.has(date),'founding edition retained '+date);
  eq(stripArticles(currentEditions.get(date)),stripArticles(priorEdition),'non-reading founding edition content unchanged '+date);
 }
-if(current.size===prior.size)eq(stripArticles(source.replace(currentKey,previousKey)),stripArticles(baseline),'entire unchanged six-edition archive matches baseline');
+if(current.size===prior.size){
+ const mainOnly=s=>s.match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)?.[1]||'';
+ eq(stripArticles(mainOnly(source)),stripArticles(mainOnly(baseline)),'entire historical issue and closing-content archive unchanged except approved synthesis label');
+}
 eq(compose(source),source,'publication composer is byte-idempotent without a panel');
 const main=source.match(/<main[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)[1];
 const ns=nodes(main),editions=ns.filter(n=>n.classes.includes('edition'));
@@ -68,6 +73,11 @@ eq((source.match(/data-reading-finish="5"/g)||[]).length,current.size,'finished 
 eq((source.match(/class="reading-opening reading-opening--why"/g)||[]).length,0,'no unintended horizontal Why-it-matters sections');
 
 ok(css.includes('.evidence-pair>.margin')&&source.includes("var grid=art.querySelector('.article-grid')"),'Heron wrapper remains compatible');
+ok(source.includes('evidence.append(slot);')&&css.includes('.evidence-pair>.perch'),'Heron lives in an in-flow row beneath both evidence columns');
+ok(css.includes('.reading-folio::after{content:none!important}'),'every reading numeral loses the redundant Reading label');
+ok(css.includes('.entry.cp-keepable>.cp-keep-toggle'),'only reading KEEP controls are repositioned');
+ok(css.includes('--folio-width:clamp('),'number/title grid has shared responsive folio dimensions');
+eq((source.match(/Editor's synthesis/g)||[]).length,editions.length,'all historical synthesis labels use the approved name');
 eq((source.match(/data-reading-layout="2"/g)||[]).length,current.size,'all readings use the stable layout markers');
 eq((source.match(/class="reading-exhibit"/g)||[]).length,current.size,'all published readings have editorial exhibits');
 eq((source.match(/data-reading-exhibit="1"/g)||[]).length,current.size,'all reading exhibits have publisher-stable markers');
@@ -83,16 +93,16 @@ eq((source.match(/class="evidence-pair"/g)||[]).length,current.size,'all reading
 ok(css.includes('height:9px')&&css.includes('padding-top:52px'),'finished substantial chapter bands and condensed entry spacing');
 ok(css.includes('border:4px solid var(--forest)')&&css.includes('border-right-width:7px!important'),'paired spread has continuous structural frame and heavy internal seam');
 ok(css.includes('.reading-sources>.sources')&&css.includes('grid-template-columns:minmax(112px,.23fr)'),'post-reading sources occupy a tighter horizontal register');
-ok(css.includes('.essay-graphic'),'ledger source figure moved to interpretive panel');
+ok(css.includes('.essay-graphic .ledger-graphic svg'),'figures are visually separate from the Incidence Ledger and accompany interpretation');
 ok(css.includes('Full-width reading and source-driven graphics'),'new width and figure design applied');
 ok(css.includes('Source trail: same unboxed'),'reading references use open rather than boxed source treatment');
 ok(css.includes('border:0!important;border-top:2px solid var(--hair)!important'),'sources register keeps a thin shared rule, not a surrounding frame');
 ok(css.includes('.reading-deck .finding,')&&css.includes('max-width:none!important'),'lead and first analysis use full reading column');
 ok(css.includes(':has(>a:nth-of-type(3):last-of-type)'),'three-source register allocates full width evenly');
-ok(css.includes('.essay-graphic .plot-bar')&&css.includes('.plot-grid-zero'),'figures are styled in their actual interpretation container');
-ok(css.includes('.model-stage')&&css.includes('.surplus-band'),'model and accounting graphics have distinct physical treatments');
+ok(css.includes('.economic-axis')&&css.includes('.plot-grid-zero'),'qualitative curves and numeric figures have explicit graph axes');
+ok(css.includes('.economic-curve-0')&&css.includes('.surplus-band'),'conceptual theory graphs and accounting graphics use distinct treatments');
 ok((source.match(/class="ledger-plot"/g)||[]).length>=3,'historical quantified charts retained');
-ok((source.match(/class="model-flow"/g)||[]).length>=6,'historical model diagrams retained');
+eq((source.match(/class="economic-plot-svg"/g)||[]).length,5,'five theory plots retained with the unestimated PFAS pathway kept conceptual');
 ok((source.match(/class="surplus-visual"/g)||[]).length>=1,'historical surplus composition retained');
 ok((source.match(/class="decomp-track"/g)||[]).length>=1,'historical cost decomposition retained');
 
@@ -100,6 +110,17 @@ ok(css.includes('max-width:80ch'),'opening prose remains stacked but has a fulle
 ok(css.includes('grid-template-columns:25px minmax(0,1fr)'),'surplus calculation aligns terms as distinct readable rows');
 ok(css.includes('min-height:44px!important'),'compact source links retain mobile tap targets');
 ok(css.includes('.evidence-pair>.limitation')&&css.includes('border-left:5px solid var(--river)!important'),'evidence and notebook use stronger paired rails');
-eq((source.match(/class="essay-graphic"/g)||[]).length,(source.match(/data-exhibit-kind="ledger"/g)||[]).length,'all published Ledgers pair a figure with their interpretation');
+const editorial=require('../weekly-economics-environment/reading-exhibits.cjs');
+const ledgers=[...current.keys()].filter(id=>editorial.select(id).kind==='ledger');
+const inLedger=ledgers.filter(id=>editorial.graphicPlacement(id)==='ledger');
+eq((source.match(/class="essay-graphic"/g)||[]).length,ledgers.length-inLedger.length,'interpretive figures remain for all non-relocated Ledgers');
+ok(inLedger.length===0,'all Incidence Ledgers are separated from their graph companions');
+ok(ledgers.every(id=>current.get(id).includes('class="essay-graphic"')),'all eleven economic visualizations accompany interpretation');
+ok(current.get('2026-10-16-pfas-agriculture').includes('class="model-intervention"'),'PFAS prevention pathway retains conditional public-agency intervention');
+eq((source.match(/class="ledger-graphic"/g)||[]).length,ledgers.length,'no economic graphic duplicated or lost');
+ok(css.includes('The Equilibrium Signet')&&css.includes('rotate(45deg)'),'the original inset-diamond single-track motif replaces the copied three rails');
+ok(!css.includes('radial-gradient(circle 5px at 36%'),'deprecated three-rail graphic is absent');
+ok(css.includes('content:"";display:block;position:absolute;')&&css.includes('var(--clay) 0 var(--folio-width)'),'title underline has a real pseudo-element with a folio-width copper tab');
+ok(css.includes('padding-bottom:clamp(23px,2.15vw,30px)!important'),'title rule separates from the enlarged numeral');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
 console.log(checks+' single-divider reading layout checks passed.');

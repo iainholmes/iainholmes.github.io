@@ -2,7 +2,7 @@
 /* Execute from the repo root: node scripts/test_reading_exhibits.cjs */
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
-const {catalog,visualData,readingGuides,select,render,specimen,audit}=require('../weekly-economics-environment/reading-exhibits.cjs');
+const {catalog,visualData,readingGuides,select,render,specimen,audit,graphic,graphicPlacement}=require('../weekly-economics-environment/reading-exhibits.cjs');
 const {compose,nodes,readingRecord}=require('../weekly-economics-environment/editorial-folio.cjs');
 const page=fs.readFileSync('weekly-economics-environment/index.html','utf8');
 const css=fs.readFileSync('weekly-economics-environment/reading-folio.css','utf8');
@@ -25,7 +25,7 @@ for(const [id,reading] of articles){
  const fragment=render(id,{finding:extracted});
  ok(fragment.includes('data-exhibit-kind="'+e.kind+'"'),'type output '+id);
  ok(fragment.includes('data-curated="'+String(e.curated)+'"'),'editorial curation status is explicit '+id);
- const expected=e.kind==='ledger'?fragment.replace(require('../weekly-economics-environment/reading-exhibits.cjs').graphic(id),''):fragment;
+ const expected=e.kind==='ledger'&&graphicPlacement(id)!=='ledger'?fragment.replace(graphic(id),''):fragment;
  ok(reading.includes(expected),'exact editorial exhibit generated from the published finding '+id);
  const body=tree.find(x=>x.classes.includes('evidence-pair'));
  const lim=tree.find(x=>x.classes.includes('limitation'));
@@ -48,7 +48,9 @@ ok(!fragment.includes('FROM THE ANNEX'),'exhibit identified solely by its actual
   ok(!!guide&&guide.intro.length>120,'standalone contextual introduction '+id);
   ok(guide.read.length>80,'reader instructions supported by the article '+id);
   ok(Array.isArray(guide.term)&&guide.term.length===2&&guide.term[0].length>=2&&guide.term[1].length>30,'key economic concept defined '+id);
-  ok(fragment.includes('class="exhibit-primer"')&&fragment.includes('class="exhibit-concept"'),'guides visible without interaction '+id);
+  ok(fragment.includes('class="exhibit-primer"'),'source-specific guide visible without interaction '+id);
+  if(e.kind==='ledger')ok(!fragment.includes('class="exhibit-concept"')&&!fragment.includes('class="exhibit-footer"'),'generic post-ledger descriptors omitted '+id);
+  else ok(fragment.includes('class="exhibit-concept"'),'specific Long View concept guidance remains '+id);
  }
  if(e.kind==='ledger'){
   ok(e.rows.length>=3,'ledger includes affected parties '+id);
@@ -57,8 +59,14 @@ ok(!fragment.includes('FROM THE ANNEX'),'exhibit identified solely by its actual
   ok(!!visualData[id],'all ledgers have custom source-grounded economic visual '+id);
   ok(fragment.includes('class="ledger-graphic"'),'ledger graph/model generator retained '+id);
   const essayGraphic=tree.find(x=>x.classes.includes('essay-graphic'));
-  ok(essayGraphic&&essayGraphic.parent===interpreted,'ledger graph belongs with the economic interpretation '+id);
-  ok(reading.slice(essayGraphic.start,essayGraphic.end).includes('class="ledger-graphic"'),'source diagram present in interpretive panel '+id);
+  const ledgerGraphic=tree.find(x=>x.classes.includes('ledger-graphic'));
+  if(graphicPlacement(id)==='ledger'){
+   ok(!essayGraphic&&ledgerGraphic?.parent?.classes.includes('exhibit-ledger'),'selected pathway follows the affected-party rows '+id);
+   ok(fragment.indexOf('class="ledger-graphic"')>fragment.indexOf('class="ledger-line"'),'the selected visual is an attached Ledger companion '+id);
+  }else{
+   ok(essayGraphic&&essayGraphic.parent===interpreted,'source graph belongs with the interpretation '+id);
+   ok(reading.slice(essayGraphic.start,essayGraphic.end).includes('class="ledger-graphic"'),'source diagram retained in interpretive panel '+id);
+  }
   ok(fragment.includes('data-visual-kind="'+visualData[id].type+'"'),'appropriate graphic type '+id);
   ok(fragment.includes(visualData[id].note),'graphic carries evidence/causal qualifier '+id);
 ok(fragment.includes('class="ledger-how-to-read"'),'model or calculation interpreted explicitly '+id);
@@ -123,11 +131,37 @@ ok(css.includes('.exhibit-ledger')&&css.includes('.test-challenge')&&css.include
 ok(css.includes('grid-template-columns:25px minmax(0,1fr)'),'narrow surplus figures use readable three-row layout');
 ok(css.includes('grid-template-columns:minmax(112px,.23fr)'),'source register keeps horizontal desktop arrangement');
 const archivalFigures=[...articles.values()].filter(a=>a.includes('class="essay-graphic"'));
-eq(archivalFigures.length,totals.ledger,'all ledger articles use a figure in the interpretation panel');
-ok(archivalFigures.filter(a=>a.includes('class="ledger-plot"')).length>=3,'historical quantitative charts retained');
-ok(archivalFigures.filter(a=>a.includes('class="model-flow"')).length>=6,'historical conceptual diagrams retained');
-ok(archivalFigures.filter(a=>a.includes('class="surplus-visual"')).length>=1,'historical methane accounting figure retained');
-ok(archivalFigures.filter(a=>a.includes('class="decomp-track"')).length>=1,'historical decomposition retained');
+const relocated=[...articles.keys()].filter(id=>select(id).kind==='ledger'&&graphicPlacement(id)==='ledger');
+eq(archivalFigures.length,totals.ledger,'all eleven figures again stand beside their Incidence Ledgers');
+eq(relocated.length,0,'no economic graphic remains embedded inside the Ledger rows');
+for(const [id,reading] of articles){
+ if(select(id).kind!=='ledger')continue;
+ const g=visualData[id],plot=reading.includes('class="economic-plot-svg"');
+ const tree=require('../weekly-economics-environment/editorial-folio.cjs').nodes(reading);
+ const block=tree.find(n=>n.classes.includes('reading-exhibit'));
+ ok(!reading.slice(block.start,block.end).includes('class="ledger-graphic"'),'the Ledger remains a self-contained textual incidence register '+id);
+ if(g.type==='mechanism'&&g.plot){
+  ok(plot&&reading.includes('data-economic-evidence="schematic"'),'theoretical graph explicitly qualified '+id);
+  ok(g.plot.lines.length>=1&&g.plot.lines.every(line=>line[1].length>=2),'curves are individually specified '+id);
+  ok(reading.includes('Theoretical comparative statics'),'illustrative slopes never presented as empirical estimates '+id);
+ }else if(g.type==='mechanism'){
+  ok(!plot&&reading.includes('class="model-flow"'),'PFAS uses a truthful unestimated incidence mechanism instead of an artificial optimum '+id);
+ }else{
+  ok(!plot&&reading.includes('class="ledger-graphic"'),'source-derived numeric presentation remains intact '+id);
+ }
+}
+for(const id of ['insurance','2026-10-02-policy-mix']){
+ const markup=articles.get(id);
+ ok(markup.includes('data-economic-model="market"')&&markup.includes('economic-eq-point-0')&&markup.includes('economic-eq-point-1'),'a market graph contains calculated symbolic equilibrium markers '+id);
+}
+
+
+ok(articles.get('2026-10-16-pfas-agriculture').includes('model-intervention'),'PFAS pathway preserves conditional intervention distinction');
+ok([...articles.values()].filter(a=>a.includes('class="ledger-plot"')).length>=3,'quantitative source charts remain next to their Ledgers');
+eq([...articles.values()].filter(a=>a.includes('class="economic-plot-svg"')).length,5,'five conventional theory plots retained where economically justified');
+eq([...articles.values()].filter(a=>a.includes('class="model-flow"')).length,1,'PFAS incidence graph is a mechanism, not an invented welfare model');
+ok([...articles.values()].filter(a=>a.includes('class="surplus-visual"')).length>=1,'methane accounting display remains beside its Ledger');
+ok([...articles.values()].filter(a=>a.includes('class="decomp-track"')).length>=1,'paper markup decomposition remains beside its Ledger');
 ok(articles.get('2026-10-30-coal-country').includes('class="plot-tick"')&&articles.get('2026-10-30-coal-country').includes('class="plot-grid'), 'coal chart has labeled quantitative scale and guides');
 ok(articles.get('2026-10-30-methane-rule').includes('class="surplus-upper"'),'reported range distinguished visually from its lower bound');
 const sourceCounts=[...articles.values()].map(a=>{const x=a.match(/<div class="reading-sources">([\s\S]*?)<\/div><\/div>/);return x?(x[1].match(/<a /g)||[]).length:0});
