@@ -56,7 +56,7 @@ body.glance .reading-column::after{display:none}
 .entry{position:relative;overflow-wrap:anywhere;padding:45px 0 54px;border-top:1px solid var(--ink);scroll-margin-top:0;counter-increment:research-reading}
 .entry-head{display:grid;grid-template-columns:minmax(84px,max-content) minmax(0,1fr);column-gap:24px;align-items:start;margin-bottom:24px}
 .reading-folio{padding-top:4px;min-width:0;border-top:4px solid var(--clay)}
-.reading-folio::after{content:"Reading";display:block;margin-top:12px;font:500 10px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.reading-folio::after{content:none;display:none}
 .entry-number{font:400 76px/.95 var(--headline);letter-spacing:-.04em;color:var(--clay);font-variant-numeric:lining-nums}
 .reading-title{min-width:0}
 .entry-head .eyebrow{font:500 12px/1.5 var(--sans);letter-spacing:.07em;color:var(--forest);text-transform:uppercase}
