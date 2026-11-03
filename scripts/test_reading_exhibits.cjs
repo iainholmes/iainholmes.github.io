@@ -64,7 +64,8 @@ ok(!fragment.includes('FROM THE ANNEX'),'exhibit identified solely by its actual
 ok(fragment.includes('class="ledger-how-to-read"'),'model or calculation interpreted explicitly '+id);
   ok(css.includes('.ledger-line:nth-of-type(3n+1)')&&css.includes('.ledger-line:nth-of-type(3n+2)'),'ledger row colors distinguish groups '+id);
  }else if(e.kind==='test'){
-  ok(e.premise.length>75&&e.stress.length>75&&e.observe.length>75,'real assumption stress test, not a decorative excerpt '+id);
+  if(e.curated)ok(e.premise.length>75&&e.stress.length>75&&e.observe.length>75,'authored assumption stress test, not a decorative excerpt '+id);
+  else ok(fragment.includes('Editorial interpretation pending')&&fragment.includes('data-curated="false"'),'future fallback explicitly labeled incomplete '+id);
   ok(fragment.includes('class="test-research-question"')&&fragment.includes('class="test-challenge"'),'research-assumption and challenge clearly distinguished '+id);
  }else if(e.kind==='decision'){
   ok(e.options.length===2&&e.options.every(x=>x.length===2&&x[1].length>75),'real pair of evidenced decision margins '+id);
