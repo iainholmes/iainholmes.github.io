@@ -367,3 +367,5 @@ html[data-mode=night] .appearance{
  .appearance{background:none;break-inside:avoid}
  .concept::before,.seen::before,.concept-index::before{display:none}
 }
+/* Align the notebook's masthead and closing matter with the editorial desk. */
+.masthead,.closing-wordmark,footer{max-width:1648px}
