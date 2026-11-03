@@ -43,6 +43,16 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
    if(!finding)throw Error('L&L publication layout: missing authored finding '+id);
    const kind=exhibit.attrs.match(/data-exhibit-kind="([^"]+)"/)?.[1];
    if(kind!==exhibits.select(id).kind)throw Error('L&L publication layout: exhibit type does not match this article '+id);
+   const kindToFeature={ledger:'incidence-ledger',long:'long-view',decision:'decision-margin',test:'assumption-test'};
+   const openingFeatures=(opening.match(/data-special-features="([^"]+)"/)||[])[1];
+   if(!openingFeatures)throw Error('L&L publication layout: feature-selection record missing '+id);
+   const featureIds=openingFeatures.split(/\s+/).filter(Boolean);
+   const hasIndependentGraphic=markup.includes('class="essay-graphic"')||markup.includes('class="economic-plot"');
+   const actual=[kindToFeature[kind],...(hasIndependentGraphic?['economic-figures']:[])];
+   if(featureIds.join(' ')!==actual.join(' '))
+    throw Error('L&L publication layout: special-feature record does not match authored reading '+id);
+   if(featureIds.length>2&&!/data-feature-justification="[^"]+"/.test(opening))
+    throw Error('L&L publication layout: third feature requires explicit editorial justification '+id);
    let expected=exhibits.render(id,{finding:markup.slice(finding.open,finding.close)});
    if(kind==='ledger'){
     const chart=exhibits.graphic(id),inLedger=exhibits.graphicPlacement(id)==='ledger';
