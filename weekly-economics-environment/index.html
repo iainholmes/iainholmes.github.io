@@ -632,6 +632,45 @@ body{overflow-x:clip}
 .ih-imprint .ih-native-wordmark{display:block;margin:0;padding:0;max-width:none;white-space:nowrap}
 </style>
 <link rel="stylesheet" href="field-notes.css?v=20261101-spatial-polish">
+<style id="ll-reading-transition-release-20261103">
+/* Production-safe finishing rules. Keep here as a late-loading cascade
+   safeguard for the current static edition; canonical rules remain in reading-folio.css. */
+@media (min-width:821px){
+ .edition-body .contents-boundary::after{width:8px;right:-26px}
+ .edition-body .reading-column::after{width:8px}
+}
+.entry[data-reading-finish="5"] .entry-head{
+ padding-bottom:calc(clamp(23px,2.15vw,30px) + 10px)!important;
+}
+.entry[data-reading-finish="5"] .entry-head::after{
+ content:"";display:block;position:absolute;left:0;right:0;bottom:0;width:100%;height:2px;
+ background:linear-gradient(to right,var(--clay) 0 var(--folio-width),var(--forest) var(--folio-width) 100%);
+ pointer-events:none;
+}
+.entry[data-reading-finish="5"] .reading-deck{
+ position:relative;border:0!important;padding:22px 0 52px!important;margin:0 0 12px!important;
+}
+.entry[data-reading-finish="5"] .reading-deck::before{content:none!important;display:none!important}
+.entry[data-reading-finish="5"] .reading-deck::after{
+ content:"";position:absolute;left:0;right:0;bottom:10px;width:100%;height:19px;
+ background:
+  linear-gradient(var(--forest),var(--forest)) center top / 30% 1.25px no-repeat,
+  linear-gradient(var(--forest),var(--forest)) center top 8px / 19% 1.25px no-repeat,
+  linear-gradient(var(--forest),var(--forest)) center top 16px / 10% 1.25px no-repeat;
+ pointer-events:none;
+}
+@media(max-width:620px){
+ .entry[data-reading-finish="5"] .entry-head{padding-bottom:28px!important}
+ .entry[data-reading-finish="5"] .reading-deck{padding:17px 0 43px!important;margin-bottom:10px!important}
+ .entry[data-reading-finish="5"] .reading-deck::after{
+  bottom:9px;height:17px;
+  background:
+   linear-gradient(var(--forest),var(--forest)) center top / 30% 1px no-repeat,
+   linear-gradient(var(--forest),var(--forest)) center top 7px / 19% 1px no-repeat,
+   linear-gradient(var(--forest),var(--forest)) center top 14px / 10% 1px no-repeat;
+ }
+}
+</style>
 </head><body><a class="skip" href="#edition">Skip to the edition</a>
 <header class="masthead" id="top">
   <div class="mh-top"><span class="vn" id="volno"><b>Vol. 1</b> · 2 October 2026</span><span class="right"><span class="fri">Fridays</span><span class="dn" role="group" aria-label="Reading mode, shared by all Periodicals"><button type="button" data-mode="day" aria-pressed="true">Day</button><span class="sl" aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="false">Night</button></span></span></div>
