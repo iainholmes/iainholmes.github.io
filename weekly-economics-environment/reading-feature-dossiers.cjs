@@ -62,8 +62,12 @@ const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 function render(id){
  const d=dossiers[id];if(!d)return '';
  const isLedger=d.id==='incidence-ledger';
- const items=d.entries.map(([label,explanation],i)=>
-  '<li><span class="rcf-index">'+String(i+1).padStart(2,'0')+'</span><div><strong>'+esc(label)+'</strong><p>'+esc(explanation)+'</p></div></li>').join('');
+ const items=d.entries.map(([label,explanation],i)=>{
+  const no='<span class="rcf-index">'+String(i+1).padStart(2,'0')+'</span>';
+  return isLedger
+   ?'<li><div class="rcf-ledger-party">'+no+'<strong>'+esc(label)+'</strong></div><div class="rcf-ledger-effect"><p>'+esc(explanation)+'</p></div></li>'
+   :'<li>'+no+'<div><strong>'+esc(label)+'</strong><p>'+esc(explanation)+'</p></div></li>';
+ }).join('');
  return '<aside class="reading-companion-feature" data-special-feature="'+d.id+'" data-evidence-status="'+(id==='2026-10-30-moves6'?'proposed':'qualified')+'">'+
   '<header class="rcf-head"><div><span class="rcf-kicker">'+esc(d.kicker)+'</span><h3>'+esc(d.title)+'</h3><p class="rcf-subtitle">'+esc(d.subtitle)+'</p></div><span class="rcf-feature-type">'+(isLedger?'INCIDENCE':'RESEARCH LENS')+'</span></header>'+
   '<ol class="rcf-points '+(isLedger?'rcf-ledger':'rcf-flow')+'">'+items+'</ol>'+
