@@ -17,6 +17,8 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
   [notebookCss,['.concept-body','.concept-analysis','.concept-body+.seen','.appearance-register'],'notebook.css']]){
   for(const rule of required)if(!css.includes(rule))throw Error('L&L publication layout: '+name+' missing durable layout rule '+rule);
  }
+ if(journal.includes('ll-accepted-reading-arrangement-20261103'))
+  throw Error('L&L publication layout: retired inline layout override must not return');
  const main=journal.match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)?.[1];
  if(!main)throw Error('L&L publication layout: canonical edition archive missing');
  const editions=[...main.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[\s\S]*?(?=<section class="edition"|$)/g)];
@@ -59,17 +61,18 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
     if(extra==='incidence-ledger'){
      const rows=[...markup.matchAll(/class="rcf-ledger-party"/g)].length;
      const effects=[...markup.matchAll(/class="rcf-ledger-effect"/g)].length;
-     if(rows<2||rows!==effects||!markup.includes('rcf-points rcf-ledger'))
+     if(rows!==3||rows!==effects||!markup.includes('rcf-points rcf-ledger'))
       throw Error('L&L publication layout: companion Incidence Ledger needs three complete party/effect comparison columns '+id);
     }
    }
-   if(extra==='incidence-ledger'&&!folioCss.includes('grid-template-columns:repeat(3,minmax(0,1fr))!important'))
+   if(extra==='incidence-ledger'&&(!folioCss.includes('.rcf-points.rcf-ledger{')||!folioCss.includes('grid-template-columns:repeat(3,minmax(0,1fr))')))
     throw Error('L&L publication layout: horizontal desktop Incidence Ledger layout rule missing '+id);
    if(kind==='long'){
     const stages=[...markup.matchAll(/class="longview-point"/g)].length;
     const declared=Number(markup.match(/class="exhibit-longview" data-stage-count="(\d+)"/)?.[1]||0);
     if(stages!==declared||stages<2)throw Error('L&L publication layout: Long View stage-count mismatch '+id);
-    if(!folioCss.includes('ol.exhibit-longview>li'))throw Error('L&L publication layout: full-width stage layout missing '+id);
+    if(!markup.includes('style="--longview-stages:'+stages+'"')||!folioCss.includes('repeat(var(--longview-stages),minmax(0,1fr))'))
+     throw Error('L&L publication layout: content-derived stage tracks missing '+id);
    }
    if(featureIds.length>2&&!/data-feature-justification="[^"]+"/.test(opening))
     throw Error('L&L publication layout: third feature requires explicit editorial justification '+id);

@@ -4,7 +4,7 @@
   "scope": "All 30 readings across six editions, 2026-09-25 through 2026-10-30",
   "policy": "Evidence-led inclusion; no fixed quota; only distinct authored and qualified features. A third requires explicit rationale.",
   "methodology": "Retained all five authored primary exhibits per edition; recognized independent publication figures and diagrams as Economic Figures; added five source-bounded, explicitly non-estimated companion features where a second lens clarifies a separate economic question. Existing scholarship, links and archival dates are preserved.",
-  "limitations": "No new primary-source verification, econometric estimation or live browser QA was performed. Re-issue claims concern repository publication artifacts; GitHub Pages deployment is not independently confirmed.",
+  "limitations": "No new primary-source verification or econometric estimation was performed. Editorial content and dates are preserved. Rendered layout audit covers all 30 readings across six editions; deployment verification is recorded separately from source preflight.",
   "totals": {
     "editions": 6,
     "readings": 30,
@@ -417,5 +417,42 @@
       "Preserved the 30 readings' original scholarship, existing special features, and publication dates."
     ],
     "validation": "Six editions, 30 readings, 19 notebook concepts, 53 source links; composer idempotent. Live GitHub Pages appearance still not browser-verified."
+  },
+  "layoutAudit": {
+    "reviewed": "2026-11-03",
+    "localBrowser": "Chromium, 78 edition/viewport cases, 1145 geometry assertions passed",
+    "viewportWidths": [
+      1440,
+      1280,
+      1180,
+      1024,
+      1000,
+      851,
+      850,
+      768,
+      651,
+      650,
+      520,
+      390,
+      320
+    ],
+    "longViews": {
+      "instances": 7,
+      "threeStage": 5,
+      "fourStage": 2,
+      "desktop": "Actual stage count; equal full-width tracks; rail ends at final station",
+      "phone": "One column with connected vertical rail"
+    },
+    "supplementalLedgers": {
+      "readingIds": [
+        "grid",
+        "2026-10-09-nuclear-finance"
+      ],
+      "desktop": "Three side-by-side comparison columns",
+      "phone": "One column at 650px and below"
+    },
+    "preservation": "The six-edition main region is byte-identical except seven stage-track presentation attributes. Source links, prose, artwork, feature selections and dates unchanged.",
+    "regression": "scripts/test_ll_layout_browser.cjs",
+    "liveDeployment": "Verified separately in the delivery evidence after master deployment; source preflight alone is not visual verification."
   }
 }

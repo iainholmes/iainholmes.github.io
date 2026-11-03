@@ -16,6 +16,14 @@ function ok(x,label){assert(x,label);checks++}
 function eq(a,b,label){assert.deepEqual(a,b,label);checks++}
 function rejected(fn,regex,label){assert.throws(fn,regex,label);checks++}
 const initial=validate(input);
+eq(journal.match(/reading-folio\.css\?v=([^"]+)/)[1],require('node:crypto').createHash('sha256').update(folioCss).digest('hex').slice(0,12),'shipped CSS URL matches its content hash');
+rejected(()=>validate({...input,journal:journal.replace('</head>','<style id="ll-accepted-reading-arrangement-20261103"></style></head>')}),/retired inline/,'duplicate layout override cannot be republished');
+rejected(()=>validate({...input,journal:journal.replace('style="--longview-stages:3"','style="--longview-stages:4"')}),/content-derived stage tracks/,'wrong stage track count cannot be republished');
+const priorJournal=cp.execFileSync('git',['show','ef7f0fb:weekly-economics-environment/index.html'],{encoding:'utf8',maxBuffer:2e6});
+const mainMarkup=s=>s.match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)[1];
+eq(mainMarkup(journal).replace(/ style="--longview-stages:\d+"/g,''),mainMarkup(priorJournal),'all six editions preserve every byte except the seven stage track attributes');
+eq(compose(priorJournal).match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)[1],mainMarkup(journal),'finished archive readings receive renderer migration too');
+
 ok(initial.editions>=6&&initial.readings>=30,'existing finished editions and readings retained');
 ok(initial.concepts>=19&&initial.curated,'existing cumulative concepts and curated exhibits retained');
 eq(compose(journal),journal,'existing canonical publication byte-idempotent');

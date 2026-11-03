@@ -1388,7 +1388,7 @@ function render(id,source={}){
    const takeaway=longViewTakeaways[id];
    if(!takeaway)throw Error('Missing curated Long View interpretation '+id);
    if(!g||g.steps.length!==e.points.length)throw Error('Missing Long View guidance '+id);
-   content=primer+'<div class="longview-guide"><span>THE SEQUENCE</span><span>'+esc(g.read)+'</span></div><ol class="exhibit-longview" data-stage-count="'+e.points.length+'">'+e.points.map(([when,desc,status],i)=>{
+   content=primer+'<div class="longview-guide"><span>THE SEQUENCE</span><span>'+esc(g.read)+'</span></div><ol class="exhibit-longview" data-stage-count="'+e.points.length+'" style="--longview-stages:'+e.points.length+'">'+e.points.map(([when,desc,status],i)=>{
      const statusType=/historical|observation|reported|policy date/i.test(status)?'observed':'conditional';
      return '<li class="longview-point" data-stage-class="'+statusType+'"><span class="longview-index">'+String(i+1).padStart(2,'0')+'</span><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span><p class="longview-explain">'+esc(g.steps[i])+'</p></li>';
    }).join('')+'</ol><div class="longview-takeaway"><span>WHY THIS MATTERS</span><p>'+esc(takeaway)+'</p></div>';

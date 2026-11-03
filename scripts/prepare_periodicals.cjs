@@ -45,6 +45,8 @@ for(const [key,editions] of [['fb',fb],['cp',cp]]){
 // Compose new authored editions into the same semantic folio before any writes.
 // This is idempotent and does not rewrite text, figures, identifiers or citations.
 let ll=require('../weekly-economics-environment/editorial-folio.cjs').compose(llSource);
+// HTML and CSS must advance together on Pages/CDN caches after every layout edit.
+ll=ll.replace(/reading-folio\.css(?:\?v=[^"]*)?"/,'reading-folio.css?v='+digest(read('weekly-economics-environment/reading-folio.css'))+'"');
 // Fail before *any* archive/artwork/hub write if a future issue loses its
 // finished layout, source register, notebook structure or authored exhibit.
 require('../weekly-economics-environment/reading-layout-guard.cjs').validate({

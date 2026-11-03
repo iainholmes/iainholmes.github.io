@@ -94,6 +94,9 @@ function placeExhibit(s){
  * swaps the source dossier for curated research/decision exhibits and reserves
  * the horizontal post-reading treatment for the actual source apparatus. */
 function finishReading(s){
+ // Presentation migrations also run for already-finished archive readings.
+ // Otherwise the finish marker silently freezes obsolete renderer output.
+ s=s.replace(/(<ol class="exhibit-longview" data-stage-count="(\d+)")(?: style="--longview-stages:\d+")?/,(_,tag,count)=>tag+' style="--longview-stages:'+count+'"');
  if(s.includes('data-reading-finish="5"'))return s;
  const ns=nodes(s),art=ns.find(n=>n.tag==='article'),ex=ns.find(n=>has(n,'reading-exhibit')),
    finding=ns.find(n=>has(n,'finding'));
@@ -191,7 +194,7 @@ function readingRecord(s){
  // The newly-authored interpretive lens is a separate, clearly attributed layer.
  // Remove generated exhibits by parsed element boundaries so a curated
  // dossier can safely contain nested annotation sections.
- const exhibits=nodes(s).filter(n=>has(n,'reading-exhibit')||has(n,'economic-hinge')||has(n,'essay-graphic')).sort((a,b)=>b.start-a.start);
+ const exhibits=nodes(s).filter(n=>has(n,'reading-exhibit')||has(n,'economic-hinge')||has(n,'essay-graphic')||has(n,'reading-companion-feature')).sort((a,b)=>b.start-a.start);
  let clean=s;
  for(const n of exhibits)clean=clean.slice(0,n.start)+clean.slice(n.end);
  const ns=nodes(clean), blocks=ns.filter(n=>['h2','h3','p','figure'].includes(n.tag)).map(n=>raw(clean,n));

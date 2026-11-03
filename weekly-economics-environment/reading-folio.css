@@ -390,20 +390,6 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 .reading-exhibit .longview-guide{display:flex;flex-wrap:wrap;gap:3px 10px;align-items:baseline;margin:0 0 10px}
 .reading-exhibit .longview-guide>span:first-child{font:600 10px/1.5 var(--sans);letter-spacing:.09em;color:var(--river)}
 .reading-exhibit .longview-guide>span:last-child{font:400 11px/1.4 var(--serif);color:var(--muted)}
-.reading-exhibit .exhibit-longview{
- position:relative;display:flex;flex-direction:column;gap:0;
- margin:0 0 0 7px;padding:0 0 0 19px;list-style:none;border:0;
- border-left:2px solid var(--hair)
-}
-.reading-exhibit .longview-point{
- position:relative;min-width:0;padding:0 0 16px 7px;margin:0;border:0;
- display:grid;grid-template-columns:31px minmax(0,1fr);gap:2px 9px;
-}
-.reading-exhibit .longview-point:last-child{padding-bottom:3px}
-.reading-exhibit .longview-point::before{
- content:"";position:absolute;left:-26px;top:4px;width:10px;height:10px;
- border:2px solid var(--river);border-radius:50%;background:var(--paper);outline:0
-}
 .reading-exhibit .longview-point[data-stage-class="observed"]::before{background:var(--river)}
 .reading-exhibit .longview-index{grid-row:1/4;grid-column:1;font:400 19px/1 var(--headline);color:var(--clay)}
 .reading-exhibit .longview-date{grid-column:2;font:600 12px/1.4 var(--sans);color:var(--river)}
@@ -443,7 +429,6 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
    register without relying on column or side-by-side text placement. */
 @media(max-width:1180px){
  .reading-exhibit .ledger-headings,.reading-exhibit .ledger-line{column-gap:14px}
- .reading-exhibit .exhibit-longview{gap:10px}
  .entry[data-reading-layout="2"] .evidence-pair{grid-template-columns:minmax(0,1fr) minmax(260px,.85fr);gap:24px}
 }
 @media(max-width:900px){
@@ -459,8 +444,6 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .reading-exhibit .ledger-status{padding-left:9px}
  .reading-exhibit .exhibit-cabinet{grid-template-columns:1fr;gap:18px}
  .reading-exhibit .cabinet-record{padding:18px}
- .reading-exhibit .exhibit-longview{grid-template-columns:1fr;gap:14px}
- .reading-exhibit .longview-point{padding-bottom:18px}
 }
 @media print{
  .entry[data-reading-layout="2"] .evidence-pair{display:block}
@@ -475,11 +458,9 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .reading-exhibit .ledger-headings>span:last-child{display:none}
  .reading-exhibit .ledger-status{grid-column:2;grid-row:2;margin-top:7px}
  .reading-exhibit .exhibit-cabinet{grid-template-columns:1fr}
- .reading-exhibit .exhibit-longview{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
 }
 @media print{
  .reading-exhibit .cabinet-record{background:none}
- .reading-exhibit .longview-point{break-inside:avoid}
 }
 
 
@@ -676,7 +657,6 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 .reading-exhibit .longview-guide{display:block;margin:0 0 15px}
 .reading-exhibit .longview-guide>span:first-child{display:block;margin-bottom:4px}
 .reading-exhibit .longview-guide>span:last-child{font:italic 12.5px/1.5 var(--serif)}
-.reading-exhibit .longview-point{padding-bottom:21px;row-gap:4px}
 .reading-exhibit .longview-explain{
  grid-column:2;grid-row:auto;margin:4px 0 0;
  font:400 13.5px/1.58 var(--serif);color:var(--text)
@@ -692,7 +672,6 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 .reading-exhibit .longview-takeaway p{font-size:14.5px;line-height:1.53}
 @media(max-width:620px){
  .reading-exhibit .exhibit-concept{grid-template-columns:1fr}
- .reading-exhibit .longview-point{padding-bottom:18px}
  .entry[data-reading-finish="4"] .evidence-pair>.limitation{
   padding:6px 12px 2px!important
  }
@@ -874,18 +853,6 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  padding:19px 24px 15px!important
 }
 .entry[data-reading-finish="5"] .feature-spread[data-feature="long"] .reading-exhibit{padding:21px 24px 23px!important}
-.reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{
- display:grid;grid-template-columns:repeat(var(--stage-cols,3),minmax(0,1fr));
- gap:12px;margin:24px 0 14px;padding:19px 0 0;
- border-left:0;border-top:4px solid var(--river)
-}
-.reading-exhibit[data-exhibit-kind="long"] .longview-point{
- display:block;padding:8px 11px 13px!important;
- border-left:3px solid var(--hair);min-width:0
-}
-.reading-exhibit[data-exhibit-kind="long"] .longview-point::before{
- left:8px;top:-28px;width:11px;height:11px;border:3px solid var(--river)
-}
 .reading-exhibit[data-exhibit-kind="long"] .longview-index{display:block;margin:0 0 5px;color:var(--clay)}
 .reading-exhibit[data-exhibit-kind="long"] .longview-date{display:block;margin-bottom:6px}
 .reading-exhibit[data-exhibit-kind="long"] .longview-event{display:block;font-size:15px}
@@ -928,12 +895,9 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  .entry[data-reading-finish="5"] .feature-spread[data-feature="test"] .interpretive-essay{
   border-bottom-color:var(--river)!important
  }
- .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:750px){
  .reading-exhibit .test-challenge,.reading-exhibit .decision-branches{grid-template-columns:minmax(0,1fr)}
- .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{grid-template-columns:minmax(0,1fr)}
- .reading-exhibit[data-exhibit-kind="long"] .longview-point{padding-bottom:18px!important}
  .entry[data-reading-finish="5"] .reading-sources>.sources{
   grid-template-columns:minmax(0,1fr);gap:7px
  }
@@ -1767,7 +1731,7 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
    These follow, rather than replace, the accepted primary exhibit. */
 .entry[data-reading-finish="5"] .reading-companion-feature{
  --rcf-color:var(--river);
- margin:28px 0 38px;padding:26px 30px 24px;
+ margin:18px 0 22px;padding:18px 22px;
  background:color-mix(in srgb,var(--river) 5%,var(--paper));
  border-top:3px solid var(--rcf-color);border-bottom:1px solid var(--hair);
  border-left:1px solid color-mix(in srgb,var(--river) 22%,var(--paper));
@@ -1779,7 +1743,7 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  background:color-mix(in srgb,var(--clay) 5%,var(--paper));
 }
 .entry[data-reading-finish="5"] .rcf-head{
- display:flex;justify-content:space-between;gap:18px;align-items:start;margin:0 0 22px;
+ display:flex;justify-content:space-between;gap:18px;align-items:start;margin:0 0 12px;
 }
 .entry[data-reading-finish="5"] .rcf-head .rcf-kicker{
  display:block;font:600 10px/1.5 var(--sans);color:var(--rcf-color);
@@ -1817,7 +1781,7 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  margin:0;color:var(--text);font:400 14px/1.58 var(--serif);
 }
 .entry[data-reading-finish="5"] .rcf-caveat{
- border-top:1px solid var(--hair);padding-top:13px;margin:0;
+ border-top:1px solid var(--hair);padding-top:10px;margin:12px 0 0;
  font:italic 13px/1.6 var(--serif);color:var(--muted);
 }
 .entry[data-reading-finish="5"] .rcf-caveat strong{
@@ -1839,68 +1803,68 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 }
 
 
-/* L&L accepted correction: Incidence Ledger is a horizontal three-column
-   comparison on wide screens; stack only where the viewport requires it.
-   Restore one authoritative override; do not add another vertical fallback. */
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger{
- display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
- gap:0!important;align-items:stretch!important;width:100%;margin:0 0 12px!important;
- padding:0!important;
+/* Canonical timeline layout. The renderer supplies the actual stage count.
+   Each desktop stage owns its rail segment, so wrapped rows have real rails
+   and the final rail ends at the final station rather than an empty track. */
+.reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{
+ position:relative;display:grid;
+ grid-template-columns:repeat(var(--longview-stages),minmax(0,1fr));
+ gap:12px;list-style:none;width:100%;max-width:none;
+ margin:22px 0 14px;padding:0;border:0;
 }
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger>li{
- display:block!important;min-width:0;width:auto!important;
- margin:0!important;padding:13px 17px 14px!important;
- border:0!important;border-top:2px solid var(--clay)!important;
- border-right:1px solid var(--hair)!important;background:transparent!important;
+.reading-exhibit[data-exhibit-kind="long"] .longview-point{
+ position:relative;display:block;min-width:0;margin:19px 0 0;
+ padding:8px 11px 13px;border:0;border-left:3px solid var(--hair);
 }
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger>li:last-child{
- border-right:0!important;
+.reading-exhibit[data-exhibit-kind="long"] .longview-point::after{
+ content:"";position:absolute;left:-3px;right:-15px;top:-19px;
+ height:4px;background:var(--river);
 }
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party{
- display:block!important;margin:0 0 10px!important;
+.reading-exhibit[data-exhibit-kind="long"] .longview-point:last-child::after{right:calc(100% - 18px)}
+.reading-exhibit[data-exhibit-kind="long"] .longview-point::before{
+ content:"";position:absolute;z-index:1;left:8px;top:-24px;
+ width:11px;height:11px;border:3px solid var(--river);border-radius:50%;
+ background:var(--paper);outline:0;
 }
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party .rcf-index{
- display:block!important;margin:0 0 7px!important;
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party strong{
- display:block!important;margin:0;font:600 14px/1.4 var(--sans);
-}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-effect p{
- margin:0!important;font:400 15px/1.55 var(--serif);
-}
-/* Three stages use three fully expanded flex items. Flex layout prevents
-   a ghost fourth grid track and distributes available width evenly. */
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview{
- display:flex!important;flex-flow:row nowrap!important;
- gap:12px!important;width:100%!important;max-width:none!important;
- margin:22px 0 14px!important;
-}
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview>li{
- flex:1 1 0!important;min-width:0!important;width:auto!important;
- max-width:none!important;
-}
-/* Content-led spacing without fixed-height shells or unused tracks. */
-.entry[data-reading-finish="5"] .reading-companion-feature{
- height:auto!important;min-height:0!important;
- margin:18px 0 22px!important;padding:18px 22px!important;
-}
-.entry[data-reading-finish="5"] .reading-companion-feature .rcf-head{margin-bottom:12px!important}
-.entry[data-reading-finish="5"] .reading-companion-feature .rcf-caveat{
- margin-top:12px!important;padding-top:10px!important;
-}
-@media(max-width:850px){
- .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger{
-  grid-template-columns:minmax(0,1fr)!important;
+.reading-exhibit[data-exhibit-kind="long"] .longview-point[data-stage-class="observed"]::before{background:var(--river)}
+@media(min-width:651px) and (max-width:1000px){
+ .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview[data-stage-count="4"]{
+  grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px;
  }
- .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-points.rcf-ledger>li{
-  border-right:0!important;border-bottom:1px solid var(--hair)!important;
+ .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview[data-stage-count="4"] .longview-point:nth-child(2)::after{
+  right:calc(100% - 18px);
  }
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview{flex-wrap:wrap!important}
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview>li{flex:1 1 calc(50% - 12px)!important}
 }
+/* Supplemental Ledgers compare three parties; primary source-accounting
+   Ledgers retain their authored row/table design. */
+.entry[data-reading-finish="5"] .rcf-points.rcf-ledger{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:0;align-items:stretch;width:100%;margin:0 0 12px;padding:0;
+}
+.entry[data-reading-finish="5"] .rcf-points.rcf-ledger>li{
+ display:block;min-width:0;width:auto;margin:0;padding:13px 17px 14px;
+ border:0;border-top:2px solid var(--clay);border-right:1px solid var(--hair);
+ background:transparent;
+}
+.entry[data-reading-finish="5"] .rcf-points.rcf-ledger>li:last-child{border-right:0}
+.entry[data-reading-finish="5"] .rcf-ledger-party{display:block;margin:0 0 10px}
+.entry[data-reading-finish="5"] .rcf-ledger-party .rcf-index{display:block;margin:0 0 7px}
+.entry[data-reading-finish="5"] .rcf-ledger-party strong{margin:0;font:600 14px/1.4 var(--sans)}
+.entry[data-reading-finish="5"] .rcf-ledger-effect p{margin:0;font:400 15px/1.55 var(--serif)}
 @media(max-width:650px){
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview{flex-flow:column nowrap!important}
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview>li{
-  flex:none!important;width:100%!important;
+ .entry[data-reading-finish="5"] .rcf-points.rcf-ledger{grid-template-columns:minmax(0,1fr)}
+ .entry[data-reading-finish="5"] .rcf-points.rcf-ledger>li{border-right:0;border-bottom:1px solid var(--hair)}
+ .reading-exhibit[data-exhibit-kind="long"] .exhibit-longview{
+  grid-template-columns:minmax(0,1fr);gap:0;margin-left:7px;
+  width:auto;border-left:2px solid var(--river);padding-left:19px;
  }
+ .reading-exhibit[data-exhibit-kind="long"] .longview-point{
+  margin:0;border:0;padding:0 0 23px 7px;
+ }
+ .reading-exhibit[data-exhibit-kind="long"] .longview-point:last-child{padding-bottom:0}
+ .reading-exhibit[data-exhibit-kind="long"] .longview-point::after{content:none}
+ .reading-exhibit[data-exhibit-kind="long"] .longview-point::before{left:-27px;top:2px}
 }
+/* The journal's extra guide links must fit the tablet drawer even while it
+   is closed; visibility:hidden alone does not contain scrollable overflow. */
+@media(min-width:821px) and (max-width:1180px){.pd-row{flex-wrap:wrap}}
