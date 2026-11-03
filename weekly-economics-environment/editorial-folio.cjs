@@ -127,7 +127,7 @@ function closing(s,type){
  if(!eyebrow)throw Error('Missing closing heading');let content='';
  if(type==='synthesis'){
   if(!h)throw Error('Missing synthesis title');
-  content='<header class="closing-heading">'+raw(s,eyebrow)+raw(s,h)+'</header><div class="synthesis-argument">'+children.filter(n=>n!==eyebrow&&n!==h&&!has(n,'closing')).map(n=>raw(s,n)).join('')+'</div>'+children.filter(n=>has(n,'closing')).map(n=>'<footer class="synthesis-conclusion">'+raw(s,n)+'</footer>').join('');
+  content='<header class="closing-heading"><div class="eyebrow">Editor\'s synthesis</div>'+raw(s,h)+'</header><div class="synthesis-argument">'+children.filter(n=>n!==eyebrow&&n!==h&&!has(n,'closing')).map(n=>raw(s,n)).join('')+'</div>'+children.filter(n=>has(n,'closing')).map(n=>'<footer class="synthesis-conclusion">'+raw(s,n)+'</footer>').join('');
  }else if(type==='knowledge'){
   if(!h)throw Error('Missing methods title');const intro=children.find(n=>n.tag==='p'),last=children.at(-1),returnLink=last!==intro&&last.tag==='p'&&inside(s,last).includes('href="notebook/"')?last:null;
   content='<header class="closing-heading">'+raw(s,eyebrow)+raw(s,h)+(intro?raw(s,intro):'')+'</header><div class="method-directory">'+children.filter(n=>![eyebrow,h,intro,returnLink].includes(n)).map(n=>raw(s,n)).join('')+'</div>'+(returnLink?'<footer class="methods-return">'+raw(s,returnLink)+'</footer>':'');
