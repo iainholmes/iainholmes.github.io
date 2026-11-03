@@ -1558,46 +1558,75 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 }
 
 
-/* L&L folio VI-A — substantial paired separators and the graph register */
-/* Header rule: clearance after the enlarged numeral, a heavier baseline,
-   and a copper portion exactly as wide as the numeral's structural folio. */
+/* L&L folio VI-B · the two distinct editorial separators */
+/* The title underline was previously invisible: data-reading-finish=5 did
+   not inherit the v4 pseudo-element's content/position, leaving only the
+   earlier one-pixel border. Define it fully, independently of the old rule. */
 .entry[data-reading-finish="5"] .entry-head{
- padding-bottom:clamp(34px,3vw,42px);
+ position:relative;
+ border-bottom:0!important;
+ padding-bottom:clamp(23px,2.15vw,30px)!important;
 }
 .entry[data-reading-finish="5"] .entry-head::after{
- height:3px;bottom:0;left:0;right:0;
+ content:"";display:block;position:absolute;
+ left:0;right:0;bottom:0;width:100%;height:3px;
  background:linear-gradient(to right,
   var(--clay) 0 var(--folio-width),
-  var(--forest) var(--folio-width) 48%,
-  var(--hair) 48% 100%);
+  var(--forest) var(--folio-width) 66%,
+  var(--hair) 66% 100%);
+ pointer-events:none
 }
-/* Compact three-tier miniature in the existing lead-to-body separator.
-   No extra markup, no per-issue modifications, no excessive white space. */
+/* The Equilibrium Signet: a single asymmetric rule with an inset, faceted
+   copper-centered diamond joining the two sides. This is an original L&L
+   editorial device—not a stack of three rails—and occupies only 36px. */
 .entry[data-reading-finish="5"] .reading-deck{
- padding-bottom:56px;margin-bottom:19px;border:0;
+ position:relative;
+ border:0!important;
+ padding:21px 0 48px!important;
+ margin:0 0 17px!important;
+ isolation:isolate
 }
 .entry[data-reading-finish="5"] .reading-deck::after{
- content:"";position:absolute;left:0;right:0;bottom:0;
- width:100%;height:40px;
- background:
-  linear-gradient(var(--river),var(--river)) center top 0 / 72% 4px no-repeat,
-  linear-gradient(var(--forest),var(--forest)) center top 15px / 49% 4px no-repeat,
-  linear-gradient(var(--river),var(--river)) center top 31px / 28% 3px no-repeat;
- pointer-events:none;
+ content:"";position:absolute;left:0;right:0;bottom:19px;
+ width:100%;height:4px;
+ background:linear-gradient(to right,
+   var(--clay) 0 15%,
+   var(--forest) 15% calc(50% - 38px),
+   transparent calc(50% - 38px) calc(50% + 38px),
+   var(--forest) calc(50% + 38px) 81%,
+   var(--river) 81% 100%);
+ pointer-events:none;z-index:0
 }
 .entry[data-reading-finish="5"] .reading-deck::before{
- content:"";position:absolute;left:0;right:0;bottom:0;
- width:100%;height:40px;z-index:1;
- background:
-  radial-gradient(circle 5px at 36% 32px,var(--sage) 0 3.5px,var(--forest) 4.1px 5px,transparent 5.4px),
-  radial-gradient(circle 5px at 64% 32px,var(--sage) 0 3.5px,var(--forest) 4.1px 5px,transparent 5.4px);
- pointer-events:none;
+ content:"";position:absolute;
+ left:50%;bottom:6px;width:24px;height:24px;
+ transform:translateX(-50%) rotate(45deg);
+ border:3px solid var(--forest);
+ background:radial-gradient(circle,var(--clay) 0 4px,var(--paper) 4.5px 100%);
+ box-shadow:0 0 0 6px var(--paper);
+ pointer-events:none;z-index:1
 }
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .ledger-graphic{
- margin-top:20px;max-width:100%;
+/* A graphic is adjacent to the interpretation, not structurally fused
+   into the affected-party Ledger. Authoritative quantities remain as given. */
+.entry[data-reading-finish="5"] .essay-graphic{
+ min-width:0;margin:19px 0 0
 }
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .ledger-graphic svg{
+.entry[data-reading-finish="5"] .essay-graphic .ledger-graphic svg{
  width:100%;height:auto;display:block
+}
+.entry[data-reading-finish="5"] .essay-graphic .model-intervention{
+ display:grid;grid-template-columns:minmax(106px,.34fr) minmax(0,1fr);
+ gap:12px;margin:14px 0 4px;padding:12px 0 0;
+ border-top:2px dashed color-mix(in srgb,var(--river) 48%,var(--paper))
+}
+.entry[data-reading-finish="5"] .essay-graphic .model-intervention span{
+ font:600 12px/1.45 var(--sans);color:var(--river)
+}
+.entry[data-reading-finish="5"] .essay-graphic .model-intervention p{
+ margin:0;font:400 14px/1.5 var(--serif);color:var(--text)
+}
+.entry[data-reading-finish="5"] .essay-graphic .model-kind{
+ display:block;margin:11px 0;font:italic 12px/1.5 var(--serif)
 }
 /* Actual economic diagrams: named axes, schematic curves and visible legend.
    Curve geometry is author-curated, explicitly not source-estimated. */
@@ -1672,26 +1701,60 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  margin-top:12px
 }
 @media(max-width:620px){
- .entry[data-reading-finish="5"] .entry-head{padding-bottom:27px}
- .entry[data-reading-finish="5"] .reading-deck{padding-bottom:49px;margin-bottom:17px}
+ .entry[data-reading-finish="5"] .entry-head{
+  padding-bottom:22px!important
+ }
+ .entry[data-reading-finish="5"] .reading-deck{
+  padding:17px 0 41px!important;margin-bottom:13px!important
+ }
  .entry[data-reading-finish="5"] .reading-deck::after{
-  height:32px;
-  background:
-   linear-gradient(var(--river),var(--river)) center top 0 / 76% 3px no-repeat,
-   linear-gradient(var(--forest),var(--forest)) center top 12px / 52% 3px no-repeat,
-   linear-gradient(var(--river),var(--river)) center top 25px / 31% 3px no-repeat
+  bottom:16px;height:3px;
+  background:linear-gradient(to right,
+   var(--clay) 0 13%,
+   var(--forest) 13% calc(50% - 30px),
+   transparent calc(50% - 30px) calc(50% + 30px),
+   var(--forest) calc(50% + 30px) 85%,
+   var(--river) 85% 100%)
  }
  .entry[data-reading-finish="5"] .reading-deck::before{
-  height:32px;
-  background:
-   radial-gradient(circle 4px at 34.5% 26px,var(--sage) 0 3px,var(--forest) 3.3px 4px,transparent 4.3px),
-   radial-gradient(circle 4px at 65.5% 26px,var(--sage) 0 3px,var(--forest) 3.3px 4px,transparent 4.3px)
+  bottom:6px;width:19px;height:19px;border-width:3px
  }
  .entry[data-reading-finish="5"] .economic-plot h5{font-size:20px}
  .entry[data-reading-finish="5"] .economic-y-axis,
  .entry[data-reading-finish="5"] .economic-x-axis{font-size:10px}
+ .entry[data-reading-finish="5"] .essay-graphic .model-intervention{
+  grid-template-columns:minmax(0,1fr);gap:5px
+ }
 }
 @media print{
  .entry[data-reading-finish="5"] .economic-curve-0{stroke:var(--forest)}
  .entry[data-reading-finish="5"] .economic-curve-1{stroke:var(--clay)}
+}
+
+
+/* Textbook-style supply/demand markers; schematic P/Q labels, never
+   numerical estimates. Market intersections are solved from the drawn curves. */
+.entry[data-reading-finish="5"] .economic-eq-guide{
+ stroke:var(--sage);stroke-width:1.8;stroke-dasharray:5 5;
+ vector-effect:non-scaling-stroke
+}
+.entry[data-reading-finish="5"] .economic-eq-point{
+ fill:var(--paper);stroke:var(--forest);stroke-width:3.5;
+ vector-effect:non-scaling-stroke
+}
+.entry[data-reading-finish="5"] .economic-eq-point-1{stroke:var(--clay)}
+.entry[data-reading-finish="5"] .economic-eq-label{
+ fill:var(--ink);font:700 17px var(--serif)
+}
+.entry[data-reading-finish="5"] .economic-eq-value{
+ fill:var(--muted);font:600 12px var(--sans)
+}
+.entry[data-reading-finish="5"] .economic-curve-label{
+ fill:var(--ink);font:700 16px var(--serif)
+}
+@media print{
+ .entry[data-reading-finish="5"] .reading-deck::before{
+  box-shadow:none;border:2px solid currentColor
+ }
+ .entry[data-reading-finish="5"] .economic-eq-point{fill:white}
 }
