@@ -137,8 +137,25 @@ function closing(s,type){
  }
  return s.slice(0,section.open-1)+' data-editorial-folio="1">'+content+'</section>';
 }
+/* Keep the edition's special-feature ledger derived from authored markup.
+ * This does not create, choose or reword research exhibits. */
+function recordSpecialFeatures(s){
+ const art=s.match(/^<article class="entry"[^>]*>/)?.[0];
+ if(!art)return s;
+ const kind=s.match(/data-exhibit-kind="([^"]+)"/)?.[1];
+ const ids={ledger:'incidence-ledger',test:'assumption-test',decision:'decision-margin',long:'long-view'};
+ if(!ids[kind])throw Error('L&L feature inventory: missing curated exhibit '+(art.match(/id="([^"]+)"/)?.[1]||'?'));
+ const actual=[ids[kind]];
+ if(s.includes('class="essay-graphic"')||s.includes('class="economic-plot"'))actual.push('economic-figures');
+ const declared=art.match(/data-special-features="([^"]+)"/)?.[1];
+ if(declared&&declared!==actual.join(' '))
+  throw Error('L&L feature inventory mismatch for '+(art.match(/id="([^"]+)"/)?.[1]||'?'));
+ if(declared)return s;
+ const next=art.slice(0,-1)+' data-special-features="'+actual.join(' ')+'" data-feature-review="adaptive-v1">';
+ return next+s.slice(art.length);
+}
 function edition(s){
- s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>finishReading(placeExhibit(readingLayout(article(m)))));
+ s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>recordSpecialFeatures(finishReading(placeExhibit(readingLayout(article(m))))));
  // Only uncomposed sections are matched; composed colophons contain nested sections.
  for(const type of ['synthesis','knowledge','editorial-note'])s=s.replace(new RegExp('<section class="'+type+'"(?![^>]*data-editorial-folio)[^>]*>[\\s\\S]*?</section>','g'),m=>closing(m,type));
  const date=s.match(/data-edition="([^"]+)"/)?.[1];
