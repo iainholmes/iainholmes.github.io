@@ -1,4 +1,4 @@
-/* Loblolly & Logit · Reading Field Guide registry, v1.
+/* Loblolly & Logit · Reading Field Guide registry, v2.
    This is editorial metadata, not permission to invent evidence or features.
    Future publishers may import select(), but must author and source the selected
    modules before rendering. No existing edition is rewritten. */
@@ -14,7 +14,7 @@ const features=[
 {id:"decision-margin",name:"The Decision Margin",group:"special",purpose:"Isolates the behavioral or policy choice at which incentives change.",when:"Use when the relevant alternative, constraint, or threshold can be stated clearly.",signals:["margin","choice","tradeoff","threshold"],example:["The Decision Margin"]},
 {id:"heron",name:"The Heron",group:"special",purpose:"An occasional methodological companion that probes an assumption or interpretation.",when:"Use sparingly, only when a pointed methodological question adds value and a sourced, concise answer is available.",signals:["assumption","method","identification"],example:["The Heron"]},
 {id:"assumption-test",name:"The Assumption Test",group:"special",purpose:"Shows which assumptions a finding or model depends upon and what would change if they failed.",when:"Use for important, testable or sensitivity-relevant assumptions; do not imply that a test has been run unless it has.",signals:["assumption","sensitivity","model","identification"],example:["Assumption Test"]},
-{id:"evidence-cabinet",name:"The Evidence Cabinet",group:"special",purpose:"Organizes complementary sources, evidence strength, and conflicting interpretations.",when:"Use when several independent sources need comparison or provenance needs to be made especially clear.",signals:["sources","triangulation","conflict","provenance"],example:["Evidence Cabinet"]},
+{id:"estimation-desk",name:"The Estimation Desk",group:"special",purpose:"Sets out a specific econometric equation, defines the estimand and variables, and distinguishes coefficient interpretation from identification.",when:"Use only when a model or empirical specification genuinely illuminates the study; label theoretical, proposed, estimated and illustrative equations accurately. Never invent estimates, standard errors or results.",signals:["econometrics","regression","estimation","specification","identification","estimand"],example:["Estimation Desk"]},
 {id:"mechanism-map",name:"The Mechanism Map",group:"special",purpose:"Draws the proposed sequence from shock or policy to behavior, equilibrium responses and outcomes.",when:"Use for multi-stage mechanisms where directions and unverified links can be labeled without presenting a schematic as estimated causality.",signals:["mechanism","transmission","spillover","substitution"],example:["Mechanism Map"]}
 ];
 const byId=Object.fromEntries(features.map(x=>[x.id,x]));
