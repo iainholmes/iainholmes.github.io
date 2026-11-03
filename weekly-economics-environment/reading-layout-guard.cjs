@@ -47,10 +47,16 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
    const openingFeatures=(opening.match(/data-special-features="([^"]+)"/)||[])[1];
    if(!openingFeatures)throw Error('L&L publication layout: feature-selection record missing '+id);
    const featureIds=openingFeatures.split(/\s+/).filter(Boolean);
-   const hasIndependentGraphic=markup.includes('class="essay-graphic"')||markup.includes('class="economic-plot"');
-   const actual=[kindToFeature[kind],...(hasIndependentGraphic?['economic-figures']:[])];
+   const hasIndependentGraphic=markup.includes('class="essay-graphic"')||markup.includes('class="economic-plot"')||markup.includes('<figure class="figure"');
+   const extra=markup.match(/class="reading-companion-feature"[^>]*data-special-feature="([^"]+)"/)?.[1];
+   const actual=[kindToFeature[kind],...(hasIndependentGraphic?['economic-figures']:[]),...(extra?[extra]:[])];
    if(featureIds.join(' ')!==actual.join(' '))
     throw Error('L&L publication layout: special-feature record does not match authored reading '+id);
+   if(extra){
+    const approved=require('./reading-feature-dossiers.cjs').dossiers[id];
+    if(!approved||approved.id!==extra)throw Error('L&L publication layout: unsupported supplemental feature '+id);
+    if(!markup.includes('Evidence boundary.'))throw Error('L&L publication layout: supplemental feature missing evidence boundary '+id);
+   }
    if(featureIds.length>2&&!/data-feature-justification="[^"]+"/.test(opening))
     throw Error('L&L publication layout: third feature requires explicit editorial justification '+id);
    let expected=exhibits.render(id,{finding:markup.slice(finding.open,finding.close)});
