@@ -56,10 +56,22 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
     const approved=require('./reading-feature-dossiers.cjs').dossiers[id];
     if(!approved||approved.id!==extra)throw Error('L&L publication layout: unsupported supplemental feature '+id);
     if(!markup.includes('Evidence boundary.'))throw Error('L&L publication layout: supplemental feature missing evidence boundary '+id);
+    if(extra==='incidence-ledger'){
+     const rows=[...markup.matchAll(/class="rcf-ledger-party"/g)].length;
+     const effects=[...markup.matchAll(/class="rcf-ledger-effect"/g)].length;
+     if(rows<2||rows!==effects||!markup.includes('rcf-points rcf-ledger'))
+      throw Error('L&L publication layout: companion Incidence Ledger must be vertical party/effect rows '+id);
+    }
    }
    if(featureIds.length>2&&!/data-feature-justification="[^"]+"/.test(opening))
     throw Error('L&L publication layout: third feature requires explicit editorial justification '+id);
    let expected=exhibits.render(id,{finding:markup.slice(finding.open,finding.close)});
+   if(kind==='ledger'){
+    const parties=[...markup.matchAll(/class="ledger-party"/g)].length;
+    const ledgerRows=[...markup.matchAll(/class="ledger-line"/g)].length;
+    if(ledgerRows<2||parties!==ledgerRows)
+     throw Error('L&L publication layout: primary Ledger requires vertical ordered rows '+id);
+   }
    if(kind==='ledger'){
     const chart=exhibits.graphic(id),inLedger=exhibits.graphicPlacement(id)==='ledger';
     if(!chart)throw Error('L&L publication layout: absent source-grounded graphic '+id);
