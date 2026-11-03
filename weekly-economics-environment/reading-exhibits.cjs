@@ -626,6 +626,8 @@ const visualData={
   },
   "2026-10-16-pfas-agriculture": {
     "type": "mechanism",
+    "placement": "ledger",
+    "intervention": ["Public agencies", "Upstream prevention may change who ultimately bears costs"],
     "title": "Potential cost transmission",
     "stages": [
       "Contaminated inputs",
@@ -942,7 +944,9 @@ function graphic(id){
  if(v.type==='mechanism'){
    content='<div class="model-flow" role="img" aria-label="'+esc(v.title+'. '+v.stages.join('; ')+'. Conceptual pathway, not a measured effect.')+'">'+v.stages.map((stage,i)=>
      '<div class="model-stage"><span class="model-stage-number">'+String(i+1).padStart(2,'0')+'</span><strong>'+esc(stage)+'</strong></div>'
-   ).join('<span class="model-connector" aria-hidden="true">→</span>')+'</div><p class="model-kind">Conceptual transmission channel · no estimated magnitude</p>';
+   ).join('<span class="model-connector" aria-hidden="true">→</span>')+'</div>'+
+   (v.intervention?'<div class="model-intervention"><span>'+esc(v.intervention[0])+'</span><p>'+esc(v.intervention[1])+'</p></div>':'')+
+   '<p class="model-kind">Conceptual transmission channel · no estimated magnitude</p>';
  }else if(v.type==='calculation'){
    const [a,b,c]=v.terms;
    const min=Number(String(b[1]).split('–')[0]),max=Number(String(b[1]).split('–')[1]),base=Number(a[1]),total=base+max;
@@ -984,6 +988,7 @@ function graphic(id){
  }
  return '<figure class="ledger-graphic" data-visual-kind="'+esc(v.type)+'">'+head+content+note+'</figure>';
 }
+function graphicPlacement(id){return visualData[id]?.placement==='ledger'?'ledger':'interpretation';}
 function render(id,source={}){
  const e=select(id),kind=e.kind;
  const head='<header class="exhibit-head"><strong>'+esc(names[kind])+'</strong><span class="exhibit-heading">'+esc(e.heading)+'</span></header>';
@@ -993,7 +998,7 @@ function render(id,source={}){
 
  let content='';
  if(kind==='ledger'){
-   content=primer+'<div class="exhibit-ledger">'+graphic(id)+'<p class="ledger-how-to-read"><strong>How to read this</strong> '+esc(g?.read||'')+'</p><div class="ledger-headings" aria-hidden="true"><span>Affected party</span><span>Economic consequence</span><span>Evidence status</span></div>'+e.rows.map(([party,impact,status],i)=>'<div class="ledger-line"><div class="ledger-party"><span class="ledger-no">'+String(i+1).padStart(2,'0')+'</span>'+esc(party)+'</div><div class="ledger-effect">'+esc(impact)+'</div><div class="ledger-status">'+esc(status)+'</div></div>').join('')+'</div>';
+   content=primer+'<div class="exhibit-ledger">'+(graphicPlacement(id)==='ledger'?'':graphic(id))+'<p class="ledger-how-to-read"><strong>How to read this</strong> '+esc(g?.read||'')+'</p><div class="ledger-headings" aria-hidden="true"><span>Affected party</span><span>Economic consequence</span><span>Evidence status</span></div>'+e.rows.map(([party,impact,status],i)=>'<div class="ledger-line"><div class="ledger-party"><span class="ledger-no">'+String(i+1).padStart(2,'0')+'</span>'+esc(party)+'</div><div class="ledger-effect">'+esc(impact)+'</div><div class="ledger-status">'+esc(status)+'</div></div>').join('')+(graphicPlacement(id)==='ledger'?graphic(id):'')+'</div>';
  }else if(kind==='test'){
    content='<p class="exhibit-introduction">'+esc(e.intro)+'</p><div class="test-research-question"><span class="exhibit-field-label">THE ASSUMPTION</span><p>'+esc(e.premise)+'</p></div><div class="test-challenge"><section><span class="exhibit-field-label">PRESS ON THE CLAIM</span><p>'+esc(e.stress)+'</p></section><section><span class="exhibit-field-label">WHAT WOULD HELP DECIDE?</span><p>'+esc(e.observe)+'</p></section></div><div class="test-scope">'+esc(e.note)+'</div>';
  }else if(kind==='decision'){
@@ -1007,8 +1012,10 @@ function render(id,source={}){
      return '<li class="longview-point" data-stage-class="'+statusType+'"><span class="longview-index">'+String(i+1).padStart(2,'0')+'</span><span class="longview-date">'+esc(when)+'</span><span class="longview-event">'+esc(desc)+'</span><span class="longview-status">'+esc(status)+'</span><p class="longview-explain">'+esc(g.steps[i])+'</p></li>';
    }).join('')+'</ol><div class="longview-takeaway"><span>WHY THIS MATTERS</span><p>'+esc(takeaway)+'</p></div>';
  }else throw Error('Unsupported exhibit kind '+kind);
- const footer='<footer class="exhibit-footer"><span>'+esc(e.curated?'Reading-specific editorial interpretation':'Editorial verification pending')+'</span><span>See the evidence limits and sources below</span></footer>';
- return '<section class="reading-exhibit" data-exhibit-kind="'+kind+'" data-curated="'+e.curated+'" aria-label="'+esc(names[kind])+'">'+head+content+term+footer+'</section>';
+ const footer=kind==='ledger'?'':'<footer class="exhibit-footer"><span>'+esc(e.curated?'Reading-specific editorial interpretation':'Editorial verification pending')+'</span><span>See the evidence limits and sources below</span></footer>';
+ // The Ledger itself already names its economic concepts and evidence status.
+ // Avoid repeating generic glossary/footer descriptors beneath its rows.
+ return '<section class="reading-exhibit" data-exhibit-kind="'+kind+'" data-curated="'+e.curated+'" aria-label="'+esc(names[kind])+'">'+head+content+(kind==='ledger'?'':term)+footer+'</section>';
 }
 function audit(ids){
  const sequence=ids.map(id=>select(id).kind);
@@ -1017,4 +1024,4 @@ function audit(ids){
  for(let i=2;i<sequence.length;i++)if(sequence[i]===sequence[i-1]&&sequence[i]===sequence[i-2])longRuns.push({at:i,kind:sequence[i]});
  return {sequence,frequency,longRuns};
 }
-module.exports={catalog,visualData,readingGuides,names,specimen,select,render,audit,graphic};
+module.exports={catalog,visualData,readingGuides,names,specimen,select,render,audit,graphic,graphicPlacement};
