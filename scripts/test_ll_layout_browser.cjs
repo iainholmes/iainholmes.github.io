@@ -23,11 +23,16 @@ async function audit({page,goto,setViewport,origin,widths=[1440,1280,1180,1024,1
      children:[...e.children].map(c=>({...rect(c),overflow:Math.max(0,...[...c.children].map(n=>n.scrollWidth-n.clientWidth)),
       markerTop:getComputedStyle(c,'::before').top,segment:getComputedStyle(c,'::after').content}))
     }));
+    const panels=[...ed.querySelectorAll('.feature-spread>.interpretive-essay,.feature-spread>.reading-exhibit')].map(p=>{
+     const r=p.getBoundingClientRect();const leaves=[...p.querySelectorAll('*')].filter(n=>!n.children.length&&n.getBoundingClientRect().height);
+     const end=Math.max(r.top,...leaves.map(n=>n.getBoundingClientRect().bottom));
+     return {id:p.closest('article').id,cls:p.className,height:r.height,blank:r.bottom-end};
+    });
     const overflows=[...ed.querySelectorAll('.entry,.feature-spread,.reading-exhibit,.reading-companion-feature,.reading-media,.reading-sources')]
      // Figure crop marks intentionally extend 14px into the page margin.
      .filter(e=>e.scrollWidth>e.clientWidth+(e.matches('.entry,.reading-media')?14:2)).map(e=>({id:e.closest('article')?.id,cls:e.className,excess:e.scrollWidth-e.clientWidth}));
     return {readings:ed.querySelectorAll('article.entry').length,viewport:innerWidth,scroll:document.documentElement.scrollWidth,lists,overflows,
-     kinds:[...ed.querySelectorAll('.reading-exhibit')].map(e=>e.dataset.exhibitKind),
+     panels,kinds:[...ed.querySelectorAll('.reading-exhibit')].map(e=>e.dataset.exhibitKind),
      duplicateInline:!!document.getElementById('ll-accepted-reading-arrangement-20261103')};
    });
    const label=width+' '+date;
@@ -36,6 +41,7 @@ async function audit({page,goto,setViewport,origin,widths=[1440,1280,1180,1024,1
    check(result.scroll<=width+1,label+': page overflow');
    check(!result.duplicateInline,label+': retired inline override absent');
    check(!result.overflows.length,label+': feature overflow '+JSON.stringify(result.overflows));
+   check(result.panels.every(p=>p.blank<=90),label+': unfinished panel whitespace '+JSON.stringify(result.panels.filter(p=>p.blank>90)));
    for(const list of result.lists){
     const cells=list.children,n=cells.length;
     check(n===(list.type==='ledger'?3:list.declared),label+' '+list.id+': complete comparison');

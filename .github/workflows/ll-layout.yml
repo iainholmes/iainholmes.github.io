@@ -1,0 +1,42 @@
+name: Loblolly & Logit rendered layout
+on:
+  push:
+    branches: [master]
+    paths: ['weekly-economics-environment/**', 'personal-updates/mobile/**', 'assets/identity/**', 'scripts/*ll*', 'scripts/prepare_periodicals.cjs', '.github/workflows/ll-layout.yml']
+  pull_request:
+    paths: ['weekly-economics-environment/**', 'personal-updates/mobile/**', 'assets/identity/**', 'scripts/*ll*', 'scripts/prepare_periodicals.cjs', '.github/workflows/ll-layout.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rendered-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate renderer and preserved archive
+        run: |
+          node scripts/test_ll_publication_layout.cjs
+          node scripts/test_reading_exhibits.cjs
+          node scripts/test_editorial_folio.cjs
+      - name: Install pinned browser runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/ll-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
+          "$RUNNER_TEMP/ll-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Audit all six editions at 13 viewport widths
+        env:
+          LL_PLAYWRIGHT: ${{ runner.temp }}/ll-browser/node_modules/playwright
+          LL_QA_JSON: ${{ runner.temp }}/ll-layout-results.json
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/ll-preview.log" 2>&1 &
+          node scripts/test_ll_layout_browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ll-layout-evidence
+          path: ${{ runner.temp }}/ll-layout-results.json
+          if-no-files-found: ignore

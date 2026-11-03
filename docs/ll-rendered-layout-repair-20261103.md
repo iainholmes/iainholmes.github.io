@@ -16,7 +16,7 @@ All seven Long Views derive desktop tracks from the actual stage count (five wit
 
 The six-edition `<main>` region is byte-identical to `ef7f0fb` except seven `--longview-stages` presentation attributes. All prose, dates, links, artwork, edition IDs, feature choices, source qualifications and profile/feature associations remain unchanged. The source renderer and preservation comparison distinguish authored companion features from the original scholarship, and companion markup is separately protected by the archive byte comparison.
 
-`test_ll_publication_layout.cjs` covers archive migration, repeat composition, future-edition growth, CSS version integrity, stage mismatch rejection and duplicate inline override rejection. `test_ll_layout_browser.cjs` checks real served HTML/CSS rather than matching source strings. It can run through Playwright or the connected browser and audits all six editions at 13 widths (320–1440px), including both sides of responsive thresholds. It checks equal columns, actual element positions, unused right tracks, complete mobile stacks, mobile rails, five readings per edition and content/page overflow. The existing 14px figure crop marks are intentional margin ornaments and are excluded from content overflow checks.
+`test_ll_publication_layout.cjs` covers archive migration, repeat composition, future-edition growth, CSS version integrity, stage mismatch rejection and duplicate inline override rejection. `test_ll_layout_browser.cjs` checks real served HTML/CSS rather than matching source strings. It can run through Playwright or the connected browser and audits all six editions at 13 widths (320–1440px), including both sides of responsive thresholds. It checks equal columns, actual element positions, unused right tracks, complete mobile stacks, mobile rails, five readings per edition, content/page overflow and excess blank area below the actual panel content. The existing 14px figure crop marks are intentional margin ornaments and are excluded from content overflow checks.
 
 Run locally or against Pages:
 
@@ -24,4 +24,8 @@ Run locally or against Pages:
 LL_ORIGIN=https://iainholmes.github.io LL_QA_JSON=layout-results.json node scripts/test_ll_layout_browser.cjs
 ```
 
-Local Chromium result: **78 edition/viewport cases, 1,145 assertions passed**. Source publication, exhibit rendering, editorial preservation, field register and publishing integrity tests also pass. Final live deployment status, asset hashes and screenshots are recorded separately in delivery evidence after deployment; none is inferred from a source check.
+Primary Ledger and Assumption Test panels previously stretched to the height of a taller neighbour, producing up to 766px of blank painted canvas. Their existing editorial columns, palette, artwork and shared upper ribbon remain, while panel boundaries now close at their own content. No primary Ledger content or accounting-row semantics were overwritten.
+
+The `Loblolly & Logit rendered layout` GitHub workflow runs the source checks and the full browser audit on relevant pushes and pull requests.
+
+Local Chromium result: **78 edition/viewport cases, 1,223 assertions passed**. Source publication, exhibit rendering, editorial preservation, field register and publishing integrity tests also pass. Final live deployment status, asset hashes and screenshots are recorded separately in delivery evidence after deployment; none is inferred from a source check.

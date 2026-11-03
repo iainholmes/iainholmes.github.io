@@ -727,15 +727,15 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
  background:var(--clay);z-index:1;pointer-events:none
 }
 .entry[data-reading-finish="5"] .feature-spread .interpretive-essay{
- grid-area:essay;align-self:stretch;min-height:0;
+ grid-area:essay;align-self:start;min-height:0;
  padding:23px 23px 19px!important;margin:0!important;
- border:0!important;border-right:5px solid var(--clay)!important;
+ border:0;border-right:5px solid var(--clay)!important;
  background:color-mix(in srgb,var(--paper) 95%,var(--forest) 5%)
 }
 .entry[data-reading-finish="5"] .feature-spread .reading-exhibit{
- grid-area:exhibit;align-self:stretch;min-width:0;
+ grid-area:exhibit;align-self:start;min-width:0;
  margin:0!important;padding:22px 23px 19px!important;
- border:0!important;background:var(--paper)
+ border:0;background:var(--paper)
 }
 /* Ledger: related figure in the interpretation panel and the incidence
    register in the other panel. No huge second chart at the top of ledger. */
@@ -1868,3 +1868,20 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 /* The journal's extra guide links must fit the tablet drawer even while it
    is closed; visibility:hidden alone does not contain scrollable overflow. */
 @media(min-width:821px) and (max-width:1180px){.pd-row{flex-wrap:wrap}}
+/* Bound paired features to their own content. The shared top ribbon and seam
+   remain; each panel closes where its material ends instead of painting a
+   half-empty rectangle down to its taller neighbour. */
+@media(min-width:1181px){
+ .entry[data-reading-finish="5"] .feature-spread:is([data-feature="ledger"],[data-feature="test"]){
+  align-items:start;background:transparent;
+  border-left:0!important;border-right:0!important;border-bottom:0!important;box-shadow:none;
+ }
+ .entry[data-reading-finish="5"] .feature-spread:is([data-feature="ledger"],[data-feature="test"])>.interpretive-essay{
+  border-left:4px solid var(--forest);border-bottom:6px solid var(--forest)!important;
+  box-shadow:0 5px 0 color-mix(in srgb,var(--forest) 12%,transparent);
+ }
+ .entry[data-reading-finish="5"] .feature-spread:is([data-feature="ledger"],[data-feature="test"])>.reading-exhibit{
+  border-right:4px solid var(--forest);border-bottom:6px solid var(--forest);
+  box-shadow:0 5px 0 color-mix(in srgb,var(--forest) 12%,transparent);
+ }
+}

@@ -420,7 +420,7 @@
   },
   "layoutAudit": {
     "reviewed": "2026-11-03",
-    "localBrowser": "Chromium, 78 edition/viewport cases, 1145 geometry assertions passed",
+    "localBrowser": "Chromium, 78 edition/viewport cases, 1223 geometry and whitespace assertions passed",
     "viewportWidths": [
       1440,
       1280,
@@ -453,6 +453,8 @@
     },
     "preservation": "The six-edition main region is byte-identical except seven stage-track presentation attributes. Source links, prose, artwork, feature selections and dates unchanged.",
     "regression": "scripts/test_ll_layout_browser.cjs",
-    "liveDeployment": "Verified separately in the delivery evidence after master deployment; source preflight alone is not visual verification."
+    "liveDeployment": "Verified separately in the delivery evidence after master deployment; source preflight alone is not visual verification.",
+    "pairedPanels": "Primary Ledgers and Assumption Tests retain their editorial columns, with each panel closing at its own content boundary instead of stretching into blank canvas.",
+    "continuousVerification": ".github/workflows/ll-layout.yml runs source preservation and rendered browser audits on relevant pushes and pull requests."
   }
 }
