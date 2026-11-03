@@ -1,5 +1,6 @@
 'use strict';
 const readingExhibits=require('./reading-exhibits.cjs');
+const featureDossiers=require('./reading-feature-dossiers.cjs');
 // Publication-time presentation only. Original text, links and figures are sliced
 // from the author's markup, never serialized or rewritten. No browser dependency.
 const voids=new Set('area base br col embed hr img input link meta param source track wbr'.split(' '));
@@ -146,16 +147,21 @@ function recordSpecialFeatures(s){
  const ids={ledger:'incidence-ledger',test:'assumption-test',decision:'decision-margin',long:'long-view'};
  if(!ids[kind])throw Error('L&L feature inventory: missing curated exhibit '+(art.match(/id="([^"]+)"/)?.[1]||'?'));
  const actual=[ids[kind]];
- if(s.includes('class="essay-graphic"')||s.includes('class="economic-plot"'))actual.push('economic-figures');
- const declared=art.match(/data-special-features="([^"]+)"/)?.[1];
- if(declared&&declared!==actual.join(' '))
-  throw Error('L&L feature inventory mismatch for '+(art.match(/id="([^"]+)"/)?.[1]||'?'));
- if(declared)return s;
- const next=art.slice(0,-1)+' data-special-features="'+actual.join(' ')+'" data-feature-review="adaptive-v1">';
+ // A curated standalone quantitative figure belongs to Economic Figures
+ // whether it uses the historic .figure or the newer .essay-graphic wrapper.
+ if(s.includes('class="essay-graphic"')||s.includes('class="economic-plot"')||s.includes('<figure class="figure"'))actual.push('economic-figures');
+ const companion=s.match(/class="reading-companion-feature"[^>]*data-special-feature="([^"]+)"/)?.[1];
+ if(companion)actual.push(companion);
+ const unique=[...new Set(actual)];
+ if(unique.length>2 && !art.includes('data-feature-justification="'))
+  throw Error('L&L reading needs justification for third feature '+(art.match(/id="([^"]+)"/)?.[1]||'?'));
+ let next=art.replace(/\s+data-special-features="[^"]*"/g,'').replace(/\s+data-feature-review="[^"]*"/g,'');
+ next=next.slice(0,-1)+' data-special-features="'+unique.join(' ')+'" data-feature-review="2026-11-03-reissue">';
  return next+s.slice(art.length);
 }
+
 function edition(s){
- s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>recordSpecialFeatures(finishReading(placeExhibit(readingLayout(article(m))))));
+ s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>recordSpecialFeatures(featureDossiers.attach(finishReading(placeExhibit(readingLayout(article(m)))))));
  // Only uncomposed sections are matched; composed colophons contain nested sections.
  for(const type of ['synthesis','knowledge','editorial-note'])s=s.replace(new RegExp('<section class="'+type+'"(?![^>]*data-editorial-folio)[^>]*>[\\s\\S]*?</section>','g'),m=>closing(m,type));
  const date=s.match(/data-edition="([^"]+)"/)?.[1];
