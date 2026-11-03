@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-full-screen-finishing';
+const currentKey='reading-folio.css?v=20261102-wide-reading-figures';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -73,6 +73,16 @@ ok(css.includes('height:9px')&&css.includes('padding-top:52px'),'finished substa
 ok(css.includes('border:4px solid var(--forest)')&&css.includes('border-right-width:7px!important'),'paired spread has continuous structural frame and heavy internal seam');
 ok(css.includes('.reading-sources>.sources')&&css.includes('grid-template-columns:minmax(112px,.23fr)'),'post-reading sources occupy a tighter horizontal register');
 ok(css.includes('.essay-graphic'),'ledger source figure moved to interpretive panel');
+ok(css.includes('Full-width reading and source-driven graphics'),'new width and figure design applied');
+ok(css.includes('.reading-deck .finding,')&&css.includes('max-width:none!important'),'lead and first analysis use full reading column');
+ok(css.includes(':has(>a:nth-of-type(3):last-of-type)'),'three-source register allocates full width evenly');
+ok(css.includes('.essay-graphic .plot-bar')&&css.includes('.plot-grid-zero'),'figures are styled in their actual interpretation container');
+ok(css.includes('.model-stage')&&css.includes('.surplus-band'),'model and accounting graphics have distinct physical treatments');
+eq((source.match(/class="ledger-plot"/g)||[]).length,3,'three scaled source-reported quantitative charts');
+eq((source.match(/class="model-flow"/g)||[]).length,6,'six carefully labeled conceptual diagrams');
+eq((source.match(/class="surplus-visual"/g)||[]).length,1,'surplus ledger includes an actual proportional composition graphic');
+eq((source.match(/class="decomp-track"/g)||[]).length,1,'one source-specific price decomposition');
+
 ok(css.includes('max-width:80ch'),'opening prose remains stacked but has a fuller desktop measure');
 ok(css.includes('grid-template-columns:25px minmax(0,1fr)'),'surplus calculation aligns terms as distinct readable rows');
 ok(css.includes('min-height:44px!important'),'compact source links retain mobile tap targets');
