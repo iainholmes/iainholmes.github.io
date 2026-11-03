@@ -407,6 +407,15 @@
     ],
     "implementation": "Two supplemental Incidence Ledgers now use party/effect row markup. Primary Ledgers retain their already-vertical structure. CSS implements content-led compact spacing for supplemental reading features.",
     "verification": "Publisher layout guard passed: six editions, 30 readings, 19 notebook concepts, 53 source links; editorial composer idempotent.",
-    "limitation": "Production deployment and browser rendering not independently verified."
+    "limitation": "Production deployment and browser rendering not independently verified.",
+    "revision": "2026-11-03-verified-stage-and-ledger-repair",
+    "cause": "The Long View used a 4-column fallback for 3-stage lists, leaving 25% of the panel empty. The supplemental Ledger's CSS override was insufficient to ensure the rendered desktop presentation matched its intended vertical order.",
+    "fixes": [
+      "Explicit authored 3/4 stage counts for seven Long Views (five three-stage, two four-stage).",
+      "One vertically stacked sequence of party/effect rows for the two supplemental Incidence Ledgers at all viewport widths, with late-loaded page-level safeguard.",
+      "Compact, content-sized companion containers and adaptive tablet/phone column behavior.",
+      "Preserved the 30 readings' original scholarship, existing special features, and publication dates."
+    ],
+    "validation": "Six editions, 30 readings, 19 notebook concepts, 53 source links; composer idempotent. Live GitHub Pages appearance still not browser-verified."
   }
 }
