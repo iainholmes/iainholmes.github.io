@@ -396,5 +396,17 @@
       "evidenceStatus": "Qualified interpretive companion; see in-reading evidence boundary",
       "decision": "Add evidence-bounded second lens of distinct analytical purpose"
     }
-  ]
+  ],
+  "layoutReissue": {
+    "date": "2026-11-03",
+    "scope": "All six editions; 30 published readings",
+    "rules": [
+      "Incidence Ledgers must display affected parties vertically, as successive rows, at all breakpoints.",
+      "Use existing content-driven space; avoid fixed-height blank panels and surplus gutters in reissued companions.",
+      "Preserve source text, figures, citations, issue identifiers, feature selection, and established typographic hierarchy."
+    ],
+    "implementation": "Two supplemental Incidence Ledgers now use party/effect row markup. Primary Ledgers retain their already-vertical structure. CSS implements content-led compact spacing for supplemental reading features.",
+    "verification": "Publisher layout guard passed: six editions, 30 readings, 19 notebook concepts, 53 source links; editorial composer idempotent.",
+    "limitation": "Production deployment and browser rendering not independently verified."
+  }
 }
