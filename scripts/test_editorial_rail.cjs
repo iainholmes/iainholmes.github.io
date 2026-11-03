@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-folio-heron-pathways';
+const currentKey='reading-folio.css?v=20261102-three-beat-cadence';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -118,8 +118,10 @@ ok(inLedger.length===0,'all Incidence Ledgers are separated from their graph com
 ok(ledgers.every(id=>current.get(id).includes('class="essay-graphic"')),'all eleven economic visualizations accompany interpretation');
 ok(current.get('2026-10-16-pfas-agriculture').includes('class="model-intervention"'),'PFAS prevention pathway retains conditional public-agency intervention');
 eq((source.match(/class="ledger-graphic"/g)||[]).length,ledgers.length,'no economic graphic duplicated or lost');
-ok(css.includes('The Equilibrium Signet')&&css.includes('rotate(45deg)'),'the original inset-diamond single-track motif replaces the copied three rails');
-ok(!css.includes('radial-gradient(circle 5px at 36%'),'deprecated three-rail graphic is absent');
+ok(css.includes('The Three-Beat Cadence')&&css.includes('Two restrained sage registration dots'),'three-line L&L editorial cadence is present');
+ok(css.includes('89% 5px no-repeat')&&css.includes('63% 4px no-repeat')&&css.includes('30% 3px no-repeat'),'desktop separator has three independently dimensioned bars');
+ok(css.includes('92% 4px no-repeat')&&css.includes('67% 3px no-repeat')&&css.includes('34% 3px no-repeat'),'mobile separator retains three compact bars');
+ok(!css.includes('The Equilibrium Signet')&&!css.includes('rotate(45deg)'),'the superseded diamond signet has been removed');
 ok(css.includes('content:"";display:block;position:absolute;')&&css.includes('var(--clay) 0 var(--folio-width)'),'title underline has a real pseudo-element with a folio-width copper tab');
 ok(css.includes('padding-bottom:clamp(23px,2.15vw,30px)!important'),'title rule separates from the enlarged numeral');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
