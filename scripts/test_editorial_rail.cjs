@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-publisher-durable';
+const currentKey='reading-folio.css?v=20261102-folio-heron-pathways';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -15,7 +15,9 @@ const articles=s=>[...s.matchAll(/<article class="entry"[^>]*id="([^"]+)"[\s\S]*
 const prior=new Map(articles(baseline)),current=new Map(articles(source));
 ok(current.size>=prior.size,'the thirty founding readings survive future issues');
 for(const [id,old] of prior){ok(current.has(id),'reading retained '+id);eq(readingRecord(current.get(id)),readingRecord(old),'authored article unchanged '+id)}
-const stripArticles=s=>s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>'<article id="'+m.match(/\bid="([^"]+)"/)?.[1]+'"></article>');
+// Only the synthesis overline has changed; all other closing copy is locked.
+const stripArticles=s=>s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>'<article id="'+m.match(/\bid="([^"]+)"/)?.[1]+'"></article>')
+ .replace(/<div class="eyebrow">(?:The synthesis \/ Editorial interpretation|Editor's synthesis)<\/div>/g,'<div class="eyebrow">[SYNTHESIS OVERLINE]</div>');
 // The original archive is a permanent subset. A later issue may legitimately
 // extend the main publication region without changing those six editions.
 const editionParts=s=>{
@@ -68,6 +70,11 @@ eq((source.match(/data-reading-finish="5"/g)||[]).length,current.size,'finished 
 eq((source.match(/class="reading-opening reading-opening--why"/g)||[]).length,0,'no unintended horizontal Why-it-matters sections');
 
 ok(css.includes('.evidence-pair>.margin')&&source.includes("var grid=art.querySelector('.article-grid')"),'Heron wrapper remains compatible');
+ok(source.includes('evidence.append(slot);')&&css.includes('.evidence-pair>.perch'),'Heron lives in an in-flow row beneath both evidence columns');
+ok(css.includes('.reading-folio::after{content:none!important}'),'every reading numeral loses the redundant Reading label');
+ok(css.includes('.entry.cp-keepable>.cp-keep-toggle'),'only reading KEEP controls are repositioned');
+ok(css.includes('--folio-width:clamp('),'number/title grid has shared responsive folio dimensions');
+eq((source.match(/Editor's synthesis/g)||[]).length,editions.length,'all historical synthesis labels use the approved name');
 eq((source.match(/data-reading-layout="2"/g)||[]).length,current.size,'all readings use the stable layout markers');
 eq((source.match(/class="reading-exhibit"/g)||[]).length,current.size,'all published readings have editorial exhibits');
 eq((source.match(/data-reading-exhibit="1"/g)||[]).length,current.size,'all reading exhibits have publisher-stable markers');
@@ -100,6 +107,11 @@ ok(css.includes('max-width:80ch'),'opening prose remains stacked but has a fulle
 ok(css.includes('grid-template-columns:25px minmax(0,1fr)'),'surplus calculation aligns terms as distinct readable rows');
 ok(css.includes('min-height:44px!important'),'compact source links retain mobile tap targets');
 ok(css.includes('.evidence-pair>.limitation')&&css.includes('border-left:5px solid var(--river)!important'),'evidence and notebook use stronger paired rails');
-eq((source.match(/class="essay-graphic"/g)||[]).length,(source.match(/data-exhibit-kind="ledger"/g)||[]).length,'all published Ledgers pair a figure with their interpretation');
+const editorial=require('../weekly-economics-environment/reading-exhibits.cjs');
+const ledgers=[...current.keys()].filter(id=>editorial.select(id).kind==='ledger');
+const inLedger=ledgers.filter(id=>editorial.graphicPlacement(id)==='ledger');
+eq((source.match(/class="essay-graphic"/g)||[]).length,ledgers.length-inLedger.length,'interpretive figures remain for all non-relocated Ledgers');
+ok(inLedger.every(id=>current.get(id).includes('class="model-intervention"')),'selected conceptual pathway and intervention reside within the ledger');
+eq((source.match(/class="ledger-graphic"/g)||[]).length,ledgers.length,'no economic graphic duplicated or lost');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
 console.log(checks+' single-divider reading layout checks passed.');
