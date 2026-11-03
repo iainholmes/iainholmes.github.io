@@ -575,6 +575,55 @@
         "checked": "2026-10-29",
         "source": "https://www.ncparks.gov/state-parks/morrow-mountain-state-park"
       }
+    },
+    {
+      "id": "medoc-mountain-bluff",
+      "name": "Medoc Mountain State Park — Bluff Loop",
+      "short_name": "Medoc Mountain",
+      "kind": "trail",
+      "region": "Halifax County",
+      "access": {
+        "name": "Medoc Mountain public park access, Hollister",
+        "lat": 36.2639,
+        "lng": -77.8883,
+        "coords_verified": true,
+        "coords_checked": "2026-11-03",
+        "coords_source": "Official NC State Parks home GPS 36.2639,-77.8883; official park map reviewed for public access, parking and named route. Observe the official closed-road address warning and follow signed day-use access."
+      },
+      "dog_policy": "Attended leash no longer than six feet; pets stay outside buildings.",
+      "routes": [
+        {
+          "route_id": "medoc-mountain-bluff-loop@1",
+          "distance_mi": 1.75,
+          "shape": "loop",
+          "difficulty": "moderate",
+          "surface": "Natural woodland path; orange-triangle blazes. Official difficulty is easy to moderate."
+        }
+      ],
+      "links": [
+        {
+          "label": "Official access, status, hours and pets",
+          "url": "https://www.ncparks.gov/state-parks/medoc-mountain-state-park"
+        },
+        {
+          "label": "Official trails",
+          "url": "https://www.ncparks.gov/state-parks/medoc-mountain-state-park/trails"
+        },
+        {
+          "label": "Official park map",
+          "url": "https://www.ncparks.gov/maps/medoc-mountain-state-park-map/open"
+        }
+      ],
+      "tags": [
+        "woodland",
+        "short-walk",
+        "picnic"
+      ],
+      "closure": {
+        "status": "open",
+        "checked": "2026-11-03",
+        "source": "https://www.ncparks.gov/state-parks/medoc-mountain-state-park"
+      }
     }
   ]
 }

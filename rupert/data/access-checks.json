@@ -165,6 +165,24 @@
       "status": "open",
       "discrepancy": false,
       "note": "Publication-day official home/status, trail table and news re-read before approval. Hiking explicitly Open, with downed-tree reporting notice; open does not promise clear footing. Official map and public park-office GPS 35.3737,-80.0735 identify the visitor access opposite Laurel Trail. Easy 0.7-mile red-hexagon loop, designated parking; no roadside parking. Six-foot attended leash, pets outside buildings/pool/cabins. Free day use. October gates 7 a.m.–9 p.m., November 7 a.m.–8 p.m.; day-use closes one hour earlier. Plan finishes daylight and accounts for Sunday clock change. Dated facility construction notice excludes no part of this loop; no camping, shelter A or pool is required. Canonical NWS issue 2026-10-29T06:45:28-04:00 read: both daytime periods mostly cloudy near 70F, Saturday northeast wind 5–8 mph, Sunday-night slight shower chance; no active alerts returned, not a guarantee. Footing/downed-branch cautions, water/rain layer and postpone-for-thunder/unsafe-conditions pivot remain appropriate. The long drive for a short walk is explicitly disclosed; this is an optional leisurely picnic day, not a summit or mileage claim."
+    },
+    {
+      "place_id": "medoc-mountain-bluff",
+      "status": "open",
+      "checked": "2026-11-03",
+      "checked_at": "2026-11-03T12:11:16.891Z",
+      "official_url": "https://www.ncparks.gov/state-parks/medoc-mountain-state-park",
+      "discrepancy": false,
+      "note": "Official home explicitly lists hiking trails Open. Current trails table and September 2024 map agree on Bluff Loop: 1.75 miles, orange triangles, easy to moderate, hiking only. Public park GPS 36.2639,-77.8883 and signed day-use/picnic access checked on map; office/visitor-center directions are a park-access reference, not a precise parking-stall pin. Official Google Maps closed-road warning is retained in parking instructions. November hours 8 a.m.–6 p.m.; free ordinary day use. Attended leash at most six feet, no pets inside buildings. News lists no current posts; this is not used alone as proof of opening. No swim, off-leash, water-quality or obstacle-free claim. Mandatory release-day NWS refresh and editorial review still required."
+    },
+    {
+      "place_id": "medoc-mountain-bluff",
+      "status": "open",
+      "checked": "2026-11-03",
+      "checked_at": "2026-11-03T12:14:53.380Z",
+      "official_url": "https://www.ncparks.gov/state-parks/medoc-mountain-state-park",
+      "discrepancy": false,
+      "note": "Publication-day official home, route table, news and map read. Hiking explicitly Open; Bluff Loop 1.75 miles, orange triangles, hiking only, official easy-to-moderate grade. Designated day-use/picnic parking and park public GPS checked; Google Maps closed-road address warning retained, follow signs and use 1540 or park name for visitor-center directions rather than entering a closed road. November gate 8 a.m.–6 p.m., visitor center 8 a.m.–5 p.m.; pets outside buildings on attended leash at most six feet. Free ordinary day use. No current news posts is not the opening evidence; explicit trail status is. No swimming or off-leash recommendation, no unsupported crowd reading."
     }
   ],
   "official_hosts": [

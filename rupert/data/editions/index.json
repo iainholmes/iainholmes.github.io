@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "2edc1d46870fea79",
+  "revision": "2d69fb3ba06d9996",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -555,6 +555,56 @@
       ],
       "photo_id": "atlas-plate-33fe2974faa3",
       "path": "data/editions/2026-W44-thu.json"
+    },
+    {
+      "id": "2026-W45-tue",
+      "slot": "tuesday",
+      "status": "published",
+      "published_at": "2026-11-03T07:16:34-05:00",
+      "weekend": {
+        "start": "2026-11-07",
+        "end": "2026-11-08"
+      },
+      "title": "Medoc Mountain, without a summit campaign",
+      "place_id": "medoc-mountain-bluff",
+      "experience_key": "medoc-mountain-bluff-loop",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Medoc Mountain, without a summit campaign",
+          "place_id": "medoc-mountain-bluff",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "medoc-mountain-bluff"
+      ],
+      "place_roles": [
+        {
+          "place_id": "medoc-mountain-bluff",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-d522216530a1",
+      "path": "data/editions/2026-W45-tue.json"
     }
   ]
 }

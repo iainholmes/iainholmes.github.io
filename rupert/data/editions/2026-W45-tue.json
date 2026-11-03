@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "id": "2026-W45-tue",
+  "slot": "tuesday",
+  "status": "published",
+  "published_at": "2026-11-03T07:16:34-05:00",
+  "weekend": {
+    "start": "2026-11-07",
+    "end": "2026-11-08"
+  },
+  "flagship": {
+    "place_id": "medoc-mountain-bluff",
+    "title": "Medoc Mountain, without a summit campaign",
+    "standfirst": "An orange-blazed woodland loop above Little Fishing Creek: a modest walk, a picnic if the day allows, and plenty of time for Rupert to investigate.",
+    "why_this_week": "The name promises a mountain; the better invitation is a small woodland circuit. The official Bluff Loop is 1.75 miles and rated easy to moderate, not a strenuous summit expedition. Follow its orange triangles from the signed day-use trail network, allowing time for access walking and unhurried sniffing. This is a new eastern option after last week’s Sandhills and Uwharrie outings. The drive is substantial for a short walk, so make it an easy-paced day rather than a mileage errand. Wet leaves can conceal roots and uneven slopes; Little Fishing Creek is scenery, not an invitation for Rupert to swim. This morning’s dated NWS forecast favours Sunday: mostly sunny near 69F, versus a slight chance of Saturday showers before 1 p.m. Recheck before the drive; a forecast is not a trail inspection.",
+    "headline_condition": "Sunday favoured; watch wet leaves",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-11-03",
+      "route": {
+        "route_id": "medoc-mountain-bluff-loop@1",
+        "distance_mi": 1.75,
+        "shape": "loop",
+        "difficulty": "moderate",
+        "surface": "Natural woodland path; orange-triangle blazes. Official difficulty is easy to moderate."
+      },
+      "access": {
+        "name": "Medoc Mountain public park access, Hollister",
+        "parking": "Use signed day-use/picnic parking for Bluff Loop, following the official map; the published public park GPS is an access reference, not an assertion of the exact trailhead. The park warns that 1541 Medoc State Park Road can route Google Maps to a closed road: search Medoc Mountain State Park or use 1540 for visitor-center directions, then follow park signs. Do not enter a closed road or use campground parking for this walk. November park hours 8 a.m.–6 p.m.; finish in daylight. Free day use."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          110,
+          130
+        ]
+      },
+      "duration_h": [
+        1.25,
+        2
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl. No swimming is part of this outing.",
+        "shade": "Woodland shade; parking and picnic areas may be exposed.",
+        "watch_for": [
+          "Slippery leaves, roots and uneven ground",
+          "Creek or lake edges; no wading or swimming",
+          "Wildlife, ticks and downed branches"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "photo": {
+      "id": "atlas-plate-d522216530a1",
+      "alt": "Original engraved print of Rupert, a chocolate American Labrador in a mustard collar, stretching playfully against navy."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "NC State Parks — current status, access, hours and pets",
+        "url": "https://www.ncparks.gov/state-parks/medoc-mountain-state-park",
+        "retrieved": "2026-11-03"
+      },
+      {
+        "kind": "park",
+        "label": "Official route table",
+        "url": "https://www.ncparks.gov/state-parks/medoc-mountain-state-park/trails",
+        "retrieved": "2026-11-03"
+      },
+      {
+        "kind": "park",
+        "label": "Official parking and trail map",
+        "url": "https://www.ncparks.gov/maps/medoc-mountain-state-park-map/open",
+        "retrieved": "2026-11-03"
+      },
+      {
+        "kind": "park",
+        "label": "Official park news",
+        "url": "https://www.ncparks.gov/state-parks/medoc-mountain-state-park/news",
+        "retrieved": "2026-11-03"
+      },
+      {
+        "kind": "forecast",
+        "label": "National Weather Service — dated weekend forecast",
+        "url": "https://api.weather.gov/gridpoints/RAH/99,82/forecast",
+        "retrieved": "2026-11-03"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ],
+    "experience_id": "medoc-mountain-bluff-loop",
+    "experience_basis": {
+      "activity_id": "leashed-woodland-hike",
+      "feature_id": "medoc-bluff-and-little-fishing-creek",
+      "format_id": "unhurried-loop-and-optional-picnic"
+    },
+    "panels": [
+      {
+        "label": "Follow the orange triangles",
+        "text": "The named Bluff Loop is 1.75 miles, officially easy to moderate and hiking only. Use the official map at junctions; the three-mile Summit Loop is a different outing."
+      },
+      {
+        "label": "Leave room for pauses",
+        "text": "Allow roughly 1¼–2 hours with sniffing and access walking. A picnic can round out the day, but turn back for unsafe footing or weather; do not add a harder loop to justify the drive."
+      }
+    ],
+    "qualities": {
+      "activity": "hike",
+      "expected_heat": "unknown"
+    },
+    "artwork": {
+      "image_id": "atlas-plate-d522216530a1",
+      "brief": "Minimal action mode, following actual latest-six review: four older plates are olive standing profile, cream frontal rest, ochre ball close-up and burgundy frontal walk; the latest two add seated layered autumn woodland and side-on waterside rest. Recent modes are now mixed, so a deliberate minimal action print is appropriate. Choose Rupert in a playful forelegs-down stretch, rear three-quarter side view, head turned gently toward the viewer, on a navy field with a single ochre leaf. Full athletic body and slender tapered tail, fine cream engraving, mustard collar. Distinct dynamic diagonal silhouette, low head/high haunches, sparse ground line and generous upper negative space replace the recent upright/seated/reclining poses; no river, mountain, sun or forest backdrop. Preserve Plate006 likeness and print execution. This is an independent Rupert character moment, not a depiction of the recommended outing.",
+      "characters": [
+        "rupert"
+      ]
+    }
+  },
+  "local_trail": {
+    "place_id": "medoc-mountain-bluff",
+    "title": "A shorter beginning",
+    "line": "Walk only the beginning of the signed Bluff Loop and return the same way. Choose the turnaround by footing and Rupert’s pace; do not record the full loop as completed.",
+    "snapshot": {
+      "as_of": "2026-11-03",
+      "access": {
+        "name": "Medoc Mountain public park access, Hollister",
+        "parking": "Use signed day-use/picnic parking for Bluff Loop, following the official map; the published public park GPS is an access reference, not an assertion of the exact trailhead. The park warns that 1541 Medoc State Park Road can route Google Maps to a closed road: search Medoc Mountain State Park or use 1540 for visitor-center directions, then follow park signs. Do not enter a closed road or use campground parking for this walk. November park hours 8 a.m.–6 p.m.; finish in daylight. Free day use."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          110,
+          130
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.75
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl. No swimming is part of this outing.",
+        "shade": "Woodland shade; parking and picnic areas may be exposed.",
+        "watch_for": [
+          "Slippery leaves, roots and uneven ground",
+          "Creek or lake edges; no wading or swimming",
+          "Wildlife, ticks and downed branches"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "away_mission": {
+    "place_id": "medoc-mountain-bluff",
+    "title": "The full named loop",
+    "line": "Complete only the named marked circuit if conditions and Rupert’s energy allow. Use the map at junctions rather than adding an unplanned longer trail.",
+    "snapshot": {
+      "as_of": "2026-11-03",
+      "route": {
+        "route_id": "medoc-mountain-bluff-loop@1",
+        "distance_mi": 1.75,
+        "shape": "loop",
+        "difficulty": "moderate",
+        "surface": "Natural woodland path; orange-triangle blazes. Official difficulty is easy to moderate."
+      },
+      "access": {
+        "name": "Medoc Mountain public park access, Hollister",
+        "parking": "Use signed day-use/picnic parking for Bluff Loop, following the official map; the published public park GPS is an access reference, not an assertion of the exact trailhead. The park warns that 1541 Medoc State Park Road can route Google Maps to a closed road: search Medoc Mountain State Park or use 1540 for visitor-center directions, then follow park signs. Do not enter a closed road or use campground parking for this walk. November park hours 8 a.m.–6 p.m.; finish in daylight. Free day use."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          110,
+          130
+        ]
+      },
+      "duration_h": [
+        1.25,
+        2
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl. No swimming is part of this outing.",
+        "shade": "Woodland shade; parking and picnic areas may be exposed.",
+        "watch_for": [
+          "Slippery leaves, roots and uneven ground",
+          "Creek or lake edges; no wading or swimming",
+          "Wildlife, ticks and downed branches"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ]
+  },
+  "wildcard": {
+    "place_id": "medoc-mountain-bluff",
+    "title": "Picnic, if the day allows",
+    "line": "Stay with a designated picnic area and a brief leashed leg-stretch. This outdoor option is not a thunderstorm alternative; postpone for unsafe conditions.",
+    "snapshot": {
+      "as_of": "2026-11-03",
+      "access": {
+        "name": "Medoc Mountain public park access, Hollister",
+        "parking": "Use signed day-use/picnic parking for Bluff Loop, following the official map; the published public park GPS is an access reference, not an assertion of the exact trailhead. The park warns that 1541 Medoc State Park Road can route Google Maps to a closed road: search Medoc Mountain State Park or use 1540 for visitor-center directions, then follow park signs. Do not enter a closed road or use campground parking for this walk. November park hours 8 a.m.–6 p.m.; finish in daylight. Free day use."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          110,
+          130
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.75
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl. No swimming is part of this outing.",
+        "shade": "Woodland shade; parking and picnic areas may be exposed.",
+        "watch_for": [
+          "Slippery leaves, roots and uneven ground",
+          "Creek or lake edges; no wading or swimming",
+          "Wildlife, ticks and downed branches"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "picnic",
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "text": "Let Rupert choose a few sniffing pauses without leaving the marked trail or disturbing wildlife.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "Record which part of the named route you actually walked and what made Rupert stop to investigate."
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-11-03T05:57:35-05:00",
+    "checked_at": "2026-11-03T12:13:56.437Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RAH/99,82/forecast",
+      "issued_at": "2026-11-03T10:57:35.000Z",
+      "retrieved_at": "2026-11-03T12:13:56.437Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "A slight chance of rain showers before 1pm. Mostly sunny, with a high near 73."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "Mostly sunny, with a high near 69."
+      }
+    ],
+    "summary": "Saturday: A slight chance of rain showers before 1pm. Mostly sunny, with a high near 73. Sunday: Mostly sunny, with a high near 69. Saturday night: Partly cloudy, with a low around 48. Sunday night: A slight chance of rain showers after 7pm. Mostly cloudy, with a low around 47.",
+    "alerts": [],
+    "alerts_checked_at": "2026-11-03T12:13:56.437Z",
+    "pivot": {
+      "if": "Thunder, strong wind, flooding, unsafe footing or an official closure",
+      "note": "Postpone. A different exposed trail or a picnic is not a storm alternative. Check official status and NWS again before leaving."
+    },
+    "trail_note": "Follow Bluff Loop’s orange triangles and use the map at junctions. Wet leaves can hide roots and uneven slopes; turn back at flooding, fallen trees or unsafe footing rather than bypassing them. Do not wade or let Rupert swim in Little Fishing Creek. Finish in daylight."
+  },
+  "practical": {
+    "best_window": "Sunday morning in full daylight is the first choice in the publication-day forecast. Saturday has a slight shower chance before 1 p.m.; check rain and footing before committing to the drive. Park opens 8 a.m., closes 6 p.m.; finish well before dark.",
+    "fees": "Free ordinary day use; camping, permits, rentals and facility reservations are separate.",
+    "bring": [
+      "Drinking water and bowl",
+      "Attended six-foot leash and waste bags",
+      "Traction shoes",
+      "Weather layer",
+      "Official map offline"
+    ],
+    "closures_checked": "2026-11-03",
+    "closures_note": "Publication-day official home, route table, news and map read. Hiking explicitly Open; Bluff Loop 1.75 miles, orange triangles, hiking only, official easy-to-moderate grade. Designated day-use/picnic parking and park public GPS checked; Google Maps closed-road address warning retained, follow signs and use 1540 or park name for visitor-center directions rather than entering a closed road. November gate 8 a.m.–6 p.m., visitor center 8 a.m.–5 p.m.; pets outside buildings on attended leash at most six feet. Free ordinary day use. No current news posts is not the opening evidence; explicit trail status is. No swimming or off-leash recommendation, no unsupported crowd reading. Canonical NWS issue 2026-11-03T05:57:35-05:00 actually read: Saturday slight showers before1pm then mostly sunny/high73F; Sunday mostly sunny/high69F, Sunday-night slight shower chance after7pm. No active alerts returned at refresh; this is not a safety guarantee. Prefer Sunday daylight morning, recheck Saturday showers/footing and latest official/NWS status. Carry water, traction shoes and weather layer; postpone for thunder,strong wind,flooding,unsafe footing or closure, no outdoor storm substitute. Long drive for short loop explicitly disclosed."
+  }
+}

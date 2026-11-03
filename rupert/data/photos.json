@@ -305,6 +305,32 @@
         "composition_key": "side-on-resting-bank-reeds-navy-water-ivory-sky-20261029"
       },
       "plate_no": 11
+    },
+    {
+      "id": "atlas-plate-d522216530a1",
+      "file": "atlas-plate-d522216530a1",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1122,
+      "height": 1402,
+      "widths": [
+        800,
+        1122
+      ],
+      "alt": "Original engraved print of Rupert, a chocolate American Labrador in a mustard collar, stretching playfully against navy.",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "caption": "TRA Plate No. 012",
+      "source_note": "Original native ChatGPT editorial illustration generated and visually reviewed 3 November 2026; independent of the recommended destination.",
+      "generation": {
+        "owner": "2026-W45-tue/flagship",
+        "created_at": "2026-11-03",
+        "style_version": "atlas-engraved-3",
+        "composition_key": "play-bow-diagonal-full-body-navy-single-leaf-20261103"
+      },
+      "plate_no": 12
     }
   ]
 }
