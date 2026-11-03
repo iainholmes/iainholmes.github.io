@@ -1,5 +1,8 @@
 'use strict';
-/* Loblolly & Logit · Re-issued editorial companion features.
+/* Historical v5 companion archive; no current publishing imports.
+ * Current authoring and rendering: editorial-decisions.json and
+ * editorial-architecture.cjs. See docs/ll-editorial-architecture-v6.md.
+ * Loblolly & Logit · Re-issued editorial companion features.
  * Explicitly authored, evidence-qualified interpretations of already published
  * articles. No synthetic estimates, no fabricated tests, no dated new claims.
  * These modules are supplementary to the curated primary exhibits. */

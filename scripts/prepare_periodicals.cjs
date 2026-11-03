@@ -47,6 +47,7 @@ for(const [key,editions] of [['fb',fb],['cp',cp]]){
 let ll=require('../weekly-economics-environment/editorial-folio.cjs').compose(llSource);
 // HTML and CSS must advance together on Pages/CDN caches after every layout edit.
 ll=ll.replace(/reading-folio\.css(?:\?v=[^"]*)?"/,'reading-folio.css?v='+digest(read('weekly-economics-environment/reading-folio.css'))+'"');
+ll=ll.replace(/reading-index\.js(?:\?v=[^"]*)?"/,'reading-index.js?v='+digest(read('weekly-economics-environment/reading-index.js'))+'"');
 // Fail before *any* archive/artwork/hub write if a future issue loses its
 // finished layout, source register, notebook structure or authored exhibit.
 require('../weekly-economics-environment/reading-layout-guard.cjs').validate({
@@ -75,6 +76,8 @@ let brief=read('daily-watchlist-5/index.html');
 brief=brief.replace(/artwork-archive\.js(?:\?v=[^"]*)?"/,'artwork-archive.js?v='+digest(read('daily-watchlist-5/artwork-archive.js'))+'"');
 write('daily-watchlist-5/index.html',brief);
 write('weekly-economics-environment/index.html',jsonReplace(ll,'field-studies',field));
+write('weekly-economics-environment/reading-feature-inventory.json',JSON.stringify(require('../weekly-economics-environment/editorial-architecture.cjs').inventory(ll),null,2)+'\n');
+write('weekly-economics-environment/reading-field-guide/index.html',require('../weekly-economics-environment/field-guide.cjs').generate(ll));
 write('personal-updates/issue-mark-archive.js',"/* Published artwork is immutable. Append new editions; never overwrite an existing entry. */\n(function(root){var archive="+JSON.stringify(archive,null,2)+";if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});\n");
 let hub=read('personal-updates/index.html');
 const latest={fb:fb.at(-1),cp:cp.at(-1),sp:{date:editions.at(-1)[1],title:plain(editions.at(-1)[2])}};

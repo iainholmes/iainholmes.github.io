@@ -1,0 +1,369 @@
+{
+  "reviewed": "2026-11-03",
+  "policy": "Access checks are distinct from substantive verification. Theory, reconstructed notation and proposed designs are labeled separately from reported results.",
+  "fullTextRead": [
+    {
+      "url": "https://www.brookings.edu/wp-content/uploads/2026/09/WP115_KahnMiller.pdf",
+      "verified": "Equation (1), p. 5; within-CBSA×year specification and clustered inference."
+    },
+    {
+      "url": "https://rvhaefen.wordpress.ncsu.edu/wp-content/blogs.dir/2115/files/2025/04/WANG_CHUNHUA.pdf",
+      "verified": "Section 3.3, Shandong policy interaction and controls; price/markup decomposition and pre-trend qualification."
+    },
+    {
+      "url": "https://www.seacen.org/publication-doc/WP05_2026_Final-Version.pdf",
+      "verified": "Section 4.3 local projections; horizon-specific country/year effects and common-shock interpretation."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.iea.org/reports/electrification",
+      "http": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "Electrification - IEA",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.energy.gov/articles/energy-department-announces-speed-power-investments-across-26-states-lower-electricity",
+      "http": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "Energy Department Announces Speed to Power Investments Across 26 States to Lower Electricity Costs and Improve Grid Reliability | Department of Energy",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.iea.org/reports/modernising-grids-in-the-age-of-electricity",
+      "http": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "Modernising Grids in the Age of Electricity - IEA",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.wto.org/english/news_e/news26_e/dsb_25sep26_496_e.htm",
+      "http": 200,
+      "contentType": "text/html",
+      "title": "WTO | 2026 News items - Panel to review EU carbon border adjustment mechanism and emissions trading scheme",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.wto.org/english/tratop_e/dispu_e/cases_e/ds639_e.htm",
+      "http": 200,
+      "contentType": "text/html",
+      "title": "WTO | dispute settlement - the disputes - DS639: European Union and its Member States - Carbon Border Adjustment Mechanism",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.brookings.edu/wp-content/uploads/2026/09/WP115_KahnMiller.pdf",
+      "http": 200,
+      "contentType": "application/pdf",
+      "title": null,
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.brookings.edu/articles/how-local-homeowners-insurance-market-stress-impacts-urban-and-suburban-housing-markets/",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "How local homeowners insurance market stress impacts urban and suburban housing markets | Brookings",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.hhs.gov/press-room/hhs-epa-partnership-strengthen-glyphosate-review.html",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://www.seacen.org/working-papers/wp5-2026-green-public-spending-shocks-composition-effects-and-state-dependent-heterogeneity-across-countries/",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "(WP5/2026) Green Public Spending Shocks: Composition Effects and State-Dependent Heterogeneity Across Countries - SEACEN",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://epic.uchicago.edu/working-papers/economics-of-demand-side-and-supply-side-climate-policies/",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Economics of Demand-Side and Supply-Side Climate Policies - EPIC",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.brookings.edu/events/bpea-fall-2026-conference/",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "BPEA Fall 2026 Conference | Brookings",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://cepr.org/publications/dp21999",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://bfi.uchicago.edu/insights/evaluating-the-spatial-consequences-of-a-climate-tipping-point/",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Evaluating the Spatial Consequences of a Climate Tipping Point | Becker Friedman Institute",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.gsb.stanford.edu/insights/clean-energy-bottleneck-isnt-technology-its-market-design",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "The Clean Energy Bottleneck Isn’t Technology. It’s Market Design. | Stanford Graduate School of Business",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.gsb.stanford.edu/faculty-research/working-papers/economics-grid-scale-energy-storage-wholesale-electricity-markets",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Economics of Grid-Scale Energy Storage in Wholesale Electricity Markets | Stanford Graduate School of Business",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.aeaweb.org/doi/10.1257/aer.20241765",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "The Environmental Bias of Corporate Income Taxation - American Economic Association",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3880057",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://www.nber.org/papers/w35834",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "A Framework for Integrating Climate Goals into Trade Agreements | NBER",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.nber.org/system/files/working_papers/w35834/w35834.pdf",
+      "http": 200,
+      "contentType": "application/pdf",
+      "title": null,
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.aeaweb.org/articles?id=10.1257/app.20240759",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Disastrous Displacement: The Long-Run Impacts of Landslides - American Economic Association",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://documents1.worldbank.org/curated/en/099236208022317890/pdf/IDU0c486fb2604f1f040ad082f50231320e5789e.pdf",
+      "http": 200,
+      "contentType": "application/pdf;charset=utf-8",
+      "title": null,
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.aeaweb.org/articles/materials/26106",
+      "http": 200,
+      "contentType": "application/pdf",
+      "title": null,
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.energy.gov/articles/energy-department-announces-42-billion-investment-boost-nuclear-power-and-help-lower",
+      "http": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "Energy Department Announces $4.2 Billion Investment to Boost Nuclear Power and Help Lower Energy Costs in Pennsylvania and Ohio | Department of Energy",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68264",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "\r\n\t\tMixed outlook for energy expenditures this winter -\r\n\t\tU.S. Energy Information Administration (EIA)\t",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.eia.gov/outlooks/steo/",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Short-Term Energy Outlook - U.S. Energy Information Administration (EIA)",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.supremecourt.gov/search.aspx?filename=%2Fdocket%2Fdocketfiles%2Fhtml%2Fpublic%2F25-170.html",
+      "http": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "\r\n\tSearch - Supreme Court of the United States\r\n",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.reuters.com/sustainability/cop/us-supreme-court-weighs-bid-by-oil-companies-avoid-climate-lawsuit-2026-10-05/",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 401: HTTP Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://www.nber.org/papers/w35894",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Estimating the Impact of Targeted Public Policies with Limited Data | NBER",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://publications.cast-science.org/CAST/en/article/view/246",
+      "http": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "\n\t\tPFAS in Agriculture: Science, Uncertainty, and Risk Communication\n\t\t\t\t\t\t\t| Council for Agricultural Science and Technology (CAST)\n\t\t\t",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.ferc.gov/news-events/news/ferc-takes-historic-action-launching-first-lng-authorization-program",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://www.ferc.gov/news-events/news/ferc-launches-nepa-overhaul-accelerate-natural-gas-projects",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://www.imf.org/en/publications/weo/issues/2026/10/13/world-economic-outlook-october-2026",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://www.imf.org/en/blogs/articles/2026/10/12/global-economic-resilience-is-under-strain-demanding-decisive-policy-action",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://academic.oup.com/bioscience/advance-article/doi/10.1093/biosci/biag125/8836482",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://doi.org/10.1016/j.jeem.2026.103435",
+      "http": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "title": "Redirecting",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://rvhaefen.wordpress.ncsu.edu/wp-content/blogs.dir/2115/files/2025/04/WANG_CHUNHUA.pdf",
+      "http": 200,
+      "contentType": "application/pdf",
+      "title": null,
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68325",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "\r\n\t\tHybrid sales rise while battery electric sales remain lower after tax credit expiration -\r\n\t\tU.S. Energy Information Administration (EIA)\t",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.unep.org/en/publications/report/emissions-gap-report-2026",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://www.eib.org/en/publications/20260310-eib-group-climate-adaptation-plan-phase2-2026-2030",
+      "http": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "EIB Group Climate Adaptation Plan Phase 2 – 2026-2030",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.eib.org/en/press/all/2026-351-eib-group-doubles-down-on-climate-resilience-with-eur30-billion-adaptation-plan",
+      "http": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "EIB Group doubles down on climate resilience with €30 billion adaptation plan",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.unep.org/en/news-and-stories/technical-highlight/electric-mobility-gathers-speed-unep-tackles-two-major",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://doi.org/10.1086/743935",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://doi.org/10.2139/ssrn.4283327",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://doi.org/10.7910/DVN/VSVC0Y",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 404: Not Found",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://www.nber.org/papers/w35945",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Homework in Climate Economics: Household Production, Environmental Preferences, and Climate Policy | NBER",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://doi.org/10.3386/w35945",
+      "http": 200,
+      "contentType": "application/pdf",
+      "title": null,
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.federalregister.gov/documents/2026/10/29/2026-22082/additional-reconsideration-standards-of-performance-for-new-reconstructed-and-modified-sources-and",
+      "http": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "Federal Register :: Request Access",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.regulations.gov/docket/EPA-HQ-OAR-2025-0163",
+      "access": "Restricted or unavailable to automated retrieval",
+      "detail": "HTTP Error 403: Forbidden",
+      "assessment": "Preserve archived claims and citations; no new empirical result is inferred from unavailable full text."
+    },
+    {
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68384",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "\r\n\t\tThe share of solar generation with co-located battery storage is increasing -\r\n\t\tU.S. Energy Information Administration (EIA)\t",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.eia.gov/electricity/data/eia860m/",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Preliminary Monthly Electric Generator Inventory (based on Form EIA-860M as a supplement to Form EIA-860) - U.S. Energy Information Administration (EIA)",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.federalregister.gov/documents/2026/10/27/2026-21843/official-release-of-the-moves6-motor-vehicle-emissions-model-for-sips-and-transportation-conformity",
+      "http": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "Federal Register :: Request Access",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    },
+    {
+      "url": "https://www.epa.gov/moves",
+      "http": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "MOVES and Mobile Source Emissions Research | US EPA",
+      "assessment": "Accessible source endpoint; this does not itself verify every published claim."
+    }
+  ]
+}

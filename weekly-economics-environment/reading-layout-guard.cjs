@@ -1,120 +1,42 @@
 'use strict';
-/* Loblolly & Logit publishing preflight.
- * This applies to every existing and future edition, not to one issue's IDs.
- * Safe provisional exhibits are useful in private drafts but must not leak
- * into the permanent published archive. No file writes or browser APIs. */
-const {nodes}=require('./editorial-folio.cjs');
-const exhibits=require('./reading-exhibits.cjs');
-const has=(node,cls)=>node.classes.includes(cls);
+/* Permanent publication gate: an authored decision record is required before a
+   reading can enter the public archive. Rendering cannot invent missing research. */
+const {names,decisions,compose}=require('./editorial-architecture.cjs');
 function validate({journal,notebook,folioCss,notebookCss}={}){
- if(typeof journal!=='string'||typeof notebook!=='string'||typeof folioCss!=='string'||typeof notebookCss!=='string')
-  throw Error('L&L publication layout: journal, notebook and both stylesheets required');
- if(!/href="reading-folio\.css(?:\?v=[^"]+)?"/.test(journal)||
-    !/href="notebook\.css(?:\?v=[^"]+)?"/.test(notebook))
-  throw Error('L&L publication layout: permanent journal/notebook CSS references missing');
- for(const [css,required,name] of [
-  [folioCss,['[data-reading-finish="5"]','.reading-opening','.feature-spread','.reading-sources','nth-of-type(n+4)'],'reading-folio.css'],
-  [notebookCss,['.concept-body','.concept-analysis','.concept-body+.seen','.appearance-register'],'notebook.css']]){
-  for(const rule of required)if(!css.includes(rule))throw Error('L&L publication layout: '+name+' missing durable layout rule '+rule);
- }
- if(journal.includes('ll-accepted-reading-arrangement-20261103'))
-  throw Error('L&L publication layout: retired inline layout override must not return');
- const main=journal.match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)?.[1];
- if(!main)throw Error('L&L publication layout: canonical edition archive missing');
- const editions=[...main.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[\s\S]*?(?=<section class="edition"|$)/g)];
- if(!editions.length)throw Error('L&L publication layout: no editions');
- const seenIds=new Set();let readingCount=0,sourceCount=0;
- for(const edition of editions){
-  const date=edition[1];
-  const articles=[...edition[0].matchAll(/<article class="entry"[^>]*id="([^"]+)"[\s\S]*?<\/article>/g)];
-  if(articles.length!==5)throw Error('L&L publication layout: '+date+' must contain five readings, found '+articles.length);
-  for(const match of articles){
-   const id=match[1],markup=match[0];
-   if(seenIds.has(id))throw Error('L&L publication layout: duplicate reading '+id);
-   seenIds.add(id);readingCount++;
-   const opening=markup.match(/^<article[^>]*>/)?.[0]||'';
-   for(const marker of ['data-reading-folio="1"','data-reading-layout="2"','data-reading-exhibit="1"','data-reading-stage="3"','data-reading-finish="5"'])
-    if(!opening.includes(marker))throw Error('L&L publication layout: incomplete composed layout '+id+' ('+marker+')');
-   const tree=nodes(markup);
-   for(const cls of ['reading-opening','feature-spread','reading-exhibit','evidence-pair','reading-sources'])
-    if(!tree.some(n=>has(n,cls)))throw Error('L&L publication layout: '+id+' missing '+cls);
-   const exhibit=tree.find(n=>has(n,'reading-exhibit'));
-   if(!exhibits.select(id).curated||!exhibit.attrs.includes('data-curated="true"'))
-    throw Error('L&L publication layout: uncurated reading '+id+'; finish the source-specific editorial exhibit before publishing');
-   const finding=tree.find(n=>has(n,'finding'));
-   if(!finding)throw Error('L&L publication layout: missing authored finding '+id);
-   const kind=exhibit.attrs.match(/data-exhibit-kind="([^"]+)"/)?.[1];
-   if(kind!==exhibits.select(id).kind)throw Error('L&L publication layout: exhibit type does not match this article '+id);
-   const kindToFeature={ledger:'incidence-ledger',long:'long-view',decision:'decision-margin',test:'assumption-test'};
-   const openingFeatures=(opening.match(/data-special-features="([^"]+)"/)||[])[1];
-   if(!openingFeatures)throw Error('L&L publication layout: feature-selection record missing '+id);
-   const featureIds=openingFeatures.split(/\s+/).filter(Boolean);
-   const hasIndependentGraphic=markup.includes('class="essay-graphic"')||markup.includes('class="economic-plot"')||markup.includes('<figure class="figure"');
-   const extra=markup.match(/class="reading-companion-feature"[^>]*data-special-feature="([^"]+)"/)?.[1];
-   const actual=[kindToFeature[kind],...(hasIndependentGraphic?['economic-figures']:[]),...(extra?[extra]:[])];
-   if(featureIds.join(' ')!==actual.join(' '))
-    throw Error('L&L publication layout: special-feature record does not match authored reading '+id);
-   if(extra){
-    const approved=require('./reading-feature-dossiers.cjs').dossiers[id];
-    if(!approved||approved.id!==extra)throw Error('L&L publication layout: unsupported supplemental feature '+id);
-    if(!markup.includes('Evidence boundary.'))throw Error('L&L publication layout: supplemental feature missing evidence boundary '+id);
-    if(extra==='incidence-ledger'){
-     const rows=[...markup.matchAll(/class="rcf-ledger-party"/g)].length;
-     const effects=[...markup.matchAll(/class="rcf-ledger-effect"/g)].length;
-     if(rows!==3||rows!==effects||!markup.includes('rcf-points rcf-ledger'))
-      throw Error('L&L publication layout: companion Incidence Ledger needs three complete party/effect comparison columns '+id);
-    }
-   }
-   if(extra==='incidence-ledger'&&(!folioCss.includes('.rcf-points.rcf-ledger{')||!folioCss.includes('grid-template-columns:repeat(3,minmax(0,1fr))')))
-    throw Error('L&L publication layout: horizontal desktop Incidence Ledger layout rule missing '+id);
-   if(kind==='long'){
-    const stages=[...markup.matchAll(/class="longview-point"/g)].length;
-    const declared=Number(markup.match(/class="exhibit-longview" data-stage-count="(\d+)"/)?.[1]||0);
-    if(stages!==declared||stages<2)throw Error('L&L publication layout: Long View stage-count mismatch '+id);
-    if(!markup.includes('style="--longview-stages:'+stages+'"')||!folioCss.includes('repeat(var(--longview-stages),minmax(0,1fr))'))
-     throw Error('L&L publication layout: content-derived stage tracks missing '+id);
-   }
-   if(featureIds.length>2&&!/data-feature-justification="[^"]+"/.test(opening))
-    throw Error('L&L publication layout: third feature requires explicit editorial justification '+id);
-   let expected=exhibits.render(id,{finding:markup.slice(finding.open,finding.close)});
-   if(kind==='ledger'){
-    const parties=[...markup.matchAll(/class="ledger-party"/g)].length;
-    const ledgerRows=[...markup.matchAll(/class="ledger-line"/g)].length;
-    if(ledgerRows<2||parties!==ledgerRows)
-     throw Error('L&L publication layout: primary Ledger requires vertical ordered rows '+id);
-   }
-   if(kind==='ledger'){
-    const chart=exhibits.graphic(id),inLedger=exhibits.graphicPlacement(id)==='ledger';
-    if(!chart)throw Error('L&L publication layout: absent source-grounded graphic '+id);
-    if(inLedger){
-     if(!expected.includes(chart)||!markup.slice(exhibit.start,exhibit.end).includes(chart)||
-        tree.some(n=>has(n,'essay-graphic')))
-      throw Error('L&L publication layout: selected incidence pathway misplaced '+id);
-    }else{
-     if(!markup.includes('<div class="essay-graphic">'+chart+'</div>'))
-      throw Error('L&L publication layout: missing or stale source-grounded graphic '+id);
-     expected=expected.replace(chart,'');
-    }
-   }
-   if(markup.slice(exhibit.start,exhibit.end)!==expected)
-    throw Error('L&L publication layout: stale or mismatched generated exhibit '+id);
-   const sourceNode=tree.find(n=>has(n,'sources')&&n.parent&&has(n.parent,'reading-sources'));
-   if(!sourceNode)throw Error('L&L publication layout: source register missing '+id);
-   const anchors=tree.filter(n=>n.tag==='a'&&n.start>=sourceNode.open&&n.end<=sourceNode.close&&/\bhref=/.test(n.attrs));
-   if(!anchors.length)throw Error('L&L publication layout: at least one linked primary source required for '+id);
-   sourceCount+=anchors.length;
-   if(!['ledger','test','decision','long'].includes(kind))throw Error('L&L publication layout: invalid exhibit type '+id);
-   if(kind==='ledger'&&exhibits.graphicPlacement(id)!=='ledger'&&!tree.some(n=>has(n,'essay-graphic')&&n.parent&&has(n.parent,'interpretive-essay')))
-    throw Error('L&L publication layout: Ledger graphic missing from interpretation '+id);
+ if(![journal,notebook,folioCss,notebookCss].every(x=>typeof x==='string'))throw Error('L&L publication: journal, notebook and stylesheets required');
+ if(!/href="reading-folio\.css\?v=/.test(journal)||!/href="notebook\.css\?v=/.test(notebook))throw Error('L&L publication: canonical stylesheet references required');
+ const {nodes}=require('./editorial-folio.cjs');
+ const index=JSON.parse(journal.match(/id="ll-reading-index-data">([\s\S]*?)<\/script>/)?.[1]||'null');
+ if(!index)throw Error('L&L publication: generated Reading Index required');
+ const seen=new Set(),featureCounts={};let sources=0,count=0;
+ for(const ed of index.editions){if(ed.readings.length!==5)throw Error('L&L publication: five readings per edition required');
+ for(const r of ed.readings){
+  if(seen.has(r.id))throw Error('L&L publication: duplicate reading '+r.id);seen.add(r.id);count++;
+  const v=decisions.readings[r.id];if(!v)throw Error('L&L publication: authored editorial review required '+r.id);
+  if(!v.subjects?.length||!v.argument||!v.figureAssessment||!v.modelAssessment||!v.rejected?.length)throw Error('L&L publication: incomplete six-criterion review '+r.id);
+  const special=v.features.filter(f=>f.type!=='heron');if(special.length<2&&!v.minimumTargetReview?.exception)throw Error('L&L publication: document minimum-target exception '+r.id);
+  const html=journal.match(new RegExp('<article class="entry"[^>]*id="'+r.id+'"[\\s\\S]*?<\\/article>'))?.[0];
+  if(!html?.includes('data-editorial-system="6"'))throw Error('L&L publication: legacy reading system '+r.id);
+  if(compose(html,{nodes})!==html)throw Error('L&L publication: stale authored features '+r.id);
+  const ns=nodes(html);
+  for(const cls of ['finding','ll-argument','ll-editorial','research-note','reading-sources','ll-feature-stream'])if(!ns.some(n=>n.classes.includes(cls)))throw Error('L&L publication: missing '+cls+' '+r.id);
+  const src=ns.find(n=>n.classes.includes('sources'));const links=ns.filter(n=>n.tag==='a'&&n.start>src.open&&n.end<=src.close&&n.attrs.includes('href='));if(!links.length)throw Error('L&L publication: original source register missing '+r.id);sources+=links.length;
+  const actual=ns.filter(n=>n.classes.includes('ll-feature'));
+  if(actual.length<special.length)throw Error('L&L publication: missing selected feature '+r.id);
+  for(const f of v.features){
+   if(!names[f.type]||!f.title||!f.status||!f.provenance?.length)throw Error('L&L publication: feature provenance required '+r.id);
+   const fields=['analyticalRelevance','evidentiarySupport','distinctiveness','readerValue','presentationSuitability','informationBurden'];if(!fields.every(k=>f.assessment?.[k]))throw Error('L&L publication: six-criterion assessment required '+r.id);
+   if(f.type==='estimation-desk'&&(!f.math?.includes('<math ')||f.terms?.length<2||!f.interpretation||!f.assumption))throw Error('L&L publication: incomplete Estimation Desk '+r.id);
+   if(f.type==='mechanism-map'&&(!f.nodes?.length||f.edges?.length!==f.nodes.length-1))throw Error('L&L publication: mechanism connections required '+r.id);
+   if(f.type==='economic-figures'&&!f.chart)throw Error('L&L publication: meaningful figure data or theoretical diagram required '+r.id);
+   featureCounts[f.type]=(featureCounts[f.type]||0)+1;
   }
- }
- const concepts=[...notebook.matchAll(/<article class="concept" id="([^"]+)"[\s\S]*?<\/article>/g)];
- if(!concepts.length||new Set(concepts.map(x=>x[1])).size!==concepts.length)
-  throw Error('L&L publication layout: cumulative notebook absent or duplicated');
- for(const [,id,body] of concepts.map(m=>[m[0],m[1],m[0]])){
-  for(const cls of ['concept-body','concept-analysis','seen','appearance-register'])
-   if(!body.includes('class="'+cls+'"'))throw Error('L&L publication layout: incomplete notebook structure '+id+' ('+cls+')');
- }
- return {editions:editions.length,readings:readingCount,concepts:concepts.length,sourceLinks:sourceCount,curated:true};
+  for(const f of r.features){if(f.id==='heron')continue;if(!ns.some(n=>n.id===f.anchor&&n.attrs.includes('data-special-feature="'+f.id+'"')))throw Error('L&L publication: stale feature Index link '+r.id);}
+ }}
+ const articles=[...journal.matchAll(/<article class="entry"/g)].length;if(count!==articles)throw Error('L&L publication: Index and archive counts differ');
+ if(/ll-accepted-reading-arrangement|ll-reading-transition-release/.test(journal))throw Error('L&L publication: retired inline layout override');
+ if(!journal.includes('reading-index.js?v='))throw Error('L&L publication: publication-local Index control required');
+ const concepts=[...notebook.matchAll(/<article class="concept"/g)].length;if(!concepts)throw Error('L&L publication: cumulative notebook missing');
+ return {editions:index.editions.length,readings:count,concepts,sourceLinks:sources,curated:true,features:featureCounts};
 }
 module.exports={validate};

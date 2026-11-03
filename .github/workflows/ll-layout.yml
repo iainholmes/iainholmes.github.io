@@ -23,6 +23,9 @@ jobs:
           node scripts/test_ll_publication_layout.cjs
           node scripts/test_reading_exhibits.cjs
           node scripts/test_editorial_folio.cjs
+          node scripts/test_notebook.cjs
+          node scripts/test_field_register.cjs
+          node scripts/test_publishing.cjs
       - name: Install pinned browser runtime
         run: |
           npm install --prefix "$RUNNER_TEMP/ll-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0

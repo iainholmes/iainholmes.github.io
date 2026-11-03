@@ -1,5 +1,7 @@
 'use strict';
-/* Curated rotating reading exhibits: meaning first, visual diversity audited. */
+/* Historical v5 exhibit archive. Not used by the publishing renderer.
+ * Current authored selections: editorial-decisions.json; renderer:
+ * editorial-architecture.cjs. See docs/ll-editorial-architecture-v6.md. */
 const catalog={
   "insurance": {
     "kind": "ledger",

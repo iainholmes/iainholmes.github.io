@@ -1,75 +1,23 @@
 'use strict';
-/* Real rendered geometry, shared by CI Playwright and the connected browser.
- * Example: LL_ORIGIN=https://iainholmes.github.io LL_CHROME=/path/to/chrome node scripts/test_ll_layout_browser.cjs
- * No mocked stylesheet requests: this audits the HTML and CSS actually served.
- */
-const assert=require('node:assert/strict');
-const dates=['2026-09-25','2026-10-02','2026-10-09','2026-10-16','2026-10-23','2026-10-30'];
-async function audit({page,goto,setViewport,origin,widths=[1440,1280,1180,1024,1000,851,850,768,651,650,520,390,320]}){
- let assertions=0;const evidence=[];
- const check=(condition,message)=>{assert(condition,message);assertions++};
- for(const width of widths){
-  await setViewport({width,height:1100});
-  for(const date of dates){
-   await goto(origin+'/weekly-economics-environment/#edition-'+date);
-   const selected=page.locator('#edition-'+date);
-   check(await selected.isVisible(),`${width} ${date}: selected edition visible`);
-   const result=await selected.evaluate(ed=>{
-    const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,w:r.width,h:r.height}};
-    const lists=[...ed.querySelectorAll('.exhibit-longview,.rcf-ledger')].map(e=>({
-     type:e.classList.contains('rcf-ledger')?'ledger':'long',id:e.closest('article').id,
-     declared:Number(e.dataset.stageCount),rect:rect(e),display:getComputedStyle(e).display,
-     rail:getComputedStyle(e).borderLeftWidth,
-     children:[...e.children].map(c=>({...rect(c),overflow:Math.max(0,...[...c.children].map(n=>n.scrollWidth-n.clientWidth)),
-      markerTop:getComputedStyle(c,'::before').top,segment:getComputedStyle(c,'::after').content}))
-    }));
-    const panels=[...ed.querySelectorAll('.feature-spread>.interpretive-essay,.feature-spread>.reading-exhibit')].map(p=>{
-     const r=p.getBoundingClientRect();const leaves=[...p.querySelectorAll('*')].filter(n=>!n.children.length&&n.getBoundingClientRect().height);
-     const end=Math.max(r.top,...leaves.map(n=>n.getBoundingClientRect().bottom));
-     return {id:p.closest('article').id,cls:p.className,height:r.height,blank:r.bottom-end};
-    });
-    const overflows=[...ed.querySelectorAll('.entry,.feature-spread,.reading-exhibit,.reading-companion-feature,.reading-media,.reading-sources')]
-     // Figure crop marks intentionally extend 14px into the page margin.
-     .filter(e=>e.scrollWidth>e.clientWidth+(e.matches('.entry,.reading-media')?14:2)).map(e=>({id:e.closest('article')?.id,cls:e.className,excess:e.scrollWidth-e.clientWidth}));
-    return {readings:ed.querySelectorAll('article.entry').length,viewport:innerWidth,scroll:document.documentElement.scrollWidth,lists,overflows,
-     panels,kinds:[...ed.querySelectorAll('.reading-exhibit')].map(e=>e.dataset.exhibitKind),
-     duplicateInline:!!document.getElementById('ll-accepted-reading-arrangement-20261103')};
-   });
-   const label=width+' '+date;
-   check(result.viewport===width,label+': actual viewport width');
-   check(result.readings===5,label+': five readings');
-   check(result.scroll<=width+1,label+': page overflow');
-   check(!result.duplicateInline,label+': retired inline override absent');
-   check(!result.overflows.length,label+': feature overflow '+JSON.stringify(result.overflows));
-   check(result.panels.every(p=>p.blank<=90),label+': unfinished panel whitespace '+JSON.stringify(result.panels.filter(p=>p.blank>90)));
-   for(const list of result.lists){
-    const cells=list.children,n=cells.length;
-    check(n===(list.type==='ledger'?3:list.declared),label+' '+list.id+': complete comparison');
-    const columns=width<=650?1:list.type==='long'&&n===4&&width<=1000?2:n;
-    const row=cells.slice(0,columns);
-    check(row.every(c=>Math.abs(c.y-row[0].y)<1),label+' '+list.id+': expected side-by-side row');
-    check(row.every(c=>Math.abs(c.w-row[0].w)<1),label+' '+list.id+': equal tracks');
-    check(Math.abs(row.at(-1).right-list.rect.right)<2,label+' '+list.id+': no unused right track');
-    check(cells.every(c=>c.overflow<=2),label+' '+list.id+': readable within tracks');
-    if(columns===1)check(cells.every((c,i)=>!i||c.y>=cells[i-1].bottom-1),label+' '+list.id+': nonoverlapping mobile stack');
-    if(list.type==='long'&&width<=650){
-     check(parseFloat(list.rail)===2,label+' '+list.id+': vertical rail');
-     check(cells.every(c=>c.segment==='none'&&c.markerTop==='2px'),label+' '+list.id+': connected mobile markers');
-    }
-   }
-   evidence.push({width,date,...result});
-  }
- }
- return {result:'passed',assertions,evidence};
+const assert=require('node:assert/strict');const dates=['2026-09-25','2026-10-02','2026-10-09','2026-10-16','2026-10-23','2026-10-30'];
+async function audit({page,goto,setViewport,origin,widths=[1440,1280,1180,1024,850,820,768,651,650,520,390,375,320]}){
+ let assertions=0;const evidence=[];const check=(v,m)=>{assert(v,m);assertions++};
+ for(const width of widths){await setViewport({width,height:1100});for(const date of dates){await goto(origin+'/weekly-economics-environment/#edition-'+date);await page.locator('#edition-'+date).waitFor({state:'visible'});
+ const r=await page.locator('#edition-'+date).evaluate(ed=>{
+ const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,right:r.right,bottom:r.bottom}};
+ const features=[...ed.querySelectorAll('.ll-feature')].map(e=>{const h=e.querySelector('h3'),style=getComputedStyle(h),last=e.querySelector('.ll-feature-source');return {id:e.id,type:e.dataset.specialFeature,rect:rect(e),font:style.fontFamily,size:style.fontSize,style:style.fontStyle,bottomBlank:e.getBoundingClientRect().bottom-last.getBoundingClientRect().bottom,overflow:e.scrollWidth-e.clientWidth,bodyFont:getComputedStyle(e).fontSize}});
+ const ledger=[...ed.querySelectorAll('.ll-ledger')].map(e=>({id:e.closest('.ll-feature').id,rect:rect(e),cells:[...e.children].map(rect)}));
+ const timelines=[...ed.querySelectorAll('.ll-timeline')].map(e=>({id:e.closest('.ll-feature').id,n:e.children.length,rect:rect(e),cells:[...e.children].map(rect)}));
+ const core=[...ed.querySelectorAll('.ll-editorial h3,.research-note h3')].map(e=>({font:getComputedStyle(e).fontFamily,size:getComputedStyle(e).fontSize}));
+ const nodes=[...ed.querySelectorAll('.ll-node')].map(e=>e.getBoundingClientRect().width);return {nodes,width:innerWidth,scroll:document.documentElement.scrollWidth,readings:ed.querySelectorAll('.entry[data-editorial-system="6"]').length,features,ledger,timelines,core,maths:[...ed.querySelectorAll('.ll-equation')].map(e=>({width:e.clientWidth,content:e.scrollWidth,focus:e.tabIndex})),indexCount:JSON.parse(document.getElementById('ll-reading-index-data').textContent).editions.reduce((s,e)=>s+e.readings.length,0)};
+ });const label=width+' '+date;check(r.width===width,label+' viewport');check(r.scroll<=width+1,label+' page overflow');check(r.readings===5,label+' readings');check(r.indexCount===30,label+' Index coverage');check(r.features.length>=10,label+' authored features');check(r.nodes.every(w=>w>=120),label+' legible mechanism nodes');check(r.features.every(f=>f.overflow<=2),label+' feature overflow '+JSON.stringify(r.features.filter(f=>f.overflow>2)));check(r.features.every(f=>f.bottomBlank<=30),label+' incomplete panel termination');check(r.core.every(f=>f.size==='23px'&&f.font===r.core[0].font),label+' consistent editorial typography');check(r.maths.every(m=>m.focus===0),label+' keyboard-accessible mathematical content');
+ for(const l of r.ledger){const cols=width<=650?1:3;check(l.cells.length===3,label+' Ledger parties');check(l.cells.slice(0,cols).every(c=>Math.abs(c.y-l.cells[0].y)<1),label+' Ledger side-by-side');check(Math.abs(l.cells[cols-1].right-l.rect.right)<2,label+' Ledger fills boundary')}
+ for(const t of r.timelines){const cols=width<=650?1:t.n===4&&width<=1279?2:t.n;check(t.cells.slice(0,cols).every(c=>Math.abs(c.y-t.cells[0].y)<1),label+' timeline row');check(Math.abs(t.cells[cols-1].right-t.rect.right)<2,label+' no unused timeline track')}
+ evidence.push({date,...r});}}
+ const identities=new Map(evidence.flatMap(e=>e.features.map(f=>[f.type,f.font+' '+f.size+' '+f.style])));check(identities.size===7,'all seven substantive families inspected');check(new Set(identities.values()).size===7,'distinct substantive feature typography');return {result:'passed',assertions,evidence,identities:Object.fromEntries(identities)};
 }
-module.exports={audit};
-if(require.main===module)(async()=>{
- const fs=require('node:fs');const {chromium}=require(process.env.LL_PLAYWRIGHT||'playwright');
- const browser=await chromium.launch({headless:true,...(process.env.LL_CHROME?{executablePath:process.env.LL_CHROME}:{})});
- try{
-  const page=await browser.newPage();
-  const result=await audit({page,goto:url=>page.goto(url,{waitUntil:'networkidle'}),setViewport:size=>page.setViewportSize(size),origin:process.env.LL_ORIGIN||'http://127.0.0.1:8765'});
-  if(process.env.LL_QA_JSON)fs.writeFileSync(process.env.LL_QA_JSON,JSON.stringify(result,null,2));
-  console.log(JSON.stringify({result:result.result,assertions:result.assertions,viewports:new Set(result.evidence.map(x=>x.width)).size,editions:dates.length}));
- }finally{await browser.close()}
-})().catch(e=>{console.error(e);process.exitCode=1});
+async function navigation({page,goto,setViewport,origin,pressEscape,openIndex=()=>page.locator('#open-archive').click(),settleNavigation=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))))}){let assertions=0;const check=(v,m)=>{assert(v,m);assertions++};for(const width of [1440,768,390]){await setViewport({width,height:900});await goto(origin+'/weekly-economics-environment/#insurance');await page.locator('#insurance').waitFor({state:'visible'});await settleNavigation();const before=await page.evaluate(()=>scrollY);await openIndex();check(await page.locator('#ll-reading-index').evaluate(e=>e.open),'Index opens');await page.locator('#ll-index-search').fill('');await page.locator('[data-view="edition"]').click();check(await page.locator('.ll-index-group').count()===6,'six editions');check(await page.locator('.ll-index-reading').count()===30,'30 reading links');await pressEscape();check(!await page.locator('#ll-reading-index').evaluate(e=>e.open),'Escape closes');check(await page.evaluate(()=>document.activeElement.id==='open-archive'),'focus restored');check(Math.abs(await page.evaluate(()=>scrollY)-before)<3,'reader position preserved');
+ await openIndex();await page.locator('[data-view="subject"]').click();check(await page.locator('.ll-index-category').count()>=6,'subject groups');await page.locator('#ll-index-search').fill('coal');check(await page.locator('.ll-index-reading').count()===2,'coal in two relevant subject categories');await page.locator('#ll-index-search').fill('');await page.locator('[data-view="feature"]').click();check(await page.locator('.ll-index-category').count()===8,'all eight feature families');await page.locator('#ll-index-search').fill('insurance');await page.locator('.ll-index-reading[href="#insurance--estimation-desk"]').click();await page.locator('#insurance--estimation-desk').waitFor({state:'visible'});check(!await page.locator('#ll-reading-index').evaluate(e=>e.open),'feature selection closes Index');check(await page.evaluate(()=>location.hash==='#insurance--estimation-desk'),'precise feature deep link');}
+ return {result:'passed',assertions};}
+module.exports={audit,navigation};
+if(require.main===module)(async()=>{const fs=require('fs'),{chromium}=require(process.env.LL_PLAYWRIGHT||'playwright');const browser=await chromium.launch({headless:true,...(process.env.LL_CHROME?{executablePath:process.env.LL_CHROME}:{})});try{const page=await browser.newPage();await page.emulateMedia({reducedMotion:'reduce'});const cfg={page,goto:url=>page.goto(url,{waitUntil:'networkidle'}),setViewport:s=>page.setViewportSize(s),origin:process.env.LL_ORIGIN||'http://127.0.0.1:8765',pressEscape:()=>page.keyboard.press('Escape')};const result=await audit(cfg);await page.locator('.dn button[data-mode="night"]').click();await page.waitForFunction(()=>document.documentElement.dataset.mode==='night');result.night=await audit(cfg);await page.locator('.dn button[data-mode="day"]').click();await page.waitForFunction(()=>document.documentElement.dataset.mode==='day');result.navigation=await navigation(cfg);if(process.env.LL_QA_JSON)fs.writeFileSync(process.env.LL_QA_JSON,JSON.stringify(result,null,2));console.log(JSON.stringify({result:result.result,assertions:result.assertions,navigation:result.navigation.assertions,cases:result.evidence.length}));}finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});

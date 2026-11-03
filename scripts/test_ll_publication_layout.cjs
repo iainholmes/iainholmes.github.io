@@ -1,73 +1,18 @@
 'use strict';
-/* Authoring regression: future editions inherit the settled design and cannot
- * publish a provisional exhibit. This fixture remains private/in-memory. */
-const fs=require('node:fs'),cp=require('node:child_process'),assert=require('node:assert/strict');
-const {compose,nodes}=require('../weekly-economics-environment/editorial-folio.cjs');
-const {catalog}=require('../weekly-economics-environment/reading-exhibits.cjs');
+const fs=require('fs'),assert=require('node:assert/strict'),crypto=require('crypto');
+const {compose}=require('../weekly-economics-environment/editorial-folio.cjs'),arch=require('../weekly-economics-environment/editorial-architecture.cjs');
 const {validate}=require('../weekly-economics-environment/reading-layout-guard.cjs');
-const read=p=>fs.readFileSync(p,'utf8');
-const journal=read('weekly-economics-environment/index.html');
-const notebook=read('weekly-economics-environment/notebook/index.html');
-const folioCss=read('weekly-economics-environment/reading-folio.css');
-const notebookCss=read('weekly-economics-environment/notebook/notebook.css');
-const input={journal,notebook,folioCss,notebookCss};
-let checks=0;
-function ok(x,label){assert(x,label);checks++}
-function eq(a,b,label){assert.deepEqual(a,b,label);checks++}
-function rejected(fn,regex,label){assert.throws(fn,regex,label);checks++}
-const initial=validate(input);
-eq(journal.match(/reading-folio\.css\?v=([^"]+)/)[1],require('node:crypto').createHash('sha256').update(folioCss).digest('hex').slice(0,12),'shipped CSS URL matches its content hash');
-rejected(()=>validate({...input,journal:journal.replace('</head>','<style id="ll-accepted-reading-arrangement-20261103"></style></head>')}),/retired inline/,'duplicate layout override cannot be republished');
-rejected(()=>validate({...input,journal:journal.replace('style="--longview-stages:3"','style="--longview-stages:4"')}),/content-derived stage tracks/,'wrong stage track count cannot be republished');
-const priorJournal=cp.execFileSync('git',['show','ef7f0fb:weekly-economics-environment/index.html'],{encoding:'utf8',maxBuffer:2e6});
-const mainMarkup=s=>s.match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)[1];
-eq(mainMarkup(journal).replace(/ style="--longview-stages:\d+"/g,''),mainMarkup(priorJournal),'all six editions preserve every byte except the seven stage track attributes');
-eq(compose(priorJournal).match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)[1],mainMarkup(journal),'finished archive readings receive renderer migration too');
-
-ok(initial.editions>=6&&initial.readings>=30,'existing finished editions and readings retained');
-ok(initial.concepts>=19&&initial.curated,'existing cumulative concepts and curated exhibits retained');
-eq(compose(journal),journal,'existing canonical publication byte-idempotent');
-rejected(()=>validate({...input,journal:journal.replace('reading-folio.css?v=','missing-folio.css?v=')}),/CSS references missing/,'journal style link required');
-rejected(()=>validate({...input,notebook:notebook.replace('class="concept-analysis"','class="missing-analysis"')}),/notebook structure/,'concept scaffolding required');
-rejected(()=>validate({...input,journal:journal.replace('data-curated="true"','data-curated="false"')}),/uncurated reading/,'unfinished exhibit cannot be published');
-rejected(()=>validate({...input,folioCss:folioCss.replaceAll('nth-of-type(n+4)','missing-source-overflow-rule')}),/durable layout rule/,'future source-count CSS required');
-// Feed the publisher an unpublished, authentic authoring structure. No
-// previous public issue is altered and the fixture cannot be written by us.
-const source=cp.execFileSync('git',['show','70274c9dfae92aa3c6132a3cf7dfd3659d9559a1:weekly-economics-environment/index.html'],{encoding:'utf8',maxBuffer:2e6});
-const raw=source.match(/<article class="entry"[^>]*id="[^"]+"[\s\S]*?<\/article>/)?.[0];
-ok(!!raw,'historical authoring template available for future-layout simulation');
-const ids=Array.from({length:5},(_,i)=>'9999-12-31-private-layout-'+(i+1));
-const articles=ids.map((id,i)=>{
- let html=raw.replace(/(<article class="entry" id=")[^"]+/,'$1'+id);
- const src=nodes(html).find(n=>n.classes.includes('sources'));
- ok(!!src,'source section retained in future authoring fixture '+i);
- const extra=Array.from({length:i},(_,j)=>'<a href="https://example.org/future-'+i+'-'+j+'">Unpublished fixture link '+j+'</a>').join('');
- return html.slice(0,src.close)+extra+html.slice(src.close);
-}).join('');
-const fixture='<section class="edition" id="edition-9999-12-31" data-edition="9999-12-31" data-title="Private Growth Fixture">'+articles+'</section>';
-const main=journal.match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)?.[1];
-const grown=journal.replace('</main>',fixture+'</main>');
-const provisional=compose(grown);
-const resultingMain=provisional.match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)?.[1];
-ok(resultingMain.startsWith(main),'all founding editions and readings remain byte-identical');
-for(const id of ids){
- const article=provisional.match(new RegExp('<article class="entry"[^>]*id="'+id+'"[\\s\\S]*?<\\/article>'))?.[0]||'';
- ok(article.includes('data-reading-finish="5"')&&article.includes('class="reading-sources"'),'future article inherits finished layout '+id);
- ok(article.includes('data-curated="false"'),'missing curation clearly labeled during draft '+id);
-}
-eq(compose(provisional),provisional,'new issue retry does not rewrite or duplicate anything');
-rejected(()=>validate({...input,journal:provisional}),/uncurated reading/,'unreviewed future issue blocked by publication preflight');
-// Simulate subsequent editorial curation. This is not output content.
-const test=Object.values(catalog).find(entry=>entry.kind==='test');
-ok(!!test,'source-validated Assumption Test schema available');
-for(const id of ids)catalog[id]={...test};
-try{
- const ready=compose(grown),pass=validate({...input,journal:ready});
- eq(pass.editions,initial.editions+1,'the seventh edition is accepted by the publishing gate');
- eq(pass.readings,initial.readings+5,'all five future readings receive finished formatting');
- ok(pass.sourceLinks>=initial.sourceLinks+15,'one through five source links all survive');
- eq(compose(ready),ready,'curated future edition remains idempotent');
-}finally{
- for(const id of ids)delete catalog[id];
-}
-console.log(checks+' future-edition layout, growth, curation and preservation checks passed.');
+const read=p=>fs.readFileSync(p,'utf8');const journal=read('weekly-economics-environment/index.html'),input={journal,notebook:read('weekly-economics-environment/notebook/index.html'),folioCss:read('weekly-economics-environment/reading-folio.css'),notebookCss:read('weekly-economics-environment/notebook/notebook.css')};let n=0;
+function ok(v,m){assert(v,m);n++}function eq(a,b,m){assert.deepEqual(a,b,m);n++}
+const result=validate(input);eq(result.editions,6,'six archival editions');eq(result.readings,30,'30 readings');eq(compose(journal),journal,'composer is idempotent');
+for(const file of ['reading-folio.css','reading-index.js']){const hash=crypto.createHash('sha256').update(read('weekly-economics-environment/'+file)).digest('hex').slice(0,12);ok(journal.includes(file+'?v='+hash),'content-versioned asset '+file)}
+const base=journal.match(/<article class="entry"[^>]*id="insurance"[\s\S]*?<\/article>/)[0];
+assert.throws(()=>compose(journal.replace('</main>','<section class="edition" data-edition="9999-12-31" data-title="Unreviewed">'+base.replace('id="insurance"','id="private-unreviewed"')+'</section></main>')),/editorial review required/);n++;
+const ids=Array.from({length:5},(_,i)=>'private-future-'+i);try{
+ const articles=ids.map((id,i)=>{arch.decisions.readings[id]=JSON.parse(JSON.stringify(arch.decisions.readings.insurance));arch.decisions.readings[id].title='Private future reading '+i;return base.replace('id="insurance"','id="'+id+'"').replaceAll('insurance--',id+'--').replace(/<h2>[^<]+<\/h2>/,'<h2>Private future reading '+i+'</h2>')}).join('');
+ const grown=compose(journal.replace('</main>','<section class="edition" data-edition="9999-12-31" data-title="Private future fixture">'+articles+'</section></main>'));const pass=validate({...input,journal:grown});eq(pass.editions,7,'future curated edition accepted');eq(pass.readings,35,'future readings indexed automatically');const idx=JSON.parse(grown.match(/id="ll-reading-index-data">([\s\S]*?)<\/script>/)[1]);eq(idx.editions.at(-1).readings.map(r=>r.id),ids,'all future stable anchors generated');eq(compose(grown),grown,'future publication retry stable');
+ const f=arch.decisions.readings[ids[0]].features[0],terms=f.terms;delete f.terms;assert.throws(()=>validate({...input,journal:compose(grown)}),/incomplete Estimation Desk/);n++;f.terms=terms;
+}finally{for(const id of ids)delete arch.decisions.readings[id]}
+const registry=require('../weekly-economics-environment/reading-feature-registry.js');eq(registry.select({tags:['regression','history']}).special,[],'keywords never publish features');
+const candidates=arch.decisions.readings.insurance.features.map(f=>({id:f.type,authored:true,provenance:f.provenance,assessment:f.assessment,function:f.type}));eq(registry.select({candidates}).special,['estimation-desk','economic-figures'],'evidence-led authored candidates selected');ok(registry.select({candidates:[candidates[0]]}).review.length,'minimum-target exception required');
+console.log(n+' publication, future growth, Index and editorial gate checks passed.');
