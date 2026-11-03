@@ -6,7 +6,7 @@ All seven Long Views derive desktop tracks from the actual stage count (five wit
 
 ## What caused the mismatch
 
-* The user's 14:48:09 and 14:48:13 screenshots preceded the final successful Pages deployment at **14:48:59 EDT**. GitHub run `41706519476` deployed `ef7f0fb`; the four preceding runs were cancelled. A commit was not evidence that the page had deployed. A fresh independent browser opened later did show that commit's three Ledger columns and filled three-stage timelines at 1440px. This supports deployment timing as the immediate screenshot discrepancy; the earlier browser cache itself cannot be reconstructed.
+* The user's 14:48:09 and 14:48:13 screenshots preceded the final successful Pages deployment at **14:48:59 EST**. GitHub run `41706519476` deployed `ef7f0fb`; the four preceding runs were cancelled. A commit was not evidence that the page had deployed. A fresh independent browser opened later did show that commit's three Ledger columns and filled three-stage timelines at 1440px. This supports deployment timing as the immediate screenshot discrepancy; the earlier browser cache itself cannot be reconstructed.
 * Source CSS simultaneously retained the original vertical timeline, later horizontal grid, later flex overrides, and a duplicate `ll-accepted-reading-arrangement-20261103` inline style after the linked stylesheet. Responsive rules used several inconsistent breakpoints. These layers have been reconciled into one timeline layout and one supplemental Ledger layout in `reading-folio.css`; the duplicated inline block is removed. The accepted transition/divider styling remains.
 * `finishReading()` returned immediately on `data-reading-finish="5"`. Existing archive readings therefore skipped changed renderer output. A presentation-only migration now runs before that return, and publication preflight verifies that every stage count agrees with the track count and actual markup.
 * The publisher now versions the stylesheet URL with its SHA-256 content digest, so CSS edits cannot silently reuse a stale asset URL.
@@ -29,3 +29,11 @@ Primary Ledger and Assumption Test panels previously stretched to the height of 
 The `Loblolly & Logit rendered layout` GitHub workflow runs the source checks and the full browser audit on relevant pushes and pull requests.
 
 Local Chromium result: **78 edition/viewport cases, 1,223 assertions passed**. Source publication, exhibit rendering, editorial preservation, field register and publishing integrity tests also pass. Final live deployment status, asset hashes and screenshots are recorded separately in delivery evidence after deployment; none is inferred from a source check.
+
+## Live deployment evidence
+
+Layout commit `5dba2bb153be1a72bf2bd7571901bfbf677a4bcf` passed Pages deployment run `41711274579` and cloud rendered-layout run `41711274807` on 3 November 2026. An independent fresh browser then passed the same **78 live edition/viewport cases and 1,223 assertions**. The stylesheet response received by the browser was HTTP 200, without disk-cache or service-worker substitution, and matched the tested file byte-for-byte: SHA-256 `fae16ebd49ad8a9c21b4ac8e54b540cdd0ad3fc741ee63786c48d0e983b2756f`.
+
+Published screenshots cover the first edition's grid and electrification Long Views, both supplemental Ledgers, the final edition's four-stage solar chronology, primary Ledger/Assumption Test/Decision Margin/Mechanism Map examples, tablet wrapping, and phone stacking. Day/night, Full Edition/At a Glance, archive selection and Heron controls were also checked. Delivery evidence includes the original user screenshots beside the published corrected features.
+
+Two broad legacy suites also fail on the untouched baseline: `test_editorial_rail.cjs` assumes older companion/spine state; `test_art_originality.cjs` reconstructs a historical fixture without the canonical CSS references required by current preflight. Those inherited failures are not counted as passing checks. The scoped source preservation suites and new cloud browser audit pass.

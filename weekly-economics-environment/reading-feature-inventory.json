@@ -453,7 +453,18 @@
     },
     "preservation": "The six-edition main region is byte-identical except seven stage-track presentation attributes. Source links, prose, artwork, feature selections and dates unchanged.",
     "regression": "scripts/test_ll_layout_browser.cjs",
-    "liveDeployment": "Verified separately in the delivery evidence after master deployment; source preflight alone is not visual verification.",
+    "liveDeployment": {
+      "layoutCommit": "5dba2bb153be1a72bf2bd7571901bfbf677a4bcf",
+      "pagesRun": 41711274579,
+      "pagesResult": "success",
+      "cloudBrowserRun": 41711274807,
+      "cloudBrowserResult": "success",
+      "liveBrowserCases": 78,
+      "liveBrowserAssertions": 1223,
+      "liveBrowserResult": "passed",
+      "cssSHA256": "fae16ebd49ad8a9c21b4ac8e54b540cdd0ad3fc741ee63786c48d0e983b2756f",
+      "assetBytesMatchTestedSource": true
+    },
     "pairedPanels": "Primary Ledgers and Assumption Tests retain their editorial columns, with each panel closing at its own content boundary instead of stretching into blank canvas.",
     "continuousVerification": ".github/workflows/ll-layout.yml runs source preservation and rendered browser audits on relevant pushes and pull requests."
   }
