@@ -132,12 +132,25 @@ ok(css.includes('grid-template-columns:25px minmax(0,1fr)'),'narrow surplus figu
 ok(css.includes('grid-template-columns:minmax(112px,.23fr)'),'source register keeps horizontal desktop arrangement');
 const archivalFigures=[...articles.values()].filter(a=>a.includes('class="essay-graphic"'));
 const relocated=[...articles.keys()].filter(id=>select(id).kind==='ledger'&&graphicPlacement(id)==='ledger');
-eq(archivalFigures.length,totals.ledger-relocated.length,'selective embedded pathways do not duplicate interpretive figures');
-ok(relocated.includes('2026-10-16-pfas-agriculture'),'PFAS pathway housed under its incidence table');
-ok(archivalFigures.filter(a=>a.includes('class="ledger-plot"')).length>=3,'historical quantitative charts retained');
-ok([...articles.values()].filter(a=>a.includes('class="model-flow"')).length>=6,'all six historical conceptual diagrams retained across both placements');
-ok(archivalFigures.filter(a=>a.includes('class="surplus-visual"')).length>=1,'historical methane accounting figure retained');
-ok(archivalFigures.filter(a=>a.includes('class="decomp-track"')).length>=1,'historical decomposition retained');
+eq(archivalFigures.length,0,'all Incidence Ledger visuals now attach to their affected-party tables');
+eq(relocated.length,totals.ledger,'all curated Incidence Ledgers have in-ledger economic graphs');
+for(const [id,reading] of articles){
+ if(select(id).kind!=='ledger')continue;
+ const g=visualData[id],plot=reading.includes('class="economic-plot-svg"');
+ if(g.type==='mechanism'){
+  ok(plot&&reading.includes('data-economic-evidence="schematic"'),'conceptual graph has plot and explicit uncertainty '+id);
+  ok(g.plot.lines.length>=1&&g.plot.lines.every(line=>line[1].length>=2),'each qualitative economic curve individually authored '+id);
+  ok(reading.includes('Schematic comparative statics'),'qualitative graph never masquerades as an estimated effect '+id);
+ }else{
+  ok(!plot&&reading.includes('class="ledger-graphic"'),'source-backed numeric presentation stays numeric '+id);
+ }
+}
+
+ok(articles.get('2026-10-16-pfas-agriculture').includes('model-intervention'),'PFAS pathway preserves conditional intervention distinction');
+ok([...articles.values()].filter(a=>a.includes('class="ledger-plot"')).length>=3,'quantitative source graphs retained in their Ledgers');
+eq([...articles.values()].filter(a=>a.includes('class="economic-plot-svg"')).length,6,'six mechanisms now use explicitly labeled economic graphs rather than flow diagrams');
+ok([...articles.values()].filter(a=>a.includes('class="surplus-visual"')).length>=1,'historical methane accounting graph retained within its Ledger');
+ok([...articles.values()].filter(a=>a.includes('class="decomp-track"')).length>=1,'historical paper-markup decomposition retained within its Ledger');
 ok(articles.get('2026-10-30-coal-country').includes('class="plot-tick"')&&articles.get('2026-10-30-coal-country').includes('class="plot-grid'), 'coal chart has labeled quantitative scale and guides');
 ok(articles.get('2026-10-30-methane-rule').includes('class="surplus-upper"'),'reported range distinguished visually from its lower bound');
 const sourceCounts=[...articles.values()].map(a=>{const x=a.match(/<div class="reading-sources">([\s\S]*?)<\/div><\/div>/);return x?(x[1].match(/<a /g)||[]).length:0});
