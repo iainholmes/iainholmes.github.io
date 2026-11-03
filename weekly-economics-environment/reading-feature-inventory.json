@@ -1,357 +1,400 @@
 {
-  "title": "Loblolly & Logit · Six-Edition Reading Feature Inventory",
+  "title": "Loblolly & Logit · Six-Edition Reading Feature Re-Issue Audit",
   "reviewed": "2026-11-03",
-  "scope": "30 readings in six editions from 2026-09-25 to 2026-10-30",
-  "policy": "Value-based selection; zero default, each feature must be distinct, authored, evidence-qualified and materially useful. Beyond two, explicit editorial rationale; no hard limit.",
-  "limitation": "Retrospective inventory of already authored components. It does not demonstrate that new special features were created or that new econometric specifications were estimated.",
+  "scope": "All 30 readings across six editions, 2026-09-25 through 2026-10-30",
+  "policy": "Evidence-led inclusion; no fixed quota; only distinct authored and qualified features. A third requires explicit rationale.",
+  "methodology": "Retained all five authored primary exhibits per edition; recognized independent publication figures and diagrams as Economic Figures; added five source-bounded, explicitly non-estimated companion features where a second lens clarifies a separate economic question. Existing scholarship, links and archival dates are preserved.",
+  "limitations": "No new primary-source verification, econometric estimation or live browser QA was performed. Re-issue claims concern repository publication artifacts; GitHub Pages deployment is not independently confirmed.",
   "totals": {
     "editions": 6,
     "readings": 30,
-    "readingsWithOne": 19,
-    "readingsWithTwo": 11,
-    "readingsWithThreeOrMore": 0
+    "readingsWithOne": 9,
+    "readingsWithTwo": 21,
+    "readingsWithThreeOrMore": 0,
+    "companionFeaturesAdded": 5,
+    "readingsWithEconomicFigures": 16
   },
   "entries": [
     {
       "edition": "2026-09-25",
       "readingId": "electrification",
+      "title": "Electrification’s Opportunity Is Larger Than Its Current Market Share",
       "features": [
-        "long-view"
+        "long-view",
+        "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Electrification’s Opportunity Is Larger Than Its Current Market Share"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-09-25",
       "readingId": "grid",
+      "title": "The Grid Gets a $5.25 Billion Investment Test",
       "features": [
-        "long-view"
+        "long-view",
+        "incidence-ledger"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "The Grid Gets a $5.25 Billion Investment Test"
+      "hasAuthoredCompanion": true,
+      "economicFigure": false,
+      "evidenceStatus": "Qualified interpretive companion; see in-reading evidence boundary",
+      "decision": "Add evidence-bounded second lens of distinct analytical purpose"
     },
     {
       "edition": "2026-09-25",
       "readingId": "carbon-border",
+      "title": "Carbon-Border Policy Enters a New Institutional Test",
       "features": [
         "decision-margin"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Carbon-Border Policy Enters a New Institutional Test"
+      "hasAuthoredCompanion": false,
+      "economicFigure": false,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-09-25",
       "readingId": "insurance",
+      "title": "Insurance Stress Has an Urban Geography of Its Own",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Insurance Stress Has an Urban Geography of Its Own"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-09-25",
       "readingId": "glyphosate",
+      "title": "Glyphosate Review Makes the Value of Information Concrete",
       "features": [
         "decision-margin"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Glyphosate Review Makes the Value of Information Concrete"
+      "hasAuthoredCompanion": false,
+      "economicFigure": false,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-02",
       "readingId": "2026-10-02-green-spending",
+      "title": "Green Public Spending Can Carry a Short-Run Growth Cost",
       "features": [
-        "assumption-test"
+        "assumption-test",
+        "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Green Public Spending Can Carry a Short-Run Growth Cost"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-02",
       "readingId": "2026-10-02-policy-mix",
+      "title": "Carbon Policy Looks Different Once Leakage Is Treated as a Price Problem",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Carbon Policy Looks Different Once Leakage Is Treated as a Price Problem"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-02",
       "readingId": "2026-10-02-amoc",
+      "title": "A Climate Tipping Point Can Reverse the Geography of Damages",
       "features": [
-        "long-view"
+        "long-view",
+        "mechanism-map"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "A Climate Tipping Point Can Reverse the Geography of Damages"
+      "hasAuthoredCompanion": true,
+      "economicFigure": false,
+      "evidenceStatus": "Qualified interpretive companion; see in-reading evidence boundary",
+      "decision": "Add evidence-bounded second lens of distinct analytical purpose"
     },
     {
       "edition": "2026-10-02",
       "readingId": "2026-10-02-storage",
+      "title": "Storage Creates Value by Eroding the Price Spreads That Pay for It",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Storage Creates Value by Eroding the Price Spreads That Pay for It"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-02",
       "readingId": "2026-10-02-tax-bias",
+      "title": "The Tax Code Can Favor Carbon-Intensive Firms Through Financing",
       "features": [
         "assumption-test"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "The Tax Code Can Favor Carbon-Intensive Firms Through Financing"
+      "hasAuthoredCompanion": false,
+      "economicFigure": false,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-09",
       "readingId": "2026-10-09-trade-climate",
+      "title": "Climate Cooperation Is Also a Problem of International Incidence",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Climate Cooperation Is Also a Problem of International Incidence"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-09",
       "readingId": "2026-10-09-landslides",
+      "title": "Disaster Losses Persist When Displacement Breaks Local Ties",
       "features": [
-        "assumption-test"
+        "assumption-test",
+        "mechanism-map"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Disaster Losses Persist When Displacement Breaks Local Ties"
+      "hasAuthoredCompanion": true,
+      "economicFigure": false,
+      "evidenceStatus": "Qualified interpretive companion; see in-reading evidence boundary",
+      "decision": "Add evidence-bounded second lens of distinct analytical purpose"
     },
     {
       "edition": "2026-10-09",
       "readingId": "2026-10-09-nuclear-finance",
+      "title": "A $4.2 Billion Loan Commitment Tests the Value of Existing Nuclear Assets",
       "features": [
-        "long-view"
+        "long-view",
+        "incidence-ledger"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "A $4.2 Billion Loan Commitment Tests the Value of Existing Nuclear Assets"
+      "hasAuthoredCompanion": true,
+      "economicFigure": false,
+      "evidenceStatus": "Qualified interpretive companion; see in-reading evidence boundary",
+      "decision": "Add evidence-bounded second lens of distinct analytical purpose"
     },
     {
       "edition": "2026-10-09",
       "readingId": "2026-10-09-winter-bills",
+      "title": "The Same Winter Forecast Produces Four Different Household Burdens",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "The Same Winter Forecast Produces Four Different Household Burdens"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-09",
       "readingId": "2026-10-09-climate-liability",
+      "title": "Climate Liability Reaches a Jurisdictional Crossroads",
       "features": [
         "decision-margin"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Climate Liability Reaches a Jurisdictional Crossroads"
+      "hasAuthoredCompanion": false,
+      "economicFigure": false,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-16",
       "readingId": "2026-10-16-targeted-power",
+      "title": "Rarely Exposed Groups Can Vanish in Population Averages",
       "features": [
-        "assumption-test"
+        "assumption-test",
+        "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Rarely Exposed Groups Can Vanish in Population Averages"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-16",
       "readingId": "2026-10-16-pfas-agriculture",
+      "title": "PFAS Policy Meets the Farm at the End of the Pipe",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "PFAS Policy Meets the Farm at the End of the Pipe"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-16",
       "readingId": "2026-10-16-ferc-review",
+      "title": "FERC Proposes Trading Case-Specific Review for Categorical Rules",
       "features": [
         "decision-margin"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "FERC Proposes Trading Case-Specific Review for Categorical Rules"
+      "hasAuthoredCompanion": false,
+      "economicFigure": false,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-16",
       "readingId": "2026-10-16-energy-macro",
+      "title": "Energy Exposure Splits the Global Outlook",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Energy Exposure Splits the Global Outlook"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-16",
       "readingId": "2026-10-16-climate-vitals",
+      "title": "Seven of Sixteen Climate Vital Signs Reach Record Extremes",
       "features": [
         "assumption-test"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Seven of Sixteen Climate Vital Signs Reach Record Extremes"
+      "hasAuthoredCompanion": false,
+      "economicFigure": false,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-23",
       "readingId": "2026-10-23-paper-markups",
+      "title": "Pollution Rules Can Raise Both Costs and Markups",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Pollution Rules Can Raise Both Costs and Markups"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-23",
       "readingId": "2026-10-23-vehicle-mix",
+      "title": "After Tax Credits, Vehicle Sales Shift Toward Hybrids",
       "features": [
-        "long-view"
+        "long-view",
+        "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "After Tax Credits, Vehicle Sales Shift Toward Hybrids"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-23",
       "readingId": "2026-10-23-emissions-gap",
+      "title": "The Emissions Gap Becomes an Overshoot Problem",
       "features": [
         "long-view"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "The Emissions Gap Becomes an Overshoot Problem"
+      "hasAuthoredCompanion": false,
+      "economicFigure": false,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-23",
       "readingId": "2026-10-23-adaptation-finance",
+      "title": "Europe Tries to Make Climate Risk Bankable",
       "features": [
         "decision-margin"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Europe Tries to Make Climate Risk Bankable"
+      "hasAuthoredCompanion": false,
+      "economicFigure": false,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-23",
       "readingId": "2026-10-23-mobility-finance",
+      "title": "Electric Mobility’s Constraint Is the Cost of Capital",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Electric Mobility’s Constraint Is the Cost of Capital"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-30",
       "readingId": "2026-10-30-coal-country",
+      "title": "Coal Demand Shocks Travel Beyond the Mine",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Coal Demand Shocks Travel Beyond the Mine"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-30",
       "readingId": "2026-10-30-household-climate",
+      "title": "Clean Equipment and Rooftop Solar Work Together",
       "features": [
         "assumption-test"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "Clean Equipment and Rooftop Solar Work Together"
+      "hasAuthoredCompanion": false,
+      "economicFigure": false,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-30",
       "readingId": "2026-10-30-methane-rule",
+      "title": "EPA Proposes a Different Methane Ledger",
       "features": [
         "incidence-ledger",
         "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "EPA Proposes a Different Methane Ledger"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-30",
       "readingId": "2026-10-30-solar-storage",
+      "title": "More New Solar Is Arriving With Batteries",
       "features": [
-        "long-view"
+        "long-view",
+        "economic-figures"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "More New Solar Is Arriving With Batteries"
+      "hasAuthoredCompanion": false,
+      "economicFigure": true,
+      "evidenceStatus": "Existing authored and source-linked content",
+      "decision": "Retain existing curated reading; classify original graphical feature where present"
     },
     {
       "edition": "2026-10-30",
       "readingId": "2026-10-30-moves6",
+      "title": "A New Emissions Model Changes the Baseline",
       "features": [
-        "decision-margin"
+        "decision-margin",
+        "assumption-test"
       ],
-      "reviewed": "2026-11-03",
-      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
-      "evidenceStatus": "Existing published content; not re-estimated",
-      "title": "A New Emissions Model Changes the Baseline"
+      "hasAuthoredCompanion": true,
+      "economicFigure": false,
+      "evidenceStatus": "Qualified interpretive companion; see in-reading evidence boundary",
+      "decision": "Add evidence-bounded second lens of distinct analytical purpose"
     }
   ]
 }
