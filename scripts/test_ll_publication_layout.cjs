@@ -22,7 +22,7 @@ eq(compose(journal),journal,'existing canonical publication byte-idempotent');
 rejected(()=>validate({...input,journal:journal.replace('reading-folio.css?v=','missing-folio.css?v=')}),/CSS references missing/,'journal style link required');
 rejected(()=>validate({...input,notebook:notebook.replace('class="concept-analysis"','class="missing-analysis"')}),/notebook structure/,'concept scaffolding required');
 rejected(()=>validate({...input,journal:journal.replace('data-curated="true"','data-curated="false"')}),/uncurated reading/,'unfinished exhibit cannot be published');
-rejected(()=>validate({...input,folioCss:folioCss.replace('nth-of-type(n+4)','missing-source-overflow-rule')}),/durable layout rule/,'future source-count CSS required');
+rejected(()=>validate({...input,folioCss:folioCss.replaceAll('nth-of-type(n+4)','missing-source-overflow-rule')}),/durable layout rule/,'future source-count CSS required');
 // Feed the publisher an unpublished, authentic authoring structure. No
 // previous public issue is altered and the fixture cannot be written by us.
 const source=cp.execFileSync('git',['show','70274c9dfae92aa3c6132a3cf7dfd3659d9559a1:weekly-economics-environment/index.html'],{encoding:'utf8',maxBuffer:2e6});
