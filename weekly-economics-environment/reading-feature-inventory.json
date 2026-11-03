@@ -1,0 +1,357 @@
+{
+  "title": "Loblolly & Logit · Six-Edition Reading Feature Inventory",
+  "reviewed": "2026-11-03",
+  "scope": "30 readings in six editions from 2026-09-25 to 2026-10-30",
+  "policy": "Value-based selection; zero default, each feature must be distinct, authored, evidence-qualified and materially useful. Beyond two, explicit editorial rationale; no hard limit.",
+  "limitation": "Retrospective inventory of already authored components. It does not demonstrate that new special features were created or that new econometric specifications were estimated.",
+  "totals": {
+    "editions": 6,
+    "readings": 30,
+    "readingsWithOne": 19,
+    "readingsWithTwo": 11,
+    "readingsWithThreeOrMore": 0
+  },
+  "entries": [
+    {
+      "edition": "2026-09-25",
+      "readingId": "electrification",
+      "features": [
+        "long-view"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Electrification’s Opportunity Is Larger Than Its Current Market Share"
+    },
+    {
+      "edition": "2026-09-25",
+      "readingId": "grid",
+      "features": [
+        "long-view"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "The Grid Gets a $5.25 Billion Investment Test"
+    },
+    {
+      "edition": "2026-09-25",
+      "readingId": "carbon-border",
+      "features": [
+        "decision-margin"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Carbon-Border Policy Enters a New Institutional Test"
+    },
+    {
+      "edition": "2026-09-25",
+      "readingId": "insurance",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Insurance Stress Has an Urban Geography of Its Own"
+    },
+    {
+      "edition": "2026-09-25",
+      "readingId": "glyphosate",
+      "features": [
+        "decision-margin"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Glyphosate Review Makes the Value of Information Concrete"
+    },
+    {
+      "edition": "2026-10-02",
+      "readingId": "2026-10-02-green-spending",
+      "features": [
+        "assumption-test"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Green Public Spending Can Carry a Short-Run Growth Cost"
+    },
+    {
+      "edition": "2026-10-02",
+      "readingId": "2026-10-02-policy-mix",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Carbon Policy Looks Different Once Leakage Is Treated as a Price Problem"
+    },
+    {
+      "edition": "2026-10-02",
+      "readingId": "2026-10-02-amoc",
+      "features": [
+        "long-view"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "A Climate Tipping Point Can Reverse the Geography of Damages"
+    },
+    {
+      "edition": "2026-10-02",
+      "readingId": "2026-10-02-storage",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Storage Creates Value by Eroding the Price Spreads That Pay for It"
+    },
+    {
+      "edition": "2026-10-02",
+      "readingId": "2026-10-02-tax-bias",
+      "features": [
+        "assumption-test"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "The Tax Code Can Favor Carbon-Intensive Firms Through Financing"
+    },
+    {
+      "edition": "2026-10-09",
+      "readingId": "2026-10-09-trade-climate",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Climate Cooperation Is Also a Problem of International Incidence"
+    },
+    {
+      "edition": "2026-10-09",
+      "readingId": "2026-10-09-landslides",
+      "features": [
+        "assumption-test"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Disaster Losses Persist When Displacement Breaks Local Ties"
+    },
+    {
+      "edition": "2026-10-09",
+      "readingId": "2026-10-09-nuclear-finance",
+      "features": [
+        "long-view"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "A $4.2 Billion Loan Commitment Tests the Value of Existing Nuclear Assets"
+    },
+    {
+      "edition": "2026-10-09",
+      "readingId": "2026-10-09-winter-bills",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "The Same Winter Forecast Produces Four Different Household Burdens"
+    },
+    {
+      "edition": "2026-10-09",
+      "readingId": "2026-10-09-climate-liability",
+      "features": [
+        "decision-margin"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Climate Liability Reaches a Jurisdictional Crossroads"
+    },
+    {
+      "edition": "2026-10-16",
+      "readingId": "2026-10-16-targeted-power",
+      "features": [
+        "assumption-test"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Rarely Exposed Groups Can Vanish in Population Averages"
+    },
+    {
+      "edition": "2026-10-16",
+      "readingId": "2026-10-16-pfas-agriculture",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "PFAS Policy Meets the Farm at the End of the Pipe"
+    },
+    {
+      "edition": "2026-10-16",
+      "readingId": "2026-10-16-ferc-review",
+      "features": [
+        "decision-margin"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "FERC Proposes Trading Case-Specific Review for Categorical Rules"
+    },
+    {
+      "edition": "2026-10-16",
+      "readingId": "2026-10-16-energy-macro",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Energy Exposure Splits the Global Outlook"
+    },
+    {
+      "edition": "2026-10-16",
+      "readingId": "2026-10-16-climate-vitals",
+      "features": [
+        "assumption-test"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Seven of Sixteen Climate Vital Signs Reach Record Extremes"
+    },
+    {
+      "edition": "2026-10-23",
+      "readingId": "2026-10-23-paper-markups",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Pollution Rules Can Raise Both Costs and Markups"
+    },
+    {
+      "edition": "2026-10-23",
+      "readingId": "2026-10-23-vehicle-mix",
+      "features": [
+        "long-view"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "After Tax Credits, Vehicle Sales Shift Toward Hybrids"
+    },
+    {
+      "edition": "2026-10-23",
+      "readingId": "2026-10-23-emissions-gap",
+      "features": [
+        "long-view"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "The Emissions Gap Becomes an Overshoot Problem"
+    },
+    {
+      "edition": "2026-10-23",
+      "readingId": "2026-10-23-adaptation-finance",
+      "features": [
+        "decision-margin"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Europe Tries to Make Climate Risk Bankable"
+    },
+    {
+      "edition": "2026-10-23",
+      "readingId": "2026-10-23-mobility-finance",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Electric Mobility’s Constraint Is the Cost of Capital"
+    },
+    {
+      "edition": "2026-10-30",
+      "readingId": "2026-10-30-coal-country",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Coal Demand Shocks Travel Beyond the Mine"
+    },
+    {
+      "edition": "2026-10-30",
+      "readingId": "2026-10-30-household-climate",
+      "features": [
+        "assumption-test"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "Clean Equipment and Rooftop Solar Work Together"
+    },
+    {
+      "edition": "2026-10-30",
+      "readingId": "2026-10-30-methane-rule",
+      "features": [
+        "incidence-ledger",
+        "economic-figures"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "EPA Proposes a Different Methane Ledger"
+    },
+    {
+      "edition": "2026-10-30",
+      "readingId": "2026-10-30-solar-storage",
+      "features": [
+        "long-view"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "More New Solar Is Arriving With Batteries"
+    },
+    {
+      "edition": "2026-10-30",
+      "readingId": "2026-10-30-moves6",
+      "features": [
+        "decision-margin"
+      ],
+      "reviewed": "2026-11-03",
+      "decision": "Retain existing authored special content; decline unsubstantiated additions.",
+      "evidenceStatus": "Existing published content; not re-estimated",
+      "title": "A New Emissions Model Changes the Baseline"
+    }
+  ]
+}
