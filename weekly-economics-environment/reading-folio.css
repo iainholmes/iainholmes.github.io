@@ -12,7 +12,7 @@
 @media(min-width:821px){
  .contents-boundary{position:relative}
  .contents-boundary::after{
-  content:"";position:absolute;top:0;bottom:0;right:-29px;width:14px;
+  content:"";position:absolute;top:0;bottom:0;right:-26px;width:8px;
   background:linear-gradient(to bottom,var(--clay) 0 70px,var(--forest) 70px calc(100% - 70px),var(--clay) calc(100% - 70px) 100%);
   clip-path:polygon(0 0,100% 0,100% 54px,72% 72px,72% calc(100% - 72px),100% calc(100% - 54px),100% 100%,0 100%,0 calc(100% - 54px),28% calc(100% - 72px),28% 72px,0 54px);
   pointer-events:none
@@ -1565,7 +1565,7 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 .entry[data-reading-finish="5"] .entry-head{
  position:relative;
  border-bottom:0!important;
- padding-bottom:clamp(23px,2.15vw,30px)!important;
+ padding-bottom:calc(clamp(23px,2.15vw,30px) + 10px)!important;
 }
 .entry[data-reading-finish="5"] .entry-head::after{
  content:"";display:block;position:absolute;
@@ -1582,17 +1582,17 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 .entry[data-reading-finish="5"] .reading-deck{
  position:relative;
  border:0!important;
- padding:22px 0 111px!important;
+ padding:22px 0 76px!important;
  margin:0 0 19px!important
 }
 .entry[data-reading-finish="5"] .reading-deck::after{
  content:"";position:absolute;
- left:0;right:0;bottom:18px;
- width:100%;height:51px;
+ left:0;right:0;bottom:14px;
+ width:100%;height:29px;
  background:
-  linear-gradient(var(--forest),var(--forest)) center top / 83% 3px no-repeat,
-  linear-gradient(var(--forest),var(--forest)) center top 23px / 59% 3px no-repeat,
-  linear-gradient(var(--forest),var(--forest)) center top 46px / 35% 3px no-repeat;
+  linear-gradient(var(--forest),var(--forest)) center top / 44% 1.5px no-repeat,
+  linear-gradient(var(--forest),var(--forest)) center top 12px / 28% 1.5px no-repeat,
+  linear-gradient(var(--forest),var(--forest)) center top 24px / 16% 1.5px no-repeat;
  pointer-events:none
 }
 .entry[data-reading-finish="5"] .reading-deck::before{
@@ -1695,17 +1695,17 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 }
 @media(max-width:620px){
  .entry[data-reading-finish="5"] .entry-head{
-  padding-bottom:22px!important
+  padding-bottom:28px!important
  }
  .entry[data-reading-finish="5"] .reading-deck{
-  padding:17px 0 88px!important;margin-bottom:15px!important
+  padding:17px 0 60px!important;margin-bottom:15px!important
  }
  .entry[data-reading-finish="5"] .reading-deck::after{
-  bottom:14px;height:43px;
+  bottom:12px;height:25px;
   background:
-   linear-gradient(var(--forest),var(--forest)) center top / 84% 3px no-repeat,
-   linear-gradient(var(--forest),var(--forest)) center top 19px / 60% 3px no-repeat,
-   linear-gradient(var(--forest),var(--forest)) center top 38px / 36% 3px no-repeat
+   linear-gradient(var(--forest),var(--forest)) center top / 44% 1.25px no-repeat,
+   linear-gradient(var(--forest),var(--forest)) center top 10px / 28% 1.25px no-repeat,
+   linear-gradient(var(--forest),var(--forest)) center top 20px / 16% 1.25px no-repeat
  }
  .entry[data-reading-finish="5"] .economic-plot h5{font-size:20px}
  .entry[data-reading-finish="5"] .economic-y-axis,
