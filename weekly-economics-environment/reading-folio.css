@@ -1569,42 +1569,35 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 }
 .entry[data-reading-finish="5"] .entry-head::after{
  content:"";display:block;position:absolute;
- left:0;right:0;bottom:0;width:100%;height:3px;
+ left:0;right:0;bottom:0;width:100%;height:2px;
  background:linear-gradient(to right,
   var(--clay) 0 var(--folio-width),
-  var(--forest) var(--folio-width) 66%,
-  var(--hair) 66% 100%);
+  var(--forest) var(--folio-width) 100%);
  pointer-events:none
 }
-/* The Three-Beat Cadence: L&L's three-tier evidence separator.
-   Unlike the centered three-bar reference, the lengths and registrations
-   form a descending, offset rhythm anchored to the editorial grid.
-   Forest, copper and river blue carry the visual identity without a box. */
+/* The Three-Line Rule: just three equal-weight, single-color horizontal
+   rules, differentiated ONLY by length. No dots, caps, tabs, gradient,
+   symbols, extra marks or per-line styling. Centered and spaced so the
+   reading's opening argument can end before the next analytical section. */
 .entry[data-reading-finish="5"] .reading-deck{
  position:relative;
  border:0!important;
- padding:21px 0 54px!important;
- margin:0 0 15px!important;
- isolation:isolate
+ padding:22px 0 111px!important;
+ margin:0 0 19px!important
 }
 .entry[data-reading-finish="5"] .reading-deck::after{
  content:"";position:absolute;
- left:0;right:0;bottom:8px;
- width:100%;height:34px;
+ left:0;right:0;bottom:18px;
+ width:100%;height:51px;
  background:
-  linear-gradient(to right,var(--clay) 0 16%,var(--forest) 16% 81%,var(--river) 81% 100%) left top / 89% 5px no-repeat,
-  linear-gradient(to right,var(--river) 0 26%,var(--forest) 26% 100%) right top 13px / 63% 4px no-repeat,
-  linear-gradient(to right,var(--clay) 0 12%,var(--forest) 12% 100%) 43% 27px / 30% 3px no-repeat;
- pointer-events:none;z-index:0
+  linear-gradient(var(--forest),var(--forest)) center top / 83% 3px no-repeat,
+  linear-gradient(var(--forest),var(--forest)) center top 23px / 59% 3px no-repeat,
+  linear-gradient(var(--forest),var(--forest)) center top 46px / 35% 3px no-repeat;
+ pointer-events:none
 }
-/* Two restrained sage registration dots terminate the final beat. */
 .entry[data-reading-finish="5"] .reading-deck::before{
- content:"";position:absolute;bottom:7px;
- left:calc(30.1% - 5px);width:calc(30% + 10px);height:11px;
- background:
-  radial-gradient(circle,var(--sage) 0 3.3px,var(--forest) 3.6px 5px,transparent 5.3px) left center / 11px 11px no-repeat,
-  radial-gradient(circle,var(--sage) 0 3.3px,var(--forest) 3.6px 5px,transparent 5.3px) right center / 11px 11px no-repeat;
- pointer-events:none;z-index:1
+ content:none!important;
+ display:none!important
 }
 /* A graphic is adjacent to the interpretation, not structurally fused
    into the affected-party Ledger. Authoritative quantities remain as given. */
@@ -1705,18 +1698,14 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
   padding-bottom:22px!important
  }
  .entry[data-reading-finish="5"] .reading-deck{
-  padding:17px 0 47px!important;margin-bottom:12px!important
+  padding:17px 0 88px!important;margin-bottom:15px!important
  }
  .entry[data-reading-finish="5"] .reading-deck::after{
-  bottom:7px;height:30px;
+  bottom:14px;height:43px;
   background:
-   linear-gradient(to right,var(--clay) 0 16%,var(--forest) 16% 81%,var(--river) 81% 100%) left top / 92% 4px no-repeat,
-   linear-gradient(to right,var(--river) 0 26%,var(--forest) 26% 100%) right top 11px / 67% 3px no-repeat,
-   linear-gradient(to right,var(--clay) 0 12%,var(--forest) 12% 100%) 42% 23px / 34% 3px no-repeat
- }
- .entry[data-reading-finish="5"] .reading-deck::before{
-  bottom:6px;left:calc(27.72% - 5px);
-  width:calc(34% + 10px);height:11px
+   linear-gradient(var(--forest),var(--forest)) center top / 84% 3px no-repeat,
+   linear-gradient(var(--forest),var(--forest)) center top 19px / 60% 3px no-repeat,
+   linear-gradient(var(--forest),var(--forest)) center top 38px / 36% 3px no-repeat
  }
  .entry[data-reading-finish="5"] .economic-plot h5{font-size:20px}
  .entry[data-reading-finish="5"] .economic-y-axis,

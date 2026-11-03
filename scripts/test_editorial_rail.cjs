@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-three-beat-cadence';
+const currentKey='reading-folio.css?v=20261102-clean-three-lines';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -118,10 +118,13 @@ ok(inLedger.length===0,'all Incidence Ledgers are separated from their graph com
 ok(ledgers.every(id=>current.get(id).includes('class="essay-graphic"')),'all eleven economic visualizations accompany interpretation');
 ok(current.get('2026-10-16-pfas-agriculture').includes('class="model-intervention"'),'PFAS prevention pathway retains conditional public-agency intervention');
 eq((source.match(/class="ledger-graphic"/g)||[]).length,ledgers.length,'no economic graphic duplicated or lost');
-ok(css.includes('The Three-Beat Cadence')&&css.includes('Two restrained sage registration dots'),'three-line L&L editorial cadence is present');
-ok(css.includes('89% 5px no-repeat')&&css.includes('63% 4px no-repeat')&&css.includes('30% 3px no-repeat'),'desktop separator has three independently dimensioned bars');
-ok(css.includes('92% 4px no-repeat')&&css.includes('67% 3px no-repeat')&&css.includes('34% 3px no-repeat'),'mobile separator retains three compact bars');
-ok(!css.includes('The Equilibrium Signet')&&!css.includes('rotate(45deg)'),'the superseded diamond signet has been removed');
+ok(css.includes('The Three-Line Rule'),'reading divider uses three unadorned horizontal lines');
+ok(css.includes('83% 3px no-repeat')&&css.includes('59% 3px no-repeat')&&css.includes('35% 3px no-repeat'),'desktop three lines have identical color/weight and differ only in width');
+ok(css.includes('84% 3px no-repeat')&&css.includes('60% 3px no-repeat')&&css.includes('36% 3px no-repeat'),'mobile three lines have identical color/weight and differ only in width');
+ok(css.includes('padding:22px 0 111px!important')&&css.includes('center top 46px'),'opening paragraph has space before and between the three lines');
+ok(css.includes('.reading-deck::before{\n content:none!important;')&&!css.includes('Two restrained sage registration dots'),'no end dots, balls, caps or ornamental endpoints');
+ok(css.includes('width:100%;height:2px;')&&css.includes('var(--forest) var(--folio-width) 100%'),'title underline is thinner and has only orange then forest green');
+ok(!css.includes('The Equilibrium Signet')&&!css.includes('rotate(45deg)'),'superseded diamond signet remains absent');
 ok(css.includes('content:"";display:block;position:absolute;')&&css.includes('var(--clay) 0 var(--folio-width)'),'title underline has a real pseudo-element with a folio-width copper tab');
 ok(css.includes('padding-bottom:clamp(23px,2.15vw,30px)!important'),'title rule separates from the enlarged numeral');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
