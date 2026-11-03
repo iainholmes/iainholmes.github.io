@@ -117,3 +117,253 @@ main>.concept-index{grid-column:1/-1;width:100%;max-width:1560px;justify-self:ce
  .concept-index li::before{font-size:20px}
  .concept-index a{font-size:19px}
 }
+
+
+/* Methods & Concepts · editorial desk refinement · 2026-11-02 */
+/* Preserve the journal's existing typefaces, palette, source copy and links.
+   The notebook is a full-width reference desk, not a narrow essay column. */
+main>.intro{
+ grid-column:1/-1;width:100%;max-width:1560px;justify-self:center;
+ grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+ gap:clamp(36px,5vw,88px);padding:42px 0 43px
+}
+.intro-lead{align-self:start}
+.intro h1{max-width:13ch;font-size:clamp(42px,4.15vw,64px);line-height:1.07}
+.intro-copy{max-width:none;padding-top:6px}
+.intro-copy p{
+ max-width:74ch;font:400 clamp(18px,1.45vw,22px)/1.58 var(--serif);
+ color:var(--ink);margin-bottom:19px
+}
+/* A properly registered index, with a numbered rhythm and resilient targets. */
+.concept-index{
+ position:relative;border-top:7px solid var(--forest, var(--rule));
+ padding:29px 0 39px
+}
+.concept-index::before{
+ content:"";position:absolute;top:-7px;left:0;width:108px;height:7px;
+ background:var(--clay);pointer-events:none
+}
+.concept-index-heading{
+ margin-bottom:18px;padding-bottom:23px;align-items:end;
+ border-bottom:2px solid var(--hair)
+}
+.concept-index-heading h2{font-size:clamp(35px,3.65vw,49px)}
+.concept-index-heading p{font-size:17px}
+.concept-index ol{gap:0 34px}
+.concept-index li{
+ min-height:66px;grid-template-columns:36px minmax(0,1fr);gap:13px;
+ padding:0 10px 0 0;border-bottom:1px solid var(--hair)
+}
+.concept-index li::before{padding-top:14px;font-size:24px}
+.concept-index a{
+ min-height:65px;display:flex;align-items:center;
+ padding:8px 3px;font-size:20px;line-height:1.32
+}
+.concept-index li:has(a:hover),.concept-index li:has(a:focus-visible){
+ background:color-mix(in srgb,var(--paper) 90%,var(--river) 10%)
+}
+/* A clear chapter transition: the upper copper and forest band is shared
+   across the whole entry, rather than thin disconnected rules. */
+.concept{
+ position:relative;border:0;
+ padding:65px 0 37px;scroll-margin-top:18px
+}
+.concept::before{
+ content:"";position:absolute;top:0;left:0;right:0;height:7px;
+ background:linear-gradient(to right,var(--clay) 0 98px,var(--rule) 98px 100%);
+ pointer-events:none
+}
+.concept-heading{
+ grid-template-columns:minmax(96px,max-content) minmax(0,1fr);
+ gap:26px;align-items:baseline;margin-bottom:31px
+}
+.concept-number{
+ font-size:clamp(60px,5vw,78px);font-variant-numeric:lining-nums tabular-nums
+}
+.concept-heading h2{
+ max-width:none;font-size:clamp(35px,3.4vw,51px);
+ line-height:1.12;letter-spacing:-.018em
+}
+/* The definition, economic use and research qualification are a composed
+   two-panel analytical spread, using both edges of the reference sheet. */
+.concept-body{
+ margin:0;max-width:none!important;width:100%;
+ display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.07fr);
+ align-items:stretch;gap:26px
+}
+.canonical{
+ min-width:0;width:100%;max-width:none;
+ display:flex;flex-direction:column;justify-content:flex-start;
+ margin:0;padding:27px 30px 32px;
+ border:3px solid var(--rule);border-left-width:7px;border-top-width:7px;
+ background:color-mix(in srgb,var(--paper) 93%,var(--river) 7%);
+ font:400 clamp(22px,1.72vw,27px)/1.56 var(--serif);
+ color:var(--ink);text-wrap:pretty
+}
+.canonical::before{
+ content:"THE CONCEPT";display:block;margin-bottom:16px;
+ font:600 11px/1.45 var(--sans);letter-spacing:.12em;
+ color:var(--river)
+}
+.concept-analysis{
+ min-width:0;display:grid;grid-template-columns:minmax(0,1fr);
+ gap:0;margin:0;padding:0;border:3px solid var(--rule);
+ border-top-width:7px;align-items:stretch;
+ background:color-mix(in srgb,var(--paper) 95%,var(--rule) 5%)
+}
+.concept-analysis .application,
+.concept-analysis .caution{
+ min-width:0;margin:0;padding:19px 25px 20px;
+ border:0;border-left:6px solid var(--river)
+}
+.concept-analysis .application{border-bottom:3px solid var(--hair)}
+.concept-analysis .caution{
+ border-left-color:var(--clay);
+ background:color-mix(in srgb,var(--paper) 93%,var(--clay) 7%)
+}
+.concept-analysis h3{
+ margin:0 0 9px;font:400 clamp(22px,1.65vw,27px)/1.22 Menor,serif;
+ letter-spacing:0;text-transform:none;color:var(--ink)
+}
+.concept-analysis .caution h3{color:var(--clay)}
+.concept-analysis p{
+ font:400 clamp(17px,1.25vw,19px)/1.62 var(--serif);
+ color:var(--text);margin:0
+}
+/* Source trail: no empty third column when only one or two editions exist.
+   Cards form a coherent responsive register, not floating snippets. */
+.seen{
+ position:relative;width:100%;margin-top:36px;padding-top:24px;
+ border-top:6px solid var(--rule)
+}
+.seen::before{
+ content:"";position:absolute;top:-6px;left:0;width:98px;height:6px;
+ background:var(--clay);pointer-events:none
+}
+.seen-heading{
+ align-items:baseline;margin-bottom:19px;padding-bottom:12px;
+ border-bottom:1px solid var(--hair)
+}
+.seen-heading h3{
+ font:400 clamp(24px,2.1vw,32px)/1.14 Menor,serif;color:var(--ink)
+}
+.revisited{font:500 12px/1.6 var(--sans)}
+.appearance-register{
+ width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:16px;align-items:stretch
+}
+.appearance-register:has(>li:first-child:last-child){
+ grid-template-columns:minmax(0,1fr)
+}
+.appearance-register:has(>li:nth-child(2):last-child),
+.appearance-register:has(>li:nth-child(4):last-child){
+ grid-template-columns:repeat(2,minmax(0,1fr))
+}
+.appearance{
+ max-width:none;min-width:0;display:flex;flex-direction:column;gap:0;
+ margin:0;padding:18px 20px 17px;
+ border:0;border-left:5px solid var(--clay);border-top:4px solid var(--rule);
+ background:color-mix(in srgb,var(--paper) 96%,var(--river) 4%)
+}
+.appearance-edition{min-width:0;padding-bottom:11px;border-bottom:1px solid var(--hair)}
+.edition-folio{
+ margin-bottom:5px;font:600 12px/1.4 var(--sans);
+ letter-spacing:.025em;color:var(--muted)
+}
+.edition-title{
+ font:italic 400 clamp(17px,1.4vw,20px)/1.42 var(--serif);color:var(--ink)
+}
+.appearance-readings{display:grid;grid-template-columns:minmax(0,1fr);gap:0;padding-top:8px}
+.appearance-readings li+li{border-top:1px solid color-mix(in srgb,var(--hair) 65%,transparent)}
+.appearance-readings a{
+ display:flex;align-items:center;min-height:44px;
+ padding:8px 0;font:400 clamp(17px,1.32vw,20px)/1.35 var(--serif)
+}
+.reference-kind{margin:11px 0 1px}
+/* Single-reference entries use the available width for a true horizontal
+   archive row: provenance left and reading links right. */
+.appearance-register:has(>li:first-child:last-child) .appearance{
+ display:grid;grid-template-columns:minmax(0,.43fr) minmax(0,.57fr);
+ gap:18px 36px;align-items:start
+}
+.appearance-register:has(>li:first-child:last-child) .appearance-edition{
+ padding:0;border:0
+}
+.appearance-register:has(>li:first-child:last-child) .appearance-readings{
+ padding:0 0 0 24px;border-left:3px solid var(--hair)
+}
+.concept-nav{
+ justify-content:flex-end;margin-top:25px;
+ border-top:2px solid var(--hair);padding-top:9px
+}
+.concept-nav a{padding:8px 0 8px 14px;font-size:13px}
+html[data-mode=night] .canonical,
+html[data-mode=night] .concept-analysis,
+html[data-mode=night] .appearance{
+ color:var(--text)
+}
+/* Two-column reading layouts stay substantial on laptops; once either
+   panel becomes cramped, the spread stacks with its field borders intact. */
+@media(max-width:1150px){
+ main>.intro{gap:32px}
+ .concept-body{gap:18px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .canonical{padding:22px 24px;font-size:22px}
+ .concept-analysis .application,.concept-analysis .caution{padding:17px 20px}
+ .appearance-register{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .concept-heading{gap:20px}
+}
+@media(max-width:850px){
+ main>.intro{grid-template-columns:minmax(0,1fr);gap:17px;padding:28px 0 32px}
+ .intro h1{max-width:none}
+ .concept{padding-top:50px}
+ .concept-body{grid-template-columns:minmax(0,1fr);gap:0}
+ .canonical{font-size:22px;padding:23px 24px}
+ .concept-analysis{
+  border-top:0;border-left-width:3px;border-right-width:3px
+ }
+ .concept-analysis .application,.concept-analysis .caution{
+  padding:18px 21px
+ }
+ .appearance-register:has(>li:first-child:last-child) .appearance{
+  grid-template-columns:minmax(0,1fr);gap:0
+ }
+ .appearance-register:has(>li:first-child:last-child) .appearance-edition{
+  padding-bottom:11px;border-bottom:1px solid var(--hair)
+ }
+ .appearance-register:has(>li:first-child:last-child) .appearance-readings{
+  padding:8px 0 0;border:0
+ }
+}
+@media(max-width:620px){
+ .concept-index{padding:22px 0 26px}
+ .concept-index-heading{gap:8px}
+ .concept-index li{min-height:53px}
+ .concept-index a{min-height:52px;font-size:18px}
+ .concept{padding:43px 0 28px}
+ .concept::before{height:6px;background:linear-gradient(to right,var(--clay) 0 65px,var(--rule) 65px)}
+ .concept-heading{grid-template-columns:54px minmax(0,1fr);gap:12px;margin-bottom:21px}
+ .concept-number{font-size:47px}
+ .concept-heading h2{font-size:clamp(29px,7vw,37px)}
+ .canonical{padding:20px 19px 22px;font-size:20px}
+ .concept-analysis .application,.concept-analysis .caution{padding:16px 17px}
+ .concept-analysis p{font-size:17px}
+ .seen{margin-top:26px;padding-top:19px}
+ .seen-heading{display:flex;align-items:flex-start}
+ .appearance-register,
+ .appearance-register:has(>li:nth-child(2):last-child),
+ .appearance-register:has(>li:nth-child(4):last-child){
+  grid-template-columns:minmax(0,1fr)
+ }
+ .appearance{padding:15px 17px}
+ .appearance-readings a{font-size:18px}
+ .concept-nav{justify-content:flex-start}
+}
+@media print{
+ .concept{break-inside:auto}
+ .concept-body{display:block}
+ .canonical{border-color:var(--ink);background:none;padding:13px 0}
+ .canonical::before{display:none}
+ .concept-analysis{display:grid;grid-template-columns:1fr 1fr;border:0;border-top:2px solid var(--ink)}
+ .appearance{background:none;break-inside:avoid}
+ .concept::before,.seen::before,.concept-index::before{display:none}
+}
