@@ -1,4 +1,4 @@
-/* Loblolly & Logit · Reading Field Guide registry, v3.
+/* Loblolly & Logit · Reading Field Guide registry, v4.
    This is editorial metadata, not permission to invent evidence or features.
    Future publishers may import select(), but must author and source the selected
    modules before rendering. No existing edition is rewritten. */
@@ -19,20 +19,58 @@ const features=[
 {id:"economic-figures",name:"Economic Figures",group:"special",purpose:"Plots economic relationships, model comparisons, or empirical quantities with labeled axes, legends, and a clear evidence status. Its boundary is graphical illustration or measurement with clear provenance; it is separate from distributional accounting in The Incidence Ledger.",when:"Use when a visual substantially clarifies a quantitative or theoretical claim. Label schematic comparative statics, descriptive observations, simulations, and estimated effects distinctly. It may accompany but is not part of the Incidence Ledger.",signals:["figure","visualization","curve","comparative statics","chart","quantitative"],example:["ECONOMIC GRAPH","ECONOMIC MODEL"]}
 ];
 const byId=Object.fromEntries(features.map(x=>[x.id,x]));
+/* Adaptive selection is a human-auditable editorial recommendation, not auto-authoring.
+   Each possible feature requires real authored content. Bare topical tags alone
+   cannot trigger a feature in a published reading. */
 function select(input){
  const meta=input&&typeof input==="object"?input:{};
  const tags=new Set((Array.isArray(meta.tags)?meta.tags:[]).filter(x=>typeof x==="string").map(x=>x.toLowerCase().trim()));
- const required=Array.isArray(meta.required)?meta.required.filter(x=>byId[x]):[];
  const excluded=new Set(Array.isArray(meta.exclude)?meta.exclude:[]);
- const eligible=features.filter(f=>!excluded.has(f.id)&&(required.includes(f.id)||f.signals.some(t=>tags.has(t))));
- const editorial=features.filter(f=>f.group==="editorial"&&eligible.includes(f)).map(f=>f.id);
- const candidates=eligible.filter(f=>f.group==="special").sort((a,b)=>
-  (required.includes(b.id)?1:0)-(required.includes(a.id)?1:0) ||
-  b.signals.filter(t=>tags.has(t)).length-a.signals.filter(t=>tags.has(t)).length ||
-  features.indexOf(a)-features.indexOf(b));
- const cap=Number.isInteger(meta.maxSpecial)?Math.max(0,Math.min(meta.maxSpecial,3)):2;
- return {editorial,special:candidates.slice(0,cap).map(f=>f.id),
-  advisory:"Selection is a planning recommendation only. Publish only authored, fact-checked, appropriately sourced modules."};
+ const required=Array.isArray(meta.required)?meta.required.filter(id=>byId[id]&&!excluded.has(id)):[];
+ const proposals=Array.isArray(meta.candidates)?meta.candidates:[];
+ const editorial=features.filter(f=>f.group==="editorial"&&!excluded.has(f.id)&&(
+   required.includes(f.id)||f.signals.some(t=>tags.has(t)))).map(f=>f.id);
+ const accepted=[],review=[],rejected=[],usedFunctions=new Set();
+ for(const proposed of proposals){
+  if(!proposed||typeof proposed!=="object")continue;
+  const feature=byId[proposed.id];
+  if(!feature||feature.group!=="special"||excluded.has(feature.id))continue;
+  if(accepted.some(x=>x.id===feature.id)||review.some(x=>x.id===feature.id))continue;
+  const isAuthored=proposed.authored===true;
+  const evidence=proposed.evidence==="verified"||proposed.evidence==="qualified";
+  const addsValue=proposed.materialValue===true;
+  const distinct=proposed.nonredundant===true;
+  const functionKey=typeof proposed.function==="string"&&proposed.function.trim()?proposed.function.trim():feature.id;
+  if(!isAuthored||!evidence||!addsValue||!distinct){
+   rejected.push({id:feature.id,reason:"Missing authored content, qualified evidence, material value, or nonredundancy."});
+   continue;
+  }
+  if(usedFunctions.has(functionKey)){
+   rejected.push({id:feature.id,reason:"Duplicates an already selected analytical function."});
+   continue;
+  }
+  const record={id:feature.id,evidence:proposed.evidence,function:functionKey};
+  /* Two is a review hinge rather than a numerical maximum. */
+  if(accepted.length>=2 && typeof proposed.editorialJustification!=="string"){
+   review.push({id:feature.id,reason:"Beyond the soft review threshold: explain why the additional feature earns reading space."});
+   continue;
+  }
+  if(accepted.length>=2 && !proposed.editorialJustification.trim()){
+   review.push({id:feature.id,reason:"An explicit editorial justification is required beyond two features."});
+   continue;
+  }
+  accepted.push(record);usedFunctions.add(functionKey);
+ }
+ return {
+  editorial,
+  special:accepted.map(x=>x.id),
+  review,
+  rejected,
+  softReviewThreshold:2,
+  hardMaximum:null,
+  advisory:"Use only authored, fact-checked, nonredundant features. The third and subsequent feature requires editorial justification, not automatic inclusion. The publishing pipeline must explicitly opt into this recommendation."
+ };
 }
+
 root.LLReadingFeatures=Object.freeze({features,select,byId});
 })(typeof window!=="undefined"?window:typeof globalThis!=="undefined"?globalThis:this);
