@@ -2092,6 +2092,68 @@
         "seed": 692484503,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A ledger is inspected beside a hidden transfer channel\"><title>Raleigh puts a $203 million housing-and-transport bond package before voters</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-02-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-02-05)\"><path d=\"M85 130H360V540H85Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M125 200H325M125 270H325M125 340H260M125 410H300\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"548\" cy=\"284\" r=\"112\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"35\"/><path d=\"M624 367L718 489\" stroke=\"#7a1f33\" stroke-width=\"42\"/><path d=\"M402 530V425H475V345H548\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"21\"/></g></svg>"
       }
+    },
+    "2026-11-03": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-03",
+        "number": "01",
+        "category": "U.S. policy · intelligence governance",
+        "topic": "government",
+        "title": "U.S. intelligence coordination slows across agencies and Congress",
+        "composition": "government-document",
+        "signature": "plate:government-document",
+        "seed": 2156467588,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A legal document meets a gate of authority\"><title>U.S. intelligence coordination slows across agencies and Congress</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-03-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-03-01)\"><path d=\"M110 100H375L460 190V525H110Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M160 225H395M160 302H395M160 378H312\" stroke=\"#7c5a3e\" stroke-width=\"20\"/><path d=\"M530 535V185H690V535M490 260H728\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"30\"/><path d=\"M460 445H550\" stroke=\"#1b4a6b\" stroke-width=\"27\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-03",
+        "number": "02",
+        "category": "Technology · semiconductors and photonics",
+        "topic": "infrastructure",
+        "title": "Marvell makes a $115 billion bet on optical links for AI infrastructure",
+        "composition": "trade-detour",
+        "signature": "plate:trade-detour",
+        "seed": 3270758517,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Server cargo takes an indirect route around an inspection gate\"><title>Marvell makes a $115 billion bet on optical links for AI infrastructure</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-03-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-03-02)\"><path d=\"M65 480H240V180H490V480H715\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"38\"/><path d=\"M350 280V555\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M300 295H400\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M75 376H195V506H75ZM552 105H682V247H552Z\" fill=\"#2c241d\"/><path d=\"M99 410H173M99 451H173M578 146H658M578 194H658\" stroke=\"#f4ead7\" stroke-width=\"14\"/><path d=\"M490 180H545\" stroke=\"#c4452c\" stroke-width=\"24\"/><path d=\"M524 158L551 180L524 203\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"12\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-03",
+        "number": "03",
+        "category": "Environment · climate resilience",
+        "topic": "climate",
+        "title": "Europe's 2026 climate shocks expose infrastructure as a system risk",
+        "composition": "climate-terraces",
+        "signature": "plate:climate-terraces",
+        "seed": 909468533,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Exposed terraces are monitored at different elevations\"><title>Europe&#39;s 2026 climate shocks expose infrastructure as a system risk</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-03-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-03-03)\"><path d=\"M65 530V405H255V285H460V165H735V530Z\" fill=\"#1d5f47\"/><path d=\"M80 405H247M268 285H448M470 165H720\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M350 310V185M310 194H390\" stroke=\"#2c241d\" stroke-width=\"20\"/><circle cx=\"350\" cy=\"159\" r=\"41\" fill=\"#c4452c\"/><path d=\"M105 90Q270 20 440 90\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"32\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-03",
+        "number": "04",
+        "category": "U.S. policy · state ballot lawmaking",
+        "topic": "government",
+        "title": "Voters decide more than 140 state and territorial measures",
+        "composition": "government-balance",
+        "signature": "plate:government-balance",
+        "seed": 3321256441,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Public funds are held in balance under a legal decision\"><title>Voters decide more than 140 state and territorial measures</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-03-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-03-04)\"><path d=\"M390 130V520M250 525H535M165 240H620\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M190 240L110 400H270ZM585 240L505 400H665Z\" fill=\"#1b4a6b\"/><path d=\"M135 401Q190 476 245 401M530 401Q585 476 640 401\" fill=\"#c98a12\"/><rect x=\"295\" y=\"90\" width=\"190\" height=\"105\" fill=\"#7a1f33\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-03",
+        "number": "05",
+        "category": "North Carolina · development and infrastructure",
+        "topic": "infrastructure",
+        "title": "An existing Raleigh data-center expansion falls outside the city's pause",
+        "composition": "institution-weave",
+        "signature": "plate:institution-weave",
+        "seed": 2567055751,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Interdependent institutions form a woven system\"><title>An existing Raleigh data-center expansion falls outside the city&#39;s pause</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-03-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-03-05)\"><path d=\"M100 170H700M100 320H700M100 470H700\" stroke=\"#1b4a6b\" stroke-width=\"72\"/><path d=\"M225 80V560M575 80V560\" stroke=\"#7a1f33\" stroke-width=\"69\"/><path d=\"M185 320H266M535 170H616M535 470H616\" stroke=\"#f4ead7\" stroke-width=\"73\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

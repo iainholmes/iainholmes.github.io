@@ -1,4 +1,4 @@
-/* Published artwork is pinned. Append new editions; only explicit, provenance-preserved editorial corrections may replace an existing pin. */
+/* Published artwork is immutable. Append new editions; never overwrite an existing entry. */
 (function(root){var archive={
   "fb:2026-09-26": {
     "key": "fb",
@@ -1557,5 +1557,57 @@
       "originalRelease": "2926414b6233f738795180b40a1475444b609467"
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 037: Robotics / adaptable capability\"><title>Field Brief · 037 · Robotics / adaptable capability</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M70 480H305V435H70Z\" fill=\"#221a14\"/><path d=\"M145 435V336L285 242L374 318\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"32\"/><circle cx=\"145\" cy=\"336\" r=\"35\" fill=\"#8a2a36\"/><circle cx=\"285\" cy=\"242\" r=\"31\" fill=\"#c5ad88\"/><path d=\"M353 300L374 318L357 354M374 318L407 305\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"15\"/><path d=\"M362 480H540\" stroke=\"#221a14\" stroke-width=\"8\"/><path d=\"M380 450L408 393L436 450Z\" fill=\"#c5ad88\"/><circle cx=\"484\" cy=\"423\" r=\"28\" fill=\"#8a2a36\"/><path d=\"M90 172H450V255M430 234L450 255L470 234\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"7\"/><path d=\"M98 135V205M123 149V191M148 160V180\" stroke=\"#8a2a36\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 037 / 2026-11-02</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Robotics / adaptable capability</text></g></svg>"
+  },
+  "fb:2026-11-03": {
+    "key": "fb",
+    "date": "2026-11-03",
+    "no": "038",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "U.S. intelligence coordination slows across agencies and Congress. Marvell makes a $115 billion optical-connectivity bet, while Europe measures climate risk across infrastructure systems. Voters decide more than 140 state and territorial measures, and an existing Raleigh data-center expansion exposes the limits of a temporary pause. Different decisions, common limits These five developments do not form one policy story. They do show different limits on formal authority: intelligence structures depend on cooperation, mergers on execution and approval, resilience plans on investment, ballot mandates on implementation, and moratoriums on their legal scope. The next evidence is specific in each case: joint intelligence production, merger review and integration, infrastructure stress tests, certified ballot results, and Raleigh's pending-application record and final ordinance.",
+    "version": 6,
+    "subject": "capacity",
+    "composition": "spread-long-section-control-loop-coupled-grid",
+    "signature": "issue:spread-long-section-control-loop-coupled-grid",
+    "phrase": "Intelligence / commitments & use",
+    "seed": 3553333032,
+    "geometry": "<g transform=\"translate(70 110) scale(1.75)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"$accent\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"$support\" stroke-width=\"6\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M5 10H40V90H5ZM60 10H95V90H60Z\" fill=\"$ink\"/><path d=\"M40 32H60M40 68H60\" stroke=\"$accent\" stroke-width=\"10\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "01"
+        ],
+        "score": 25
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "02",
+          "03"
+        ],
+        "score": 16
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "03"
+        ],
+        "score": 15
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "05"
+        ],
+        "score": 3
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 37,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 038: Intelligence / commitments &amp; use\"><title>Field Brief · 038 · Intelligence / commitments &amp; use</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"#8a2a36\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M5 10H40V90H5ZM60 10H95V90H60Z\" fill=\"#221a14\"/><path d=\"M40 32H60M40 68H60\" stroke=\"#8a2a36\" stroke-width=\"10\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 038 / 2026-11-03</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Intelligence / commitments &amp; use</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
