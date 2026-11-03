@@ -39,12 +39,24 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
    const exhibit=tree.find(n=>has(n,'reading-exhibit'));
    if(!exhibits.select(id).curated||!exhibit.attrs.includes('data-curated="true"'))
     throw Error('L&L publication layout: uncurated reading '+id+'; finish the source-specific editorial exhibit before publishing');
+   const finding=tree.find(n=>has(n,'finding'));
+   if(!finding)throw Error('L&L publication layout: missing authored finding '+id);
+   const kind=exhibit.attrs.match(/data-exhibit-kind="([^"]+)"/)?.[1];
+   if(kind!==exhibits.select(id).kind)throw Error('L&L publication layout: exhibit type does not match this article '+id);
+   let expected=exhibits.render(id,{finding:markup.slice(finding.open,finding.close)});
+   if(kind==='ledger'){
+    const chart=exhibits.graphic(id);
+    if(!chart||!markup.includes('<div class="essay-graphic">'+chart+'</div>'))
+     throw Error('L&L publication layout: missing or stale source-grounded graphic '+id);
+    expected=expected.replace(chart,'');
+   }
+   if(markup.slice(exhibit.start,exhibit.end)!==expected)
+    throw Error('L&L publication layout: stale or mismatched generated exhibit '+id);
    const sourceNode=tree.find(n=>has(n,'sources')&&n.parent&&has(n.parent,'reading-sources'));
    if(!sourceNode)throw Error('L&L publication layout: source register missing '+id);
    const anchors=tree.filter(n=>n.tag==='a'&&n.start>=sourceNode.open&&n.end<=sourceNode.close&&/\bhref=/.test(n.attrs));
    if(!anchors.length)throw Error('L&L publication layout: at least one linked primary source required for '+id);
    sourceCount+=anchors.length;
-   const kind=exhibit.attrs.match(/data-exhibit-kind="([^"]+)"/)?.[1];
    if(!['ledger','test','decision','long'].includes(kind))throw Error('L&L publication layout: invalid exhibit type '+id);
    if(kind==='ledger'&&!tree.some(n=>has(n,'essay-graphic')&&n.parent&&has(n.parent,'interpretive-essay')))
     throw Error('L&L publication layout: Ledger graphic missing from interpretation '+id);
