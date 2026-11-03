@@ -369,3 +369,131 @@ html[data-mode=night] .appearance{
 }
 /* Align the notebook's masthead and closing matter with the editorial desk. */
 .masthead,.closing-wordmark,footer{max-width:1648px}
+
+
+/* Notebook concept + reading trail: one connected editorial folio */
+/* Keep the accepted top heading and two analytical panels, but join the
+   archive underneath as the third tier of the SAME concept folio. */
+.concept-body{
+ position:relative;gap:0!important;align-items:stretch;
+ border:4px solid var(--rule);border-top-width:7px;border-bottom:0;
+ background:color-mix(in srgb,var(--paper) 95%,var(--river) 5%)
+}
+.concept-body>.canonical{
+ border:0!important;border-right:6px solid var(--rule)!important;
+ padding:25px clamp(20px,2.2vw,32px) 29px;
+ background:color-mix(in srgb,var(--paper) 92%,var(--river) 8%)
+}
+.concept-body>.concept-analysis{
+ border:0!important;background:color-mix(in srgb,var(--paper) 97%,var(--rule) 3%)
+}
+.concept-body>.concept-analysis .application,
+.concept-body>.concept-analysis .caution{
+ border-left-width:5px
+}
+/* This is a continuous foot of the folio, not a floating second card. */
+.concept-body+.seen{
+ width:100%;max-width:none;
+ margin:0!important;
+ padding:22px clamp(18px,2.1vw,31px) 26px!important;
+ border:4px solid var(--rule);border-top-width:7px;border-bottom-width:5px;
+ background:color-mix(in srgb,var(--paper) 96%,var(--river) 4%)
+}
+.concept-body+.seen::before{
+ top:-7px;width:98px;height:7px
+}
+.concept-body+.seen .seen-heading{
+ position:relative;display:flex;align-items:baseline;
+ justify-content:space-between;gap:12px 22px;
+ margin:0 0 7px;padding:0 0 15px;
+ border-bottom:2px solid var(--hair)
+}
+.concept-body+.seen .seen-heading h3{
+ margin:0;font-size:clamp(24px,2.1vw,31px);line-height:1.18
+}
+.concept-body+.seen .revisited{
+ margin:0;white-space:normal
+}
+/* A shared citation register: no isolated backgrounds or mini-card caps.
+   Internal rails show the publication provenance without dividing the page
+   into unrelated floating objects. The count-based responsive grid remains. */
+.concept-body+.seen .appearance-register{
+ gap:0!important;align-items:stretch
+}
+.concept-body+.seen .appearance{
+ min-width:0;max-width:none;margin:0;
+ padding:16px clamp(14px,1.45vw,24px) 14px;
+ border:0!important;border-left:4px solid var(--clay)!important;
+ background:none!important;
+ gap:0
+}
+.concept-body+.seen .appearance+.appearance{
+ border-left-color:var(--river)!important
+}
+.concept-body+.seen .appearance-edition{
+ padding-bottom:9px;border-bottom:1px solid var(--hair)
+}
+.concept-body+.seen .appearance-readings{
+ padding-top:6px
+}
+.concept-body+.seen .appearance-register:has(>li:first-child:last-child) .appearance{
+ padding:16px 20px 13px
+}
+.concept-body+.seen .appearance-register:has(>li:first-child:last-child) .appearance-edition{
+ border:0;padding:0
+}
+.concept-body+.seen .appearance-register:has(>li:first-child:last-child) .appearance-readings{
+ border-left:4px solid var(--hair);padding:0 0 0 21px
+}
+.concept-body+.seen .appearance-readings a{
+ font-size:clamp(17px,1.25vw,19px);
+ padding:7px 0;min-height:44px
+}
+/* Attach the return path to the sheet's foot, not to a free-floating gap. */
+.concept-nav{
+ justify-content:flex-end;margin:0;padding:8px 0 0;
+ border:0
+}
+.concept-nav a{padding:7px 3px 7px 12px}
+/* The canonical and archive tiers remain one framed folio when stacked. */
+@media(max-width:850px){
+ .concept-body{grid-template-columns:minmax(0,1fr);gap:0!important}
+ .concept-body>.canonical{
+  border-right:0!important;border-bottom:6px solid var(--rule)!important
+ }
+ .concept-body>.concept-analysis{border:0!important}
+ .concept-body+.seen{padding:19px 20px 23px!important}
+ .concept-body+.seen .appearance-register:has(>li:first-child:last-child) .appearance-readings{
+  border-left:0;padding:8px 0 0
+ }
+}
+@media(max-width:620px){
+ .concept-body+.seen{padding:16px 15px 19px!important}
+ .concept-body+.seen .seen-heading{
+  display:block;padding-bottom:13px
+ }
+ .concept-body+.seen .revisited{margin-top:7px}
+ .concept-body+.seen .appearance-register,
+ .concept-body+.seen .appearance-register:has(>li:nth-child(2):last-child),
+ .concept-body+.seen .appearance-register:has(>li:nth-child(4):last-child){
+  grid-template-columns:minmax(0,1fr)!important
+ }
+ .concept-body+.seen .appearance{
+  padding:14px 9px 13px 14px
+ }
+ .concept-body+.seen .appearance+.appearance{
+  border-top:2px solid var(--hair)!important
+ }
+ .concept-nav{justify-content:flex-start}
+}
+@media print{
+ .concept-body{border:2px solid var(--ink);border-bottom:0}
+ .concept-body>.canonical{
+  background:none!important;border-right:2px solid var(--ink)!important
+ }
+ .concept-body+.seen{
+  border:2px solid var(--ink);border-top:3px solid var(--ink);
+  background:none!important
+ }
+ .concept-body+.seen .appearance{break-inside:avoid}
+}
