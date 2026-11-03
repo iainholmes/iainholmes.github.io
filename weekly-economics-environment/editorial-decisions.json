@@ -28,12 +28,12 @@
           ],
           "rule": "Match the instrument to the binding constraint; a blanket subsidy can fund purchases that would occur anyway.",
           "note": "Conceptual alternatives; the IEA scenarios do not estimate these policy effects.",
-          "rationale": "Clarifies the feasible alternatives and the criterion separating them.",
+          "rationale": "Financing and split incentives can block a privately feasible switch even when the engineering comparison favors electrification; the decision panel separates those margins.",
           "provenance": [
             "https://www.iea.org/reports/electrification"
           ],
           "assessment": {
-            "analyticalRelevance": "Separate a favorable engineering return from the private adoption decision.",
+            "analyticalRelevance": "Financing and split incentives can block a privately feasible switch even when the engineering comparison favors electrification; the decision panel separates those margins.",
             "evidentiarySupport": "Editorial decision framework · no fitted threshold",
             "distinctiveness": "Clarifies the feasible alternatives and the criterion separating them.",
             "readerValue": "Conceptual alternatives; the IEA scenarios do not estimate these policy effects.",
@@ -58,12 +58,12 @@
           ],
           "interpretation": "Adoption requires a nonnegative private value and feasible credit. Social benefits from lower emissions are a separate object.",
           "assumption": "Savings depend on tariffs and use; this expression does not identify subsidy additionality.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "A private adoption inequality distinguishes operating savings, upfront cost and financing frictions from the separate social value of avoided emissions.",
           "provenance": [
             "https://www.iea.org/reports/electrification"
           ],
           "assessment": {
-            "analyticalRelevance": "Separate a favorable engineering return from the private adoption decision.",
+            "analyticalRelevance": "A private adoption inequality distinguishes operating savings, upfront cost and financing frictions from the separate social value of avoided emissions.",
             "evidentiarySupport": "Theoretically illustrative · not the IEA’s estimated model",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "Adoption requires a nonnegative private value and feasible credit. Social benefits from lower emissions are a separate object.",
@@ -102,14 +102,15 @@
           "long-view",
           "economic-figures"
         ],
-        "retained": [],
+        "retained": [
+          "economic-figures"
+        ],
         "added": [
           "decision-margin",
           "estimation-desk"
         ],
         "replaced": [
-          "long-view",
-          "economic-figures"
+          "long-view"
         ],
         "reason": "Separate a favorable engineering return from the private adoption decision."
       }
@@ -141,13 +142,13 @@
             ]
           ],
           "note": "These are conditional surplus channels, not measured incidence. Investment costs and network spillovers determine the net result.",
-          "rationale": "Distinguishes affected parties and the limits of burden accounting.",
+          "rationale": "Importing consumers, incumbent generators and exporting regions can gain or lose through different price channels; a party comparison prevents funding from being equated with universal benefit.",
           "provenance": [
             "https://www.energy.gov/articles/energy-department-announces-speed-power-investments-across-26-states-lower-electricity",
             "https://www.iea.org/reports/modernising-grids-in-the-age-of-electricity"
           ],
           "assessment": {
-            "analyticalRelevance": "A funding announcement changes options; dispatch and market conditions determine who gains.",
+            "analyticalRelevance": "Importing consumers, incumbent generators and exporting regions can gain or lose through different price channels; a party comparison prevents funding from being equated with universal benefit.",
             "evidentiarySupport": "Conditional economic incidence · magnitudes not estimated",
             "distinctiveness": "Distinguishes affected parties and the limits of burden accounting.",
             "readerValue": "These are conditional surplus channels, not measured incidence. Investment costs and network spillovers determine the net result.",
@@ -189,13 +190,13 @@
             ]
           ],
           "note": "Selection is not commissioning. Extra transfer capability is not new generation; the funding graphic below retains the announced dollar amounts.",
-          "rationale": "Separates distinct links and identifies which are not causally established.",
+          "rationale": "The chain from project selection to commissioning, dispatch and measured reliability explains why announced network funding is not itself an observed economic outcome.",
           "provenance": [
             "https://www.energy.gov/articles/energy-department-announces-speed-power-investments-across-26-states-lower-electricity",
             "https://www.iea.org/reports/modernising-grids-in-the-age-of-electricity"
           ],
           "assessment": {
-            "analyticalRelevance": "A funding announcement changes options; dispatch and market conditions determine who gains.",
+            "analyticalRelevance": "The chain from project selection to commissioning, dispatch and measured reliability explains why announced network funding is not itself an observed economic outcome.",
             "evidentiarySupport": "Qualified mechanism · arrows are economic hypotheses, not estimated causal effects",
             "distinctiveness": "Separates distinct links and identifies which are not causally established.",
             "readerValue": "Selection is not commissioning. Extra transfer capability is not new generation; the funding graphic below retains the announced dollar amounts.",
@@ -242,7 +243,8 @@
           "incidence-ledger"
         ],
         "added": [
-          "mechanism-map"
+          "mechanism-map",
+          "economic-figures"
         ],
         "replaced": [
           "long-view"
@@ -292,13 +294,13 @@
             ]
           ],
           "note": "Dashed relationships are mechanisms to investigate. The WTO panel announcement estimates none of these links.",
-          "rationale": "Separates distinct links and identifies which are not causally established.",
+          "rationale": "The map separates border charges, supplier adjustment, diversion and global emissions, making the leakage channel visible without treating a WTO proceeding as an experiment.",
           "provenance": [
             "https://www.wto.org/english/news_e/news26_e/dsb_25sep26_496_e.htm",
             "https://www.wto.org/english/tratop_e/dispu_e/cases_e/ds639_e.htm"
           ],
           "assessment": {
-            "analyticalRelevance": "Follow price transmission and leakage without treating litigation as a policy experiment.",
+            "analyticalRelevance": "The map separates border charges, supplier adjustment, diversion and global emissions, making the leakage channel visible without treating a WTO proceeding as an experiment.",
             "evidentiarySupport": "Qualified mechanism · arrows are economic hypotheses, not estimated causal effects",
             "distinctiveness": "Separates distinct links and identifies which are not causally established.",
             "readerValue": "Dashed relationships are mechanisms to investigate. The WTO panel announcement estimates none of these links.",
@@ -323,13 +325,13 @@
           ],
           "interpretation": "Track total output and third-market exports, not EU imports alone. β is causal only with a defensible counterfactual.",
           "assumption": "Differential trends, anticipation and concurrent trade restrictions can invalidate the comparison.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "A proposed product-country exposure comparison clarifies the counterfactual needed to study leakage and why EU imports alone cannot identify global abatement.",
           "provenance": [
             "https://www.wto.org/english/news_e/news26_e/dsb_25sep26_496_e.htm",
             "https://www.wto.org/english/tratop_e/dispu_e/cases_e/ds639_e.htm"
           ],
           "assessment": {
-            "analyticalRelevance": "Follow price transmission and leakage without treating litigation as a policy experiment.",
+            "analyticalRelevance": "A proposed product-country exposure comparison clarifies the counterfactual needed to study leakage and why EU imports alone cannot identify global abatement.",
             "evidentiarySupport": "Proposed research design · not a regression reported by the WTO",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "Track total output and third-market exports, not EU imports alone. β is causal only with a defensible counterfactual.",
@@ -407,13 +409,13 @@
           ],
           "interpretation": "The fixed effects absorb shared metro–year conditions. They do not randomize ZIP-level insurance strain. The paper clusters standard errors at CBSA × year.",
           "assumption": "Unobserved neighborhood demand and housing quality can remain correlated with insurance strain.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "The reported metro-year fixed-effects equation identifies the actual within-place comparison and exposes the gap between controlling common shocks and randomizing insurance strain.",
           "provenance": [
             "https://www.brookings.edu/wp-content/uploads/2026/09/WP115_KahnMiller.pdf",
             "https://www.brookings.edu/articles/how-local-homeowners-insurance-market-stress-impacts-urban-and-suburban-housing-markets/"
           ],
           "assessment": {
-            "analyticalRelevance": "Interpret within-metro associations and sample sensitivity before causal capitalization claims.",
+            "analyticalRelevance": "The reported metro-year fixed-effects equation identifies the actual within-place comparison and exposes the gap between controlling common shocks and randomizing insurance strain.",
             "evidentiarySupport": "Reported specification · Kahn & Miller, equation (1), p. 5",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "The fixed effects absorb shared metro–year conditions. They do not randomize ZIP-level insurance strain. The paper clusters standard errors at CBSA × year.",
@@ -444,13 +446,13 @@
             ]
           },
           "note": "The common sample requires both housing-price and rent data. Compare samples before interpreting differences as mechanisms; no confidence intervals are reconstructed.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "Contrasting common-sample and broader-sample coefficients makes sample sensitivity visible while preserving the distinction between association and a causal capitalization effect.",
           "provenance": [
             "https://www.brookings.edu/wp-content/uploads/2026/09/WP115_KahnMiller.pdf",
             "https://www.brookings.edu/articles/how-local-homeowners-insurance-market-stress-impacts-urban-and-suburban-housing-markets/"
           ],
           "assessment": {
-            "analyticalRelevance": "Interpret within-metro associations and sample sensitivity before causal capitalization claims.",
+            "analyticalRelevance": "Contrasting common-sample and broader-sample coefficients makes sample sensitivity visible while preserving the distinction between association and a causal capitalization effect.",
             "evidentiarySupport": "Reported associations · different samples · not causal effects",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "The common sample requires both housing-price and rent data. Compare samples before interpreting differences as mechanisms; no confidence intervals are reconstructed.",
@@ -530,12 +532,12 @@
           ],
           "rule": "Compare the expected value of an improved decision with research cost and the cost of delay.",
           "note": "The memorandum is not a new finding of safety or harm.",
-          "rationale": "Clarifies the feasible alternatives and the criterion separating them.",
+          "rationale": "The regulatory announcement concerns evidence building; comparing action now with targeted research puts the choice on whether information could change a consequential decision.",
           "provenance": [
             "https://www.hhs.gov/press-room/hhs-epa-partnership-strengthen-glyphosate-review.html"
           ],
           "assessment": {
-            "analyticalRelevance": "New evidence is valuable when it can change a decision, not simply when more data exist.",
+            "analyticalRelevance": "The regulatory announcement concerns evidence building; comparing action now with targeted research puts the choice on whether information could change a consequential decision.",
             "evidentiarySupport": "Editorial decision framework · no fitted threshold",
             "distinctiveness": "Clarifies the feasible alternatives and the criterion separating them.",
             "readerValue": "The memorandum is not a new finding of safety or harm.",
@@ -560,12 +562,12 @@
           ],
           "interpretation": "A signal earns its cost when it changes a consequential choice enough to improve expected welfare.",
           "assumption": "The result depends on the decision set, prior beliefs and signal quality; none is quantified in the announcement.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "Expected value of sample information supplies a clearly theoretical economic criterion for research expenditure, without presenting an agency announcement as a health-effect estimate.",
           "provenance": [
             "https://www.hhs.gov/press-room/hhs-epa-partnership-strengthen-glyphosate-review.html"
           ],
           "assessment": {
-            "analyticalRelevance": "New evidence is valuable when it can change a decision, not simply when more data exist.",
+            "analyticalRelevance": "Expected value of sample information supplies a clearly theoretical economic criterion for research expenditure, without presenting an agency announcement as a health-effect estimate.",
             "evidentiarySupport": "Theoretically illustrative · decision theory, not an agency estimate",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "A signal earns its cost when it changes a consequential choice enough to improve expected welfare.",
@@ -638,12 +640,12 @@
           ],
           "interpretation": "The equation clarifies the dynamic response being sought. It is not a transcription of a specific table or a newly fitted impulse response. Country and horizon-specific time effects condition out shared global movements.",
           "assumption": "Residual-based shocks must be unrelated to other output news after conditioning; fiscal composition can differ across countries.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "Horizon-indexed local-projection notation clarifies that the reported response is a short-run dynamic relationship conditional on a documented shock and controls.",
           "provenance": [
             "https://www.seacen.org/working-papers/wp5-2026-green-public-spending-shocks-composition-effects-and-state-dependent-heterogeneity-across-countries/"
           ],
           "assessment": {
-            "analyticalRelevance": "A constructed spending shock needs both a dynamic estimand and an exclusion argument.",
+            "analyticalRelevance": "Horizon-indexed local-projection notation clarifies that the reported response is a short-run dynamic relationship conditional on a documented shock and controls.",
             "evidentiarySupport": "Reconstructed schematic of the documented local-projection design · no estimated coefficients",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "The equation clarifies the dynamic response being sought. It is not a transcription of a specific table or a newly fitted impulse response.",
@@ -659,12 +661,12 @@
           "threat": "Budgets can anticipate recessions, disasters or other fiscal actions.",
           "check": "Inspect timing, forecast information and spending composition; compare state-dependent responses.",
           "consequence": "If fiscal news remains in the residual, the response mixes spending effects with omitted shocks.",
-          "rationale": "Examines a consequential vulnerability and the inference lost if it fails.",
+          "rationale": "Examining shock construction and anticipatory spending distinguishes a credible policy innovation from fiscal changes that respond to existing economic conditions.",
           "provenance": [
             "https://www.seacen.org/working-papers/wp5-2026-green-public-spending-shocks-composition-effects-and-state-dependent-heterogeneity-across-countries/"
           ],
           "assessment": {
-            "analyticalRelevance": "A constructed spending shock needs both a dynamic estimand and an exclusion argument.",
+            "analyticalRelevance": "Examining shock construction and anticipatory spending distinguishes a credible policy innovation from fiscal changes that respond to existing economic conditions.",
             "evidentiarySupport": "Proposed diagnostic · not performed here",
             "distinctiveness": "Examines a consequential vulnerability and the inference lost if it fails.",
             "readerValue": "If fiscal news remains in the residual, the response mixes spending effects with omitted shocks.",
@@ -704,14 +706,13 @@
           "economic-figures"
         ],
         "retained": [
-          "assumption-test"
+          "assumption-test",
+          "economic-figures"
         ],
         "added": [
           "estimation-desk"
         ],
-        "replaced": [
-          "economic-figures"
-        ],
+        "replaced": [],
         "reason": "A constructed spending shock needs both a dynamic estimand and an exclusion argument."
       }
     },
@@ -732,13 +733,13 @@
             "mode": "leakage"
           },
           "note": "A demand reduction tends to lower the world fossil price; a supply restriction tends to raise it. Magnitudes and global emissions depend on elasticities and coverage.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "An explicitly schematic supply-and-demand comparison shows how a demand intervention can lower the world fossil price and create an offsetting response elsewhere.",
           "provenance": [
             "https://epic.uchicago.edu/working-papers/economics-of-demand-side-and-supply-side-climate-policies/",
             "https://www.brookings.edu/events/bpea-fall-2026-conference/"
           ],
           "assessment": {
-            "analyticalRelevance": "Different sides of the fossil market produce opposite world-price feedbacks.",
+            "analyticalRelevance": "An explicitly schematic supply-and-demand comparison shows how a demand intervention can lower the world fossil price and create an offsetting response elsewhere.",
             "evidentiarySupport": "Theoretical comparative statics · schematic axes, no fitted elasticities",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "A demand reduction tends to lower the world fossil price; a supply restriction tends to raise it. Magnitudes and global emissions depend on elasticities and coverage.",
@@ -774,13 +775,13 @@
             ]
           ],
           "note": "Broad extraction pricing acts through the supply side. A project-specific restriction is not automatically equivalent to an economy-wide extraction price.",
-          "rationale": "Separates distinct links and identifies which are not causally established.",
+          "rationale": "The connected domestic-demand, world-price and outside-demand channels explain leakage separately from the diagram’s equilibrium price comparison.",
           "provenance": [
             "https://epic.uchicago.edu/working-papers/economics-of-demand-side-and-supply-side-climate-policies/",
             "https://www.brookings.edu/events/bpea-fall-2026-conference/"
           ],
           "assessment": {
-            "analyticalRelevance": "Different sides of the fossil market produce opposite world-price feedbacks.",
+            "analyticalRelevance": "The connected domestic-demand, world-price and outside-demand channels explain leakage separately from the diagram’s equilibrium price comparison.",
             "evidentiarySupport": "Qualified mechanism · arrows are economic hypotheses, not estimated causal effects",
             "distinctiveness": "Separates distinct links and identifies which are not causally established.",
             "readerValue": "Broad extraction pricing acts through the supply side. A project-specific restriction is not automatically equivalent to an economy-wide extraction price.",
@@ -877,13 +878,13 @@
             ]
           ],
           "note": "All arrows describe model logic. They are not observed causal effects of an AMOC collapse.",
-          "rationale": "Separates distinct links and identifies which are not causally established.",
+          "rationale": "The climate-to-productivity-to-mobility pathway reveals why adaptation can change the geography of modeled welfare damage; each arrow remains qualified model logic.",
           "provenance": [
             "https://cepr.org/publications/dp21999",
             "https://bfi.uchicago.edu/insights/evaluating-the-spatial-consequences-of-a-climate-tipping-point/"
           ],
           "assessment": {
-            "analyticalRelevance": "Separate physical climate change from mobility-mediated economic adjustment.",
+            "analyticalRelevance": "The climate-to-productivity-to-mobility pathway reveals why adaptation can change the geography of modeled welfare damage; each arrow remains qualified model logic.",
             "evidentiarySupport": "Qualified mechanism · arrows are economic hypotheses, not estimated causal effects",
             "distinctiveness": "Separates distinct links and identifies which are not causally established.",
             "readerValue": "All arrows describe model logic. They are not observed causal effects of an AMOC collapse.",
@@ -910,13 +911,13 @@
             "unit": "Percent welfare loss reported in the published reading"
           },
           "note": "The additional 2.1% is not independently comparable to a country-level effect. Do not infer a combined loss by adding percentages with potentially different bases.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "The comparison separates the model’s reported baseline welfare loss from the additional loss with relocation blocked, rather than adding unlike quantities into a new estimate.",
           "provenance": [
             "https://cepr.org/publications/dp21999",
             "https://bfi.uchicago.edu/insights/evaluating-the-spatial-consequences-of-a-climate-tipping-point/"
           ],
           "assessment": {
-            "analyticalRelevance": "Separate physical climate change from mobility-mediated economic adjustment.",
+            "analyticalRelevance": "The comparison separates the model’s reported baseline welfare loss from the additional loss with relocation blocked, rather than adding unlike quantities into a new estimate.",
             "evidentiarySupport": "Model counterfactuals · distinct reported comparisons",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "The additional 2.1% is not independently comparable to a country-level effect. Do not infer a combined loss by adding percentages with potentially different bases.",
@@ -996,13 +997,13 @@
           ],
           "interpretation": "Storage earns the price spread but its dispatch also erodes that spread. The private objective omits consumer-surplus and emissions effects.",
           "assumption": "Price-taking and exogenous prices are simplifying assumptions; market power and endogenous entry matter.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "A theoretical dispatch objective and storage constraint explain how charging costs, efficiency and capacity bound an arbitrage opportunity.",
           "provenance": [
             "https://www.gsb.stanford.edu/insights/clean-energy-bottleneck-isnt-technology-its-market-design",
             "https://www.gsb.stanford.edu/faculty-research/working-papers/economics-grid-scale-energy-storage-wholesale-electricity-markets"
           ],
           "assessment": {
-            "analyticalRelevance": "Private arbitrage revenue and system value are different objectives.",
+            "analyticalRelevance": "A theoretical dispatch objective and storage constraint explain how charging costs, efficiency and capacity bound an arbitrage opportunity.",
             "evidentiarySupport": "Theoretically illustrative storage problem · not a replication of Karaduman’s model",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "Storage earns the price spread but its dispatch also erodes that spread. The private objective omits consumer-surplus and emissions effects.",
@@ -1019,13 +1020,13 @@
             "mode": "storage"
           },
           "note": "Additional storage can compress the arbitrage spread. A system-value margin can include benefits that the storage operator cannot capture; this is a conceptual wedge, not a numerical welfare estimate.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "The conceptual private-revenue and system-value margins show why deployment can erode the price spreads paying investors while still supplying useful flexibility.",
           "provenance": [
             "https://www.gsb.stanford.edu/insights/clean-energy-bottleneck-isnt-technology-its-market-design",
             "https://www.gsb.stanford.edu/faculty-research/working-papers/economics-grid-scale-energy-storage-wholesale-electricity-markets"
           ],
           "assessment": {
-            "analyticalRelevance": "Private arbitrage revenue and system value are different objectives.",
+            "analyticalRelevance": "The conceptual private-revenue and system-value margins show why deployment can erode the price spreads paying investors while still supplying useful flexibility.",
             "evidentiarySupport": "Theoretical schematic · no estimated benefit curves",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "Additional storage can compress the arbitrage spread. A system-value margin can include benefits that the storage operator cannot capture; this is a conceptual wedge, not a numerical welfare estimate.",
@@ -1122,13 +1123,13 @@
             ]
           ],
           "note": "A modeled removal of debt’s tax advantage is not an observed economy-wide reform.",
-          "rationale": "Separates distinct links and identifies which are not causally established.",
+          "rationale": "The financing-to-capital-allocation pathway makes the proposed emissions channel explicit, including the general-equilibrium steps between deductibility and aggregate emissions.",
           "provenance": [
             "https://www.aeaweb.org/doi/10.1257/aer.20241765",
             "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3880057"
           ],
           "assessment": {
-            "analyticalRelevance": "Finance policy changes the cost of capital differently across firms.",
+            "analyticalRelevance": "The financing-to-capital-allocation pathway makes the proposed emissions channel explicit, including the general-equilibrium steps between deductibility and aggregate emissions.",
             "evidentiarySupport": "Qualified mechanism · arrows are economic hypotheses, not estimated causal effects",
             "distinctiveness": "Separates distinct links and identifies which are not causally established.",
             "readerValue": "A modeled removal of debt’s tax advantage is not an observed economy-wide reform.",
@@ -1155,13 +1156,13 @@
             ]
           ],
           "note": "The source combines empirical relationships and a general-equilibrium counterfactual. No party-specific welfare amount is inferred.",
-          "rationale": "Distinguishes affected parties and the limits of burden accounting.",
+          "rationale": "Separating debt-intensive firms, workers and investors, and public finances keeps the reform’s incidence distinct from its modeled aggregate efficiency gain.",
           "provenance": [
             "https://www.aeaweb.org/doi/10.1257/aer.20241765",
             "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3880057"
           ],
           "assessment": {
-            "analyticalRelevance": "Finance policy changes the cost of capital differently across firms.",
+            "analyticalRelevance": "Separating debt-intensive firms, workers and investors, and public finances keeps the reform’s incidence distinct from its modeled aggregate efficiency gain.",
             "evidentiarySupport": "Conditional economic incidence · magnitudes not estimated",
             "distinctiveness": "Distinguishes affected parties and the limits of burden accounting.",
             "readerValue": "The source combines empirical relationships and a general-equilibrium counterfactual. No party-specific welfare amount is inferred.",
@@ -1239,13 +1240,13 @@
           ],
           "rule": "Compare each member’s agreement payoff with its disagreement payoff, not only the global sum.",
           "note": "The disagreement point and value of trade preferences are modeled assumptions.",
-          "rationale": "Clarifies the feasible alternatives and the criterion separating them.",
+          "rationale": "A participation comparison explains why a country’s willingness to join depends on its own transfer, terms of trade and welfare, not only on global emissions.",
           "provenance": [
             "https://www.nber.org/papers/w35834",
             "https://www.nber.org/system/files/working_papers/w35834/w35834.pdf"
           ],
           "assessment": {
-            "analyticalRelevance": "The feasible policy is constrained by participation as well as aggregate gains.",
+            "analyticalRelevance": "A participation comparison explains why a country’s willingness to join depends on its own transfer, terms of trade and welfare, not only on global emissions.",
             "evidentiarySupport": "Editorial decision framework · no fitted threshold",
             "distinctiveness": "Clarifies the feasible alternatives and the criterion separating them.",
             "readerValue": "The disagreement point and value of trade preferences are modeled assumptions.",
@@ -1280,13 +1281,13 @@
             ]
           },
           "note": "The two tax-mix variants are separate model cases, not an uncertainty interval. Carbon-price results have a different unit and are not plotted on this axis.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "The published model comparisons make the consequences of alternative agreement designs visible while labeling the values as scenario variants rather than uncertainty intervals.",
           "provenance": [
             "https://www.nber.org/papers/w35834",
             "https://www.nber.org/system/files/working_papers/w35834/w35834.pdf"
           ],
           "assessment": {
-            "analyticalRelevance": "The feasible policy is constrained by participation as well as aggregate gains.",
+            "analyticalRelevance": "The published model comparisons make the consequences of alternative agreement designs visible while labeling the values as scenario variants rather than uncertainty intervals.",
             "evidentiarySupport": "Calibrated model comparisons · not observed emissions changes",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "The two tax-mix variants are separate model cases, not an uncertainty interval. Carbon-price results have a different unit and are not plotted on this axis.",
@@ -1357,14 +1358,14 @@
           "threat": "Micro-geography, location choice and indirect effects may differ at the boundary.",
           "check": "The published reading reports balance and alternative-comparison checks; network-preserving relocation is a proposed extension.",
           "consequence": "A credible reduced-form exposure effect does not by itself identify the causal effect of lost social ties.",
-          "rationale": "Examines a consequential vulnerability and the inference lost if it fails.",
+          "rationale": "The exposure-boundary assumption is central to interpreting households inside and outside a landslide path as comparable; its vulnerability deserves a dedicated test.",
           "provenance": [
             "https://www.aeaweb.org/articles?id=10.1257/app.20240759",
             "https://documents1.worldbank.org/curated/en/099236208022317890/pdf/IDU0c486fb2604f1f040ad082f50231320e5789e.pdf",
             "https://www.aeaweb.org/articles/materials/26106"
           ],
           "assessment": {
-            "analyticalRelevance": "Distinguish the boundary exposure design from the weaker mechanism evidence.",
+            "analyticalRelevance": "The exposure-boundary assumption is central to interpreting households inside and outside a landslide path as comparable; its vulnerability deserves a dedicated test.",
             "evidentiarySupport": "Source-reported exposure diagnostics · mechanism test remains proposed",
             "distinctiveness": "Examines a consequential vulnerability and the inference lost if it fails.",
             "readerValue": "A credible reduced-form exposure effect does not by itself identify the causal effect of lost social ties.",
@@ -1406,14 +1407,14 @@
             ]
           ],
           "note": "Exposure effects are better identified than the mediating social-capital channel. Dashed arrows preserve that distinction.",
-          "rationale": "Separates distinct links and identifies which are not causally established.",
+          "rationale": "The displacement-to-network-to-recovery pathway explains the proposed social-capital mechanism while preserving the distinction between a plausible channel and a measured causal effect of ties.",
           "provenance": [
             "https://www.aeaweb.org/articles?id=10.1257/app.20240759",
             "https://documents1.worldbank.org/curated/en/099236208022317890/pdf/IDU0c486fb2604f1f040ad082f50231320e5789e.pdf",
             "https://www.aeaweb.org/articles/materials/26106"
           ],
           "assessment": {
-            "analyticalRelevance": "Distinguish the boundary exposure design from the weaker mechanism evidence.",
+            "analyticalRelevance": "The displacement-to-network-to-recovery pathway explains the proposed social-capital mechanism while preserving the distinction between a plausible channel and a measured causal effect of ties.",
             "evidentiarySupport": "Qualified mechanism · arrows are economic hypotheses, not estimated causal effects",
             "distinctiveness": "Separates distinct links and identifies which are not causally established.",
             "readerValue": "Exposure effects are better identified than the mediating social-capital channel. Dashed arrows preserve that distinction.",
@@ -1496,12 +1497,12 @@
             ]
           ],
           "note": "The announcement does not disclose enough terms to calculate the subsidy equivalent.",
-          "rationale": "Distinguishes affected parties and the limits of burden accounting.",
+          "rationale": "Borrower, public balance sheet and ratepayer consequences differ; the comparison prevents the loan’s face value from being mistaken for its subsidy.",
           "provenance": [
             "https://www.energy.gov/articles/energy-department-announces-42-billion-investment-boost-nuclear-power-and-help-lower"
           ],
           "assessment": {
-            "analyticalRelevance": "Credit face value, capacity preserved and welfare must remain separate.",
+            "analyticalRelevance": "Borrower, public balance sheet and ratepayer consequences differ; the comparison prevents the loan’s face value from being mistaken for its subsidy.",
             "evidentiarySupport": "Conditional economic incidence · magnitudes not estimated",
             "distinctiveness": "Distinguishes affected parties and the limits of burden accounting.",
             "readerValue": "The announcement does not disclose enough terms to calculate the subsidy equivalent.",
@@ -1526,12 +1527,12 @@
           ],
           "interpretation": "Expected repayments must reflect default and recovery. A private-market comparison and a budget-scoring convention need not produce the same valuation.",
           "assumption": "Missing loan terms prevent calculation. Capacity retained is not automatically additional generation.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "An illustrative present-value credit comparison defines the subsidy object and makes the missing benchmark, maturity, guarantee and risk terms explicit.",
           "provenance": [
             "https://www.energy.gov/articles/energy-department-announces-42-billion-investment-boost-nuclear-power-and-help-lower"
           ],
           "assessment": {
-            "analyticalRelevance": "Credit face value, capacity preserved and welfare must remain separate.",
+            "analyticalRelevance": "An illustrative present-value credit comparison defines the subsidy object and makes the missing benchmark, maturity, guarantee and risk terms explicit.",
             "evidentiarySupport": "Theoretically illustrative valuation identity · no subsidy estimated",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "Expected repayments must reflect default and recovery. A private-market comparison and a budget-scoring convention need not produce the same valuation.",
@@ -1574,7 +1575,8 @@
           "incidence-ledger"
         ],
         "added": [
-          "estimation-desk"
+          "estimation-desk",
+          "economic-figures"
         ],
         "replaced": [
           "long-view"
@@ -1617,13 +1619,13 @@
             ]
           },
           "note": "Fuel-group averages combine prices and weather assumptions. They are not estimates of income-group incidence.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "A fuel-by-fuel comparison preserves the direction and units of the published expenditure forecasts instead of compressing divergent household experiences into one national number.",
           "provenance": [
             "https://www.eia.gov/todayinenergy/detail.php?id=68264",
             "https://www.eia.gov/outlooks/steo/"
           ],
           "assessment": {
-            "analyticalRelevance": "Conditional fuel forecasts do not determine the distribution of household burdens.",
+            "analyticalRelevance": "A fuel-by-fuel comparison preserves the direction and units of the published expenditure forecasts instead of compressing divergent household experiences into one national number.",
             "evidentiarySupport": "Conditional forecast · not realized household expenditure",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "Fuel-group averages combine prices and weather assumptions. They are not estimates of income-group incidence.",
@@ -1650,13 +1652,13 @@
             ]
           ],
           "note": "Distributional magnitudes require linked household income, fuel use and assistance data; none is inferred from the forecast percentages.",
-          "rationale": "Distinguishes affected parties and the limits of burden accounting.",
+          "rationale": "Heating-fuel users, renters and assistance providers face different exposure and adjustment margins; conditional incidence adds information that the forecast bars cannot supply.",
           "provenance": [
             "https://www.eia.gov/todayinenergy/detail.php?id=68264",
             "https://www.eia.gov/outlooks/steo/"
           ],
           "assessment": {
-            "analyticalRelevance": "Conditional fuel forecasts do not determine the distribution of household burdens.",
+            "analyticalRelevance": "Heating-fuel users, renters and assistance providers face different exposure and adjustment margins; conditional incidence adds information that the forecast bars cannot supply.",
             "evidentiarySupport": "Conditional economic incidence · magnitudes not estimated",
             "distinctiveness": "Distinguishes affected parties and the limits of burden accounting.",
             "readerValue": "Distributional magnitudes require linked household income, fuel use and assistance data; none is inferred from the forecast percentages.",
@@ -1700,8 +1702,8 @@
           "economic-figures"
         ],
         "retained": [
-          "economic-figures",
-          "incidence-ledger"
+          "incidence-ledger",
+          "economic-figures"
         ],
         "added": [],
         "replaced": [],
@@ -1733,13 +1735,13 @@
           ],
           "rule": "Read the procedural holding before changing any interpretation of expected liability.",
           "note": "No outcome is predicted from oral-argument questions.",
-          "rationale": "Clarifies the feasible alternatives and the criterion separating them.",
+          "rationale": "The immediate choice concerns which forum can hear the claims; a procedural decision panel keeps that margin separate from future findings about damages.",
           "provenance": [
             "https://www.supremecourt.gov/search.aspx?filename=%2Fdocket%2Fdocketfiles%2Fhtml%2Fpublic%2F25-170.html",
             "https://www.reuters.com/sustainability/cop/us-supreme-court-weighs-bid-by-oil-companies-avoid-climate-lawsuit-2026-10-05/"
           ],
           "assessment": {
-            "analyticalRelevance": "Keep access to a legal forum separate from findings on causation and damages.",
+            "analyticalRelevance": "The immediate choice concerns which forum can hear the claims; a procedural decision panel keeps that margin separate from future findings about damages.",
             "evidentiarySupport": "Editorial decision framework · no fitted threshold",
             "distinctiveness": "Clarifies the feasible alternatives and the criterion separating them.",
             "readerValue": "No outcome is predicted from oral-argument questions.",
@@ -1775,13 +1777,13 @@
             ]
           ],
           "note": "The map is a proposed research channel. A forum decision is not proof of attribution or a damages estimate.",
-          "rationale": "Separates distinct links and identifies which are not causally established.",
+          "rationale": "A conditional forum-to-liability-risk-to-investment pathway frames testable economic responses without assigning a damages estimate or causal investment effect to oral argument.",
           "provenance": [
             "https://www.supremecourt.gov/search.aspx?filename=%2Fdocket%2Fdocketfiles%2Fhtml%2Fpublic%2F25-170.html",
             "https://www.reuters.com/sustainability/cop/us-supreme-court-weighs-bid-by-oil-companies-avoid-climate-lawsuit-2026-10-05/"
           ],
           "assessment": {
-            "analyticalRelevance": "Keep access to a legal forum separate from findings on causation and damages.",
+            "analyticalRelevance": "A conditional forum-to-liability-risk-to-investment pathway frames testable economic responses without assigning a damages estimate or causal investment effect to oral argument.",
             "evidentiarySupport": "Qualified mechanism · arrows are economic hypotheses, not estimated causal effects",
             "distinctiveness": "Separates distinct links and identifies which are not causally established.",
             "readerValue": "The map is a proposed research channel. A forum decision is not proof of attribution or a damages estimate.",
@@ -1858,12 +1860,12 @@
           ],
           "interpretation": "Under no spillovers and an unaffected remainder, a 1/p scaling links the detectable population effect to the required affected-group effect.",
           "assumption": "Heterogeneity, spillovers, clustering and selection alter this simple planning identity.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "The population-effect dilution identity explains why a policy concentrated on a small subgroup can disappear in aggregate data; it is labeled theoretical rather than a fitted study equation.",
           "provenance": [
             "https://www.nber.org/papers/w35894"
           ],
           "assessment": {
-            "analyticalRelevance": "Rare exposure dilutes an effect before the statistical test even begins.",
+            "analyticalRelevance": "The population-effect dilution identity explains why a policy concentrated on a small subgroup can disappear in aggregate data; it is labeled theoretical rather than a fitted study equation.",
             "evidentiarySupport": "Theoretically illustrative planning identity · no new policy-effect estimate",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "Under no spillovers and an unaffected remainder, a 1/p scaling links the detectable population effect to the required affected-group effect.",
@@ -1879,12 +1881,12 @@
             "kind": "dilution"
           },
           "note": "The curve shows τpopulation / τaffected = p, not an estimated treatment effect. More targeted data increase p but may reduce sample size; both enter power calculations.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "The retained source-linked subgroup comparisons make the scale implied by small exposure shares visible and preserve the original outcome definitions and qualifications.",
           "provenance": [
             "https://www.nber.org/papers/w35894"
           ],
           "assessment": {
-            "analyticalRelevance": "Rare exposure dilutes an effect before the statistical test even begins.",
+            "analyticalRelevance": "The retained source-linked subgroup comparisons make the scale implied by small exposure shares visible and preserve the original outcome definitions and qualifications.",
             "evidentiarySupport": "Theoretical sensitivity illustration · exposure shares are illustrative",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "The curve shows τpopulation / τaffected = p, not an estimated treatment effect. More targeted data increase p but may reduce sample size; both enter power calculations.",
@@ -1977,12 +1979,12 @@
             ]
           ],
           "note": "Presence does not establish a particular health effect. Arrows describe possible exposure and cost channels, not estimated dose–response functions.",
-          "rationale": "Separates distinct links and identifies which are not causally established.",
+          "rationale": "The connected upstream-use, residual, agricultural and food pathway distinguishes an exposure location from the original pollution source without asserting a health effect.",
           "provenance": [
             "https://publications.cast-science.org/CAST/en/article/view/246"
           ],
           "assessment": {
-            "analyticalRelevance": "Trace the externality upstream before interpreting a farm-level detection.",
+            "analyticalRelevance": "The connected upstream-use, residual, agricultural and food pathway distinguishes an exposure location from the original pollution source without asserting a health effect.",
             "evidentiarySupport": "Qualified mechanism · arrows are economic hypotheses, not estimated causal effects",
             "distinctiveness": "Separates distinct links and identifies which are not causally established.",
             "readerValue": "Presence does not establish a particular health effect. Arrows describe possible exposure and cost channels, not estimated dose–response functions.",
@@ -2007,12 +2009,12 @@
           ],
           "rule": "Compare avoided exposure with monitoring cost and feasible substitutions; disclose stakeholder interests.",
           "note": "The CAST synthesis does not supply a causal benefit–cost ratio. EPA and National Academies evidence remain necessary for health-specific claims.",
-          "rationale": "Clarifies the feasible alternatives and the criterion separating them.",
+          "rationale": "Comparing upstream control with downstream response clarifies which decision changes avoidable exposure and which may merely move the burden among farms and households.",
           "provenance": [
             "https://publications.cast-science.org/CAST/en/article/view/246"
           ],
           "assessment": {
-            "analyticalRelevance": "Trace the externality upstream before interpreting a farm-level detection.",
+            "analyticalRelevance": "Comparing upstream control with downstream response clarifies which decision changes avoidable exposure and which may merely move the burden among farms and households.",
             "evidentiarySupport": "Editorial decision framework · no fitted threshold",
             "distinctiveness": "Clarifies the feasible alternatives and the criterion separating them.",
             "readerValue": "The CAST synthesis does not supply a causal benefit–cost ratio. EPA and National Academies evidence remain necessary for health-specific claims.",
@@ -2088,13 +2090,13 @@
           ],
           "rule": "Check the final eligibility text and other regulators’ requirements before inferring a change in compliance cost.",
           "note": "These are proposed routes, not measured time savings.",
-          "rationale": "Clarifies the feasible alternatives and the criterion separating them.",
+          "rationale": "The project’s physical capacity, footprint and design life determine the relevant proposed review tier; a decision composition helps the reader classify the actual margin.",
           "provenance": [
             "https://www.ferc.gov/news-events/news/ferc-takes-historic-action-launching-first-lng-authorization-program",
             "https://www.ferc.gov/news-events/news/ferc-launches-nepa-overhaul-accelerate-natural-gas-projects"
           ],
           "assessment": {
-            "analyticalRelevance": "A faster authorization changes the information and review margin, not welfare automatically.",
+            "analyticalRelevance": "The project’s physical capacity, footprint and design life determine the relevant proposed review tier; a decision composition helps the reader classify the actual margin.",
             "evidentiarySupport": "Editorial decision framework · no fitted threshold",
             "distinctiveness": "Clarifies the feasible alternatives and the criterion separating them.",
             "readerValue": "These are proposed routes, not measured time savings.",
@@ -2110,13 +2112,13 @@
           "threat": "Air-quality information, local exposure or mitigation can fall between agencies.",
           "check": "Match the information and mitigation required under the alternative processes; examine objections and monitoring.",
           "consequence": "A shorter file can lower transaction cost while increasing unmeasured external risk.",
-          "rationale": "Examines a consequential vulnerability and the inference lost if it fails.",
+          "rationale": "The information-substitution assumption tests whether other review processes really supply the information removed from one process, with proposed diagnostics clearly identified.",
           "provenance": [
             "https://www.ferc.gov/news-events/news/ferc-takes-historic-action-launching-first-lng-authorization-program",
             "https://www.ferc.gov/news-events/news/ferc-launches-nepa-overhaul-accelerate-natural-gas-projects"
           ],
           "assessment": {
-            "analyticalRelevance": "A faster authorization changes the information and review margin, not welfare automatically.",
+            "analyticalRelevance": "The information-substitution assumption tests whether other review processes really supply the information removed from one process, with proposed diagnostics clearly identified.",
             "evidentiarySupport": "Proposed diagnostic · not performed here",
             "distinctiveness": "Examines a consequential vulnerability and the inference lost if it fails.",
             "readerValue": "A shorter file can lower transaction cost while increasing unmeasured external risk.",
@@ -2195,13 +2197,13 @@
             ]
           ],
           "note": "These are conditional channels. The global IMF forecast is not a causal estimate of their size.",
-          "rationale": "Distinguishes affected parties and the limits of burden accounting.",
+          "rationale": "Net importers, exporters and household/public budgets experience different terms-of-trade and fiscal channels, so the same energy shock requires a conditional incidence comparison.",
           "provenance": [
             "https://www.imf.org/en/publications/weo/issues/2026/10/13/world-economic-outlook-october-2026",
             "https://www.imf.org/en/blogs/articles/2026/10/12/global-economic-resilience-is-under-strain-demanding-decisive-policy-action"
           ],
           "assessment": {
-            "analyticalRelevance": "A global forecast can conceal opposite exposure to the same energy shock.",
+            "analyticalRelevance": "Net importers, exporters and household/public budgets experience different terms-of-trade and fiscal channels, so the same energy shock requires a conditional incidence comparison.",
             "evidentiarySupport": "Conditional economic incidence · magnitudes not estimated",
             "distinctiveness": "Distinguishes affected parties and the limits of burden accounting.",
             "readerValue": "These are conditional channels. The global IMF forecast is not a causal estimate of their size.",
@@ -2245,13 +2247,13 @@
             ]
           },
           "note": "Separate panels prevent growth and inflation from being mistaken for parts of one total. Aggregate forecasts do not identify importer/exporter incidence.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "Separate sourced growth and inflation panels keep distinct macroeconomic quantities and forecast years legible rather than presenting unlike units on a shared scale.",
           "provenance": [
             "https://www.imf.org/en/publications/weo/issues/2026/10/13/world-economic-outlook-october-2026",
             "https://www.imf.org/en/blogs/articles/2026/10/12/global-economic-resilience-is-under-strain-demanding-decisive-policy-action"
           ],
           "assessment": {
-            "analyticalRelevance": "A global forecast can conceal opposite exposure to the same energy shock.",
+            "analyticalRelevance": "Separate sourced growth and inflation panels keep distinct macroeconomic quantities and forecast years legible rather than presenting unlike units on a shared scale.",
             "evidentiarySupport": "IMF staff projections · not realized outcomes",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "Separate panels prevent growth and inflation from being mistaken for parts of one total. Aggregate forecasts do not identify importer/exporter incidence.",
@@ -2319,12 +2321,12 @@
           "threat": "Indicators have different units, windows, update schedules and preliminary status.",
           "check": "Check series definitions and baselines before comparing extremes; an economic assessment also needs exposure and damage functions.",
           "consequence": "Counting records is evidence about physical conditions, not a causal estimate or common-unit welfare index.",
-          "rationale": "Examines a consequential vulnerability and the inference lost if it fails.",
+          "rationale": "A record within an indicator’s own measurement series is not automatically comparable across indicators; the test examines the invalid step from record counts to a welfare conclusion.",
           "provenance": [
             "https://academic.oup.com/bioscience/advance-article/doi/10.1093/biosci/biag125/8836482"
           ],
           "assessment": {
-            "analyticalRelevance": "Physical records and economic damages are distinct measurement objects.",
+            "analyticalRelevance": "A record within an indicator’s own measurement series is not automatically comparable across indicators; the test examines the invalid step from record counts to a welfare conclusion.",
             "evidentiarySupport": "Proposed diagnostic · not performed here",
             "distinctiveness": "Examines a consequential vulnerability and the inference lost if it fails.",
             "readerValue": "Counting records is evidence about physical conditions, not a causal estimate or common-unit welfare index.",
@@ -2343,12 +2345,12 @@
             "unit": "Physical climate indicators at record extremes"
           },
           "note": "Seven of sixteen is a frequency in the report’s selected indicator set. It is neither the share of climate damages nor a measure of the probability of catastrophe.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "A seven-of-sixteen count graphic communicates the reported fact economically while explicitly refusing to turn that count into a climate-damage index.",
           "provenance": [
             "https://academic.oup.com/bioscience/advance-article/doi/10.1093/biosci/biag125/8836482"
           ],
           "assessment": {
-            "analyticalRelevance": "Physical records and economic damages are distinct measurement objects.",
+            "analyticalRelevance": "A seven-of-sixteen count graphic communicates the reported fact economically while explicitly refusing to turn that count into a climate-damage index.",
             "evidentiarySupport": "Reported indicator count · not weighted by economic damages",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "Seven of sixteen is a frequency in the report’s selected indicator set. It is neither the share of climate damages nor a measure of the probability of catastrophe.",
@@ -2421,13 +2423,13 @@
           ],
           "interpretation": "β compares within-firm changes with comparison-province changes. The open paper excludes Henan from the control group.",
           "assumption": "Parallel counterfactual trends and no differential concurrent shocks are required; survival and product mix also matter.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "Reconstructed treatment-interaction notation clarifies the documented comparison between regulated Shandong mills and controls, with parallel trends stated as an identification condition.",
           "provenance": [
             "https://doi.org/10.1016/j.jeem.2026.103435",
             "https://rvhaefen.wordpress.ncsu.edu/wp-content/blogs.dir/2115/files/2025/04/WANG_CHUNHUA.pdf"
           ],
           "assessment": {
-            "analyticalRelevance": "Decompose consumer-price changes and make the identifying comparison explicit.",
+            "analyticalRelevance": "Reconstructed treatment-interaction notation clarifies the documented comparison between regulated Shandong mills and controls, with parallel trends stated as an identification condition.",
             "evidentiarySupport": "Reconstructed notation for the source’s difference-in-differences design · open working paper §3.3",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "β compares within-firm changes with comparison-province changes. The open paper excludes Henan from the control group.",
@@ -2458,13 +2460,13 @@
             ]
           },
           "note": "The rounded components sum to 22.9 log points. Do not describe the log-price coefficient as an exact 23% price increase.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "The cost and markup components explain why a price coefficient is not a productivity measure; log-point units and rounded component totals prevent a false percentage interpretation.",
           "provenance": [
             "https://doi.org/10.1016/j.jeem.2026.103435",
             "https://rvhaefen.wordpress.ncsu.edu/wp-content/blogs.dir/2115/files/2025/04/WANG_CHUNHUA.pdf"
           ],
           "assessment": {
-            "analyticalRelevance": "Decompose consumer-price changes and make the identifying comparison explicit.",
+            "analyticalRelevance": "The cost and markup components explain why a price coefficient is not a productivity measure; log-point units and rounded component totals prevent a false percentage interpretation.",
             "evidentiarySupport": "Estimated relationships · rounded components · not percentage changes",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "The rounded components sum to 22.9 log points. Do not describe the log-price coefficient as an exact 23% price increase.",
@@ -2550,12 +2552,12 @@
             ]
           },
           "note": "The categories total 22.7%, consistent with a rounded 23% headline. Sales shares are not fleet shares or emissions estimates.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "The retained powertrain shares distinguish battery-electric decline from hybrid substitution and keep sales composition separate from a causal policy effect.",
           "provenance": [
             "https://www.eia.gov/todayinenergy/detail.php?id=68325"
           ],
           "assessment": {
-            "analyticalRelevance": "Read shares as market composition before attributing a policy effect.",
+            "analyticalRelevance": "The retained powertrain shares distinguish battery-electric decline from hybrid substitution and keep sales composition separate from a causal policy effect.",
             "evidentiarySupport": "Reported descriptive shares · rounded categories",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "The categories total 22.7%, consistent with a rounded 23% headline. Sales shares are not fleet shares or emissions estimates.",
@@ -2571,12 +2573,12 @@
           "threat": "Model launches, inventories, prices and anticipation can move sales at the same time.",
           "check": "Use transaction-level timing and predetermined eligibility; test anticipation and product availability.",
           "consequence": "An annual share difference alone does not identify a tax-credit effect.",
-          "rationale": "Examines a consequential vulnerability and the inference lost if it fails.",
+          "rationale": "Concurrent model launches, inventories and anticipated eligibility changes threaten an annual before-after interpretation, making the counterfactual the reading’s central methodological issue.",
           "provenance": [
             "https://www.eia.gov/todayinenergy/detail.php?id=68325"
           ],
           "assessment": {
-            "analyticalRelevance": "Read shares as market composition before attributing a policy effect.",
+            "analyticalRelevance": "Concurrent model launches, inventories and anticipated eligibility changes threaten an annual before-after interpretation, making the counterfactual the reading’s central methodological issue.",
             "evidentiarySupport": "Proposed diagnostic · not performed here",
             "distinctiveness": "Examines a consequential vulnerability and the inference lost if it fails.",
             "readerValue": "An annual share difference alone does not identify a tax-credit effect.",
@@ -2657,12 +2659,12 @@
             ]
           ],
           "note": "These are scenario requirements in the published report, not achieved reductions. The temperature path and its probability depend on additional assumptions.",
-          "rationale": "Separates observation, projection and economic horizons.",
+          "rationale": "The dated 2030, 2035 and 2040 requirements form a genuine sequence of policy horizons, with scenario status visible at each stage instead of an unused fourth track.",
           "provenance": [
             "https://www.unep.org/en/publications/report/emissions-gap-report-2026"
           ],
           "assessment": {
-            "analyticalRelevance": "Overshoot requires a path-dependent loss measure, not only an end-century endpoint.",
+            "analyticalRelevance": "The dated 2030, 2035 and 2040 requirements form a genuine sequence of policy horizons, with scenario status visible at each stage instead of an unused fourth track.",
             "evidentiarySupport": "Read the evidence status at each station",
             "distinctiveness": "Separates observation, projection and economic horizons.",
             "readerValue": "These are scenario requirements in the published report, not achieved reductions. The temperature path and its probability depend on additional assumptions.",
@@ -2687,12 +2689,12 @@
           ],
           "interpretation": "Two paths with the same terminal temperature can accumulate different damages. Irreversibility is not removed by later cooling.",
           "assumption": "The report’s temperature scenarios do not determine a damage function or a social discount rate.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "An illustrative discounted path-damage expression explains why the duration and timing of overshoot matter, while acknowledging that the report’s temperature scenarios do not identify a damage function.",
           "provenance": [
             "https://www.unep.org/en/publications/report/emissions-gap-report-2026"
           ],
           "assessment": {
-            "analyticalRelevance": "Overshoot requires a path-dependent loss measure, not only an end-century endpoint.",
+            "analyticalRelevance": "An illustrative discounted path-damage expression explains why the duration and timing of overshoot matter, while acknowledging that the report’s temperature scenarios do not identify a damage function.",
             "evidentiarySupport": "Theoretically illustrative damage accounting · not a UNEP welfare estimate",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "Two paths with the same terminal temperature can accumulate different damages. Irreversibility is not removed by later cooling.",
@@ -2765,13 +2767,13 @@
           ],
           "rule": "Track counterfactual funding and completed resilience, not only signed commitments.",
           "note": "Face value is neither fiscal subsidy nor avoided climate loss.",
-          "rationale": "Clarifies the feasible alternatives and the criterion separating them.",
+          "rationale": "The project-preparation versus risk-coordination comparison identifies which financing failure public support is meant to address before assuming that more lending produces additional adaptation.",
           "provenance": [
             "https://www.eib.org/en/publications/20260310-eib-group-climate-adaptation-plan-phase2-2026-2030",
             "https://www.eib.org/en/press/all/2026-351-eib-group-doubles-down-on-climate-resilience-with-eur30-billion-adaptation-plan"
           ],
           "assessment": {
-            "analyticalRelevance": "A financing commitment matters through project additionality and avoided disruption.",
+            "analyticalRelevance": "The project-preparation versus risk-coordination comparison identifies which financing failure public support is meant to address before assuming that more lending produces additional adaptation.",
             "evidentiarySupport": "Editorial decision framework · no fitted threshold",
             "distinctiveness": "Clarifies the feasible alternatives and the criterion separating them.",
             "readerValue": "Face value is neither fiscal subsidy nor avoided climate loss.",
@@ -2796,13 +2798,13 @@
           ],
           "interpretation": "The missing counterfactual is the supported project without support. Approved-versus-rejected comparisons need an assignment argument.",
           "assumption": "Eligibility cutoffs or capacity constraints help only if manipulation and other discontinuities are addressed.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "A proposed additionality estimand defines the counterfactual project outcome without support and identifies selection into public assistance as the central empirical obstacle.",
           "provenance": [
             "https://www.eib.org/en/publications/20260310-eib-group-climate-adaptation-plan-phase2-2026-2030",
             "https://www.eib.org/en/press/all/2026-351-eib-group-doubles-down-on-climate-resilience-with-eur30-billion-adaptation-plan"
           ],
           "assessment": {
-            "analyticalRelevance": "A financing commitment matters through project additionality and avoided disruption.",
+            "analyticalRelevance": "A proposed additionality estimand defines the counterfactual project outcome without support and identifies selection into public assistance as the central empirical obstacle.",
             "evidentiarySupport": "Proposed evaluation estimand · not an EIB estimate",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "The missing counterfactual is the supported project without support. Approved-versus-rejected comparisons need an assignment argument.",
@@ -2879,12 +2881,12 @@
           ],
           "interpretation": "Compare payment obligations with net operating cash flow, after downtime and maintenance. Annual rates require conversion to the payment frequency.",
           "assumption": "This assumes a fixed amortizing loan; fees, default, resale value and lease terms can change the burden.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "The illustrative amortization identity translates borrowing terms into the recurring payment faced by an adopter, exposing the cash-flow margin behind favorable lifetime costs.",
           "provenance": [
             "https://www.unep.org/en/news-and-stories/technical-highlight/electric-mobility-gathers-speed-unep-tackles-two-major"
           ],
           "assessment": {
-            "analyticalRelevance": "The financing wedge can overturn an attractive operating-cost comparison.",
+            "analyticalRelevance": "The illustrative amortization identity translates borrowing terms into the recurring payment faced by an adopter, exposing the cash-flow margin behind favorable lifetime costs.",
             "evidentiarySupport": "Theoretically illustrative level-payment loan identity · no loan priced here",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "Compare payment obligations with net operating cash flow, after downtime and maintenance. Annual rates require conversion to the payment frequency.",
@@ -2913,12 +2915,12 @@
             ]
           },
           "note": "The ranges describe different markets and borrowers; they are not a treatment-effect comparison or an estimate of the guarantee’s impact.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "Reported borrowing ranges make the financing gap visible while labeling them as package comparisons rather than statistical confidence intervals.",
           "provenance": [
             "https://www.unep.org/en/news-and-stories/technical-highlight/electric-mobility-gathers-speed-unep-tackles-two-major"
           ],
           "assessment": {
-            "analyticalRelevance": "The financing wedge can overturn an attractive operating-cost comparison.",
+            "analyticalRelevance": "Reported borrowing ranges make the financing gap visible while labeling them as package comparisons rather than statistical confidence intervals.",
             "evidentiarySupport": "Reported market ranges · not confidence intervals",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "The ranges describe different markets and borrowers; they are not a treatment-effect comparison or an estimate of the guarantee’s impact.",
@@ -2994,14 +2996,14 @@
           ],
           "interpretation": "π is the relevance relationship; β uses predicted coal demand variation. The published reading describes two stacked periods and common-shock controls.",
           "assumption": "Exclusion requires demand exposure not to transmit other local labor shocks. Welfare results additionally rely on a spatial model.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "Separating the reconstructed first stage from the outcome equation makes the instrument’s predicted-demand variation and exclusion requirement explicit.",
           "provenance": [
             "https://doi.org/10.1086/743935",
             "https://doi.org/10.2139/ssrn.4283327",
             "https://doi.org/10.7910/DVN/VSVC0Y"
           ],
           "assessment": {
-            "analyticalRelevance": "A dispatch-based instrument connects predetermined market exposure to local adjustment.",
+            "analyticalRelevance": "Separating the reconstructed first stage from the outcome equation makes the instrument’s predicted-demand variation and exclusion requirement explicit.",
             "evidentiarySupport": "Reconstructed schematic from the documented working-paper design · not a full replication",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "π is the relevance relationship; β uses predicted coal demand variation. The published reading describes two stacked periods and common-shock controls.",
@@ -3028,14 +3030,14 @@
             ]
           },
           "note": "The exposure scale is a $5,127 decline in production value per person in the analyzed data. Different outcome sources are not independent experiments.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "Juxtaposing the two reported employment margins shows how local effects extend beyond mine payrolls, without inventing confidence intervals or summing different outcome coefficients.",
           "provenance": [
             "https://doi.org/10.1086/743935",
             "https://doi.org/10.2139/ssrn.4283327",
             "https://doi.org/10.7910/DVN/VSVC0Y"
           ],
           "assessment": {
-            "analyticalRelevance": "A dispatch-based instrument connects predetermined market exposure to local adjustment.",
+            "analyticalRelevance": "Juxtaposing the two reported employment margins shows how local effects extend beyond mine payrolls, without inventing confidence intervals or summing different outcome coefficients.",
             "evidentiarySupport": "Reported estimates · point values only · no invented confidence intervals",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "The exposure scale is a $5,127 decline in production value per person in the analyzed data. Different outcome sources are not independent experiments.",
@@ -3119,13 +3121,13 @@
           ],
           "interpretation": "The target is a 10% reduction in household emissions. Minimizing subsidy expenditure is a narrower objective than maximizing social welfare.",
           "assumption": "Behavioral preferences, roof access and technology complementarities determine the constraint; these are model counterfactuals, not causal subsidy estimates.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "A clearly theoretical fiscal-cost objective subject to an emissions target distinguishes the policymaker’s optimization problem from the household adoption responses embedded in the source model.",
           "provenance": [
             "https://www.nber.org/papers/w35945",
             "https://doi.org/10.3386/w35945"
           ],
           "assessment": {
-            "analyticalRelevance": "Complementarity changes the cheapest mix of subsidies for a fixed emissions target.",
+            "analyticalRelevance": "A clearly theoretical fiscal-cost objective subject to an emissions target distinguishes the policymaker’s optimization problem from the household adoption responses embedded in the source model.",
             "evidentiarySupport": "Theoretically illustrative representation of the stated policy problem · not the authors’ full model",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "The target is a 10% reduction in household emissions. Minimizing subsidy expenditure is a narrower objective than maximizing social welfare.",
@@ -3161,13 +3163,13 @@
             ]
           ],
           "note": "The model disciplines behavior with survey and energy data. A factorial subsidy design would test complementarity rather than assume it.",
-          "rationale": "Separates distinct links and identifies which are not causally established.",
+          "rationale": "The solar-to-clean-electricity-to-equipment pathway explains the modeled complementarity without converting a simulated policy comparison into an experimentally identified interaction.",
           "provenance": [
             "https://www.nber.org/papers/w35945",
             "https://doi.org/10.3386/w35945"
           ],
           "assessment": {
-            "analyticalRelevance": "Complementarity changes the cheapest mix of subsidies for a fixed emissions target.",
+            "analyticalRelevance": "The solar-to-clean-electricity-to-equipment pathway explains the modeled complementarity without converting a simulated policy comparison into an experimentally identified interaction.",
             "evidentiarySupport": "Qualified mechanism · arrows are economic hypotheses, not estimated causal effects",
             "distinctiveness": "Separates distinct links and identifies which are not causally established.",
             "readerValue": "The model disciplines behavior with survey and energy data. A factorial subsidy design would test complementarity rather than assume it.",
@@ -3247,13 +3249,13 @@
             ]
           ],
           "note": "Transfers are not automatically resource savings; omitted damages are not zero damages.",
-          "rationale": "Distinguishes affected parties and the limits of burden accounting.",
+          "rationale": "Operators, energy-market participants and people exposed to added emissions bear different consequences; separating them prevents private savings from standing in for net welfare.",
           "provenance": [
             "https://www.federalregister.gov/documents/2026/10/29/2026-22082/additional-reconsideration-standards-of-performance-for-new-reconstructed-and-modified-sources-and",
             "https://www.regulations.gov/docket/EPA-HQ-OAR-2025-0163"
           ],
           "assessment": {
-            "analyticalRelevance": "A regulatory surplus subtotal must not silently become net social welfare.",
+            "analyticalRelevance": "Operators, energy-market participants and people exposed to added emissions bear different consequences; separating them prevents private savings from standing in for net welfare.",
             "evidentiarySupport": "Conditional economic incidence · magnitudes not estimated",
             "distinctiveness": "Distinguishes affected parties and the limits of burden accounting.",
             "readerValue": "Transfers are not automatically resource savings; omitted damages are not zero damages.",
@@ -3287,13 +3289,13 @@
             ]
           },
           "note": "Ranges reflect the reported accounting figures, not sampling confidence intervals. Additional emissions damages are outside this subtotal.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "The accounting comparison preserves the reported compliance-savings and energy-market components and their units, while showing that it is not a complete damage-inclusive welfare calculation.",
           "provenance": [
             "https://www.federalregister.gov/documents/2026/10/29/2026-22082/additional-reconsideration-standards-of-performance-for-new-reconstructed-and-modified-sources-and",
             "https://www.regulations.gov/docket/EPA-HQ-OAR-2025-0163"
           ],
           "assessment": {
-            "analyticalRelevance": "A regulatory surplus subtotal must not silently become net social welfare.",
+            "analyticalRelevance": "The accounting comparison preserves the reported compliance-savings and energy-market components and their units, while showing that it is not a complete damage-inclusive welfare calculation.",
             "evidentiarySupport": "Agency projections relative to the 2024-rule baseline · not total social welfare",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "Ranges reflect the reported accounting figures, not sampling confidence intervals. Additional emissions damages are outside this subtotal.",
@@ -3380,13 +3382,13 @@
             ]
           ],
           "note": "Later stations are intentions, not completed capacity. Capacity shares are not generation shares.",
-          "rationale": "Separates observation, projection and economic horizons.",
+          "rationale": "Four dated stations distinguish observed co-location from inventory, installed-plus-planned additions and future proposals; this is a supported chronology rather than four comparable realized outcomes.",
           "provenance": [
             "https://www.eia.gov/todayinenergy/detail.php?id=68384",
             "https://www.eia.gov/electricity/data/eia860m/"
           ],
           "assessment": {
-            "analyticalRelevance": "Distinguish historical additions from the future project pipeline.",
+            "analyticalRelevance": "Four dated stations distinguish observed co-location from inventory, installed-plus-planned additions and future proposals; this is a supported chronology rather than four comparable realized outcomes.",
             "evidentiarySupport": "Read the evidence status at each station",
             "distinctiveness": "Separates observation, projection and economic horizons.",
             "readerValue": "Later stations are intentions, not completed capacity. Capacity shares are not generation shares.",
@@ -3403,13 +3405,13 @@
             "mode": "solar"
           },
           "note": "A battery can shift delivery toward more valuable hours, subject to efficiency, interconnection limits and charging-source rules. The existing sourced capacity chart below describes adoption, not this revenue effect.",
-          "rationale": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
+          "rationale": "The retained source graphic preserves the published capacity shares and source notes, reinforcing the distinction between capacity pairing, generation and modeled value.",
           "provenance": [
             "https://www.eia.gov/todayinenergy/detail.php?id=68384",
             "https://www.eia.gov/electricity/data/eia860m/"
           ],
           "assessment": {
-            "analyticalRelevance": "Distinguish historical additions from the future project pipeline.",
+            "analyticalRelevance": "The retained source graphic preserves the published capacity shares and source notes, reinforcing the distinction between capacity pairing, generation and modeled value.",
             "evidentiarySupport": "Theoretical schematic · not measured hourly dispatch",
             "distinctiveness": "Makes a sourced quantity or expressly theoretical relationship inspectable.",
             "readerValue": "A battery can shift delivery toward more valuable hours, subject to efficiency, interconnection limits and charging-source rules. The existing sourced capacity chart below describes adoption, not this revenue effect.",
@@ -3477,13 +3479,13 @@
           "threat": "Changing fleet assumptions and travel activity together mixes two sources of difference.",
           "check": "Re-run identical plans under both versions, then vary fleet, energy, fuel and emission-rate inputs in turn.",
           "consequence": "A budget threshold crossing can reflect revised measurement rather than a causal transport-policy effect.",
-          "rationale": "Examines a consequential vulnerability and the inference lost if it fails.",
+          "rationale": "The model-version comparison needs the decision context and activity inputs held fixed; testing that boundary prevents a changed accounting baseline from being labeled an intervention effect.",
           "provenance": [
             "https://www.federalregister.gov/documents/2026/10/27/2026-21843/official-release-of-the-moves6-motor-vehicle-emissions-model-for-sips-and-transportation-conformity",
             "https://www.epa.gov/moves"
           ],
           "assessment": {
-            "analyticalRelevance": "Separate an accounting-model revision from a change in real-world behavior.",
+            "analyticalRelevance": "The model-version comparison needs the decision context and activity inputs held fixed; testing that boundary prevents a changed accounting baseline from being labeled an intervention effect.",
             "evidentiarySupport": "Proposed diagnostic · not performed here",
             "distinctiveness": "Examines a consequential vulnerability and the inference lost if it fails.",
             "readerValue": "A budget threshold crossing can reflect revised measurement rather than a causal transport-policy effect.",
@@ -3508,13 +3510,13 @@
           ],
           "interpretation": "Decompose changes in activity from changes in cell-specific rates. Real MOVES processes include more detailed running, starts and non-exhaust calculations.",
           "assumption": "A rate model is not an econometric estimate of the effect of a plan on travel; some processes need activity measures other than vehicle miles.",
-          "rationale": "Defines the economic object or identifying comparison that prose alone can obscure.",
+          "rationale": "An illustrative emissions-aggregation identity identifies activity and emission factors as separate inputs, clarifying where model-version differences can enter without inventing a study regression.",
           "provenance": [
             "https://www.federalregister.gov/documents/2026/10/27/2026-21843/official-release-of-the-moves6-motor-vehicle-emissions-model-for-sips-and-transportation-conformity",
             "https://www.epa.gov/moves"
           ],
           "assessment": {
-            "analyticalRelevance": "Separate an accounting-model revision from a change in real-world behavior.",
+            "analyticalRelevance": "An illustrative emissions-aggregation identity identifies activity and emission factors as separate inputs, clarifying where model-version differences can enter without inventing a study regression.",
             "evidentiarySupport": "Theoretically illustrative aggregation · not a transcription of MOVES source code",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "Decompose changes in activity from changes in cell-specific rates. Real MOVES processes include more detailed running, starts and non-exhaust calculations.",

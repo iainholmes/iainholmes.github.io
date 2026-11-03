@@ -8,4 +8,10 @@ const counts={};for(const [id,v]of Object.entries(arch.decisions.readings)){
  if(f.type==='economic-figures')ok(f.chart&&f.note,'graphical substance and limits '+id);
  }
 }
-ok(counts['estimation-desk']>=10,'substantial mathematical presence');ok(counts['mechanism-map']>=5,'genuine mechanism diagrams');ok(counts['long-view']<10,'no default chronology');ok(new Set(Object.values(arch.decisions.readings).map(v=>v.composition)).size>=5,'content-specific compositions');ok(registry.features.filter(f=>f.group==='special').length===8&&registry.features.filter(f=>f.group==='editorial').length===4,'two distinct editorial categories');console.log(n+' authored feature, model, graph, rationale and vocabulary checks passed.');
+ok(counts['estimation-desk']>=10,'substantial mathematical presence');ok(counts['mechanism-map']>=5,'genuine mechanism diagrams');ok(counts['long-view']<10,'no default chronology');ok(new Set(Object.values(arch.decisions.readings).map(v=>v.composition)).size>=5,'content-specific compositions');ok(registry.features.filter(f=>f.group==='special').length===8&&registry.features.filter(f=>f.group==='editorial').length===4,'two distinct editorial categories');
+
+const publishedInventory=require('../weekly-economics-environment/editorial-architecture.cjs').inventory(page);
+ok(publishedInventory.entries.find(e=>e.id==='electrification').changeRecord.retained.includes('economic-figures'),'retained original figure is recorded as retained');
+ok(!publishedInventory.entries.find(e=>e.id==='electrification').changeRecord.replaced.includes('economic-figures'),'retained original figure is never recorded as replaced');
+
+console.log(n+' authored feature, model, graph, rationale and vocabulary checks passed.');
