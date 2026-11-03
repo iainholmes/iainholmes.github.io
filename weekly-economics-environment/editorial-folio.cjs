@@ -100,9 +100,9 @@ function finishReading(s){
  let newer=readingExhibits.render(art.id,{finding:inside(s,finding)});
  const kind=readingExhibits.select(art.id).kind;
  let chart='';
- if(kind==='ledger'){
-  // Pair the source-grounded figure with the interpretation rather than
-  // extending a tall ledger beside an empty essay column.
+ if(kind==='ledger'&&readingExhibits.graphicPlacement(art.id)!=='ledger'){
+  // Quantitative figures normally accompany interpretation. Selected
+  // conceptual pathways sit after the incidence parties inside the Ledger.
   chart=readingExhibits.graphic(art.id);
   if(!chart||!newer.includes(chart))throw Error('Ledger graphic missing '+art.id);
   newer=newer.replace(chart,'');
