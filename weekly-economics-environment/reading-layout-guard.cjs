@@ -60,8 +60,16 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
      const rows=[...markup.matchAll(/class="rcf-ledger-party"/g)].length;
      const effects=[...markup.matchAll(/class="rcf-ledger-effect"/g)].length;
      if(rows<2||rows!==effects||!markup.includes('rcf-points rcf-ledger'))
-      throw Error('L&L publication layout: companion Incidence Ledger must be vertical party/effect rows '+id);
+      throw Error('L&L publication layout: companion Incidence Ledger needs three complete party/effect comparison columns '+id);
     }
+   }
+   if(extra==='incidence-ledger'&&!folioCss.includes('grid-template-columns:repeat(3,minmax(0,1fr))!important'))
+    throw Error('L&L publication layout: horizontal desktop Incidence Ledger layout rule missing '+id);
+   if(kind==='long'){
+    const stages=[...markup.matchAll(/class="longview-point"/g)].length;
+    const declared=Number(markup.match(/class="exhibit-longview" data-stage-count="(\\d+)"/)?.[1]||0);
+    if(stages!==declared||stages<2)throw Error('L&L publication layout: Long View stage-count mismatch '+id);
+    if(!folioCss.includes('ol.exhibit-longview>li'))throw Error('L&L publication layout: full-width stage layout missing '+id);
    }
    if(featureIds.length>2&&!/data-feature-justification="[^"]+"/.test(opening))
     throw Error('L&L publication layout: third feature requires explicit editorial justification '+id);
