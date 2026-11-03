@@ -19,8 +19,8 @@ const stripArticles=s=>s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=
 // The original archive is a permanent subset. A later issue may legitimately
 // extend the main publication region without changing those six editions.
 const editionParts=s=>{
- const main=s.match(/<main\\b[^>]*id="edition"[^>]*>([\\s\\S]*?)<\\/main>/)?.[1]||'';
- return new Map([...main.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[\\s\\S]*?(?=<section class="edition"|$)/g)].map(m=>[m[1],m[0]]));
+ const main=s.match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)?.[1]||'';
+ return new Map([...main.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[\s\S]*?(?=<section class="edition"|$)/g)].map(m=>[m[1],m[0]]));
 };
 const priorEditions=editionParts(baseline),currentEditions=editionParts(source);
 for(const [date,priorEdition] of priorEditions){
