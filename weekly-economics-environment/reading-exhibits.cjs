@@ -935,35 +935,52 @@ function select(id){
 
 function graphic(id){
  const v=visualData[id];if(!v)return '';
- const head='<div class="ledger-graphic-head"><span class="ledger-graphic-label">ECONOMIC FIGURE</span><strong>'+esc(v.title)+'</strong></div>';
- const note='<p class="ledger-graphic-note">'+esc(v.note)+'</p>';
+ const label=v.type==='mechanism'?'ECONOMIC MODEL':v.type==='calculation'?'ECONOMIC ACCOUNTING':v.type==='decomposition'?'ESTIMATED DECOMPOSITION':'ECONOMIC FIGURE';
+ const head='<div class="ledger-graphic-head"><span class="ledger-graphic-label">'+label+'</span><strong>'+esc(v.title)+'</strong></div>';
+ const note='<figcaption class="ledger-graphic-note">'+esc(v.note)+'</figcaption>';
  let content='';
  if(v.type==='mechanism'){
-   content='<div class="ledger-mechanism" aria-label="'+esc(v.title)+' — conceptual model">'+v.stages.map((label,i)=>'<div class="mechanism-node"><span class="mechanism-index">'+String(i+1).padStart(2,'0')+'</span><span>'+esc(label)+'</span></div>').join('<span class="mechanism-arrow" aria-hidden="true">→</span>')+'</div>';
+   content='<div class="model-flow" role="img" aria-label="'+esc(v.title+'. '+v.stages.join('; ')+'. Conceptual pathway, not a measured effect.')+'">'+v.stages.map((stage,i)=>
+     '<div class="model-stage"><span class="model-stage-number">'+String(i+1).padStart(2,'0')+'</span><strong>'+esc(stage)+'</strong></div>'
+   ).join('<span class="model-connector" aria-hidden="true">→</span>')+'</div><p class="model-kind">Conceptual transmission channel · no estimated magnitude</p>';
  }else if(v.type==='calculation'){
    const [a,b,c]=v.terms;
-   content='<div class="ledger-calculation" aria-label="'+esc(v.title)+'"><div><b>'+esc(a[1])+'</b><small>'+esc(a[0])+'</small></div><span class="calc-sign">+</span><div><b>'+esc(b[1])+'</b><small>'+esc(b[0])+'</small></div><span class="calc-sign">=</span><div class="calc-total"><b>'+esc(c[1])+'</b><small>'+esc(c[0])+'</small></div></div><div class="ledger-units">'+esc(v.units)+'</div>';
+   const min=Number(String(b[1]).split('–')[0]),max=Number(String(b[1]).split('–')[1]),base=Number(a[1]),total=base+max;
+   const pct=n=>(100*n/total).toFixed(3)+'%';
+   content='<div class="ledger-calculation" aria-label="'+esc(v.title)+'"><div><b>'+esc(a[1])+'</b><small>'+esc(a[0])+'</small></div><span class="calc-sign" aria-hidden="true">+</span><div><b>'+esc(b[1])+'</b><small>'+esc(b[0])+'</small></div><span class="calc-sign" aria-hidden="true">=</span><div class="calc-total"><b>'+esc(c[1])+'</b><small>'+esc(c[0])+'</small></div></div>'+
+     '<div class="surplus-visual" role="img" aria-label="'+esc('Annual projected subtotal: '+a[1]+' billion in compliance savings plus '+b[1]+' billion energy-market surplus, equaling '+c[1]+' billion. Climate and health damages not fully included.')+'">'+
+     '<div class="surplus-visual-title">COMPOSITION OF THE REPORTED SUBTOTAL</div>'+
+     '<div class="surplus-band"><span class="surplus-fixed" style="width:'+pct(base)+'%"></span><span class="surplus-variable" style="width:'+pct(min)+'%"></span><span class="surplus-upper" style="width:'+pct(max-min)+'%"></span></div>'+
+     '<div class="surplus-axis"><span>0</span><span>'+esc(base)+' · compliance</span><span>'+esc(c[1])+' · subtotal</span></div>'+
+     '<div class="surplus-key"><span><i class="surplus-key-fixed"></i>Compliance savings</span><span><i class="surplus-key-variable"></i>Market surplus (range)</span></div></div>'+
+     '<div class="ledger-units">'+esc(v.units)+'</div>';
  }else if(v.type==='decomposition'){
-   const sum=v.components.reduce((a,x)=>a+x[1],0);
-   const segments=v.components.map(([label,val],i)=>'<div class="decomp-part decomp-'+i+'" style="width:'+((val/sum)*100).toFixed(3)+'%" title="'+esc(label+': '+val+' log points')+'"></div>').join('');
-   content='<div class="decomp-metric"><strong>'+esc(v.roundedTotal)+'</strong><span>reported log-point price coefficient</span></div><div class="decomp-track" role="img" aria-label="'+esc(v.components.map(x=>x[0]+': '+x[1]+' log points').join(', '))+'">'+segments+'</div><div class="decomp-legend">'+v.components.map(([label,val],i)=>'<span><i class="decomp-key decomp-'+i+'"></i>'+esc(label)+' <b>'+esc(val)+'</b></span>').join('')+'</div>';
+   const sum=v.components.reduce((n,row)=>n+row[1],0);
+   const bars=v.components.map(([part,value],i)=>'<span class="decomp-part decomp-'+i+'" style="width:'+((value/sum)*100).toFixed(3)+'%"></span>').join('');
+   content='<div class="decomp-metric"><strong>'+esc(v.roundedTotal)+'</strong><span>reported log-point price coefficient</span></div>'+
+   '<div class="decomp-title">ESTIMATED CONTRIBUTIONS TO THE PRICE COEFFICIENT</div>'+
+   '<div class="decomp-track" role="img" aria-label="'+esc(v.components.map(x=>x[0]+' '+x[1]+' log points').join('; '))+'">'+bars+'</div>'+
+   '<div class="decomp-axis"><span>0</span><span>'+esc(sum.toFixed(1))+' log points (components)</span></div>'+
+   '<div class="decomp-legend">'+v.components.map(([part,value],i)=>'<span><i class="decomp-key decomp-'+i+'"></i>'+esc(part)+' <b>'+esc(value)+' log points</b></span>').join('')+'</div>';
  }else{
-   // All quantitative visuals use a zero-based or signed linear scale. Figures
-   // come only from source-verified, explicit visualData above.
-   const width=520, plotLeft=185, plotRight=465, length=plotRight-plotLeft, rows=(v.values||v.ranges||[]);
+   const rows=v.values||v.ranges||[],width=800,plotLeft=250,plotRight=660,range=plotRight-plotLeft;
    const low=v.min??0,high=v.max??Math.max(1,...rows.map(x=>Math.abs(x[1])));
-   const px=value=>plotLeft+((value-low)/(high-low))*length;
-   const zero=px(0), height=58+rows.length*43;
-   const base='<line x1="'+zero.toFixed(1)+'" y1="28" x2="'+zero.toFixed(1)+'" y2="'+(height-20)+'" class="plot-zero" />';
-   const items=rows.map((row,i)=>{
-     const y=49+i*43, label=esc(row[0]),range=v.type==='range',value=row[1];
-     const min=range?row[1]:Math.min(0,value),max=range?row[2]:Math.max(0,value);
-     const x=px(min),right=px(max);
-     const rect='<rect x="'+x.toFixed(2)+'" y="'+(y-13)+'" width="'+Math.max(1,right-x).toFixed(2)+'" height="16" rx="2" class="plot-bar bar-'+i+'"/>';
-     const printed=range?row[1]+'–'+row[2]+'%':(v.type==='signed-bar'?(value>0?'+':'')+value+'%':value.toFixed(2)+' pp');
-     return '<text x="'+(plotLeft-12)+'" y="'+y+'" text-anchor="end" class="plot-label">'+label+'</text>'+rect+'<text x="'+Math.min(width-4,Math.max(12,right+7)).toFixed(1)+'" y="'+(y+1)+'" class="plot-value">'+esc(printed)+'</text>';
+   const x=value=>plotLeft+(value-low)/(high-low)*range;
+   const zero=x(0),height=95+rows.length*74,axisY=height-34;
+   const ticks=v.type==='bar'&&high===1.2?[0,.3,.6,.9,1.2]:v.type==='signed-bar'&&low===-10?[-10,0,10,20]:v.type==='range'&&high===100?[0,25,50,75,100]:Array.from({length:5},(_,i)=>low+(high-low)*i/4);
+   const readable=n=>Number(n.toFixed(2)).toString();
+   const grid=ticks.map(t=>'<line x1="'+x(t).toFixed(2)+'" y1="48" x2="'+x(t).toFixed(2)+'" y2="'+(axisY-8)+'" class="plot-grid'+(t===0?' plot-grid-zero':'')+'"/><text x="'+x(t).toFixed(2)+'" y="'+(height-12)+'" text-anchor="middle" class="plot-tick">'+readable(t)+'</text>').join('');
+   const bars=rows.map((row,i)=>{
+     const y=89+i*74,rangeType=v.type==='range',value=row[1],a=rangeType?row[1]:Math.min(0,value),b=rangeType?row[2]:Math.max(0,value);
+     const begin=x(a),finish=x(b),mark=rangeType?readable(a)+'–'+readable(b)+'%':v.type==='signed-bar'?(value>0?'+':'')+readable(value)+'%':value.toFixed(2)+' pp';
+     return '<line x1="'+plotLeft+'" y1="'+(y+23)+'" x2="'+plotRight+'" y2="'+(y+23)+'" class="plot-row-guide"/>'+
+       '<text x="'+(plotLeft-20)+'" y="'+(y+4)+'" text-anchor="end" class="plot-label">'+esc(row[0])+'</text>'+
+       '<rect x="'+Math.min(begin,finish).toFixed(2)+'" y="'+(y-19)+'" width="'+Math.max(2,Math.abs(finish-begin)).toFixed(2)+'" height="29" rx="2" class="plot-bar bar-'+i+'"/>'+
+       '<text x="'+(plotRight+20)+'" y="'+(y+4)+'" class="plot-value">'+esc(mark)+'</text>';
    }).join('');
-   content='<svg class="ledger-plot" viewBox="0 0 '+width+' '+height+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+esc(v.title+'. '+rows.map(x=>x[0]+': '+(v.type==='range'?x[1]+' to '+x[2]:x[1])+' '+v.units).join('; '))+'">'+base+items+'</svg><div class="ledger-units">'+esc(v.units)+'</div>';
+   content='<svg class="ledger-plot" viewBox="0 0 '+width+' '+height+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+esc(v.title+'. '+rows.map(row=>row[0]+': '+(v.type==='range'?row[1]+' to '+row[2]:row[1])+' '+v.units).join('; '))+'">'+
+     '<text x="'+plotLeft+'" y="28" class="plot-axis-title">'+esc(v.units)+'</text>'+grid+bars+
+     '<line x1="'+plotLeft+'" y1="'+axisY+'" x2="'+plotRight+'" y2="'+axisY+'" class="plot-axis"/></svg>';
  }
  return '<figure class="ledger-graphic" data-visual-kind="'+esc(v.type)+'">'+head+content+note+'</figure>';
 }
