@@ -1202,7 +1202,7 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 .entry[data-reading-finish="5"] .essay-graphic .plot-bar.bar-2{fill:var(--clay)}
 .entry[data-reading-finish="5"] .essay-graphic .plot-bar.bar-3{fill:var(--sage)}
 /* Model exhibits are diagrams, not pseudo-quantified bar charts. */
-.entry[data-reading-finish="5"] .model-flow{
+.entry[data-reading-finish="5"] .essay-graphic .model-flow{
  display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr) 24px minmax(0,1fr);
  gap:5px;align-items:stretch
 }
