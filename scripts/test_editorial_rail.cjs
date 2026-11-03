@@ -7,7 +7,7 @@ const file='weekly-economics-environment/index.html';
 const source=fs.readFileSync(file,'utf8');
 const baseline=cp.execFileSync('git',['show','2926414b6233f738795180b40a1475444b609467:'+file],{encoding:'utf8',maxBuffer:4e6});
 const previousKey='reading-folio.css?v=20261101-synthesis-flow';
-const currentKey='reading-folio.css?v=20261102-wide-reading-figures';
+const currentKey='reading-folio.css?v=20261102-open-source-register';
 let checks=0;
 function eq(actual,expected,why){assert.deepEqual(actual,expected,why);checks++}
 function ok(actual,why){assert(actual,why);checks++}
@@ -74,6 +74,8 @@ ok(css.includes('border:4px solid var(--forest)')&&css.includes('border-right-wi
 ok(css.includes('.reading-sources>.sources')&&css.includes('grid-template-columns:minmax(112px,.23fr)'),'post-reading sources occupy a tighter horizontal register');
 ok(css.includes('.essay-graphic'),'ledger source figure moved to interpretive panel');
 ok(css.includes('Full-width reading and source-driven graphics'),'new width and figure design applied');
+ok(css.includes('Source trail: same unboxed'),'reading references use open rather than boxed source treatment');
+ok(css.includes('border:0!important;border-top:2px solid var(--hair)!important'),'sources register keeps a thin shared rule, not a surrounding frame');
 ok(css.includes('.reading-deck .finding,')&&css.includes('max-width:none!important'),'lead and first analysis use full reading column');
 ok(css.includes(':has(>a:nth-of-type(3):last-of-type)'),'three-source register allocates full width evenly');
 ok(css.includes('.essay-graphic .plot-bar')&&css.includes('.plot-grid-zero'),'figures are styled in their actual interpretation container');
