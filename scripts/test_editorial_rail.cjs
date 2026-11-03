@@ -93,7 +93,7 @@ eq((source.match(/class="evidence-pair"/g)||[]).length,current.size,'all reading
 ok(css.includes('height:9px')&&css.includes('padding-top:52px'),'finished substantial chapter bands and condensed entry spacing');
 ok(css.includes('border:4px solid var(--forest)')&&css.includes('border-right-width:7px!important'),'paired spread has continuous structural frame and heavy internal seam');
 ok(css.includes('.reading-sources>.sources')&&css.includes('grid-template-columns:minmax(112px,.23fr)'),'post-reading sources occupy a tighter horizontal register');
-ok(css.includes('.reading-exhibit[data-exhibit-kind="ledger"] .ledger-graphic svg'),'ledger figures are styled where they appear beneath their tables');
+ok(css.includes('.essay-graphic .ledger-graphic svg'),'figures are visually separate from the Incidence Ledger and accompany interpretation');
 ok(css.includes('Full-width reading and source-driven graphics'),'new width and figure design applied');
 ok(css.includes('Source trail: same unboxed'),'reading references use open rather than boxed source treatment');
 ok(css.includes('border:0!important;border-top:2px solid var(--hair)!important'),'sources register keeps a thin shared rule, not a surrounding frame');
@@ -102,7 +102,7 @@ ok(css.includes(':has(>a:nth-of-type(3):last-of-type)'),'three-source register a
 ok(css.includes('.economic-axis')&&css.includes('.plot-grid-zero'),'qualitative curves and numeric figures have explicit graph axes');
 ok(css.includes('.economic-curve-0')&&css.includes('.surplus-band'),'conceptual theory graphs and accounting graphics use distinct treatments');
 ok((source.match(/class="ledger-plot"/g)||[]).length>=3,'historical quantified charts retained');
-eq((source.match(/class="economic-plot-svg"/g)||[]).length,6,'six source-specific conceptual economics graphs replace non-graph flow diagrams');
+eq((source.match(/class="economic-plot-svg"/g)||[]).length,5,'five theory plots retained with the unestimated PFAS pathway kept conceptual');
 ok((source.match(/class="surplus-visual"/g)||[]).length>=1,'historical surplus composition retained');
 ok((source.match(/class="decomp-track"/g)||[]).length>=1,'historical cost decomposition retained');
 
@@ -114,11 +114,13 @@ const editorial=require('../weekly-economics-environment/reading-exhibits.cjs');
 const ledgers=[...current.keys()].filter(id=>editorial.select(id).kind==='ledger');
 const inLedger=ledgers.filter(id=>editorial.graphicPlacement(id)==='ledger');
 eq((source.match(/class="essay-graphic"/g)||[]).length,ledgers.length-inLedger.length,'interpretive figures remain for all non-relocated Ledgers');
-ok(inLedger.length===11&&inLedger.every(id=>current.get(id).includes('class="ledger-graphic"')),'each Incidence Ledger has its own attached economics graphic');
+ok(inLedger.length===0,'all Incidence Ledgers are separated from their graph companions');
+ok(ledgers.every(id=>current.get(id).includes('class="essay-graphic"')),'all eleven economic visualizations accompany interpretation');
 ok(current.get('2026-10-16-pfas-agriculture').includes('class="model-intervention"'),'PFAS prevention pathway retains conditional public-agency intervention');
 eq((source.match(/class="ledger-graphic"/g)||[]).length,ledgers.length,'no economic graphic duplicated or lost');
-ok(css.includes('L&L folio VI-A')&&css.includes('radial-gradient(circle 5px at 36%'),'three-tier centered lower separator has thematic terminal dots');
-ok(css.includes('background:linear-gradient(to right,\n  var(--clay) 0 var(--folio-width)'),'chapter-title underline accent matches folio width');
-ok(css.includes('padding-bottom:clamp(34px,3vw,42px)'),'heavier title separator has adequate numeral clearance');
+ok(css.includes('The Equilibrium Signet')&&css.includes('rotate(45deg)'),'the original inset-diamond single-track motif replaces the copied three rails');
+ok(!css.includes('radial-gradient(circle 5px at 36%'),'deprecated three-rail graphic is absent');
+ok(css.includes('content:"";display:block;position:absolute;')&&css.includes('var(--clay) 0 var(--folio-width)'),'title underline has a real pseudo-element with a folio-width copper tab');
+ok(css.includes('padding-bottom:clamp(23px,2.15vw,30px)!important'),'title rule separates from the enlarged numeral');
 ok(!css.includes('.editorial-rail'),'retired rail has no styling');
 console.log(checks+' single-divider reading layout checks passed.');
