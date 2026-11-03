@@ -30,7 +30,7 @@ for(const [date,priorEdition] of priorEditions){
  eq(stripArticles(currentEditions.get(date)),stripArticles(priorEdition),'non-reading founding edition content unchanged '+date);
 }
 if(current.size===prior.size){
- const mainOnly=s=>s.match(/<main\\b[^>]*id="edition"[^>]*>([\\s\\S]*?)<\\/main>/)?.[1]||'';
+ const mainOnly=s=>s.match(/<main\b[^>]*id="edition"[^>]*>([\s\S]*?)<\/main>/)?.[1]||'';
  eq(stripArticles(mainOnly(source)),stripArticles(mainOnly(baseline)),'entire historical issue and closing-content archive unchanged except approved synthesis label');
 }
 eq(compose(source),source,'publication composer is byte-idempotent without a panel');
