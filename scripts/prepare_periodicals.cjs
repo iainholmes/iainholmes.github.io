@@ -48,6 +48,7 @@ let ll=require('../weekly-economics-environment/editorial-folio.cjs').compose(ll
 // HTML and CSS must advance together on Pages/CDN caches after every layout edit.
 ll=ll.replace(/reading-folio\.css(?:\?v=[^"]*)?"/,'reading-folio.css?v='+digest(read('weekly-economics-environment/reading-folio.css'))+'"');
 ll=ll.replace(/reading-index\.js(?:\?v=[^"]*)?"/,'reading-index.js?v='+digest(read('weekly-economics-environment/reading-index.js'))+'"');
+ll=ll.replace(/commonplace\.js(?:\?v=[^"]*)?"/,'commonplace.js?v='+digest(read('personal-updates/commonplace/commonplace.js'))+'"');
 // Fail before *any* archive/artwork/hub write if a future issue loses its
 // finished layout, source register, notebook structure or authored exhibit.
 require('../weekly-economics-environment/reading-layout-guard.cjs').validate({

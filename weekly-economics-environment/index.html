@@ -1582,10 +1582,11 @@ function syncAnchorOffset(){
   document.documentElement.style.setProperty('--ll-anchor-top',(Math.ceil(bar.getBoundingClientRect().height+inset)+16)+'px');
 }
 const anchorObserver=new ResizeObserver(syncAnchorOffset);anchorObserver.observe(document.querySelector('.toolbar'));addEventListener('resize',syncAnchorOffset);syncAnchorOffset();
+let heronRouteHandled='';
 function route(){let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return}
-  if(!id)return;
+  if(!id)return;if(id.indexOf('heron-')!==0)heronRouteHandled='';
   if(id.indexOf('cp-ll-')===0){var md=id.match(/^cp-ll-(\d{4}-\d{2}-\d{2})-/);if(md){selectEdition(md[1]);mode(false)}return}
-  if(id.indexOf('heron-')===0){var hid=id.slice(6),cd;try{cd=JSON.parse(document.getElementById('companion-data').textContent)}catch(e){cd={}};var d=Object.keys(cd).find(function(k){return (cd[k].appearances||[]).some(function(a){return a.id===hid})});if(d){selectEdition(d);mode(false);setTimeout(function(){var slot=document.getElementById(id);if(slot){slot.scrollIntoView({block:'center'});var b=slot.querySelector('.heron-perch');if(b&&!b.hidden)b.click()}},0)}return}
+  if(id.indexOf('heron-')===0){var hid=id.slice(6),cd;try{cd=JSON.parse(document.getElementById('companion-data').textContent)}catch(e){cd={}};var d=Object.keys(cd).find(function(k){return (cd[k].appearances||[]).some(function(a){return a.id===hid})});if(d&&READY){var active=editions.find(function(e){return e.dataset.edition===d});if(active.hidden)selectEdition(d);else if(!HERON.items.some(function(it){return it.a.id===hid}))renderCompanion(active);mode(false);requestAnimationFrame(function(){var slot=document.getElementById(id);if(slot){var b=slot.querySelector('.heron-perch');if(b&&!b.hidden&&heronRouteHandled!==id){if(b.getAttribute('aria-expanded')!=='true')b.click();heronRouteHandled=id}slot.scrollIntoView({block:'center',behavior:'instant'})}})}return}
   if(id.indexOf('field-register-')===0){openRegister();setTimeout(function(){var r=document.getElementById(id);if(r)r.scrollIntoView({block:'center'})},0);return}
   const fieldNotes=id.match(/^field-notes-(\d{4}-\d{2}-\d{2})(?:-profile-(\d{3,}))?$/);
   if(fieldNotes){
@@ -1596,7 +1597,7 @@ function route(){let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{
   }
   const t=document.getElementById(id);if(!t)return;const ed=t.closest('[data-edition]');if(ed&&ed.hidden)selectEdition(ed.dataset.edition);
   if(t.closest('.entry,.knowledge,.synthesis,.editorial-note'))mode(false);requestAnimationFrame(function(){syncAnchorOffset();t.scrollIntoView({block:'start',behavior:'instant'})})}
-document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;if(/^#field-notes-/.test(a.hash)||a.classList.contains('rg-related')){e.preventDefault();const registerDialog=$('register-dialog');if(registerDialog.open)registerDialog.close();const active=editions.find(ed=>!ed.hidden);if(!location.hash&&active)history.replaceState(history.state,'','#edition-'+active.dataset.edition);if(location.hash!==a.hash)history.pushState(null,'',a.hash);route();if(a.classList.contains('rg-related'))requestAnimationFrame(()=>{const heading=document.getElementById(a.hash.slice(1))?.querySelector('h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true})}});return}const t=document.getElementById(a.hash.slice(1));if(!t||!t.closest('.entry'))return;e.preventDefault();if(location.hash!==a.hash)history.pushState(null,'',a.hash);route()});
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;if(a.hash.indexOf('#heron-')===0)heronRouteHandled='';if(/^#field-notes-/.test(a.hash)||a.classList.contains('rg-related')){e.preventDefault();const registerDialog=$('register-dialog');if(registerDialog.open)registerDialog.close();const active=editions.find(ed=>!ed.hidden);if(!location.hash&&active)history.replaceState(history.state,'','#edition-'+active.dataset.edition);if(location.hash!==a.hash)history.pushState(null,'',a.hash);route();if(a.classList.contains('rg-related'))requestAnimationFrame(()=>{const heading=document.getElementById(a.hash.slice(1))?.querySelector('h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true})}});return}const t=document.getElementById(a.hash.slice(1));if(!t||!t.closest('.entry'))return;e.preventDefault();if(location.hash!==a.hash)history.pushState(null,'',a.hash);route()});
 addEventListener('popstate',route);
 function updateProgress(){const x=document.documentElement.scrollHeight-innerHeight;$('progress').style.width=(x>0?Math.min(100,scrollY/x*100):0)+'%';document.body.classList.toggle('scrolled',scrollY>180)}
 addEventListener('scroll',updateProgress,{passive:true});addEventListener('resize',updateProgress);
@@ -1625,7 +1626,7 @@ function afterSelect(active){
   var n=document.getElementById('mhNo');if(n)n.textContent=pad3(no);
   var closing=document.getElementById('closingNo');if(closing)closing.textContent=pad3(chron.filter(function(e){return e.dataset.edition.slice(0,4)===active.dataset.edition.slice(0,4)&&e.dataset.edition<=active.dataset.edition}).length);
   var d=document.getElementById('mhDate');if(d)d.textContent=fmt(active.dataset.edition,{day:'numeric',month:'long',year:'numeric'});
-  renderRegister(active);renderCompanion(active);
+  renderRegister(active);if(HERON.edition!==active)renderCompanion(active);
 }
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
 function readJSON(id){try{return JSON.parse(document.getElementById(id).textContent)}catch(e){return null}}
@@ -1884,7 +1885,7 @@ var cur=editions.find(function(e){return !e.hidden});if(cur)afterSelect(cur);
 var READY=true;requestAnimationFrame(route);
 addEventListener('load',function(){document.fonts.ready.then(function(){requestAnimationFrame(route)})},{once:true});
 })();
-</script><script src="../personal-updates/commonplace/commonplace.js?v=20261002-navigation"></script>
+</script><script src="../personal-updates/commonplace/commonplace.js?v=586d7e7f5321"></script>
 <script src="/personal-updates/mobile/mobile.js?v=20261002-reading"></script>
 <script src="reading-index.js?v=8c98451174cf" defer></script>
 <script type="application/json" id="ll-reading-index-data">

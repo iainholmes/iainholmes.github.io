@@ -29,6 +29,12 @@ schedule, immutable artwork and shared Periodicals navigation are unchanged.
 The old `reading-exhibits.cjs` and `reading-feature-dossiers.cjs` are retained as
 historical source records only. They are not renderer imports or fallbacks.
 
+L&L owns its Heron deep-link lifecycle. The shared Commonplace scanner delegates
+Heron routing only when it detects this v6 publication, so rescanning saved-item
+controls cannot reopen a closed note or override a saved preference. L&L versions
+that integration asset during preparation; behavior in other publications is
+unchanged.
+
 ## Authoring a future edition
 
 1. Assess the research and sources; preserve their definitions, dates, units and
