@@ -626,7 +626,7 @@ body{overflow-x:clip}
 <meta name="apple-mobile-web-app-title" content="Periodicals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-instrument">
-<link rel="stylesheet" href="refinement.css?v=20261101-reading-folio"><link rel="stylesheet" href="reading-folio.css?v=20261103-ledger-v2-stage-count"><link rel="stylesheet" href="../assets/identity/identity.css?v=20261012-seamless2">
+<link rel="stylesheet" href="refinement.css?v=20261101-reading-folio"><link rel="stylesheet" href="reading-folio.css?v=20261103-horizontal-incidence-fullwidth-stages"><link rel="stylesheet" href="../assets/identity/identity.css?v=20261012-seamless2">
 <style>
 /* Publication-specific authorship signatures; canonical IH. assets remain unchanged. */
 .ih-imprint .ih-native-wordmark{display:block;margin:0;padding:0;max-width:none;white-space:nowrap}
@@ -681,36 +681,45 @@ body{overflow-x:clip}
  }
 }
 </style>
-<style id="ll-published-layout-fix-20261103">
-/* Authored stage-count, never a blank fourth track for a three-step Long View. */
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview[data-stage-count="3"]{grid-template-columns:repeat(3,minmax(0,1fr))!important;--stage-cols:3;width:100%}
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview[data-stage-count="4"]{grid-template-columns:repeat(4,minmax(0,1fr))!important;--stage-cols:4;width:100%}
-/* The same vertical Ledger grammar for authored primary and companion features. */
+<style id="ll-accepted-reading-arrangement-20261103">
+/* Full-width stage chronology: no unused fourth track. */
+.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview{
+ display:flex!important;flex-flow:row nowrap!important;gap:12px!important;
+ width:100%!important;max-width:none!important;
+}
+.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview>li{
+ flex:1 1 0!important;min-width:0!important;width:auto!important;max-width:none!important;
+}
+/* Incidence is a side-by-side comparison on desktop: three actual cards. */
 .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] ol.rcf-ledger{
- display:flex!important;flex-direction:column!important;grid-template-columns:none!important;gap:0!important;margin:0 0 12px!important;
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:0!important;width:100%!important;
 }
 .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] ol.rcf-ledger>li{
- display:grid!important;grid-template-columns:minmax(0,40%) minmax(0,1fr)!important;
- align-items:start!important;gap:15px!important;width:100%!important;margin:0!important;padding:13px 15px!important;
- border:0!important;border-top:1px solid var(--hair)!important;border-left:5px solid var(--forest)!important;
- background:color-mix(in srgb,var(--forest) 6%,var(--paper))!important;
+ display:block!important;min-width:0!important;width:auto!important;
+ border:0!important;border-top:2px solid var(--clay)!important;
+ border-right:1px solid var(--hair)!important;padding:13px 17px!important;
+ background:transparent!important;
 }
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] ol.rcf-ledger>li:nth-child(3n+2){border-left-color:var(--clay)!important;background:color-mix(in srgb,var(--clay) 6%,var(--paper))!important}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] ol.rcf-ledger>li:nth-child(3n+3){border-left-color:var(--river)!important;background:color-mix(in srgb,var(--river) 6%,var(--paper))!important}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party{display:flex;align-items:baseline;gap:9px;min-width:0}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party .rcf-index{margin:0;flex:none}
-.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party strong{margin:0;font-weight:600;line-height:1.45}
-.entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .exhibit-ledger>.ledger-line{display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);gap:6px 15px}
-.entry[data-reading-finish="5"] .reading-companion-feature{height:auto!important;min-height:0!important;margin:18px 0 22px!important;padding:18px 22px!important}
-.entry[data-reading-finish="5"] .reading-companion-feature .rcf-head{margin-bottom:12px!important}
-.entry[data-reading-finish="5"] .reading-companion-feature .rcf-caveat{margin-top:12px!important;padding-top:10px!important}
-@media(max-width:970px){
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview[data-stage-count]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] ol.rcf-ledger>li:last-child{border-right:0!important}
+.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party{
+ display:block!important;margin-bottom:10px!important;
+}
+.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party .rcf-index{
+ display:block!important;margin-bottom:7px!important;
+}
+.entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] .rcf-ledger-party strong{
+ display:block!important;margin:0!important;
+}
+@media(max-width:850px){
+ .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] ol.rcf-ledger{grid-template-columns:minmax(0,1fr)!important}
+ .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] ol.rcf-ledger>li{border-right:0!important;border-bottom:1px solid var(--hair)!important}
+ .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview{flex-wrap:wrap!important}
+ .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview>li{flex:1 1 calc(50% - 12px)!important}
 }
 @media(max-width:650px){
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview[data-stage-count]{grid-template-columns:minmax(0,1fr)!important}
- .entry[data-reading-finish="5"] .reading-companion-feature[data-special-feature="incidence-ledger"] ol.rcf-ledger>li{grid-template-columns:minmax(0,1fr)!important;gap:6px!important}
- .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="ledger"] .exhibit-ledger>.ledger-line{grid-template-columns:minmax(0,1fr)}
+ .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview{flex-flow:column nowrap!important}
+ .entry[data-reading-finish="5"] .reading-exhibit[data-exhibit-kind="long"] ol.exhibit-longview>li{flex:none!important;width:100%!important}
 }
 </style></head><body><a class="skip" href="#edition">Skip to the edition</a>
 <header class="masthead" id="top">
