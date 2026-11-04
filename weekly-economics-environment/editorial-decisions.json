@@ -79,7 +79,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "Private adoption value is not the same as social value",
             "text": "A private adoption inequality distinguishes operating savings, upfront cost and financing frictions from the separate social value of avoided emissions. "
           },
           "mathLayout": {
@@ -201,7 +201,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Follow the party, price and resource channel",
+            "title": "Locational prices and scarcity rents move differently",
             "text": "These are conditional surplus channels, not measured incidence. Investment costs and network spillovers determine the net result. Each column separates the affected party from the mechanism; the panel does not assign an estimated gain to every member of that group."
           }
         },
@@ -228,7 +228,7 @@
           ],
           "note": "These are implementation horizons, not promised completion dates or an estimated benefit trajectory.",
           "readerGuide": {
-            "title": "Read horizons, not a forecast curve",
+            "title": "Commitment, completion and realized benefit are separate clocks",
             "text": "Begin with the commitment, then distinguish delivery from operation. Each station changes the economic object being evaluated; none is a reported completion forecast."
           },
           "rationale": "The distinction between announcement, delivery and asset operation is the central timing problem. It adds a temporal baseline beyond the party comparison and funding graphic.",
@@ -389,8 +389,8 @@
           "check": "Track the legal scope, implementation dates and exposed products separately; then compare economic outcomes against a defensible unexposed or differently exposed baseline.",
           "consequence": "An observed change around a hearing cannot by itself be attributed to the border measure.",
           "readerGuide": {
-            "title": "What would discriminate between explanations?",
-            "text": "This is a proposed reading and research diagnostic. It identifies a comparison that could inform the claim; it does not report a new test result."
+            "title": "A legal hearing does not identify an emissions effect",
+            "text": "To learn whether border policy changed emissions, follow actual implementation dates and product exposure, then compare outcomes against a credible counterfactual. The WTO proceeding is not itself an emissions treatment. This comparison is proposed here, not reported as completed."
           },
           "rationale": "The WTO record supports an institutional reading, not a study-specific regression. This diagnostic keeps legal status and economic attribution distinct.",
           "provenance": [
@@ -531,7 +531,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "Within-metro comparisons do not randomize exposure",
             "text": "The reported metro-year fixed-effects equation identifies the actual within-place comparison and exposes the gap between controlling common shocks and randomizing insurance strain. "
           },
           "mathLayout": {
@@ -578,7 +578,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Sample composition changes the estimated association",
             "text": "Contrasting common-sample and broader-sample coefficients makes sample sensitivity visible while preserving the distinction between association and a causal capitalization effect."
           }
         },
@@ -602,7 +602,7 @@
           ],
           "note": "These are interpretive incidence channels, not estimated allocations of losses across the three groups.",
           "readerGuide": {
-            "title": "Compare the economic objects",
+            "title": "Premiums, property values and public risk are different margins",
             "text": "Read the columns as different economic channels and recipients, not as portions of one measured total. Ownership capitalization, rental-market adjustment and public backstops are separate channels."
           },
           "rationale": "Ownership capitalization, rental-market adjustment and public backstops are separate channels. The Ledger complements the reported specification and sample-sensitivity figure.",
@@ -746,8 +746,8 @@
           "check": "Specify the decision, population, formulation and exposure route before judging whether additional research would change the assessment; distinguish new data collection from a completed finding.",
           "consequence": "More studies need not reduce the consequential uncertainty, and the partnership itself does not determine the registration outcome.",
           "readerGuide": {
-            "title": "What would discriminate between explanations?",
-            "text": "This is a proposed reading and research diagnostic. It identifies a comparison that could inform the claim; it does not report a new test result."
+            "title": "Would additional evidence change the actual registration decision?",
+            "text": "The useful test depends on which population, formulation and exposure route the registration decision concerns. Evidence about a different dose or use cannot automatically resolve the consequential uncertainty; the proposed evidence review is not an accomplished test."
           },
           "rationale": "The scientific partnership targets consequential evidence gaps. A focused diagnostic better clarifies research value than an unestimated value-of-information equation.",
           "provenance": [
@@ -882,7 +882,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "A local projection describes responses by horizon",
             "text": "Horizon-indexed local-projection notation clarifies that the reported response is a short-run dynamic relationship conditional on a documented shock and controls. "
           },
           "mathLayout": {
@@ -919,7 +919,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Separate the claim from its diagnostic",
+            "title": "Anticipation can make the spending shock endogenous",
             "text": "Examining shock construction and anticipatory spending distinguishes a credible policy innovation from fiscal changes that respond to existing economic conditions. "
           }
         }
@@ -1025,7 +1025,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Demand- and supply-side interventions move world prices differently",
             "text": "An explicitly schematic supply-and-demand comparison shows how a demand intervention can lower the world fossil price and create an offsetting response elsewhere."
           }
         },
@@ -1049,7 +1049,7 @@
           ],
           "note": "The Ledger identifies possible channels and recipients. It does not sum national gains or estimate leakage rates.",
           "readerGuide": {
-            "title": "Compare the economic objects",
+            "title": "World-price feedback redistributes gains across participants",
             "text": "Read the columns as different economic channels and recipients, not as portions of one measured total. The supply-and-demand figure already traces the price mechanism."
           },
           "rationale": "The supply-and-demand figure already traces the price mechanism. Comparing recipients adds international incidence instead of repeating that chain.",
@@ -1233,7 +1233,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Baseline and constrained-relocation losses are different counterfactuals",
             "text": "The comparison separates the model’s reported baseline welfare loss from the additional loss with relocation blocked, rather than adding unlike quantities into a new estimate."
           }
         },
@@ -1260,7 +1260,7 @@
           ],
           "note": "These are analytical horizons. No speed of migration, transition year or observed AMOC collapse is supplied.",
           "readerGuide": {
-            "title": "Read horizons, not a forecast curve",
+            "title": "Adjustment connects the physical event to the modeled equilibrium",
             "text": "Read the physical counterfactual, the scope for adjustment and the equilibrium comparison as separate objects. The sequence does not supply a year-by-year transition path."
           },
           "rationale": "The map traces channels; the Long View prevents a spatial-equilibrium endpoint from being interpreted as an immediate measured damage or a dated migration forecast.",
@@ -1404,7 +1404,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "Dispatch value depends on efficiency and capacity constraints",
             "text": "A theoretical dispatch objective and storage constraint explain how charging costs, efficiency and capacity bound an arbitrage opportunity. "
           },
           "mathLayout": {
@@ -1474,7 +1474,7 @@
           ],
           "note": "Conditional market incidence, with no quantified allocation of producer or consumer surplus.",
           "readerGuide": {
-            "title": "Compare the economic objects",
+            "title": "Storage revenue and system benefits can move in opposite directions",
             "text": "Read the columns as different economic channels and recipients, not as portions of one measured total. Storage’s revenue erosion has identifiable counterparties."
           },
           "rationale": "Storage’s revenue erosion has identifiable counterparties. Incidence complements both the dispatch optimization and entry decision.",
@@ -1664,7 +1664,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Follow the party, price and resource channel",
+            "title": "Financing distortions create different adjustment burdens",
             "text": "The source combines empirical relationships and a general-equilibrium counterfactual. No party-specific welfare amount is inferred. Each column separates the affected party from the mechanism; the panel does not assign an estimated gain to every member of that group."
           }
         }
@@ -1822,7 +1822,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "These are agreement scenarios, not uncertainty intervals",
             "text": "The published model comparisons make the consequences of alternative agreement designs visible while labeling the values as scenario variants rather than uncertainty intervals."
           }
         },
@@ -1846,7 +1846,7 @@
           ],
           "note": "The source reports model counterfactuals. This panel does not estimate household effects or specify an optimal transfer for every country.",
           "readerGuide": {
-            "title": "Compare the economic objects",
+            "title": "Transfer design affects participation and distribution",
             "text": "Read the columns as different economic channels and recipients, not as portions of one measured total. The figure compares agreement designs; the Ledger clarifies the allocation issue that allows those designs to differ.."
           },
           "rationale": "The figure compares agreement designs; the Ledger clarifies the allocation issue that allows those designs to differ.",
@@ -1974,7 +1974,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Separate the claim from its diagnostic",
+            "title": "Adjacent households need not be otherwise comparable",
             "text": "The exposure-boundary assumption is central to interpreting households inside and outside a landslide path as comparable; its vulnerability deserves a dedicated test. "
           }
         },
@@ -2050,7 +2050,7 @@
           ],
           "note": "Analytical periods drawn from the published reading; no new annual recovery series or duration estimate is constructed.",
           "readerGuide": {
-            "title": "Read horizons, not a forecast curve",
+            "title": "Destruction, displacement and recovery occur on different clocks",
             "text": "Separate the initial physical event from later recovery. The chronology does not assign an annual loss to any one network or relocation mechanism."
           },
           "rationale": "The exposure test and network map answer different questions from recovery timing. This chronology makes persistence legible without inventing intermediate estimates.",
@@ -2192,7 +2192,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Follow the party, price and resource channel",
+            "title": "A loan commitment is not a measured subsidy",
             "text": "The announcement does not disclose enough terms to calculate the subsidy equivalent. Each column separates the affected party from the mechanism; the panel does not assign an estimated gain to every member of that group."
           }
         },
@@ -2230,7 +2230,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "Credit advantage requires a risk-adjusted benchmark",
             "text": "An illustrative present-value credit comparison defines the subsidy object and makes the missing benchmark, maturity, guarantee and risk terms explicit. "
           },
           "mathLayout": {
@@ -2359,7 +2359,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Fuel-specific forecasts cannot be read as one household bill",
             "text": "A fuel-by-fuel comparison preserves the direction and units of the published expenditure forecasts instead of compressing divergent household experiences into one national number."
           }
         },
@@ -2396,7 +2396,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Follow the party, price and resource channel",
+            "title": "Fuel-price forecasts are not household energy-burden estimates",
             "text": "Distributional magnitudes require linked household income, fuel use and assistance data; none is inferred from the forecast percentages. Each column separates the affected party from the mechanism; the panel does not assign an estimated gain to every member of that group."
           }
         },
@@ -2573,7 +2573,7 @@
           ],
           "note": "Conditional legal and economic horizons, not a prediction of the Court’s ruling or a schedule for the case.",
           "readerGuide": {
-            "title": "Read horizons, not a forecast curve",
+            "title": "A procedural ruling is not a final liability finding",
             "text": "The first station describes the immediate procedural question. Later stations are contingent on intervening legal and evidentiary findings."
           },
           "rationale": "Separate the immediate procedural event from later proof and economic adjustment. This temporal treatment avoids drawing a premature chain from oral argument to damages.",
@@ -2706,7 +2706,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "Population aggregation can conceal a large subgroup response",
             "text": "The population-effect dilution identity explains why a policy concentrated on a small subgroup can disappear in aggregate data; it is labeled theoretical rather than a fitted study equation. "
           },
           "mathLayout": {
@@ -2736,7 +2736,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Exposure shares change the scale of aggregate effects",
             "text": "The retained source-linked subgroup comparisons make the scale implied by small exposure shares visible and preserve the original outcome definitions and qualifications."
           }
         }
@@ -2918,7 +2918,7 @@
           ],
           "note": "Illustrative stock-flow horizons, not a measured decay curve, site-specific risk estimate or universal half-life.",
           "readerGuide": {
-            "title": "Read horizons, not a forecast curve",
+            "title": "Stopping new inputs does not remove accumulated contamination",
             "text": "Read stocks and flows separately. Preventing new inputs and managing existing contamination are different tasks; there is no universal clearance time in this panel."
           },
           "rationale": "Persistence creates a stock-flow problem beyond the spatial pathway. This Long View clarifies why prevention and recipient monitoring have different time horizons.",
@@ -3073,7 +3073,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Separate the claim from its diagnostic",
+            "title": "Other reviews must actually replace the information removed",
             "text": "The information-substitution assumption tests whether other review processes really supply the information removed from one process, with proposed diagnostics clearly identified. "
           }
         },
@@ -3100,7 +3100,7 @@
           ],
           "note": "Conditional project horizons; no completion date, authorization outcome or welfare effect is predicted.",
           "readerGuide": {
-            "title": "Read horizons, not a forecast curve",
+            "title": "Approval speed is distinct from lifetime operating outcomes",
             "text": "Follow three clocks: rule-making, project review and asset operation. A shorter administrative clock does not measure the lifetime economic outcome."
           },
           "rationale": "The immediate tier choice and information test need an asset-life context. The chronology distinguishes procedural speed from eventual economic and environmental outcomes.",
@@ -3238,7 +3238,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Follow the party, price and resource channel",
+            "title": "Energy-price shocks reach sectors through different channels",
             "text": "These are conditional channels. The global IMF forecast is not a causal estimate of their size. Each column separates the affected party from the mechanism; the panel does not assign an estimated gain to every member of that group."
           }
         },
@@ -3292,7 +3292,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Growth and inflation forecasts use distinct measures",
             "text": "Separate sourced growth and inflation panels keep distinct macroeconomic quantities and forecast years legible rather than presenting unlike units on a shared scale."
           }
         },
@@ -3447,7 +3447,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Separate the claim from its diagnostic",
+            "title": "Record counts cannot be added into a welfare estimate",
             "text": "A record within an indicator’s own measurement series is not automatically comparable across indicators; the test examines the invalid step from record counts to a welfare conclusion. "
           }
         },
@@ -3474,7 +3474,7 @@
           ],
           "note": "The reported 7/16 count is retained below as physical context. The horizons do not estimate damages or supply a fitted climate trajectory.",
           "readerGuide": {
-            "title": "Read horizons, not a forecast curve",
+            "title": "A record year sits within a longer physical stock process",
             "text": "Use the physical indicator count as monitoring context. The horizons separate an accumulated state, a current record and the additional economic assessment needed."
           },
           "rationale": "The temporal and stock-flow interpretation adds more than treating a count of physical records as an economic diagram. It complements the test of welfare aggregation.",
@@ -3609,7 +3609,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "The interaction isolates a difference in changes",
             "text": "Reconstructed treatment-interaction notation clarifies the documented comparison between regulated Shandong mills and controls, with parallel trends stated as an identification condition. "
           }
         },
@@ -3650,7 +3650,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Cost and markup contributions are measured in log points",
             "text": "The cost and markup components explain why a price coefficient is not a productivity measure; log-point units and rounded component totals prevent a false percentage interpretation."
           }
         }
@@ -3772,7 +3772,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Battery-electric and hybrid substitution are different responses",
             "text": "The retained powertrain shares distinguish battery-electric decline from hybrid substitution and keep sales composition separate from a causal policy effect."
           }
         },
@@ -3797,7 +3797,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Separate the claim from its diagnostic",
+            "title": "Anticipation and composition complicate policy attribution",
             "text": "Concurrent model launches, inventories and anticipated eligibility changes threaten an annual before-after interpretation, making the counterfactual the reading’s central methodological issue. "
           }
         },
@@ -3824,7 +3824,7 @@
           ],
           "note": "Reported dates and descriptive comparisons from EIA; this is not a causal event study or a forecast of fleet adoption.",
           "readerGuide": {
-            "title": "Read horizons, not a forecast curve",
+            "title": "A sales flow is not the installed vehicle stock",
             "text": "Distinguish the past policy boundary, the later sales comparison and the installed fleet. The last station changes the denominator from new transactions to vehicles already in service."
           },
           "rationale": "The source documents a policy boundary and distinguishes sales from the fleet. This chronology contributes a timing and stock-flow interpretation beyond the chart and attribution test.",
@@ -3959,7 +3959,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Keep the horizons distinct",
+            "title": "Policy deadlines and modeled outcomes occupy different horizons",
             "text": "The dated 2030, 2035 and 2040 requirements form a genuine sequence of policy horizons, with scenario status visible at each stage instead of an unused fourth track. "
           }
         },
@@ -3993,7 +3993,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "Timing matters to discounted climate damages",
             "text": "An illustrative discounted path-damage expression explains why the duration and timing of overshoot matter, while acknowledging that the report’s temperature scenarios do not identify a damage function. "
           },
           "mathLayout": {
@@ -4178,7 +4178,7 @@
           ],
           "note": "Conditional incidence; the announcement does not identify borrower gains, fiscal subsidy equivalents or avoided damages.",
           "readerGuide": {
-            "title": "Compare the economic objects",
+            "title": "Resilience financing redistributes risk, not just capital",
             "text": "Read the columns as different economic channels and recipients, not as portions of one measured total. The financing instrument distributes risk as well as supporting investment."
           },
           "rationale": "The financing instrument distributes risk as well as supporting investment. This party comparison complements the choice of instrument and tests against equating commitments with resilience.",
@@ -4393,7 +4393,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Borrowing ranges describe terms, not causal effects",
             "text": "Reported borrowing ranges make the financing gap visible while labeling them as package comparisons rather than statistical confidence intervals."
           }
         }
@@ -4511,7 +4511,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "Prediction and exclusion are separate IV requirements",
             "text": "Separating the reconstructed first stage from the outcome equation makes the instrument’s predicted-demand variation and exclusion requirement explicit. "
           }
         },
@@ -4549,7 +4549,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Two employment measures reflect one modeled coal shock",
             "text": "Juxtaposing the two reported employment margins shows how local effects extend beyond mine payrolls, without inventing confidence intervals or summing different outcome coefficients."
           }
         }
@@ -4674,7 +4674,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "The optimization objective is a theoretical policy comparison",
             "text": "A clearly theoretical fiscal-cost objective subject to an emissions target distinguishes the policymaker’s optimization problem from the household adoption responses embedded in the source model. "
           },
           "mathLayout": {
@@ -4735,8 +4735,8 @@
           "check": "Compare the joint and separate technology cases under matched emissions targets and stated energy-system assumptions; treat a new sensitivity exercise as proposed unless the source reports it.",
           "consequence": "A cost-effective mix in one calibrated setting need not be the same mix for every household or grid.",
           "readerGuide": {
-            "title": "What would discriminate between explanations?",
-            "text": "This is a proposed reading and research diagnostic. It identifies a comparison that could inform the claim; it does not report a new test result."
+            "title": "Technology complementarity depends on a consistent baseline",
+            "text": "The joint-technology advantage should be evaluated against the separate technology cases under the same emissions target, tariffs, grid assumptions and use patterns. A sensitivity exercise beyond the published scenarios would be proposed, not a reported finding."
           },
           "rationale": "The optimization gives a policy objective and the map gives a channel. This diagnostic identifies the baseline dependence of their policy interpretation.",
           "provenance": [
@@ -4873,7 +4873,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Compare economic consequences",
+            "title": "Resource savings, surplus and damages belong to separate accounts",
             "text": "Operators, energy-market participants and people exposed to added emissions bear different consequences; separating them prevents private savings from standing in for net welfare."
           }
         },
@@ -4917,7 +4917,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "The projected subtotal omits additional emissions damages",
             "text": "The accounting comparison preserves the reported compliance-savings and energy-market components and their units, while showing that it is not a complete damage-inclusive welfare calculation."
           }
         }
@@ -5044,7 +5044,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Keep the horizons distinct",
+            "title": "Installed, planned and proposed capacity are not interchangeable",
             "text": "Four dated stations distinguish observed co-location from inventory, installed-plus-planned additions and future proposals; this is a supported chronology rather than four comparable realized outcomes. "
           }
         },
@@ -5071,7 +5071,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "What the graphic does and does not compare",
+            "title": "Co-located capacity does not establish delivered generation",
             "text": "The retained source graphic preserves the published capacity shares and source notes, reinforcing the distinction between capacity pairing, generation and modeled value."
           }
         }
@@ -5179,7 +5179,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Separate the claim from its diagnostic",
+            "title": "Version changes and behavior changes need separate diagnostics",
             "text": "The model-version comparison needs the decision context and activity inputs held fixed; testing that boundary prevents a changed accounting baseline from being labeled an intervention effect. "
           }
         },
@@ -5214,7 +5214,7 @@
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "Read the relationship before the coefficient",
+            "title": "Activity multiplied by rate is accounting, not causality",
             "text": "An illustrative emissions-aggregation identity identifies activity and emission factors as separate inputs, clarifying where model-version differences can enter without inventing a study regression. "
           }
         }
