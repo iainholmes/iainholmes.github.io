@@ -45,10 +45,32 @@
   bestParent.insertBefore(node,bestNext&&bestNext.parentNode===bestParent?bestNext:null);
   return {component:node.className,parent:bestParent.className,heightBefore:startingHeight,heightAfter:articleHeight(a)};
  }
+ // Join only genuinely adjacent, feature-only elements. Standard editorial,
+ // notebook, source and Heron elements remain explicit physical boundaries.
+ const nonFeatures='.ll-editorial,.ll-interpretation,.ll-opening,.ll-evidence-destination,.ll-notebook-unit,.research-note,.perch,.ll-standard-break,.reading-sources';
+ const featureOnly=n=>!!n?.querySelector('.ll-feature')&&!n.querySelector(nonFeatures);
+ const isHost=n=>n?.classList.contains('ll-feature-host')&&featureOnly(n);
+ function refreshFeatureJoins(a){
+  a.querySelectorAll('.ll-arranged-row').forEach(row=>{
+   const cols=[...row.children].filter(n=>n.nodeType===1&&!n.classList.contains('ll-feature-divider'));
+   row.classList.toggle('ll-touching-feature-row',cols.length===2&&cols.every(featureOnly)&&!row.closest('.ll-shared-field'));
+  });
+  for(const parent of [a.querySelector('.ll-reading'),...a.querySelectorAll('.ll-arranged-row>div,.ll-authored-inset,.ll-shared-field')].filter(Boolean)){
+   const children=[...parent.children];
+   let hasJoin=false;
+   for(const child of children)child.classList.remove('ll-join-prev','ll-join-next');
+   for(let i=0;i<children.length-1;i++){
+    if(isHost(children[i])&&isHost(children[i+1])){
+     children[i].classList.add('ll-join-next');children[i+1].classList.add('ll-join-prev');hasJoin=true;
+    }
+   }
+   parent.classList.toggle('ll-touching-feature-stack',hasJoin);
+  }
+ }
  function updateDividers(a){
   const rect=n=>n.getBoundingClientRect(),intersects=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1;
-  for(const field of a.querySelectorAll('.ll-shared-field,.ll-coal-featuregroup,.ll-moves-featuregroup')){
-   const fr=rect(field),features=[...field.querySelectorAll('.ll-feature')].filter(visible),standards=[...field.querySelectorAll('.ll-editorial,.ll-notebook-unit,.ll-interpretation,.ll-opening')].filter(n=>visible(n)&&!n.closest('.ll-feature')).map(rect),rules=[];
+  for(const field of a.querySelectorAll('.ll-shared-field,.ll-coal-featuregroup,.ll-moves-featuregroup,.ll-touching-feature-row,.ll-touching-feature-stack')){
+   const fr=rect(field),features=[...field.querySelectorAll('.ll-feature')].filter(n=>visible(n)&&(!field.classList.contains('ll-touching-feature-stack')||n.closest('.ll-feature-host')?.parentElement===field)),standards=[...field.querySelectorAll('.ll-editorial,.ll-notebook-unit,.ll-interpretation,.ll-opening')].filter(n=>visible(n)&&!n.closest('.ll-feature')).map(rect),rules=[];
    for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){
     const ar=rect(features[i]),br=rect(features[j]);let one=ar,two=br,axis=null,overlap=0,start=0,cross=0,strip;
     if(Math.max(ar.top,br.top)<Math.min(ar.bottom,br.bottom)-80&&(ar.right<=br.left+2||br.right<=ar.left+2)){
@@ -74,13 +96,13 @@
   const open=a.querySelector('.heron-perch[aria-expanded="true"]');
   const signature=[Math.round(a.clientWidth),a.textContent.length,document.documentElement.dataset.mode,!!a.querySelector('.perch'),!!open].join('|');
   if(!force&&cache.get(a)===signature)return;cache.set(a,signature);
-  if(open){updateDividers(a);return;} // The companion stays where the reader opened it.
-  const before=articleHeight(a);a.querySelectorAll(regions).forEach(balance);
+  if(open){refreshFeatureJoins(a);updateDividers(a);return;} // The companion stays where the reader opened it.
+  const before=articleHeight(a);refreshFeatureJoins(a);a.querySelectorAll(regions).forEach(balance);
   const moves=[],plan=plans[a.dataset.readingComposition]||{note:(a.dataset.dockNote||'').split(';').filter(Boolean),heron:(a.dataset.dockHeron||'').split(';').filter(Boolean)};
   const n=dock(a,note,plan.note);if(n)moves.push(n);
   const h=dock(a,heron,plan.heron);if(h)moves.push(h);
   a.querySelectorAll(regions).forEach(balance);
-  updateDividers(a);
+  refreshFeatureJoins(a);updateDividers(a);
   const previous=reports.get(a.id),initial=previous&&previous.width===a.clientWidth?Math.max(previous.initialHeight,before):before;
   reports.set(a.id,{id:a.id,width:a.clientWidth,initialHeight:initial,heightBefore:before,heightAfter:articleHeight(a),heightSaved:initial-articleHeight(a),moves,
    sourcesLast:a.querySelector('.ll-reading').lastElementChild.classList.contains('reading-sources')});
@@ -93,5 +115,5 @@
  observer.observe(document.documentElement,{attributes:true,attributeFilter:['data-mode']});
  const resize=new ResizeObserver(schedule);document.querySelectorAll('.entry[data-reading-composition]').forEach(a=>resize.observe(a));
  document.fonts.ready.then(()=>{run(true);const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t?.closest('.entry')&&t.getClientRects().length)t.scrollIntoView({block:'start',behavior:'instant'});});document.fonts.addEventListener('loadingdone',()=>run(true));addEventListener('resize',schedule);
- window.LLLayout={reflow:()=>{paused=false;run(true)},reset:()=>{paused=true;document.querySelectorAll('.ll-feature-divider').forEach(n=>n.remove());for(const [n,h]of homes){h.parent.insertBefore(n,h.next&&h.next.parentNode===h.parent?h.next:null)}document.querySelectorAll(regions).forEach(r=>{r.style.removeProperty('--fit-share');r.style.removeProperty('--fit-rest')});},report:()=>[...reports.values()]};
+ window.LLLayout={reflow:()=>{paused=false;run(true)},reset:()=>{paused=true;document.querySelectorAll('.ll-feature-divider').forEach(n=>n.remove());document.querySelectorAll('.ll-touching-feature-row,.ll-touching-feature-stack').forEach(n=>n.classList.remove('ll-touching-feature-row','ll-touching-feature-stack'));document.querySelectorAll('.ll-join-prev,.ll-join-next').forEach(n=>n.classList.remove('ll-join-prev','ll-join-next'));for(const [n,h]of homes){h.parent.insertBefore(n,h.next&&h.next.parentNode===h.parent?h.next:null)}document.querySelectorAll(regions).forEach(r=>{r.style.removeProperty('--fit-share');r.style.removeProperty('--fit-rest')});},report:()=>[...reports.values()]};
 })();
