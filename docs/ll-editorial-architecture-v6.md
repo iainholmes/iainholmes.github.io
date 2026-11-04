@@ -1,4 +1,6 @@
-# Loblolly & Logit: permanent editorial architecture VI
+# Loblolly & Logit: historical editorial architecture VI
+
+Superseded by [architecture VII](ll-editorial-architecture-v7.md). The current system requires individually authored arrangements; the coarse composition categories below are retained only as historical documentation.
 
 Effective with the six-edition re-issue, 3 November 2026. This document supersedes
 the older exhibit rotation and finish-stage layout instructions. The publication

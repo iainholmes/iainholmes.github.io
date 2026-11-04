@@ -34,6 +34,7 @@ function closing(s,type){
 }
 function edition(s){
  s=s.replace(/<article class="entry"[\s\S]*?<\/article>/g,m=>architecture.compose(m,{nodes}));
+ s=s.replace(/(<section class="edition"[^>]*)(>)/,(m,a,b)=>a.replace(/ data-reading-architecture="[^"]*"/g,'')+' data-reading-architecture="7"'+b);
  // Only uncomposed sections are matched; composed colophons contain nested sections.
  for(const type of ['synthesis','knowledge','editorial-note'])s=s.replace(new RegExp('<section class="'+type+'"(?![^>]*data-editorial-folio)[^>]*>[\\s\\S]*?</section>','g'),m=>closing(m,type));
  const date=s.match(/data-edition="([^"]+)"/)?.[1];
@@ -60,7 +61,7 @@ function compose(source){
 // retaining exact paragraph/heading/figure bytes and every original link/ID.
 function readingRecord(s){
  const tree=nodes(s), retained=tree.filter(n=>has(n,'ll-retained-media')).map(n=>inside(s,n)).join('');
- const generated=tree.filter(n=>['reading-exhibit','economic-hinge','essay-graphic','reading-companion-feature','ll-feature-stream','ll-argument'].some(c=>has(n,c))).filter(n=>!tree.some(p=>p.start<n.start&&p.end>n.end&&['reading-exhibit','ll-feature-stream'].some(c=>has(p,c)))).sort((a,b)=>b.start-a.start);
+ const generated=tree.filter(n=>['reading-exhibit','economic-hinge','essay-graphic','reading-companion-feature','ll-feature','ll-feature-stream','ll-argument','ll-source-summary'].some(c=>has(n,c))).filter(n=>!tree.some(p=>p.start<n.start&&p.end>n.end&&['reading-exhibit','ll-feature-stream'].some(c=>has(p,c)))).sort((a,b)=>b.start-a.start);
  let clean=s;for(const n of generated)clean=clean.slice(0,n.start)+clean.slice(n.end);
  clean='<div>'+clean+retained+'</div>';
  const ns=nodes(clean),blocks=ns.filter(n=>['h2','h3','p','figure'].includes(n.tag)).map(n=>raw(clean,n)).sort();

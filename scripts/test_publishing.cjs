@@ -27,7 +27,7 @@ assert.match(ll,/<h1>The Price of a<br><em>Resilient Economy<\/em><\/h1>/);
 assert.match(read('weekly-economics-environment/refinement.css'),/\.hero h1,\.overview-item h3\{font-family:'LM Roman Dunhill'/);
 const folio=read('weekly-economics-environment/reading-folio.css');
 assert.match(read('weekly-economics-environment/refinement.css'),/--headline:'LM Roman Dunhill'/);
-assert.match(folio,/\.entry\[data-editorial-system="6"\] \.reading-title h2\{[^}]*var\(--headline\)/,'reading folio preserves the journal headline font');
+assert.match(folio,/\.reading-title>h2\{[^}]*font-family:var\(--headline\)/,'reading folio preserves the journal headline font');
 // Preparation is reproducible; never silently changes pinned illustration bytes.
 const paths=['personal-updates/issue-mark-archive.js','personal-updates/index.html','weekly-economics-environment/index.html','daily-watchlist-5/artwork-archive.js','daily-watchlist-5/index.html'],snap=paths.map(read);try{cp.execFileSync(process.execPath,['scripts/prepare_periodicals.cjs'],{cwd:root});assert.deepEqual(paths.map(read),snap);}finally{paths.forEach((p,i)=>fs.writeFileSync(root+'/'+p,snap[i]));}
 console.log('Publication integrity, eight question contracts, preserved archive bytes, seven-edition history, repeat penalty/override, diversity defaults, immutable marks, distinct repeated-subject layouts, original Field Study, sequential/deterministic new studies, title hierarchy and idempotent preparation passed.');

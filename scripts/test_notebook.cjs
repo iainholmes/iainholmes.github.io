@@ -51,7 +51,7 @@ for(const date of ['2026-10-02','2026-10-09']){
 }
 const {readingRecord}=require('../weekly-economics-environment/editorial-folio.cjs');
 const journalArticles=new Map([...journal.matchAll(/<article class="entry" id="([^"]+)"[\s\S]*?<\/article>/g)].map(m=>[m[1],m[0]]));
-for(const m of old('weekly-economics-environment/index.html').matchAll(/<article class="entry" id="([^"]+)"[\s\S]*?<\/article>/g))eq(readingRecord(journalArticles.get(m[1])),readingRecord(m[0]),'published article scholarship preserved independently of layout');
+for(const m of old('weekly-economics-environment/index.html').matchAll(/<article class="entry" id="([^"]+)"[\s\S]*?<\/article>/g)){const after=readingRecord(journalArticles.get(m[1])),before=readingRecord(m[0]);const added=new Set(['https://www.epa.gov/system/files/documents/2025-01/2025-02.pdf','https://www.epa.gov/system/files/documents/2026-10/420r26005.pdf']);after.links=after.links.filter(a=>!added.has(a.match(/href="([^"]+)"/)?.[1]));eq(after,before,'published article scholarship preserved independently of layout; only two documented primary design references added');}
 const snapshot=JSON.stringify(input);validate(input);validate(input);eq(JSON.stringify(input),snapshot,'validation is read-only and idempotent');
 for(const date of ['2026-09-25',dates.at(-1)]){const r=copy();delete r.reviews[date];rejected({reviews:r},/missing documented review/);}
 {const r=copy();r.reviews['2026-10-09'].readings.pop();rejected({reviews:r},/all five readings/);}

@@ -13,14 +13,19 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
  for(const r of ed.readings){
   if(seen.has(r.id))throw Error('L&L publication: duplicate reading '+r.id);seen.add(r.id);count++;
   const v=decisions.readings[r.id];if(!v)throw Error('L&L publication: authored editorial review required '+r.id);
+  if(!v.layout?.id||!v.layout.rationale||!v.layout.colorBasis||!v.layout.palette||!v.layout.docking)throw Error('L&L publication: authored spatial composition required '+r.id);
   if(!v.subjects?.length||!v.argument||!v.figureAssessment||!v.modelAssessment||!v.rejected?.length)throw Error('L&L publication: incomplete six-criterion review '+r.id);
+  if(!v.rankedSelection?.length)throw Error('L&L publication: ranked editorial selection required '+r.id);
   const special=v.features.filter(f=>f.type!=='heron');if(special.length<2&&!v.minimumTargetReview?.exception)throw Error('L&L publication: document minimum-target exception '+r.id);
+  const chosen=require('./reading-feature-registry.js').select({candidates:special.map(f=>({id:f.type,authored:true,provenance:f.provenance,assessment:f.assessment,function:f.type,editorialJustification:v.additionalFeatureJustification})),exception:v.minimumTargetReview?.exception});if(chosen.review.length||chosen.rejected.length||chosen.special.length!==special.length)throw Error('L&L publication: feature selection review required '+r.id);
   const html=journal.match(new RegExp('<article class="entry"[^>]*id="'+r.id+'"[\\s\\S]*?<\\/article>'))?.[0];
-  if(!html?.includes('data-editorial-system="6"'))throw Error('L&L publication: legacy reading system '+r.id);
+  if(!html?.includes('data-editorial-system="7"'))throw Error('L&L publication: legacy reading system '+r.id);
   if(compose(html,{nodes})!==html)throw Error('L&L publication: stale authored features '+r.id);
   const ns=nodes(html);
-  for(const cls of ['finding','ll-argument','ll-editorial','research-note','reading-sources','ll-feature-stream'])if(!ns.some(n=>n.classes.includes(cls)))throw Error('L&L publication: missing '+cls+' '+r.id);
+  for(const cls of ['finding','ll-argument','ll-editorial','research-note','reading-sources','ll-reading-shell'])if(!ns.some(n=>n.classes.includes(cls)))throw Error('L&L publication: missing '+cls+' '+r.id);
   const src=ns.find(n=>n.classes.includes('sources'));const links=ns.filter(n=>n.tag==='a'&&n.start>src.open&&n.end<=src.close&&n.attrs.includes('href='));if(!links.length)throw Error('L&L publication: original source register missing '+r.id);sources+=links.length;
+  const reading=ns.find(n=>n.classes.includes('ll-reading')),sourceContainer=ns.find(n=>n.classes.includes('reading-sources'));if(reading.children.at(-1)!==sourceContainer)throw Error('L&L publication: Sources must be final '+r.id);
+  if(!ns.some(n=>n.classes.includes('ll-source-divider'))||!ns.some(n=>n.classes.includes('ll-source-links')))throw Error('L&L publication: Sources finish required '+r.id);
   const actual=ns.filter(n=>n.classes.includes('ll-feature'));
   if(actual.length<special.length)throw Error('L&L publication: missing selected feature '+r.id);
   for(const f of v.features){
@@ -35,6 +40,7 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
  }}
  const articles=[...journal.matchAll(/<article class="entry"/g)].length;if(count!==articles)throw Error('L&L publication: Index and archive counts differ');
  if(/ll-accepted-reading-arrangement|ll-reading-transition-release/.test(journal))throw Error('L&L publication: retired inline layout override');
+ if(!journal.includes('reading-composition.js?v='))throw Error('L&L publication: content-fit renderer required');
  if(!journal.includes('reading-index.js?v='))throw Error('L&L publication: publication-local Index control required');
  const concepts=[...notebook.matchAll(/<article class="concept"/g)].length;if(!concepts)throw Error('L&L publication: cumulative notebook missing');
  return {editions:index.editions.length,readings:count,concepts,sourceLinks:sources,curated:true,features:featureCounts};

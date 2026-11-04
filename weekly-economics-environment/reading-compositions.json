@@ -1,0 +1,80 @@
+{
+  "version": 7,
+  "profiles": {
+    "copper": {
+      "name": "Copper",
+      "accent": "color-mix(in srgb,var(--clay) 82%,var(--pollen))",
+      "dayWash": "#ead2ac",
+      "nightWash": "#2d2217",
+      "basis": "Labor, industrial adjustment and price incidence. Warm bronze rather than pink clay.",
+      "dayStrength": 16,
+      "nightStrength": 28
+    },
+    "forest": {
+      "name": "Forest",
+      "accent": "var(--forest)",
+      "dayWash": "#d9e6ce",
+      "nightWash": "#19291c",
+      "basis": "Physical resources, ecosystem constraints and welfare accounting. A warmer leaf-green field.",
+      "dayStrength": 28,
+      "nightStrength": 32
+    },
+    "estuary": {
+      "name": "Estuary",
+      "accent": "var(--river)",
+      "dayWash": "#d6e7f2",
+      "nightWash": "#132a38",
+      "basis": "Measurement systems, model comparability and interconnected evidence. A cooler blue field.",
+      "dayStrength": 24,
+      "nightStrength": 32
+    },
+    "lichen": {
+      "name": "Lichen",
+      "accent": "color-mix(in srgb,var(--lichen) 70%,var(--forest))",
+      "dayWash": "var(--lichen-wash)",
+      "nightWash": "#1d2718",
+      "basis": "Material inputs, production processes and land or resource efficiency; the existing journal figure wash.",
+      "dayStrength": 42,
+      "nightStrength": 45
+    },
+    "sage": {
+      "name": "Sage",
+      "accent": "color-mix(in srgb,var(--sage) 60%,var(--forest))",
+      "dayWash": "#e0e9df",
+      "nightWash": "#1d2a24",
+      "basis": "Adaptation, behavioral adjustment and responses over time.",
+      "dayStrength": 34,
+      "nightStrength": 34
+    },
+    "pollen": {
+      "name": "Pollen",
+      "accent": "color-mix(in srgb,var(--pollen) 65%,var(--forest))",
+      "dayWash": "#f0e5bf",
+      "nightWash": "#2c2816",
+      "basis": "Thresholds, incentives, decision margins and the option value of waiting.",
+      "dayStrength": 22,
+      "nightStrength": 28
+    },
+    "slate": {
+      "name": "Slate",
+      "accent": "var(--charcoal)",
+      "dayWash": "#dfe4e8",
+      "nightWash": "#20272c",
+      "basis": "Identification, institutional comparison and the separation of an estimand from its estimator.",
+      "dayStrength": 30,
+      "nightStrength": 35
+    },
+    "tidal": {
+      "name": "Tidal",
+      "accent": "var(--river-deep)",
+      "dayWash": "#d1e5df",
+      "nightWash": "#102b2b",
+      "basis": "Networks, shared infrastructure, transmission channels and system interdependence.",
+      "nightAccent": "var(--river)",
+      "dayStrength": 22,
+      "nightStrength": 32
+    }
+  },
+  "selectionRule": "An editor selects one of eight journal-derived color families using the reading's focal economic object, lead graphic or research task, and records a specific rationale. Adjacent readings inform a tie-break between equally suitable choices. The renderer never rotates colors or guesses from keywords.",
+  "inheritanceRule": "The color profile belongs to the reading. Every feature, including detached panels separated by standard sections, inherits the same background and border accent."
+}

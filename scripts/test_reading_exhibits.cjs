@@ -8,7 +8,7 @@ const counts={};for(const [id,v]of Object.entries(arch.decisions.readings)){
  if(f.type==='economic-figures')ok(f.chart&&f.note,'graphical substance and limits '+id);
  }
 }
-ok(counts['estimation-desk']>=10,'substantial mathematical presence');ok(counts['mechanism-map']>=5,'genuine mechanism diagrams');ok(counts['long-view']<10,'no default chronology');ok(new Set(Object.values(arch.decisions.readings).map(v=>v.composition)).size>=5,'content-specific compositions');ok(registry.features.filter(f=>f.group==='special').length===8&&registry.features.filter(f=>f.group==='editorial').length===4,'two distinct editorial categories');
+ok(counts['estimation-desk']>=10,'substantial mathematical presence');ok(counts['mechanism-map']>=5,'genuine mechanism diagrams');ok(Object.values(arch.decisions.readings).every(v=>v.features.filter(f=>f.type==='long-view').every(f=>f.stages.length>=3&&f.stages.every(s=>s.length===3)&&f.rationale&&f.status)),'every chronology has authored horizons and an evidence label');ok(new Set(Object.values(arch.decisions.readings).map(v=>v.layout.id)).size===30,'30 authored reading arrangements');ok(Math.max(...Object.values(counts))-Math.min(...Object.values(counts))<=4,'broadly balanced authored feature coverage without filler');ok(registry.features.filter(f=>f.group==='special').length===8&&registry.features.filter(f=>f.group==='editorial').length===4,'two distinct editorial categories');
 
 const publishedInventory=require('../weekly-economics-environment/editorial-architecture.cjs').inventory(page);
 ok(publishedInventory.entries.find(e=>e.id==='electrification').changeRecord.retained.includes('economic-figures'),'retained original figure is recorded as retained');
