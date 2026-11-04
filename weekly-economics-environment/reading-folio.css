@@ -614,6 +614,7 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 .entry[data-reading-composition] .ll-touching-feature-row .ll-feature-host>.ll-feature{border:0;border-radius:0;background:transparent;box-shadow:none}
 .ll-touching-feature-row::before,.ll-touching-feature-row::after{content:"";position:absolute;z-index:2;top:0;bottom:0;width:4px;pointer-events:none;background:linear-gradient(to bottom,var(--pillar-copper) 0 30px,var(--forest) 30px calc(100% - 30px),var(--pillar-copper) calc(100% - 30px) 100%);opacity:.52}
 .ll-touching-feature-row::before{left:0}.ll-touching-feature-row::after{right:0}
+.ll-quiet-centered{align-self:center}
 .ll-touching-feature-stack{position:relative}
 .ll-touching-feature-stack>.ll-feature-host.ll-join-next{margin-bottom:0!important}
 .ll-touching-feature-stack>.ll-feature-host.ll-join-prev{margin-top:0!important}
