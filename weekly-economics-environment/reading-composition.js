@@ -110,7 +110,7 @@
     const length=overlap*.8,cap=Math.min(73,length*.2),shoulder=cap*.8;
     rules.push({axis,x:axis==='vertical'?cross-fr.left-4:start-fr.left+overlap*.1,y:axis==='vertical'?start-fr.top+overlap*.1:cross-fr.top-4,length,cap,shoulder,overlap,from:features[i].id,to:features[j].id});
    }
-   const old=[...field.querySelectorAll(':scope > .ll-feature-divider')];rules.forEach((r,i)=>{const n=old[i]||document.createElement('span');n.className='ll-feature-divider ll-divider-'+r.axis;n.setAttribute('aria-hidden','true');n.dataset.from=r.from;n.dataset.to=r.to;n.dataset.overlap=String(r.overlap);n.style.cssText='left:'+r.x+'px;top:'+r.y+'px;--divider-length:'+r.length+'px;--divider-cap:'+r.cap+'px;--divider-shoulder:'+r.shoulder+'px';if(!n.parentElement)field.append(n)});old.slice(rules.length).forEach(n=>n.remove());
+   const old=[...field.querySelectorAll(':scope > .ll-feature-divider')];rules.forEach((r,i)=>{const n=old[i]||document.createElement('span');n.className='ll-feature-divider ll-divider-'+r.axis;n.setAttribute('aria-hidden','true');n.dataset.from=r.from;n.dataset.to=r.to;n.dataset.overlap=String(r.overlap);n.style.cssText='left:'+r.x+'px;top:'+r.y+'px;--divider-length:'+r.length+'px;--divider-cap:'+r.cap+'px;--divider-shoulder:'+r.shoulder+'px';if(!n.parentElement){const sources=field.querySelector(':scope > .reading-sources');if(sources)field.insertBefore(n,sources);else field.append(n)}});old.slice(rules.length).forEach(n=>n.remove());
   }
  }
  function fit(a,force=false){
