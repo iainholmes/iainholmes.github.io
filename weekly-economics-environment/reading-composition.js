@@ -161,7 +161,7 @@
    const cap=Math.min(73,span*.2),shoulder=cap*.8;
    rule.style.cssText=(axis==='vertical'?'left:calc(50% - 4px);top:10%;':'left:10%;top:calc(50% - 4px);')+
     '--divider-length:'+(span*.8)+'px;--divider-cap:'+cap+'px;--divider-shoulder:'+shoulder+'px';
-   bridge.append(rule);root.append(bridge);joined++;
+   bridge.append(rule);root.insertBefore(bridge,root.querySelector(':scope > .reading-sources'));joined++;
   }
   a.dataset.offsetFeatureJoins=String(joined);
  }
