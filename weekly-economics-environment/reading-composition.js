@@ -31,6 +31,20 @@
   for(let i=0;i<=6;i++)tryShare(Math.max(low,Math.min(high,center-radius+radius*i/3)));
   region.style.setProperty('--fit-share',best+'fr');region.style.setProperty('--fit-rest',(1-best)+'fr');
  }
+ // The occasional text-light column is vertically recentered rather than
+ // stretched or padded with filler; editorial words and figures are untouched.
+ function alignQuietColumn(region){
+  const columns=[...region.children].filter(visible);
+  for(const col of columns)col.classList.remove('ll-quiet-centered');
+  if(columns.length!==2||getComputedStyle(region).display!=='grid')return;
+  const rects=columns.map(n=>n.getBoundingClientRect());
+  if(Math.abs(rects[0].left-rects[1].left)<10||Math.abs(rects[0].top-rects[1].top)>4)return;
+  const ix=rects[0].height<rects[1].height?0:1,short=columns[ix],tall=columns[1-ix];
+  if(rects[1-ix].height-rects[ix].height<120||rects[ix].height/rects[1-ix].height>.66)return;
+  if(!short.querySelector('.ll-editorial,.ll-opening')||short.querySelector('.ll-feature,.research-note,.perch'))return;
+  if(!tall.querySelector('.ll-feature'))return;
+  short.classList.add('ll-quiet-centered');
+ }
  function layoutCost(a){let empty=0;for(const r of a.querySelectorAll(regions)){
   const c=[...r.children].filter(visible);if(c.length!==2)continue;const x=c[0].getBoundingClientRect(),y=c[1].getBoundingClientRect();
   if(Math.abs(x.top-y.top)<4&&Math.abs(x.left-y.left)>10)empty+=Math.abs(x.height-y.height);
@@ -49,7 +63,7 @@
  // notebook, source and Heron elements remain explicit physical boundaries.
  const nonFeatures='.ll-editorial,.ll-interpretation,.ll-opening,.ll-evidence-destination,.ll-notebook-unit,.research-note,.perch,.ll-standard-break,.reading-sources';
  const featureOnly=n=>!!n?.querySelector('.ll-feature')&&!n.querySelector(nonFeatures);
- const isHost=n=>n?.classList.contains('ll-feature-host')&&featureOnly(n);
+ const isHost=n=>(n?.classList.contains('ll-feature-host')||n?.classList.contains('ll-shared-field'))&&featureOnly(n);
  function refreshFeatureJoins(a){
   a.querySelectorAll('.ll-arranged-row').forEach(row=>{
    const cols=[...row.children].filter(n=>n.nodeType===1&&!n.classList.contains('ll-feature-divider'));
@@ -70,8 +84,18 @@
  function updateDividers(a){
   const rect=n=>n.getBoundingClientRect(),intersects=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1;
   for(const field of a.querySelectorAll('.ll-shared-field,.ll-coal-featuregroup,.ll-moves-featuregroup,.ll-touching-feature-row,.ll-touching-feature-stack')){
-   const fr=rect(field),features=[...field.querySelectorAll('.ll-feature')].filter(n=>visible(n)&&(!field.classList.contains('ll-touching-feature-stack')||n.closest('.ll-feature-host')?.parentElement===field)),standards=[...field.querySelectorAll('.ll-editorial,.ll-notebook-unit,.ll-interpretation,.ll-opening')].filter(n=>visible(n)&&!n.closest('.ll-feature')).map(rect),rules=[];
+   const stackUnit=n=>{let p=n;while(p?.parentElement&&p.parentElement!==field)p=p.parentElement;return p?.parentElement===field?p:null;};
+   const features=[...field.querySelectorAll('.ll-feature')].filter(n=>{
+    if(!visible(n))return false;
+    if(!field.classList.contains('ll-touching-feature-stack'))return true;
+    const unit=stackUnit(n);return !!unit&&(unit.classList.contains('ll-join-prev')||unit.classList.contains('ll-join-next'));
+   });
+   const fr=rect(field),standards=[...field.querySelectorAll('.ll-editorial,.ll-notebook-unit,.ll-interpretation,.ll-opening')].filter(n=>visible(n)&&!n.closest('.ll-feature')).map(rect),rules=[];
    for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){
+    if(field.classList.contains('ll-touching-feature-stack')){
+     const x=stackUnit(features[i]),y=stackUnit(features[j]);
+     if(x===y||x?.nextElementSibling!==y&&y?.nextElementSibling!==x)continue;
+    }
     const ar=rect(features[i]),br=rect(features[j]);let one=ar,two=br,axis=null,overlap=0,start=0,cross=0,strip;
     if(Math.max(ar.top,br.top)<Math.min(ar.bottom,br.bottom)-80&&(ar.right<=br.left+2||br.right<=ar.left+2)){
      if(ar.left>br.left){one=br;two=ar;}const gap=two.left-one.right;if(gap>70)continue;
@@ -102,6 +126,7 @@
   const n=dock(a,note,plan.note);if(n)moves.push(n);
   const h=dock(a,heron,plan.heron);if(h)moves.push(h);
   a.querySelectorAll(regions).forEach(balance);
+  a.querySelectorAll(regions).forEach(alignQuietColumn);
   refreshFeatureJoins(a);updateDividers(a);
   const previous=reports.get(a.id),initial=previous&&previous.width===a.clientWidth?Math.max(previous.initialHeight,before):before;
   reports.set(a.id,{id:a.id,width:a.clientWidth,initialHeight:initial,heightBefore:before,heightAfter:articleHeight(a),heightSaved:initial-articleHeight(a),moves,
