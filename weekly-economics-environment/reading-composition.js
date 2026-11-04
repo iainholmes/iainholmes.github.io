@@ -12,7 +12,7 @@
  const articleHeight=a=>a.getBoundingClientRect().height;
  function balance(region){
   const cs=getComputedStyle(region);if(cs.display!=='grid')return;
-  const children=[...region.children].filter(visible);if(children.length!==2)return;
+  const children=[...region.children].filter(n=>visible(n)&&!n.classList.contains('ll-feature-divider'));if(children.length!==2)return;
   const [a,b]=children,ar=a.getBoundingClientRect(),br=b.getBoundingClientRect();
   if(Math.abs(ar.top-br.top)>4||Math.abs(ar.left-br.left)<10)return;
   const width=region.clientWidth,minimum=parseFloat(getComputedStyle(region).fontSize)*16;
@@ -34,7 +34,7 @@
  // The occasional text-light column is vertically recentered rather than
  // stretched or padded with filler; editorial words and figures are untouched.
  function alignQuietColumn(region){
-  const columns=[...region.children].filter(visible);
+  const columns=[...region.children].filter(n=>visible(n)&&!n.classList.contains('ll-feature-divider'));
   for(const col of columns)col.classList.remove('ll-quiet-centered');
   if(columns.length!==2||getComputedStyle(region).display!=='grid')return;
   const rects=columns.map(n=>n.getBoundingClientRect());
@@ -46,7 +46,7 @@
   short.classList.add('ll-quiet-centered');
  }
  function layoutCost(a){let empty=0;for(const r of a.querySelectorAll(regions)){
-  const c=[...r.children].filter(visible);if(c.length!==2)continue;const x=c[0].getBoundingClientRect(),y=c[1].getBoundingClientRect();
+  const c=[...r.children].filter(n=>visible(n)&&!n.classList.contains('ll-feature-divider'));if(c.length!==2)continue;const x=c[0].getBoundingClientRect(),y=c[1].getBoundingClientRect();
   if(Math.abs(x.top-y.top)<4&&Math.abs(x.left-y.left)>10)empty+=Math.abs(x.height-y.height);
  }const plate=a.querySelector('.ll-paper-plate'),design=a.querySelector('.ll-paper-design');if(visible(plate)&&visible(design)&&getComputedStyle(plate).float==='right')empty+=Math.max(0,plate.getBoundingClientRect().bottom-design.getBoundingClientRect().bottom);return articleHeight(a)+empty*.1;}
  function dock(a,node,selectors){
