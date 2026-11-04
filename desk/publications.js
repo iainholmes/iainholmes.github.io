@@ -23,10 +23,13 @@
     if(art.date!==e.date||art.key!==spec.key||!/^\d+$/.test(String(art.no))||!safeCover(art.frozen))throw Error('Incomplete published artwork');
     if(id==='field-brief'&&(!e.issueTitle||e.stories?.length!==5))throw Error('Incomplete briefing');
     if(id==='workbook'&&(!e.questions?.length||Number(e.no)!==Number(art.no)))throw Error('Incomplete set');
-    const title=id==='field-brief'?e.issueTitle:id==='workbook'?(e.title||art.phrase):e.title;
+    const title=plain(art.phrase);
+    const official=plain(id==='field-brief'?e.issueTitle:e.title);
+    const headline=official.toLocaleLowerCase()!==title.toLocaleLowerCase()?official:'';
+    const facts=id==='field-brief'?`${e.stories.length} developments · ${e.readTime||''}`:id==='workbook'?`${e.questions.length} questions · ${new Set(e.questions.map(q=>q.field)).size} fields · ${e.minutes||''} min`:'';
     if(!title)throw Error('Missing publication title');
     return {id,date:e.date,dateLabel:label(e.date),number:String(art.no).padStart(3,'0'),title:plain(title),
-      detail:id==='field-brief'?`${e.stories.length} developments · ${e.readTime||''}`:id==='workbook'?`${e.questions.length} questions · ${new Set(e.questions.map(q=>q.field)).size} fields · ${e.minutes||''} min`:art.phrase||'',
+      detail:[headline,facts].filter(Boolean).join(' · '),
       artwork:art.frozen,url:'https://iainholmes.github.io'+spec.path+'#'+(id==='loblolly'?'edition-':'')+e.date};
   }
   function weekendAt(now){const date=dayAt(now);const d=new Date(date+'T12:00:00Z');const weekday=d.getUTCDay();d.setUTCDate(d.getUTCDate()+(weekday===0?-1:6-weekday));return d.toISOString().slice(0,10);}
