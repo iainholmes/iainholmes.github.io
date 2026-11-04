@@ -438,7 +438,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 @container ll-reading (max-width:850px){.ll-paper-close{display:flex;flex-direction:column}.ll-paper-close>.ll-evidence-destination{order:0}.ll-paper-notebook{order:1}}
 
 /* Explanation is part of the feature, with readable definitions and no faded text. */
-.entry[data-reading-composition]{--interior-rule-inset:10%;--interior-rule-length:80%;--interior-rule-width:8px;--interior-rule-cap:73px;--interior-rule-shoulder:59px;--interior-rule-opacity:.38;--feature-rule:color-mix(in srgb,var(--feature-accent) 28%,var(--paper))}
+.entry[data-reading-composition]{--interior-rule-inset:10%;--interior-rule-length:80%;--interior-rule-width:8px;--interior-rule-cap:73px;--interior-rule-shoulder:59px;--interior-rule-opacity:.49;--feature-rule:color-mix(in srgb,var(--feature-accent) 28%,var(--paper))}
 .entry[data-reading-composition] .ll-feature h5{font-size:17px}
 .entry[data-reading-composition] .ll-reading-key{margin:0 0 24px;max-width:none}
 .entry[data-reading-composition] .ll-reading-key h5{font:600 19px/1.35 var(--serif);margin:0 0 8px}
@@ -624,3 +624,165 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 .ll-touching-feature-stack>.ll-shared-field.ll-join-prev{margin-top:0!important;border-top-left-radius:0;border-top-right-radius:0}
 @container ll-reading (max-width:850px){.ll-touching-feature-row{grid-template-columns:minmax(0,1fr);gap:0!important}}
 @media(prefers-reduced-motion:reduce){.ll-reading-index{transition:none;transform:none}}
+
+
+/* 2026-11-04 | Staggered feature-edge connections.
+   Bridges are absolute decoration within the reading; they never change
+   columns, widths, authored margins, panel positions or text flow. */
+.entry[data-reading-composition] .ll-reading{position:relative}
+.ll-feature-bridge{position:absolute;display:block;pointer-events:none;z-index:2;box-sizing:border-box;background:var(--feature-wash)}
+.ll-feature-bridge.ll-bridge-vertical{border-top:1px solid color-mix(in srgb,var(--feature-accent) 28%,transparent);border-bottom:1px solid color-mix(in srgb,var(--feature-accent) 28%,transparent)}
+.ll-feature-bridge.ll-bridge-horizontal{border-left:1px solid color-mix(in srgb,var(--feature-accent) 28%,transparent);border-right:1px solid color-mix(in srgb,var(--feature-accent) 28%,transparent)}
+.ll-feature-bridge>.ll-feature-divider{display:block;position:absolute;pointer-events:none;opacity:.83}
+
+/* 2026-11-04 | Restored Special Feature identities. Each analytical family
+   has its own color, graphic grammar and interior emphasis, while the shared
+   outer architectural field and content-driven placement remain untouched. */
+.entry[data-reading-composition] .ll-incidence-ledger{--special-primary:var(--clay);--special-secondary:var(--forest);--special-tint:color-mix(in srgb,var(--clay) 12%,var(--paper))}
+.entry[data-reading-composition] .ll-long-view{--special-primary:var(--river);--special-secondary:var(--clay);--special-tint:color-mix(in srgb,var(--river) 12%,var(--paper))}
+.entry[data-reading-composition] .ll-decision-margin{--special-primary:var(--forest);--special-secondary:var(--clay);--special-tint:color-mix(in srgb,var(--forest) 10%,var(--paper))}
+.entry[data-reading-composition] .ll-assumption-test{--special-primary:var(--clay);--special-secondary:var(--river);--special-tint:color-mix(in srgb,var(--clay) 12%,var(--paper))}
+.entry[data-reading-composition] .ll-estimation-desk{--special-primary:var(--forest);--special-secondary:var(--clay);--special-tint:color-mix(in srgb,var(--forest) 11%,var(--paper))}
+.entry[data-reading-composition] .ll-mechanism-map{--special-primary:var(--river);--special-secondary:var(--clay);--special-tint:color-mix(in srgb,var(--river) 11%,var(--paper))}
+.entry[data-reading-composition] .ll-economic-figures{--special-primary:var(--forest);--special-secondary:var(--river);--special-tint:color-mix(in srgb,var(--river) 9%,var(--paper))}
+.entry[data-reading-composition] .ll-feature .ll-feature-category h3{color:var(--special-primary,var(--ink))}
+.entry[data-reading-composition] .ll-feature .ll-feature-no{
+ color:var(--special-primary,var(--forest));
+ background:color-mix(in srgb,var(--special-primary,var(--forest)) 13%,var(--paper));
+ border-radius:50%;box-shadow:0 0 0 4px color-mix(in srgb,var(--special-primary,var(--forest)) 9%,transparent)}
+.entry[data-reading-composition] .ll-feature .ll-feature-head{position:relative}
+.entry[data-reading-composition] .ll-feature .ll-feature-head::after{
+ content:"";position:absolute;left:0;right:20%;bottom:-9px;height:3px;
+ background:linear-gradient(90deg,var(--special-secondary,var(--clay)) 0 19%,var(--special-primary,var(--forest)) 19% 100%);
+ opacity:.66;pointer-events:none;border-radius:2px}
+.entry[data-reading-composition] .ll-feature .ll-evidence-label{
+ color:var(--special-primary,var(--ink));background:linear-gradient(90deg,var(--special-tint,var(--paper)),transparent 92%);
+ box-shadow:inset 3px 0 var(--special-secondary,var(--clay))}
+.entry[data-reading-composition] .ll-feature .ll-reading-key{
+ background:linear-gradient(120deg,var(--special-tint,var(--paper)),transparent 88%);
+ box-shadow:inset 3px 0 var(--special-secondary,var(--clay))}
+.entry[data-reading-composition] .ll-feature .ll-reading-key h5{color:var(--special-primary,var(--ink))}
+.entry[data-reading-composition] .ll-feature .ll-feature-source a{color:var(--special-primary,var(--forest))}
+
+/* The Incidence Ledger: chromatic accounting for three differently exposed parties. */
+.entry[data-reading-composition] .ll-incidence-ledger .ll-ledger{
+ border-top:2px solid var(--clay);border-bottom:1px solid color-mix(in srgb,var(--forest) 40%,var(--hair))}
+.entry[data-reading-composition] .ll-incidence-ledger .ll-ledger li{
+ background:color-mix(in srgb,var(--clay) 10%,var(--paper));
+ box-shadow:inset 0 3px color-mix(in srgb,var(--clay) 60%,transparent)}
+.entry[data-reading-composition] .ll-incidence-ledger .ll-ledger li:nth-child(2){
+ background:color-mix(in srgb,var(--forest) 9%,var(--paper));
+ box-shadow:inset 0 3px color-mix(in srgb,var(--forest) 60%,transparent)}
+.entry[data-reading-composition] .ll-incidence-ledger .ll-ledger li:nth-child(3){
+ background:color-mix(in srgb,var(--river) 9%,var(--paper));
+ box-shadow:inset 0 3px color-mix(in srgb,var(--river) 60%,transparent)}
+.entry[data-reading-composition] .ll-incidence-ledger .ll-ledger .ll-number{color:var(--clay)}
+.entry[data-reading-composition] .ll-incidence-ledger .ll-ledger li:nth-child(2) .ll-number{color:var(--forest)}
+.entry[data-reading-composition] .ll-incidence-ledger .ll-ledger li:nth-child(3) .ll-number{color:var(--river)}
+
+/* The Long View: a visually continuous time axis with different temporal stations. */
+.entry[data-reading-composition] .ll-long-view .ll-timeline li{
+ background:linear-gradient(180deg,color-mix(in srgb,var(--river) 13%,var(--paper)),transparent 84%);
+ box-shadow:inset 0 2px var(--river)}
+.entry[data-reading-composition] .ll-long-view .ll-timeline li:nth-child(even){
+ background:linear-gradient(180deg,color-mix(in srgb,var(--clay) 11%,var(--paper)),transparent 84%);
+ box-shadow:inset 0 2px var(--clay)}
+.entry[data-reading-composition] .ll-long-view .ll-timeline .ll-number{color:var(--clay)}
+.entry[data-reading-composition] .ll-long-view .ll-timeline li::before{background:var(--paper);border-color:var(--river)}
+.entry[data-reading-composition] .ll-long-view .ll-timeline li:nth-child(even)::before{border-color:var(--clay)}
+
+/* The Decision Margin: two visibly different alternatives and a decisive criterion. */
+.entry[data-reading-composition] .ll-decision-margin .ll-question{
+ background:linear-gradient(90deg,color-mix(in srgb,var(--clay) 11%,var(--paper)),transparent)}
+.entry[data-reading-composition] .ll-decision-margin .ll-choices section{
+ background:color-mix(in srgb,var(--forest) 12%,var(--paper));
+ box-shadow:inset 0 4px var(--forest)}
+.entry[data-reading-composition] .ll-decision-margin .ll-choices section+section{
+ background:color-mix(in srgb,var(--clay) 12%,var(--paper));
+ box-shadow:inset 0 4px var(--clay)}
+.entry[data-reading-composition] .ll-decision-margin .ll-choices .ll-number{color:var(--forest);opacity:1}
+.entry[data-reading-composition] .ll-decision-margin .ll-choices section+section .ll-number{color:var(--clay)}
+.entry[data-reading-composition] .ll-decision-margin .ll-decision-rule{
+ background:linear-gradient(90deg,color-mix(in srgb,var(--forest) 8%,var(--paper)),transparent 92%);
+ box-shadow:inset 0 2px var(--forest)}
+
+/* The Assumption Test: a four-stage diagnostic, not a plain prose panel. */
+.entry[data-reading-composition] .ll-assumption-test .ll-test-premise{
+ background:linear-gradient(100deg,color-mix(in srgb,var(--clay) 15%,var(--paper)),transparent);
+ box-shadow:inset 0 -3px color-mix(in srgb,var(--clay) 62%,transparent)}
+.entry[data-reading-composition] .ll-assumption-test .ll-test-grid section{
+ background:linear-gradient(140deg,color-mix(in srgb,var(--river) 12%,var(--paper)),transparent 90%);
+ box-shadow:inset 0 3px var(--river)}
+.entry[data-reading-composition] .ll-assumption-test .ll-test-grid section+section{
+ background:linear-gradient(140deg,color-mix(in srgb,var(--clay) 12%,var(--paper)),transparent 90%);
+ box-shadow:inset 0 3px var(--clay)}
+.entry[data-reading-composition] .ll-assumption-test .ll-test-verdict{
+ background:linear-gradient(100deg,color-mix(in srgb,var(--forest) 14%,var(--paper)),transparent 88%);
+ box-shadow:inset 0 3px var(--forest)}
+.entry[data-reading-composition] .ll-assumption-test .ll-test-premise .ll-label{color:var(--clay)}
+.entry[data-reading-composition] .ll-assumption-test .ll-test-grid section .ll-label{color:var(--river)}
+.entry[data-reading-composition] .ll-assumption-test .ll-test-grid section+section .ll-label{color:var(--clay)}
+.entry[data-reading-composition] .ll-assumption-test .ll-test-verdict .ll-label{color:var(--forest)}
+
+/* The Estimation Desk: model plate, notation dictionary, identification boundary. */
+.entry[data-reading-composition] .ll-estimation-desk .ll-equation{
+ background:linear-gradient(135deg,color-mix(in srgb,var(--forest) 13%,var(--paper)),color-mix(in srgb,var(--clay) 8%,var(--paper)));
+ box-shadow:inset 0 3px var(--forest),inset 0 -2px color-mix(in srgb,var(--clay) 65%,transparent)}
+.entry[data-reading-composition] .ll-estimation-desk .ll-terms>div{
+ background:linear-gradient(90deg,color-mix(in srgb,var(--forest) 9%,var(--paper)),transparent);
+ border-left-color:var(--forest)}
+.entry[data-reading-composition] .ll-estimation-desk .ll-terms>div:nth-child(even){
+ background:linear-gradient(90deg,color-mix(in srgb,var(--clay) 11%,var(--paper)),transparent);
+ border-left-color:var(--clay)}
+.entry[data-reading-composition] .ll-estimation-desk .ll-estimand{
+ background:linear-gradient(95deg,color-mix(in srgb,var(--forest) 11%,var(--paper)),transparent 92%)}
+.entry[data-reading-composition] .ll-estimation-desk .ll-identification{
+ background:linear-gradient(95deg,color-mix(in srgb,var(--clay) 12%,var(--paper)),transparent 92%);
+ box-shadow:inset 4px 0 var(--clay)}
+
+/* The Mechanism Map: genuinely distinct, color-coded causal transmission nodes. */
+.entry[data-reading-composition] .ll-mechanism-map .ll-node{
+ border-color:var(--river);background:color-mix(in srgb,var(--river) 17%,var(--paper));
+ box-shadow:inset 0 4px color-mix(in srgb,var(--river) 70%,transparent)}
+.entry[data-reading-composition] .ll-mechanism-map .ll-node:nth-child(4n + 3){
+ border-color:var(--forest);background:color-mix(in srgb,var(--forest) 14%,var(--paper));
+ box-shadow:inset 0 4px color-mix(in srgb,var(--forest) 70%,transparent)}
+.entry[data-reading-composition] .ll-mechanism-map .ll-node:nth-child(4n + 1):not(:first-child){
+ border-color:var(--clay);background:color-mix(in srgb,var(--clay) 14%,var(--paper));
+ box-shadow:inset 0 4px color-mix(in srgb,var(--clay) 70%,transparent)}
+.entry[data-reading-composition] .ll-mechanism-map .ll-node span{color:var(--river)}
+.entry[data-reading-composition] .ll-mechanism-map .ll-node:nth-child(4n + 3) span{color:var(--forest)}
+.entry[data-reading-composition] .ll-mechanism-map .ll-node:nth-child(4n + 1):not(:first-child) span{color:var(--clay)}
+.entry[data-reading-composition] .ll-mechanism-map .ll-edge span{color:var(--clay);font-weight:650}
+.entry[data-reading-composition] .ll-mechanism-map .ll-edge path{stroke:var(--clay);stroke-dasharray:5 3}
+
+/* Economic Figures: a chromatic data plate, without changing sourced quantities. */
+.entry[data-reading-composition] .ll-economic-figures .ll-figure{
+ background:linear-gradient(120deg,color-mix(in srgb,var(--river) 11%,var(--paper)),color-mix(in srgb,var(--clay) 5%,var(--paper)))}
+.entry[data-reading-composition] .ll-economic-figures .ll-data-track{
+ background-color:color-mix(in srgb,var(--forest) 7%,var(--paper))}
+.entry[data-reading-composition] .ll-economic-figures .ll-data-band{
+ box-shadow:inset 0 -3px color-mix(in srgb,var(--paper) 25%,transparent)}
+.entry[data-reading-composition] .ll-economic-figures .ll-figure figcaption{border-top-color:var(--river)}
+
+/* The Heron retains its own restrained methodological identity and remains
+   an optional companion rather than another enclosing reading panel. */
+.entry[data-reading-composition] .heron-perch,
+.entry[data-reading-composition] .heron-panel{
+ --special-primary:var(--clay);
+ background-image:linear-gradient(100deg,color-mix(in srgb,var(--clay) 8%,transparent),transparent 75%)}
+
+/* Two short copper/forest lines above every Sources register, not one long rule. */
+.entry[data-reading-composition] .ll-source-divider{width:108px;max-width:45%;height:14px}
+.entry[data-reading-composition] .ll-source-divider::before{
+ left:0;right:0;top:2px;height:2px;background:var(--clay)}
+.entry[data-reading-composition] .ll-source-divider::after{
+ left:17%;right:17%;top:10px;height:2px;background:var(--forest)}
+
+/* Horizontal divider only: a 5px paper-wash breathing strip on either side
+   of the eight-pixel rail. The rail stays centered at the same coordinates;
+   neither panel nor its text is displaced. Vertical rules remain unchanged. */
+.entry[data-reading-composition] .ll-feature-divider.ll-divider-horizontal{
+ border-top:5px solid var(--feature-wash);border-bottom:5px solid var(--feature-wash);
+ box-sizing:content-box;transform:translateY(-5px);
+}
