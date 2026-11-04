@@ -1609,5 +1609,52 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 038: Intelligence / commitments &amp; use\"><title>Field Brief · 038 · Intelligence / commitments &amp; use</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"#8a2a36\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M5 10H40V90H5ZM60 10H95V90H60Z\" fill=\"#221a14\"/><path d=\"M40 32H60M40 68H60\" stroke=\"#8a2a36\" stroke-width=\"10\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 038 / 2026-11-03</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Intelligence / commitments &amp; use</text></g></svg>"
+  },
+  "fb:2026-11-04": {
+    "key": "fb",
+    "date": "2026-11-04",
+    "no": "039",
+    "identity": "Field Brief",
+    "theme": "change",
+    "framing": "Democrats win both chambers of Congress, while North Carolina’s state House also changes hands in unofficial returns. Tencent tests training-data limits for an open model, California adopts long-horizon insurer supervision, and new labor data show more vacancies with fewer layoffs. Five outcomes, different implementation tests These developments do not form one policy trend. The election results change formal authority; Tencent’s safeguards remain company-tested claims; California’s rule creates a supervisory process; and JOLTS measures labor-market flows rather than future hiring. The next evidence is correspondingly different: certified margins and chamber organization, independent model evaluations, insurer filings and supervisory action, and the October payroll and turnover releases.",
+    "version": 6,
+    "subject": "risk",
+    "composition": "spread-unequal-dialogue-exposure-gradient-staffed-bench",
+    "signature": "issue:spread-unequal-dialogue-exposure-gradient-staffed-bench",
+    "phrase": "Congressional / productive capacity",
+    "seed": 3400494669,
+    "geometry": "<g transform=\"translate(65 115) scale(3.15)\"><path d=\"M8 90L50 8L92 90Z\" fill=\"$ink\"/><path d=\"M25 72H75M35 53H65\" stroke=\"$paper\" stroke-width=\"6\"/><circle cx=\"80\" cy=\"20\" r=\"11\" fill=\"$accent\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"$ink\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"$accent\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"$support\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "03"
+        ],
+        "score": 13
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 12
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "02"
+        ],
+        "score": 3
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 38,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 039: Congressional / productive capacity\"><title>Field Brief · 039 · Congressional / productive capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M8 90L50 8L92 90Z\" fill=\"#221a14\"/><path d=\"M25 72H75M35 53H65\" stroke=\"#f1e6d0\" stroke-width=\"6\"/><circle cx=\"80\" cy=\"20\" r=\"11\" fill=\"#8a2a36\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 039 / 2026-11-04</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Congressional / productive capacity</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
