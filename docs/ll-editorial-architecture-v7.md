@@ -38,7 +38,8 @@ anchors, artwork and site-wide navigation. Layout is publication-specific.
   typographic system. Notebook and Heron placement can adapt; Sources always come last.
 - Each reading owns one subtle background profile. Shared and detached feature fields
   keep that identity. Rounded, feathered edges do not replace the architectural frame.
-- Internal dividers only separate Special Features inside shared fields. They are
+- Adjacent Special Features join physically into one continuous analytical field, even across individually authored rows or vertically adjacent feature-only groups. Standard editorial, notebook, source and Heron elements are hard boundaries: never bridge them. A short editorial text column may be centered vertically when the opposing analytical figure is substantially taller; do not insert filler or change prose.
+- Internal dividers only separate genuinely adjacent Special Features inside joined fields. They are
   miniature outer pillars, with copper tips tapering into green stems, at reduced
   opacity. Vertical and horizontal versions occupy the centered 80% of the actual
   shared boundary. The runtime excludes standard elements and other intervening
@@ -54,6 +55,8 @@ anchors, artwork and site-wide navigation. Layout is publication-specific.
 - Sources use horizontal references where space permits, a copper-underlined reading
   descriptor and a short copper/forest double rule. This is distinct from the full
   separator between readings.
+
+The Reading Index opens as a centered, viewport-fitted modal, not a right-hand drawer; preserve its search, archive, subject and feature views. The Reading Field Guide reuses the publication's copper-tipped framing and three-line reading motif, with a separate visual identity for Special Feature specimens. Every Special Feature reader guide must be reading-specific, source-qualified, and synchronized with the published feature inventory; the ordinary Editorial Sections are not rewritten by this rule.
 
 `reading-folio.css` owns the reading/Index design; do not append inline overrides.
 `reading-composition.js` measures joins and content fit. The Field Guide explains the
