@@ -58,7 +58,7 @@ if(process.env.LL_QA_SHOTS_DIR){
  for(const shot of [{name:'macbook-1440',width:1440,height:1000},{name:'mobile-390',width:390,height:844}]){
   await page.setViewportSize({width:shot.width,height:shot.height});
   await page.goto(cfg.origin+'/weekly-economics-environment/#edition-2026-10-30',{waitUntil:'networkidle'});
-  const target=page.locator('#2026-10-30-household-climate .ll-household-policy-robustness');
+  const target=page.locator('[id="2026-10-30-household-climate"] .ll-household-policy-robustness');
   await target.waitFor({state:'visible'});
   await target.screenshot({path:process.env.LL_QA_SHOTS_DIR+'/ll-household-'+shot.name+'.png',animations:'disabled'});
  }
