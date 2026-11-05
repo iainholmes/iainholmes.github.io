@@ -67,7 +67,7 @@
  function refreshFeatureJoins(a){
   a.querySelectorAll('.ll-arranged-row').forEach(row=>{
    const cols=[...row.children].filter(n=>n.nodeType===1&&!n.classList.contains('ll-feature-divider'));
-   row.classList.toggle('ll-touching-feature-row',cols.length===2&&cols.every(featureOnly)&&!row.closest('.ll-shared-field'));
+   row.classList.toggle('ll-touching-feature-row',cols.length===2&&cols.every(featureOnly));
   });
   for(const parent of [a.querySelector('.ll-reading'),...a.querySelectorAll('.ll-arranged-row>div,.ll-authored-inset,.ll-shared-field')].filter(Boolean)){
    const children=[...parent.children];
@@ -83,87 +83,29 @@
  }
  function updateDividers(a){
   const rect=n=>n.getBoundingClientRect(),intersects=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1;
-  for(const field of a.querySelectorAll('.ll-shared-field,.ll-coal-featuregroup,.ll-moves-featuregroup,.ll-touching-feature-row,.ll-touching-feature-stack')){
-   const stackUnit=n=>{let p=n;while(p?.parentElement&&p.parentElement!==field)p=p.parentElement;return p?.parentElement===field?p:null;};
-   const features=[...field.querySelectorAll('.ll-feature')].filter(n=>{
-    if(!visible(n))return false;
-    if(!field.classList.contains('ll-touching-feature-stack'))return true;
-    const unit=stackUnit(n);return !!unit&&(unit.classList.contains('ll-join-prev')||unit.classList.contains('ll-join-next'));
-   });
+  for(const field of a.querySelectorAll('.ll-reading')){
+   const features=[...field.querySelectorAll('.ll-feature')].filter(visible);
+   for(const f of features)f.classList.remove('ll-contact-top','ll-contact-bottom','ll-contact-left','ll-contact-right');
    const fr=rect(field),standards=[...field.querySelectorAll('.ll-editorial,.ll-notebook-unit,.ll-interpretation,.ll-opening')].filter(n=>visible(n)&&!n.closest('.ll-feature')).map(rect),rules=[];
    for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){
-    if(field.classList.contains('ll-touching-feature-stack')){
-     const x=stackUnit(features[i]),y=stackUnit(features[j]);
-     if(x===y||x?.nextElementSibling!==y&&y?.nextElementSibling!==x)continue;
-    }
     const ar=rect(features[i]),br=rect(features[j]);let one=ar,two=br,axis=null,overlap=0,start=0,cross=0,strip;
     if(Math.max(ar.top,br.top)<Math.min(ar.bottom,br.bottom)-80&&(ar.right<=br.left+2||br.right<=ar.left+2)){
-     if(ar.left>br.left){one=br;two=ar;}const gap=two.left-one.right;if(gap>70)continue;
+     if(ar.left>br.left){one=br;two=ar;}const gap=two.left-one.right;if(Math.abs(gap)>1)continue;
      axis='vertical';start=Math.max(one.top,two.top);overlap=Math.min(one.bottom,two.bottom)-start;cross=(one.right+two.left)/2;
      strip={left:cross-4,right:cross+4,top:start,bottom:start+overlap};
     }else if(Math.max(ar.left,br.left)<Math.min(ar.right,br.right)-100&&(ar.bottom<=br.top+2||br.bottom<=ar.top+2)){
-     if(ar.top>br.top){one=br;two=ar;}const gap=two.top-one.bottom;if(gap>80)continue;
+     if(ar.top>br.top){one=br;two=ar;}const gap=two.top-one.bottom;if(Math.abs(gap)>1)continue;
      axis='horizontal';start=Math.max(one.left,two.left);overlap=Math.min(one.right,two.right)-start;cross=(one.bottom+two.top)/2;
      strip={top:cross-4,bottom:cross+4,left:start,right:start+overlap};
     }
     if(!axis||standards.some(r=>intersects(r,strip))||features.some((n,k)=>k!==i&&k!==j&&intersects(rect(n),strip)))continue;
+    if(axis==='vertical'){const left=ar.left<br.left?features[i]:features[j],right=left===features[i]?features[j]:features[i];left.classList.add('ll-contact-right');right.classList.add('ll-contact-left');}
+    else{const top=ar.top<br.top?features[i]:features[j],bottom=top===features[i]?features[j]:features[i];top.classList.add('ll-contact-bottom');bottom.classList.add('ll-contact-top');}
     const length=overlap*.8,cap=Math.min(73,length*.2),shoulder=cap*.8;
     rules.push({axis,x:axis==='vertical'?cross-fr.left-4:start-fr.left+overlap*.1,y:axis==='vertical'?start-fr.top+overlap*.1:cross-fr.top-4,length,cap,shoulder,overlap,from:features[i].id,to:features[j].id});
    }
    const old=[...field.querySelectorAll(':scope > .ll-feature-divider')];rules.forEach((r,i)=>{const n=old[i]||document.createElement('span');n.className='ll-feature-divider ll-divider-'+r.axis;n.setAttribute('aria-hidden','true');n.dataset.from=r.from;n.dataset.to=r.to;n.dataset.overlap=String(r.overlap);n.style.cssText='left:'+r.x+'px;top:'+r.y+'px;--divider-length:'+r.length+'px;--divider-cap:'+r.cap+'px;--divider-shoulder:'+r.shoulder+'px';if(!n.parentElement){const sources=field.querySelector(':scope > .reading-sources');if(sources)field.insertBefore(n,sources);else field.append(n)}});old.slice(rules.length).forEach(n=>n.remove());
   }
- }
-
- // Connect edges across authored containers without moving a single feature.
- // Unlike sibling-only joins, this uses the actual overlap of displaced edges.
- function bridgeOffsetFeatures(a){
-  const root=a.querySelector('.ll-reading');if(!root)return;
-  root.querySelectorAll('.ll-feature-bridge').forEach(n=>n.remove());
-  const rect=n=>n.getBoundingClientRect(),intersects=(x,y,pad=2)=>x.left<y.right-pad&&x.right>y.left+pad&&x.top<y.bottom-pad&&x.bottom>y.top+pad;
-  const features=[...root.querySelectorAll('.ll-feature')].filter(visible);
-  const blockers=[...root.querySelectorAll('.ll-editorial,.ll-interpretation,.ll-opening,.ll-evidence-destination,.ll-notebook-unit,.research-note,.perch,.heron-panel,.ll-standard-break,.reading-sources,.ll-argument')]
-   .filter(n=>visible(n)&&!n.closest('.ll-feature')).map(rect);
-  const existing=new Set([...root.querySelectorAll('.ll-feature-divider[data-from][data-to]')]
-   .map(n=>[n.dataset.from,n.dataset.to].sort().join('|')));
-  const origin=rect(root);let joined=0;
-  for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){
-   const first=features[i],second=features[j],ar=rect(first),br=rect(second);
-   if(existing.has([first.id,second.id].sort().join('|')))continue;
-   let axis,span,gap,corridor;
-   // Parallel vertical edges: their vertical extents need overlap, not matching tops.
-   const side=ar.left<=br.left?[ar,br]:[br,ar];
-   const sideOverlap=Math.min(side[0].bottom,side[1].bottom)-Math.max(side[0].top,side[1].top);
-   const sideGap=side[1].left-side[0].right;
-   // Parallel horizontal edges: their horizontal extents need overlap, not equal widths.
-   const stack=ar.top<=br.top?[ar,br]:[br,ar];
-   const stackOverlap=Math.min(stack[0].right,stack[1].right)-Math.max(stack[0].left,stack[1].left);
-   const stackGap=stack[1].top-stack[0].bottom;
-   if(sideGap>=-1&&sideGap<=108&&sideOverlap>=48&&sideOverlap>=Math.min(ar.height,br.height)*.12){
-    axis='vertical';span=sideOverlap;gap=sideGap;
-    corridor={left:side[0].right,right:side[1].left,top:Math.max(side[0].top,side[1].top),bottom:Math.min(side[0].bottom,side[1].bottom)};
-   }else if(stackGap>=-1&&stackGap<=88&&stackOverlap>=64&&stackOverlap>=Math.min(ar.width,br.width)*.12){
-    axis='horizontal';span=stackOverlap;gap=stackGap;
-    corridor={left:Math.max(stack[0].left,stack[1].left),right:Math.min(stack[0].right,stack[1].right),top:stack[0].bottom,bottom:stack[1].top};
-   }else continue;
-   // A boundary is impassable if any standard content or third feature occupies it.
-   const ribbon=axis==='vertical'
-    ?{left:corridor.left-2,right:corridor.right+2,top:corridor.top,bottom:corridor.bottom}
-    :{left:corridor.left,right:corridor.right,top:corridor.top-2,bottom:corridor.bottom+2};
-   if(blockers.some(b=>intersects(ribbon,b,0))||features.some((n,k)=>k!==i&&k!==j&&intersects(ribbon,rect(n),0)))continue;
-   const bridge=document.createElement('span');bridge.className='ll-feature-bridge ll-bridge-'+axis;
-   bridge.setAttribute('aria-hidden','true');bridge.dataset.from=first.id;bridge.dataset.to=second.id;bridge.dataset.gap=String(gap);
-   const cross=axis==='vertical'?(corridor.left+corridor.right)/2:(corridor.top+corridor.bottom)/2;
-   const left=axis==='vertical'?cross-Math.max(8,gap)/2:corridor.left,top=axis==='vertical'?corridor.top:cross-Math.max(8,gap)/2;
-   const width=axis==='vertical'?Math.max(8,gap):span,height=axis==='vertical'?span:Math.max(8,gap);
-   bridge.style.cssText='left:'+(left-origin.left)+'px;top:'+(top-origin.top)+'px;width:'+width+'px;height:'+height+'px';
-   const rule=document.createElement('span');rule.className='ll-feature-divider ll-divider-'+axis;
-   rule.dataset.from=first.id;rule.dataset.to=second.id;rule.dataset.overlap=String(span);
-   const cap=Math.min(73,span*.2),shoulder=cap*.8;
-   rule.style.cssText=(axis==='vertical'?'left:calc(50% - 4px);top:10%;':'left:10%;top:calc(50% - 4px);')+
-    '--divider-length:'+(span*.8)+'px;--divider-cap:'+cap+'px;--divider-shoulder:'+shoulder+'px';
-   bridge.append(rule);root.insertBefore(bridge,root.querySelector(':scope > .reading-sources'));joined++;
-  }
-  a.dataset.offsetFeatureJoins=String(joined);
  }
 
  function fit(a,force=false){
@@ -173,14 +115,14 @@
   const open=a.querySelector('.heron-perch[aria-expanded="true"]');
   const signature=[Math.round(a.clientWidth),a.textContent.length,document.documentElement.dataset.mode,!!a.querySelector('.perch'),!!open].join('|');
   if(!force&&cache.get(a)===signature)return;cache.set(a,signature);
-  if(open){refreshFeatureJoins(a);updateDividers(a);bridgeOffsetFeatures(a);return;} // The companion stays where the reader opened it.
+  if(open){refreshFeatureJoins(a);updateDividers(a);return;} // The companion stays where the reader opened it.
   const before=articleHeight(a);refreshFeatureJoins(a);a.querySelectorAll(regions).forEach(balance);
   const moves=[],plan=plans[a.dataset.readingComposition]||{note:(a.dataset.dockNote||'').split(';').filter(Boolean),heron:(a.dataset.dockHeron||'').split(';').filter(Boolean)};
   const n=dock(a,note,plan.note);if(n)moves.push(n);
   const h=dock(a,heron,plan.heron);if(h)moves.push(h);
   a.querySelectorAll(regions).forEach(balance);
   a.querySelectorAll(regions).forEach(alignQuietColumn);
-  refreshFeatureJoins(a);updateDividers(a);bridgeOffsetFeatures(a);
+  refreshFeatureJoins(a);updateDividers(a);
   const previous=reports.get(a.id),initial=previous&&previous.width===a.clientWidth?Math.max(previous.initialHeight,before):before;
   reports.set(a.id,{id:a.id,width:a.clientWidth,initialHeight:initial,heightBefore:before,heightAfter:articleHeight(a),heightSaved:initial-articleHeight(a),moves,
    sourcesLast:a.querySelector('.ll-reading').lastElementChild.classList.contains('reading-sources')});
@@ -193,5 +135,5 @@
  observer.observe(document.documentElement,{attributes:true,attributeFilter:['data-mode']});
  const resize=new ResizeObserver(schedule);document.querySelectorAll('.entry[data-reading-composition]').forEach(a=>resize.observe(a));
  document.fonts.ready.then(()=>{run(true);const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t?.closest('.entry')&&t.getClientRects().length)t.scrollIntoView({block:'start',behavior:'instant'});});document.fonts.addEventListener('loadingdone',()=>run(true));addEventListener('resize',schedule);
- window.LLLayout={reflow:()=>{paused=false;run(true)},reset:()=>{paused=true;document.querySelectorAll('.ll-feature-divider,.ll-feature-bridge').forEach(n=>n.remove());document.querySelectorAll('.ll-touching-feature-row,.ll-touching-feature-stack').forEach(n=>n.classList.remove('ll-touching-feature-row','ll-touching-feature-stack'));document.querySelectorAll('.ll-join-prev,.ll-join-next').forEach(n=>n.classList.remove('ll-join-prev','ll-join-next'));for(const [n,h]of homes){h.parent.insertBefore(n,h.next&&h.next.parentNode===h.parent?h.next:null)}document.querySelectorAll(regions).forEach(r=>{r.style.removeProperty('--fit-share');r.style.removeProperty('--fit-rest')});},report:()=>[...reports.values()]};
+ window.LLLayout={reflow:()=>{paused=false;run(true)},reset:()=>{paused=true;document.querySelectorAll('.ll-feature-divider').forEach(n=>n.remove());document.querySelectorAll('.ll-touching-feature-row,.ll-touching-feature-stack').forEach(n=>n.classList.remove('ll-touching-feature-row','ll-touching-feature-stack'));document.querySelectorAll('.ll-join-prev,.ll-join-next').forEach(n=>n.classList.remove('ll-join-prev','ll-join-next'));for(const [n,h]of homes){h.parent.insertBefore(n,h.next&&h.next.parentNode===h.parent?h.next:null)}document.querySelectorAll(regions).forEach(r=>{r.style.removeProperty('--fit-share');r.style.removeProperty('--fit-rest')});},report:()=>[...reports.values()]};
 })();

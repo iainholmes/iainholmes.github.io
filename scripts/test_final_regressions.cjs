@@ -52,7 +52,7 @@ assert(fb.includes('.mast-main .mast-folio small{order:-2;margin-left:0;margin-r
 assert(fb.includes('.mast-main .mast-folio .cp-keep-toggle.cp-inline{order:-1;margin:0 auto 0 12px}'));
 assert(book.includes('.ps-title .ps-no .ps-folio{grid-row:3;justify-self:end}'));
 assert(ll.includes('.masthead .mh-folio{justify-self:end;text-align:right}'));
-assert(ll.includes('.modes button,.toolbar .toolbar-inner .heron-toggle{font-size:10.5px;line-height:1;letter-spacing:.05em;padding-block:10px}'));
+assert(ll.includes('.modes button{font-size:10.5px;line-height:1;letter-spacing:.05em;padding-block:10px}'));
 assert(cp.includes('.imprint>a,.imprint nav>a,.imprint nav>span{display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box}'));assert(cp.includes('<span aria-current="page">Commonplace</span>'));
 for(const p of ['personal-updates/commonplace/index.html','personal-updates/handbook/index.html']){const s=read(p);assert(s.includes('body .pd-tools{background:var(--ground);color:var(--paper)}'));assert(s.includes('color-scheme:dark'));assert(s.includes('env(safe-area-inset-bottom,0px)'));}
 const keeper=read('personal-updates/commonplace/commonplace.js');assert(keeper.includes('family=Instrument+Sans:wght@400;500;600&display=swap'));assert(!keeper.includes('Fahkwang'));

@@ -282,6 +282,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .ll-coal-plate,.ll-coal-identification{min-width:0}
 /* Miniature framing pillars only occupy measured feature-to-feature joins. */
 .ll-shared-field,.ll-coal-featuregroup,.ll-moves-featuregroup{position:relative}
+.entry[data-reading-composition] .ll-reading{position:relative}
 .ll-feature-divider{position:absolute;display:block;pointer-events:none;opacity:var(--interior-rule-opacity,.38);z-index:1}
 .ll-divider-vertical{width:8px;height:var(--divider-length);background:linear-gradient(to bottom,var(--pillar-copper) 0 var(--divider-cap),var(--forest) var(--divider-cap) calc(100% - var(--divider-cap)),var(--pillar-copper) calc(100% - var(--divider-cap)) 100%);clip-path:polygon(0 0,100% 0,100% var(--divider-shoulder),67% var(--divider-cap),67% calc(100% - var(--divider-cap)),100% calc(100% - var(--divider-shoulder)),100% 100%,0 100%,0 calc(100% - var(--divider-shoulder)),33% calc(100% - var(--divider-cap)),33% var(--divider-cap),0 var(--divider-shoulder))}
 .ll-divider-horizontal{height:8px;width:var(--divider-length);background:linear-gradient(to right,var(--pillar-copper) 0 var(--divider-cap),var(--forest) var(--divider-cap) calc(100% - var(--divider-cap)),var(--pillar-copper) calc(100% - var(--divider-cap)) 100%);clip-path:polygon(0 0,var(--divider-shoulder) 0,var(--divider-cap) 33%,calc(100% - var(--divider-cap)) 33%,calc(100% - var(--divider-shoulder)) 0,100% 0,100% 100%,calc(100% - var(--divider-shoulder)) 100%,calc(100% - var(--divider-cap)) 67%,var(--divider-cap) 67%,var(--divider-shoulder) 100%,0 100%)}
@@ -608,12 +609,24 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 
 /* 2026-11-04 | Feature-only adjacency belongs to one architectural field.
    No joining is allowed across an editorial, notebook, source or Heron node. */
-.ll-touching-feature-row{position:relative;gap:0!important;align-items:stretch;margin-block:28px;background:var(--feature-wash);border:1px solid color-mix(in srgb,var(--feature-accent,var(--forest)) 32%,transparent);border-top:2px solid var(--forest);border-radius:16px 26px 16px 20px;box-shadow:inset 0 0 9px 1px var(--paper)}
-.ll-touching-feature-row>div{min-width:0}
-.ll-touching-feature-row .ll-feature-host{margin:0!important}
-.entry[data-reading-composition] .ll-touching-feature-row .ll-feature-host>.ll-feature{border:0;border-radius:0;background:transparent;box-shadow:none}
-.ll-touching-feature-row::before,.ll-touching-feature-row::after{content:"";position:absolute;z-index:2;top:0;bottom:0;width:4px;pointer-events:none;background:linear-gradient(to bottom,var(--pillar-copper) 0 30px,var(--forest) 30px calc(100% - 30px),var(--pillar-copper) calc(100% - 30px) 100%);opacity:.52}
-.ll-touching-feature-row::before{left:0}.ll-touching-feature-row::after{right:0}
+/* Native grid cells own their complete surfaces; no gap-covering paint. */
+.ll-touching-feature-row{position:relative;gap:0!important;align-items:stretch;margin-block:28px}
+.ll-touching-feature-row>div{display:flex;flex-direction:column;min-width:0}
+.ll-touching-feature-row .ll-feature-host{display:flex;flex-direction:column;flex:1;margin:0!important}
+.entry[data-reading-composition] .ll-touching-feature-row .ll-feature-host>.ll-feature{flex:1;align-self:stretch;border-radius:0;box-shadow:none}
+/* Explicitly authored runs share actual block edges, including staggered widths.
+   The wrapper has no surface, border, height or decorative pseudo-elements. */
+.ll-joined-sequence{margin:28px 0;display:flow-root}
+.ll-joined-sequence .ll-feature-host{margin-block:0}
+.ll-joined-sequence>.ll-feature-host,.ll-joined-sequence>.ll-arranged-row,.ll-joined-sequence>.ll-authored-inset{margin-block:0}
+.ll-joined-sequence>.ll-arranged-row{align-items:stretch}
+.ll-joined-sequence>.ll-arranged-row>div{display:flex;flex-direction:column}
+.ll-joined-sequence>.ll-arranged-row>div>.ll-feature-host{display:flex;flex-direction:column;flex:1}
+.entry[data-reading-composition] .ll-joined-sequence .ll-feature-host>.ll-feature{flex:1;align-self:stretch;box-shadow:none}
+.entry[data-reading-composition] .ll-feature.ll-contact-top{border-top-left-radius:0;border-top-right-radius:0}
+.entry[data-reading-composition] .ll-feature.ll-contact-bottom{border-bottom-left-radius:0;border-bottom-right-radius:0}
+.entry[data-reading-composition] .ll-feature.ll-contact-left{border-top-left-radius:0;border-bottom-left-radius:0}
+.entry[data-reading-composition] .ll-feature.ll-contact-right{border-top-right-radius:0;border-bottom-right-radius:0}
 .ll-quiet-centered{align-self:center}
 .ll-touching-feature-stack{position:relative}
 .ll-touching-feature-stack>.ll-feature-host.ll-join-next{margin-bottom:0!important}
@@ -624,18 +637,6 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 .ll-touching-feature-stack>.ll-shared-field.ll-join-prev{margin-top:0!important;border-top-left-radius:0;border-top-right-radius:0}
 @container ll-reading (max-width:850px){.ll-touching-feature-row{grid-template-columns:minmax(0,1fr);gap:0!important}}
 @media(prefers-reduced-motion:reduce){.ll-reading-index{transition:none;transform:none}}
-
-/* Staggered-join geometry only. Restore the original authored Special Feature
-   palette, typography, panel surfaces, clipped copper-terminal miniature
-   dividers, source glyph and their original opacity from commit 7e110d9.
-   The geometry is absolute decoration: no changes to reading layout or flow.
-   Bridge dividers inherit the SAME .ll-feature-divider and .ll-divider-*
-   design/opacity as all original within-field joins. */
-.entry[data-reading-composition] .ll-reading{position:relative}
-.ll-feature-bridge{
- position:absolute;display:block;pointer-events:none;z-index:2;
- box-sizing:border-box;background:var(--feature-wash)
-}
 
 /* Retained from PR #55 by explicit request: Mechanism Map and Heron only. */
 /* The Mechanism Map: genuinely distinct, color-coded causal transmission nodes. */

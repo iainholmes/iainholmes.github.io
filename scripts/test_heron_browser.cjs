@@ -8,6 +8,7 @@ let assertions=0;const errors=[];function check(value,message){assert(value,mess
 function fetchBytes(url){const file=path.join(out,'cache',crypto.createHash('sha256').update(url).digest('hex'));if(!fs.existsSync(file)){const bytes=cp.execFileSync('curl',['-fLsS','--max-time','30','--retry','2',url],{maxBuffer:16*1024*1024});fs.writeFileSync(file,bytes)}return fs.readFileSync(file)}
 async function context(browser,viewport){
  const c=await browser.newContext({viewport,isMobile:viewport.width<900,hasTouch:viewport.width<900,deviceScaleFactor:1});
+ await c.addInitScript(()=>localStorage.setItem('economics-environment:companion','off'));
  c.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
  await c.route('**/*',async route=>{const url=route.request().url(),p=new URL(url).pathname;let body;if(/^https:\/\/fonts\.(googleapis|gstatic)\.com\//.test(url)||process.env.WB_LIVE==='1'&&url.startsWith(origin))body=fetchBytes(url);else if(url.startsWith(origin)){const local=path.join(process.cwd(),decodeURIComponent(p),p.endsWith('/')?'index.html':'');if(!fs.existsSync(local))return route.fulfill({status:404,body:'Not found'});body=fs.readFileSync(local)}else return route.continue();const contentType=url.includes('fonts.googleapis.com')||p.endsWith('.css')?'text/css':p.endsWith('.woff2')?'font/woff2':p.endsWith('.js')?'application/javascript':p.endsWith('.svg')?'image/svg+xml':p.endsWith('.json')?'application/json':p.endsWith('.otf')?'font/otf':p.endsWith('.png')?'image/png':'text/html';return route.fulfill({body,contentType,status:200})});
  return c;
@@ -22,7 +23,7 @@ async function shot(p,name){const file=path.join(out,name+'.png');await p.screen
   await article.scrollIntoViewIfNeeded();await article.evaluate(e=>e.scrollIntoView({block:'start'}));await shot(p,'article-'+viewport.width);
   const available=viewport.width<=1024||viewport.width>=1181;
   equal(await ed.locator('.heron-perch:visible').count(),viewport.width<=1024?2:available?1:0,'curated viewport count');
-  equal(await p.locator('.heron-toggle').isVisible(),available,'toggle matches available space');
+  equal(await p.locator('.heron-toggle').count(),0,'retired toggle absent');
   check(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no page overflow');
   if(available){
    const button=ed.locator('[data-id="h-2026-10-16-a"] .heron-perch'),slot=button.locator('..');await button.scrollIntoViewIfNeeded();
@@ -36,7 +37,6 @@ async function shot(p,name){const file=path.join(out,name+'.png');await p.screen
    await slot.locator('.hp-close').click();check(await button.isVisible(),'close retains label');check(await button.evaluate(e=>e.classList.contains('vacant')),'bird leaves');await shot(p,'closed-'+viewport.width);
    await button.focus();await p.keyboard.press('Enter');check(await slot.locator('.heron-panel').isVisible(),'keyboard reopens label');await p.keyboard.press('Escape');check(!await slot.locator('.heron-panel').isVisible(),'Escape closes');
    await button.click();await slot.locator('.hp-dismiss').click();check(!await button.isVisible(),'dismiss suppresses');await p.reload();await ready(p);check(!await p.locator('[data-id="h-2026-10-16-a"] .heron-perch').isVisible(),'dismiss persists');
-   await p.locator('.heron-toggle').click();equal(await p.locator('.edition:not([hidden]) .heron-perch:visible').count(),0,'off hides all');await p.reload();await ready(p);equal(await p.locator('.heron-toggle').getAttribute('aria-pressed'),'false','off persists');await p.locator('.heron-toggle').click();
    evidence.push({viewport,geometry});
   }await c.close();
  }

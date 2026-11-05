@@ -5365,24 +5365,24 @@
         {
           "type": "estimation-desk",
           "title": "A constrained policy objective",
-          "status": "Theoretically illustrative representation of the stated policy problem · not the authors’ full model",
-          "math": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><msub><mi>min</mi><mtext>s</mtext></msub><mi>F</mi><mrow><mo>(</mo><mi>s</mi><mo>)</mo></mrow><mspace></mspace><mtext> subject to </mtext><mi>E</mi><mrow><mo>(</mo><mi>s</mi><mo>)</mo></mrow><mo>≤</mo><mn>0.9</mn><msub><mi>E</mi><mtext>baseline</mtext></msub></mrow></math>",
+          "status": "Theoretically illustrative editorial reconstruction · not a source-authored equation",
+          "math": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><msub><mi>min</mi><mtext>z</mtext></msub><mi>F</mi><mrow><mo>(</mo><mi>z</mi><mo>)</mo></mrow><mspace></mspace><mtext> subject to </mtext><mi>E</mi><mrow><mo>(</mo><mi>z</mi><mo>)</mo></mrow><mo>≤</mo><mn>0.9</mn><msub><mi>E</mi><mtext>baseline</mtext></msub></mrow></math>",
           "terms": [
             [
-              "s; F(s)",
-              "The subsidy schedule and associated fiscal expenditure in the illustrative constrained policy objective."
+              "z; F(z)",
+              "z is an editorial vector of technology-specific subsidy rates and income-eligibility caps. F(z) denotes total subsidy expenditure at the corresponding balanced-budget model equilibrium."
             ],
             [
-              "E(s); Ebaseline",
-              "Household emissions under the modeled adoption response and under the stated baseline."
+              "E(z); Ebaseline",
+              "Aggregate household emissions at that equilibrium and in the paper’s baseline. Household adoption and the financing tax respond within the underlying model."
             ],
             [
               "0.9",
-              "The displayed target permits ninety percent of baseline emissions, corresponding to a ten percent reduction. It does not identify a universal optimal subsidy."
+              "A compact feasible-target representation of a 10% reduction. It is not a universal subsidy optimum or a welfare-maximization condition."
             ]
           ],
           "interpretation": "The target is a 10% reduction in household emissions. Minimizing subsidy expenditure is a narrower objective than maximizing social welfare.",
-          "assumption": "Behavioral preferences, roof access and technology complementarities determine the constraint; these are model counterfactuals, not causal subsidy estimates.",
+          "assumption": "The compact expression suppresses technology-specific rates, discrete income-cap choices, household optimization and the labor-income tax that balances the budget. Those equilibrium responses remain inside F and E; this is not the full source model or an identified causal effect.",
           "rationale": "A clearly theoretical fiscal-cost objective subject to an emissions target distinguishes the policymaker’s optimization problem from the household adoption responses embedded in the source model.",
           "provenance": [
             "https://www.nber.org/papers/w35945",
@@ -5390,15 +5390,15 @@
           ],
           "assessment": {
             "analyticalRelevance": "A clearly theoretical fiscal-cost objective subject to an emissions target distinguishes the policymaker’s optimization problem from the household adoption responses embedded in the source model.",
-            "evidentiarySupport": "Theoretically illustrative representation of the stated policy problem · not the authors’ full model",
+            "evidentiarySupport": "Theoretically illustrative editorial reconstruction · not a source-authored equation",
             "distinctiveness": "Defines the economic object or identifying comparison that prose alone can obscure.",
             "readerValue": "The target is a 10% reduction in household emissions. Minimizing subsidy expenditure is a narrower objective than maximizing social welfare.",
             "presentationSuitability": "estimation-desk",
             "informationBurden": "A bounded feature with a separate analytical role; original prose is preserved and supporting detail remains at the sources."
           },
           "readerGuide": {
-            "title": "The optimization objective is a theoretical policy comparison",
-            "text": "A clearly theoretical fiscal-cost objective subject to an emissions target distinguishes the policymaker’s optimization problem from the household adoption responses embedded in the source model. "
+            "title": "A compact reconstruction of the policy search",
+            "text": "This is our notation for the policy objective described in §5, printed p. 26. The source does not print this equation. We use z, not the paper’s sᵢ (a household’s solar decision), to collect policy choices. Appendix B.3 defines the subsidy and tax-financing system."
           },
           "mathLayout": {
             "compact": [

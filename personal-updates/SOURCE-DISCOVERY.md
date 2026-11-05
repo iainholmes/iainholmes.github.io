@@ -101,3 +101,10 @@ Existing checks enforce structural contracts, not source quality or full-text in
 | LL6: No worthwhile new journal article is found | Record the actual scan and select the best five available readings from the wider research/policy universe. | No forced novelty or journal slot. |
 
 Fallback review: Crossref unavailable → use another legitimate metadata/publisher channel; OpenAlex unavailable or requiring unavailable authorization → use Crossref/repository discovery; all named consumer outlets paywalled → use accessible reporting/primary records. The outcome remains a supported edition, not fabricated access or an automatic service-dependent failure. These are editorial scenario exercises, not machine proof that future publishers will comply.
+
+
+### L&L: discovery is not claim verification
+
+An accessible URL is a discovery/access observation. Opening a document, reading relevant passages, checking a claim, evaluating an editorial derivation, and completing a recorded prepublication review are separate steps. A “Request Access” page with HTTP 200 is not substantive full text. Keep unavailable material marked unavailable; inspect a legitimate open manuscript when possible without bypassing restrictions.
+
+For every new or amended L&L reading, use the component-level evidence contract in PUBLISHING.md and source-evidence.json before release. Review estimator/outcome/treatment definitions and identification assumptions; verify values, units, denominators and rounding; preserve observed/modeled/projected distinctions. Check source-authored symbols exactly. Label and derive editorial mathematics, disclose simplifications and avoid reusing source symbols with conflicting meanings. Link proposed diagnostics and interpretation to their actual analytical basis without attributing them as findings the authors reported. Automated metadata validation does not replace this review.
