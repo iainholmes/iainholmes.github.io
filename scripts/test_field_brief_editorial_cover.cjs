@@ -38,7 +38,7 @@ eq(JSON.stringify(archive),original,'selection never mutates published registry'
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),'fb-editorial-exhaustion-'));
 try{
  for(const folder of ['scripts','personal-updates','daily-watchlist-5','daily-econ-challenge','weekly-economics-environment'])fs.cpSync(folder,path.join(dir,folder),{recursive:true});
- const copy=structuredClone(data);copy.editions.push({...structuredClone(nov2),date:'9997-03-01'});
+ const copy=structuredClone(data);copy.editions.push(require('./fixtures/field-brief-edition.cjs').future(nov2,'9997-03-01'));
  fs.writeFileSync(path.join(dir,'daily-watchlist-5/index.html'),html.replace(/(id="briefing-data">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(copy)+b));
  fs.appendFileSync(path.join(dir,'daily-watchlist-5/artwork.js'),'\nmodule.exports.issueModel=()=>{throw Error("No original content-supported Field Brief cover: simulated exhaustion");};\n');
  const outputs=['daily-watchlist-5/index.html','daily-watchlist-5/artwork-archive.js','personal-updates/issue-mark-archive.js','personal-updates/index.html','weekly-economics-environment/index.html','weekly-economics-environment/field-register-history.json'];
