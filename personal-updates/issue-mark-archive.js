@@ -1656,5 +1656,61 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 039: Congressional / productive capacity\"><title>Field Brief · 039 · Congressional / productive capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M8 90L50 8L92 90Z\" fill=\"#221a14\"/><path d=\"M25 72H75M35 53H65\" stroke=\"#f1e6d0\" stroke-width=\"6\"/><circle cx=\"80\" cy=\"20\" r=\"11\" fill=\"#8a2a36\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 039 / 2026-11-04</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Congressional / productive capacity</text></g></svg>"
+  },
+  "fb:2026-11-05": {
+    "key": "fb",
+    "date": "2026-11-05",
+    "no": "040",
+    "identity": "Field Brief",
+    "theme": "change",
+    "framing": "SpaceX commits to terrestrial 5G equipment, CVS plans to divide its pharmacy and health-services businesses, and Turkey's renewable buildout still leaves coal dominant. Wake and Raleigh voters authorize more than $1 billion in capital bonds, while new productivity data clarify the U.S. cost picture. Implementation is the common test, not a common policy direction These stories do not describe one trend. SpaceX and CVS are proposed corporate strategies; Turkey's power mix is an observed transition constraint; the Wake and Raleigh votes authorize public borrowing; and the productivity release measures economy-wide efficiency and labor costs. The evidence to watch is correspondingly different: deployed cell sites and service terms, separation filings and contracts, fossil generation displaced rather than renewable capacity added, bond issuance and completed projects, and revised productivity and unit-cost data.",
+    "version": 6,
+    "subject": "infrastructure",
+    "composition": "spread-facing-measures-trunk-branches-control-loop",
+    "signature": "issue:spread-facing-measures-trunk-branches-control-loop",
+    "phrase": "Technology / feedback",
+    "seed": 1778751195,
+    "geometry": "<g transform=\"translate(60 175) scale(2.4)\"><path d=\"M15 90V15H90M15 50H70V90M50 15V35\" fill=\"none\" stroke=\"$ink\" stroke-width=\"10\"/><circle cx=\"70\" cy=\"90\" r=\"9\" fill=\"$accent\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"$accent\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"$support\" stroke-width=\"6\"/></g><path d=\"M315 100V500\" stroke=\"$support\" stroke-width=\"5\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01"
+        ],
+        "score": 25
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "04"
+        ],
+        "score": 15
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "05"
+        ],
+        "score": 3
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "02"
+        ],
+        "score": 1
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 39,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 040: Technology / feedback\"><title>Field Brief · 040 · Technology / feedback</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 175) scale(2.4)\"><path d=\"M15 90V15H90M15 50H70V90M50 15V35\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><circle cx=\"70\" cy=\"90\" r=\"9\" fill=\"#8a2a36\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"#8a2a36\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M315 100V500\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 040 / 2026-11-05</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Technology / feedback</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

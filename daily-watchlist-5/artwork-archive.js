@@ -2216,6 +2216,68 @@
         "seed": 1531989408,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separated evidence platforms are connected by a narrow research bridge\"><title>North Carolina Democrats appear to flip the state House</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-04-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-04-05)\"><rect x=\"85\" y=\"305\" width=\"185\" height=\"225\" fill=\"#1b4a6b\"/><rect x=\"530\" y=\"210\" width=\"185\" height=\"320\" fill=\"#1d5f47\"/><path d=\"M270 354Q400 195 530 260\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"30\"/><path d=\"M145 258V145H205V258M587 165V82H648V165\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"20\"/><path d=\"M305 420H490\" stroke=\"#7c5a3e\" stroke-width=\"15\" stroke-dasharray=\"26 20\"/></g></svg>"
       }
+    },
+    "2026-11-05": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-05",
+        "number": "01",
+        "category": "Technology · telecom competition",
+        "topic": "infrastructure",
+        "title": "SpaceX selects Qualcomm for a nationwide terrestrial 5G network",
+        "composition": "infrastructure-duct",
+        "signature": "plate:infrastructure-duct",
+        "seed": 4072922295,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Cooling infrastructure surrounds a capacity chamber\"><title>SpaceX selects Qualcomm for a nationwide terrestrial 5G network</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-05-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-05-01)\"><path d=\"M90 155H475V480H90Z\" fill=\"#2c241d\"/><path d=\"M130 202H432M130 270H432M130 338H432M130 406H432\" stroke=\"#f4ead7\" stroke-width=\"23\"/><path d=\"M520 510V185H690V410H600\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"51\"/><path d=\"M520 96V160M580 96V160M640 96V160\" stroke=\"#c4452c\" stroke-width=\"20\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-05",
+        "number": "02",
+        "category": "U.S. health economy · corporate structure",
+        "topic": "research",
+        "title": "CVS plans to separate pharmacies from insurance and health services",
+        "composition": "labor-clock",
+        "signature": "plate:labor-clock",
+        "seed": 1320919214,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A time clock beside an interrupted production belt\"><title>CVS plans to separate pharmacies from insurance and health services</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-05-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-05-02)\"><circle cx=\"246\" cy=\"277\" r=\"165\" fill=\"#2c241d\"/><circle cx=\"246\" cy=\"277\" r=\"125\" fill=\"#f4ead7\"/><path d=\"M246 180V277L324 326\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M480 180H700V480H480Z\" fill=\"#1b4a6b\"/><path d=\"M517 228H663M517 297H663M517 366H604\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M80 532H348M443 532H720\" stroke=\"#7c5a3e\" stroke-width=\"30\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-05",
+        "number": "03",
+        "category": "Climate · electricity transition",
+        "topic": "heat",
+        "title": "Turkey's solar buildout grows faster than coal consumption falls",
+        "composition": "heat-canopy",
+        "signature": "plate:heat-canopy",
+        "seed": 3073206051,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Heat waves above a shaded shelter and exposed ground\"><title>Turkey&#39;s solar buildout grows faster than coal consumption falls</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-05-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-05-03)\"><circle cx=\"605\" cy=\"160\" r=\"101\" fill=\"#c4452c\"/><path d=\"M70 155Q180 95 290 155T510 155M70 225Q180 165 290 225T510 225\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"25\"/><path d=\"M105 375L285 265L465 375Z\" fill=\"#1b4a6b\"/><path d=\"M140 375V540M430 375V540\" stroke=\"#2c241d\" stroke-width=\"23\"/><g fill=\"#2c241d\"><circle cx=\"230\" cy=\"417\" r=\"24\"/><circle cx=\"328\" cy=\"417\" r=\"24\"/><path d=\"M207 445H253V523H207ZM305 445H351V523H305Z\"/></g><path d=\"M508 520L561 451L600 500L651 427L718 485\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-05",
+        "number": "04",
+        "category": "North Carolina · public investment",
+        "topic": "trade",
+        "title": "Wake and Raleigh voters authorize $1.032 billion in capital bonds",
+        "composition": "trade-checkpoint",
+        "signature": "plate:trade-checkpoint",
+        "seed": 1709598221,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A commercial route passes through a staffed checkpoint\"><title>Wake and Raleigh voters authorize $1.032 billion in capital bonds</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-05-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-05-04)\"><path d=\"M80 400H720\" stroke=\"#7c5a3e\" stroke-width=\"58\"/><path d=\"M325 510V145H480V510\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M340 250H565\" stroke=\"#c4452c\" stroke-width=\"27\"/><rect x=\"110\" y=\"300\" width=\"142\" height=\"110\" fill=\"#1b4a6b\"/><path d=\"M140 300V410M216 300V410\" stroke=\"#f4ead7\" stroke-width=\"12\"/><circle cx=\"570\" cy=\"460\" r=\"31\" fill=\"#2c241d\"/><path d=\"M530 560V512Q570 480 610 512V560Z\" fill=\"#2c241d\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-05",
+        "number": "05",
+        "category": "U.S. economy · productivity",
+        "topic": "labor",
+        "title": "Productivity rises 3.6% as quarterly unit labor costs fall",
+        "composition": "finance-blocked",
+        "signature": "plate:finance-blocked",
+        "seed": 2584508563,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Payment branches meet a blocking seal\"><title>Productivity rises 3.6% as quarterly unit labor costs fall</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-05-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-05-05)\"><path d=\"M120 150L365 315L120 485M365 315L665 160M365 315L665 490\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"31\"/><g fill=\"#c98a12\"><circle cx=\"120\" cy=\"150\" r=\"58\"/><circle cx=\"120\" cy=\"485\" r=\"58\"/><circle cx=\"665\" cy=\"160\" r=\"58\"/></g><rect x=\"565\" y=\"408\" width=\"158\" height=\"125\" fill=\"#7a1f33\"/><path d=\"M585 435L705 505M705 435L585 505\" stroke=\"#f4ead7\" stroke-width=\"18\"/><circle cx=\"365\" cy=\"315\" r=\"69\" fill=\"#2c241d\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
