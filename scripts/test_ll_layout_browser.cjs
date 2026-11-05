@@ -62,5 +62,15 @@ if(process.env.LL_QA_SHOTS_DIR){
   await target.waitFor({state:'visible'});
   await target.screenshot({path:process.env.LL_QA_SHOTS_DIR+'/ll-household-'+shot.name+'.png',animations:'disabled'});
  }
+ for(const item of [
+  {edition:'2026-10-30',reading:'2026-10-30-household-climate',target:'.ll-joined-sequence',name:'ll-joined-sequence-macbook-1440.png'},
+  {edition:'2026-10-02',reading:'2026-10-02-storage',target:'.ll-touching-feature-row',name:'ll-true-feature-pair-macbook-1440.png'}
+ ]){
+  await page.setViewportSize({width:1440,height:1000});
+  await page.goto(cfg.origin+'/weekly-economics-environment/#edition-'+item.edition,{waitUntil:'networkidle'});
+  const target=page.locator('[id="'+item.reading+'"] '+item.target).first();
+  await target.waitFor({state:'visible'});
+  await target.screenshot({path:process.env.LL_QA_SHOTS_DIR+'/'+item.name,animations:'disabled'});
+ }
 }
 if(process.env.LL_QA_JSON)fs.writeFileSync(process.env.LL_QA_JSON,JSON.stringify(result,null,2));console.log(JSON.stringify({result:result.result,assertions:result.assertions,navigation:result.navigation.assertions,cases:result.evidence.length}));}finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});
