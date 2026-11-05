@@ -14,6 +14,10 @@ for(const ed of fb)require('../daily-watchlist-5/editorial-order.cjs').validate(
 for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])throw Error('Published Field Brief is missing its story artwork pin: '+ed.date);
 // Validate L&L companions before any publication artifacts are written.
 const llSource=read('weekly-economics-environment/index.html'),companions=data(llSource,'companion-data');
+// Evidence gates precede artwork preparation and every publication artifact write.
+require('../weekly-economics-environment/source-evidence.cjs').validate({journal:llSource});
+const reviewedLL=require('../weekly-economics-environment/editorial-folio.cjs').compose(llSource);
+require('../weekly-economics-environment/source-evidence.cjs').validate({journal:reviewedLL});
 const registerHistory=require('../weekly-economics-environment/field-register-schema.cjs').validate({journal:llSource}).history;
 // A present edition without its cumulative notebook review is not a completed publication.
 require('../weekly-economics-environment/notebook/validate.cjs').validate({journal:llSource});
@@ -46,7 +50,7 @@ for(const [key,editions] of [['fb',fb],['cp',cp]]){
 }
 // Compose new authored editions into the same semantic folio before any writes.
 // This is idempotent and does not rewrite text, figures, identifiers or citations.
-let ll=require('../weekly-economics-environment/editorial-folio.cjs').compose(llSource);
+let ll=reviewedLL;
 // HTML and CSS must advance together on Pages/CDN caches after every layout edit.
 ll=ll.replace(/reading-folio\.css(?:\?v=[^"]*)?"/,'reading-folio.css?v='+digest(read('weekly-economics-environment/reading-folio.css'))+'"');
 ll=ll.replace(/reading-index\.js(?:\?v=[^"]*)?"/,'reading-index.js?v='+digest(read('weekly-economics-environment/reading-index.js'))+'"');

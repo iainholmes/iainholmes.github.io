@@ -1,0 +1,2988 @@
+{
+  "version": 1,
+  "historicalThrough": "2026-10-30",
+  "policy": "Historical incomplete records preserve exact content without asserting source fidelity. New or amended components require a completed inspectable review. Machine validation cannot authenticate reviewer identity or prove semantic truth.",
+  "documents": {
+    "nber-35945-oct2026": {
+      "url": "https://www.nber.org/system/files/working_papers/w35945/w35945.pdf",
+      "aliases": [
+        "https://www.nber.org/papers/w35945",
+        "https://doi.org/10.3386/w35945"
+      ],
+      "title": "Homework in Climate Economics: Household Production, Environmental Preferences, and Climate Policy",
+      "version": "October 2026 PDF, retrieved 2026-11-05",
+      "publicationStatus": "NBER working paper; not peer reviewed",
+      "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-05",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-05",
+        "scope": "Targeted substantive review of PDF pp. 1–3, 18–32 and 68–69; not a replication or entire-paper audit."
+      },
+      "passages": {
+        "policy": {
+          "locator": "§5, printed pp. 24–28 / PDF pp. 26–30; Appendix B.3, PDF pp. 68–69, equations (7)–(9)",
+          "support": "The search jointly selects technology rates and income caps; household choices and a balancing labor tax determine expenditure and emissions.",
+          "facts": {
+            "target": {
+              "kind": "modeled",
+              "value": 10,
+              "unit": "percent reduction",
+              "denominator": "baseline household emissions"
+            },
+            "solarShare": {
+              "kind": "modeled",
+              "value": 38,
+              "unit": "percent share",
+              "denominator": "normalized abatement contributions"
+            },
+            "noSolarCost": {
+              "kind": "modeled",
+              "value": 50,
+              "unit": "approximate percent increase",
+              "denominator": "cost with solar subsidies"
+            },
+            "incomeCaps": {
+              "kind": "modeled",
+              "value": 5,
+              "unit": "approximate percent saving",
+              "denominator": "cost without income caps"
+            }
+          }
+        },
+        "adoption": {
+          "locator": "§3, printed pp. 16–19 / PDF pp. 18–21; §4, printed pp. 20–23 / PDF pp. 22–25",
+          "support": "Household choices, roof capacity and preference calibration are model inputs; solar/equipment complementarity is conditional, including on roof capacity.",
+          "facts": {}
+        },
+        "preferences": {
+          "locator": "§5, printed pp. 28–29 / PDF pp. 30–31",
+          "support": "The zero-preference and common-absolute-abatement counterfactuals compare calibrated model equilibria.",
+          "facts": {
+            "emissions": {
+              "kind": "modeled",
+              "value": 15.6,
+              "unit": "percent increase",
+              "denominator": "baseline household emissions"
+            },
+            "additionalCost": {
+              "kind": "modeled",
+              "value": 22,
+              "unit": "approximate percent increase",
+              "denominator": "policy cost without environmental preferences"
+            }
+          }
+        },
+        "robustness": {
+          "locator": "§5, printed p. 30 / PDF p. 32; §3 and §4, PDF pp. 18–25",
+          "support": "Authors vary preference calibration, adoption-cost shocks and the target. The notebook’s additional factorial and grid/tariff diagnostics are editorial proposals.",
+          "facts": {
+            "factorial": {
+              "kind": "proposed",
+              "performed": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "readings": {
+    "electrification": {
+      "edition": "2026-09-25",
+      "historical": true,
+      "title": "Electrification’s Opportunity Is Larger Than Its Current Market Share",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "347218026c2050dbec54594d37d1aacd088f8eaebbeee743a4b152ede0c7b419",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "347218026c2050dbec54594d37d1aacd088f8eaebbeee743a4b152ede0c7b419",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "a32a0955c5fb6b68aa3e14ff0cc1fa5e7cfe69ad68bd0144d594162138b8e0dc",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "1d85e9ae59bfafc22ce829756e8fd76b5d6dcf1726609e1ca6e779e2cf19191d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "2472743b2e7b1dd98b0346f37a8554d7d38b1aace767eab3c036dbdcba780c18",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "cbb6257cede6e9085305ea3761eeaf19bcd2d729d79426ce15732261ca2c0a55",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "84a6a9b2762142b622ce9d7ea6592bef6a56cf22e3cf6e6b95e02840945fb565",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "7c15d0b9bd8efc2bf5f0b41b09eed09a0145feb1f6eb9882ad7e672d9c07f68d",
+          "status": "incomplete",
+          "priority": "1-mathematics",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "a81ba98039b2b23ffc95285b923c9adbbe0961ff444852870e079a14f3c0fd35",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "060e4173c5bb145831d8dcb72acb12a0ff8e262a94bf3fc89f915526478a1029",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-09-25-a",
+          "sha256": "6ba6376d1521a982f682782dd21cda7b9bed43dc7b9d9533be34e2879bc6354b",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "e119affb0b084626a9e15d178301d6ecc7e107f8e6bf44b707272d5bfd013831",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "grid": {
+      "edition": "2026-09-25",
+      "historical": true,
+      "title": "The Grid Gets a $5.25 Billion Investment Test",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "145abc89da50ad42f5adb9a856ef3cd0126f28eddabd43c106e798ac5ad71dee",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "145abc89da50ad42f5adb9a856ef3cd0126f28eddabd43c106e798ac5ad71dee",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "df086cc82da1ac6d4e5deaa4edd36b60b8a4c6b3caa660dd334a52a2080ca611",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "282b19641f233dc698b821f455fdf7af90a9ebc7ab11f2951da787634f0d332f",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "b2e585bfe4449f9d84fa942139da98f059fb1d1e8b3dabacd3e28f7b0788f007",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "a31adedb21edfcac3752d6648ed8b4e51ec12837b40cdea4d4b407daa6c1bbb7",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "87d7ed321a761fdc767ebc583f9465fc474e783ffab46289f7655217319e42af",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "f444ebdbb1d4216479b74aae5b85eba5670d6dd2815d1dc0a1e6257a8cc44967",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "9b2267c1e0db78a518cf4b14b57b1e4eebb0e01a87aec1f7310556d59e630e6f",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "long-view",
+          "sha256": "e3e52110bfd102d8306b8d95f4242152f35b9425d21b7ed98727ad97c02b7fed",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "2b7d56b4af7c0bc935dffec9e18869df25ee435c8dc3f735a7a3cf4ac61826c1",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "carbon-border": {
+      "edition": "2026-09-25",
+      "historical": true,
+      "title": "Carbon-Border Policy Enters a New Institutional Test",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "3b8fabb392058898285e64e8948b3910479a34d201612cf03c1a54d3c65e3ba5",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "3b8fabb392058898285e64e8948b3910479a34d201612cf03c1a54d3c65e3ba5",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "93b58ada9f1ca1ed330d8254349922853bf6eea517687ca166a06c3a47b416c5",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "961c7dce5b79a7673826d68b79c862dc3d764fab3acf3cadf00f25a9cc3dee51",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "07dbf59a9b769d779aea6b4526b870526bba12f3533c2862e4e3e2805b1d4f84",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "0f33afaa5ff503caf8bf6b9c84bbff07b6292d3949a7eeb02d007d85b10217e3",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "1becfff9bab7a50dd3af680637427ab52648c4c54d0cc94fe0a0fa3e35fab1db",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "c704344276a0b2f68747764143f40fd3ac6201a2e2a92406ae8eba84aea00f56",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "84d5140ad90c201017f78191ecc7a1ea2284d6e2457aefa765f5f4a4a6953a9a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "4e28a72d1934afd9415e67fcfda9ce03cbc634f2972f208d15f7d8cc868bb9b6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "insurance": {
+      "edition": "2026-09-25",
+      "historical": true,
+      "title": "Insurance Stress Has an Urban Geography of Its Own",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "ded69d62e73373f6cf41e3f7df0c8c3810ad45661908b3e32be7ae63b93fa056",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "ded69d62e73373f6cf41e3f7df0c8c3810ad45661908b3e32be7ae63b93fa056",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "5877841396c375ca6d0edbe3a00a8ed88a449da1af931b0d2f95f59e29a3b075",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "4e3cf27eeb100299e18c790dac5fea0257d469751f69f8f47dade0d9fdcbf44d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "fca97a728721ae30f583fce28f7398f39c10036149b91a99fb850deb5116bf79",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "ed65f930f3acb7250b84a9a7e4a50a5a511bc24ae7fa7557c807b1e7b20930ad",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "ccfc86426deadb0aec90eb5ecca8537170843fff8dd5db551a0e467d3cf20447",
+          "status": "incomplete",
+          "priority": "1-mathematics",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "86ccaf499df91cdf448c998e61e20d299562bd28a51479ec98bc20f27bdd15f4",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "2c8d344415b78fa2d3be04c370c1e0216846f134ef5d65cf8a1c2dd25e8a3de2",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "d6b3ce88d90d254300bb255e47046dcf6eb6102a8c404101f34ae115660c8b77",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-09-25-c",
+          "sha256": "5bb7d19bda5316ade8dfe921d8fdd9e4541ba5b1298c03cfeab33122dfb21672",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "58995a1c8af08ae23f0c0e8740805b7a44eaedf1c8afad0d59efdbe4eba8d10e",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "glyphosate": {
+      "edition": "2026-09-25",
+      "historical": true,
+      "title": "Glyphosate Review Makes the Value of Information Concrete",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "3bd50dc5881ddde36b6781ae777979ff305a16151af3a20bcc48789a06c278d6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "3bd50dc5881ddde36b6781ae777979ff305a16151af3a20bcc48789a06c278d6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "1e9c8322cab036d972480e2b568d5c811b7f6a9c505673e42d49d950a8adf5e6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "50b8d957300b1773f955e77fc397b440be27109e48cfcefdc4d5d979e97af9ed",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "03ddd911e62e15be2de081470ba5da22eb98500ff9338e8f65a84f66e624b090",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "0085a532ac81d95da7529ec56b27127a6b8038795bdbdf0b65b4fc30c47cb071",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "687be9562c4d530167b23d84dd410b875d01432833e5e3f017f156450bc5271d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "f3d3d6f53c26a09b48a30b8a1383d83d1d37a23c0bf59e2e27a6c64c646e9456",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "a389d4e1001b43334eeca2461a21f6fcab82b08fe230503fc6c808eea72b760f",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "eb70b893692f47562800a619cee0e8314a25425d83e9c9f80721d837ff91e26b",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-02-green-spending": {
+      "edition": "2026-10-02",
+      "historical": true,
+      "title": "Green Public Spending Can Carry a Short-Run Growth Cost",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "ffa39cb2914558c7bdbccd6890bc2888110690089e28f7dbc0de97da792da4c1",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "ffa39cb2914558c7bdbccd6890bc2888110690089e28f7dbc0de97da792da4c1",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "69576aec5b3799ff0f4c733760c73837ea200127bc467eeb538c1af99051121c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "49493749c45c3de32e95aeeeaa2e4ef980d382a457cfc5fcabd0e3ed1f1d2afa",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "38fa2aa2c48ab88763491d723629b21ecca04fb86ff175202cec21e3558a4c39",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "30e5ead65562ec7c97d64a144912a6261c358e6b7470a021e38a07dd5f564c40",
+          "status": "incomplete",
+          "priority": "1-mathematics",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "011927a1f7f84af174db1f8bce86dad9500fc2f93604b7862e9ce559d7e190ce",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "d65888b9d53e87637e4e925cbc03490877d6657c017989344845a1439892b6af",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "7841b9a6b393f9c3897942b97eb7c547a0162864e7182a7e1dde3bb808c52335",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "50ad1fda747cb7115f7190b09b80577519a1b5d903ed44ef68c4b64ecca71ca5",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-10-02-a",
+          "sha256": "3aad5484843ebfe6bf2d36b75288463f2ac4ba06aa803ff58f92f9218b146512",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "c5d9335aa0888e926fa29ae1b8c08b53636ab032f305cb72175b660f1c87d15e",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-02-policy-mix": {
+      "edition": "2026-10-02",
+      "historical": true,
+      "title": "Carbon Policy Looks Different Once Leakage Is Treated as a Price Problem",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "84802e60340d46a824dc93fd0e55b813a452dfb80172e4722f641a392094059a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "84802e60340d46a824dc93fd0e55b813a452dfb80172e4722f641a392094059a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "7aac4e653b1a32e9f4bf6bf3344b8d7c7e8573f7a64d8b9905657108e18e53e0",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "4867569a4ecce89bf5e878580b96cdf5ae8e539c1044eaa14ef715ef40e5a049",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "20bcb28f794fad3b89224f659c97ec093662e5f68a9137bdd7de0d63c96d57c8",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "ebff0242be5dba108064cc9553b2ced44b19c72f4227a226a680ad96ab660df9",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "1cb2f20c590c512e88f35c279227c52b824d00c2a1a1d801bbe9178e516445c3",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "f4a79175d82ce8b219c7f2cbbbc411af6197e12f0ed7e8fa8a96857ecae31e20",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "7488e159f67f3738929698b5b7d0ecad912f175461d32db23f8f6958ccfb2f37",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "916f500df0c07e7b352adc6779ff1808ccd94cf02b1a7f5aa9c0ae24c14c11be",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-02-amoc": {
+      "edition": "2026-10-02",
+      "historical": true,
+      "title": "A Climate Tipping Point Can Reverse the Geography of Damages",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "6aa040e1feee3dde6ebb1fce35075b47b982b3445e021316dca2bde01fed2676",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "6aa040e1feee3dde6ebb1fce35075b47b982b3445e021316dca2bde01fed2676",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "df494cf5d5680458e8cc225b3ece6267c64e310e177ef8a52b5c48dfc8b56cf3",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "fd6d40f68bc3d617e155740b61ad5192a203a6b6862482f921a812635e8a4d88",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "72f2cdf93b0adde5cb4359977a8b023fe96fcdd415830f76549ab708da05cff6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "c1732c301ec81b18237c1fb610eeb01de491733693cc9c9d5a2aba3b70250d89",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "9c4babed6c9abdd29b55ee8a43c25df414413b5793435c7a2a549d8fe03f43a1",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "667d3821862a2b88ac5e0d251c54bcc10a827ce4a3345e91df6b873ff19d7cd9",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "long-view",
+          "sha256": "46789d9ace7fb64944e8cf2e9b1bfdcd2de35f17627c72f5df7746eecb08ef99",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "f36d8a3465cfb5c5de607716113a9c59db4728f47b64249df64d9fa2ab1e2eb2",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-10-02-b",
+          "sha256": "cfa595816676f30bdffe2a843470f00a45131005988633d937fe4a853e74c05e",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "07a4d6fbfa61bc680d0ec48c123ac11595c506b5f70c2aa45c8619ae4f3440b9",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-02-storage": {
+      "edition": "2026-10-02",
+      "historical": true,
+      "title": "Storage Creates Value by Eroding the Price Spreads That Pay for It",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "52a2589505cb17b6fd2e2f729b2fa4f991752f3fa2f321aeffc605c878afda32",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "52a2589505cb17b6fd2e2f729b2fa4f991752f3fa2f321aeffc605c878afda32",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "1ae418028c22400a8633d776bd8b8719040c85e029716cbb49ae771a66f692f3",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "7cf207a53e8dfa7c76dfd794f9ff5ba36205db5b37e6ef3764758fd6380479f0",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "700dc5b3511fd1dc1715c8a003c442bbc51d5759d2efde09665de9c221b127f2",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "27a460246dc3b3f03ff885739abb0973cca184e3f7761d900d1ce215599ea6a4",
+          "status": "incomplete",
+          "priority": "1-mathematics",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "b8c799b9506c0849cfc108b282ae0f6a9b3746224277e8ed1a79b7d16fbff848",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "acdf2a9b15d159690e98ff8b8cdbf5274178ae295eb40da12453649bc51b7cb5",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "d2f4a045e23944c9718958994096cb3801462be14a8daebc8a55ea88c2f0da98",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "63b7f93dadfc0b239ba1bf3087b2b3cf3afcb9ac1fd8ddcbc07a19ecc83c3fae",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "cb99a16030a0e5036631086da195bea1dab8990c1f1bed0f6f8425b09e52e110",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-02-tax-bias": {
+      "edition": "2026-10-02",
+      "historical": true,
+      "title": "The Tax Code Can Favor Carbon-Intensive Firms Through Financing",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "a937242fa49afe171147c0a4b99067e14e19044483b255f838ef3609a36dc936",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "a937242fa49afe171147c0a4b99067e14e19044483b255f838ef3609a36dc936",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "45c6510876aae1cf0e10381af5d0ac32e140bfcb733044c24a8723923e16462c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "db3e44056e9fa571c6097c8cf25bebdf7c85581cc2e1ed9ec60286d34354f005",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "83da7967ad2671f655a90d693b1137250cd31b00bfeb09a4ffb75b2700ce91b0",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "0b1389fdd6befc96e90f71bc223ce3ff9684f3a3a142a59fc435dc150f2c81bd",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "0dd59824ee7a2eaeaa09d137a567df3128f869a917e2048c3227ea5071226410",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "4134f1caa543cacf57bd6e12187593e4e3dea8d2ce509c1dc836bb2fd7797c4a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "7fc0b09656b13b46aa8e4059d40ba44483fc5c89f25043ee900f5d870d22f6ab",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "0671fd8223eb03ccdfcbaca382bcd7aba5842a16797ffda637db3c9a122a9a97",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-09-trade-climate": {
+      "edition": "2026-10-09",
+      "historical": true,
+      "title": "Climate Cooperation Is Also a Problem of International Incidence",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "df88008b9411daa0778e4af3822965a32c4ff0c6a47c5ef61d4f68696e197fcb",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "df88008b9411daa0778e4af3822965a32c4ff0c6a47c5ef61d4f68696e197fcb",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "658a82dc421a7ffdc2661f5741a0450646632d09c52fea4537a70fc56f24e26c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "4520ff925db9feb216d43487202b713f4307a8cb8859ac14d9ef8e5518a5ee2c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "81844a75e38fa24f68a6e49181770267c410581cc04481a092a542eba60e16ce",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "e86b2c73735af571fd5058f2385bf0a1ecc2d2e8b00da9a4cec1a9f8dbd59b6f",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "55ddccb59f478f207330010c267fa19ef685d10b601e577d7f6f9da06953132d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "a6cc48274ec7f26b14cb8b8e3d7c3f0275e686067fd6b8a458e1e9eb8e41afcf",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "a4f7a3942e2b9aa046ae56bd7ec96b985f5b8845357fb835f8d1b0754d2881b3",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "f9ce545ce5884fee92aa8381ee4d493dcaecddd98f9cf90d0a12f13388613f9e",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-10-09-a",
+          "sha256": "bb2986824a252f36b5cfb1f2a7340827b88898fb35762e891e39edb6ada94012",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "f10734d3b13686bc4b01dafd610f64ce936e5ff8c19f987b4712733b9edc3320",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-09-landslides": {
+      "edition": "2026-10-09",
+      "historical": true,
+      "title": "Disaster Losses Persist When Displacement Breaks Local Ties",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "66c7f2683bfd5a5d7ec25d2641ced6af4a48b9c53745e48723b7b7d0cb023af4",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "66c7f2683bfd5a5d7ec25d2641ced6af4a48b9c53745e48723b7b7d0cb023af4",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "0a32ec594d2d7242e6aeff34106fe4c199a7de2d03dd593b1059c6cd060bb1ac",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "53cf971dc0724896f247a186eb021658458d2dfb50c5bc85e1af2aa20160d616",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "21711b4bdd9be75d9157492db616c04ce3a94e91dff42de215aec9e60653328e",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "a62c0b3a971f053af8bc008aba40850e57d79e6f98909d18404cf8424bfd2dec",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "7addc35f97c326bc25f471acaaad31f0711ed0f43436ac6f853a3ef8ff62d8f2",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "586304b6afb8e24d8f5b10cb15930302fc8c11fee3f5365730a956ea09511c76",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "long-view",
+          "sha256": "7330aece6a6509794222a27ac50b441946c95334509497eae51872cce2343c77",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "7acb13946b1165251df750816b86137cbb71c0a54c077e8bf1213985dbc0ca02",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-10-09-b",
+          "sha256": "7af1831d46967c72494ba423eed8cce7d4df9d0ddcbe6eef964d1cbaf7894dfa",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "7d15f828fc731eda39151442ec1dadc067f50469792cc748b6ab46b65d674ec2",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-09-nuclear-finance": {
+      "edition": "2026-10-09",
+      "historical": true,
+      "title": "A $4.2 Billion Loan Commitment Tests the Value of Existing Nuclear Assets",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "06f7684cf9908b69e41f5b19cb1aa469f331d3d2b71731b8f86922ac25a7c18d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "06f7684cf9908b69e41f5b19cb1aa469f331d3d2b71731b8f86922ac25a7c18d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "03c0dddb94ed71ff86f3bd05ad95b3a67d5f2462ec12e7c4d4926292cbb8af15",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "b8f343a2e200e1ce21ad6a9c6462dfe40d86449c6342ede6ce57677316d2ccef",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "46a9db6357d938469c139f3036d55347758087662ab19ad03395c9d860b3e301",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "147a13fecc2988ef59c2cc519177dda883b1785097889468eb3e3d40d2d675ac",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "ce72cc10c1a3bffaf3ebbd920d3c330948eb29a201149646c41824d2685020ac",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "e44b5edb6bc302b504950d32357d28667ceb731914b4b7ae9d7b5f74cbca445a",
+          "status": "incomplete",
+          "priority": "1-mathematics",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "32d048802746d7532e094e98cdca92ec4c10677d0cf5fd6baaa8f9a3eff1f8c7",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "b4e0ea98fabc3fe83c03b8761f815e336a06cb65b96cbf3ab13ecf41db171c61",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "484f24651a5f44d8acd27815e878a15675e718a093314366db8ad4b4833dbb03",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-09-winter-bills": {
+      "edition": "2026-10-09",
+      "historical": true,
+      "title": "The Same Winter Forecast Produces Four Different Household Burdens",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "f937f6b3398de5735709292328fe8f3028e207185ee7e7d75cfaa1ec9b765c0e",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "f937f6b3398de5735709292328fe8f3028e207185ee7e7d75cfaa1ec9b765c0e",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "c204d1bac17fb5ce39b65c29095bb1a6d8fd254b624c436e888eb3f111762760",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "b0ec1fc306bdc030d32b68fd1be88c6447f9543ad7385bd4999c2c24dd700550",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "7d7d021d8ae3885be640a0a2cee63055c68bff0efdc3b65087aad9ac032e7532",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "f123345ecfb00946976ad3c222175d03425cdaf2c2d1dfd6709a0a0be7e3442a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "f9b3a5056dcf51473afac7b42984fb2a6a3e8e4afc73d3c0d54726d5e2e486d5",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "54220e59f12aa5346719dc96e0901adf2d336f959089bb45a914fe919fb0c30c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "afd26819447a945d4a5fed6456c1a22d2521b7d056dcad42c31cbe964759a39b",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "de1dd02cec7f73ea7bd8ee9870a65f3d8329912a3647fa9a47a36c87aaf82169",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "1dc05c5734dfcf68e05941d7b944c6cfe787ad8237f9076d5bd1dabddcccf2b3",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-09-climate-liability": {
+      "edition": "2026-10-09",
+      "historical": true,
+      "title": "Climate Liability Reaches a Jurisdictional Crossroads",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "47e07af7ceaa6586736a2054edc1b1bc3e49d83473a99b586aecce1a25d1c975",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "47e07af7ceaa6586736a2054edc1b1bc3e49d83473a99b586aecce1a25d1c975",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "4cb3542f4ef80cd27e5a04115eca4e25bf74ddfc77a2b175a0b73b3ac2dee5a8",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "83f1128579a5d5fe04b2ebec80fb9b5f0717c61f29c9b4f2c37cbc27da578719",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "d516dcad39cd4109a309acfc08534d74e84001cdf2a70ee1a34c5f4daadec36a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "efe48be7d7e97832a752fb80f16da123d62367f05e3d4d03b135da704cc2db36",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "42daf5abe4e4515f7a712f82f20168b48c81a5bb737daef07ad94348bbb09e09",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "fe47029a49f6e46f8b80d9c815a5d04e2dda8753cdb0e403b0f54018926101f1",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "long-view",
+          "sha256": "3a24da1b8928ed5d198518529200b7154d8fd2bd6b80f70c7191841596efea4a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "b67b0550a09842967c1f60fc85430764062a2495153e979b33662616f11f9091",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-16-targeted-power": {
+      "edition": "2026-10-16",
+      "historical": true,
+      "title": "Rarely Exposed Groups Can Vanish in Population Averages",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "8c34601be3d547461e9ee60951cc67e4cb320c66563523aabb61ef1949f83d0f",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "8c34601be3d547461e9ee60951cc67e4cb320c66563523aabb61ef1949f83d0f",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "eaad7bc7c31b7f8ffc2e7ed456312ad619627006be97efabde560c2353bfb276",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "0b6db24493f43cc098348c8ed198de47bc8fd5e7f769678cf7ffad8891be1d63",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "87729e8ec2982e7144a92a49b62eb2c7527d577cc2d193c47881dbc986ef17d0",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "4699011ccfe849e715d6e841ba5031fcaba9ae63eb3b99ef387ac393ee4e2f1d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "1c3bbf254758817305f77a8b79939baea271f049bc4d2ece54085a2034cf8031",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "7398d7a7ff130ff34afccd269a0fb5978f06771b1de9bc9b7c1b248db0aa03ce",
+          "status": "incomplete",
+          "priority": "1-mathematics",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "54ae67a05ce7476f3bdf4d6e8971538a972f34b1ec7a1829a3dbdd60b8ed637d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-10-16-a",
+          "sha256": "dcb42d40c7158a9bf4feee616ea9dfa1cc37fb49ea9ed7c2e4ab1b817ad3e844",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "92059ee4f5513837edc9bbc2d7755ee2225ded613498d50c83bca2f27c9c7d30",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-16-pfas-agriculture": {
+      "edition": "2026-10-16",
+      "historical": true,
+      "title": "PFAS Policy Meets the Farm at the End of the Pipe",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "49ddd1beb8edf0801ba26f18bd64444a8a45f2c1f06ce61a12ed1144da915df6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "49ddd1beb8edf0801ba26f18bd64444a8a45f2c1f06ce61a12ed1144da915df6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "9183e3b52454bf68484ff8a5008b181b3f969cc081ba56a4d2fc5089ddb468e7",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "b7e9690c72f385eb856675263c6ec9b5f741e2f219479bf7da14ee56d196f908",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "185aaee96b5301406d9b142b5224779886446a940fb833f51472cd98c28c4c18",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "f5c1460212a0c2ec1e1c0b4af877f2c7894e997ba5ef43e1a201b9af496fd81b",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "bae3d036bbf389d595f548891267373ef69b681a197f0aafee22ad9b4ad41046",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "long-view",
+          "sha256": "e3e49746109b1121ba057b135be177e58a8449eed67b8c8b3a57079294a4fcd5",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "8e1f7983cb49dddd4a54a7b2299b1b6a70dd5623ccce377b4044040f94fe7fb1",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "9a19bf8be8b0bdc0baacb36af52bba3063d69ae3f7f489b8ad849877828b0dbd",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "2b4ec164d34514ed34c2e52b5e112df6fd4b8cb24947c1beb3fd56ba7ad0a0b0",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-16-ferc-review": {
+      "edition": "2026-10-16",
+      "historical": true,
+      "title": "FERC Proposes Trading Case-Specific Review for Categorical Rules",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "51271424bcf6aa541bd32ce5d9837d21b38e7ce8336f081d3fbe14c98fb04607",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "51271424bcf6aa541bd32ce5d9837d21b38e7ce8336f081d3fbe14c98fb04607",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "94b26d0ea59c35c910c9d0aeb88a55dc89d1ec7cbf56457d8552369fffd0e75f",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "22934f07d9fa240574f13e6aeabf267f4e60b4951f6e6b4071150d14e93bbc40",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "b531cb6cba25ea383621c1805712f189f13fc0b7fdfe4a84eb24ffb62ffe8d82",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "003101acff2aa52c307018fab61f566f61b2ed38efe09d96c8a6baf058b335c8",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "5a871a1555bc5317e04f0f9b2b4d1bceef0e9fde3c3e1b8936fa451f8d9adc56",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "long-view",
+          "sha256": "a24e310e6608f434bf40a17d43432a84005ae4d75b8721b131e7263d4afdbb9d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "83ffd47bd365c0a91d80cb521e71698eb881c9ae09290fc352b0b74c554c956d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "5ea805d87e31e91ee87c7042fbb4e34ab179da0d04603ddf35a6a5b4f9649120",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-10-16-b",
+          "sha256": "b5f1fcd557080a0b9e41da9160aa248bb57404db79cad5d8d7297ab6da5796fd",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "8ba587577807933fc57e74ca303dcb1f240a2d8e79da65f7b8b4cc2e233b5dc3",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-16-energy-macro": {
+      "edition": "2026-10-16",
+      "historical": true,
+      "title": "Energy Exposure Splits the Global Outlook",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "6ecc3e964083e59046007a56bc3c1488a877d69025180999f8f80ff31f342fe7",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "6ecc3e964083e59046007a56bc3c1488a877d69025180999f8f80ff31f342fe7",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "6ea77815d1cdca8e1006d919f9a7b9713c5f5bc87415a42747654c4a9d5ff618",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "023257358c7e59729d6e7523e857cd3793f57b944f475731f5111233630424ca",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "5808b0d7fd45e06fe7314c859389323b079858993ab972521fe611bdf2bbbc69",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "3e60d2b9c9848d585b1e32bf6f04e14e1c1ca69b302fa5152ea1eceda8a27244",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "d4beaec3ec2739479f86fdc999ef8a467274d82c3424bd0026b529f9b49142c9",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "2e881dc18c3d5bb68635f31936151eaaf27c5ad20203cac4a1ebca2270431b55",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "c84b0b90bbd7687763343318c0925032f1b1548fcd5d322cd14886b57b6a440d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "e39b5842f1cef4123e099c0e3604bf61313509c622199e8d0c4f367f47ad263c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "30e9d01481ea38666f4c74309e47240445cbfd3fb1f025b76c22fbba7ec31995",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-16-climate-vitals": {
+      "edition": "2026-10-16",
+      "historical": true,
+      "title": "Seven of Sixteen Climate Vital Signs Reach Record Extremes",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "46c4d97b24d632f7f78553b5b57ed891a97752af9e22bcb9abe85412b87aae86",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "46c4d97b24d632f7f78553b5b57ed891a97752af9e22bcb9abe85412b87aae86",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "0b0da5e0b1fd5c7d0d6da4270c19920cf331c8ee69918cb661f0145f5cfe880c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "4b7696ac3decf4bcab8d0d6dc4985807b3a675c3c2bbdf5b893bff523d0f3231",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "long-view",
+          "sha256": "008ccaaa7e1f20deaefc8e1443c1ab66d47c7d36ddf909912e2e93ad7f5ef54c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "737dac76c47fcf92358c6152c9e762b92bf35ff672a60aa84aabc40c6b11e200",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "3e31379bd620eff07bef18e09d862c6d58a8a9d28f362b3999bad5e3da4bec16",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "8703d7877d55fbd1f081ce8466f3519632ccb76f9f7f2aba9a300ad6ac7aac24",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "35a459f23d845c508baabd4e9e77460e38a58fb48663d2c2dda018cda9f1b697",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "aff559ccf33095f2b51340c93a05e3ef615938dfbaeab27aedd08022847dea3a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-23-paper-markups": {
+      "edition": "2026-10-23",
+      "historical": true,
+      "title": "Pollution Rules Can Raise Both Costs and Markups",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "3d0ac6fd746dcfe34c203a757cdf745e44d76c5b628098c3a3f71fb0a3659d4e",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "3d0ac6fd746dcfe34c203a757cdf745e44d76c5b628098c3a3f71fb0a3659d4e",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "70863e57062dcc4066ca72a59ee6b432e23b621433ae6c1deee7ffafc8441acd",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "a0267b9f7eb10d2f3da64a5fb2d3b3d2870f53c98a25f57752236662f9da9ba1",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "3be0af258bd6d31410835b958994fdb5b58b3f2a785e18400b44ff7f5e0c57d1",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "f7a38edaa6fb9c63e8d629163662ee5a2bb8a243535d28a7246cb2a0a5c42cce",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "9e2ee20702e032014d06635204167447f3126614e99abc8bfc10bc31087a7bbb",
+          "status": "incomplete",
+          "priority": "1-mathematics",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "e73f778284eaa26a5d929dc5074eda3d313e9be2067272598a7317f4490c2276",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "bc1e82469c78dae6c05c172e06930b69299d70c9fc11e00049517b7dabaafd78",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-10-23-a",
+          "sha256": "f3caf9fc46c0004b5e9b22e6f6e24a3be61224955b79e8dd86422dea4f8e3023",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "3eda4943eb2cdb3c4b71b345894fa85ec3a2c6b89bf43d708876ab3ffb1557ce",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-23-vehicle-mix": {
+      "edition": "2026-10-23",
+      "historical": true,
+      "title": "After Tax Credits, Vehicle Sales Shift Toward Hybrids",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "33c103e42bbf8190ca85a30e66490e59edeb4c54450626aab43bc6df3db93498",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "33c103e42bbf8190ca85a30e66490e59edeb4c54450626aab43bc6df3db93498",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "caa45745262757cd2cc24aefa893aabf2e44b032fd957434d89a6aeac6462127",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "b8a7f58485eda85547f58e1112f42cfa00c2fc55eb0657bb7f906e7161fe85d6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "bdab401ab6c81c284dd556ccd1a835923cb1b30100cd777b44ffd5651ef175cf",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "e14be56c2930ede872da545a5f2f66b984fb24c9fbdf7c61ccfc137ba3bc88c2",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "long-view",
+          "sha256": "6a288beb129111ba9dad51fad552fd4e58727827fe5f088522fb7df53b025b1c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "20037413281719593f2650b7eb60b4fb307838b0637cc6906a654feb42a1e87f",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "b634238d6c4e0d3172f992fb9302a78ec6dcf1b079e3cc22c89b9e1ed5307f1b",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "4c51207801209d9e0520017618e5c54fe0fb61c45fdd4737b0d660d47eae7b77",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-10-23-b",
+          "sha256": "82959a2c9f52f3453a50489cacf39ec19a9a71edd8f068230acc80d1ece78625",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "b382d0e1b0b9eed39045e891c5dbf4a07811b926c8babb132d4ce2d53a456690",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-23-emissions-gap": {
+      "edition": "2026-10-23",
+      "historical": true,
+      "title": "The Emissions Gap Becomes an Overshoot Problem",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "a309b928c43cf9139e3933b3f3665b3325d1fa51923a554e72a9a71c827b8486",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "a309b928c43cf9139e3933b3f3665b3325d1fa51923a554e72a9a71c827b8486",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "d547c50b4861b01a9223aa84ced458437614bc7a97d67058afb58f577dad698d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "a3bc0f7ce544794fc73049ffff1f0ec763328de8a850fddc1fb6f023c4f78701",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "long-view",
+          "sha256": "1e4b37e9ff3421c98cbc0c5886c48e4b4a7abaf16e6e266f1950feee8e5bf680",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "579658665c5107fca3bbb4a619639e9d83b51c5329ee60592b0f649d6221419c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "38aa04dc042e0eb1ec57a65606983c1c280fbaeab26480c8b7bfb3a3482a2d1d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "0db5c00f6ec6a07453179783aa2811dff1e0c30534d67fd3ca04471a4d6d6391",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "6787f9113f8bb8852e06d6b885d83d0827177b32b1c601046f84b02b2b61da2d",
+          "status": "incomplete",
+          "priority": "1-mathematics",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "6f43ac5de73a54c324b3752f5562d2744af7d7e05a7292ba0409b10eb29f034b",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "76f4dd94e1b3359d827f6028a02b4113051a18989f72fa18d79b479f057b6c56",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-23-adaptation-finance": {
+      "edition": "2026-10-23",
+      "historical": true,
+      "title": "Europe Tries to Make Climate Risk Bankable",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "ac35f69522b4293320ecd29f377ed461781423594ccdaada70d7ef2bda3f081a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "ac35f69522b4293320ecd29f377ed461781423594ccdaada70d7ef2bda3f081a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "91d3c8b541ae8288abe96e7f5e79776218a8b0698718cb4191df70bc6484f59a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "00e6827ce03c542ce3cc2ac4e3f2f2485a433d47545315242822ed746388c1d6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "de5b1de01dcb4b503b76bbd2bb9bd49ae3c19e582b877b63a6f181c8f6a4742a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "c677796b02181e668b1bf84c1cc4f69a3a516c21aacb16beb2df4b406a9bb20b",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "e9a2c08ffb152f8f36071ba6543e5668097cc9aff998b6d2d960c8dac286c9fb",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "8d3321c875dc91854c9fde2d0bdb72d0afb0dc55484618faee7944496da8229f",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "7396d931b203d17cb1b74e2621229a5ea5d7e37e5ea073d7b04caf2d7324975d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "e6605e2b749c91b5fd1f7e53f01b954859ef1b2a71db4e07a8329ab1ea8aeee4",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "d616a8bef2962158161ddee500c37926d0e405caf7c558c9b8c0a60d0992b268",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-23-mobility-finance": {
+      "edition": "2026-10-23",
+      "historical": true,
+      "title": "Electric Mobility’s Constraint Is the Cost of Capital",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "a8d79e329df9badc757c72f6e491403c60bdb166ac9d57bbe0a37ce30c030db9",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "a8d79e329df9badc757c72f6e491403c60bdb166ac9d57bbe0a37ce30c030db9",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "8469d6084905edd28ba0cd0154c7ab0adaf17d8c46c6974ffe3c8fdcef7d13b6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "55c51f8e89ca3415938a4f5431913e797b78b26369c69a3c6a804bd0d555ccca",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "05469b46f338199d86901af0ca756809557f72582ca1f6ecb5f7d5f0c3090e94",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "738301e23b7b9f3efe5d6b5a324b0fc64bb1677bfb7e230c9cd8fdabc6dd3b47",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "b3c5dcb365ee8029fdb764b59ee2bea321c6231599d67f5d02640d10f7e27d73",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "6b71a27f3381a98b1deebff56fded82c77b86afece8de4beadf2852f46afbf38",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "204df5739fdd2bbc21a3db7df37a603405ee3ef1e7714ed40136bf14710da2c7",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "0e59152109473ede0a5a2d77126f4bba5291475dbed31f292fc47fa8a0819e03",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-30-coal-country": {
+      "edition": "2026-10-30",
+      "historical": true,
+      "title": "Coal Demand Shocks Travel Beyond the Mine",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "f8c694e79c9816c35fd6fc0d23938fcea69ff478b8a7e93390c46654b340adb9",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "f8c694e79c9816c35fd6fc0d23938fcea69ff478b8a7e93390c46654b340adb9",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "833f2490c9ccc3423b67cc0a194a952b8707deed850f096124b436f0e0610196",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "63cb6c90cf4d425b2e903758a397b108027f0f9682482cd0f7f52478588b41b7",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "b83473a9ad02bf9361f68dbaa7fba71cd51543e4f21bf6d51c5a0cfd6cae5d17",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "587a57934ab461cbff9c269baf067881127f108ead6aeaf7020db6c2152d4496",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "7670ed67f2e3dfd8313b233b2a8dfb954f3e7f79e7fa761ee6f2b989560aa85c",
+          "status": "incomplete",
+          "priority": "1-mathematics",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "f4a1a4aa2ca2be6dbe5b0736ec6d9b7908247da5074e9c79d2cc9f4ed341c897",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "fedabf9401b2c2f398e290953d9c5849c2a6f639d4c2d7e70a67be597c71329a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "heron-h-2026-10-30-a",
+          "sha256": "2ce5d938ea06fcdfada891870e264348de87f40341f7671b752c9099ec97a826",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "21815bda24e02f9d5178a11321acd2bda6b9a33f10563bd1e40f2d1d600858cf",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-30-household-climate": {
+      "edition": "2026-10-30",
+      "historical": true,
+      "title": "Clean Equipment and Rooftop Solar Work Together",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "90601bc68b5a402788f292c10235b604721aa0ba24b9c947b44faccd2de2dc50",
+          "status": "verified",
+          "priority": "2-claims-and-analysis",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "adoption",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            }
+          ],
+          "mapping": "Reported percentages are model comparisons. 38 is the normalized abatement contribution; approximately 50 and 5 preserve rounding and the restricted-policy denominators.",
+          "claims": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "fact": "target",
+              "kind": "modeled",
+              "value": 10,
+              "unit": "percent reduction",
+              "denominator": "baseline household emissions"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "fact": "solarShare",
+              "kind": "modeled",
+              "value": 38,
+              "unit": "percent share",
+              "denominator": "normalized abatement contributions"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "fact": "noSolarCost",
+              "kind": "modeled",
+              "value": 50,
+              "unit": "approximate percent increase",
+              "denominator": "cost with solar subsidies"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "fact": "incomeCaps",
+              "kind": "modeled",
+              "value": 5,
+              "unit": "approximate percent saving",
+              "denominator": "cost without income caps"
+            }
+          ],
+          "qualifications": [
+            "Calibrated equilibrium comparisons are not causal subsidy estimates.",
+            "This targeted source-and-analysis review is not replication or blanket verification of the archive."
+          ],
+          "verification": {
+            "reviewer": "Codex source-and-analysis review",
+            "reviewedAt": "2026-11-05",
+            "method": "source-and-analysis",
+            "reasoning": "Reported percentages are model comparisons. 38 is the normalized abatement contribution; approximately 50 and 5 preserve rounding and the restricted-policy denominators."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "90601bc68b5a402788f292c10235b604721aa0ba24b9c947b44faccd2de2dc50",
+          "status": "verified",
+          "priority": "2-claims-and-analysis",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "adoption",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            }
+          ],
+          "mapping": "Same finding as the deck; checked independently against the policy comparisons, not inferred from a successful URL request.",
+          "claims": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "fact": "target",
+              "kind": "modeled",
+              "value": 10,
+              "unit": "percent reduction",
+              "denominator": "baseline household emissions"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "fact": "solarShare",
+              "kind": "modeled",
+              "value": 38,
+              "unit": "percent share",
+              "denominator": "normalized abatement contributions"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "fact": "noSolarCost",
+              "kind": "modeled",
+              "value": 50,
+              "unit": "approximate percent increase",
+              "denominator": "cost with solar subsidies"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "fact": "incomeCaps",
+              "kind": "modeled",
+              "value": 5,
+              "unit": "approximate percent saving",
+              "denominator": "cost without income caps"
+            }
+          ],
+          "qualifications": [
+            "Calibrated equilibrium comparisons are not causal subsidy estimates.",
+            "This targeted source-and-analysis review is not replication or blanket verification of the archive."
+          ],
+          "verification": {
+            "reviewer": "Codex source-and-analysis review",
+            "reviewedAt": "2026-11-05",
+            "method": "source-and-analysis",
+            "reasoning": "Same finding as the deck; checked independently against the policy comparisons, not inferred from a successful URL request."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "09a0731dcd3c5300f5dc6685d548c80f10314eab145c7686c69770d7c32d4941",
+          "status": "verified",
+          "priority": "2-claims-and-analysis",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "preferences",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            }
+          ],
+          "mapping": "Income targeting trades inframarginal expenditure against eligibility breadth. The 15.6 and 22 comparisons retain their distinct model counterfactuals and denominators.",
+          "claims": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "preferences",
+              "fact": "emissions",
+              "kind": "modeled",
+              "value": 15.6,
+              "unit": "percent increase",
+              "denominator": "baseline household emissions"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "preferences",
+              "fact": "additionalCost",
+              "kind": "modeled",
+              "value": 22,
+              "unit": "approximate percent increase",
+              "denominator": "policy cost without environmental preferences"
+            }
+          ],
+          "qualifications": [
+            "Calibrated equilibrium comparisons are not causal subsidy estimates.",
+            "This targeted source-and-analysis review is not replication or blanket verification of the archive."
+          ],
+          "verification": {
+            "reviewer": "Codex source-and-analysis review",
+            "reviewedAt": "2026-11-05",
+            "method": "source-and-analysis",
+            "reasoning": "Income targeting trades inframarginal expenditure against eligibility breadth. The 15.6 and 22 comparisons retain their distinct model counterfactuals and denominators."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "df9b7d18b12537ccbe3787307525c6368ffefe7c4fc364ed36a38a54fa1a4d64",
+          "status": "verified",
+          "priority": "2-claims-and-analysis",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "adoption",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            }
+          ],
+          "mapping": "A fixed abatement target and conditional technology complementarity motivate the reading lens; no experimental interaction is asserted.",
+          "claims": [],
+          "qualifications": [
+            "Calibrated equilibrium comparisons are not causal subsidy estimates.",
+            "This targeted source-and-analysis review is not replication or blanket verification of the archive."
+          ],
+          "verification": {
+            "reviewer": "Codex source-and-analysis review",
+            "reviewedAt": "2026-11-05",
+            "method": "source-and-analysis",
+            "reasoning": "A fixed abatement target and conditional technology complementarity motivate the reading lens; no experimental interaction is asserted."
+          }
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "a0a7a0bb501d83e0fcb14df685844b2555034e286960945efca84ed3261d3c6e",
+          "status": "verified",
+          "priority": "1-mathematics",
+          "scope": "whole-component",
+          "basis": "editorial-reconstruction",
+          "evidence": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "adoption",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            }
+          ],
+          "mapping": "Define editorial policy vector z containing rates and eligibility caps. Evaluate total expenditure F and aggregate household emissions E at each balanced-budget equilibrium. Replace the full policy search with a feasible-target inequality; the source states the objective in prose rather than this equation.",
+          "claims": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "fact": "target",
+              "kind": "modeled",
+              "value": 10,
+              "unit": "percent reduction",
+              "denominator": "baseline household emissions"
+            }
+          ],
+          "qualifications": [
+            "Calibrated equilibrium comparisons are not causal subsidy estimates.",
+            "This targeted source-and-analysis review is not replication or blanket verification of the archive."
+          ],
+          "verification": {
+            "reviewer": "Codex source-and-analysis review",
+            "reviewedAt": "2026-11-05",
+            "method": "source-and-analysis",
+            "reasoning": "Define editorial policy vector z containing rates and eligibility caps. Evaluate total expenditure F and aggregate household emissions E at each balanced-budget equilibrium. Replace the full policy search with a feasible-target inequality; the source states the objective in prose rather than this equation."
+          },
+          "mathematics": {
+            "derivation": "Define editorial policy vector z containing rates and eligibility caps. Evaluate total expenditure F and aggregate household emissions E at each balanced-budget equilibrium. Replace the full policy search with a feasible-target inequality; the source states the objective in prose rather than this equation.",
+            "omissions": [
+              "Technology-specific rates and discrete income-cap choices are collected in z.",
+              "Household optimization and the balancing financing tax are implicit functions, not removed from the economic model.",
+              "A weak inequality is an editorial feasible-target shorthand for the paper’s 10% target search."
+            ],
+            "notation": [
+              {
+                "symbol": "z",
+                "meaning": "editorial vector of subsidy rates and income-eligibility caps",
+                "sourceMeaning": "not source notation"
+              },
+              {
+                "symbol": "s_i",
+                "meaning": "household solar-installation choice",
+                "sourceSymbol": "s_i",
+                "sourceMeaning": "household solar-installation choice"
+              }
+            ]
+          }
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "fb5b0fc4c03f11093f458e3f0e6b5446db9308d841c94f52dd900750c203e519",
+          "status": "verified",
+          "priority": "2-claims-and-analysis",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "adoption",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            }
+          ],
+          "mapping": "The arrows summarize a conditional model mechanism, not an estimated causal chain. The accompanying factorial design is proposed rather than source-performed.",
+          "claims": [],
+          "qualifications": [
+            "Calibrated equilibrium comparisons are not causal subsidy estimates.",
+            "This targeted source-and-analysis review is not replication or blanket verification of the archive."
+          ],
+          "verification": {
+            "reviewer": "Codex source-and-analysis review",
+            "reviewedAt": "2026-11-05",
+            "method": "source-and-analysis",
+            "reasoning": "The arrows summarize a conditional model mechanism, not an estimated causal chain. The accompanying factorial design is proposed rather than source-performed."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "4b34367750f2f7cfcbc04af9a70be170608011fda3ef212af1f0d4e4f90c0d82",
+          "status": "verified",
+          "priority": "2-claims-and-analysis",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "adoption",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            }
+          ],
+          "mapping": "The household problem and calibration sections support the tasks, household heterogeneity and data inputs, including long-run energy elasticity. This is calibration, not treatment-effect identification.",
+          "claims": [],
+          "qualifications": [
+            "Calibrated equilibrium comparisons are not causal subsidy estimates.",
+            "This targeted source-and-analysis review is not replication or blanket verification of the archive."
+          ],
+          "verification": {
+            "reviewer": "Codex source-and-analysis review",
+            "reviewedAt": "2026-11-05",
+            "method": "source-and-analysis",
+            "reasoning": "The household problem and calibration sections support the tasks, household heterogeneity and data inputs, including long-run energy elasticity. This is calibration, not treatment-effect identification."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "c38b23a0187b66d3b4cd28045571ad0d498b6e1498dc55f348e49d449f444a70",
+          "status": "verified",
+          "priority": "2-claims-and-analysis",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "adoption",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "policy",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "robustness",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            }
+          ],
+          "mapping": "Working-paper status and model counterfactual classification are checked. The additional frictions are methodological qualifications proposed by the editor, not alleged omissions proved to invalidate the model.",
+          "claims": [],
+          "qualifications": [
+            "Calibrated equilibrium comparisons are not causal subsidy estimates.",
+            "This targeted source-and-analysis review is not replication or blanket verification of the archive."
+          ],
+          "verification": {
+            "reviewer": "Codex source-and-analysis review",
+            "reviewedAt": "2026-11-05",
+            "method": "source-and-analysis",
+            "reasoning": "Working-paper status and model counterfactual classification are checked. The additional frictions are methodological qualifications proposed by the editor, not alleged omissions proved to invalidate the model."
+          }
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "7fa937a28c872a29d75d9656a2747798408c6074ef5ba846857b9f87c5152893",
+          "status": "verified",
+          "priority": "2-claims-and-analysis",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "adoption",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "robustness",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            }
+          ],
+          "mapping": "Grid, tariffs and matched-target comparisons are proposed diagnostics. Authors already report sensitivity to preferences, cost shocks and target size; this feature does not represent its additional exercise as performed.",
+          "claims": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "robustness",
+              "fact": "factorial",
+              "kind": "proposed",
+              "performed": false
+            }
+          ],
+          "qualifications": [
+            "Calibrated equilibrium comparisons are not causal subsidy estimates.",
+            "This targeted source-and-analysis review is not replication or blanket verification of the archive."
+          ],
+          "verification": {
+            "reviewer": "Codex source-and-analysis review",
+            "reviewedAt": "2026-11-05",
+            "method": "source-and-analysis",
+            "reasoning": "Grid, tariffs and matched-target comparisons are proposed diagnostics. Authors already report sensitivity to preferences, cost shocks and target size; this feature does not represent its additional exercise as performed."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "d6cbedada8e2a117075bdee517e264d657da7dcbe414548d564d045f48699dac",
+          "status": "verified",
+          "priority": "2-claims-and-analysis",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "adoption",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            },
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "robustness",
+              "sha256": "23a8d7ba77b986cffe604299f7419f1f1d41f83fe704d821aaf2aeb22f52ad5a"
+            }
+          ],
+          "mapping": "Randomized/factorial incentives and hourly-use measurement are an editorial research proposal for identification, not a description of the authors’ performed analysis.",
+          "claims": [
+            {
+              "document": "nber-35945-oct2026",
+              "passage": "robustness",
+              "fact": "factorial",
+              "kind": "proposed",
+              "performed": false
+            }
+          ],
+          "qualifications": [
+            "Calibrated equilibrium comparisons are not causal subsidy estimates.",
+            "This targeted source-and-analysis review is not replication or blanket verification of the archive."
+          ],
+          "verification": {
+            "reviewer": "Codex source-and-analysis review",
+            "reviewedAt": "2026-11-05",
+            "method": "source-and-analysis",
+            "reasoning": "Randomized/factorial incentives and hourly-use measurement are an editorial research proposal for identification, not a description of the authors’ performed analysis."
+          }
+        },
+        {
+          "id": "entry-head",
+          "sha256": "a10ebd098aa88a69dcf7ac5765c2618cee39fde18f8f72def5b19affbe179ab6",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-30-methane-rule": {
+      "edition": "2026-10-30",
+      "historical": true,
+      "title": "EPA Proposes a Different Methane Ledger",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "fa8c1ab7552b9dd262efe45d587c869cf0b9730e75d8f90bffb52de867eadad7",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "fa8c1ab7552b9dd262efe45d587c869cf0b9730e75d8f90bffb52de867eadad7",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "bb8120a931d968132583fa12e3eb2c893eee6018ba2e1888f66197027ac147c4",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "660375fad161dc1c9547faa0c32ab2703dbf68cf21fe43866a6749e27d391883",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "3feaf4d0aa3c74b7049a9fc2aeb5f6b00d03720eb706eaf1460f081f82eaa998",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "4d6c14bf16d4df58d7cc715bf64b06e8891040dbf66eb60f3957ecc51e444c4c",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "dbd412198f394ae448601824be37cfa238cad0ea879ff9f28c863d1518235464",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "cb82c5473f186838a09b0628c0f7d7b540e92bcfb5efe2d63f1a7acacf0a7669",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "933de36c6003e78a0eb893333a10d831300ee34f34d9fdb394c641df9750efb4",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "701bbcda569cebb4f7e680fa226c0f67f1be5c00259f9f8dbd2dbcb3a6af2394",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-30-solar-storage": {
+      "edition": "2026-10-30",
+      "historical": true,
+      "title": "More New Solar Is Arriving With Batteries",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "eaee4b216094a20dc729f8aced855be006e163fb826056c40128c28e78217f93",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "eaee4b216094a20dc729f8aced855be006e163fb826056c40128c28e78217f93",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "1da0cb904a81185ce3e93f85a1db993c1f8e8cd6d18407026a0a58166d442bb9",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "b2300fd3e4206f4a266be089d045d8f012a34c19c1ec6237fe6e44f8af95bb4b",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "40e20adefbd2c100c980ee285d08b81a6c6ab880bbf3b15c25d2bf23cd7ad834",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "6cb0aa6faaf6ac29811e6e3960b3022b5e6bc4d81ea00e87fef0ded7b53f34a7",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "3c143774026bdc8b729312520cc53b99edebadd02cd23d7e36eff8a6f42964c5",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "long-view",
+          "sha256": "7f109330bbcd29d711f8a02770e986073c958c50f5c4f8f424dd70e3872fa6ae",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "f27820c9bd5914c105b1176282191ae65a990f2410e515f36c0c8a5c2e5b1f8a",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "9fb2aded28d6f6aa79f4eb6f829c2f030da11cb90241d0c7cf0743077b0f112d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-10-30-moves6": {
+      "edition": "2026-10-30",
+      "historical": true,
+      "title": "A New Emissions Model Changes the Baseline",
+      "components": [
+        {
+          "id": "reading-deck",
+          "sha256": "56a15b2b3b106e702f49e601ce264f2b070eb84bf3500059a303eafe8b191f5d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "finding",
+          "sha256": "56a15b2b3b106e702f49e601ce264f2b070eb84bf3500059a303eafe8b191f5d",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "27be88451eb755632c8b3e0718b046668f21495f85976fae58d4ed40509bf957",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "233ca4678502043ae632cfc3eb506b1214f372d3786deba4548aa44523d4cdc1",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "b72329c53fa6b3d89f55845176c7099ca491015f4de3b42fd256a1e1805b3501",
+          "status": "incomplete",
+          "priority": "1-mathematics",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "a6c598e37a3fdf243617b61bd7c163465134117c31fd98c9d7ddde57110d8779",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "5888d16379c4598840eff159329ec3ad508028425a7133fb1a4b4c62484479ff",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "d1b03d83890688fb0088f3746bd367d1c5f7a557028a4792bfd32edda7dd2a71",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "research-note",
+          "sha256": "d774d1df4d83e9a564d8a3af2f94baf7e10383dd3d752bd73db22551efb7a1ee",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "No component-level source-and-analysis verification reproduced in this build; prior access metadata is not a completed claim review."
+        },
+        {
+          "id": "entry-head",
+          "sha256": "76721535ce5d0995f3d9171457aa062309081464cb84261bb363df6636176bbb",
+          "status": "incomplete",
+          "priority": "2-claims-and-analysis",
+          "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    }
+  }
+}

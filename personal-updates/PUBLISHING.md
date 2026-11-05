@@ -175,3 +175,14 @@ Run `node scripts/test_field_brief_order.cjs` alongside the existing Field Brief
 publication, navigation and artwork checks. The test protects every earlier
 edition and all frozen artwork, with only this precisely scoped content-order
 and feature-tag allowance for No. 040.
+
+
+## L&L source-to-component verification — November 5, 2026
+
+Before a new or substantively amended reading is prepared, perform an actual source-and-analysis review and record it in `weekly-economics-environment/source-evidence.json`. Run `node weekly-economics-environment/source-evidence.cjs` and `node scripts/test_ll_source_evidence.cjs`. The existing preparation command invokes the read-only gate before artwork preparation and before any publication write; a failed review uses the normal stop/retry path, never a deadline waiver.
+
+The record binds each finding, analytical block, research note, substantive feature and configured Heron to a content fingerprint. Identify the inspected document version/hash, publication status, precise supporting passage, claim classification, units/denominators, and qualifications. Distinguish reported/paraphrased results, editorial reconstructions, calculations, hypotheses and interpretation. Source-authored mathematics needs matching source tokens; reconstruction needs a derivation, omissions and a notation mapping. A proposed diagnostic is not a performed test; a model comparison is not an identified treatment effect. Review diagrams, quantities and methodological criticisms on the same basis.
+
+A URL response, download, populated citation or generated declaration is never a completed substantive review. Reviewers must actually inspect the cited passages and evaluate the analysis. Record reviewer, date, reasoning and material discrepancies. Machine checks verify coverage, stale records, linked evidence, typed facts and required disclosures; they cannot authenticate the reviewer or establish that a passage truly proves a proposition. Do not auto-complete records or generate verified attestations during preparation. A new reading cannot opt itself into the historical exemption.
+
+The six-edition archive is inventoried, not certified: ten components of the October 30 household-climate reading were reviewed against NBER 35945; 318 other historical components remain explicitly incomplete. The three older full-text assertions in source-review.json were not independently reproduced in this build. Unchanged incomplete historical components may remain, but new or changed content requires completed review. Preserve existing evidence records and explicitly document amendments; do not recalculate fingerprints to conceal a content change. The approved household equation amendment uses editorial policy vector z, discloses the omitted policy/household/tax structure, and retains the supported 10% objective.

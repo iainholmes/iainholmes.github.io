@@ -365,5 +365,11 @@
       "title": "MOVES and Mobile Source Emissions Research | US EPA",
       "assessment": "Accessible source endpoint; this does not itself verify every published claim."
     }
-  ]
+  ],
+  "componentAudit": {
+    "record": "source-evidence.json",
+    "reviewed": "2026-11-05",
+    "scope": "30 readings / six editions inventoried; one reading’s ten components substantively reviewed. Remaining component reviews are incomplete, including three previously asserted full-text checks not independently repeated here.",
+    "accessCorrection": "HTTP 200 Request Access pages (Federal Register) are not readable substantive documents. Prior URL metadata is retained as historical evidence, not verification."
+  }
 }
