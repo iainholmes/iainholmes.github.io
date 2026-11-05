@@ -1,3 +1,5 @@
+# The L&L validation workflow is independent of GitHub Pages publishing.
+# A successful visual/layout audit does not verify a successful Pages deployment.
 name: Loblolly & Logit rendered layout
 on:
   push:
