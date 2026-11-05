@@ -624,6 +624,55 @@
         "checked": "2026-11-03",
         "source": "https://www.ncparks.gov/state-parks/medoc-mountain-state-park"
       }
+    },
+    {
+      "id": "lake-norman-alder",
+      "name": "Lake Norman State Park — Alder Trail",
+      "short_name": "Alder Trail",
+      "kind": "trail",
+      "region": "Iredell County",
+      "access": {
+        "name": "Visitor-center parking, 759 State Park Road, Troutman",
+        "lat": 35.6725,
+        "lng": -80.9325,
+        "coords_verified": true,
+        "coords_checked": "2026-11-05",
+        "coords_source": "Official NC State Parks home GPS 35.6725,-80.9325; official park map reviewed for public access, parking and named route. Visitor-center parking beside Alder Trail on Park Lake."
+      },
+      "dog_policy": "Attended leash no longer than six feet; pets stay outside buildings, swim beach and cabins.",
+      "routes": [
+        {
+          "route_id": "lake-norman-alder-loop@1",
+          "distance_mi": 0.8,
+          "shape": "loop",
+          "difficulty": "easy",
+          "surface": "Natural woodland path; white-diamond blazes around Park Lake."
+        }
+      ],
+      "links": [
+        {
+          "label": "Official access, status, hours and pets",
+          "url": "https://www.ncparks.gov/state-parks/lake-norman-state-park"
+        },
+        {
+          "label": "Official trails",
+          "url": "https://www.ncparks.gov/state-parks/lake-norman-state-park/trails"
+        },
+        {
+          "label": "Official park map",
+          "url": "https://www.ncparks.gov/maps/lake-norman-state-park-map/open"
+        }
+      ],
+      "tags": [
+        "woodland",
+        "short-walk",
+        "picnic"
+      ],
+      "closure": {
+        "status": "open",
+        "checked": "2026-11-05",
+        "source": "https://www.ncparks.gov/state-parks/lake-norman-state-park"
+      }
     }
   ]
 }

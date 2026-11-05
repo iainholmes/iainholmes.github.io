@@ -432,6 +432,49 @@
       ],
       "headline_condition": "Recheck the dated weekend forecast",
       "condition_level": "normal"
+    },
+    {
+      "edition_id": "2026-W45-thu",
+      "replaced_at": "2026-11-05T12:10:18.951Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-11-05T05:33:30-05:00",
+        "checked_at": "2026-11-05T12:06:12.623Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/GSP/114,84/forecast",
+          "issued_at": "2026-11-05T10:33:30.000Z",
+          "retrieved_at": "2026-11-05T12:06:12.623Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Sunny, with a high near 66. North northwest wind around 5 mph."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "Sunny, with a high near 65."
+          }
+        ],
+        "summary": "Saturday: Sunny, with a high near 66. North northwest wind around 5 mph. Sunday: Sunny, with a high near 65. Saturday night: Mostly clear, with a low around 38. Sunday night: Mostly clear, with a low around 39.",
+        "alerts": [],
+        "alerts_checked_at": "2026-11-05T12:06:12.623Z",
+        "pivot": {
+          "if": "Thunder,strong wind,flooding,unsafe footing or official closure",
+          "note": "Postpone. Another exposed trail or picnic is not a storm alternative. Recheck official status and NWS before leaving."
+        },
+        "trail_note": "Stay on the named marked route; turn back at unsafe footing or flooding, carry drinking water and finish in daylight."
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — dated weekend forecast",
+          "url": "https://api.weather.gov/gridpoints/GSP/114,84/forecast",
+          "retrieved": "2026-11-05"
+        }
+      ],
+      "headline_condition": "Recheck the dated weekend forecast",
+      "condition_level": "normal"
     }
   ]
 }

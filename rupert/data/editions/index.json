@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "2d69fb3ba06d9996",
+  "revision": "386220520c0d08a2",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -605,6 +605,56 @@
       ],
       "photo_id": "atlas-plate-d522216530a1",
       "path": "data/editions/2026-W45-tue.json"
+    },
+    {
+      "id": "2026-W45-thu",
+      "slot": "thursday",
+      "status": "published",
+      "published_at": "2026-11-05T07:12:46-05:00",
+      "weekend": {
+        "start": "2026-11-07",
+        "end": "2026-11-08"
+      },
+      "title": "Alder, on the smaller lake",
+      "place_id": "lake-norman-alder",
+      "experience_key": "lake-norman-alder-loop",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Alder, on the smaller lake",
+          "place_id": "lake-norman-alder",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "short-walk",
+            "picnic"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "lake-norman-alder"
+      ],
+      "place_roles": [
+        {
+          "place_id": "lake-norman-alder",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-171c6a7ad656",
+      "path": "data/editions/2026-W45-thu.json"
     }
   ]
 }

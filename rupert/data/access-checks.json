@@ -183,6 +183,24 @@
       "official_url": "https://www.ncparks.gov/state-parks/medoc-mountain-state-park",
       "discrepancy": false,
       "note": "Publication-day official home, route table, news and map read. Hiking explicitly Open; Bluff Loop 1.75 miles, orange triangles, hiking only, official easy-to-moderate grade. Designated day-use/picnic parking and park public GPS checked; Google Maps closed-road address warning retained, follow signs and use 1540 or park name for visitor-center directions rather than entering a closed road. November gate 8 a.m.–6 p.m., visitor center 8 a.m.–5 p.m.; pets outside buildings on attended leash at most six feet. Free ordinary day use. No current news posts is not the opening evidence; explicit trail status is. No swimming or off-leash recommendation, no unsupported crowd reading."
+    },
+    {
+      "place_id": "lake-norman-alder",
+      "status": "open",
+      "checked": "2026-11-05",
+      "checked_at": "2026-11-05T12:06:05.416Z",
+      "official_url": "https://www.ncparks.gov/state-parks/lake-norman-state-park",
+      "discrepancy": false,
+      "note": "Official home explicitly lists Hiking Trails Open; mountain-bike trails are Closed, and are excluded. Alder is hiking-only, 0.8 mile easy white-diamond loop by visitor-center parking on the official trail table and map. Public visitor-center GPS35.6725,-80.9325 verified from home and map, address759 State Park Road. November day-use table7 a.m.–6 p.m.; status panel7:30p.m. is later, so use6p.m. and finish daylight. Pets attended leash at most6ft, outside buildings, swim beach and cabins. Free ordinary day use. Official news and July18,2023 boil notice read: no rescission verified; carry all drinking water, do not assume taps safe. No swim, rental or bike trail required. Release-day weather refresh and editorial approval remain mandatory."
+    },
+    {
+      "place_id": "lake-norman-alder",
+      "status": "open",
+      "checked": "2026-11-05",
+      "checked_at": "2026-11-05T12:10:58.673Z",
+      "official_url": "https://www.ncparks.gov/state-parks/lake-norman-state-park",
+      "discrepancy": false,
+      "note": "Publication-day official home, trails, map, news and dated boil advisory actually read. Hiking Trails explicitly Open; mountain-bike trails Closed and excluded. Alder hiking-only0.8-mile easy white-diamond loop beside Park Lake, accessible from designated visitor-center parking; public GPS35.6725,-80.9325 and759StateParkRoad verified from official home/map. November7a.m.–6p.m. day-use table governs earlier than7:30p.m.status-panel text; finish daylight. Attended leash at most6feet; pets outside swim beach, buildings and cabins. Free ordinary day use. July18,2023 official boil notice still online says until updated; no rescission verified. Carry all human/dog drinking water; no claim that taps are safe. No boating,swimming or bike trail needed."
     }
   ],
   "official_hosts": [
