@@ -35,6 +35,7 @@ jobs:
         env:
           LL_PLAYWRIGHT: ${{ runner.temp }}/ll-browser/node_modules/playwright
           LL_QA_JSON: ${{ runner.temp }}/ll-layout-results.json
+          LL_QA_SHOTS_DIR: ${{ runner.temp }}/ll-hotfix-shots
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/ll-preview.log" 2>&1 &
           node scripts/test_ll_layout_browser.cjs
@@ -42,5 +43,7 @@ jobs:
         if: always()
         with:
           name: ll-layout-evidence
-          path: ${{ runner.temp }}/ll-layout-results.json
+          path: |
+            ${{ runner.temp }}/ll-layout-results.json
+            ${{ runner.temp }}/ll-hotfix-shots/*.png
           if-no-files-found: ignore
