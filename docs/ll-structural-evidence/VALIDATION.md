@@ -79,7 +79,7 @@ The following is the complete coverage register. Zero means **verification incom
 
 ## Browser validation
 
-Actual Chrome rendering used the supported browser surface with sized iframes, not physical-device simulation. The Day/Night geometry audit covers all six editions at the established responsive widths, plus 1512px and 852x393 landscape. Each divider must coincide with actual feature boundaries; no artificial bridge is permitted. Source hashes and original figures are checked separately from rendering.
+Actual Chrome rendering used the supported browser surface with sized iframes, not physical-device simulation. The completed local Day/Night geometry audit passed all 180 cases (six editions × 15 widths × two modes), covering all six editions at the established responsive widths, plus 1512px and 852x393 landscape. Each divider must coincide with actual feature boundaries; no artificial bridge is permitted. Source hashes and original figures are checked separately from rendering.
 
 Desktop visual checks cover the inset grid figure / Ledger join, unequal-content insurance features, and the amended household equation. Phone Night inspection confirms readable wrapping and no equation overflow. A seeded old off preference does not prevent Heron opening. Close collapses the note, keyboard reopening works, Escape from the focused note restores the perch control, individual dismissal hides the appearance and moves focus to the reading heading. Index opens, Escape closes and restores focus. The mobile Periodicals drawer contains all primary destinations and no Field Guide entry. Full Edition / At a Glance switch correctly.
 
@@ -90,3 +90,35 @@ Full responsive/browser CI and production verification are recorded on the PR af
 `node scripts/test_final_regressions.cjs` fails identically on untouched baseline and this branch at the old hub-script snapshot (before reaching its updated toolbar assertion). This is pre-existing, not reported as a pass.
 
 The first PR CI attempt caught a prerequisite-order regression in the Register fixture after moving composition earlier. Register preflight retains its original priority; both source gates still execute before artwork work or writes. An explicit empty-reading rejection was added. No check was bypassed.
+
+Four directly affected Handbook references to the removed global toggle were corrected. Its figure, typography, layout and other explanations are unchanged.
+
+## Changed-file scope
+
+```text
+.github/workflows/ll-layout.yml
+docs/ll-structural-evidence/VALIDATION.md
+docs/ll-structural-evidence/after.jpg
+docs/ll-structural-evidence/before.jpg
+personal-updates/PUBLISHING.md
+personal-updates/SOURCE-DISCOVERY.md
+personal-updates/handbook/index.html
+scripts/prepare_periodicals.cjs
+scripts/test_editorial_folio.cjs
+scripts/test_final_regressions.cjs
+scripts/test_heron_browser.cjs
+scripts/test_ll_layout_browser.cjs
+scripts/test_ll_source_evidence.cjs
+scripts/test_maintenance_browser.cjs
+weekly-economics-environment/editorial-decisions.json
+weekly-economics-environment/index.html
+weekly-economics-environment/reading-arrangements.cjs
+weekly-economics-environment/reading-composition.js
+weekly-economics-environment/reading-compositions.cjs
+weekly-economics-environment/reading-feature-inventory.json
+weekly-economics-environment/reading-field-guide/index.html
+weekly-economics-environment/reading-folio.css
+weekly-economics-environment/source-evidence.cjs
+weekly-economics-environment/source-evidence.json
+weekly-economics-environment/source-review.json
+```
