@@ -33,6 +33,8 @@ idx.editions.push({date:'9998-01-01',readings:[{id:newId,title:'Private fixture'
 const article=journal.match(/<article class="entry"[^>]*id="2026-10-30-household-climate"[\s\S]*?<\/article>/)[0].replaceAll(reading.id,newId);
 const grown=journal.replace(/(id="ll-reading-index-data">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(idx)+b).replace('</main>','<section class="edition" data-edition="9998-01-01">'+article+'</section></main>');
 reject(()=>gate.validate({journal:grown}),/completed substantive review required/);
+const emptyDraft=journal.replace('</main>','<section class="edition" data-edition="9998-01-01"><article class="entry" id="private-empty-reading"></article></section></main>');
+reject(()=>gate.validate({journal:emptyDraft}),/substantive components and completed review required/);
 const unindexed=journal.replace('</main>','<section class="edition" data-edition="9998-01-01">'+article+'</section></main>');
 reject(()=>gate.validate({journal:unindexed}),/completed substantive review required/);
 const futureEvidence=clone(evidence),newReading=gate.inventory(grown).find(r=>r.id===newId);

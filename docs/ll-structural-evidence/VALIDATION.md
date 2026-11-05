@@ -65,7 +65,7 @@ The following is the complete coverage register. Zero means **verification incom
 
 ## Executed source tests
 
-- `node scripts/test_ll_source_evidence.cjs`: 30 passed, including every requested negative case, accepted sourced interpretation, future coverage, stale Index detection, missing component detection and actual pre-write refusal with unchanged artifacts.
+- `node scripts/test_ll_source_evidence.cjs`: 31 passed, including every requested negative case, accepted sourced interpretation, future coverage, stale Index detection, missing component detection and actual pre-write refusal with unchanged artifacts.
 - `node scripts/test_ll_publication_layout.cjs`: 15 passed.
 - `node scripts/test_reading_exhibits.cjs`: 691 passed.
 - `node scripts/test_editorial_folio.cjs`: 261 passed; the sole drawer exception is exactly the approved Field Guide link removal.
@@ -88,3 +88,5 @@ Before/after screenshots: [before](before.jpg), [after](after.jpg). These show l
 Full responsive/browser CI and production verification are recorded on the PR after completion. Standalone WebKit browser-launch scripts were updated for the explicitly removed toggle but not run locally. Physical Safari/iPhone testing is not claimed. Local Bundler remains unavailable; no independent Jekyll build is claimed here.
 
 `node scripts/test_final_regressions.cjs` fails identically on untouched baseline and this branch at the old hub-script snapshot (before reaching its updated toolbar assertion). This is pre-existing, not reported as a pass.
+
+The first PR CI attempt caught a prerequisite-order regression in the Register fixture after moving composition earlier. Register preflight retains its original priority; both source gates still execute before artwork work or writes. An explicit empty-reading rejection was added. No check was bypassed.

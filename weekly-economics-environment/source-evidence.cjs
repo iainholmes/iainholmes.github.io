@@ -57,7 +57,7 @@ function check(record,component,reading,documents){
 function validate({journal,evidence=require('./source-evidence.json')}={}){
  const readings=inventory(journal);let verified=0,incomplete=0;
  for(const id of historicalIds)if(!readings.some(r=>r.id===id))throw Error('L&L source evidence: missing historical reading '+id);
- for(const r of readings){const previous=evidence.readings[r.id],legacy=historicalIds.has(r.id)&&previous?.historical===true&&previous.edition===r.edition&&r.edition<=evidence.historicalThrough;
+ for(const r of readings){if(!r.components.length)throw Error('L&L source evidence '+r.id+': substantive components and completed review required');const previous=evidence.readings[r.id],legacy=historicalIds.has(r.id)&&previous?.historical===true&&previous.edition===r.edition&&r.edition<=evidence.historicalThrough;
   for(const c of previous?.components||[])if(!r.components.some(x=>x.id===c.id))throw Error('L&L source evidence '+r.id+': missing reviewed/historical component '+c.id);
   for(const c of r.components){const rec=previous?.components.find(x=>x.id===c.id);
    if(legacy&&rec?.status==='incomplete'&&rec.sha256===c.sha256){incomplete++;continue;}
