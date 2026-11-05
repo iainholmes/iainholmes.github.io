@@ -138,3 +138,40 @@ Each edition appends 3–5 sourced profiles to the existing `#field-register` JS
 Run `node weekly-economics-environment/field-register-schema.cjs` and `node scripts/test_field_register.cjs`. The existing preparation command calls this read-only gate before any artwork, hub or history write. `field-register-history.json` stores stable hashes of published records; never replace, trim or recalculate old pins to accommodate a mutation. Successful preparation appends pins for genuinely new-edition profiles; commit the updated ledger with the new edition and its register data. A retry is idempotent. Missing profiles, invalid selections, wrong reading associations, historical mutation, deletion or renumbering block publication.
 
 Field Notes and Register history links are rendered automatically from `issue`, permanent `no` and the original `fieldNote` flag. Stable targets are `#field-notes-YYYY-MM-DD` and `#field-notes-YYYY-MM-DD-profile-NNN`; do not hand-author links by array position. Featured profiles link to their own plate. Unfeatured Register records explicitly say so, link to the edition's Field Notes as context, and retain a direct associated-reading link. Historical navigation closes the Register, selects the edition, restores Full Edition and focuses the heading beneath the toolbar. Preserve the Full/At a Glance viewport repair when editing the router.
+
+
+## Field Brief fifth-position North Carolina feature — prospective from November 6, 2026
+
+For every new five-story edition, explicitly mark the dedicated local feature with
+`story.editorial.feature: "north-carolina"` and include `"North Carolina"` in its
+`editorial.geographies`. Place that story fifth. Additional North Carolina stories
+are permitted elsewhere without that feature designation; mentions in prose or
+headlines do not designate a feature. Existing domain/diversity selection continues
+unchanged. Historical editions through November 5 are not retroactively retagged.
+
+`daily-watchlist-5/editorial-order.cjs` enforces this before artwork preparation or
+any artifact write in `scripts/prepare_periodicals.cjs`; the read-only
+`scripts/check_field_brief.cjs` invokes the same gate. If an editorial exception is
+needed, record `editorialSelection.orderException` with a substantive `reason`,
+`approvedBy`, `approvedAt` (YYYY-MM-DD) and HTTPS `reviewUrl` identifying the explicit
+editorial approval. The validator verifies the review record's structure; the
+publisher must establish the actual approval, not self-authorize an exception.
+Do not remove the feature tag or use a headline match to evade this check.
+
+### Approved No. 040 ordering correction
+
+The user authorized one ordering correction to November 5, 2026: productivity is
+fourth (ochre), Wake/Raleigh bonds fifth (oxblood). Permanent story IDs remain
+unchanged: `/05` still opens productivity; `/04` still opens Wake/Raleigh. Their
+frozen SVGs and all artwork registry bytes remain exact. Only these two objects
+exchange array positions; the local story gains its explicit feature designation.
+Display folios, front-list folios, Index folios and colors follow array position;
+DOM/hash targets, artwork lookup and Commonplace identity follow permanent IDs.
+A hidden `.s-no` retains the legacy identity hook when it differs from the visible
+`.s-position`, protecting cached Commonplace clients without rewriting saved items.
+The validator permits this exact 01/02/03/05/04 order only for this date; future
+issues retain 01/02/03/04/05. Do not renumber or regenerate either illustration.
+Run `node scripts/test_field_brief_order.cjs` alongside the existing Field Brief
+publication, navigation and artwork checks. The test protects every earlier
+edition and all frozen artwork, with only this precisely scoped content-order
+and feature-tag allowance for No. 040.

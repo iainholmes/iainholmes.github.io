@@ -159,13 +159,16 @@ html.index-open .main{transform:translateX(56px) scale(.985);filter:saturate(.6)
 .front-list a:hover b{text-decoration:underline;text-decoration-color:var(--k);text-underline-offset:3px}
 .front-list b{font-weight:500}
 
-.story{--k:var(--prussian);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr) minmax(0,.75fr);gap:0 34px;padding:34px 0 36px;border-bottom:1px solid var(--rule);scroll-margin-top:64px}
+.story{--k:var(--prussian);--story-top:34px;--story-bottom:36px;--story-outset:14px;position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr) minmax(0,.75fr);gap:0 34px;padding:34px 0 36px;border-bottom:1px solid var(--rule);scroll-margin-top:64px}
+/* Each pair is owned by one story and stops inside its existing vertical padding. */
+.story::before,.story::after{content:"";position:absolute;top:var(--story-top);bottom:var(--story-bottom);width:2px;background:var(--k);pointer-events:none}
+.story::before{left:calc(-1 * var(--story-outset))}.story::after{right:calc(-1 * var(--story-outset))}
 .story.flip .art{order:3}.story.flip .side{order:1}.story.flip .copy{order:2}
 .art{margin:0;position:sticky;top:66px;align-self:start}
 .art-frame{overflow:hidden;aspect-ratio:5/4;background:var(--paper-2);border-top:6px solid var(--k)}
 .art svg{display:block;width:100%;height:100%;filter:var(--art-filter)}
 .s-head{display:flex;align-items:baseline;gap:14px;margin-bottom:12px}
-.s-no{font:500 36px/.86 var(--display);color:var(--k);letter-spacing:-.03em}
+.s-no,.s-position{font:500 36px/.86 var(--display);color:var(--k);letter-spacing:-.03em}
 .story h2{margin:0 0 14px;font:400 clamp(26px,2.5vw,34px)/1.06 var(--head);color:var(--ink);letter-spacing:-.005em;text-wrap:balance}
 .summary p{margin:0 0 12px}
 .summary p:first-child::first-letter{font:500 3.1em/.8 var(--display);float:left;margin:.06em .08em 0 0;color:var(--k)}
@@ -210,7 +213,8 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
   .pub-name{font-size:19px}
   .mast h1{font-size:clamp(40px,12.2vw,84px)}
   .front{grid-template-columns:1fr;gap:20px}
-  .story,.story.flip{display:block;padding:28px 0}
+  .story,.story.flip{--story-top:28px;--story-bottom:28px;--story-outset:10px;display:block;padding:28px 0}
+  .story::before,.story::after{width:1.5px}
   .art{position:relative;top:auto;margin-bottom:18px}
   .art-frame{aspect-ratio:16/10}
   .side{margin-top:18px}
@@ -388,6 +392,11 @@ not an equal-cell table. Day/Night lives in that rail and uses the shared Period
 periodicals:session-mode (day|night), set in <head> before paint, shared across titles in this tab for the session. The Index is a slide-in contents panel with expandable issues. The Periodicals shelf
 lists Periodicals, Field Brief, Loblolly & Logit, The Workbook, plus a Handbook utility link.
 No pills, chips, slogans, category labels above headlines or explanatory UI copy.
+No. 040 ordering correction (5 November 2026): display 05/productivity fourth and
+04/Wake-Raleigh fifth; preserve permanent IDs, frozen pins and Commonplace links.
+Display folios are array positions; .s-no retains the permanent identity hook.
+Future editions require editorial.feature="north-carolina" in position 05;
+see editorial-order.cjs and personal-updates/PUBLISHING.md for reviewed exceptions.
 Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepable addresses for the Commonplace; never recycle or change a published story number within an issue. Whole issues and stories are keepable. -->
 <script type="application/json" id="briefing-data">
 {
@@ -16261,6 +16270,59 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
           }
         },
         {
+          "number": "05",
+          "category": "U.S. economy · productivity",
+          "title": "Productivity rises 3.6% as quarterly unit labor costs fall",
+          "art": "economy",
+          "summary": [
+            "Nonfarm business labor productivity increased at a 3.6% annualized rate in the third quarter as output rose 3.7% and hours worked increased 0.1%, the Bureau of Labor Statistics reports. Productivity was 2.1% higher than a year earlier. Real hourly compensation rose 1.1% for the quarter and 1.0% over four quarters.",
+            "Unit labor costs fell at a 0.7% annualized rate because productivity outpaced the 2.9% increase in hourly compensation. Costs were still 2.4% higher than a year earlier. Manufacturing was weaker: productivity rose 0.3% for the quarter while unit labor costs increased 2.7%, with nondurable manufacturing productivity down 1.7%."
+          ],
+          "why": "Output per hour and unit labor costs connect growth, pay and inflation more directly than vacancies or layoffs. The quarter's stronger economy-wide efficiency absorbed compensation growth, but the annual cost increase and weak manufacturing split argue against treating one annualized quarter as a settled trend.",
+          "implications": [
+            [
+              "Inflation",
+              "Falling quarterly unit labor costs reduce near-term labor-cost pressure after accounting for output, while the 2.4% annual rise shows that the price signal is not uniformly disinflationary."
+            ],
+            [
+              "Evidence",
+              "The release incorporates annual national-accounts revisions and materially revised second-quarter productivity upward. December's revision and the manufacturing divergence are important checks on durability."
+            ]
+          ],
+          "sources": [
+            [
+              "Bureau of Labor Statistics · third-quarter 2026 Productivity and Costs release, November 5",
+              "https://www.bls.gov/news.release/prod2.htm"
+            ]
+          ],
+          "editorial": {
+            "domain": "economy",
+            "entities": [
+              "Bureau of Labor Statistics"
+            ],
+            "industries": [
+              "nonfarm business",
+              "manufacturing"
+            ],
+            "geographies": [
+              "United States"
+            ],
+            "mechanisms": [
+              "labor productivity measurement",
+              "unit labor cost index"
+            ],
+            "questions": [
+              "Is output per hour rising fast enough to absorb compensation growth without adding inflation pressure?"
+            ],
+            "materialDevelopment": {
+              "evidenceUrl": "https://www.bls.gov/news.release/prod2.htm",
+              "previousStatus": "The November 4 edition reported September vacancies, hiring and layoffs from JOLTS.",
+              "newStatus": "The November 5 release shows nonfarm productivity rising 3.6% annualized and unit labor costs falling 0.7% in the third quarter, with productivity up 2.1% and costs up 2.4% from a year earlier.",
+              "reason": "Productivity and unit labor costs measure output efficiency and labor-cost inflation, not vacancies or worker flows; the release supplies a different and newly observed part of the economic picture."
+            }
+          }
+        },
+        {
           "number": "04",
           "category": "North Carolina · public investment",
           "title": "Wake and Raleigh voters authorize $1.032 billion in capital bonds",
@@ -16329,60 +16391,8 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
               "previousStatus": "The November 2 edition previewed Raleigh's proposed $203 million housing and transportation bonds before voters decided them.",
               "newStatus": "Voters approved both Raleigh measures plus $680 million for Wake schools and $149.1 million for Wake Tech, authorizing $1.032 billion in local capital borrowing.",
               "reason": "Completed authorization changes the projects from ballot proposals to financed implementation, and the combined Wake County result is substantially broader than the prior Raleigh-only preview."
-            }
-          }
-        },
-        {
-          "number": "05",
-          "category": "U.S. economy · productivity",
-          "title": "Productivity rises 3.6% as quarterly unit labor costs fall",
-          "art": "economy",
-          "summary": [
-            "Nonfarm business labor productivity increased at a 3.6% annualized rate in the third quarter as output rose 3.7% and hours worked increased 0.1%, the Bureau of Labor Statistics reports. Productivity was 2.1% higher than a year earlier. Real hourly compensation rose 1.1% for the quarter and 1.0% over four quarters.",
-            "Unit labor costs fell at a 0.7% annualized rate because productivity outpaced the 2.9% increase in hourly compensation. Costs were still 2.4% higher than a year earlier. Manufacturing was weaker: productivity rose 0.3% for the quarter while unit labor costs increased 2.7%, with nondurable manufacturing productivity down 1.7%."
-          ],
-          "why": "Output per hour and unit labor costs connect growth, pay and inflation more directly than vacancies or layoffs. The quarter's stronger economy-wide efficiency absorbed compensation growth, but the annual cost increase and weak manufacturing split argue against treating one annualized quarter as a settled trend.",
-          "implications": [
-            [
-              "Inflation",
-              "Falling quarterly unit labor costs reduce near-term labor-cost pressure after accounting for output, while the 2.4% annual rise shows that the price signal is not uniformly disinflationary."
-            ],
-            [
-              "Evidence",
-              "The release incorporates annual national-accounts revisions and materially revised second-quarter productivity upward. December's revision and the manufacturing divergence are important checks on durability."
-            ]
-          ],
-          "sources": [
-            [
-              "Bureau of Labor Statistics · third-quarter 2026 Productivity and Costs release, November 5",
-              "https://www.bls.gov/news.release/prod2.htm"
-            ]
-          ],
-          "editorial": {
-            "domain": "economy",
-            "entities": [
-              "Bureau of Labor Statistics"
-            ],
-            "industries": [
-              "nonfarm business",
-              "manufacturing"
-            ],
-            "geographies": [
-              "United States"
-            ],
-            "mechanisms": [
-              "labor productivity measurement",
-              "unit labor cost index"
-            ],
-            "questions": [
-              "Is output per hour rising fast enough to absorb compensation growth without adding inflation pressure?"
-            ],
-            "materialDevelopment": {
-              "evidenceUrl": "https://www.bls.gov/news.release/prod2.htm",
-              "previousStatus": "The November 4 edition reported September vacancies, hiring and layoffs from JOLTS.",
-              "newStatus": "The November 5 release shows nonfarm productivity rising 3.6% annualized and unit labor costs falling 0.7% in the third quarter, with productivity up 2.1% and costs up 2.4% from a year earlier.",
-              "reason": "Productivity and unit labor costs measure output efficiency and labor-cost inflation, not vacancies or worker flows; the release supplies a different and newly observed part of the economic picture."
-            }
+            },
+            "feature": "north-carolina"
           }
         }
       ],
@@ -16544,9 +16554,12 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
   function dateOnly(ed){return ed.displayDate.replace(/^[A-Za-z]+, /,'')}
   const INKS=['--prussian','--vermilion','--viridian','--ochre','--oxblood'];
   function storyHTML(ed,s,k){
-    return `<section class="story${k%2?' flip':''}" style="--k:var(${INKS[k%5]})" id="story-${esc(s.number)}" aria-labelledby="h-${esc(s.number)}">
+    const position=String(k+1).padStart(2,'0');
+    // Keep the legacy .s-no identity hook for cached Commonplace clients.
+    const number=s.number===position?`<span class="s-no">${esc(s.number)}</span>`:`<span class="s-no" hidden>${esc(s.number)}</span><span class="s-position">${position}</span>`;
+    return `<section class="story${k%2?' flip':''}" style="--k:var(${INKS[k%5]})" data-story-number="${esc(s.number)}" id="story-${esc(s.number)}" aria-labelledby="h-${esc(s.number)}">
       <figure class="art"><div class="art-frame">${art(ed,s)}</div></figure>
-      <div class="copy"><div class="s-head"><span class="s-no">${esc(s.number)}</span></div><h2 id="h-${esc(s.number)}">${esc(s.title)}</h2>
+      <div class="copy"><div class="s-head">${number}</div><h2 id="h-${esc(s.number)}">${esc(s.title)}</h2>
         <div class="summary">${s.summary.map(p=>`<p>${esc(p)}</p>`).join('')}</div>
         <div class="sources" aria-label="Sources">${s.sources.map(x=>`<a href="${esc(x[1])}" target="_blank" rel="noopener">${esc(x[0])} ↗</a>`).join('')}</div></div>
       <aside class="side"><h3>Why it matters</h3><p class="why">${esc(s.why)}</p><dl>${s.implications.map(x=>`<dt>${esc(x[0])}</dt><dd>${esc(x[1])}</dd>`).join('')}</dl></aside>
@@ -16589,7 +16602,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
       </header>
       <section class="front">
         <div>${ed.issueTitle?`<h2 class="issue-title">${esc(ed.issueTitle)}</h2>`:''}<p class="deck">${esc(ed.deck)}</p></div>
-        <ol class="front-list" aria-label="In this edition">${ed.stories.map((s,k)=>`<li style="--k:var(${INKS[k%5]})"><a href="#${esc(ed.date)}/${esc(s.number)}"><span>${esc(s.number)}</span><b>${esc(s.title)}</b></a></li>`).join('')}</ol>
+        <ol class="front-list" aria-label="In this edition">${ed.stories.map((s,k)=>`<li style="--k:var(${INKS[k%5]})"><a href="#${esc(ed.date)}/${esc(s.number)}"><span>${String(k+1).padStart(2,'0')}</span><b>${esc(s.title)}</b></a></li>`).join('')}</ol>
       </section>
       ${ed.stories.map((s,k)=>storyHTML(ed,s,k)).join('')}
       ${ed.signalTitle?`<section class="signal"><div><div class="k">Across today's five</div><h2>${esc(ed.signalTitle)}</h2></div><div>${(ed.signal||[]).map(p=>`<p>${esc(p)}</p>`).join('')}</div></section>`:''}
@@ -16619,7 +16632,7 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
     newest.forEach(e=>{
       const m=new Date(e.date+'T12:00:00').toLocaleDateString('en-US',{month:'long',year:'numeric'});
       if(m!==month){html+=`<div class="ix-month">${m}</div>`;month=m}
-      html+=`<div class="ix-item" data-date="${esc(e.date)}" data-expanded="false"><button class="ix-row" type="button" aria-expanded="false"><span class="ix-no"><span class="no">N<sup>o</sup>.</span>${issueLabel(e)}</span><span><span class="ix-date">${esc(e.displayDate)}</span><span class="ix-title">${esc(e.issueTitle||e.stories[0].title)}</span></span><span class="ix-caret" aria-hidden="true">›</span></button><div class="ix-more"><div><ol>${e.stories.map(s=>`<li><a href="#${esc(e.date)}/${esc(s.number)}"><span>${esc(s.number)}</span>${esc(s.title)}</a></li>`).join('')}<li><a class="ix-open" href="#${esc(e.date)}">Open edition ${issueLabel(e)}</a></li></ol></div></div></div>`;
+      html+=`<div class="ix-item" data-date="${esc(e.date)}" data-expanded="false"><button class="ix-row" type="button" aria-expanded="false"><span class="ix-no"><span class="no">N<sup>o</sup>.</span>${issueLabel(e)}</span><span><span class="ix-date">${esc(e.displayDate)}</span><span class="ix-title">${esc(e.issueTitle||e.stories[0].title)}</span></span><span class="ix-caret" aria-hidden="true">›</span></button><div class="ix-more"><div><ol>${e.stories.map((s,k)=>`<li><a href="#${esc(e.date)}/${esc(s.number)}"><span>${String(k+1).padStart(2,'0')}</span>${esc(s.title)}</a></li>`).join('')}<li><a class="ix-open" href="#${esc(e.date)}">Open edition ${issueLabel(e)}</a></li></ol></div></div></div>`;
     });
     body.innerHTML=html;
     body.querySelectorAll('.ix-row').forEach(btn=>btn.addEventListener('click',()=>{const it=btn.parentElement,x=it.dataset.expanded!=='true';it.dataset.expanded=String(x);btn.setAttribute('aria-expanded',String(x))}));

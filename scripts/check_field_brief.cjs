@@ -2,6 +2,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const art=require('../daily-watchlist-5/artwork.js'),memory=require('../personal-updates/editorial-memory.js');
+const ordering=require('../daily-watchlist-5/editorial-order.cjs');
 const json=(s,id)=>{const m=s.match(new RegExp('<script[^>]*id="'+id+'"[^>]*>([\\s\\S]*?)</script>'));if(!m)throw Error('Missing '+id);return JSON.parse(m[1]);};
 function registry(source){const c={module:{exports:{}}};vm.runInNewContext(source,c);return JSON.parse(JSON.stringify(c.module.exports));}
 function inspect({date,html,marks,plates,hub}){
@@ -13,8 +14,8 @@ function inspect({date,html,marks,plates,hub}){
  if(!issue){if(ordered.at(-1)?.date>date)throw Error('Historical gap requires explicit numbering review; do not renumber newer publications');return {date,state:'missing',action:'prepare',latest:ordered.at(-1)?.date,nextNumber:editions.length+1};}
  const no=ordered.findIndex(e=>e.date===date)+1,fail=s=>errors.push(s),stories=issue.stories||[];
  if(stories.length!==5)fail('Expected exactly five stories');
+ try{ordering.validate(issue);}catch(e){fail(e.message);}
  stories.forEach((s,i)=>{
-  if(s.number!==String(i+1).padStart(2,'0'))fail('Invalid permanent story number '+s.number);
   for(const key of ['title','art','why'])if(typeof s[key]!=='string'||!s[key].trim())fail('Missing story '+s.number+' '+key);
   for(const key of ['summary','implications','sources'])if(!Array.isArray(s[key])||!s[key].length)fail('Missing story '+s.number+' '+key);
   if(!(s.sources||[]).every(x=>Array.isArray(x)&&x.length===2&&x[0]&&/^https:\/\//.test(x[1])))fail('Invalid source '+s.number);

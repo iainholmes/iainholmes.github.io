@@ -9,6 +9,8 @@ const plain=s=>String(s).replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&
 function data(s,id){return JSON.parse(s.match(new RegExp('<script type="application/json" id="'+id+'">([\\s\\S]*?)</script>'))[1]);}
 function jsonReplace(s,id,value){return s.replace(new RegExp('(<script type="application/json" id="'+id+'">)[\\s\\S]*?(</script>)'),(_,a,b)=>a+'\n'+JSON.stringify(value,null,2)+'\n'+b);}
 const fb=data(read('daily-watchlist-5/index.html'),'briefing-data').editions.sort((a,b)=>a.date.localeCompare(b.date));
+// Validate editorial placement before preparing artwork or writing any artifact.
+for(const ed of fb)require('../daily-watchlist-5/editorial-order.cjs').validate(ed);
 for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])throw Error('Published Field Brief is missing its story artwork pin: '+ed.date);
 // Validate L&L companions before any publication artifacts are written.
 const llSource=read('weekly-economics-environment/index.html'),companions=data(llSource,'companion-data');
