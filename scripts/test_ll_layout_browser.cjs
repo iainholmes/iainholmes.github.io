@@ -52,4 +52,15 @@ async function companion({page,goto,setViewport,origin,pressEscape,settleNavigat
 async function guideConnection({page,goto,origin,pressEscape}){await goto(origin+'/weekly-economics-environment/#index-feature-estimation-desk');await page.locator('#ll-reading-index[open]').waitFor({state:'visible'});assert(await page.locator('.ll-index-category').count()===1,'Field Guide opens exactly its feature family');assert(await page.locator('[data-feature-family="estimation-desk"]').count()===1,'Field Guide opens Estimation Desk examples');await pressEscape();return {result:'passed',assertions:2};}
 module.exports={audit,navigation,deepLinks,companion,guideConnection};
 if(require.main===module)(async()=>{const fs=require('fs'),{chromium}=require(process.env.LL_PLAYWRIGHT||'playwright');const browser=await chromium.launch({headless:true,...(process.env.LL_CHROME?{executablePath:process.env.LL_CHROME}:{})});try{const page=await browser.newPage();await page.emulateMedia({reducedMotion:'reduce'});const cfg={page,goto:url=>page.goto(url,{waitUntil:'networkidle'}),setViewport:s=>page.setViewportSize(s),origin:process.env.LL_ORIGIN||'http://127.0.0.1:8765',pressEscape:()=>page.keyboard.press('Escape')};const result=await audit(cfg);await page.locator('.dn button[data-mode="night"]').click();await page.waitForFunction(()=>document.documentElement.dataset.mode==='night');result.night=await audit(cfg);await page.locator('.dn button[data-mode="day"]').click();await page.waitForFunction(()=>document.documentElement.dataset.mode==='day');// A coordinate click matches a reader's pointer; locator auto-scrolling can move a sticky toolbar before its click handler runs.
-result.navigation=await navigation(cfg);result.deepLinks=await deepLinks(cfg);result.companion=await companion(cfg);result.guideConnection=await guideConnection(cfg);if(process.env.LL_QA_JSON)fs.writeFileSync(process.env.LL_QA_JSON,JSON.stringify(result,null,2));console.log(JSON.stringify({result:result.result,assertions:result.assertions,navigation:result.navigation.assertions,cases:result.evidence.length}));}finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});
+result.navigation=await navigation(cfg);result.deepLinks=await deepLinks(cfg);result.companion=await companion(cfg);result.guideConnection=await guideConnection(cfg);
+if(process.env.LL_QA_SHOTS_DIR){
+ fs.mkdirSync(process.env.LL_QA_SHOTS_DIR,{recursive:true});
+ for(const shot of [{name:'macbook-1440',width:1440,height:1000},{name:'mobile-390',width:390,height:844}]){
+  await page.setViewportSize({width:shot.width,height:shot.height});
+  await page.goto(cfg.origin+'/weekly-economics-environment/#edition-2026-10-30',{waitUntil:'networkidle'});
+  const target=page.locator('#2026-10-30-household-climate .ll-household-policy-robustness');
+  await target.waitFor({state:'visible'});
+  await target.screenshot({path:process.env.LL_QA_SHOTS_DIR+'/ll-household-'+shot.name+'.png',animations:'disabled'});
+ }
+}
+if(process.env.LL_QA_JSON)fs.writeFileSync(process.env.LL_QA_JSON,JSON.stringify(result,null,2));console.log(JSON.stringify({result:result.result,assertions:result.assertions,navigation:result.navigation.assertions,cases:result.evidence.length}));}finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});
