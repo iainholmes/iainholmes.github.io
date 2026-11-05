@@ -638,6 +638,54 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 @container ll-reading (max-width:850px){.ll-touching-feature-row{grid-template-columns:minmax(0,1fr);gap:0!important}}
 @media(prefers-reduced-motion:reduce){.ll-reading-index{transition:none;transform:none}}
 
+/* PR #58 visual correction: the authored grid is the real common boundary.
+   Restore its previously accepted outline without the removed fake side pillars
+   or any gap-filling rectangles. Only a genuine feature-only row gets this frame. */
+.entry[data-reading-composition] .ll-touching-feature-row{
+ background:var(--feature-wash);
+ border:1px solid color-mix(in srgb,var(--feature-accent,var(--forest)) 32%,transparent);
+ border-top:2px solid var(--forest);
+ border-radius:16px 26px 16px 20px;
+ box-shadow:inset 0 0 9px 1px var(--paper)
+}
+/* The October 30 Assumption Test shares a layout ROW with a research notebook,
+   not a boundary with another Special Feature. The former shared-field wash
+   suppressed its blue family rule and turned two editorial roles into one field.
+   Give each actual section its own bounded surface; never bridge between them. */
+.entry[data-reading-composition] .ll-household-policy-robustness{
+ background:transparent;
+ box-shadow:none;
+ border-radius:0
+}
+.entry[data-reading-composition] .ll-household-policy-robustness>.ll-arranged-row{
+ gap:clamp(22px,2.3vw,34px);
+ align-items:start
+}
+.entry[data-reading-composition] .ll-household-policy-robustness .ll-feature-host>.ll-assumption-test{
+ background:color-mix(in srgb,var(--river) 6%,var(--paper));
+ border-left:5px solid var(--river);
+ border-radius:16px 24px 16px 20px;
+ box-shadow:inset 0 0 9px 1px var(--paper)
+}
+.entry[data-reading-composition] .ll-household-policy-robustness .ll-notebook-home{
+ background:var(--paper);
+ margin:0;
+ padding:24px 26px;
+ border-radius:16px 24px 16px 20px;
+ min-width:0
+}
+.entry[data-reading-composition] .ll-household-policy-robustness .ll-notebook-unit{margin-top:0}
+.entry[data-reading-composition] .ll-household-policy-robustness .research-note h3{
+ font-size:clamp(24px,2vw,30px);
+ overflow-wrap:normal;
+ word-break:normal;
+ hyphens:none
+}
+@container ll-reading (max-width:500px){
+ .entry[data-reading-composition] .ll-household-policy-robustness .ll-notebook-home{padding:20px}
+ .entry[data-reading-composition] .ll-household-policy-robustness .research-note h3{font-size:26px}
+}
+
 /* Retained from PR #55 by explicit request: Mechanism Map and Heron only. */
 /* The Mechanism Map: genuinely distinct, color-coded causal transmission nodes. */
 .entry[data-reading-composition] .ll-mechanism-map .ll-node{
