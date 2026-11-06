@@ -2825,6 +2825,201 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Dasgupta, Pillai & Rubin (2015), Journal of the Royal Statistical Society: Series B; Gerber & Green (2012), Field Experiments."
         }
       ]
+    },
+    {
+      "no": 15,
+      "date": "2026-11-06",
+      "minutes": 29,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>A researcher estimates a simple linear model of earnings on schooling. In one dataset, earnings are measured with classical mean-zero error independent of true schooling and the structural disturbance. In another, schooling is measured with classical additive error independent of true schooling and earnings. Assume the standard simple-regression conditions. Which statements are defensible?</p>",
+          "options": [
+            "Classical measurement error in the dependent variable alone does not ordinarily make the OLS slope inconsistent, although it can reduce precision.",
+            "Classical mean-zero error in the dependent variable necessarily attenuates the schooling coefficient toward zero.",
+            "Classical error in the schooling regressor can attenuate the simple-regression slope toward zero.",
+            "Adding independent observations can reduce sampling variability but does not, by itself, eliminate a persistent regressor-measurement-error bias."
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ],
+          "concepts": [
+            "Errors-in-variables",
+            "Attenuation bias",
+            "Outcome measurement versus regressor measurement"
+          ],
+          "assistance": "<p>Write the estimated regression twice: first replace the outcome by its observed version, then replace the regressor by its observed version. Examine whether the added error is correlated with the included regressor.</p><p>Consistency requires more than a large sample. Separate bias introduced by a mismeasured explanatory variable from increased residual noise introduced by an independently mismeasured outcome.</p>",
+          "explanation": "<p><b>(A), (C), and (D) are correct.</b> With independently mismeasured earnings, the extra outcome noise enters the composite disturbance but remains orthogonal to true schooling, so the slope remains consistent under the maintained assumptions, usually with lower precision. With observed schooling <i>X</i>* = <i>X</i> + <i>u</i>, the simple-regression probability limit is β Var(<i>X</i>)/[Var(<i>X</i>) + Var(<i>u</i>)], producing attenuation for a positive β. Thus (B) confuses dependent-variable error with regressor error. A larger sample shrinks sampling uncertainty around the biased probability limit; it does not change that limit.</p>",
+          "refs": "Wooldridge, Introductory Econometrics, chapter on measurement error; Carroll et al. (2006), Measurement Error in Nonlinear Models."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A risk-neutral employee chooses high or low effort. A project succeeds with probability 0.7 under high effort and 0.2 under low effort. High effort costs the employee $12; low effort costs nothing. The contract pays a bonus <i>b</i> only on success, and the employee otherwise receives the same fixed wage. What is the smallest success bonus that <i>weakly</i> induces high effort?</p>",
+          "options": [
+            "$12, because the effort cost must be reimbursed once.",
+            "About $17.14, because the bonus is divided by the high-effort success probability.",
+            "$24, because high effort increases the chance of receiving the bonus by 0.5.",
+            "$60, because the bonus is divided by the low-effort success probability."
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Moral hazard",
+            "Incentive compatibility",
+            "Success-contingent contracts"
+          ],
+          "assistance": "<p>Compare expected compensation under the two effort choices. The fixed wage is identical in both states of the decision, so it drops out of the incentive comparison.</p><p>Set the increase in expected bonus earnings from high effort at least as large as the private effort cost. Use the difference between success probabilities, not either probability in isolation.</p>",
+          "explanation": "<p><b>(C) is correct.</b> The employee's incentive constraint is 0.7<i>b</i> − 12 ≥ 0.2<i>b</i>, equivalently 0.5<i>b</i> ≥ 12. The smallest weakly incentive-compatible bonus is therefore $24. The comparison concerns the incremental chance of a bonus. If the employer requires strictly preferred high effort rather than weak indifference, the bonus must be slightly greater than $24; participation and employer-profit constraints would have to be checked separately.</p>",
+          "refs": "Holmström (1979), Moral Hazard and Observability, Bell Journal of Economics; Laffont & Martimort (2002), The Theory of Incentives."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "<p>Consider an economy in which the price of imported consumer goods rises 20%, while the prices of domestically produced final goods and services remain fixed. Assume the import price change affects the household consumption basket but does not immediately change domestic output prices. Which statements are correct?</p>",
+          "options": [
+            "A consumer price index can rise because imported consumer goods carry positive weight in the basket.",
+            "The GDP deflator must rise by 20% because imported consumption goods are included in the value of domestically produced final output.",
+            "Real purchasing power for consumers can fall even if the domestic-output GDP deflator is unchanged.",
+            "The consumer price index must rise by exactly 20%, independently of the expenditure share of imports."
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "concepts": [
+            "CPI versus GDP deflator",
+            "Imported inflation",
+            "Consumer purchasing power"
+          ],
+          "assistance": "<p>List which transactions enter a price index for household purchases and which enter a price index for goods and services produced domestically. Imports are purchased by residents but not produced at home.</p><p>Do not mistake a price change for a full-basket price change. Weight the imported item by its importance to consumer expenditure, and distinguish cost of living from prices of domestic output.</p>",
+          "explanation": "<p><b>(A) and (C) are correct.</b> An imported good can raise the CPI because the CPI includes consumer purchases of imports; its contribution depends on expenditure weights and substitution/index conventions. The GDP deflator reflects prices of domestically produced output and does not directly include imported final goods. A higher imported-consumption price can therefore reduce what households can purchase with given nominal income even if domestic output prices are unchanged. (B) incorrectly treats imports as domestic production, and (D) ignores the rest of the consumer basket.</p>",
+          "refs": "U.S. Bureau of Labor Statistics, Handbook of Methods: Consumer Price Index; U.S. Bureau of Economic Analysis, NIPA Handbook."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>Two irrigators withdraw water from a common groundwater aquifer. At the current margin, an extra unit withdrawn by one irrigator imposes $15 of higher pumping costs on the other irrigator today and $25 of additional present-value future depletion damages on other users. These damages are not privately internalized; there are no other marginal external effects. What per-unit extraction charge would align the private marginal decision with social marginal cost at this margin?</p>",
+          "options": [
+            "$15, because only current pumping costs enter an efficient charge.",
+            "$25, because only future depletion enters a stock-resource charge.",
+            "$40, because current and discounted future external costs both count.",
+            "$60, because the same damages must be counted twice for a shared aquifer."
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Common-pool groundwater",
+            "Dynamic extraction externality",
+            "Marginal external cost"
+          ],
+          "assistance": "<p>Separate the withdrawing irrigator's own marginal extraction cost from costs imposed on others. An efficient marginal corrective charge covers costs that the private decision-maker does not bear.</p><p>Treat the future damages as already discounted into present value. Add distinct current and future external margins once each, rather than applying an additional discount or counting them twice.</p>",
+          "explanation": "<p><b>(C) is correct.</b> The marginal external cost of the extra withdrawal is $15 in contemporaneous costs imposed on the other irrigator plus $25 in present-value future depletion damages: $40 per unit. A charge at that margin adds the omitted social costs to the private marginal extraction cost. Whether a constant $40 charge is optimal at other quantities depends on how the marginal external damages evolve with extraction and the aquifer stock. This exercise is illustrative, not an empirical estimate for a specific aquifer.</p>",
+          "refs": "Gisser & Sánchez (1980), Competition versus optimal control in groundwater pumping, Water Resources Research; Ostrom (1990), Governing the Commons."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>A school intervention is evaluated with two-stage randomization: schools are assigned different invitation saturations, and students are randomized to invitations within schools. An invited student's behavior may affect classmates. Which statements are defensible under a specified within-school exposure mapping and no cross-school interference?</p>",
+          "options": [
+            "The usual no-interference assumption between individual students may be violated.",
+            "Comparing uninvited students under different randomized saturation policies can help identify spillover effects under the design's assumptions.",
+            "The pooled treated-minus-untreated difference always identifies an invariant direct effect without accounting for peers' assignments.",
+            "Uncertainty estimation should respect the school-level randomization of saturation rather than treating all students as independently assigned saturations."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Partial interference",
+            "Two-stage randomization",
+            "Direct and spillover effects"
+          ],
+          "assistance": "<p>Define a student's potential outcome by both the student's invitation and the peer-treatment environment. This makes the choice of comparison group part of the estimand.</p><p>Distinguish the first randomization at the school level from the second randomization within schools. Think about where independent variation in saturation actually originates.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Peer effects violate individual-level no-interference. Under partial interference, valid exposure mapping, known assignment probabilities and the maintained design, untreated students under different saturation assignments can identify an indirect or spillover contrast. A naive pooled treated–control comparison may mix own-treatment and peer-exposure contrasts, so (C) is false. Because saturation is randomized by school, uncertainty for saturation effects must account for the appropriate assignment level and dependence structure.</p>",
+          "refs": "Hudgens & Halloran (2008), Journal of the American Statistical Association; Aronow & Samii (2017), Annals of Applied Statistics."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "<p>An equivalence study prespecifies a clinically meaningful equivalence interval from −2 to +2 units. Its 90% confidence interval for the mean treatment difference is [−1.1, 1.5]. Under the usual two one-sided tests (TOST) procedure at a 5% significance level, the data establish equivalence within the prespecified margin. True or false?</p>",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Equivalence testing",
+            "TOST",
+            "Interval hypotheses"
+          ],
+          "assistance": "<p>Equivalence is not the same as failing to reject a zero difference. The null is that the true difference lies outside the acceptable region on at least one side.</p><p>At a 5% TOST level, compare the two-sided 90% confidence interval to the entire prespecified equivalence interval. Ask whether every point of that interval lies within the accepted margin.</p>",
+          "explanation": "<p><b>True.</b> Under the standard TOST–confidence-interval correspondence, equivalence at α = 0.05 is established if the entire two-sided 90% confidence interval lies strictly within (−2, 2). Here −1.1 is greater than −2, and 1.5 is less than 2, so both one-sided tests reject their relevant non-equivalence nulls. This is evidence of equivalence under the chosen margin and assumptions, not proof that the treatment effect is exactly zero.</p>",
+          "refs": "Schuirmann (1987), Journal of Pharmacokinetics and Biopharmaceutics; Lakens (2017), Social Psychological and Personality Science."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>A travel-cost recreation model with linear marginal utility of income α = 0.002 per dollar and multinomial logit choice reports inclusive-value terms Σ exp(<i>V</i><sub>j</sub>) of 2.0 before an access improvement and 2.4 afterward, with the same choice set definition (including any outside option). Holding the income coefficient fixed, what is the approximate per-person compensating-variation gain?</p>",
+          "options": [
+            "$0.20, calculated from the difference between the two inclusive-value sums.",
+            "$91.16, calculated from [ln(2.4) − ln(2.0)]/0.002.",
+            "$200, calculated from the raw difference 0.4 divided by 0.002.",
+            "$1,200, calculated from the new sum multiplied by the inverse income coefficient."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Random utility welfare",
+            "Log-sum compensating variation",
+            "Recreation access valuation"
+          ],
+          "assistance": "<p>For a logit-based random utility model with utility linear in money, welfare changes use the difference between log inclusive values, not the difference between their raw exponential sums.</p><p>First take the logarithm of the ratio of the two inclusive-value sums. Then convert utility units to money using the positive marginal utility of income supplied in the problem.</p>",
+          "explanation": "<p><b>(B) is correct.</b> The log-sum change is ln(2.4) − ln(2.0) = ln(1.2) ≈ 0.182322 utility units. Dividing by α = 0.002 utility units per dollar gives about $91.16 per person. The formula assumes a consistent choice set, the standard extreme-value logit setup and linear marginal utility of income. Raw exponential-sum differences in (A) and (C) are not the log-sum welfare change; (D) has no valid welfare derivation.</p>",
+          "refs": "Small & Rosen (1981), Applied Welfare Economics with Discrete Choice Models, Econometrica; Train (2009), Discrete Choice Methods with Simulation."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "multi",
+          "stem": "<p>An observational study estimates whether a drinking-water treatment investment changes a later health outcome. Wealthier water systems may both invest earlier and serve populations with different baseline health risks. Investigators propose a negative-control outcome that the investment cannot plausibly affect. Which statements are sound?</p>",
+          "options": [
+            "A useful negative-control outcome should share relevant sources of confounding or bias with the study outcome while being causally unaffected by the investment.",
+            "A statistically significant treatment–negative-control association establishes that the treatment has no causal effect on the actual health outcome.",
+            "A null negative-control association proves that all unmeasured confounding has been removed.",
+            "A non-null association with a credible negative-control outcome can flag residual confounding or another design failure, but diagnosis and identification still require additional assumptions."
+          ],
+          "correct": [
+            0,
+            3
+          ],
+          "concepts": [
+            "Negative-control outcomes",
+            "Residual confounding",
+            "Falsification diagnostics"
+          ],
+          "assistance": "<p>The negative control is not a second target outcome. Its value comes from a known causal exclusion combined with exposure to some of the same spurious-association mechanisms.</p><p>Separate the diagnostic implication of finding an unexpected association from the stronger claim of identifying or disproving the treatment effect. Also ask what a null diagnostic can and cannot rule out.</p>",
+          "explanation": "<p><b>(A) and (D) are correct.</b> A negative-control outcome cannot be caused by the treatment under the maintained exclusion, yet should share mechanisms that might generate bias in the substantive outcome model. An unexpected association can therefore reveal possible confounding, selection or measurement problems. It does not establish that the treatment effect on the real outcome is zero, so (B) is false. Failure to detect such an association can reflect insufficient power or confounders not shared by the control; it cannot prove absence of bias, so (C) is false.</p>",
+          "refs": "Lipsitch, Tchetgen Tchetgen & Cohen (2010), Epidemiology; Miao, Geng & Tchetgen Tchetgen (2018), Biometrika."
+        }
+      ]
     }
   ]
 }
