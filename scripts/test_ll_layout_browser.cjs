@@ -30,7 +30,7 @@ async function audit({page,goto,setViewport,origin,widths=[1440,1280,1180,1024,8
    const group=movesArticle.querySelector('.ll-moves-featuregroup'),math=group?.querySelector('.ll-estimation-desk'),test=group?.querySelector('.ll-assumption-test');
    if(!group||!math||!test)return {bothPresent:false};
    const g=getComputedStyle(group),m=getComputedStyle(math),t=getComputedStyle(test),a=math.getBoundingClientRect(),b=test.getBoundingClientRect();
-   return {bothPresent:true,groupBackground:g.backgroundColor,mathBackground:m.backgroundColor,testBackground:t.backgroundColor,mathBorder:parseFloat(m.borderTopWidth),testBorder:parseFloat(t.borderLeftWidth),gap:b.top-a.bottom,overlap:Math.min(a.right,b.right)-Math.max(a.left,b.left),separateChildren:math.parentElement!==test.parentElement};
+   return {bothPresent:true,groupBackground:g.backgroundColor,mathBackground:m.backgroundColor,testBackground:t.backgroundColor,mathBorder:parseFloat(m.borderTopWidth),testBorder:parseFloat(t.borderLeftWidth),mathBorderColor:m.borderTopColor,testBorderColor:t.borderLeftColor,gap:b.top-a.bottom,overlap:Math.min(a.right,b.right)-Math.max(a.left,b.left),separateChildren:math.parentElement!==test.parentElement};
   })():null;
   const nodes=[...ed.querySelectorAll('.ll-node')].map(e=>e.getBoundingClientRect().width);return {nodes,touching,household,householdJoin,movesJoin,width:innerWidth,scroll:document.documentElement.scrollWidth,readings:ed.querySelectorAll('.entry[data-editorial-system="7"]').length,features,ledger,timelines,core,maths:[...ed.querySelectorAll('.ll-equation')].map(e=>({width:e.clientWidth,content:e.scrollWidth,focus:e.tabIndex})),horizontalScrollers:[...ed.querySelectorAll('*')].filter(e=>e.clientWidth>0&&e.getClientRects().length&&e.clientWidth&&e.scrollWidth>e.clientWidth+1&&['auto','scroll'].includes(getComputedStyle(e).overflowX)).map(e=>e.className),headlines:[...ed.querySelectorAll('.reading-title h2')].map(e=>({family:getComputedStyle(e).fontFamily,weight:getComputedStyle(e).fontWeight})),sources:[...ed.querySelectorAll('.entry')].map(a=>({id:a.id,last:a.querySelector('.ll-reading').lastElementChild.classList.contains('reading-sources'),titleUnderlined:getComputedStyle(a.querySelector('.ll-source-context')).textDecorationLine==='underline'})),dividers:[...ed.querySelectorAll('.ll-feature-divider')].map(d=>({axis:d.classList.contains('ll-divider-horizontal')?'horizontal':'vertical',length:d.classList.contains('ll-divider-horizontal')?d.getBoundingClientRect().width:d.getBoundingClientRect().height,overlap:+d.dataset.overlap,from:d.dataset.from,to:d.dataset.to,gap:(()=>{const a=ed.querySelector('[id="'+d.dataset.from+'"]').getBoundingClientRect(),b=ed.querySelector('[id="'+d.dataset.to+'"]').getBoundingClientRect();return d.classList.contains('ll-divider-horizontal')?Math.min(Math.abs(a.bottom-b.top),Math.abs(b.bottom-a.top)):Math.min(Math.abs(a.right-b.left),Math.abs(b.right-a.left))})()})),bridges:ed.querySelectorAll('.ll-feature-bridge').length,indexCount:JSON.parse(document.getElementById('ll-reading-index-data').textContent).editions.reduce((s,e)=>s+e.readings.length,0)};
  });const label=width+' '+date;check(r.width===width,label+' viewport');check(r.scroll<=width+1,label+' page overflow');check(r.readings===5,label+' readings');check(r.indexCount===totalReadings,label+' Index coverage');check(r.features.length>=10,label+' authored features');check(r.nodes.every(w=>w>=120),label+' legible mechanism nodes');check(r.features.every(f=>f.overflow<=2),label+' feature overflow '+JSON.stringify(r.features.filter(f=>f.overflow>2)));check(r.features.every(f=>f.bottomBlank<=30||f.nativeJoin),label+' incomplete panel termination');check(r.core.every(f=>(f.householdNote?(parseFloat(f.size)>=21&&parseFloat(f.size)<=30):['31px','34px'].includes(f.size))&&f.font===r.core[0].font),label+' consistent editorial typography');check(r.maths.every(m=>m.focus===0),label+' keyboard-accessible mathematical content');
@@ -45,7 +45,7 @@ async function audit({page,goto,setViewport,origin,widths=[1440,1280,1180,1024,8
    }
    check(!!r.movesJoin?.bothPresent&&r.movesJoin.separateChildren,label+' MOVES6 contains two real semantic feature sections');
    check(r.movesJoin.mathBorder>=4.5&&r.movesJoin.testBorder>=4.5&&r.movesJoin.mathBackground!=='rgba(0, 0, 0, 0)'&&r.movesJoin.testBackground!=='rgba(0, 0, 0, 0)',label+' MOVES6 retains distinct bounded family surfaces '+JSON.stringify(r.movesJoin));
-   check(r.movesJoin.mathBackground===r.movesJoin.testBackground&&r.movesJoin.groupBackground==='rgba(0, 0, 0, 0)',label+' MOVES6 uses one cohesive underlying wash without a blended parent panel '+JSON.stringify(r.movesJoin));
+   check(r.movesJoin.mathBackground===r.movesJoin.testBackground&&r.movesJoin.groupBackground==='rgba(0, 0, 0, 0)'&&r.movesJoin.mathBorderColor===r.movesJoin.testBorderColor,label+' MOVES6 uses one inherited Estuary accent/wash across both families '+JSON.stringify(r.movesJoin));
    check(Math.abs(r.movesJoin.gap)<=1&&r.movesJoin.overlap>=100,label+' MOVES6 feature surfaces share their actual border '+JSON.stringify(r.movesJoin));
    check(r.dividers.some(d=>[d.from,d.to].includes('2026-10-30-moves6--estimation-desk')&&[d.from,d.to].includes('2026-10-30-moves6--assumption-test')&&d.axis==='horizontal'),label+' MOVES6 copper divider lies on the actual shared feature boundary');
    check(!!r.household,label+' household mixed field exists');
@@ -86,6 +86,8 @@ if(process.env.LL_QA_SHOTS_DIR){
   const target=page.locator('[id="2026-10-30-household-climate"] .ll-household-policy-robustness');
   await target.waitFor({state:'visible'});
   await target.screenshot({path:process.env.LL_QA_SHOTS_DIR+'/ll-household-'+shot.name+'.png',animations:'disabled'});
+  const moves=page.locator('[id="2026-10-30-moves6"] .ll-moves-featuregroup');await moves.waitFor({state:'visible'});
+  await moves.screenshot({path:process.env.LL_QA_SHOTS_DIR+'/ll-moves6-'+shot.name+'.png',animations:'disabled'});
  }
  for(const item of [
   {edition:'2026-10-30',reading:'2026-10-30-household-climate',target:'.ll-joined-sequence',name:'ll-joined-sequence-macbook-1440.png'},
@@ -94,6 +96,18 @@ if(process.env.LL_QA_SHOTS_DIR){
  ]){
   await page.setViewportSize({width:1440,height:1000});
   await page.goto(cfg.origin+'/weekly-economics-environment/#edition-'+item.edition,{waitUntil:'networkidle'});
+  const target=page.locator('[id="'+item.reading+'"] '+item.target).first();
+  await target.waitFor({state:'visible'});
+  await target.screenshot({path:process.env.LL_QA_SHOTS_DIR+'/'+item.name,animations:'disabled'});
+ }
+ await page.setViewportSize({width:1440,height:1000});
+ await page.goto(cfg.origin+'/weekly-economics-environment/#edition-2026-10-30',{waitUntil:'networkidle'});
+ await page.locator('.dn button[data-mode="night"]').click();
+ await page.waitForFunction(()=>document.documentElement.dataset.mode==='night');
+ for(const item of [
+  {reading:'2026-10-30-household-climate',target:'.ll-joined-sequence',name:'ll-household-joined-night-1440.png'},
+  {reading:'2026-10-30-moves6',target:'.ll-moves-featuregroup',name:'ll-moves6-night-1440.png'}
+ ]){
   const target=page.locator('[id="'+item.reading+'"] '+item.target).first();
   await target.waitFor({state:'visible'});
   await target.screenshot({path:process.env.LL_QA_SHOTS_DIR+'/'+item.name,animations:'disabled'});
