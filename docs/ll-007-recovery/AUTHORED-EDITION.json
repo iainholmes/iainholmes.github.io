@@ -1,0 +1,676 @@
+{
+  "version": 1,
+  "edition": {
+    "date": "2026-11-06",
+    "title": "Where Risk Becomes Visible",
+    "deck": "Five readings on new environmental measurements, the economic decisions they inform, and the assumptions that separate risk, cost, and welfare.",
+    "window": "31 October–6 November 2026",
+    "minutes": 19,
+    "synthesisTitle": "What changes when risk becomes measurable?",
+    "synthesis": [
+      "Across agricultural robotics, wildfire exposure, groundwater depletion, pollution information, and coastal carbon sinks, a common economic problem recurs: the object observed is not the object society ultimately values. Robot costs combine with farmer constraints; expected damaged structures are not a monetary welfare estimate; aquifer fill is not the shadow value of stored water; analyst attention is not factory emissions; and sediment burial is not automatically additional climate mitigation.",
+      "New instruments, data, and structural models help isolate decisions that were previously obscured. They also introduce their own boundaries: crop-system engineering assumptions, a fixed wildfire vulnerability index, representative-agent dynamic calibration, the timing of information access, and spatially uneven carbon samples. None should be read as a universal causal effect or a single exchangeable policy benefit.",
+      "The practical discipline is to specify the decision and denominator first. Ask which margin changes behavior, which population or asset bears the cost, which future state is compared with the baseline, and how uncertain source measurements propagate into any price or policy recommendation."
+    ],
+    "synthesisClosing": "The question to carry forward: does the new measurement change a choice after its counterfactual, distribution and source limitations are made explicit?",
+    "conceptIds": [
+      "counterfactual-reasoning",
+      "identification",
+      "incidence",
+      "value-of-information",
+      "private-returns-social-value",
+      "selection"
+    ]
+  },
+  "readings": [
+    {
+      "id": "2026-11-06-farm-robots",
+      "title": "On the Farm, the Robot Is Not the Whole Cost",
+      "subjects": [
+        "Agricultural economics",
+        "Technology & adoption"
+      ],
+      "category": "Agricultural technology & production costs",
+      "published": "2 November 2026",
+      "palette": "copper",
+      "composition": "farm-capital-and-input-margin",
+      "readingType": "decision-led",
+      "status": "Peer-reviewed accepted article; modeled systems",
+      "source": {
+        "url": "https://www.nature.com/articles/s41467-026-78281-7.pdf",
+        "alias": "https://www.nature.com/articles/s41467-026-78281-7",
+        "label": "Nature Communications · Schlehuber et al. (2026), research article",
+        "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f",
+        "document": "robots-2026-nature",
+        "passages": {
+          "results": {
+            "locator": "PDF pp. 1–5, Abstract and Results including Fig. 4; source PDF 14 pp",
+            "support": "Total cost of ownership and life-cycle model compare autonomous battery robot crop systems with reference literature, not randomized adoption. Variable inputs account for 72–90% of modeled costs and 72–95% of global-warming potential.",
+            "facts": {
+              "costShare": {
+                "kind": "modeled",
+                "value": "72–90",
+                "unit": "percent",
+                "denominator": "modeled total costs"
+              },
+              "gwpShare": {
+                "kind": "modeled",
+                "value": "72–95",
+                "unit": "percent",
+                "denominator": "modeled global-warming potential"
+              }
+            }
+          },
+          "boundaries": {
+            "locator": "PDF pp. 7–9, comparison with conventional systems and Discussion limitations",
+            "support": "Benchmark range comparisons differ by crop/system; harvesting is omitted from the main robot system boundary, variable input and maintenance assumptions vary, and downtime and charging logistics are not fully represented.",
+            "facts": {
+              "benchmark": {
+                "kind": "modeled",
+                "value": "76 percent below to 17 percent above",
+                "unit": "relative cost variation",
+                "denominator": "literature reference ranges"
+              }
+            }
+          }
+        }
+      },
+      "finding": "A 2026 Nature Communications study models a small autonomous battery-powered farm robot across strawberry, onion, lettuce, and peanut systems. Its total-cost-of-ownership and life-cycle comparisons find that variable inputs account for 72–90% of costs and 72–95% of global-warming impact across modeled cases. Relative to literature reference ranges, the modeled crop-system costs run from 76% lower to 17% higher. That span is a scenario comparison, not the observed effect of adopting robots on working farms.",
+      "econ": "An agricultural investment is valuable when savings in recurring resources, labor, and disruption justify the purchase, maintenance, financing, and capacity constraints of the machine. The decisive margin here is not simply electric propulsion versus diesel: fertilizer, seed, water, task intensity, and crop-specific yields dominate modeled totals. Shared ownership may improve annual machine utilization but introduces coordination and scheduling costs, especially where narrow planting windows make delays expensive. A robot can lower emissions per kilogram while still being privately unattractive if small farms lack credit or reliable repair services.",
+      "design": "Schlehuber and colleagues construct a crop- and management-specific total-cost model paired with life-cycle assessment. They benchmark scenarios against published conventional production estimates and vary input use, robot dimensions, lifespan, and work speeds in sensitivity exercises. Because the baseline combines engineering assumptions and literature-based crop quantities, the estimates describe feasible parameterized systems, not a representative treatment effect from a field experiment.",
+      "limits": "The modeled system does not fully capture breakdowns, charging and refill logistics, implementation learning, or harvesting. The authors also acknowledge average regional input and yield assumptions and incomplete comparisons with conventional system boundaries. A narrow cost gap cannot be interpreted as precise farm-level savings, and the climate calculation excludes labor as a direct emissions flow by conventional life-cycle practice. Financing costs, access and labor transitions are additional economic questions, not source-estimated outcomes.",
+      "lens": "The economic choice is whether input and labor reductions justify a capacity-constrained capital investment.",
+      "notebookTitle": "A field trial needs a full-system comparison",
+      "notebook": "Compare robot-adopting and observationally similar farms with matched crop, yield, acreage, labor, input quantities and charging access. Measure completed field tasks, downtime, harvest logistics and financing, not only energy per hectare. The proposed design would test economic additionality rather than infer it from engineering scenarios.",
+      "concepts": [
+        "Private returns & social value",
+        "Adoption constraints",
+        "Incidence"
+      ],
+      "features": [
+        {
+          "type": "decision-margin",
+          "title": "The variable-input threshold",
+          "status": "Illustrative farm-level decision, not estimated break-even price",
+          "question": "Which constraint must change before a modeled low-emissions robot is an attractive investment?",
+          "options": [
+            [
+              "Operating savings",
+              "Reduced fertilizer, water, weeding and labor expenditure must cover capital charges and downtime."
+            ],
+            [
+              "Capacity and finance",
+              "Annual usable hectares, loan terms and maintenance access determine whether the platform can be utilized economically."
+            ]
+          ],
+          "rule": "Compare discounted all-in costs per harvested kilogram under the same yield and task boundaries; identify the binding cost or capacity constraint before recommending a subsidy.",
+          "note": "The study estimates scenario costs but does not observe a universal subsidy threshold or experimentally identify adoption returns.",
+          "rationale": "The robot paper's decisive economic choice is whether modeled variable-input savings survive capital, scale and operating constraints."
+        },
+        {
+          "type": "incidence-ledger",
+          "title": "The gains are not distributed uniformly",
+          "status": "Conditional economic interpretation of modeled systems",
+          "rows": [
+            [
+              "Growers",
+              "Bear the machine purchase, repair, and charging risk while potentially saving variable inputs and hired labor."
+            ],
+            [
+              "Workers and service providers",
+              "May face different work tasks, required skills, and hours; distribution depends on local labor markets and complementary services."
+            ],
+            [
+              "Water and climate systems",
+              "May gain from lower input use, but lifecycle impact depends on the modeled electricity and crop-specific task boundary."
+            ]
+          ],
+          "note": "The source reports engineering and cost scenarios, not observed income losses, worker displacement, or welfare totals for these groups.",
+          "rationale": "Separate private investment returns from possible labor and environmental incidence without inventing distributional estimates."
+        }
+      ],
+      "rejected": [
+        [
+          "estimation-desk",
+          "The full engineering model has many crop-specific parameters; a compact fabricated equation would hide more than it explains."
+        ]
+      ],
+      "figureAssessment": "Source scenario quantities are reported with their denominators; no unsupported full-system cost curve or field-trial error bars.",
+      "modelAssessment": "The decision feature states a qualitative all-in threshold without claiming a source-estimated universal optimum.",
+      "audit": {
+        "basis": "modeled production-system comparison",
+        "reason": "Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.",
+        "qualifications": [
+          "Scenario cost comparisons are not causal field adoption estimates.",
+          "Harvesting and several logistics constraints are excluded from the modeled boundary."
+        ]
+      },
+      "register": {
+        "name": "Nature Communications",
+        "org": "Springer Nature",
+        "role": "Peer-reviewed multidisciplinary journal",
+        "place": "London, United Kingdom",
+        "kind": "institution",
+        "does": "Publishes peer-reviewed research across the sciences, including the 2026 assessment of farm robots' cost-of-ownership and life-cycle impacts across selected crops.",
+        "economics": "The reviewed study makes an engineering input model relevant to private cost decisions by separating recurring crop inputs from capital intensity and by distinguishing modeled scenarios from field adoption outcomes.",
+        "fieldNote": false
+      }
+    },
+    {
+      "id": "2026-11-06-fire-exposure",
+      "title": "Fire Risk Is Built as Well as Burned",
+      "subjects": [
+        "Environmental risk",
+        "Housing & land use"
+      ],
+      "category": "Wildfire exposure & economic vulnerability",
+      "published": "3 November 2026",
+      "palette": "forest",
+      "composition": "fire-exposure-and-adaptation",
+      "readingType": "horizon-led",
+      "status": "Peer-reviewed scenario projection; no adaptation assumed",
+      "source": {
+        "url": "https://www.nature.com/articles/s41467-026-78904-z.pdf",
+        "alias": "https://www.nature.com/articles/s41467-026-78904-z",
+        "label": "Nature Communications · Iglesias et al. (2026), research article",
+        "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4",
+        "document": "fire-2026-nature",
+        "passages": {
+          "results": {
+            "locator": "PDF pp. 1, 6–9; Results and Figs. 5–7",
+            "support": "Spatial risk is the projected expected number of structures damaged or destroyed, conditional on burned area, structure exposure and vulnerability. Relative to 2011–2020, the three climate-model risk multipliers are 1.85, 2.27, and 3.2 in 2051–2060.",
+            "facts": {
+              "low": {
+                "kind": "modeled",
+                "value": 1.85,
+                "unit": "risk multiplier",
+                "denominator": "2011–2020 expected structural loss"
+              },
+              "mid": {
+                "kind": "modeled",
+                "value": 2.27,
+                "unit": "risk multiplier",
+                "denominator": "2011–2020 expected structural loss"
+              },
+              "high": {
+                "kind": "modeled",
+                "value": 3.2,
+                "unit": "risk multiplier",
+                "denominator": "2011–2020 expected structural loss"
+              }
+            }
+          },
+          "limits": {
+            "locator": "PDF pp. 9–13; Discussion, Methods and sensitivity analysis",
+            "support": "The business-as-usual model holds the exposure-adjusted structure-loss index constant and does not model adaptation. Risk is a structure-count expectation, not property dollar losses; spatially varying hazard, exposure and vulnerability affect its projections.",
+            "facts": {
+              "losses": {
+                "kind": "modeled",
+                "value": "133200–449100",
+                "unit": "structures damaged or destroyed",
+                "denominator": "cumulative 2024–2060 projections"
+              },
+              "westOverlap": {
+                "kind": "modeled",
+                "value": 30,
+                "unit": "percent of tracts",
+                "denominator": "highest-risk census tracts in western U.S. intersecting socioeconomic hardship"
+              }
+            }
+          }
+        }
+      },
+      "finding": "A new Nature Communications analysis reconstructs wildfire risk to U.S. buildings from 1945–2023 and projects exposure through 2060. Across three climate-model scenarios, expected annual structural losses in 2051–2060 rise to 1.85, 2.27, and 3.2 times their 2011–2020 levels. The reported cumulative range of 133,200–449,100 buildings damaged or destroyed from 2024–2060 is an expected structure count under modeled business-as-usual conditions—not a dollar estimate of insured or total economic damage.",
+      "econ": "Physical fire hazard and the economic geography of exposure are jointly endogenous to long-lived settlement decisions. Houses, roads, powerlines and local land-use rules shape how many assets occupy risky landscapes, while insurance prices, mortgages, mitigation rules and expectations influence where building continues. A larger expected count of damaged structures can arise from more intense fires, more structures in harm's way, or changes in vulnerability; interpreting the projection as only a climate effect would erase the development margin. The cost of adaptation also differs across renters, homeowners, and communities whose budgets cannot finance defensible space or safer construction.",
+      "design": "Iglesias and coauthors combine historical burned area and structure-loss observations with high-resolution housing settlement reconstructions and three climate projections. Their hazard-exposure-vulnerability formulation produces ecoregion-specific expected structure losses, then overlays socioeconomic hardship. It is a conditional geospatial risk model rather than a quasi-experimental estimate of the effect of zoning, insurance, or a particular adaptation policy.",
+      "limits": "The projections keep an empirical measure of structural vulnerability fixed into the future and assume no adaptation, so policies that alter building location or susceptibility would change the scenario. The overlap result for socioeconomic hardship—about 30%—refers specifically to western census tracts in the highest projected fire-risk group, not all U.S. tracts. Structure counts do not price property, displacement, mortality or public suppression, and climate-model dispersion is not a full social-welfare confidence interval.",
+      "lens": "Long-lived land-use decisions convert a changing fire hazard into an uneven stock of exposure.",
+      "notebookTitle": "Separate hazard effects from exposure effects",
+      "notebook": "For policy evaluation, compare variation in fire hazard with land-development decisions and baseline structure counts. A useful design would distinguish new building from mitigation of existing buildings, allow for insurance and migration responses, and avoid attributing a model projection to an observed zoning reform.",
+      "concepts": [
+        "Exposure",
+        "Counterfactual reasoning",
+        "Incidence"
+      ],
+      "features": [
+        {
+          "type": "long-view",
+          "title": "From settlement history to conditional risk",
+          "status": "Observed history and modeled futures are distinct",
+          "stages": [
+            [
+              "1945–2023",
+              "Reconstructed settlement and fire-loss history",
+              "Historical inputs"
+            ],
+            [
+              "2011–2020",
+              "Reference period for risk ratios",
+              "Comparison baseline"
+            ],
+            [
+              "2051–2060",
+              "Risk factors of 1.85, 2.27 and 3.2 across three models",
+              "No-adaptation projections"
+            ]
+          ],
+          "note": "The projected multipliers apply to expected annual structural loss, not damages measured in dollars. The no-adaptation premise matters.",
+          "rationale": "The temporal series distinguishes historical land development from future model exposure; the baseline and scenarios are not interchangeable."
+        },
+        {
+          "type": "assumption-test",
+          "title": "What if vulnerability changes?",
+          "status": "Interpretive stress test of a stated projection assumption",
+          "premise": "The business-as-usual projection holds the exposure-adjusted structural-loss index fixed while hazard and structure exposure evolve.",
+          "threat": "Building codes, landscaping, land-use decisions and protection investments could change vulnerability. Catastrophic fire behavior could also fall outside an index estimated from historical losses.",
+          "check": "Re-estimate the scenarios under explicit vulnerability reductions and alternative settlement paths; compare expected structure counts without treating this proposed exercise as already performed.",
+          "consequence": "A different adaptation path can shift projected losses even if the climate scenario stays the same; conversely, unchanged vulnerability can preserve large risk in existing development.",
+          "rationale": "The fixed vulnerability assumption is a consequential and testable reason not to interpret conditional forecast as unavoidable welfare loss."
+        }
+      ],
+      "rejected": [
+        [
+          "economic-figures",
+          "Without an original source graph of per-year dollars, a new damages chart would confuse structure count with monetary loss."
+        ]
+      ],
+      "figureAssessment": "Three documented model multipliers can be tabulated, but no invented property-damage scale is added.",
+      "modelAssessment": "The model's hazard-exposure-vulnerability structure is explained without claiming a policy causal estimate.",
+      "audit": {
+        "basis": "reconstructed structural risk and projected scenarios",
+        "reason": "Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.",
+        "qualifications": [
+          "Risk multipliers are modeled scenarios, not measured policy effects.",
+          "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+        ]
+      },
+      "register": {
+        "name": "Virginia Iglesias",
+        "org": "University of Colorado Boulder · CIRES Earth Lab",
+        "role": "Earth Lab Director and research scientist",
+        "place": "Boulder, Colorado",
+        "kind": "person",
+        "does": "Leads and studies high-resolution environmental data analyses, including the 2026 structural wildfire risk reconstruction and forecasts connecting burn area, development and socioeconomic exposure.",
+        "economics": "The work makes long-lived development choices and inherited housing exposure central to adaptation economics. It separates expected physical structure losses from prices, transfers, and the distribution of household welfare.",
+        "fieldNote": true
+      }
+    },
+    {
+      "id": "2026-11-06-groundwater-choice",
+      "title": "A Stable Water Table Is Not Necessarily Optimal",
+      "subjects": [
+        "Resource economics",
+        "Dynamic optimization"
+      ],
+      "category": "Groundwater & intertemporal welfare",
+      "published": "October 2026 NBER working-paper release",
+      "palette": "sage",
+      "composition": "groundwater-stock-and-optimum",
+      "readingType": "horizon-led",
+      "status": "Structural-model estimate; working paper",
+      "source": {
+        "url": "https://www.dallasfed.org/~/media/documents/research/papers/2026/wp2626.pdf",
+        "alias": "https://www.nber.org/papers/w35904",
+        "label": "Dallas Fed Working Paper 2626 · Greaney, Shapiro & Wagner (2026)",
+        "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e",
+        "document": "groundwater-dallas-2626",
+        "passages": {
+          "model": {
+            "locator": "PDF pp. 2–4, 11–13, 20–22; Introduction, dynamic model, calibration and recovery of discount factors",
+            "support": "Remote sensing and economic data identify gross extraction, recharge, marginal extraction costs and production; model-derived decision discount factors are compared with Ramsey and market benchmarks, with some aquifers omitted if the model cannot rationalize observed use.",
+            "facts": {
+              "ramsey": {
+                "kind": "modeled",
+                "value": 61,
+                "unit": "percent of aquifers",
+                "denominator": "aquifers analyzed relative to Ramsey benchmark"
+              },
+              "market": {
+                "kind": "modeled",
+                "value": 79,
+                "unit": "percent of aquifers",
+                "denominator": "aquifers analyzed relative to market benchmark"
+              }
+            }
+          },
+          "welfare": {
+            "locator": "PDF pp. 4–5, 27–30 and Figure 8; welfare counterfactuals and Central Valley trajectories",
+            "support": "Different optimal extraction paths can replenish low aquifer stocks even if current net extraction is approximately zero. Global welfare losses from nonoptimal extraction are model-based and depend on discount and production assumptions.",
+            "facts": {
+              "aggregate": {
+                "kind": "modeled",
+                "value": 2.6,
+                "unit": "percent of aquifer present value",
+                "denominator": "model-based global present-value comparison"
+              }
+            }
+          }
+        }
+      },
+      "finding": "Greaney, Shapiro, and Wagner estimate a dynamic groundwater-extraction model for many of the world's roughly 3,400 aquifers using satellite and economic data. Comparing the discount factors that rationalize observed choices with normative benchmarks, they find 61% of analyzed aquifers above the optimal extraction rate under a Ramsey benchmark and 79% under a market benchmark. Their modeled aggregate welfare loss is approximately 2.6% of aquifer present value. These percentages are outputs of structural assumptions, not a direct field experiment.",
+      "econ": "A static efficiency comparison would stop when current pumping costs equal current water productivity. The dynamic problem adds the shadow cost of lowering tomorrow's stock, which can raise later lifting costs and shrink future feasible production. That is why observing extraction equal to recharge need not certify optimality: a depleted stock can be held indefinitely at a level that is too low. The correct transition may require extracting less than recharge for a time, even though an indefinitely zero-net-extraction rule sounds sustainable. Discount rates and groundwater property rights alter the weight assigned to that adjustment.",
+      "design": "The authors combine remote-sensing groundwater measurements with crop production, climate, geology, recharge and energy-cost inputs to calibrate aquifer-specific extraction problems. They back out a revealed decision discount factor, solve counterfactual paths using Ramsey and financial-market benchmarks, and report present-value profit differences. Value-function iteration and a representative-agent approximation rationalize observed decentralized extraction; neither directly identifies a policy reform's causal effect.",
+      "limits": "The representative-agent approximation suppresses heterogeneity in water rights, pumping depth, crops, location and institutions within aquifers. Some aquifers cannot be matched by a feasible implied discount factor and are excluded from the core comparison, with sensitivity analysis discussed separately. The optimal path depends on discount, yield, energy and aquifer parameter assumptions; welfare figures should not be generalized to precise location-level tax rates. The Dallas Fed version predates its October NBER listing and is identified separately.",
+      "lens": "Economic sustainability compares extraction paths from the existing stock, not merely current annual water balance.",
+      "notebookTitle": "The shadow price belongs to the future stock",
+      "notebook": "A credible policy comparison requires observed pumping and recharge, the response of extraction cost to falling water levels, the crop-production margin, and an institutional counterfactual. Test different social discount rates and property-right assumptions before calling a zero-net-extraction restriction efficient.",
+      "concepts": [
+        "Dynamic resource management",
+        "Counterfactual reasoning",
+        "Private returns & social value"
+      ],
+      "features": [
+        {
+          "type": "long-view",
+          "title": "The stock matters before the steady state",
+          "status": "Model-based dynamic paths, not observed policy reforms",
+          "stages": [
+            [
+              "Observed stock",
+              "Low water level can coexist with roughly stable net withdrawals",
+              "Remote sensing and structural calibration"
+            ],
+            [
+              "Transition",
+              "A benchmark path can temporarily reduce extraction to rebuild stock",
+              "Modeled counterfactual"
+            ],
+            [
+              "Long run",
+              "A higher aquifer fill can support a different cost and welfare path",
+              "Conditional optimum"
+            ]
+          ],
+          "note": "A fixed current fill level is not the same as the welfare-maximizing stock. The transition is costly for current extractors even when future users benefit.",
+          "rationale": "Separate present stock, transition and long-run welfare; a steady extraction-recharge balance need not be dynamically efficient."
+        },
+        {
+          "type": "assumption-test",
+          "title": "Who owns the future pumping cost?",
+          "status": "Sensitivity and identification boundary of the structural model",
+          "premise": "The inferred decision discount factor translates a representative aquifer's observed extraction into an intertemporal decision rule.",
+          "threat": "Heterogeneous farms, missing rights enforcement and aquifers not rationalizable by a feasible discount factor can change the inferred wedge.",
+          "check": "Compare the implied rates with measured institutions, pumping-depth heterogeneity, alternative recharge series and benchmark discount factors; disclose when a calibration fails.",
+          "consequence": "The fraction classified as excessive and the welfare loss can move with model assumptions, even if observed extraction data remain unchanged.",
+          "rationale": "The paper's representative-agent calibration and exclusions are precisely the premises separating a model-implied welfare wedge from a measured policy effect."
+        }
+      ],
+      "rejected": [
+        [
+          "estimation-desk",
+          "A short illustrative Bellman equation would conceal the actual aquifer-specific production and recharge estimation more than clarify it without all source notation."
+        ]
+      ],
+      "figureAssessment": "Model benchmark comparisons are reported with benchmark definitions; no invented aquifer-specific trend or global interval.",
+      "modelAssessment": "Formal dynamic logic is explained using future extraction costs and the shadow value of storage; no source-unauthorized estimator is inserted.",
+      "audit": {
+        "basis": "aquifer-specific calibrated structural model",
+        "reason": "Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.",
+        "qualifications": [
+          "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+          "A non-declining current water table does not prove a welfare-optimal stock level."
+        ]
+      },
+      "register": {
+        "name": "Joseph S. Shapiro",
+        "org": "University of California, Berkeley; NBER",
+        "role": "Economist and research coauthor",
+        "place": "Berkeley, California",
+        "kind": "person",
+        "does": "Researches environmental, natural-resource and trade economics; coauthored the Dallas Fed working paper developing a dynamic model and global data to assess optimal groundwater extraction.",
+        "economics": "The core economic object is the shadow value of an aquifer's remaining water. Comparing model-implied decision discounting with alternative benchmarks clarifies how institutions may distort intertemporal resource use.",
+        "fieldNote": true
+      }
+    },
+    {
+      "id": "2026-11-06-pollution-salience",
+      "title": "Pollution Monitors Can Reprice a Firm",
+      "subjects": [
+        "Financial economics",
+        "Information & environmental risk"
+      ],
+      "category": "Environmental disclosure & asset prices",
+      "published": "October 2026 NBER working paper",
+      "palette": "slate",
+      "composition": "pollution-monitoring-to-markets",
+      "readingType": "model-led",
+      "status": "Working-paper quasi-experiment; identification qualified",
+      "source": {
+        "url": "https://www.nber.org/system/files/working_papers/w35969/w35969.pdf",
+        "alias": "https://www.nber.org/papers/w35969",
+        "label": "NBER Working Paper 35969 · Kala et al. (2026)",
+        "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4",
+        "document": "pollution-nber-35969",
+        "passages": {
+          "identification": {
+            "locator": "PDF pp. 2–5, 13–15; Abstract, Introduction and identification design",
+            "support": "The study exploits staggered ambient-air monitoring in China, comparing analysts based in different cities who cover the same firm in the same period. Analyst×firm×cohort fixed effects and event studies target pre-existing analyst matching.",
+            "facts": {
+              "attention": {
+                "kind": "descriptive",
+                "value": "more than twice as likely",
+                "unit": "relative probability",
+                "denominator": "air-pollution discussion by treated versus not-yet-treated analysts covering same firm"
+              }
+            }
+          },
+          "pricing": {
+            "locator": "PDF pp. 20–24, 36–38, 51; market responses, no-reversal exercise and analyst text classification",
+            "support": "Treated analysts acquire information and report different perceptions for brown and green firms; associated report-window stock responses differ by classification. Authors report no subsequent reversal in their specified horizon; this is not proof of a permanently efficient price.",
+            "facts": {}
+          }
+        }
+      },
+      "finding": "Kala, Sani, Shroff, and Zhang study China's staggered rollout of ambient pollution monitoring to examine whether new local measurements affect how equity analysts price environmental risks. Analysts based in newly monitored cities become more than twice as likely to discuss air pollution in reports relative to not-yet-treated analysts covering the same firm in the same period. Reports by exposed analysts elicit more negative market reactions for brown firms and more positive reactions for green firms, with little change for neutral firms in the authors' classification.",
+      "econ": "Monitoring can change financial valuations without directly changing a factory's emissions. New public measurements may make regulatory costs, demand shifts and reputational risks more salient to specialized information intermediaries. Analysts then invest in site visits and research, updating forecasts and investor expectations. This is an information-production mechanism, not proof that physical pollution declined. Prices can capitalize expected future cash-flow effects, but an observed short-window return does not itself identify an efficient long-run valuation level or every investor's welfare.",
+      "design": "The authors compare treated and not-yet-treated analysts covering the same firm and quarter, using analyst–firm–cohort fixed effects and event-study checks. This design reduces several common firm-level shocks because different analysts comment on the same company at the same time. Its causal interpretation still relies on the monitoring rollout not coinciding with unmeasured city-analyst-specific changes that alter reports or investor reception.",
+      "limits": "Analyst attention is partly classified from reports using a language model, introducing text-measurement choices alongside econometric assumptions. Monitoring changes information salience rather than automatically identifying the pollution–profit production function. Non-reversing price responses over the studied horizon are consistent with information capitalization but cannot prove prices are fully efficient or effects are immutable. The paper is an NBER working paper, not a peer-reviewed finalized journal article.",
+      "lens": "Environmental monitoring can shift the information set investors use before any physical emissions response is observed.",
+      "notebookTitle": "Hold the firm constant while analyst information changes",
+      "notebook": "An informative negative-control analysis would compare unrelated nonfinancial report topics and examine the monitoring event-study preperiod. The source conducts topic comparisons and event studies; a separately proposed check would use variation in analyst mobility and reporting-audience exposure.",
+      "concepts": [
+        "Identification",
+        "Value of information",
+        "Counterfactual reasoning"
+      ],
+      "features": [
+        {
+          "type": "mechanism-map",
+          "title": "From ambient readings to financial prices",
+          "status": "Documented information channel; individual links have different evidence",
+          "nodes": [
+            "Local pollution monitoring becomes salient",
+            "Analysts acquire information and revisit firm risks",
+            "Reports revise assessments for brown and green firms",
+            "Investors react to published analysis"
+          ],
+          "edges": [
+            [
+              "0",
+              "1",
+              "exposure and attention"
+            ],
+            [
+              "1",
+              "2",
+              "information-production response"
+            ],
+            [
+              "2",
+              "3",
+              "report-window pricing"
+            ]
+          ],
+          "note": "The authors measure analyst attention, information acquisition and stock reactions. This is not an estimate of environmental cleanup or social welfare.",
+          "rationale": "Separate the information-salience shock, intermediary research and observed market reaction instead of presenting one undifferentiated causal claim."
+        },
+        {
+          "type": "assumption-test",
+          "title": "Is monitoring rollout an information shock?",
+          "status": "Identification stress test; proposed additions distinguished",
+          "premise": "Conditional on firm-quarter and analyst–firm relationships, monitoring timing does not independently shift treated-city analysts' forecasts through another simultaneous shock.",
+          "threat": "Local policy, brokerage networks, air-quality shocks or firm proximity could move treated analysts and investors at the same time.",
+          "check": "Examine the reported event-study preperiod and unrelated-topic negative controls; additionally test local-city policy timing and analyst relocation where data permit.",
+          "consequence": "If rollout changes analyst behavior through a concurrent local economic shock, report-window pricing cannot be attributed solely to environmental information salience.",
+          "rationale": "The core econometric distinction is between staggered information access and local shocks that influence analysts through other channels."
+        }
+      ],
+      "rejected": [
+        [
+          "incidence-ledger",
+          "Firm-type stock responses do not by themselves establish welfare incidence on workers, consumers or local communities."
+        ]
+      ],
+      "figureAssessment": "No invented returns or market capitalization totals; source report-window findings remain qualitative where exact model versions require reconciliation.",
+      "modelAssessment": "The fixed-effects design is explained in words; no partial or potentially miscopied econometric equation.",
+      "audit": {
+        "basis": "staggered monitoring quasi-experimental analysis",
+        "reason": "Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.",
+        "qualifications": [
+          "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+          "Financial-market reactions are not welfare or pollution-reduction estimates."
+        ]
+      },
+      "register": {
+        "name": "Nemit Shroff",
+        "org": "MIT Sloan School of Management",
+        "role": "School of Management Distinguished Professor of Accounting",
+        "place": "Cambridge, Massachusetts",
+        "kind": "person",
+        "does": "Studies financial reporting, disclosure, financing, and real economic responses to information. Coauthors the working paper testing whether new ambient pollution monitoring changes analyst attention and stock-market reactions.",
+        "economics": "The economic mechanism is information production and capital-market price discovery: public environmental signals can alter expectations, analyst effort and the cost of capital without immediately changing firms' physical emissions.",
+        "fieldNote": true
+      }
+    },
+    {
+      "id": "2026-11-06-seagrass-carbon",
+      "title": "What Counts as a Seagrass Carbon Sink?",
+      "subjects": [
+        "Natural capital",
+        "Environmental measurement"
+      ],
+      "category": "Blue carbon measurement & valuation",
+      "published": "4 November 2026",
+      "palette": "tidal",
+      "composition": "seagrass-observation-to-valuation",
+      "readingType": "figure-led",
+      "status": "Peer-reviewed empirical synthesis; sampling uncertainty",
+      "source": {
+        "url": "https://www.nature.com/articles/s41467-026-79168-3.pdf",
+        "alias": "https://www.nature.com/articles/s41467-026-79168-3",
+        "label": "Nature Communications · Arias-Ortiz et al. (2026), research article",
+        "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6",
+        "document": "seagrass-2026-nature",
+        "passages": {
+          "estimates": {
+            "locator": "PDF pp. 1–3; Abstract and Fig. 2 sample-level and area-weighted estimates",
+            "support": "Meta-synthesis uses 332 sediment cores, deriving geometric mean 25±3 g OC m−2 yr−1 and area-weighted global 33±9 g OC m−2 yr−1; sampling geography remains uneven, and some cores show undetectable net deposition.",
+            "facts": {
+              "cores": {
+                "kind": "descriptive",
+                "value": 332,
+                "unit": "sediment cores",
+                "denominator": "global synthesis sample"
+              },
+              "geometric": {
+                "kind": "descriptive",
+                "value": 25,
+                "unit": "g organic carbon m−2 yr−1",
+                "denominator": "geometric mean observed core rate"
+              },
+              "weighted": {
+                "kind": "descriptive",
+                "value": 33,
+                "unit": "g organic carbon m−2 yr−1",
+                "denominator": "area-weighted global rate"
+              }
+            }
+          },
+          "implications": {
+            "locator": "PDF pp. 5, 7, 9; sediment mechanisms, adjacent bare-sediment redistribution and Outlook",
+            "support": "Burial depends jointly on OC concentrations and mineral accumulation; redistribution into adjacent unvegetated sediment complicates attribution. Global 6–15 Tg OC/year estimate depends on mapped seagrass extent and the study is not a carbon-credit additionality exercise.",
+            "facts": {
+              "global": {
+                "kind": "modeled",
+                "value": "6–15",
+                "unit": "Tg organic carbon per year",
+                "denominator": "global estimate under mapped seagrass area"
+              }
+            }
+          }
+        }
+      },
+      "finding": "A November 2026 Nature Communications synthesis of 332 sediment cores revises global estimates of organic-carbon burial in seagrass sediments. It reports a geometric mean of 25 ± 3 grams of organic carbon per square meter per year and an area-weighted global estimate of 33 ± 9 in the same units. The paper scales mapped meadow area to an estimated 6–15 teragrams of organic carbon buried globally each year, while emphasizing substantial uncertainty over geography, sediment dynamics and carbon exported beyond the sampled meadows.",
+      "econ": "Blue-carbon programs value additional carbon retained because of a policy or restoration action, not simply every gram found in a sediment core. A measurement of long-run sediment burial is a biophysical baseline; translating it to credits requires a counterfactual, permanence horizon, leakage accounting, attribution, monitoring cost, and discounting. Sediment transported between vegetated and bare areas can make local burial rates an unreliable proxy for meadow-specific additionality. A more careful rate estimate improves the information available for valuation but does not itself establish an efficient subsidy, credit price or restored hectare's net benefit.",
+      "design": "Arias-Ortiz and coauthors harmonize century-scale sediment-core observations and compare bioregional, geometric and area-weighted estimates. Their analysis models the relationship between organic-carbon content and mass accumulation rates and discusses deposition in bare sediments near meadows. The estimated global total uses mapped seagrass area, so spatial extent and representation affect the inferred aggregate.",
+      "limits": "The sampled cores disproportionately represent Australia, the United States and Spain, and 16% of examined vegetated sediments lacked detectable excess lead-210 for meaningful deposition assessment on decadal–centennial timescales. The authors report lower estimates when such sites are included; geographical undercoverage and uncertain meadow extent persist. The figures measure sediment organic-carbon burial, not net climate mitigation after export, atmospheric exchange, permanence and the cost of management. They are not automatically tradable credit quantities.",
+      "lens": "A tighter physical baseline can improve carbon accounting, but additional climate value requires a policy counterfactual.",
+      "notebookTitle": "A burial rate is not a creditable ton",
+      "notebook": "An applied valuation design should measure a restoration area's burial against a credible no-restoration trajectory, quantify the fate of exported carbon, and assign monitoring uncertainty to credit issuance. Without that counterfactual, gross stored carbon and additional atmospheric removals are different estimands.",
+      "concepts": [
+        "Counterfactual reasoning",
+        "Private returns & social value",
+        "Measurement"
+      ],
+      "features": [
+        {
+          "type": "economic-figures",
+          "title": "Two legitimate averages, different weights",
+          "status": "Reported sediment rates; not additional removals",
+          "chart": {
+            "kind": "bars",
+            "unit": "g organic carbon m−2 yr−1",
+            "rows": [
+              [
+                "Geometric mean",
+                25
+              ],
+              [
+                "Area-weighted",
+                33
+              ]
+            ]
+          },
+          "note": "The 25 ± 3 and 33 ± 9 source estimates use different weighting conventions; the bars show their reported point values, not a confidence interval, carbon price or offset credit.",
+          "rationale": "Placing two source estimates on one common physical unit helps explain differing weights without conflating them with extra sequestration."
+        },
+        {
+          "type": "assumption-test",
+          "title": "Does a sediment core represent a hectare?",
+          "status": "Sampling and attribution diagnostic",
+          "premise": "Core-based burial rates and mapped seagrass extent provide an informative global aggregate once scaled and weighted.",
+          "threat": "Bioregional sampling bias, bare-sediment lateral transport, and missing non-depositional sites can change both observed rates and creditable attribution.",
+          "check": "Reweight by mapped regions, incorporate zero-deposition cores, sample adjacent bare sediments and distinguish retained versus exported organic carbon.",
+          "consequence": "Changing sampling and the fate of exported carbon can revise total burial and any credible restoration additionality even while a core's laboratory measurement is unchanged.",
+          "rationale": "The central inferential problem is scaling uneven, spatially mobile physical observations to a policy-relevant carbon-stock change."
+        }
+      ],
+      "rejected": [
+        [
+          "incidence-ledger",
+          "No carbon-credit price, restoration cost or measured payment is in the source, so fiscal incidence would be speculative."
+        ]
+      ],
+      "figureAssessment": "Physical averages plotted with exact units; stated uncertainties remain in captions and prose; no invented carbon-credit or dollar axis.",
+      "modelAssessment": "Measurement and stock-flow attribution discussed without estimating a social cost or causal restoration effect.",
+      "audit": {
+        "basis": "observational sediment-core synthesis and spatial extrapolation",
+        "reason": "Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.",
+        "qualifications": [
+          "Geometric and area-weighted estimates are distinct estimands.",
+          "Gross sediment burial does not establish additional tradable removals."
+        ]
+      },
+      "register": {
+        "name": "Arias-Ortiz and colleagues",
+        "org": "Nature Communications research collaboration",
+        "role": "Coauthors of global seagrass carbon synthesis",
+        "place": "Multiple international research institutions",
+        "kind": "institution",
+        "does": "A distributed scientific collaboration assembled hundreds of sediment-core observations and developed a bioregional reassessment of long-run seagrass organic-carbon burial rates and scaling uncertainty.",
+        "economics": "Better physical measurement is an input to natural-capital accounts, but private carbon-market claims require explicit additionality, permanence, baseline selection and credible separation of retained versus exported organic carbon.",
+        "fieldNote": false
+      }
+    }
+  ]
+}

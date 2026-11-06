@@ -104,6 +104,22 @@
     "26": {
       "issue": "2026-10-30",
       "sha256": "7dc93b51b92d98a397f47c6e2effe7fc3263293b170ed5afa44cd20d8b4b51b0"
+    },
+    "27": {
+      "issue": "2026-11-06",
+      "sha256": "1e8d58794cc701efcc9aa6caaf046880d3166c4d71522ab1d3a3b58bb66a5632"
+    },
+    "28": {
+      "issue": "2026-11-06",
+      "sha256": "ca1287ed53af846057410fd36b6f2b4d9f4325af95322cbf1d54cc7ab16eac23"
+    },
+    "29": {
+      "issue": "2026-11-06",
+      "sha256": "c757e7acf8d659c6aa63c81cf4593b473161fb90d84dad81a7c28dd05389d078"
+    },
+    "30": {
+      "issue": "2026-11-06",
+      "sha256": "5467e58e10969d04836ac1bef3548fbd7d788a5fe03f89fa5b3bd4cdd92c3c27"
     }
   }
 }
