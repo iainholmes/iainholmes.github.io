@@ -1,0 +1,78 @@
+# TEMPORARY isolated recovery workflow; must be removed before merging.
+name: Field Brief 041 guarded recovery
+on:
+  push:
+    branches: [recovery/field-brief-2026-11-06]
+    paths: ['daily-watchlist-5/index.html','.github/workflows/field-brief-041-recovery.yml']
+  pull_request:
+    branches: [master]
+    paths: ['daily-watchlist-5/index.html','.github/workflows/field-brief-041-recovery.yml']
+permissions:
+  contents: write
+jobs:
+  publication:
+    if: github.repository == 'iainholmes/iainholmes.github.io' && (github.ref == 'refs/heads/recovery/field-brief-2026-11-06' || github.head_ref == 'recovery/field-brief-2026-11-06')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: recovery/field-brief-2026-11-06
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Validate local feature, date, and archive before publication artifacts
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),json=s=>JSON.parse(s.match(/id="briefing-data">([\s\S]*?)<\/script>/)[1]);
+          const p='daily-watchlist-5/index.html',src=fs.readFileSync(p,'utf8'),data=json(src),arr=data.editions,ed=arr.at(-1);
+          if(arr.length!==41||ed.date!=='2026-11-06'||ed.stories.length!==5||arr.filter(x=>x.date===ed.date).length!==1)throw Error('Wrong due issue or duplicate');
+          require('./daily-watchlist-5/editorial-order.cjs').validate(ed);
+          const memory=require('./personal-updates/editorial-memory.js');
+          const history=memory.history(arr,ed.date).map(x=>x.date);
+          if(JSON.stringify(ed.editorialSelection.historyDates)!==JSON.stringify(history))throw Error('Not a seven-edition historical review');
+          ed.editorialSelection.candidates=ed.editorialSelection.candidates.map(c=>{
+            const story=ed.stories.find(s=>s.title===c.title);
+            if(!story)return c;
+            const a=memory.assess(story,arr,ed.date);
+            return {...c,rawPenalty:a.rawPenalty,matchedDimensions:[...new Set(a.matches.flatMap(m=>Object.keys(m.shared)))]};
+          });
+          ed.editorialSelection.diversity=memory.review(ed.stories);
+          if(ed.editorialSelection.diversity.needsEditorialDecision)throw Error('Unresolved diversity warning');
+          const out=src.replace(/(<script type="application\/json" id="briefing-data">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+'\n'+JSON.stringify(data,null,2)+'\n'+b);
+          fs.writeFileSync(p,out);
+          console.log('Five articles and position-05 North Carolina feature, seven-edition review, issue number 041 verified.');
+          NODE
+      - name: Run original Periodicals preparation and artwork originality
+        run: node scripts/prepare_periodicals.cjs
+      - name: Inspect complete Field Brief edition and preserved archives
+        run: |
+          node scripts/check_field_brief.cjs 2026-11-06
+          node scripts/test_field_brief_order.cjs
+          node scripts/test_issue_marks.cjs
+          node scripts/test_publishing.cjs
+          git diff --check
+      - name: Restrict generated changes to new issue and frozen publication artifacts
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),cp=require('child_process');
+          const d=JSON.parse(fs.readFileSync('daily-watchlist-5/index.html','utf8').match(/id="briefing-data">([\s\S]*?)<\/script>/)[1]).editions;
+          if(d.length!==41||d.at(-1).date!=='2026-11-06'||d.at(-1).stories.length!==5)throw Error('Incomplete Field Brief');
+          const marks=require('./personal-updates/issue-mark-archive.js'),plates=require('./daily-watchlist-5/artwork-archive.js');
+          const m=marks['fb:2026-11-06'],p=plates.issues['2026-11-06'];
+          if(!m||!m.frozen||m.no!=='041'||!p||d.at(-1).stories.some(s=>!p[s.number]?.frozen))throw Error('Incomplete frozen issue and story art');
+          const hub=fs.readFileSync('personal-updates/index.html','utf8');
+          if(!hub.includes('data-issue-mark="fb" data-edition="2026-11-06"')||!hub.includes(m.frozen))throw Error('Stale Field Brief hub');
+          const changed=cp.execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim().split('\n').filter(Boolean);
+          const allowed=new Set(['daily-watchlist-5/index.html','daily-watchlist-5/artwork-archive.js','personal-updates/index.html','personal-updates/issue-mark-archive.js']);
+          if(changed.some(x=>!allowed.has(x)))throw Error('Unauthorized generated diff: '+changed);
+          console.log('Verified frozen original story art, cover, current hub, isolated generated paths:',changed.join(', '));
+          NODE
+      - name: Commit fully validated frozen art and hub to recovery branch
+        run: |
+          git config user.name "Field Brief recovery validation"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add daily-watchlist-5/index.html daily-watchlist-5/artwork-archive.js personal-updates/index.html personal-updates/issue-mark-archive.js
+          git diff --cached --check
+          git commit -m "Prepare original Field Brief 041 artwork and hub" || true
+          git push origin HEAD:recovery/field-brief-2026-11-06
