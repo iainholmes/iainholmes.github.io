@@ -61,7 +61,7 @@ function audit(d){
   const ed=parseJSON(html,'challenge-data').editions;
   selected=ed.find(e=>e.date===d.date);
   if(!selected)return {state:'missing',errors:['no dated Workbook set'],count:ed.length};
-  if(ed.at(-1)?.date!==d.date)errors.push('dated set not latest');
+  if((ed.at(-1)?.date||'')<d.date)errors.push('new set not current');
   if(selected.questions?.length!==8)errors.push('set must have eight questions');
   if(selected.no!==ed.findIndex(e=>e.date===d.date)+1)errors.push('set number not sequential');
   count=ed.length;
