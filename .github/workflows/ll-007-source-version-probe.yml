@@ -13,6 +13,7 @@ jobs:
     steps:
       - name: Retrieve actual public research artifacts and report hashes and status
         run: |
+          python -m pip install -q pypdf
           mkdir -p "$RUNNER_TEMP/ll-sources"
           fetch () {
             name="$1"; url="$2"
@@ -20,7 +21,15 @@ jobs:
             status=$(curl -L -sS --retry 2 --max-time 60 -A 'Mozilla/5.0 (research-verification; +https://github.com/iainholmes/iainholmes.github.io)' -o "$out" -w '%{http_code}' "$url" || true)
             echo "SOURCE $name status=$status bytes=$(wc -c < "$out") MIME=$(file -bi "$out") SHA256=$(sha256sum "$out" | cut -d' ' -f1)"
             if file "$out" | grep -qi PDF; then
-              pdftotext -layout "$out" "$out.txt"
+              python - "$out" <<'PY'
+import sys
+from pypdf import PdfReader
+p=sys.argv[1]
+r=PdfReader(p)
+s='\n'.join(x.extract_text() or '' for x in r.pages)
+open(p+'.txt','w').write(s)
+print('PDF PAGES',len(r.pages))
+PY
               echo "TEXT $name chars=$(wc -c < "$out.txt") headings:"
               grep -inE '^[[:space:]]*(introduction|results|discussion|data|method|empirical|conclusion|estimation|model|sensitivity|identification|robustness|welfare|findings)[[:space:]]*$' "$out.txt" | head -35 || true
               head -c 2000 "$out.txt"; echo
