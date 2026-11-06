@@ -86,7 +86,7 @@
   const rect=n=>n.getBoundingClientRect(),intersects=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1;
   for(const field of a.querySelectorAll('.ll-reading')){
    const features=[...field.querySelectorAll('.ll-feature')].filter(visible);
-   const corners=new Map(features.map(f=>[f,new Set()]));
+   const corners=new Map(features.map(f=>[f,new Set()])),sides=new Map(features.map(f=>[f,new Set()]));
    const fr=rect(field),standards=[...field.querySelectorAll('.ll-editorial,.ll-notebook-unit,.ll-interpretation,.ll-opening')].filter(n=>visible(n)&&!n.closest('.ll-feature')).map(rect),rules=[];
    for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){
     const ar=rect(features[i]),br=rect(features[j]);let one=ar,two=br,axis=null,overlap=0,start=0,cross=0,strip;
@@ -102,11 +102,13 @@
     if(!axis||standards.some(r=>intersects(r,strip))||features.some((n,k)=>k!==i&&k!==j&&intersects(rect(n),strip)))continue;
     const leading=ar===one?features[i]:features[j],trailing=ar===one?features[j]:features[i];
     if(axis==='vertical'){
+     sides.get(leading).add('right');sides.get(trailing).add('left');
      if(Math.abs(start-one.top)<=1)corners.get(leading).add('tr');
      if(Math.abs(start+overlap-one.bottom)<=1)corners.get(leading).add('br');
      if(Math.abs(start-two.top)<=1)corners.get(trailing).add('tl');
      if(Math.abs(start+overlap-two.bottom)<=1)corners.get(trailing).add('bl');
     }else{
+     sides.get(leading).add('bottom');sides.get(trailing).add('top');
      if(Math.abs(start-one.left)<=1)corners.get(leading).add('bl');
      if(Math.abs(start+overlap-one.right)<=1)corners.get(leading).add('br');
      if(Math.abs(start-two.left)<=1)corners.get(trailing).add('tl');
@@ -115,6 +117,7 @@
     const length=overlap*.9,cap=Math.min(73,length*.2),shoulder=cap*.8;
     rules.push({axis,x:axis==='vertical'?cross-fr.left-4:start-fr.left+overlap*.05,y:axis==='vertical'?start-fr.top+overlap*.05:cross-fr.top-4,length,cap,shoulder,overlap,from:features[i].id,to:features[j].id});
    }
+   for(const [feature,values]of sides){if(values.size)feature.dataset.contactSides=[...values].join(' ');else feature.removeAttribute('data-contact-sides');}
    for(const [feature,values]of corners){if(values.size)feature.dataset.contactCorners=[...values].join(' ');else feature.removeAttribute('data-contact-corners');}
    const old=[...field.querySelectorAll(':scope > .ll-feature-divider')];rules.forEach((r,i)=>{const n=old[i]||document.createElement('span');n.className='ll-feature-divider ll-divider-'+r.axis;n.setAttribute('aria-hidden','true');n.dataset.from=r.from;n.dataset.to=r.to;n.dataset.overlap=String(r.overlap);n.style.cssText='left:'+r.x+'px;top:'+r.y+'px;--divider-length:'+r.length+'px;--divider-cap:'+r.cap+'px;--divider-shoulder:'+r.shoulder+'px';if(!n.parentElement){const sources=field.querySelector(':scope > .reading-sources');if(sources)field.insertBefore(n,sources);else field.append(n)}});old.slice(rules.length).forEach(n=>n.remove());
   }
