@@ -26,7 +26,7 @@ module.exports=({row,field,inset,flo,gap,join})=>({...module.exports.authored,
  '2026-10-23-emissions-gap':({E,O,Q,N,T,M,G})=>E+field('overshoot-and-persistence',T()+row('overshoot-channel',G(),N,'1.4fr','1fr'),'gatefold')+O+row('overshoot-loss-and-limits',M(),Q,'1.3fr','1fr'),
  '2026-10-23-adaptation-finance':({E,O,Q,N,D,L,G})=>E+inset('adaptation-policy-context',O,'82%')+field('adaptation-allocation',D()+L(),'open')+row('adaptation-additionality',N,G(),'1fr','1.4fr')+Q,
  '2026-10-23-mobility-finance':({E,O,Q,N,A,D})=>row('mobility-credit-opening',E,O,'1.45fr','1fr')+field('mobility-cash-flow',A+inset('mobility-finance-choice',D(),'80%','left'),'folio')+row('mobility-research-and-evidence',N,Q,'1fr','1.3fr'),
- '2026-10-30-household-climate':({E,O,Q,N,M,G,X})=>E+join(M(),row('household-complementarity',G(),O+Q,'1.5fr','1fr'))+field('household-policy-robustness',row('household-test-and-research',X(),N,'1.4fr','1fr'),'ledger'),
+ '2026-10-30-household-climate':({E,O,Q,N,M,G,X})=>E+join(M(),row('household-complementarity',G(),O+Q,'1.5fr','1fr'),field('household-policy-robustness',row('household-test-and-research',X(),N,'1.5fr','1fr'),'ledger')),
  '2026-10-30-solar-storage':({E,O,Q,N,A,T})=>E+flo('solar-project-clock',A,O+N,'left','60%')+T()+inset('solar-project-risk',Q,'85%')
 });
 module.exports.authored={};
