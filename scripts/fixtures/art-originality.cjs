@@ -21,7 +21,7 @@ function assertHistory(now,prior){
  // Canonicalize only the authorized editorial wrappers. All published text,
  // metadata, figures, pins and associations are still compared per edition.
  const compose=require('../../weekly-economics-environment/editorial-folio.cjs').compose;
- const journal=value=>typeof value==='string'?compose('<main id="edition">'+value+'</main>'):value;
+ const journal=value=>typeof value==='string'?compose('<main id="edition">'+value+'</main><script type="application/json" id="companion-data">{}</script>'):value;
  let count=0;for(const [kind,entries]of Object.entries(prior))for(const [id,value]of Object.entries(entries)){
   assert.deepEqual(kind==='journal'?journal(now[kind]?.[id]):now[kind]?.[id],kind==='journal'?journal(value):value,'immutable '+kind+' '+id);count++;
  }return count;
