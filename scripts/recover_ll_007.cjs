@@ -44,7 +44,7 @@ for(const r of R){
 decision.reviewed=D;
 write('weekly-economics-environment/editorial-decisions.json',JSON.stringify(decision,null,2)+'\n');
 
-const renderArticle=(r,i)=>'<article class="entry" id="'+r.id+'">'+
+const renderArticle=(r,i)=>'<article class="entry" id="'+r.id+'" data-editorial-system="6">'+
  '<header class="entry-head"><div class="reading-folio"><span class="entry-number">'+String(i+1).padStart(2,'0')+'</span></div><div class="reading-title"><div class="eyebrow">'+esc(r.category)+' <span class="sep">/</span> '+esc(r.published)+'</div><h2>'+esc(r.title)+'</h2><div class="status"><span></span>'+esc(r.status)+'</div></div></header>'+
  '<div class="reading-deck"><p class="finding">'+esc(r.finding)+'</p></div><div class="article-grid ll-reading">'+
  '<section class="ll-editorial"><h3>Economic interpretation</h3>'+pp(r.econ)+'</section>'+
