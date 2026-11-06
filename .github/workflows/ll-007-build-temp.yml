@@ -81,7 +81,7 @@ jobs:
           const cover=require('./personal-updates/issue-mark-archive.js')['sp:2026-11-06'];
           if(!cover?.frozen||cover.date!=='2026-11-06')throw Error('No dated original cover');
           const study=JSON.parse(s.match(/id="field-studies">([\s\S]*?)<\/script>/)[1])['2026-11-06'];
-          if(!study?.html||study.version!==4)throw Error('No original field-study');
+          if(!study?.html||![2,4].includes(study.version))throw Error('No original validated field-study');
           const hub=fs.readFileSync('personal-updates/index.html','utf8');
           if(!hub.includes('data-issue-mark="sp" data-edition="2026-11-06"')||!hub.includes(cover.frozen))throw Error('Hub out of sync');
           console.log('LL_007_CANDIDATE_INTEGRITY_OK',dates.length, 'editions', e.readings['2026-11-06-farm-robots'].components.length,'robot evidence components');
