@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict');
-async function audit({page,goto,setViewport,origin,widths=[1440,1280,1180,1024,850,820,768,651,650,520,390,375,320]}){
+async function audit({page,goto,setViewport,origin,widths=[1710,1440,1280,1180,1024,850,820,768,651,650,520,390,375,320]}){
  let assertions=0;const evidence=[];const check=(v,m)=>{assert(v,m);assertions++};
  await goto(origin+'/weekly-economics-environment/');const directory=await page.locator('#ll-reading-index-data').evaluate(e=>JSON.parse(e.textContent));const publishedDates=directory.editions.map(e=>e.date),totalReadings=directory.editions.reduce((n,e)=>n+e.readings.length,0);
  for(const width of widths){await setViewport({width,height:1100});for(const date of publishedDates){await goto(origin+'/weekly-economics-environment/#edition-'+date);await page.locator('#edition-'+date).waitFor({state:'visible'});
@@ -96,6 +96,16 @@ if(process.env.LL_QA_SHOTS_DIR){
  ]){
   await page.setViewportSize({width:1440,height:1000});
   await page.goto(cfg.origin+'/weekly-economics-environment/#edition-'+item.edition,{waitUntil:'networkidle'});
+  const target=page.locator('[id="'+item.reading+'"] '+item.target).first();
+  await target.waitFor({state:'visible'});
+  await target.screenshot({path:process.env.LL_QA_SHOTS_DIR+'/'+item.name,animations:'disabled'});
+ }
+ await page.setViewportSize({width:1710,height:1107});
+ await page.goto(cfg.origin+'/weekly-economics-environment/#edition-2026-10-30',{waitUntil:'networkidle'});
+ for(const item of [
+  {reading:'2026-10-30-household-climate',target:'.ll-joined-sequence',name:'ll-household-joined-macbook-air-1710.png'},
+  {reading:'2026-10-30-moves6',target:'.ll-moves-featuregroup',name:'ll-moves6-macbook-air-1710.png'}
+ ]){
   const target=page.locator('[id="'+item.reading+'"] '+item.target).first();
   await target.waitFor({state:'visible'});
   await target.screenshot({path:process.env.LL_QA_SHOTS_DIR+'/'+item.name,animations:'disabled'});
