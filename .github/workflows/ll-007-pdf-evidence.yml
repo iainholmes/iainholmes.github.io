@@ -1,5 +1,8 @@
 name: TEMP L&L 007 verifiable primary-source artifact hashes
 on:
+  push:
+    branches: [recovery/ll-edition-007-20261106]
+    paths: ['.github/workflows/ll-007-pdf-evidence.yml']
   pull_request:
     branches: [master]
     paths: ['.github/workflows/ll-007-pdf-evidence.yml']
