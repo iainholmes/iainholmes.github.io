@@ -1,6 +1,11 @@
 # Temporary, strictly branch-scoped recovery runner. Delete before merging to master.
 name: Workbook Set 015 guarded preparation
 on:
+  pull_request:
+    branches: [master]
+    paths:
+      - 'daily-econ-challenge/index.html'
+      - '.github/workflows/workbook-set015-recovery.yml'
   push:
     branches: [recovery/workbook-2026-11-06]
     paths:
@@ -10,7 +15,7 @@ permissions:
   contents: write
 jobs:
   prepare-validate-and-stage:
-    if: github.repository == 'iainholmes/iainholmes.github.io' && github.ref == 'refs/heads/recovery/workbook-2026-11-06'
+    if: github.repository == 'iainholmes/iainholmes.github.io' && (github.ref == 'refs/heads/recovery/workbook-2026-11-06' || github.head_ref == 'recovery/workbook-2026-11-06')
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
