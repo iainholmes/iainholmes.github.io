@@ -51,7 +51,7 @@ function audit(d){
   const ed=parseJSON(html,'briefing-data').editions;
   selected=ed.find(e=>e.date===d.date);
   if(!selected)return {state:'missing',errors:['no dated Field Brief issue'],count:ed.length};
-  if(ed.at(-1)?.date!==d.date)errors.push('dated issue not latest');
+  if((ed.at(-1)?.date||'')<d.date)errors.push('new issue not current');
   if(selected.stories?.length!==5)errors.push('issue must have five stories');
   try{require('../daily-watchlist-5/editorial-order.cjs').validate(selected)}catch(e){errors.push('editorial order: '+e.message)}
   const plates=require('../daily-watchlist-5/artwork-archive.js').issues?.[d.date];
@@ -61,7 +61,7 @@ function audit(d){
   const ed=parseJSON(html,'challenge-data').editions;
   selected=ed.find(e=>e.date===d.date);
   if(!selected)return {state:'missing',errors:['no dated Workbook set'],count:ed.length};
-  if(ed.at(-1)?.date!==d.date)errors.push('dated set not latest');
+  if((ed.at(-1)?.date||'')<d.date)errors.push('new set not current');
   if(selected.questions?.length!==8)errors.push('set must have eight questions');
   if(selected.no!==ed.findIndex(e=>e.date===d.date)+1)errors.push('set number not sequential');
   count=ed.length;
@@ -69,7 +69,7 @@ function audit(d){
   const index=parseJSON(html,'ll-reading-index-data');
   selected=editionHTML(html,d.date);
   if(!selected)return {state:'missing',errors:['no dated L&L edition section'],count:index.editions.length};
-  if(index.editions.at(-1)?.date!==d.date)errors.push('reading index not current');
+  if((index.editions.at(-1)?.date||'')<d.date)errors.push('reading index missing due issue');
   if((selected.match(/<article class="entry"/g)||[]).length!==5)errors.push('edition must contain five complete readings');
   const field=parseJSON(html,'field-studies')[d.date];
   if(!field?.html||field.date!==d.date)errors.push('original Field Study absent');
@@ -79,8 +79,10 @@ function audit(d){
   count=index.editions.length;
  }
  const hub=read('personal-updates/index.html');
- if(!hub.includes('data-issue-mark="'+d.key+'" data-edition="'+d.date+'"'))errors.push('Periodicals hub points at older issue');
- if(pin?.frozen&&!hub.includes(pin.frozen))errors.push('Periodicals hub frozen cover mismatch');
+ const expectedHubDate=(d.key==='sp'?parseJSON(html,'ll-reading-index-data').editions.at(-1)?.date:parseJSON(html,d.key==='fb'?'briefing-data':'challenge-data').editions.at(-1)?.date);
+ const expectedHubPin=marks[d.key+':'+expectedHubDate];
+ if(!hub.includes('data-issue-mark="'+d.key+'" data-edition="'+expectedHubDate+'"'))errors.push('Periodicals hub points at wrong current issue');
+ if(expectedHubPin?.frozen&&!hub.includes(expectedHubPin.frozen))errors.push('Periodicals hub frozen cover mismatch');
  return {state:errors.length?'incomplete':'canonical_ready',errors,count,selected:!!selected};
 }
 const BASE='https://iainholmes.github.io/';
@@ -94,12 +96,14 @@ async function verifyPages(d,stamp){
  const [page,hub]=await Promise.all([getPublic(d.url,stamp),getPublic('personal-updates/',stamp)]);
  const canonical=read(d.file),marks=require('../personal-updates/issue-mark-archive.js');
  const pin=marks[d.key+':'+d.date],errors=[];
- if(!hub.includes('data-issue-mark="'+d.key+'" data-edition="'+d.date+'"'))errors.push('live hub has older cover metadata');
- if(pin?.frozen&&!hub.includes(pin.frozen))errors.push('live hub frozen cover differs');
+ const latestDate=d.key==='sp'?parseJSON(canonical,'ll-reading-index-data').editions.at(-1)?.date:parseJSON(canonical,d.key==='fb'?'briefing-data':'challenge-data').editions.at(-1)?.date;
+ const latestPin=marks[d.key+':'+latestDate];
+ if(!hub.includes('data-issue-mark="'+d.key+'" data-edition="'+latestDate+'"'))errors.push('live hub has wrong latest cover metadata');
+ if(latestPin?.frozen&&!hub.includes(latestPin.frozen))errors.push('live hub frozen cover differs');
  if(d.key==='fb'||d.key==='cp'){
   const id=d.key==='fb'?'briefing-data':'challenge-data';
   const local=parseJSON(canonical,id).editions,live=parseJSON(page,id).editions;
-  if(local.length!==live.length||JSON.stringify(local.at(-1))!==JSON.stringify(live.at(-1)))errors.push('live edition content does not match canonical archive');
+  if(local.length!==live.length||JSON.stringify(local.at(-1))!==JSON.stringify(live.at(-1))||JSON.stringify(local.find(x=>x.date===d.date))!==JSON.stringify(live.find(x=>x.date===d.date)))errors.push('live dated edition content does not match canonical archive');
  }else{
   const a=editionHTML(canonical,d.date),b=editionHTML(page,d.date);
   if(!b)errors.push('live L&L edition absent');
@@ -139,6 +143,21 @@ async function reconcileIssue(d,result,stamp){
 async function main(){
  const now=process.env.WATCHDOG_NOW||new Date().toISOString();
  const targets=due(now);
+ // Recheck prior outstanding incidents after their due date. Recovering a dated
+ // issue tomorrow must close yesterday's incident once archive and Pages agree.
+ if(process.env.GITHUB_TOKEN&&!process.argv.includes('--local-only')&&!process.argv.includes('--no-issues')){
+  try{
+   const open=await gh('GET','/issues?state=open&per_page=100');
+   for(const issue of open){
+    if(issue.pull_request)continue;
+    const match=String(issue.title||'').match(/^\[Publisher incident\] (.+) — (\d{4}-\d\d-\d\d)$/);
+    if(!match)continue;
+    const definition=DEFINITIONS.find(x=>x.name===match[1]);
+    if(!definition||match[2]>eastern(now).date||targets.some(x=>x.key===definition.key&&x.date===match[2]))continue;
+    targets.push({...definition,date:match[2]});
+   }
+  }catch(e){console.error('Cannot recheck unresolved publication incidents:',e.message);process.exitCode=1;}
+ }
  const results=[];
  for(const d of targets){
   let r;
