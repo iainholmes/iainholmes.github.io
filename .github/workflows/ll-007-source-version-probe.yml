@@ -1,0 +1,36 @@
+name: TEMP L&L 007 inspect five primary research versions
+on:
+  push:
+    branches: [recovery/ll-edition-007-20261106]
+    paths: ['.github/workflows/ll-007-source-version-probe.yml']
+  pull_request:
+    branches: [master]
+    paths: ['.github/workflows/ll-007-source-version-probe.yml']
+permissions: {contents: read}
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Retrieve actual public research artifacts and report hashes and status
+        run: |
+          mkdir -p "$RUNNER_TEMP/ll-sources"
+          fetch () {
+            name="$1"; url="$2"
+            out="$RUNNER_TEMP/ll-sources/$name"
+            status=$(curl -L -sS --retry 2 --max-time 60 -A 'Mozilla/5.0 (research-verification; +https://github.com/iainholmes/iainholmes.github.io)' -o "$out" -w '%{http_code}' "$url" || true)
+            echo "SOURCE $name status=$status bytes=$(wc -c < "$out") MIME=$(file -bi "$out") SHA256=$(sha256sum "$out" | cut -d' ' -f1)"
+            if file "$out" | grep -qi PDF; then
+              pdftotext -layout "$out" "$out.txt"
+              echo "TEXT $name chars=$(wc -c < "$out.txt") headings:"
+              grep -inE '^[[:space:]]*(introduction|results|discussion|data|method|empirical|conclusion|estimation|model|sensitivity|identification|robustness|welfare|findings)[[:space:]]*$' "$out.txt" | head -35 || true
+              head -c 2000 "$out.txt"; echo
+            elif file "$out" | grep -qi HTML; then
+              echo "HTML $name TITLE $(grep -o -m1 '<title>[^<]*' "$out" | cut -c 1-140)"
+            fi
+          }
+          fetch steel https://www.nature.com/articles/s41467-026-78786-1.pdf
+          fetch robots https://www.nature.com/articles/s41467-026-78281-7.pdf
+          fetch fire https://www.nature.com/articles/s41467-026-78904-z.pdf
+          fetch groundwater https://www.dallasfed.org/~/media/documents/research/papers/2026/wp2626.pdf
+          fetch pollution https://www.nber.org/system/files/working_papers/w35969/w35969.pdf
+          echo 'SOURCE_PROBE_FINISHED'
