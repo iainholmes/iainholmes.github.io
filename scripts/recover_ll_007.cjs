@@ -141,7 +141,7 @@ for(const r of R){
    return {id:c.id,sha256:c.sha256,status:'verified',scope:'whole-component',basis:classification,
     evidence:[...new Set(witnesses)].map(k=>({document:p.document,passage:k,sha256:p.sha256})),
     mapping:explanation+'; source status '+r.audit.basis+'; no extra source-authored empirical result is implied.',
-    claims:['reading-deck','finding','economic-figures'].includes(c.id)?facts:[],
+    claims:['reading-deck','finding','economic-figures'].includes(c.id)?facts.filter(x=>witnesses.includes(x.passage)):[],
     qualifications:r.audit.qualifications,
     verification:{reviewer:'GPT-6 primary-source and economic-analysis review',reviewedAt:D,method:'source-and-analysis',reasoning:explanation+'; '+r.audit.reason+'; '+r.audit.qualifications.join(' ')}
    };
