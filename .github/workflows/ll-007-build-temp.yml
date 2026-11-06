@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/recover_ll_007.cjs'
       - 'scripts/test_ll_source_evidence.cjs'
+      - 'scripts/test_ll_publication_layout.cjs'
       - '.github/workflows/ll-007-build-temp.yml'
 permissions:
   contents: write
@@ -75,6 +76,7 @@ jobs:
           const allowed=new Set([
             'weekly-economics-environment/index.html',
             'scripts/test_ll_source_evidence.cjs',
+            'scripts/test_ll_publication_layout.cjs',
             'weekly-economics-environment/editorial-decisions.json',
             'weekly-economics-environment/reading-arrangements.cjs',
             'weekly-economics-environment/source-evidence.json',
@@ -92,7 +94,7 @@ jobs:
           NODE
       - name: Commit validated issue to protected recovery branch only
         run: |
-          git add scripts/test_ll_source_evidence.cjs weekly-economics-environment/index.html weekly-economics-environment/editorial-decisions.json weekly-economics-environment/reading-arrangements.cjs weekly-economics-environment/source-evidence.json weekly-economics-environment/notebook/index.html weekly-economics-environment/notebook/reviews.json weekly-economics-environment/field-register-history.json weekly-economics-environment/reading-feature-inventory.json weekly-economics-environment/reading-field-guide/index.html personal-updates/issue-mark-archive.js personal-updates/index.html
+          git add scripts/test_ll_publication_layout.cjs scripts/test_ll_source_evidence.cjs weekly-economics-environment/index.html weekly-economics-environment/editorial-decisions.json weekly-economics-environment/reading-arrangements.cjs weekly-economics-environment/source-evidence.json weekly-economics-environment/notebook/index.html weekly-economics-environment/notebook/reviews.json weekly-economics-environment/field-register-history.json weekly-economics-environment/reading-feature-inventory.json weekly-economics-environment/reading-field-guide/index.html personal-updates/issue-mark-archive.js personal-updates/index.html
           git diff --cached --check
           git commit -m "Prepare fully sourced Loblolly & Logit Edition 007 for review"
           git push origin HEAD:recovery/ll-edition-007-20261106
