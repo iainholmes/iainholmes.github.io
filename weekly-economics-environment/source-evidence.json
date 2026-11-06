@@ -85,6 +85,256 @@
           }
         }
       }
+    },
+    "robots-2026-nature": {
+      "url": "https://www.nature.com/articles/s41467-026-78281-7.pdf",
+      "aliases": [
+        "https://www.nature.com/articles/s41467-026-78281-7"
+      ],
+      "title": "Nature Communications · Schlehuber et al. (2026), research article",
+      "version": "Exact publisher PDF retrieved and SHA-256 checked on 6 November 2026; 2 November 2026",
+      "publicationStatus": "Peer-reviewed accepted article; modeled systems",
+      "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-06",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-06",
+        "scope": "Targeted source-and-analysis examination of the cited passages from the full downloaded PDF; not a full replication, all-appendix inspection or blanket whole-paper audit."
+      },
+      "passages": {
+        "results": {
+          "locator": "PDF pp. 1–5, Abstract and Results including Fig. 4; source PDF 14 pp",
+          "support": "Total cost of ownership and life-cycle model compare autonomous battery robot crop systems with reference literature, not randomized adoption. Variable inputs account for 72–90% of modeled costs and 72–95% of global-warming potential.",
+          "facts": {
+            "costShare": {
+              "kind": "modeled",
+              "value": "72–90",
+              "unit": "percent",
+              "denominator": "modeled total costs"
+            },
+            "gwpShare": {
+              "kind": "modeled",
+              "value": "72–95",
+              "unit": "percent",
+              "denominator": "modeled global-warming potential"
+            }
+          }
+        },
+        "boundaries": {
+          "locator": "PDF pp. 7–9, comparison with conventional systems and Discussion limitations",
+          "support": "Benchmark range comparisons differ by crop/system; harvesting is omitted from the main robot system boundary, variable input and maintenance assumptions vary, and downtime and charging logistics are not fully represented.",
+          "facts": {
+            "benchmark": {
+              "kind": "modeled",
+              "value": "76 percent below to 17 percent above",
+              "unit": "relative cost variation",
+              "denominator": "literature reference ranges"
+            }
+          }
+        }
+      }
+    },
+    "fire-2026-nature": {
+      "url": "https://www.nature.com/articles/s41467-026-78904-z.pdf",
+      "aliases": [
+        "https://www.nature.com/articles/s41467-026-78904-z"
+      ],
+      "title": "Nature Communications · Iglesias et al. (2026), research article",
+      "version": "Exact publisher PDF retrieved and SHA-256 checked on 6 November 2026; 3 November 2026",
+      "publicationStatus": "Peer-reviewed scenario projection; no adaptation assumed",
+      "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-06",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-06",
+        "scope": "Targeted source-and-analysis examination of the cited passages from the full downloaded PDF; not a full replication, all-appendix inspection or blanket whole-paper audit."
+      },
+      "passages": {
+        "results": {
+          "locator": "PDF pp. 1, 6–9; Results and Figs. 5–7",
+          "support": "Spatial risk is the projected expected number of structures damaged or destroyed, conditional on burned area, structure exposure and vulnerability. Relative to 2011–2020, the three climate-model risk multipliers are 1.85, 2.27, and 3.2 in 2051–2060.",
+          "facts": {
+            "low": {
+              "kind": "modeled",
+              "value": 1.85,
+              "unit": "risk multiplier",
+              "denominator": "2011–2020 expected structural loss"
+            },
+            "mid": {
+              "kind": "modeled",
+              "value": 2.27,
+              "unit": "risk multiplier",
+              "denominator": "2011–2020 expected structural loss"
+            },
+            "high": {
+              "kind": "modeled",
+              "value": 3.2,
+              "unit": "risk multiplier",
+              "denominator": "2011–2020 expected structural loss"
+            }
+          }
+        },
+        "limits": {
+          "locator": "PDF pp. 9–13; Discussion, Methods and sensitivity analysis",
+          "support": "The business-as-usual model holds the exposure-adjusted structure-loss index constant and does not model adaptation. Risk is a structure-count expectation, not property dollar losses; spatially varying hazard, exposure and vulnerability affect its projections.",
+          "facts": {
+            "losses": {
+              "kind": "modeled",
+              "value": "133200–449100",
+              "unit": "structures damaged or destroyed",
+              "denominator": "cumulative 2024–2060 projections"
+            },
+            "westOverlap": {
+              "kind": "modeled",
+              "value": 30,
+              "unit": "percent of tracts",
+              "denominator": "highest-risk census tracts in western U.S. intersecting socioeconomic hardship"
+            }
+          }
+        }
+      }
+    },
+    "groundwater-dallas-2626": {
+      "url": "https://www.dallasfed.org/~/media/documents/research/papers/2026/wp2626.pdf",
+      "aliases": [
+        "https://www.nber.org/papers/w35904"
+      ],
+      "title": "Dallas Fed Working Paper 2626 · Greaney, Shapiro & Wagner (2026)",
+      "version": "Exact publisher PDF retrieved and SHA-256 checked on 6 November 2026; October 2026 NBER working-paper release",
+      "publicationStatus": "Structural-model estimate; working paper",
+      "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-06",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-06",
+        "scope": "Targeted source-and-analysis examination of the cited passages from the full downloaded PDF; not a full replication, all-appendix inspection or blanket whole-paper audit."
+      },
+      "passages": {
+        "model": {
+          "locator": "PDF pp. 2–4, 11–13, 20–22; Introduction, dynamic model, calibration and recovery of discount factors",
+          "support": "Remote sensing and economic data identify gross extraction, recharge, marginal extraction costs and production; model-derived decision discount factors are compared with Ramsey and market benchmarks, with some aquifers omitted if the model cannot rationalize observed use.",
+          "facts": {
+            "ramsey": {
+              "kind": "modeled",
+              "value": 61,
+              "unit": "percent of aquifers",
+              "denominator": "aquifers analyzed relative to Ramsey benchmark"
+            },
+            "market": {
+              "kind": "modeled",
+              "value": 79,
+              "unit": "percent of aquifers",
+              "denominator": "aquifers analyzed relative to market benchmark"
+            }
+          }
+        },
+        "welfare": {
+          "locator": "PDF pp. 4–5, 27–30 and Figure 8; welfare counterfactuals and Central Valley trajectories",
+          "support": "Different optimal extraction paths can replenish low aquifer stocks even if current net extraction is approximately zero. Global welfare losses from nonoptimal extraction are model-based and depend on discount and production assumptions.",
+          "facts": {
+            "aggregate": {
+              "kind": "modeled",
+              "value": 2.6,
+              "unit": "percent of aquifer present value",
+              "denominator": "model-based global present-value comparison"
+            }
+          }
+        }
+      }
+    },
+    "pollution-nber-35969": {
+      "url": "https://www.nber.org/system/files/working_papers/w35969/w35969.pdf",
+      "aliases": [
+        "https://www.nber.org/papers/w35969"
+      ],
+      "title": "NBER Working Paper 35969 · Kala et al. (2026)",
+      "version": "Exact publisher PDF retrieved and SHA-256 checked on 6 November 2026; October 2026 NBER working paper",
+      "publicationStatus": "Working-paper quasi-experiment; identification qualified",
+      "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-06",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-06",
+        "scope": "Targeted source-and-analysis examination of the cited passages from the full downloaded PDF; not a full replication, all-appendix inspection or blanket whole-paper audit."
+      },
+      "passages": {
+        "identification": {
+          "locator": "PDF pp. 2–5, 13–15; Abstract, Introduction and identification design",
+          "support": "The study exploits staggered ambient-air monitoring in China, comparing analysts based in different cities who cover the same firm in the same period. Analyst×firm×cohort fixed effects and event studies target pre-existing analyst matching.",
+          "facts": {
+            "attention": {
+              "kind": "descriptive",
+              "value": "more than twice as likely",
+              "unit": "relative probability",
+              "denominator": "air-pollution discussion by treated versus not-yet-treated analysts covering same firm"
+            }
+          }
+        },
+        "pricing": {
+          "locator": "PDF pp. 20–24, 36–38, 51; market responses, no-reversal exercise and analyst text classification",
+          "support": "Treated analysts acquire information and report different perceptions for brown and green firms; associated report-window stock responses differ by classification. Authors report no subsequent reversal in their specified horizon; this is not proof of a permanently efficient price.",
+          "facts": {}
+        }
+      }
+    },
+    "seagrass-2026-nature": {
+      "url": "https://www.nature.com/articles/s41467-026-79168-3.pdf",
+      "aliases": [
+        "https://www.nature.com/articles/s41467-026-79168-3"
+      ],
+      "title": "Nature Communications · Arias-Ortiz et al. (2026), research article",
+      "version": "Exact publisher PDF retrieved and SHA-256 checked on 6 November 2026; 4 November 2026",
+      "publicationStatus": "Peer-reviewed empirical synthesis; sampling uncertainty",
+      "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-06",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-06",
+        "scope": "Targeted source-and-analysis examination of the cited passages from the full downloaded PDF; not a full replication, all-appendix inspection or blanket whole-paper audit."
+      },
+      "passages": {
+        "estimates": {
+          "locator": "PDF pp. 1–3; Abstract and Fig. 2 sample-level and area-weighted estimates",
+          "support": "Meta-synthesis uses 332 sediment cores, deriving geometric mean 25±3 g OC m−2 yr−1 and area-weighted global 33±9 g OC m−2 yr−1; sampling geography remains uneven, and some cores show undetectable net deposition.",
+          "facts": {
+            "cores": {
+              "kind": "descriptive",
+              "value": 332,
+              "unit": "sediment cores",
+              "denominator": "global synthesis sample"
+            },
+            "geometric": {
+              "kind": "descriptive",
+              "value": 25,
+              "unit": "g organic carbon m−2 yr−1",
+              "denominator": "geometric mean observed core rate"
+            },
+            "weighted": {
+              "kind": "descriptive",
+              "value": 33,
+              "unit": "g organic carbon m−2 yr−1",
+              "denominator": "area-weighted global rate"
+            }
+          }
+        },
+        "implications": {
+          "locator": "PDF pp. 5, 7, 9; sediment mechanisms, adjacent bare-sediment redistribution and Outlook",
+          "support": "Burial depends jointly on OC concentrations and mineral accumulation; redistribution into adjacent unvegetated sediment complicates attribution. Global 6–15 Tg OC/year estimate depends on mapped seagrass extent and the study is not a carbon-credit additionality exercise.",
+          "facts": {
+            "global": {
+              "kind": "modeled",
+              "value": "6–15",
+              "unit": "Tg organic carbon per year",
+              "denominator": "global estimate under mapped seagrass area"
+            }
+          }
+        }
+      }
     }
   },
   "readings": {
@@ -2981,6 +3231,1742 @@
           "status": "incomplete",
           "priority": "2-claims-and-analysis",
           "reason": "Component-level source verification not completed in this build."
+        }
+      ]
+    },
+    "2026-11-06-farm-robots": {
+      "edition": "2026-11-06",
+      "historical": false,
+      "title": "On the Farm, the Robot Is Not the Whole Cost",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "39aba3c9ace699cb248b17579b1feb508c000b08e4e81915e1e85c8f07d2bffc",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            }
+          ],
+          "mapping": "Bibliographic identity, source status and dated study title reviewed; source status modeled production-system comparison; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Scenario cost comparisons are not causal field adoption estimates.",
+            "Harvesting and several logistics constraints are excluded from the modeled boundary."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Bibliographic identity, source status and dated study title reviewed; Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.; Scenario cost comparisons are not causal field adoption estimates. Harvesting and several logistics constraints are excluded from the modeled boundary."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "be4c4c85b98ce78b5a1c0de8655097310831be0c2634a48cc16480df803d7d84",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            },
+            {
+              "document": "robots-2026-nature",
+              "passage": "boundaries",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            }
+          ],
+          "mapping": "Opening result and all source magnitude descriptions checked against identified passages; source status modeled production-system comparison; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "fact": "costShare",
+              "kind": "modeled",
+              "value": "72–90",
+              "unit": "percent",
+              "denominator": "modeled total costs"
+            },
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "fact": "gwpShare",
+              "kind": "modeled",
+              "value": "72–95",
+              "unit": "percent",
+              "denominator": "modeled global-warming potential"
+            },
+            {
+              "document": "robots-2026-nature",
+              "passage": "boundaries",
+              "fact": "benchmark",
+              "kind": "modeled",
+              "value": "76 percent below to 17 percent above",
+              "unit": "relative cost variation",
+              "denominator": "literature reference ranges"
+            }
+          ],
+          "qualifications": [
+            "Scenario cost comparisons are not causal field adoption estimates.",
+            "Harvesting and several logistics constraints are excluded from the modeled boundary."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Opening result and all source magnitude descriptions checked against identified passages; Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.; Scenario cost comparisons are not causal field adoption estimates. Harvesting and several logistics constraints are excluded from the modeled boundary."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "be4c4c85b98ce78b5a1c0de8655097310831be0c2634a48cc16480df803d7d84",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            },
+            {
+              "document": "robots-2026-nature",
+              "passage": "boundaries",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            }
+          ],
+          "mapping": "Opening result, source quantities and denominators checked; source status modeled production-system comparison; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "fact": "costShare",
+              "kind": "modeled",
+              "value": "72–90",
+              "unit": "percent",
+              "denominator": "modeled total costs"
+            },
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "fact": "gwpShare",
+              "kind": "modeled",
+              "value": "72–95",
+              "unit": "percent",
+              "denominator": "modeled global-warming potential"
+            },
+            {
+              "document": "robots-2026-nature",
+              "passage": "boundaries",
+              "fact": "benchmark",
+              "kind": "modeled",
+              "value": "76 percent below to 17 percent above",
+              "unit": "relative cost variation",
+              "denominator": "literature reference ranges"
+            }
+          ],
+          "qualifications": [
+            "Scenario cost comparisons are not causal field adoption estimates.",
+            "Harvesting and several logistics constraints are excluded from the modeled boundary."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Opening result, source quantities and denominators checked; Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.; Scenario cost comparisons are not causal field adoption estimates. Harvesting and several logistics constraints are excluded from the modeled boundary."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "6fe2676d54454fc0968332ff7458ebe3331dae45e2fb5917534ce9885a753855",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            }
+          ],
+          "mapping": "Economic mechanisms and private versus social costs bounded by source assumptions; source status modeled production-system comparison; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Scenario cost comparisons are not causal field adoption estimates.",
+            "Harvesting and several logistics constraints are excluded from the modeled boundary."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Economic mechanisms and private versus social costs bounded by source assumptions; Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.; Scenario cost comparisons are not causal field adoption estimates. Harvesting and several logistics constraints are excluded from the modeled boundary."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "728b80b40a958c2cb80c0061db6948141705966529fc86d0e98826e094213245",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            }
+          ],
+          "mapping": "Original economic reading lens, separately qualified; source status modeled production-system comparison; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Scenario cost comparisons are not causal field adoption estimates.",
+            "Harvesting and several logistics constraints are excluded from the modeled boundary."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Original economic reading lens, separately qualified; Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.; Scenario cost comparisons are not causal field adoption estimates. Harvesting and several logistics constraints are excluded from the modeled boundary."
+          }
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "48155ad901c86066be18871c26aaa875d16f2e72ebb3c71a7b57f4b4781adf97",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            }
+          ],
+          "mapping": "The robot paper's decisive economic choice is whether modeled variable-input savings survive capital, scale and operating constraints.; source status modeled production-system comparison; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Scenario cost comparisons are not causal field adoption estimates.",
+            "Harvesting and several logistics constraints are excluded from the modeled boundary."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "The robot paper's decisive economic choice is whether modeled variable-input savings survive capital, scale and operating constraints.; Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.; Scenario cost comparisons are not causal field adoption estimates. Harvesting and several logistics constraints are excluded from the modeled boundary."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "19cefecbed4f2667a610f9cef96c48c959c1be99d5fd9e50736fab5fcb23579a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            }
+          ],
+          "mapping": "Original study design, identification and empirical/model distinctions reviewed; source status modeled production-system comparison; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Scenario cost comparisons are not causal field adoption estimates.",
+            "Harvesting and several logistics constraints are excluded from the modeled boundary."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Original study design, identification and empirical/model distinctions reviewed; Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.; Scenario cost comparisons are not causal field adoption estimates. Harvesting and several logistics constraints are excluded from the modeled boundary."
+          }
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "ca057a0a25500da9960e612abf2d17d0e611afa3fedeff5f8e717a1e71b76944",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            }
+          ],
+          "mapping": "Separate private investment returns from possible labor and environmental incidence without inventing distributional estimates.; source status modeled production-system comparison; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Scenario cost comparisons are not causal field adoption estimates.",
+            "Harvesting and several logistics constraints are excluded from the modeled boundary."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Separate private investment returns from possible labor and environmental incidence without inventing distributional estimates.; Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.; Scenario cost comparisons are not causal field adoption estimates. Harvesting and several logistics constraints are excluded from the modeled boundary."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "7cc3a6457616e73b9f0fe82f42ce8e0db707265f3b52a3e9b1bdfe6f5c09dc55",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "boundaries",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            }
+          ],
+          "mapping": "Source-specific uncertainty, extrapolation and limitations reviewed; source status modeled production-system comparison; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Scenario cost comparisons are not causal field adoption estimates.",
+            "Harvesting and several logistics constraints are excluded from the modeled boundary."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Source-specific uncertainty, extrapolation and limitations reviewed; Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.; Scenario cost comparisons are not causal field adoption estimates. Harvesting and several logistics constraints are excluded from the modeled boundary."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "f4e8193f6d90c5dd11bfb5de68271489953b7cff7f6dca617cacabeada52c1e1",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "robots-2026-nature",
+              "passage": "results",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            },
+            {
+              "document": "robots-2026-nature",
+              "passage": "boundaries",
+              "sha256": "0c81570cf84aca5220a6cd9e010f349017547b3724ae66373d199bb6435d847f"
+            }
+          ],
+          "mapping": "Proposed methodological research direction, not a performed test; source status modeled production-system comparison; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Scenario cost comparisons are not causal field adoption estimates.",
+            "Harvesting and several logistics constraints are excluded from the modeled boundary."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Proposed methodological research direction, not a performed test; Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.; Scenario cost comparisons are not causal field adoption estimates. Harvesting and several logistics constraints are excluded from the modeled boundary."
+          }
+        }
+      ]
+    },
+    "2026-11-06-fire-exposure": {
+      "edition": "2026-11-06",
+      "historical": false,
+      "title": "Fire Risk Is Built as Well as Burned",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "45791333ca5c14d3b2b8f98d195c4811cb3cbd5e278afa6b85bf5fa73fc6a776",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            }
+          ],
+          "mapping": "Bibliographic identity, source status and dated study title reviewed; source status reconstructed structural risk and projected scenarios; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Risk multipliers are modeled scenarios, not measured policy effects.",
+            "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Bibliographic identity, source status and dated study title reviewed; Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.; Risk multipliers are modeled scenarios, not measured policy effects. The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "8018e07254c9da065c9f2e93eb6975e6ab6d01299be5daa6c4c40721be539528",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "limits",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            }
+          ],
+          "mapping": "Opening result and all source magnitude descriptions checked against identified passages; source status reconstructed structural risk and projected scenarios; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "fact": "low",
+              "kind": "modeled",
+              "value": 1.85,
+              "unit": "risk multiplier",
+              "denominator": "2011–2020 expected structural loss"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "fact": "mid",
+              "kind": "modeled",
+              "value": 2.27,
+              "unit": "risk multiplier",
+              "denominator": "2011–2020 expected structural loss"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "fact": "high",
+              "kind": "modeled",
+              "value": 3.2,
+              "unit": "risk multiplier",
+              "denominator": "2011–2020 expected structural loss"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "limits",
+              "fact": "losses",
+              "kind": "modeled",
+              "value": "133200–449100",
+              "unit": "structures damaged or destroyed",
+              "denominator": "cumulative 2024–2060 projections"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "limits",
+              "fact": "westOverlap",
+              "kind": "modeled",
+              "value": 30,
+              "unit": "percent of tracts",
+              "denominator": "highest-risk census tracts in western U.S. intersecting socioeconomic hardship"
+            }
+          ],
+          "qualifications": [
+            "Risk multipliers are modeled scenarios, not measured policy effects.",
+            "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Opening result and all source magnitude descriptions checked against identified passages; Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.; Risk multipliers are modeled scenarios, not measured policy effects. The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "8018e07254c9da065c9f2e93eb6975e6ab6d01299be5daa6c4c40721be539528",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "limits",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            }
+          ],
+          "mapping": "Opening result, source quantities and denominators checked; source status reconstructed structural risk and projected scenarios; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "fact": "low",
+              "kind": "modeled",
+              "value": 1.85,
+              "unit": "risk multiplier",
+              "denominator": "2011–2020 expected structural loss"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "fact": "mid",
+              "kind": "modeled",
+              "value": 2.27,
+              "unit": "risk multiplier",
+              "denominator": "2011–2020 expected structural loss"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "fact": "high",
+              "kind": "modeled",
+              "value": 3.2,
+              "unit": "risk multiplier",
+              "denominator": "2011–2020 expected structural loss"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "limits",
+              "fact": "losses",
+              "kind": "modeled",
+              "value": "133200–449100",
+              "unit": "structures damaged or destroyed",
+              "denominator": "cumulative 2024–2060 projections"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "limits",
+              "fact": "westOverlap",
+              "kind": "modeled",
+              "value": 30,
+              "unit": "percent of tracts",
+              "denominator": "highest-risk census tracts in western U.S. intersecting socioeconomic hardship"
+            }
+          ],
+          "qualifications": [
+            "Risk multipliers are modeled scenarios, not measured policy effects.",
+            "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Opening result, source quantities and denominators checked; Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.; Risk multipliers are modeled scenarios, not measured policy effects. The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "3883f4eb55540a43a997ef945c7c43e06a9f1b25effd408aafd1a060e0ad41c6",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            }
+          ],
+          "mapping": "Economic mechanisms and private versus social costs bounded by source assumptions; source status reconstructed structural risk and projected scenarios; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Risk multipliers are modeled scenarios, not measured policy effects.",
+            "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Economic mechanisms and private versus social costs bounded by source assumptions; Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.; Risk multipliers are modeled scenarios, not measured policy effects. The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "1c7add446ebe58891759f6de407ea1af44b222b2914fa23791a1d8d13bb1e216",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            }
+          ],
+          "mapping": "Original economic reading lens, separately qualified; source status reconstructed structural risk and projected scenarios; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Risk multipliers are modeled scenarios, not measured policy effects.",
+            "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Original economic reading lens, separately qualified; Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.; Risk multipliers are modeled scenarios, not measured policy effects. The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "f96a9b9f0eb9b2691258b44bd4314996a62f5e59f423d6d14525a74f69cbd4c1",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            }
+          ],
+          "mapping": "Original study design, identification and empirical/model distinctions reviewed; source status reconstructed structural risk and projected scenarios; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Risk multipliers are modeled scenarios, not measured policy effects.",
+            "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Original study design, identification and empirical/model distinctions reviewed; Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.; Risk multipliers are modeled scenarios, not measured policy effects. The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          }
+        },
+        {
+          "id": "long-view",
+          "sha256": "3c9b1d12012d6fbb3f3cd247a8d5cea21bc587b30c9c032bd57d359413b5fd05",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            }
+          ],
+          "mapping": "The temporal series distinguishes historical land development from future model exposure; the baseline and scenarios are not interchangeable.; source status reconstructed structural risk and projected scenarios; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Risk multipliers are modeled scenarios, not measured policy effects.",
+            "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "The temporal series distinguishes historical land development from future model exposure; the baseline and scenarios are not interchangeable.; Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.; Risk multipliers are modeled scenarios, not measured policy effects. The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          }
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "30c4e439b079850fa10cdaf5f73c472e9dd13f5fa7957a2f41bbd8778e165fff",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "limits",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            }
+          ],
+          "mapping": "The fixed vulnerability assumption is a consequential and testable reason not to interpret conditional forecast as unavoidable welfare loss.; source status reconstructed structural risk and projected scenarios; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Risk multipliers are modeled scenarios, not measured policy effects.",
+            "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "The fixed vulnerability assumption is a consequential and testable reason not to interpret conditional forecast as unavoidable welfare loss.; Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.; Risk multipliers are modeled scenarios, not measured policy effects. The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "92a09b50b5174d2f3bd05966167ebd4562ccf954f02e331c6ff7a31e549bcb21",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "results",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            },
+            {
+              "document": "fire-2026-nature",
+              "passage": "limits",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            }
+          ],
+          "mapping": "Proposed methodological research direction, not a performed test; source status reconstructed structural risk and projected scenarios; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Risk multipliers are modeled scenarios, not measured policy effects.",
+            "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Proposed methodological research direction, not a performed test; Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.; Risk multipliers are modeled scenarios, not measured policy effects. The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "54fa1f013dc7f921316df54a1b4a3536aa407c09aa106a470ed2381fe8ab7903",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "fire-2026-nature",
+              "passage": "limits",
+              "sha256": "5e9bb0652454d052c8a3e62e9f035e79dfee7407184bde453cd398e6e7a0bdc4"
+            }
+          ],
+          "mapping": "Source-specific uncertainty, extrapolation and limitations reviewed; source status reconstructed structural risk and projected scenarios; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Risk multipliers are modeled scenarios, not measured policy effects.",
+            "The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Source-specific uncertainty, extrapolation and limitations reviewed; Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.; Risk multipliers are modeled scenarios, not measured policy effects. The 30% hardship overlap concerns high-risk western tracts, not all U.S. regions."
+          }
+        }
+      ]
+    },
+    "2026-11-06-groundwater-choice": {
+      "edition": "2026-11-06",
+      "historical": false,
+      "title": "A Stable Water Table Is Not Necessarily Optimal",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "1a0694d10449fabc6cfb5814df8fbf81d8c8db3a164cbd956cfaa5a5c80368f2",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            }
+          ],
+          "mapping": "Bibliographic identity, source status and dated study title reviewed; source status aquifer-specific calibrated structural model; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+            "A non-declining current water table does not prove a welfare-optimal stock level."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Bibliographic identity, source status and dated study title reviewed; Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.; 61% and 79% depend on different benchmark discount factors and eligible aquifers. A non-declining current water table does not prove a welfare-optimal stock level."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "0de5d791fb390fedf1ff0d11cf9683c33e0fbda3881bbac99cbc868739493b55",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            },
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "welfare",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            }
+          ],
+          "mapping": "Opening result and all source magnitude descriptions checked against identified passages; source status aquifer-specific calibrated structural model; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "fact": "ramsey",
+              "kind": "modeled",
+              "value": 61,
+              "unit": "percent of aquifers",
+              "denominator": "aquifers analyzed relative to Ramsey benchmark"
+            },
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "fact": "market",
+              "kind": "modeled",
+              "value": 79,
+              "unit": "percent of aquifers",
+              "denominator": "aquifers analyzed relative to market benchmark"
+            },
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "welfare",
+              "fact": "aggregate",
+              "kind": "modeled",
+              "value": 2.6,
+              "unit": "percent of aquifer present value",
+              "denominator": "model-based global present-value comparison"
+            }
+          ],
+          "qualifications": [
+            "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+            "A non-declining current water table does not prove a welfare-optimal stock level."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Opening result and all source magnitude descriptions checked against identified passages; Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.; 61% and 79% depend on different benchmark discount factors and eligible aquifers. A non-declining current water table does not prove a welfare-optimal stock level."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "0de5d791fb390fedf1ff0d11cf9683c33e0fbda3881bbac99cbc868739493b55",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            },
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "welfare",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            }
+          ],
+          "mapping": "Opening result, source quantities and denominators checked; source status aquifer-specific calibrated structural model; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "fact": "ramsey",
+              "kind": "modeled",
+              "value": 61,
+              "unit": "percent of aquifers",
+              "denominator": "aquifers analyzed relative to Ramsey benchmark"
+            },
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "fact": "market",
+              "kind": "modeled",
+              "value": 79,
+              "unit": "percent of aquifers",
+              "denominator": "aquifers analyzed relative to market benchmark"
+            },
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "welfare",
+              "fact": "aggregate",
+              "kind": "modeled",
+              "value": 2.6,
+              "unit": "percent of aquifer present value",
+              "denominator": "model-based global present-value comparison"
+            }
+          ],
+          "qualifications": [
+            "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+            "A non-declining current water table does not prove a welfare-optimal stock level."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Opening result, source quantities and denominators checked; Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.; 61% and 79% depend on different benchmark discount factors and eligible aquifers. A non-declining current water table does not prove a welfare-optimal stock level."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "7a2727e1e53c1777ab88473d07064f6a667dc505503701997da67b96ddf5d142",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            }
+          ],
+          "mapping": "Economic mechanisms and private versus social costs bounded by source assumptions; source status aquifer-specific calibrated structural model; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+            "A non-declining current water table does not prove a welfare-optimal stock level."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Economic mechanisms and private versus social costs bounded by source assumptions; Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.; 61% and 79% depend on different benchmark discount factors and eligible aquifers. A non-declining current water table does not prove a welfare-optimal stock level."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "0a3186d0867d02e68e09f808194b4ce2abfd5749b922b57fe317773a2c66f50e",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            }
+          ],
+          "mapping": "Original economic reading lens, separately qualified; source status aquifer-specific calibrated structural model; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+            "A non-declining current water table does not prove a welfare-optimal stock level."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Original economic reading lens, separately qualified; Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.; 61% and 79% depend on different benchmark discount factors and eligible aquifers. A non-declining current water table does not prove a welfare-optimal stock level."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "645d029bf3c2e3647bcb76b9deeadd61ff2b7e94b27a73ed385db1c4942c58b1",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            }
+          ],
+          "mapping": "Original study design, identification and empirical/model distinctions reviewed; source status aquifer-specific calibrated structural model; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+            "A non-declining current water table does not prove a welfare-optimal stock level."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Original study design, identification and empirical/model distinctions reviewed; Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.; 61% and 79% depend on different benchmark discount factors and eligible aquifers. A non-declining current water table does not prove a welfare-optimal stock level."
+          }
+        },
+        {
+          "id": "long-view",
+          "sha256": "1a6c3d5cd613c2ff572dcd07426b55c620cce8d29d51d0a49dcded5a2721e424",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            }
+          ],
+          "mapping": "Separate present stock, transition and long-run welfare; a steady extraction-recharge balance need not be dynamically efficient.; source status aquifer-specific calibrated structural model; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+            "A non-declining current water table does not prove a welfare-optimal stock level."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Separate present stock, transition and long-run welfare; a steady extraction-recharge balance need not be dynamically efficient.; Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.; 61% and 79% depend on different benchmark discount factors and eligible aquifers. A non-declining current water table does not prove a welfare-optimal stock level."
+          }
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "ec1fa6e869a238eabddb850db0135cbe65ee962f5911751a9a378cc4d4cfeeb0",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "welfare",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            }
+          ],
+          "mapping": "The paper's representative-agent calibration and exclusions are precisely the premises separating a model-implied welfare wedge from a measured policy effect.; source status aquifer-specific calibrated structural model; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+            "A non-declining current water table does not prove a welfare-optimal stock level."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "The paper's representative-agent calibration and exclusions are precisely the premises separating a model-implied welfare wedge from a measured policy effect.; Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.; 61% and 79% depend on different benchmark discount factors and eligible aquifers. A non-declining current water table does not prove a welfare-optimal stock level."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "4cdf485f2cf92dd3bbd78e0504aa79415ee08b7c8685834dcc7551e901ea2c8c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "welfare",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            }
+          ],
+          "mapping": "Source-specific uncertainty, extrapolation and limitations reviewed; source status aquifer-specific calibrated structural model; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+            "A non-declining current water table does not prove a welfare-optimal stock level."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Source-specific uncertainty, extrapolation and limitations reviewed; Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.; 61% and 79% depend on different benchmark discount factors and eligible aquifers. A non-declining current water table does not prove a welfare-optimal stock level."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "a546b60ceeb8f1dd664425b215af711b6422aa65009364b43864b2aac881a2ea",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "model",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            },
+            {
+              "document": "groundwater-dallas-2626",
+              "passage": "welfare",
+              "sha256": "236207dabc3cb030a2faa2c74df5b4c0e4755eaa61c82dfdeb27ffc938bc434e"
+            }
+          ],
+          "mapping": "Proposed methodological research direction, not a performed test; source status aquifer-specific calibrated structural model; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "61% and 79% depend on different benchmark discount factors and eligible aquifers.",
+            "A non-declining current water table does not prove a welfare-optimal stock level."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Proposed methodological research direction, not a performed test; Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.; 61% and 79% depend on different benchmark discount factors and eligible aquifers. A non-declining current water table does not prove a welfare-optimal stock level."
+          }
+        }
+      ]
+    },
+    "2026-11-06-pollution-salience": {
+      "edition": "2026-11-06",
+      "historical": false,
+      "title": "Pollution Monitors Can Reprice a Firm",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "53a8b28cabd20e37cc1c7e1b715e4427408d7b27e846c554c79b9b2bef854b7b",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "identification",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            }
+          ],
+          "mapping": "Bibliographic identity, source status and dated study title reviewed; source status staggered monitoring quasi-experimental analysis; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+            "Financial-market reactions are not welfare or pollution-reduction estimates."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Bibliographic identity, source status and dated study title reviewed; Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.; The observational identification relies on event timing and absence of local analyst-specific shocks. Financial-market reactions are not welfare or pollution-reduction estimates."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "3a80b46c8012ff1bac7bff0f6ce56a8467618a543c02b055dd7ca02cbfd2faf6",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "identification",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            },
+            {
+              "document": "pollution-nber-35969",
+              "passage": "pricing",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            }
+          ],
+          "mapping": "Opening result and all source magnitude descriptions checked against identified passages; source status staggered monitoring quasi-experimental analysis; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "identification",
+              "fact": "attention",
+              "kind": "descriptive",
+              "value": "more than twice as likely",
+              "unit": "relative probability",
+              "denominator": "air-pollution discussion by treated versus not-yet-treated analysts covering same firm"
+            }
+          ],
+          "qualifications": [
+            "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+            "Financial-market reactions are not welfare or pollution-reduction estimates."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Opening result and all source magnitude descriptions checked against identified passages; Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.; The observational identification relies on event timing and absence of local analyst-specific shocks. Financial-market reactions are not welfare or pollution-reduction estimates."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "3a80b46c8012ff1bac7bff0f6ce56a8467618a543c02b055dd7ca02cbfd2faf6",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "identification",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            },
+            {
+              "document": "pollution-nber-35969",
+              "passage": "pricing",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            }
+          ],
+          "mapping": "Opening result, source quantities and denominators checked; source status staggered monitoring quasi-experimental analysis; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "identification",
+              "fact": "attention",
+              "kind": "descriptive",
+              "value": "more than twice as likely",
+              "unit": "relative probability",
+              "denominator": "air-pollution discussion by treated versus not-yet-treated analysts covering same firm"
+            }
+          ],
+          "qualifications": [
+            "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+            "Financial-market reactions are not welfare or pollution-reduction estimates."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Opening result, source quantities and denominators checked; Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.; The observational identification relies on event timing and absence of local analyst-specific shocks. Financial-market reactions are not welfare or pollution-reduction estimates."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "82b74cb37e55498bd1553cf55a42d3e187f8a1b5278228804b1a681ac4fff05f",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "identification",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            }
+          ],
+          "mapping": "Economic mechanisms and private versus social costs bounded by source assumptions; source status staggered monitoring quasi-experimental analysis; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+            "Financial-market reactions are not welfare or pollution-reduction estimates."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Economic mechanisms and private versus social costs bounded by source assumptions; Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.; The observational identification relies on event timing and absence of local analyst-specific shocks. Financial-market reactions are not welfare or pollution-reduction estimates."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "b39d3c820c453cd00540e4a3ca5515897e080a063bc34ee53d3fec117ad90b1a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "identification",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            }
+          ],
+          "mapping": "Original economic reading lens, separately qualified; source status staggered monitoring quasi-experimental analysis; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+            "Financial-market reactions are not welfare or pollution-reduction estimates."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Original economic reading lens, separately qualified; Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.; The observational identification relies on event timing and absence of local analyst-specific shocks. Financial-market reactions are not welfare or pollution-reduction estimates."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "47f1f2689a8c01f5ba0bc21d968e9c7c4074927bb0aabe71d7c676dfd496bddb",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "identification",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            }
+          ],
+          "mapping": "Original study design, identification and empirical/model distinctions reviewed; source status staggered monitoring quasi-experimental analysis; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+            "Financial-market reactions are not welfare or pollution-reduction estimates."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Original study design, identification and empirical/model distinctions reviewed; Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.; The observational identification relies on event timing and absence of local analyst-specific shocks. Financial-market reactions are not welfare or pollution-reduction estimates."
+          }
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "2f22b35896d79734d61875cf7262e4887a748a11be7f9dd3d3a9016a14173a3f",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "identification",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            }
+          ],
+          "mapping": "Separate the information-salience shock, intermediary research and observed market reaction instead of presenting one undifferentiated causal claim.; source status staggered monitoring quasi-experimental analysis; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+            "Financial-market reactions are not welfare or pollution-reduction estimates."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Separate the information-salience shock, intermediary research and observed market reaction instead of presenting one undifferentiated causal claim.; Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.; The observational identification relies on event timing and absence of local analyst-specific shocks. Financial-market reactions are not welfare or pollution-reduction estimates."
+          }
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "b31bca8a00dd10447d32886eb3c7bdb64f0c4a88d223bec14b48a61ba005b13c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "pricing",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            }
+          ],
+          "mapping": "The core econometric distinction is between staggered information access and local shocks that influence analysts through other channels.; source status staggered monitoring quasi-experimental analysis; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+            "Financial-market reactions are not welfare or pollution-reduction estimates."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "The core econometric distinction is between staggered information access and local shocks that influence analysts through other channels.; Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.; The observational identification relies on event timing and absence of local analyst-specific shocks. Financial-market reactions are not welfare or pollution-reduction estimates."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "53a612f9b5ddaa418acd6d5eab399d2bd8b0fe8f6e938dd311f8bd509b194869",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "identification",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            },
+            {
+              "document": "pollution-nber-35969",
+              "passage": "pricing",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            }
+          ],
+          "mapping": "Proposed methodological research direction, not a performed test; source status staggered monitoring quasi-experimental analysis; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+            "Financial-market reactions are not welfare or pollution-reduction estimates."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Proposed methodological research direction, not a performed test; Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.; The observational identification relies on event timing and absence of local analyst-specific shocks. Financial-market reactions are not welfare or pollution-reduction estimates."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "9daa8bf3724b862afc9648106848b4be95b1aa45e797d3ebfce09b017b955ab3",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "pollution-nber-35969",
+              "passage": "pricing",
+              "sha256": "649f39114320bb3ed5a43edf772dcdf22da0eb28386e97316b9b19aee91aa9d4"
+            }
+          ],
+          "mapping": "Source-specific uncertainty, extrapolation and limitations reviewed; source status staggered monitoring quasi-experimental analysis; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "The observational identification relies on event timing and absence of local analyst-specific shocks.",
+            "Financial-market reactions are not welfare or pollution-reduction estimates."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Source-specific uncertainty, extrapolation and limitations reviewed; Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.; The observational identification relies on event timing and absence of local analyst-specific shocks. Financial-market reactions are not welfare or pollution-reduction estimates."
+          }
+        }
+      ]
+    },
+    "2026-11-06-seagrass-carbon": {
+      "edition": "2026-11-06",
+      "historical": false,
+      "title": "What Counts as a Seagrass Carbon Sink?",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "d3a8e0995cc2aaef744116536c69de0c1819045dde6bd2808f62dcbfb428fee3",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            }
+          ],
+          "mapping": "Bibliographic identity, source status and dated study title reviewed; source status observational sediment-core synthesis and spatial extrapolation; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Geometric and area-weighted estimates are distinct estimands.",
+            "Gross sediment burial does not establish additional tradable removals."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Bibliographic identity, source status and dated study title reviewed; Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.; Geometric and area-weighted estimates are distinct estimands. Gross sediment burial does not establish additional tradable removals."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "b8a26cad484d81e06e34663a36dbd2b4b7eeef8b26df7c1e2f95512978fa792a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "implications",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            }
+          ],
+          "mapping": "Opening result and all source magnitude descriptions checked against identified passages; source status observational sediment-core synthesis and spatial extrapolation; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "fact": "cores",
+              "kind": "descriptive",
+              "value": 332,
+              "unit": "sediment cores",
+              "denominator": "global synthesis sample"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "fact": "geometric",
+              "kind": "descriptive",
+              "value": 25,
+              "unit": "g organic carbon m−2 yr−1",
+              "denominator": "geometric mean observed core rate"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "fact": "weighted",
+              "kind": "descriptive",
+              "value": 33,
+              "unit": "g organic carbon m−2 yr−1",
+              "denominator": "area-weighted global rate"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "implications",
+              "fact": "global",
+              "kind": "modeled",
+              "value": "6–15",
+              "unit": "Tg organic carbon per year",
+              "denominator": "global estimate under mapped seagrass area"
+            }
+          ],
+          "qualifications": [
+            "Geometric and area-weighted estimates are distinct estimands.",
+            "Gross sediment burial does not establish additional tradable removals."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Opening result and all source magnitude descriptions checked against identified passages; Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.; Geometric and area-weighted estimates are distinct estimands. Gross sediment burial does not establish additional tradable removals."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "b8a26cad484d81e06e34663a36dbd2b4b7eeef8b26df7c1e2f95512978fa792a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "implications",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            }
+          ],
+          "mapping": "Opening result, source quantities and denominators checked; source status observational sediment-core synthesis and spatial extrapolation; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "fact": "cores",
+              "kind": "descriptive",
+              "value": 332,
+              "unit": "sediment cores",
+              "denominator": "global synthesis sample"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "fact": "geometric",
+              "kind": "descriptive",
+              "value": 25,
+              "unit": "g organic carbon m−2 yr−1",
+              "denominator": "geometric mean observed core rate"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "fact": "weighted",
+              "kind": "descriptive",
+              "value": 33,
+              "unit": "g organic carbon m−2 yr−1",
+              "denominator": "area-weighted global rate"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "implications",
+              "fact": "global",
+              "kind": "modeled",
+              "value": "6–15",
+              "unit": "Tg organic carbon per year",
+              "denominator": "global estimate under mapped seagrass area"
+            }
+          ],
+          "qualifications": [
+            "Geometric and area-weighted estimates are distinct estimands.",
+            "Gross sediment burial does not establish additional tradable removals."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Opening result, source quantities and denominators checked; Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.; Geometric and area-weighted estimates are distinct estimands. Gross sediment burial does not establish additional tradable removals."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "e544a9091a6f2e23250d44f488194759f127c0458cfe91089e5dfae53afe779c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            }
+          ],
+          "mapping": "Economic mechanisms and private versus social costs bounded by source assumptions; source status observational sediment-core synthesis and spatial extrapolation; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Geometric and area-weighted estimates are distinct estimands.",
+            "Gross sediment burial does not establish additional tradable removals."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Economic mechanisms and private versus social costs bounded by source assumptions; Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.; Geometric and area-weighted estimates are distinct estimands. Gross sediment burial does not establish additional tradable removals."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "0663cb9337ace40cb38125bf4ed8ce50bff67b81bd7a729683434ea67180f43e",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            }
+          ],
+          "mapping": "Original economic reading lens, separately qualified; source status observational sediment-core synthesis and spatial extrapolation; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Geometric and area-weighted estimates are distinct estimands.",
+            "Gross sediment burial does not establish additional tradable removals."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Original economic reading lens, separately qualified; Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.; Geometric and area-weighted estimates are distinct estimands. Gross sediment burial does not establish additional tradable removals."
+          }
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "f850352217fbb5ba5f959f9951fa0ff144f1bb4c7e9ab123b430e891994fcd9b",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            }
+          ],
+          "mapping": "Placing two source estimates on one common physical unit helps explain differing weights without conflating them with extra sequestration.; source status observational sediment-core synthesis and spatial extrapolation; no extra source-authored empirical result is implied.",
+          "claims": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "fact": "cores",
+              "kind": "descriptive",
+              "value": 332,
+              "unit": "sediment cores",
+              "denominator": "global synthesis sample"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "fact": "geometric",
+              "kind": "descriptive",
+              "value": 25,
+              "unit": "g organic carbon m−2 yr−1",
+              "denominator": "geometric mean observed core rate"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "fact": "weighted",
+              "kind": "descriptive",
+              "value": 33,
+              "unit": "g organic carbon m−2 yr−1",
+              "denominator": "area-weighted global rate"
+            }
+          ],
+          "qualifications": [
+            "Geometric and area-weighted estimates are distinct estimands.",
+            "Gross sediment burial does not establish additional tradable removals."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Placing two source estimates on one common physical unit helps explain differing weights without conflating them with extra sequestration.; Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.; Geometric and area-weighted estimates are distinct estimands. Gross sediment burial does not establish additional tradable removals."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "538d33ca0a06077a58f64729fa2450587c3a4d291e87e9678f22b741c647ba35",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            }
+          ],
+          "mapping": "Original study design, identification and empirical/model distinctions reviewed; source status observational sediment-core synthesis and spatial extrapolation; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Geometric and area-weighted estimates are distinct estimands.",
+            "Gross sediment burial does not establish additional tradable removals."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Original study design, identification and empirical/model distinctions reviewed; Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.; Geometric and area-weighted estimates are distinct estimands. Gross sediment burial does not establish additional tradable removals."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "a0d5ab9d7e8255c79849b0a3bf4d989ba978cccc2aeb7f4836d69e8b7563067e",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "implications",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            }
+          ],
+          "mapping": "Source-specific uncertainty, extrapolation and limitations reviewed; source status observational sediment-core synthesis and spatial extrapolation; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Geometric and area-weighted estimates are distinct estimands.",
+            "Gross sediment burial does not establish additional tradable removals."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Source-specific uncertainty, extrapolation and limitations reviewed; Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.; Geometric and area-weighted estimates are distinct estimands. Gross sediment burial does not establish additional tradable removals."
+          }
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "eca1af7f46860b972291f518dc18e72252b5363aee8c2a2d43bb51b144ad4edc",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "implications",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            }
+          ],
+          "mapping": "The central inferential problem is scaling uneven, spatially mobile physical observations to a policy-relevant carbon-stock change.; source status observational sediment-core synthesis and spatial extrapolation; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Geometric and area-weighted estimates are distinct estimands.",
+            "Gross sediment burial does not establish additional tradable removals."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "The central inferential problem is scaling uneven, spatially mobile physical observations to a policy-relevant carbon-stock change.; Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.; Geometric and area-weighted estimates are distinct estimands. Gross sediment burial does not establish additional tradable removals."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "322ba0e06b4db725315d2124e5686537928912f6c9f59398e132d0975cdcba12",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "estimates",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            },
+            {
+              "document": "seagrass-2026-nature",
+              "passage": "implications",
+              "sha256": "daf0dc3724c246e272deb959c85967bbb1d7e91472e395c18589ae70587f0fc6"
+            }
+          ],
+          "mapping": "Proposed methodological research direction, not a performed test; source status observational sediment-core synthesis and spatial extrapolation; no extra source-authored empirical result is implied.",
+          "claims": [],
+          "qualifications": [
+            "Geometric and area-weighted estimates are distinct estimands.",
+            "Gross sediment burial does not establish additional tradable removals."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-06",
+            "method": "source-and-analysis",
+            "reasoning": "Proposed methodological research direction, not a performed test; Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.; Geometric and area-weighted estimates are distinct estimands. Gross sediment burial does not establish additional tradable removals."
+          }
         }
       ]
     }
