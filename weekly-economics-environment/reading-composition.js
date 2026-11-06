@@ -85,25 +85,36 @@
   const rect=n=>n.getBoundingClientRect(),intersects=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1;
   for(const field of a.querySelectorAll('.ll-reading')){
    const features=[...field.querySelectorAll('.ll-feature')].filter(visible);
-   for(const f of features)f.classList.remove('ll-contact-top','ll-contact-bottom','ll-contact-left','ll-contact-right');
+   const corners=new Map(features.map(f=>[f,new Set()]));
    const fr=rect(field),standards=[...field.querySelectorAll('.ll-editorial,.ll-notebook-unit,.ll-interpretation,.ll-opening')].filter(n=>visible(n)&&!n.closest('.ll-feature')).map(rect),rules=[];
    for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){
     const ar=rect(features[i]),br=rect(features[j]);let one=ar,two=br,axis=null,overlap=0,start=0,cross=0,strip;
-    if(Math.max(ar.top,br.top)<Math.min(ar.bottom,br.bottom)-80&&(ar.right<=br.left+2||br.right<=ar.left+2)){
+    if(Math.max(ar.top,br.top)<Math.min(ar.bottom,br.bottom)-16&&(ar.right<=br.left+2||br.right<=ar.left+2)){
      if(ar.left>br.left){one=br;two=ar;}const gap=two.left-one.right;if(Math.abs(gap)>1)continue;
      axis='vertical';start=Math.max(one.top,two.top);overlap=Math.min(one.bottom,two.bottom)-start;cross=(one.right+two.left)/2;
      strip={left:cross-4,right:cross+4,top:start,bottom:start+overlap};
-    }else if(Math.max(ar.left,br.left)<Math.min(ar.right,br.right)-100&&(ar.bottom<=br.top+2||br.bottom<=ar.top+2)){
+    }else if(Math.max(ar.left,br.left)<Math.min(ar.right,br.right)-16&&(ar.bottom<=br.top+2||br.bottom<=ar.top+2)){
      if(ar.top>br.top){one=br;two=ar;}const gap=two.top-one.bottom;if(Math.abs(gap)>1)continue;
      axis='horizontal';start=Math.max(one.left,two.left);overlap=Math.min(one.right,two.right)-start;cross=(one.bottom+two.top)/2;
      strip={top:cross-4,bottom:cross+4,left:start,right:start+overlap};
     }
     if(!axis||standards.some(r=>intersects(r,strip))||features.some((n,k)=>k!==i&&k!==j&&intersects(rect(n),strip)))continue;
-    if(axis==='vertical'){const left=ar.left<br.left?features[i]:features[j],right=left===features[i]?features[j]:features[i];left.classList.add('ll-contact-right');right.classList.add('ll-contact-left');}
-    else{const top=ar.top<br.top?features[i]:features[j],bottom=top===features[i]?features[j]:features[i];top.classList.add('ll-contact-bottom');bottom.classList.add('ll-contact-top');}
-    const length=overlap*.8,cap=Math.min(73,length*.2),shoulder=cap*.8;
-    rules.push({axis,x:axis==='vertical'?cross-fr.left-4:start-fr.left+overlap*.1,y:axis==='vertical'?start-fr.top+overlap*.1:cross-fr.top-4,length,cap,shoulder,overlap,from:features[i].id,to:features[j].id});
+    const leading=ar===one?features[i]:features[j],trailing=ar===one?features[j]:features[i];
+    if(axis==='vertical'){
+     if(Math.abs(start-one.top)<=1)corners.get(leading).add('tr');
+     if(Math.abs(start+overlap-one.bottom)<=1)corners.get(leading).add('br');
+     if(Math.abs(start-two.top)<=1)corners.get(trailing).add('tl');
+     if(Math.abs(start+overlap-two.bottom)<=1)corners.get(trailing).add('bl');
+    }else{
+     if(Math.abs(start-one.left)<=1)corners.get(leading).add('bl');
+     if(Math.abs(start+overlap-one.right)<=1)corners.get(leading).add('br');
+     if(Math.abs(start-two.left)<=1)corners.get(trailing).add('tl');
+     if(Math.abs(start+overlap-two.right)<=1)corners.get(trailing).add('tr');
+    }
+    const length=overlap*.9,cap=Math.min(73,length*.2),shoulder=cap*.8;
+    rules.push({axis,x:axis==='vertical'?cross-fr.left-4:start-fr.left+overlap*.05,y:axis==='vertical'?start-fr.top+overlap*.05:cross-fr.top-4,length,cap,shoulder,overlap,from:features[i].id,to:features[j].id});
    }
+   for(const [feature,values]of corners){if(values.size)feature.dataset.contactCorners=[...values].join(' ');else feature.removeAttribute('data-contact-corners');}
    const old=[...field.querySelectorAll(':scope > .ll-feature-divider')];rules.forEach((r,i)=>{const n=old[i]||document.createElement('span');n.className='ll-feature-divider ll-divider-'+r.axis;n.setAttribute('aria-hidden','true');n.dataset.from=r.from;n.dataset.to=r.to;n.dataset.overlap=String(r.overlap);n.style.cssText='left:'+r.x+'px;top:'+r.y+'px;--divider-length:'+r.length+'px;--divider-cap:'+r.cap+'px;--divider-shoulder:'+r.shoulder+'px';if(!n.parentElement){const sources=field.querySelector(':scope > .reading-sources');if(sources)field.insertBefore(n,sources);else field.append(n)}});old.slice(rules.length).forEach(n=>n.remove());
   }
  }
