@@ -42,7 +42,7 @@ function approved(s,v){const p=parts(s),f=p.features;for(const type of Object.ke
  const dock='<div class="evidence-pair ll-heron-dock"></div>';
  let body;
  if(v.key==='coal')body=`<div class="ll-coal-introduction" data-balance>${interpretation}<div class="ll-coal-design">${p.opening}${slot('research')}</div></div><section class="ll-coal-featuregroup" data-balance aria-label="Employment estimates and identifying model"><div class="ll-coal-plate">${economic}${slot('figure')}</div><div class="ll-coal-identification ll-internal-divider">${coalSystem(f['estimation-desk'])}${slot('model')}</div></section><div class="ll-coal-close" data-balance><div class="ll-coal-qualifications">${evidence}</div><div class="ll-coal-notebook">${notebook}${dock}</div></div>`;
- if(v.key==='methane')body=interpretation+`<div class="ll-methane-register">${f['incidence-ledger']}</div><div class="ll-policy-counterfactual">${p.opening}${slot('policy')}</div><div class="ll-methane-lower" data-balance><div class="ll-methane-accounting">${economic}</div><div class="ll-methane-annotation">${evidence}${notebook}${dock}</div></div>`;
+ if(v.key==='methane')body=interpretation+`<div class="ll-methane-register">${f['incidence-ledger']}</div><div class="ll-standard-boundary"><div class="ll-policy-counterfactual">${p.opening}${slot('policy')}</div></div><div class="ll-methane-lower" data-balance><div class="ll-methane-accounting">${economic}</div><div class="ll-methane-annotation">${evidence}${notebook}${dock}</div></div>`;
  if(v.key==='moves')body=interpretation+`<div class="ll-moves-main" data-balance><section class="ll-moves-featuregroup" aria-label="Accounting identity and methodological diagnostic"><div class="ll-moves-identity">${f['estimation-desk']}</div><div class="ll-moves-test">${f['assumption-test']}</div></section><div class="ll-moves-context">${p.opening}${evidence}<div class="ll-moves-notebook">${notebook}${dock}</div></div></div>`;
  if(v.key==='paper')body=`<div class="ll-paper-opening"><div class="ll-paper-plate">${economic}</div>${interpretation}<div class="ll-paper-design">${p.opening}${slot('research')}</div></div><div class="ll-paper-model">${paperModel(paperEquation(f['estimation-desk']))}</div><div class="ll-paper-close" data-balance><div class="ll-paper-notebook">${notebook}${dock}</div>${evidence}</div>`;
  if(v.key==='coal')p.sources=p.sources.includes('2025-02.pdf')?p.sources:p.sources.replace('</div></div>','<a href="https://www.epa.gov/system/files/documents/2025-01/2025-02.pdf" target="_blank" rel="noopener noreferrer">EPA/NCEE · 2025 working paper (design reference) ↗</a></div></div>');
@@ -51,13 +51,13 @@ function approved(s,v){const p=parts(s),f=p.features;for(const type of Object.ke
  const sources=renderSources(p.sources,v.id,title);
  const palette=colors.readings[v.id];assert(palette&&colors.profiles[palette.profile]);
  const attrs=p.attrs.replace('data-editorial-system="6"','data-editorial-system="7"').replace(/ data-reading-composition="[^"]*"| data-spatial-composition="[^"]*"| data-reading-palette="[^"]*"/g,'').slice(0,-1)+` data-reading-composition="${v.key}" data-spatial-composition="${v.composition}" data-reading-palette="${palette.profile}">`;
- return attrs+`<div class="ll-reading-shell">${p.head}${p.deck}<div class="article-grid ll-reading">${body}${sources}</div></div></article>`;
+ return attrs+`<div class="ll-reading-shell">${p.head}${p.deck}<div class="article-grid ll-reading" data-feature-flow="native">${body}${sources}</div></div></article>`;
 }
 
  function row(key,a,b,ratio='1fr',rest='1fr',extra=''){const divider=[a,b].every(s=>s.includes('ll-feature-host')&&!['ll-opening','ll-interpretation','ll-evidence-destination','ll-notebook-home'].some(c=>s.includes(c)))?' class="ll-internal-divider"':'';return `<div class="ll-arranged-row ll-${key} ${extra}" data-balance style="--initial-share:${ratio};--initial-rest:${rest}"><div>${a}</div><div${divider}>${b}</div></div>`;}
  const field=(key,content,shape='sheet')=>`<section class="ll-shared-field ll-field-${shape} ll-${key}" aria-label="Related analytical features">${content}</section>`;
- const inset=(key,content,width='82%',side='right')=>`<div class="ll-authored-inset ll-${key}" style="--inset-width:${width};--inset-side:${side==='right'?'auto 0':'0 auto'}">${content}</div>`;
- const flo=(key,figure,content,side='right',width='54%')=>`<div class="ll-authored-float ll-${key}" style="--float-side:${side};--float-width:${width}"><div class="ll-floating-evidence">${figure}</div>${content}</div>`;
+ const inset=(key,content,width='82%',side='right')=>{const panel=`<div class="ll-authored-inset ll-${key}" style="--inset-width:${width};--inset-side:${side==='right'?'auto 0':'0 auto'}">${content}</div>`;return content.includes('ll-feature-host')?panel:'<div class="ll-standard-boundary">'+panel+'</div>';};
+ const flo=(key,figure,content,side='right',width='54%')=>`<div class="ll-authored-float ll-${key}" style="--float-side:${side};--float-width:${width}"><div class="ll-floating-evidence">${figure}</div><div class="ll-floating-context">${content}</div></div>`;
  const gap=content=>`<div class="ll-standard-break">${content}</div>`;
  const approvedKeys={'2026-10-30-coal-country':'coal','2026-10-30-methane-rule':'methane','2026-10-30-moves6':'moves','2026-10-23-paper-markups':'paper'};
  function compose(s){const ns=nodes(s),id=ns[0].id,v=decisions.readings[id];if(!v?.layout?.id||!v.layout.rationale||!v.layout.palette)throw Error('L&L authored composition required: '+id);
@@ -70,7 +70,7 @@ function approved(s,v){const p=parts(s),f=p.features;for(const type of Object.ke
   const fn=layouts[id];if(!fn)throw Error('L&L authored arrangement required: '+id);
   const body=fn({E,O,Q,N,F,A,M,L,T,D,X,G}),title=p.head.match(/<h2[^>]*>([\s\S]*?)<\/h2>/)[1].replace(/<[^>]*>/g,'');
   const attrs=p.attrs.replace('data-editorial-system="6"','data-editorial-system="7"').replace(/ data-reading-composition="[^"]*"| data-spatial-composition="[^"]*"| data-reading-palette="[^"]*"/g,'').slice(0,-1)+` data-reading-composition="${esc(v.layout.id)}" data-spatial-composition="${esc(v.layout.id)}" data-reading-palette="${esc(v.layout.palette)}" data-dock-note="${esc(v.layout.docking.note.map(s=>'[data-slot="'+s+'"]').join(';'))}" data-dock-heron="${esc(v.layout.docking.heron.map(s=>'[data-slot="'+s+'"]').join(';'))}">`;
-  return attrs+`<div class="ll-reading-shell">${p.head}${p.deck}<div class="article-grid ll-reading">${body}${renderSources(p.sources,id,title)}</div></div></article>`;
+  return attrs+`<div class="ll-reading-shell">${p.head}${p.deck}<div class="article-grid ll-reading" data-feature-flow="native">${body}${renderSources(p.sources,id,title)}</div></div></article>`;
  }
  return {compose};
 };

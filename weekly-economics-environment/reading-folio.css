@@ -255,7 +255,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .entry[data-reading-composition] .ll-argument>.ll-label{display:none}
 .entry[data-reading-composition] .ll-argument p{font:italic 19px/1.5 var(--serif);color:var(--river);max-width:none;margin:0}
 /* Every feature owns its complete contents and boundary; no text crosses panels. */
-.entry[data-reading-composition] .ll-feature{display:flow-root;min-width:0;margin:0;padding:25px;border:1px solid color-mix(in srgb,var(--feature-accent) 25%,transparent);background:var(--feature-wash);border-radius:16px 24px 16px 20px;font:400 17px/1.65 var(--serif);align-self:start}
+.entry[data-reading-composition] .ll-feature{display:flow-root;min-width:0;margin:0;padding:25px;border:0;background:var(--feature-wash);border-radius:16px 24px 16px 20px;font:400 17px/1.65 var(--serif);align-self:start}
 .entry[data-reading-composition] .ll-feature-head{margin:0 0 22px}
 .entry[data-reading-composition] .ll-feature-category{display:flex;align-items:baseline;gap:12px}
 .entry[data-reading-composition] .ll-feature-no{font-size:11px;flex:none}
@@ -327,14 +327,14 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .ll-moves-featuregroup>.ll-moves-identity,.ll-moves-featuregroup>.ll-moves-test{min-width:0}
 .entry[data-reading-composition="moves"] .ll-moves-identity>.ll-estimation-desk{
  background:var(--feature-wash);
- border:1px solid color-mix(in srgb,var(--feature-accent) 25%,transparent);
+ border:0;
  border-top:5px solid var(--feature-accent);
  border-bottom:0;
  box-shadow:none
 }
 .entry[data-reading-composition="moves"] .ll-moves-test>.ll-assumption-test{
  background:var(--feature-wash);
- border:1px solid color-mix(in srgb,var(--feature-accent) 25%,transparent);
+ border:0;
  border-left:5px solid var(--feature-accent);
  border-top:0;
  box-shadow:none
@@ -351,11 +351,14 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .entry[data-reading-composition="moves"] .ll-test-premise::before,.entry[data-reading-composition="moves"] .ll-test-grid section::before,.entry[data-reading-composition="moves"] .ll-test-verdict::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border:1px solid var(--feature-accent);border-radius:50%;background:var(--paper)}
 .ll-moves-close{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:38px;align-items:start;margin-top:30px}
 .ll-moves-close .ll-evidence-destination{margin:0}
-/* Paper: a floating figure-led opening, a detached full-width model, then a closing research exchange. */
-.ll-paper-opening{display:flow-root;margin-bottom:30px}
-.ll-paper-plate{float:right;width:54%;margin:0 0 25px 30px;min-width:0}
-.ll-paper-opening>.ll-interpretation,.ll-paper-design{display:flow-root;min-width:0}
-.ll-paper-design{margin-top:28px}
+/* Paper: the figure spans the opening's right track and meets the model below.
+   The two standard arguments retain their own left track and breathing room. */
+.ll-paper-opening{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);gap:0;margin:0}
+.ll-paper-plate{display:flex;grid-column:2;grid-row:1/3;min-width:0}
+.entry[data-reading-composition="paper"] .ll-paper-plate .ll-feature{flex:1;align-self:stretch}
+.ll-paper-opening>.ll-interpretation{grid-column:1;grid-row:1}
+.ll-paper-design{grid-column:1;grid-row:2}
+.ll-paper-opening>.ll-interpretation,.ll-paper-design{min-width:0;margin:0;padding:24px 22px}
 .entry[data-reading-composition="paper"] .ll-paper-plate .ll-feature{border-top-width:0}
 .entry[data-reading-composition="paper"] .ll-poster-value{font:500 47px var(--ll-ledger)}
 .entry[data-reading-composition="paper"] .ll-paper-model .ll-feature{display:grid;grid-template-columns:minmax(0,var(--fit-share,1fr)) minmax(0,var(--fit-rest,1.3fr));gap:16px 30px;border-radius:12px 12px 24px 12px}
@@ -395,10 +398,10 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
  .entry[data-reading-composition="coal"] .ll-desktop-plot .ll-row-label{font-size:26px}
 }
 @container ll-reading (max-width:850px){
- .ll-coal-introduction,.ll-coal-featuregroup,.ll-coal-close,.ll-methane-lower,.ll-moves-main,.ll-paper-close{grid-template-columns:minmax(0,1fr);gap:28px}
+ .ll-coal-introduction,.ll-coal-close,.ll-methane-lower,.ll-moves-main,.ll-paper-close{grid-template-columns:minmax(0,1fr);gap:28px}
+ .ll-coal-featuregroup{grid-template-columns:minmax(0,1fr);gap:0}
 
  .ll-policy-counterfactual{width:100%;margin-left:0}
- .ll-paper-plate{float:none;width:100%;margin:0 0 28px}
  .entry[data-reading-composition="paper"] .ll-paper-model .ll-feature,.entry[data-reading-composition="paper"] .ll-paper-model .ll-feature-head,.entry[data-reading-composition="moves"] .ll-moves-identity .ll-feature{display:block}
  .entry[data-reading-composition="moves"] .ll-equation,.entry[data-reading-composition="paper"] .ll-equation{margin:18px 0;padding:15px 0}
  .entry[data-reading-composition="moves"] .ll-terms,.entry[data-reading-composition="paper"] .ll-terms{margin:20px 0;grid-template-columns:1fr 1fr}
@@ -487,6 +490,8 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .ll-coal-close:not(:has(.ll-coal-notebook .ll-notebook-unit,.ll-coal-notebook .perch)),.ll-paper-close:not(:has(.ll-paper-notebook .ll-notebook-unit,.ll-paper-notebook .perch)){display:block}
 .entry[data-reading-composition] .evidence-pair.ll-heron-dock:not(:has(.heron-perch:not([hidden]),.heron-panel:not([hidden]))){display:none}
 @container ll-reading (max-width:850px){
+ .ll-paper-opening{grid-template-columns:minmax(0,1fr)}
+ .ll-paper-plate,.ll-paper-opening>.ll-interpretation,.ll-paper-design{grid-column:1;grid-row:auto;width:auto;float:none;margin:0}
  .entry[data-reading-composition="paper"] .ll-paper-model .ll-feature{display:block}
  .entry[data-reading-composition="paper"] .ll-equation{margin:20px 0}
  .entry[data-reading-composition="paper"] .ll-terms{grid-template-columns:1fr 1fr}
@@ -542,26 +547,30 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 
 /* Composition primitives are shared; complete reading arrangements are authored
    in reading-arrangements.cjs and reviewed in editorial-decisions.json. */
-.ll-arranged-row{display:grid;grid-template-columns:minmax(0,var(--fit-share,var(--initial-share,1fr))) minmax(0,var(--fit-rest,var(--initial-rest,1fr)));gap:32px;align-items:start;margin:28px 0}
+/* Native cells tile the authored arrangement. Breathing room belongs to
+   standard editorial cells, never to a gutter between analytical neighbors.
+   This also handles partial edges beside a notebook or an opening. */
+.ll-arranged-row{display:grid;grid-template-columns:minmax(0,var(--fit-share,var(--initial-share,1fr))) minmax(0,var(--fit-rest,var(--initial-rest,1fr)));gap:0;align-items:stretch;margin:0}
 .ll-arranged-row>div,.ll-feature-host,.ll-opening,.ll-notebook-home{min-width:0}
-.ll-arranged-row>div>.ll-feature-host+.ll-feature-host{margin-top:28px}
-.ll-feature-host{margin:28px 0}
-.ll-arranged-row>div>.ll-feature-host:first-child{margin-top:0}.ll-arranged-row>div>.ll-feature-host:last-child{margin-bottom:0}
-.ll-shared-field{background:transparent;box-shadow:none;margin:30px 0;display:flow-root;min-width:0;border-radius:16px 26px 16px 20px}
+.ll-arranged-row>div{display:flex;flex-direction:column}
+.ll-feature-host{display:flex;flex-direction:column;flex:1;margin:0;min-width:0}
+.entry[data-reading-composition] .ll-feature-host>.ll-feature{flex:1;align-self:stretch;border-radius:16px 24px 16px 20px;box-shadow:none}
+.ll-shared-field{position:relative;background:transparent;box-shadow:none;margin:0;display:flow-root;min-width:0;border-radius:16px 26px 16px 20px}
 .entry[data-reading-composition] .ll-shared-field .ll-feature{background:var(--feature-wash);box-shadow:none}
-.ll-shared-field .ll-feature-host{margin:0}
-.ll-shared-field>.ll-arranged-row{margin:0;gap:0}
-.ll-shared-field .ll-authored-inset{margin:0}
-.ll-shared-field .ll-notebook-home,.ll-shared-field .ll-opening,.ll-shared-field .ll-evidence-destination{background:var(--paper);padding:20px;margin:22px 18px;border-radius:12px 0 12px 0}
 .ll-field-gatefold{border-radius:28px 12px 16px 28px}.ll-field-open{border-radius:12px 28px 12px 12px}.ll-field-folio{border-radius:24px 12px 24px 12px}.ll-field-ledger{border-radius:12px 12px 28px 12px}
-.ll-authored-inset{width:min(100%,var(--inset-width,82%));margin:28px var(--inset-side,auto 0);min-width:0}
-.ll-authored-float{display:flow-root;margin:28px 0}
-.ll-floating-evidence{float:var(--float-side,right);width:var(--float-width,54%);margin:0 0 24px 30px;min-width:0}
-.ll-authored-float[style*="--float-side:left"]>.ll-floating-evidence{margin:0 30px 24px 0}
-.ll-authored-float>.ll-interpretation,.ll-authored-float>.ll-opening,.ll-authored-float>.ll-notebook-home{display:flow-root;min-width:0}
-.ll-standard-break{margin:30px 0}.ll-notebook-home{margin:26px 0}
+.ll-authored-inset{width:min(100%,var(--inset-width,82%));margin:0 var(--inset-side,auto 0);min-width:0}
+/* A figure and its marginal commentary remain independently authored columns,
+   with native row sizing so a following feature can meet the figure's foot. */
+.ll-authored-float{display:grid;grid-template-columns:minmax(0,calc(100% - var(--float-width,54%))) minmax(0,var(--float-width,54%));gap:0;align-items:stretch;margin:0}
+.ll-authored-float[style*="--float-side:left"]{grid-template-columns:minmax(0,var(--float-width,54%)) minmax(0,calc(100% - var(--float-width,54%)))}
+.ll-floating-evidence{grid-column:2;grid-row:1;display:flex;min-width:0}
+.ll-floating-context{grid-column:1;grid-row:1;display:flex;flex-direction:column;min-width:0}
+.ll-authored-float[style*="--float-side:left"]>.ll-floating-evidence{grid-column:1}
+.ll-authored-float[style*="--float-side:left"]>.ll-floating-context{grid-column:2}
+.ll-standard-break{margin:0;padding:24px 0}.ll-notebook-home{margin:0}
 .ll-notebook-home:not(:has(.ll-notebook-unit,.perch)){display:none}
-.entry[data-reading-composition] .ll-feature-host>.ll-feature{border-radius:16px 24px 16px 20px;box-shadow:none}
+.ll-arranged-row>div>.ll-interpretation,.ll-arranged-row>div>.ll-opening,.ll-arranged-row>div>.ll-evidence-destination,.ll-arranged-row>div>.ll-notebook-home,
+.ll-floating-context>.ll-interpretation,.ll-floating-context>.ll-opening,.ll-floating-context>.ll-notebook-home{margin:0;padding:24px 22px;min-width:0}
 /* One typographic identity for standards, recognizable families for analytical work. */
 .entry[data-reading-composition] .ll-feature{container-type:inline-size;container-name:analytical-feature}
 .entry[data-reading-composition] .ll-long-view .ll-feature-category h3{font:italic 500 46px/1.12 var(--ll-time)}
@@ -601,7 +610,7 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 .entry[data-reading-composition] .ll-variant-vertical .ll-timeline li{border:0;padding:0 0 24px}
 .entry[data-reading-composition] .ll-variant-vertical .ll-timeline li::before{left:-26px;top:7px}
 /* Responsive behavior follows the width actually available to each composition. */
-@container ll-reading (max-width:850px){.ll-arranged-row{grid-template-columns:minmax(0,1fr);gap:26px}.ll-floating-evidence{float:none;width:100%;margin:0 0 26px!important}.ll-authored-inset{width:100%;margin-inline:0}}
+@container ll-reading (max-width:850px){.ll-arranged-row{grid-template-columns:minmax(0,1fr);gap:0}.ll-authored-float{grid-template-columns:minmax(0,1fr)!important}.ll-authored-float[style]>.ll-floating-evidence,.ll-authored-float[style]>.ll-floating-context{grid-column:1;grid-row:auto}.ll-authored-inset{width:100%;margin-inline:0}}
 @container analytical-feature (max-width:1000px){.ll-mechanism{flex-direction:column}.ll-node{flex:none;width:100%;max-width:100%;min-width:0}.ll-edge{flex:none;width:100%;height:64px;display:flex;align-items:center;justify-content:center;gap:16px}.ll-edge svg{width:40px;transform:rotate(90deg)}.ll-edge span{max-width:180px;min-height:0}}
 @container analytical-feature (max-width:600px){.ll-ledger{grid-template-columns:1fr}.ll-timeline{grid-template-columns:1fr!important;margin-left:6px!important;padding-left:20px!important;border-left:1.5px solid var(--forest)!important;gap:0!important}.ll-timeline li{border:0!important;padding:0 0 24px!important}.ll-timeline li::before{left:-26px!important;top:7px!important}.ll-choices,.ll-test-grid,.ll-terms{grid-template-columns:1fr}}
 @media(max-width:620px){.entry[data-reading-composition] .ll-long-view .ll-feature-category h3{font-size:40px}.entry[data-reading-composition] .ll-decision-margin .ll-feature-category h3{font-size:32px}.entry[data-reading-composition] .ll-mechanism-map .ll-feature-category h3{font-size:34px}.entry[data-reading-composition] .ll-retained-media .bar-row{grid-template-columns:95px minmax(0,1fr) 42px}.entry[data-reading-composition] .ll-count-plot{grid-template-columns:1fr}.entry[data-reading-composition] .ll-ledger{grid-template-columns:1fr}}
@@ -633,13 +642,13 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 /* 2026-11-04 | Feature-only adjacency belongs to one architectural field.
    No joining is allowed across an editorial, notebook, source or Heron node. */
 /* Native grid cells own their complete surfaces; no gap-covering paint. */
-.ll-touching-feature-row{position:relative;gap:0!important;align-items:stretch;margin-block:28px}
+.ll-touching-feature-row{position:relative;gap:0!important;align-items:stretch;margin-block:0}
 .ll-touching-feature-row>div{display:flex;flex-direction:column;min-width:0}
 .ll-touching-feature-row .ll-feature-host{display:flex;flex-direction:column;flex:1;margin:0!important}
 .entry[data-reading-composition] .ll-touching-feature-row .ll-feature-host>.ll-feature{flex:1;align-self:stretch;box-shadow:none}
 /* Explicitly authored runs share actual block edges, including staggered widths.
    The wrapper has no surface, border, height or decorative pseudo-elements. */
-.ll-joined-sequence{margin:28px 0;display:flow-root}
+.ll-joined-sequence{margin:0;display:flow-root}
 .ll-joined-sequence .ll-feature-host{margin-block:0}
 .ll-joined-sequence>.ll-feature-host,.ll-joined-sequence>.ll-arranged-row,.ll-joined-sequence>.ll-authored-inset,.ll-joined-sequence>.ll-shared-field{margin-block:0}
 .ll-joined-sequence>.ll-arranged-row{align-items:stretch}
@@ -667,13 +676,13 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 .entry[data-reading-composition] .ll-joined-sequence>.ll-household-complementarity,
 .entry[data-reading-composition] .ll-joined-sequence>.ll-household-policy-robustness>.ll-household-test-and-research{
  grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
- gap:32px
+ gap:0
 }
 @container ll-reading (max-width:850px){
  .entry[data-reading-composition] .ll-joined-sequence>.ll-household-complementarity,
  .entry[data-reading-composition] .ll-joined-sequence>.ll-household-policy-robustness>.ll-household-test-and-research{
   grid-template-columns:minmax(0,1fr);
-  gap:26px
+  gap:0
  }
 }
 

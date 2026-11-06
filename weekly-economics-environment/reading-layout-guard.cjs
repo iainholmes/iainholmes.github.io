@@ -20,10 +20,12 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
   const chosen=require('./reading-feature-registry.js').select({candidates:special.map(f=>({id:f.type,authored:true,provenance:f.provenance,assessment:f.assessment,function:f.type,editorialJustification:v.additionalFeatureJustification})),exception:v.minimumTargetReview?.exception});if(chosen.review.length||chosen.rejected.length||chosen.special.length!==special.length)throw Error('L&L publication: feature selection review required '+r.id);
   const html=journal.match(new RegExp('<article class="entry"[^>]*id="'+r.id+'"[\\s\\S]*?<\\/article>'))?.[0];
   if(!html?.includes('data-editorial-system="7"'))throw Error('L&L publication: legacy reading system '+r.id);
-  if(compose(html,{nodes})!==html)throw Error('L&L publication: stale authored features '+r.id);
   const ns=nodes(html);
   for(const cls of ['finding','ll-argument','ll-editorial','research-note','reading-sources','ll-reading-shell'])if(!ns.some(n=>n.classes.includes(cls)))throw Error('L&L publication: missing '+cls+' '+r.id);
   const src=ns.find(n=>n.classes.includes('sources'));const links=ns.filter(n=>n.tag==='a'&&n.start>src.open&&n.end<=src.close&&n.attrs.includes('href='));if(!links.length)throw Error('L&L publication: original source register missing '+r.id);sources+=links.length;
+  const flow=ns.find(n=>n.classes.includes('ll-reading'));if(!flow?.attrs.includes('data-feature-flow="native"'))throw Error('L&L publication: native feature-flow contract required '+r.id);
+  for(const float of ns.filter(n=>n.classes.includes('ll-authored-float')))if(!float.children.some(n=>n.classes.includes('ll-floating-context')))throw Error('L&L publication: native figure context required '+r.id);
+  if(compose(html,{nodes})!==html)throw Error('L&L publication: stale authored features '+r.id);
   const reading=ns.find(n=>n.classes.includes('ll-reading')),sourceContainer=ns.find(n=>n.classes.includes('reading-sources'));if(reading.children.at(-1)!==sourceContainer)throw Error('L&L publication: Sources must be final '+r.id);
   if(!ns.some(n=>n.classes.includes('ll-source-divider'))||!ns.some(n=>n.classes.includes('ll-source-links')))throw Error('L&L publication: Sources finish required '+r.id);
   const actual=ns.filter(n=>n.classes.includes('ll-feature'));

@@ -59,8 +59,9 @@
   bestParent.insertBefore(node,bestNext&&bestNext.parentNode===bestParent?bestNext:null);
   return {component:node.className,parent:bestParent.className,heightBefore:startingHeight,heightAfter:articleHeight(a)};
  }
- // Join only genuinely adjacent, feature-only elements. Standard editorial,
- // notebook, source and Heron elements remain explicit physical boundaries.
+ // Retain semantic markers for entirely analytical groups. Physical adjacency
+ // is governed by the native primitives, including mixed and partial edges;
+ // updateDividers measures those real boundaries independently of these markers.
  const nonFeatures='.ll-editorial,.ll-interpretation,.ll-opening,.ll-evidence-destination,.ll-notebook-unit,.research-note,.perch,.ll-standard-break,.reading-sources';
  const featureOnly=n=>!!n?.querySelector('.ll-feature')&&!n.querySelector(nonFeatures);
  const isHost=n=>(n?.classList.contains('ll-feature-host')||n?.classList.contains('ll-shared-field'))&&featureOnly(n);

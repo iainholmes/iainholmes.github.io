@@ -1,0 +1,12 @@
+'use strict';
+const assert=require('node:assert/strict'),{missingJoins}=require('./ll_feature_gap_audit.cjs');
+const box=(id,x,y,w,h)=>({id,reading:'fixture',rect:{x,y,w,h,right:x+w,bottom:y+h}});
+const figure=box('figure',0,0,600,400),ledger=box('ledger',0,428,1000,350);
+assert.equal(missingJoins([figure,ledger],[]).length,1,'full-width 28px pre-conjunction gap fails');
+assert.equal(missingJoins([figure,ledger],[box('notebook-beside',620,0,380,428)]).length,1,'a notebook beside a figure does not excuse its open foot');
+assert.equal(missingJoins([figure,ledger],[box('standard-between',0,400,1000,28)]).length,0,'an actual intervening standard preserves separation');
+assert.equal(missingJoins([figure,box('joined',0,400,1000,350)],[]).length,0,'native shared boundary passes');
+assert.equal(missingJoins([box('test',0,200,480,400),box('map',512,0,488,800)],[box('opening',0,0,480,200)]).length,1,'mixed columns still require their partial feature edge');
+assert.equal(missingJoins([figure,box('other-reading',0,428,600,300)].map((f,i)=>({...f,reading:String(i)})),[]).length,0,'separate readings never join');
+assert.equal(missingJoins([figure,box('lower',0,428,600,350)],[box('partial-standard',0,400,200,28)])[0].start,200,'only the unobstructed part is eligible');
+console.log('7 missing-join regression checks passed.');
