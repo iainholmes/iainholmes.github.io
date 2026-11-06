@@ -1,0 +1,23 @@
+name: TEMP — exercise live Periodicals watchdog
+on:
+  push:
+    branches: [verify/periodicals-watchdog-live-20261106]
+    paths: [.github/workflows/temp-live-watchdog-verify.yml]
+permissions:
+  contents: read
+  issues: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: master}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Independently audit Friday publications and create only missing-release incident
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          WATCHDOG_NOW: '2026-11-06T21:35:00Z'
+        run: |
+          node scripts/test_periodicals_publication_watchdog.cjs
+          node scripts/periodicals-publication-watchdog.cjs
