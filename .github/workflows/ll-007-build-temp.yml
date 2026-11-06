@@ -69,7 +69,7 @@ jobs:
           node - <<'NODE'
           const fs=require('fs');
           const s=fs.readFileSync('weekly-economics-environment/index.html','utf8');
-          const dates=[...s.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"/g)].map(x=>x[1]);
+          const dates=JSON.parse(s.match(/id="ll-reading-index-data">([\s\S]*?)<\/script>/)[1]).editions.map(x=>x.date);
           if(dates.length!==7||dates.at(-1)!=='2026-11-06'||dates.filter(x=>x==='2026-11-06').length!==1)throw Error('Edition archive/date integrity');
           const ed=s.match(/<section class="edition"[^>]*data-edition="2026-11-06"[\s\S]*?(?=<\/main>)/)[0];
           if((ed.match(/<article class="entry"/g)||[]).length!==5)throw Error('Five readings absent');
