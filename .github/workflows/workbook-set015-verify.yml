@@ -1,0 +1,57 @@
+# Branch-only, read-only publication parity check. Never merge into master.
+name: Verify Workbook Set 015 Pages parity
+on:
+  pull_request:
+    branches: [master]
+    paths: ['.github/workflows/workbook-set015-verify.yml']
+  push:
+    branches: [verify/workbook-2026-11-06-pages]
+    paths: ['.github/workflows/workbook-set015-verify.yml']
+permissions:
+  contents: read
+jobs:
+  public-parity:
+    if: github.repository == 'iainholmes/iainholmes.github.io' && (github.ref == 'refs/heads/verify/workbook-2026-11-06-pages' || github.head_ref == 'verify/workbook-2026-11-06-pages')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify master has exactly one new complete Workbook edition
+        run: |
+          node daily-econ-challenge/learning-schema.cjs
+          node - <<'NODE'
+          const fs=require('fs');
+          const s=fs.readFileSync('daily-econ-challenge/index.html','utf8');
+          const d=JSON.parse(s.match(/id="challenge-data">([\s\S]*?)<\/script>/)[1]);
+          if(d.editions.length!==15||d.editions.at(-1).date!=='2026-11-06'||d.editions.at(-1).no!==15)throw Error('Incorrect canonical Workbook latest edition');
+          NODE
+      - name: Retrieve GitHub Pages workbook and hub over public HTTPS
+        run: |
+          for attempt in 1 2 3 4 5 6; do
+            curl --fail --location --silent --show-error --max-time 20 -H "Cache-Control: no-cache" "https://iainholmes.github.io/daily-econ-challenge/?verify=20261106-$attempt" -o "$RUNNER_TEMP/public-workbook.html"
+            curl --fail --location --silent --show-error --max-time 20 -H "Cache-Control: no-cache" "https://iainholmes.github.io/personal-updates/?verify=20261106-$attempt" -o "$RUNNER_TEMP/public-hub.html"
+            if node - <<'NODE'
+          const fs=require('fs'),p=process.env.RUNNER_TEMP;
+          const local=fs.readFileSync('daily-econ-challenge/index.html','utf8');
+          const live=fs.readFileSync(p+'/public-workbook.html','utf8');
+          const idx=s=>JSON.parse(s.match(/id="challenge-data">([\s\S]*?)<\/script>/)[1]).editions;
+          const a=idx(local),b=idx(live);
+          if(b.length!==a.length||JSON.stringify(b.at(-1))!==JSON.stringify(a.at(-1)))process.exit(1);
+          const lh=fs.readFileSync('personal-updates/index.html','utf8');
+          const ph=fs.readFileSync(p+'/public-hub.html','utf8');
+          if(!ph.includes('data-issue-mark="cp" data-edition="2026-11-06"'))process.exit(1);
+          const mark=require('./personal-updates/issue-mark-archive.js')['cp:2026-11-06'];
+          if(!mark||!mark.frozen||!ph.includes(mark.frozen))process.exit(1);
+          console.log('PUBLIC_WORKBOOK_SET015_PARITY_OK, 15 sets, latest dated content, hub, frozen cover');
+          NODE
+            then exit 0
+            fi
+            echo "Public site has not yet converged (attempt $attempt)"
+            sleep 15
+          done
+          echo "::error::Public Workbook/Hub parity not reached"; exit 1
