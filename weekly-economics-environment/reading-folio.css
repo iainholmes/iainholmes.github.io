@@ -467,7 +467,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 @container ll-reading (max-width:850px){.ll-paper-close{display:flex;flex-direction:column}.ll-paper-close>.ll-evidence-destination{order:0}.ll-paper-notebook{order:1}}
 
 /* Explanation is part of the feature, with readable definitions and no faded text. */
-.entry[data-reading-composition]{--interior-rule-inset:5%;--interior-rule-length:90%;--interior-rule-width:8px;--interior-rule-cap:73px;--interior-rule-shoulder:59px;--interior-rule-opacity:.38;--feature-rule:color-mix(in srgb,var(--feature-accent) 28%,var(--paper))}
+.entry[data-reading-composition]{--interior-rule-inset:5%;--interior-rule-length:90%;--interior-rule-width:8px;--interior-rule-cap:73px;--interior-rule-shoulder:59px;--interior-rule-opacity:.60;--feature-rule:color-mix(in srgb,var(--feature-accent) 28%,var(--paper))}
 .entry[data-reading-composition] .ll-feature h5{font-size:17px}
 .entry[data-reading-composition] .ll-reading-key{margin:0 0 24px;max-width:none}
 .entry[data-reading-composition] .ll-reading-key h5{font:600 19px/1.35 var(--serif);margin:0 0 8px}
