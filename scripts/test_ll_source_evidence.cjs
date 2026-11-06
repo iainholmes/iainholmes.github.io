@@ -22,7 +22,7 @@ const interpretation=evidence.readings[reading.id].components.find(c=>c.id==='ll
 const conflict=clone(record);conflict.discrepancy='Source and claim materially disagree';reject(()=>run(conflict),/unresolved material/);
 const noReviewer=clone(record);delete noReviewer.verification.reasoning;reject(()=>run(noReviewer),/inspectable source-and-analysis/);
 reject(()=>run(record,evidence.documents,{...component,sha256:'0'.repeat(64)}),/content changed/);
-const coverage=gate.validate({journal});ok(coverage.readings===30&&coverage.verifiedComponents===10&&coverage.incompleteHistoricalComponents>0,'archive coverage remains honest');
+const coverage=gate.validate({journal});ok(coverage.readings===35&&coverage.verifiedComponents>=60&&coverage.incompleteHistoricalComponents===318,'all 30 legacy readings retained, historical gaps disclosed, new five readings verified');
 const future=journal.replaceAll('2026-10-30','9998-12-31');reject(()=>gate.validate({journal:future}),/missing historical reading/);
 const amended=journal.replace('Solar changes another technology’s emissions margin','An unreviewed changed claim');reject(()=>gate.validate({journal:amended}),/content changed/);
 const incomplete=clone(evidence);incomplete.readings.insurance.components[0].sha256='0'.repeat(64);reject(()=>gate.validate({journal,evidence:incomplete}),/completed substantive review required/);
