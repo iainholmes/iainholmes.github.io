@@ -1,0 +1,45 @@
+name: Verify Field Brief Issue 041 Pages parity
+on:
+  push:
+    branches: [verify/field-brief-2026-11-06-pages]
+    paths: ['.github/workflows/field-brief-041-verify.yml']
+  pull_request:
+    branches: [master]
+    paths: ['.github/workflows/field-brief-041-verify.yml']
+permissions:
+  contents: read
+jobs:
+  parity:
+    if: github.repository == 'iainholmes/iainholmes.github.io' && (github.ref == 'refs/heads/verify/field-brief-2026-11-06-pages' || github.head_ref == 'verify/field-brief-2026-11-06-pages')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: master}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Check canonical issue completeness
+        run: |
+          node scripts/check_field_brief.cjs 2026-11-06
+      - name: Fetch live Pages and check edition, cover and story data parity
+        run: |
+          for i in 1 2 3 4 5 6; do
+            curl -fLsS --max-time 20 -H 'Cache-Control: no-cache' "https://iainholmes.github.io/daily-watchlist-5/?verify=20261106-$i" -o "$RUNNER_TEMP/public-brief.html"
+            curl -fLsS --max-time 20 -H 'Cache-Control: no-cache' "https://iainholmes.github.io/personal-updates/?verify=20261106-$i" -o "$RUNNER_TEMP/public-hub.html"
+            if node - <<'NODE'
+          const fs=require('fs'),dir=process.env.RUNNER_TEMP;
+          const local=fs.readFileSync('daily-watchlist-5/index.html','utf8');
+          const live=fs.readFileSync(dir+'/public-brief.html','utf8');
+          const extract=s=>JSON.parse(s.match(/id="briefing-data">([\s\S]*?)<\/script>/)[1]).editions;
+          const a=extract(local),b=extract(live);
+          if(b.length!==41||a.length!==41||JSON.stringify(b.at(-1))!==JSON.stringify(a.at(-1)))process.exit(1);
+          if(b.at(-1).date!=='2026-11-06'||b.at(-1).stories[4].editorial.feature!=='north-carolina')process.exit(1);
+          const hub=fs.readFileSync(dir+'/public-hub.html','utf8'),mark=require('./personal-updates/issue-mark-archive.js')['fb:2026-11-06'];
+          if(!mark?.frozen||!hub.includes('data-issue-mark="fb" data-edition="2026-11-06"')||!hub.includes(mark.frozen))process.exit(1);
+          console.log('PUBLIC_FIELD_BRIEF_041_PARITY_OK: 41 editions, 5 stories, NC position 05, frozen cover and hub');
+          NODE
+            then exit 0
+            fi
+            echo "Public Pages not yet converged (attempt $i)"
+            sleep 15
+          done
+          echo 'Public Field Brief/Hub parity not reached'; exit 1
