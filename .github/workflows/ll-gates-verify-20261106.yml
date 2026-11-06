@@ -1,0 +1,50 @@
+name: Verify L&L source and publication gates
+on:
+  push:
+    branches: [verify/ll-publication-gates-2026-11-06]
+    paths: ['.github/workflows/ll-gates-verify-20261106.yml']
+  pull_request:
+    branches: [master]
+    paths: ['.github/workflows/ll-gates-verify-20261106.yml']
+permissions:
+  contents: read
+jobs:
+  contracts:
+    if: github.repository == 'iainholmes/iainholmes.github.io' && (github.ref == 'refs/heads/verify/ll-publication-gates-2026-11-06' || github.head_ref == 'verify/ll-publication-gates-2026-11-06')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: master,fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Show live editorial contract and verify absent new issue
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),s=fs.readFileSync('weekly-economics-environment/index.html','utf8');
+          const dates=[...s.matchAll(/<section class="edition"[^>]*data-edition="(\d{4}-\d\d-\d\d)"/g)].map(m=>m[1]);
+          console.log('LL_CURRENT_CANONICAL_EDITION_DATES',JSON.stringify(dates));
+          if(dates.includes('2026-11-06'))throw Error('New edition appeared; re-evaluate the live source instead');
+          const evidence=require('./weekly-economics-environment/source-evidence.cjs').validate({journal:s});
+          console.log('LL_SOURCE_COVERAGE',JSON.stringify(evidence));
+          NODE
+      - name: Source-to-component content and fingerprint regression
+        run: |
+          node weekly-economics-environment/source-evidence.cjs
+          node scripts/test_ll_source_evidence.cjs
+      - name: Editorial layout, Notebook, Field Register and publishing regressions
+        run: |
+          node scripts/test_ll_publication_layout.cjs
+          node scripts/test_editorial_folio.cjs
+          node scripts/test_notebook.cjs
+          node scripts/test_field_register.cjs
+          node scripts/test_publishing.cjs
+      - name: Verify publisher preparation is idempotent without data modifications
+        run: |
+          node scripts/prepare_periodicals.cjs
+          git diff --check
+          if [ -n "$(git status --porcelain)" ]; then
+            git status --short
+            echo 'Publisher preparation generated unexpected changes on current master'
+            exit 1
+          fi
+          echo "LL_CURRENT_MASTER_PUBLISHER_IDEMPOTENT_OK"
