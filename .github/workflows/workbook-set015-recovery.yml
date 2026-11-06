@@ -7,12 +7,14 @@ on:
       - 'daily-econ-challenge/index.html'
       - '.github/workflows/workbook-set015-recovery.yml'
       - 'scripts/fixtures/art-originality.cjs'
+      - 'scripts/test_issue_marks.cjs'
   push:
     branches: [recovery/workbook-2026-11-06]
     paths:
       - 'daily-econ-challenge/index.html'
       - '.github/workflows/workbook-set015-recovery.yml'
       - 'scripts/fixtures/art-originality.cjs'
+      - 'scripts/test_issue_marks.cjs'
 permissions:
   contents: write
 jobs:
