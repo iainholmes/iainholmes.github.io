@@ -636,7 +636,7 @@ body.glance .entry[data-editorial-system="6"]{display:none}
    The wrapper has no surface, border, height or decorative pseudo-elements. */
 .ll-joined-sequence{margin:28px 0;display:flow-root}
 .ll-joined-sequence .ll-feature-host{margin-block:0}
-.ll-joined-sequence>.ll-feature-host,.ll-joined-sequence>.ll-arranged-row,.ll-joined-sequence>.ll-authored-inset{margin-block:0}
+.ll-joined-sequence>.ll-feature-host,.ll-joined-sequence>.ll-arranged-row,.ll-joined-sequence>.ll-authored-inset,.ll-joined-sequence>.ll-shared-field{margin-block:0}
 .ll-joined-sequence>.ll-arranged-row{align-items:stretch}
 .ll-joined-sequence>.ll-arranged-row>div{display:flex;flex-direction:column}
 .ll-joined-sequence>.ll-arranged-row>div>.ll-feature-host{display:flex;flex-direction:column;flex:1}
