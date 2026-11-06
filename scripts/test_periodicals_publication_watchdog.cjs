@@ -30,4 +30,8 @@ const cp=wd.audit({...wd.DEFINITIONS[1],date:'2026-11-06'});
 equal(cp.state,'canonical_ready');
 const ll=wd.audit({...wd.DEFINITIONS[2],date:'2026-11-06'});
 equal(['missing','canonical_ready','incomplete'].includes(ll.state),true);
+// Previous completed releases remain valid after the public hub advances.
+equal(wd.audit({...wd.DEFINITIONS[0],date:'2026-11-05'}).state,'canonical_ready');
+equal(wd.audit({...wd.DEFINITIONS[1],date:'2026-10-30'}).state,'canonical_ready');
+equal(wd.audit({...wd.DEFINITIONS[2],date:'2026-10-30'}).state,'canonical_ready');
 console.log(count+' scheduled-publisher, DST, canonical archive and incident classification checks passed.');
