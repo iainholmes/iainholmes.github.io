@@ -6,6 +6,8 @@ const read=p=>fs.readFileSync(p,'utf8');const journal=read('weekly-economics-env
 function ok(v,m){assert(v,m);n++}function eq(a,b,m){assert.deepEqual(a,b,m);n++}
 const result=validate(input);eq(result.editions,6,'six archival editions');eq(result.readings,30,'30 readings');eq(compose(journal),journal,'composer is idempotent');
 for(const file of ['reading-folio.css','reading-index.js','reading-composition.js']){const hash=crypto.createHash('sha256').update(read('weekly-economics-environment/'+file)).digest('hex').slice(0,12);ok(journal.includes(file+'?v='+hash),'content-versioned asset '+file)}
+assert.throws(()=>validate({...input,journal:journal.replaceAll(' data-feature-flow="native"','')}),/native feature-flow contract/);n++;
+require('./test_ll_feature_gap_audit.cjs');
 const base=journal.match(/<article class="entry"[^>]*id="insurance"[\s\S]*?<\/article>/)[0];
 assert.throws(()=>compose(journal.replace('</main>','<section class="edition" data-edition="9999-12-31" data-title="Unreviewed">'+base.replace('id="insurance"','id="private-unreviewed"')+'</section></main>')),/editorial review required/);n++;
 const arrangements=require('../weekly-economics-environment/reading-arrangements.cjs');

@@ -33,7 +33,7 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/ll-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
           "$RUNNER_TEMP/ll-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - name: Audit all six editions at 13 viewport widths
+      - name: Audit every indexed reading at 21 widths in both themes
         env:
           LL_PLAYWRIGHT: ${{ runner.temp }}/ll-browser/node_modules/playwright
           LL_QA_JSON: ${{ runner.temp }}/ll-layout-results.json
