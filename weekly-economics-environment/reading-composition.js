@@ -125,7 +125,9 @@
   for(const n of [note,heron])if(n&&!homes.has(n))homes.set(n,{parent:n.parentNode,next:n.nextSibling});
   const open=a.querySelector('.heron-perch[aria-expanded="true"]');
   const signature=[Math.round(a.clientWidth),a.textContent.length,document.documentElement.dataset.mode,!!a.querySelector('.perch'),!!open].join('|');
-  if(!force&&cache.get(a)===signature)return;cache.set(a,signature);
+  // Cached composition choices do not imply cached geometry. Fonts, a quiet
+  // column or a neighboring panel can reflow without changing article width.
+  if(!force&&cache.get(a)===signature){updateDividers(a);return;}cache.set(a,signature);
   if(open){refreshFeatureJoins(a);updateDividers(a);return;} // The companion stays where the reader opened it.
   const before=articleHeight(a);refreshFeatureJoins(a);a.querySelectorAll(regions).forEach(balance);
   const moves=[],plan=plans[a.dataset.readingComposition]||{note:(a.dataset.dockNote||'').split(';').filter(Boolean),heron:(a.dataset.dockHeron||'').split(';').filter(Boolean)};
@@ -144,7 +146,7 @@
  const observer=new MutationObserver(records=>{if(running)return;if(records.some(r=>r.type==='childList'||r.attributeName==='hidden'||r.attributeName==='aria-expanded'||r.attributeName==='data-mode'))schedule();});
  observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','aria-expanded','data-mode']});
  observer.observe(document.documentElement,{attributes:true,attributeFilter:['data-mode']});
- const resize=new ResizeObserver(schedule);document.querySelectorAll('.entry[data-reading-composition]').forEach(a=>resize.observe(a));
+ const resize=new ResizeObserver(schedule);document.querySelectorAll('.entry[data-reading-composition],.entry[data-reading-composition] .ll-feature,.entry[data-reading-composition] [data-balance]').forEach(n=>resize.observe(n));
  document.fonts.ready.then(()=>{run(true);const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t?.closest('.entry')&&t.getClientRects().length)t.scrollIntoView({block:'start',behavior:'instant'});});document.fonts.addEventListener('loadingdone',()=>run(true));addEventListener('resize',schedule);
  window.LLLayout={reflow:()=>{paused=false;run(true)},reset:()=>{paused=true;document.querySelectorAll('.ll-feature-divider').forEach(n=>n.remove());document.querySelectorAll('.ll-touching-feature-row,.ll-touching-feature-stack').forEach(n=>n.classList.remove('ll-touching-feature-row','ll-touching-feature-stack'));document.querySelectorAll('.ll-join-prev,.ll-join-next').forEach(n=>n.classList.remove('ll-join-prev','ll-join-next'));for(const [n,h]of homes){h.parent.insertBefore(n,h.next&&h.next.parentNode===h.parent?h.next:null)}document.querySelectorAll(regions).forEach(r=>{r.style.removeProperty('--fit-share');r.style.removeProperty('--fit-rest')});},report:()=>[...reports.values()]};
 })();

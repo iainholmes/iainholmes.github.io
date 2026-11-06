@@ -24,6 +24,8 @@ Screenshots and detailed local JSON evidence are delivered in the task's `output
 
 The first CI run exposed a measurement difference: headless Chrome includes the reserved scrollbar gutter in `documentElement.clientWidth`, while its body/paper box excludes it. The inset assertion now measures the actual body/content boundary, just as the Index centering assertion does. Safe-clearance limits are unchanged; no CSS was weakened to satisfy the test.
 
+A subsequent independent browser run exposed stale divider geometry after late panel reflow. The runtime now remeasures genuine shared edges even when its authored composition choice is cached, and observes feature/balance-region dimensions as well as the whole article. The browser test waits for actual font readiness and two animation frames before inspection, without forcing composition.
+
 ## Preservation and limits
 
 Original reading prose, equations, assumptions, citations, source-evidence records/classifications, artwork, palettes, composition registry, historical dates, five-reading editions, Field Register, cumulative Notebook, Heron artwork, hash links and site-wide navigation remain unchanged. Other publications are outside this change. Existing incomplete historical verification remains incomplete; passing layout/source-consistency checks is not a new scholarly attestation.
