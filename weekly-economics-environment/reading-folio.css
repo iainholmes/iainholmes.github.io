@@ -312,9 +312,27 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 /* MOVES6: one estuary folio, with a mathematical ribbon and a four-part testing instrument. */
 .ll-moves-main{display:grid;grid-template-columns:minmax(0,var(--fit-share,1fr)) minmax(0,var(--fit-rest,1fr));gap:34px;align-items:start}
 .ll-moves-context,.ll-moves-featuregroup{min-width:0}
-.ll-moves-featuregroup{background:var(--feature-wash);border:0;border-radius:24px 12px 24px 12px}
+.ll-moves-featuregroup{display:flex;flex-direction:column;gap:0;background:transparent;border:0;border-radius:0}
 .ll-moves-notebook{margin-top:28px;padding-top:20px;border-top:2px solid var(--forest)}
-.entry[data-reading-composition="moves"] .ll-moves-featuregroup .ll-feature{border:0;background:none}
+/* One authored joining field, but two real, family-owned feature surfaces.
+   Do not let the estuary wash erase the Estimation Desk or Assumption Test. */
+.ll-moves-featuregroup>.ll-moves-identity,.ll-moves-featuregroup>.ll-moves-test{min-width:0}
+.entry[data-reading-composition="moves"] .ll-moves-identity>.ll-estimation-desk{
+ background:var(--feature-wash);
+ border:1px solid color-mix(in srgb,var(--forest) 25%,transparent);
+ border-top:5px solid var(--forest);
+ border-bottom:0;
+ border-radius:24px 12px 0 0;
+ box-shadow:inset 0 0 9px 1px var(--paper)
+}
+.entry[data-reading-composition="moves"] .ll-moves-test>.ll-assumption-test{
+ background:var(--feature-wash);
+ border:1px solid color-mix(in srgb,var(--river) 25%,transparent);
+ border-left:5px solid var(--river);
+ border-top:0;
+ border-radius:0 0 24px 12px;
+ box-shadow:inset 0 0 9px 1px var(--paper)
+}
 .entry[data-reading-composition="moves"] .ll-moves-identity .ll-feature{display:flow-root;border-bottom:0}
 .entry[data-reading-composition="moves"] .ll-equation{margin:18px 0;padding:12px 0;border:0;font-size:36px}
 .entry[data-reading-composition="moves"] .ll-terms{grid-template-columns:1fr 1.2fr;margin:18px 0}
@@ -638,6 +656,22 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 @container ll-reading (max-width:850px){.ll-touching-feature-row{grid-template-columns:minmax(0,1fr);gap:0!important}}
 @media(prefers-reduced-motion:reduce){.ll-reading-index{transition:none;transform:none}}
 
+/* The upper household mechanism and lower Assumption Test are authored as
+   consecutive features in one joined sequence. Align the two left tracks
+   exactly; adjacent right-hand editorial and Notebook material remains distinct. */
+.entry[data-reading-composition] .ll-joined-sequence>.ll-household-complementarity,
+.entry[data-reading-composition] .ll-joined-sequence>.ll-household-policy-robustness>.ll-household-test-and-research{
+ grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+ gap:32px
+}
+@container ll-reading (max-width:850px){
+ .entry[data-reading-composition] .ll-joined-sequence>.ll-household-complementarity,
+ .entry[data-reading-composition] .ll-joined-sequence>.ll-household-policy-robustness>.ll-household-test-and-research{
+  grid-template-columns:minmax(0,1fr);
+  gap:26px
+ }
+}
+
 /* PR #58 visual correction: the authored grid is the real common boundary.
    Restore its previously accepted outline without the removed fake side pillars
    or any gap-filling rectangles. Only a genuine feature-only row gets this frame. */
@@ -658,7 +692,6 @@ body.glance .entry[data-editorial-system="6"]{display:none}
  border-radius:0
 }
 .entry[data-reading-composition] .ll-household-policy-robustness>.ll-arranged-row{
- gap:clamp(22px,2.3vw,34px);
  align-items:start
 }
 .entry[data-reading-composition] .ll-household-policy-robustness .ll-feature-host>.ll-assumption-test{
