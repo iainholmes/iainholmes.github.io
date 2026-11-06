@@ -42,4 +42,4 @@ PY
           fetch fire https://www.nature.com/articles/s41467-026-78904-z.pdf
           fetch groundwater https://www.dallasfed.org/~/media/documents/research/papers/2026/wp2626.pdf
           fetch pollution https://www.nber.org/system/files/working_papers/w35969/w35969.pdf
-          echo 'SOURCE_PROBE_FINISHED' # reevaluation
+          echo 'SOURCE_PROBE_FINISHED' # verification
