@@ -22,6 +22,8 @@ Starting master: `9275f9bad554ba2a0534b6f47ebc729de3510114` (5 November 2026). T
 
 Screenshots and detailed local JSON evidence are delivered in the task's `outputs/viewport-refinement` directory. These initial images show the local candidate; production status and evidence are reported only after the deployed assets are independently checked.
 
+The first CI run exposed a measurement difference: headless Chrome includes the reserved scrollbar gutter in `documentElement.clientWidth`, while its body/paper box excludes it. The inset assertion now measures the actual body/content boundary, just as the Index centering assertion does. Safe-clearance limits are unchanged; no CSS was weakened to satisfy the test.
+
 ## Preservation and limits
 
 Original reading prose, equations, assumptions, citations, source-evidence records/classifications, artwork, palettes, composition registry, historical dates, five-reading editions, Field Register, cumulative Notebook, Heron artwork, hash links and site-wide navigation remain unchanged. Other publications are outside this change. Existing incomplete historical verification remains incomplete; passing layout/source-consistency checks is not a new scholarly attestation.
