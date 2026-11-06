@@ -1,9 +1,17 @@
 /* The edition's reading folio. Opening pages and shared Periodicals UI keep
    their own canvas. All reading and closing layout rules live here. */
-.edition-body{display:grid;grid-template-columns:184px minmax(0,1fr);column-gap:44px;row-gap:0;align-items:start;overflow-wrap:anywhere;counter-reset:research-reading}
+html:has(main#edition){scrollbar-gutter:stable}
+.edition-body{display:grid;grid-template-columns:clamp(154px,12vw,204px) minmax(0,1fr);column-gap:clamp(24px,2.2vw,44px);row-gap:0;align-items:start;overflow-wrap:anywhere;counter-reset:research-reading}
 .contents-boundary{grid-column:1;grid-row:1;align-self:stretch;min-width:0}
 .edition-body>.synthesis,.edition-body>.knowledge,.edition-body>.editorial-note{grid-column:1/-1;min-width:0}
-@media(min-width:1181px){.edition-body{width:min(1462px,calc(100vw - 88px));margin-left:calc((100% - min(1462px,calc(100vw - 88px)))/2)}}
+/* Only the reading spread escapes the opening-page measure. Its width comes
+   from the actual main content box, including scrollbar clearance. */
+@media(min-width:821px){
+ main.wrap{max-width:none;padding-inline:clamp(22px,1.4vw,40px)}
+ .edition>:not(.edition-body){max-width:1232px;margin-inline:auto}
+ .edition-body{width:auto;max-width:none;margin-inline:0}
+ .edition-body>.synthesis,.edition-body>.knowledge,.edition-body>.editorial-note{width:100%;max-width:1462px;justify-self:center}
+}
 
 /* Chapter navigator: a numbered reading register, then the issue's apparatus. */
 .contents{position:sticky;top:70px;padding:48px 0 28px;border-top:1px solid var(--ink)}
@@ -198,22 +206,22 @@ html[data-mode="night"] .synthesis{background:#0f2b38}
 html[data-mode="night"] .ll-feature{color:var(--text)}html[data-mode="night"] .ll-estimation-desk{background:color-mix(in srgb,var(--paper) 96%,var(--forest))}
 
 /* Reading-owned color profiles: authored metadata, no rotation. */
-.entry[data-reading-palette="copper"]{--feature-accent:color-mix(in srgb,var(--clay) 82%,var(--pollen));--feature-wash:color-mix(in srgb,#ead2ac 16%,var(--paper))}
-html[data-mode="night"] .entry[data-reading-palette="copper"]{--feature-wash:color-mix(in srgb,#2d2217 28%,var(--paper));--feature-accent:color-mix(in srgb,var(--clay) 82%,var(--pollen))}
-.entry[data-reading-palette="forest"]{--feature-accent:var(--forest);--feature-wash:color-mix(in srgb,#d9e6ce 28%,var(--paper))}
-html[data-mode="night"] .entry[data-reading-palette="forest"]{--feature-wash:color-mix(in srgb,#19291c 32%,var(--paper));--feature-accent:var(--forest)}
-.entry[data-reading-palette="estuary"]{--feature-accent:var(--river);--feature-wash:color-mix(in srgb,#d6e7f2 24%,var(--paper))}
-html[data-mode="night"] .entry[data-reading-palette="estuary"]{--feature-wash:color-mix(in srgb,#132a38 32%,var(--paper));--feature-accent:var(--river)}
-.entry[data-reading-palette="lichen"]{--feature-accent:color-mix(in srgb,var(--lichen) 70%,var(--forest));--feature-wash:color-mix(in srgb,var(--lichen-wash) 42%,var(--paper))}
-html[data-mode="night"] .entry[data-reading-palette="lichen"]{--feature-wash:color-mix(in srgb,#1d2718 45%,var(--paper));--feature-accent:color-mix(in srgb,var(--lichen) 70%,var(--forest))}
-.entry[data-reading-palette="sage"]{--feature-accent:color-mix(in srgb,var(--sage) 60%,var(--forest));--feature-wash:color-mix(in srgb,#e0e9df 34%,var(--paper))}
-html[data-mode="night"] .entry[data-reading-palette="sage"]{--feature-wash:color-mix(in srgb,#1d2a24 34%,var(--paper));--feature-accent:color-mix(in srgb,var(--sage) 60%,var(--forest))}
-.entry[data-reading-palette="pollen"]{--feature-accent:color-mix(in srgb,var(--pollen) 65%,var(--forest));--feature-wash:color-mix(in srgb,#f0e5bf 22%,var(--paper))}
-html[data-mode="night"] .entry[data-reading-palette="pollen"]{--feature-wash:color-mix(in srgb,#2c2816 28%,var(--paper));--feature-accent:color-mix(in srgb,var(--pollen) 65%,var(--forest))}
-.entry[data-reading-palette="slate"]{--feature-accent:var(--charcoal);--feature-wash:color-mix(in srgb,#dfe4e8 30%,var(--paper))}
-html[data-mode="night"] .entry[data-reading-palette="slate"]{--feature-wash:color-mix(in srgb,#20272c 35%,var(--paper));--feature-accent:var(--charcoal)}
-.entry[data-reading-palette="tidal"]{--feature-accent:var(--river-deep);--feature-wash:color-mix(in srgb,#d1e5df 22%,var(--paper))}
-html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:color-mix(in srgb,#102b2b 32%,var(--paper));--feature-accent:var(--river)}
+.entry[data-reading-palette="copper"]{--feature-accent:color-mix(in srgb,var(--clay) 82%,var(--pollen));--feature-wash:color-mix(in srgb,#ead2ac 16%,transparent)}
+html[data-mode="night"] .entry[data-reading-palette="copper"]{--feature-wash:color-mix(in srgb,#2d2217 28%,transparent);--feature-accent:color-mix(in srgb,var(--clay) 82%,var(--pollen))}
+.entry[data-reading-palette="forest"]{--feature-accent:var(--forest);--feature-wash:color-mix(in srgb,#d9e6ce 28%,transparent)}
+html[data-mode="night"] .entry[data-reading-palette="forest"]{--feature-wash:color-mix(in srgb,#19291c 32%,transparent);--feature-accent:var(--forest)}
+.entry[data-reading-palette="estuary"]{--feature-accent:var(--river);--feature-wash:color-mix(in srgb,#d6e7f2 24%,transparent)}
+html[data-mode="night"] .entry[data-reading-palette="estuary"]{--feature-wash:color-mix(in srgb,#132a38 32%,transparent);--feature-accent:var(--river)}
+.entry[data-reading-palette="lichen"]{--feature-accent:color-mix(in srgb,var(--lichen) 70%,var(--forest));--feature-wash:color-mix(in srgb,var(--lichen-wash) 42%,transparent)}
+html[data-mode="night"] .entry[data-reading-palette="lichen"]{--feature-wash:color-mix(in srgb,#1d2718 45%,transparent);--feature-accent:color-mix(in srgb,var(--lichen) 70%,var(--forest))}
+.entry[data-reading-palette="sage"]{--feature-accent:color-mix(in srgb,var(--sage) 60%,var(--forest));--feature-wash:color-mix(in srgb,#e0e9df 34%,transparent)}
+html[data-mode="night"] .entry[data-reading-palette="sage"]{--feature-wash:color-mix(in srgb,#1d2a24 34%,transparent);--feature-accent:color-mix(in srgb,var(--sage) 60%,var(--forest))}
+.entry[data-reading-palette="pollen"]{--feature-accent:color-mix(in srgb,var(--pollen) 65%,var(--forest));--feature-wash:color-mix(in srgb,#f0e5bf 22%,transparent)}
+html[data-mode="night"] .entry[data-reading-palette="pollen"]{--feature-wash:color-mix(in srgb,#2c2816 28%,transparent);--feature-accent:color-mix(in srgb,var(--pollen) 65%,var(--forest))}
+.entry[data-reading-palette="slate"]{--feature-accent:var(--charcoal);--feature-wash:color-mix(in srgb,#dfe4e8 30%,transparent)}
+html[data-mode="night"] .entry[data-reading-palette="slate"]{--feature-wash:color-mix(in srgb,#20272c 35%,transparent);--feature-accent:var(--charcoal)}
+.entry[data-reading-palette="tidal"]{--feature-accent:var(--river-deep);--feature-wash:color-mix(in srgb,#d1e5df 22%,transparent)}
+html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:color-mix(in srgb,#102b2b 32%,transparent);--feature-accent:var(--river)}
 .edition[data-reading-architecture] .reading-column{position:relative;display:flow-root;padding:0 30px;min-width:0;--pillar-copper:color-mix(in srgb,var(--clay) 82%,var(--pollen))}
 .edition[data-reading-architecture] .contents-boundary::after{display:none}
 .edition[data-reading-architecture] .reading-column::before,.edition[data-reading-architecture] .reading-column::after{content:"";display:block;position:absolute;top:0;bottom:0;width:12px;pointer-events:none;background:linear-gradient(to bottom,var(--pillar-copper) 0 110px,var(--forest) 110px calc(100% - 110px),var(--pillar-copper) calc(100% - 110px) 100%);clip-path:polygon(0 0,100% 0,100% 88px,67% 110px,67% calc(100% - 110px),100% calc(100% - 88px),100% 100%,0 100%,0 calc(100% - 88px),33% calc(100% - 110px),33% 110px,0 88px)}
@@ -247,7 +255,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .entry[data-reading-composition] .ll-argument>.ll-label{display:none}
 .entry[data-reading-composition] .ll-argument p{font:italic 19px/1.5 var(--serif);color:var(--river);max-width:none;margin:0}
 /* Every feature owns its complete contents and boundary; no text crosses panels. */
-.entry[data-reading-composition] .ll-feature{display:flow-root;min-width:0;margin:0;padding:25px;border:0;background:var(--feature-wash);font:400 17px/1.65 var(--serif);align-self:start}
+.entry[data-reading-composition] .ll-feature{display:flow-root;min-width:0;margin:0;padding:25px;border:1px solid color-mix(in srgb,var(--feature-accent) 25%,transparent);background:var(--feature-wash);border-radius:16px 24px 16px 20px;font:400 17px/1.65 var(--serif);align-self:start}
 .entry[data-reading-composition] .ll-feature-head{margin:0 0 22px}
 .entry[data-reading-composition] .ll-feature-category{display:flex;align-items:baseline;gap:12px}
 .entry[data-reading-composition] .ll-feature-no{font-size:11px;flex:none}
@@ -278,7 +286,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 /* Coal: standards form an introduction; adjacent features share one bounded spread. */
 .ll-coal-introduction{display:grid;grid-template-columns:minmax(0,var(--fit-share,1fr)) minmax(0,var(--fit-rest,1fr));gap:34px;align-items:start;margin-bottom:30px}
 .ll-coal-introduction .ll-interpretation{margin:0}
-.ll-coal-featuregroup{position:relative;display:grid;grid-template-columns:minmax(0,var(--fit-share,1fr)) minmax(0,var(--fit-rest,1fr));background:var(--feature-wash);border:0;align-items:start;border-radius:12px 24px 12px 18px}
+.ll-coal-featuregroup{position:relative;display:grid;grid-template-columns:minmax(0,var(--fit-share,1fr)) minmax(0,var(--fit-rest,1fr));background:transparent;border:0;align-items:start;border-radius:12px 24px 12px 18px}
 .ll-coal-plate,.ll-coal-identification{min-width:0}
 /* Miniature framing pillars only occupy measured feature-to-feature joins. */
 .ll-shared-field,.ll-coal-featuregroup,.ll-moves-featuregroup{position:relative}
@@ -286,8 +294,8 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .ll-feature-divider{position:absolute;display:block;pointer-events:none;opacity:var(--interior-rule-opacity,.38);z-index:1}
 .ll-divider-vertical{width:8px;height:var(--divider-length);background:linear-gradient(to bottom,var(--pillar-copper) 0 var(--divider-cap),var(--forest) var(--divider-cap) calc(100% - var(--divider-cap)),var(--pillar-copper) calc(100% - var(--divider-cap)) 100%);clip-path:polygon(0 0,100% 0,100% var(--divider-shoulder),67% var(--divider-cap),67% calc(100% - var(--divider-cap)),100% calc(100% - var(--divider-shoulder)),100% 100%,0 100%,0 calc(100% - var(--divider-shoulder)),33% calc(100% - var(--divider-cap)),33% var(--divider-cap),0 var(--divider-shoulder))}
 .ll-divider-horizontal{height:8px;width:var(--divider-length);background:linear-gradient(to right,var(--pillar-copper) 0 var(--divider-cap),var(--forest) var(--divider-cap) calc(100% - var(--divider-cap)),var(--pillar-copper) calc(100% - var(--divider-cap)) 100%);clip-path:polygon(0 0,var(--divider-shoulder) 0,var(--divider-cap) 33%,calc(100% - var(--divider-cap)) 33%,calc(100% - var(--divider-shoulder)) 0,100% 0,100% 100%,calc(100% - var(--divider-shoulder)) 100%,calc(100% - var(--divider-cap)) 67%,var(--divider-cap) 67%,var(--divider-shoulder) 100%,0 100%)}
-.entry[data-reading-composition="coal"] .ll-coal-featuregroup .ll-feature{border:0;background:none}
-.entry[data-reading-composition="coal"] .ll-coal-identification .ll-feature{border:0}
+.entry[data-reading-composition="coal"] .ll-coal-featuregroup .ll-feature{background:var(--feature-wash)}
+
 .entry[data-reading-composition="coal"] .ll-terms{grid-template-columns:1fr}
 .entry[data-reading-composition="coal"] .ll-equation{font-size:24px;padding:17px 0;margin:20px 0}
 .entry[data-reading-composition="coal"] .ll-desktop-equation{display:none}.entry[data-reading-composition="coal"] .ll-mobile-equation{display:block}
@@ -295,7 +303,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .ll-coal-close .ll-evidence-destination{margin:0}.ll-coal-notebook{padding-top:0;border:0;margin:0}
 /* Methane: full horizontal register, an intervening standard, then tall accounting with marginal notes. */
 .ll-methane-register{margin-bottom:30px}
-.entry[data-reading-composition="methane"] .ll-incidence-ledger{border:0}
+
 .entry[data-reading-composition="methane"] .ll-ledger{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;border:0}
 .entry[data-reading-composition="methane"] .ll-ledger li{background:none;padding:0;border:0}
 .entry[data-reading-composition="methane"] .ll-ledger .ll-number{font-size:45px;margin-bottom:14px}
@@ -306,7 +314,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .ll-methane-accounting,.ll-methane-annotation{min-width:0}
 .ll-methane-annotation .ll-evidence-destination{margin:0}
 .ll-methane-annotation .ll-notebook-unit{margin-top:28px;padding-top:20px;border-top:3px double var(--forest)}
-.entry[data-reading-composition="methane"] .ll-methane-accounting .ll-feature{border-right-width:0}
+
 .entry[data-reading-composition="methane"] .ll-large-value{font:500 72px var(--ll-ledger)}.entry[data-reading-composition="methane"] .ll-mid-value{font:500 43px var(--ll-ledger)}.entry[data-reading-composition="methane"] .ll-subtotal{font:500 89px var(--ll-ledger)}
 .entry[data-reading-composition="methane"] .ll-connector{fill:none;stroke:var(--clay);stroke-width:2}
 /* MOVES6: one estuary folio, with a mathematical ribbon and a four-part testing instrument. */
@@ -322,16 +330,14 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
  border:1px solid color-mix(in srgb,var(--feature-accent) 25%,transparent);
  border-top:5px solid var(--feature-accent);
  border-bottom:0;
- border-radius:24px 12px 0 0;
- box-shadow:inset 0 0 9px 1px var(--paper)
+ box-shadow:none
 }
 .entry[data-reading-composition="moves"] .ll-moves-test>.ll-assumption-test{
  background:var(--feature-wash);
  border:1px solid color-mix(in srgb,var(--feature-accent) 25%,transparent);
  border-left:5px solid var(--feature-accent);
  border-top:0;
- border-radius:0 0 24px 12px;
- box-shadow:inset 0 0 9px 1px var(--paper)
+ box-shadow:none
 }
 .entry[data-reading-composition="moves"] .ll-moves-identity .ll-feature{display:flow-root;border-bottom:0}
 .entry[data-reading-composition="moves"] .ll-equation{margin:18px 0;padding:12px 0;border:0;font-size:36px}
@@ -352,7 +358,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .ll-paper-design{margin-top:28px}
 .entry[data-reading-composition="paper"] .ll-paper-plate .ll-feature{border-top-width:0}
 .entry[data-reading-composition="paper"] .ll-poster-value{font:500 47px var(--ll-ledger)}
-.entry[data-reading-composition="paper"] .ll-paper-model .ll-feature{display:grid;grid-template-columns:minmax(0,var(--fit-share,1fr)) minmax(0,var(--fit-rest,1.3fr));gap:16px 30px;border:0;border-radius:12px 12px 24px 12px}
+.entry[data-reading-composition="paper"] .ll-paper-model .ll-feature{display:grid;grid-template-columns:minmax(0,var(--fit-share,1fr)) minmax(0,var(--fit-rest,1.3fr));gap:16px 30px;border-radius:12px 12px 24px 12px}
 .entry[data-reading-composition="paper"] .ll-paper-model .ll-feature-head,.entry[data-reading-composition="paper"] .ll-paper-model .ll-reading-key{grid-column:1/-1}
 .entry[data-reading-composition="paper"] .ll-paper-model .ll-feature-category h3{font-style:italic}
 .entry[data-reading-composition="paper"] .ll-equation-column{grid-column:1;min-width:0;align-self:center}
@@ -390,7 +396,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 }
 @container ll-reading (max-width:850px){
  .ll-coal-introduction,.ll-coal-featuregroup,.ll-coal-close,.ll-methane-lower,.ll-moves-main,.ll-paper-close{grid-template-columns:minmax(0,1fr);gap:28px}
- .entry[data-reading-composition="coal"] .ll-coal-identification .ll-feature{border:0}
+
  .ll-policy-counterfactual{width:100%;margin-left:0}
  .ll-paper-plate{float:none;width:100%;margin:0 0 28px}
  .entry[data-reading-composition="paper"] .ll-paper-model .ll-feature,.entry[data-reading-composition="paper"] .ll-paper-model .ll-feature-head,.entry[data-reading-composition="moves"] .ll-moves-identity .ll-feature{display:block}
@@ -457,7 +463,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 @container ll-reading (max-width:850px){.ll-paper-close{display:flex;flex-direction:column}.ll-paper-close>.ll-evidence-destination{order:0}.ll-paper-notebook{order:1}}
 
 /* Explanation is part of the feature, with readable definitions and no faded text. */
-.entry[data-reading-composition]{--interior-rule-inset:10%;--interior-rule-length:80%;--interior-rule-width:8px;--interior-rule-cap:73px;--interior-rule-shoulder:59px;--interior-rule-opacity:.38;--feature-rule:color-mix(in srgb,var(--feature-accent) 28%,var(--paper))}
+.entry[data-reading-composition]{--interior-rule-inset:5%;--interior-rule-length:90%;--interior-rule-width:8px;--interior-rule-cap:73px;--interior-rule-shoulder:59px;--interior-rule-opacity:.38;--feature-rule:color-mix(in srgb,var(--feature-accent) 28%,var(--paper))}
 .entry[data-reading-composition] .ll-feature h5{font-size:17px}
 .entry[data-reading-composition] .ll-reading-key{margin:0 0 24px;max-width:none}
 .entry[data-reading-composition] .ll-reading-key h5{font:600 19px/1.35 var(--serif);margin:0 0 8px}
@@ -471,7 +477,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .entry[data-reading-composition="methane"] .ll-ledger h5{font-size:20px}
 .entry[data-reading-composition="methane"] .ll-incidence-ledger{border-radius:12px 12px 26px 12px}
 .entry[data-reading-composition="methane"] .ll-methane-accounting .ll-feature{border-radius:24px 12px 12px 12px}
-.entry[data-reading-composition="paper"] .ll-paper-plate .ll-feature{border-radius:12px 24px 12px 24px;border:0}
+.entry[data-reading-composition="paper"] .ll-paper-plate .ll-feature{border-radius:12px 24px 12px 24px}
 .ll-moves-test::before{content:none}
 .ll-dock-slot:empty,.ll-heron-dock:empty{display:none!important}
 .ll-notebook-unit{margin-top:22px;min-width:0}
@@ -498,7 +504,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .entry[data-reading-composition="methane"] .ll-incidence-ledger,
 .entry[data-reading-composition="methane"] .ll-methane-accounting .ll-feature,
 .entry[data-reading-composition="paper"] .ll-paper-plate .ll-feature,
-.entry[data-reading-composition="paper"] .ll-paper-model .ll-feature{box-shadow:inset 0 0 9px 1px var(--paper)}
+.entry[data-reading-composition="paper"] .ll-paper-model .ll-feature{box-shadow:none}
 
 /* Reading Index: centered scholarly directory. Preserve the editorial contents and tools. */
 .ll-reading-index{position:fixed;inset:0;margin:auto;width:min(880px,calc(100vw - 48px));height:min(88dvh,930px);max-height:calc(100dvh - 40px);padding:0;border:1px solid var(--hair);border-top:6px solid var(--forest);border-bottom:3px solid var(--forest);border-radius:6px 6px 12px 12px;background:var(--paper);color:var(--ink);box-shadow:0 25px 90px rgba(0,0,0,.22);transform:translateY(14px) scale(.985);opacity:0;transition:transform .22s cubic-bezier(.2,.8,.2,1),opacity .22s ease;overflow-y:auto;overscroll-behavior:contain}
@@ -541,8 +547,8 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 .ll-arranged-row>div>.ll-feature-host+.ll-feature-host{margin-top:28px}
 .ll-feature-host{margin:28px 0}
 .ll-arranged-row>div>.ll-feature-host:first-child{margin-top:0}.ll-arranged-row>div>.ll-feature-host:last-child{margin-bottom:0}
-.ll-shared-field{background:var(--feature-wash);box-shadow:inset 0 0 9px 1px var(--paper);margin:30px 0;display:flow-root;min-width:0;border-radius:16px 26px 16px 20px}
-.entry[data-reading-composition] .ll-shared-field .ll-feature{background:none;border:0;box-shadow:none}
+.ll-shared-field{background:transparent;box-shadow:none;margin:30px 0;display:flow-root;min-width:0;border-radius:16px 26px 16px 20px}
+.entry[data-reading-composition] .ll-shared-field .ll-feature{background:var(--feature-wash);box-shadow:none}
 .ll-shared-field .ll-feature-host{margin:0}
 .ll-shared-field>.ll-arranged-row{margin:0;gap:0}
 .ll-shared-field .ll-authored-inset{margin:0}
@@ -555,8 +561,7 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 .ll-authored-float>.ll-interpretation,.ll-authored-float>.ll-opening,.ll-authored-float>.ll-notebook-home{display:flow-root;min-width:0}
 .ll-standard-break{margin:30px 0}.ll-notebook-home{margin:26px 0}
 .ll-notebook-home:not(:has(.ll-notebook-unit,.perch)){display:none}
-.entry[data-reading-composition] .ll-feature-host>.ll-feature{border-radius:16px 24px 16px 20px;box-shadow:inset 0 0 9px 1px var(--paper)}
-.entry[data-reading-composition] .ll-shared-field .ll-feature-host>.ll-feature{border-radius:0;box-shadow:none}
+.entry[data-reading-composition] .ll-feature-host>.ll-feature{border-radius:16px 24px 16px 20px;box-shadow:none}
 /* One typographic identity for standards, recognizable families for analytical work. */
 .entry[data-reading-composition] .ll-feature{container-type:inline-size;container-name:analytical-feature}
 .entry[data-reading-composition] .ll-long-view .ll-feature-category h3{font:italic 500 46px/1.12 var(--ll-time)}
@@ -631,7 +636,7 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 .ll-touching-feature-row{position:relative;gap:0!important;align-items:stretch;margin-block:28px}
 .ll-touching-feature-row>div{display:flex;flex-direction:column;min-width:0}
 .ll-touching-feature-row .ll-feature-host{display:flex;flex-direction:column;flex:1;margin:0!important}
-.entry[data-reading-composition] .ll-touching-feature-row .ll-feature-host>.ll-feature{flex:1;align-self:stretch;border-radius:0;box-shadow:none}
+.entry[data-reading-composition] .ll-touching-feature-row .ll-feature-host>.ll-feature{flex:1;align-self:stretch;box-shadow:none}
 /* Explicitly authored runs share actual block edges, including staggered widths.
    The wrapper has no surface, border, height or decorative pseudo-elements. */
 .ll-joined-sequence{margin:28px 0;display:flow-root}
@@ -641,16 +646,16 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 .ll-joined-sequence>.ll-arranged-row>div{display:flex;flex-direction:column}
 .ll-joined-sequence>.ll-arranged-row>div>.ll-feature-host{display:flex;flex-direction:column;flex:1}
 .entry[data-reading-composition] .ll-joined-sequence .ll-feature-host>.ll-feature{flex:1;align-self:stretch;box-shadow:none}
-.entry[data-reading-composition] .ll-feature.ll-contact-top{border-top-left-radius:0;border-top-right-radius:0}
-.entry[data-reading-composition] .ll-feature.ll-contact-bottom{border-bottom-left-radius:0;border-bottom-right-radius:0}
-.entry[data-reading-composition] .ll-feature.ll-contact-left{border-top-left-radius:0;border-bottom-left-radius:0}
-.entry[data-reading-composition] .ll-feature.ll-contact-right{border-top-right-radius:0;border-bottom-right-radius:0}
+/* Only corners reached by the measured shared segment become interior.
+   A staggered neighbor must not square an unrelated exterior corner. */
+.entry[data-reading-composition] .ll-feature[data-contact-corners~="tl"]{border-top-left-radius:0}
+.entry[data-reading-composition] .ll-feature[data-contact-corners~="tr"]{border-top-right-radius:0}
+.entry[data-reading-composition] .ll-feature[data-contact-corners~="bl"]{border-bottom-left-radius:0}
+.entry[data-reading-composition] .ll-feature[data-contact-corners~="br"]{border-bottom-right-radius:0}
 .ll-quiet-centered{align-self:center}
 .ll-touching-feature-stack{position:relative}
 .ll-touching-feature-stack>.ll-feature-host.ll-join-next{margin-bottom:0!important}
 .ll-touching-feature-stack>.ll-feature-host.ll-join-prev{margin-top:0!important}
-.entry[data-reading-composition] .ll-touching-feature-stack>.ll-feature-host.ll-join-next>.ll-feature{border-bottom-left-radius:0;border-bottom-right-radius:0;box-shadow:none}
-.entry[data-reading-composition] .ll-touching-feature-stack>.ll-feature-host.ll-join-prev>.ll-feature{border-top-left-radius:0;border-top-right-radius:0;box-shadow:none}
 .ll-touching-feature-stack>.ll-shared-field.ll-join-next{margin-bottom:0!important;border-bottom-left-radius:0;border-bottom-right-radius:0}
 .ll-touching-feature-stack>.ll-shared-field.ll-join-prev{margin-top:0!important;border-top-left-radius:0;border-top-right-radius:0}
 @container ll-reading (max-width:850px){.ll-touching-feature-row{grid-template-columns:minmax(0,1fr);gap:0!important}}
@@ -675,13 +680,8 @@ body.glance .entry[data-editorial-system="6"]{display:none}
 /* PR #58 visual correction: the authored grid is the real common boundary.
    Restore its previously accepted outline without the removed fake side pillars
    or any gap-filling rectangles. Only a genuine feature-only row gets this frame. */
-.entry[data-reading-composition] .ll-touching-feature-row{
- background:var(--feature-wash);
- border:1px solid color-mix(in srgb,var(--feature-accent,var(--forest)) 32%,transparent);
- border-top:2px solid var(--forest);
- border-radius:16px 26px 16px 20px;
- box-shadow:inset 0 0 9px 1px var(--paper)
-}
+/* Frames belong to the real feature cells; wrappers add no second wash. */
+.entry[data-reading-composition] .ll-touching-feature-row{background:transparent;border:0;box-shadow:none}
 /* The October 30 Assumption Test shares a layout ROW with a research notebook,
    not a boundary with another Special Feature. The former shared-field wash
    suppressed its blue family rule and turned two editorial roles into one field.
@@ -695,10 +695,9 @@ body.glance .entry[data-editorial-system="6"]{display:none}
  align-items:start
 }
 .entry[data-reading-composition] .ll-household-policy-robustness .ll-feature-host>.ll-assumption-test{
- background:color-mix(in srgb,var(--river) 6%,var(--paper));
+ background:var(--feature-wash);
  border-left:5px solid var(--river);
- border-radius:16px 24px 16px 20px;
- box-shadow:inset 0 0 9px 1px var(--paper)
+ box-shadow:none
 }
 .entry[data-reading-composition] .ll-household-policy-robustness .ll-notebook-home{
  background:var(--paper);
@@ -743,3 +742,17 @@ body.glance .entry[data-editorial-system="6"]{display:none}
  --special-primary:var(--clay);
  background-image:linear-gradient(100deg,color-mix(in srgb,var(--clay) 8%,transparent),transparent 75%)}
 
+
+/* Wide prose reflows within its existing editorial unit. Graphics retain their
+   authored dimensions and scales; headings and folios do not grow with it. */
+@container ll-reading (min-width:1500px){
+ .entry[data-reading-composition] .ll-reading>.ll-interpretation{max-width:150ch;margin-inline:auto;font-size:19px}
+ .entry[data-reading-composition] .ll-editorial,
+ .entry[data-reading-composition] .research-note{max-width:150ch;margin-inline:auto}
+ .entry[data-reading-composition] .finding,
+ .entry[data-reading-composition] .ll-editorial>p,
+ .entry[data-reading-composition] .research-agenda>p{column-count:2;column-width:44ch;column-gap:36px;orphans:3;widows:3}
+ .entry[data-reading-composition] .finding{max-width:150ch;margin-inline:auto}
+ .entry[data-reading-composition] .ll-feature>p:not(.ll-closing){max-width:95ch}
+ .entry[data-reading-composition] .ll-figure{max-width:1100px;margin-inline:auto}
+}
