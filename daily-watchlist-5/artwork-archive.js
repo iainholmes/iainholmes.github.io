@@ -2340,6 +2340,68 @@
         "seed": 3049251750,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Research benches lose staffed capacity\"><title>Treasury certifies 204 new North Carolina Opportunity Zones</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-06-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-06-05)\"><path d=\"M75 525H730\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M95 235H300V285H95ZM385 385H715V435H385Z\" fill=\"#1b4a6b\"/><path d=\"M135 285V525M260 285V525M420 435V525M680 435V525\" stroke=\"#2c241d\" stroke-width=\"23\"/><path d=\"M170 214V160H207V113H245L270 177L233 210Z\" fill=\"#2c241d\"/><path d=\"M466 360V254H534V360M586 360V254H654V360\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/><path d=\"M548 105L548 190M510 153L548 195L586 153\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
       }
+    },
+    "2026-11-07": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-07",
+        "number": "01",
+        "category": "Markets · policy expectations",
+        "topic": "research",
+        "title": "Midterm results reset expectations across Wall Street",
+        "composition": "capacity-columns",
+        "signature": "plate:capacity-columns",
+        "seed": 2513463422,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Unequal capacity columns carry a shared load\"><title>Midterm results reset expectations across Wall Street</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-07-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-07-01)\"><path d=\"M85 140H715V202H85Z\" fill=\"#2c241d\"/><path d=\"M125 202V530H255V202M345 202V385H475V202M565 202V290H695V202\" fill=\"#1b4a6b\"/><path d=\"M345 465H475M565 375H695M565 465H695\" stroke=\"#7c5a3e\" stroke-width=\"27\"/><path d=\"M95 570H725\" stroke=\"#7a1f33\" stroke-width=\"17\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-07",
+        "number": "02",
+        "category": "Climate · emissions monitoring",
+        "topic": "research",
+        "title": "Satellite readings identify concentrated methane releases from Turkish landfills",
+        "composition": "observation-lens",
+        "signature": "plate:observation-lens",
+        "seed": 2228933189,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Observation links a broad field to a decision point\"><title>Satellite readings identify concentrated methane releases from Turkish landfills</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-07-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-07-02)\"><circle cx=\"294\" cy=\"285\" r=\"178\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"32\"/><path d=\"M180 285Q294 160 408 285Q294 410 180 285Z\" fill=\"#1b4a6b\"/><circle cx=\"294\" cy=\"285\" r=\"46\" fill=\"#7a1f33\"/><path d=\"M420 410L577 552\" stroke=\"#2c241d\" stroke-width=\"45\"/><path d=\"M560 120H710V295H560Z\" fill=\"#c4452c\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-07",
+        "number": "03",
+        "category": "Technology · capital markets",
+        "topic": "finance",
+        "title": "Reported $11 billion financing values OpenAI at $1.25 trillion",
+        "composition": "finance-ledger",
+        "signature": "plate:finance-ledger",
+        "seed": 471772074,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A ledger is inspected beside a hidden transfer channel\"><title>Reported $11 billion financing values OpenAI at $1.25 trillion</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-07-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-07-03)\"><path d=\"M85 130H360V540H85Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M125 200H325M125 270H325M125 340H260M125 410H300\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"548\" cy=\"284\" r=\"112\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"35\"/><path d=\"M624 367L718 489\" stroke=\"#7a1f33\" stroke-width=\"42\"/><path d=\"M402 530V425H475V345H548\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"21\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-07",
+        "number": "04",
+        "category": "Energy · crude oil trade",
+        "topic": "heat",
+        "title": "Venezuelan crude deliveries to U.S. refineries reach a nine-year high",
+        "composition": "heat-exposure",
+        "signature": "plate:heat-exposure",
+        "seed": 1841500338,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An exposure field crossed by people and thermal bands\"><title>Venezuelan crude deliveries to U.S. refineries reach a nine-year high</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-07-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-07-04)\"><path d=\"M90 115H710V510H90Z\" fill=\"#7a1f33\"/><path d=\"M90 205Q245 125 410 205T710 205M90 325Q245 245 410 325T710 325M90 445Q245 365 410 445T710 445\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"45\"/><g fill=\"#f4ead7\"><circle cx=\"255\" cy=\"283\" r=\"38\"/><path d=\"M205 450V355Q255 305 305 355V450Z\"/><circle cx=\"558\" cy=\"360\" r=\"38\"/><path d=\"M508 525V430Q558 380 608 430V525Z\"/></g></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-07",
+        "number": "05",
+        "category": "North Carolina · water scarcity",
+        "topic": "climate",
+        "title": "North Carolina reservoirs fall as central and eastern drought intensifies",
+        "composition": "climate-watershed",
+        "signature": "plate:climate-watershed",
+        "seed": 1410589941,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A high lake spills toward inhabited lower ground\"><title>North Carolina reservoirs fall as central and eastern drought intensifies</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-07-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-07-05)\"><path d=\"M50 425L235 130L398 385L530 215L750 525H50Z\" fill=\"#1d5f47\"/><ellipse cx=\"290\" cy=\"285\" rx=\"85\" ry=\"34\" fill=\"#1b4a6b\"/><path d=\"M340 295Q340 430 570 483\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"34\"/><path d=\"M584 410L650 355L716 410V510H584Z\" fill=\"#2c241d\"/><path d=\"M93 480H234\" stroke=\"#c98a12\" stroke-width=\"25\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
