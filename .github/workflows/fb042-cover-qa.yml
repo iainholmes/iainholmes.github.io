@@ -32,12 +32,12 @@ jobs:
           node scripts/test_field_brief_cover_042.cjs
           node scripts/test_issue_marks.cjs
           node scripts/test_field_brief_order.cjs
-          node scripts/test_publishing.cjs
       - name: Check official canonical publisher preparation
         run: |
           node scripts/prepare_periodicals.cjs
           node scripts/test_field_brief_cover_042.cjs
           node scripts/test_issue_marks.cjs
+          node scripts/test_publishing.cjs
           node scripts/check_field_brief.cjs 2026-11-07
           git diff --check
       - name: Confirm limited derived files and commit any canonical cache hashes
