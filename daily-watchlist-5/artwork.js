@@ -297,6 +297,7 @@
       const sameSubject=candidate.subject===old.subject,sameCaption=phrase(candidate.phrase)===phrase(old.phrase);
       let reason;
       if(i<3&&sameCaption)reason='repeated recent editorial caption';
+      else if(candidate.date>='2026-11-07'&&i<2&&shared>=1)reason='reused distinctive motif from one of the two preceding issues';
       else if(i<3&&current.family===prior.family)reason='repeated recent composition family';
       else if(shared>=2&&(i<3||sameSubject&&current.family===prior.family))reason='repeated motif treatment';
       if(reason)return {ok:false,reason,date:old.date};
