@@ -1,0 +1,57 @@
+name: Field Brief Issue 042 distinct-cover QA
+on:
+  push:
+    branches: [fix/field-brief-042-distinct-cover-artwork]
+    paths:
+      - 'personal-updates/issue-mark-archive.js'
+      - 'personal-updates/index.html'
+      - 'daily-watchlist-5/artwork.js'
+      - 'scripts/test_field_brief_cover_042.cjs'
+      - '.github/workflows/fb042-cover-qa.yml'
+  pull_request:
+    branches: [master]
+    paths:
+      - '.github/workflows/fb042-cover-qa.yml'
+permissions:
+  contents: write
+concurrency:
+  group: fb042-cover-qa
+  cancel-in-progress: false
+jobs:
+  qa:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/field-brief-042-distinct-cover-artwork
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Validate newly authored original artwork and anti-repeat rules
+        run: |
+          node scripts/test_field_brief_cover_042.cjs
+          node scripts/test_issue_marks.cjs
+          node scripts/test_field_brief_order.cjs
+          node scripts/test_publishing.cjs
+      - name: Check official canonical publisher preparation
+        run: |
+          node scripts/prepare_periodicals.cjs
+          node scripts/test_field_brief_cover_042.cjs
+          node scripts/test_issue_marks.cjs
+          node scripts/check_field_brief.cjs 2026-11-07
+          git diff --check
+      - name: Confirm limited derived files and commit any canonical cache hashes
+        run: |
+          node - <<'NODE'
+          const cp=require('child_process');
+          const changed=cp.execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim().split('\n').filter(Boolean);
+          const allowed=new Set(['personal-updates/index.html','personal-updates/issue-mark-archive.js']);
+          if(changed.some(p=>!allowed.has(p)))throw Error('Unexpected post-preparation file changes: '+changed);
+          console.log('Canonical preparation changed only:',changed);
+          NODE
+          git config user.name "Field Brief artwork QA"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add personal-updates/index.html personal-updates/issue-mark-archive.js
+          git diff --cached --check
+          git commit -m "Preserve official regenerated archive/cache for corrected Issue 042" || true
+          git push origin HEAD:fix/field-brief-042-distinct-cover-artwork
