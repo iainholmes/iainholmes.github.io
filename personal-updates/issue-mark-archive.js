@@ -1796,26 +1796,35 @@
     "theme": "change",
     "framing": "Election outcomes reshape investment expectations; satellite readings expose difficult-to-capture methane; a reported AI financing round tests private valuations. Refinery feedstock data and North Carolina's worsening drought illustrate how physical constraints shape economic decisions. Distinguish new information from realized economic outcomes The week's market repricing and the OpenAI financing report concern expectations and negotiated valuations; neither demonstrates implemented legislation or operating profitability. Satellite methane releases are measured episodically, not continuously. Physical energy imports and reservoir levels are measured stocks or flows. Their economic importance depends on technology, institutional constraints and changes in behavior—not on assuming every new number is a causal estimate.",
     "version": 6,
-    "subject": "capacity",
-    "composition": "spread-long-section-staffed-bench-service-rack",
-    "signature": "issue:spread-long-section-staffed-bench-service-rack",
-    "phrase": "Markets / commitments & use",
+    "subject": "risk",
+    "composition": "authored-signal-and-reserve-20261107",
+    "signature": "issue:authored-signal-and-reserve-20261107",
+    "phrase": "Signals and scarcity",
     "seed": 3875109076,
-    "geometry": "<g transform=\"translate(70 110) scale(1.75)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"$ink\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"$accent\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"$support\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M12 3H88V97H12Z\" fill=\"$ink\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"$paper\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"$accent\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "geometry": "<circle cx=\"300\" cy=\"297\" r=\"185\" fill=\"none\" stroke=\"$ink\" stroke-width=\"19\"/><path d=\"M142 297C185 287 225 342 274 319S377 285 456 297\" fill=\"none\" stroke=\"$support\" stroke-width=\"20\" stroke-linecap=\"round\"/><path d=\"M155 385C205 359 260 413 311 385S412 359 445 385\" fill=\"none\" stroke=\"$support\" stroke-width=\"17\" stroke-linecap=\"round\"/><path d=\"M171 439C214 424 255 448 301 439S385 420 429 439\" fill=\"none\" stroke=\"$support\" stroke-width=\"12\" stroke-linecap=\"round\"/><path d=\"M161 269L238 190L304 237L405 145\" fill=\"none\" stroke=\"$accent\" stroke-width=\"23\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"161\" cy=\"269\" r=\"13\" fill=\"$ink\"/><circle cx=\"238\" cy=\"190\" r=\"14\" fill=\"$ink\"/><circle cx=\"304\" cy=\"237\" r=\"14\" fill=\"$ink\"/><circle cx=\"405\" cy=\"145\" r=\"18\" fill=\"$accent\"/><path d=\"M113 495H487\" fill=\"none\" stroke=\"$ink\" stroke-width=\"6\" stroke-linecap=\"round\"/>",
     "supportedConcepts": [
       {
-        "concept": "capacity",
-        "storyNumbers": [],
+        "concept": "market repricing",
+        "storyNumbers": [
+          "01",
+          "03"
+        ],
         "score": 2
       },
       {
-        "concept": "infrastructure",
-        "storyNumbers": [],
+        "concept": "physical scarcity",
+        "storyNumbers": [
+          "04",
+          "05"
+        ],
         "score": 2
       },
       {
-        "concept": "evidence",
-        "storyNumbers": [],
+        "concept": "measurement uncertainty",
+        "storyNumbers": [
+          "02",
+          "05"
+        ],
         "score": 2
       }
     ],
@@ -1824,6 +1833,6 @@
       "compared": 41,
       "recentWindow": 3
     },
-    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 042: Markets / commitments &amp; use\"><title>Field Brief · 042 · Markets / commitments &amp; use</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M12 3H88V97H12Z\" fill=\"#221a14\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"#f1e6d0\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"#8a2a36\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 042 / 2026-11-07</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Markets / commitments &amp; use</text></g></svg>"
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 042: Signals and scarcity\"><title>Field Brief · 042 · Signals and scarcity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><circle cx=\"300\" cy=\"297\" r=\"185\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"19\"/><path d=\"M142 297C185 287 225 342 274 319S377 285 456 297\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"20\" stroke-linecap=\"round\"/><path d=\"M155 385C205 359 260 413 311 385S412 359 445 385\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"17\" stroke-linecap=\"round\"/><path d=\"M171 439C214 424 255 448 301 439S385 420 429 439\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"12\" stroke-linecap=\"round\"/><path d=\"M161 269L238 190L304 237L405 145\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"23\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"161\" cy=\"269\" r=\"13\" fill=\"#221a14\"/><circle cx=\"238\" cy=\"190\" r=\"14\" fill=\"#221a14\"/><circle cx=\"304\" cy=\"237\" r=\"14\" fill=\"#221a14\"/><circle cx=\"405\" cy=\"145\" r=\"18\" fill=\"#8a2a36\"/><path d=\"M113 495H487\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"6\" stroke-linecap=\"round\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 042 / 2026-11-07</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Signals and scarcity</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
