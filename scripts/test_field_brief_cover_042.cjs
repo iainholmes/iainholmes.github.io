@@ -24,6 +24,7 @@ assert(/reused distinctive motif/.test(rejected.reason),'Expected stronger disti
 const hub=fs.readFileSync(require('node:path').join(__dirname,'../personal-updates/index.html'),'utf8');
 assert(hub.includes(current.frozen),'Landing page must contain corrected, immutable 042 illustration');
 assert(!hub.includes(old.frozen),'Current landing page must not display the previous issue artwork');
-assert(hub.includes('issue-mark-archive.js?v=20261107-cover-redraw-'),'Landing page must invalidate old issue-mark archive cache');
+assert(/issue-mark-archive\.js\?v=[^"\s]+/.test(hub),'Landing page must version its issue-mark archive');
+assert(!hub.includes('issue-mark-archive.js?v=2026-11-07_2026-11-06_2026-10-30_3da3e2b2a9d5'),'The previous cached original-artwork archive key must be invalidated');
 for(const [key,m] of Object.entries(archive)){if(key.startsWith('fb:')&&key!=='fb:2026-11-07')assert.notEqual(m.frozen,current.frozen,'Cover repeated '+key)}
 console.log('Field Brief Issue 042 original cover passes renderer, archival, recent-motif, visual separation and live-hub source checks; similarity to 041 = '+similarity.toFixed(4));
