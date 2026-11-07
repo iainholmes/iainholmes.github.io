@@ -1,0 +1,32 @@
+name: TEMP L&L original-source access verification
+on:
+  push:
+    branches: [recovery/ll-edition-007-20261106]
+    paths: [.github/workflows/ll-source-access-probe.yml]
+  pull_request:
+    branches: [master]
+    paths: [.github/workflows/ll-source-access-probe.yml]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Verify original primary-document URLs and checksums
+        run: |
+          set +e
+          while read -r url; do
+            echo "::group::$url"
+            code=$(curl -L -A 'Mozilla/5.0' -sS --connect-timeout 12 --max-time 35 -o /tmp/source.data -w '%{http_code}' "$url")
+            echo "HTTP $code | size $(wc -c </tmp/source.data) bytes | SHA256 $(sha256sum /tmp/source.data | cut -d' ' -f1)"
+            file /tmp/source.data
+            echo "::endgroup::"
+          done <<'URLS'
+          https://www.nature.com/articles/s41467-026-78786-1
+          https://www.nature.com/articles/s41467-026-78281-7
+          https://www.nature.com/articles/s41467-026-78904-z
+          https://www.dallasfed.org/~/media/documents/research/papers/2026/wp2626.pdf
+          https://www.reuters.com/sustainability/cop/cop31-comes-turkey-satellites-reveal-landfill-methane-problem-2026-11-07/
+          https://www.nber.org/system/files/working_papers/w35969/w35969.pdf
+          https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1038/s41467-026-78786-1&format=json
+          URLS
