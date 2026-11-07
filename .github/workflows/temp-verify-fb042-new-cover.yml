@@ -1,0 +1,47 @@
+name: TEMP verify original Field Brief 042 cover live
+on:
+  push:
+    branches: [verify/field-brief-042-unique-cover-live]
+    paths: [.github/workflows/temp-verify-fb042-new-cover.yml]
+  pull_request:
+    branches: [master]
+    paths: [.github/workflows/temp-verify-fb042-new-cover.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: master}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Check source artwork exactly against canonical regenerated cover
+        run: |
+          node scripts/test_field_brief_cover_042.cjs
+          node scripts/test_issue_marks.cjs
+      - name: Fetch public Pages, bypass browser caches and verify unique current cover
+        run: |
+          for i in 1 2 3 4 5 6; do
+            curl -fLsS --max-time 20 -H 'Cache-Control: no-cache' "https://iainholmes.github.io/personal-updates/?fb_cover=20261107-$i" -o "$RUNNER_TEMP/hub.html"
+            curl -fLsS --max-time 20 -H 'Cache-Control: no-cache' "https://iainholmes.github.io/personal-updates/issue-mark-archive.js?fb_cover=20261107-$i" -o "$RUNNER_TEMP/archive.js"
+            if node - <<'NODE'
+          const fs=require('fs'),p=process.env.RUNNER_TEMP,marks=require('./personal-updates/issue-mark-archive.js');
+          const current=marks['fb:2026-11-07'],old=marks['fb:2026-11-06'];
+          const hub=fs.readFileSync(p+'/hub.html','utf8'),archive=fs.readFileSync(p+'/archive.js','utf8');
+          const localHub=fs.readFileSync('personal-updates/index.html','utf8');
+          const localArchive=fs.readFileSync('personal-updates/issue-mark-archive.js','utf8');
+          if(!current?.frozen||current.composition!=='authored-signal-and-reserve-20261107')process.exit(1);
+          if(!hub.includes(current.frozen)||!hub.includes('data-edition="2026-11-07"')||!hub.includes('Signals and scarcity'))process.exit(1);
+          if(!hub.includes(localHub.match(/issue-mark-archive\.js\?v=([^"]+)/)[0]))process.exit(1);
+          if(archive!==localArchive)process.exit(1);
+          const start=hub.indexOf('data-issue-mark="fb"'),end=hub.indexOf('</svg>',start);
+          if(start<0||end<0||hub.slice(start,end).includes('service-rack')||hub.slice(start,end).includes(old.frozen))process.exit(1);
+          console.log('PUBLIC_FB042_UNIQUE_COVER_LIVE: exact fresh SVG, canonical script, cache-version, signature and date verified.');
+          NODE
+            then exit 0
+            fi
+            echo "Pages not yet refreshed ($i)"
+            sleep 12
+          done
+          echo 'Failed: public Pages did not show new source-matched original cover'; exit 1
