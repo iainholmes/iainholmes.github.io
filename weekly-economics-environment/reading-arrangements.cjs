@@ -27,6 +27,11 @@ module.exports=({row,field,inset,flo,gap,join})=>({...module.exports.authored,
  '2026-10-23-adaptation-finance':({E,O,Q,N,D,L,G})=>E+inset('adaptation-policy-context',O,'82%')+field('adaptation-allocation',D()+L(),'open')+row('adaptation-additionality',N,G(),'1fr','1.4fr')+Q,
  '2026-10-23-mobility-finance':({E,O,Q,N,A,D})=>row('mobility-credit-opening',E,O,'1.45fr','1fr')+field('mobility-cash-flow',A+inset('mobility-finance-choice',D(),'80%','left'),'folio')+row('mobility-research-and-evidence',N,Q,'1fr','1.3fr'),
  '2026-10-30-household-climate':({E,O,Q,N,M,G,X})=>E+join(M(),row('household-complementarity',G(),O+Q,'1.5fr','1fr'),field('household-policy-robustness',row('household-test-and-research',X(),N,'1.5fr','1fr'),'ledger')),
- '2026-10-30-solar-storage':({E,O,Q,N,A,T})=>E+flo('solar-project-clock',A,O+N,'left','60%')+T()+inset('solar-project-risk',Q,'85%')
+ '2026-10-30-solar-storage':({E,O,Q,N,A,T})=>E+flo('solar-project-clock',A,O+N,'left','60%')+T()+inset('solar-project-risk',Q,'85%'),
+ '2026-11-06-farm-robots':({E,O,Q,N,D,L})=>E+row('robot-choice',D(),O,'1.3fr','1fr')+L()+row('robot-limits',Q,N,'1.3fr','1fr'),
+ '2026-11-06-fire-exposure':({E,O,Q,N,T,X})=>row('fire-context',E,O,'1.35fr','1fr')+field('fire-trend',row('fire-horizons',T(),X(),'1.35fr','1fr'),'folio')+row('fire-research',N,Q,'1fr','1.3fr'),
+ '2026-11-06-groundwater-choice':({E,O,Q,N,T,X})=>E+row('groundwater-stock',O,T(),'1fr','1.4fr')+inset('groundwater-qualification',X(),'90%','left')+row('groundwater-inference',Q,N,'1.25fr','1fr'),
+ '2026-11-06-pollution-salience':({E,O,Q,N,G,X})=>row('pollution-attention',E,O,'1.35fr','1fr')+join(G(),X())+row('pollution-review',N,Q,'1fr','1.35fr'),
+ '2026-11-06-seagrass-carbon':({E,O,Q,N,A,X})=>E+flo('seagrass-weighting',A,O,'left','58%')+row('seagrass-baselines',Q,X(),'1fr','1.3fr')+inset('seagrass-notebook',N,'82%'),
 });
 module.exports.authored={};
