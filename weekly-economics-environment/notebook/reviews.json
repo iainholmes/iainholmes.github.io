@@ -146,6 +146,27 @@
       ],
       "added": [],
       "note": "Reviewed both complete research readings, all three institutional items, and the baseline-and-model synthesis. Existing entries already cover complementarity, incidence, counterfactual reasoning, identification, spatial equilibrium, and social-value accounting, so no distinct reusable concept was added. References were appended only where the new evidence substantively revisits those ideas; modeled, descriptive, proposed, and causal claims remain separated."
+    },
+    "2026-11-06": {
+      "reviewedOn": "2026-11-06",
+      "readings": [
+        "2026-11-06-farm-robots",
+        "2026-11-06-fire-exposure",
+        "2026-11-06-groundwater-choice",
+        "2026-11-06-pollution-salience",
+        "2026-11-06-seagrass-carbon"
+      ],
+      "synthesis": "2026-11-06-connections",
+      "revisited": [
+        "counterfactual-reasoning",
+        "identification",
+        "incidence",
+        "value-of-information",
+        "private-returns-social-value",
+        "selection"
+      ],
+      "added": [],
+      "note": "Individually assessed all five source-specific studies and the issue synthesis against six existing Notebook concepts. Model scenarios, observed physical rates, structural policy comparisons, measurement and quasi-experimental identification are distinguished. No new transferable concept justified beyond the existing archive."
     }
   }
 }

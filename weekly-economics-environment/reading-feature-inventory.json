@@ -1,7 +1,7 @@
 {
   "version": 7,
   "title": "Loblolly & Logit · Editorial Decision Inventory",
-  "reviewed": "2026-11-03",
+  "reviewed": "2026-11-06",
   "policy": "Aim for at least two substantive, nonredundant features; document exceptions; diversity is a tie-breaker after evidence and reader value.",
   "entries": [
     {
@@ -6104,20 +6104,734 @@
         }
       ],
       "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-06-farm-robots",
+      "title": "On the Farm, the Robot Is Not the Whole Cost",
+      "subjects": [
+        "Agricultural economics",
+        "Technology & adoption"
+      ],
+      "features": [
+        {
+          "type": "decision-margin",
+          "title": "The variable-input threshold",
+          "status": "Illustrative farm-level decision, not estimated break-even price",
+          "question": "Which constraint must change before a modeled low-emissions robot is an attractive investment?",
+          "options": [
+            [
+              "Operating savings",
+              "Reduced fertilizer, water, weeding and labor expenditure must cover capital charges and downtime."
+            ],
+            [
+              "Capacity and finance",
+              "Annual usable hectares, loan terms and maintenance access determine whether the platform can be utilized economically."
+            ]
+          ],
+          "rule": "Compare discounted all-in costs per harvested kilogram under the same yield and task boundaries; identify the binding cost or capacity constraint before recommending a subsidy.",
+          "note": "The study estimates scenario costs but does not observe a universal subsidy threshold or experimentally identify adoption returns.",
+          "rationale": "The robot paper's decisive economic choice is whether modeled variable-input savings survive capital, scale and operating constraints.",
+          "provenance": [
+            "https://www.nature.com/articles/s41467-026-78281-7.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "The robot paper's decisive economic choice is whether modeled variable-input savings survive capital, scale and operating constraints.",
+            "evidentiarySupport": "Illustrative farm-level decision, not estimated break-even price; source reviewed at Nature Communications · Schlehuber et al. (2026), research article exact PDF.",
+            "distinctiveness": "A separate economic function, differentiated from the other selected feature and the editorial argument.",
+            "readerValue": "The study estimates scenario costs but does not observe a universal subsidy threshold or experimentally identify adoption returns.",
+            "presentationSuitability": "decision-margin—selected as an appropriate native panel with quantified limitations.",
+            "informationBurden": "Bounded evidence-specific feature; no fabricated estimates or unreported causal effects."
+          }
+        },
+        {
+          "type": "incidence-ledger",
+          "title": "The gains are not distributed uniformly",
+          "status": "Conditional economic interpretation of modeled systems",
+          "rows": [
+            [
+              "Growers",
+              "Bear the machine purchase, repair, and charging risk while potentially saving variable inputs and hired labor."
+            ],
+            [
+              "Workers and service providers",
+              "May face different work tasks, required skills, and hours; distribution depends on local labor markets and complementary services."
+            ],
+            [
+              "Water and climate systems",
+              "May gain from lower input use, but lifecycle impact depends on the modeled electricity and crop-specific task boundary."
+            ]
+          ],
+          "note": "The source reports engineering and cost scenarios, not observed income losses, worker displacement, or welfare totals for these groups.",
+          "rationale": "Separate private investment returns from possible labor and environmental incidence without inventing distributional estimates.",
+          "provenance": [
+            "https://www.nature.com/articles/s41467-026-78281-7.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Separate private investment returns from possible labor and environmental incidence without inventing distributional estimates.",
+            "evidentiarySupport": "Conditional economic interpretation of modeled systems; source reviewed at Nature Communications · Schlehuber et al. (2026), research article exact PDF.",
+            "distinctiveness": "A separate economic function, differentiated from the other selected feature and the editorial argument.",
+            "readerValue": "The source reports engineering and cost scenarios, not observed income losses, worker displacement, or welfare totals for these groups.",
+            "presentationSuitability": "incidence-ledger—selected as an appropriate native panel with quantified limitations.",
+            "informationBurden": "Bounded evidence-specific feature; no fabricated estimates or unreported causal effects."
+          }
+        }
+      ],
+      "edition": "2026-11-06",
+      "composition": "decision-led",
+      "argument": "The economic choice is whether input and labor reductions justify a capacity-constrained capital investment.",
+      "rejected": [
+        [
+          "estimation-desk",
+          "The full engineering model has many crop-specific parameters; a compact fabricated equation would hide more than it explains."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "decision-margin",
+          "reason": "The robot paper's decisive economic choice is whether modeled variable-input savings survive capital, scale and operating constraints."
+        },
+        {
+          "rank": 2,
+          "feature": "incidence-ledger",
+          "reason": "Separate private investment returns from possible labor and environmental incidence without inventing distributional estimates."
+        }
+      ],
+      "layout": {
+        "id": "farm-capital-and-input-margin",
+        "palette": "copper",
+        "colorBasis": "Agricultural technology & production costs and the economic object of the reading; selected editorially.",
+        "rationale": "Original composition places the finding, economic mechanism, two analytical functions, limitations, notebook and sources in a coherent feature-specific argument.",
+        "docking": {
+          "note": [
+            "opening",
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Source scenario quantities are reported with their denominators; no unsupported full-system cost curve or field-trial error bars.",
+      "modelAssessment": "The decision feature states a qualitative all-in threshold without claiming a source-estimated universal optimum.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-06",
+      "evidenceReview": {
+        "basis": "Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.",
+        "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
+      },
+      "selected": [
+        {
+          "id": "decision-margin",
+          "name": "The Decision Margin",
+          "anchor": "2026-11-06-farm-robots--decision-margin"
+        },
+        {
+          "id": "incidence-ledger",
+          "name": "The Incidence Ledger",
+          "anchor": "2026-11-06-farm-robots--incidence-ledger"
+        }
+      ],
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-06",
+        "reason": "First publication of this source-specific reading; no earlier version or historical feature is being replaced.",
+        "selectionReview": "Two distinct analytical features were selected after considering evidence, methodological limitations, reader value, visual suitability, information burden and rejected alternatives. Neither is a revision to earlier published material.",
+        "retained": [],
+        "added": [
+          "decision-margin",
+          "incidence-ledger"
+        ],
+        "replaced": []
+      },
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-06-fire-exposure",
+      "title": "Fire Risk Is Built as Well as Burned",
+      "subjects": [
+        "Environmental risk",
+        "Housing & land use"
+      ],
+      "features": [
+        {
+          "type": "long-view",
+          "title": "From settlement history to conditional risk",
+          "status": "Observed history and modeled futures are distinct",
+          "stages": [
+            [
+              "1945–2023",
+              "Reconstructed settlement and fire-loss history",
+              "Historical inputs"
+            ],
+            [
+              "2011–2020",
+              "Reference period for risk ratios",
+              "Comparison baseline"
+            ],
+            [
+              "2051–2060",
+              "Risk factors of 1.85, 2.27 and 3.2 across three models",
+              "No-adaptation projections"
+            ]
+          ],
+          "note": "The projected multipliers apply to expected annual structural loss, not damages measured in dollars. The no-adaptation premise matters.",
+          "rationale": "The temporal series distinguishes historical land development from future model exposure; the baseline and scenarios are not interchangeable.",
+          "provenance": [
+            "https://www.nature.com/articles/s41467-026-78904-z.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "The temporal series distinguishes historical land development from future model exposure; the baseline and scenarios are not interchangeable.",
+            "evidentiarySupport": "Observed history and modeled futures are distinct; source reviewed at Nature Communications · Iglesias et al. (2026), research article exact PDF.",
+            "distinctiveness": "A separate economic function, differentiated from the other selected feature and the editorial argument.",
+            "readerValue": "The projected multipliers apply to expected annual structural loss, not damages measured in dollars. The no-adaptation premise matters.",
+            "presentationSuitability": "long-view—selected as an appropriate native panel with quantified limitations.",
+            "informationBurden": "Bounded evidence-specific feature; no fabricated estimates or unreported causal effects."
+          }
+        },
+        {
+          "type": "assumption-test",
+          "title": "What if vulnerability changes?",
+          "status": "Interpretive stress test of a stated projection assumption",
+          "premise": "The business-as-usual projection holds the exposure-adjusted structural-loss index fixed while hazard and structure exposure evolve.",
+          "threat": "Building codes, landscaping, land-use decisions and protection investments could change vulnerability. Catastrophic fire behavior could also fall outside an index estimated from historical losses.",
+          "check": "Re-estimate the scenarios under explicit vulnerability reductions and alternative settlement paths; compare expected structure counts without treating this proposed exercise as already performed.",
+          "consequence": "A different adaptation path can shift projected losses even if the climate scenario stays the same; conversely, unchanged vulnerability can preserve large risk in existing development.",
+          "rationale": "The fixed vulnerability assumption is a consequential and testable reason not to interpret conditional forecast as unavoidable welfare loss.",
+          "provenance": [
+            "https://www.nature.com/articles/s41467-026-78904-z.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "The fixed vulnerability assumption is a consequential and testable reason not to interpret conditional forecast as unavoidable welfare loss.",
+            "evidentiarySupport": "Interpretive stress test of a stated projection assumption; source reviewed at Nature Communications · Iglesias et al. (2026), research article exact PDF.",
+            "distinctiveness": "A separate economic function, differentiated from the other selected feature and the editorial argument.",
+            "readerValue": "A different adaptation path can shift projected losses even if the climate scenario stays the same; conversely, unchanged vulnerability can preserve large risk in existing development.",
+            "presentationSuitability": "assumption-test—selected as an appropriate native panel with quantified limitations.",
+            "informationBurden": "Bounded evidence-specific feature; no fabricated estimates or unreported causal effects."
+          }
+        }
+      ],
+      "edition": "2026-11-06",
+      "composition": "horizon-led",
+      "argument": "Long-lived land-use decisions convert a changing fire hazard into an uneven stock of exposure.",
+      "rejected": [
+        [
+          "economic-figures",
+          "Without an original source graph of per-year dollars, a new damages chart would confuse structure count with monetary loss."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "long-view",
+          "reason": "The temporal series distinguishes historical land development from future model exposure; the baseline and scenarios are not interchangeable."
+        },
+        {
+          "rank": 2,
+          "feature": "assumption-test",
+          "reason": "The fixed vulnerability assumption is a consequential and testable reason not to interpret conditional forecast as unavoidable welfare loss."
+        }
+      ],
+      "layout": {
+        "id": "fire-exposure-and-adaptation",
+        "palette": "forest",
+        "colorBasis": "Wildfire exposure & economic vulnerability and the economic object of the reading; selected editorially.",
+        "rationale": "Original composition places the finding, economic mechanism, two analytical functions, limitations, notebook and sources in a coherent feature-specific argument.",
+        "docking": {
+          "note": [
+            "opening",
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Three documented model multipliers can be tabulated, but no invented property-damage scale is added.",
+      "modelAssessment": "The model's hazard-exposure-vulnerability structure is explained without claiming a policy causal estimate.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-06",
+      "evidenceReview": {
+        "basis": "Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.",
+        "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
+      },
+      "selected": [
+        {
+          "id": "long-view",
+          "name": "The Long View",
+          "anchor": "2026-11-06-fire-exposure--long-view"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-06-fire-exposure--assumption-test"
+        }
+      ],
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-06",
+        "reason": "First publication of this source-specific reading; no earlier version or historical feature is being replaced.",
+        "selectionReview": "Two distinct analytical features were selected after considering evidence, methodological limitations, reader value, visual suitability, information burden and rejected alternatives. Neither is a revision to earlier published material.",
+        "retained": [],
+        "added": [
+          "long-view",
+          "assumption-test"
+        ],
+        "replaced": []
+      },
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-06-groundwater-choice",
+      "title": "A Stable Water Table Is Not Necessarily Optimal",
+      "subjects": [
+        "Resource economics",
+        "Dynamic optimization"
+      ],
+      "features": [
+        {
+          "type": "long-view",
+          "title": "The stock matters before the steady state",
+          "status": "Model-based dynamic paths, not observed policy reforms",
+          "stages": [
+            [
+              "Observed stock",
+              "Low water level can coexist with roughly stable net withdrawals",
+              "Remote sensing and structural calibration"
+            ],
+            [
+              "Transition",
+              "A benchmark path can temporarily reduce extraction to rebuild stock",
+              "Modeled counterfactual"
+            ],
+            [
+              "Long run",
+              "A higher aquifer fill can support a different cost and welfare path",
+              "Conditional optimum"
+            ]
+          ],
+          "note": "A fixed current fill level is not the same as the welfare-maximizing stock. The transition is costly for current extractors even when future users benefit.",
+          "rationale": "Separate present stock, transition and long-run welfare; a steady extraction-recharge balance need not be dynamically efficient.",
+          "provenance": [
+            "https://www.dallasfed.org/~/media/documents/research/papers/2026/wp2626.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Separate present stock, transition and long-run welfare; a steady extraction-recharge balance need not be dynamically efficient.",
+            "evidentiarySupport": "Model-based dynamic paths, not observed policy reforms; source reviewed at Dallas Fed Working Paper 2626 · Greaney, Shapiro & Wagner (2026) exact PDF.",
+            "distinctiveness": "A separate economic function, differentiated from the other selected feature and the editorial argument.",
+            "readerValue": "A fixed current fill level is not the same as the welfare-maximizing stock. The transition is costly for current extractors even when future users benefit.",
+            "presentationSuitability": "long-view—selected as an appropriate native panel with quantified limitations.",
+            "informationBurden": "Bounded evidence-specific feature; no fabricated estimates or unreported causal effects."
+          }
+        },
+        {
+          "type": "assumption-test",
+          "title": "Who owns the future pumping cost?",
+          "status": "Sensitivity and identification boundary of the structural model",
+          "premise": "The inferred decision discount factor translates a representative aquifer's observed extraction into an intertemporal decision rule.",
+          "threat": "Heterogeneous farms, missing rights enforcement and aquifers not rationalizable by a feasible discount factor can change the inferred wedge.",
+          "check": "Compare the implied rates with measured institutions, pumping-depth heterogeneity, alternative recharge series and benchmark discount factors; disclose when a calibration fails.",
+          "consequence": "The fraction classified as excessive and the welfare loss can move with model assumptions, even if observed extraction data remain unchanged.",
+          "rationale": "The paper's representative-agent calibration and exclusions are precisely the premises separating a model-implied welfare wedge from a measured policy effect.",
+          "provenance": [
+            "https://www.dallasfed.org/~/media/documents/research/papers/2026/wp2626.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "The paper's representative-agent calibration and exclusions are precisely the premises separating a model-implied welfare wedge from a measured policy effect.",
+            "evidentiarySupport": "Sensitivity and identification boundary of the structural model; source reviewed at Dallas Fed Working Paper 2626 · Greaney, Shapiro & Wagner (2026) exact PDF.",
+            "distinctiveness": "A separate economic function, differentiated from the other selected feature and the editorial argument.",
+            "readerValue": "The fraction classified as excessive and the welfare loss can move with model assumptions, even if observed extraction data remain unchanged.",
+            "presentationSuitability": "assumption-test—selected as an appropriate native panel with quantified limitations.",
+            "informationBurden": "Bounded evidence-specific feature; no fabricated estimates or unreported causal effects."
+          }
+        }
+      ],
+      "edition": "2026-11-06",
+      "composition": "horizon-led",
+      "argument": "Economic sustainability compares extraction paths from the existing stock, not merely current annual water balance.",
+      "rejected": [
+        [
+          "estimation-desk",
+          "A short illustrative Bellman equation would conceal the actual aquifer-specific production and recharge estimation more than clarify it without all source notation."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "long-view",
+          "reason": "Separate present stock, transition and long-run welfare; a steady extraction-recharge balance need not be dynamically efficient."
+        },
+        {
+          "rank": 2,
+          "feature": "assumption-test",
+          "reason": "The paper's representative-agent calibration and exclusions are precisely the premises separating a model-implied welfare wedge from a measured policy effect."
+        }
+      ],
+      "layout": {
+        "id": "groundwater-stock-and-optimum",
+        "palette": "sage",
+        "colorBasis": "Groundwater & intertemporal welfare and the economic object of the reading; selected editorially.",
+        "rationale": "Original composition places the finding, economic mechanism, two analytical functions, limitations, notebook and sources in a coherent feature-specific argument.",
+        "docking": {
+          "note": [
+            "opening",
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Model benchmark comparisons are reported with benchmark definitions; no invented aquifer-specific trend or global interval.",
+      "modelAssessment": "Formal dynamic logic is explained using future extraction costs and the shadow value of storage; no source-unauthorized estimator is inserted.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-06",
+      "evidenceReview": {
+        "basis": "Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.",
+        "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
+      },
+      "selected": [
+        {
+          "id": "long-view",
+          "name": "The Long View",
+          "anchor": "2026-11-06-groundwater-choice--long-view"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-06-groundwater-choice--assumption-test"
+        }
+      ],
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-06",
+        "reason": "First publication of this source-specific reading; no earlier version or historical feature is being replaced.",
+        "selectionReview": "Two distinct analytical features were selected after considering evidence, methodological limitations, reader value, visual suitability, information burden and rejected alternatives. Neither is a revision to earlier published material.",
+        "retained": [],
+        "added": [
+          "long-view",
+          "assumption-test"
+        ],
+        "replaced": []
+      },
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-06-pollution-salience",
+      "title": "Pollution Monitors Can Reprice a Firm",
+      "subjects": [
+        "Financial economics",
+        "Information & environmental risk"
+      ],
+      "features": [
+        {
+          "type": "mechanism-map",
+          "title": "From ambient readings to financial prices",
+          "status": "Documented information channel; individual links have different evidence",
+          "nodes": [
+            "Local pollution monitoring becomes salient",
+            "Analysts acquire information and revisit firm risks",
+            "Reports revise assessments for brown and green firms",
+            "Investors react to published analysis"
+          ],
+          "edges": [
+            [
+              "0",
+              "1",
+              "exposure and attention"
+            ],
+            [
+              "1",
+              "2",
+              "information-production response"
+            ],
+            [
+              "2",
+              "3",
+              "report-window pricing"
+            ]
+          ],
+          "note": "The authors measure analyst attention, information acquisition and stock reactions. This is not an estimate of environmental cleanup or social welfare.",
+          "rationale": "Separate the information-salience shock, intermediary research and observed market reaction instead of presenting one undifferentiated causal claim.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w35969/w35969.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Separate the information-salience shock, intermediary research and observed market reaction instead of presenting one undifferentiated causal claim.",
+            "evidentiarySupport": "Documented information channel; individual links have different evidence; source reviewed at NBER Working Paper 35969 · Kala et al. (2026) exact PDF.",
+            "distinctiveness": "A separate economic function, differentiated from the other selected feature and the editorial argument.",
+            "readerValue": "The authors measure analyst attention, information acquisition and stock reactions. This is not an estimate of environmental cleanup or social welfare.",
+            "presentationSuitability": "mechanism-map—selected as an appropriate native panel with quantified limitations.",
+            "informationBurden": "Bounded evidence-specific feature; no fabricated estimates or unreported causal effects."
+          }
+        },
+        {
+          "type": "assumption-test",
+          "title": "Is monitoring rollout an information shock?",
+          "status": "Identification stress test; proposed additions distinguished",
+          "premise": "Conditional on firm-quarter and analyst–firm relationships, monitoring timing does not independently shift treated-city analysts' forecasts through another simultaneous shock.",
+          "threat": "Local policy, brokerage networks, air-quality shocks or firm proximity could move treated analysts and investors at the same time.",
+          "check": "Examine the reported event-study preperiod and unrelated-topic negative controls; additionally test local-city policy timing and analyst relocation where data permit.",
+          "consequence": "If rollout changes analyst behavior through a concurrent local economic shock, report-window pricing cannot be attributed solely to environmental information salience.",
+          "rationale": "The core econometric distinction is between staggered information access and local shocks that influence analysts through other channels.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w35969/w35969.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "The core econometric distinction is between staggered information access and local shocks that influence analysts through other channels.",
+            "evidentiarySupport": "Identification stress test; proposed additions distinguished; source reviewed at NBER Working Paper 35969 · Kala et al. (2026) exact PDF.",
+            "distinctiveness": "A separate economic function, differentiated from the other selected feature and the editorial argument.",
+            "readerValue": "If rollout changes analyst behavior through a concurrent local economic shock, report-window pricing cannot be attributed solely to environmental information salience.",
+            "presentationSuitability": "assumption-test—selected as an appropriate native panel with quantified limitations.",
+            "informationBurden": "Bounded evidence-specific feature; no fabricated estimates or unreported causal effects."
+          }
+        }
+      ],
+      "edition": "2026-11-06",
+      "composition": "model-led",
+      "argument": "Environmental monitoring can shift the information set investors use before any physical emissions response is observed.",
+      "rejected": [
+        [
+          "incidence-ledger",
+          "Firm-type stock responses do not by themselves establish welfare incidence on workers, consumers or local communities."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "mechanism-map",
+          "reason": "Separate the information-salience shock, intermediary research and observed market reaction instead of presenting one undifferentiated causal claim."
+        },
+        {
+          "rank": 2,
+          "feature": "assumption-test",
+          "reason": "The core econometric distinction is between staggered information access and local shocks that influence analysts through other channels."
+        }
+      ],
+      "layout": {
+        "id": "pollution-monitoring-to-markets",
+        "palette": "slate",
+        "colorBasis": "Environmental disclosure & asset prices and the economic object of the reading; selected editorially.",
+        "rationale": "Original composition places the finding, economic mechanism, two analytical functions, limitations, notebook and sources in a coherent feature-specific argument.",
+        "docking": {
+          "note": [
+            "opening",
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "No invented returns or market capitalization totals; source report-window findings remain qualitative where exact model versions require reconciliation.",
+      "modelAssessment": "The fixed-effects design is explained in words; no partial or potentially miscopied econometric equation.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-06",
+      "evidenceReview": {
+        "basis": "Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.",
+        "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
+      },
+      "selected": [
+        {
+          "id": "mechanism-map",
+          "name": "The Mechanism Map",
+          "anchor": "2026-11-06-pollution-salience--mechanism-map"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-06-pollution-salience--assumption-test"
+        }
+      ],
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-06",
+        "reason": "First publication of this source-specific reading; no earlier version or historical feature is being replaced.",
+        "selectionReview": "Two distinct analytical features were selected after considering evidence, methodological limitations, reader value, visual suitability, information burden and rejected alternatives. Neither is a revision to earlier published material.",
+        "retained": [],
+        "added": [
+          "mechanism-map",
+          "assumption-test"
+        ],
+        "replaced": []
+      },
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-06-seagrass-carbon",
+      "title": "What Counts as a Seagrass Carbon Sink?",
+      "subjects": [
+        "Natural capital",
+        "Environmental measurement"
+      ],
+      "features": [
+        {
+          "type": "economic-figures",
+          "title": "Two legitimate averages, different weights",
+          "status": "Reported sediment rates; not additional removals",
+          "chart": {
+            "kind": "bars",
+            "unit": "g organic carbon m−2 yr−1",
+            "rows": [
+              [
+                "Geometric mean",
+                25
+              ],
+              [
+                "Area-weighted",
+                33
+              ]
+            ]
+          },
+          "note": "The 25 ± 3 and 33 ± 9 source estimates use different weighting conventions; the bars show their reported point values, not a confidence interval, carbon price or offset credit.",
+          "rationale": "Placing two source estimates on one common physical unit helps explain differing weights without conflating them with extra sequestration.",
+          "provenance": [
+            "https://www.nature.com/articles/s41467-026-79168-3.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Placing two source estimates on one common physical unit helps explain differing weights without conflating them with extra sequestration.",
+            "evidentiarySupport": "Reported sediment rates; not additional removals; source reviewed at Nature Communications · Arias-Ortiz et al. (2026), research article exact PDF.",
+            "distinctiveness": "A separate economic function, differentiated from the other selected feature and the editorial argument.",
+            "readerValue": "The 25 ± 3 and 33 ± 9 source estimates use different weighting conventions; the bars show their reported point values, not a confidence interval, carbon price or offset credit.",
+            "presentationSuitability": "economic-figures—selected as an appropriate native panel with quantified limitations.",
+            "informationBurden": "Bounded evidence-specific feature; no fabricated estimates or unreported causal effects."
+          }
+        },
+        {
+          "type": "assumption-test",
+          "title": "Does a sediment core represent a hectare?",
+          "status": "Sampling and attribution diagnostic",
+          "premise": "Core-based burial rates and mapped seagrass extent provide an informative global aggregate once scaled and weighted.",
+          "threat": "Bioregional sampling bias, bare-sediment lateral transport, and missing non-depositional sites can change both observed rates and creditable attribution.",
+          "check": "Reweight by mapped regions, incorporate zero-deposition cores, sample adjacent bare sediments and distinguish retained versus exported organic carbon.",
+          "consequence": "Changing sampling and the fate of exported carbon can revise total burial and any credible restoration additionality even while a core's laboratory measurement is unchanged.",
+          "rationale": "The central inferential problem is scaling uneven, spatially mobile physical observations to a policy-relevant carbon-stock change.",
+          "provenance": [
+            "https://www.nature.com/articles/s41467-026-79168-3.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "The central inferential problem is scaling uneven, spatially mobile physical observations to a policy-relevant carbon-stock change.",
+            "evidentiarySupport": "Sampling and attribution diagnostic; source reviewed at Nature Communications · Arias-Ortiz et al. (2026), research article exact PDF.",
+            "distinctiveness": "A separate economic function, differentiated from the other selected feature and the editorial argument.",
+            "readerValue": "Changing sampling and the fate of exported carbon can revise total burial and any credible restoration additionality even while a core's laboratory measurement is unchanged.",
+            "presentationSuitability": "assumption-test—selected as an appropriate native panel with quantified limitations.",
+            "informationBurden": "Bounded evidence-specific feature; no fabricated estimates or unreported causal effects."
+          }
+        }
+      ],
+      "edition": "2026-11-06",
+      "composition": "figure-led",
+      "argument": "A tighter physical baseline can improve carbon accounting, but additional climate value requires a policy counterfactual.",
+      "rejected": [
+        [
+          "incidence-ledger",
+          "No carbon-credit price, restoration cost or measured payment is in the source, so fiscal incidence would be speculative."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "economic-figures",
+          "reason": "Placing two source estimates on one common physical unit helps explain differing weights without conflating them with extra sequestration."
+        },
+        {
+          "rank": 2,
+          "feature": "assumption-test",
+          "reason": "The central inferential problem is scaling uneven, spatially mobile physical observations to a policy-relevant carbon-stock change."
+        }
+      ],
+      "layout": {
+        "id": "seagrass-observation-to-valuation",
+        "palette": "tidal",
+        "colorBasis": "Blue carbon measurement & valuation and the economic object of the reading; selected editorially.",
+        "rationale": "Original composition places the finding, economic mechanism, two analytical functions, limitations, notebook and sources in a coherent feature-specific argument.",
+        "docking": {
+          "note": [
+            "opening",
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Physical averages plotted with exact units; stated uncertainties remain in captions and prose; no invented carbon-credit or dollar axis.",
+      "modelAssessment": "Measurement and stock-flow attribution discussed without estimating a social cost or causal restoration effect.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-06",
+      "evidenceReview": {
+        "basis": "Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.",
+        "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
+      },
+      "selected": [
+        {
+          "id": "economic-figures",
+          "name": "Economic Figures",
+          "anchor": "2026-11-06-seagrass-carbon--economic-figures"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-06-seagrass-carbon--assumption-test"
+        }
+      ],
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-06",
+        "reason": "First publication of this source-specific reading; no earlier version or historical feature is being replaced.",
+        "selectionReview": "Two distinct analytical features were selected after considering evidence, methodological limitations, reader value, visual suitability, information burden and rejected alternatives. Neither is a revision to earlier published material.",
+        "retained": [],
+        "added": [
+          "economic-figures",
+          "assumption-test"
+        ],
+        "replaced": []
+      },
+      "additionalFeatureJustification": null
     }
   ],
   "totals": {
-    "editions": 6,
-    "readings": 30,
+    "editions": 7,
+    "readings": 35,
     "features": {
-      "economic-figures": 17,
-      "decision-margin": 10,
+      "economic-figures": 18,
+      "decision-margin": 11,
       "estimation-desk": 11,
       "heron": 11,
-      "incidence-ledger": 11,
-      "long-view": 10,
-      "mechanism-map": 9,
-      "assumption-test": 9
+      "incidence-ledger": 12,
+      "long-view": 12,
+      "mechanism-map": 10,
+      "assumption-test": 13
     }
   }
 }
