@@ -7,7 +7,11 @@ on:
       - scripts/test_periodicals_publication_watchdog.cjs
       - .github/workflows/periodicals-publication-watchdog.yml
   schedule:
-    - cron: '17,47 8-18 * * *'
+    # One post-grace check per day, and one additional Friday post-L&L check.
+    # A missing release opens one deduplicated Issue; it does NOT fail GitHub Actions.
+    - cron: '47 8 * * *'
+      timezone: 'America/New_York'
+    - cron: '47 15 * * 5'
       timezone: 'America/New_York'
   workflow_dispatch:
 permissions:
