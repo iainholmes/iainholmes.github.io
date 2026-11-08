@@ -5,11 +5,13 @@ on:
     paths:
       - 'daily-watchlist-5/index.html'
       - '.github/workflows/field-brief-043-recovery.yml'
+      - 'scripts/test_field_brief_cover_042.cjs'
   pull_request:
     branches: [master]
     paths:
       - 'daily-watchlist-5/index.html'
       - '.github/workflows/field-brief-043-recovery.yml'
+      - 'scripts/test_field_brief_cover_042.cjs'
 permissions:
   contents: write
 concurrency:
