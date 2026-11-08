@@ -175,7 +175,10 @@ async function main(){
  if(!targets.length)results.push({state:'not_due',message:'No publication exceeds the allowed preparation grace window'});
  console.log(JSON.stringify({observation:now,eastern:eastern(now),results},null,2));
  if(process.env.GITHUB_STEP_SUMMARY)fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,'## Independent Periodicals verification\n\n'+results.map(x=>'- '+(x.publication||'Schedule')+': **'+x.state+'** '+(x.date||'')+' '+(x.errors||[]).join('; ')).join('\n')+'\n');
- if(results.some(x=>!['published','not_due'].includes(x.state))&&!process.argv.includes('--local-only'))process.exitCode=1;
+ // A legitimately missing edition is a tracked publishing incident, not a broken GitHub Actions run.
+ // Fail this monitoring job only when its incident-reporting mechanism itself fails.
+ if(results.some(x=>(x.errors||[]).some(e=>e.startsWith('Incident notification failed:')))&&!process.argv.includes('--local-only'))process.exitCode=1;
+ else if(results.some(x=>!['published','not_due'].includes(x.state)))console.log('::warning::One or more publication incidents remain open; see GitHub Issues and the run summary.');
 }
 module.exports={eastern,due,parseJSON,editionHTML,audit,verifyPages,DEFINITIONS,issueTitle};
 if(require.main===module)main().catch(e=>{console.error('Watchdog infrastructure failure:',e);process.exitCode=1});
