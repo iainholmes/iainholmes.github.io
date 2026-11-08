@@ -1834,5 +1834,47 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 042: Signals and scarcity\"><title>Field Brief · 042 · Signals and scarcity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><circle cx=\"300\" cy=\"297\" r=\"185\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"19\"/><path d=\"M142 297C185 287 225 342 274 319S377 285 456 297\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"20\" stroke-linecap=\"round\"/><path d=\"M155 385C205 359 260 413 311 385S412 359 445 385\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"17\" stroke-linecap=\"round\"/><path d=\"M171 439C214 424 255 448 301 439S385 420 429 439\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"12\" stroke-linecap=\"round\"/><path d=\"M161 269L238 190L304 237L405 145\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"23\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"161\" cy=\"269\" r=\"13\" fill=\"#221a14\"/><circle cx=\"238\" cy=\"190\" r=\"14\" fill=\"#221a14\"/><circle cx=\"304\" cy=\"237\" r=\"14\" fill=\"#221a14\"/><circle cx=\"405\" cy=\"145\" r=\"18\" fill=\"#8a2a36\"/><path d=\"M113 495H487\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"6\" stroke-linecap=\"round\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 042 / 2026-11-07</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Signals and scarcity</text></g></svg>"
+  },
+  "fb:2026-11-08": {
+    "key": "fb",
+    "date": "2026-11-08",
+    "no": "043",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "A post-election affordability agenda faces difficult budget choices, while energy proposals must reckon with the full cost of the grid. COP31's finance negotiations, a new U.S. forecasting system, and sharply different North Carolina drought protocols show why implementation and local conditions matter. A policy proposal is not a measured outcome Political agendas, international finance promises and new forecasting capabilities describe future decision opportunities rather than demonstrated welfare gains. Their economic value depends on implementation, participation and counterfactual costs. The North Carolina contrast is instructive: a conservation response appropriate for one watershed cannot be inferred for another from a statewide headline. Credible analysis requires disaggregated exposure and institutional context.",
+    "version": 6,
+    "subject": "infrastructure",
+    "composition": "spread-unequal-dialogue-coupled-grid-idle-stock",
+    "signature": "issue:spread-unequal-dialogue-coupled-grid-idle-stock",
+    "phrase": "Affordability / idle capital",
+    "seed": 787429139,
+    "geometry": "<g transform=\"translate(65 115) scale(3.15)\"><path d=\"M5 10H40V90H5ZM60 10H95V90H60Z\" fill=\"$ink\"/><path d=\"M40 32H60M40 68H60\" stroke=\"$accent\" stroke-width=\"10\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M8 30H92V90H8Z\" fill=\"$ink\"/><path d=\"M20 42H80M20 56H80M20 70H80\" stroke=\"$paper\" stroke-width=\"5\"/><path d=\"M40 5H60V25H40Z\" fill=\"$accent\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "02"
+        ],
+        "score": 15
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "03"
+        ],
+        "score": 1
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 42,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 043: Affordability / idle capital\"><title>Field Brief · 043 · Affordability / idle capital</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M5 10H40V90H5ZM60 10H95V90H60Z\" fill=\"#221a14\"/><path d=\"M40 32H60M40 68H60\" stroke=\"#8a2a36\" stroke-width=\"10\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M8 30H92V90H8Z\" fill=\"#221a14\"/><path d=\"M20 42H80M20 56H80M20 70H80\" stroke=\"#f1e6d0\" stroke-width=\"5\"/><path d=\"M40 5H60V25H40Z\" fill=\"#8a2a36\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 043 / 2026-11-08</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Affordability / idle capital</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

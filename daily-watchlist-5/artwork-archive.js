@@ -2402,6 +2402,68 @@
         "seed": 1410589941,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A high lake spills toward inhabited lower ground\"><title>North Carolina reservoirs fall as central and eastern drought intensifies</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-07-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-07-05)\"><path d=\"M50 425L235 130L398 385L530 215L750 525H50Z\" fill=\"#1d5f47\"/><ellipse cx=\"290\" cy=\"285\" rx=\"85\" ry=\"34\" fill=\"#1b4a6b\"/><path d=\"M340 295Q340 430 570 483\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"34\"/><path d=\"M584 410L650 355L716 410V510H584Z\" fill=\"#2c241d\"/><path d=\"M93 480H234\" stroke=\"#c98a12\" stroke-width=\"25\"/></g></svg>"
       }
+    },
+    "2026-11-08": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-08",
+        "number": "01",
+        "category": "U.S. economy · affordability",
+        "topic": "research",
+        "title": "Voters demand cost-of-living relief as fiscal choices tighten",
+        "composition": "research-observatory",
+        "signature": "plate:research-observatory",
+        "seed": 4136236019,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An observing instrument links separated research stations\"><title>Voters demand cost-of-living relief as fiscal choices tighten</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-08-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-08-01)\"><path d=\"M175 255L440 100L490 185L225 341Z\" fill=\"#1b4a6b\"/><path d=\"M280 290L180 525M280 290L420 525\" stroke=\"#2c241d\" stroke-width=\"25\"/><circle cx=\"475\" cy=\"137\" r=\"58\" fill=\"#c98a12\"/><rect x=\"540\" y=\"350\" width=\"145\" height=\"170\" fill=\"#2c241d\"/><path d=\"M563 395H662M563 447H662\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M380 325H520\" stroke=\"#c4452c\" stroke-width=\"18\" stroke-dasharray=\"28 20\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-08",
+        "number": "02",
+        "category": "Climate policy · electricity",
+        "topic": "energy",
+        "title": "New congressional majorities prepare a clean-energy affordability push",
+        "composition": "energy-reserve",
+        "signature": "plate:energy-reserve",
+        "seed": 427475763,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A storage tank feeds a finite reserve through a valve\"><title>New congressional majorities prepare a clean-energy affordability push</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-08-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-08-02)\"><path d=\"M105 170Q250 85 395 170V485Q250 555 105 485Z\" fill=\"#1b4a6b\"/><ellipse cx=\"250\" cy=\"170\" rx=\"145\" ry=\"48\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M395 380H555V520H710\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"32\"/><circle cx=\"555\" cy=\"380\" r=\"52\" fill=\"#c4452c\"/><path d=\"M555 338V422M513 380H597\" stroke=\"#f4ead7\" stroke-width=\"11\"/><path d=\"M155 315H345\" stroke=\"#c98a12\" stroke-width=\"26\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-08",
+        "number": "03",
+        "category": "International environment · climate finance",
+        "topic": "finance",
+        "title": "COP31 enters negotiations over climate finance and implementation",
+        "composition": "finance-vault",
+        "signature": "plate:finance-vault",
+        "seed": 1209224478,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A locked reserve encloses transfers\"><title>COP31 enters negotiations over climate finance and implementation</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-08-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-08-03)\"><rect x=\"110\" y=\"125\" width=\"430\" height=\"395\" rx=\"9\" fill=\"#2c241d\"/><circle cx=\"325\" cy=\"320\" r=\"122\" fill=\"#1b4a6b\" stroke=\"#f4ead7\" stroke-width=\"16\"/><path d=\"M325 235V405M240 320H410\" stroke=\"#f4ead7\" stroke-width=\"16\"/><path d=\"M540 245H690V465H615\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"32\"/><path d=\"M607 449L586 465L607 481\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"13\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-08",
+        "number": "04",
+        "category": "Technology · public risk information",
+        "topic": "research",
+        "title": "NOAA begins operating hourly 3-kilometer rapid forecast system",
+        "composition": "research-bridge",
+        "signature": "plate:research-bridge",
+        "seed": 34818127,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separated evidence platforms are connected by a narrow research bridge\"><title>NOAA begins operating hourly 3-kilometer rapid forecast system</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-08-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-08-04)\"><rect x=\"85\" y=\"305\" width=\"185\" height=\"225\" fill=\"#1b4a6b\"/><rect x=\"530\" y=\"210\" width=\"185\" height=\"320\" fill=\"#1d5f47\"/><path d=\"M270 354Q400 195 530 260\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"30\"/><path d=\"M145 258V145H205V258M587 165V82H648V165\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"20\"/><path d=\"M305 420H490\" stroke=\"#7c5a3e\" stroke-width=\"15\" stroke-dasharray=\"26 20\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-08",
+        "number": "05",
+        "category": "North Carolina · water policy",
+        "topic": "climate",
+        "title": "Catawba-Wateree utilities ease mandatory water curbs despite statewide drought",
+        "composition": "climate-vortex",
+        "signature": "plate:climate-vortex",
+        "seed": 48008666,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A rotating storm path crosses a settled landscape\"><title>Catawba-Wateree utilities ease mandatory water curbs despite statewide drought</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-08-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-08-05)\"><path d=\"M95 505H705\" stroke=\"#7c5a3e\" stroke-width=\"25\"/><path d=\"M510 505V365L590 300L675 365V505Z\" fill=\"#2c241d\"/><path d=\"M125 145Q440 70 520 230Q570 330 445 365Q330 398 354 485\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"48\"/><path d=\"M190 205Q395 155 438 244Q464 303 386 326\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"22\"/><path d=\"M239 430L298 388M405 180L452 137M538 272L595 238\" stroke=\"#c4452c\" stroke-width=\"18\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
