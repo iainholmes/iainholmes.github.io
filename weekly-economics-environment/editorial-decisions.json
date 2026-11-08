@@ -5410,6 +5410,12 @@
       "evidenceReview": {
         "basis": "Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.",
         "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-06",
+        "reason": "First publication of this source-specific reading; no earlier version or historical feature is being replaced.",
+        "selectionReview": "Two distinct analytical features were selected after considering evidence, methodological limitations, reader value, visual suitability, information burden and rejected alternatives. Neither is a revision to earlier published material."
       }
     },
     "2026-11-06-fire-exposure": {
@@ -5524,6 +5530,12 @@
       "evidenceReview": {
         "basis": "Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.",
         "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-06",
+        "reason": "First publication of this source-specific reading; no earlier version or historical feature is being replaced.",
+        "selectionReview": "Two distinct analytical features were selected after considering evidence, methodological limitations, reader value, visual suitability, information burden and rejected alternatives. Neither is a revision to earlier published material."
       }
     },
     "2026-11-06-groundwater-choice": {
@@ -5638,6 +5650,12 @@
       "evidenceReview": {
         "basis": "Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.",
         "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-06",
+        "reason": "First publication of this source-specific reading; no earlier version or historical feature is being replaced.",
+        "selectionReview": "Two distinct analytical features were selected after considering evidence, methodological limitations, reader value, visual suitability, information burden and rejected alternatives. Neither is a revision to earlier published material."
       }
     },
     "2026-11-06-pollution-salience": {
@@ -5758,6 +5776,12 @@
       "evidenceReview": {
         "basis": "Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.",
         "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-06",
+        "reason": "First publication of this source-specific reading; no earlier version or historical feature is being replaced.",
+        "selectionReview": "Two distinct analytical features were selected after considering evidence, methodological limitations, reader value, visual suitability, information burden and rejected alternatives. Neither is a revision to earlier published material."
       }
     },
     "2026-11-06-seagrass-carbon": {
@@ -5869,6 +5893,12 @@
       "evidenceReview": {
         "basis": "Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.",
         "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-06",
+        "reason": "First publication of this source-specific reading; no earlier version or historical feature is being replaced.",
+        "selectionReview": "Two distinct analytical features were selected after considering evidence, methodological limitations, reader value, visual suitability, information burden and rejected alternatives. Neither is a revision to earlier published material."
       }
     }
   },
