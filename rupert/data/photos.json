@@ -357,6 +357,32 @@
         "composition_key": "alert-three-quarter-meadow-grasses-low-hedgerow-20261105"
       },
       "plate_no": 13
+    },
+    {
+      "id": "atlas-plate-9447161a5ce0",
+      "file": "atlas-plate-9447161a5ce0",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1122,
+      "height": 1402,
+      "widths": [
+        800,
+        1122
+      ],
+      "alt": "Original engraved print of Rupert sitting with his head turned over his shoulder, mustard collar against olive.",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "caption": "TRA Plate No. 014",
+      "source_note": "Original native ChatGPT editorial illustration generated and visually reviewed 10 November 2026; independent of destination.",
+      "generation": {
+        "owner": "2026-W46-tue/flagship",
+        "created_at": "2026-11-10",
+        "style_version": "atlas-engraved-3",
+        "composition_key": "seated-rear-three-quarter-lookback-olive-leaf-20261110"
+      },
+      "plate_no": 14
     }
   ]
 }

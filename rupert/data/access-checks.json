@@ -201,6 +201,24 @@
       "official_url": "https://www.ncparks.gov/state-parks/lake-norman-state-park",
       "discrepancy": false,
       "note": "Publication-day official home, trails, map, news and dated boil advisory actually read. Hiking Trails explicitly Open; mountain-bike trails Closed and excluded. Alder hiking-only0.8-mile easy white-diamond loop beside Park Lake, accessible from designated visitor-center parking; public GPS35.6725,-80.9325 and759StateParkRoad verified from official home/map. November7a.m.–6p.m. day-use table governs earlier than7:30p.m.status-panel text; finish daylight. Attended leash at most6feet; pets outside swim beach, buildings and cabins. Free ordinary day use. July18,2023 official boil notice still online says until updated; no rescission verified. Carry all human/dog drinking water; no claim that taps are safe. No boating,swimming or bike trail needed."
+    },
+    {
+      "place_id": "jones-lake-bay",
+      "status": "open",
+      "checked": "2026-11-10",
+      "checked_at": "2026-11-10T12:02:22.861Z",
+      "official_url": "https://www.ncparks.gov/state-parks/jones-lake-state-park",
+      "discrepancy": false,
+      "note": "Official home explicitly lists hiking trails open. Official trail description and map agree on white-diamond four-mile moderate Bay Trail, starting behind the picnic shelter at the signed day-use area. Public GPS 34.6827,-78.5954 and 4117 N.C. 242 N. checked. November 8 a.m.–6 p.m., weekday visitor centre only, free day use. Attended six-foot leash, yield to other trail users, no pets on swim beach or in buildings. Read official news. Boggy ground, roots and wooden boardwalks; exclude Salters detour, swimming and off-trail detours. Publication requires fresh NWS and editorial approval."
+    },
+    {
+      "place_id": "jones-lake-bay",
+      "status": "open",
+      "checked": "2026-11-10",
+      "checked_at": "2026-11-10T12:07:11.351Z",
+      "official_url": "https://www.ncparks.gov/state-parks/jones-lake-state-park",
+      "discrepancy": false,
+      "note": "Official current home explicitly reports hiking open; reviewed trail table, news and park map. Bay Trail: white diamonds, four-mile moderate hiking loop with roots, gravel, sand and boardwalks. Start behind picnic shelter from designated day-use parking, 4117 N.C. 242 N., public GPS 34.6827,-78.5954. November 8 a.m.–6 p.m., free ordinary day use, weekday visitor-centre hours only. Attended six-foot leash, yield to other users, no pets on swim beach or inside buildings. Salters spur not included. No swimming, off-trail detours or assumed dry footing. Rechecked the live official home immediately before guarded release: hiking status, access GPS, November hours and leash limit unchanged."
     }
   ],
   "official_hosts": [

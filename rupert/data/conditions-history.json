@@ -475,6 +475,49 @@
       ],
       "headline_condition": "Recheck the dated weekend forecast",
       "condition_level": "normal"
+    },
+    {
+      "edition_id": "2026-W46-tue",
+      "replaced_at": "2026-11-10T12:04:47.724Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-11-10T06:21:47-05:00",
+        "checked_at": "2026-11-10T12:02:14.413Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/ILM/63,92/forecast",
+          "issued_at": "2026-11-10T11:21:47.000Z",
+          "retrieved_at": "2026-11-10T12:02:14.413Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Sunny, with a high near 57."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "Sunny, with a high near 58."
+          }
+        ],
+        "summary": "Saturday: Sunny, with a high near 57. Sunday: Sunny, with a high near 58. Saturday night: Clear, with a low around 31. Sunday night: Mostly clear, with a low around 31.",
+        "alerts": [],
+        "alerts_checked_at": "2026-11-10T12:02:14.413Z",
+        "pivot": {
+          "if": "Thunder, flooding, unsafe footing, strong wind or official closure",
+          "note": "Postpone. No exposed trail or picnic is a storm alternative. Check official status and NWS before leaving."
+        },
+        "trail_note": "Stay on the signed trail, turn back for unsafe footing, carry water and finish in daylight."
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — dated weekend forecast",
+          "url": "https://api.weather.gov/gridpoints/ILM/63,92/forecast",
+          "retrieved": "2026-11-10"
+        }
+      ],
+      "headline_condition": "Check the dated weekend forecast",
+      "condition_level": "normal"
     }
   ]
 }

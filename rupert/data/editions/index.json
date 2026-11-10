@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "386220520c0d08a2",
+  "revision": "872da3fc99b815e9",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -655,6 +655,55 @@
       ],
       "photo_id": "atlas-plate-171c6a7ad656",
       "path": "data/editions/2026-W45-thu.json"
+    },
+    {
+      "id": "2026-W46-tue",
+      "slot": "tuesday",
+      "status": "published",
+      "published_at": "2026-11-10T07:07:12-05:00",
+      "weekend": {
+        "start": "2026-11-14",
+        "end": "2026-11-15"
+      },
+      "title": "The long way around Jones Lake",
+      "place_id": "jones-lake-bay",
+      "experience_key": "jones-lake-bay-loop",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "The long way around Jones Lake",
+          "place_id": "jones-lake-bay",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "jones-lake-bay"
+      ],
+      "place_roles": [
+        {
+          "place_id": "jones-lake-bay",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-9447161a5ce0",
+      "path": "data/editions/2026-W46-tue.json"
     }
   ]
 }
