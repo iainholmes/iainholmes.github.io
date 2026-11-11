@@ -1892,5 +1892,45 @@
     "framing": "Editor's synthesisWhat changes when risk becomes measurable?Across agricultural robotics, wildfire exposure, groundwater depletion, pollution information, and coastal carbon sinks, a common economic problem recurs: the object observed is not the object society ultimately values. Robot costs combine with farmer constraints; expected damaged structures are not a monetary welfare estimate; aquifer fill is not the shadow value of stored water; analyst attention is not factory emissions; and sediment burial is not automatically additional climate mitigation.New instruments, data, and structural models help isolate decisions that were previously obscured. They also introduce their own boundaries: crop-system engineering assumptions, a fixed wildfire vulnerability index, representative-agent dynamic calibration, the timing of information access, and spatially uneven carbon samples. None should be read as a universal causal effect or a single exchangeable policy benefit.The practical discipline is to specify the decision and denominator first. Ask which margin changes behavior, which population or asset bears the cost, which future state is compared with the baseline, and how uncertain source measurements propagate into any price or policy recommendation.The question to carry forward: does the new measurement change a choice after its counterfactual, distribution and source limitations are made explicit?",
     "geometry": "<path d=\"M100 140H500V470H100Z\" fill=\"none\" stroke=\"$ink\" stroke-width=\"10\"/><path d=\"M100 250H500M100 360H500M230 140V470M370 140V470\" stroke=\"$support\" stroke-width=\"7\"/><circle cx=\"165\" cy=\"195\" r=\"35\" fill=\"$accent\"/><circle cx=\"300\" cy=\"415\" r=\"35\" fill=\"$accent\"/><path d=\"M405 275L465 335M465 275L405 335\" stroke=\"$ink\" stroke-width=\"10\"/>",
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Loblolly &amp; Logit, issue 007: Observation &amp; inference\"><title>Loblolly &amp; Logit · 007 · Observation &amp; inference</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f3f0e6\"/><g><g fill=\"none\" stroke=\"#1f4a3b\" opacity=\".16\"><path d=\"M-20 460Q150 290 300 440T620 410M-20 480Q150 310 300 460T620 430M-20 500Q150 330 300 480T620 450M-20 520Q150 350 300 500T620 470\"/></g><path d=\"M100 140H500V470H100Z\" fill=\"none\" stroke=\"#1f4a3b\" stroke-width=\"10\"/><path d=\"M100 250H500M100 360H500M230 140V470M370 140V470\" stroke=\"#e3b456\" stroke-width=\"7\"/><circle cx=\"165\" cy=\"195\" r=\"35\" fill=\"#b4532e\"/><circle cx=\"300\" cy=\"415\" r=\"35\" fill=\"#b4532e\"/><path d=\"M405 275L465 335M465 275L405 335\" stroke=\"#1f4a3b\" stroke-width=\"10\"/></g><path d=\"M42 570H558\" stroke=\"#1f4a3b\" stroke-width=\"2\"/><g fill=\"#1f4a3b\"><text x=\"42\" y=\"634\" font-family=\"Ectros,Georgia,serif\" font-size=\"43\">Loblolly &amp; Logit</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 007 / 2026-11-06</text><text x=\"42\" y=\"740\" font-family=\"Ectros,Georgia,serif\" font-size=\"26\">Observation &amp; inference</text></g></svg>"
+  },
+  "fb:2026-11-11": {
+    "key": "fb",
+    "date": "2026-11-11",
+    "no": "044",
+    "identity": "Field Brief",
+    "theme": "change",
+    "framing": "October inflation data update the household affordability picture as the Senate advances a bipartisan permitting bill. A new global carbon budget separates a temporary emissions dip from structural decarbonization, NIST proposes a common language for attacks on agentic AI systems, and North Carolina demands a broader PFAS cleanup plan from Chemours. Different records, different tests Today's evidence spans a measured price release, a procedural Senate vote, a provisional global estimate, a draft technical taxonomy and a state enforcement directive. None should be treated as a completed outcome of the same kind. The next tests are correspondingly distinct: inflation and real-wage persistence, final legislative text and passage, a durable emissions decline, validated security benchmarks, and enforceable PFAS remediation milestones.",
+    "version": 6,
+    "subject": "evidence",
+    "composition": "spread-long-section-sampling-window-appeal-route",
+    "signature": "issue:spread-long-section-sampling-window-appeal-route",
+    "phrase": "Inflation / commitments & use",
+    "seed": 2462376243,
+    "geometry": "<g transform=\"translate(70 110) scale(1.75)\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><path d=\"M12 50H50V12\" fill=\"none\" stroke=\"$accent\" stroke-width=\"8\"/><circle cx=\"66\" cy=\"66\" r=\"9\" fill=\"$support\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M10 85H45V20H88M72 4L88 20L72 36\" fill=\"none\" stroke=\"$ink\" stroke-width=\"8\"/><circle cx=\"15\" cy=\"30\" r=\"14\" fill=\"$accent\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01"
+        ],
+        "score": 25
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [],
+        "score": 14
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 43,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 044: Inflation / commitments &amp; use\"><title>Field Brief · 044 · Inflation / commitments &amp; use</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M12 50H50V12\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"8\"/><circle cx=\"66\" cy=\"66\" r=\"9\" fill=\"#c5ad88\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M10 85H45V20H88M72 4L88 20L72 36\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"8\"/><circle cx=\"15\" cy=\"30\" r=\"14\" fill=\"#8a2a36\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 044 / 2026-11-11</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Inflation / commitments &amp; use</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
