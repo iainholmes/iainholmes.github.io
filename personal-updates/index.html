@@ -47,7 +47,12 @@ a{color:inherit}
 .shelf{display:grid;grid-template-columns:1.12fr 1fr .92fr;gap:28px;align-items:end;padding:54px 0 0}
 .vol{display:block;text-decoration:none;color:inherit;outline-offset:8px}
 .cover{position:relative;overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 2px 0 rgba(255,255,255,.04) inset;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.vol:hover .cover,.vol:focus-visible .cover{transform:translateY(-10px)}
+.cover {
+  transform: translateY(calc(var(--cover-rest-offset, 0px) + var(--cover-lift, 0px)));
+}
+.vol:hover,.vol:focus-visible {
+  --cover-lift: -10px;
+}
 .shelf .vol:nth-child(2) .cover{aspect-ratio:3/3.85}
 .shelf .vol:nth-child(3) .cover{aspect-ratio:3/3.7}
 .label{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:18px 0 0;border-top:3px solid var(--c);margin-top:22px}
@@ -138,8 +143,10 @@ a{color:inherit}
 /* navigation memory: the most recently visited title stands slightly proud of the shelf */
 .vol{position:relative}
 .sr{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.vol.recent .cover{transform:translateY(-8px);box-shadow:0 44px 70px -26px rgba(0,0,0,.85),0 2px 0 rgba(255,255,255,.05) inset}
-.vol.recent:hover .cover,.vol.recent:focus-visible .cover{transform:translateY(-8px)}
+.vol.recent {
+  --cover-rest-offset: -8px;
+}
+.vol.recent .cover{box-shadow:0 44px 70px -26px rgba(0,0,0,.85),0 2px 0 rgba(255,255,255,.05) inset}
 @media (prefers-reduced-motion:reduce){.vol.recent .cover{transition:none}}
 
 /* Publication notes: a compact press docket, not a table. */
@@ -203,7 +210,7 @@ a{color:inherit}
  .mobile-press-note .press-note::after{width:24px;height:3px}
  .note-head{align-items:flex-start;flex-direction:column;gap:5px}
  .issue-line{display:block}.issue-line>span{display:block;margin-top:4px;text-align:left!important}
- .vol .cover,.vol.recent .cover,.vol:hover .cover,.vol:focus-visible .cover,.vol.recent:hover .cover,.vol.recent:focus-visible .cover{transform:none}
+ .vol .cover{transform:none}
 }
 @media(max-width:600px){.mast h1{font-size:clamp(54px,17.6vw,96px)}.shelf{--shelf-width:calc((100vw - 32px)*.86)}}
 @media(max-width:1000px) and (orientation:landscape){.shelf{--shelf-width:min(calc((100vw - 64px)*.86),300px)}}
