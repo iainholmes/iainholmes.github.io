@@ -82,7 +82,14 @@ function freshPin(key,date,no,h,cover){
    geometry+=key==='study'?'<path d="M'+intervalStart+' '+(70+i*250/bins)+'h'+(35+height*.65)+'m0 -8v16" stroke="#1f4a3b" stroke-width="5"/><circle cx="'+(intervalStart+height*.35)+'" cy="'+(70+i*250/bins)+'" r="7" fill="#b4532e"/>':'<rect x="'+x+'" y="'+(480-height)+'" width="'+w+'" height="'+height+'" fill="'+(i%2?'#b4532e':'#1f4a3b')+'"/>';
   }
   const signature='test-only:'+key+':'+date+':'+variant;
-  const svg='<svg role="img" viewBox="0 0 600 '+(key==='study'?'390':'800')+'"><title>Unpublished distribution fixture</title><rect width="600" height="'+(key==='study'?'390':'800')+'" fill="#f3f0e6"/>'+geometry+(key==='study'?'':'<path d="M42 570H558"/>')+'</svg>';
+  const identity={fb:'Field Brief',sp:'Loblolly &amp; Logit',cp:'The Workbook'}[key];
+  const family={fb:'Instrument Serif',sp:'Ectros',cp:'STIX Two Text'}[key];
+  const number=String(no).padStart(3,'0');
+  // Use the real cover footer coordinates with the independent fixture artwork.
+  const footer=key==='study'?'':'<path d="M42 570H558"/><g fill="#1f4a3b"><text x="42" y="634">'+identity+'</text>'
+   +'<text x="42" y="683">'+(key==='cp'?'SET':'ISSUE')+' '+number+' / '+date+'</text>'
+   +'<text x="42" y="740" font-family="'+family+',Georgia,serif" font-size="26">Unpublished distribution fixture</text></g>';
+  const svg='<svg role="img" aria-label="Unpublished distribution fixture" viewBox="0 0 600 '+(key==='study'?'390':'800')+'"><title>Unpublished distribution fixture</title><rect width="600" height="'+(key==='study'?'390':'800')+'" fill="#f3f0e6"/>'+geometry+footer+'</svg>';
   const m=key==='study'?{date,no,version:4,concept:'evidence',composition:signature,signature,html:svg+'<figcaption>Unpublished interval fixture</figcaption>'}:{key,date,no:String(no).padStart(3,'0'),version:key==='fb'?5:key==='cp'?4:6,subject:'evidence',theme:'identification',identity:key==='cp'?'The Workbook':key==='sp'?'Loblolly & Logit':'Field Brief',composition:signature,signature,phrase:'Unpublished distribution fixture '+date,seed:variant,geometry,frozen:svg};
   try{if(key==='fb')vectors.validateIssue(m,prior);else if(key==='study')studies.validateOriginality(m,prior,cover);else art.validate(m,prior,layer);return m;}catch(e){if(!/originality|same-edition/.test(e.message))throw e;}
  }

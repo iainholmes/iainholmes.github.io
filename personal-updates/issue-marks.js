@@ -191,5 +191,74 @@
     return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="'+esc(m.identity+', '+(m.key==='cp'?'set':'issue')+' '+m.no+': '+m.phrase)+'"><title>'+esc(m.identity+' · '+m.no+' · '+m.phrase)+'</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width="600" height="800" fill="'+p[0]+'"/><g>'+artwork(m,p)+'</g><path d="M42 570H558" stroke="'+p[1]+'" stroke-width="2"/><g fill="'+p[1]+'"><text x="42" y="634" font-family="'+family+'" font-size="'+(m.key==='sp'?43:48)+'">'+esc(m.identity)+'</text><text x="42" y="683" font-family="IBM Plex Sans Condensed, sans-serif" font-size="19" letter-spacing="2">'+(m.key==='cp'?'SET':'ISSUE')+' '+m.no+' / '+esc(m.date)+'</text><text x="42" y="740" font-family="'+family+'" font-size="26">'+esc(m.phrase)+'</text></g></svg>';
   }
   function update(info){var m=model(info),host=root.document.querySelector('[data-issue-mark="'+m.key+'"]');if(!host)return m;host.innerHTML=svg(m);host.dataset.edition=m.date;host.dataset.theme=m.theme;host.dataset.signature=String(m.seed);host.removeAttribute('aria-hidden');var link=host.closest('a');if(link)link.setAttribute('aria-label',m.identity+', '+(m.key==='cp'?'set':'issue')+' '+m.no+': '+m.phrase);return m}
-  var api={model:model,svg:svg,update:update,concept:concept,workbookSignature:workbookSignature,validateOriginality:validateOriginality};if(typeof module==='object'&&module.exports)module.exports=api;else root.PeriodicalsIssueMarks=api;
+
+  // The hub captions the pinned artwork with the edition's published metadata.
+  function hubIssue(key, editions, pins=archive) {
+    const edition = editions.slice().sort((a,b)=>a.date.localeCompare(b.date)).at(-1);
+    const count = editions.length;
+    if (!edition) throw Error('No canonical edition for '+key);
+    const {date} = edition;
+    const serial = String(key==='cp' ? edition.no : count).padStart(3,'0');
+    const no = key==='sp' ? edition.number : serial;
+    const title = key==='fb' ? edition.issueTitle || edition.stories[0].title
+      : key==='sp' ? edition.title
+      : edition.questions.length+' questions · '+new Set(edition.questions.map(q=>q.field)).size+' fields';
+    const pin = pins[key+':'+date];
+    if (!pin?.frozen || pin.key!==key || pin.date!==date || pin.no!==serial)
+      throw Error('Missing or mismatched hub artwork for '+key+' '+date);
+    if (typeof title!=='string' || !title.trim() || !/^\d{3,}$/.test(no))
+      throw Error('Missing or invalid hub metadata for '+key+' '+date);
+    const caption = /<text x="42" y="740" font-family="([^"]+)" font-size="26">[^<]*<\/text>/;
+    const folio = /(<text x="42" y="683"[^>]*>)([^<]*)(<\/text>)/;
+    const kind = key==='cp' ? 'set' : 'issue';
+    if (!caption.test(pin.frozen) || pin.frozen.match(folio)?.[2]!==kind.toUpperCase()+' '+serial+' / '+date)
+      throw Error('Invalid hub artwork footer for '+key+' '+date);
+    const titleHTML = esc(title);
+    const label = esc(identities[key]+', '+kind+' '+no+': '+title);
+    const fontSize = title.length>110 ? 20 : title.length>75 ? 23 : 26;
+    const cover = pin.frozen
+      .replace(/aria-label="[^"]*"/,()=> 'aria-label="'+label+'"')
+      .replace(/<title>[^<]*<\/title>/,()=> '<title>'+esc(identities[key]+' · '+no+' · '+title)+'</title>')
+      .replace(folio,(_,open,old,close)=>open+kind.toUpperCase()+' '+no+' / '+date+close)
+      .replace(caption,(_,family)=>'<foreignObject x="42" y="714" width="516" height="78"><span xmlns="http://www.w3.org/1999/xhtml" data-cover-caption="" style="display:block;font-family:'+family+';font-size:'+fontSize+'px;line-height:1.15;color:'+palettes[key][1]+';overflow-wrap:anywhere;text-wrap:balance">'+titleHTML+'</span></foreignObject>');
+    const issueDate = new Date(date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
+    return {key,date,no,count,titleHTML,label,cover,pin,line:'N<sup>o</sup>. '+no+' · '+issueDate};
+  }
+  function matchesHubIssue(html, issue) {
+    const {key,date,count,titleHTML,cover,line} = issue;
+    const mark = html.match(new RegExp('data-issue-mark="'+key+'" data-edition="'+date+'"[^>]*>(<svg[\\s\\S]*?</svg>)'))?.[1];
+    return mark===cover
+      && html.includes('data-'+key+'="count">'+count+'</b>')
+      && html.includes('data-'+key+'="title">'+titleHTML+'</p>')
+      && html.includes('data-'+key+'="line" data-hub-edition="'+date+'">'+line+'</span>');
+  }
+  function renderHub(html, {fb,sp,cp,registerCount}, pins=archive) {
+    for (const [key, editions] of [['fb',fb],['sp',sp],['cp',cp]]) {
+      const issue = hubIssue(key,editions,pins);
+      const {date,cover,label,pin,count,titleHTML,line} = issue;
+      const pattern = new RegExp('(<a class="vol"[^>]*aria-label=")[^"]*(">\\s*)<div class="cover ([^"]+)" data-issue-mark="'+key+'"[^>]*>[\\s\\S]*?</div>');
+      html = html.replace(pattern,(_,link,separator,classes)=>link+label+separator
+        +'<div class="cover '+classes+'" data-issue-mark="'+key+'" data-edition="'+date+'" data-theme="'+pin.theme+'" data-signature="'+pin.seed+'">'+cover+'</div>');
+      function set(attr,value) {
+        const element = new RegExp('(<(b|p|span)[^>]*\\b'+attr+'[^>]*>)[\\s\\S]*?(</\\2>)');
+        html = html.replace(element,(_,open,tag,close)=>open+value+close);
+      }
+      set('data-'+key+'="count"',count);
+      set('data-'+key+'="title"',titleHTML);
+      set('data-'+key+'="line"',line);
+      html = html.replace(new RegExp('(data-'+key+'="line")(?: data-hub-edition="[^"]*")?'),(_,attr)=>attr+' data-hub-edition="'+date+'"');
+      if (key==='fb') set('data-fb-depth',fb.reduce((n,x)=>n+x.stories.length,0));
+      if (key==='sp') {
+        set('data-sp-depth',sp.reduce((n,x)=>n+x.readings.length,0));
+        set('data-sp-register',registerCount);
+      }
+      if (key==='cp') {
+        set('data-cp-depth',cp.reduce((n,x)=>n+x.questions.length,0));
+        set('data-cp-fields',new Set(cp.flatMap(x=>x.questions.map(q=>q.field))).size);
+      }
+      if (!matchesHubIssue(html,issue)) throw Error('Could not render synchronized hub metadata for '+key+' '+date);
+    }
+    return html;
+  }
+  var api={model:model,svg:svg,update:update,concept:concept,workbookSignature:workbookSignature,validateOriginality:validateOriginality,hubIssue:hubIssue,matchesHubIssue:matchesHubIssue,renderHub:renderHub};if(typeof module==='object'&&module.exports)module.exports=api;else root.PeriodicalsIssueMarks=api;
 })(typeof window==='object'?window:{});

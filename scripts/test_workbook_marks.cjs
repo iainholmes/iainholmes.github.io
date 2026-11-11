@@ -14,8 +14,7 @@ const latest=archive['cp:2026-10-08'];equal(latest.version,4);equal(latest.compo
 for(const date of ['2026-10-05','2026-10-07'])check(marks.workbookSignature(latest)!==marks.workbookSignature(archive['cp:'+date]),'latest structural identity differs');
 equal(marks.workbookSignature(archive['cp:2026-10-05']),marks.workbookSignature(archive['cp:2026-10-07']),'legacy rotation is correctly treated as one composition');
 equal(marks.svg(latest),latest.frozen,'pinned bytes authoritative');equal(marks.model({key:'cp',date:latest.date,no:999,questions:[]}),latest,'later edits cannot regenerate a pin');
-const published=data.editions.at(-1);
-check(read('personal-updates/index.html').includes(archive['cp:'+published.date].frozen),'embedded no-script cover agrees with latest actual set');
+check(marks.matchesHubIssue(read('personal-updates/index.html'),marks.hubIssue('cp',data.editions)),'embedded cover and note agree with the latest actual set');
 const fx=require('./fixtures/art-originality.cjs'),controlled=fx.baselineHistory(),privateArchive=structuredClone(controlled.covers),privateMarks=fx.isolatedMarks(privateArchive),questions=[{field:'Econometrics',stem:'Interpret conditional median quantile regression.',concepts:['Conditional quantiles']}];
 const start=fx.addDays(fx.nextDate(controlled),14),signatures=[],inputs=[];let exhausted=false;
 for(let i=0;i<256;i++){
@@ -30,8 +29,10 @@ const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'workbook-publication-'));
 try{
  fx.copySite(root,fixture);const appended=fx.append(fixture,['cp']),ar=appended.after.covers,m=ar['cp:'+appended.date],simulated=fx.data(fx.read(fixture,'daily-econ-challenge/index.html'),'challenge-data');
  check(m&&m.no===String(appended.workbook.no).padStart(3,'0'));check(marks.validateOriginality(m,archive).ok,'supplied authored test plate passes actual full live history');count+=fx.assertHistory(appended.after,appended.before);
- const hub=fx.read(fixture,'personal-updates/index.html'),candidate=appended.workbook,label=new Date(candidate.date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
- check(hub.includes(m.frozen),'fallback is the prepared pin');check(hub.includes('N<sup>o</sup>. '+m.no+' · '+label));check(hub.includes('data-cp="count">'+simulated.editions.length+'</b>'));check(hub.includes('data-cp-depth>'+simulated.editions.reduce((n,e)=>n+e.questions.length,0)+'</b>'));check(hub.includes('data-cp="title">'+candidate.questions.length+' questions · '+new Set(candidate.questions.map(q=>q.field)).size+' fields</p>'));check(hub.includes('_'+candidate.date+'_'),'append advances cache key');
+ const hub=fx.read(fixture,'personal-updates/index.html');
+ const prepared=marks.hubIssue('cp',simulated.editions,ar);
+ check(marks.matchesHubIssue(hub,prepared),'prepared cover and note advance to the same set');
+ check(hub.includes('data-cp-depth>'+simulated.editions.reduce((n,e)=>n+e.questions.length,0)+'</b>'));
  if(process.env.SHELF_FIXTURE){fs.mkdirSync(process.env.SHELF_FIXTURE,{recursive:true});fx.copySite(fixture,process.env.SHELF_FIXTURE);}
 }finally{fs.rmSync(fixture,{recursive:true,force:true})}
 // Legitimate later releases may append source data; the test must never rewrite any current public byte.

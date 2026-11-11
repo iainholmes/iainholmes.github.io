@@ -49,7 +49,8 @@ const unknown={date:'2028-01-01',no:22,framing:'Unclassified prose with no suppo
 for(const [key,m]of Object.entries(archive))eq(marks.svg(marks.model({key:m.key,date:m.date,no:999,framing:'incidental later text'})),m.frozen,'pinned '+key);
 const host={dataset:{},removeAttribute(){},closest:()=>null},browser={window:{FieldBriefArtwork:art,PeriodicalsMarkArchive:archive,document:{querySelector:()=>host}}};vm.runInNewContext(read('personal-updates/issue-marks.js'),browser);
 browser.window.PeriodicalsIssueMarks.update({key:'fb',date:'2026-10-17',no:21});eq(host.innerHTML,original.frozen,'live refresh honors historical duplicate pin');
-const latest=data(read('daily-watchlist-5/index.html')).editions.at(-1),latestMark=archive['fb:'+latest.date];eq(read('personal-updates/index.html').match(/data-issue-mark="fb"[^>]*>([\s\S]*?)<\/div>/)[1],latestMark.frozen,'no-script current cover remains pinned');
+const published=data(read('daily-watchlist-5/index.html')).editions,latest=published.at(-1);
+check(marks.matchesHubIssue(read('personal-updates/index.html'),marks.hubIssue('fb',published)),'no-script cover uses the current pinned illustration and issue metadata');
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),'fb-cover-originality-'));
 const outputs=['daily-watchlist-5/index.html','daily-watchlist-5/artwork-archive.js','personal-updates/issue-mark-archive.js','personal-updates/index.html','weekly-economics-environment/index.html'];
 try{
@@ -60,7 +61,7 @@ try{
  const source=path.join(dir,'daily-watchlist-5/index.html'),doc=read('daily-watchlist-5/index.html'),payload=data(doc);payload.editions.push(candidate);fs.writeFileSync(source,doc.replace(/(id="briefing-data">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(payload)+b));prep();
  const newArchive=registry(fs.readFileSync(path.join(dir,'personal-updates/issue-mark-archive.js'),'utf8')),pin=newArchive['fb:'+candidate.date];eq(pin.no,String(payload.editions.length).padStart(3,'0'),'sequential numbering');eq(pin.version,6,'new originality-aware cover');check(art.validateIssue(pin,archive).ok,'publisher validates before freezing');
  for(const [k,v]of Object.entries(archive))eq(newArchive[k],v,'append-only '+k);
- eq(fs.readFileSync(path.join(dir,'personal-updates/index.html'),'utf8').match(/data-issue-mark="fb"[^>]*>([\s\S]*?)<\/div>/)[1],pin.frozen,'new embedded cover matches frozen pin');
+ check(marks.matchesHubIssue(fs.readFileSync(path.join(dir,'personal-updates/index.html'),'utf8'),marks.hubIssue('fb',payload.editions,newArchive)),'new embedded cover and note agree with the published issue');
  const stable=snap();prep();eq(snap(),stable,'repeat publication is byte-idempotent');
  // An updater cannot bypass validation by inserting a new pin before preparation.
  newArchive['fb:'+candidate.date]={...pin,frozen:original.frozen};fs.writeFileSync(path.join(dir,'personal-updates/issue-mark-archive.js'),'module.exports='+JSON.stringify(newArchive));const bad=snap();throws(prep,/cover originality/,'new pre-pinned duplicates are rejected');eq(snap(),bad,'failure writes no artifact or hub state');
