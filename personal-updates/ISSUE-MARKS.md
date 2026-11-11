@@ -1,6 +1,6 @@
 # Current and archived issue marks
 
-The Periodicals shelf reads canonical publication pages for latest dates, counts and framing. Its cover system keeps the existing 600×800 frame, publication palettes, type identities and conceptual illustration style. `scripts/prepare_periodicals.cjs` also updates embedded covers and metadata for offline/no-script use.
+`scripts/prepare_periodicals.cjs` reads each canonical publication and embeds the current cover and press note together in the Periodicals hub. `issue-marks.js` applies the edition's title or set summary to the hub copy of the pinned SVG. The publication name, palette, typography and illustration retain their established 600×800 frame. Open hub pages refresh from the deployed hub on load, focus and return. An unavailable or incomplete response leaves the current pair visible.
 
 Broad thematic families still describe the issue, but new illustrations derive their dominant subject from specific content: compute and power infrastructure, timber rotations, river displacement, networks, shelter and insurance, experimental assignment, institutional boundaries or prices over time. The October 1 Field Brief uses a compute block linked to a power trunk within an oversight frame, replacing the September 30 threshold composition. These are conceptual illustrations, never photographs or measured diagrams.
 

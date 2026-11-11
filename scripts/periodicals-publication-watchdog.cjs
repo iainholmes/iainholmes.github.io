@@ -8,6 +8,7 @@
 const fs=require('node:fs');
 const path=require('node:path');
 const {createHash}=require('node:crypto');
+const {hubIssue,matchesHubIssue}=require('../personal-updates/issue-marks.js');
 const ROOT=path.resolve(__dirname,'..');
 const TZ='America/New_York';
 const DEFINITIONS=[
@@ -29,6 +30,10 @@ function parseJSON(html,id){
  const m=html.match(new RegExp('<script[^>]*id="'+id+'"[^>]*>([\\s\\S]*?)<\\/script>'));
  if(!m)throw Error('Missing embedded '+id+' registry');
  return JSON.parse(m[1]);
+}
+function currentHubIssue(key,html){
+ const registry={fb:'briefing-data',sp:'ll-reading-index-data',cp:'challenge-data'};
+ return hubIssue(key,parseJSON(html,registry[key]).editions);
 }
 function editionHTML(html,date){
  const match=[...html.matchAll(/<section class="edition"[^>]*data-edition="(\d{4}-\d{2}-\d{2})"/g)].find(m=>m[1]===date);
@@ -79,10 +84,9 @@ function audit(d){
   count=index.editions.length;
  }
  const hub=read('personal-updates/index.html');
- const expectedHubDate=(d.key==='sp'?parseJSON(html,'ll-reading-index-data').editions.at(-1)?.date:parseJSON(html,d.key==='fb'?'briefing-data':'challenge-data').editions.at(-1)?.date);
- const expectedHubPin=marks[d.key+':'+expectedHubDate];
- if(!hub.includes('data-issue-mark="'+d.key+'" data-edition="'+expectedHubDate+'"'))errors.push('Periodicals hub points at wrong current issue');
- if(expectedHubPin?.frozen&&!hub.includes(expectedHubPin.frozen))errors.push('Periodicals hub frozen cover mismatch');
+ try{
+  if(!matchesHubIssue(hub,currentHubIssue(d.key,html)))errors.push('Periodicals hub cover or latest edition metadata differs from the canonical issue');
+ }catch(error){errors.push(error.message);}
  return {state:errors.length?'incomplete':'canonical_ready',errors,count,selected:!!selected};
 }
 const BASE='https://iainholmes.github.io/';
@@ -94,12 +98,8 @@ async function getPublic(rel,stamp){
 }
 async function verifyPages(d,stamp){
  const [page,hub]=await Promise.all([getPublic(d.url,stamp),getPublic('personal-updates/',stamp)]);
- const canonical=read(d.file),marks=require('../personal-updates/issue-mark-archive.js');
- const pin=marks[d.key+':'+d.date],errors=[];
- const latestDate=d.key==='sp'?parseJSON(canonical,'ll-reading-index-data').editions.at(-1)?.date:parseJSON(canonical,d.key==='fb'?'briefing-data':'challenge-data').editions.at(-1)?.date;
- const latestPin=marks[d.key+':'+latestDate];
- if(!hub.includes('data-issue-mark="'+d.key+'" data-edition="'+latestDate+'"'))errors.push('live hub has wrong latest cover metadata');
- if(latestPin?.frozen&&!hub.includes(latestPin.frozen))errors.push('live hub frozen cover differs');
+ const canonical=read(d.file),errors=[];
+ if(!matchesHubIssue(hub,currentHubIssue(d.key,canonical)))errors.push('live hub cover or latest edition metadata differs from the canonical issue');
  if(d.key==='fb'||d.key==='cp'){
   const id=d.key==='fb'?'briefing-data':'challenge-data';
   const local=parseJSON(canonical,id).editions,live=parseJSON(page,id).editions;
@@ -128,7 +128,7 @@ async function reconcileIssue(d,result,stamp){
  const issues=await gh('GET','/issues?state=all&per_page=100');
  const issue=issues.find(i=>!i.pull_request&&i.title===title);
  if(result.state==='published'){
-  if(issue&&issue.state==='open'){await gh('POST','/issues/'+issue.number+'/comments',{body:'Recovered: independent Pages and frozen-cover parity verified '+stamp+'.'});await gh('PATCH','/issues/'+issue.number,{state:'closed'});}
+  if(issue&&issue.state==='open'){await gh('POST','/issues/'+issue.number+'/comments',{body:'Recovered: independent Pages, cover and edition metadata parity verified '+stamp+'.'});await gh('PATCH','/issues/'+issue.number,{state:'closed'});}
   return;
  }
  const run=process.env.GITHUB_SERVER_URL+'/'+process.env.GITHUB_REPOSITORY+'/actions/runs/'+process.env.GITHUB_RUN_ID;

@@ -2,6 +2,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const art=require('../daily-watchlist-5/artwork.js'),memory=require('../personal-updates/editorial-memory.js');
+const {hubIssue,matchesHubIssue}=require('../personal-updates/issue-marks.js');
 const ordering=require('../daily-watchlist-5/editorial-order.cjs');
 const json=(s,id)=>{const m=s.match(new RegExp('<script[^>]*id="'+id+'"[^>]*>([\\s\\S]*?)</script>'));if(!m)throw Error('Missing '+id);return JSON.parse(m[1]);};
 function registry(source){const c={module:{exports:{}}};vm.runInNewContext(source,c);return JSON.parse(JSON.stringify(c.module.exports));}
@@ -32,12 +33,11 @@ function inspect({date,html,marks,plates,hub}){
   try{art.validateEdition(issue,pin,art.recent(plates.issues,date));}catch(e){fail(e.message);}
  }
  // The hub represents the latest actual publication, including when checking an older retry.
- const latest=ordered.at(-1),latestPin=marks['fb:'+latest.date];
+ const latest=ordered.at(-1);
  if(hub!==undefined){
-  if(!hub.includes('data-issue-mark="fb" data-edition="'+latest.date+'"')||!latestPin?.frozen||!hub.includes(latestPin.frozen))fail('Hub cover is not the latest frozen issue');
-  const text=attr=>hub.match(new RegExp('data-fb="'+attr+'"[^>]*>([\\s\\S]*?)</(?:b|p|span)>'))?.[1];
-  const escape=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
-  if(text('count')!==String(editions.length)||text('title')!==escape(latest.issueTitle))fail('Hub latest metadata is stale');
+  try{
+   if(!matchesHubIssue(hub,hubIssue('fb',ordered,marks)))fail('Hub cover or latest edition metadata differs from the published issue');
+  }catch(error){fail(error.message);}
  }
  return {date,no,state:errors.length?'incomplete':'complete',action:errors.length?'stop':'verify-deployment',latest:latest.date,errors};
 }
