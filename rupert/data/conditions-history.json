@@ -518,6 +518,49 @@
       ],
       "headline_condition": "Check the dated weekend forecast",
       "condition_level": "normal"
+    },
+    {
+      "edition_id": "2026-W46-thu",
+      "replaced_at": "2026-11-12T12:05:12.738Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-11-12T06:30:41-05:00",
+        "checked_at": "2026-11-12T12:02:45.915Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RNK/78,32/forecast",
+          "issued_at": "2026-11-12T11:30:41.000Z",
+          "retrieved_at": "2026-11-12T12:02:45.915Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Sunny, with a high near 51. Northwest wind 2 to 12 mph."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "Sunny, with a high near 54."
+          }
+        ],
+        "summary": "Saturday: Sunny, with a high near 51. Northwest wind 2 to 12 mph. Sunday: Sunny, with a high near 54. Saturday night: Mostly clear, with a low around 28. Sunday night: Mostly clear, with a low around 27.",
+        "alerts": [],
+        "alerts_checked_at": "2026-11-12T12:02:45.915Z",
+        "pivot": {
+          "if": "Thunder, high water, unsafe footing, strong wind or official closure",
+          "note": "Postpone and recheck official park status and NWS. Do not substitute another exposed outing."
+        },
+        "trail_note": "Take the shorter red inner loop only if its footing is safe."
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — dated weekend forecast",
+          "url": "https://api.weather.gov/gridpoints/RNK/78,32/forecast",
+          "retrieved": "2026-11-12"
+        }
+      ],
+      "headline_condition": "Check the dated weekend forecast",
+      "condition_level": "normal"
     }
   ]
 }

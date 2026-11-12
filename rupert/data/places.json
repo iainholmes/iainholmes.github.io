@@ -722,6 +722,58 @@
         "checked": "2026-11-10",
         "source": "https://www.ncparks.gov/state-parks/jones-lake-state-park"
       }
+    },
+    {
+      "id": "mayo-river-mountain-loop",
+      "name": "Mayo River State Park — Mayo Mountain",
+      "short_name": "Mayo Mountain",
+      "kind": "trail",
+      "region": "Rockingham County",
+      "access": {
+        "name": "Mayo Mountain picnic shelter parking, 500 Old Mayo Park Road, Mayodan",
+        "lat": 36.4391,
+        "lng": -79.9475,
+        "coords_verified": true,
+        "coords_checked": "2026-11-12",
+        "coords_source": "NC State Parks official public Mayo Mountain access GPS; trail page locates start in picnic shelter parking lot; official map confirms parking and loop."
+      },
+      "dog_policy": "Attended leash no longer than six feet; pets stay outside buildings.",
+      "routes": [
+        {
+          "route_id": "mayo-mountain-loop@1",
+          "distance_mi": 2,
+          "shape": "loop",
+          "difficulty": "easy",
+          "surface": "Natural mixed-hardwood trail; blue blazes on official map."
+        }
+      ],
+      "links": [
+        {
+          "label": "Official park information",
+          "url": "https://www.ncparks.gov/state-parks/mayo-river-state-park"
+        },
+        {
+          "label": "Official route and parking",
+          "url": "https://www.ncparks.gov/state-parks/mayo-river-state-park/trails"
+        },
+        {
+          "label": "Official park map",
+          "url": "https://www.ncparks.gov/maps/mayo-river-state-park-map/open"
+        },
+        {
+          "label": "Mayo Mountain access",
+          "url": "https://www.ncparks.gov/park-features/mayo-river-state-park-mayo-mountain-access"
+        }
+      ],
+      "tags": [
+        "woodland",
+        "picnic"
+      ],
+      "closure": {
+        "status": "open",
+        "checked": "2026-11-12",
+        "source": "https://www.ncparks.gov/state-parks/mayo-river-state-park"
+      }
     }
   ]
 }

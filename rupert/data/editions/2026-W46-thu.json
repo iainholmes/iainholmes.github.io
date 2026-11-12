@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "id": "2026-W46-thu",
+  "slot": "thursday",
+  "status": "published",
+  "published_at": "2026-11-12T07:06:23-05:00",
+  "weekend": {
+    "start": "2026-11-14",
+    "end": "2026-11-15"
+  },
+  "flagship": {
+    "place_id": "mayo-river-mountain-loop",
+    "title": "A two-mile turn over Mayo Mountain",
+    "standfirst": "A modest hardwood loop from the picnic shelter, with a shorter inner loop if Rupert has had enough.",
+    "why_this_week": "Start at the main Mayo Mountain access and take the blue two-mile loop through mixed hardwoods. The park describes a creek and seasonal views of Cedar Mountain; neither calls for leaving the trail. Keep the red half-mile inner loop in reserve for a shorter walk, and leave the separate waterfall and river accesses for another day. Finish in daylight and heed the earlier access closing time. The dated forecast puts both days in the low 50s after cold nights. A late-morning start gives the shaded path some time to warm; wet leaves can still hide slick roots.",
+    "headline_condition": "Sunny outlook; watch for frost",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-11-12",
+      "route": {
+        "route_id": "mayo-mountain-loop@1",
+        "distance_mi": 2,
+        "shape": "loop",
+        "difficulty": "easy",
+        "surface": "Natural mixed-hardwood trail; blue blazes on official map."
+      },
+      "access": {
+        "name": "Mayo Mountain picnic shelter parking, 500 Old Mayo Park Road, Mayodan",
+        "parking": "Use the picnic shelter parking lot at the main Mayo Mountain access. Use the earlier 5 p.m. limit on the access page; the general November park table lists 6 p.m. This is not the Deshazo Mill or river launch access."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          100,
+          120
+        ]
+      },
+      "duration_h": [
+        1,
+        1.75
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl. No swimming or paddling.",
+        "shade": "Mixed hardwood forest; picnic area may be exposed.",
+        "watch_for": [
+          "Roots and wet leaves",
+          "Uneven slopes and creek banks",
+          "Short November daylight"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "photo": {
+      "id": "atlas-plate-bfaebd8d2796",
+      "alt": "Engraved print of Rupert following a scent past copper ferns and pale birch trunks."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "Official status, hours, public access and pets",
+        "url": "https://www.ncparks.gov/state-parks/mayo-river-state-park",
+        "retrieved": "2026-11-12"
+      },
+      {
+        "kind": "park",
+        "label": "Official trail and parking details",
+        "url": "https://www.ncparks.gov/state-parks/mayo-river-state-park/trails",
+        "retrieved": "2026-11-12"
+      },
+      {
+        "kind": "park",
+        "label": "Official alerts and news",
+        "url": "https://www.ncparks.gov/state-parks/mayo-river-state-park/news",
+        "retrieved": "2026-11-12"
+      },
+      {
+        "kind": "park",
+        "label": "Official park map",
+        "url": "https://www.ncparks.gov/maps/mayo-river-state-park-map/open",
+        "retrieved": "2026-11-12"
+      },
+      {
+        "kind": "park",
+        "label": "Access-specific hours",
+        "url": "https://www.ncparks.gov/park-features/mayo-river-state-park-mayo-mountain-access",
+        "retrieved": "2026-11-12"
+      },
+      {
+        "kind": "forecast",
+        "label": "National Weather Service — dated weekend forecast",
+        "url": "https://api.weather.gov/gridpoints/RNK/78,32/forecast",
+        "retrieved": "2026-11-12"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "picnic"
+    ],
+    "experience_id": "mayo-mountain-blue-loop",
+    "experience_basis": {
+      "activity_id": "leashed-hardwood-hike",
+      "feature_id": "mayo-mountain-woodland",
+      "format_id": "two-mile-loop-with-inner-shortcut"
+    },
+    "panels": [
+      {
+        "label": "Start at the picnic shelter",
+        "text": "The blue Mayo Mountain Loop is two miles. Use the main access and designated picnic shelter parking, not a river launch or waterfall lot."
+      },
+      {
+        "label": "Keep the red loop in reserve",
+        "text": "The red inner loop is half a mile. Keep Rupert leashed and turn back if wet leaves hide unsafe footing."
+      }
+    ],
+    "qualities": {
+      "activity": "hike",
+      "expected_heat": "unknown"
+    },
+    "artwork": {
+      "image_id": "atlas-plate-bfaebd8d2796",
+      "brief": "Restrained environmental print after inspecting Plates 009–014 plus 006. Recent work is mixed: flat oxblood frontal walk, autumn woodland frontal seat, waterside recline, navy play bow, standing meadow and seated olive rear turn. This plate uses a nose-low side-on walking silhouette across a diagonal bank, pale trunks at the far right and a large slate-blue upper field; more depth than the last olive portrait, less detail than the layered woodland. Fine cream lines, one mustard collar, long Labrador muzzle and slim tapered tail. Independent of destination.",
+      "characters": [
+        "rupert"
+      ]
+    }
+  },
+  "local_trail": {
+    "place_id": "mayo-river-mountain-loop",
+    "title": "The red inner loop",
+    "line": "Choose the half-mile red loop if Rupert has had enough.",
+    "snapshot": {
+      "as_of": "2026-11-12",
+      "access": {
+        "name": "Mayo Mountain picnic shelter parking, 500 Old Mayo Park Road, Mayodan",
+        "parking": "Use the picnic shelter parking lot at the main Mayo Mountain access. Use the earlier 5 p.m. limit on the access page; the general November park table lists 6 p.m. This is not the Deshazo Mill or river launch access."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          100,
+          120
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.5
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl. No swimming or paddling.",
+        "shade": "Mixed hardwood forest; picnic area may be exposed.",
+        "watch_for": [
+          "Roots and wet leaves",
+          "Uneven slopes and creek banks",
+          "Short November daylight"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "away_mission": {
+    "place_id": "mayo-river-mountain-loop",
+    "title": "The full blue loop",
+    "line": "Complete the two-mile blue loop only if the footing and weather suit.",
+    "snapshot": {
+      "as_of": "2026-11-12",
+      "route": {
+        "route_id": "mayo-mountain-loop@1",
+        "distance_mi": 2,
+        "shape": "loop",
+        "difficulty": "easy",
+        "surface": "Natural mixed-hardwood trail; blue blazes on official map."
+      },
+      "access": {
+        "name": "Mayo Mountain picnic shelter parking, 500 Old Mayo Park Road, Mayodan",
+        "parking": "Use the picnic shelter parking lot at the main Mayo Mountain access. Use the earlier 5 p.m. limit on the access page; the general November park table lists 6 p.m. This is not the Deshazo Mill or river launch access."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          100,
+          120
+        ]
+      },
+      "duration_h": [
+        1,
+        1.75
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl. No swimming or paddling.",
+        "shade": "Mixed hardwood forest; picnic area may be exposed.",
+        "watch_for": [
+          "Roots and wet leaves",
+          "Uneven slopes and creek banks",
+          "Short November daylight"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "wildcard": {
+    "place_id": "mayo-river-mountain-loop",
+    "title": "A picnic instead",
+    "line": "Stay in the designated picnic area for a brief leashed walk. This is not a storm alternative.",
+    "snapshot": {
+      "as_of": "2026-11-12",
+      "access": {
+        "name": "Mayo Mountain picnic shelter parking, 500 Old Mayo Park Road, Mayodan",
+        "parking": "Use the picnic shelter parking lot at the main Mayo Mountain access. Use the earlier 5 p.m. limit on the access page; the general November park table lists 6 p.m. This is not the Deshazo Mill or river launch access."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          100,
+          120
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.75
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water and a bowl. No swimming or paddling.",
+        "shade": "Mixed hardwood forest; picnic area may be exposed.",
+        "watch_for": [
+          "Roots and wet leaves",
+          "Uneven slopes and creek banks",
+          "Short November daylight"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "text": "Let Rupert choose a few sniffing pauses without leaving the marked trail or disturbing wildlife.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "Where did Rupert linger: the hardwood slope, the creek or the short loop near the shelter?"
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-11-12T06:30:41-05:00",
+    "checked_at": "2026-11-12T12:05:12.738Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RNK/78,32/forecast",
+      "issued_at": "2026-11-12T11:30:41.000Z",
+      "retrieved_at": "2026-11-12T12:05:12.738Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "Sunny, with a high near 51. Northwest wind 2 to 12 mph."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "Sunny, with a high near 54."
+      }
+    ],
+    "summary": "Saturday: Sunny, with a high near 51. Northwest wind 2 to 12 mph. Sunday: Sunny, with a high near 54. Saturday night: Mostly clear, with a low around 28. Sunday night: Mostly clear, with a low around 27.",
+    "alerts": [],
+    "alerts_checked_at": "2026-11-12T12:05:12.738Z",
+    "pivot": {
+      "if": "Thunder, high water, unsafe footing, strong wind or official closure",
+      "note": "Postpone and recheck official park status and NWS. Do not substitute another exposed outing."
+    },
+    "trail_note": "Watch for frost on shaded ground and slick leaves over roots. Stay clear of creek banks; turn back if footing is unsafe. The red inner loop is a distance option only when its footing is sound."
+  },
+  "practical": {
+    "best_window": "Start in late morning after checking park status and the latest forecast. Allow up to two hours and finish well before dusk and the earlier 5 p.m. closing time.",
+    "fees": "Free ordinary day use; reservations are separate.",
+    "bring": [
+      "Water and bowl",
+      "Six-foot leash and waste bags",
+      "Traction shoes",
+      "Official map offline"
+    ],
+    "closures_checked": "2026-11-12",
+    "closures_note": "Current official home, access page, trail page, news and map reviewed. No posted closure for Mayo Mountain access found. Main access GPS 36.4391,-79.9475, 500 Old Mayo Park Road. Start at picnic shelter parking. Blue two-mile easy loop with red half-mile inner loop. Free ordinary day use, use earlier 5 p.m. access close despite general 6 p.m. park close. Attended leash up to six feet; no pets inside buildings. Stay on trail; other river accesses are outside this itinerary."
+  }
+}

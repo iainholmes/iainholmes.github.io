@@ -219,6 +219,24 @@
       "official_url": "https://www.ncparks.gov/state-parks/jones-lake-state-park",
       "discrepancy": false,
       "note": "Official current home explicitly reports hiking open; reviewed trail table, news and park map. Bay Trail: white diamonds, four-mile moderate hiking loop with roots, gravel, sand and boardwalks. Start behind picnic shelter from designated day-use parking, 4117 N.C. 242 N., public GPS 34.6827,-78.5954. November 8 a.m.–6 p.m., free ordinary day use, weekday visitor-centre hours only. Attended six-foot leash, yield to other users, no pets on swim beach or inside buildings. Salters spur not included. No swimming, off-trail detours or assumed dry footing. Rechecked the live official home immediately before guarded release: hiking status, access GPS, November hours and leash limit unchanged."
+    },
+    {
+      "place_id": "mayo-river-mountain-loop",
+      "status": "open",
+      "checked": "2026-11-12",
+      "checked_at": "2026-11-12T12:01:28+00:00",
+      "official_url": "https://www.ncparks.gov/state-parks/mayo-river-state-park",
+      "discrepancy": false,
+      "note": "NC State Parks home, current news, trail page, park map and specific access page reviewed. Main access GPS 36.4391,-79.9475, 500 Old Mayo Park Road; start at picnic shelter parking. Blue two-mile woodland loop and red half-mile inner loop. No closure for this access found on the reviewed official sources. Use 8 a.m.–5 p.m., the earlier access closing time rather than general November 6 p.m.; finish by daylight. Free day use; attended leash up to six feet and no pets indoors. Weather and final editorial approval must be refreshed before release."
+    },
+    {
+      "place_id": "mayo-river-mountain-loop",
+      "status": "open",
+      "checked": "2026-11-12",
+      "checked_at": "2026-11-12T12:05:32+00:00",
+      "official_url": "https://www.ncparks.gov/state-parks/mayo-river-state-park",
+      "discrepancy": false,
+      "note": "Current official home, access page, trail page, news and map reviewed. No posted closure for Mayo Mountain access found. Main access GPS 36.4391,-79.9475, 500 Old Mayo Park Road. Start at picnic shelter parking. Blue two-mile easy loop with red half-mile inner loop. Free ordinary day use, use earlier 5 p.m. access close despite general 6 p.m. park close. Attended leash up to six feet; no pets inside buildings. Stay on trail; other river accesses are outside this itinerary."
     }
   ],
   "official_hosts": [
