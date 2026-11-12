@@ -18205,11 +18205,466 @@ Hash routes: #YYYY-MM-DD and #YYYY-MM-DD/NN (story). These are permanent keepabl
         },
         "exceptions": []
       }
+    },
+    {
+      "date": "2026-11-12",
+      "issueTitle": "Housing eligibility, cyber risk and public investment",
+      "displayDate": "Thursday, November 12, 2026",
+      "shortDate": "Nov 12",
+      "title": "Daily Briefing",
+      "deck": "A new HUD rule changes eligibility verification and the treatment of mixed-status families in assisted housing. Microsoft patches an actively exploited Outlook flaw, states receive a second $10 billion rural-health award round, WMO reports record ocean heat and sea level, and North Carolina prepares a narrower return for its Healthy Opportunities Pilot.",
+      "readTime": "8 min read",
+      "stories": [
+        {
+          "number": "01",
+          "category": "U.S. policy · housing eligibility",
+          "art": "housing",
+          "title": "HUD limits long-term housing assistance for mixed-status families",
+          "summary": [
+            "HUD's final rule requires citizenship or eligible-immigration-status verification for every applicant and recipient in covered public-housing and rental-assistance programs, regardless of age. Beginning December 14, prorated assistance for mixed-status families becomes temporary while eligibility is resolved rather than a continuing arrangement.",
+            "HUD says the change will direct scarce assistance toward fully eligible households and people on waiting lists. The rule also acknowledges that mixed-status families may lose assistance, pay more rent or leave covered housing; qualifying families may receive a temporary deferral of termination for up to 18 months. Those distributional effects are the agency's projections, not measured outcomes of the rule."
+          ],
+          "why": "The rule changes both the documentation burden and the incidence of federal housing aid. Its practical effect will depend on public-housing-agency implementation, the accuracy and speed of status verification, and whether displaced assistance reaches other eligible households without increasing housing instability.",
+          "implications": [
+            [
+              "Housing stability",
+              "Mixed-status households face a finite transition instead of indefinite prorated aid. Families unable to document eligible status may confront higher rent or displacement even when some members remain eligible."
+            ],
+            [
+              "Administration and allocation",
+              "Housing agencies must verify every covered person and manage deferrals and terminations. HUD expects assistance to shift toward fully eligible households, but the timing and local waiting-list effect will require implementation data."
+            ]
+          ],
+          "sources": [
+            [
+              "Federal Register · final rule on verification of eligible status, November 12",
+              "https://www.govinfo.gov/content/pkg/FR-2026-11-12/pdf/2026-23003.pdf"
+            ],
+            [
+              "HUD · final-rule announcement and implementation summary, November 12",
+              "https://www.hud.gov/news/hud-no-26-091"
+            ]
+          ],
+          "editorial": {
+            "domain": "policy",
+            "entities": [
+              "U.S. Department of Housing and Urban Development",
+              "public housing agencies"
+            ],
+            "disputes": [
+              "housing eligibility and treatment of mixed-status families"
+            ],
+            "industries": [
+              "public housing",
+              "rental assistance"
+            ],
+            "geographies": [
+              "United States"
+            ],
+            "mechanisms": [
+              "Section 214 eligibility verification",
+              "temporary prorated assistance",
+              "status documentation"
+            ],
+            "questions": [
+              "How will universal status verification redistribute scarce housing assistance and affect mixed-status families?"
+            ]
+          }
+        },
+        {
+          "number": "02",
+          "category": "Technology · cybersecurity",
+          "art": "cyber",
+          "title": "Microsoft's record cyber update patches an exploited Outlook flaw",
+          "summary": [
+            "Microsoft's November security release addresses 1,235 vulnerabilities across products including Windows, Office, SharePoint and Active Directory. Among them is CVE-2026-124194, an Outlook flaw that Microsoft says has been exploited in the wild.",
+            "A crafted message file can cause Outlook to connect to an attacker-controlled location after the user opens it, potentially disclosing authentication information such as an NTLM hash. CISA added the flaw to its Known Exploited Vulnerabilities catalog and set a November 24 remediation deadline for covered federal agencies."
+          ],
+          "why": "The update turns an unusually large patch workload into an immediate credential-protection problem. Organizations must prioritize the exploited Outlook flaw and internet-facing or identity infrastructure without losing visibility across the rest of the release.",
+          "implications": [
+            [
+              "Enterprise security",
+              "Credential disclosure can support lateral movement even without a conventional code-execution exploit. Rapid Outlook patching should be paired with authentication monitoring, outbound-connection controls and incident review."
+            ],
+            [
+              "Maintenance capacity",
+              "A four-digit vulnerability release strains testing and deployment systems. Risk-based sequencing matters more than a simple patch count, especially for hospitals, governments and firms with legacy dependencies."
+            ]
+          ],
+          "sources": [
+            [
+              "JPCERT/CC · Microsoft November 2026 security-update advisory",
+              "https://www.jpcert.or.jp/english/at/2026/at260035.html"
+            ],
+            [
+              "NHS England Digital · November 2026 Microsoft security updates",
+              "https://digital.nhs.uk/cyber-alerts/2026/cc-4742"
+            ],
+            [
+              "CISA · Known Exploited Vulnerabilities catalog entry for CVE-2026-124194",
+              "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+            ]
+          ],
+          "editorial": {
+            "domain": "technology",
+            "entities": [
+              "Microsoft",
+              "Cybersecurity and Infrastructure Security Agency"
+            ],
+            "disputes": [
+              "speed and prioritization of enterprise security patching"
+            ],
+            "technologies": [
+              "Microsoft Outlook",
+              "Windows",
+              "SharePoint",
+              "Active Directory"
+            ],
+            "industries": [
+              "cybersecurity",
+              "enterprise software"
+            ],
+            "geographies": [
+              "global",
+              "United States"
+            ],
+            "mechanisms": [
+              "security update",
+              "Known Exploited Vulnerabilities catalog",
+              "credential-hash disclosure"
+            ],
+            "questions": [
+              "Can organizations patch actively exploited enterprise-software flaws before attackers scale credential theft?"
+            ]
+          }
+        },
+        {
+          "number": "03",
+          "category": "U.S. health policy · public finance",
+          "art": "health",
+          "title": "CMS awards states $10 billion for rural-health transformation",
+          "summary": [
+            "CMS announced the second $10 billion annual award round under the five-year Rural Health Transformation Program. Every state receives at least $100 million from the baseline half of the allocation; the other half reflects workload and performance factors. North Carolina's second-year award is $216,824,573.",
+            "States can use cooperative-agreement funds for access, workforce, technology, payment and prevention strategies in approved plans. CMS says annual reports and progress will inform future awards, and all program funds must be spent by September 30, 2032. The agency's stated transformation goals are prospective; the award announcement does not yet establish better access or health outcomes."
+          ],
+          "why": "The program is moving from planning into execution. The central question is whether a large, time-limited federal investment changes rural delivery capacity and workforce economics rather than temporarily supporting operations without durable access gains.",
+          "implications": [
+            [
+              "Rural access",
+              "States can finance local delivery models, workforce retention and technology-enabled care, but benefits will depend on fit with travel patterns, hospital finances, broadband and primary-care capacity."
+            ],
+            [
+              "Public accountability",
+              "The split between guaranteed and workload funding spreads resources nationwide while retaining performance leverage. Comparable measures and transparent annual reporting will determine whether later awards reward activity or outcomes."
+            ]
+          ],
+          "sources": [
+            [
+              "CMS · second-year Rural Health Transformation awards, November 10",
+              "https://www.cms.gov/newsroom/press-releases/trump-administration-announces-10-billion-second-year-rural-health-transformation-awards-all-50"
+            ],
+            [
+              "CMS · Rural Health Transformation Program fact sheet",
+              "https://www.cms.gov/newsroom/fact-sheets/rural-health-transformation-program"
+            ]
+          ],
+          "editorial": {
+            "domain": "health",
+            "entities": [
+              "Centers for Medicare and Medicaid Services",
+              "state health agencies"
+            ],
+            "disputes": [
+              "allocation and accountability for rural-health transformation funding"
+            ],
+            "technologies": [
+              "telehealth",
+              "health information technology"
+            ],
+            "industries": [
+              "rural hospitals",
+              "primary care",
+              "emergency medical services"
+            ],
+            "geographies": [
+              "United States",
+              "rural communities"
+            ],
+            "mechanisms": [
+              "cooperative agreements",
+              "baseline and workload funding",
+              "annual progress review"
+            ],
+            "questions": [
+              "Will state-led rural-health investments produce durable access and workforce improvements rather than short-term operating support?"
+            ]
+          }
+        },
+        {
+          "number": "04",
+          "category": "Climate · earth-system observations",
+          "art": "climate",
+          "title": "WMO reports record ocean heat and sea level as El Niño intensifies",
+          "summary": [
+            "WMO's COP31 climate update says January through September 2026 was about 1.47°C above the 1850–1900 average, making the year likely to rank among the four warmest observed. Preliminary data through July indicate a tenth consecutive annual record for ocean heat content, while global mean sea level also reached a new high.",
+            "The report says El Niño strengthened from August and is expected to reach record intensity by December and persist into early 2027. The temperature ranking, ocean estimate and seasonal outlook are preliminary observations and forecasts; they should not be presented as final 2026 records or deterministic forecasts for individual disasters."
+          ],
+          "why": "Ocean heat and sea level measure accumulated physical risk beyond the annual surface-temperature ranking. Together with a strong El Niño, they raise the value of near-term preparedness while reinforcing long-run adaptation needs for roughly 900 million people living in low-lying coastal zones.",
+          "implications": [
+            [
+              "Preparedness",
+              "Seasonal outlooks can guide heat, flood, agriculture and emergency planning, but local agencies still need regional forecasts and exposure data rather than translating a global El Niño signal directly into a local event prediction."
+            ],
+            [
+              "Adaptation investment",
+              "Record ocean heat and sea level strengthen the case for coastal resilience, early-warning systems and infrastructure standards that account for compounding hazards and rising baselines."
+            ]
+          ],
+          "sources": [
+            [
+              "World Meteorological Organization · State of the Climate Update for COP31",
+              "https://wmo.int/resources/publication-series/state-of-climate-update-cop/state-of-climate-update-cop31"
+            ],
+            [
+              "World Meteorological Organization · media summary, November 10",
+              "https://wmo.int/media/news/2026-set-be-among-four-warmest-years-record"
+            ]
+          ],
+          "editorial": {
+            "domain": "environment",
+            "entities": [
+              "World Meteorological Organization"
+            ],
+            "technologies": [
+              "satellite altimetry",
+              "ocean heat monitoring",
+              "seasonal forecasting"
+            ],
+            "industries": [
+              "climate science",
+              "coastal infrastructure",
+              "disaster risk management"
+            ],
+            "geographies": [
+              "global",
+              "low-lying coasts",
+              "tropical Pacific"
+            ],
+            "mechanisms": [
+              "El Niño",
+              "earth energy imbalance",
+              "thermal expansion",
+              "early-warning systems"
+            ],
+            "questions": [
+              "How should record ocean heat, sea level and an intensifying El Niño change near-term adaptation and preparedness decisions?"
+            ]
+          }
+        },
+        {
+          "number": "05",
+          "category": "North Carolina · Medicaid and food security",
+          "art": "community",
+          "title": "North Carolina relaunches a narrower Healthy Opportunities Pilot",
+          "summary": [
+            "North Carolina plans to restart Healthy Opportunities in early 2027 with $9 million in state appropriations and federal Medicaid matching funds, for an expected total of about $25 million. The narrower program will provide weekly healthy-food boxes to qualifying Medicaid members in 33 counties who have food insecurity and pregnancy, diabetes or cardiovascular-disease risk.",
+            "The broader pilot lost funding after July 1, 2025 and had included housing, transportation, interpersonal-safety and other nutrition services. A state evaluation covering 31,597 participants from March 2022 through November 2024 estimates average net savings of $164 per beneficiary per month, including service and administrative costs, alongside fewer emergency and inpatient visits. NCDHHS labels the findings preliminary and not yet CMS-approved; the observational results do not prove that the relaunched food-only model will reproduce them."
+          ],
+          "why": "The relaunch preserves a nationally watched Medicaid social-needs experiment but changes the intervention, scale and eligible population. That makes program design and renewed evaluation—not the earlier pilot's headline savings—the proper test.",
+          "implications": [
+            [
+              "Health and food security",
+              "Targeting food boxes to high-risk members may concentrate near-term clinical benefit, while excluding earlier housing and transportation services narrows the pathways through which the original pilot sought to improve health."
+            ],
+            [
+              "Medicaid evidence",
+              "North Carolina can compare participation, utilization and cost outcomes against the broader pilot, but causal claims will require careful controls for selection, managed-care changes and the smaller service mix."
+            ]
+          ],
+          "sources": [
+            [
+              "NCDHHS · Healthy Opportunities Pilot relaunch plan, November 9",
+              "https://www.ncdhhs.gov/news/press-releases/2026/11/09/north-carolina-announces-plan-relaunch-innovative-healthy-opportunities-pilot-program"
+            ],
+            [
+              "NCDHHS · Healthy Opportunities Pilot program and evaluation materials",
+              "https://www.ncdhhs.gov/about/department-initiatives/healthy-opportunities/healthy-opportunities-pilots"
+            ],
+            [
+              "UNC Sheps Center · Healthy Opportunities Pilot summative evaluation",
+              "https://www.ncdhhs.gov/healthy-opportunities-pilot-summative-evaluation-report/download?attachment"
+            ]
+          ],
+          "editorial": {
+            "domain": "regional",
+            "feature": "north-carolina",
+            "entities": [
+              "North Carolina Department of Health and Human Services",
+              "NC Medicaid",
+              "North Carolina General Assembly"
+            ],
+            "disputes": [
+              "scope and funding of Medicaid social-needs services"
+            ],
+            "technologies": [
+              "Medicaid managed-care referral and payment systems"
+            ],
+            "industries": [
+              "Medicaid",
+              "community health",
+              "food assistance"
+            ],
+            "geographies": [
+              "North Carolina",
+              "33 pilot counties"
+            ],
+            "mechanisms": [
+              "Section 1115 waiver",
+              "state appropriation",
+              "federal Medicaid matching funds",
+              "healthy-food delivery"
+            ],
+            "questions": [
+              "Can a food-only relaunch preserve measurable health gains after the broader pilot's funding interruption?"
+            ]
+          }
+        }
+      ],
+      "signalTitle": "Implementation is the next record",
+      "signal": [
+        "Today's developments are different kinds of evidence: a final housing rule, an actively exploited software flaw, a public-funding allocation, preliminary climate observations and a state program relaunch. They do not form a single policy story.",
+        "Each now requires an implementation record: housing-agency outcomes, patch adoption and incidents, rural-health access measures, regional preparedness, and a fresh evaluation of North Carolina's narrower food intervention."
+      ],
+      "editorialSelection": {
+        "historyDates": [
+          "2026-11-11",
+          "2026-11-08",
+          "2026-11-07",
+          "2026-11-06",
+          "2026-11-05",
+          "2026-11-04",
+          "2026-11-03"
+        ],
+        "candidates": [
+          {
+            "title": "HUD limits long-term housing assistance for mixed-status families",
+            "selected": true,
+            "rawPenalty": 8,
+            "matchedDimensions": [
+              "geographies",
+              "mechanisms"
+            ],
+            "reason": "Selected: the final rule creates a new housing-eligibility and assistance-allocation mechanism; explicit tags show that broad United States and heuristic monetary-policy matches do not repeat the recent inflation or permitting questions."
+          },
+          {
+            "title": "Microsoft's record cyber update patches an exploited Outlook flaw",
+            "selected": true,
+            "rawPenalty": 10.571428571428573,
+            "matchedDimensions": [
+              "technologies",
+              "industries",
+              "geographies",
+              "mechanisms"
+            ],
+            "reason": "Selected: active exploitation and a concrete enterprise patch obligation are distinct from the previous NIST taxonomy draft and Tencent model-training controls."
+          },
+          {
+            "title": "CMS awards states $10 billion for a second year of rural-health transformation",
+            "selected": true,
+            "rawPenalty": 11.571428571428571,
+            "matchedDimensions": [
+              "industries",
+              "geographies",
+              "mechanisms"
+            ],
+            "reason": "Selected: a newly allocated annual award round moves a five-year health program into state execution; it does not revisit the prior CVS restructuring or general affordability debate."
+          },
+          {
+            "title": "WMO reports record ocean heat and sea level as El Niño intensifies",
+            "selected": true,
+            "rawPenalty": 5.2857142857142865,
+            "matchedDimensions": [
+              "geographies",
+              "industries"
+            ],
+            "reason": "Selected: physical observations and a seasonal forecast answer a preparedness question distinct from the prior carbon-budget estimate, COP finance agenda and European infrastructure analysis."
+          },
+          {
+            "title": "North Carolina relaunches a narrower Healthy Opportunities Pilot",
+            "selected": true,
+            "rawPenalty": 10.857142857142858,
+            "matchedDimensions": [
+              "entities",
+              "industries",
+              "geographies",
+              "mechanisms"
+            ],
+            "reason": "Selected: explicit North Carolina feature tags show that the recurrent regional geography is required by the edition structure; a Medicaid food intervention is materially different from recent PFAS, drought, elections and Opportunity Zone coverage."
+          },
+          {
+            "title": "Google adds confidential-computing and high-context TPU systems",
+            "selected": false,
+            "rawPenalty": 11.714285714285714,
+            "matchedDimensions": [
+              "technologies",
+              "industries",
+              "geographies",
+              "mechanisms"
+            ],
+            "reason": "Not selected: the vendor launch is consequential for accelerator competition, but it would add a second technology story and relies primarily on vendor-reported performance and security claims."
+          },
+          {
+            "title": "Durham's easily accessible water supply falls below 80 days",
+            "selected": false,
+            "rawPenalty": 12,
+            "matchedDimensions": [
+              "entities",
+              "industries",
+              "geographies",
+              "mechanisms",
+              "questions"
+            ],
+            "reason": "Not selected: the lower supply estimate is important locally but substantially repeats last week's drought-allocation and interutility-transfer question without a new regulatory or infrastructure decision."
+          },
+          {
+            "title": "CMS codifies Medicare drug-price negotiation for 2029 and beyond",
+            "selected": false,
+            "rawPenalty": 10.285714285714286,
+            "matchedDimensions": [
+              "entities",
+              "industries",
+              "geographies",
+              "mechanisms"
+            ],
+            "reason": "Not selected: the rule is consequential but was published November 5 and is less current than the second-year rural-health allocation."
+          }
+        ],
+        "selectedIndexes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "diversity": {
+          "counts": {
+            "policy": 1,
+            "technology": 1,
+            "health": 1,
+            "environment": 1,
+            "regional": 1
+          },
+          "warnings": [],
+          "exception": null,
+          "needsEditorialDecision": false
+        },
+        "exceptions": []
+      }
     }
   ]
 }
 </script>
-<script src="artwork-archive.js?v=e77846b31900"></script>
+<script src="artwork-archive.js?v=2c2917eb5ce5"></script>
 <script src="artwork.js?v=20261017-cover-originality"></script>
 <script>
 (function(){

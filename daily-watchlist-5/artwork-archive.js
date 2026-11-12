@@ -2526,6 +2526,68 @@
         "seed": 3431017714,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Heat waves above a shaded shelter and exposed ground\"><title>North Carolina orders a broader Chemours PFAS cleanup plan</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-11-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-11-05)\"><circle cx=\"605\" cy=\"160\" r=\"101\" fill=\"#c4452c\"/><path d=\"M70 155Q180 95 290 155T510 155M70 225Q180 165 290 225T510 225\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"25\"/><path d=\"M105 375L285 265L465 375Z\" fill=\"#1b4a6b\"/><path d=\"M140 375V540M430 375V540\" stroke=\"#2c241d\" stroke-width=\"23\"/><g fill=\"#2c241d\"><circle cx=\"230\" cy=\"417\" r=\"24\"/><circle cx=\"328\" cy=\"417\" r=\"24\"/><path d=\"M207 445H253V523H207ZM305 445H351V523H305Z\"/></g><path d=\"M508 520L561 451L600 500L651 427L718 485\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/></g></svg>"
       }
+    },
+    "2026-11-12": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-12",
+        "number": "01",
+        "category": "U.S. policy · housing eligibility",
+        "topic": "government",
+        "title": "HUD limits long-term housing assistance for mixed-status families",
+        "composition": "housing-verification",
+        "signature": "plate:housing-verification",
+        "seed": 1994332383,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A household record passes through an eligibility gate\"><title>HUD limits long-term housing assistance for mixed-status families</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-12-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-12-01)\"><path d=\"M85 330L235 205L385 330V535H85Z\" fill=\"#1b4a6b\"/><path d=\"M185 535V405H285V535\" fill=\"#f4ead7\"/><path d=\"M445 120H690V430H445Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M485 200H650M485 275H650M485 350H590\" stroke=\"#7c5a3e\" stroke-width=\"18\"/><path d=\"M400 490H735M520 455V555M650 455V555\" stroke=\"#7a1f33\" stroke-width=\"25\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-12",
+        "number": "02",
+        "category": "Technology · cybersecurity",
+        "topic": "infrastructure",
+        "title": "Microsoft's record cyber update patches an exploited Outlook flaw",
+        "composition": "cyber-credential",
+        "signature": "plate:cyber-credential",
+        "seed": 2608344048,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A message connection reaches a guarded credential store\"><title>Microsoft&#39;s record cyber update patches an exploited Outlook flaw</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-12-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-12-02)\"><path d=\"M75 170H375V390H75Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"20\"/><path d=\"M75 170L225 295L375 170\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"24\"/><path d=\"M375 280H505V165H685\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"27\"/><path d=\"M500 310H710V535H500Z\" fill=\"#2c241d\"/><circle cx=\"605\" cy=\"400\" r=\"55\" fill=\"#c98a12\"/><path d=\"M605 455V505M575 505H635\" stroke=\"#f4ead7\" stroke-width=\"18\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-12",
+        "number": "03",
+        "category": "U.S. health policy · public finance",
+        "topic": "research",
+        "title": "CMS awards states $10 billion for rural-health transformation",
+        "composition": "health-allocation",
+        "signature": "plate:health-allocation",
+        "seed": 2422216102,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Rural clinics receive separate shares from a common health fund\"><title>CMS awards states $10 billion for rural-health transformation</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-12-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-12-03)\"><circle cx=\"400\" cy=\"145\" r=\"88\" fill=\"#c98a12\"/><path d=\"M400 235V315M400 315H175V405M400 315H625V405\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"24\"/><path d=\"M75 405L175 325L275 405V535H75ZM525 405L625 325L725 405V535H525Z\" fill=\"#1b4a6b\"/><path d=\"M145 535V450H205V535M595 535V450H655V535\" fill=\"#f4ead7\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-12",
+        "number": "04",
+        "category": "Climate · earth-system observations",
+        "topic": "heat",
+        "title": "WMO reports record ocean heat and sea level as El Niño intensifies",
+        "composition": "climate-ocean-record",
+        "signature": "plate:climate-ocean-record",
+        "seed": 3027507421,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Rising ocean measures meet a strengthening climate signal\"><title>WMO reports record ocean heat and sea level as El Niño intensifies</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-12-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-12-04)\"><path d=\"M55 390Q175 300 295 390T535 390T745 390V575H55Z\" fill=\"#1b4a6b\"/><path d=\"M75 455Q195 365 315 455T555 455T725 455\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"21\"/><circle cx=\"185\" cy=\"175\" r=\"90\" fill=\"#c98a12\"/><path d=\"M470 115V335M425 150H515M425 215H515M425 280H515\" stroke=\"#7a1f33\" stroke-width=\"24\"/><path d=\"M560 260L625 195L690 260\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"28\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-12",
+        "number": "05",
+        "category": "North Carolina · Medicaid and food security",
+        "topic": "research",
+        "title": "North Carolina relaunches a narrower Healthy Opportunities Pilot",
+        "composition": "health-food-box",
+        "signature": "plate:health-food-box",
+        "seed": 2214274277,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A food box connects community delivery to patient care\"><title>North Carolina relaunches a narrower Healthy Opportunities Pilot</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-12-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-12-05)\"><path d=\"M80 315H360V545H80Z\" fill=\"#7c5a3e\"/><path d=\"M80 315L220 230L360 315M220 230V545\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M435 180H720V545H435Z\" fill=\"#1b4a6b\"/><path d=\"M520 265H635M578 208V323\" stroke=\"#f4ead7\" stroke-width=\"27\"/><path d=\"M360 420H435\" stroke=\"#c4452c\" stroke-width=\"30\"/><circle cx=\"170\" cy=\"395\" r=\"40\" fill=\"#1d5f47\"/><path d=\"M170 355Q205 315 230 350\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"14\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

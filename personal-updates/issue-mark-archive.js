@@ -1932,5 +1932,45 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 044: Inflation / commitments &amp; use\"><title>Field Brief · 044 · Inflation / commitments &amp; use</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M12 50H50V12\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"8\"/><circle cx=\"66\" cy=\"66\" r=\"9\" fill=\"#c5ad88\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M10 85H45V20H88M72 4L88 20L72 36\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"8\"/><circle cx=\"15\" cy=\"30\" r=\"14\" fill=\"#8a2a36\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 044 / 2026-11-11</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Inflation / commitments &amp; use</text></g></svg>"
+  },
+  "fb:2026-11-12": {
+    "key": "fb",
+    "date": "2026-11-12",
+    "no": "045",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "A new HUD rule changes eligibility verification and the treatment of mixed-status families in assisted housing. Microsoft patches an actively exploited Outlook flaw, states receive a second $10 billion rural-health award round, WMO reports record ocean heat and sea level, and North Carolina prepares a narrower return for its Healthy Opportunities Pilot. Implementation is the next record Today's developments are different kinds of evidence: a final housing rule, an actively exploited software flaw, a public-funding allocation, preliminary climate observations and a state program relaunch. They do not form a single policy story. Each now requires an implementation record: housing-agency outcomes, patch adoption and incidents, rural-health access measures, regional preparedness, and a fresh evaluation of North Carolina's narrower food intervention.",
+    "version": 6,
+    "subject": "risk",
+    "composition": "spread-facing-measures-buffer-wall-control-loop",
+    "signature": "issue:spread-facing-measures-buffer-wall-control-loop",
+    "phrase": "Housing eligibility / feedback",
+    "seed": 1576167993,
+    "geometry": "<g transform=\"translate(60 175) scale(2.4)\"><path d=\"M8 95L40 5L62 95Z\" fill=\"$ink\"/><path d=\"M70 20H96V95H70Z\" fill=\"$accent\"/><path d=\"M2 66Q18 51 35 66M2 83Q18 68 35 83\" fill=\"none\" stroke=\"$support\" stroke-width=\"7\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"$accent\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"$support\" stroke-width=\"6\"/></g><path d=\"M315 100V500\" stroke=\"$support\" stroke-width=\"5\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "04"
+        ],
+        "score": 15
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 12
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 44,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 045: Housing eligibility / feedback\"><title>Field Brief · 045 · Housing eligibility / feedback</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 175) scale(2.4)\"><path d=\"M8 95L40 5L62 95Z\" fill=\"#221a14\"/><path d=\"M70 20H96V95H70Z\" fill=\"#8a2a36\"/><path d=\"M2 66Q18 51 35 66M2 83Q18 68 35 83\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"#8a2a36\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M315 100V500\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 045 / 2026-11-12</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Housing eligibility / feedback</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
