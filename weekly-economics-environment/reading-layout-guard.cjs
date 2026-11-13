@@ -9,7 +9,9 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
  const index=JSON.parse(journal.match(/id="ll-reading-index-data">([\s\S]*?)<\/script>/)?.[1]||'null');
  if(!index)throw Error('L&L publication: generated Reading Index required');
  const seen=new Set(),featureCounts={};let sources=0,count=0;
+ const syntheses=new Map([...journal.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[\s\S]*?(?=<section class="edition"|<\/main>)/g)].map(([edition,date])=>[date,edition.match(/<section class="synthesis"[^>]*>\s*<header class="closing-heading">\s*<div class="eyebrow">Editor's synthesis<\/div>\s*<h2\b[^>]*>([\s\S]*?)<\/h2>/)?.[1]?.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim()]));
  for(const ed of index.editions){if(ed.readings.length!==5)throw Error('L&L publication: five readings per edition required');
+ const synthesis=syntheses.get(ed.date);if(!synthesis||/^what connects this week[?.!]?$/i.test(synthesis))throw Error('L&L publication: edition-specific synthesis heading required '+ed.date);
  for(const r of ed.readings){
   if(seen.has(r.id))throw Error('L&L publication: duplicate reading '+r.id);seen.add(r.id);count++;
   const v=decisions.readings[r.id];if(!v)throw Error('L&L publication: authored editorial review required '+r.id);
@@ -22,6 +24,8 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
   if(!html?.includes('data-editorial-system="7"'))throw Error('L&L publication: legacy reading system '+r.id);
   const ns=nodes(html);
   for(const cls of ['finding','ll-argument','ll-editorial','research-note','reading-sources','ll-reading-shell'])if(!ns.some(n=>n.classes.includes(cls)))throw Error('L&L publication: missing '+cls+' '+r.id);
+  const grid=ns.find(n=>n.classes.includes('article-grid'));
+  if(!grid||ns.filter(n=>n.classes.includes('ll-heron-dock')&&n.start>=grid.open&&n.end<=grid.close).length!==1)throw Error('L&L publication: expected one Heron dock '+r.id);
   const src=ns.find(n=>n.classes.includes('sources'));const links=ns.filter(n=>n.tag==='a'&&n.start>src.open&&n.end<=src.close&&n.attrs.includes('href='));if(!links.length)throw Error('L&L publication: original source register missing '+r.id);sources+=links.length;
   const flow=ns.find(n=>n.classes.includes('ll-reading'));if(!flow?.attrs.includes('data-feature-flow="native"'))throw Error('L&L publication: native feature-flow contract required '+r.id);
   for(const float of ns.filter(n=>n.classes.includes('ll-authored-float')))if(!float.children.some(n=>n.classes.includes('ll-floating-context')))throw Error('L&L publication: native figure context required '+r.id);

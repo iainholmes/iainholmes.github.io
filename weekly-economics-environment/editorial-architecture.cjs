@@ -73,11 +73,29 @@ function composeLegacy(s,{nodes}){
  return attrs+raw(s,head)+raw(s,deck)+`<div class="article-grid ll-reading"><div class="ll-argument"><span class="ll-label">Reading lens</span><p>${esc(v.argument)}</p></div>${body}<div class="evidence-pair">${core(s,limitation,'limits','limitation')}${raw(s,note)}</div><div class="reading-sources" id="${id}--sources">${raw(s,sources).replace(/^<div class="reading-sources"[^>]*>|<\/div>$/g,'')}</div></div></article>`;
 }
 function compose(s,ctx){const legacy=composeLegacy(s,ctx);return require('./reading-compositions.cjs')({nodes:ctx.nodes,decisions}).compose(legacy);}
+function validateCompanions(companion,readingsByDate){
+ const seen=new Set();
+ for(const [date,config] of Object.entries(companion)){
+  const readings=readingsByDate.get(date);
+  if(!readings)throw Error('L&L Heron: unknown edition '+date);
+  if(typeof config?.enabled!=='boolean'||!Array.isArray(config.appearances))throw Error('L&L Heron: expected an enabled flag and appearance list for '+date);
+  if(config.appearances.length>2)throw Error('L&L Heron: at most two interventions per edition '+date);
+  if(!config.enabled&&config.appearances.length)throw Error('L&L Heron: a disabled edition must have an empty appearance list '+date);
+  for(const note of config.appearances){
+   if(typeof note?.id!=='string'||!/^[a-z0-9][a-z0-9-]*$/.test(note.id)||seen.has(note.id))throw Error('L&L Heron: invalid or duplicate appearance ID in '+date);
+   if(!readings.some(([,id])=>id===note.target))throw Error('L&L Heron: '+note.id+' must target a reading in '+date);
+   if(![note.title,note.text].every(value=>typeof value==='string'&&value.trim()))throw Error('L&L Heron: title and note text required for '+note.id);
+   seen.add(note.id);
+  }
+ }
+}
 function finalize(journal,{nodes}){
  const editions=[...journal.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[^>]*data-title="([^"]+)"([\s\S]*?)(?=<section class="edition"|<\/main>)/g)];
  const companion=JSON.parse(journal.match(/id="companion-data">([\s\S]*?)<\/script>/)[1]);
  editions.sort((a,b)=>a[1].localeCompare(b[1]));
- const indexed=editions.map(([s,date,title],i)=>({date,title:text(title),number:String(editions.filter(e=>e[1].slice(0,4)===date.slice(0,4)&&e[1]<=date).length).padStart(3,'0'),readings:[...s.matchAll(/<article class="entry"[^>]*id="([^"]+)"[\s\S]*?<\/article>/g)].map(([html,id])=>{
+ const readingsByDate=new Map(editions.map(([s,date])=>[date,[...s.matchAll(/<article class="entry"[^>]*id="([^"]+)"[\s\S]*?<\/article>/g)]]));
+ validateCompanions(companion,readingsByDate);
+ const indexed=editions.map(([,date,title])=>({date,title:text(title),number:String(editions.filter(e=>e[1].slice(0,4)===date.slice(0,4)&&e[1]<=date).length).padStart(3,'0'),readings:readingsByDate.get(date).map(([html,id])=>{
  const v=decisions.readings[id],features=[...html.matchAll(/<section class="ll-feature[^"]*" id="([^"]+)" data-special-feature="([^"]+)"/g)].map(m=>({id:m[2],name:names[m[2]],anchor:m[1]}));
  const appearances=(companion[date]?.appearances||[]).filter(a=>a.target===id);for(const a of appearances)features.push({id:'heron',name:names.heron,anchor:'heron-'+a.id});
  return {id,title:v.title,subjects:v.subjects,features};})}));

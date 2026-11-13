@@ -12,10 +12,9 @@ const fb=data(read('daily-watchlist-5/index.html'),'briefing-data').editions.sor
 // Validate editorial placement before preparing artwork or writing any artifact.
 for(const ed of fb)require('../daily-watchlist-5/editorial-order.cjs').validate(ed);
 for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])throw Error('Published Field Brief is missing its story artwork pin: '+ed.date);
-// Validate L&L companions before any publication artifacts are written.
-const llSource=read('weekly-economics-environment/index.html'),companions=data(llSource,'companion-data');
+const llSource=read('weekly-economics-environment/index.html');
 const registerHistory=require('../weekly-economics-environment/field-register-schema.cjs').validate({journal:llSource}).history;
-// Evidence gates precede artwork preparation and every publication artifact write.
+// Companion and evidence gates precede artwork preparation and every artifact write.
 require('../weekly-economics-environment/source-evidence.cjs').validate({journal:llSource});
 const reviewedLL=require('../weekly-economics-environment/editorial-folio.cjs').compose(llSource);
 require('../weekly-economics-environment/source-evidence.cjs').validate({journal:reviewedLL});
@@ -32,7 +31,6 @@ labelEditions.forEach(e=>{
  const expected='Volume '+roman(year-2025)+' / No. '+String(no).padStart(3,'0')+' / '+date;
  if(year<2026||plain(e[2]).replace(/\s+/g,' ').trim()!==expected||!/<sup>o<\/sup>/.test(e[2]))throw Error('Invalid L&L edition label: '+e[1]+'; expected '+expected);
 });
-for(const [date,cfg] of Object.entries(companions))if(cfg.enabled!==false&&(cfg.appearances||[]).length>2)throw Error('L&L permits at most two active Heron interventions: '+date);
 const plates=storyArt.prepare(fb,storyArchive);
 const cp=data(read('daily-econ-challenge/index.html'),'challenge-data').editions.sort((a,b)=>a.date.localeCompare(b.date));
 // Workbook publication requires authored, safe, question-specific Assistance and Explanation before any artifact is written.
