@@ -1,7 +1,7 @@
 {
   "version": 7,
   "title": "Loblolly & Logit · Editorial Decision Inventory",
-  "reviewed": "2026-11-06",
+  "reviewed": "2026-11-13",
   "policy": "Aim for at least two substantive, nonredundant features; document exceptions; diversity is a tie-breaker after evidence and reader value.",
   "entries": [
     {
@@ -6818,20 +6818,736 @@
         }
       ],
       "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-13-carbon-incidence",
+      "title": "Carbon Prices Travel Through Incomes, Not Only Energy Bills",
+      "subjects": [
+        "Climate policy",
+        "Macroeconomic incidence"
+      ],
+      "features": [
+        {
+          "type": "incidence-ledger",
+          "title": "The burden has more than one channel",
+          "status": "Causal macro estimates and qualified distributional interpretation",
+          "rows": [
+            [
+              "Energy users",
+              "A tighter carbon-pricing shock raises energy prices immediately; households with larger energy budget shares face a larger direct squeeze."
+            ],
+            [
+              "Workers and consumers",
+              "Lower demand, wages and employment transmit an indirect burden that the paper estimates at roughly two-thirds of the aggregate consumption response."
+            ],
+            [
+              "Low-income households",
+              "UK microdata show larger expenditure and income reductions, making compensation design central to the distributional result."
+            ]
+          ],
+          "note": "The shock is normalized to a 1% energy-price increase. These responses are not the effect of every carbon tax design or every possible use of revenues.",
+          "rationale": "Separates the direct energy-bill channel from general-equilibrium income and employment channels.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w31221/w31221.pdf",
+            "https://www.aeaweb.org/articles?id=10.1257/aer.20230448"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Identifies distinct incidence channels.",
+            "evidentiarySupport": "Full AER-version manuscript and working-paper record reviewed.",
+            "distinctiveness": "Distributional accounting differs from the identification diagnostic.",
+            "readerValue": "Shows why energy shares alone understate burden.",
+            "presentationSuitability": "Three-party ledger.",
+            "informationBurden": "Keeps magnitudes tied to the normalized shock."
+          }
+        },
+        {
+          "type": "assumption-test",
+          "title": "Is the announcement surprise a policy shock?",
+          "status": "Identification stress test of the external-instrument design",
+          "premise": "Narrow-window allowance-price surprises around regulatory announcements are correlated with carbon-policy shocks and orthogonal to other structural shocks.",
+          "threat": "Anticipation or coincident macroeconomic news could move allowance prices and later outcomes together.",
+          "check": "Inspect event narratives, orthogonalize against pre-announcement information, exclude confounded dates, test instrument strength and compare VAR and local-projection results.",
+          "consequence": "If the exclusion restriction fails, the impulse responses combine carbon-policy news with other shocks and lose their causal interpretation.",
+          "rationale": "The paper's central causal claim depends on a valid and sufficiently strong external instrument.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w31221/w31221.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Makes the exclusion restriction explicit.",
+            "evidentiarySupport": "Event construction and robustness sections reviewed.",
+            "distinctiveness": "Identification rather than incidence.",
+            "readerValue": "Calibrates confidence in the causal language.",
+            "presentationSuitability": "Four-part diagnostic.",
+            "informationBurden": "No new test result is invented."
+          }
+        }
+      ],
+      "edition": "2026-11-13",
+      "composition": "comparison",
+      "argument": "The allowance-price shock reaches households through wages and employment as well as direct energy expenditure.",
+      "rejected": [
+        [
+          "economic-figures",
+          "A compact chart would omit horizons and uncertainty bands from the paper's impulse responses."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "incidence-ledger",
+          "reason": "The paper's contribution is the indirect and unequal transmission of the shock."
+        },
+        {
+          "rank": 2,
+          "feature": "assumption-test",
+          "reason": "The external-instrument exclusion restriction determines causal credibility."
+        }
+      ],
+      "layout": {
+        "id": "carbon-shock-and-incidence",
+        "palette": "copper",
+        "colorBasis": "Prices, income and labor-market incidence.",
+        "rationale": "A ledger leads into an identification stress test and evidence boundary.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Impulse responses are best read in the paper with their horizons and confidence bands.",
+      "modelAssessment": "No substitute structural model is added.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-13",
+      "evidenceReview": {
+        "basis": "AER November 2026 article identity and the corresponding September 2025 full working-paper PDF were reviewed across design, estimates, heterogeneity and robustness.",
+        "access": "Legitimate full manuscript plus version-of-record metadata; estimate attribution is to the inspected manuscript version."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-13",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant functions selected after full-text review; no historical material changed.",
+        "retained": [],
+        "added": [
+          "incidence-ledger",
+          "assumption-test"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "incidence-ledger",
+          "name": "The Incidence Ledger",
+          "anchor": "2026-11-13-carbon-incidence--incidence-ledger"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-13-carbon-incidence--assumption-test"
+        }
+      ],
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-13-flood-adaptation",
+      "title": "Firms Adapt to Floods by Rewriting Their Networks",
+      "subjects": [
+        "Climate adaptation",
+        "Production networks"
+      ],
+      "features": [
+        {
+          "type": "mechanism-map",
+          "title": "Three margins of private adaptation",
+          "status": "Empirical mechanisms with model-based aggregation",
+          "nodes": [
+            "Flood experience",
+            "Relocation and supplier learning",
+            "Changed routes and network exposure",
+            "Future cost risk"
+          ],
+          "edges": [
+            [
+              0,
+              1,
+              "observed response"
+            ],
+            [
+              1,
+              2,
+              "choice reallocation"
+            ],
+            [
+              2,
+              3,
+              "model aggregation"
+            ]
+          ],
+          "note": "The route response is the cleanest evidence of persistent adaptation; economy-wide damage changes are counterfactual model results.",
+          "rationale": "Connects the distinct behavioral margins without treating them as one treatment coefficient.",
+          "provenance": [
+            "https://jmboehm.github.io/Pakistan_Floods.pdf",
+            "https://www.aeaweb.org/articles?id=10.1257/aer.20241027"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Maps firm choices into network exposure.",
+            "evidentiarySupport": "Published AER PDF reviewed.",
+            "distinctiveness": "Mechanism sequence rather than decision threshold.",
+            "readerValue": "Shows how risk moves through links.",
+            "presentationSuitability": "Four-stage map.",
+            "informationBurden": "Separates observed and modeled steps."
+          }
+        },
+        {
+          "type": "decision-margin",
+          "title": "Diversify without merely moving the risk",
+          "status": "Policy decision framework grounded in observed adjustment margins",
+          "question": "What information or constraint would make a resilience intervention additional?",
+          "options": [
+            [
+              "Information",
+              "Make route and supplier flood exposure legible before firms experience a damaging event."
+            ],
+            [
+              "Adjustment capacity",
+              "Reduce search, finance or coordination costs that prevent switching to nearby lower-risk suppliers."
+            ]
+          ],
+          "rule": "Target the margin that blocks a privately valuable adjustment, then measure whether network-wide expected costs fall rather than only one firm's exposure.",
+          "note": "The paper identifies adaptation after floods; it does not estimate a universal subsidy or information-treatment effect.",
+          "rationale": "Turns the paper's remaining adaptation scope into a bounded decision problem.",
+          "provenance": [
+            "https://jmboehm.github.io/Pakistan_Floods.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Links evidence to an implementable margin.",
+            "evidentiarySupport": "Full text and model counterfactuals reviewed.",
+            "distinctiveness": "Decision criterion rather than descriptive pathway.",
+            "readerValue": "Prevents relocation from being equated with social resilience.",
+            "presentationSuitability": "Two-option decision panel.",
+            "informationBurden": "No policy effect is claimed."
+          }
+        }
+      ],
+      "edition": "2026-11-13",
+      "composition": "map-led",
+      "argument": "Adaptation occurs at locations, suppliers and routes, so one firm's safer choice can redistribute risk through the network.",
+      "rejected": [
+        [
+          "economic-figures",
+          "The model's flood-specific counterfactuals need spatial context not available in a compact generic plot."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "mechanism-map",
+          "reason": "The three margins are the core empirical contribution."
+        },
+        {
+          "rank": 2,
+          "feature": "decision-margin",
+          "reason": "Policy relevance turns on information and adjustment constraints."
+        }
+      ],
+      "layout": {
+        "id": "flood-network-transect",
+        "palette": "sage",
+        "colorBasis": "Adaptation and behavioral adjustment over time.",
+        "rationale": "A mechanism sequence is paired with the research design and a bounded decision margin.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Spatial model figures remain at the source; the feature map labels evidence status at each step.",
+      "modelAssessment": "Observed responses and structural counterfactuals are kept separate.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-13",
+      "evidenceReview": {
+        "basis": "Published AER PDF reviewed across data, relocation, supplier and route designs, model and counterfactuals.",
+        "access": "Publisher-version PDF from an author site; replication package metadata available at AEA."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-13",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two source-specific features selected; no historical material changed.",
+        "retained": [],
+        "added": [
+          "mechanism-map",
+          "decision-margin"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "mechanism-map",
+          "name": "The Mechanism Map",
+          "anchor": "2026-11-13-flood-adaptation--mechanism-map"
+        },
+        {
+          "id": "decision-margin",
+          "name": "The Decision Margin",
+          "anchor": "2026-11-13-flood-adaptation--decision-margin"
+        }
+      ],
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-13-fisheries-heat",
+      "title": "Ocean Heat Changes the Geography of Fishing Revenue",
+      "subjects": [
+        "Fisheries economics",
+        "Climate impacts"
+      ],
+      "features": [
+        {
+          "type": "economic-figures",
+          "title": "Late-century revenue under two temperature paths",
+          "status": "Model projection using estimated temperature responses; not a forecast",
+          "chart": {
+            "kind": "bars",
+            "unit": "Median revenue change, 2076–2100 (%)",
+            "rows": [
+              [
+                "SSP2-4.5",
+                -8
+              ],
+              [
+                "SSP3-7.0",
+                -12
+              ]
+            ]
+          },
+          "note": "Median projected change relative to the 2013–2022 baseline; annual variability and coefficient uncertainty do not exhaust scenario or ecological uncertainty.",
+          "rationale": "The two source-reported late-century medians make scenario divergence legible without presenting the path as certain.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w35994/w35994.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Compares the paper's two climate scenarios.",
+            "evidentiarySupport": "Exact NBER PDF reviewed.",
+            "distinctiveness": "Quantitative horizon distinct from identification assumptions.",
+            "readerValue": "Shows scale and scenario dependence.",
+            "presentationSuitability": "Two-bar comparison with explicit units.",
+            "informationBurden": "No unreported values or confidence intervals."
+          }
+        },
+        {
+          "type": "assumption-test",
+          "title": "Can species and fleets move?",
+          "status": "Projection-boundary diagnostic",
+          "premise": "The projection holds non-temperature determinants and baseline cell species composition fixed while management constrains aggregate harvest.",
+          "threat": "Species redistribution, new fishing grounds, price changes, quota use and technology can alter realized future revenue.",
+          "check": "Compare cell and management-area projections, allow species entry and fleet reallocation, and propagate multiple climate and ecological models.",
+          "consequence": "The €430–€560 million late-century losses remain conditional scenarios rather than unconditional forecasts of fisher income.",
+          "rationale": "The projection boundary is essential to reading the reported distributional losses.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w35994/w35994.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Identifies omitted adaptation margins.",
+            "evidentiarySupport": "Projection methods and limits reviewed.",
+            "distinctiveness": "Assumption test rather than result display.",
+            "readerValue": "Prevents causal estimates from turning into certain forecasts.",
+            "presentationSuitability": "Four-part diagnostic.",
+            "informationBurden": "Proposed checks are labeled as unperformed."
+          }
+        }
+      ],
+      "edition": "2026-11-13",
+      "composition": "figure-led",
+      "argument": "Species-specific thermal exposure turns the same warming into losses, gains and a spatially unequal adaptation problem.",
+      "rejected": [
+        [
+          "incidence-ledger",
+          "The paper's geographic pattern is stronger than a generic party list and income incidence is not directly estimated."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "economic-figures",
+          "reason": "The scenario divergence is the clearest policy-facing quantitative result."
+        },
+        {
+          "rank": 2,
+          "feature": "assumption-test",
+          "reason": "Long-run spatial and biological adaptation bound that result."
+        }
+      ],
+      "layout": {
+        "id": "marine-thermal-gradient",
+        "palette": "estuary",
+        "colorBasis": "Ocean measurement and interconnected ecological evidence.",
+        "rationale": "A scenario figure is paired with design and a projection-boundary test.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Uses two exact reported medians and labels the figure as a model projection.",
+      "modelAssessment": "The fixed-effects causal estimate and climate projection are distinguished.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-13",
+      "evidenceReview": {
+        "basis": "NBER working-paper PDF reviewed across data, fixed effects, selection, trophic spillovers, heterogeneity and projection methods.",
+        "access": "Exact full PDF and online appendix link; working paper, not peer reviewed."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-13",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two source-specific features selected; no historical material changed.",
+        "retained": [],
+        "added": [
+          "economic-figures",
+          "assumption-test"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "economic-figures",
+          "name": "Economic Figures",
+          "anchor": "2026-11-13-fisheries-heat--economic-figures"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-13-fisheries-heat--assumption-test"
+        }
+      ],
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-13-carbon-budget",
+      "title": "A Small Fossil-Emissions Dip Is Not Yet a Turning Point",
+      "subjects": [
+        "Carbon accounting",
+        "Climate data"
+      ],
+      "features": [
+        {
+          "type": "economic-figures",
+          "title": "The estimate and its uncertainty range",
+          "status": "Preliminary 2026 projection; one-sigma growth range",
+          "chart": {
+            "kind": "ranges",
+            "unit": "Change in fossil CO₂ emissions from 2025 (%)",
+            "rows": [
+              [
+                "2026 central and range",
+                -1.5,
+                0.6
+              ]
+            ]
+          },
+          "note": "Central estimate −0.4%; range −1.5% to +0.6%. The interval includes zero and excludes baseline-level uncertainty.",
+          "rationale": "A range plot makes the report's uncertainty more prominent than the headline sign.",
+          "provenance": [
+            "https://essd.copernicus.org/preprints/essd-2026-895/essd-2026-895.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Shows why sign alone is weak evidence of a durable turn.",
+            "evidentiarySupport": "Full preprint and data-hub metadata reviewed.",
+            "distinctiveness": "Measurement display rather than stock-flow test.",
+            "readerValue": "Keeps uncertainty visible.",
+            "presentationSuitability": "Single honest range.",
+            "informationBurden": "No extra precision."
+          }
+        },
+        {
+          "type": "assumption-test",
+          "title": "Does a one-year decline change the stock?",
+          "status": "Stock-flow interpretation grounded in the carbon budget",
+          "premise": "A projected fall in fossil emissions signals progress toward a sustained decline in total anthropogenic CO₂ and atmospheric accumulation.",
+          "threat": "Land-use emissions can offset fossil changes, geopolitical shocks can reverse, and positive net emissions keep atmospheric CO₂ rising.",
+          "check": "Track revised annual inventories, the fossil/land-use decomposition, sink estimates and atmospheric growth over multiple years.",
+          "consequence": "A temporary or statistically indistinct fossil decline need not reduce total emissions, concentration or cumulative climate damages.",
+          "rationale": "Separates a flow's annual growth rate from the accumulated atmospheric stock.",
+          "provenance": [
+            "https://essd.copernicus.org/preprints/essd-2026-895/essd-2026-895.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the stock-flow object.",
+            "evidentiarySupport": "Methods and budget balance reviewed.",
+            "distinctiveness": "Interpretation test rather than plotted estimate.",
+            "readerValue": "Prevents a false turning-point claim.",
+            "presentationSuitability": "Four-part diagnostic.",
+            "informationBurden": "No causal attribution is added."
+          }
+        }
+      ],
+      "edition": "2026-11-13",
+      "composition": "comparison",
+      "argument": "A projected annual decline can coexist with rising total emissions and atmospheric concentration because the carbon budget is a stock-flow system.",
+      "rejected": [
+        [
+          "long-view",
+          "A short timeline would hide revisions and cross-component uncertainty in the living dataset."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "economic-figures",
+          "reason": "The uncertainty range changes how the headline is read."
+        },
+        {
+          "rank": 2,
+          "feature": "assumption-test",
+          "reason": "Stock-flow accounting is the reusable economic concept."
+        }
+      ],
+      "layout": {
+        "id": "carbon-stock-and-flow",
+        "palette": "slate",
+        "colorBasis": "Accounting boundaries, uncertainty and aggregate stocks.",
+        "rationale": "The uncertainty range leads into a stock-flow interpretation and source limits.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Only the reported central estimate and range are plotted.",
+      "modelAssessment": "Budget components are accounting estimates, not a causal policy model.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-13",
+      "evidenceReview": {
+        "basis": "ESSD discussion preprint reviewed across abstract, 2026 projection methods, uncertainties, budget balance and data release.",
+        "access": "Exact full preprint PDF; in review, with open data DOI."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-13",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two source-specific features selected; no historical material changed.",
+        "retained": [],
+        "added": [
+          "economic-figures",
+          "assumption-test"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "economic-figures",
+          "name": "Economic Figures",
+          "anchor": "2026-11-13-carbon-budget--economic-figures"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-13-carbon-budget--assumption-test"
+        }
+      ],
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-13-power-outlook",
+      "title": "Renewables Meet Record Power Demand Without Ending Fossil Generation",
+      "subjects": [
+        "Electricity markets",
+        "Energy outlook"
+      ],
+      "features": [
+        {
+          "type": "long-view",
+          "title": "A two-year shift in the generation mix",
+          "status": "EIA conditional forecast completed 5 November 2026",
+          "stages": [
+            [
+              "2025",
+              "Solar 7%, wind 11%, coal 17% of generation",
+              "Historical estimate"
+            ],
+            [
+              "2026",
+              "Total generation nearly 4,390 BkWh, up 2.7%",
+              "Current-year estimate"
+            ],
+            [
+              "2027",
+              "Solar nearly 10%, wind 12%, coal 15%",
+              "Conditional forecast"
+            ]
+          ],
+          "note": "EIA projects 72 GW of solar and 20 GW of wind additions across 2026–2027. Shares can move even when gas, nuclear and coal generation is roughly flat in absolute terms.",
+          "rationale": "Separates levels, shares and forecast horizons.",
+          "provenance": [
+            "https://www.eia.gov/outlooks/steo/pdf/steo_full.PDF"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Shows incremental supply and installed-stock persistence.",
+            "evidentiarySupport": "Exact November STEO PDF reviewed.",
+            "distinctiveness": "Time path rather than incidence accounting.",
+            "readerValue": "Prevents share changes from being read as immediate retirements.",
+            "presentationSuitability": "Three-stage horizon.",
+            "informationBurden": "Exact reported values only."
+          }
+        },
+        {
+          "type": "incidence-ledger",
+          "title": "Who adjusts when demand sets a record?",
+          "status": "Conditional economic interpretation of EIA forecasts",
+          "rows": [
+            [
+              "Consumers and load-serving utilities",
+              "More commercial-sector demand raises procurement and infrastructure needs; bills depend on local rates, contracts and capacity costs."
+            ],
+            [
+              "Renewable developers and grids",
+              "Most forecast generation growth comes from utility-scale solar, but connection and balancing constraints determine delivered value."
+            ],
+            [
+              "Coal regions and exporters",
+              "Domestic coal use falls while exports offset part of the production decline, shifting rather than eliminating some regional exposure."
+            ]
+          ],
+          "note": "The STEO forecasts quantities and prices; it does not estimate household incidence or the causal effect of any single policy.",
+          "rationale": "Makes demand growth, grid capacity and coal export leakage distinct incidence channels.",
+          "provenance": [
+            "https://www.eia.gov/outlooks/steo/pdf/steo_full.PDF"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Identifies affected margins.",
+            "evidentiarySupport": "Full report sections reviewed.",
+            "distinctiveness": "Party accounting rather than time path.",
+            "readerValue": "Connects aggregate shares to local costs.",
+            "presentationSuitability": "Three-party ledger.",
+            "informationBurden": "No bill or welfare estimate is invented."
+          }
+        }
+      ],
+      "edition": "2026-11-13",
+      "composition": "horizon-led",
+      "argument": "Capacity additions can capture incremental demand while the installed thermal fleet continues to supply nearly flat absolute generation.",
+      "rejected": [
+        [
+          "economic-figures",
+          "The long-view already presents the key levels and shares without duplicating EIA's full chart set."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "long-view",
+          "reason": "The stock-flow transition across 2025–2027 is the central result."
+        },
+        {
+          "rank": 2,
+          "feature": "incidence-ledger",
+          "reason": "Demand growth and coal exports shift local burdens differently."
+        }
+      ],
+      "layout": {
+        "id": "power-capacity-across-time",
+        "palette": "pollen",
+        "colorBasis": "Investment timing, capacity and decision margins.",
+        "rationale": "A horizon leads into an incidence ledger and forecast boundary.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "The source's detailed figures remain linked; the authored chronology uses exact headline values.",
+      "modelAssessment": "STEO is a conditional forecast, not a causal policy evaluation.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-13",
+      "evidenceReview": {
+        "basis": "November 2026 STEO PDF reviewed across electricity, coal, emissions and forecast assumptions.",
+        "access": "Exact EIA PDF and dated report page; official forecast completed 5 November and released 10 November."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-13",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two source-specific features selected; no historical material changed.",
+        "retained": [],
+        "added": [
+          "long-view",
+          "incidence-ledger"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "long-view",
+          "name": "The Long View",
+          "anchor": "2026-11-13-power-outlook--long-view"
+        },
+        {
+          "id": "incidence-ledger",
+          "name": "The Incidence Ledger",
+          "anchor": "2026-11-13-power-outlook--incidence-ledger"
+        }
+      ],
+      "additionalFeatureJustification": null
     }
   ],
   "totals": {
-    "editions": 7,
-    "readings": 35,
+    "editions": 8,
+    "readings": 40,
     "features": {
-      "economic-figures": 18,
-      "decision-margin": 11,
+      "economic-figures": 20,
+      "decision-margin": 12,
       "estimation-desk": 11,
       "heron": 11,
-      "incidence-ledger": 12,
-      "long-view": 12,
-      "mechanism-map": 10,
-      "assumption-test": 13
+      "incidence-ledger": 14,
+      "long-view": 13,
+      "mechanism-map": 11,
+      "assumption-test": 16
     }
   }
 }

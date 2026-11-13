@@ -33,5 +33,10 @@ module.exports=({row,field,inset,flo,gap,join})=>({...module.exports.authored,
  '2026-11-06-groundwater-choice':({E,O,Q,N,T,X})=>E+row('groundwater-stock',O,T(),'1fr','1.4fr')+inset('groundwater-qualification',X(),'90%','left')+row('groundwater-inference',Q,N,'1.25fr','1fr'),
  '2026-11-06-pollution-salience':({E,O,Q,N,G,X})=>row('pollution-attention',E,O,'1.35fr','1fr')+join(G(),X())+row('pollution-review',N,Q,'1fr','1.35fr'),
  '2026-11-06-seagrass-carbon':({E,O,Q,N,A,X})=>E+flo('seagrass-weighting',A,O,'left','58%')+row('seagrass-baselines',Q,X(),'1fr','1.3fr')+inset('seagrass-notebook',N,'82%'),
+ '2026-11-13-carbon-incidence':({E,O,Q,N,L,X})=>row('carbon-incidence-opening',E,O,'1.35fr','1fr')+field('carbon-incidence-channels',L()+X(),'folio')+row('carbon-incidence-limits',N,Q,'1fr','1.3fr'),
+ '2026-11-13-flood-adaptation':({E,O,Q,N,G,D})=>E+row('flood-network-design',G(),O,'1.4fr','1fr')+inset('flood-policy-margin',D(),'88%','left')+row('flood-network-limits',Q,N,'1.3fr','1fr'),
+ '2026-11-13-fisheries-heat':({E,O,Q,N,A,X})=>flo('fisheries-scenarios',A,E+O,'right','55%')+row('fisheries-boundaries',X(),Q,'1.35fr','1fr')+inset('fisheries-notebook',N,'82%'),
+ '2026-11-13-carbon-budget':({E,O,Q,N,A,X})=>E+field('carbon-budget-range',row('carbon-budget-figure',A,O,'1.15fr','1fr'),'gatefold')+row('carbon-budget-stock',X(),Q,'1.35fr','1fr')+inset('carbon-budget-notebook',N,'82%'),
+ '2026-11-13-power-outlook':({E,O,Q,N,T,L})=>row('power-demand-opening',E,O,'1.35fr','1fr')+field('power-transition',T()+L(),'open')+row('power-forecast-boundary',N,Q,'1fr','1.3fr'),
 });
 module.exports.authored={};

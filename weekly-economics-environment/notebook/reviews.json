@@ -167,6 +167,14 @@
       ],
       "added": [],
       "note": "Individually assessed all five source-specific studies and the issue synthesis against six existing Notebook concepts. Model scenarios, observed physical rates, structural policy comparisons, measurement and quasi-experimental identification are distinguished. No new transferable concept justified beyond the existing archive."
+    },
+    "2026-11-13": {
+      "reviewedOn": "2026-11-13",
+      "readings": ["2026-11-13-carbon-incidence", "2026-11-13-flood-adaptation", "2026-11-13-fisheries-heat", "2026-11-13-carbon-budget", "2026-11-13-power-outlook"],
+      "synthesis": "2026-11-13-connections",
+      "revisited": ["incidence", "identification", "spatial-equilibrium-migration", "counterfactual-reasoning", "leakage-spillovers", "private-returns-social-value"],
+      "added": [],
+      "note": "Reviewed all five readings and the adjustment synthesis. The issue substantively revisits incidence, identification, spatial adjustment, counterfactual reasoning, spillovers, and private versus social value. No distinct reusable concept was added because the archive already separates these objects; references were appended only where the new evidence adds a different shock, adaptation margin, or stock-flow application."
     }
   }
 }

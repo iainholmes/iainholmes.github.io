@@ -335,6 +335,394 @@
           }
         }
       }
+    },
+    "carbon-aer-2026": {
+      "url": "https://www.aeaweb.org/articles?id=10.1257/aer.20230448",
+      "aliases": [
+        "https://www.nber.org/system/files/working_papers/w31221/w31221.pdf"
+      ],
+      "title": "American Economic Review · Känzig (2026); corresponding full manuscript",
+      "version": "AER November 2026 version identity; corresponding NBER manuscript revised September 2025, downloaded 13 November 2026",
+      "publicationStatus": "Peer-reviewed AER article; estimates inspected in corresponding full working-paper manuscript",
+      "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-13",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-13",
+        "scope": "Targeted source-and-analysis review of introduction, event construction, external-instrument design, aggregate effects, household incidence and robustness; not a replication or all-appendix audit."
+      },
+      "passages": {
+        "design": {
+          "locator": "Manuscript pp. 2–3, 8–17 and 18; announcement sample, high-frequency surprise, external-instrument assumptions and first stage",
+          "support": "The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption.",
+          "facts": {
+            "events": {
+              "kind": "descriptive",
+              "value": 114,
+              "unit": "regulatory announcements",
+              "denominator": "EU ETS event sample"
+            },
+            "firstStage": {
+              "kind": "descriptive",
+              "value": 16.85,
+              "unit": "robust F-statistic",
+              "denominator": "baseline refined surprise instrument"
+            }
+          }
+        },
+        "effects": {
+          "locator": "Manuscript pp. 2–4 and 18–22; aggregate impulse responses and transmission",
+          "support": "A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response.",
+          "facts": {
+            "energy": {
+              "kind": "causal",
+              "value": 1,
+              "unit": "percent energy-price increase",
+              "denominator": "shock normalization"
+            },
+            "emissions": {
+              "kind": "causal",
+              "value": -0.75,
+              "unit": "percent peak response",
+              "denominator": "GHG emissions"
+            },
+            "gdp": {
+              "kind": "causal",
+              "value": -0.3,
+              "unit": "percent peak response",
+              "denominator": "real GDP"
+            },
+            "consumption": {
+              "kind": "causal",
+              "value": -0.3,
+              "unit": "percent peak response",
+              "denominator": "aggregate consumption"
+            },
+            "indirect": {
+              "kind": "calculated",
+              "value": "roughly two-thirds",
+              "unit": "share",
+              "denominator": "aggregate consumption response"
+            }
+          }
+        },
+        "distribution": {
+          "locator": "Manuscript pp. 3–4 and household-incidence section; UK expenditure and income responses; pp. 21–22 approximate cost calculation",
+          "support": "Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate.",
+          "facts": {
+            "mac": {
+              "kind": "modeled",
+              "value": 107,
+              "unit": "EUR per tCO2",
+              "denominator": "approximate marginal abatement cost over assumed 20-year response"
+            }
+          }
+        }
+      }
+    },
+    "flood-aer-2026": {
+      "url": "https://www.aeaweb.org/articles?id=10.1257/aer.20241027",
+      "aliases": [
+        "https://jmboehm.github.io/Pakistan_Floods.pdf"
+      ],
+      "title": "American Economic Review · Balboni, Boehm & Waseem (2026)",
+      "version": "Published AER 116(11) author-hosted publisher PDF downloaded 13 November 2026",
+      "publicationStatus": "Peer-reviewed empirical article with structural production-network model",
+      "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-13",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-13",
+        "scope": "Targeted full-text review of introduction, data, relocation, supplier and route specifications, model, counterfactuals and limitations; replication package not executed."
+      },
+      "passages": {
+        "behavior": {
+          "locator": "AER pp. 4283–4285 and 4298–4300; relocation, supplier and route results",
+          "support": "Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers.",
+          "facts": {
+            "relocate": {
+              "kind": "causal",
+              "value": 3.67,
+              "unit": "percentage points",
+              "denominator": "probability of relocation over 10 km for severe flooding"
+            },
+            "baseline": {
+              "kind": "descriptive",
+              "value": 17.34,
+              "unit": "percent",
+              "denominator": "nonflooded-firm relocation probability"
+            },
+            "depth": {
+              "kind": "causal",
+              "value": 19.7,
+              "unit": "centimeters lower expected flood depth",
+              "denominator": "1-in-100-year flood for severely flooded movers"
+            }
+          }
+        },
+        "model": {
+          "locator": "AER pp. 4285–4287 and model/counterfactual sections; household cost index and flood-specific simulations",
+          "support": "The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations.",
+          "facts": {
+            "cost": {
+              "kind": "modeled",
+              "value": "0.05–0.3",
+              "unit": "percent",
+              "denominator": "household cost-index increase across sample floods"
+            },
+            "damage2013": {
+              "kind": "modeled",
+              "value": 5,
+              "unit": "percent higher without adaptation",
+              "denominator": "modeled 2013 flood damages"
+            },
+            "damage2015": {
+              "kind": "modeled",
+              "value": 1,
+              "unit": "percent higher without adaptation",
+              "denominator": "modeled 2015 flood damages"
+            }
+          }
+        }
+      }
+    },
+    "fisheries-nber-35994": {
+      "url": "https://www.nber.org/data-appendix/w35994",
+      "aliases": [
+        "https://www.nber.org/system/files/working_papers/w35994/w35994.pdf"
+      ],
+      "title": "NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026)",
+      "version": "NBER November 2026 PDF downloaded and SHA-256 checked 13 November 2026",
+      "publicationStatus": "Working paper; causal panel design and conditional climate scenarios",
+      "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-13",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-13",
+        "scope": "Targeted review of data, Marine Degree Days, fixed-effects identification, selection, ecological spillovers, heterogeneity and projection methods; no replication."
+      },
+      "passages": {
+        "design": {
+          "locator": "PDF pp. 1–3 and 14–18; 2.5 million cell-species-technology observations and high-dimensional fixed effects",
+          "support": "Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible.",
+          "facts": {
+            "observations": {
+              "kind": "descriptive",
+              "value": 2.5,
+              "unit": "million observations",
+              "denominator": "spatially explicit fishing-revenue sample, 2013–2022"
+            },
+            "heat": {
+              "kind": "causal",
+              "value": -15,
+              "unit": "percent revenue change",
+              "denominator": "100 additional Marine Degree Days above thermal range"
+            },
+            "cold": {
+              "kind": "causal",
+              "value": -4.7,
+              "unit": "percent revenue change",
+              "denominator": "100 additional Marine Degree Days below thermal range"
+            }
+          }
+        },
+        "projection": {
+          "locator": "PDF pp. 28–32; SSP2-4.5 and SSP3-7.0 projections and caveats",
+          "support": "Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios.",
+          "facts": {
+            "ssp245": {
+              "kind": "modeled",
+              "value": -8,
+              "unit": "percent median revenue change",
+              "denominator": "2076–2100 versus 2013–2022 baseline"
+            },
+            "ssp370": {
+              "kind": "modeled",
+              "value": -12,
+              "unit": "percent median revenue change",
+              "denominator": "2076–2100 versus 2013–2022 baseline"
+            },
+            "loss245": {
+              "kind": "modeled",
+              "value": 430,
+              "unit": "million EUR per year",
+              "denominator": "late-century SSP2-4.5 scenario"
+            },
+            "loss370": {
+              "kind": "modeled",
+              "value": 560,
+              "unit": "million EUR per year",
+              "denominator": "late-century SSP3-7.0 scenario"
+            }
+          }
+        }
+      }
+    },
+    "gcb-2026": {
+      "url": "https://globalcarbonbudget.org/the-data-hub-2026/the-latest-gcb-data-2026/",
+      "aliases": [
+        "https://essd.copernicus.org/preprints/essd-2026-895/essd-2026-895.pdf"
+      ],
+      "title": "Global Carbon Budget 2026 · ESSD discussion preprint and data release",
+      "version": "ESSD-2026-895 preprint downloaded 13 November 2026; data release version 2026",
+      "publicationStatus": "Discussion preprint in review; preliminary 2026 estimates and living dataset",
+      "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-13",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-13",
+        "scope": "Targeted review of abstract, methods, preliminary 2026 estimates, uncertainty, budget balance and remaining-carbon-budget sections; not a reproduction of component datasets."
+      },
+      "passages": {
+        "budget": {
+          "locator": "Preprint lines 187–220 and 266–272; abstract and headline 2026 budget",
+          "support": "Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2.",
+          "facts": {
+            "central": {
+              "kind": "modeled",
+              "value": -0.4,
+              "unit": "percent annual growth",
+              "denominator": "2026 fossil CO2 emissions versus 2025"
+            },
+            "low": {
+              "kind": "modeled",
+              "value": -1.5,
+              "unit": "percent annual growth",
+              "denominator": "lower bound for 2026 fossil CO2 growth"
+            },
+            "high": {
+              "kind": "modeled",
+              "value": 0.6,
+              "unit": "percent annual growth",
+              "denominator": "upper bound for 2026 fossil CO2 growth"
+            },
+            "fossil": {
+              "kind": "modeled",
+              "value": 38.2,
+              "unit": "GtCO2 per year",
+              "denominator": "2026 fossil emissions"
+            },
+            "total": {
+              "kind": "modeled",
+              "value": 43.3,
+              "unit": "GtCO2 per year",
+              "denominator": "2026 total anthropogenic emissions"
+            },
+            "remaining": {
+              "kind": "modeled",
+              "value": 150,
+              "unit": "GtCO2",
+              "denominator": "remaining budget from 2027 for 50% likelihood of 1.5°C"
+            }
+          }
+        },
+        "uncertainty": {
+          "locator": "Preprint lines 187–210, 379–388, 1041–1046 and component sections",
+          "support": "All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations.",
+          "facts": {}
+        }
+      }
+    },
+    "eia-steo-nov-2026": {
+      "url": "https://www.eia.gov/outlooks/steo/report/electricity.php",
+      "aliases": [
+        "https://www.eia.gov/outlooks/steo/pdf/steo_full.PDF"
+      ],
+      "title": "U.S. EIA · Short-Term Energy Outlook, November 2026",
+      "version": "Official PDF released 10 November 2026; forecast completed 5 November; downloaded 13 November",
+      "publicationStatus": "Official conditional short-term energy forecast",
+      "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-13",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-13",
+        "scope": "Targeted review of forecast assumptions, electricity, coal and energy-related CO2 sections; no independent forecast reproduction."
+      },
+      "passages": {
+        "power": {
+          "locator": "PDF pp. 5 and 14–16; electricity generation, capacity and source shares",
+          "support": "EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027.",
+          "facts": {
+            "generation": {
+              "kind": "modeled",
+              "value": 4390,
+              "unit": "billion kilowatthours",
+              "denominator": "U.S. electric-power generation in 2026"
+            },
+            "growth": {
+              "kind": "modeled",
+              "value": 2.7,
+              "unit": "percent",
+              "denominator": "2026 generation versus 2025"
+            },
+            "solar2025": {
+              "kind": "descriptive",
+              "value": 7,
+              "unit": "percent generation share",
+              "denominator": "utility-scale solar in 2025"
+            },
+            "solar2027": {
+              "kind": "modeled",
+              "value": 10,
+              "unit": "percent generation share",
+              "denominator": "utility-scale solar, nearly, in 2027"
+            },
+            "wind2027": {
+              "kind": "modeled",
+              "value": 12,
+              "unit": "percent generation share",
+              "denominator": "wind in 2027"
+            },
+            "coal2025": {
+              "kind": "descriptive",
+              "value": 17,
+              "unit": "percent generation share",
+              "denominator": "coal in 2025"
+            },
+            "coal2027": {
+              "kind": "modeled",
+              "value": 15,
+              "unit": "percent generation share",
+              "denominator": "coal in 2027"
+            },
+            "solarCapacity": {
+              "kind": "modeled",
+              "value": 72,
+              "unit": "GW",
+              "denominator": "new solar capacity in 2026–2027"
+            },
+            "windCapacity": {
+              "kind": "modeled",
+              "value": 20,
+              "unit": "GW",
+              "denominator": "new wind capacity in 2026–2027"
+            }
+          }
+        },
+        "coal": {
+          "locator": "PDF pp. 5 and 15–16; coal consumption, production and exports",
+          "support": "Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027.",
+          "facts": {
+            "exports": {
+              "kind": "modeled",
+              "value": 11,
+              "unit": "percent increase",
+              "denominator": "2026 coal exports versus 2025"
+            },
+            "retirements": {
+              "kind": "modeled",
+              "value": 13,
+              "unit": "GW",
+              "denominator": "scheduled coal retirements by end-2027"
+            }
+          }
+        }
+      }
     }
   },
   "readings": {
@@ -4969,6 +5357,1642 @@
           }
         }
       ]
+    },
+    "2026-11-13-carbon-incidence": {
+      "edition": "2026-11-13",
+      "historical": false,
+      "title": "Carbon Prices Travel Through Incomes, Not Only Energy Bills",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "a17bac49ce8b6963375256288b8bf64c2fbc38af200d1f63ecfbd1bbe55ce073",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "carbon-aer-2026",
+              "passage": "design",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "effects",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "distribution",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component entry-head reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The design requires announcement surprises to exclude other structural shocks.",
+            "Household incidence is UK-specific and the long-horizon cost is approximate."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed entry-head against American Economic Review · Känzig (2026); corresponding full manuscript: The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption. A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response. Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate. Qualifications preserved: The design requires announcement surprises to exclude other structural shocks. Household incidence is UK-specific and the long-horizon cost is approximate."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "c009ef2e687bdf242742a97e81d9310422275ddabba4546e26c2dfa040e2f923",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "carbon-aer-2026",
+              "passage": "design",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "effects",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "distribution",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component reading-deck reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The design requires announcement surprises to exclude other structural shocks.",
+            "Household incidence is UK-specific and the long-horizon cost is approximate."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed reading-deck against American Economic Review · Känzig (2026); corresponding full manuscript: The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption. A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response. Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate. Qualifications preserved: The design requires announcement surprises to exclude other structural shocks. Household incidence is UK-specific and the long-horizon cost is approximate."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "c009ef2e687bdf242742a97e81d9310422275ddabba4546e26c2dfa040e2f923",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "carbon-aer-2026",
+              "passage": "design",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "effects",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "distribution",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component finding reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The design requires announcement surprises to exclude other structural shocks.",
+            "Household incidence is UK-specific and the long-horizon cost is approximate."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed finding against American Economic Review · Känzig (2026); corresponding full manuscript: The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption. A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response. Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate. Qualifications preserved: The design requires announcement surprises to exclude other structural shocks. Household incidence is UK-specific and the long-horizon cost is approximate."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "ad61f0ee6115d62e69ebb512263bfbc4abfb8f2fd387f2a80235c5b5229b076a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "carbon-aer-2026",
+              "passage": "design",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "effects",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "distribution",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component analysis-01 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The design requires announcement surprises to exclude other structural shocks.",
+            "Household incidence is UK-specific and the long-horizon cost is approximate."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-01 against American Economic Review · Känzig (2026); corresponding full manuscript: The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption. A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response. Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate. Qualifications preserved: The design requires announcement surprises to exclude other structural shocks. Household incidence is UK-specific and the long-horizon cost is approximate."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "498db4ba14cecc37252ceff6724fae6e29721b5e15f894e1b771fd032a05620e",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "carbon-aer-2026",
+              "passage": "design",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "effects",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "distribution",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component ll-argument reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The design requires announcement surprises to exclude other structural shocks.",
+            "Household incidence is UK-specific and the long-horizon cost is approximate."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed ll-argument against American Economic Review · Känzig (2026); corresponding full manuscript: The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption. A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response. Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate. Qualifications preserved: The design requires announcement surprises to exclude other structural shocks. Household incidence is UK-specific and the long-horizon cost is approximate."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "508fdceb8e52ddba1463609d4286a732b2a2d653dd156c49c407fb959e53408f",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "carbon-aer-2026",
+              "passage": "design",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "effects",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "distribution",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component analysis-02 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The design requires announcement surprises to exclude other structural shocks.",
+            "Household incidence is UK-specific and the long-horizon cost is approximate."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-02 against American Economic Review · Känzig (2026); corresponding full manuscript: The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption. A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response. Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate. Qualifications preserved: The design requires announcement surprises to exclude other structural shocks. Household incidence is UK-specific and the long-horizon cost is approximate."
+          }
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "0390cc4e77f7285170b004f7abdfdbe157b39487507fc655ae910255879c865e",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "carbon-aer-2026",
+              "passage": "design",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "effects",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "distribution",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component incidence-ledger reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The design requires announcement surprises to exclude other structural shocks.",
+            "Household incidence is UK-specific and the long-horizon cost is approximate."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed incidence-ledger against American Economic Review · Känzig (2026); corresponding full manuscript: The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption. A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response. Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate. Qualifications preserved: The design requires announcement surprises to exclude other structural shocks. Household incidence is UK-specific and the long-horizon cost is approximate."
+          }
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "37da46f2be6397dc04209f68628e48c824f9e994bfefee5763432ab6ef3944d3",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "carbon-aer-2026",
+              "passage": "design",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "effects",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "distribution",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test. Component assumption-test reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The design requires announcement surprises to exclude other structural shocks.",
+            "Household incidence is UK-specific and the long-horizon cost is approximate."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed assumption-test against American Economic Review · Känzig (2026); corresponding full manuscript: The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption. A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response. Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate. Qualifications preserved: The design requires announcement surprises to exclude other structural shocks. Household incidence is UK-specific and the long-horizon cost is approximate."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "7f1abdb950bf43b47088d1fa4f0c76fd1064de6e93c44250fa83bd67ea33ea9d",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "carbon-aer-2026",
+              "passage": "design",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "effects",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "distribution",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test. Component research-note reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The design requires announcement surprises to exclude other structural shocks.",
+            "Household incidence is UK-specific and the long-horizon cost is approximate."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed research-note against American Economic Review · Känzig (2026); corresponding full manuscript: The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption. A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response. Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate. Qualifications preserved: The design requires announcement surprises to exclude other structural shocks. Household incidence is UK-specific and the long-horizon cost is approximate."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "00fa477dba046019763a7c397895c87e8a29c8562de9671e35f6922897e5ccf1",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "carbon-aer-2026",
+              "passage": "design",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "effects",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            },
+            {
+              "document": "carbon-aer-2026",
+              "passage": "distribution",
+              "sha256": "45646b26f0641e339f7bb89dc62a8b69af24a7743e1eab64d80333787aac5140"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component analysis-03 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The design requires announcement surprises to exclude other structural shocks.",
+            "Household incidence is UK-specific and the long-horizon cost is approximate."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-03 against American Economic Review · Känzig (2026); corresponding full manuscript: The paper uses 114 regulatory announcements, narrow event windows and pre-information orthogonalization. The baseline robust first-stage F-statistic is 16.85; exclusion from other structural shocks remains the identifying assumption. A shock normalized to raise energy prices by 1% lowers emissions about 0.75% at peak, GDP and consumption about 0.3%, with indirect income and employment channels accounting for roughly two-thirds of consumption response. Lower-income UK households reduce spending and income more. The €107/tCO2 calculation extrapolates short-horizon responses over a 20-year horizon and is explicitly approximate. Qualifications preserved: The design requires announcement surprises to exclude other structural shocks. Household incidence is UK-specific and the long-horizon cost is approximate."
+          }
+        }
+      ]
+    },
+    "2026-11-13-flood-adaptation": {
+      "edition": "2026-11-13",
+      "historical": false,
+      "title": "Firms Adapt to Floods by Rewriting Their Networks",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "8a2332cbf9d67a5c2ac90c0d1e9f86dc94e1b49cd6afc7da91f991009e8fb3b6",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "flood-aer-2026",
+              "passage": "behavior",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            },
+            {
+              "document": "flood-aer-2026",
+              "passage": "model",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component entry-head reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Relocation timing is inferred from endpoints.",
+            "Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed entry-head against American Economic Review · Balboni, Boehm & Waseem (2026): Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers. The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations. Qualifications preserved: Relocation timing is inferred from endpoints. Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "b97cce93edc2714285688ce66faf357b1481b542ce896e1ce638888de152e964",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "flood-aer-2026",
+              "passage": "behavior",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            },
+            {
+              "document": "flood-aer-2026",
+              "passage": "model",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component reading-deck reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Relocation timing is inferred from endpoints.",
+            "Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed reading-deck against American Economic Review · Balboni, Boehm & Waseem (2026): Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers. The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations. Qualifications preserved: Relocation timing is inferred from endpoints. Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "b97cce93edc2714285688ce66faf357b1481b542ce896e1ce638888de152e964",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "flood-aer-2026",
+              "passage": "behavior",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            },
+            {
+              "document": "flood-aer-2026",
+              "passage": "model",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component finding reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Relocation timing is inferred from endpoints.",
+            "Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed finding against American Economic Review · Balboni, Boehm & Waseem (2026): Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers. The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations. Qualifications preserved: Relocation timing is inferred from endpoints. Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "37af80d10da796e360ee4f11f087d4e46f4a3e86c1b63843086006cf3b7db1c6",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "flood-aer-2026",
+              "passage": "behavior",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            },
+            {
+              "document": "flood-aer-2026",
+              "passage": "model",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component analysis-01 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Relocation timing is inferred from endpoints.",
+            "Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-01 against American Economic Review · Balboni, Boehm & Waseem (2026): Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers. The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations. Qualifications preserved: Relocation timing is inferred from endpoints. Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "fc318650d64d108fa503e98f55c40816cebc077b1f45218e38783b5f1acfd46e",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "flood-aer-2026",
+              "passage": "behavior",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            },
+            {
+              "document": "flood-aer-2026",
+              "passage": "model",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component ll-argument reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Relocation timing is inferred from endpoints.",
+            "Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed ll-argument against American Economic Review · Balboni, Boehm & Waseem (2026): Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers. The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations. Qualifications preserved: Relocation timing is inferred from endpoints. Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          }
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "ccd8656e859bf18776e6c6985a87f90e38749993380f50536704e462dd6d7d3f",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "flood-aer-2026",
+              "passage": "behavior",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            },
+            {
+              "document": "flood-aer-2026",
+              "passage": "model",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component mechanism-map reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Relocation timing is inferred from endpoints.",
+            "Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed mechanism-map against American Economic Review · Balboni, Boehm & Waseem (2026): Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers. The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations. Qualifications preserved: Relocation timing is inferred from endpoints. Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "666c3b0850125721792a767263393be895541a3d197f34f2df21affd803bbfae",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "flood-aer-2026",
+              "passage": "behavior",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            },
+            {
+              "document": "flood-aer-2026",
+              "passage": "model",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component analysis-02 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Relocation timing is inferred from endpoints.",
+            "Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-02 against American Economic Review · Balboni, Boehm & Waseem (2026): Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers. The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations. Qualifications preserved: Relocation timing is inferred from endpoints. Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          }
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "8a32903172abe7e140ed39ffaaba84b50ff697bc40907571371c052e46be37c6",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "flood-aer-2026",
+              "passage": "behavior",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            },
+            {
+              "document": "flood-aer-2026",
+              "passage": "model",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component decision-margin reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Relocation timing is inferred from endpoints.",
+            "Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed decision-margin against American Economic Review · Balboni, Boehm & Waseem (2026): Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers. The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations. Qualifications preserved: Relocation timing is inferred from endpoints. Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "ee0e3e651d0fe7eacffa7f797090df8703f99d5491cb630ef749052bf92055db",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "flood-aer-2026",
+              "passage": "behavior",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            },
+            {
+              "document": "flood-aer-2026",
+              "passage": "model",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component analysis-03 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Relocation timing is inferred from endpoints.",
+            "Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-03 against American Economic Review · Balboni, Boehm & Waseem (2026): Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers. The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations. Qualifications preserved: Relocation timing is inferred from endpoints. Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "a8371e0e553746e870296dd511de7e99138f4b0dab76339e6344f6bf715cde16",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "flood-aer-2026",
+              "passage": "behavior",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            },
+            {
+              "document": "flood-aer-2026",
+              "passage": "model",
+              "sha256": "5b1345bd9af4140e24c5d4cfdc307f8bd1b4574a231dbc9aedf76d1489f84df7"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test. Component research-note reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Relocation timing is inferred from endpoints.",
+            "Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed research-note against American Economic Review · Balboni, Boehm & Waseem (2026): Severe flooding raises relocation over 10 km by 3.67 percentage points from a 17.34% nonflooded baseline; severely flooded movers reach locations with 19.7 cm lower expected depth in a 1-in-100-year flood. Supplier and route choices persist after physical access recovers. The structural network model estimates sample-flood household cost-index increases of 0.05%–0.3%. Adaptation after 2012 lowers modeled 2013 and 2015 damage but raises modeled 2014 damage in disjoint lower-risk locations. Qualifications preserved: Relocation timing is inferred from endpoints. Aggregate damage effects are structural-model counterfactuals, not randomized policy effects."
+          }
+        }
+      ]
+    },
+    "2026-11-13-fisheries-heat": {
+      "edition": "2026-11-13",
+      "historical": false,
+      "title": "Ocean Heat Changes the Geography of Fishing Revenue",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "e7f32d19289e3b8fcc2413de39438053da91e981345470bf8ef74e8b183bbdb4",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "design",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            },
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "projection",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component entry-head reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Species-by-cell fixed effects would absorb nearly all identifying variation.",
+            "Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed entry-head against NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026): Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible. Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios. Qualifications preserved: Species-by-cell fixed effects would absorb nearly all identifying variation. Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "219db3a4032f76e88d7681feba43a169b51086a9df1dc513a666e5856edc3542",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "design",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            },
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "projection",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component reading-deck reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Species-by-cell fixed effects would absorb nearly all identifying variation.",
+            "Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed reading-deck against NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026): Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible. Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios. Qualifications preserved: Species-by-cell fixed effects would absorb nearly all identifying variation. Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "219db3a4032f76e88d7681feba43a169b51086a9df1dc513a666e5856edc3542",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "design",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            },
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "projection",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component finding reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Species-by-cell fixed effects would absorb nearly all identifying variation.",
+            "Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed finding against NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026): Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible. Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios. Qualifications preserved: Species-by-cell fixed effects would absorb nearly all identifying variation. Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          }
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "21d97bc95f03a0ff152e22ccbc99494dcf103baaad3dcc53fc3918281d8b2f9a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "design",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            },
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "projection",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component economic-figures reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Species-by-cell fixed effects would absorb nearly all identifying variation.",
+            "Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed economic-figures against NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026): Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible. Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios. Qualifications preserved: Species-by-cell fixed effects would absorb nearly all identifying variation. Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "eb65b69e1b6b68ed1187cc99c57b088ca2eee523255debb75488a774405ca2ff",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "design",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            },
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "projection",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component analysis-01 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Species-by-cell fixed effects would absorb nearly all identifying variation.",
+            "Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-01 against NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026): Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible. Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios. Qualifications preserved: Species-by-cell fixed effects would absorb nearly all identifying variation. Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "fb9dc60441966fe6c04d8466cc35e3b531f5ceed9d35714174e9c4c5a3e0b418",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "design",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            },
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "projection",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component ll-argument reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Species-by-cell fixed effects would absorb nearly all identifying variation.",
+            "Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed ll-argument against NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026): Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible. Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios. Qualifications preserved: Species-by-cell fixed effects would absorb nearly all identifying variation. Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "a0c4b46722ddde8052896b3dec94dd0eda41805d29b948d277640e5d685d9bf5",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "design",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            },
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "projection",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component analysis-02 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Species-by-cell fixed effects would absorb nearly all identifying variation.",
+            "Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-02 against NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026): Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible. Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios. Qualifications preserved: Species-by-cell fixed effects would absorb nearly all identifying variation. Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          }
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "6004711f9775340ac03334fc874987956c037d78de9a5f9e7971b07f1147dbe7",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "design",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            },
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "projection",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test. Component assumption-test reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Species-by-cell fixed effects would absorb nearly all identifying variation.",
+            "Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed assumption-test against NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026): Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible. Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios. Qualifications preserved: Species-by-cell fixed effects would absorb nearly all identifying variation. Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "cc641a1c358b172cd9e63519e9861e5e22e0b09d906cb12401d85f2281a7ba47",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "design",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            },
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "projection",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component analysis-03 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Species-by-cell fixed effects would absorb nearly all identifying variation.",
+            "Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-03 against NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026): Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible. Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios. Qualifications preserved: Species-by-cell fixed effects would absorb nearly all identifying variation. Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "d92ce6198b92b272b05e1d374c6f8c00ca1234b3de7ee7367bdbe7ae275a0aa7",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "design",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            },
+            {
+              "document": "fisheries-nber-35994",
+              "passage": "projection",
+              "sha256": "a3e2e6be9d159c512164c0afc60c971f73609c695c2d78d7d1d1fda0b9814684"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test. Component research-note reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "Species-by-cell fixed effects would absorb nearly all identifying variation.",
+            "Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed research-note against NBER Working Paper 35994 · Cevenini, Costello & Fezzi (2026): Identification compares species-specific thermal exposure within cell-year-technology and the same species across nearby management locations; fisher selection and common species-year shocks are absorbed, while species-by-cell fixed effects are not feasible. Late-century median losses are about 8% and 12%, with annual losses around €430m and €560m. Non-temperature determinants and baseline cell species presence are held fixed; results are ceteris paribus scenarios. Qualifications preserved: Species-by-cell fixed effects would absorb nearly all identifying variation. Long-run results are ceteris-paribus scenarios with restricted adaptation."
+          }
+        }
+      ]
+    },
+    "2026-11-13-carbon-budget": {
+      "edition": "2026-11-13",
+      "historical": false,
+      "title": "A Small Fossil-Emissions Dip Is Not Yet a Turning Point",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "38e33acf6228e3ca735d2f99f03312528cb87341870aa86a706bcc195f38dbc0",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "gcb-2026",
+              "passage": "budget",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            },
+            {
+              "document": "gcb-2026",
+              "passage": "uncertainty",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component entry-head reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The central fossil-growth range includes zero and excludes baseline-level uncertainty.",
+            "The living dataset and preprint are subject to revision."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed entry-head against Global Carbon Budget 2026 · ESSD discussion preprint and data release: Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2. All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations. Qualifications preserved: The central fossil-growth range includes zero and excludes baseline-level uncertainty. The living dataset and preprint are subject to revision."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "47b418ca98b4a2ebf22c4e7abd1c856d450a8cdef03871d2d32d39edbc042c2c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "gcb-2026",
+              "passage": "budget",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            },
+            {
+              "document": "gcb-2026",
+              "passage": "uncertainty",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component reading-deck reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The central fossil-growth range includes zero and excludes baseline-level uncertainty.",
+            "The living dataset and preprint are subject to revision."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed reading-deck against Global Carbon Budget 2026 · ESSD discussion preprint and data release: Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2. All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations. Qualifications preserved: The central fossil-growth range includes zero and excludes baseline-level uncertainty. The living dataset and preprint are subject to revision."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "47b418ca98b4a2ebf22c4e7abd1c856d450a8cdef03871d2d32d39edbc042c2c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "gcb-2026",
+              "passage": "budget",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            },
+            {
+              "document": "gcb-2026",
+              "passage": "uncertainty",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component finding reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The central fossil-growth range includes zero and excludes baseline-level uncertainty.",
+            "The living dataset and preprint are subject to revision."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed finding against Global Carbon Budget 2026 · ESSD discussion preprint and data release: Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2. All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations. Qualifications preserved: The central fossil-growth range includes zero and excludes baseline-level uncertainty. The living dataset and preprint are subject to revision."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "005ccb03ff807574f38ca990ac519065ac55f3f36ab165cdff849342d436c5ea",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "gcb-2026",
+              "passage": "budget",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            },
+            {
+              "document": "gcb-2026",
+              "passage": "uncertainty",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component analysis-01 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The central fossil-growth range includes zero and excludes baseline-level uncertainty.",
+            "The living dataset and preprint are subject to revision."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-01 against Global Carbon Budget 2026 · ESSD discussion preprint and data release: Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2. All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations. Qualifications preserved: The central fossil-growth range includes zero and excludes baseline-level uncertainty. The living dataset and preprint are subject to revision."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "8a2746c99a7d98ff794a7845007877a3997ad870212a356d3bca5d44354207f4",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "gcb-2026",
+              "passage": "budget",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            },
+            {
+              "document": "gcb-2026",
+              "passage": "uncertainty",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component ll-argument reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The central fossil-growth range includes zero and excludes baseline-level uncertainty.",
+            "The living dataset and preprint are subject to revision."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed ll-argument against Global Carbon Budget 2026 · ESSD discussion preprint and data release: Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2. All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations. Qualifications preserved: The central fossil-growth range includes zero and excludes baseline-level uncertainty. The living dataset and preprint are subject to revision."
+          }
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "551da862716963429b800a841f7e1d0307d38a4af2ea28320d0b5ef820f3ed90",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "gcb-2026",
+              "passage": "budget",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            },
+            {
+              "document": "gcb-2026",
+              "passage": "uncertainty",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component economic-figures reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The central fossil-growth range includes zero and excludes baseline-level uncertainty.",
+            "The living dataset and preprint are subject to revision."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed economic-figures against Global Carbon Budget 2026 · ESSD discussion preprint and data release: Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2. All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations. Qualifications preserved: The central fossil-growth range includes zero and excludes baseline-level uncertainty. The living dataset and preprint are subject to revision."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "0c774c6476eb17aa5358f11d9612e6eb26655983a041250a1d247c0415afb9e4",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "gcb-2026",
+              "passage": "budget",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            },
+            {
+              "document": "gcb-2026",
+              "passage": "uncertainty",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component analysis-02 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The central fossil-growth range includes zero and excludes baseline-level uncertainty.",
+            "The living dataset and preprint are subject to revision."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-02 against Global Carbon Budget 2026 · ESSD discussion preprint and data release: Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2. All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations. Qualifications preserved: The central fossil-growth range includes zero and excludes baseline-level uncertainty. The living dataset and preprint are subject to revision."
+          }
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "9f07ed307c59b045f63fd6b48a7eef1a8d42eb08014b83684f489f0c94177f81",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "gcb-2026",
+              "passage": "budget",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            },
+            {
+              "document": "gcb-2026",
+              "passage": "uncertainty",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test. Component assumption-test reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The central fossil-growth range includes zero and excludes baseline-level uncertainty.",
+            "The living dataset and preprint are subject to revision."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed assumption-test against Global Carbon Budget 2026 · ESSD discussion preprint and data release: Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2. All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations. Qualifications preserved: The central fossil-growth range includes zero and excludes baseline-level uncertainty. The living dataset and preprint are subject to revision."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "f0544602a99e3a082d0950821eb9dbbb4fe25e458e0690edff06fbb6bcb7cd6a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "gcb-2026",
+              "passage": "budget",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            },
+            {
+              "document": "gcb-2026",
+              "passage": "uncertainty",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component analysis-03 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The central fossil-growth range includes zero and excludes baseline-level uncertainty.",
+            "The living dataset and preprint are subject to revision."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-03 against Global Carbon Budget 2026 · ESSD discussion preprint and data release: Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2. All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations. Qualifications preserved: The central fossil-growth range includes zero and excludes baseline-level uncertainty. The living dataset and preprint are subject to revision."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "28fe3da37f55f097512743966a84aea4a3b3817d2e53c839d53f63b0f14d88fe",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "gcb-2026",
+              "passage": "budget",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            },
+            {
+              "document": "gcb-2026",
+              "passage": "uncertainty",
+              "sha256": "7c031e2616d5e9e0884c1364320cbaa7cb480a2bf15a07e0124b4f7dd9b9f76e"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test. Component research-note reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The central fossil-growth range includes zero and excludes baseline-level uncertainty.",
+            "The living dataset and preprint are subject to revision."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed research-note against Global Carbon Budget 2026 · ESSD discussion preprint and data release: Preliminary fossil CO2 growth is −0.4% with range −1.5% to +0.6%; fossil emissions 38.2 GtCO2, total anthropogenic emissions 43.3 GtCO2, and remaining 50%-likelihood 1.5°C budget 150 GtCO2. All reported global uncertainties use ±1σ; 2026 growth uncertainty excludes baseline-level uncertainty. Land-use emissions and land/ocean sink magnitudes remain materially uncertain; the budget imbalance reflects data and knowledge limitations. Qualifications preserved: The central fossil-growth range includes zero and excludes baseline-level uncertainty. The living dataset and preprint are subject to revision."
+          }
+        }
+      ]
+    },
+    "2026-11-13-power-outlook": {
+      "edition": "2026-11-13",
+      "historical": false,
+      "title": "Renewables Meet Record Power Demand Without Ending Fossil Generation",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "3f12eadd3b0845b0ee3e44e141371db60dbae31407ffae8079cf1a31e9256fef",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "power",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            },
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "coal",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component entry-head reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions.",
+            "Generation shares do not identify local prices, reliability value or household incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed entry-head against U.S. EIA · Short-Term Energy Outlook, November 2026: EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027. Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027. Qualifications preserved: The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions. Generation shares do not identify local prices, reliability value or household incidence."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "9fd94c88d014013c0c6869b14f11b476626e6811fb678e57647a5a9da64c140c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "power",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            },
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "coal",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component reading-deck reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions.",
+            "Generation shares do not identify local prices, reliability value or household incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed reading-deck against U.S. EIA · Short-Term Energy Outlook, November 2026: EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027. Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027. Qualifications preserved: The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions. Generation shares do not identify local prices, reliability value or household incidence."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "9fd94c88d014013c0c6869b14f11b476626e6811fb678e57647a5a9da64c140c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "power",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            },
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "coal",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component finding reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions.",
+            "Generation shares do not identify local prices, reliability value or household incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed finding against U.S. EIA · Short-Term Energy Outlook, November 2026: EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027. Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027. Qualifications preserved: The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions. Generation shares do not identify local prices, reliability value or household incidence."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "c7c6bc892c6039df07a3f605994b23e9763b2e5d2adf1a0f0709d916a8f111ef",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "power",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            },
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "coal",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component analysis-01 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions.",
+            "Generation shares do not identify local prices, reliability value or household incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-01 against U.S. EIA · Short-Term Energy Outlook, November 2026: EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027. Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027. Qualifications preserved: The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions. Generation shares do not identify local prices, reliability value or household incidence."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "bec0a904d8e0d9a81285c28a47fa8d1294f169f3547fb23bba66e6a968918c0d",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "power",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            },
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "coal",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component ll-argument reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions.",
+            "Generation shares do not identify local prices, reliability value or household incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed ll-argument against U.S. EIA · Short-Term Energy Outlook, November 2026: EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027. Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027. Qualifications preserved: The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions. Generation shares do not identify local prices, reliability value or household incidence."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "827bcf1f56bb64b1e0c41634fb95b8e204fe3650f4ba967d0bea556c4972f57c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "power",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            },
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "coal",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component analysis-02 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions.",
+            "Generation shares do not identify local prices, reliability value or household incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-02 against U.S. EIA · Short-Term Energy Outlook, November 2026: EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027. Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027. Qualifications preserved: The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions. Generation shares do not identify local prices, reliability value or household incidence."
+          }
+        },
+        {
+          "id": "long-view",
+          "sha256": "77e50ca8d12fa11ee494b5d263321969d8058fe78c8df01f5156eef5ec8fcda2",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "power",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            },
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "coal",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            }
+          ],
+          "mapping": "Source identity, design and reported evidence checked against the cited passages. Component long-view reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions.",
+            "Generation shares do not identify local prices, reliability value or household incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed long-view against U.S. EIA · Short-Term Energy Outlook, November 2026: EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027. Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027. Qualifications preserved: The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions. Generation shares do not identify local prices, reliability value or household incidence."
+          }
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "a4652353f968fd430b4f2f8d4bc4f396c7c99bb83a485b2e8882919f5ec637e4",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "power",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            },
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "coal",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component incidence-ledger reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions.",
+            "Generation shares do not identify local prices, reliability value or household incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed incidence-ledger against U.S. EIA · Short-Term Energy Outlook, November 2026: EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027. Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027. Qualifications preserved: The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions. Generation shares do not identify local prices, reliability value or household incidence."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "0c9580ed5cbc4b72677cd9c7afae6613dfdb19daf087dbc12353029e4c88af96",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "power",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            },
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "coal",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test. Component research-note reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions.",
+            "Generation shares do not identify local prices, reliability value or household incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed research-note against U.S. EIA · Short-Term Energy Outlook, November 2026: EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027. Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027. Qualifications preserved: The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions. Generation shares do not identify local prices, reliability value or household incidence."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "32a5952571f8401f06239f110fcf9761c0bc9925f5b396b1ee3b3a85dd7f9c45",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "power",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            },
+            {
+              "document": "eia-steo-nov-2026",
+              "passage": "coal",
+              "sha256": "69f55c7c37f96490a76e0ae3ca189d9ee5257ca1e343f062e515b8268588c417"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the source evidence. Component analysis-03 reviewed for this reading.",
+          "claims": [],
+          "qualifications": [
+            "The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions.",
+            "Generation shares do not identify local prices, reliability value or household incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-13",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed analysis-03 against U.S. EIA · Short-Term Energy Outlook, November 2026: EIA projects almost 4,390 BkWh in 2026, up 2.7%; solar share rises 7% to nearly 10% by 2027, wind to 12%, coal falls 17% to 15%; 72 GW solar and 20 GW wind additions are expected in 2026–2027. Domestic coal consumption falls 7% in 2026, while exports rise 11%, partially offsetting production effects. Scheduled coal retirements total 13 GW by end-2027. Qualifications preserved: The STEO is conditional on weather, fuel-price and scheduled-capacity assumptions. Generation shares do not identify local prices, reliability value or household incidence."
+          }
+        }
+      ]
     }
-  }
+  },
+  "reviewed": "2026-11-13"
 }
