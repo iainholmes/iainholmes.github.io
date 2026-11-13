@@ -448,7 +448,7 @@ html[data-mode="night"] .entry[data-reading-palette="tidal"]{--feature-wash:colo
 .entry[data-reading-composition] .evidence-pair.ll-heron-dock{display:block;margin:24px 0 0;padding:0;border:0;min-width:0}
 .entry[data-reading-composition] .ll-heron-dock>.perch{margin:0;width:100%}
 .ll-heron-dock .heron-panel[data-heron-expansion="space"]{position:absolute;inset:100% 0 auto;z-index:2}
-html.ll-heron-adjusting,html:has(.ll-heron-dock .heron-panel:not([hidden])){overflow-anchor:none}
+html.ll-heron-adjusting{overflow-anchor:none}
 .entry[data-reading-composition] .ll-heron-dock .heron-perch{grid-template-columns:62px minmax(0,1fr);gap:14px;padding:4px 0 14px}
 .entry[data-reading-composition] .ll-heron-dock .heron-perch>svg{width:62px;height:102px}
 .entry[data-reading-composition] .ll-heron-dock .hp-t{font-size:23px}

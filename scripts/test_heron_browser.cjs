@@ -127,10 +127,6 @@ async function run() {
     await trigger.evaluate(el => el.scrollIntoView({block:'center',behavior:'instant'}));
     await settle();
     const before = await measure(perch);
-    await trigger.evaluate(el=>el.addEventListener('click',()=>{
-      const snapshot=()=>[scrollY,el.getBoundingClientRect().top,el.closest('.entry').getBoundingClientRect().top,el.closest('.entry').getBoundingClientRect().height];
-      window.heronTestClick=[snapshot()];queueMicrotask(()=>window.heronTestClick.push(snapshot()));
-    },{capture:true,once:true}));
     await trigger.click();
     await settle();
     const opened = await measure(perch);
@@ -138,7 +134,6 @@ async function run() {
     if (expectedMode) equal(opened.mode, expectedMode, label + ' uses the expected expansion mode');
     equal(opened.overlaps, [], label + ' leaves editorial content clear');
     check(opened.actionCount >= 2, label + ' keeps the actions reachable');
-    if(Math.abs(before.scroll-opened.scroll)>2||Math.abs(before.trigger-opened.trigger)>2)console.log(JSON.stringify({label,before,opened,click:await page.evaluate(()=>window.heronTestClick)}));
     near(before.trigger, opened.trigger, label + ' trigger stays in place');
     if (opened.mode === 'space') {
       near(before.scroll, opened.scroll, label + ' scroll stays in place');
@@ -160,9 +155,11 @@ async function run() {
     const modes = new Set();
     for (const [width, height, theme] of [[2560, 900, 'day'], [1440, 900, 'night'], [768, 1024, 'day'], [844, 390, 'night'], [390, 844, 'day']]) {
       await page.setViewportSize({width,height});
-      for (const [editionDate, config] of Object.entries(companions)) {
+      for (const config of Object.values(companions)) {
         if (!config.appearances.length) continue;
-        await load('edition-' + editionDate);
+        // Enter a reading directly so the saved-progress prompt cannot time out
+        // above the article during the measured interaction.
+        await load(config.appearances[0].target);
         await page.locator('.dn button[data-mode="' + theme + '"]').click();
         await settle();
         for (const note of config.appearances) modes.add(await exercise(page.locator('#heron-' + note.id), note.id + ' at ' + width));
@@ -173,7 +170,7 @@ async function run() {
     await load('electrification');
     await exercise(page.locator('#heron-h-2026-09-25-a'), 'Electrification with its figure annotation', 'flow');
     await page.setViewportSize({width:2560,height:900});
-    await load('edition-2026-10-23');
+    await load('2026-10-23-vehicle-mix');
     const resizePerch = page.locator('#heron-h-2026-10-23-b');
     for (let i=0;i<3;i++) await exercise(resizePerch, 'repeated opening ' + (i+1));
     await resizePerch.locator(button).click();
