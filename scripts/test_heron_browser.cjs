@@ -127,6 +127,10 @@ async function run() {
     await trigger.evaluate(el => el.scrollIntoView({block:'center',behavior:'instant'}));
     await settle();
     const before = await measure(perch);
+    await trigger.evaluate(el=>el.addEventListener('click',()=>{
+      const snapshot=()=>[scrollY,el.getBoundingClientRect().top,el.closest('.entry').getBoundingClientRect().top,el.closest('.entry').getBoundingClientRect().height];
+      window.heronTestClick=[snapshot()];queueMicrotask(()=>window.heronTestClick.push(snapshot()));
+    },{capture:true,once:true}));
     await trigger.click();
     await settle();
     const opened = await measure(perch);
@@ -136,6 +140,7 @@ async function run() {
     check(opened.actionCount >= 2, label + ' keeps the actions reachable');
     near(before.trigger, opened.trigger, label + ' trigger stays in place');
     if (opened.mode === 'space') {
+      if(Math.abs(before.scroll-opened.scroll)>2)console.log(JSON.stringify({label,before,opened,click:await page.evaluate(()=>window.heronTestClick)}));
       near(before.scroll, opened.scroll, label + ' scroll stays in place');
       for (const key of ['article', 'row', 'next']) before[key].forEach((value, i) => near(value, opened[key][i], label + ' stable ' + key));
       check(before.blocks.every((rect, i) => rect.every((value, j) => Math.abs(value - opened.blocks[i][j]) <= 2)), label + ' all surrounding editorial rectangles stay in place');
