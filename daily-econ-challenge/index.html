@@ -3020,6 +3020,203 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Lipsitch, Tchetgen Tchetgen & Cohen (2010), Epidemiology; Miao, Geng & Tchetgen Tchetgen (2018), Biometrika."
         }
       ]
+    },
+    {
+      "no": 16,
+      "date": "2026-11-13",
+      "minutes": 28,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>A researcher estimates a time-series regression by OLS. The regressors are strictly exogenous, but the disturbance is serially correlated and heteroskedastic. The sample has many time periods and dependence weakens sufficiently with temporal distance. Which statements are defensible?</p>",
+          "options": [
+            "OLS coefficient estimates can remain consistent under the stated exogeneity condition even though the disturbances are serially correlated.",
+            "The usual homoskedastic OLS standard errors are automatically valid because strict exogeneity holds.",
+            "Heteroskedasticity-and-autocorrelation-consistent standard errors can provide asymptotically valid inference under suitable dependence and bandwidth conditions.",
+            "A correctly specified feasible GLS transformation can improve efficiency, but misspecifying the disturbance process can forfeit that advantage."
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ],
+          "concepts": [
+            "Serial correlation",
+            "HAC inference",
+            "Feasible generalized least squares"
+          ],
+          "assistance": "<p>Separate the assumptions needed for the coefficient probability limit from those needed to estimate its sampling variance. Exogeneity concerns the regressor–disturbance relationship; serial dependence concerns how disturbances co-move over time.</p><p>Then compare two responses to dependence: estimating a robust long-run variance without transforming the regression, and imposing a parametric disturbance model to seek efficiency. Each relies on different maintained conditions.</p>",
+          "explanation": "<p><b>(A), (C), and (D) are correct.</b> With strict exogeneity and regularity conditions, serial correlation and heteroskedasticity do not by themselves make the OLS coefficient inconsistent, but they change its asymptotic variance. The conventional homoskedastic formula ignores both features, so (B) is false. HAC estimators consistently estimate the long-run covariance under suitable weak-dependence and bandwidth conditions. Feasible GLS can be more efficient when its covariance model is well specified; a poor model can remove that gain and can make its conventional inference unreliable.</p>",
+          "refs": "Newey & West (1987), Econometrica; Wooldridge, Econometric Analysis of Cross Section and Panel Data, time-series regression chapters."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>Two households consume the same quantity <i>G</i> of a pure public good. Their marginal benefits are MB<sub>A</sub> = 40 − <i>G</i> and MB<sub>B</sub> = 30 − <i>G</i>. The marginal cost is constant at 30. At an interior efficient allocation, what quantity and personalized Lindahl prices implement the allocation?</p>",
+          "options": [
+            "<i>G</i> = 10, with personalized prices 30 for each household.",
+            "<i>G</i> = 20, with personalized prices 20 for A and 10 for B.",
+            "<i>G</i> = 30, with personalized prices 10 for A and 0 for B.",
+            "<i>G</i> = 35, with each household paying 15."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Lindahl prices",
+            "Public-good implementation",
+            "Personalized marginal benefits"
+          ],
+          "assistance": "<p>For a pure public good, both households consume the same quantity, so efficiency adds their marginal benefits vertically and equates the sum to marginal cost.</p><p>After finding the shared quantity, evaluate each household's marginal benefit there. Personalized prices should add to the production cost while making each household choose that common quantity.</p>",
+          "explanation": "<p><b>(B) is correct.</b> Efficiency requires (40 − <i>G</i>) + (30 − <i>G</i>) = 30, so 70 − 2<i>G</i> = 30 and <i>G</i> = 20. At that quantity, A's marginal benefit is 20 and B's is 10. Those personalized prices sum to the marginal cost of 30, and each household equates its own marginal benefit to its assigned price. The other options either fail the vertical-summation condition or assign prices that do not support the stated common quantity.</p>",
+          "refs": "Lindahl (1919), Just Taxation—A Positive Solution; Mas-Colell, Whinston & Green (1995), Microeconomic Theory, public goods."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "<p>In a small open economy, productivity rises persistently in the tradable sector but not in the nontradable sector. Tradable-goods prices are pinned down internationally, labor is mobile across domestic sectors, and markups are unchanged. Which implications of this productivity differential are consistent with the setup?</p>",
+          "options": [
+            "Higher tradable-sector productivity can bid up economy-wide wages.",
+            "International price equalization for tradable goods forces the domestic price of nontradable services to remain fixed.",
+            "Higher wages can raise nontradable prices, producing a real appreciation through the relative price of nontradables.",
+            "The real appreciation need not require a nominal exchange-rate appreciation if domestic relative prices adjust."
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ],
+          "concepts": [
+            "Productivity-differential hypothesis",
+            "Tradable productivity",
+            "Real exchange-rate appreciation"
+          ],
+          "assistance": "<p>Trace the shock through three margins: the marginal product of labor in tradables, wage equalization across domestic sectors, and the price needed for less-productive nontradable firms to cover higher labor costs.</p><p>A real exchange rate is a relative-price object. Distinguish movement in that object from movement in the nominal exchange rate alone.</p>",
+          "explanation": "<p><b>(A), (C), and (D) are correct.</b> Greater tradable productivity raises labor demand and wages; domestic labor mobility transmits the wage increase to nontradables. Because nontradable productivity has not risen, their unit labor costs and prices increase. Tradable prices remain tied to world prices, so the relative price of nontradables rises and the economy experiences a real appreciation. Thus (B) incorrectly extends tradable-goods price equalization to nontradables. The adjustment can occur through domestic prices even with a fixed nominal exchange rate.</p>",
+          "refs": "Balassa (1964), Journal of Political Economy; Obstfeld & Rogoff (1996), Foundations of International Macroeconomics."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>A stated-choice model for wetland restoration has indirect utility <i>V</i> = 0.8<i>A</i> − 0.004<i>F</i> + other terms, where <i>A</i> measures units of restored habitat and <i>F</i> is a one-time fee in dollars. Holding other attributes fixed and treating coefficients as fixed, what marginal willingness to pay does the model imply for one more unit of habitat?</p>",
+          "options": [
+            "$0.005, from 0.004/0.8.",
+            "$3.20, from 0.8 × 0.004 × 1,000.",
+            "$200, from −0.8/(−0.004).",
+            "$800, because the habitat coefficient is measured in utility units."
+          ],
+          "correct": [
+            2
+          ],
+          "concepts": [
+            "Choice experiments",
+            "Marginal willingness to pay",
+            "Utility coefficient ratios"
+          ],
+          "assistance": "<p>Compensating variation holds utility constant when the environmental attribute changes. Set the utility gain from one unit of habitat against the utility loss from a higher fee.</p><p>Pay attention to the sign and units of the fee coefficient: it converts utility units into dollars. A coefficient is not itself a monetary value.</p>",
+          "explanation": "<p><b>(C) is correct.</b> Holding utility constant gives 0.8Δ<i>A</i> − 0.004Δ<i>F</i> = 0. For Δ<i>A</i> = 1, the fee increase that exactly offsets the habitat gain is Δ<i>F</i> = 0.8/0.004 = $200. Equivalently, marginal willingness to pay is −β<sub>A</sub>/β<sub>F</sub> = −0.8/(−0.004). The other options invert, multiply, or directly relabel coefficients without the compensating-variation calculation. Interpretation still depends on credible survey design and model specification.</p>",
+          "refs": "Hanemann (1984), American Journal of Agricultural Economics; Train (2009), Discrete Choice Methods with Simulation."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>A large randomized trial is used to discover treatment-effect heterogeneity. Researchers grow a recursive partitioning tree that selects subgroups using observed outcomes. They want interpretable subgroup estimates and uncertainty statements. Which practices or claims are defensible?</p>",
+          "options": [
+            "Using the same outcome observations to choose splits and to report conventional subgroup confidence intervals can produce adaptive overfitting.",
+            "Honest sample splitting can use one sample to discover the partition and an independent sample to estimate effects within the selected leaves.",
+            "Random treatment assignment alone makes conventional confidence intervals valid after unrestricted outcome-driven subgroup search on the same sample.",
+            "The value of a treatment-allocation rule should be assessed on observations not used to tune that rule, or with a valid cross-fitting procedure."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Honest causal trees",
+            "Treatment-effect heterogeneity",
+            "Out-of-sample policy evaluation"
+          ],
+          "assistance": "<p>Random assignment protects treatment comparisons for a fixed analysis, but subgroup boundaries here are themselves selected by looking at outcomes. Treat model selection as part of the inferential procedure.</p><p>Separate data used to search for promising heterogeneity from data used to estimate leaf effects or policy value. Independence or carefully constructed cross-fitting can limit reuse of the same noise.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Outcome-driven split selection favors partitions with unusually large in-sample differences, so ordinary intervals that ignore the search can undercover. Honest causal trees separate partition construction from within-leaf estimation; related cross-fitting strategies rotate discovery and estimation roles. Randomization identifies treatment effects for prespecified comparisons, but it does not erase data-adaptive selection, so (C) is false. Evaluating a learned allocation rule on held-out data targets its generalization value rather than its optimized in-sample performance.</p>",
+          "refs": "Athey & Imbens (2016), Proceedings of the National Academy of Sciences; Wager & Athey (2018), Journal of the American Statistical Association."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "<p>A researcher applies a valid Benjamini–Hochberg procedure at level 0.05 under conditions that ensure false-discovery-rate control. True or false: this guarantees that the probability of making even one false rejection is at most 5%.</p>",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "False discovery rate",
+            "Benjamini–Hochberg procedure",
+            "Family-wise error distinction"
+          ],
+          "assistance": "<p>Write the random false-discovery proportion as the number of false rejections divided by the total number of rejections, with the usual convention when none are made.</p><p>Compare controlling its expectation with controlling the event that the false-rejection count is positive. Those are different risk functionals, especially when many hypotheses are tested.</p>",
+          "explanation": "<p><b>False.</b> False discovery rate is the expected proportion of false discoveries among all discoveries, not the probability of at least one false rejection. The latter is the family-wise error rate. A procedure can control FDR at 5% while the chance of one or more false rejections exceeds 5%, particularly when it makes many rejections. The statement would require a family-wise guarantee such as an appropriately implemented Bonferroni procedure, not merely valid BH FDR control.</p>",
+          "refs": "Benjamini & Hochberg (1995), Journal of the Royal Statistical Society: Series B; Efron (2010), Large-Scale Inference."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "single",
+          "stem": "<p>An economy reports conventional net investment of $20 million. During the same period it extracts a nonrenewable resource with estimated scarcity rent of $30 million and restores forests worth $8 million as newly produced natural capital. Ignoring other adjustments, what is adjusted net saving?</p>",
+          "options": [
+            "−$2 million, because 20 − 30 + 8 = −2.",
+            "$10 million, because only resource depletion is deducted.",
+            "$42 million, because all three entries are positive forms of current activity.",
+            "$58 million, because resource extraction creates an asset equal to the scarcity rent."
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Adjusted net saving",
+            "Natural-capital depletion",
+            "Green accounting"
+          ],
+          "assistance": "<p>Start with produced-capital net investment. Depleting an owned natural asset is an asset reduction even when extraction adds to current measured output; creating or restoring natural capital is an addition.</p><p>Keep current production flows separate from changes in the economy's asset base. Apply each adjustment once using the values supplied.</p>",
+          "explanation": "<p><b>(A) is correct.</b> Adjusted net saving starts from $20 million, subtracts $30 million of nonrenewable-resource depletion valued at scarcity rent, and adds $8 million of forest-capital creation: 20 − 30 + 8 = −$2 million. (B) omits the forest addition, while (C) and (D) treat depletion as asset formation. A negative value signals declining comprehensive wealth under the stated accounting prices; it is not, by itself, a complete welfare measure.</p>",
+          "refs": "Hamilton & Clemens (1999), World Bank Economic Review; World Bank, The Changing Wealth of Nations, adjusted net saving framework."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "multi",
+          "stem": "<p>A probability survey of small firms has substantial unit nonresponse. Administrative records provide population margins for industry, region, and firm size. Analysts plan to calibrate respondent weights to those margins before estimating average investment. Which statements are defensible?</p>",
+          "options": [
+            "Calibration can reduce bias when response and outcomes are sufficiently explained by the variables used in the weighting adjustment.",
+            "A very large respondent sample does not by itself remove systematic nonresponse bias.",
+            "Exact agreement with the observed population margins proves that response is ignorable for every unobserved determinant of investment.",
+            "Analysts should inspect weight concentration and overlap, and report sensitivity to alternative response or calibration specifications."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Survey nonresponse",
+            "Calibration weighting",
+            "Weight diagnostics"
+          ],
+          "assistance": "<p>Calibration forces weighted respondents to reproduce selected known totals. Ask what must be true for those observed variables to stand in for the response process relevant to the outcome.</p><p>Then distinguish sampling variance from selection bias. Examine whether a few respondents receive extreme weights and whether conclusions depend on the adjustment model.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Calibration can improve representativeness when the calibration variables capture outcome-relevant response differences and the target population totals are correct. Increasing the number of respondents reduces sampling noise around the respondent distribution but does not repair systematic exclusion. Matching industry, region, and size margins cannot rule out selection on unobserved productivity or financing conditions, so (C) is false. Extreme weights, poor overlap, and specification sensitivity can reveal instability that a single calibrated estimate conceals.</p>",
+          "refs": "Deville & Särndal (1992), Journal of the American Statistical Association; Little & Rubin (2019), Statistical Analysis with Missing Data."
+        }
+      ]
     }
   ]
 }
