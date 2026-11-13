@@ -2588,6 +2588,68 @@
         "seed": 2214274277,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A food box connects community delivery to patient care\"><title>North Carolina relaunches a narrower Healthy Opportunities Pilot</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-12-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-12-05)\"><path d=\"M80 315H360V545H80Z\" fill=\"#7c5a3e\"/><path d=\"M80 315L220 230L360 315M220 230V545\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M435 180H720V545H435Z\" fill=\"#1b4a6b\"/><path d=\"M520 265H635M578 208V323\" stroke=\"#f4ead7\" stroke-width=\"27\"/><path d=\"M360 420H435\" stroke=\"#c4452c\" stroke-width=\"30\"/><circle cx=\"170\" cy=\"395\" r=\"40\" fill=\"#1d5f47\"/><path d=\"M170 355Q205 315 230 350\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"14\"/></g></svg>"
       }
+    },
+    "2026-11-13": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-13",
+        "number": "01",
+        "category": "U.S. policy · consumer protection",
+        "topic": "research",
+        "title": "Family Dollar agrees to $63 million price-accuracy settlement",
+        "composition": "retail-price-audit",
+        "signature": "plate:retail-price-audit",
+        "seed": 2698703710,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Shelf prices and register totals meet an independent audit\"><title>Family Dollar agrees to $63 million price-accuracy settlement</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-13-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-13-01)\"><path d=\"M72 135H340V525H72Z\" fill=\"#1b4a6b\"/><path d=\"M105 205H306M105 290H306M105 375H306\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M420 160H708V525H420Z\" fill=\"#2c241d\"/><path d=\"M460 235H668M460 320H620\" stroke=\"#f4ead7\" stroke-width=\"22\"/><circle cx=\"558\" cy=\"430\" r=\"68\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"25\"/><path d=\"M607 481L705 566\" stroke=\"#c98a12\" stroke-width=\"34\"/><path d=\"M340 330H420\" stroke=\"#c4452c\" stroke-width=\"31\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-13",
+        "number": "02",
+        "category": "Technology · power semiconductors",
+        "topic": "energy",
+        "title": "Infineon produces power devices on 300-millimeter silicon-carbide wafers",
+        "composition": "sic-wafer-scale",
+        "signature": "plate:sic-wafer-scale",
+        "seed": 3060033863,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A larger silicon-carbide wafer feeds power-device production\"><title>Infineon produces power devices on 300-millimeter silicon-carbide wafers</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-13-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-13-02)\"><circle cx=\"255\" cy=\"310\" r=\"205\" fill=\"#1d5f47\"/><path d=\"M116 165H394M75 258H435M75 362H435M116 455H394M151 126V494M255 105V515M359 126V494\" stroke=\"#f4ead7\" stroke-width=\"12\"/><path d=\"M500 150H710V285H500ZM500 375H710V510H500Z\" fill=\"#2c241d\"/><path d=\"M535 195H675M535 240H630M535 420H675M535 465H630\" stroke=\"#c98a12\" stroke-width=\"17\"/><path d=\"M435 310H535\" stroke=\"#c4452c\" stroke-width=\"29\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-13",
+        "number": "03",
+        "category": "Technology economics · measurement",
+        "topic": "infrastructure",
+        "title": "AI investment surges before broad productivity gains appear",
+        "composition": "ai-investment-gap",
+        "signature": "plate:ai-investment-gap",
+        "seed": 2398083631,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Capital spending rises ahead of measured productivity\"><title>AI investment surges before broad productivity gains appear</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-13-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-13-03)\"><path d=\"M80 520V430H180V350H280V245H380V125H480V520Z\" fill=\"#1b4a6b\"/><path d=\"M95 430H166M195 350H266M295 245H366M395 125H466\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M535 520V385H705V520Z\" fill=\"#7c5a3e\"/><path d=\"M570 385V295H670V385\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M500 215H730\" stroke=\"#c4452c\" stroke-width=\"18\" stroke-dasharray=\"28 18\"/><circle cx=\"615\" cy=\"215\" r=\"34\" fill=\"#c98a12\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-13",
+        "number": "04",
+        "category": "Climate · methane finance",
+        "topic": "research",
+        "title": "COP31 methane summit mobilizes more than $500 million",
+        "composition": "methane-finance",
+        "signature": "plate:methane-finance",
+        "seed": 2069638790,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Climate finance branches toward methane cuts in three sectors\"><title>COP31 methane summit mobilizes more than $500 million</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-13-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-13-04)\"><circle cx=\"400\" cy=\"145\" r=\"86\" fill=\"#c98a12\"/><path d=\"M400 231V310M400 310H160V390M400 310V390M400 310H640V390\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"24\"/><path d=\"M70 390H250V540H70Z\" fill=\"#1d5f47\"/><path d=\"M310 390H490V540H310Z\" fill=\"#1b4a6b\"/><path d=\"M550 390H730V540H550Z\" fill=\"#7c5a3e\"/><path d=\"M115 445H205M355 445H445M595 445H685\" stroke=\"#f4ead7\" stroke-width=\"22\"/><path d=\"M160 330V375M400 330V375M640 330V375\" stroke=\"#c4452c\" stroke-width=\"15\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-13",
+        "number": "05",
+        "category": "North Carolina · local public finance",
+        "topic": "labor",
+        "title": "Wake County freezes most hiring as a large budget gap opens",
+        "composition": "county-hiring-freeze",
+        "signature": "plate:county-hiring-freeze",
+        "seed": 3353743712,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A hiring gate closes while essential services remain open\"><title>Wake County freezes most hiring as a large budget gap opens</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-13-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-13-05)\"><path d=\"M90 165H365V535H90Z\" fill=\"#1b4a6b\"/><path d=\"M135 240H320M135 325H320M135 410H275\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M440 535V170H700V535M405 265H735\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"32\"/><path d=\"M470 265V535\" stroke=\"#c4452c\" stroke-width=\"23\"/><path d=\"M570 265V535M665 265V535\" stroke=\"#1d5f47\" stroke-width=\"23\"/><circle cx=\"520\" cy=\"465\" r=\"30\" fill=\"#c98a12\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

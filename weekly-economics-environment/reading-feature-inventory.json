@@ -6226,18 +6226,6 @@
         "basis": "Read PDF abstract, Results and Discussion, especially sensitivity, system boundaries and crop comparability; do not attribute modeled variations to a randomized robot-adoption experiment.",
         "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
       },
-      "selected": [
-        {
-          "id": "decision-margin",
-          "name": "The Decision Margin",
-          "anchor": "2026-11-06-farm-robots--decision-margin"
-        },
-        {
-          "id": "incidence-ledger",
-          "name": "The Incidence Ledger",
-          "anchor": "2026-11-06-farm-robots--incidence-ledger"
-        }
-      ],
       "changeRecord": {
         "previous": [],
         "reviewed": "2026-11-06",
@@ -6250,6 +6238,18 @@
         ],
         "replaced": []
       },
+      "selected": [
+        {
+          "id": "decision-margin",
+          "name": "The Decision Margin",
+          "anchor": "2026-11-06-farm-robots--decision-margin"
+        },
+        {
+          "id": "incidence-ledger",
+          "name": "The Incidence Ledger",
+          "anchor": "2026-11-06-farm-robots--incidence-ledger"
+        }
+      ],
       "additionalFeatureJustification": null
     },
     {
@@ -6367,18 +6367,6 @@
         "basis": "Inspected PDF Results and Methods, with scenario-specific model ratios and the fixed-vulnerability/no-adaptation sensitivity; distinguish expected structures from economic loss.",
         "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
       },
-      "selected": [
-        {
-          "id": "long-view",
-          "name": "The Long View",
-          "anchor": "2026-11-06-fire-exposure--long-view"
-        },
-        {
-          "id": "assumption-test",
-          "name": "The Assumption Test",
-          "anchor": "2026-11-06-fire-exposure--assumption-test"
-        }
-      ],
       "changeRecord": {
         "previous": [],
         "reviewed": "2026-11-06",
@@ -6391,6 +6379,18 @@
         ],
         "replaced": []
       },
+      "selected": [
+        {
+          "id": "long-view",
+          "name": "The Long View",
+          "anchor": "2026-11-06-fire-exposure--long-view"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-06-fire-exposure--assumption-test"
+        }
+      ],
       "additionalFeatureJustification": null
     },
     {
@@ -6508,18 +6508,6 @@
         "basis": "Inspected PDF Introduction, calibration/discount recovery, sample exclusions and dynamic welfare counterfactuals; distinguish observed groundwater measurements from benchmark-induced model outputs.",
         "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
       },
-      "selected": [
-        {
-          "id": "long-view",
-          "name": "The Long View",
-          "anchor": "2026-11-06-groundwater-choice--long-view"
-        },
-        {
-          "id": "assumption-test",
-          "name": "The Assumption Test",
-          "anchor": "2026-11-06-groundwater-choice--assumption-test"
-        }
-      ],
       "changeRecord": {
         "previous": [],
         "reviewed": "2026-11-06",
@@ -6532,6 +6520,18 @@
         ],
         "replaced": []
       },
+      "selected": [
+        {
+          "id": "long-view",
+          "name": "The Long View",
+          "anchor": "2026-11-06-groundwater-choice--long-view"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-06-groundwater-choice--assumption-test"
+        }
+      ],
       "additionalFeatureJustification": null
     },
     {
@@ -6655,18 +6655,6 @@
         "basis": "Reviewed full PDF Abstract, identification with within-firm-quarter comparisons, market response/no-reversal discussion and analyst text measurement; distinguish salience from physical emissions effects.",
         "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
       },
-      "selected": [
-        {
-          "id": "mechanism-map",
-          "name": "The Mechanism Map",
-          "anchor": "2026-11-06-pollution-salience--mechanism-map"
-        },
-        {
-          "id": "assumption-test",
-          "name": "The Assumption Test",
-          "anchor": "2026-11-06-pollution-salience--assumption-test"
-        }
-      ],
       "changeRecord": {
         "previous": [],
         "reviewed": "2026-11-06",
@@ -6679,6 +6667,18 @@
         ],
         "replaced": []
       },
+      "selected": [
+        {
+          "id": "mechanism-map",
+          "name": "The Mechanism Map",
+          "anchor": "2026-11-06-pollution-salience--mechanism-map"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-06-pollution-salience--assumption-test"
+        }
+      ],
       "additionalFeatureJustification": null
     },
     {
@@ -6793,18 +6793,6 @@
         "basis": "Reviewed full PDF sample and bioregional estimates, carbon content and deposition relationships, lateral transport and Outlook; separate physical burial from credits and atmospheric additionality.",
         "access": "Exact downloaded scholarly PDF, reviewed selectively at cited pages; no replication or blanket full-paper audit."
       },
-      "selected": [
-        {
-          "id": "economic-figures",
-          "name": "Economic Figures",
-          "anchor": "2026-11-06-seagrass-carbon--economic-figures"
-        },
-        {
-          "id": "assumption-test",
-          "name": "The Assumption Test",
-          "anchor": "2026-11-06-seagrass-carbon--assumption-test"
-        }
-      ],
       "changeRecord": {
         "previous": [],
         "reviewed": "2026-11-06",
@@ -6817,6 +6805,18 @@
         ],
         "replaced": []
       },
+      "selected": [
+        {
+          "id": "economic-figures",
+          "name": "Economic Figures",
+          "anchor": "2026-11-06-seagrass-carbon--economic-figures"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-06-seagrass-carbon--assumption-test"
+        }
+      ],
       "additionalFeatureJustification": null
     }
   ],
