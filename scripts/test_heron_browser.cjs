@@ -1,49 +1,174 @@
-/* WebKit desktop margin Heron and unchanged mobile lifecycle regressions. */
 'use strict';
-const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),cp=require('node:child_process'),assert=require('node:assert/strict');
-const {webkit}=require(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES?process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright':'playwright');
-const origin=process.env.WB_ORIGIN||'http://127.0.0.1:8765',out=process.env.WB_QA_DIR||'/tmp/ll-heron-browser-qa';
-fs.mkdirSync(out,{recursive:true});fs.mkdirSync(path.join(out,'cache'),{recursive:true});
-let assertions=0;const errors=[];function check(value,message){assert(value,message);assertions++}function equal(a,b,message){assert.deepEqual(a,b,message);assertions++}
-function fetchBytes(url){const file=path.join(out,'cache',crypto.createHash('sha256').update(url).digest('hex'));if(!fs.existsSync(file)){const bytes=cp.execFileSync('curl',['-fLsS','--max-time','30','--retry','2',url],{maxBuffer:16*1024*1024});fs.writeFileSync(file,bytes)}return fs.readFileSync(file)}
-async function context(browser,viewport){
- const c=await browser.newContext({viewport,isMobile:viewport.width<900,hasTouch:viewport.width<900,deviceScaleFactor:1});
- await c.addInitScript(()=>localStorage.setItem('economics-environment:companion','off'));
- c.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
- await c.route('**/*',async route=>{const url=route.request().url(),p=new URL(url).pathname;let body;if(/^https:\/\/fonts\.(googleapis|gstatic)\.com\//.test(url)||process.env.WB_LIVE==='1'&&url.startsWith(origin))body=fetchBytes(url);else if(url.startsWith(origin)){const local=path.join(process.cwd(),decodeURIComponent(p),p.endsWith('/')?'index.html':'');if(!fs.existsSync(local))return route.fulfill({status:404,body:'Not found'});body=fs.readFileSync(local)}else return route.continue();const contentType=url.includes('fonts.googleapis.com')||p.endsWith('.css')?'text/css':p.endsWith('.woff2')?'font/woff2':p.endsWith('.js')?'application/javascript':p.endsWith('.svg')?'image/svg+xml':p.endsWith('.json')?'application/json':p.endsWith('.otf')?'font/otf':p.endsWith('.png')?'image/png':'text/html';return route.fulfill({body,contentType,status:200})});
- return c;
+
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const playwright = require(process.env.LL_PLAYWRIGHT || 'playwright');
+const engine = process.env.LL_BROWSER || 'chromium';
+const origin = process.env.LL_ORIGIN || 'http://127.0.0.1:8765';
+const journalUrl = origin + '/weekly-economics-environment/';
+const date = '2026-11-06';
+const source = fs.readFileSync('weekly-economics-environment/index.html', 'utf8');
+const companionBlock = /(<script type="application\/json" id="companion-data">)([\s\S]*?)(<\/script>)/;
+const companions = JSON.parse(source.match(companionBlock)[2]);
+const directory = JSON.parse(source.match(/id="ll-reading-index-data">([\s\S]*?)<\/script>/)[1]);
+const issue = directory.editions.find(edition => edition.date === date);
+const active = '.edition:not([hidden])';
+const button = '.heron-perch';
+const dismissed = 'economics-environment:companion:dismissed';
+
+function fixture(positions, suffix) {
+  return {
+    enabled: true,
+    appearances: positions.map(position => ({
+      id: 'heron-fixture-' + suffix + '-' + position,
+      target: issue.readings[position - 1].id,
+      type: 'method',
+      title: 'A fixture about the evidence in Reading ' + position,
+      text: 'Private test note. Check what the observed measure captures and whether a comparison supports the proposed interpretation.',
+      diagram: 'counterfactual',
+      see: { href: 'notebook/#counterfactual-reasoning', label: 'Counterfactual reasoning' }
+    }))
+  };
 }
-async function ready(p){await p.waitForSelector('.pd-tools');await p.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))});}
-async function shot(p,name){const file=path.join(out,name+'.png');await p.screenshot({path:file,animations:'disabled'});if(process.env.HERON_BASELINE&&p.viewportSize().width<=1024)equal(fs.readFileSync(file),fs.readFileSync(path.join(process.env.HERON_BASELINE,name+'.png')),'unchanged mobile pixels: '+name)}
-(async()=>{const b=await webkit.launch({executablePath:process.env.WB_WEBKIT,headless:true});const evidence=[];try{
- for(const viewport of [{width:390,height:844},{width:844,height:390},{width:1024,height:768},{width:1100,height:800},{width:1181,height:850},{width:1280,height:720},{width:1440,height:900},{width:1536,height:960}]){
-  const c=await context(b,viewport),p=await c.newPage();
-  await p.goto(origin+'/weekly-economics-environment/#edition-2026-10-16',{waitUntil:'load',timeout:120000});await ready(p);
-  const ed=p.locator('.edition:not([hidden])'),article=ed.locator('[id="2026-10-16-targeted-power"]');
-  await article.scrollIntoViewIfNeeded();await article.evaluate(e=>e.scrollIntoView({block:'start'}));await shot(p,'article-'+viewport.width);
-  const available=viewport.width<=1024||viewport.width>=1181;
-  equal(await ed.locator('.heron-perch:visible').count(),viewport.width<=1024?2:available?1:0,'curated viewport count');
-  equal(await p.locator('.heron-toggle').count(),0,'retired toggle absent');
-  check(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no page overflow');
-  if(available){
-   const button=ed.locator('[data-id="h-2026-10-16-a"] .heron-perch'),slot=button.locator('..');await button.scrollIntoViewIfNeeded();
-   const geometry=await button.evaluate(e=>{const r=e.getBoundingClientRect(),g=e.closest('.article-grid'),a=g.querySelector('.prose').getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,proseRight:a.right}});
-   check(geometry.top>=0&&geometry.bottom<=viewport.height,'standing perch actually in viewport');
-   if(viewport.width>=1181){check(geometry.left>=geometry.proseRight+20,'bird entirely in existing research margin');check(geometry.right<=viewport.width-40,'bird inside page inset')}
-   await shot(p,'perch-'+viewport.width);await button.click();equal(await button.getAttribute('aria-expanded'),'true','open');
-   equal(await button.locator('.pose-inspect').evaluate(e=>getComputedStyle(e).display),'block','bent pose');check(await slot.locator('.heron-panel').isVisible(),'note contents');await shot(p,'open-'+viewport.width);
-   if(viewport.width>=1181){const panel=await slot.locator('.heron-panel').boundingBox();check(panel.x>=geometry.proseRight+20&&panel.x+panel.width<=viewport.width-40,'expanded note stays in margin')}
-   if(viewport.width>=1181){await slot.locator('.hp-close').scrollIntoViewIfNeeded();const close=await slot.locator('.hp-close').boundingBox();check(close.y>=50&&close.y+close.height<=viewport.height,'expanded margin actions reachable without clipping')}
-   await slot.locator('.hp-close').click();check(await button.isVisible(),'close retains label');check(await button.evaluate(e=>e.classList.contains('vacant')),'bird leaves');await shot(p,'closed-'+viewport.width);
-   await button.focus();await p.keyboard.press('Enter');check(await slot.locator('.heron-panel').isVisible(),'keyboard reopens label');await p.keyboard.press('Escape');check(!await slot.locator('.heron-panel').isVisible(),'Escape closes');
-   await button.click();await slot.locator('.hp-dismiss').click();check(!await button.isVisible(),'dismiss suppresses');await p.reload();await ready(p);check(!await p.locator('[data-id="h-2026-10-16-a"] .heron-perch').isVisible(),'dismiss persists');
-   evidence.push({viewport,geometry});
-  }await c.close();
- }
- const c=await context(b,{width:1440,height:900}),p=await c.newPage();
- for(const date of ['2026-09-25','2026-10-02','2026-10-09','2026-10-16','2026-10-23']){await p.goto(origin+'/weekly-economics-environment/#edition-'+date,{waitUntil:'load',timeout:120000});await ready(p);const ed=p.locator('.edition:not([hidden])');equal(await ed.getAttribute('data-edition'),date,'correct edition');equal(await ed.locator('.heron-perch:visible').count(),1,'one selected desktop appearance in archive')}
- for(const width of [1024,1100,1181,390,1440]){await p.setViewportSize({width,height:900});await ready(p);equal(await p.locator('.edition:not([hidden]) .heron-perch:visible').count(),width<=1024?2:width>=1181?1:0,'breakpoint resize '+width)}
- await p.emulateMedia({reducedMotion:'reduce'});const btn=p.locator('.edition:not([hidden]) .heron-perch:visible').first();await btn.click();equal(await p.locator('.edition:not([hidden]) .heron-panel:visible').count(),1,'reduced motion opens statically');await p.locator('.dn button[data-mode="night"]').click();await btn.scrollIntoViewIfNeeded();await shot(p,'desktop-night');check(await btn.isVisible(),'night visible');
- await p.locator('#glance-mode').click();equal(await p.locator('.edition:not([hidden]) .heron-perch:visible').count(),0,'At a glance quiet');await p.locator('#full-mode').click();equal(await p.locator('.edition:not([hidden]) .heron-perch:visible').count(),1,'Full edition restores margin');
- await c.close();equal(errors,[],'no browser script errors');fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({assertions,evidence,result:'passed'},null,2));console.log(JSON.stringify({assertions,result:'passed'}));
- }finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)});
+
+async function run() {
+  const browser = await playwright[engine].launch({
+    headless: true,
+    ...(process.env.LL_CHROME ? { executablePath: process.env.LL_CHROME } : {})
+  });
+  const context = await browser.newContext({ reducedMotion: 'reduce', viewport: { width: 1440, height: 900 } });
+  const errors = [];
+  const page = await context.newPage();
+  page.on('pageerror', error => errors.push(error.message));
+  let assertions = 0;
+  function equal(actual, expected, label) {
+    assert.deepEqual(actual, expected, label);
+    assertions++;
+  }
+  function check(value, label) {
+    assert(value, label);
+    assertions++;
+  }
+  await context.route('**/*', route => route.request().url().startsWith(origin + '/') ? route.continue() : route.abort());
+  let fixtureData;
+  await page.route(url => url.origin === origin && url.pathname === '/weekly-economics-environment/', route => {
+    if (!fixtureData) return route.continue();
+    const { [date]: _published, ...others } = companions;
+    const data = fixtureData === 'missing' ? others : { ...others, [date]: fixtureData };
+    const body = source.replace(companionBlock, (_, open, _data, close) => open + JSON.stringify(data) + close);
+    return route.fulfill({ contentType: 'text/html; charset=utf-8', body });
+  });
+
+  async function settle() {
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    });
+  }
+  let visit = 0;
+  async function load(anchor, data) {
+    fixtureData = data;
+    await page.goto(journalUrl + '?heron-test=' + (++visit) + '#' + anchor, { waitUntil: 'load' });
+    await page.locator('body[data-layout-ready="true"]').waitFor();
+    await settle();
+  }
+  async function positions() {
+    return page.locator(active + ' ' + button + ':visible').evaluateAll(buttons => buttons.map(el => {
+      const reading = el.closest('.entry');
+      return [...reading.closest('.edition').querySelectorAll('.entry')].indexOf(reading) + 1;
+    }));
+  }
+  async function checkGeometry(locator, label) {
+    const geometry = await locator.evaluate(el => {
+      const rect = el.getBoundingClientRect();
+      const reading = el.closest('.article-grid').getBoundingClientRect();
+      return {
+        fits: rect.width > 0 && rect.height > 0 && rect.left >= reading.left - 1 && rect.right <= reading.right + 1,
+        readable: rect.left >= 0 && rect.right <= innerWidth + 1 && el.scrollWidth <= el.clientWidth + 2,
+        dock: el.closest('.ll-heron-dock')?.closest('.entry') === el.closest('.entry')
+      };
+    });
+    equal(geometry, { fits: true, readable: true, dock: true }, label);
+  }
+  async function screenshot(name, locator) {
+    if (!process.env.LL_QA_SHOTS_DIR) return;
+    fs.mkdirSync(process.env.LL_QA_SHOTS_DIR, { recursive: true });
+    await locator.screenshot({ path: path.join(process.env.LL_QA_SHOTS_DIR, name + '.png'), animations: 'disabled' });
+  }
+  try {
+    for (const width of [1440, 390]) {
+      await page.setViewportSize({ width, height: 900 });
+      const expected = [[1, 4], [1, 3], [1, 2], [1, 3], [1, 2], [1], []];
+      for (const [i, edition] of directory.editions.slice(0, expected.length).entries()) {
+        await load('edition-' + edition.date);
+        equal(await positions(), expected[i], 'published Issue ' + edition.number + ' at ' + width + 'px');
+      }
+      for (let position = 1; position <= 5; position++) {
+        await load('edition-' + date, fixture([position], 'single'));
+        equal(await positions(), [position], 'single authored note at position ' + position + ', ' + width + 'px');
+        const perch = page.locator(active + ' ' + button + ':visible');
+        await checkGeometry(perch, 'perch stays in reading ' + position + ', ' + width + 'px');
+        equal(await perch.getAttribute('aria-expanded'), 'false', 'note starts closed');
+      }
+      for (const data of ['missing', { enabled: false, appearances: [] }, { enabled: true, appearances: [] }]) {
+        await load('edition-' + date, data);
+        equal(await positions(), [], 'silent issue at ' + width + 'px');
+        equal(await page.locator(active + ' .ll-heron-dock:visible').count(), 0, 'silence leaves no visible dock');
+      }
+    }
+
+    const data = fixture([5, 2], 'pair');
+    const [fifth, second] = data.appearances.map(note => page.locator('#heron-' + note.id));
+    await load('edition-' + date, data);
+    for (const [width, expected] of [[1024, [2, 5]], [1025, []], [1180, []], [1181, [2, 5]], [1440, [2, 5]], [390, [2, 5]]]) {
+      await page.setViewportSize({ width, height: 900 });
+      await settle();
+      equal(await positions(), expected, 'breakpoint and authored order at ' + width + 'px');
+    }
+    for (const [width, theme] of [[1440, 'day'], [390, 'night']]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.locator('.dn button[data-mode="' + theme + '"]').click();
+      await settle();
+      await second.locator(button).press('Enter');
+      check(await second.locator('.heron-panel').isVisible(), 'keyboard opens later reading in ' + theme);
+      await fifth.locator(button).click();
+      check(!(await second.locator('.heron-panel').isVisible()), 'opening a second note collapses the first');
+      check(await fifth.locator('.pose-inspect').isVisible(), 'open note shows the inspecting pose');
+      await checkGeometry(fifth.locator('.heron-panel'), 'expanded note stays inside its reading in ' + theme);
+      await screenshot('heron-reading-five-' + theme + '-' + width, fifth);
+      await page.keyboard.press('Escape');
+      equal(await fifth.locator(button).getAttribute('aria-expanded'), 'false', 'Escape closes the note');
+      check(await fifth.locator(button).evaluate(el => document.activeElement === el), 'Escape returns focus');
+    }
+
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.locator('#glance-mode').click();
+    equal(await positions(), [], 'At a Glance is quiet');
+    await page.locator('#full-mode').click();
+    equal(await positions(), [2, 5], 'full mode restores both notes');
+    await load('heron-' + data.appearances[1].id, data);
+    check(await second.locator('.heron-panel').isVisible(), 'direct link opens the second registry entry on desktop');
+    check(await second.locator('.hp-actions a[href="notebook/#counterfactual-reasoning"]').isVisible(), 'notebook link is available');
+    await second.locator('.hp-close').click();
+    await settle();
+    check(!(await second.locator('.heron-panel').isVisible()), 'Commonplace rescan does not reopen a closed deep link');
+    await second.locator(button).click();
+    await second.locator('.hp-dismiss').click();
+    await settle();
+    equal(await positions(), [5], 'dismissal affects only the selected note');
+    await page.reload({ waitUntil: 'load' });
+    await settle();
+    equal(await positions(), [5], 'dismissal persists even when reloading its deep link');
+    equal(await page.evaluate(key => JSON.parse(localStorage.getItem(key)), dismissed), [data.appearances[1].id], 'dismissal uses the stable note ID');
+    equal(errors, [], 'no browser script errors');
+    console.log(engine + ': ' + assertions + ' Heron placement, rendering, silence and interaction checks passed.');
+  } finally {
+    await browser.close();
+  }
+}
+
+run().catch(error => {
+  console.error(error);
+  process.exitCode = 1;
+});

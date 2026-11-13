@@ -12,7 +12,7 @@ Body retains Source Serif 4. Generic apparatus, metadata and controls use Instru
 
 # Heron editorial maintenance
 
-L&L’s occasional methodological margin editor usually has 2–3 interventions per issue, maximum 4. Write 50–100 words that clarify a definition, identification, counterfactual, economic intuition or evidence caveat. Offer at most one compact sketch or existing-figure annotation; the renderer prefers `visual` over a legacy `diagram`. Use the notebook entry as the deeper link. The lifecycle is unseen → arrive → perched → optional note → depart → label-only. Only the large desktop margin permits a 1.4-second flight. Mobile and reduced motion use a static perch. Labels survive departure; reopening does not repeat a flight. New triggers wait for departure, and scrolling never interrupts flight.
+Review all five readings for L&L’s occasional methodological companion. Select up to two interventions where a definition, identification question, counterfactual, economic intuition or evidence caveat needs a distinct, source-reviewed clarification. Silence is valid. Write a compact note for the passage, with at most one sketch or existing-figure annotation. The renderer prefers `visual` over a legacy `diagram`. Link to the relevant notebook entry where one exists. Each supported layout uses the static perch and in-flow note within the targeted reading.
 
 # Reading anchors and mobile notes
 

@@ -4,9 +4,9 @@ name: Loblolly & Logit rendered layout
 on:
   push:
     branches: [master]
-    paths: ['weekly-economics-environment/**', 'personal-updates/mobile/**', 'assets/identity/**', 'scripts/*ll*', 'scripts/prepare_periodicals.cjs', '.github/workflows/ll-layout.yml']
+    paths: ['weekly-economics-environment/**', 'personal-updates/mobile/**', 'personal-updates/commonplace/commonplace.js', 'assets/identity/**', 'scripts/*ll*', 'scripts/test_heron_browser.cjs', 'scripts/prepare_periodicals.cjs', '.github/workflows/ll-layout.yml']
   pull_request:
-    paths: ['weekly-economics-environment/**', 'personal-updates/mobile/**', 'assets/identity/**', 'scripts/*ll*', 'scripts/prepare_periodicals.cjs', '.github/workflows/ll-layout.yml']
+    paths: ['weekly-economics-environment/**', 'personal-updates/mobile/**', 'personal-updates/commonplace/commonplace.js', 'assets/identity/**', 'scripts/*ll*', 'scripts/test_heron_browser.cjs', 'scripts/prepare_periodicals.cjs', '.github/workflows/ll-layout.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -40,6 +40,7 @@ jobs:
           LL_QA_SHOTS_DIR: ${{ runner.temp }}/ll-hotfix-shots
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/ll-preview.log" 2>&1 &
+          node scripts/test_heron_browser.cjs
           node scripts/test_ll_layout_browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
