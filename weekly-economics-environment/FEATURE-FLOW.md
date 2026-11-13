@@ -48,6 +48,26 @@ side-by-side, partial and blocked edges, and both themes check palette contrast.
 These checks enumerate the generated Index, so newly published readings are
 automatically included.
 
+## Opening a Heron note
+
+The renderer measures the full note directly below its existing perch. The
+note can use that space without affecting the reading's height when it fits
+within the reading and viewport width, clears neighboring content, and can
+be read within the viewport height available between the navigation bars.
+The check follows the perch's ancestors to account for adjacent columns,
+subsequent blocks, other controls and clipping. This works with the existing
+authored layouts and needs no per-reading settings or reserved space.
+
+If the space is too small or a figure annotation adds an inline caption,
+the note expands in flow. Opening and closing keep the visible trigger in
+place and move keyboard focus without centering the page. Opening a direct
+link still navigates to its trigger. Only one note can be open at a time.
+
+The layout optimizer leaves an open perch where it is. Its existing resize
+and content checks can move an out-of-flow note into safe in-flow expansion
+if the space becomes too small. It stays in flow until the next opening.
+The published availability breakpoints and individual dismissal still apply.
+
 Run `node scripts/test_ll_publication_layout.cjs` and
 `node scripts/test_ll_layout_browser.cjs` from the repository root. The existing
 L&L Actions workflow runs these checks at 21 widths in day and night modes,
