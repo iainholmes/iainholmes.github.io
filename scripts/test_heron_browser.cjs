@@ -138,9 +138,9 @@ async function run() {
     if (expectedMode) equal(opened.mode, expectedMode, label + ' uses the expected expansion mode');
     equal(opened.overlaps, [], label + ' leaves editorial content clear');
     check(opened.actionCount >= 2, label + ' keeps the actions reachable');
+    if(Math.abs(before.scroll-opened.scroll)>2||Math.abs(before.trigger-opened.trigger)>2)console.log(JSON.stringify({label,before,opened,click:await page.evaluate(()=>window.heronTestClick)}));
     near(before.trigger, opened.trigger, label + ' trigger stays in place');
     if (opened.mode === 'space') {
-      if(Math.abs(before.scroll-opened.scroll)>2)console.log(JSON.stringify({label,before,opened,click:await page.evaluate(()=>window.heronTestClick)}));
       near(before.scroll, opened.scroll, label + ' scroll stays in place');
       for (const key of ['article', 'row', 'next']) before[key].forEach((value, i) => near(value, opened[key][i], label + ' stable ' + key));
       check(before.blocks.every((rect, i) => rect.every((value, j) => Math.abs(value - opened.blocks[i][j]) <= 2)), label + ' all surrounding editorial rectangles stay in place');
