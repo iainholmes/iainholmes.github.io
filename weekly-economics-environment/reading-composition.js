@@ -151,6 +151,7 @@
  }
  function expandHeron(panel,hasInlineAnnotation){
   panel.dataset.heronExpansion=hasInlineAnnotation?'flow':'space';
+  panel.hidden=false;
   if(panel.dataset.heronExpansion==='space'&&!heronFits(panel))panel.dataset.heronExpansion='flow';
   resize.observe(panel);
  }
