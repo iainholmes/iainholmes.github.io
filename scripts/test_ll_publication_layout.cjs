@@ -33,6 +33,9 @@ const ids=Array.from({length:5},(_,i)=>'private-future-'+i);try{
  const date='9999-12-31';
  const draft=journal.replace('</main>','<section class="edition" data-edition="'+date+'" data-title="Private future fixture">'+articles+'<section class="synthesis" id="private-synthesis"><div class="eyebrow">Synthesis</div><h2>How does spatial exposure change the estimate?</h2><p>Private synthesis.</p></section></section></main>');
  const grown=compose(draft);const pass=validate({...input,journal:grown});eq(pass.editions,result.editions+1,'future curated edition accepted');eq(pass.readings,result.readings+5,'future readings indexed automatically');eq(indexOf(grown).editions.at(-1).readings.map(r=>r.id),ids,'all future stable anchors generated');eq(compose(grown),grown,'future publication retry stable');
+ const future=grown.slice(grown.indexOf('data-edition="'+date+'"'),grown.indexOf('</main>'));
+ eq((future.match(/data-reading-palette="slate"/g)||[]).length,5,'future compositions inherit their authored palette');
+ ok(future.includes('class="ll-feature-host"')&&!future.includes('data-contact-sides')&&!future.includes('ll-feature-divider'),'future issue emits native features and leaves edge measurement to the browser');
  assert.throws(()=>validate({...input,journal:grown.replace('How does spatial exposure change the estimate?','What connects this week')}),/edition-specific synthesis heading required/);n++;
  const makeNote=(target,id='fixture-heron')=>({id,target,type:'method',title:'Sampling and exposure',text:'Private fixture for the source-review and placement tests.'});
  const generate=config=>compose(withCompanion(draft,{...companion,[date]:config}));

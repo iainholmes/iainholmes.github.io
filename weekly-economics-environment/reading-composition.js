@@ -86,20 +86,22 @@
   const rect=n=>n.getBoundingClientRect(),intersects=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1;
   for(const field of a.querySelectorAll('.ll-reading')){
    const features=[...field.querySelectorAll('.ll-feature')].filter(visible);
+   const bounds=features.map(rect);
    const corners=new Map(features.map(f=>[f,new Set()])),sides=new Map(features.map(f=>[f,new Set()]));
-   const fr=rect(field),standards=[...field.querySelectorAll('.ll-editorial,.ll-notebook-unit,.ll-interpretation,.ll-opening')].filter(n=>visible(n)&&!n.closest('.ll-feature')).map(rect),rules=[];
+   const halfWidth=parseFloat(getComputedStyle(field).getPropertyValue('--ll-divider-width'))/2;
+   const fr=rect(field),standards=[...field.querySelectorAll(nonFeatures)].filter(n=>visible(n)&&!n.closest('.ll-feature')).map(rect),rules=[];
    for(let i=0;i<features.length;i++)for(let j=i+1;j<features.length;j++){
-    const ar=rect(features[i]),br=rect(features[j]);let one=ar,two=br,axis=null,overlap=0,start=0,cross=0,strip;
+    const ar=bounds[i],br=bounds[j];let one=ar,two=br,axis=null,overlap=0,start=0,cross=0,strip;
     if(Math.max(ar.top,br.top)<Math.min(ar.bottom,br.bottom)-16&&(ar.right<=br.left+2||br.right<=ar.left+2)){
      if(ar.left>br.left){one=br;two=ar;}const gap=two.left-one.right;if(Math.abs(gap)>1)continue;
      axis='vertical';start=Math.max(one.top,two.top);overlap=Math.min(one.bottom,two.bottom)-start;cross=(one.right+two.left)/2;
-     strip={left:cross-4,right:cross+4,top:start,bottom:start+overlap};
+     strip={left:cross-halfWidth,right:cross+halfWidth,top:start,bottom:start+overlap};
     }else if(Math.max(ar.left,br.left)<Math.min(ar.right,br.right)-16&&(ar.bottom<=br.top+2||br.bottom<=ar.top+2)){
      if(ar.top>br.top){one=br;two=ar;}const gap=two.top-one.bottom;if(Math.abs(gap)>1)continue;
      axis='horizontal';start=Math.max(one.left,two.left);overlap=Math.min(one.right,two.right)-start;cross=(one.bottom+two.top)/2;
-     strip={top:cross-4,bottom:cross+4,left:start,right:start+overlap};
+     strip={top:cross-halfWidth,bottom:cross+halfWidth,left:start,right:start+overlap};
     }
-    if(!axis||standards.some(r=>intersects(r,strip))||features.some((n,k)=>k!==i&&k!==j&&intersects(rect(n),strip)))continue;
+    if(!axis||standards.some(r=>intersects(r,strip))||bounds.some((r,k)=>k!==i&&k!==j&&intersects(r,strip)))continue;
     const leading=ar===one?features[i]:features[j],trailing=ar===one?features[j]:features[i];
     if(axis==='vertical'){
      sides.get(leading).add('right');sides.get(trailing).add('left');
@@ -114,8 +116,8 @@
      if(Math.abs(start-two.left)<=1)corners.get(trailing).add('tl');
      if(Math.abs(start+overlap-two.right)<=1)corners.get(trailing).add('tr');
     }
-    const length=overlap*.9,cap=Math.min(73,length*.2),shoulder=cap*.8;
-    rules.push({axis,x:axis==='vertical'?cross-fr.left-4:start-fr.left+overlap*.05,y:axis==='vertical'?start-fr.top+overlap*.05:cross-fr.top-4,length,cap,shoulder,overlap,from:features[i].id,to:features[j].id});
+    const length=overlap*.9,cap=Math.min(24,length*.16),shoulder=cap*.8;
+    rules.push({axis,x:axis==='vertical'?cross-fr.left-halfWidth:start-fr.left+overlap*.05,y:axis==='vertical'?start-fr.top+overlap*.05:cross-fr.top-halfWidth,length,cap,shoulder,overlap,from:features[i].id,to:features[j].id});
    }
    for(const [feature,values]of sides){if(values.size)feature.dataset.contactSides=[...values].join(' ');else feature.removeAttribute('data-contact-sides');}
    for(const [feature,values]of corners){if(values.size)feature.dataset.contactCorners=[...values].join(' ');else feature.removeAttribute('data-contact-corners');}
