@@ -96,7 +96,95 @@ async function run() {
     fs.mkdirSync(process.env.LL_QA_SHOTS_DIR, { recursive: true });
     await locator.screenshot({ path: path.join(process.env.LL_QA_SHOTS_DIR, name + '.png'), animations: 'disabled' });
   }
+  async function measure(perch) {
+    return perch.evaluate(slot => {
+      const trigger = slot.querySelector('.heron-perch');
+      const panel = slot.querySelector('.heron-panel');
+      const article = slot.closest('.entry');
+      const field = article.querySelector('.ll-reading');
+      const row = slot.closest('[data-balance]') || field;
+      const blocks = [...field.querySelectorAll('.ll-feature,.ll-editorial,.research-note,.reading-sources')];
+      const rect = element => {
+        const r = element.getBoundingClientRect();
+        return [r.left, r.top + scrollY, r.width, r.height];
+      };
+      const box = panel.getBoundingClientRect();
+      const overlaps = !panel.hidden && blocks.filter(block => {
+        if (block.contains(panel)) return false;
+        const r = block.getBoundingClientRect();
+        return r.width > 0 && r.height > 0 && box.left < r.right - 1 && box.right > r.left + 1 && box.top < r.bottom - 1 && box.bottom > r.top + 1;
+      }).map(block => block.id || block.className);
+      return { scroll: scrollY, trigger: trigger.getBoundingClientRect().top, mode: panel.dataset.heronExpansion,
+        article: rect(article), row: rect(row), next: rect(article.nextElementSibling || article),
+        blocks: blocks.map(rect), overlaps, actionCount: [...panel.querySelectorAll('.hp-actions a,.hp-actions button')].filter(action => action.getBoundingClientRect().width).length };
+    });
+  }
+  function near(before, after, label) {
+    check(Math.abs(before - after) <= 2, label + ' (' + before + ' → ' + after + ')');
+  }
+  async function exercise(perch, label, expectedMode) {
+    const trigger = perch.locator(button);
+    await trigger.evaluate(el => el.scrollIntoView({block:'center',behavior:'instant'}));
+    await settle();
+    const before = await measure(perch);
+    await trigger.click();
+    await settle();
+    const opened = await measure(perch);
+    check(['space', 'flow'].includes(opened.mode), label + ' selects an expansion mode');
+    if (expectedMode) equal(opened.mode, expectedMode, label + ' uses the expected expansion mode');
+    equal(opened.overlaps, [], label + ' leaves editorial content clear');
+    check(opened.actionCount >= 2, label + ' keeps the actions reachable');
+    near(before.trigger, opened.trigger, label + ' trigger stays in place');
+    if (opened.mode === 'space') {
+      near(before.scroll, opened.scroll, label + ' scroll stays in place');
+      for (const key of ['article', 'row', 'next']) before[key].forEach((value, i) => near(value, opened[key][i], label + ' stable ' + key));
+      check(before.blocks.every((rect, i) => rect.every((value, j) => Math.abs(value - opened.blocks[i][j]) <= 2)), label + ' all surrounding editorial rectangles stay in place');
+    } else {
+      check(opened.article[3] >= before.article[3] - 2, label + ' in-flow panel has room');
+      near(opened.scroll - before.scroll, (opened.trigger + opened.scroll) - (before.trigger + before.scroll), label + ' scroll only compensates for movement of the trigger');
+    }
+    await page.keyboard.press('Escape');
+    await settle();
+    const closed = await measure(perch);
+    near(before.scroll, closed.scroll, label + ' closing restores the same view');
+    near(before.trigger, closed.trigger, label + ' no trigger drift');
+    near(before.article[3], closed.article[3], label + ' original article height restored');
+    return opened.mode;
+  }
   try {
+    const modes = new Set();
+    for (const [width, height, theme] of [[2560, 900, 'day'], [1440, 900, 'night'], [768, 1024, 'day'], [844, 390, 'night'], [390, 844, 'day']]) {
+      await page.setViewportSize({width,height});
+      for (const config of Object.values(companions)) {
+        if (!config.appearances.length) continue;
+        // Enter a reading directly so the saved-progress prompt cannot time out
+        // above the article during the measured interaction.
+        await load(config.appearances[0].target);
+        await page.locator('.dn button[data-mode="' + theme + '"]').click();
+        await settle();
+        for (const note of config.appearances) modes.add(await exercise(page.locator('#heron-' + note.id), note.id + ' at ' + width));
+      }
+    }
+    equal([...modes].sort(), ['flow', 'space'], 'published notes exercise both expansion modes');
+    await page.setViewportSize({width:1440,height:900});
+    await load('electrification');
+    await exercise(page.locator('#heron-h-2026-09-25-a'), 'Electrification with its figure annotation', 'flow');
+    await page.setViewportSize({width:2560,height:900});
+    await load('2026-10-23-vehicle-mix');
+    const resizePerch = page.locator('#heron-h-2026-10-23-b');
+    for (let i=0;i<3;i++) await exercise(resizePerch, 'repeated opening ' + (i+1));
+    await resizePerch.locator(button).click();
+    await settle();
+    equal((await measure(resizePerch)).mode, 'space', 'wide layout uses existing space');
+    await page.setViewportSize({width:390,height:844});
+    await settle();
+    equal((await measure(resizePerch)).mode, 'flow', 'resize falls back while keeping the same note open');
+    equal((await measure(resizePerch)).overlaps, [], 'resized note stays clear');
+    await page.setViewportSize({width:2560,height:900});
+    await settle();
+    equal((await measure(resizePerch)).mode, 'flow', 'the open note stays in its safe fallback until reopened');
+    await page.keyboard.press('Escape');
+
     for (const width of [1440, 390]) {
       await page.setViewportSize({ width, height: 900 });
       const expected = [[1, 4], [1, 3], [1, 2], [1, 3], [1, 2], [1], []];

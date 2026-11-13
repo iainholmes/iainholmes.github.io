@@ -125,16 +125,56 @@
   }
  }
 
+ // The measured panel stays directly below its perch. Sibling branches along
+ // the path to the reading include neighboring columns and subsequent blocks.
+ function heronFits(panel){
+  const bounds=panel.getBoundingClientRect(),field=panel.closest('.ll-reading');
+  if(!field||!bounds.height||panel.scrollWidth>panel.clientWidth+1)return false;
+  const reading=field.getBoundingClientRect(),view=window.visualViewport;
+  const left=view?.offsetLeft||0,right=left+(view?.width||document.documentElement.clientWidth);
+  if(bounds.left<Math.max(left,reading.left)-1||bounds.right>Math.min(right,reading.right)+1||bounds.bottom>reading.bottom)return false;
+  const toolbar=document.querySelector('.toolbar'),tools=document.querySelector('.pd-tools');
+  const fixedTools=tools&&getComputedStyle(tools).position==='fixed'?tools.getBoundingClientRect().height:0;
+  if(bounds.height>(view?.height||innerHeight)-(toolbar?.getBoundingClientRect().height||0)-fixedTools)return false;
+  const clearance=8;
+  for(let branch=panel;branch!==field;branch=branch.parentElement){
+   const parent=branch.parentElement,style=getComputedStyle(parent),box=parent.getBoundingClientRect();
+   if(style.overflowX!=='visible'&&(bounds.left<box.left||bounds.right>box.right))return false;
+   if(style.overflowY!=='visible'&&(bounds.top<box.top||bounds.bottom>box.bottom))return false;
+   for(const sibling of parent.children){
+    if(sibling===branch||!visible(sibling))continue;
+    const other=sibling.getBoundingClientRect();
+    if(bounds.left<other.right-.5&&bounds.right>other.left+.5&&bounds.top<other.bottom&&bounds.bottom+clearance>other.top)return false;
+   }
+  }
+  return true;
+ }
+ function expandHeron(panel,hasInlineAnnotation){
+  panel.dataset.heronExpansion=hasInlineAnnotation?'flow':'space';
+  panel.hidden=false;
+  if(panel.dataset.heronExpansion==='space'&&!heronFits(panel))panel.dataset.heronExpansion='flow';
+  resize.observe(panel);
+ }
+ function collapseHeron(panel){
+  resize.unobserve(panel);
+  delete panel.dataset.heronExpansion;
+ }
+
  function fit(a,force=false){
   if(!visible(a))return;
   const note=a.querySelector('.ll-notebook-unit'),heron=a.querySelector('.ll-heron-dock');
   for(const n of [note,heron])if(n&&!homes.has(n))homes.set(n,{parent:n.parentNode,next:n.nextSibling});
-  const open=a.querySelector('.heron-perch[aria-expanded="true"]');
-  const signature=[Math.round(a.clientWidth),a.textContent.length,document.documentElement.dataset.mode,!!a.querySelector('.perch'),!!open].join('|');
+  const open=a.querySelector('.heron-panel:not([hidden])');
+  if(open){
+   // A responsive or content change may make the current space too small.
+   // Keep the perch in place and fall back once, until the next opening.
+   if(open.dataset.heronExpansion==='space'&&!heronFits(open))open.dataset.heronExpansion='flow';
+   refreshFeatureJoins(a);updateDividers(a);return;
+  }
+  const signature=[Math.round(a.clientWidth),a.textContent.length,document.documentElement.dataset.mode,!!a.querySelector('.perch')].join('|');
   // Cached composition choices do not imply cached geometry. Fonts, a quiet
   // column or a neighboring panel can reflow without changing article width.
   if(!force&&cache.get(a)===signature){updateDividers(a);return;}cache.set(a,signature);
-  if(open){refreshFeatureJoins(a);updateDividers(a);return;} // The companion stays where the reader opened it.
   const before=articleHeight(a);refreshFeatureJoins(a);a.querySelectorAll(regions).forEach(balance);
   const moves=[],plan=plans[a.dataset.readingComposition]||{note:(a.dataset.dockNote||'').split(';').filter(Boolean),heron:(a.dataset.dockHeron||'').split(';').filter(Boolean)};
   const n=dock(a,note,plan.note);if(n)moves.push(n);
@@ -153,6 +193,6 @@
  observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','aria-expanded','data-mode']});
  observer.observe(document.documentElement,{attributes:true,attributeFilter:['data-mode']});
  const resize=new ResizeObserver(schedule);document.querySelectorAll('.entry[data-reading-composition],.entry[data-reading-composition] .ll-feature,.entry[data-reading-composition] [data-balance]').forEach(n=>resize.observe(n));
- document.fonts.ready.then(()=>{run(true);const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t?.closest('.entry')&&t.getClientRects().length)t.scrollIntoView({block:'start',behavior:'instant'});});document.fonts.addEventListener('loadingdone',()=>run(true));addEventListener('resize',schedule);
- window.LLLayout={reflow:()=>{paused=false;run(true)},reset:()=>{paused=true;document.querySelectorAll('.ll-feature-divider').forEach(n=>n.remove());document.querySelectorAll('.ll-touching-feature-row,.ll-touching-feature-stack').forEach(n=>n.classList.remove('ll-touching-feature-row','ll-touching-feature-stack'));document.querySelectorAll('.ll-join-prev,.ll-join-next').forEach(n=>n.classList.remove('ll-join-prev','ll-join-next'));for(const [n,h]of homes){h.parent.insertBefore(n,h.next&&h.next.parentNode===h.parent?h.next:null)}document.querySelectorAll(regions).forEach(r=>{r.style.removeProperty('--fit-share');r.style.removeProperty('--fit-rest')});},report:()=>[...reports.values()]};
+ document.fonts.ready.then(()=>{run(true);const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t?.closest('.entry')&&!t.matches('.perch')&&t.getClientRects().length)t.scrollIntoView({block:'start',behavior:'instant'});});document.fonts.addEventListener('loadingdone',()=>run(true));addEventListener('resize',schedule);
+ window.LLLayout={expandHeron,collapseHeron,reflow:()=>{paused=false;run(true)},reset:()=>{paused=true;document.querySelectorAll('.ll-feature-divider').forEach(n=>n.remove());document.querySelectorAll('.ll-touching-feature-row,.ll-touching-feature-stack').forEach(n=>n.classList.remove('ll-touching-feature-row','ll-touching-feature-stack'));document.querySelectorAll('.ll-join-prev,.ll-join-next').forEach(n=>n.classList.remove('ll-join-prev','ll-join-next'));for(const [n,h]of homes){h.parent.insertBefore(n,h.next&&h.next.parentNode===h.parent?h.next:null)}document.querySelectorAll(regions).forEach(r=>{r.style.removeProperty('--fit-share');r.style.removeProperty('--fit-rest')});},report:()=>[...reports.values()]};
 })();

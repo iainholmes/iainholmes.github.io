@@ -618,7 +618,7 @@ body{overflow-x:clip}
 <meta name="apple-mobile-web-app-title" content="Periodicals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-instrument">
-<link rel="stylesheet" href="refinement.css?v=20261101-reading-folio"><link rel="stylesheet" href="reading-folio.css?v=f782b4e7f97c"><link rel="stylesheet" href="../assets/identity/identity.css?v=20261012-seamless2">
+<link rel="stylesheet" href="refinement.css?v=20261101-reading-folio"><link rel="stylesheet" href="reading-folio.css?v=e02e25f7d0b6"><link rel="stylesheet" href="../assets/identity/identity.css?v=20261012-seamless2">
 <style>
 /* Publication-specific authorship signatures; canonical IH. assets remain unchanged. */
 .ih-imprint .ih-native-wordmark{display:block;margin:0;padding:0;max-width:none;white-space:nowrap}
@@ -626,7 +626,7 @@ body{overflow-x:clip}
 <link rel="stylesheet" href="field-notes.css?v=20261101-spatial-polish">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500&amp;family=Cormorant+Garamond:ital,wght@1,500&amp;family=DM+Sans:wght@700&amp;family=Libre+Baskerville:ital,wght@1,400&amp;family=STIX+Two+Text:wght@500&amp;family=Space+Grotesk:wght@500&amp;display=swap&amp;text=The%20Incidence%20LedgerLong%20ViewDecision%20MarginAssumption%20TestEstimation%20DeskMechanism%20Map">
-<script src="reading-composition.js?v=07e804036d78" defer></script></head><body><a class="skip" href="#edition">Skip to the edition</a>
+<script src="reading-composition.js?v=0cb54b2dbbd7" defer></script></head><body><a class="skip" href="#edition">Skip to the edition</a>
 <header class="masthead" id="top">
   <div class="mh-top"><span class="vn" id="volno"><b>Vol. 1</b> · 2 October 2026</span><span class="right"><span class="fri">Fridays</span><span class="dn" role="group" aria-label="Reading mode, shared by all Periodicals"><button type="button" data-mode="day" aria-pressed="true">Day</button><span class="sl" aria-hidden="true">/</span><button type="button" data-mode="night" aria-pressed="false">Night</button></span></span></div>
   <div class="mh-title"><div class="mh-wordmark"><h1><span class="r1">Loblolly</span> <span class="amp">&amp;</span> <i>Logit</i></h1><p class="mh-desc">Weekly journal covering environmental economics and applied research</p></div><div class="mh-folio" aria-label="Issue number"><span class="no">N<sup>o</sup>.</span><span class="num" id="mhNo">002</span></div></div>
@@ -1666,7 +1666,7 @@ let heronRouteHandled='';
 function route(){let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return}
   if(!id)return;if(id.indexOf('heron-')!==0)heronRouteHandled='';
   if(id.indexOf('cp-ll-')===0){var md=id.match(/^cp-ll-(\d{4}-\d{2}-\d{2})-/);if(md){selectEdition(md[1]);mode(false)}return}
-  if(id.indexOf('heron-')===0){var hid=id.slice(6),cd;try{cd=JSON.parse(document.getElementById('companion-data').textContent)}catch(e){cd={}};var d=Object.keys(cd).find(function(k){return (cd[k].appearances||[]).some(function(a){return a.id===hid})});if(d&&READY){var active=editions.find(function(e){return e.dataset.edition===d});if(active.hidden)selectEdition(d);else if(!HERON.items.some(function(it){return it.a.id===hid}))renderCompanion(active);mode(false);requestAnimationFrame(function(){var slot=document.getElementById(id);if(slot){var b=slot.querySelector('.heron-perch');if(b&&!b.hidden&&heronRouteHandled!==id){if(b.getAttribute('aria-expanded')!=='true')b.click();heronRouteHandled=id}slot.scrollIntoView({block:'center',behavior:'instant'})}})}return}
+  if(id.indexOf('heron-')===0){var hid=id.slice(6),cd;try{cd=JSON.parse(document.getElementById('companion-data').textContent)}catch(e){cd={}};var d=Object.keys(cd).find(function(k){return (cd[k].appearances||[]).some(function(a){return a.id===hid})});if(d&&READY){var active=editions.find(function(e){return e.dataset.edition===d});if(active.hidden)selectEdition(d);else if(!HERON.items.some(function(it){return it.a.id===hid}))renderCompanion(active);mode(false);requestAnimationFrame(function(){var slot=document.getElementById(id);if(slot){var b=slot.querySelector('.heron-perch');if(b&&!b.hidden&&heronRouteHandled!==id){heronRouteHandled=id;b.scrollIntoView({block:'center',behavior:'instant'});if(b.getAttribute('aria-expanded')!=='true')b.click()}}})}return}
   if(id.indexOf('field-register-')===0){openRegister();setTimeout(function(){var r=document.getElementById(id);if(r)r.scrollIntoView({block:'center'})},0);return}
   const fieldNotes=id.match(/^field-notes-(\d{4}-\d{2}-\d{2})(?:-profile-(\d{3,}))?$/);
   if(fieldNotes){
@@ -1850,10 +1850,10 @@ var HV=(function(){
     figure:function(v){return '<p class="hv-ref">'+esc(v.note||'Marked on the figure above.')+' <button type="button" class="hv-goto">'+esc(v.label||'See the figure')+' ↑</button></p>'}
   };
   function render(v){if(!v)return '';if(Array.isArray(v))return v.map(render).join('');var f=P[v.type];return f?f(v):''}
-  function mark(scope,v,on){(Array.isArray(v)?v:[v]).forEach(function(x){if(!x||x.type!=='figure')return;var fig=scope.querySelector(x.ref||'.figure');if(!fig)return;
+  function mark(scope,v,on){var inline=false;(Array.isArray(v)?v:[v]).forEach(function(x){if(!x||x.type!=='figure')return;var fig=scope.querySelector(x.ref||'.figure');if(!fig)return;
     var rows=fig.querySelectorAll('.bar-row'),last=null;(x.rows||[]).forEach(function(i){var r=rows[i];if(r){r.classList.toggle('hv-marked',on);last=r}});
     var an=fig.querySelector('.hv-annot');if(an)an.remove();fig.classList.toggle('hv-marking',on);
-    if(on&&last&&x.annotation){an=document.createElement('p');an.className='hv-annot';an.setAttribute('aria-hidden','true');an.textContent=x.annotation;last.after(an)}})}
+    if(on&&last&&x.annotation){an=document.createElement('p');an.className='hv-annot';an.setAttribute('aria-hidden','true');an.textContent=x.annotation;last.after(an);inline=true}});return inline}
   function figureOf(scope,v){var x=(Array.isArray(v)?v:[v]).find(function(y){return y&&y.type==='figure'});return x?scope.querySelector(x.ref||'.figure'):null}
   return {render:render,mark:mark,figureOf:figureOf};
 })();
@@ -1863,6 +1863,18 @@ var LS={get:function(k,d){try{var v=localStorage.getItem(k);return v==null?d:v}c
 function companionOn(){return true}
 function listKey(k){try{return JSON.parse(LS.get(k,'[]'))||[]}catch(e){return []}}
 function addTo(k,id){var l=listKey(k);if(l.indexOf(id)<0){l.push(id);LS.set(k,JSON.stringify(l))}}
+function keepHeronPosition(trigger,change){
+  const root=document.documentElement,top=trigger.getBoundingClientRect().top;
+  const visible=top>=document.querySelector('.toolbar').getBoundingClientRect().bottom&&top<innerHeight;
+  root.classList.add('ll-heron-adjusting');
+  try{
+    change();
+    if(visible&&!trigger.hidden){
+      const shift=trigger.getBoundingClientRect().top-top;
+      if(Math.abs(shift)>.5)scrollBy({top:shift,behavior:'instant'});
+    }
+  }finally{requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('ll-heron-adjusting')))}
+}
 var companionViewport=matchMedia('(max-width:1024px)');
 var companionDesktopViewport=matchMedia('(min-width:1181px)');
 var reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -1881,7 +1893,7 @@ function settleHeron(){
   stopFlight();
   HERON.items.forEach(function(it){it.btn.hidden=!companionAvailable()||!companionOn()||it.state==='dismissed';it.btn.classList.toggle('vacant',it.state==='label-only')});
 }
-function teardownHeron(){HERON.items.forEach(function(it){HV.mark(it.art,it.a.visual,false);it.panel.hidden=true;it.btn.hidden=true;it.btn.setAttribute('aria-expanded','false')});stopFlight();if(HERON.io)HERON.io.disconnect();clearTimeout(HERON.timer);if(HERON.flyer)HERON.flyer.remove();HERON.flyer=null;HERON.current=null;HERON.busy=false;}
+function teardownHeron(){HERON.items.forEach(function(it){HV.mark(it.art,it.a.visual,false);it.panel.hidden=true;window.LLLayout?.collapseHeron(it.panel);it.btn.hidden=true;it.btn.setAttribute('aria-expanded','false')});stopFlight();if(HERON.io)HERON.io.disconnect();clearTimeout(HERON.timer);if(HERON.flyer)HERON.flyer.remove();HERON.flyer=null;HERON.current=null;HERON.busy=false;}
 function renderCompanion(active){
   teardownHeron();HERON.edition=active;HERON.items=[];
   if(!companionAvailable())return;
@@ -1906,16 +1918,25 @@ function renderCompanion(active){
       var itemOf=function(){return HERON.items.find(function(x){return x.slot===slot})};
       function openP(o,quiet){
         var it=itemOf();if(!it||!companionAvailable()||!companionOn()||it.state==='dismissed')return;
-        var switching=o&&HERON.current&&HERON.current!==it;if(switching)HERON.current.closeNote();
-        panel.hidden=!o;btn.setAttribute('aria-expanded',String(o));HV.mark(art,a.visual,o);
-        if(o){addTo(seenKey,a.id);summon(it);panel.focus({preventScroll:true});if(switching)btn.scrollIntoView({block:'center',behavior:'instant'})}
-        else{release(it);if(!quiet){btn.focus();btn.scrollIntoView({block:'center',behavior:'instant'})}}
+        function change(){
+          if(o&&HERON.current&&HERON.current!==it)HERON.current.closeNote();
+          const inline=HV.mark(art,a.visual,o);
+          if(o){
+            btn.setAttribute('aria-expanded','true');
+            if(window.LLLayout)window.LLLayout.expandHeron(panel,inline);else panel.hidden=false;
+            addTo(seenKey,a.id);summon(it);panel.focus({preventScroll:true});
+          }else{
+            release(it);window.LLLayout?.collapseHeron(panel);
+            if(!quiet)btn.focus({preventScroll:true});
+          }
+        }
+        if(quiet)change();else keepHeronPosition(btn,change);
       }
       slot.closeHeronNote=function(){openP(false,true)};
       var go=panel.querySelector('.hv-goto');if(go)go.addEventListener('click',function(){var f=HV.figureOf(art,a.visual);if(f)f.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'center'})});
       btn.addEventListener('click',function(){openP(panel.hidden)});
       slot.querySelector('.hp-close').addEventListener('click',function(){openP(false)});
-      slot.querySelector('.hp-dismiss').addEventListener('click',function(){var it=itemOf();if(!it)return;openP(false);dismissHeron(it);var heading=art.querySelector('h2');if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}});
+      slot.querySelector('.hp-dismiss').addEventListener('click',function(){var it=itemOf();if(!it)return;keepHeronPosition(btn,function(){openP(false,true);dismissHeron(it);var heading=art.querySelector('h2');if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}})});
       panel.addEventListener('keydown',function(e){if(e.key==='Escape'){e.stopPropagation();openP(false)}});
     }
     slot.classList.toggle('desktop-heron',!companionMobile());
@@ -1944,7 +1965,12 @@ function initCompanion(){
   addEventListener('scroll',heronScroll,{passive:true});
   addEventListener('resize',function(){if(HERON.busy)settleHeron();heronTick()});
   reduceMotion.addEventListener('change',function(){settleHeron();heronTick()});
-  function changeCompanionViewport(){var cur=editions.find(function(e){return !e.hidden});if(cur){var focus=document.activeElement.closest?.('.perch'),heading=HERON.current?.art.querySelector('h2')||(focus&&(focus.closest('.entry')?.querySelector('h2')||cur.querySelector('.hero h1')));renderCompanion(cur);if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}}}
+  function changeCompanionViewport(){
+    var cur=editions.find(function(e){return !e.hidden});if(!cur)return;
+    if(companionAvailable()&&HERON.items.length){HERON.items.forEach(it=>it.slot.classList.toggle('desktop-heron',!companionMobile()));return;}
+    var focus=document.activeElement.closest?.('.perch'),heading=HERON.current?.art.querySelector('h2')||focus?.closest('.entry')?.querySelector('h2');
+    renderCompanion(cur);if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}
+  }
   companionViewport.addEventListener('change',changeCompanionViewport);
   companionDesktopViewport.addEventListener('change',changeCompanionViewport);
 }
