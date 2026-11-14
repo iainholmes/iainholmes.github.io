@@ -15,6 +15,7 @@ for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])thro
 const llSource=read('weekly-economics-environment/index.html');
 const registerHistory=require('../weekly-economics-environment/field-register-schema.cjs').validate({journal:llSource}).history;
 // Companion and evidence gates precede artwork preparation and every artifact write.
+require('../weekly-economics-environment/heron-editorial-review.cjs').validate({journal:llSource});
 require('../weekly-economics-environment/source-evidence.cjs').validate({journal:llSource});
 const reviewedLL=require('../weekly-economics-environment/editorial-folio.cjs').compose(llSource);
 require('../weekly-economics-environment/source-evidence.cjs').validate({journal:reviewedLL});

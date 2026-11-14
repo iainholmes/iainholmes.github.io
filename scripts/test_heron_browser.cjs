@@ -7,12 +7,15 @@ const playwright = require(process.env.LL_PLAYWRIGHT || 'playwright');
 const engine = process.env.LL_BROWSER || 'chromium';
 const origin = process.env.LL_ORIGIN || 'http://127.0.0.1:8765';
 const journalUrl = origin + '/weekly-economics-environment/';
-const date = '2026-11-06';
+const date = '9999-12-31';
 const source = fs.readFileSync('weekly-economics-environment/index.html', 'utf8');
 const companionBlock = /(<script type="application\/json" id="companion-data">)([\s\S]*?)(<\/script>)/;
 const companions = JSON.parse(source.match(companionBlock)[2]);
 const directory = JSON.parse(source.match(/id="ll-reading-index-data">([\s\S]*?)<\/script>/)[1]);
-const issue = directory.editions.find(edition => edition.date === date);
+const template = directory.editions.find(edition => edition.date === '2026-11-06');
+const issue = { ...template, date, readings: template.readings.map(reading => ({ ...reading, id: reading.id.replace(template.date, date) })) };
+const editionMarkup = source.match(/<section class="edition"[^>]*data-edition="2026-11-06"[\s\S]*?(?=<section class="edition"|<\/main>)/)[0];
+const futureEdition = editionMarkup.replaceAll(template.date, date).replace('data-title="'+template.title+'"', 'data-title="Private future browser fixture"');
 const active = '.edition:not([hidden])';
 const button = '.heron-perch';
 const dismissed = 'economics-environment:companion:dismissed';
@@ -54,9 +57,8 @@ async function run() {
   let fixtureData;
   await page.route(url => url.origin === origin && url.pathname === '/weekly-economics-environment/', route => {
     if (!fixtureData) return route.continue();
-    const { [date]: _published, ...others } = companions;
-    const data = fixtureData === 'missing' ? others : { ...others, [date]: fixtureData };
-    const body = source.replace(companionBlock, (_, open, _data, close) => open + JSON.stringify(data) + close);
+    const data = fixtureData === 'missing' ? companions : { ...companions, [date]: fixtureData };
+    const body = source.replace('</main>', futureEdition + '</main>').replace(companionBlock, (_, open, _data, close) => open + JSON.stringify(data) + close);
     return route.fulfill({ contentType: 'text/html; charset=utf-8', body });
   });
 
@@ -187,7 +189,7 @@ async function run() {
 
     for (const width of [1440, 390]) {
       await page.setViewportSize({ width, height: 900 });
-      const expected = [[1, 4], [1, 3], [1, 2], [1, 3], [1, 2], [1], []];
+      const expected = [[1, 4], [1, 3], [1, 2], [1, 3], [1, 2], [1], [], []];
       for (const [i, edition] of directory.editions.slice(0, expected.length).entries()) {
         await load('edition-' + edition.date);
         equal(await positions(), expected[i], 'published Issue ' + edition.number + ' at ' + width + 'px');

@@ -89,12 +89,19 @@ function validateCompanions(companion,readingsByDate){
   }
  }
 }
-function finalize(journal,{nodes}){
+function companionContext(journal){
  const editions=[...journal.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[^>]*data-title="([^"]+)"([\s\S]*?)(?=<section class="edition"|<\/main>)/g)];
- const companion=JSON.parse(journal.match(/id="companion-data">([\s\S]*?)<\/script>/)[1]);
+ const block=journal.match(/id="companion-data">([\s\S]*?)<\/script>/);
+ if(!block)throw Error('L&L Heron: missing companion-data registry');
+ const companion=JSON.parse(block[1]);
+ if(!companion||typeof companion!=='object'||Array.isArray(companion))throw Error('L&L Heron: companion-data must be keyed by edition date');
  editions.sort((a,b)=>a[1].localeCompare(b[1]));
  const readingsByDate=new Map(editions.map(([s,date])=>[date,[...s.matchAll(/<article class="entry"[^>]*id="([^"]+)"[\s\S]*?<\/article>/g)]]));
  validateCompanions(companion,readingsByDate);
+ return {editions,companion,readingsByDate};
+}
+function finalize(journal,{nodes}){
+ const {editions,companion,readingsByDate}=companionContext(journal);
  const indexed=editions.map(([,date,title])=>({date,title:text(title),number:String(editions.filter(e=>e[1].slice(0,4)===date.slice(0,4)&&e[1]<=date).length).padStart(3,'0'),readings:readingsByDate.get(date).map(([html,id])=>{
  const v=decisions.readings[id],features=[...html.matchAll(/<section class="ll-feature[^"]*" id="([^"]+)" data-special-feature="([^"]+)"/g)].map(m=>({id:m[2],name:names[m[2]],anchor:m[1]}));
  const appearances=(companion[date]?.appearances||[]).filter(a=>a.target===id);for(const a of appearances)features.push({id:'heron',name:names.heron,anchor:'heron-'+a.id});
@@ -105,4 +112,4 @@ function finalize(journal,{nodes}){
 }
 function publishedChanges(v,features){const previous=v.changeRecord?.previous||[],current=features.filter(f=>f.id!=='heron').map(f=>f.id);return {...v.changeRecord,retained:previous.filter(id=>current.includes(id)),added:current.filter(id=>!previous.includes(id)),replaced:previous.filter(id=>!current.includes(id))};}
 function inventory(journal){const index=JSON.parse(journal.match(/id="ll-reading-index-data">([\s\S]*?)<\/script>/)[1]);return {version:7,title:'Loblolly & Logit · Editorial Decision Inventory',reviewed:decisions.reviewed,policy:decisions.policy,entries:index.editions.flatMap(e=>e.readings.map(r=>({...r,edition:e.date,...decisions.readings[r.id],selected:r.features,changeRecord:publishedChanges(decisions.readings[r.id],r.features),additionalFeatureJustification:decisions.readings[r.id].additionalFeatureJustification||(r.features.filter(f=>f.id!=='heron').length>decisions.readings[r.id].features.length?'Retains an original sourced graphic in addition to the authored analytical functions; preserved visual evidence is not discarded to meet a feature quota.':null)}))),totals:{editions:index.editions.length,readings:index.editions.reduce((s,e)=>s+e.readings.length,0),features:index.editions.flatMap(e=>e.readings.flatMap(r=>r.features)).reduce((s,f)=>(s[f.id]=(s[f.id]||0)+1,s),{})}};}
-module.exports={compose,finalize,inventory,renderFeature,names,decisions};
+module.exports={compose,finalize,inventory,renderFeature,names,decisions,companionContext};

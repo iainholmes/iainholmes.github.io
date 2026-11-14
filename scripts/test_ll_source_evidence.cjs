@@ -22,7 +22,7 @@ const interpretation=evidence.readings[reading.id].components.find(c=>c.id==='ll
 const conflict=clone(record);conflict.discrepancy='Source and claim materially disagree';reject(()=>run(conflict),/unresolved material/);
 const noReviewer=clone(record);delete noReviewer.verification.reasoning;reject(()=>run(noReviewer),/inspectable source-and-analysis/);
 reject(()=>run(record,evidence.documents,{...component,sha256:'0'.repeat(64)}),/content changed/);
-const coverage=gate.validate({journal});ok(coverage.readings===40&&coverage.verifiedComponents>=110&&coverage.incompleteHistoricalComponents===318,'all 35 legacy readings retained, historical gaps disclosed, new five readings verified');
+const coverage=gate.validate({journal});ok(coverage.readings===inv.length&&coverage.readings>=40&&coverage.verifiedComponents>=110&&coverage.incompleteHistoricalComponents===318,'all readings inventoried, historical gaps disclosed, and at least the first eight issues retained');
 const future=journal.replaceAll('2026-10-30','9998-12-31');reject(()=>gate.validate({journal:future}),/missing historical reading/);
 const amended=journal.replace('Solar changes another technology’s emissions margin','An unreviewed changed claim');reject(()=>gate.validate({journal:amended}),/content changed/);
 const incomplete=clone(evidence);incomplete.readings.insurance.components[0].sha256='0'.repeat(64);reject(()=>gate.validate({journal,evidence:incomplete}),/completed substantive review required/);
@@ -41,6 +41,14 @@ const futureEvidence=clone(evidence),newReading=gate.inventory(grown).find(r=>r.
 futureEvidence.readings[newId]={...clone(evidence.readings[reading.id]),edition:'9998-01-01',historical:false};
 for(let i=0;i<futureEvidence.readings[newId].components.length;i++){let c=futureEvidence.readings[newId].components[i];if(c.status!=='verified'){c={...clone(interpretation),id:c.id};futureEvidence.readings[newId].components[i]=c;}c.sha256=newReading.components.find(x=>x.id===c.id).sha256;}
 ok(gate.validate({journal:grown,evidence:futureEvidence}).verifiedComponents===coverage.verifiedComponents+newReading.components.length,'fully recorded future fixture accepted');
+const heron={id:'future-evidence-heron',target:newId,type:'method',title:'Interpreting the policy comparison',text:'Private source-review fixture.'};
+const withHeron=grown.replace(/(id="companion-data">)([\s\S]*?)(<\/script>)/,(_,open,body,close)=>open+JSON.stringify({...JSON.parse(body),'9998-01-01':{enabled:true,appearances:[heron]}})+close);
+const noteComponent=gate.inventory(withHeron).find(r=>r.id===newId).components.find(c=>c.id==='heron-'+heron.id);
+reject(()=>gate.validate({journal:withHeron,evidence:futureEvidence}),/heron-future-evidence-heron: completed substantive review required/);
+const noteEvidence=clone(futureEvidence);
+noteEvidence.readings[newId].components.push({...clone(interpretation),id:noteComponent.id,sha256:noteComponent.sha256});
+ok(gate.validate({journal:withHeron,evidence:noteEvidence}).verifiedComponents===coverage.verifiedComponents+newReading.components.length+1,'future Heron is bound to a verified source component');
+reject(()=>gate.validate({journal:withHeron.replace(heron.text,'Changed private fixture text.'),evidence:noteEvidence}),/heron-future-evidence-heron: content changed since source review/);
 futureEvidence.readings[newId].historical=true;futureEvidence.readings[newId].components[0].status='incomplete';reject(()=>gate.validate({journal:grown,evidence:futureEvidence}),/completed substantive review required/);
 const {nodes}=require('../weekly-economics-environment/editorial-folio.cjs');
 const removed=nodes(article).find(n=>n.id===newId+'--mechanism-map');
