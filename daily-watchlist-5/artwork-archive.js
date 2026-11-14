@@ -2650,6 +2650,68 @@
         "seed": 3353743712,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A hiring gate closes while essential services remain open\"><title>Wake County freezes most hiring as a large budget gap opens</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-13-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-13-05)\"><path d=\"M90 165H365V535H90Z\" fill=\"#1b4a6b\"/><path d=\"M135 240H320M135 325H320M135 410H275\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M440 535V170H700V535M405 265H735\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"32\"/><path d=\"M470 265V535\" stroke=\"#c4452c\" stroke-width=\"23\"/><path d=\"M570 265V535M665 265V535\" stroke=\"#1d5f47\" stroke-width=\"23\"/><circle cx=\"520\" cy=\"465\" r=\"30\" fill=\"#c98a12\"/></g></svg>"
       }
+    },
+    "2026-11-14": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-14",
+        "number": "01",
+        "category": "U.S. infrastructure · aviation",
+        "topic": "infrastructure",
+        "title": "Nationwide air-traffic outage exposes the cost of legacy infrastructure",
+        "composition": "air-traffic-overload",
+        "signature": "plate:air-traffic-overload",
+        "seed": 941713235,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A national air network halts at an overloaded communications junction\"><title>Nationwide air-traffic outage exposes the cost of legacy infrastructure</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-14-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-14-01)\"><path d=\"M80 145H275V255H420V145H720M80 495H275V385H420V495H720\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"31\"/><path d=\"M275 210H420M275 430H420M347 210V430\" stroke=\"#2c241d\" stroke-width=\"29\"/><circle cx=\"347\" cy=\"320\" r=\"88\" fill=\"#7a1f33\"/><path d=\"M298 270L396 368M396 270L298 368\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M85 320H235M460 320H715\" stroke=\"#c98a12\" stroke-width=\"18\" stroke-dasharray=\"27 18\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-14",
+        "number": "02",
+        "category": "U.S. policy · immigration law",
+        "topic": "government",
+        "title": "Supreme Court will review presidential authority to suspend asylum access",
+        "composition": "asylum-certiorari",
+        "signature": "plate:asylum-certiorari",
+        "seed": 3051412030,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A statutory record ascends to a court reviewing executive authority\"><title>Supreme Court will review presidential authority to suspend asylum access</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-14-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-14-02)\"><path d=\"M75 150H330V510H75Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M115 225H290M115 300H290M115 375H245\" stroke=\"#1b4a6b\" stroke-width=\"19\"/><path d=\"M430 510V360H505V285H580V210H705V510Z\" fill=\"#7a1f33\"/><path d=\"M410 145H725L665 95H470Z\" fill=\"#2c241d\"/><path d=\"M465 145V205M535 145V205M605 145V205M675 145V205\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M330 430H430\" stroke=\"#c98a12\" stroke-width=\"28\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-14",
+        "number": "03",
+        "category": "U.S. economy · producer prices",
+        "topic": "research",
+        "title": "Producer prices rise 6.5% over twelve months",
+        "composition": "producer-price-pipeline",
+        "signature": "plate:producer-price-pipeline",
+        "seed": 694874649,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Upstream prices move through a measured supply pipeline\"><title>Producer prices rise 6.5% over twelve months</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-14-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-14-03)\"><path d=\"M80 150H230V275H80ZM325 260H475V385H325ZM570 370H720V495H570Z\" fill=\"#1b4a6b\"/><path d=\"M230 212H295V322H325M475 322H540V432H570\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"25\"/><path d=\"M125 205H185M370 315H430M615 425H675\" stroke=\"#f4ead7\" stroke-width=\"19\"/><path d=\"M95 535H705\" stroke=\"#7c5a3e\" stroke-width=\"17\"/><path d=\"M145 535V485M400 535V450M655 535V405\" stroke=\"#c4452c\" stroke-width=\"22\"/><circle cx=\"145\" cy=\"480\" r=\"22\" fill=\"#c98a12\"/><circle cx=\"400\" cy=\"445\" r=\"22\" fill=\"#c98a12\"/><circle cx=\"655\" cy=\"400\" r=\"22\" fill=\"#c98a12\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-14",
+        "number": "04",
+        "category": "Technology · quantum computing",
+        "topic": "research",
+        "title": "Commerce finalizes a $100 million neutral-atom quantum award",
+        "composition": "neutral-atom-array",
+        "signature": "plate:neutral-atom-array",
+        "seed": 2477449357,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A neutral-atom array connects to semiconductor control and validation\"><title>Commerce finalizes a $100 million neutral-atom quantum award</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-14-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-14-04)\"><g fill=\"#1b4a6b\"><circle cx=\"150\" cy=\"175\" r=\"33\"/><circle cx=\"260\" cy=\"175\" r=\"33\"/><circle cx=\"150\" cy=\"285\" r=\"33\"/><circle cx=\"260\" cy=\"285\" r=\"33\"/><circle cx=\"150\" cy=\"395\" r=\"33\"/><circle cx=\"260\" cy=\"395\" r=\"33\"/></g><path d=\"M315 285H445\" stroke=\"#c4452c\" stroke-width=\"28\"/><path d=\"M445 135H710V435H445Z\" fill=\"#2c241d\"/><path d=\"M485 190H670M485 255H670M485 320H670M485 385H610\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M515 495H650\" stroke=\"#c98a12\" stroke-width=\"25\"/><path d=\"M545 455V535M620 455V535\" stroke=\"#c98a12\" stroke-width=\"17\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-14",
+        "number": "05",
+        "category": "North Carolina · hospital competition",
+        "topic": "research",
+        "title": "WakeMed merger price cap depends on a partly private enforcement structure",
+        "composition": "hospital-price-cap",
+        "signature": "plate:hospital-price-cap",
+        "seed": 3863712102,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A hospital price path passes through a monitored contractual cap\"><title>WakeMed merger price cap depends on a partly private enforcement structure</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-14-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-14-05)\"><path d=\"M85 230L235 110L385 230V520H85Z\" fill=\"#1b4a6b\"/><path d=\"M195 520V390H275V520\" fill=\"#f4ead7\"/><path d=\"M150 285H320M235 200V360\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M455 145H710V520H455Z\" fill=\"#2c241d\"/><path d=\"M495 220H665M495 300H665M495 380H610\" stroke=\"#f4ead7\" stroke-width=\"19\"/><path d=\"M385 335H535\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M535 255V415\" stroke=\"#c98a12\" stroke-width=\"28\"/><circle cx=\"650\" cy=\"445\" r=\"43\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"18\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

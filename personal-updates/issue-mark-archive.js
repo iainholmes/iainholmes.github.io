@@ -2065,5 +2065,55 @@
     "framing": "Editor's synthesisThe shock is only the beginningA carbon-market announcement, a flood, a run of warm ocean days, a change in annual emissions, and a surge in electricity demand all look like discrete events. Their economic consequences travel through wages and employment, supplier relationships and routes, species and management rules, carbon stocks and sinks, and a power fleet built over decades.The five readings share an accounting discipline. Identify the first disturbance, then follow the adjustment margins before naming the final burden. A household's energy bill is not the whole incidence of a carbon price. A firm's relocation is not necessarily a reduction in system risk. A causal temperature response is not an unconditional 2100 forecast. A negative annual growth estimate is not yet a lower atmospheric stock. A rising renewable share is not the same as declining fossil generation.Each case also contains an option value. Firms learn and switch; fish and vessels may move; investment expands capacity; policy can recycle revenue. Adaptation can lower expected harm, but it can also displace exposure across people and places. Welfare analysis begins where the physical or policy shock meets those endogenous responses.The durable question is not simply what changed this week, but which choices the change unlocks—and who bears the risks while the system adjusts.",
     "geometry": "<path d=\"M70 430Q165 335 265 400T530 335V485H70Z\" fill=\"$ink\"/><path d=\"M70 365H530\" stroke=\"$accent\" stroke-width=\"15\"/><path d=\"M115 300H195V365H115ZM395 245H485V335H395Z\" fill=\"$support\"/><path d=\"M155 300V250L115 280M155 250L195 280M440 245V190L395 220M440 190L485 220\" fill=\"none\" stroke=\"$ink\" stroke-width=\"10\"/><path d=\"M235 300Q300 240 365 285\" fill=\"none\" stroke=\"$accent\" stroke-width=\"8\" stroke-dasharray=\"12 10\"/>",
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Loblolly &amp; Logit, issue 008: Shock, movement &amp; adjustment\"><title>Loblolly &amp; Logit · 008 · Shock, movement &amp; adjustment</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f3f0e6\"/><g><g fill=\"none\" stroke=\"#1f4a3b\" opacity=\".16\"><path d=\"M-20 460Q150 290 300 440T620 410M-20 480Q150 310 300 460T620 430M-20 500Q150 330 300 480T620 450M-20 520Q150 350 300 500T620 470\"/></g><path d=\"M70 430Q165 335 265 400T530 335V485H70Z\" fill=\"#1f4a3b\"/><path d=\"M70 365H530\" stroke=\"#b4532e\" stroke-width=\"15\"/><path d=\"M115 300H195V365H115ZM395 245H485V335H395Z\" fill=\"#e3b456\"/><path d=\"M155 300V250L115 280M155 250L195 280M440 245V190L395 220M440 190L485 220\" fill=\"none\" stroke=\"#1f4a3b\" stroke-width=\"10\"/><path d=\"M235 300Q300 240 365 285\" fill=\"none\" stroke=\"#b4532e\" stroke-width=\"8\" stroke-dasharray=\"12 10\"/></g><path d=\"M42 570H558\" stroke=\"#1f4a3b\" stroke-width=\"2\"/><g fill=\"#1f4a3b\"><text x=\"42\" y=\"634\" font-family=\"Ectros,Georgia,serif\" font-size=\"43\">Loblolly &amp; Logit</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 008 / 2026-11-13</text><text x=\"42\" y=\"740\" font-family=\"Ectros,Georgia,serif\" font-size=\"26\">Shock, movement &amp; adjustment</text></g></svg>"
+  },
+  "fb:2026-11-14": {
+    "key": "fb",
+    "date": "2026-11-14",
+    "no": "047",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "A nationwide air-traffic shutdown turns infrastructure modernization into an immediate reliability problem. The Supreme Court takes up presidential authority over asylum access, producer prices show persistent upstream pressure, Commerce funds neutral-atom quantum systems, and new disclosures expose limits in WakeMed's proposed merger price cap. Infrastructure, authority and verification The five developments do not point to one policy program: they concern a network outage, a judicial grant of review, an inflation measure, a research award and a hospital-merger safeguard. Each now requires a different verification record—an outage investigation, a merits decision, subsequent price transmission, validated quantum milestones, and public evidence that the WakeMed cap is enforceable and observed.",
+    "version": 6,
+    "subject": "infrastructure",
+    "composition": "spread-unequal-dialogue-service-rack-idle-stock",
+    "signature": "issue:spread-unequal-dialogue-service-rack-idle-stock",
+    "phrase": "Airspace reliability / idle capital",
+    "seed": 1265315564,
+    "geometry": "<g transform=\"translate(65 115) scale(3.15)\"><path d=\"M12 3H88V97H12Z\" fill=\"$ink\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"$paper\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"$accent\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M8 30H92V90H8Z\" fill=\"$ink\"/><path d=\"M20 42H80M20 56H80M20 70H80\" stroke=\"$paper\" stroke-width=\"5\"/><path d=\"M40 5H60V25H40Z\" fill=\"$accent\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01"
+        ],
+        "score": 13
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 12
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "02",
+          "05"
+        ],
+        "score": 4
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "03"
+        ],
+        "score": 3
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 46,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 047: Airspace reliability / idle capital\"><title>Field Brief · 047 · Airspace reliability / idle capital</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M12 3H88V97H12Z\" fill=\"#221a14\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"#f1e6d0\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"#8a2a36\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M8 30H92V90H8Z\" fill=\"#221a14\"/><path d=\"M20 42H80M20 56H80M20 70H80\" stroke=\"#f1e6d0\" stroke-width=\"5\"/><path d=\"M40 5H60V25H40Z\" fill=\"#8a2a36\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 047 / 2026-11-14</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Airspace reliability / idle capital</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
