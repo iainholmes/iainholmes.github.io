@@ -8,6 +8,7 @@ function validate({journal,notebook,folioCss,notebookCss}={}){
  const {nodes}=require('./editorial-folio.cjs');
  const index=JSON.parse(journal.match(/id="ll-reading-index-data">([\s\S]*?)<\/script>/)?.[1]||'null');
  if(!index)throw Error('L&L publication: generated Reading Index required');
+ require('./heron-editorial-review.cjs').validate({journal,index});
  const seen=new Set(),featureCounts={};let sources=0,count=0;
  const syntheses=new Map([...journal.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"[\s\S]*?(?=<section class="edition"|<\/main>)/g)].map(([edition,date])=>[date,edition.match(/<section class="synthesis"[^>]*>\s*<header class="closing-heading">\s*<div class="eyebrow">Editor's synthesis<\/div>\s*<h2\b[^>]*>([\s\S]*?)<\/h2>/)?.[1]?.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim()]));
  for(const ed of index.editions){if(ed.readings.length!==5)throw Error('L&L publication: five readings per edition required');
