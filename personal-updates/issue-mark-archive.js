@@ -2115,5 +2115,45 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 047: Airspace reliability / idle capital\"><title>Field Brief · 047 · Airspace reliability / idle capital</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M12 3H88V97H12Z\" fill=\"#221a14\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"#f1e6d0\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"#8a2a36\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M8 30H92V90H8Z\" fill=\"#221a14\"/><path d=\"M20 42H80M20 56H80M20 70H80\" stroke=\"#f1e6d0\" stroke-width=\"5\"/><path d=\"M40 5H60V25H40Z\" fill=\"#8a2a36\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 047 / 2026-11-14</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Airspace reliability / idle capital</text></g></svg>"
+  },
+  "fb:2026-11-15": {
+    "key": "fb",
+    "date": "2026-11-15",
+    "no": "048",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "Federal investigators disrupt a North Korean deepfake campaign that stole more than $400 million and freeze part of a separate $1.2 billion exchange theft. A Labor Department audit finds pervasive errors in health-plan directories, DOE again keeps a retired coal plant available for winter, FDA approves a survival-improving bladder-cancer regimen, and North Carolina's disability-savings program reaches $53 million after eligibility expands. Access depends on enforceable systems The five developments do not form one policy program: they concern cybercrime, health-plan administration, electricity reliability, cancer treatment and disability savings. They do share a practical test of access—whether seized assets stay recoverable, listed clinicians can actually be reached, grid capacity is available when needed, an approved regimen reaches eligible patients, and expanded savings rules translate into participation.",
+    "version": 6,
+    "subject": "enforcement",
+    "composition": "spread-long-section-inspection-screen-hiring-cohorts",
+    "signature": "issue:spread-long-section-inspection-screen-hiring-cohorts",
+    "phrase": "Cyber disruption / commitments & use",
+    "seed": 3437088170,
+    "geometry": "<g transform=\"translate(70 110) scale(1.75)\"><path d=\"M7 8H93V92H7Z\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><path d=\"M28 18V82M51 18V82M74 18V82\" stroke=\"$support\" stroke-width=\"6\"/><path d=\"M10 56H90\" stroke=\"$accent\" stroke-width=\"13\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M3 94V8H24V94M40 94V38H61V94M77 94V68H98V94\" fill=\"$accent\"/><path d=\"M2 98H99\" stroke=\"$ink\" stroke-width=\"6\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "enforcement",
+        "storyNumbers": [],
+        "score": 14
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "02"
+        ],
+        "score": 3
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 47,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 048: Cyber disruption / commitments &amp; use\"><title>Field Brief · 048 · Cyber disruption / commitments &amp; use</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><path d=\"M7 8H93V92H7Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M28 18V82M51 18V82M74 18V82\" stroke=\"#c5ad88\" stroke-width=\"6\"/><path d=\"M10 56H90\" stroke=\"#8a2a36\" stroke-width=\"13\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M3 94V8H24V94M40 94V38H61V94M77 94V68H98V94\" fill=\"#8a2a36\"/><path d=\"M2 98H99\" stroke=\"#221a14\" stroke-width=\"6\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 048 / 2026-11-15</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Cyber disruption / commitments &amp; use</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

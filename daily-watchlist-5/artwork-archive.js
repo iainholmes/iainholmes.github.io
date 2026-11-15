@@ -2712,6 +2712,68 @@
         "seed": 3863712102,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A hospital price path passes through a monitored contractual cap\"><title>WakeMed merger price cap depends on a partly private enforcement structure</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-14-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-14-05)\"><path d=\"M85 230L235 110L385 230V520H85Z\" fill=\"#1b4a6b\"/><path d=\"M195 520V390H275V520\" fill=\"#f4ead7\"/><path d=\"M150 285H320M235 200V360\" stroke=\"#f4ead7\" stroke-width=\"24\"/><path d=\"M455 145H710V520H455Z\" fill=\"#2c241d\"/><path d=\"M495 220H665M495 300H665M495 380H610\" stroke=\"#f4ead7\" stroke-width=\"19\"/><path d=\"M385 335H535\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M535 255V415\" stroke=\"#c98a12\" stroke-width=\"28\"/><circle cx=\"650\" cy=\"445\" r=\"43\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"18\"/></g></svg>"
       }
+    },
+    "2026-11-15": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-15",
+        "number": "01",
+        "category": "Technology · cybersecurity",
+        "topic": "infrastructure",
+        "title": "Justice Department disrupts a $400 million North Korean deepfake theft campaign",
+        "composition": "cyber-deepfake-seizure",
+        "signature": "plate:cyber-deepfake-seizure",
+        "seed": 2469650046,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A deceptive video channel is cut off at a seized cloud node\"><title>Justice Department disrupts a $400 million North Korean deepfake theft campaign</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-15-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-15-01)\"><path d=\"M70 125H330V345H70Z\" fill=\"#2c241d\"/><path d=\"M105 165H295V305H105Z\" fill=\"#1b4a6b\"/><circle cx=\"200\" cy=\"218\" r=\"38\" fill=\"#f4ead7\"/><path d=\"M140 305V278Q200 238 260 278V305Z\" fill=\"#f4ead7\"/><path d=\"M330 235H505\" stroke=\"#c4452c\" stroke-width=\"30\" stroke-dasharray=\"38 20\"/><path d=\"M505 115H720V500H505Z\" fill=\"#7c5a3e\"/><path d=\"M540 175H685M540 250H685M540 325H685M540 400H640\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M470 85L755 530\" stroke=\"#7a1f33\" stroke-width=\"34\"/><circle cx=\"430\" cy=\"450\" r=\"70\" fill=\"#c98a12\"/><path d=\"M391 411L469 489M469 411L391 489\" stroke=\"#2c241d\" stroke-width=\"21\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-15",
+        "number": "02",
+        "category": "U.S. policy · health benefits",
+        "topic": "research",
+        "title": "Labor Department finds pervasive errors in health-plan provider directories",
+        "composition": "provider-directory-audit",
+        "signature": "plate:provider-directory-audit",
+        "seed": 1279132834,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An audited provider directory reveals broken routes to care\"><title>Labor Department finds pervasive errors in health-plan provider directories</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-15-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-15-02)\"><path d=\"M70 105H390V535H70Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M120 175H340M120 255H340M120 335H340M120 415H285\" stroke=\"#1b4a6b\" stroke-width=\"19\"/><g fill=\"#c4452c\"><circle cx=\"335\" cy=\"175\" r=\"16\"/><circle cx=\"335\" cy=\"255\" r=\"16\"/><circle cx=\"335\" cy=\"335\" r=\"16\"/></g><path d=\"M390 320H510M510 320V165H700M510 320V485H700\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"25\"/><circle cx=\"590\" cy=\"320\" r=\"103\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"27\"/><path d=\"M664 394L735 485\" stroke=\"#c98a12\" stroke-width=\"36\"/><path d=\"M655 150L705 200M705 150L655 200M655 460L705 510M705 460L655 510\" stroke=\"#7a1f33\" stroke-width=\"20\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-15",
+        "number": "03",
+        "category": "Energy · grid reliability",
+        "topic": "infrastructure",
+        "title": "DOE orders a retired Michigan coal plant to remain available through winter",
+        "composition": "winter-capacity-order",
+        "signature": "plate:winter-capacity-order",
+        "seed": 840046363,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A winter reserve order keeps a coal station behind the grid switch\"><title>DOE orders a retired Michigan coal plant to remain available through winter</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-15-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-15-03)\"><path d=\"M80 480H720\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M120 480V265H390V480Z\" fill=\"#7c5a3e\"/><path d=\"M160 265V145H225V265M285 265V105H350V265\" fill=\"#2c241d\"/><path d=\"M135 315H375M135 380H375\" stroke=\"#f4ead7\" stroke-width=\"19\"/><path d=\"M430 185H690V480H430Z\" fill=\"#1b4a6b\"/><path d=\"M470 245H650M470 325H650M470 405H650\" stroke=\"#f4ead7\" stroke-width=\"22\"/><circle cx=\"430\" cy=\"325\" r=\"58\" fill=\"#c98a12\"/><path d=\"M395 290L465 360M465 290L395 360\" stroke=\"#7a1f33\" stroke-width=\"20\"/><path d=\"M80 95L125 125L170 95L215 125L260 95L305 125L350 95L395 125\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"15\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-15",
+        "number": "04",
+        "category": "Biotechnology · oncology",
+        "topic": "research",
+        "title": "FDA approves a perioperative combination for muscle-invasive bladder cancer",
+        "composition": "bladder-cancer-pathway",
+        "signature": "plate:bladder-cancer-pathway",
+        "seed": 2037358697,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A perioperative treatment path surrounds surgery and measured survival\"><title>FDA approves a perioperative combination for muscle-invasive bladder cancer</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-15-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-15-04)\"><circle cx=\"150\" cy=\"315\" r=\"78\" fill=\"#7a1f33\"/><path d=\"M228 315H340\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M340 145H505V485H340Z\" fill=\"#2c241d\"/><path d=\"M385 210H460M385 285H460M385 360H460\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M422 485V555\" stroke=\"#2c241d\" stroke-width=\"24\"/><path d=\"M505 315H640\" stroke=\"#1d5f47\" stroke-width=\"30\"/><circle cx=\"675\" cy=\"315\" r=\"62\" fill=\"#1b4a6b\"/><path d=\"M635 315H715M675 275V355\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M105 185Q150 125 195 185M630 455Q675 515 720 455\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"20\"/><circle cx=\"150\" cy=\"315\" r=\"28\" fill=\"#f4ead7\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-15",
+        "number": "05",
+        "category": "North Carolina · disability savings",
+        "topic": "government",
+        "title": "Expanded eligibility helps NC ABLE accounts reach $53 million",
+        "composition": "able-savings-bridge",
+        "signature": "plate:able-savings-bridge",
+        "seed": 151092591,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A protected savings account bridges household needs and public benefits\"><title>Expanded eligibility helps NC ABLE accounts reach $53 million</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-15-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-15-05)\"><path d=\"M75 500H725\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M95 500V275H310V500Z\" fill=\"#1b4a6b\"/><path d=\"M135 330H270M135 395H270\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M310 385Q405 235 500 385\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"38\"/><path d=\"M500 500V260H710V500Z\" fill=\"#1d5f47\"/><path d=\"M545 320H665M545 385H665\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M405 150L485 190V285Q405 350 325 285V190Z\" fill=\"#7a1f33\"/><path d=\"M370 235H440M405 200V270\" stroke=\"#f4ead7\" stroke-width=\"18\"/><circle cx=\"200\" cy=\"190\" r=\"58\" fill=\"#7c5a3e\"/><path d=\"M170 190H230M200 160V220\" stroke=\"#f4ead7\" stroke-width=\"15\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
