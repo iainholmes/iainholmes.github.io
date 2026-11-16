@@ -363,6 +363,10 @@
       id:'capability-transfer',rank:-1,phrase:'Robotics / adaptable capability',
       geometry:'<path d="M70 480H305V435H70Z" fill="$ink"/><path d="M145 435V336L285 242L374 318" fill="none" stroke="$ink" stroke-width="32"/><circle cx="145" cy="336" r="35" fill="$accent"/><circle cx="285" cy="242" r="31" fill="$support"/><path d="M353 300L374 318L357 354M374 318L407 305" fill="none" stroke="$accent" stroke-width="15"/><path d="M362 480H540" stroke="$ink" stroke-width="8"/><path d="M380 450L408 393L436 450Z" fill="$support"/><circle cx="484" cy="423" r="28" fill="$accent"/><path d="M90 172H450V255M430 234L450 255L470 234" fill="none" stroke="$support" stroke-width="7"/><path d="M98 135V205M123 149V191M148 160V180" stroke="$accent" stroke-width="7"/>'
     });
+    if(/AI-financ|artificial intelligence.*financ|off-balance-sheet|circular financing/i.test(title+' '+framing+' '+records.join(' ')))options.push({
+      id:'obligation-perimeter',rank:-2,phrase:'AI finance / connected obligations',
+      geometry:'<path d="M82 155H260V333H82Z" fill="none" stroke="$ink" stroke-width="18"/><path d="M117 203H225M117 253H225M117 303H190" stroke="$support" stroke-width="12"/><circle cx="404" cy="200" r="62" fill="$accent"/><circle cx="482" cy="405" r="82" fill="none" stroke="$ink" stroke-width="20"/><path d="M260 244H342L378 212M433 256L466 326M298 462H400" fill="none" stroke="$support" stroke-width="14"/><path d="M282 432H322V492H282ZM541 142H565V348H541Z" fill="$ink"/><path d="M565 245H526" stroke="$accent" stroke-width="16"/>'
+    });
     options.sort((a,b)=>a.rank-b.rank||hash(seed+'|'+a.id)-hash(seed+'|'+b.id));
     return {seed,subject:topic[0],evidence:supported.map(x=>({concept:x.topic[0],storyNumbers:x.positions,score:x.score})),options};
   }

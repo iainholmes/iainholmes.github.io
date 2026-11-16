@@ -2774,6 +2774,68 @@
         "seed": 151092591,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A protected savings account bridges household needs and public benefits\"><title>Expanded eligibility helps NC ABLE accounts reach $53 million</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-15-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-15-05)\"><path d=\"M75 500H725\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M95 500V275H310V500Z\" fill=\"#1b4a6b\"/><path d=\"M135 330H270M135 395H270\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M310 385Q405 235 500 385\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"38\"/><path d=\"M500 500V260H710V500Z\" fill=\"#1d5f47\"/><path d=\"M545 320H665M545 385H665\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M405 150L485 190V285Q405 350 325 285V190Z\" fill=\"#7a1f33\"/><path d=\"M370 235H440M405 200V270\" stroke=\"#f4ead7\" stroke-width=\"18\"/><circle cx=\"200\" cy=\"190\" r=\"58\" fill=\"#7c5a3e\"/><path d=\"M170 190H230M200 160V220\" stroke=\"#f4ead7\" stroke-width=\"15\"/></g></svg>"
       }
+    },
+    "2026-11-16": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-16",
+        "number": "01",
+        "category": "Technology economics · financial stability",
+        "topic": "finance",
+        "title": "Federal Reserve maps AI-financing risk beyond technology stocks",
+        "composition": "finance-ledger",
+        "signature": "plate:finance-ledger",
+        "seed": 4170115467,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A ledger is inspected beside a hidden transfer channel\"><title>Federal Reserve maps AI-financing risk beyond technology stocks</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-16-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-16-01)\"><path d=\"M85 130H360V540H85Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M125 200H325M125 270H325M125 340H260M125 410H300\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"548\" cy=\"284\" r=\"112\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"35\"/><path d=\"M624 367L718 489\" stroke=\"#7a1f33\" stroke-width=\"42\"/><path d=\"M402 530V425H475V345H548\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"21\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-16",
+        "number": "02",
+        "category": "Technology · supply-chain security",
+        "topic": "government",
+        "title": "Ten governments define a shared security perimeter for AI supply chains",
+        "composition": "housing-verification",
+        "signature": "plate:housing-verification",
+        "seed": 4025005501,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A household record passes through an eligibility gate\"><title>Ten governments define a shared security perimeter for AI supply chains</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-16-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-16-02)\"><path d=\"M85 330L235 205L385 330V535H85Z\" fill=\"#1b4a6b\"/><path d=\"M185 535V405H285V535\" fill=\"#f4ead7\"/><path d=\"M445 120H690V430H445Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M485 200H650M485 275H650M485 350H590\" stroke=\"#7c5a3e\" stroke-width=\"18\"/><path d=\"M400 490H735M520 455V555M650 455V555\" stroke=\"#7a1f33\" stroke-width=\"25\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-16",
+        "number": "03",
+        "category": "U.S. policy · early childhood",
+        "topic": "labor",
+        "title": "Head Start rule removes federal wage and benefit requirements",
+        "composition": "labor-clock",
+        "signature": "plate:labor-clock",
+        "seed": 2567448703,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A time clock beside an interrupted production belt\"><title>Head Start rule removes federal wage and benefit requirements</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-16-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-16-03)\"><circle cx=\"246\" cy=\"277\" r=\"165\" fill=\"#2c241d\"/><circle cx=\"246\" cy=\"277\" r=\"125\" fill=\"#f4ead7\"/><path d=\"M246 180V277L324 326\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M480 180H700V480H480Z\" fill=\"#1b4a6b\"/><path d=\"M517 228H663M517 297H663M517 366H604\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M80 532H348M443 532H720\" stroke=\"#7c5a3e\" stroke-width=\"30\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-16",
+        "number": "04",
+        "category": "Environment · wildfire operations",
+        "topic": "climate",
+        "title": "Wildfire operations receive a one-year water-pollution exemption",
+        "composition": "climate-watershed",
+        "signature": "plate:climate-watershed",
+        "seed": 2808004421,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A high lake spills toward inhabited lower ground\"><title>Wildfire operations receive a one-year water-pollution exemption</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-16-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-16-04)\"><path d=\"M50 425L235 130L398 385L530 215L750 525H50Z\" fill=\"#1d5f47\"/><ellipse cx=\"290\" cy=\"285\" rx=\"85\" ry=\"34\" fill=\"#1b4a6b\"/><path d=\"M340 295Q340 430 570 483\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"34\"/><path d=\"M584 410L650 355L716 410V510H584Z\" fill=\"#2c241d\"/><path d=\"M93 480H234\" stroke=\"#c98a12\" stroke-width=\"25\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-16",
+        "number": "05",
+        "category": "North Carolina · coastal access",
+        "topic": "climate",
+        "title": "North Carolina directs $1.8 million to ten coastal-access projects",
+        "composition": "climate-vortex",
+        "signature": "plate:climate-vortex",
+        "seed": 3146014872,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A rotating storm path crosses a settled landscape\"><title>North Carolina directs $1.8 million to ten coastal-access projects</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-16-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-16-05)\"><path d=\"M95 505H705\" stroke=\"#7c5a3e\" stroke-width=\"25\"/><path d=\"M510 505V365L590 300L675 365V505Z\" fill=\"#2c241d\"/><path d=\"M125 145Q440 70 520 230Q570 330 445 365Q330 398 354 485\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"48\"/><path d=\"M190 205Q395 155 438 244Q464 303 386 326\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"22\"/><path d=\"M239 430L298 388M405 180L452 137M538 272L595 238\" stroke=\"#c4452c\" stroke-width=\"18\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

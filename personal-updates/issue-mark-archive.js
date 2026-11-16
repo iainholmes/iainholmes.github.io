@@ -2155,5 +2155,57 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 048: Cyber disruption / commitments &amp; use\"><title>Field Brief · 048 · Cyber disruption / commitments &amp; use</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><path d=\"M7 8H93V92H7Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M28 18V82M51 18V82M74 18V82\" stroke=\"#c5ad88\" stroke-width=\"6\"/><path d=\"M10 56H90\" stroke=\"#8a2a36\" stroke-width=\"13\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M3 94V8H24V94M40 94V38H61V94M77 94V68H98V94\" fill=\"#8a2a36\"/><path d=\"M2 98H99\" stroke=\"#221a14\" stroke-width=\"6\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 048 / 2026-11-15</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Cyber disruption / commitments &amp; use</text></g></svg>"
+  },
+  "fb:2026-11-16": {
+    "key": "fb",
+    "date": "2026-11-16",
+    "no": "049",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "The Federal Reserve maps leverage and connected financing around the AI buildout, while ten governments define a shared security perimeter for the technology's supply chains. A Head Start rule shifts compensation decisions back to local programs, federal wildfire operations receive a one-year water-pollution exemption, and North Carolina funds ten coastal-access projects. Different systems, visible dependencies These five developments do not imply one common program: they concern financial leverage, technology diplomacy, early-childhood staffing, wildfire operations and coastal public space. Each makes a dependency easier to see—on connected financing, allied infrastructure, local labor markets, emergency legal authority or durable public assets—and shifts responsibility toward the institutions expected to manage it.",
+    "version": 6,
+    "subject": "risk",
+    "composition": "obligation-perimeter",
+    "signature": "issue:obligation-perimeter",
+    "phrase": "AI finance / connected obligations",
+    "seed": 1484052430,
+    "geometry": "<path d=\"M82 155H260V333H82Z\" fill=\"none\" stroke=\"$ink\" stroke-width=\"18\"/><path d=\"M117 203H225M117 253H225M117 303H190\" stroke=\"$support\" stroke-width=\"12\"/><circle cx=\"404\" cy=\"200\" r=\"62\" fill=\"$accent\"/><circle cx=\"482\" cy=\"405\" r=\"82\" fill=\"none\" stroke=\"$ink\" stroke-width=\"20\"/><path d=\"M260 244H342L378 212M433 256L466 326M298 462H400\" fill=\"none\" stroke=\"$support\" stroke-width=\"14\"/><path d=\"M282 432H322V492H282ZM541 142H565V348H541Z\" fill=\"$ink\"/><path d=\"M565 245H526\" stroke=\"$accent\" stroke-width=\"16\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "01"
+        ],
+        "score": 11
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [
+          "03"
+        ],
+        "score": 3
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 48,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 049: AI finance / connected obligations\"><title>Field Brief · 049 · AI finance / connected obligations</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M82 155H260V333H82Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"18\"/><path d=\"M117 203H225M117 253H225M117 303H190\" stroke=\"#c5ad88\" stroke-width=\"12\"/><circle cx=\"404\" cy=\"200\" r=\"62\" fill=\"#8a2a36\"/><circle cx=\"482\" cy=\"405\" r=\"82\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"20\"/><path d=\"M260 244H342L378 212M433 256L466 326M298 462H400\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"14\"/><path d=\"M282 432H322V492H282ZM541 142H565V348H541Z\" fill=\"#221a14\"/><path d=\"M565 245H526\" stroke=\"#8a2a36\" stroke-width=\"16\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 049 / 2026-11-16</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">AI finance / connected obligations</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
