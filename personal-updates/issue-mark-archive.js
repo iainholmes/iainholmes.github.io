@@ -2207,5 +2207,50 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 049: AI finance / connected obligations\"><title>Field Brief · 049 · AI finance / connected obligations</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><path d=\"M82 155H260V333H82Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"18\"/><path d=\"M117 203H225M117 253H225M117 303H190\" stroke=\"#c5ad88\" stroke-width=\"12\"/><circle cx=\"404\" cy=\"200\" r=\"62\" fill=\"#8a2a36\"/><circle cx=\"482\" cy=\"405\" r=\"82\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"20\"/><path d=\"M260 244H342L378 212M433 256L466 326M298 462H400\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"14\"/><path d=\"M282 432H322V492H282ZM541 142H565V348H541Z\" fill=\"#221a14\"/><path d=\"M565 245H526\" stroke=\"#8a2a36\" stroke-width=\"16\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 049 / 2026-11-16</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">AI finance / connected obligations</text></g></svg>"
+  },
+  "fb:2026-11-17": {
+    "key": "fb",
+    "date": "2026-11-17",
+    "no": "050",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "Commerce moves advanced-chip controls beyond physical shipments to remote computing, while the Small Business Administration expands public leverage for private investment funds. Wireless carriers receive a compliance date for SIM-swap safeguards, Louisiana gains primary authority over coal-ash permits, and a court-appointed restructuring officer takes control of Saint Augustine’s University’s reorganization. Rules for access, capital and control The five developments operate in different systems: semiconductor trade, small-business finance, mobile security, environmental permitting and higher-education restructuring. Each changes who may provide access, deploy capital or exercise authority. Their consequences will depend less on the formal transfer than on licensing, underwriting, authentication, enforcement and the credibility of the plans that follow.",
+    "version": 6,
+    "subject": "capacity",
+    "composition": "spread-facing-measures-aperture-frame-trunk-branches",
+    "signature": "issue:spread-facing-measures-aperture-frame-trunk-branches",
+    "phrase": "Technology controls / contrasting scales",
+    "seed": 2809412246,
+    "geometry": "<g transform=\"translate(60 175) scale(2.4)\"><path d=\"M5 7H95V93H5ZM27 29V72H73V29Z\" fill=\"$ink\" fill-rule=\"evenodd\"/><path d=\"M40 15V85M60 15V85\" stroke=\"$accent\" stroke-width=\"7\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M15 90V15H90M15 50H70V90M50 15V35\" fill=\"none\" stroke=\"$ink\" stroke-width=\"10\"/><circle cx=\"70\" cy=\"90\" r=\"9\" fill=\"$accent\"/></g><path d=\"M315 100V500\" stroke=\"$support\" stroke-width=\"5\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "capacity",
+        "storyNumbers": [
+          "02"
+        ],
+        "score": 15
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01"
+        ],
+        "score": 13
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "03",
+          "05"
+        ],
+        "score": 4
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 49,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 050: Technology controls / contrasting scales\"><title>Field Brief · 050 · Technology controls / contrasting scales</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 175) scale(2.4)\"><path d=\"M5 7H95V93H5ZM27 29V72H73V29Z\" fill=\"#221a14\" fill-rule=\"evenodd\"/><path d=\"M40 15V85M60 15V85\" stroke=\"#8a2a36\" stroke-width=\"7\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M15 90V15H90M15 50H70V90M50 15V35\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><circle cx=\"70\" cy=\"90\" r=\"9\" fill=\"#8a2a36\"/></g><path d=\"M315 100V500\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 050 / 2026-11-17</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Technology controls / contrasting scales</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
