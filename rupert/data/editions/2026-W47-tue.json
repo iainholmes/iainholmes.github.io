@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "id": "2026-W47-tue",
+  "slot": "tuesday",
+  "status": "published",
+  "published_at": "2026-11-17T07:05:17-05:00",
+  "weekend": {
+    "start": "2026-11-21",
+    "end": "2026-11-22"
+  },
+  "flagship": {
+    "place_id": "pilot-mountain-ivy-bluff",
+    "title": "Under the laurels at Ivy Bluff",
+    "standfirst": "Follow the Yadkin’s south bank on a short, rooty out-and-back with no obligation to cross a swollen creek.",
+    "why_this_week": "At Ivy Bluff, mountain laurel and rhododendron frame the south bank of the Yadkin. The red circles lead over sloping ground and across creeks; 1.3 miles out is enough for a 2.6-mile return. Let Rupert sniff on a short leash away from the water’s edge. Turn before any crossing that looks slick or high, and skip the trip if the park posts a closure or the river is rising. Saturday has the better window in the dated forecast. Early Sunday showers are possible, so check the creek approaches and be ready to shorten the walk.",
+    "headline_condition": "Saturday first; check the creeks",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-11-17",
+      "route": {
+        "route_id": "pilot-ivy-bluff-out-back@1",
+        "distance_mi": 2.6,
+        "shape": "out and back",
+        "difficulty": "moderate",
+        "surface": "Natural roots, sloping ground and creek crossings."
+      },
+      "access": {
+        "name": "Ivy Bluff Access parking, 4240 Shoals Road, East Bend",
+        "parking": "Use the designated Ivy Bluff lot off Shoals Road on the south bank. Do not navigate to the summit, Bean Shoals or the separate fishing and paddling lot. November river section hours are 8:30 a.m.–6 p.m.; finish before dark."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          135,
+          155
+        ]
+      },
+      "duration_h": [
+        1.25,
+        2
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water; keep Rupert out of the river and creeks.",
+        "shade": "Wooded slopes with mountain laurel and rhododendron.",
+        "watch_for": [
+          "Slippery roots and steep slopes",
+          "Creek crossings and high water",
+          "Short November daylight"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "photo": {
+      "id": "atlas-plate-dc80e6bfccc2",
+      "alt": "Engraved close portrait of Rupert tilting his head, with a mustard collar on warm cream paper."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "Official access, hours and dog rules",
+        "url": "https://www.ncparks.gov/state-parks/pilot-mountain-state-park",
+        "retrieved": "2026-11-17"
+      },
+      {
+        "kind": "park",
+        "label": "Official trail route and parking",
+        "url": "https://www.ncparks.gov/state-parks/pilot-mountain-state-park/trails",
+        "retrieved": "2026-11-17"
+      },
+      {
+        "kind": "park",
+        "label": "Official park map",
+        "url": "https://www.ncparks.gov/maps/pilot-mountain-state-park-yadkin-river-map/open",
+        "retrieved": "2026-11-17"
+      },
+      {
+        "kind": "park",
+        "label": "Official park news",
+        "url": "https://www.ncparks.gov/state-parks/pilot-mountain-state-park/news",
+        "retrieved": "2026-11-17"
+      },
+      {
+        "kind": "forecast",
+        "label": "National Weather Service — dated weekend forecast",
+        "url": "https://api.weather.gov/gridpoints/RNK/59,22/forecast",
+        "retrieved": "2026-11-17"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "river"
+    ],
+    "experience_id": "ivy-bluff-south-bank-out-back",
+    "experience_basis": {
+      "activity_id": "leashed-river-bluff-hike",
+      "feature_id": "yadkin-south-bank-laurel-slope",
+      "format_id": "red-blaze-out-and-back"
+    },
+    "panels": [
+      {
+        "label": "Use the south-bank lot",
+        "text": "Park at Ivy Bluff Access on Shoals Road. This route stays on the south bank, away from the separate Bean Shoals road and summit traffic."
+      },
+      {
+        "label": "Turn at high water",
+        "text": "Red circles mark the 1.3-mile trail each way. Turn before a slick or swollen crossing; keep Rupert on leash and clear of the riverbank."
+      }
+    ],
+    "qualities": {
+      "activity": "hike",
+      "expected_heat": "unknown"
+    },
+    "artwork": {
+      "image_id": "atlas-plate-dc80e6bfccc2",
+      "brief": "Minimal close portrait after direct review of Plates 010–015 and reference 006. Recent run is mixed: woodland seat, waterside recline, navy play bow, standing meadow, olive seated look-back, fern-trail profile. This close portrait removes horizon and full-body silhouette, using frontal tilted listening head, cream paper and stronger expressive detail concentrated in the eyes, ears and collar. No destination or implied landmark. Distinct scale, posture, negative space and density from all recent full-body designs.",
+      "characters": [
+        "rupert"
+      ]
+    }
+  },
+  "local_trail": {
+    "place_id": "pilot-mountain-ivy-bluff",
+    "title": "Shorten at the first crossing",
+    "line": "Return on the same path if the approach is dry but the crossing is slick.",
+    "snapshot": {
+      "as_of": "2026-11-17",
+      "access": {
+        "name": "Ivy Bluff Access parking, 4240 Shoals Road, East Bend",
+        "parking": "Use the designated Ivy Bluff lot off Shoals Road on the south bank. Do not navigate to the summit, Bean Shoals or the separate fishing and paddling lot. November river section hours are 8:30 a.m.–6 p.m.; finish before dark."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          135,
+          155
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.75
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water; keep Rupert out of the river and creeks.",
+        "shade": "Wooded slopes with mountain laurel and rhododendron.",
+        "watch_for": [
+          "Slippery roots and steep slopes",
+          "Creek crossings and high water",
+          "Short November daylight"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "away_mission": {
+    "place_id": "pilot-mountain-ivy-bluff",
+    "title": "Walk the red circles out and back",
+    "line": "Take the full trail only if access, weather and every crossing are safe.",
+    "snapshot": {
+      "as_of": "2026-11-17",
+      "route": {
+        "route_id": "pilot-ivy-bluff-out-back@1",
+        "distance_mi": 2.6,
+        "shape": "out and back",
+        "difficulty": "moderate",
+        "surface": "Natural roots, sloping ground and creek crossings."
+      },
+      "access": {
+        "name": "Ivy Bluff Access parking, 4240 Shoals Road, East Bend",
+        "parking": "Use the designated Ivy Bluff lot off Shoals Road on the south bank. Do not navigate to the summit, Bean Shoals or the separate fishing and paddling lot. November river section hours are 8:30 a.m.–6 p.m.; finish before dark."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          135,
+          155
+        ]
+      },
+      "duration_h": [
+        1.25,
+        2
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water; keep Rupert out of the river and creeks.",
+        "shade": "Wooded slopes with mountain laurel and rhododendron.",
+        "watch_for": [
+          "Slippery roots and steep slopes",
+          "Creek crossings and high water",
+          "Short November daylight"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "wildcard": {
+    "place_id": "pilot-mountain-ivy-bluff",
+    "title": "Postpone for high water",
+    "line": "Do not divert to the north-bank closure or attempt a river crossing.",
+    "snapshot": {
+      "as_of": "2026-11-17",
+      "access": {
+        "name": "Ivy Bluff Access parking, 4240 Shoals Road, East Bend",
+        "parking": "Use the designated Ivy Bluff lot off Shoals Road on the south bank. Do not navigate to the summit, Bean Shoals or the separate fishing and paddling lot. November river section hours are 8:30 a.m.–6 p.m.; finish before dark."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          135,
+          155
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.75
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet; pets stay outside buildings.",
+        "water": "Carry drinking water; keep Rupert out of the river and creeks.",
+        "shade": "Wooded slopes with mountain laurel and rhododendron.",
+        "watch_for": [
+          "Slippery roots and steep slopes",
+          "Creek crossings and high water",
+          "Short November daylight"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "text": "Let Rupert choose a few sniffing pauses without leaving the marked trail or disturbing wildlife.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "Record where Rupert sniffed and whether the creek approaches made you turn back."
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-11-17T06:30:37-05:00",
+    "checked_at": "2026-11-17T12:04:29.269Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RNK/59,22/forecast",
+      "issued_at": "2026-11-17T11:30:37.000Z",
+      "retrieved_at": "2026-11-17T12:04:29.269Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "Partly sunny, with a high near 67."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "A slight chance of rain showers before 7am. Partly sunny, with a high near 71."
+      }
+    ],
+    "summary": "Saturday: Partly sunny, with a high near 67. Sunday: A slight chance of rain showers before 7am. Partly sunny, with a high near 71. Saturday night: A slight chance of rain showers after 7pm. Mostly cloudy, with a low around 45. Sunday night: Partly cloudy, with a low around 45.",
+    "alerts": [],
+    "alerts_checked_at": "2026-11-17T12:04:29.269Z",
+    "pivot": {
+      "if": "Thunder, unsafe footing, high water, strong winds or park closure",
+      "note": "Postpone and recheck the official forecast and park status. Do not substitute an exposed outdoor outing."
+    },
+    "trail_note": "After rain, roots, rocks and creek approaches may be slick. Turn back before high or fast water or uncertain footing. Keep Rupert on a short leash away from the river’s edge."
+  },
+  "practical": {
+    "best_window": "Favor late Saturday morning, after checking the latest forecast and park status. Allow up to two hours and return before dusk. Treat Sunday as conditional on safe footing and crossings after possible early showers.",
+    "fees": "Free ordinary trail access.",
+    "bring": [
+      "Water and bowl",
+      "Six-foot leash and waste bags",
+      "Traction shoes",
+      "Official map offline"
+    ],
+    "closures_checked": "2026-11-17",
+    "closures_note": "Rechecked official park home, trail and news pages and reviewed the official river map. Ivy Bluff’s signed south-bank parking is at 4240 Shoals Road, East Bend, GPS 36.2537,-80.5087. No posted Ivy Bluff closure identified. November River Section hours 8:30 a.m.–6 p.m. The moderate hiking-only red-circle trail runs 1.3 miles each way across rooted slopes and creek crossings. Use an attended leash no longer than six feet and keep pets out of buildings. Stay clear of the riverbank and do not use the summit or the separate Bean Shoals access."
+  }
+}

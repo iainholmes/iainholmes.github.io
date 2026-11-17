@@ -237,6 +237,24 @@
       "official_url": "https://www.ncparks.gov/state-parks/mayo-river-state-park",
       "discrepancy": false,
       "note": "Current official home, access page, trail page, news and map reviewed. No posted closure for Mayo Mountain access found. Main access GPS 36.4391,-79.9475, 500 Old Mayo Park Road. Start at picnic shelter parking. Blue two-mile easy loop with red half-mile inner loop. Free ordinary day use, use earlier 5 p.m. access close despite general 6 p.m. park close. Attended leash up to six feet; no pets inside buildings. Stay on trail; other river accesses are outside this itinerary."
+    },
+    {
+      "place_id": "pilot-mountain-ivy-bluff",
+      "status": "open",
+      "checked": "2026-11-17",
+      "checked_at": "2026-11-17T12:00:28+00:00",
+      "official_url": "https://www.ncparks.gov/state-parks/pilot-mountain-state-park",
+      "discrepancy": false,
+      "note": "Current official home, news, trails and Yadkin River map reviewed. The south-bank Ivy Bluff lot is at 4240 Shoals Road, East Bend, public GPS 36.2537,-80.5087. No posted closure for Ivy Bluff identified. Summit road notices and the north-bank Bean Shoals crossing are outside this route. November river-section hours 8:30 a.m.–6 p.m. Hiking-only red circles, 1.3 miles each way, rooted slopes and creek crossings. Attended leash up to six feet, no pets inside buildings. Turn back instead of crossing high water or unsafe footing."
+    },
+    {
+      "place_id": "pilot-mountain-ivy-bluff",
+      "status": "open",
+      "checked": "2026-11-17",
+      "checked_at": "2026-11-17T12:04:40+00:00",
+      "official_url": "https://www.ncparks.gov/state-parks/pilot-mountain-state-park",
+      "discrepancy": false,
+      "note": "Rechecked official park home, trail and news pages and reviewed the official river map. Ivy Bluff’s signed south-bank parking is at 4240 Shoals Road, East Bend, GPS 36.2537,-80.5087. No posted Ivy Bluff closure identified. November River Section hours 8:30 a.m.–6 p.m. The moderate hiking-only red-circle trail runs 1.3 miles each way across rooted slopes and creek crossings. Use an attended leash no longer than six feet and keep pets out of buildings. Stay clear of the riverbank and do not use the summit or the separate Bean Shoals access."
     }
   ],
   "official_hosts": [

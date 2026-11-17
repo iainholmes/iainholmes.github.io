@@ -409,6 +409,32 @@
         "composition_key": "side-stride-nose-low-birch-fern-slate-bank-20261112"
       },
       "plate_no": 15
+    },
+    {
+      "id": "atlas-plate-dc80e6bfccc2",
+      "file": "atlas-plate-dc80e6bfccc2",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1122,
+      "height": 1402,
+      "widths": [
+        800,
+        1122
+      ],
+      "alt": "Engraved close portrait of Rupert tilting his head, with a mustard collar on warm cream paper.",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "caption": "TRA Plate No. 016",
+      "source_note": "Original native ChatGPT editorial illustration generated and visually reviewed 17 November 2026; independent of destination.",
+      "generation": {
+        "owner": "2026-W47-tue/flagship",
+        "created_at": "2026-11-17",
+        "style_version": "atlas-engraved-3",
+        "composition_key": "listening-close-bust-warm-ecru-20261117"
+      },
+      "plate_no": 16
     }
   ]
 }

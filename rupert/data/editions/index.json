@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "57b14f74e022b487",
+  "revision": "ea8449d5e09248c5",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -754,6 +754,56 @@
       ],
       "photo_id": "atlas-plate-bfaebd8d2796",
       "path": "data/editions/2026-W46-thu.json"
+    },
+    {
+      "id": "2026-W47-tue",
+      "slot": "tuesday",
+      "status": "published",
+      "published_at": "2026-11-17T07:05:17-05:00",
+      "weekend": {
+        "start": "2026-11-21",
+        "end": "2026-11-22"
+      },
+      "title": "Under the laurels at Ivy Bluff",
+      "place_id": "pilot-mountain-ivy-bluff",
+      "experience_key": "ivy-bluff-south-bank-out-back",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "Under the laurels at Ivy Bluff",
+          "place_id": "pilot-mountain-ivy-bluff",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "river"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "pilot-mountain-ivy-bluff"
+      ],
+      "place_roles": [
+        {
+          "place_id": "pilot-mountain-ivy-bluff",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-dc80e6bfccc2",
+      "path": "data/editions/2026-W47-tue.json"
     }
   ]
 }

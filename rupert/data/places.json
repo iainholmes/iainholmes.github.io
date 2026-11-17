@@ -774,6 +774,54 @@
         "checked": "2026-11-12",
         "source": "https://www.ncparks.gov/state-parks/mayo-river-state-park"
       }
+    },
+    {
+      "id": "pilot-mountain-ivy-bluff",
+      "name": "Pilot Mountain State Park — Ivy Bluff Trail",
+      "short_name": "Ivy Bluff",
+      "kind": "trail",
+      "region": "Yadkin County",
+      "access": {
+        "name": "Ivy Bluff Access parking, 4240 Shoals Road, East Bend",
+        "lat": 36.2537,
+        "lng": -80.5087,
+        "coords_verified": true,
+        "coords_checked": "2026-11-17",
+        "coords_source": "NC State Parks official Ivy Bluff Access GPS; official Yadkin River Section map identifies the designated lot."
+      },
+      "dog_policy": "Attended leash no longer than six feet; pets stay outside buildings.",
+      "routes": [
+        {
+          "route_id": "pilot-ivy-bluff-out-back@1",
+          "distance_mi": 2.6,
+          "shape": "out and back",
+          "difficulty": "moderate",
+          "surface": "Natural roots, sloping ground and creek crossings."
+        }
+      ],
+      "links": [
+        {
+          "label": "Official park information",
+          "url": "https://www.ncparks.gov/state-parks/pilot-mountain-state-park"
+        },
+        {
+          "label": "Official trail information",
+          "url": "https://www.ncparks.gov/state-parks/pilot-mountain-state-park/trails"
+        },
+        {
+          "label": "Official river section map",
+          "url": "https://www.ncparks.gov/maps/pilot-mountain-state-park-yadkin-river-map/open"
+        }
+      ],
+      "tags": [
+        "woodland",
+        "river"
+      ],
+      "closure": {
+        "status": "open",
+        "checked": "2026-11-17",
+        "source": "https://www.ncparks.gov/state-parks/pilot-mountain-state-park"
+      }
     }
   ]
 }
