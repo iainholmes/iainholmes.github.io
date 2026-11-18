@@ -13,9 +13,14 @@ const disclosure = (label, body) => `<details class="context"><summary>${escape(
 // Canonical publication content plus immutable artwork pins establish releases.
 // Embed complete, validated source SVGs using existing self-hosted fonts.
 const sync = createRequire(import.meta.url)('../publications.js');
-const publicationData = await sync.snapshot(path => readFile(new URL(path.slice(1),new URL('../../',import.meta.url)),'utf8'));
+const retainedSnapshot = process.argv.includes('--retained-snapshot');
+// Validation and visual-only builds reproduce the committed fallback verbatim.
+// Ordinary builds still refresh through the canonical, verified adapters.
+const publicationData = retainedSnapshot
+  ? JSON.parse(await readFile(new URL('publication-snapshot.json',root),'utf8'))
+  : await sync.snapshot(path => readFile(new URL(path.slice(1),new URL('../../',import.meta.url)),'utf8'));
 if(Object.keys(publicationData.publications).length!==3)throw Error('Missing verified Periodicals release');
-await writeFile(new URL('publication-snapshot.json',root),JSON.stringify(publicationData,null,2)+'\n');
+if(!retainedSnapshot)await writeFile(new URL('publication-snapshot.json',root),JSON.stringify(publicationData,null,2)+'\n');
 const covers = new Map(Object.entries(publicationData.publications).map(([id,e])=>[id,e.artwork]));
 const version = createHash('sha256').update(await readFile(new URL('desk.js',root))).update(await readFile(new URL('publications.js',root))).update(await readFile(new URL('desk.css',root))).digest('hex').slice(0,12);
 

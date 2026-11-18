@@ -265,7 +265,7 @@ check(len(presentation.faces) == 7 and all(value == {'collection','authentic'} f
 check('[hidden] { display:none!important }' in css, 'Inactive presentations must leave layout and accessibility navigation')
 
 before = source
-subprocess.run(['node', str(ROOT / '_tools/build.mjs')], check=True, capture_output=True)
+subprocess.run(['node', str(ROOT / '_tools/build.mjs'), '--retained-snapshot'], check=True, capture_output=True)
 check((ROOT / 'index.html').read_text() == before, 'Committed HTML is out of sync with configuration')
 changed = subprocess.check_output(['git', 'diff', '--name-only', 'origin/master', '--'], cwd=REPO, text=True).splitlines()
 untracked = subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard'], cwd=REPO, text=True).splitlines()
