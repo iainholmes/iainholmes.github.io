@@ -7,7 +7,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: ih-house-divider-validation
+  group: ih-house-divider-validation-${{ github.sha }}
   cancel-in-progress: true
 jobs:
   desk-divider:
