@@ -10,12 +10,16 @@ concurrency:
   cancel-in-progress: true
 jobs:
   source:
+    strategy:
+      fail-fast: false
+      matrix:
+        source: [baseline, proposed]
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '502ee8984d2392ff2eab0f651acf47be809bc180'
+          ref: ${{ matrix.source == 'baseline' && 'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d' || '502ee8984d2392ff2eab0f651acf47be809bc180' }}
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
@@ -24,22 +28,25 @@ jobs:
       - name: Run every relevant existing source suite and preserve every failure
         env:
           IH_EVIDENCE: ${{ runner.temp }}/ih-source-evidence
+          IH_SOURCE: ${{ matrix.source }}
         run: |
           node <<'SOURCE_JS'
           const fs=require('node:fs'),cp=require('node:child_process'),path=require('node:path');
           fs.mkdirSync(process.env.IH_EVIDENCE,{recursive:true});
+          // Use the identical current Heron mock for both product revisions; no baseline product changes.
+          if(process.env.IH_SOURCE==='baseline')fs.writeFileSync('scripts/test_periodicals.cjs',cp.execFileSync('git',['show','502ee8984d2392ff2eab0f651acf47be809bc180:scripts/test_periodicals.cjs'],{encoding:'utf8'}));
           const commands=[['desk tests',['node','--test','desk/_tools/test-runtime.cjs','desk/_tools/test-publications.cjs','desk/_tools/test-publication-titles.cjs'],'.'],
           ...['test_periodicals','test_publishing','test_hub_metadata','test_issue_marks','test_field_brief_order','test_field_brief_operations','test_workbook_cadence','test_workbook_learning'].map(n=>[n,['node','scripts/'+n+'.cjs'],'.']),
           ...JSON.parse(fs.readFileSync('rupert/package.json','utf8')).scripts.test.split(' && ').map(cmd=>['Atlas '+cmd,cmd.split(' '),'rupert'])];
           const results=[];
           for(const [name,args,cwd]of commands){const r=cp.spawnSync(args[0],args.slice(1),{cwd,encoding:'utf8',maxBuffer:16*1024*1024});const output=(r.stdout||'')+(r.stderr||'');console.log(name+': '+r.status);if(r.status!==0)console.log(output.slice(-6000));else console.log(output.split('\n').filter(x=>/passed|PASS|assertions|# pass/.test(x)).slice(-4).join('\n'));results.push({name,exit:r.status,tail:output.slice(-6000)});}
-          fs.writeFileSync(path.join(process.env.IH_EVIDENCE,'source-results.json'),JSON.stringify({source:'502ee8984d2392ff2eab0f651acf47be809bc180',results},null,2));
+          fs.writeFileSync(path.join(process.env.IH_EVIDENCE,'source-results.json'),JSON.stringify({source:process.env.IH_SOURCE,sha:cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),results},null,2));
           if(results.some(r=>r.exit!==0))process.exitCode=1;
           SOURCE_JS
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ih-house-source-evidence
+          name: ih-house-source-${{ matrix.source }}
           path: ${{ runner.temp }}/ih-source-evidence
           retention-days: 3
   chromium:
@@ -124,6 +131,9 @@ jobs:
             if(await page.locator('.tour-skip').isVisible())await page.locator('.tour-skip').click();
            }
            await page.locator(item.target).first().waitFor({state:'visible'});
+           // Results generate new font faces and navigation rows; settle the same content before comparison.
+           await page.evaluate(async()=>{await document.fonts.ready;window.scrollTo(0,0);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
+           if(item.id==='advisor')await page.waitForFunction(()=>!document.getAnimations().some(a=>a.playState==='running'));
           }
           async function setMode(page,item,mode){
            if(mode==='day'||mode==='night'){await page.locator('button[data-mode="'+mode+'"]').first().click();await page.waitForFunction(m=>document.documentElement.dataset.mode===m,mode);}
