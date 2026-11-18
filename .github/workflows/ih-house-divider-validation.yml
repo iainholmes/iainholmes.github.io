@@ -26,7 +26,7 @@ jobs:
         run: |
           test "$(git rev-parse HEAD)" = "fb6f83f53b81eced6793cf9adba5df460e5fecae"
           node --test desk/_tools/test-runtime.cjs desk/_tools/test-publications.cjs desk/_tools/test-publication-titles.cjs
-          python3 -m pip install --quiet Pillow
+          python3 -m pip install --quiet Pillow fonttools Brotli
           python3 desk/_tools/validate.py
       - name: Install existing pinned browser runtime
         if: always()
@@ -41,11 +41,11 @@ jobs:
         run: |
           mkdir -p "$IH_EVIDENCE"
           python3 -m http.server 8765 --bind 127.0.0.1 > "$IH_EVIDENCE/preview.log" 2>&1 &
+          curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://127.0.0.1:8765/desk/
           node <<'JS'
           const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto');
           const {chromium}=require(process.env.IH_PLAYWRIGHT);
           (async()=>{
-            for(let attempt=0;;attempt++){try{const r=await fetch('http://127.0.0.1:8765/desk/');assert(r.ok);break;}catch(e){if(attempt>=30)throw e;await new Promise(r=>setTimeout(r,300));}}
             const browser=await chromium.launch({headless:true}),results=[];
             try{
               for(const size of [{name:'macbook-air',width:1710,height:1107},{name:'tablet',width:1024,height:900},{name:'iphone',width:390,height:844},{name:'landscape',width:844,height:390}]){
