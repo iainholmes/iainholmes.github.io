@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '569e9fe08bb02c7607a14a0ba5cdd525848fe9cf'
+          ref: 'fb6f83f53b81eced6793cf9adba5df460e5fecae'
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
@@ -24,15 +24,17 @@ jobs:
           node-version: '22'
       - name: Verify exact source and existing desk tests
         run: |
-          test "$(git rev-parse HEAD)" = "569e9fe08bb02c7607a14a0ba5cdd525848fe9cf"
+          test "$(git rev-parse HEAD)" = "fb6f83f53b81eced6793cf9adba5df460e5fecae"
           node --test desk/_tools/test-runtime.cjs desk/_tools/test-publications.cjs desk/_tools/test-publication-titles.cjs
           python3 -m pip install --quiet Pillow
           python3 desk/_tools/validate.py
       - name: Install existing pinned browser runtime
+        if: always()
         run: |
           npm install --prefix "$RUNNER_TEMP/ih-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
           "$RUNNER_TEMP/ih-browser/node_modules/.bin/playwright" install --with-deps chromium
       - name: Serve unchanged source and capture responsive evidence
+        if: always()
         env:
           IH_PLAYWRIGHT: ${{ runner.temp }}/ih-browser/node_modules/playwright
           IH_EVIDENCE: ${{ runner.temp }}/ih-house-evidence
@@ -60,15 +62,15 @@ jobs:
                     await page.locator('#'+id+' .section-heading').scrollIntoViewIfNeeded();
                     const name=size.name+'-'+mode+'-'+id+'.png',path=process.env.IH_EVIDENCE+'/'+name;
                     await page.screenshot({path,animations:'disabled'});
-                    const bytes=fs.readFileSync(path);results.push({source:'569e9fe08bb02c7607a14a0ba5cdd525848fe9cf',viewport:size,mode,chapter:id,file:name,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics});
+                    const bytes=fs.readFileSync(path);results.push({source:'fb6f83f53b81eced6793cf9adba5df460e5fecae',viewport:size,mode,chapter:id,file:name,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics});
                   }
                 }
                 await page.locator('#reveal-advisor').click();await page.waitForFunction(()=>document.getElementById('reveal-advisor').getAttribute('aria-expanded')==='true');
                 assert(await page.locator('#authentic-advisor').isVisible());await page.locator('#reveal-advisor').click();assert(!(await page.locator('#authentic-advisor').isVisible()));
                 await context.close();
               }
-            }finally{await browser.close();fs.writeFileSync(process.env.IH_EVIDENCE+'/manifest.json',JSON.stringify({source:'569e9fe08bb02c7607a14a0ba5cdd525848fe9cf',results},null,2));}
-            console.log(JSON.stringify({result:'passed',source:'569e9fe08bb02c7607a14a0ba5cdd525848fe9cf',screenshots:results.length}));
+            }finally{await browser.close();fs.writeFileSync(process.env.IH_EVIDENCE+'/manifest.json',JSON.stringify({source:'fb6f83f53b81eced6793cf9adba5df460e5fecae',results},null,2));}
+            console.log(JSON.stringify({result:'passed',source:'fb6f83f53b81eced6793cf9adba5df460e5fecae',screenshots:results.length}));
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
       - uses: actions/upload-artifact@v4
