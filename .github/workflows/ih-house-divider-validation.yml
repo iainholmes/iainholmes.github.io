@@ -10,13 +10,13 @@ concurrency:
   group: ih-house-divider-validation
   cancel-in-progress: false
 jobs:
-  desk-baseline:
+  desk-divider:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '37b115f4cbee8943959821c239f9899fcdb64343'
+          ref: '5fef4c90bcdfeba816ce2518ed54ee7aa65f555c'
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
@@ -24,7 +24,7 @@ jobs:
           node-version: '22'
       - name: Verify exact source and existing desk tests
         run: |
-          test "$(git rev-parse HEAD)" = "37b115f4cbee8943959821c239f9899fcdb64343"
+          test "$(git rev-parse HEAD)" = "5fef4c90bcdfeba816ce2518ed54ee7aa65f555c"
           node --test desk/_tools/test-runtime.cjs desk/_tools/test-publications.cjs desk/_tools/test-publication-titles.cjs
           python3 -m pip install --quiet Pillow fonttools Brotli
           python3 desk/_tools/validate.py
@@ -40,50 +40,66 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/ih-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
           "$RUNNER_TEMP/ih-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - name: Serve unchanged source and capture responsive evidence
+      - name: Compare exact before/after source and responsive rendering
         if: always()
         env:
           IH_PLAYWRIGHT: ${{ runner.temp }}/ih-browser/node_modules/playwright
           IH_EVIDENCE: ${{ runner.temp }}/ih-house-evidence
         run: |
           mkdir -p "$IH_EVIDENCE"
+          git worktree add --detach "$RUNNER_TEMP/ih-before" 5eb4d812dd7f9647613da373e1bba261e9bbb0de
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory "$RUNNER_TEMP/ih-before" > "$IH_EVIDENCE/before-preview.log" 2>&1 &
           python3 -m http.server 8765 --bind 127.0.0.1 > "$IH_EVIDENCE/preview.log" 2>&1 &
+          curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://127.0.0.1:8766/desk/
+          node -e 'const cp=require("node:child_process"),assert=require("node:assert/strict");const base="5eb4d812dd7f9647613da373e1bba261e9bbb0de";const paths=cp.execFileSync("git",["diff","--name-only",base,"HEAD"],{encoding:"utf8"}).trim().split("\n");assert.deepEqual(paths.sort(),["desk/HOUSE-DIVIDER-SYSTEM.md","desk/desk.css","desk/index.html"].sort());const before=cp.execFileSync("git",["show",base+":desk/index.html"],{encoding:"utf8"});const after=require("node:fs").readFileSync("desk/index.html","utf8");const clean=s=>s.replace(/((?:publications\\.js|desk\\.js|desk\\.css)\\?v=)[a-f0-9]{12}/g,"$1CACHE");assert.equal(clean(after),clean(before),"HTML, publication metadata and artwork must be unchanged");console.log("Only three scoped files; served HTML differs only in asset versions");'
+
           curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://127.0.0.1:8765/desk/
           node <<'JS'
           const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto');
           const {chromium}=require(process.env.IH_PLAYWRIGHT);
           (async()=>{
-            const browser=await chromium.launch({headless:true}),results=[];
-            try{
-              for(const size of [{name:'macbook-air',width:1710,height:1107},{name:'tablet',width:1024,height:900},{name:'iphone',width:390,height:844},{name:'landscape',width:844,height:390}]){
-                const context=await browser.newContext({viewport:{width:size.width,height:size.height},reducedMotion:'reduce'});
-                const page=await context.newPage();
-                await page.goto('http://127.0.0.1:8765/desk/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
-                assert.equal(await page.locator('.editorial-chapter').count(),3);assert.equal(await page.locator('[data-reveal]').count(),7);
-                for(const mode of ['day','night']){
-                  if(await page.evaluate(()=>document.documentElement.dataset.appearance)!==mode)await page.locator('.appearance-switch').click();
-                  await page.waitForFunction(m=>document.documentElement.dataset.appearance===m,mode);
-                  const metrics=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,headings:[...document.querySelectorAll('.section-heading h2')].map(e=>e.textContent)}));
-                  assert(metrics.scroll<=metrics.width+1,JSON.stringify(metrics));
-                  for(const id of ['research','reading','profile']){
-                    await page.locator('#'+id+' .section-heading').scrollIntoViewIfNeeded();
-                    const name=size.name+'-'+mode+'-'+id+'.png',path=process.env.IH_EVIDENCE+'/'+name;
-                    await page.screenshot({path,animations:'disabled'});
-                    const bytes=fs.readFileSync(path);results.push({source:'37b115f4cbee8943959821c239f9899fcdb64343',viewport:size,mode,chapter:id,file:name,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics});
-                  }
-                }
-                await page.locator('#reveal-advisor').click();await page.waitForFunction(()=>document.getElementById('reveal-advisor').getAttribute('aria-expanded')==='true');
-                assert(await page.locator('#authentic-advisor').isVisible());await page.locator('#reveal-advisor').click();assert(!(await page.locator('#authentic-advisor').isVisible()));
-                await context.close();
+           const browser=await chromium.launch({headless:true}),results=[];
+           const positions=()=>[...document.querySelectorAll('.section-heading h2,.work-item,.desk-toolbar,.desk-header')].map(e=>{const r=e.getBoundingClientRect();return {id:e.id||e.className,x:r.x,y:r.y+scrollY,width:r.width,height:r.height};});
+           const mode=async(page,value)=>{if(await page.evaluate(()=>document.documentElement.dataset.appearance)!==value)await page.locator('.appearance-switch').click();await page.waitForFunction(m=>document.documentElement.dataset.appearance===m,value);};
+           try{
+            for(const size of [{name:'macbook-air',width:1710,height:1107},{name:'tablet',width:1024,height:900},{name:'iphone',width:390,height:844},{name:'landscape',width:844,height:390}]){
+             const context=await browser.newContext({viewport:{width:size.width,height:size.height},reducedMotion:'reduce',hasTouch:size.width===390||size.width===844});
+             const before=await context.newPage(),after=await context.newPage();
+             for(const [page,port]of [[before,8766],[after,8765]]){await page.goto('http://127.0.0.1:'+port+'/desk/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);}
+             for(const appearance of ['day','night']){
+              await mode(before,appearance);await mode(after,appearance);
+              const a=await before.evaluate(positions),b=await after.evaluate(positions);assert.equal(a.length,b.length);
+              for(let i=0;i<a.length;i++)for(const k of ['x','y','width','height'])assert(Math.abs(a[i][k]-b[i][k])<.1,size.name+' '+appearance+' preserved '+a[i].id+' '+k);
+              const metrics=await after.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,rules:[...document.querySelectorAll('.section-heading h2')].map(e=>{const s=getComputedStyle(e,'::after');return{height:s.height,pointer:s.pointerEvents,clip:s.clipPath,background:s.backgroundImage};})}));
+              assert(metrics.scroll<=metrics.width+1);assert(metrics.rules.every(r=>r.height==='4px'&&r.pointer==='none'&&r.clip.startsWith('polygon(')));
+              for(const id of ['research','reading','profile'])for(const [label,page]of [['before',before],['after',after]]){
+               await page.locator('#'+id+' .section-heading').scrollIntoViewIfNeeded();
+               const name=size.name+'-'+appearance+'-'+id+'-'+label+'.png',path=process.env.IH_EVIDENCE+'/'+name;
+               await page.screenshot({path,animations:'disabled'});const bytes=fs.readFileSync(path);
+               results.push({source:label==='before'?'5eb4d812dd7f9647613da373e1bba261e9bbb0de':'5fef4c90bcdfeba816ce2518ed54ee7aa65f555c',viewport:size,appearance,chapter:id,state:label,file:name,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics});
               }
-            }finally{await browser.close();fs.writeFileSync(process.env.IH_EVIDENCE+'/manifest.json',JSON.stringify({source:'37b115f4cbee8943959821c239f9899fcdb64343',results},null,2));}
-            console.log(JSON.stringify({result:'passed',source:'37b115f4cbee8943959821c239f9899fcdb64343',screenshots:results.length}));
+             }
+             for(const id of ['advisor','qst','field-brief','loblolly','workbook','rupert','portfolio']){
+              await after.locator('#reveal-'+id).click();await after.waitForFunction(id=>document.getElementById('reveal-'+id).getAttribute('aria-expanded')==='true',id);
+              assert(await after.locator('#authentic-'+id).isVisible());await after.locator('#reveal-'+id).click();assert(!(await after.locator('#authentic-'+id).isVisible()));
+             }
+             for(const chapter of ['research','reading','profile']){
+              await after.locator('.desk-nav a[href="#'+chapter+'"]').click();
+              await after.waitForFunction(id=>document.getElementById(id).dataset.complete==='true',chapter);
+              const colors=await after.locator('#'+chapter).evaluate(e=>{const s=getComputedStyle(e);return{actual:s.getPropertyValue('--ih-divider-ink').trim(),expected:s.getPropertyValue('--chapter-ink').trim()};});assert.equal(colors.actual,colors.expected);
+              await after.locator('[data-return="'+chapter+'"]').click();
+             }
+             await after.emulateMedia({forcedColors:'active'});assert.equal(await after.locator('.section-heading h2').first().evaluate(e=>getComputedStyle(e,'::after').pointerEvents),'none');
+             await context.close();
+            }
+           }finally{await browser.close();fs.writeFileSync(process.env.IH_EVIDENCE+'/manifest.json',JSON.stringify({before:'5eb4d812dd7f9647613da373e1bba261e9bbb0de',after:'5fef4c90bcdfeba816ce2518ed54ee7aa65f555c',results},null,2));}
+           console.log(JSON.stringify({result:'passed',screenshots:results.length,unalteredLayout:true,allSevenReveals:true,allChapterPalettes:true}));
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ih-house-divider-baseline
+          name: ih-house-divider-desk
           path: ${{ runner.temp }}/ih-house-evidence
           retention-days: 3
           if-no-files-found: error
