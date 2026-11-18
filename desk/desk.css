@@ -1184,7 +1184,7 @@ body { background-image:repeating-linear-gradient(0deg,transparent 0 5px,#976144
   --ih-divider-ink:var(--ink);
   --ih-divider-terminal:var(--accent);
 }
-:root .editorial-chapter[data-complete="true"] {
+:root[data-appearance] .editorial-chapter[data-complete="true"] {
   --ih-divider-ink:var(--chapter-ink);
   --ih-divider-terminal:var(--chapter-accent);
 }
