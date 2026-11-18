@@ -2252,5 +2252,62 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 050: Technology controls / contrasting scales\"><title>Field Brief · 050 · Technology controls / contrasting scales</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 175) scale(2.4)\"><path d=\"M5 7H95V93H5ZM27 29V72H73V29Z\" fill=\"#221a14\" fill-rule=\"evenodd\"/><path d=\"M40 15V85M60 15V85\" stroke=\"#8a2a36\" stroke-width=\"7\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M15 90V15H90M15 50H70V90M50 15V35\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><circle cx=\"70\" cy=\"90\" r=\"9\" fill=\"#8a2a36\"/></g><path d=\"M315 100V500\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 050 / 2026-11-17</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Technology controls / contrasting scales</text></g></svg>"
+  },
+  "fb:2026-11-18": {
+    "key": "fb",
+    "date": "2026-11-18",
+    "no": "051",
+    "identity": "Field Brief",
+    "theme": "complements",
+    "framing": "Britain's inflation release separates fuel pressure from steadier underlying prices. U.S. officials address a widening series of technology outages, Treasury finalizes retirement-enrollment rules, Voyager 1 reaches a one-light-day milestone, and North Carolina assigns more electricity-system risk to large data centers while approving household rate increases. Different systems, different obligations These developments have different causes and time horizons. Britain's price release measures a current household cost squeeze; U.S. outage explanations remain provisional; retirement rules govern how defaults become payroll actions; Voyager makes a physical communication limit visible; and North Carolina's utility orders allocate investment costs and risk. Their practical tests are correspondingly specific: persistent inflation beyond fuel, documented incident findings, accurate enrollment and opt-out systems, reliable delayed spacecraft commands, and enforceable large-load contracts. A policy announcement, a technical explanation and a calculated milestone each require a different kind of verification.",
+    "version": 6,
+    "subject": "evidence",
+    "composition": "spread-unequal-dialogue-disclosure-ledger-power-junction",
+    "signature": "issue:spread-unequal-dialogue-disclosure-ledger-power-junction",
+    "phrase": "Prices / capacity & comparison",
+    "seed": 3789712898,
+    "geometry": "<g transform=\"translate(65 115) scale(3.15)\"><path d=\"M8 8H92V92H8Z\" fill=\"$ink\"/><path d=\"M22 25H78M22 45H78M22 65H48\" stroke=\"$paper\" stroke-width=\"7\"/><path d=\"M60 64H96V96H60Z\" fill=\"$accent\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"$ink\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"$accent\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"$support\" stroke-width=\"10\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "01",
+          "02",
+          "05"
+        ],
+        "score": 27
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [],
+        "score": 12
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 50,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 051: Prices / capacity &amp; comparison\"><title>Field Brief · 051 · Prices / capacity &amp; comparison</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M8 8H92V92H8Z\" fill=\"#221a14\"/><path d=\"M22 25H78M22 45H78M22 65H48\" stroke=\"#f1e6d0\" stroke-width=\"7\"/><path d=\"M60 64H96V96H60Z\" fill=\"#8a2a36\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"#221a14\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"#8a2a36\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"10\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 051 / 2026-11-18</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Prices / capacity &amp; comparison</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

@@ -2898,6 +2898,68 @@
         "seed": 616186632,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A petition ascends institutional steps\"><title>Court-appointed restructuring officer takes control of Saint Augustine’s reorganization</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-17-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-17-05)\"><path d=\"M70 535V430H240V335H410V240H580V145H730V535Z\" fill=\"#1b4a6b\"/><path d=\"M106 140H302V290H106Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M138 184H267M138 226H241\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M330 295L410 200L489 238\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/></g></svg>"
       }
+    },
+    "2026-11-18": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-18",
+        "number": "01",
+        "category": "Economy · United Kingdom inflation",
+        "topic": "energy",
+        "title": "UK inflation reaches 3.6% as motor fuels lift transport costs",
+        "composition": "fuel-price-basket",
+        "signature": "plate:fuel-price-basket",
+        "seed": 4145608434,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A fuel pump stands beside a household price basket\"><title>UK inflation reaches 3.6% as motor fuels lift transport costs</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-18-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-18-01)\"><path d=\"M100 165H310V515H100Z\" fill=\"#1b4a6b\"/><path d=\"M125 205H285V305H125Z\" fill=\"#f4ead7\"/><path d=\"M310 245H360V425Q360 465 400 425V210L365 160\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"24\"/><path d=\"M460 355H725L680 525H505Z\" fill=\"#7c5a3e\"/><path d=\"M505 355L550 265M680 355L635 265\" stroke=\"#2c241d\" stroke-width=\"20\"/><path d=\"M525 395H665M535 455H650\" stroke=\"#f4ead7\" stroke-width=\"17\"/><circle cx=\"595\" cy=\"155\" r=\"68\" fill=\"#c98a12\"/><path d=\"M565 175L595 135L625 175\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"18\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-18",
+        "number": "02",
+        "category": "Technology · operational resilience",
+        "topic": "research",
+        "title": "Officials report no evidence linking a widening series of technology outages",
+        "composition": "separate-service-outages",
+        "signature": "plate:separate-service-outages",
+        "seed": 2078098342,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Separate service systems show distinct interruptions without a common-cause connection\"><title>Officials report no evidence linking a widening series of technology outages</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-18-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-18-02)\"><path d=\"M75 100H285V325H75ZM485 300H715V535H485Z\" fill=\"#1b4a6b\"/><path d=\"M110 150H250M110 220H250M520 350H680M520 420H680\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M145 365V520H355M420 255V110H650\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M245 490L295 550M295 490L245 550M540 80L595 140M595 80L540 140\" stroke=\"#c4452c\" stroke-width=\"21\"/><path d=\"M365 240V330M365 375V420\" stroke=\"#c98a12\" stroke-width=\"18\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-18",
+        "number": "03",
+        "category": "U.S. policy · retirement saving",
+        "topic": "research",
+        "title": "Treasury finalizes automatic-enrollment rules for covered retirement plans",
+        "composition": "retirement-default-choice",
+        "signature": "plate:retirement-default-choice",
+        "seed": 459766259,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A payroll stream branches toward retirement saving and an affirmative alternative\"><title>Treasury finalizes automatic-enrollment rules for covered retirement plans</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-18-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-18-03)\"><path d=\"M70 165H300V430H70Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M110 230H255M110 300H255M110 370H210\" stroke=\"#1b4a6b\" stroke-width=\"20\"/><path d=\"M300 300H405V180H535M405 300V470H535\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"26\"/><path d=\"M540 110H710V285H540Z\" fill=\"#1d5f47\"/><path d=\"M575 150H675\" stroke=\"#f4ead7\" stroke-width=\"17\"/><circle cx=\"625\" cy=\"225\" r=\"30\" fill=\"#c98a12\"/><path d=\"M540 405H710V535H540Z\" fill=\"#7a1f33\"/><path d=\"M580 470H670M640 440L675 470L640 500\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M425 160L455 180L425 200\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"17\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-18",
+        "number": "04",
+        "category": "Science · deep-space exploration",
+        "topic": "research",
+        "title": "Voyager 1 reaches the one-light-day distance milestone",
+        "composition": "voyager-light-day",
+        "signature": "plate:voyager-light-day",
+        "seed": 1597440473,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A distant probe and a terrestrial dish exchange delayed radio signals\"><title>Voyager 1 reaches the one-light-day distance milestone</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-18-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-18-04)\"><path d=\"M75 455Q165 560 255 455L165 355Z\" fill=\"#1b4a6b\"/><path d=\"M165 495V555M105 555H225\" stroke=\"#2c241d\" stroke-width=\"20\"/><path d=\"M195 395L275 300\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M470 135Q580 105 640 205L550 255Z\" fill=\"#c98a12\"/><path d=\"M550 255L490 365M515 315L425 295M490 365L590 405\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"20\"/><path d=\"M270 340L320 295M350 270L395 230M420 210L460 175\" stroke=\"#c4452c\" stroke-width=\"13\"/><circle cx=\"355\" cy=\"465\" r=\"65\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/><path d=\"M355 420V465L390 485\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"14\"/><path d=\"M650 85H710M680 55V115\" stroke=\"#f4ead7\" stroke-width=\"13\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-18",
+        "number": "05",
+        "category": "North Carolina · utility regulation",
+        "topic": "finance",
+        "title": "NC approves Duke rate increases and stronger financial terms for large data centers",
+        "composition": "large-load-cost-boundary",
+        "signature": "plate:large-load-cost-boundary",
+        "seed": 2208857425,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A large customer funds its grid connection across a boundary protecting household accounts\"><title>NC approves Duke rate increases and stronger financial terms for large data centers</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-18-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-18-05)\"><path d=\"M70 110H325V325H70Z\" fill=\"#1b4a6b\"/><path d=\"M110 160H285M110 230H285\" stroke=\"#f4ead7\" stroke-width=\"25\"/><path d=\"M195 325V490H370\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"30\"/><circle cx=\"280\" cy=\"490\" r=\"53\" fill=\"#c98a12\"/><path d=\"M280 455V525M255 475H305M255 505H305\" stroke=\"#2c241d\" stroke-width=\"13\"/><path d=\"M390 115V555\" stroke=\"#7a1f33\" stroke-width=\"25\"/><path d=\"M455 320L580 210L715 320V535H455Z\" fill=\"#1d5f47\"/><path d=\"M535 535V410H625V535\" fill=\"#f4ead7\"/><path d=\"M480 140H700\" stroke=\"#7c5a3e\" stroke-width=\"22\"/><path d=\"M510 115V165M590 115V165M670 115V165\" stroke=\"#7c5a3e\" stroke-width=\"17\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
