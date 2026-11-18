@@ -28,6 +28,13 @@ jobs:
           node --test desk/_tools/test-runtime.cjs desk/_tools/test-publications.cjs desk/_tools/test-publication-titles.cjs
           python3 -m pip install --quiet Pillow fonttools Brotli
           python3 desk/_tools/validate.py
+      - name: Record generator differences and restore exact tested source
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/ih-house-evidence"
+          git diff -- desk/index.html > "$RUNNER_TEMP/ih-house-evidence/baseline-generator.diff"
+          git restore --worktree -- desk
+          test -z "$(git status --porcelain)"
       - name: Install existing pinned browser runtime
         if: always()
         run: |
