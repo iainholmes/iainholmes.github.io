@@ -19,12 +19,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ matrix.source == 'baseline' && 'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d' || '502ee8984d2392ff2eab0f651acf47be809bc180' }}
+          ref: ${{ matrix.source == 'baseline' && 'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d' || '16b878bbe5712efe9ec6e0c5da59222241826f73' }}
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install the existing Atlas synthetic-image test dependency
+        run: python3 -m pip install --disable-pip-version-check Pillow==11.3.0
       - name: Run every relevant existing source suite and preserve every failure
         env:
           IH_EVIDENCE: ${{ runner.temp }}/ih-source-evidence
@@ -34,9 +36,9 @@ jobs:
           const fs=require('node:fs'),cp=require('node:child_process'),path=require('node:path');
           fs.mkdirSync(process.env.IH_EVIDENCE,{recursive:true});
           // Use the identical current Heron mock for both product revisions; no baseline product changes.
-          if(process.env.IH_SOURCE==='baseline')fs.writeFileSync('scripts/test_periodicals.cjs',cp.execFileSync('git',['show','502ee8984d2392ff2eab0f651acf47be809bc180:scripts/test_periodicals.cjs'],{encoding:'utf8'}));
+          if(process.env.IH_SOURCE==='baseline')fs.writeFileSync('scripts/test_periodicals.cjs',cp.execFileSync('git',['show','16b878bbe5712efe9ec6e0c5da59222241826f73:scripts/test_periodicals.cjs'],{encoding:'utf8'}));
           const commands=[['desk tests',['node','--test','desk/_tools/test-runtime.cjs','desk/_tools/test-publications.cjs','desk/_tools/test-publication-titles.cjs'],'.'],
-          ...['test_periodicals','test_publishing','test_hub_metadata','test_issue_marks','test_field_brief_order','test_field_brief_operations','test_workbook_cadence','test_workbook_learning'].map(n=>[n,['node','scripts/'+n+'.cjs'],'.']),
+          ...['test_periodicals','test_publishing','test_hub_metadata','test_issue_marks','test_field_brief_order','test_field_brief_operations','test_workbook_cadence','test_workbook_learning','test_ll_source_evidence','test_ll_publication_layout','test_reading_exhibits','test_editorial_folio','test_notebook','test_field_register'].map(n=>[n,['node','scripts/'+n+'.cjs'],'.']),
           ...JSON.parse(fs.readFileSync('rupert/package.json','utf8')).scripts.test.split(' && ').map(cmd=>['Atlas '+cmd,cmd.split(' '),'rupert'])];
           const results=[];
           for(const [name,args,cwd]of commands){const r=cp.spawnSync(args[0],args.slice(1),{cwd,encoding:'utf8',maxBuffer:16*1024*1024});const output=(r.stdout||'')+(r.stderr||'');console.log(name+': '+r.status);if(r.status!==0)console.log(output.slice(-6000));else console.log(output.split('\n').filter(x=>/passed|PASS|assertions|# pass/.test(x)).slice(-4).join('\n'));results.push({name,exit:r.status,tail:output.slice(-6000)});}
@@ -50,13 +52,17 @@ jobs:
           path: ${{ runner.temp }}/ih-source-evidence
           retention-days: 3
   chromium:
+    strategy:
+      fail-fast: false
+      matrix:
+        viewport: [macbook-air, tablet, iphone, landscape]
     runs-on: ubuntu-24.04
     container: mcr.microsoft.com/playwright:v1.57.0-noble
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '502ee8984d2392ff2eab0f651acf47be809bc180'
+          ref: '16b878bbe5712efe9ec6e0c5da59222241826f73'
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/checkout@v4
@@ -94,17 +100,18 @@ jobs:
           curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://127.0.0.1:8766/
       - name: Compare source, controls, geometry and actual rendered dividers
         env:
+          IH_VIEWPORT: ${{ matrix.viewport }}
           IH_PLAYWRIGHT: ${{ runner.temp }}/ih-browser/node_modules/playwright
           IH_EVIDENCE: ${{ runner.temp }}/ih-house-evidence
         run: |
           node <<'JS'
           const fs=require('node:fs'),cp=require('node:child_process'),assert=require('node:assert/strict'),crypto=require('node:crypto');
           const {chromium}=require(process.env.IH_PLAYWRIGHT);
-          const repos=[{dir:'.',base:'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d',head:'502ee8984d2392ff2eab0f651acf47be809bc180',files:["index.html","personal-updates/index.html","daily-watchlist-5/index.html","daily-econ-challenge/index.html","rupert/assets/css/atlas.css","desk/HOUSE-DIVIDER-SYSTEM.md","scripts/test_periodicals.cjs"]},{dir:'econometric-advisor',base:'dddcdb09566f7b5ae6b2f1b969ceed99b122413c',head:'21c335ea180f8ccc40fa44c3698758067e220fcd',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']},{dir:'quant-skills-trainer',base:'3a81a4d4322769ce30950dd3bf7255eec462895b',head:'e2853fcae6ca9f1b6ab753380c4447bc813d83d5',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']}];
+          const repos=[{dir:'.',base:'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d',head:'16b878bbe5712efe9ec6e0c5da59222241826f73',files:["index.html","personal-updates/index.html","daily-watchlist-5/index.html","daily-econ-challenge/index.html","rupert/assets/css/atlas.css","rupert/index.html","desk/HOUSE-DIVIDER-SYSTEM.md","scripts/test_periodicals.cjs"]},{dir:'econometric-advisor',base:'dddcdb09566f7b5ae6b2f1b969ceed99b122413c',head:'21c335ea180f8ccc40fa44c3698758067e220fcd',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']},{dir:'quant-skills-trainer',base:'3a81a4d4322769ce30950dd3bf7255eec462895b',head:'e2853fcae6ca9f1b6ab753380c4447bc813d83d5',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']}];
           for(const r of repos){
            assert.equal(cp.execFileSync('git',['-C',r.dir,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),r.head);
            const paths=cp.execFileSync('git',['-C',r.dir,'diff','--name-only',r.base,r.head],{encoding:'utf8'}).trim().split('\n').sort();assert.deepEqual(paths,r.files.slice().sort());
-           for(const path of paths.filter(p=>p.endsWith('.html'))){const before=cp.execFileSync('git',['-C',r.dir,'show',r.base+':'+path],{encoding:'utf8',maxBuffer:8*1024*1024}),after=fs.readFileSync(r.dir+'/'+path,'utf8');assert.equal(after.replace(/<style id="ih-house-dividers">[\s\S]*?<\/style>\n/,''),before,'Strict HTML/scripts/data/artwork preservation '+r.dir+'/'+path);}
+           for(const path of paths.filter(p=>p.endsWith('.html'))){const before=cp.execFileSync('git',['-C',r.dir,'show',r.base+':'+path],{encoding:'utf8',maxBuffer:8*1024*1024}),after=fs.readFileSync(r.dir+'/'+path,'utf8');assert.equal(after.replace(/<style id="ih-house-dividers">[\s\S]*?<\/style>\n/,'').replace('atlas.css?v=b92390ae33da-ih-house-1','atlas.css?v=b92390ae33da'),before,'Strict HTML/scripts/data/artwork preservation '+r.dir+'/'+path);}
            if(r.dir==='.'){const before=cp.execFileSync('git',['show',r.base+':rupert/assets/css/atlas.css'],{encoding:'utf8'}),after=fs.readFileSync('rupert/assets/css/atlas.css','utf8');assert.equal(after.slice(0,after.indexOf('\n/* IH_HOUSE_DIVIDER_V1:')),before,'Atlas original stylesheet intact');}
           }
           const cases=[
@@ -114,7 +121,9 @@ jobs:
            {id:'workbook',path:'/daily-econ-challenge/',target:'.ps-title',modes:['day','night']},
            {id:'atlas',path:'/rupert/',target:'.weekband',modes:['default']},
            {id:'advisor',path:'/econometric-advisor/',target:'.ov-toolkit-band',modes:['default']},
-           {id:'qst',path:'/quant-skills-trainer/?lang=r&module=r_env',target:'.sess-header',modes:['light','dark']}
+           {id:'qst',path:'/quant-skills-trainer/?lang=r&module=r_env',target:'.sess-header',modes:['light','dark'],langLabel:'R'},
+           {id:'qst-python',path:'/quant-skills-trainer/?lang=python&module=py_env',target:'.sess-header',modes:['light','dark'],langLabel:'Python'},
+           {id:'qst-stata',path:'/quant-skills-trainer/?lang=stata&module=st_env',target:'.sess-header',modes:['light','dark'],langLabel:'Stata'}
           ];
           const evidence=[],functional=[],browserErrors=[];
           async function prepare(page,item,origin){
@@ -144,7 +153,7 @@ jobs:
           (async()=>{
            const browser=await chromium.launch({headless:true});
            try{
-            for(const size of [{name:'macbook-air',width:1710,height:1107},{name:'tablet',width:1024,height:900},{name:'iphone',width:390,height:844},{name:'landscape',width:844,height:390}]){
+            for(const size of [{name:'macbook-air',width:1710,height:1107},{name:'tablet',width:1024,height:900},{name:'iphone',width:390,height:844},{name:'landscape',width:844,height:390}].filter(v=>!process.env.IH_VIEWPORT||v.name===process.env.IH_VIEWPORT)){
              for(const item of cases){
               console.log('Render',item.id,size.name);
               const context=await browser.newContext({viewport:{width:size.width,height:size.height},reducedMotion:'reduce',hasTouch:size.width<900});
@@ -166,8 +175,8 @@ jobs:
                 evidence.push({property:item.id,viewport:size,mode,state:label,file,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics:metrics[label==='before'?0:1],pseudo});
                }
               }
-              if(item.id==='qst'){
-               for(const page of [before,after]){await page.locator('#pbtn-practice').click();assert(await page.locator('#code-input').isVisible());await page.locator('#pbtn-learn').click();assert(await page.locator('#learn-out').isVisible());assert.equal(await page.locator('#sess-pill').textContent(),'R');}
+              if(item.id.startsWith('qst')){
+               for(const page of [before,after]){await page.locator('#pbtn-practice').click();assert(await page.locator('#code-input').isVisible());await page.locator('#pbtn-learn').click();assert(await page.locator('#learn-out').isVisible());assert.equal(await page.locator('#sess-pill').textContent(),item.langLabel);}
                functional.push({property:item.id,viewport:size.name,learningPractice:true});
               }
               if(item.id==='advisor'){
@@ -185,7 +194,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ih-house-chromium-evidence
+          name: ih-house-chromium-${{ matrix.viewport }}
           path: ${{ runner.temp }}/ih-house-evidence
           retention-days: 3
   webkit:
@@ -200,7 +209,7 @@ jobs:
           - state: baseline
             source: 'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d'
           - state: proposed
-            source: '502ee8984d2392ff2eab0f651acf47be809bc180'
+            source: '16b878bbe5712efe9ec6e0c5da59222241826f73'
     steps:
       - uses: actions/checkout@v4
         with:
