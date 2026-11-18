@@ -121,3 +121,7 @@ Validation: `node desk/_tools/build.mjs`, `python desk/_tools/validate.py`,
 `node desk/_tools/test-runtime.cjs`, and `node desk/_tools/test-publications.cjs`.
 342 source checks, 16 runtime tests and 7 publication tests pass. Browser control
 is unavailable in Work; no integrated browser or physical acceptance is claimed.
+
+### Reproducing the committed presentation
+
+For validation and visual-only changes, use `node desk/_tools/build.mjs --retained-snapshot` to reproduce the existing `publication-snapshot.json` and preserve its dated fallback covers and captions. The static validator uses this mode so advancing the canonical archives cannot silently refresh publication content during a design check. Ordinary builds omit the flag and continue refreshing through the verified publication adapters; browser refresh behavior is unchanged.

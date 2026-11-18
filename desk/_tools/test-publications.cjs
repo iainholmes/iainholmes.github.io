@@ -16,12 +16,16 @@ test('Current canonical publication data and artwork agree',async()=>{
 });
 test('New genuine editions advance without changing desk configuration; unpinned and future entries do not',()=>{
  const html=page('field-brief'),data=JSON.parse(html.match(/id="briefing-data">([\s\S]*?)<\/script>/)[1]);
+ // Freeze this historical fixture before appending its synthetic future release.
+ data.editions=data.editions.filter(e=>e.date<='2026-10-12');
+ const unpinned={...archive};delete unpinned['fb:2026-10-13'];
  const latest=data.editions.at(-1),release={...latest,date:'2026-10-13',issueTitle:'New Authored Edition'};data.editions.push(release);
  const updated=html.replace(/(id="briefing-data">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(data)+b);
  const pins={...archive,'fb:2026-10-13':{...archive['fb:2026-10-12'],date:release.date,no:'017'}};
  assert.equal(api.periodical('field-brief',updated,pins,now).number,'016');
- assert.equal(api.periodical('field-brief',updated,archive,new Date('2026-10-13T22:00Z')).number,'016');
- assert.equal(api.periodical('field-brief',updated,pins,new Date('2026-10-13T22:00Z')).title,release.issueTitle);
+ assert.equal(api.periodical('field-brief',updated,unpinned,new Date('2026-10-13T22:00Z')).number,'016');
+ const advanced=api.periodical('field-brief',updated,pins,new Date('2026-10-13T22:00Z'));
+ assert.equal(advanced.number,'017');assert.equal(advanced.title,pins['fb:2026-10-13'].phrase);assert(advanced.detail.includes(release.issueTitle));
  release.status='draft';data.editions[data.editions.length-1]=release;
  const draft=html.replace(/(id="briefing-data">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(data)+b);
  assert.equal(api.periodical('field-brief',draft,pins,new Date('2026-10-13T22:00Z')).number,'016');
@@ -51,7 +55,7 @@ test('A released edition must match its manifest and registered editorial image'
  assert.throws(()=>api.atlasRelease(selected,edition,{photos:[]},now));
 });
 test('Withdrawn slots do not resurrect their recommendation artwork',()=>{
- const fake=structuredClone(manifest);const latest=fake.editions.filter(e=>e.slot==='thursday').at(-1);latest.status='withdrawn';
+ const fake=structuredClone(manifest);const latest=api.atlasIndex(fake,now).find(e=>e.slot==='thursday').entry;assert(latest);latest.status='withdrawn';
  const s=api.atlasIndex(fake,now).find(e=>e.slot==='thursday'),e=api.atlasRelease(s,null,photos,now);
  assert.equal(e.state,'withdrawn');assert.equal(e.title,undefined);assert.equal(e.artwork,undefined);
 });
