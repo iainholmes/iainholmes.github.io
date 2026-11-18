@@ -1630,6 +1630,29 @@
 
 </style>
 <link rel="stylesheet" href="assets/identity/identity.css?v=20261012-seamless2">
+<style id="ih-house-dividers">
+/* IH_HOUSE_DIVIDER_V1: refine an existing structural rule; preserve its box. */
+#research > .section-title,
+#tools > .section-title {
+  --ih-divider-ink:#1f4a3b;
+  --ih-divider-terminal:#b4532e;
+  --ih-divider-cap:clamp(10px,1.2vw,18px);
+  --ih-divider-shoulder:calc(var(--ih-divider-cap) + 6px);
+  position:relative;
+  border-bottom-color:transparent;
+}
+#research > .section-title::after,
+#tools > .section-title::after {
+  content:"";position:absolute;inset-inline:0;bottom:-3px;height:4px;pointer-events:none;
+  background:linear-gradient(to right,var(--ih-divider-terminal) 0 var(--ih-divider-shoulder),var(--ih-divider-ink) var(--ih-divider-shoulder) calc(100% - var(--ih-divider-shoulder)),var(--ih-divider-terminal) calc(100% - var(--ih-divider-shoulder)) 100%);
+  clip-path:polygon(0 0,var(--ih-divider-cap) 0,var(--ih-divider-shoulder) 33.333%,calc(100% - var(--ih-divider-shoulder)) 33.333%,calc(100% - var(--ih-divider-cap)) 0,100% 0,100% 100%,calc(100% - var(--ih-divider-cap)) 100%,calc(100% - var(--ih-divider-shoulder)) 66.667%,var(--ih-divider-shoulder) 66.667%,var(--ih-divider-cap) 100%,0 100%);
+}
+@media(forced-colors:active) { #research > .section-title::after,
+#tools > .section-title::after {background:CanvasText} }
+@media print { #research > .section-title,
+#tools > .section-title {border-bottom-color:currentColor} #research > .section-title::after,
+#tools > .section-title::after {display:none} }
+</style>
 </head>
 <body>
 
