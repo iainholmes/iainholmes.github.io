@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '5fef4c90bcdfeba816ce2518ed54ee7aa65f555c'
+          ref: 'a0e1dfa2337ad86db3bbf483ddb2d276c0fe81f8'
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
@@ -24,7 +24,7 @@ jobs:
           node-version: '22'
       - name: Verify exact source and existing desk tests
         run: |
-          test "$(git rev-parse HEAD)" = "5fef4c90bcdfeba816ce2518ed54ee7aa65f555c"
+          test "$(git rev-parse HEAD)" = "a0e1dfa2337ad86db3bbf483ddb2d276c0fe81f8"
           node --test desk/_tools/test-runtime.cjs desk/_tools/test-publications.cjs desk/_tools/test-publication-titles.cjs
           python3 -m pip install --quiet Pillow fonttools Brotli
           python3 desk/_tools/validate.py
@@ -76,7 +76,7 @@ jobs:
                await page.locator('#'+id+' .section-heading').scrollIntoViewIfNeeded();
                const name=size.name+'-'+appearance+'-'+id+'-'+label+'.png',path=process.env.IH_EVIDENCE+'/'+name;
                await page.screenshot({path,animations:'disabled'});const bytes=fs.readFileSync(path);
-               results.push({source:label==='before'?'5eb4d812dd7f9647613da373e1bba261e9bbb0de':'5fef4c90bcdfeba816ce2518ed54ee7aa65f555c',viewport:size,appearance,chapter:id,state:label,file:name,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics});
+               results.push({source:label==='before'?'5eb4d812dd7f9647613da373e1bba261e9bbb0de':'a0e1dfa2337ad86db3bbf483ddb2d276c0fe81f8',viewport:size,appearance,chapter:id,state:label,file:name,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics});
               }
              }
              for(const id of ['advisor','qst','field-brief','loblolly','workbook','rupert','portfolio']){
@@ -92,7 +92,7 @@ jobs:
              await after.emulateMedia({forcedColors:'active'});assert.equal(await after.locator('.section-heading h2').first().evaluate(e=>getComputedStyle(e,'::after').pointerEvents),'none');
              await context.close();
             }
-           }finally{await browser.close();fs.writeFileSync(process.env.IH_EVIDENCE+'/manifest.json',JSON.stringify({before:'5eb4d812dd7f9647613da373e1bba261e9bbb0de',after:'5fef4c90bcdfeba816ce2518ed54ee7aa65f555c',results},null,2));}
+           }finally{await browser.close();fs.writeFileSync(process.env.IH_EVIDENCE+'/manifest.json',JSON.stringify({before:'5eb4d812dd7f9647613da373e1bba261e9bbb0de',after:'a0e1dfa2337ad86db3bbf483ddb2d276c0fe81f8',results},null,2));}
            console.log(JSON.stringify({result:'passed',screenshots:results.length,unalteredLayout:true,allSevenReveals:true,allChapterPalettes:true}));
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
