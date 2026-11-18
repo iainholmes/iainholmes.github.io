@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '70f7bc6b880a796c87b232cd8e3382defa407887'
+          ref: '502ee8984d2392ff2eab0f651acf47be809bc180'
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/checkout@v4
@@ -37,6 +37,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Trust only the three authenticated checkouts inside the container
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/econometric-advisor"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/quant-skills-trainer"
       - name: Existing source, publication, learning and Atlas regressions
         run: |
           node --test desk/_tools/test-runtime.cjs desk/_tools/test-publications.cjs desk/_tools/test-publication-titles.cjs
@@ -73,7 +78,7 @@ jobs:
           node <<'JS'
           const fs=require('node:fs'),cp=require('node:child_process'),assert=require('node:assert/strict'),crypto=require('node:crypto');
           const {chromium}=require(process.env.IH_PLAYWRIGHT);
-          const repos=[{dir:'.',base:'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d',head:'70f7bc6b880a796c87b232cd8e3382defa407887',files:["index.html","personal-updates/index.html","daily-watchlist-5/index.html","daily-econ-challenge/index.html","rupert/assets/css/atlas.css","desk/HOUSE-DIVIDER-SYSTEM.md"]},{dir:'econometric-advisor',base:'dddcdb09566f7b5ae6b2f1b969ceed99b122413c',head:'21c335ea180f8ccc40fa44c3698758067e220fcd',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']},{dir:'quant-skills-trainer',base:'3a81a4d4322769ce30950dd3bf7255eec462895b',head:'e2853fcae6ca9f1b6ab753380c4447bc813d83d5',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']}];
+          const repos=[{dir:'.',base:'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d',head:'502ee8984d2392ff2eab0f651acf47be809bc180',files:["index.html","personal-updates/index.html","daily-watchlist-5/index.html","daily-econ-challenge/index.html","rupert/assets/css/atlas.css","desk/HOUSE-DIVIDER-SYSTEM.md","scripts/test_periodicals.cjs"]},{dir:'econometric-advisor',base:'dddcdb09566f7b5ae6b2f1b969ceed99b122413c',head:'21c335ea180f8ccc40fa44c3698758067e220fcd',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']},{dir:'quant-skills-trainer',base:'3a81a4d4322769ce30950dd3bf7255eec462895b',head:'e2853fcae6ca9f1b6ab753380c4447bc813d83d5',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']}];
           for(const r of repos){
            assert.equal(cp.execFileSync('git',['-C',r.dir,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),r.head);
            const paths=cp.execFileSync('git',['-C',r.dir,'diff','--name-only',r.base,r.head],{encoding:'utf8'}).trim().split('\n').sort();assert.deepEqual(paths,r.files.slice().sort());
@@ -128,7 +133,7 @@ jobs:
                assert.equal(metrics[0].controls,metrics[1].controls,item.id+' controls unchanged');assert(metrics[1].scroll<=Math.max(metrics[0].scroll,size.width)+1,item.id+' no new horizontal overflow');
                const pseudo=await after.locator(item.target).first().evaluate((e,spine)=>{const p=getComputedStyle(e,spine?'::before':'::after');return{pointer:p.pointerEvents,clip:p.clipPath,height:p.height,width:p.width};},!!item.spine);assert.equal(pseudo.pointer,'none');assert(pseudo.clip.startsWith('polygon('));
                for(const [label,page]of [['before',before],['after',after]]){
-                await page.locator(item.target).first().scrollIntoViewIfNeeded();
+                await page.locator(item.target).first().evaluate((e,spine)=>{const r=e.getBoundingClientRect();window.scrollTo(0,scrollY+(spine?r.top:r.bottom)-innerHeight*(spine?.25:.55));},!!item.spine);
                 const file=item.id+'-'+size.name+'-'+mode+'-'+label+'.png',path=process.env.IH_EVIDENCE+'/'+file;
                 await page.screenshot({path,animations:'disabled'});const bytes=fs.readFileSync(path);
                 evidence.push({property:item.id,viewport:size,mode,state:label,file,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics:metrics[label==='before'?0:1],pseudo});
@@ -158,7 +163,25 @@ jobs:
           WB_QA_DIR: ${{ runner.temp }}/ih-house-evidence/webkit
         run: |
           node scripts/test_shelf_browser.cjs
-          node scripts/test_workbook_browser.cjs
+          node <<'WB_DIAGNOSTIC'
+          const fs=require('node:fs');
+          let source=fs.readFileSync('scripts/test_workbook_browser.cjs','utf8');
+          const needle="await p.waitForSelector('details[data-learning=\"explanation\"]');const explanation=";
+          const replacement="try{await p.waitForSelector('details[data-learning=\"explanation\"]');}catch(err){await shot(p,'failure-at-'+e.no+'-'+q.id);fs.writeFileSync(path.join(out,'failure-context.json'),JSON.stringify({set:e.no,date:e.date,question:q.id,state:await state(p,e.date),hash:await p.url(),dom:await p.locator('#answerLearning').innerHTML(),selected:await p.locator('[data-opt]').evaluateAll(es=>es.map(el=>({index:el.dataset.opt,className:el.className}))),buttons:await p.locator('[data-act=\"answer\"]').evaluateAll(es=>es.map(el=>({disabled:el.disabled,text:el.textContent})))},null,2));throw err;}const explanation=";
+          if(!source.includes(needle))throw Error('Diagnostic insertion missing');
+          source=source.replace(needle,replacement);
+          fs.writeFileSync(process.env.RUNNER_TEMP+'/ih-workbook-diagnostic.cjs',source);
+          WB_DIAGNOSTIC
+          node "$RUNNER_TEMP/ih-workbook-diagnostic.cjs"
+      - name: Unchanged Workbook baseline comparison if the current browser suite fails
+        if: failure()
+        env:
+          CODEX_PRIMARY_RUNTIME_NODE_MODULES: ${{ runner.temp }}/ih-browser/node_modules
+          WB_ORIGIN: http://127.0.0.1:8766
+          WB_QA_DIR: ${{ runner.temp }}/ih-house-evidence/webkit-baseline
+        run: |
+          cd "$RUNNER_TEMP/ih-before"
+          node "$RUNNER_TEMP/ih-workbook-diagnostic.cjs"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
