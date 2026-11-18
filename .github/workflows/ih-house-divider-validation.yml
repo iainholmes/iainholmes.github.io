@@ -1,4 +1,3 @@
-# Temporary branch-only validation; no deployment, schedules, secrets or repository writes.
 name: TEMP IH ecosystem divider validation
 on:
   push:
@@ -10,10 +9,43 @@ concurrency:
   group: ih-ecosystem-validation-${{ github.sha }}
   cancel-in-progress: true
 jobs:
-  ecosystem:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: '502ee8984d2392ff2eab0f651acf47be809bc180'
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run every relevant existing source suite and preserve every failure
+        env:
+          IH_EVIDENCE: ${{ runner.temp }}/ih-source-evidence
+        run: |
+          node <<'SOURCE_JS'
+          const fs=require('node:fs'),cp=require('node:child_process'),path=require('node:path');
+          fs.mkdirSync(process.env.IH_EVIDENCE,{recursive:true});
+          const commands=[['desk tests',['node','--test','desk/_tools/test-runtime.cjs','desk/_tools/test-publications.cjs','desk/_tools/test-publication-titles.cjs'],'.'],
+          ...['test_periodicals','test_publishing','test_hub_metadata','test_issue_marks','test_field_brief_order','test_field_brief_operations','test_workbook_cadence','test_workbook_learning'].map(n=>[n,['node','scripts/'+n+'.cjs'],'.']),
+          ...JSON.parse(fs.readFileSync('rupert/package.json','utf8')).scripts.test.split(' && ').map(cmd=>['Atlas '+cmd,cmd.split(' '),'rupert'])];
+          const results=[];
+          for(const [name,args,cwd]of commands){const r=cp.spawnSync(args[0],args.slice(1),{cwd,encoding:'utf8',maxBuffer:16*1024*1024});const output=(r.stdout||'')+(r.stderr||'');console.log(name+': '+r.status);if(r.status!==0)console.log(output.slice(-6000));else console.log(output.split('\n').filter(x=>/passed|PASS|assertions|# pass/.test(x)).slice(-4).join('\n'));results.push({name,exit:r.status,tail:output.slice(-6000)});}
+          fs.writeFileSync(path.join(process.env.IH_EVIDENCE,'source-results.json'),JSON.stringify({source:'502ee8984d2392ff2eab0f651acf47be809bc180',results},null,2));
+          if(results.some(r=>r.exit!==0))process.exitCode=1;
+          SOURCE_JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ih-house-source-evidence
+          path: ${{ runner.temp }}/ih-source-evidence
+          retention-days: 3
+  chromium:
     runs-on: ubuntu-24.04
     container: mcr.microsoft.com/playwright:v1.57.0-noble
-    timeout-minutes: 35
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,29 +69,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Trust only the three authenticated checkouts inside the container
+      - name: Trust the exact three checked-out source paths
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config --global --add safe.directory "$GITHUB_WORKSPACE/econometric-advisor"
           git config --global --add safe.directory "$GITHUB_WORKSPACE/quant-skills-trainer"
-      - name: Existing source, publication, learning and Atlas regressions
-        run: |
-          node --test desk/_tools/test-runtime.cjs desk/_tools/test-publications.cjs desk/_tools/test-publication-titles.cjs
-          node scripts/test_periodicals.cjs
-          node scripts/test_publishing.cjs
-          node scripts/test_hub_metadata.cjs
-          node scripts/test_issue_marks.cjs
-          node scripts/test_field_brief_order.cjs
-          node scripts/test_field_brief_operations.cjs
-          node scripts/test_workbook_cadence.cjs
-          node scripts/test_workbook_learning.cjs
-          npm --prefix rupert test
-          git diff --exit-code
-      - name: Use pinned browser tools already present in official Playwright image
-        if: always()
-        run: npm install --prefix "$RUNNER_TEMP/ih-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
-      - name: Serve exact before and after source without publishing
-        if: always()
+          npm install --prefix "$RUNNER_TEMP/ih-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
+      - name: Serve isolated before and after source
         run: |
           mkdir -p "$RUNNER_TEMP/ih-house-evidence"
           git worktree add --detach "$RUNNER_TEMP/ih-before" de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d
@@ -69,8 +85,7 @@ jobs:
           python3 -m http.server 8766 --bind 127.0.0.1 --directory "$RUNNER_TEMP/ih-before" > "$RUNNER_TEMP/ih-house-evidence/preview-before.log" 2>&1 &
           curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://127.0.0.1:8765/
           curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://127.0.0.1:8766/
-      - name: Source preservation, functional comparisons and responsive Chromium screenshots
-        if: always()
+      - name: Compare source, controls, geometry and actual rendered dividers
         env:
           IH_PLAYWRIGHT: ${{ runner.temp }}/ih-browser/node_modules/playwright
           IH_EVIDENCE: ${{ runner.temp }}/ih-house-evidence
@@ -155,14 +170,49 @@ jobs:
            console.log(JSON.stringify({result:'passed',screenshots:evidence.length,functional,sourcePreservation:true}));
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
-      - name: Existing WebKit shelf and Workbook browser suites
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ih-house-chromium-evidence
+          path: ${{ runner.temp }}/ih-house-evidence
+          retention-days: 3
+  webkit:
+    runs-on: ubuntu-24.04
+    container: mcr.microsoft.com/playwright:v1.57.0-noble
+    timeout-minutes: 18
+    strategy:
+      fail-fast: false
+      matrix:
+        state: [baseline, proposed]
+        include:
+          - state: baseline
+            source: 'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d'
+          - state: proposed
+            source: '502ee8984d2392ff2eab0f651acf47be809bc180'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.source }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Use pinned WebKit runtime
+        run: npm install --prefix "$RUNNER_TEMP/ih-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
+      - name: Existing shelf browser suite
+        env:
+          CODEX_PRIMARY_RUNTIME_NODE_MODULES: ${{ runner.temp }}/ih-browser/node_modules
+          WB_ORIGIN: http://127.0.0.1:8765
+          WB_QA_DIR: ${{ runner.temp }}/ih-webkit-evidence/shelf
+        run: node scripts/test_shelf_browser.cjs
+      - name: Existing Workbook suite with failure-only state capture
         if: always()
         env:
           CODEX_PRIMARY_RUNTIME_NODE_MODULES: ${{ runner.temp }}/ih-browser/node_modules
           WB_ORIGIN: http://127.0.0.1:8765
-          WB_QA_DIR: ${{ runner.temp }}/ih-house-evidence/webkit
+          WB_QA_DIR: ${{ runner.temp }}/ih-webkit-evidence/workbook
         run: |
-          node scripts/test_shelf_browser.cjs
           node <<'WB_DIAGNOSTIC'
           const fs=require('node:fs');
           let source=fs.readFileSync('scripts/test_workbook_browser.cjs','utf8');
@@ -173,19 +223,9 @@ jobs:
           fs.writeFileSync(process.env.RUNNER_TEMP+'/ih-workbook-diagnostic.cjs',source);
           WB_DIAGNOSTIC
           node "$RUNNER_TEMP/ih-workbook-diagnostic.cjs"
-      - name: Unchanged Workbook baseline comparison if the current browser suite fails
-        if: failure()
-        env:
-          CODEX_PRIMARY_RUNTIME_NODE_MODULES: ${{ runner.temp }}/ih-browser/node_modules
-          WB_ORIGIN: http://127.0.0.1:8766
-          WB_QA_DIR: ${{ runner.temp }}/ih-house-evidence/webkit-baseline
-        run: |
-          cd "$RUNNER_TEMP/ih-before"
-          node "$RUNNER_TEMP/ih-workbook-diagnostic.cjs"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ih-house-ecosystem-evidence
-          path: ${{ runner.temp }}/ih-house-evidence
+          name: ih-house-webkit-${{ matrix.state }}
+          path: ${{ runner.temp }}/ih-webkit-evidence
           retention-days: 3
-          if-no-files-found: error
