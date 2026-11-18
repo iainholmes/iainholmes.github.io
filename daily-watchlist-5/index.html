@@ -316,6 +316,24 @@ html[data-mode="night"] .signal{background:#3b1520;color:#f3e3d0}
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-instrument">
 <link rel="stylesheet" href="../assets/identity/identity.css?v=20261012-seamless2">
+<style id="ih-house-dividers">
+/* IH_HOUSE_DIVIDER_V1: refine an existing structural rule; preserve its box. */
+.edition .front {
+  --ih-divider-ink:var(--oxblood);
+  --ih-divider-terminal:var(--ink);
+  --ih-divider-cap:clamp(10px,1.2vw,18px);
+  --ih-divider-shoulder:calc(var(--ih-divider-cap) + 6px);
+  position:relative;
+  border-bottom-color:transparent;
+}
+.edition .front::after {
+  content:"";position:absolute;inset-inline:0;bottom:-1px;height:4px;pointer-events:none;
+  background:linear-gradient(to right,var(--ih-divider-terminal) 0 var(--ih-divider-shoulder),var(--ih-divider-ink) var(--ih-divider-shoulder) calc(100% - var(--ih-divider-shoulder)),var(--ih-divider-terminal) calc(100% - var(--ih-divider-shoulder)) 100%);
+  clip-path:polygon(0 0,var(--ih-divider-cap) 0,var(--ih-divider-shoulder) 33.333%,calc(100% - var(--ih-divider-shoulder)) 33.333%,calc(100% - var(--ih-divider-cap)) 0,100% 0,100% 100%,calc(100% - var(--ih-divider-cap)) 100%,calc(100% - var(--ih-divider-shoulder)) 66.667%,var(--ih-divider-shoulder) 66.667%,var(--ih-divider-cap) 100%,0 100%);
+}
+@media(forced-colors:active) { .edition .front::after {background:CanvasText} }
+@media print { .edition .front {border-bottom-color:currentColor} .edition .front::after {display:none} }
+</style>
 </head>
 <body>
 <a class="skip" href="#briefing">Skip to the briefing</a>

@@ -237,6 +237,17 @@ a{color:inherit}
 <link rel="stylesheet" href="/personal-updates/mobile/mobile.css?v=20261002-instrument">
 <link rel="stylesheet" href="issue-marks.css?v=20261002-instrument">
 <link rel="stylesheet" href="../assets/identity/identity.css?v=20261012-seamless2">
+<style id="ih-house-dividers">
+/* IH_HOUSE_DIVIDER_V1: articulate the existing press-note corner in its own ink. */
+.press-note::before {
+  pointer-events:none;
+  clip-path:polygon(0 0,100% 0,100% 12px,66.667% 18px,66.667% calc(100% - 18px),100% calc(100% - 12px),100% 100%,0 100%,0 calc(100% - 12px),33.333% calc(100% - 18px),33.333% 18px,0 12px);
+}
+.press-note::after {
+  pointer-events:none;
+  clip-path:polygon(0 0,12px 0,18px 33.333%,100% 33.333%,100% 66.667%,18px 66.667%,12px 100%,0 100%);
+}
+</style>
 </head>
 <body>
 <!-- PERIODICALS HUB — /personal-updates/ (display name Periodicals). Permanently dark: no Day/Night
