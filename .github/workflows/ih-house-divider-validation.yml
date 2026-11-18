@@ -1,5 +1,5 @@
-# Temporary, branch-only pre-merge evidence. Never deploys or writes repository contents.
-name: TEMP IH house divider validation
+# Temporary branch-only validation; no deployment, schedules, secrets or repository writes.
+name: TEMP IH ecosystem divider validation
 on:
   push:
     branches: [validation/ih-house-divider-20261117]
@@ -7,105 +7,162 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: ih-house-divider-validation-${{ github.sha }}
+  group: ih-ecosystem-validation-${{ github.sha }}
   cancel-in-progress: true
 jobs:
-  desk-divider:
+  ecosystem:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    container: mcr.microsoft.com/playwright:v1.57.0-noble
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 'bb9d909be64087309de1f90240fdfe7c3ff9f902'
+          ref: '70f7bc6b880a796c87b232cd8e3382defa407887'
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: iainholmes/econometric-advisor
+          ref: '21c335ea180f8ccc40fa44c3698758067e220fcd'
+          path: econometric-advisor
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: iainholmes/quant-skills-trainer
+          ref: 'e2853fcae6ca9f1b6ab753380c4447bc813d83d5'
+          path: quant-skills-trainer
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify exact source and existing desk tests
+      - name: Existing source, publication, learning and Atlas regressions
         run: |
-          test "$(git rev-parse HEAD)" = "bb9d909be64087309de1f90240fdfe7c3ff9f902"
           node --test desk/_tools/test-runtime.cjs desk/_tools/test-publications.cjs desk/_tools/test-publication-titles.cjs
-          python3 -m pip install --quiet Pillow fonttools Brotli
-          python3 desk/_tools/validate.py
-      - name: Record generator differences and restore exact tested source
+          node scripts/test_periodicals.cjs
+          node scripts/test_publishing.cjs
+          node scripts/test_hub_metadata.cjs
+          node scripts/test_issue_marks.cjs
+          node scripts/test_field_brief_order.cjs
+          node scripts/test_field_brief_operations.cjs
+          node scripts/test_workbook_cadence.cjs
+          node scripts/test_workbook_learning.cjs
+          npm --prefix rupert test
+          git diff --exit-code
+      - name: Use pinned browser tools already present in official Playwright image
+        if: always()
+        run: npm install --prefix "$RUNNER_TEMP/ih-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
+      - name: Serve exact before and after source without publishing
         if: always()
         run: |
           mkdir -p "$RUNNER_TEMP/ih-house-evidence"
-          git diff -- desk/index.html > "$RUNNER_TEMP/ih-house-evidence/baseline-generator.diff"
-          git restore --worktree -- desk
-          test -z "$(git status --porcelain)"
-      - name: Install existing pinned browser runtime
-        if: always()
-        run: |
-          npm install --prefix "$RUNNER_TEMP/ih-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
-          "$RUNNER_TEMP/ih-browser/node_modules/.bin/playwright" install chromium
-      - name: Compare exact before/after source and responsive rendering
+          git worktree add --detach "$RUNNER_TEMP/ih-before" de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d
+          git -C econometric-advisor worktree add --detach "$RUNNER_TEMP/ih-before/econometric-advisor" dddcdb09566f7b5ae6b2f1b969ceed99b122413c
+          git -C quant-skills-trainer worktree add --detach "$RUNNER_TEMP/ih-before/quant-skills-trainer" 3a81a4d4322769ce30950dd3bf7255eec462895b
+          python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/ih-house-evidence/preview-after.log" 2>&1 &
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory "$RUNNER_TEMP/ih-before" > "$RUNNER_TEMP/ih-house-evidence/preview-before.log" 2>&1 &
+          curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://127.0.0.1:8765/
+          curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://127.0.0.1:8766/
+      - name: Source preservation, functional comparisons and responsive Chromium screenshots
         if: always()
         env:
           IH_PLAYWRIGHT: ${{ runner.temp }}/ih-browser/node_modules/playwright
           IH_EVIDENCE: ${{ runner.temp }}/ih-house-evidence
         run: |
-          mkdir -p "$IH_EVIDENCE"
-          git worktree add --detach "$RUNNER_TEMP/ih-before" 5eb4d812dd7f9647613da373e1bba261e9bbb0de
-          python3 -m http.server 8766 --bind 127.0.0.1 --directory "$RUNNER_TEMP/ih-before" > "$IH_EVIDENCE/before-preview.log" 2>&1 &
-          python3 -m http.server 8765 --bind 127.0.0.1 > "$IH_EVIDENCE/preview.log" 2>&1 &
-          curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://127.0.0.1:8766/desk/
-          node -e 'const cp=require("node:child_process"),assert=require("node:assert/strict");const base="5eb4d812dd7f9647613da373e1bba261e9bbb0de";const paths=cp.execFileSync("git",["diff","--name-only",base,"HEAD"],{encoding:"utf8"}).trim().split("\n");assert.deepEqual(paths.sort(),["desk/HOUSE-DIVIDER-SYSTEM.md","desk/desk.css","desk/index.html"].sort());const before=cp.execFileSync("git",["show",base+":desk/index.html"],{encoding:"utf8"});const after=require("node:fs").readFileSync("desk/index.html","utf8");const clean=s=>s.replace(/((?:publications[.]js|desk[.]js|desk[.]css)[?]v=)[a-f0-9]{12}/g,"$1CACHE");assert.equal(clean(after),clean(before),"HTML, publication metadata and artwork must be unchanged");console.log("Only three scoped files; served HTML differs only in asset versions");'
-
-          curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://127.0.0.1:8765/desk/
           node <<'JS'
-          const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+          const fs=require('node:fs'),cp=require('node:child_process'),assert=require('node:assert/strict'),crypto=require('node:crypto');
           const {chromium}=require(process.env.IH_PLAYWRIGHT);
+          const repos=[{dir:'.',base:'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d',head:'70f7bc6b880a796c87b232cd8e3382defa407887',files:["index.html","personal-updates/index.html","daily-watchlist-5/index.html","daily-econ-challenge/index.html","rupert/assets/css/atlas.css","desk/HOUSE-DIVIDER-SYSTEM.md"]},{dir:'econometric-advisor',base:'dddcdb09566f7b5ae6b2f1b969ceed99b122413c',head:'21c335ea180f8ccc40fa44c3698758067e220fcd',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']},{dir:'quant-skills-trainer',base:'3a81a4d4322769ce30950dd3bf7255eec462895b',head:'e2853fcae6ca9f1b6ab753380c4447bc813d83d5',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']}];
+          for(const r of repos){
+           assert.equal(cp.execFileSync('git',['-C',r.dir,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),r.head);
+           const paths=cp.execFileSync('git',['-C',r.dir,'diff','--name-only',r.base,r.head],{encoding:'utf8'}).trim().split('\n').sort();assert.deepEqual(paths,r.files.slice().sort());
+           for(const path of paths.filter(p=>p.endsWith('.html'))){const before=cp.execFileSync('git',['-C',r.dir,'show',r.base+':'+path],{encoding:'utf8',maxBuffer:8*1024*1024}),after=fs.readFileSync(r.dir+'/'+path,'utf8');assert.equal(after.replace(/<style id="ih-house-dividers">[\s\S]*?<\/style>\n/,''),before,'Strict HTML/scripts/data/artwork preservation '+r.dir+'/'+path);}
+           if(r.dir==='.'){const before=cp.execFileSync('git',['show',r.base+':rupert/assets/css/atlas.css'],{encoding:'utf8'}),after=fs.readFileSync('rupert/assets/css/atlas.css','utf8');assert.equal(after.slice(0,after.indexOf('\n/* IH_HOUSE_DIVIDER_V1:')),before,'Atlas original stylesheet intact');}
+          }
+          const cases=[
+           {id:'home',path:'/',target:'#research > .section-title',modes:['default']},
+           {id:'hub',path:'/personal-updates/',target:'.press-note',modes:['default'],spine:true},
+           {id:'field-brief',path:'/daily-watchlist-5/',target:'.front',modes:['day','night']},
+           {id:'workbook',path:'/daily-econ-challenge/',target:'.ps-title',modes:['day','night']},
+           {id:'atlas',path:'/rupert/',target:'.weekband',modes:['default']},
+           {id:'advisor',path:'/econometric-advisor/',target:'.ov-toolkit-band',modes:['default']},
+           {id:'qst',path:'/quant-skills-trainer/?lang=r&module=r_env',target:'.sess-header',modes:['light','dark']}
+          ];
+          const evidence=[],functional=[],browserErrors=[];
+          async function prepare(page,item,origin){
+           await page.goto(origin+item.path,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+           if(item.id==='advisor'){
+            await page.getByRole('button',{name:'Begin assessment',exact:true}).click();await page.locator('#api-modal .btn-skip').click();
+            for(let n=0;n<35;n++){
+             if(await page.locator('.ov-toolkit-band').isVisible())break;
+             const old=await page.locator('#quiz-inner .q-label').textContent(),go=page.locator('#quiz-inner .btn-cont');
+             if(await go.isVisible())await go.click();else await page.locator('#quiz-inner .chip').first().click();
+             await page.waitForFunction(old=>document.getElementById('screen-results').style.display==='block'||document.querySelector('#quiz-inner .q-label')?.textContent!==old,old);
+            }
+            await page.locator('.ov-toolkit-band').waitFor({state:'visible'});
+            if(await page.locator('.tour-skip').isVisible())await page.locator('.tour-skip').click();
+           }
+           await page.locator(item.target).first().waitFor({state:'visible'});
+          }
+          async function setMode(page,item,mode){
+           if(mode==='day'||mode==='night'){await page.locator('button[data-mode="'+mode+'"]').first().click();await page.waitForFunction(m=>document.documentElement.dataset.mode===m,mode);}
+           if(mode==='light'||mode==='dark'){if(await page.evaluate(()=>document.documentElement.dataset.theme==='dark'?'dark':'light')!==mode)await page.locator('#theme-toggle').click();await page.waitForFunction(m=>(document.documentElement.dataset.theme==='dark'?'dark':'light')===m,mode);}
+          }
           (async()=>{
-           const browser=await chromium.launch({headless:true}),results=[];
-           const positions=()=>[...document.querySelectorAll('.section-heading h2,.work-item,.desk-toolbar,.desk-header')].map(e=>{const r=e.getBoundingClientRect();return {id:e.id||e.className,x:r.x,y:r.y+scrollY,width:r.width,height:r.height};});
-           const mode=async(page,value)=>{if(await page.evaluate(()=>document.documentElement.dataset.appearance)!==value)await page.locator('.appearance-switch').click();await page.waitForFunction(m=>document.documentElement.dataset.appearance===m,value);};
+           const browser=await chromium.launch({headless:true});
            try{
             for(const size of [{name:'macbook-air',width:1710,height:1107},{name:'tablet',width:1024,height:900},{name:'iphone',width:390,height:844},{name:'landscape',width:844,height:390}]){
-             const context=await browser.newContext({viewport:{width:size.width,height:size.height},reducedMotion:'reduce',hasTouch:size.width===390||size.width===844});
-             const before=await context.newPage(),after=await context.newPage();
-             for(const [page,port]of [[before,8766],[after,8765]]){await page.goto('http://127.0.0.1:'+port+'/desk/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);}
-             for(const appearance of ['day','night']){
-              await mode(before,appearance);await mode(after,appearance);
-              const a=await before.evaluate(positions),b=await after.evaluate(positions);assert.equal(a.length,b.length);
-              for(let i=0;i<a.length;i++)for(const k of ['x','y','width','height'])assert(Math.abs(a[i][k]-b[i][k])<.1,size.name+' '+appearance+' preserved '+a[i].id+' '+k);
-              const metrics=await after.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,rules:[...document.querySelectorAll('.section-heading h2')].map(e=>{const s=getComputedStyle(e,'::after');return{height:s.height,pointer:s.pointerEvents,clip:s.clipPath,background:s.backgroundImage};})}));
-              assert(metrics.scroll<=metrics.width+1);assert(metrics.rules.every(r=>r.height==='4px'&&r.pointer==='none'&&r.clip.startsWith('polygon(')));
-              for(const id of ['research','reading','profile'])for(const [label,page]of [['before',before],['after',after]]){
-               await page.locator('#'+id+' .section-heading').scrollIntoViewIfNeeded();
-               const name=size.name+'-'+appearance+'-'+id+'-'+label+'.png',path=process.env.IH_EVIDENCE+'/'+name;
-               await page.screenshot({path,animations:'disabled'});const bytes=fs.readFileSync(path);
-               results.push({source:label==='before'?'5eb4d812dd7f9647613da373e1bba261e9bbb0de':'bb9d909be64087309de1f90240fdfe7c3ff9f902',viewport:size,appearance,chapter:id,state:label,file:name,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics});
+             for(const item of cases){
+              console.log('Render',item.id,size.name);
+              const context=await browser.newContext({viewport:{width:size.width,height:size.height},reducedMotion:'reduce',hasTouch:size.width<900});
+              await context.addInitScript(()=>localStorage.setItem('advisor_tour_v1','done'));
+              const before=await context.newPage(),after=await context.newPage();
+              for(const [page,label]of [[before,'before'],[after,'after']])page.on('pageerror',e=>browserErrors.push({property:item.id,size:size.name,state:label,message:e.message}));
+              await prepare(before,item,'http://127.0.0.1:8766');await prepare(after,item,'http://127.0.0.1:8765');
+              for(const mode of item.modes){
+               await setMode(before,item,mode);await setMode(after,item,mode);
+               const metrics=[];
+               for(const page of [before,after])metrics.push(await page.locator(item.target).first().evaluate(e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y+scrollY,width:r.width,height:r.height,viewport:innerWidth,scroll:document.documentElement.scrollWidth,controls:document.querySelectorAll('button,input,textarea,select,a').length};}));
+               for(const k of ['x','y','width','height'])assert(Math.abs(metrics[0][k]-metrics[1][k])<.5,item.id+' '+size.name+' preserved '+k+' '+JSON.stringify(metrics));
+               assert.equal(metrics[0].controls,metrics[1].controls,item.id+' controls unchanged');assert(metrics[1].scroll<=Math.max(metrics[0].scroll,size.width)+1,item.id+' no new horizontal overflow');
+               const pseudo=await after.locator(item.target).first().evaluate((e,spine)=>{const p=getComputedStyle(e,spine?'::before':'::after');return{pointer:p.pointerEvents,clip:p.clipPath,height:p.height,width:p.width};},!!item.spine);assert.equal(pseudo.pointer,'none');assert(pseudo.clip.startsWith('polygon('));
+               for(const [label,page]of [['before',before],['after',after]]){
+                await page.locator(item.target).first().scrollIntoViewIfNeeded();
+                const file=item.id+'-'+size.name+'-'+mode+'-'+label+'.png',path=process.env.IH_EVIDENCE+'/'+file;
+                await page.screenshot({path,animations:'disabled'});const bytes=fs.readFileSync(path);
+                evidence.push({property:item.id,viewport:size,mode,state:label,file,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics:metrics[label==='before'?0:1],pseudo});
+               }
               }
+              if(item.id==='qst'){
+               for(const page of [before,after]){await page.locator('#pbtn-practice').click();assert(await page.locator('#code-input').isVisible());await page.locator('#pbtn-learn').click();assert(await page.locator('#learn-out').isVisible());assert.equal(await page.locator('#sess-pill').textContent(),'R');}
+               functional.push({property:item.id,viewport:size.name,learningPractice:true});
+              }
+              if(item.id==='advisor'){
+               for(const page of [before,after]){await page.locator('.tk-jump-chip[data-tab="methods"]').click();assert(await page.locator('#tk-spec').isVisible());await page.locator('.tk-jump-chip[data-tab="graph"]').click();assert(await page.locator('#tk-graph').isVisible());}
+               functional.push({property:item.id,viewport:size.name,offlineAssessment:true,methodsAndGraphTabs:true});
+              }
+              await context.close();
              }
-             for(const id of ['advisor','qst','field-brief','loblolly','workbook','rupert','portfolio']){
-              await after.goto('http://127.0.0.1:8765/desk/?ih-case='+id+'#collection',{waitUntil:'networkidle'});await after.evaluate(()=>document.fonts.ready);
-              await after.locator('#reveal-'+id).scrollIntoViewIfNeeded();await after.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
-              console.log('Pointer reveal',size.name,id);
-              await after.locator('#reveal-'+id).click();
-              try{await after.waitForFunction(id=>document.getElementById('reveal-'+id).getAttribute('aria-expanded')==='true',id,{timeout:5000});}
-              catch(e){await after.screenshot({path:process.env.IH_EVIDENCE+'/failed-reveal-'+size.name+'-'+id+'.png'});console.log(await after.evaluate(()=>({scrollY,hash:location.hash,reveals:[...document.querySelectorAll('[data-reveal]')].map(e=>({id:e.id,expanded:e.getAttribute('aria-expanded')}))})));throw e;}
-              assert(await after.locator('#authentic-'+id).isVisible());await after.locator('#reveal-'+id).click();await after.locator('#authentic-'+id).waitFor({state:'hidden'});
-             }
-             for(const chapter of ['research','reading','profile']){
-              await after.goto('http://127.0.0.1:8765/desk/?ih-chapter='+chapter+'#collection',{waitUntil:'networkidle'});await after.evaluate(()=>document.fonts.ready);await after.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
-              await after.locator('.desk-nav a[href="#'+chapter+'"]').click();
-              await after.waitForFunction(id=>document.getElementById(id).dataset.complete==='true'&&document.activeElement.id===id,chapter);
-              const colors=await after.locator('#'+chapter).evaluate(e=>{const s=getComputedStyle(e);return{actual:s.getPropertyValue('--ih-divider-ink').trim(),expected:s.getPropertyValue('--chapter-ink').trim(),complete:e.dataset.complete};});console.log('Chapter palette',chapter,colors);assert.equal(colors.actual,colors.expected);
-              await after.locator('[data-return="'+chapter+'"]').click();
-             }
-             await after.emulateMedia({forcedColors:'active'});assert.equal(await after.locator('.section-heading h2').first().evaluate(e=>getComputedStyle(e,'::after').pointerEvents),'none');
-             await context.close();
             }
-           }finally{await browser.close();fs.writeFileSync(process.env.IH_EVIDENCE+'/manifest.json',JSON.stringify({before:'5eb4d812dd7f9647613da373e1bba261e9bbb0de',after:'bb9d909be64087309de1f90240fdfe7c3ff9f902',results},null,2));}
-           console.log(JSON.stringify({result:'passed',screenshots:results.length,unalteredLayout:true,allSevenReveals:true,allChapterPalettes:true}));
+            for(const item of cases){const old=browserErrors.filter(e=>e.property===item.id&&e.state==='before').map(e=>e.message).sort(),now=browserErrors.filter(e=>e.property===item.id&&e.state==='after').map(e=>e.message).sort();assert.deepEqual(now,old,item.id+' no new script errors');}
+           }finally{await browser.close();fs.writeFileSync(process.env.IH_EVIDENCE+'/manifest.json',JSON.stringify({sources:repos,evidence,functional,browserErrors},null,2));}
+           console.log(JSON.stringify({result:'passed',screenshots:evidence.length,functional,sourcePreservation:true}));
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
+      - name: Existing WebKit shelf and Workbook browser suites
+        if: always()
+        env:
+          CODEX_PRIMARY_RUNTIME_NODE_MODULES: ${{ runner.temp }}/ih-browser/node_modules
+          WB_ORIGIN: http://127.0.0.1:8765
+          WB_QA_DIR: ${{ runner.temp }}/ih-house-evidence/webkit
+        run: |
+          node scripts/test_shelf_browser.cjs
+          node scripts/test_workbook_browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ih-house-divider-desk
+          name: ih-house-ecosystem-evidence
           path: ${{ runner.temp }}/ih-house-evidence
           retention-days: 3
           if-no-files-found: error
