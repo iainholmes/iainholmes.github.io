@@ -1,4 +1,4 @@
-name: TEMP IH ecosystem divider validation
+name: TEMP IH QST portrait refinement validation
 on:
   push:
     branches: [validation/ih-house-divider-20261117]
@@ -9,48 +9,6 @@ concurrency:
   group: ih-ecosystem-validation-${{ github.sha }}
   cancel-in-progress: true
 jobs:
-  source:
-    strategy:
-      fail-fast: false
-      matrix:
-        source: [baseline, proposed]
-    runs-on: ubuntu-24.04
-    timeout-minutes: 12
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ matrix.source == 'baseline' && 'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d' || '16b878bbe5712efe9ec6e0c5da59222241826f73' }}
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Install the existing Atlas synthetic-image test dependency
-        run: python3 -m pip install --disable-pip-version-check Pillow==11.3.0
-      - name: Run every relevant existing source suite and preserve every failure
-        env:
-          IH_EVIDENCE: ${{ runner.temp }}/ih-source-evidence
-          IH_SOURCE: ${{ matrix.source }}
-        run: |
-          node <<'SOURCE_JS'
-          const fs=require('node:fs'),cp=require('node:child_process'),path=require('node:path');
-          fs.mkdirSync(process.env.IH_EVIDENCE,{recursive:true});
-          // Use the identical current Heron mock for both product revisions; no baseline product changes.
-          if(process.env.IH_SOURCE==='baseline')fs.writeFileSync('scripts/test_periodicals.cjs',cp.execFileSync('git',['show','16b878bbe5712efe9ec6e0c5da59222241826f73:scripts/test_periodicals.cjs'],{encoding:'utf8'}));
-          const commands=[['desk tests',['node','--test','desk/_tools/test-runtime.cjs','desk/_tools/test-publications.cjs','desk/_tools/test-publication-titles.cjs'],'.'],
-          ...['test_periodicals','test_publishing','test_hub_metadata','test_issue_marks','test_field_brief_order','test_field_brief_operations','test_workbook_cadence','test_workbook_learning','test_ll_source_evidence','test_ll_publication_layout','test_reading_exhibits','test_editorial_folio','test_notebook','test_field_register'].map(n=>[n,['node','scripts/'+n+'.cjs'],'.']),
-          ...JSON.parse(fs.readFileSync('rupert/package.json','utf8')).scripts.test.split(' && ').map(cmd=>['Atlas '+cmd,cmd.split(' '),'rupert'])];
-          const results=[];
-          for(const [name,args,cwd]of commands){const r=cp.spawnSync(args[0],args.slice(1),{cwd,encoding:'utf8',maxBuffer:16*1024*1024});const output=(r.stdout||'')+(r.stderr||'');console.log(name+': '+r.status);if(r.status!==0)console.log(output.slice(-6000));else console.log(output.split('\n').filter(x=>/passed|PASS|assertions|# pass/.test(x)).slice(-4).join('\n'));results.push({name,exit:r.status,tail:output.slice(-6000)});}
-          fs.writeFileSync(path.join(process.env.IH_EVIDENCE,'source-results.json'),JSON.stringify({source:process.env.IH_SOURCE,sha:cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),results},null,2));
-          if(results.some(r=>r.exit!==0))process.exitCode=1;
-          SOURCE_JS
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: ih-house-source-${{ matrix.source }}
-          path: ${{ runner.temp }}/ih-source-evidence
-          retention-days: 3
   chromium:
     strategy:
       fail-fast: false
@@ -75,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: iainholmes/quant-skills-trainer
-          ref: 'e2853fcae6ca9f1b6ab753380c4447bc813d83d5'
+          ref: '017e708c00659d0836090b4d5a4f07184a1f6958'
           path: quant-skills-trainer
           fetch-depth: 0
           persist-credentials: false
@@ -107,7 +65,7 @@ jobs:
           node <<'JS'
           const fs=require('node:fs'),cp=require('node:child_process'),assert=require('node:assert/strict'),crypto=require('node:crypto');
           const {chromium}=require(process.env.IH_PLAYWRIGHT);
-          const repos=[{dir:'.',base:'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d',head:'16b878bbe5712efe9ec6e0c5da59222241826f73',files:["index.html","personal-updates/index.html","daily-watchlist-5/index.html","daily-econ-challenge/index.html","rupert/assets/css/atlas.css","rupert/index.html","desk/HOUSE-DIVIDER-SYSTEM.md","scripts/test_periodicals.cjs"]},{dir:'econometric-advisor',base:'dddcdb09566f7b5ae6b2f1b969ceed99b122413c',head:'21c335ea180f8ccc40fa44c3698758067e220fcd',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']},{dir:'quant-skills-trainer',base:'3a81a4d4322769ce30950dd3bf7255eec462895b',head:'e2853fcae6ca9f1b6ab753380c4447bc813d83d5',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']}];
+          const repos=[{dir:'.',base:'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d',head:'16b878bbe5712efe9ec6e0c5da59222241826f73',files:["index.html","personal-updates/index.html","daily-watchlist-5/index.html","daily-econ-challenge/index.html","rupert/assets/css/atlas.css","rupert/index.html","desk/HOUSE-DIVIDER-SYSTEM.md","scripts/test_periodicals.cjs"]},{dir:'econometric-advisor',base:'dddcdb09566f7b5ae6b2f1b969ceed99b122413c',head:'21c335ea180f8ccc40fa44c3698758067e220fcd',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']},{dir:'quant-skills-trainer',base:'3a81a4d4322769ce30950dd3bf7255eec462895b',head:'017e708c00659d0836090b4d5a4f07184a1f6958',files:['index.html','HOUSE-DIVIDER-SYSTEM.md']}];
           for(const r of repos){
            assert.equal(cp.execFileSync('git',['-C',r.dir,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),r.head);
            const paths=cp.execFileSync('git',['-C',r.dir,'diff','--name-only',r.base,r.head],{encoding:'utf8'}).trim().split('\n').sort();assert.deepEqual(paths,r.files.slice().sort());
@@ -155,7 +113,7 @@ jobs:
            const browser=await chromium.launch({headless:true});
            try{
             for(const size of [{name:'macbook-air',width:1710,height:1107},{name:'tablet',width:1024,height:900},{name:'iphone',width:390,height:844},{name:'landscape',width:844,height:390}].filter(v=>!process.env.IH_VIEWPORT||v.name===process.env.IH_VIEWPORT)){
-             for(const item of cases){
+             for(const item of cases.filter(c=>c.id.startsWith('qst'))){
               console.log('Render',item.id,size.name);
               const context=await browser.newContext({viewport:{width:size.width,height:size.height},reducedMotion:'reduce',hasTouch:size.width<900});
               await context.addInitScript(()=>localStorage.setItem('advisor_tour_v1','done'));
@@ -168,7 +126,7 @@ jobs:
                for(const page of [before,after])metrics.push(await page.locator(item.target).first().evaluate(e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y+scrollY,width:r.width,height:r.height,viewport:innerWidth,scroll:document.documentElement.scrollWidth,controls:document.querySelectorAll('button,input,textarea,select,a').length};}));
                for(const k of ['x','y','width','height'])assert(Math.abs(metrics[0][k]-metrics[1][k])<.5,item.id+' '+size.name+' preserved '+k+' '+JSON.stringify(metrics));
                assert.equal(metrics[0].controls,metrics[1].controls,item.id+' controls unchanged');assert(metrics[1].scroll<=Math.max(metrics[0].scroll,size.width)+1,item.id+' no new horizontal overflow');
-               const pseudo=await after.locator(item.target).first().evaluate((e,spine)=>{const p=getComputedStyle(e,spine?'::before':'::after');return{pointer:p.pointerEvents,clip:p.clipPath,height:p.height,width:p.width};},!!item.spine);assert.equal(pseudo.pointer,'none');assert(pseudo.clip.startsWith('polygon('));
+               const pseudo=await after.locator(item.target).first().evaluate((e,spine)=>{const p=getComputedStyle(e,spine?'::before':'::after');return{pointer:p.pointerEvents,clip:p.clipPath,height:p.height,width:p.width,display:p.display,border:getComputedStyle(e).borderBottomColor};},!!item.spine);assert.equal(pseudo.pointer,'none');assert(pseudo.clip.startsWith('polygon('));if(item.id.startsWith('qst')&&size.width<=600){assert.equal(pseudo.display,'none');const borderBefore=await before.locator(item.target).first().evaluate(e=>getComputedStyle(e).borderBottomColor);assert.equal(pseudo.border,borderBefore,'Portrait retains its original border');}else assert.notEqual(pseudo.display,'none');
                for(const [label,page]of [['before',before],['after',after]]){
                 await page.locator(item.target).first().evaluate((e,spine)=>{const r=e.getBoundingClientRect();window.scrollTo({top:scrollY+(spine?r.top:r.bottom)-innerHeight*(spine?.25:.55),behavior:'instant'});},!!item.spine);
                 const file=item.id+'-'+size.name+'-'+mode+'-'+label+'.png',path=process.env.IH_EVIDENCE+'/'+file;
@@ -195,59 +153,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ih-house-chromium-${{ matrix.viewport }}
+          name: ih-house-qst-${{ matrix.viewport }}
           path: ${{ runner.temp }}/ih-house-evidence
-          retention-days: 3
-  webkit:
-    runs-on: ubuntu-24.04
-    container: mcr.microsoft.com/playwright:v1.57.0-noble
-    timeout-minutes: 18
-    strategy:
-      fail-fast: false
-      matrix:
-        state: [baseline, proposed]
-        include:
-          - state: baseline
-            source: 'de025feb2e5f9ac769e7f1fbc7dea0d0bc82353d'
-          - state: proposed
-            source: '16b878bbe5712efe9ec6e0c5da59222241826f73'
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ matrix.source }}
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Use pinned WebKit runtime
-        run: npm install --prefix "$RUNNER_TEMP/ih-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
-      - name: Existing shelf browser suite
-        env:
-          CODEX_PRIMARY_RUNTIME_NODE_MODULES: ${{ runner.temp }}/ih-browser/node_modules
-          WB_ORIGIN: http://127.0.0.1:8765
-          WB_QA_DIR: ${{ runner.temp }}/ih-webkit-evidence/shelf
-        run: node scripts/test_shelf_browser.cjs
-      - name: Existing Workbook suite with failure-only state capture
-        if: always()
-        env:
-          CODEX_PRIMARY_RUNTIME_NODE_MODULES: ${{ runner.temp }}/ih-browser/node_modules
-          WB_ORIGIN: http://127.0.0.1:8765
-          WB_QA_DIR: ${{ runner.temp }}/ih-webkit-evidence/workbook
-        run: |
-          node <<'WB_DIAGNOSTIC'
-          const fs=require('node:fs');
-          let source=fs.readFileSync('scripts/test_workbook_browser.cjs','utf8');
-          const needle="await p.waitForSelector('details[data-learning=\"explanation\"]');const explanation=";
-          const replacement="try{await p.waitForSelector('details[data-learning=\"explanation\"]');}catch(err){await shot(p,'failure-at-'+e.no+'-'+q.id);fs.writeFileSync(path.join(out,'failure-context.json'),JSON.stringify({set:e.no,date:e.date,question:q.id,state:await state(p,e.date),hash:await p.url(),dom:await p.locator('#answerLearning').innerHTML(),selected:await p.locator('[data-opt]').evaluateAll(es=>es.map(el=>({index:el.dataset.opt,className:el.className}))),buttons:await p.locator('[data-act=\"answer\"]').evaluateAll(es=>es.map(el=>({disabled:el.disabled,text:el.textContent})))},null,2));throw err;}const explanation=";
-          if(!source.includes(needle))throw Error('Diagnostic insertion missing');
-          source=source.replace(needle,replacement);
-          fs.writeFileSync(process.env.RUNNER_TEMP+'/ih-workbook-diagnostic.cjs',source);
-          WB_DIAGNOSTIC
-          node "$RUNNER_TEMP/ih-workbook-diagnostic.cjs"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: ih-house-webkit-${{ matrix.state }}
-          path: ${{ runner.temp }}/ih-webkit-evidence
           retention-days: 3
