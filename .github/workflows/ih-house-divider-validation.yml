@@ -80,8 +80,13 @@ jobs:
               }
              }
              for(const id of ['advisor','qst','field-brief','loblolly','workbook','rupert','portfolio']){
-              await after.locator('#reveal-'+id).click();await after.waitForFunction(id=>document.getElementById('reveal-'+id).getAttribute('aria-expanded')==='true',id);
-              assert(await after.locator('#authentic-'+id).isVisible());await after.locator('#reveal-'+id).click();assert(!(await after.locator('#authentic-'+id).isVisible()));
+              await after.goto('http://127.0.0.1:8765/desk/#collection',{waitUntil:'networkidle'});await after.evaluate(()=>document.fonts.ready);
+              await after.locator('#reveal-'+id).scrollIntoViewIfNeeded();await after.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+              console.log('Pointer reveal',size.name,id);
+              await after.locator('#reveal-'+id).click();
+              try{await after.waitForFunction(id=>document.getElementById('reveal-'+id).getAttribute('aria-expanded')==='true',id,{timeout:5000});}
+              catch(e){await after.screenshot({path:process.env.IH_EVIDENCE+'/failed-reveal-'+size.name+'-'+id+'.png'});console.log(await after.evaluate(()=>({scrollY,hash:location.hash,reveals:[...document.querySelectorAll('[data-reveal]')].map(e=>({id:e.id,expanded:e.getAttribute('aria-expanded')}))})));throw e;}
+              assert(await after.locator('#authentic-'+id).isVisible());await after.locator('#reveal-'+id).click();await after.locator('#authentic-'+id).waitFor({state:'hidden'});
              }
              for(const chapter of ['research','reading','profile']){
               await after.locator('.desk-nav a[href="#'+chapter+'"]').click();
