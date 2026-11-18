@@ -83,8 +83,9 @@ or route/map ornament is justified. Travel and every publication format remain
 unchanged. Advisor's single overview/toolkit boundary uses native interface blue
 and hint ink, leaving every methodological category and graph color untouched.
 QST adds only a three-pixel-cap/one-pixel-stroke session transition. Its language
-color follows the existing selection; editors, output, feedback and progress
-receive no ornament. No new footer signature is needed.
+color follows the existing selection. At 600px and below, its original ordinary
+border remains because the existing sidebar leaves too little space for the motif.
+Editors, output, feedback and progress receive no ornament. No new footer signature is needed.
 
 Outside desk, HTML changes consist solely of one scoped style block named
 `ih-house-dividers`; the Atlas stylesheet receives a small appended block scoped to the week page, and only
@@ -101,3 +102,26 @@ and all complete-chapter palettes. Downloaded desktop, tablet, portrait and
 landscape samples were inspected. Source and deployment evidence for subsequent
 stages belongs in the repository-specific PRs; user/device acceptance remains
 distinct from implementation and remote inspection.
+
+## Validation record and existing limitations
+
+The broader source/render comparison is [run 44235159494](https://github.com/iainholmes/iainholmes.github.io/actions/runs/44235159494):
+112 hashed before/after Chromium captures across four viewports, supported
+appearances and all three QST language palettes. All four geometry/interaction
+jobs passed. Source guards require exact preservation of HTML/scripts/data after
+removing only the added styles and Atlas CSS cache query. The existing shelf and
+128-question Workbook suites also passed at the identical publication source in
+[run 44233802168](https://github.com/iainholmes/iainholmes.github.io/actions/runs/44233802168).
+QST's narrow-width omission is separately checked in
+[run 44235717173](https://github.com/iainholmes/iainholmes.github.io/actions/runs/44235717173).
+
+The full legacy source run is not wholly green: Workbook's frozen publication
+adapter comparison, Atlas's eight-region expectation and an old Travel POI fixture
+fail identically on baseline and proposal. All 36 suite outcomes match; the three
+failure outputs are byte-identical. No failure is suppressed or publication guard
+changed. Later Workbook pointer sweeps show intermittent submit timing failures;
+retain their diagnostic artifacts alongside the complete successful sweep.
+Advisor already raises a missing `_updateComparativeAvailability` helper error and
+has portrait header overflow; QST already has a crowded portrait sidebar/content
+layout. These are recorded baseline limitations, not claims of mobile acceptance
+or changes to unrelated application behavior.
