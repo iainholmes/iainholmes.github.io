@@ -1,0 +1,80 @@
+# Temporary, branch-only pre-merge evidence. Never deploys or writes repository contents.
+name: TEMP IH house divider validation
+on:
+  push:
+    branches: [validation/ih-house-divider-20261117]
+    paths: [.github/workflows/ih-house-divider-validation.yml]
+permissions:
+  contents: read
+concurrency:
+  group: ih-house-divider-validation
+  cancel-in-progress: false
+jobs:
+  desk-baseline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: '569e9fe08bb02c7607a14a0ba5cdd525848fe9cf'
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify exact source and existing desk tests
+        run: |
+          test "$(git rev-parse HEAD)" = "569e9fe08bb02c7607a14a0ba5cdd525848fe9cf"
+          node --test desk/_tools/test-runtime.cjs desk/_tools/test-publications.cjs desk/_tools/test-publication-titles.cjs
+          python3 -m pip install --quiet Pillow
+          python3 desk/_tools/validate.py
+      - name: Install existing pinned browser runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/ih-browser" --no-save --ignore-scripts --package-lock=false playwright@1.57.0
+          "$RUNNER_TEMP/ih-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Serve unchanged source and capture responsive evidence
+        env:
+          IH_PLAYWRIGHT: ${{ runner.temp }}/ih-browser/node_modules/playwright
+          IH_EVIDENCE: ${{ runner.temp }}/ih-house-evidence
+        run: |
+          mkdir -p "$IH_EVIDENCE"
+          python3 -m http.server 8765 --bind 127.0.0.1 > "$IH_EVIDENCE/preview.log" 2>&1 &
+          node <<'JS'
+          const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+          const {chromium}=require(process.env.IH_PLAYWRIGHT);
+          (async()=>{
+            for(let attempt=0;;attempt++){try{const r=await fetch('http://127.0.0.1:8765/desk/');assert(r.ok);break;}catch(e){if(attempt>=30)throw e;await new Promise(r=>setTimeout(r,300));}}
+            const browser=await chromium.launch({headless:true}),results=[];
+            try{
+              for(const size of [{name:'macbook-air',width:1710,height:1107},{name:'tablet',width:1024,height:900},{name:'iphone',width:390,height:844},{name:'landscape',width:844,height:390}]){
+                const context=await browser.newContext({viewport:{width:size.width,height:size.height},reducedMotion:'reduce'});
+                const page=await context.newPage();
+                await page.goto('http://127.0.0.1:8765/desk/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+                assert.equal(await page.locator('.editorial-chapter').count(),3);assert.equal(await page.locator('[data-reveal]').count(),7);
+                for(const mode of ['day','night']){
+                  if(await page.evaluate(()=>document.documentElement.dataset.appearance)!==mode)await page.locator('.appearance-switch').click();
+                  await page.waitForFunction(m=>document.documentElement.dataset.appearance===m,mode);
+                  const metrics=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,headings:[...document.querySelectorAll('.section-heading h2')].map(e=>e.textContent)}));
+                  assert(metrics.scroll<=metrics.width+1,JSON.stringify(metrics));
+                  for(const id of ['research','reading','profile']){
+                    await page.locator('#'+id+' .section-heading').scrollIntoViewIfNeeded();
+                    const name=size.name+'-'+mode+'-'+id+'.png',path=process.env.IH_EVIDENCE+'/'+name;
+                    await page.screenshot({path,animations:'disabled'});
+                    const bytes=fs.readFileSync(path);results.push({source:'569e9fe08bb02c7607a14a0ba5cdd525848fe9cf',viewport:size,mode,chapter:id,file:name,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),metrics});
+                  }
+                }
+                await page.locator('#reveal-advisor').click();await page.waitForFunction(()=>document.getElementById('reveal-advisor').getAttribute('aria-expanded')==='true');
+                assert(await page.locator('#authentic-advisor').isVisible());await page.locator('#reveal-advisor').click();assert(!(await page.locator('#authentic-advisor').isVisible()));
+                await context.close();
+              }
+            }finally{await browser.close();fs.writeFileSync(process.env.IH_EVIDENCE+'/manifest.json',JSON.stringify({source:'569e9fe08bb02c7607a14a0ba5cdd525848fe9cf',results},null,2));}
+            console.log(JSON.stringify({result:'passed',source:'569e9fe08bb02c7607a14a0ba5cdd525848fe9cf',screenshots:results.length}));
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ih-house-divider-baseline
+          path: ${{ runner.temp }}/ih-house-evidence
+          retention-days: 3
+          if-no-files-found: error
