@@ -80,7 +80,7 @@ jobs:
               }
              }
              for(const id of ['advisor','qst','field-brief','loblolly','workbook','rupert','portfolio']){
-              await after.goto('http://127.0.0.1:8765/desk/#collection',{waitUntil:'networkidle'});await after.evaluate(()=>document.fonts.ready);
+              await after.goto('http://127.0.0.1:8765/desk/?ih-case='+id+'#collection',{waitUntil:'networkidle'});await after.evaluate(()=>document.fonts.ready);
               await after.locator('#reveal-'+id).scrollIntoViewIfNeeded();await after.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
               console.log('Pointer reveal',size.name,id);
               await after.locator('#reveal-'+id).click();
@@ -89,9 +89,10 @@ jobs:
               assert(await after.locator('#authentic-'+id).isVisible());await after.locator('#reveal-'+id).click();await after.locator('#authentic-'+id).waitFor({state:'hidden'});
              }
              for(const chapter of ['research','reading','profile']){
+              await after.goto('http://127.0.0.1:8765/desk/?ih-chapter='+chapter+'#collection',{waitUntil:'networkidle'});await after.evaluate(()=>document.fonts.ready);await after.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
               await after.locator('.desk-nav a[href="#'+chapter+'"]').click();
-              await after.waitForFunction(id=>document.getElementById(id).dataset.complete==='true',chapter);
-              const colors=await after.locator('#'+chapter).evaluate(e=>{const s=getComputedStyle(e);return{actual:s.getPropertyValue('--ih-divider-ink').trim(),expected:s.getPropertyValue('--chapter-ink').trim()};});console.log('Chapter palette',chapter,colors);assert.equal(colors.actual,colors.expected);
+              await after.waitForFunction(id=>document.getElementById(id).dataset.complete==='true'&&document.activeElement.id===id,chapter);
+              const colors=await after.locator('#'+chapter).evaluate(e=>{const s=getComputedStyle(e);return{actual:s.getPropertyValue('--ih-divider-ink').trim(),expected:s.getPropertyValue('--chapter-ink').trim(),complete:e.dataset.complete};});console.log('Chapter palette',chapter,colors);assert.equal(colors.actual,colors.expected);
               await after.locator('[data-return="'+chapter+'"]').click();
              }
              await after.emulateMedia({forcedColors:'active'});assert.equal(await after.locator('.section-heading h2').first().evaluate(e=>getComputedStyle(e,'::after').pointerEvents),'none');
