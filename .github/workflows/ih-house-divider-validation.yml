@@ -133,7 +133,9 @@ jobs:
            await page.locator(item.target).first().waitFor({state:'visible'});
            // Results generate new font faces and navigation rows; settle the same content before comparison.
            await page.evaluate(async()=>{await document.fonts.ready;window.scrollTo(0,0);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
-           if(item.id==='advisor')await page.waitForFunction(()=>!document.getAnimations().some(a=>a.playState==='running'));
+           if(item.id==='advisor')await page.waitForFunction(()=>document.getElementById('tk-jump-nav').classList.contains('show'));
+           // Require stable document geometry over actual render frames, preserving the strict comparison.
+           await page.locator(item.target).first().evaluate(async e=>{let prior='',stable=0;for(let n=0;n<120&&stable<5;n++){await new Promise(requestAnimationFrame);const r=e.getBoundingClientRect(),now=[r.x,r.y+scrollY,r.width,r.height].join(',');stable=now===prior?stable+1:0;prior=now;}if(stable<5)throw Error('Unstable comparison layout');});
           }
           async function setMode(page,item,mode){
            if(mode==='day'||mode==='night'){await page.locator('button[data-mode="'+mode+'"]').first().click();await page.waitForFunction(m=>document.documentElement.dataset.mode===m,mode);}
