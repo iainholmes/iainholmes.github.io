@@ -7,23 +7,23 @@ vm.createContext(ctx);vm.runInContext(block,ctx);
 function item(id){const classes=new Set();return {a:{id},state:'perched',btn:{hidden:false,classList:{add:k=>classes.add(k),remove:k=>classes.delete(k),contains:k=>classes.has(k)},setAttribute(k,v){this[k]=v}},panel:{hidden:false}}}
 const a=item('a'),b=item('b');ctx.HERON.items=[a,b];
 ctx.summon(a);assert.equal(a.state,'note');assert.equal(ctx.HERON.current,a);
-ctx.release(a);assert(!a.btn.hidden&&a.panel.hidden,'Close collapses contents but retains the label');assert(a.btn.classList.contains('vacant'),'Close hides the bird');assert.equal(a.btn['aria-expanded'],'false');assert(ctx.HERON.closed['test:a']);assert.equal(ctx.HERON.current,null);assert(!b.btn.hidden,'closing affects only this perch');
+ctx.release(a);assert(!a.btn.hidden&&a.panel.hidden,'Close collapses contents but retains the label');assert(!a.btn.classList.contains('vacant'),'Close retains the standing bird');assert.equal(a.state,'perched');assert.equal(a.btn['aria-expanded'],'false');assert(!ctx.HERON.closed['test:a'],'Close does not create a persistent dismissal');assert.equal(ctx.HERON.current,null);assert(!b.btn.hidden,'closing affects only this perch');
 ctx.summon(a);assert.equal(a.state,'note','retained label can reopen');assert(!a.btn.hidden);assert(!a.btn.classList.contains('vacant'),'reopening uses the existing inspection pose without flight');
 ctx.dismissHeron(a);assert(a.btn.hidden&&a.panel.hidden,'dismissal hides both bird and label');assert(dismissed.has('a'),'dismissal is persisted');ctx.summon(a);assert(a.btn.hidden,'dismissed intervention cannot reopen');
-ctx.summon(b);assert.equal(b.state,'note');on=false;ctx.release(b);const c=item('c');ctx.summon(c);assert.equal(c.state,'perched','Heron Off prevents opening');ctx.heronTick();assert.equal(settled,1);on=true;ctx.companionMobile=()=>false;ctx.summon(c);assert.equal(c.state,'perched','desktop cannot open a companion');
+ctx.summon(b);assert.equal(b.state,'note');on=false;ctx.release(b);const c=item('c');ctx.summon(c);assert.equal(c.state,'perched','Heron Off prevents opening');ctx.heronTick();assert.equal(settled,1);on=true;ctx.companionMobile=()=>false;ctx.summon(c);assert.equal(c.state,'perched','an unavailable companion cannot open');
 assert(!source.includes('new IntersectionObserver(function(ents)'),'standing perches do not depend on scroll-triggered arrival');
 assert(source.includes("it.btn.hidden=!companionAvailable()||!companionOn()||it.state==='dismissed'"));
 assert(!source.includes('.heron-perch:hover .pose-inspect'),'hover alone must not bend the standing bird');
-console.log('Heron lifecycle: open → close → bird gone + label retained → reopen; persistent dismissal; independent items, mobile scope and Off passed.');
+console.log('Heron lifecycle: open → close → standing perch retained → reopen; persistent dismissal; independent items, availability and Off passed.');
 
 // The actual open/close handler retains contents, labels and keyboard focus semantics.
-const uiItem=item('ui');let focusReturns=0,scrollReturns=0;
+const uiItem=item('ui');let focusReturns=0,scrollReturns=0,positionGuards=0;
 uiItem.btn.focus=()=>focusReturns++;uiItem.btn.scrollIntoView=()=>scrollReturns++;uiItem.panel.focus=()=>{};
-const ui={companionMobile:()=>true,companionAvailable:()=>true,companionOn:()=>true,settleHeron(){},addTo(){},HERON:{closed:{},current:null,edition:{dataset:{edition:'test'}}},slot:{},itemOf:()=>uiItem,panel:uiItem.panel,btn:uiItem.btn,art:{},a:uiItem.a,seenKey:'seen',HV:{mark(){}}};
+const ui={companionMobile:()=>true,companionAvailable:()=>true,companionOn:()=>true,settleHeron(){},addTo(){},HERON:{closed:{},current:null,edition:{dataset:{edition:'test'}}},slot:{},itemOf:()=>uiItem,panel:uiItem.panel,btn:uiItem.btn,art:{},a:uiItem.a,seenKey:'seen',window:{},keepHeronPosition(button,change){positionGuards++;change()},HV:{mark(){}}};
 vm.createContext(ui);vm.runInContext(block,ui);
 vm.runInContext(source.slice(source.indexOf('function openP(o,quiet)'),source.indexOf("var go=panel.querySelector('.hv-goto')")),ui);
 ui.openP(true);assert(!uiItem.panel.hidden);ui.openP(false);assert(uiItem.panel.hidden&&!uiItem.btn.hidden);assert.equal(focusReturns,1);
-ui.openP(true);assert(!uiItem.panel.hidden,'the retained label reopens full contents');ui.slot.closeHeronNote();assert(uiItem.panel.hidden&&!uiItem.btn.hidden);assert.equal(focusReturns,1,'automatic close must not steal focus from the newly opened note');assert.equal(scrollReturns,1,'automatic close must not scroll back to the previous label');
+ui.openP(true);assert(!uiItem.panel.hidden,'the retained label reopens full contents');ui.slot.closeHeronNote();assert(uiItem.panel.hidden&&!uiItem.btn.hidden);assert.equal(focusReturns,1,'automatic close must not steal focus from the newly opened note');assert.equal(scrollReturns,0,'adaptive open/close never scrolls back to the previous label');assert.equal(positionGuards,3,'every direct open/close uses the accepted position guard');
 console.log('Heron DOM handler: contents reopen, direct Close restores focus, automatic close preserves the new reading position passed.');
 
 // Exercise the real shelf controller with geometry and node identity, including resize restoration.
