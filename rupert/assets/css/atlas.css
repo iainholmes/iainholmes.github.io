@@ -2098,7 +2098,7 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
 @media(prefers-reduced-motion:reduce){.page-travel #route-stage .trip-map.is-floating{transition:none}}
 
 /* IH_HOUSE_DIVIDER_V1: refine an existing structural rule; preserve its box. */
-.weekband {
+body[data-section="week"] .weekband {
   --ih-divider-ink:var(--pine);
   --ih-divider-terminal:var(--rule-strong);
   --ih-divider-cap:clamp(10px,1.2vw,18px);
@@ -2106,10 +2106,10 @@ html.veil-active,html.veil-active body{background:#1D2A3A!important;min-height:1
   position:relative;
   border-bottom-color:transparent;
 }
-.weekband::after {
+body[data-section="week"] .weekband::after {
   content:"";position:absolute;inset-inline:0;bottom:-1px;height:4px;pointer-events:none;
   background:linear-gradient(to right,var(--ih-divider-terminal) 0 var(--ih-divider-shoulder),var(--ih-divider-ink) var(--ih-divider-shoulder) calc(100% - var(--ih-divider-shoulder)),var(--ih-divider-terminal) calc(100% - var(--ih-divider-shoulder)) 100%);
   clip-path:polygon(0 0,var(--ih-divider-cap) 0,var(--ih-divider-shoulder) 33.333%,calc(100% - var(--ih-divider-shoulder)) 33.333%,calc(100% - var(--ih-divider-cap)) 0,100% 0,100% 100%,calc(100% - var(--ih-divider-cap)) 100%,calc(100% - var(--ih-divider-shoulder)) 66.667%,var(--ih-divider-shoulder) 66.667%,var(--ih-divider-cap) 100%,0 100%);
 }
-@media(forced-colors:active) { .weekband::after {background:CanvasText} }
-@media print { .weekband {border-bottom-color:currentColor} .weekband::after {display:none} }
+@media(forced-colors:active) { body[data-section="week"] .weekband::after {background:CanvasText} }
+@media print { body[data-section="week"] .weekband {border-bottom-color:currentColor} body[data-section="week"] .weekband::after {display:none} }

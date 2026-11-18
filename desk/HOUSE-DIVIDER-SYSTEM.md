@@ -87,7 +87,8 @@ color follows the existing selection; editors, output, feedback and progress
 receive no ornament. No new footer signature is needed.
 
 Outside desk, HTML changes consist solely of one scoped style block named
-`ih-house-dividers`; the Atlas stylesheet receives a small appended scoped block.
+`ih-house-dividers`; the Atlas stylesheet receives a small appended block scoped to the week page, and only
+its stylesheet cache query is refreshed in `rupert/index.html`.
 Source checks remove only that added block and require byte-for-byte equality
 with the base. Frozen artwork, published prose/questions, scripts, citations,
 metadata, storage formats, schedules and all L&L files must compare unchanged.
