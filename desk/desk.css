@@ -1171,3 +1171,51 @@ body { background-image:repeating-linear-gradient(0deg,transparent 0 5px,#976144
   }
 }
 .work-item { overflow-anchor:none }
+
+/* IH. house divider: the journal's 3:1 terminal-to-stroke proportion,
+   translated to the three existing chapter rules. No layout dimensions change. */
+.editorial-chapter {
+  --ih-divider-ink:#1f4a3b;
+  --ih-divider-terminal:#b4532e;
+  --ih-divider-cap:clamp(12px,1.2vw,18px);
+  --ih-divider-shoulder:calc(var(--ih-divider-cap) + 6px);
+}
+:root[data-appearance="night"] .editorial-chapter {
+  --ih-divider-ink:var(--ink);
+  --ih-divider-terminal:var(--accent);
+}
+:root[data-appearance] .editorial-chapter[data-complete="true"] {
+  --ih-divider-ink:var(--chapter-ink);
+  --ih-divider-terminal:var(--chapter-accent);
+}
+.editorial-chapter .section-heading h2,
+.editorial-chapter[data-active="true"] .section-heading h2,
+.editorial-chapter[data-complete="true"] .section-heading h2 {
+  position:relative;
+  border-bottom-color:transparent;
+}
+.editorial-chapter .section-heading h2::after {
+  content:"";
+  position:absolute;
+  inset-inline:0;
+  bottom:-1px;
+  height:4px;
+  pointer-events:none;
+  background:linear-gradient(to right,
+    var(--ih-divider-terminal) 0 var(--ih-divider-shoulder),
+    var(--ih-divider-ink) var(--ih-divider-shoulder) calc(100% - var(--ih-divider-shoulder)),
+    var(--ih-divider-terminal) calc(100% - var(--ih-divider-shoulder)) 100%);
+  clip-path:polygon(0 0,var(--ih-divider-cap) 0,var(--ih-divider-shoulder) 33.333%,
+    calc(100% - var(--ih-divider-shoulder)) 33.333%,calc(100% - var(--ih-divider-cap)) 0,100% 0,
+    100% 100%,calc(100% - var(--ih-divider-cap)) 100%,calc(100% - var(--ih-divider-shoulder)) 66.667%,
+    var(--ih-divider-shoulder) 66.667%,var(--ih-divider-cap) 100%,0 100%);
+}
+@media(forced-colors:active) {
+  .editorial-chapter .section-heading h2::after { background:CanvasText }
+}
+@media print {
+  .editorial-chapter .section-heading h2,
+  .editorial-chapter[data-active="true"] .section-heading h2,
+  .editorial-chapter[data-complete="true"] .section-heading h2 { border-bottom-color:currentColor }
+  .editorial-chapter .section-heading h2::after { display:none }
+}
