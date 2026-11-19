@@ -2960,6 +2960,68 @@
         "seed": 2208857425,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A large customer funds its grid connection across a boundary protecting household accounts\"><title>NC approves Duke rate increases and stronger financial terms for large data centers</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-18-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-18-05)\"><path d=\"M70 110H325V325H70Z\" fill=\"#1b4a6b\"/><path d=\"M110 160H285M110 230H285\" stroke=\"#f4ead7\" stroke-width=\"25\"/><path d=\"M195 325V490H370\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"30\"/><circle cx=\"280\" cy=\"490\" r=\"53\" fill=\"#c98a12\"/><path d=\"M280 455V525M255 475H305M255 505H305\" stroke=\"#2c241d\" stroke-width=\"13\"/><path d=\"M390 115V555\" stroke=\"#7a1f33\" stroke-width=\"25\"/><path d=\"M455 320L580 210L715 320V535H455Z\" fill=\"#1d5f47\"/><path d=\"M535 535V410H625V535\" fill=\"#f4ead7\"/><path d=\"M480 140H700\" stroke=\"#7c5a3e\" stroke-width=\"22\"/><path d=\"M510 115V165M590 115V165M670 115V165\" stroke=\"#7c5a3e\" stroke-width=\"17\"/></g></svg>"
       }
+    },
+    "2026-11-19": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-19",
+        "number": "01",
+        "category": "Energy · global security",
+        "topic": "energy",
+        "title": "IEA says the Hormuz disruption has become history's largest energy supply shock",
+        "composition": "energy-reserve",
+        "signature": "plate:energy-reserve",
+        "seed": 2450511161,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A storage tank feeds a finite reserve through a valve\"><title>IEA says the Hormuz disruption has become history&#39;s largest energy supply shock</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-19-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-19-01)\"><path d=\"M105 170Q250 85 395 170V485Q250 555 105 485Z\" fill=\"#1b4a6b\"/><ellipse cx=\"250\" cy=\"170\" rx=\"145\" ry=\"48\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M395 380H555V520H710\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"32\"/><circle cx=\"555\" cy=\"380\" r=\"52\" fill=\"#c4452c\"/><path d=\"M555 338V422M513 380H597\" stroke=\"#f4ead7\" stroke-width=\"11\"/><path d=\"M155 315H345\" stroke=\"#c98a12\" stroke-width=\"26\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-19",
+        "number": "02",
+        "category": "Technology · semiconductor controls",
+        "topic": "infrastructure",
+        "title": "TSMC suspends advanced Chinese chip orders as U.S. foundry controls take effect",
+        "composition": "infrastructure-duct",
+        "signature": "plate:infrastructure-duct",
+        "seed": 882615712,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Cooling infrastructure surrounds a capacity chamber\"><title>TSMC suspends advanced Chinese chip orders as U.S. foundry controls take effect</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-19-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-19-02)\"><path d=\"M90 155H475V480H90Z\" fill=\"#2c241d\"/><path d=\"M130 202H432M130 270H432M130 338H432M130 406H432\" stroke=\"#f4ead7\" stroke-width=\"23\"/><path d=\"M520 510V185H690V410H600\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"51\"/><path d=\"M520 96V160M580 96V160M640 96V160\" stroke=\"#c4452c\" stroke-width=\"20\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-19",
+        "number": "03",
+        "category": "U.S. policy · health information",
+        "topic": "infrastructure",
+        "title": "HIPAA rule cuts the health-record access deadline to 15 days",
+        "composition": "ai-investment-gap",
+        "signature": "plate:ai-investment-gap",
+        "seed": 2478580796,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Capital spending rises ahead of measured productivity\"><title>HIPAA rule cuts the health-record access deadline to 15 days</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-19-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-19-03)\"><path d=\"M80 520V430H180V350H280V245H380V125H480V520Z\" fill=\"#1b4a6b\"/><path d=\"M95 430H166M195 350H266M295 245H366M395 125H466\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M535 520V385H705V520Z\" fill=\"#7c5a3e\"/><path d=\"M570 385V295H670V385\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M500 215H730\" stroke=\"#c4452c\" stroke-width=\"18\" stroke-dasharray=\"28 18\"/><circle cx=\"615\" cy=\"215\" r=\"34\" fill=\"#c98a12\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-19",
+        "number": "04",
+        "category": "Economy · trade and investment",
+        "topic": "heat",
+        "title": "U.S. announces $17 billion in Southeast Asia commercial and strategic deals",
+        "composition": "heat-canopy",
+        "signature": "plate:heat-canopy",
+        "seed": 3422325247,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Heat waves above a shaded shelter and exposed ground\"><title>U.S. announces $17 billion in Southeast Asia commercial and strategic deals</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-19-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-19-04)\"><circle cx=\"605\" cy=\"160\" r=\"101\" fill=\"#c4452c\"/><path d=\"M70 155Q180 95 290 155T510 155M70 225Q180 165 290 225T510 225\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"25\"/><path d=\"M105 375L285 265L465 375Z\" fill=\"#1b4a6b\"/><path d=\"M140 375V540M430 375V540\" stroke=\"#2c241d\" stroke-width=\"23\"/><g fill=\"#2c241d\"><circle cx=\"230\" cy=\"417\" r=\"24\"/><circle cx=\"328\" cy=\"417\" r=\"24\"/><path d=\"M207 445H253V523H207ZM305 445H351V523H305Z\"/></g><path d=\"M508 520L561 451L600 500L651 427L718 485\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"17\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-19",
+        "number": "05",
+        "category": "North Carolina · public finance",
+        "topic": "heat",
+        "title": "North Carolina sends a revised SNAP cost-sharing formula to the governor",
+        "composition": "heat-exposure",
+        "signature": "plate:heat-exposure",
+        "seed": 1067846576,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An exposure field crossed by people and thermal bands\"><title>North Carolina sends a revised SNAP cost-sharing formula to the governor</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-19-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-19-05)\"><path d=\"M90 115H710V510H90Z\" fill=\"#7a1f33\"/><path d=\"M90 205Q245 125 410 205T710 205M90 325Q245 245 410 325T710 325M90 445Q245 365 410 445T710 445\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"45\"/><g fill=\"#f4ead7\"><circle cx=\"255\" cy=\"283\" r=\"38\"/><path d=\"M205 450V355Q255 305 305 355V450Z\"/><circle cx=\"558\" cy=\"360\" r=\"38\"/><path d=\"M508 525V430Q558 380 608 430V525Z\"/></g></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

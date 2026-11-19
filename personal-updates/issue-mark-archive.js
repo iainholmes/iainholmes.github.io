@@ -2309,5 +2309,56 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 051: Prices / capacity &amp; comparison\"><title>Field Brief · 051 · Prices / capacity &amp; comparison</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M8 8H92V92H8Z\" fill=\"#221a14\"/><path d=\"M22 25H78M22 45H78M22 65H48\" stroke=\"#f1e6d0\" stroke-width=\"7\"/><path d=\"M60 64H96V96H60Z\" fill=\"#8a2a36\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M45 3H57V98H45ZM5 34H97V46H5Z\" fill=\"#221a14\"/><circle cx=\"51\" cy=\"40\" r=\"22\" fill=\"#8a2a36\"/><path d=\"M51 56V84H93\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"10\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 051 / 2026-11-18</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Prices / capacity &amp; comparison</text></g></svg>"
+  },
+  "fb:2026-11-19": {
+    "key": "fb",
+    "date": "2026-11-19",
+    "no": "052",
+    "identity": "Field Brief",
+    "theme": "allocation",
+    "framing": "The IEA measures the enduring reach of the Hormuz energy shock. New U.S. controls change foundry access for Chinese chip designers, a HIPAA rule accelerates health-record access, Southeast Asia agreements combine trade and strategic investment, and North Carolina advances a new way to divide food-assistance costs. Security decisions are becoming allocation decisions The five developments do not form one policy program. They do, however, each convert a broad risk into an allocation choice: energy import exposure, access to chip fabrication, control of health information, public support for overseas commerce and responsibility for food-assistance costs. The relevant evidence differs. The IEA offers scenarios rather than predictions; TSMC's operational response is reported against a published rule; HIPAA creates enforceable timelines after a transition; commercial announcements mix binding and prospective items; and North Carolina's formula still awaits gubernatorial action.",
+    "version": 6,
+    "subject": "infrastructure",
+    "composition": "spread-long-section-service-rack-control-loop",
+    "signature": "issue:spread-long-section-service-rack-control-loop",
+    "phrase": "Energy security / feedback",
+    "seed": 446427797,
+    "geometry": "<g transform=\"translate(70 110) scale(1.75)\"><path d=\"M12 3H88V97H12Z\" fill=\"$ink\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"$paper\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"$accent\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"$accent\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"$support\" stroke-width=\"6\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01",
+          "02"
+        ],
+        "score": 26
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 51,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 052: Energy security / feedback\"><title>Field Brief · 052 · Energy security / feedback</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><path d=\"M12 3H88V97H12Z\" fill=\"#221a14\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"#f1e6d0\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"#8a2a36\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"#8a2a36\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 052 / 2026-11-19</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Energy security / feedback</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
