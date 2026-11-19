@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "ea8449d5e09248c5",
+  "revision": "5b3a0b2455335318",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -804,6 +804,56 @@
       ],
       "photo_id": "atlas-plate-dc80e6bfccc2",
       "path": "data/editions/2026-W47-tue.json"
+    },
+    {
+      "id": "2026-W47-thu",
+      "slot": "thursday",
+      "status": "published",
+      "published_at": "2026-11-19T07:12:18-05:00",
+      "weekend": {
+        "start": "2026-11-21",
+        "end": "2026-11-22"
+      },
+      "title": "The old wagon path above the Neuse",
+      "place_id": "cliffs-neuse-old-wagon",
+      "experience_key": "cliffs-old-wagon-red-out-back",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "The old wagon path above the Neuse",
+          "place_id": "cliffs-neuse-old-wagon",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "woodland",
+            "short-walk"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "cliffs-neuse-old-wagon"
+      ],
+      "place_roles": [
+        {
+          "place_id": "cliffs-neuse-old-wagon",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-1c2beec3c62d",
+      "path": "data/editions/2026-W47-thu.json"
     }
   ]
 }

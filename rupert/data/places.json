@@ -822,6 +822,55 @@
         "checked": "2026-11-17",
         "source": "https://www.ncparks.gov/state-parks/pilot-mountain-state-park"
       }
+    },
+    {
+      "id": "cliffs-neuse-old-wagon",
+      "name": "Cliffs of the Neuse State Park — Old Wagon Path",
+      "short_name": "Old Wagon Path",
+      "kind": "trail",
+      "region": "Wayne County",
+      "access": {
+        "name": "Cliffs of the Neuse public park access; follow signs to overlook parking at end of Park Entrance Road",
+        "lat": 35.2354,
+        "lng": -77.8932,
+        "coords_verified": true,
+        "coords_checked": "2026-11-19",
+        "coords_source": "Public park GPS in the current NC State Parks March 2026 park map, corroborated by its reservation listing; follow park signs to visitor center parking. The home page lists an inconsistent latitude; do not use it."
+      },
+      "dog_policy": "Use an attended leash no longer than six feet. No pets on the swim beach, in buildings or in camper cabins.",
+      "routes": [
+        {
+          "route_id": "cliffs-old-wagon-out-back@1",
+          "distance_mi": 0.8,
+          "shape": "out and back",
+          "difficulty": "easy",
+          "surface": "Natural sand on the red-diamond Old Wagon Path; campground road crossing."
+        }
+      ],
+      "links": [
+        {
+          "label": "Official park information",
+          "url": "https://www.ncparks.gov/state-parks/cliffs-neuse-state-park"
+        },
+        {
+          "label": "Official trail information",
+          "url": "https://www.ncparks.gov/state-parks/cliffs-neuse-state-park/trails"
+        },
+        {
+          "label": "Official park map and public GPS",
+          "url": "https://www.ncparks.gov/maps/cliffs-neuse-state-park-map/open"
+        }
+      ],
+      "tags": [
+        "woodland",
+        "overlook",
+        "history"
+      ],
+      "closure": {
+        "status": "open",
+        "checked": "2026-11-19",
+        "source": "https://www.ncparks.gov/state-parks/cliffs-neuse-state-park"
+      }
     }
   ]
 }

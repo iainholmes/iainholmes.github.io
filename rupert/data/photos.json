@@ -435,6 +435,32 @@
         "composition_key": "listening-close-bust-warm-ecru-20261117"
       },
       "plate_no": 16
+    },
+    {
+      "id": "atlas-plate-1c2beec3c62d",
+      "file": "atlas-plate-1c2beec3c62d",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1122,
+      "height": 1402,
+      "widths": [
+        800,
+        1122
+      ],
+      "alt": "Engraved print of Rupert trotting with a tennis ball, mustard collar against burgundy.",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "caption": "TRA Plate No. 017",
+      "source_note": "Original native ChatGPT editorial illustration generated and visually reviewed 19 November 2026; independent of destination.",
+      "generation": {
+        "owner": "2026-W47-thu/flagship",
+        "created_at": "2026-11-19",
+        "style_version": "atlas-engraved-3",
+        "composition_key": "rightward-trot-ball-burgundy-leaves-20261119"
+      },
+      "plate_no": 17
     }
   ]
 }

@@ -604,6 +604,49 @@
       ],
       "headline_condition": "Check the dated weekend forecast",
       "condition_level": "normal"
+    },
+    {
+      "edition_id": "2026-W47-thu",
+      "replaced_at": "2026-11-19T12:10:03.390Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-11-19T06:09:25-05:00",
+        "checked_at": "2026-11-19T12:07:04.505Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RAH/104,37/forecast",
+          "issued_at": "2026-11-19T11:09:25.000Z",
+          "retrieved_at": "2026-11-19T12:07:04.505Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Partly sunny, with a high near 70. Northeast wind 7 to 10 mph."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "Rain likely. Mostly cloudy, with a high near 69. Chance of precipitation is 60%."
+          }
+        ],
+        "summary": "Saturday: Partly sunny, with a high near 70. Northeast wind 7 to 10 mph. Sunday: Rain likely. Mostly cloudy, with a high near 69. Chance of precipitation is 60%. Saturday night: A chance of rain after 7pm. Mostly cloudy, with a low around 54. Chance of precipitation is 40%. New rainfall amounts less than a tenth of an inch possible. Sunday night: A chance of rain before 7pm, then a slight chance of rain showers. Mostly cloudy, with a low around 48. Chance of precipitation is 40%.",
+        "alerts": [],
+        "alerts_checked_at": "2026-11-19T12:07:04.505Z",
+        "pivot": {
+          "if": "Thunder, heavy rain, unsafe footing, high water, strong winds or park closure",
+          "note": "Postpone and recheck official status and NWS. Do not substitute another exposed outing."
+        },
+        "trail_note": "Use the marked paths and keep clear of the bluff edge."
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — dated weekend forecast",
+          "url": "https://api.weather.gov/gridpoints/RAH/104,37/forecast",
+          "retrieved": "2026-11-19"
+        }
+      ],
+      "headline_condition": "Check the dated weekend forecast",
+      "condition_level": "normal"
     }
   ]
 }

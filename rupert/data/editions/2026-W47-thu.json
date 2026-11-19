@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "id": "2026-W47-thu",
+  "slot": "thursday",
+  "status": "published",
+  "published_at": "2026-11-19T07:12:18-05:00",
+  "weekend": {
+    "start": "2026-11-21",
+    "end": "2026-11-22"
+  },
+  "flagship": {
+    "place_id": "cliffs-neuse-old-wagon",
+    "title": "The old wagon path above the Neuse",
+    "standfirst": "A short sandy out-and-back among old longleaf pines, starting at the overlook parking area.",
+    "why_this_week": "Start at the overlook parking area and follow the red diamonds of Old Wagon Path. The park describes a longleaf pine still bearing scars from the naval-stores trade; look from the marked trail and give Rupert time to sniff where the path widens. Walk the 0.4-mile path and return the same way, pausing at the overlook well back from the cliff edge. Saturday looks better than Sunday in the dated forecast, with rain likely by Sunday. Stay clear of campground work and the closed swim beach.",
+    "headline_condition": "Favor Saturday; Sunday rain likely",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-11-19",
+      "route": {
+        "route_id": "cliffs-old-wagon-out-back@1",
+        "distance_mi": 0.8,
+        "shape": "out and back",
+        "difficulty": "easy",
+        "surface": "Natural sand on the red-diamond Old Wagon Path; campground road crossing."
+      },
+      "access": {
+        "name": "Cliffs of the Neuse public park access; follow signs to overlook parking at end of Park Entrance Road",
+        "parking": "Enter at 240 Park Entrance Road and follow park signs to overlook parking at the end of Park Entrance Road, where the official trail page locates Old Wagon Path access. Navigation coordinates identify public park access, not an exact parking stall. Do not park in the campground lot being repaved. November gate hours 7 a.m.–6 p.m.; finish in daylight."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          120,
+          140
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1.25
+      ],
+      "dog": {
+        "leash": "Use an attended leash no longer than six feet. No pets on the swim beach, in buildings or in camper cabins.",
+        "water": "Carry drinking water and a bowl. No water activity.",
+        "shade": "Pine and hardwood cover along much of the route; the overlook is exposed.",
+        "watch_for": [
+          "Road crossing near the campground turn",
+          "Shared use on the Longleaf Trail",
+          "Cliff edge at the overlook"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "photo": {
+      "id": "atlas-plate-1c2beec3c62d",
+      "alt": "Engraved print of Rupert trotting with a tennis ball, mustard collar against burgundy."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "Official status, access hours and pets",
+        "url": "https://www.ncparks.gov/state-parks/cliffs-neuse-state-park",
+        "retrieved": "2026-11-19"
+      },
+      {
+        "kind": "park",
+        "label": "Official trails and parking",
+        "url": "https://www.ncparks.gov/state-parks/cliffs-neuse-state-park/trails",
+        "retrieved": "2026-11-19"
+      },
+      {
+        "kind": "park",
+        "label": "Official park map",
+        "url": "https://www.ncparks.gov/maps/cliffs-neuse-state-park-map/open",
+        "retrieved": "2026-11-19"
+      },
+      {
+        "kind": "park",
+        "label": "Official visitor notices",
+        "url": "https://www.ncparks.gov/state-parks/cliffs-neuse-state-park/plan-your-visit",
+        "retrieved": "2026-11-19"
+      },
+      {
+        "kind": "forecast",
+        "label": "National Weather Service — dated weekend forecast",
+        "url": "https://api.weather.gov/gridpoints/RAH/104,37/forecast",
+        "retrieved": "2026-11-19"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "woodland",
+      "short-walk"
+    ],
+    "experience_id": "cliffs-old-wagon-red-out-back",
+    "experience_basis": {
+      "activity_id": "leashed-pine-history-walk",
+      "feature_id": "old-wagon-path-scarred-longleaf",
+      "format_id": "red-diamond-out-and-back"
+    },
+    "panels": [
+      {
+        "label": "Start at the overlook lot",
+        "text": "Follow the red diamonds of Old Wagon Path for 0.4 mile, then return the same way. This plan does not add the Longleaf connector."
+      },
+      {
+        "label": "Give the edge room",
+        "text": "Watch for traffic at the campground road crossing, keep Rupert leashed and stay well back from the bluff. Use designated parking away from repaving."
+      }
+    ],
+    "qualities": {
+      "activity": "hike",
+      "expected_heat": "unknown"
+    },
+    "artwork": {
+      "image_id": "atlas-plate-1c2beec3c62d",
+      "brief": "Minimal action selected after directly inspecting Plates 011–016 plus 006. Recent run is mixed: waterside recline, navy play bow, meadow stance, olive rear seat, slate sniffing walk, cream close portrait. One rightward trotting full-body dog carrying tennis ball on oxblood ground, lifted paw and low tapered tail, a few leaves and broad upper negative space. Distinct orientation, movement and framing after close static portrait and opposite-facing sniff walk. Minimalism is deliberate after varied recent environment scenes, not a quota or default. Preserve 006 American Labrador likeness and mustard collar.",
+      "characters": [
+        "rupert"
+      ]
+    }
+  },
+  "local_trail": {
+    "place_id": "cliffs-neuse-old-wagon",
+    "title": "A shorter red-diamond walk",
+    "line": "Return on the same path when Rupert has had enough; do not turn into campground work areas.",
+    "snapshot": {
+      "as_of": "2026-11-19",
+      "access": {
+        "name": "Cliffs of the Neuse public park access; follow signs to overlook parking at end of Park Entrance Road",
+        "parking": "Enter at 240 Park Entrance Road and follow park signs to overlook parking at the end of Park Entrance Road, where the official trail page locates Old Wagon Path access. Navigation coordinates identify public park access, not an exact parking stall. Do not park in the campground lot being repaved. November gate hours 7 a.m.–6 p.m.; finish in daylight."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          120,
+          140
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1.25
+      ],
+      "dog": {
+        "leash": "Use an attended leash no longer than six feet. No pets on the swim beach, in buildings or in camper cabins.",
+        "water": "Carry drinking water and a bowl. No water activity.",
+        "shade": "Pine and hardwood cover along much of the route; the overlook is exposed.",
+        "watch_for": [
+          "Road crossing near the campground turn",
+          "Shared use on the Longleaf Trail",
+          "Cliff edge at the overlook"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "away_mission": {
+    "place_id": "cliffs-neuse-old-wagon",
+    "title": "The full Old Wagon out-and-back",
+    "line": "Complete the 0.8-mile return only if the crossing and footing are safe.",
+    "snapshot": {
+      "as_of": "2026-11-19",
+      "route": {
+        "route_id": "cliffs-old-wagon-out-back@1",
+        "distance_mi": 0.8,
+        "shape": "out and back",
+        "difficulty": "easy",
+        "surface": "Natural sand on the red-diamond Old Wagon Path; campground road crossing."
+      },
+      "access": {
+        "name": "Cliffs of the Neuse public park access; follow signs to overlook parking at end of Park Entrance Road",
+        "parking": "Enter at 240 Park Entrance Road and follow park signs to overlook parking at the end of Park Entrance Road, where the official trail page locates Old Wagon Path access. Navigation coordinates identify public park access, not an exact parking stall. Do not park in the campground lot being repaved. November gate hours 7 a.m.–6 p.m.; finish in daylight."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          120,
+          140
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1.25
+      ],
+      "dog": {
+        "leash": "Use an attended leash no longer than six feet. No pets on the swim beach, in buildings or in camper cabins.",
+        "water": "Carry drinking water and a bowl. No water activity.",
+        "shade": "Pine and hardwood cover along much of the route; the overlook is exposed.",
+        "watch_for": [
+          "Road crossing near the campground turn",
+          "Shared use on the Longleaf Trail",
+          "Cliff edge at the overlook"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "wildcard": {
+    "place_id": "cliffs-neuse-old-wagon",
+    "title": "Save the bluff for a dry day",
+    "line": "Postpone for rain or unsafe access; the beach, campground and river are not alternatives.",
+    "snapshot": {
+      "as_of": "2026-11-19",
+      "access": {
+        "name": "Cliffs of the Neuse public park access; follow signs to overlook parking at end of Park Entrance Road",
+        "parking": "Enter at 240 Park Entrance Road and follow park signs to overlook parking at the end of Park Entrance Road, where the official trail page locates Old Wagon Path access. Navigation coordinates identify public park access, not an exact parking stall. Do not park in the campground lot being repaved. November gate hours 7 a.m.–6 p.m.; finish in daylight."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          120,
+          140
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1.25
+      ],
+      "dog": {
+        "leash": "Use an attended leash no longer than six feet. No pets on the swim beach, in buildings or in camper cabins.",
+        "water": "Carry drinking water and a bowl. No water activity.",
+        "shade": "Pine and hardwood cover along much of the route; the overlook is exposed.",
+        "watch_for": [
+          "Road crossing near the campground turn",
+          "Shared use on the Longleaf Trail",
+          "Cliff edge at the overlook"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "text": "Let Rupert choose a few sniffing pauses without leaving the marked trail or disturbing wildlife.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "What caught Rupert’s attention along the red diamonds, and did you spot the old pine’s scars from the marked trail?"
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-11-19T06:09:25-05:00",
+    "checked_at": "2026-11-19T12:10:03.390Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RAH/104,37/forecast",
+      "issued_at": "2026-11-19T11:09:25.000Z",
+      "retrieved_at": "2026-11-19T12:10:03.390Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "Partly sunny, with a high near 70. Northeast wind 7 to 10 mph."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "Rain likely. Mostly cloudy, with a high near 69. Chance of precipitation is 60%."
+      }
+    ],
+    "summary": "Saturday: Partly sunny, with a high near 70. Northeast wind 7 to 10 mph. Sunday: Rain likely. Mostly cloudy, with a high near 69. Chance of precipitation is 60%. Saturday night: A chance of rain after 7pm. Mostly cloudy, with a low around 54. Chance of precipitation is 40%. New rainfall amounts less than a tenth of an inch possible. Sunday night: A chance of rain before 7pm, then a slight chance of rain showers. Mostly cloudy, with a low around 48. Chance of precipitation is 40%.",
+    "alerts": [],
+    "alerts_checked_at": "2026-11-19T12:10:03.390Z",
+    "pivot": {
+      "if": "Thunder, heavy rain, unsafe footing, high water, strong winds or park closure",
+      "note": "Postpone and recheck official status and NWS. Do not substitute another exposed outing."
+    },
+    "trail_note": "Watch for wet sand, roots and traffic where Old Wagon Path crosses the campground entrance road. Keep Rupert on a short leash and stay well back from the bluff edge. No off-trail detours, beach access or river activity."
+  },
+  "practical": {
+    "best_window": "Favor late Saturday morning or early afternoon after checking the latest official status and forecast. Allow 30–75 minutes for the short walk and pauses. Sunday has rain likely; postpone if wet footing or visibility makes the bluff or road crossing unsafe.",
+    "fees": "Free day-use trail access.",
+    "bring": [
+      "Water and bowl",
+      "Six-foot leash and waste bags",
+      "Traction shoes",
+      "Official map offline"
+    ],
+    "closures_checked": "2026-11-19",
+    "closures_note": "Final route narrowed after reading the actual park map and official trail table: Old Wagon Path alone, red diamonds, 0.4 mile one way and 0.8 return, from the signed overlook lot at the end of Park Entrance Road. No added Longleaf connector mileage is claimed. The official home, trail page and visitor notices were re-fetched unchanged: trails open; campground parking repaving affects campground traffic; beach and rentals closed for 2026. Public park navigation GPS 35.2354,-77.8932 comes from the March 2026 official map; the home latitude is inconsistent and not used. Follow signs to the overlook lot, no campground parking. Gate hours November 7 a.m.–6 p.m., free day-use trails, attended leash up to six feet, no pets on beach or indoors. Watch for vehicles at road crossing and stay well back from cliff edge."
+  }
+}

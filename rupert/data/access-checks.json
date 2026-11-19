@@ -255,6 +255,24 @@
       "official_url": "https://www.ncparks.gov/state-parks/pilot-mountain-state-park",
       "discrepancy": false,
       "note": "Rechecked official park home, trail and news pages and reviewed the official river map. Ivy Bluff’s signed south-bank parking is at 4240 Shoals Road, East Bend, GPS 36.2537,-80.5087. No posted Ivy Bluff closure identified. November River Section hours 8:30 a.m.–6 p.m. The moderate hiking-only red-circle trail runs 1.3 miles each way across rooted slopes and creek crossings. Use an attended leash no longer than six feet and keep pets out of buildings. Stay clear of the riverbank and do not use the summit or the separate Bean Shoals access."
+    },
+    {
+      "place_id": "cliffs-neuse-old-wagon",
+      "status": "open",
+      "checked": "2026-11-19",
+      "checked_at": "2026-11-19T12:06:26.925243+00:00",
+      "official_url": "https://www.ncparks.gov/state-parks/cliffs-neuse-state-park",
+      "discrepancy": false,
+      "note": "Official home and trail notices explicitly say trails remain open. Campground parking is being repaved and traffic there is affected; swim beach and boat rentals closed for the 2026 season. Official March 2026 map locates visitor center parking and white-diamond Longleaf (0.4 mile) connecting with red-diamond Old Wagon Path (0.4 mile) to the overlook; planned return is the same way. Use public map GPS 35.2354,-77.8932, corroborated by state reservation listing; the home page has inconsistent latitude. Follow signs to visitor center, not campground lot. November 7 a.m.–6 p.m., free ordinary trail access, attended six-foot leash, no pets beach or indoors. Watch at campground road crossing, yield to bikes on Longleaf and stay well back from cliff edge."
+    },
+    {
+      "place_id": "cliffs-neuse-old-wagon",
+      "status": "open",
+      "checked": "2026-11-19",
+      "checked_at": "2026-11-19T12:10:14+00:00",
+      "official_url": "https://www.ncparks.gov/state-parks/cliffs-neuse-state-park",
+      "discrepancy": false,
+      "note": "Final route narrowed after reading the actual park map and official trail table: Old Wagon Path alone, red diamonds, 0.4 mile one way and 0.8 return, from the signed overlook lot at the end of Park Entrance Road. No added Longleaf connector mileage is claimed. The official home, trail page and visitor notices were re-fetched unchanged: trails open; campground parking repaving affects campground traffic; beach and rentals closed for 2026. Public park navigation GPS 35.2354,-77.8932 comes from the March 2026 official map; the home latitude is inconsistent and not used. Follow signs to the overlook lot, no campground parking. Gate hours November 7 a.m.–6 p.m., free day-use trails, attended leash up to six feet, no pets on beach or indoors. Watch for vehicles at road crossing and stay well back from cliff edge."
     }
   ],
   "official_hosts": [
