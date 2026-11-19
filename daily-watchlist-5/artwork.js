@@ -79,6 +79,81 @@
   ];
   function context(story,date){return [story.title,story.category,story.art,date,story.number,JSON.stringify(story.editorial||{}),story.why,...story.summary||[],...(story.implications||[]).flat()].join(' ')}
   function topic(story){return (topics.find(t=>t[1].test(story.title))||topics.find(t=>t[1].test(context(story,'')))||topics[8]);}
+  // Published pins through No. 052 remain authoritative, including known mismatches.
+  const storyPolicy=Object.freeze({relevanceAfter:'2026-11-19'});
+  // Required depicted subjects/mechanisms, not broad neighboring topic categories.
+  // Every group must occur in reported prose; at least one must anchor the headline/category.
+  const relevanceRules={
+    'labor-steps':['payroll|hiring|employment|jobs'],
+    'labor-clock':['workers|labor|labour|wages|payroll','hours|wages|production|workweek'],
+    'labor-benches':['workplace|staffing|hiring|vacancies|workforce','benches|vacancy|vacancies|unfilled|skills'],
+    'heat-canopy':['heat|high temperatures|thermal stress','shade|shelter|cooling'],
+    'heat-exposure':['heat|high temperatures|thermal stress','people|workers|residents|health|exposure'],
+    'heat-riverbed':['drought|heat','river|water|riverbed'],
+    'trade-detour':['chips|gpu|servers|cargo','diversion|smuggling|detour|third country'],
+    'trade-port':['cargo|shipping|shipments|port|ports|maritime'],
+    'trade-checkpoint':['trade|tariffs|tariff|customs|export|imports','tariffs|tariff|customs|licensing|trade agreement'],
+    'finance-blocked':['payments|transfers|financial assets|crypto','sanctions|blocked|freeze|frozen|seized'],
+    'finance-ledger':['financial|finance|payments|transfers','audit|hidden|investigation|illicit'],
+    'finance-vault':['bank|banks|reserves|deposits|vault','locked|restriction|protection|reserve|reserves'],
+    'research-vacancy':['research|laboratory|scientific','staffing|cuts|funding|vacancies|workforce'],
+    'research-observatory':['observatory|telescope|astronomy|astronomical'],
+    'research-bridge':['research|scientific','partnership|collaboration|translation|evidence platforms'],
+    'energy-reserve':['oil|fuel|diesel|gas','stocks|reserve|reserves|storage'],
+    'energy-turbine':['wind|turbines','electricity|power|generation'],
+    'energy-feeder':['electricity|power|grid','interruption|interrupted|outage|transmission|supply'],
+    'government-balance':['public funds|public funding|government funding|grants','court|legal|judicial|balance'],
+    'government-document':['law|legal|court|regulation|rule|legislation|statute'],
+    'government-stairs':['petition|appeal|appeals','government|court|institution|judicial'],
+    'climate-watershed':['lake|watershed','spill|flood|downstream|inhabited'],
+    'climate-levee':['water|flood','levee|barrier|settlement'],
+    'climate-terraces':['terraces|elevations','monitoring|exposure|monitored'],
+    'climate-vortex':['storm|tornado|hurricane'],
+    'infrastructure-aisle':['servers|server|data center|computing capacity'],
+    'infrastructure-wafer':['wafer|wafers|semiconductor fabrication|foundry|foundries'],
+    'infrastructure-duct':['data center|servers|computing','cooling|thermal management'],
+    'housing-verification':['housing|rental assistance','eligibility|verification|status'],
+    'cyber-credential':['outlook|message|email','credentials|authentication|credential'],
+    'health-allocation':['rural health|rural clinics','funding|fund|allocation|awards'],
+    'climate-ocean-record':['ocean','heat|sea level|el niño'],
+    'health-food-box':['food boxes|food box|healthy opportunities','medicaid|care|patients'],
+    'retail-price-audit':['retail|family dollar|stores','price accuracy|register|checkout|shelf prices'],
+    'sic-wafer-scale':['silicon carbide','wafer|wafers'],
+    'ai-investment-gap':['ai investment|artificial intelligence investment','productivity|measured output|returns'],
+    'methane-finance':['methane','finance|funding|fund|commitments'],
+    'county-hiring-freeze':['county|counties','hiring freeze|freezes most hiring|hiring gate'],
+    'air-traffic-overload':['air traffic|aviation|flights','outage|ground stop|communications'],
+    'asylum-certiorari':['asylum','supreme court|judicial review|court review'],
+    'producer-price-pipeline':['producer prices|producer price index|ppi'],
+    'neutral-atom-array':['neutral atom|neutral atoms','quantum|qubits'],
+    'hospital-price-cap':['hospital|wakemed','price cap|price increases|merger'],
+    'cyber-deepfake-seizure':['deepfake|facestealer','theft|seizure|seized|crypto'],
+    'provider-directory-audit':['provider directories|provider directory','errors|audit|accuracy'],
+    'winter-capacity-order':['coal plant|campbell','winter|reserve|emergency order'],
+    'bladder-cancer-pathway':['bladder cancer','surgery|perioperative|survival'],
+    'able-savings-bridge':['able|disability savings','benefits|savings|accounts'],
+    'fuel-price-basket':['inflation|prices','motor fuels|fuel pump|diesel|petrol'],
+    'separate-service-outages':['outages|interruptions','services|systems|networks|maintenance'],
+    'retirement-default-choice':['retirement','automatic enrollment|default contributions|opt out'],
+    'voyager-light-day':['voyager','light day|radio|signal'],
+    'large-load-cost-boundary':['data centers|large customers|large load','rates|costs|tariff|financial security'],
+    'capacity-aperture':['capacity|throughput','bottleneck|constraint|restricted|narrowing'],
+    'capacity-columns':['capacity|staffing','unequal|uneven|shared load'],
+    'capacity-funnel':['capacity|throughput','inputs|bottleneck|limited capacity'],
+    'observation-lens':['observation|measurement|evidence','decision|inspection|assessment'],
+    'institution-wheel':['institutions|agencies','cooperation|coordination|shared tasks'],
+    'institution-weave':['institutions|agencies','interdependence|interdependent|cooperation']
+  };
+  function relevance(st,composition){
+    const plain=s=>String(s||'').replace(/<[^>]*>/g,' ').replace(/[‐‑–—-]/g,' ').replace(/\s+/g,' ');
+    const headline=plain([st.title,st.category].join(' ')),report=plain([headline,...st.summary||[]].join(' '));
+    const groups=relevanceRules[composition];
+    if(!groups)return {ok:false,composition,reason:'No authored subject-relevance rule'};
+    const patterns=groups.map(s=>new RegExp('\\b(?:'+s+')\\b','i'));
+    const evidence=patterns.map(re=>report.match(re)?.[0]||null),anchored=patterns.some(re=>re.test(headline));
+    return {ok:anchored&&evidence.every(Boolean),composition,evidence,anchored,
+      reason:!anchored?'Depicted subject is absent from the headline/category':evidence.some(x=>!x)?'Reported prose does not support every depicted mechanism':'Reported subject and depicted mechanism match'};
+  }
   function choose(candidates,recent,used){
     const all=new Set(recent.flatMap(x=>Object.values(x).map(a=>a.signature))),previous=new Set(Object.values(recent[0]||{}).map(a=>a.signature));
     // Prefer a three-issue window. Exhaustion relaxes older history only; never yesterday or this issue.
@@ -86,12 +161,16 @@
     if(!c)throw Error('No distinct, relevant artwork composition available');return c;
   }
   function story(st,date,recent=[],used=new Set()){
-    const t=topic(st),seed=hash(context(st,date));
+    const t=topic(st),seed=hash(date>storyPolicy.relevanceAfter?[st.title,st.category,date,st.number,...st.summary||[]].join(' '):context(st,date));
     const emphasis={'labor-steps':/payroll|hiring|slows|growth/i,'labor-clock':/hours|wage|production/i,'labor-benches':/workplace|skills|vacanc/i,'heat-canopy':/heat stress|exposure/i,'heat-riverbed':/river|drought/i,'trade-detour':/GPU|servers|smuggl|diver|third.country/i,'trade-port':/port|shipping|cargo/i,'trade-checkpoint':/tariff|licens|inspection/i,'research-vacancy':/cuts|funding|contraction|reduction/i,'research-bridge':/partnership|translation/i,'energy-reserve':/stock|reserve|diesel/i,'government-balance':/grant|funds|preserv/i,'finance-blocked':/sanction|block|targets/i,'climate-vortex':/storm|tornado|hurricane/i,'housing-verification':/housing|eligib|mixed.status/i,'cyber-credential':/cyber|Outlook|credential|authentication/i,'health-allocation':/rural.health|CMS|award|allocation/i,'climate-ocean-record':/ocean heat|sea level|El Niño/i,'health-food-box':/food|Medicaid|healthy opportunities/i,'retail-price-audit':/Family Dollar|price-accuracy/i,'sic-wafer-scale':/Infineon|silicon-carbide/i,'ai-investment-gap':/AI investment|productivity gains/i,'methane-finance':/COP31 methane|methane summit/i,'county-hiring-freeze':/Wake County|freezes most hiring/i,'air-traffic-overload':/air-traffic outage|ground stop/i,'asylum-certiorari':/Supreme Court|asylum access/i,'producer-price-pipeline':/Producer prices|PPI/i,'neutral-atom-array':/neutral-atom|quantum award/i,'hospital-price-cap':/WakeMed|merger price cap/i,'cyber-deepfake-seizure':/North Korean|deepfake theft|FaceStealer/i,'provider-directory-audit':/provider directories|directory errors/i,'winter-capacity-order':/Michigan coal plant|through winter|Campbell/i,'bladder-cancer-pathway':/bladder cancer|perioperative combination/i,'able-savings-bridge':/NC ABLE|disability-savings/i};
     Object.assign(emphasis,{'fuel-price-basket':/UK inflation.*motor fuels/i,'separate-service-outages':/evidence linking.*technology outages/i,'retirement-default-choice':/automatic-enrollment rules.*retirement/i,'voyager-light-day':/Voyager 1.*light-day/i,'large-load-cost-boundary':/NC approves Duke.*data centers/i});
     const candidates=scenes.filter(s=>s.topic===t[0]||s.topic==='general'||t[2].includes(s.topic)).map((s,i)=>({s,score:(s.topic===t[0]?30:s.topic==='general'?10:20)+(emphasis[s.id]?.test(st.title)?8:emphasis[s.id]?.test(context(st,''))?2:0),tie:hash(seed+'|'+s.id),i})).sort((a,b)=>b.score-a.score||a.tie-b.tie||a.i-b.i).map(x=>x.s);
-    const c=choose(candidates,recent,used);
-    const m={version:2,date,number:st.number,category:st.category||st.art,topic:t[0],title:st.title,composition:c.id,signature:c.signature,seed};
+    // Prospective selection cannot use JSON keys (e.g. domain -> "ai"), risk
+    // metaphors ("financial exposure" -> heat), or unrelated fallback topics.
+    const supported=date>storyPolicy.relevanceAfter?scenes.map(s=>({s,r:relevance(st,s.id)})).filter(x=>x.r.ok).sort((a,b)=>b.r.evidence.length-a.r.evidence.length||hash(seed+'|'+a.s.id)-hash(seed+'|'+b.s.id)).map(x=>x.s):candidates;
+    if(!supported.length)throw Error('No subject-relevant Field Brief story artwork for '+date+'/'+st.number+'. Author a relevant scene and its evidence rule; do not use an unrelated fallback.');
+    const c=choose(supported,recent,used);
+    const m={version:2,date,number:st.number,category:st.category||st.art,topic:date>storyPolicy.relevanceAfter?c.topic:t[0],title:st.title,composition:c.id,signature:c.signature,seed};
     m.frozen=svg(m);return m;
   }
   function svg(m,archive){
@@ -103,8 +182,8 @@
   }
   function recent(issues,date){return Object.keys(issues).filter(d=>d<date).sort().reverse().slice(0,3).map(d=>issues[d]);}
   function edition(ed,issues){const history=recent(issues,ed.date),used=new Set(),out={};for(const st of ed.stories){const m=story(st,ed.date,history,used);used.add(m.signature);out[st.number]=m;}validateEdition(ed,out,history);return out;}
-  function validateEdition(ed,models,history){const previous=new Set(Object.values(history[0]||{}).map(x=>x.signature)),seen=new Set();if(ed.stories.length!==5)throw Error('Field Brief needs five story plates');for(const st of ed.stories){const m=models[st.number],c=scenes.find(x=>x.id===m?.composition);if(!c||m.signature!==c.signature||seen.has(m.signature)||previous.has(m.signature))throw Error('Repeated or invalid Field Brief story composition');if(m.frozen!==svg({...m,frozen:null}))throw Error('Plate geometry does not match its composition');seen.add(m.signature);}}
-  function prepare(editions,archive){const out={legacy:archive.legacy,issues:{...archive.issues}},frozenThrough=Object.keys(archive.issues).sort().at(-1)||'2026-10-03';for(const ed of [...editions].sort((a,b)=>a.date.localeCompare(b.date)))if(!out.issues[ed.date]){if(ed.date<=frozenThrough||ed.date<='2026-10-03')throw Error('Missing historical Field Brief artwork pin: '+ed.date);out.issues[ed.date]=edition(ed,out.issues);}return out;}
+  function validateEdition(ed,models,history){const previous=new Set(Object.values(history[0]||{}).map(x=>x.signature)),seen=new Set();if(ed.stories.length!==5)throw Error('Field Brief needs five story plates');for(const st of ed.stories){const m=models[st.number],c=scenes.find(x=>x.id===m?.composition);if(!c||m.signature!==c.signature||seen.has(m.signature)||previous.has(m.signature))throw Error('Repeated or invalid Field Brief story composition');if(m.frozen!==svg({...m,frozen:null}))throw Error('Plate geometry does not match its composition');if(ed.date>storyPolicy.relevanceAfter&&!relevance(st,m.composition).ok)throw Error('Subject-irrelevant Field Brief artwork '+ed.date+'/'+st.number+': '+m.composition);seen.add(m.signature);}}
+  function prepare(editions,archive){const out={legacy:archive.legacy,issues:{...archive.issues}},frozenThrough=Object.keys(archive.issues).sort().at(-1)||'2026-10-03';for(const ed of [...editions].sort((a,b)=>a.date.localeCompare(b.date))){if(!out.issues[ed.date]){if(ed.date<=frozenThrough||ed.date<='2026-10-03')throw Error('Missing historical Field Brief artwork pin: '+ed.date);out.issues[ed.date]=edition(ed,out.issues);}else if(ed.date>storyPolicy.relevanceAfter)validateEdition(ed,out.issues[ed.date],recent(out.issues,ed.date));}return out;}
   // Cover vocabulary is separate from story plates and retains the existing abstract press-mark idiom.
   const issueScenes=[
     ['capacity-observation','capacity',`<circle cx="218" cy="252" r="131" fill="none" stroke="$ink" stroke-width="25"/><path d="M110 252Q218 147 326 252Q218 357 110 252Z" fill="$accent"/><circle cx="218" cy="252" r="40" fill="$paper"/><path d="M344 252H425V445M344 252H495V155" fill="none" stroke="$ink" stroke-width="17"/><path d="M385 445H465M455 155H535" stroke="$support" stroke-width="35"/><path d="M128 435H297" stroke="$support" stroke-width="11"/>`],
@@ -392,5 +471,5 @@
     throw Error('No original content-supported Field Brief cover after '+Math.min(attempts,issuePolicy.maxAttempts)+' candidates for '+info.date+'; closest collision '+(rejected&&rejected.date)+'. Author a new composition; do not bypass originality validation.');
   }
   function issuePlate(m,p){if(m.version===5||m.version===6){if(!m.geometry)throw Error('Missing Field Brief composition geometry');return m.geometry.replace(/\$(ink|accent|support|paper)/g,(_,k)=>p[{paper:0,ink:1,accent:2,support:3}[k]]);}const c=issueScenes.find(x=>x.id===m.composition);if(!c)throw Error('Unknown Field Brief issue composition');return c.geometry.replace(/\$(ink|accent|support|paper)/g,(_,k)=>p[{paper:0,ink:1,accent:2,support:3}[k]]);}
-  const api={story,svg,edition,prepare,recent,validateEdition,scenes,issueModel,issuePlate,issueScenes,markSignature,issuePolicy,centralArtwork,issueFeatures,visualSimilarity,issueOriginality,issueTreatment,issueCandidates,validateIssue};if(typeof module==='object'&&module.exports)module.exports=api;else root.FieldBriefArtwork=api;
+  const api={story,svg,edition,prepare,recent,validateEdition,relevance,storyPolicy,scenes,issueModel,issuePlate,issueScenes,markSignature,issuePolicy,centralArtwork,issueFeatures,visualSimilarity,issueOriginality,issueTreatment,issueCandidates,validateIssue};if(typeof module==='object'&&module.exports)module.exports=api;else root.FieldBriefArtwork=api;
 })(typeof window==='object'?window:{});
