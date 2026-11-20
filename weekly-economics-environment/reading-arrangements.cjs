@@ -38,5 +38,10 @@ module.exports=({row,field,inset,flo,gap,join})=>({...module.exports.authored,
  '2026-11-13-fisheries-heat':({E,O,Q,N,A,X})=>flo('fisheries-scenarios',A,E+O,'right','55%')+row('fisheries-boundaries',X(),Q,'1.35fr','1fr')+inset('fisheries-notebook',N,'82%'),
  '2026-11-13-carbon-budget':({E,O,Q,N,A,X})=>E+field('carbon-budget-range',row('carbon-budget-figure',A,O,'1.15fr','1fr'),'gatefold')+row('carbon-budget-stock',X(),Q,'1.35fr','1fr')+inset('carbon-budget-notebook',N,'82%'),
  '2026-11-13-power-outlook':({E,O,Q,N,T,L})=>row('power-demand-opening',E,O,'1.35fr','1fr')+field('power-transition',T()+L(),'open')+row('power-forecast-boundary',N,Q,'1fr','1.3fr'),
+ '2026-11-20-eminent-domain':({E,O,Q,N,G,D})=>row('eminent-opening',E,O,'1.35fr','1fr')+field('eminent-comparison',row('eminent-mechanism-choice',G(),D(),'1fr','1.25fr'),'gatefold')+row('eminent-boundary',Q,N,'1.3fr','1fr'),
+ '2026-11-20-green-innovation':({E,O,Q,N,T,G})=>E+row('green-innovation-design',O,T(),'1fr','1.35fr')+field('green-innovation-transmission',G()+inset('green-innovation-notebook',N,'82%'),'open')+Q,
+ '2026-11-20-world-energy-outlook':({E,O,Q,N,T,L})=>row('weo-scenario-opening',E,O,'1.35fr','1fr')+field('weo-scenario-incidence',T()+L(),'folio')+row('weo-decision-boundary',Q,N,'1.3fr','1fr'),
+ '2026-11-20-shipping-weather':({E,O,Q,N,G,L})=>row('shipping-network-opening',E,O,'1.35fr','1fr')+field('shipping-exposure',G()+L(),'folio')+row('shipping-tail-risk',N,Q,'1fr','1.35fr'),
+ '2026-11-20-ai-credit':({E,O,Q,N,M,D})=>E+row('compute-model-design',M(),O,'1.25fr','1fr')+row('compute-planner-boundary',D(),Q,'1.35fr','1fr')+inset('compute-notebook',N,'82%'),
 });
 module.exports.authored={};

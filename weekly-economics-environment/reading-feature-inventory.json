@@ -1,7 +1,7 @@
 {
   "version": 7,
   "title": "Loblolly & Logit · Editorial Decision Inventory",
-  "reviewed": "2026-11-13",
+  "reviewed": "2026-11-20",
   "policy": "Aim for at least two substantive, nonredundant features; document exceptions; diversity is a tie-breaker after evidence and reader value.",
   "entries": [
     {
@@ -7534,19 +7534,791 @@
         }
       ],
       "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-20-eminent-domain",
+      "title": "The Right to Build Changed the Pipeline Map",
+      "subjects": [
+        "Infrastructure economics",
+        "Property rights"
+      ],
+      "features": [
+        {
+          "type": "mechanism-map",
+          "title": "From legal authority to completed corridor",
+          "status": "Institutional mechanism · supported by historical comparisons",
+          "nodes": [
+            "Federal certification and backstop authority",
+            "Lower holdout and cross-state coordination costs",
+            "More feasible contiguous routes",
+            "Higher interstate pipeline construction"
+          ],
+          "edges": [
+            [
+              0,
+              1,
+              "legal change"
+            ],
+            [
+              1,
+              2,
+              "bargaining channel"
+            ],
+            [
+              2,
+              3,
+              "observed post-1947 divergence"
+            ]
+          ],
+          "note": "The sequence states the proposed mechanism; the historical comparisons support the construction break but do not separately estimate every link.",
+          "rationale": "From legal authority to completed corridor",
+          "provenance": [
+            "https://escholarship.org/content/qt8wf8f4p8/qt8wf8f4p8.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the reading's mechanism map rather than repeating the headline.",
+            "evidentiarySupport": "Institutional mechanism · supported by historical comparisons",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The sequence states the proposed mechanism; the historical comparisons support the construction break but do not separately estimate every link.",
+            "presentationSuitability": "mechanism-map",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "decision-margin",
+          "title": "When does corridor authority improve welfare?",
+          "status": "Editorial decision framework · distributional magnitudes not estimated",
+          "question": "What must a right-of-way backstop accomplish beyond accelerating construction?",
+          "options": [
+            [
+              "Coordination gain",
+              "Enable a high-value contiguous route that bargaining across many parcels or jurisdictions would otherwise block."
+            ],
+            [
+              "Property safeguard",
+              "Use route review and just compensation to limit unnecessary takings and recognize burdens concentrated on landowners."
+            ]
+          ],
+          "rule": "Compare system value and avoided delay with route alternatives, compensation, local costs and the probability that voluntary negotiation would succeed.",
+          "note": "The paper estimates construction effects, not a complete welfare balance or optimal modern compensation rule.",
+          "rationale": "When does corridor authority improve welfare?",
+          "provenance": [
+            "https://escholarship.org/content/qt8wf8f4p8/qt8wf8f4p8.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the reading's decision margin rather than repeating the headline.",
+            "evidentiarySupport": "Editorial decision framework · distributional magnitudes not estimated",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The paper estimates construction effects, not a complete welfare balance or optimal modern compensation rule.",
+            "presentationSuitability": "decision-margin",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        }
+      ],
+      "edition": "2026-11-20",
+      "composition": "comparison",
+      "argument": "A federal right-of-way rule changed the feasible set for interstate construction, but the historical comparison cannot isolate every contemporaneous gas-market force.",
+      "rejected": [
+        [
+          "estimation-desk",
+          "A new equation would add assumptions without improving the source-specific comparison."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "mechanism-map",
+          "reason": "From legal authority to completed corridor"
+        },
+        {
+          "rank": 2,
+          "feature": "decision-margin",
+          "reason": "When does corridor authority improve welfare?"
+        }
+      ],
+      "layout": {
+        "id": "pipeline-rights-of-way",
+        "palette": "slate",
+        "colorBasis": "A federal right-of-way rule changed the feasible set for interstate construction, but the historical comparison cannot isolate every contemporaneous gas-market force.",
+        "rationale": "A comparison arrangement keeps the evidence, interpretation and limits in a native reading flow.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Graphical opportunity assessed; only source-reported or explicitly labeled modeled quantities are shown.",
+      "modelAssessment": "Causal, descriptive, scenario and calibrated-model claims are kept distinct.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-20",
+      "evidenceReview": {
+        "basis": "Exact full text reviewed across research question, design, estimates, robustness, limitations and economic interpretation.",
+        "access": "Lawful complete PDF inspected; version and provenance recorded in source-evidence.json."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-20",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant source-specific features selected after full-text review.",
+        "retained": [],
+        "added": [
+          "mechanism-map",
+          "decision-margin"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "mechanism-map",
+          "name": "The Mechanism Map",
+          "anchor": "2026-11-20-eminent-domain--mechanism-map"
+        },
+        {
+          "id": "decision-margin",
+          "name": "The Decision Margin",
+          "anchor": "2026-11-20-eminent-domain--decision-margin"
+        }
+      ],
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-20-green-innovation",
+      "title": "Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth",
+      "subjects": [
+        "Energy economics",
+        "Innovation"
+      ],
+      "features": [
+        {
+          "type": "long-view",
+          "title": "One shock, three economic horizons",
+          "status": "Estimated impulse-response sequence · working-paper version",
+          "stages": [
+            [
+              "Adjustment",
+              "Output falls and producer and consumer prices rise after the identified green-technology-composition shock.",
+              "Short run"
+            ],
+            [
+              "Recovery",
+              "The estimated output response returns toward baseline within about five years.",
+              "Medium run"
+            ],
+            [
+              "Intensity",
+              "Carbon emissions per unit of output remain persistently lower in the reported responses.",
+              "Longer run"
+            ]
+          ],
+          "note": "These are model-based impulse responses under the paper’s identification; they are not a forecast for a particular subsidy or transition plan.",
+          "rationale": "One shock, three economic horizons",
+          "provenance": [
+            "https://www.bancaditalia.it/pubblicazioni/temi-discussione/2025/2025-1482/en_tema_1482.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the reading's long view rather than repeating the headline.",
+            "evidentiarySupport": "Estimated impulse-response sequence · working-paper version",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "These are model-based impulse responses under the paper’s identification; they are not a forecast for a particular subsidy or transition plan.",
+            "presentationSuitability": "long-view",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "mechanism-map",
+          "title": "How a greener patent mix reaches the macroeconomy",
+          "status": "Estimated and interpretive transmission sequence",
+          "nodes": [
+            "Unexpected greener patent composition",
+            "Research and capital reallocation",
+            "Short-run output and price adjustment",
+            "Diffusion with lower emissions intensity"
+          ],
+          "edges": [
+            [
+              0,
+              1,
+              "identified innovation shock"
+            ],
+            [
+              1,
+              2,
+              "supply-side adjustment"
+            ],
+            [
+              2,
+              3,
+              "estimated medium-run response"
+            ]
+          ],
+          "note": "The VAR estimates the dynamic response; the intermediate allocation channel is an economic interpretation rather than a separately identified treatment.",
+          "rationale": "How a greener patent mix reaches the macroeconomy",
+          "provenance": [
+            "https://www.bancaditalia.it/pubblicazioni/temi-discussione/2025/2025-1482/en_tema_1482.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the reading's mechanism map rather than repeating the headline.",
+            "evidentiarySupport": "Estimated and interpretive transmission sequence",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The VAR estimates the dynamic response; the intermediate allocation channel is an economic interpretation rather than a separately identified treatment.",
+            "presentationSuitability": "mechanism-map",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        }
+      ],
+      "edition": "2026-11-20",
+      "composition": "horizon-led",
+      "argument": "Changing the composition of invention can impose near-term adjustment costs even when emissions intensity falls persistently.",
+      "rejected": [
+        [
+          "estimation-desk",
+          "A new equation would add assumptions without improving the source-specific comparison."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "long-view",
+          "reason": "One shock, three economic horizons"
+        },
+        {
+          "rank": 2,
+          "feature": "mechanism-map",
+          "reason": "How a greener patent mix reaches the macroeconomy"
+        }
+      ],
+      "layout": {
+        "id": "green-innovation-horizons",
+        "palette": "sage",
+        "colorBasis": "Changing the composition of invention can impose near-term adjustment costs even when emissions intensity falls persistently.",
+        "rationale": "A horizon-led arrangement keeps the evidence, interpretation and limits in a native reading flow.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Graphical opportunity assessed; only source-reported or explicitly labeled modeled quantities are shown.",
+      "modelAssessment": "Causal, descriptive, scenario and calibrated-model claims are kept distinct.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-20",
+      "evidenceReview": {
+        "basis": "Exact full text reviewed across research question, design, estimates, robustness, limitations and economic interpretation.",
+        "access": "Lawful complete PDF inspected; version and provenance recorded in source-evidence.json."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-20",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant source-specific features selected after full-text review.",
+        "retained": [],
+        "added": [
+          "long-view",
+          "mechanism-map"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "long-view",
+          "name": "The Long View",
+          "anchor": "2026-11-20-green-innovation--long-view"
+        },
+        {
+          "id": "mechanism-map",
+          "name": "The Mechanism Map",
+          "anchor": "2026-11-20-green-innovation--mechanism-map"
+        }
+      ],
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-20-world-energy-outlook",
+      "title": "Energy Security Now Has More Than One Baseline",
+      "subjects": [
+        "Energy systems",
+        "Scenario analysis"
+      ],
+      "features": [
+        {
+          "type": "long-view",
+          "title": "Four baselines, four questions",
+          "status": "IEA conditional scenarios · none is a forecast",
+          "stages": [
+            [
+              "Current Policies",
+              "What follows from measures already enacted?",
+              "Exploratory baseline"
+            ],
+            [
+              "Stated Policies",
+              "What follows from a broader reading of announced direction and crisis response?",
+              "Policy-intent baseline"
+            ],
+            [
+              "Additional Response",
+              "What if security reactions intensify?",
+              "Sensitivity case"
+            ],
+            [
+              "Net Zero",
+              "What pathway reaches a specified mid-century emissions outcome?",
+              "Normative pathway"
+            ]
+          ],
+          "note": "The stages are analytically distinct scenario families, not a probability ranking or chronological sequence.",
+          "rationale": "Four baselines, four questions",
+          "provenance": [
+            "https://www.iea.org/files/1027b259-ce5a-4f0d-8d03-3ba0338eaa18/WorldEnergyOutlook2026.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the reading's long view rather than repeating the headline.",
+            "evidentiarySupport": "IEA conditional scenarios · none is a forecast",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The stages are analytically distinct scenario families, not a probability ranking or chronological sequence.",
+            "presentationSuitability": "long-view",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "incidence-ledger",
+          "title": "Who pays for energy-security redundancy?",
+          "status": "Conditional incidence channels · magnitudes not estimated",
+          "rows": [
+            [
+              "Importing consumers",
+              "Stocks, bypass routes and diversified supply can reduce shortage risk but may be recovered through tariffs, taxes or higher contract prices."
+            ],
+            [
+              "Asset owners",
+              "New redundancy can preserve option value or become underused if trade flows and policy shift faster than expected."
+            ],
+            [
+              "Communities and the climate",
+              "Physical routes impose local land burdens, while fossil redundancy and low-emission flexibility have different emissions consequences."
+            ]
+          ],
+          "note": "The WEO scenarios describe system pathways; they do not estimate a single distributional ledger for every country.",
+          "rationale": "Who pays for energy-security redundancy?",
+          "provenance": [
+            "https://www.iea.org/files/1027b259-ce5a-4f0d-8d03-3ba0338eaa18/WorldEnergyOutlook2026.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the reading's incidence ledger rather than repeating the headline.",
+            "evidentiarySupport": "Conditional incidence channels · magnitudes not estimated",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The WEO scenarios describe system pathways; they do not estimate a single distributional ledger for every country.",
+            "presentationSuitability": "incidence-ledger",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        }
+      ],
+      "edition": "2026-11-20",
+      "composition": "figure-led",
+      "argument": "The 2026 disruption widened the set of plausible energy paths; policy conclusions depend on which baseline and response case is being compared.",
+      "rejected": [
+        [
+          "estimation-desk",
+          "A new equation would add assumptions without improving the source-specific comparison."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "long-view",
+          "reason": "Four baselines, four questions"
+        },
+        {
+          "rank": 2,
+          "feature": "incidence-ledger",
+          "reason": "Who pays for energy-security redundancy?"
+        }
+      ],
+      "layout": {
+        "id": "scenario-corridors-2035",
+        "palette": "pollen",
+        "colorBasis": "The 2026 disruption widened the set of plausible energy paths; policy conclusions depend on which baseline and response case is being compared.",
+        "rationale": "A figure-led arrangement keeps the evidence, interpretation and limits in a native reading flow.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Graphical opportunity assessed; only source-reported or explicitly labeled modeled quantities are shown.",
+      "modelAssessment": "Causal, descriptive, scenario and calibrated-model claims are kept distinct.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-20",
+      "evidenceReview": {
+        "basis": "Exact full text reviewed across research question, design, estimates, robustness, limitations and economic interpretation.",
+        "access": "Lawful complete PDF inspected; version and provenance recorded in source-evidence.json."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-20",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant source-specific features selected after full-text review.",
+        "retained": [],
+        "added": [
+          "long-view",
+          "incidence-ledger"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "long-view",
+          "name": "The Long View",
+          "anchor": "2026-11-20-world-energy-outlook--long-view"
+        },
+        {
+          "id": "incidence-ledger",
+          "name": "The Incidence Ledger",
+          "anchor": "2026-11-20-world-energy-outlook--incidence-ledger"
+        }
+      ],
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-20-shipping-weather",
+      "title": "Fuel Trade Is Only as Resilient as Its Narrowest Port",
+      "subjects": [
+        "Climate risk",
+        "Energy trade"
+      ],
+      "features": [
+        {
+          "type": "mechanism-map",
+          "title": "How weather becomes an energy-security loss",
+          "status": "Descriptive network mechanism · loss magnitudes not estimated",
+          "nodes": [
+            "Extreme weather at port or route",
+            "Closure, delay or physical damage",
+            "Inventories, rerouting and substitutes",
+            "Delivered-price and shortage incidence"
+          ],
+          "edges": [
+            [
+              0,
+              1,
+              "hazard exposure"
+            ],
+            [
+              1,
+              2,
+              "network response"
+            ],
+            [
+              2,
+              3,
+              "market transmission"
+            ]
+          ],
+          "note": "The report documents hazards and network responses; the final price and welfare effects depend on inventories, contracts and substitute capacity.",
+          "rationale": "How weather becomes an energy-security loss",
+          "provenance": [
+            "https://www.iea.org/files/57d8a347-3a4a-41d9-b608-a8ea7c933bb8/ExtremeWeatherRiskstoInternationalOilandNaturalGasShipping.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the reading's mechanism map rather than repeating the headline.",
+            "evidentiarySupport": "Descriptive network mechanism · loss magnitudes not estimated",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The report documents hazards and network responses; the final price and welfare effects depend on inventories, contracts and substitute capacity.",
+            "presentationSuitability": "mechanism-map",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "incidence-ledger",
+          "title": "Who bears a closed corridor?",
+          "status": "Conditional incidence channels · magnitudes not estimated",
+          "rows": [
+            [
+              "Importing consumers",
+              "Scarcity and rerouting can raise delivered fuel and electricity costs, especially where inventories and substitutes are thin."
+            ],
+            [
+              "Ports and carriers",
+              "Operators bear physical damage, delay and repair costs, but contracts and insurance can shift part of the burden."
+            ],
+            [
+              "Small island systems",
+              "Concentrated terminals, limited storage and high import dependence can turn the same hazard into a larger welfare loss."
+            ]
+          ],
+          "note": "The source documents exposure and resilience options; it does not estimate these groups’ complete surplus changes.",
+          "rationale": "Who bears a closed corridor?",
+          "provenance": [
+            "https://www.iea.org/files/57d8a347-3a4a-41d9-b608-a8ea7c933bb8/ExtremeWeatherRiskstoInternationalOilandNaturalGasShipping.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the reading's incidence ledger rather than repeating the headline.",
+            "evidentiarySupport": "Conditional incidence channels · magnitudes not estimated",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The source documents exposure and resilience options; it does not estimate these groups’ complete surplus changes.",
+            "presentationSuitability": "incidence-ledger",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        }
+      ],
+      "edition": "2026-11-20",
+      "composition": "map-led",
+      "argument": "Average port downtime is small, but correlated chokepoints and thin import redundancy create a heavy-tailed distribution of losses.",
+      "rejected": [
+        [
+          "estimation-desk",
+          "A new equation would add assumptions without improving the source-specific comparison."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "mechanism-map",
+          "reason": "How weather becomes an energy-security loss"
+        },
+        {
+          "rank": 2,
+          "feature": "incidence-ledger",
+          "reason": "Who bears a closed corridor?"
+        }
+      ],
+      "layout": {
+        "id": "ports-routes-and-incidence",
+        "palette": "tidal",
+        "colorBasis": "Average port downtime is small, but correlated chokepoints and thin import redundancy create a heavy-tailed distribution of losses.",
+        "rationale": "A map-led arrangement keeps the evidence, interpretation and limits in a native reading flow.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Graphical opportunity assessed; only source-reported or explicitly labeled modeled quantities are shown.",
+      "modelAssessment": "Causal, descriptive, scenario and calibrated-model claims are kept distinct.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-20",
+      "evidenceReview": {
+        "basis": "Exact full text reviewed across research question, design, estimates, robustness, limitations and economic interpretation.",
+        "access": "Lawful complete PDF inspected; version and provenance recorded in source-evidence.json."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-20",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant source-specific features selected after full-text review.",
+        "retained": [],
+        "added": [
+          "mechanism-map",
+          "incidence-ledger"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "mechanism-map",
+          "name": "The Mechanism Map",
+          "anchor": "2026-11-20-shipping-weather--mechanism-map"
+        },
+        {
+          "id": "incidence-ledger",
+          "name": "The Incidence Ledger",
+          "anchor": "2026-11-20-shipping-weather--incidence-ledger"
+        }
+      ],
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-20-ai-credit",
+      "title": "The AI Buildout Is Also a Leveraged Infrastructure Bet",
+      "subjects": [
+        "Financial economics",
+        "Electricity demand"
+      ],
+      "features": [
+        {
+          "type": "estimation-desk",
+          "title": "The calibrated capacity wedge",
+          "status": "Reconstructed from reported model quantities · not a causal estimand",
+          "math": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mfrac><msub><mi>K</mi><mi>D</mi></msub><msub><mi>K</mi><mi>P</mi></msub></mfrac><mo>=</mo><mfrac><mn>358</mn><mn>178.9</mn></mfrac><mo>≈</mo><mn>2.00</mn></mrow></math>",
+          "terms": [
+            [
+              "Kᴰ",
+              "Compute capacity in the calibrated decentralized equilibrium."
+            ],
+            [
+              "Kᴾ",
+              "Compute capacity in the paper’s unconstrained planner benchmark."
+            ]
+          ],
+          "interpretation": "The benchmark private buildout is about twice the modeled planner capacity.",
+          "assumption": "Both quantities inherit the model calibration; the ratio is not a forecast and the planner omits some environmental and local infrastructure costs.",
+          "rationale": "The calibrated capacity wedge",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w36032/w36032.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the reading's estimation desk rather than repeating the headline.",
+            "evidentiarySupport": "Reconstructed from reported model quantities · not a causal estimand",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "Makes the decision boundary explicit.",
+            "presentationSuitability": "estimation-desk",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "decision-margin",
+          "title": "Which externality belongs in the planner?",
+          "status": "Editorial boundary for extending the model",
+          "question": "What additional system cost should change the capacity comparison?",
+          "options": [
+            [
+              "Financial-network spillovers",
+              "Business-stealing, leverage and circular contracts can amplify investment and losses within the modeled network."
+            ],
+            [
+              "Physical-system spillovers",
+              "Grid congestion, generation, emissions, land and water costs require locational energy and environmental evidence."
+            ]
+          ],
+          "rule": "Do not label the financial planner allocation socially optimal until all material external costs and benefits share a consistent objective and geography.",
+          "note": "The source quantifies the first set in its calibration; the second set is proposed extension, not a result of the paper.",
+          "rationale": "Which externality belongs in the planner?",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w36032/w36032.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Clarifies the reading's decision margin rather than repeating the headline.",
+            "evidentiarySupport": "Editorial boundary for extending the model",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The source quantifies the first set in its calibration; the second set is proposed extension, not a result of the paper.",
+            "presentationSuitability": "decision-margin",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        }
+      ],
+      "edition": "2026-11-20",
+      "composition": "model-led",
+      "argument": "Private contracts can finance more compute than a planner chooses when firms do not internalize business-stealing and network spillovers.",
+      "rejected": [
+        [
+          "estimation-desk",
+          "A new equation would add assumptions without improving the source-specific comparison."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "estimation-desk",
+          "reason": "The calibrated capacity wedge"
+        },
+        {
+          "rank": 2,
+          "feature": "decision-margin",
+          "reason": "Which externality belongs in the planner?"
+        }
+      ],
+      "layout": {
+        "id": "compute-capital-network",
+        "palette": "copper",
+        "colorBasis": "Private contracts can finance more compute than a planner chooses when firms do not internalize business-stealing and network spillovers.",
+        "rationale": "A model-led arrangement keeps the evidence, interpretation and limits in a native reading flow.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Graphical opportunity assessed; only source-reported or explicitly labeled modeled quantities are shown.",
+      "modelAssessment": "Causal, descriptive, scenario and calibrated-model claims are kept distinct.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-20",
+      "evidenceReview": {
+        "basis": "Exact full text reviewed across research question, design, estimates, robustness, limitations and economic interpretation.",
+        "access": "Lawful complete PDF inspected; version and provenance recorded in source-evidence.json."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-20",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant source-specific features selected after full-text review.",
+        "retained": [],
+        "added": [
+          "estimation-desk",
+          "decision-margin"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "estimation-desk",
+          "name": "The Estimation Desk",
+          "anchor": "2026-11-20-ai-credit--estimation-desk"
+        },
+        {
+          "id": "decision-margin",
+          "name": "The Decision Margin",
+          "anchor": "2026-11-20-ai-credit--decision-margin"
+        }
+      ],
+      "additionalFeatureJustification": null
     }
   ],
   "totals": {
-    "editions": 8,
-    "readings": 40,
+    "editions": 9,
+    "readings": 45,
     "features": {
       "economic-figures": 20,
-      "decision-margin": 12,
-      "estimation-desk": 11,
+      "decision-margin": 14,
+      "estimation-desk": 12,
       "heron": 11,
-      "incidence-ledger": 14,
-      "long-view": 13,
-      "mechanism-map": 11,
+      "incidence-ledger": 16,
+      "long-view": 15,
+      "mechanism-map": 14,
       "assumption-test": 16
     }
   }

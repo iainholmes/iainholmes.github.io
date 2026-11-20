@@ -723,6 +723,275 @@
           }
         }
       }
+    },
+    "eminent-nber-36027": {
+      "url": "https://escholarship.org/content/qt8wf8f4p8/qt8wf8f4p8.pdf",
+      "title": "NBER Working Paper 36027 · Federal Eminent Domain and Interstate Energy Infrastructure",
+      "version": "NBER Working Paper 36027, November 2026; eScholarship PDF downloaded 20 November 2026",
+      "publicationStatus": "Working paper; historical difference-in-differences evidence",
+      "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-20",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-20",
+        "scope": "Complete eight-page paper reviewed across legal history, digitized data, both comparison groups, regressions, alternative explanations, limitations and modern analogy; appendices referenced but not independently replicated."
+      },
+      "passages": {
+        "design": {
+          "locator": "PDF pp. 1–5, especially pp. 3–4 and Figure 1 discussion",
+          "support": "The 1947 amendment granted eminent domain to federally certified interstate gas pipelines. Difference-in-differences compares interstate gas with interstate oil and project-level interstate with intrastate gas.",
+          "facts": {
+            "sixfold": {
+              "kind": "causal",
+              "value": "nearly sixfold",
+              "unit": "multiple of annual mileage additions",
+              "denominator": "interstate gas after versus before 1947"
+            },
+            "miles": {
+              "kind": "causal",
+              "value": 5000,
+              "unit": "additional miles per year",
+              "denominator": "interstate gas relative to oil and the pre-1947 gap"
+            }
+          }
+        },
+        "limits": {
+          "locator": "PDF pp. 5–7, alternative explanations and limitations",
+          "support": "The authors discuss postwar gas demand, shortages, wellhead price regulation and other policy changes. Sparse pre-period and near-zero project construction limit precision.",
+          "facts": {
+            "ratio": {
+              "kind": "causal",
+              "value": "nearly five times",
+              "unit": "relative increase",
+              "denominator": "interstate versus intrastate gas annual construction gain"
+            }
+          }
+        }
+      }
+    },
+    "green-macro-bdi-1482": {
+      "url": "https://www.bancaditalia.it/pubblicazioni/temi-discussione/2025/2025-1482/en_tema_1482.pdf",
+      "title": "Bank of Italy Working Paper 1482 · The macroeconomic effects of a greener technology mix",
+      "version": "March 2025 working paper corresponding to Energy Economics 109595, downloaded 20 November 2026",
+      "publicationStatus": "Peer-reviewed Energy Economics article; estimates and design inspected in corresponding complete working-paper version",
+      "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-20",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-20",
+        "scope": "Complete working paper reviewed across patent construction, oil-shock purging, VAR identification, impulse responses, robustness, firm event study and interpretation; published metadata checked separately."
+      },
+      "passages": {
+        "design": {
+          "locator": "PDF pp. 6–17, Sections 2–3",
+          "support": "The authors construct a green-patent-composition indicator, purge identified oil shocks and use recursive VAR and external-instrument robustness specifications.",
+          "facts": {}
+        },
+        "effects": {
+          "locator": "PDF pp. 3–5 and 23–27, baseline impulse responses and conclusion",
+          "support": "The identified shock lowers output and raises prices in the short run; output recovers within about five years while emissions intensity remains persistently lower.",
+          "facts": {
+            "recovery": {
+              "kind": "modeled",
+              "value": 5,
+              "unit": "years",
+              "denominator": "approximate output recovery horizon"
+            },
+            "variance": {
+              "kind": "modeled",
+              "value": 10,
+              "unit": "percent",
+              "denominator": "approximate emissions forecast-error variance attributed to green shock"
+            }
+          }
+        },
+        "limits": {
+          "locator": "PDF pp. 27–31 and robustness appendices",
+          "support": "Results are sensitive to the patent proxy and identifying restrictions; alternative orderings, instruments, oil controls and firm-level returns provide robustness rather than random assignment.",
+          "facts": {}
+        }
+      }
+    },
+    "iea-weo-2026": {
+      "url": "https://www.iea.org/files/1027b259-ce5a-4f0d-8d03-3ba0338eaa18/WorldEnergyOutlook2026.pdf",
+      "title": "IEA · World Energy Outlook 2026",
+      "version": "Official full report published 19 November 2026, downloaded 20 November 2026",
+      "publicationStatus": "Institutional scenario report; exploratory and normative scenarios, not forecasts",
+      "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-20",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-20",
+        "scope": "Full report searched and targeted chapters read: executive summary, scenario design, energy demand, security response, electricity, emissions and annex methodology; not an independent model replication."
+      },
+      "passages": {
+        "scenarios": {
+          "locator": "PDF Executive Summary and Chapter 1 pp. 31–47; Annex B",
+          "support": "CPS, STEPS and ARC explore conditional policy and security responses; NZE is normative. The report explicitly states that none is a forecast.",
+          "facts": {
+            "today": {
+              "kind": "descriptive",
+              "value": 33,
+              "unit": "percent",
+              "denominator": "renewables share of electricity generation today"
+            },
+            "low": {
+              "kind": "modeled",
+              "value": 45,
+              "unit": "percent",
+              "denominator": "lower 2035 exploratory-scenario renewables share"
+            },
+            "high": {
+              "kind": "modeled",
+              "value": 50,
+              "unit": "percent",
+              "denominator": "upper 2035 exploratory-scenario renewables share"
+            }
+          }
+        },
+        "security": {
+          "locator": "PDF Executive Summary pp. 27–36 and Chapter 5",
+          "support": "Middle East disruption and Strait of Hormuz constraints motivate route, stock, efficiency, electrification and diversification responses with distinct asset and emissions consequences.",
+          "facts": {}
+        }
+      }
+    },
+    "iea-shipping-weather-2026": {
+      "url": "https://www.iea.org/files/57d8a347-3a4a-41d9-b608-a8ea7c933bb8/ExtremeWeatherRiskstoInternationalOilandNaturalGasShipping.pdf",
+      "title": "IEA · Extreme Weather Risks to International Oil and Natural Gas Shipping",
+      "version": "Official report published 18 November 2026, downloaded 20 November 2026",
+      "publicationStatus": "Institutional descriptive exposure assessment and conditional scenarios",
+      "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-20",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-20",
+        "scope": "Complete report reviewed across trade flows, port and route hazards, downtime, damage scenarios, small-island exposure and resilience recommendations; no independent hazard-model replication."
+      },
+      "passages": {
+        "exposure": {
+          "locator": "PDF Executive Summary pp. 7–8 and Chapter 1 pp. 9–22",
+          "support": "In 2024, 40% of crude oil, 30% of petroleum products and 15% of natural gas supply traveled partly by water; STEPS shipping activity rises more than 15% by 2035.",
+          "facts": {
+            "crude": {
+              "kind": "descriptive",
+              "value": 40,
+              "unit": "percent",
+              "denominator": "2024 crude oil supply transported partly by water"
+            },
+            "products": {
+              "kind": "descriptive",
+              "value": 30,
+              "unit": "percent",
+              "denominator": "2024 petroleum-products supply transported partly by water"
+            },
+            "gas": {
+              "kind": "descriptive",
+              "value": 15,
+              "unit": "percent",
+              "denominator": "2024 natural gas supply transported partly by water"
+            },
+            "growth": {
+              "kind": "modeled",
+              "value": 15,
+              "unit": "percent increase",
+              "denominator": "STEPS international oil and gas shipping activity by 2035"
+            }
+          }
+        },
+        "risk": {
+          "locator": "PDF Executive Summary pp. 8–10 and Chapters 2–3",
+          "support": "Assessed tanker ports average 1.5 weather-related downtime days per year, but extreme events can close facilities for weeks or months; geography and limited redundancy make losses highly unequal.",
+          "facts": {
+            "downtime": {
+              "kind": "descriptive",
+              "value": 1.5,
+              "unit": "days per year",
+              "denominator": "average assessed tanker-handling port weather downtime"
+            },
+            "islands": {
+              "kind": "descriptive",
+              "value": 85,
+              "unit": "percent",
+              "denominator": "small island economies relying on imported fossil fuels for over half of energy"
+            }
+          }
+        }
+      }
+    },
+    "ai-credit-nber-36032": {
+      "url": "https://www.nber.org/system/files/working_papers/w36032/w36032.pdf",
+      "title": "NBER Working Paper 36032 · Clouds of Credit",
+      "version": "NBER Working Paper 36032, November 2026, downloaded 20 November 2026",
+      "publicationStatus": "Working paper; mapped financial network and calibrated structural model",
+      "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-20",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-20",
+        "scope": "Complete paper reviewed across public-filing network construction, model, calibration, decentralized and planner allocations, financing, low-productivity losses, contractual spillovers and limitations; no independent calibration reproduction."
+      },
+      "passages": {
+        "capacity": {
+          "locator": "PDF abstract, pp. 4–7 and Sections 4–5",
+          "support": "The calibrated decentralized equilibrium builds about 358 GW at $6.3 trillion, 55% above the 178.9 GW modeled social optimum; nearly 60% is debt financed.",
+          "facts": {
+            "private": {
+              "kind": "modeled",
+              "value": 358,
+              "unit": "GW",
+              "denominator": "benchmark decentralized compute capacity"
+            },
+            "planner": {
+              "kind": "modeled",
+              "value": 178.9,
+              "unit": "GW",
+              "denominator": "unconstrained modeled social optimum"
+            },
+            "capex": {
+              "kind": "modeled",
+              "value": 6.3,
+              "unit": "trillion USD",
+              "denominator": "benchmark compute buildout"
+            },
+            "debt": {
+              "kind": "modeled",
+              "value": 60,
+              "unit": "percent",
+              "denominator": "share of new investment financed with debt"
+            }
+          }
+        },
+        "losses": {
+          "locator": "PDF pp. 38–43 and Tables 7–8",
+          "support": "In the low-productivity state, modeled private losses are $16.87 trillion and debt loss-given-default is 40%; suppressing contractual payment spillovers reduces private losses by about 30%.",
+          "facts": {
+            "loss": {
+              "kind": "modeled",
+              "value": 16.87,
+              "unit": "trillion USD",
+              "denominator": "private investor loss in low-productivity state"
+            },
+            "lgd": {
+              "kind": "modeled",
+              "value": 40,
+              "unit": "percent",
+              "denominator": "debt loss given default"
+            },
+            "spillover": {
+              "kind": "modeled",
+              "value": 30,
+              "unit": "percent",
+              "denominator": "approximate private-loss reduction when contractual spillovers suppressed"
+            }
+          }
+        }
+      }
     }
   },
   "readings": {
@@ -6992,7 +7261,1658 @@
           }
         }
       ]
+    },
+    "2026-11-20-eminent-domain": {
+      "edition": "2026-11-20",
+      "historical": false,
+      "title": "The Right to Build Changed the Pipeline Map",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "c833893d8bb12547bcf70f43e4feaf2ed095dbcf686c7f431b1f95d8655e9219",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "eminent-nber-36027",
+              "passage": "design",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            },
+            {
+              "document": "eminent-nber-36027",
+              "passage": "limits",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "The historical controls do not eliminate every contemporaneous gas-specific shock.",
+            "Mileage gains are not a welfare estimate and local property incidence remains outside the design."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the reading identity, publication status and source version for The Right to Build Changed the Pipeline Map."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "1e3edd6c26767c320ff774a19331c94df98f665495037db141dfd956ab979561",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "eminent-nber-36027",
+              "passage": "design",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            },
+            {
+              "document": "eminent-nber-36027",
+              "passage": "limits",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "The historical controls do not eliminate every contemporaneous gas-specific shock.",
+            "Mileage gains are not a welfare estimate and local property incidence remains outside the design."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Compared every headline quantity and evidence-status phrase in the deck for The Right to Build Changed the Pipeline Map with the cited full-text passages."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "1e3edd6c26767c320ff774a19331c94df98f665495037db141dfd956ab979561",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "eminent-nber-36027",
+              "passage": "design",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            },
+            {
+              "document": "eminent-nber-36027",
+              "passage": "limits",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "The historical controls do not eliminate every contemporaneous gas-specific shock.",
+            "Mileage gains are not a welfare estimate and local property incidence remains outside the design."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Verified the reported finding, units, comparison and source-status qualification in The Right to Build Changed the Pipeline Map."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "d95dfeb9f07eaea46298da0720fcf8c8e57aaf957c3790427eb0840713b18658",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "eminent-nber-36027",
+              "passage": "design",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            },
+            {
+              "document": "eminent-nber-36027",
+              "passage": "limits",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The historical controls do not eliminate every contemporaneous gas-specific shock.",
+            "Mileage gains are not a welfare estimate and local property incidence remains outside the design."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the research question, data and identification or scenario design against the source methodology for The Right to Build Changed the Pipeline Map."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "2a46acb802ce9126e1b77e44b52b0847c4f0c622caee8555ae54f19497080044",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "eminent-nber-36027",
+              "passage": "design",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            },
+            {
+              "document": "eminent-nber-36027",
+              "passage": "limits",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The historical controls do not eliminate every contemporaneous gas-specific shock.",
+            "Mileage gains are not a welfare estimate and local property incidence remains outside the design."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Confirmed that the reading lens is a bounded editorial inference supported by, but not attributed as a result of, The Right to Build Changed the Pipeline Map."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "883320400989c729dfd22f6e54e0cc324914c85be2c11ea05806dcda19f05ab7",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "eminent-nber-36027",
+              "passage": "design",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            },
+            {
+              "document": "eminent-nber-36027",
+              "passage": "limits",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The historical controls do not eliminate every contemporaneous gas-specific shock.",
+            "Mileage gains are not a welfare estimate and local property incidence remains outside the design."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the economic interpretation as editorial analysis, preserving the source's evidence strength and separating welfare implications from measured results for The Right to Build Changed the Pipeline Map."
+          }
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "d288b1dee444e23b1d0a50a9a3ae499b21277dd874be3a410580fe2392219398",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "eminent-nber-36027",
+              "passage": "design",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            },
+            {
+              "document": "eminent-nber-36027",
+              "passage": "limits",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The historical controls do not eliminate every contemporaneous gas-specific shock.",
+            "Mileage gains are not a welfare estimate and local property incidence remains outside the design."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked every connection against the source design and separated directly observed or estimated links from editorial mechanism interpretation."
+          }
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "0cab7a7a525f3c174b9971f8a15dfc97df6a92bec4b8536e896b1000e15ebc76",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "eminent-nber-36027",
+              "passage": "design",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            },
+            {
+              "document": "eminent-nber-36027",
+              "passage": "limits",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The historical controls do not eliminate every contemporaneous gas-specific shock.",
+            "Mileage gains are not a welfare estimate and local property incidence remains outside the design."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the alternatives as an editorial decision framework rather than a source-estimated policy ranking."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "b62179c2508bc03396519eb4ee2c17156ece33fdfc8a7542b041fb6563a03216",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "eminent-nber-36027",
+              "passage": "design",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            },
+            {
+              "document": "eminent-nber-36027",
+              "passage": "limits",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The historical controls do not eliminate every contemporaneous gas-specific shock.",
+            "Mileage gains are not a welfare estimate and local property incidence remains outside the design."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the limitations paragraph against the source's robustness, model boundary and stated qualifications for The Right to Build Changed the Pipeline Map."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "a792ec69e708a48d0ba5a3c596b4c082782b8614767d4155bd30845460a2cad2",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "eminent-nber-36027",
+              "passage": "design",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            },
+            {
+              "document": "eminent-nber-36027",
+              "passage": "limits",
+              "sha256": "ef0ddeda1387624ef8dbcd1621b7d511a106d31b5cb23731cb0fc63ba65a0a08"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test.",
+          "claims": [],
+          "qualifications": [
+            "The historical controls do not eliminate every contemporaneous gas-specific shock.",
+            "Mileage gains are not a welfare estimate and local property incidence remains outside the design."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Assessed the proposed research diagnostic as an unperformed hypothesis and tied it to the documented evidence gap in The Right to Build Changed the Pipeline Map."
+          }
+        }
+      ]
+    },
+    "2026-11-20-green-innovation": {
+      "edition": "2026-11-20",
+      "historical": false,
+      "title": "Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "8198cadd2e731c1492b17df6f4756a19f7599818c1d3e6682bc0d662daafdc6c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "design",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "effects",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "limits",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "Patent composition is a proxy for economically valuable innovation.",
+            "Impulse responses depend on VAR and instrument restrictions and do not identify a particular subsidy."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the reading identity, publication status and source version for Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "7d1256cbe9e529d95650bb6e7601d37f88c77e04bba54b1837454c019e9440e2",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "design",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "effects",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "limits",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "Patent composition is a proxy for economically valuable innovation.",
+            "Impulse responses depend on VAR and instrument restrictions and do not identify a particular subsidy."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Compared every headline quantity and evidence-status phrase in the deck for Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth with the cited full-text passages."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "7d1256cbe9e529d95650bb6e7601d37f88c77e04bba54b1837454c019e9440e2",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "design",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "effects",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "limits",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "Patent composition is a proxy for economically valuable innovation.",
+            "Impulse responses depend on VAR and instrument restrictions and do not identify a particular subsidy."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Verified the reported finding, units, comparison and source-status qualification in Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "38e9ee0123f4b3e5ab42f8da97f5a102a79d40cdd41b6443f832c175e201506c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "design",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "effects",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "limits",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Patent composition is a proxy for economically valuable innovation.",
+            "Impulse responses depend on VAR and instrument restrictions and do not identify a particular subsidy."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the research question, data and identification or scenario design against the source methodology for Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "62bfdbf7091b8be8c0a7fc9c3b576ccf4d1a1ddf23357c140854113f314815fd",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "design",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "effects",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "limits",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Patent composition is a proxy for economically valuable innovation.",
+            "Impulse responses depend on VAR and instrument restrictions and do not identify a particular subsidy."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Confirmed that the reading lens is a bounded editorial inference supported by, but not attributed as a result of, Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "5eda7cf7d6f4d5119a7716343c131d1aacd2e860b4964b277ef82046fcf79f8d",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "design",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "effects",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "limits",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Patent composition is a proxy for economically valuable innovation.",
+            "Impulse responses depend on VAR and instrument restrictions and do not identify a particular subsidy."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the economic interpretation as editorial analysis, preserving the source's evidence strength and separating welfare implications from measured results for Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth."
+          }
+        },
+        {
+          "id": "long-view",
+          "sha256": "cbb21d2f11c6158bba54af3930fa544ca440fa3ba8027ca7e7b7be6ed6939100",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "design",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "effects",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "limits",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "Patent composition is a proxy for economically valuable innovation.",
+            "Impulse responses depend on VAR and instrument restrictions and do not identify a particular subsidy."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Matched the horizon sequence to the source's impulse-response evidence and preserved its model dependence."
+          }
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "0fedce91d06914c2764397050e88e66048327a28ff35a88024d2ce27408a0b2d",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "design",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "effects",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "limits",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Patent composition is a proxy for economically valuable innovation.",
+            "Impulse responses depend on VAR and instrument restrictions and do not identify a particular subsidy."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked every connection against the source design and separated directly observed or estimated links from editorial mechanism interpretation."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "c75f70f8fa73f568941daf0691a9e65eaf53dfc793250f2bdb84efcd1955c304",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "design",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "effects",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "limits",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test.",
+          "claims": [],
+          "qualifications": [
+            "Patent composition is a proxy for economically valuable innovation.",
+            "Impulse responses depend on VAR and instrument restrictions and do not identify a particular subsidy."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Assessed the proposed research diagnostic as an unperformed hypothesis and tied it to the documented evidence gap in Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "3740bb098802751793b6e4c521b4a58835774f56be8c84d0f157a0626e77eb1d",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "design",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "effects",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            },
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "limits",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Patent composition is a proxy for economically valuable innovation.",
+            "Impulse responses depend on VAR and instrument restrictions and do not identify a particular subsidy."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the limitations paragraph against the source's robustness, model boundary and stated qualifications for Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth."
+          }
+        }
+      ]
+    },
+    "2026-11-20-world-energy-outlook": {
+      "edition": "2026-11-20",
+      "historical": false,
+      "title": "Energy Security Now Has More Than One Baseline",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "149e5605fdf2781620265a015309f305669de4d3dcd3d1b27934a4cf90a19ffc",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "iea-weo-2026",
+              "passage": "scenarios",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            },
+            {
+              "document": "iea-weo-2026",
+              "passage": "security",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "The paths are conditional scenarios, not forecasts or confidence intervals.",
+            "Aggregate shares do not identify local reliability, cost or distributional incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the reading identity, publication status and source version for Energy Security Now Has More Than One Baseline."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "a5ba18b7449e2e74434f10274ef7fbb8ad5e0c39dd38961a09a7195b356e25aa",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-weo-2026",
+              "passage": "scenarios",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            },
+            {
+              "document": "iea-weo-2026",
+              "passage": "security",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "The paths are conditional scenarios, not forecasts or confidence intervals.",
+            "Aggregate shares do not identify local reliability, cost or distributional incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Compared every headline quantity and evidence-status phrase in the deck for Energy Security Now Has More Than One Baseline with the cited full-text passages."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "a5ba18b7449e2e74434f10274ef7fbb8ad5e0c39dd38961a09a7195b356e25aa",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-weo-2026",
+              "passage": "scenarios",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            },
+            {
+              "document": "iea-weo-2026",
+              "passage": "security",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "The paths are conditional scenarios, not forecasts or confidence intervals.",
+            "Aggregate shares do not identify local reliability, cost or distributional incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Verified the reported finding, units, comparison and source-status qualification in Energy Security Now Has More Than One Baseline."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "864690dd51e08789afe3c6f77c3152e8ffdcc2133e62f1fcd3b6fb422653381d",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-weo-2026",
+              "passage": "scenarios",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            },
+            {
+              "document": "iea-weo-2026",
+              "passage": "security",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The paths are conditional scenarios, not forecasts or confidence intervals.",
+            "Aggregate shares do not identify local reliability, cost or distributional incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the research question, data and identification or scenario design against the source methodology for Energy Security Now Has More Than One Baseline."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "ea1727b0c6266c467c06728d5dc7407476833878c00877780790f760b582e9d4",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-weo-2026",
+              "passage": "scenarios",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            },
+            {
+              "document": "iea-weo-2026",
+              "passage": "security",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The paths are conditional scenarios, not forecasts or confidence intervals.",
+            "Aggregate shares do not identify local reliability, cost or distributional incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Confirmed that the reading lens is a bounded editorial inference supported by, but not attributed as a result of, Energy Security Now Has More Than One Baseline."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "50dd7b9d461e3027f36b4c8e80cf6e6281fdffe9701380cfa574e4492b64fab6",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-weo-2026",
+              "passage": "scenarios",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            },
+            {
+              "document": "iea-weo-2026",
+              "passage": "security",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The paths are conditional scenarios, not forecasts or confidence intervals.",
+            "Aggregate shares do not identify local reliability, cost or distributional incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the economic interpretation as editorial analysis, preserving the source's evidence strength and separating welfare implications from measured results for Energy Security Now Has More Than One Baseline."
+          }
+        },
+        {
+          "id": "long-view",
+          "sha256": "2ceb9efc8f1d788b42f09229d390a576c0d7545eca6ec416a51dff4ab9aeb7c6",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-weo-2026",
+              "passage": "scenarios",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            },
+            {
+              "document": "iea-weo-2026",
+              "passage": "security",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "The paths are conditional scenarios, not forecasts or confidence intervals.",
+            "Aggregate shares do not identify local reliability, cost or distributional incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Matched the horizon sequence to the source's impulse-response evidence and preserved its model dependence."
+          }
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "081e7238600787dc8db39bb58701811957825b0065568bb9da40db9776b47847",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-weo-2026",
+              "passage": "scenarios",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            },
+            {
+              "document": "iea-weo-2026",
+              "passage": "security",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The paths are conditional scenarios, not forecasts or confidence intervals.",
+            "Aggregate shares do not identify local reliability, cost or distributional incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed each incidence channel as a conditional economic interpretation; no unestimated group magnitude is asserted."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "9cd6f4f18af6308abc108f7b655e2592256733bd622061e7d5f3ae04df1a39d7",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-weo-2026",
+              "passage": "scenarios",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            },
+            {
+              "document": "iea-weo-2026",
+              "passage": "security",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "The paths are conditional scenarios, not forecasts or confidence intervals.",
+            "Aggregate shares do not identify local reliability, cost or distributional incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the limitations paragraph against the source's robustness, model boundary and stated qualifications for Energy Security Now Has More Than One Baseline."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "e94af69b8117b9dfa9efad3e65f148bf03b1d1ceb1cf8f4019198ad197eaf577",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "iea-weo-2026",
+              "passage": "scenarios",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            },
+            {
+              "document": "iea-weo-2026",
+              "passage": "security",
+              "sha256": "e8c5d3dadc1a95447fec6fc2c76eda35e1e4cd1921412c3f7ce4d1bc07769653"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test.",
+          "claims": [],
+          "qualifications": [
+            "The paths are conditional scenarios, not forecasts or confidence intervals.",
+            "Aggregate shares do not identify local reliability, cost or distributional incidence."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Assessed the proposed research diagnostic as an unperformed hypothesis and tied it to the documented evidence gap in Energy Security Now Has More Than One Baseline."
+          }
+        }
+      ]
+    },
+    "2026-11-20-shipping-weather": {
+      "edition": "2026-11-20",
+      "historical": false,
+      "title": "Fuel Trade Is Only as Resilient as Its Narrowest Port",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "33919adb8addb11f4107ec364c0dfba0d99a091ad6564c6bf4be39f69a3bd462",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "exposure",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            },
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "risk",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "Average downtime conceals a skewed tail and correlated regional failures.",
+            "Exposure and scenario activity are not causal estimates of resilience returns."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the reading identity, publication status and source version for Fuel Trade Is Only as Resilient as Its Narrowest Port."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "90cda43dd2c8d2b61b73f7c51915427bdcd9384988c9c723cec68b872a25ada8",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "exposure",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            },
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "risk",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "Average downtime conceals a skewed tail and correlated regional failures.",
+            "Exposure and scenario activity are not causal estimates of resilience returns."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Compared every headline quantity and evidence-status phrase in the deck for Fuel Trade Is Only as Resilient as Its Narrowest Port with the cited full-text passages."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "90cda43dd2c8d2b61b73f7c51915427bdcd9384988c9c723cec68b872a25ada8",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "exposure",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            },
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "risk",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "Average downtime conceals a skewed tail and correlated regional failures.",
+            "Exposure and scenario activity are not causal estimates of resilience returns."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Verified the reported finding, units, comparison and source-status qualification in Fuel Trade Is Only as Resilient as Its Narrowest Port."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "9def34198efc713a9d865b39afc8a07e67a6c2cdcff7f904fc28d048e4c4fe02",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "exposure",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            },
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "risk",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Average downtime conceals a skewed tail and correlated regional failures.",
+            "Exposure and scenario activity are not causal estimates of resilience returns."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the research question, data and identification or scenario design against the source methodology for Fuel Trade Is Only as Resilient as Its Narrowest Port."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "49e70946f06ef6ee8773d8f61f17a88139eeafa5887d155181ed6647704d1f60",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "exposure",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            },
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "risk",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Average downtime conceals a skewed tail and correlated regional failures.",
+            "Exposure and scenario activity are not causal estimates of resilience returns."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Confirmed that the reading lens is a bounded editorial inference supported by, but not attributed as a result of, Fuel Trade Is Only as Resilient as Its Narrowest Port."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "f18df0d25ed7a5117b0a29463b7a4622b9b204e4bd2dc172d38aebe558cf5b7d",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "exposure",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            },
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "risk",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Average downtime conceals a skewed tail and correlated regional failures.",
+            "Exposure and scenario activity are not causal estimates of resilience returns."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the economic interpretation as editorial analysis, preserving the source's evidence strength and separating welfare implications from measured results for Fuel Trade Is Only as Resilient as Its Narrowest Port."
+          }
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "9a2a89c59f2564ecac76e616e9bae216212bb2758e88f180b36523d6cf13a02a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "exposure",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            },
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "risk",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Average downtime conceals a skewed tail and correlated regional failures.",
+            "Exposure and scenario activity are not causal estimates of resilience returns."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked every connection against the source design and separated directly observed or estimated links from editorial mechanism interpretation."
+          }
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "a6c75904cabd5703424e2f3bcb447cf39b23157bd4782fbc0c030c1fcb3e572e",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "exposure",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            },
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "risk",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Average downtime conceals a skewed tail and correlated regional failures.",
+            "Exposure and scenario activity are not causal estimates of resilience returns."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed each incidence channel as a conditional economic interpretation; no unestimated group magnitude is asserted."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "fbf0e217c11593b87a0117512234c4ae3328117416cb2969d467299729c76451",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "exposure",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            },
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "risk",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test.",
+          "claims": [],
+          "qualifications": [
+            "Average downtime conceals a skewed tail and correlated regional failures.",
+            "Exposure and scenario activity are not causal estimates of resilience returns."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Assessed the proposed research diagnostic as an unperformed hypothesis and tied it to the documented evidence gap in Fuel Trade Is Only as Resilient as Its Narrowest Port."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "87602451c9c59a795bcabb0505a8dc89859a1b8a0d9e84fa83999e830fd6b489",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "exposure",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            },
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "risk",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "Average downtime conceals a skewed tail and correlated regional failures.",
+            "Exposure and scenario activity are not causal estimates of resilience returns."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the limitations paragraph against the source's robustness, model boundary and stated qualifications for Fuel Trade Is Only as Resilient as Its Narrowest Port."
+          }
+        }
+      ]
+    },
+    "2026-11-20-ai-credit": {
+      "edition": "2026-11-20",
+      "historical": false,
+      "title": "The AI Buildout Is Also a Leveraged Infrastructure Bet",
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "b4a5ec07baed0b54a74db582412c8b2c50b9565ceec2803a7f459d4c99bbde29",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "reported",
+          "evidence": [
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "capacity",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            },
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "losses",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "All headline totals are calibrated model outcomes, not forecasts or causal estimates.",
+            "The planner does not internalize every electricity, emissions, water, land or community cost."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the reading identity, publication status and source version for The AI Buildout Is Also a Leveraged Infrastructure Bet."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "0c751b8ab42b7371b1658141da2ff8d5186d77b94cb53327f9b3f3d0212671bb",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "capacity",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            },
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "losses",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "All headline totals are calibrated model outcomes, not forecasts or causal estimates.",
+            "The planner does not internalize every electricity, emissions, water, land or community cost."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Compared every headline quantity and evidence-status phrase in the deck for The AI Buildout Is Also a Leveraged Infrastructure Bet with the cited full-text passages."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "0c751b8ab42b7371b1658141da2ff8d5186d77b94cb53327f9b3f3d0212671bb",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "capacity",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            },
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "losses",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "All headline totals are calibrated model outcomes, not forecasts or causal estimates.",
+            "The planner does not internalize every electricity, emissions, water, land or community cost."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Verified the reported finding, units, comparison and source-status qualification in The AI Buildout Is Also a Leveraged Infrastructure Bet."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "e378c428859e511c0046c0440f2b61ea83a00ce0a3eed79909a31ce25fb1bd88",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "capacity",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            },
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "losses",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "All headline totals are calibrated model outcomes, not forecasts or causal estimates.",
+            "The planner does not internalize every electricity, emissions, water, land or community cost."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the research question, data and identification or scenario design against the source methodology for The AI Buildout Is Also a Leveraged Infrastructure Bet."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "7d8fd8c99bebf1d4b26d540fc1959eda0cd30f54187170768a98a35a1ea27d70",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "capacity",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            },
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "losses",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "All headline totals are calibrated model outcomes, not forecasts or causal estimates.",
+            "The planner does not internalize every electricity, emissions, water, land or community cost."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Confirmed that the reading lens is a bounded editorial inference supported by, but not attributed as a result of, The AI Buildout Is Also a Leveraged Infrastructure Bet."
+          }
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "805b64eca2cb3923f22e0103de906ba812e13b7c979f118c822fdb013340554d",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "calculated",
+          "evidence": [
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "capacity",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            },
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "losses",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            }
+          ],
+          "mapping": "Reported, calculated or paraphrased source material checked against exact reviewed passages.",
+          "claims": [],
+          "qualifications": [
+            "All headline totals are calibrated model outcomes, not forecasts or causal estimates.",
+            "The planner does not internalize every electricity, emissions, water, land or community cost."
+          ],
+          "mathematics": {
+            "derivation": "358 GW divided by 178.9 GW equals 2.0011, rounded to 2.00.",
+            "omissions": [
+              "The ratio suppresses the model state, financing constraints and unmodeled environmental costs."
+            ],
+            "notation": [
+              {
+                "symbol": "K_D",
+                "meaning": "calibrated decentralized compute capacity"
+              },
+              {
+                "symbol": "K_P",
+                "meaning": "calibrated planner compute capacity"
+              }
+            ]
+          },
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Recalculated 358 divided by 178.9 from the paper's reported calibrated quantities; the displayed ratio is approximately 2.00 and remains a model comparison, not a causal estimand."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "1a36071e5ed8260ff61c2f8a4576e35b8e44a233012bbb7ff039d5839d79e654",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "capacity",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            },
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "losses",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "All headline totals are calibrated model outcomes, not forecasts or causal estimates.",
+            "The planner does not internalize every electricity, emissions, water, land or community cost."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the economic interpretation as editorial analysis, preserving the source's evidence strength and separating welfare implications from measured results for The AI Buildout Is Also a Leveraged Infrastructure Bet."
+          }
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "7b7df759191bca777599ae656ffe5314b91e21fc30f2d296a76e341d4e8b7ae2",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "capacity",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            },
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "losses",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "All headline totals are calibrated model outcomes, not forecasts or causal estimates.",
+            "The planner does not internalize every electricity, emissions, water, land or community cost."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Reviewed the alternatives as an editorial decision framework rather than a source-estimated policy ranking."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "2f57f529fe8cd3904a38b588e50ceaf9f23b199f6b6cf924ad6dd78262c64466",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "capacity",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            },
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "losses",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            }
+          ],
+          "mapping": "Editorial economic interpretation bounded by the inspected source evidence.",
+          "claims": [],
+          "qualifications": [
+            "All headline totals are calibrated model outcomes, not forecasts or causal estimates.",
+            "The planner does not internalize every electricity, emissions, water, land or community cost."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the limitations paragraph against the source's robustness, model boundary and stated qualifications for The AI Buildout Is Also a Leveraged Infrastructure Bet."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "67f5aca536b8c15afec605cf355831e3ecff3754007923a5ba422f51095c9d39",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "hypothesis",
+          "evidence": [
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "capacity",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            },
+            {
+              "document": "ai-credit-nber-36032",
+              "passage": "losses",
+              "sha256": "aab5d1f709917877ee03f56d4d8e18acd79aabcaac4cf5b2ad51d4932cea97cf"
+            }
+          ],
+          "mapping": "Proposed diagnostic or future research direction, not a performed source test.",
+          "claims": [],
+          "qualifications": [
+            "All headline totals are calibrated model outcomes, not forecasts or causal estimates.",
+            "The planner does not internalize every electricity, emissions, water, land or community cost."
+          ],
+          "verification": {
+            "reviewer": "GPT-6 primary-source and economic-analysis review",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Assessed the proposed research diagnostic as an unperformed hypothesis and tied it to the documented evidence gap in The AI Buildout Is Also a Leveraged Infrastructure Bet."
+          }
+        }
+      ]
     }
   },
-  "reviewed": "2026-11-13"
+  "reviewed": "2026-11-20"
 }

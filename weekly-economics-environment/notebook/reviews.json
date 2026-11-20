@@ -170,11 +170,43 @@
     },
     "2026-11-13": {
       "reviewedOn": "2026-11-13",
-      "readings": ["2026-11-13-carbon-incidence", "2026-11-13-flood-adaptation", "2026-11-13-fisheries-heat", "2026-11-13-carbon-budget", "2026-11-13-power-outlook"],
+      "readings": [
+        "2026-11-13-carbon-incidence",
+        "2026-11-13-flood-adaptation",
+        "2026-11-13-fisheries-heat",
+        "2026-11-13-carbon-budget",
+        "2026-11-13-power-outlook"
+      ],
       "synthesis": "2026-11-13-connections",
-      "revisited": ["incidence", "identification", "spatial-equilibrium-migration", "counterfactual-reasoning", "leakage-spillovers", "private-returns-social-value"],
+      "revisited": [
+        "incidence",
+        "identification",
+        "spatial-equilibrium-migration",
+        "counterfactual-reasoning",
+        "leakage-spillovers",
+        "private-returns-social-value"
+      ],
       "added": [],
       "note": "Reviewed all five readings and the adjustment synthesis. The issue substantively revisits incidence, identification, spatial adjustment, counterfactual reasoning, spillovers, and private versus social value. No distinct reusable concept was added because the archive already separates these objects; references were appended only where the new evidence adds a different shock, adaptation margin, or stock-flow application."
+    },
+    "2026-11-20": {
+      "reviewedOn": "2026-11-20",
+      "readings": [
+        "2026-11-20-eminent-domain",
+        "2026-11-20-green-innovation",
+        "2026-11-20-world-energy-outlook",
+        "2026-11-20-shipping-weather",
+        "2026-11-20-ai-credit"
+      ],
+      "synthesis": "2026-11-20-connections",
+      "revisited": [
+        "identification",
+        "incidence",
+        "counterfactual-reasoning",
+        "financing-wedges"
+      ],
+      "added": [],
+      "note": "Reviewed all five complete readings and the route-and-institution synthesis. The issue adds new applications to identification, incidence, counterfactual scenario reasoning and financing wedges; no distinct reusable concept was added because the cumulative Notebook already separates these objects."
     }
   }
 }
