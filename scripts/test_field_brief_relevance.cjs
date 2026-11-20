@@ -19,7 +19,7 @@ const alternate=art.story(shaded,'2026-11-20',[{}, {'01':first}]);check(alternat
 throws(()=>art.story(shaded,'2026-11-20',[],new Set([first.signature,alternate.signature])),/No distinct, relevant/,'relevant vocabulary exhaustion cannot borrow an unrelated scene');
 const healthScene=art.story({...hipaa,number:'01'},'2026-11-20');check(art.relevance(hipaa,healthScene.composition).ok&&healthScene.composition!=='ai-investment-gap','health-access rule can use a supported legal-document scene');
 throws(()=>art.story({number:'01',title:'An unclassified development',category:'News',summary:['No depicted subject is supported.'],editorial:{domain:'ai'},art:'heat'},'2026-11-20'),/No subject-relevant/,'unsupported prose blocks rather than uses unrelated stock art');
-const future=structuredClone(data.editions.find(e=>e.date==='2026-11-18'));future.date='2026-11-20';
+const future=structuredClone(data.editions.find(e=>e.date==='2026-11-18'));future.date='2099-12-31';
 const generated=art.edition(future,plates.issues);eq(generated,art.edition(future,plates.issues),'prospective preparation deterministic');
 for(const st of future.stories)check(art.relevance(st,generated[st.number].composition).ok,'each selected scene has reported support');
 eq(new Set(Object.values(generated).map(x=>x.signature)).size,5,'five distinct geometries');
@@ -36,7 +36,7 @@ for(let i=0;i<2;i++){cp.execFileSync(process.execPath,['scripts/prepare_periodic
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),'fb-relevance-'));
 try{
  for(const folder of ['scripts','personal-updates','daily-watchlist-5','daily-econ-challenge','weekly-economics-environment'])fs.cpSync(path.join(root,folder),path.join(dir,folder),{recursive:true});
- const draft=structuredClone(original);draft.date='2026-11-20';const appended={...data,editions:[...data.editions,draft]};
+ const draft=structuredClone(original);draft.date='2099-12-31';const appended={...data,editions:[...data.editions,draft]};
  fs.writeFileSync(path.join(dir,'daily-watchlist-5/index.html'),html.replace(/(id="briefing-data">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(appended)+b));
  const before=paths.map(p=>fs.readFileSync(path.join(dir,p),'utf8')),run=cp.spawnSync(process.execPath,['scripts/prepare_periodicals.cjs'],{cwd:dir,encoding:'utf8'});
  check(run.status!==0&&/No subject-relevant/.test(run.stderr),'actual publisher fails before writes for unsupported prose');eq(paths.map(p=>fs.readFileSync(path.join(dir,p),'utf8')),before,'blocked future draft has no partial artifact/hub writes');

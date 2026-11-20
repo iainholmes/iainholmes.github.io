@@ -3022,6 +3022,68 @@
         "seed": 1067846576,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An exposure field crossed by people and thermal bands\"><title>North Carolina sends a revised SNAP cost-sharing formula to the governor</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-19-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-19-05)\"><path d=\"M90 115H710V510H90Z\" fill=\"#7a1f33\"/><path d=\"M90 205Q245 125 410 205T710 205M90 325Q245 245 410 325T710 325M90 445Q245 365 410 445T710 445\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"45\"/><g fill=\"#f4ead7\"><circle cx=\"255\" cy=\"283\" r=\"38\"/><path d=\"M205 450V355Q255 305 305 355V450Z\"/><circle cx=\"558\" cy=\"360\" r=\"38\"/><path d=\"M508 525V430Q558 380 608 430V525Z\"/></g></g></svg>"
       }
+    },
+    "2026-11-20": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-20",
+        "number": "01",
+        "category": "U.S. policy · legislation",
+        "topic": "government",
+        "title": "Senate passes a sweeping energy-permitting bill",
+        "composition": "government-document",
+        "signature": "plate:government-document",
+        "seed": 2628363911,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A legal document meets a gate of authority\"><title>Senate passes a sweeping energy-permitting bill</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-20-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-20-01)\"><path d=\"M110 100H375L460 190V525H110Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M160 225H395M160 302H395M160 378H312\" stroke=\"#7c5a3e\" stroke-width=\"20\"/><path d=\"M530 535V185H690V535M490 260H728\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"30\"/><path d=\"M460 445H550\" stroke=\"#1b4a6b\" stroke-width=\"27\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-20",
+        "number": "02",
+        "category": "Technology · AI capacity",
+        "topic": "general",
+        "title": "Anthropic's record IPO puts AI capacity under public-market pressure",
+        "composition": "capacity-aperture",
+        "signature": "plate:capacity-aperture",
+        "seed": 2993669254,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A narrowing aperture restricts institutional throughput\"><title>Anthropic&#39;s record IPO puts AI capacity under public-market pressure</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-20-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-20-02)\"><path d=\"M90 115L330 245V395L90 525ZM710 115L470 245V395L710 525Z\" fill=\"#2c241d\"/><path d=\"M155 320H310M490 320H650\" stroke=\"#1b4a6b\" stroke-width=\"42\"/><path d=\"M357 175V465M445 175V465\" stroke=\"#c4452c\" stroke-width=\"22\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-20",
+        "number": "03",
+        "category": "Technology · direct access and numbering",
+        "topic": "infrastructure",
+        "title": "FCC bars covered Chinese telecom providers from direct U.S. phone-number access",
+        "composition": "telecom-number-gate",
+        "signature": "plate:telecom-number-gate",
+        "seed": 1626870493,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Phone-number blocks pass through a restricted telecom gate\"><title>FCC bars covered Chinese telecom providers from direct U.S. phone-number access</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-20-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-20-03)\"><path d=\"M70 155H285V245H70ZM70 295H285V385H70ZM70 435H285V525H70Z\" fill=\"#1b4a6b\"/><path d=\"M325 95V565M475 95V565M325 225H475\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M345 225H455\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M475 340H710\" stroke=\"#7c5a3e\" stroke-width=\"42\"/><circle cx=\"610\" cy=\"340\" r=\"77\" fill=\"#7a1f33\"/><path d=\"M565 295L655 385M655 295L565 385\" stroke=\"#f4ead7\" stroke-width=\"22\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-20",
+        "number": "04",
+        "category": "Environment · methane regulation",
+        "topic": "climate",
+        "title": "EU negotiators delay methane-reporting duties for fossil-fuel imports",
+        "composition": "methane-deadline",
+        "signature": "plate:methane-deadline",
+        "seed": 3320168683,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A methane reporting timeline pauses before verification\"><title>EU negotiators delay methane-reporting duties for fossil-fuel imports</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-20-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-20-04)\"><path d=\"M75 455H725\" stroke=\"#2c241d\" stroke-width=\"24\"/><path d=\"M125 455V205H300V455Z\" fill=\"#1d5f47\"/><path d=\"M160 265H265M160 330H265M160 395H240\" stroke=\"#f4ead7\" stroke-width=\"19\"/><path d=\"M300 330H475\" stroke=\"#7c5a3e\" stroke-width=\"31\" stroke-dasharray=\"34 20\"/><path d=\"M475 145H690V455H475Z\" fill=\"#1b4a6b\"/><path d=\"M520 220H650M520 295H650M520 370H605\" stroke=\"#f4ead7\" stroke-width=\"19\"/><circle cx=\"390\" cy=\"210\" r=\"68\" fill=\"#c98a12\"/><path d=\"M390 165V210L430 235\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"18\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-20",
+        "number": "05",
+        "category": "North Carolina · agencies and coordination",
+        "topic": "general",
+        "title": "North Carolina extends its child-care task force as the subsidy floor reaches providers",
+        "composition": "institution-wheel",
+        "signature": "plate:institution-wheel",
+        "seed": 1968477355,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Institutional cooperation connects a shared hub to distinct tasks\"><title>North Carolina extends its child-care task force as the subsidy floor reaches providers</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-20-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-20-05)\"><circle cx=\"400\" cy=\"315\" r=\"118\" fill=\"#7a1f33\"/><path d=\"M400 185V82M530 315H710M400 445V552M270 315H88\" stroke=\"#2c241d\" stroke-width=\"28\"/><rect x=\"340\" y=\"55\" width=\"120\" height=\"92\" fill=\"#1b4a6b\"/><circle cx=\"680\" cy=\"315\" r=\"61\" fill=\"#c98a12\"/><path d=\"M330 550L400 468L470 550Z\" fill=\"#1d5f47\"/><rect x=\"56\" y=\"253\" width=\"113\" height=\"124\" fill=\"#7c5a3e\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

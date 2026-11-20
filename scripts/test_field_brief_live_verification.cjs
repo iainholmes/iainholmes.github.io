@@ -13,7 +13,7 @@ function mock({mismatch,noDeployment,advanced,failUrl,unmerged}={}){let master=0
  const paths=[...files,'personal-updates/PUBLISHING.md'],before=paths.map(read);
  const result=await verify({date:'2026-11-19',get:mock()});assert.equal(result.report.publication,'verified-live');assert.equal(result.report.no,52);assert.equal(result.report.files.length,5);assert.equal(result.sources[files[0]],read(files[0]));assert.match(result.report.backup,/not-synchronized/);n+=5;
  for(const [options,pattern]of [[{mismatch:true},/Public byte mismatch/],[{noDeployment:true},/No successful Pages/],[{advanced:true},/Master advanced/],[{failUrl:'raw.githubusercontent.com'},/HTTPS unavailable/]]){await assert.rejects(()=>verify({date:'2026-11-19',get:mock(options)}),pattern);n++;}
- await assert.rejects(()=>verify({date:'2026-11-20',get:mock()}),/incomplete/);n++;
+ await assert.rejects(()=>verify({date:'2099-12-31',get:mock()}),/incomplete/);n++;
  await assert.rejects(()=>verify({date:'2026-11-19',ref:'main;unsafe',get:mock()}),/Supply/);n++;
  await assert.rejects(()=>verify({date:'2026-11-19',ref:other,get:mock()}),/differs/);n++;
  await assert.rejects(()=>verify({date:'2026-11-19',ref:sha,get:mock({unmerged:true})}),/not integrated/);n++;
