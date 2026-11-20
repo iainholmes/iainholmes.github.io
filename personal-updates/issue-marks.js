@@ -51,6 +51,7 @@
     {id:'paired-comparison',subject:'identification',phrase:'Comparisons & evidence',words:/random|treatment|counterfactual|causal|inference|identification/i},
     {id:'threshold-cut',subject:'identification',phrase:'Thresholds & response',words:/kink|discontinu|threshold|cutoff|regression design/i},
     {id:'precision-weights',subject:'precision',phrase:'Precision & information',words:/variance|standard error|weighted least|power|precision|delta method/i},
+    {id:'constraint-frame',subject:'constraints',phrase:'Constraints & allocation',words:/revenue.constrain|boundary|binding target|quota|nonnegative/i},
     {id:'scarcity-wedge',subject:'allocation',phrase:'Prices & allocation',words:/demand|supply|consumer surplus|tariff|scarcity|price|marginal/i},
     {id:'stock-transition',subject:'change',phrase:'Stocks & adjustment',words:/Solow|capital|stock|growth|steady.state|irreversible|waiting/i}
   ];
@@ -99,6 +100,7 @@
       case 'paired-comparison':s='<path d="M90 170H230V450H90Z" fill="'+a+'"/><path d="M370 170H510V450H370Z" fill="'+b+'"/><path d="M260 270H340M260 340H340" stroke="'+ink+'" stroke-width="8"/><path d="M75 480H525" stroke="'+ink+'" stroke-width="4"/>';break;
       case 'threshold-cut':s='<path d="M95 440L290 310L495 150L495 465H95Z" fill="'+b+'"/><path d="M95 440L290 310L495 150" fill="none" stroke="'+a+'" stroke-width="12"/><path d="M290 110V490" stroke="'+ink+'" stroke-width="7"/>';break;
       case 'precision-weights':s='<path d="M100 330H500M300 130V480M180 480H420" stroke="'+ink+'" stroke-width="8"/><circle cx="150" cy="280" r="45" fill="'+b+'"/><circle cx="450" cy="260" r="65" fill="'+a+'"/><path d="M150 225V155H450V185" fill="none" stroke="'+ink+'" stroke-width="5"/>';break;
+      case 'constraint-frame':s='<path d="M95 125H505V465H95Z" fill="none" stroke="'+ink+'" stroke-width="18"/><path d="M95 295H245M355 295H505" stroke="'+b+'" stroke-width="32"/><path d="M250 210H350V380H250Z" fill="'+a+'"/><path d="M300 135V210M300 380V455" stroke="'+ink+'" stroke-width="10"/><circle cx="300" cy="295" r="24" fill="'+ink+'"/>';break;
       case 'scarcity-wedge':s='<path d="M90 450L490 150V450Z" fill="'+b+'"/><path d="M90 150L490 450M90 450L490 150" stroke="'+a+'" stroke-width="10"/><path d="M90 485H520M90 110V485" fill="none" stroke="'+ink+'" stroke-width="4"/><circle cx="290" cy="300" r="25" fill="'+ink+'"/>';break;
       case 'stock-transition':s='<path d="M95 410H185V290H275V220H365V160H465" fill="none" stroke="'+ink+'" stroke-width="15"/><path d="M95 450C240 450 290 355 495 355" fill="none" stroke="'+a+'" stroke-width="12"/><path d="M465 130L505 160L465 190" fill="none" stroke="'+b+'" stroke-width="12"/>';break;
       default:throw Error('Unknown Workbook composition: '+m.composition);

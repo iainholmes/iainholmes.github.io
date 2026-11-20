@@ -3240,6 +3240,205 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Deville & Särndal (1992), Journal of the American Statistical Association; Little & Rubin (2019), Statistical Analysis with Missing Data."
         }
       ]
+    },
+    {
+      "no": 17,
+      "date": "2026-11-20",
+      "minutes": 29,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>A panel regression follows 240 firms for eight years. After firm and year fixed effects are included, residuals may remain correlated within firms over time and across firms within a year because of common shocks. Which statements are defensible?</p>",
+          "options": [
+            "Clustering only by firm allows arbitrary within-firm dependence but does not, by itself, address residual dependence across firms within the same year.",
+            "Two-way clustering by firm and year can address both dependence dimensions when the relevant cluster counts and regularity conditions support the approximation.",
+            "Including firm and year fixed effects guarantees that the remaining disturbances are independent, so cluster-robust inference is unnecessary.",
+            "With only eight year clusters, inference relying on the year-cluster asymptotic approximation may be fragile and warrants a small-sample or design-aware robustness check."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Two-way cluster-robust inference",
+            "Common shocks",
+            "Few clusters"
+          ],
+          "assistance": "<p>Map each proposed clustering dimension to the observations that may share unmodeled shocks. Firm clustering groups repeated observations of one firm; year clustering groups different firms observed under the same aggregate conditions.</p><p>Fixed effects remove common conditional means, not every form of residual covariance. Also ask whether each cluster dimension has enough independent groups for its asymptotic approximation to be credible.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Firm clustering permits arbitrary serial dependence within a firm but treats different firms as independent, leaving same-year cross-firm dependence unaddressed. Two-way clustering combines firm and year covariance contributions, net of their intersection, under suitable many-cluster conditions. Fixed effects absorb additive firm and year means; they do not force residual independence, so (C) is false. Eight year clusters provide little support for a conventional cluster asymptotic approximation, making small-sample corrections, randomization-based methods when justified, or other design-specific checks important.</p>",
+          "refs": "Cameron, Gelbach & Miller (2011), Journal of Business & Economic Statistics; MacKinnon, Nielsen & Webb (2023), Journal of Econometrics."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A regulated utility must raise a fixed amount of revenue above marginal cost. It serves two independent markets with constant absolute demand elasticities of 2 and 4, faces the same marginal cost in both, and assigns no distributional weights. Under the Ramsey inverse-elasticity rule, how should the proportional markups compare?</p>",
+          "options": [
+            "The markup in the elasticity-2 market should be twice the markup in the elasticity-4 market.",
+            "The markup in the elasticity-4 market should be twice the markup in the elasticity-2 market.",
+            "The proportional markups should be equal because marginal costs are equal.",
+            "The rule requires a zero markup in the more elastic market regardless of the revenue requirement."
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Ramsey pricing",
+            "Inverse-elasticity rule",
+            "Revenue-constrained welfare maximization"
+          ],
+          "assistance": "<p>The Ramsey rule allocates a required distortion across markets by comparing the marginal efficiency cost of raising revenue. A proportional price wedge causes a larger quantity response where demand is more elastic.</p><p>Write each markup as proportional to the reciprocal of its market's absolute elasticity, with the same multiplier reflecting the common revenue constraint, and compare the two reciprocals.</p>",
+          "explanation": "<p><b>(A) is correct.</b> With independent demands and equal welfare weights, the Ramsey rule makes the proportional markup inversely proportional to the absolute elasticity. The ratio is (1/2)/(1/4) = 2, so the elasticity-2 market bears twice the proportional markup of the elasticity-4 market. Equal marginal costs do not imply equal optimal markups when demand responses differ, ruling out (C). The more elastic market generally receives a smaller, not necessarily zero, markup, so (B) and (D) also fail.</p>",
+          "refs": "Ramsey (1927), Economic Journal; Baumol & Bradford (1970), American Economic Review."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "<p>An economy has production <i>Y</i> = <i>ZK</i><sup>0.35</sup><i>L</i><sup>0.65</sup>. Over one year, capital grows 4%, labor hours grow 1%, and measured total factor productivity <i>Z</i> grows 2%. Using the usual log-change approximation, which statements are defensible?</p>",
+          "options": [
+            "Output growth is approximately 2 + 0.35(4) + 0.65(1) = 4.05%.",
+            "The measured TFP residual can absorb utilization, quality, measurement, and model-specification errors as well as technological change.",
+            "Because TFP is computed residually, the calculation establishes that technology causally produced exactly two percentage points of growth.",
+            "Capital deepening contributes approximately 0.35(4 − 1) = 1.05 percentage points to growth in output per labor hour."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Growth accounting",
+            "Solow residual",
+            "Capital deepening"
+          ],
+          "assistance": "<p>Log-differentiate the production function so that each input's growth rate is multiplied by its output elasticity. For labor productivity, subtract labor growth from both sides and collect the capital-minus-labor term.</p><p>Keep accounting decomposition separate from causal identification. A residual is whatever observed output growth the specified inputs and elasticities do not explain.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> The growth-accounting approximation gives 2 + 1.4 + 0.65 = 4.05% output growth. Subtracting labor growth gives roughly 3.05% labor-productivity growth, decomposed into 2% measured TFP growth plus 0.35(4 − 1) = 1.05 percentage points from capital deepening. Because <i>Z</i> is a residual under the maintained production function, it can reflect omitted inputs, utilization, quality change, measurement error, and misspecification. Therefore (C) overstates an accounting identity as a causal technology estimate.</p>",
+          "refs": "Solow (1957), Review of Economics and Statistics; Hulten (2001), New Developments in Productivity Analysis."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>After learning that tap water contains an undesirable contaminant, a household buys a $120 filter. The filter also improves taste, and the household may value that co-benefit. What can the purchase most defensibly reveal about willingness to pay for contaminant reduction?</p>",
+          "options": [
+            "Willingness to pay for contaminant reduction is exactly $120 because observed averting expenditure equals compensating variation.",
+            "The purchase shows that the household's total expected benefit from all filter attributes is at least its perceived full cost, but the $120 expenditure alone does not isolate contaminant-reduction value.",
+            "Willingness to pay for contaminant reduction must exceed $120 because the filter has a taste co-benefit.",
+            "The purchase contains no revealed-preference information because environmental quality is not traded directly."
+          ],
+          "correct": [
+            1
+          ],
+          "concepts": [
+            "Averting behavior",
+            "Joint products",
+            "Revealed-preference bounds"
+          ],
+          "assistance": "<p>Treat the filter as a bundle of attributes rather than as a market transaction for contaminant reduction alone. An optimizing purchase compares the household's perceived combined benefits with its full monetary and nonmonetary costs.</p><p>Ask what additional information would be needed to separate health-risk reduction from taste, convenience, maintenance, and beliefs about filter effectiveness.</p>",
+          "explanation": "<p><b>(B) is correct.</b> Choosing the filter reveals that its perceived total benefit, including contaminant reduction and taste improvement, is at least its perceived full cost under the household's choice conditions. The expenditure is not automatically compensating variation for one attribute. Joint benefits, maintenance and time costs, imperfect effectiveness, and risk beliefs prevent the $120 price from isolating contaminant-reduction value. Thus (A) and (C) impose unsupported equalities or inequalities, while (D) ignores the revealed-preference content of defensive purchases.</p>",
+          "refs": "Courant & Porter (1981), Journal of Environmental Economics and Management; Dickie (2003), Handbook of Environmental Economics."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>A matched observational study balances measured covariates and then applies Rosenbaum's sensitivity model. The parameter Γ bounds how much two matched units' odds of treatment may differ because of an unobserved covariate. Which statements are defensible?</p>",
+          "options": [
+            "Γ = 1 corresponds to equal treatment odds within matched sets, as under the study's no-hidden-bias benchmark.",
+            "If the result remains significant through Γ = 2, it is insensitive within the model to hidden bias that changes treatment odds by as much as a factor of two.",
+            "Balance on observed covariates proves Γ = 1 and rules out hidden bias.",
+            "A large sensitivity value does not prove causality; it reports how strong a specified form of hidden bias must be before the inference changes."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Rosenbaum bounds",
+            "Hidden-bias sensitivity analysis",
+            "Matched observational studies"
+          ],
+          "assistance": "<p>Interpret Γ as a departure from equal treatment odds among units made comparable on observed covariates. The analysis asks how worst-case inference changes over increasingly large permitted departures.</p><p>Distinguish a robustness statement inside a sensitivity model from empirical evidence that no unmeasured confounder exists. Observed balance addresses only variables that were measured and used.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Γ = 1 imposes equal treatment odds within a matched set, the benchmark of no hidden treatment-selection bias. Robustness through Γ = 2 means that, under the Rosenbaum model, an unobserved factor could alter the odds by up to twofold without overturning the stated inference. Observed balance cannot establish balance on unobserved causes, so (C) is false. Sensitivity analysis quantifies vulnerability to a modeled departure; even a large Γ threshold is not a proof of identification or a universal guarantee against all confounding structures.</p>",
+          "refs": "Rosenbaum (2002), Observational Studies; Rosenbaum (2010), Design of Observational Studies."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "<p>A mixed model contains a random-intercept variance constrained to be nonnegative. A likelihood-ratio test evaluates the null that this variance equals zero. True or false: because the null lies on the boundary of the parameter space, the usual interior-parameter χ<sup>2</sup><sub>1</sub> reference distribution need not apply; under a simple regular case, the asymptotic null distribution can be a 50:50 mixture of a point mass at zero and χ<sup>2</sup><sub>1</sub>.</p>",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correct": [
+            0
+          ],
+          "concepts": [
+            "Boundary hypotheses",
+            "Likelihood-ratio tests",
+            "Mixture chi-square distributions"
+          ],
+          "assistance": "<p>Standard likelihood-ratio theory expands the likelihood around a null value that is locally interior, allowing movement in every parameter direction. A variance parameter at zero cannot move into negative values.</p><p>Consider how this one-sided geometry changes the limiting statistic when the unconstrained local estimate would fall on either side of the boundary.</p>",
+          "explanation": "<p><b>True.</b> Zero is a boundary point for a variance component, so the regular interior-parameter derivation of a χ<sup>2</sup><sub>1</sub> limit fails. In a simple one-component setting with the remaining regularity conditions, half of the local realizations pile up at the constrained estimate zero and half contribute a χ<sup>2</sup><sub>1</sub> component, yielding the stated mixture. More complicated random-effects structures can have different mixtures or require simulation or bootstrap calibration, so the simple mixture is not universal.</p>",
+          "refs": "Self & Liang (1987), Journal of the American Statistical Association; Stram & Lee (1994), Biometrics."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "multi",
+          "stem": "<p>A fishery introduces tradable quotas for a target species, fixes total allowable catch using a biological assessment, and allows quota trading. Incidental bycatch of an unpriced non-target species remains possible. Which statements are defensible?</p>",
+          "options": [
+            "If monitoring and enforcement are effective, quota trading can reallocate target catch toward vessels with lower marginal harvesting costs.",
+            "Scarce quota can earn a rent whose distribution depends partly on how initial quota rights are allocated.",
+            "A binding target-species quota automatically internalizes every bycatch externality, even when bycatch is neither capped nor priced.",
+            "Observer coverage, electronic monitoring, bycatch caps, or species-specific incentives may still be needed to address reporting and non-target-stock effects."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Individual transferable quotas",
+            "Quota rents",
+            "Bycatch externalities"
+          ],
+          "assistance": "<p>Separate the instrument's target margin from other biological and enforcement margins. A tradable right can equalize marginal harvesting costs for the constrained target catch while leaving other consequences outside the right's price.</p><p>Also distinguish efficiency under frictionless trading from distribution: the initial ownership of a valuable entitlement determines who first receives the scarcity rent.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> With credible catch accounting and tradability, vessels with high marginal costs can sell quota to lower-cost vessels, improving cost effectiveness for the target cap. Binding quota acquires scarcity value, and initial allocation affects who receives that rent even if ideal trading makes the final catch allocation efficient. An unpriced and uncapped bycatch effect remains external to the target-species quota, so (C) is false. Monitoring and complementary bycatch controls are often required to protect non-target stocks and deter misreporting or discarding.</p>",
+          "refs": "Grafton, Squires & Fox (2000), Journal of Environmental Economics and Management; Costello, Gaines & Lynham (2008), Science."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "multi",
+          "stem": "<p>A multi-country survey uses the same questionnaire to compare a latent financial-security index. Investigators worry that respondents with the same underlying security may interpret some items differently across countries. Which practices or claims are defensible?</p>",
+          "options": [
+            "Differential item functioning can make observed item responses differ across groups even at the same latent-trait level.",
+            "Anchor items and multigroup item-response or factor models can help assess and, under maintained assumptions, adjust for cross-group measurement noninvariance.",
+            "A high reliability coefficient within every country proves that the index has the same scale and meaning across countries.",
+            "The analysis should report which invariance restrictions are imposed and examine whether substantive comparisons change under plausible alternative measurement models."
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "concepts": [
+            "Measurement invariance",
+            "Differential item functioning",
+            "Multigroup latent-variable models"
+          ],
+          "assistance": "<p>Reliability asks whether items cohere within a group; comparability asks whether item response functions connect the latent construct to observed answers in the same way across groups. These are different properties.</p><p>Consider how shared anchor items identify a common scale, what restrictions must be maintained, and how conclusions should be checked when some items appear group-specific.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Differential item functioning means that group membership predicts an item response after conditioning on the latent trait, threatening direct score comparisons. Anchor items and multigroup IRT or factor models can place groups on a common scale when their identifying assumptions are credible and can accommodate selected noninvariant items. High within-country reliability does not establish equal loadings, thresholds, or item characteristic curves across countries, so (C) is false. Transparent invariance restrictions and sensitivity analyses reveal whether the substantive ranking or gap depends on the measurement model.</p>",
+          "refs": "Meredith (1993), Psychometrika; Millsap (2011), Statistical Approaches to Measurement Invariance."
+        }
+      ]
     }
   ]
 }
