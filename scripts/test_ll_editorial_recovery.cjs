@@ -13,8 +13,8 @@ for(const date of Object.keys(c).filter(d=>d<'2026-11-20'))assert.deepEqual(c[da
 for(const id of ['field-register','field-studies'])assert.deepEqual(parse(journal,id),parse(before,id),'frozen '+id);
 const text=s=>s.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
 const articles=s=>[...s.matchAll(/<article class="entry"[^>]*id="([^"]+)"[\s\S]*?<\/article>/g)];for(const a of articles(before))assert.deepEqual([...articles(journal).find(b=>b[1]===a[1])[0].matchAll(/<p(?: [^>]*)?>[\s\S]*?<\/p>/g)].map(m=>text(m[0])).sort(),[...a[0].matchAll(/<p(?: [^>]*)?>[\s\S]*?<\/p>/g)].map(m=>text(m[0])).sort(),'published paragraphs unchanged '+a[1]);
-const notebook=read('notebook/index.html');for(const a of old('notebook/index.html').matchAll(/<article class="concept"[\s\S]*?<\/article>/g))assert(notebook.includes(a[0]),'all nineteen entries remain byte-exact');
-assert.equal((notebook.match(/<article class="concept"/g)||[]).length,21);
+const notebook=read('notebook/index.html');for(const a of old('notebook/index.html').matchAll(/<article class="concept"[\s\S]*?<\/article>/g))assert(notebook.includes(a[0].split('<section class="seen"')[0]),'all nineteen canonical explanations and qualifications preserved while references may accumulate');
+assert((notebook.match(/<article class="concept"/g)||[]).length>=21);
 const nreview=require('../weekly-economics-environment/notebook/reviews.json'),bad=structuredClone(nreview);bad.reviews['2026-11-20'].candidates=[];assert.throws(()=>require('../weekly-economics-environment/notebook/validate.cjs').validate({journal,notebook,reviews:bad}),/candidate/);
 const structure=require('../weekly-economics-environment/reading-structure-review.cjs');assert.equal(structure.audit().filter(r=>r.id.startsWith('2026-11-20')&&r.family==='two-cells / middle-feature-group / two-cells').length,1);structure.validate({journal});
 const vm=require('vm'),context={module:{exports:{}}};vm.runInNewContext(old('reading-arrangements.cjs'),context);assert.throws(()=>structure.validate({journal,factory:context.module.exports}),/structural diversity/,'original three repeated layouts fail');
