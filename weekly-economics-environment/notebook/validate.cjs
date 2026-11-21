@@ -73,6 +73,14 @@ function validate(input={}){
  for(const e of editions){
   const date=e[1],review=reviews.reviews[date];
   if(!review)fail('missing documented review for '+date);
+  if(date>='2026-11-20'){
+   const candidates=review.candidates;
+   if(!Array.isArray(candidates)||candidates.length<2||new Set(candidates.map(c=>c.concept)).size!==candidates.length||candidates.some(c=>!review.readings.includes(c.reading)||!['add','covered','defer'].includes(c.decision)||typeof c.reason!=='string'||c.reason.length<60||!/^https:\/\//.test(c.sourceUrl||'')))fail('record distinct candidate concepts, reading-specific source URLs and substantive dispositions for '+date);
+   if(!review.added.length){
+    const previous=dates[dates.indexOf(date)-1];
+    if(previous&&!reviews.reviews[previous]?.added.length&&(candidates.length<3||typeof review.secondReview!=='string'||review.secondReview.length<100))fail('repeated zero-addition decisions require a second substantive review of at least three distinct candidates for '+date);
+   }
+  }
   if(!validDate(review.reviewedOn)||review.reviewedOn<date)fail('invalid review date for '+date);
   const readings=[...e[0].matchAll(/<article class="entry"[^>]*id="([^"]+)"/g)].map(x=>x[1]);
   const synthesis=e[0].match(/<section class="synthesis"[^>]*id="([^"]+)"/)?.[1];

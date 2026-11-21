@@ -7188,36 +7188,46 @@
       "completed": true,
       "readings": {
         "2026-11-20-eminent-domain": {
-          "method": "When does corridor authority improve welfare?",
-          "existingCoverage": "The reading and its two substantive features already state the identification or model boundary.",
-          "decision": "Omit a Heron note because an intervention would duplicate the visible evidence qualification."
+          "method": "Two controls share the treated construction series; neither independently measures the welfare consequences of land acquisition.",
+          "existingCoverage": "The design and decision feature already distinguish mileage effects from compensation and welfare.",
+          "decision": "Retain the existing distinction; a further note needs the inaccessible full historical paper before asserting a new source-specific critique.",
+          "addedValue": "No additional note selected: defer the shared-control diagnostic until full source access is recovered.",
+          "evidenceUrl": "https://escholarship.org/content/qt8wf8f4p8/qt8wf8f4p8.pdf"
         },
         "2026-11-20-green-innovation": {
-          "method": "How a greener patent mix reaches the macroeconomy",
-          "existingCoverage": "The reading and its two substantive features already state the identification or model boundary.",
-          "decision": "Omit a Heron note because an intervention would duplicate the visible evidence qualification."
+          "method": "Citation weighting changes the information date of the patent proxy.",
+          "existingCoverage": "The notebook paragraph discusses the green-share denominator, not information available at the decision date.",
+          "decision": "Select the information-time note to distinguish ex post importance from a real-time predictor.",
+          "addedValue": "A concrete citation-vintage diagnostic adds a temporal identification boundary absent from the reading.",
+          "evidenceUrl": "https://www.bancaditalia.it/pubblicazioni/temi-discussione/2025/2025-1482/en_tema_1482.pdf",
+          "noteId": "h-2026-11-20-information-time"
         },
         "2026-11-20-world-energy-outlook": {
-          "method": "Who pays for energy-security redundancy?",
-          "existingCoverage": "The reading and its two substantive features already state the identification or model boundary.",
-          "decision": "Omit a Heron note because an intervention would duplicate the visible evidence qualification."
+          "method": "Scenario ordering is not a probability distribution or a policy ranking.",
+          "existingCoverage": "The scenario feature and limitation already explicitly reject probability ranking and forecasts.",
+          "decision": "Omit this candidate because its proposed comparison is already presented by the four-baseline feature.",
+          "addedValue": "A note about probability weighting would repeat the scenario qualification rather than add a diagnostic.",
+          "evidenceUrl": "https://www.iea.org/reports/world-energy-outlook-2026"
         },
         "2026-11-20-shipping-weather": {
-          "method": "Who bears a closed corridor?",
-          "existingCoverage": "The reading and its two substantive features already state the identification or model boundary.",
-          "decision": "Omit a Heron note because an intervention would duplicate the visible evidence qualification."
+          "method": "Marginal port downtime cannot identify the availability of a substitute during a common hazard.",
+          "existingCoverage": "The reading describes chokepoints and heavy tails but supplies no dependence-breaking comparison.",
+          "decision": "Select the joint-failure diagnostic while marking it as editorial and unperformed.",
+          "addedValue": "Holding individual outage frequencies fixed isolates the question of dependence rather than simply repeating resilience advice.",
+          "evidenceUrl": "https://www.iea.org/files/57d8a347-3a4a-41d9-b608-a8ea7c933bb8/ExtremeWeatherRiskstoInternationalOilandNaturalGasShipping.pdf",
+          "noteId": "h-2026-11-20-joint-failures"
         },
         "2026-11-20-ai-credit": {
-          "method": "Which externality belongs in the planner?",
-          "existingCoverage": "The reading and its two substantive features already state the identification or model boundary.",
-          "decision": "Omit a Heron note because an intervention would duplicate the visible evidence qualification."
+          "method": "A financial planner benchmark does not include all locational environmental externalities.",
+          "existingCoverage": "The decision margin already contrasts financial-network and physical-system spillovers in detail.",
+          "decision": "Omit an environmental-optimum note because both the feature and research note already state that boundary.",
+          "addedValue": "A new note would need a separate, source-checked aggregation question rather than another list of omitted costs.",
+          "evidenceUrl": "https://www.nber.org/system/files/working_papers/w36032/w36032.pdf"
         }
       },
-      "silenceReason": "All five methodological boundaries are already adjacent to the claims they qualify; no note adds a distinct counterfactual, definition or diagnostic.",
-      "continuity": {
-        "previousDate": "2026-11-13",
-        "reassessedAllReadings": true,
-        "reason": "Because Issue 008 was silent, every Issue 009 reading was reassessed specifically for a nonduplicative intervention; each candidate repeated a visible assumption test or source-status warning."
+      "amendment": {
+        "date": "2026-11-20",
+        "reason": "Authorized editorial systems recovery: add two nonduplicative source-grounded notes; preserve original readings and frozen artwork."
       }
     }
   }

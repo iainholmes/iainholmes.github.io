@@ -37,9 +37,9 @@ const ids=Array.from({length:5},(_,i)=>'private-future-'+i);try{
  const draft=journal.replace('</main>','<section class="edition" data-edition="'+date+'" data-title="Private future fixture">'+articles+'<section class="synthesis" id="private-synthesis"><div class="eyebrow">Synthesis</div><h2>How does spatial exposure change the estimate?</h2><p>Private synthesis.</p></section></section></main>');
  const makeReview=(targets,notes=[],silenceReason,continuity,reviewedOn=date)=>({reviewer:'Private fixture reviewer',reviewedOn,completed:true,readings:Object.fromEntries(targets.map((id,i)=>[id,{
   method:['Boundary comparability','Selection into insurance','Precision of small subgroups','Comparability of housing prices','Changes in exposure'][i],
-  existingCoverage:notes.some(note=>note.target===id)?'The reading states the sampling restriction but leaves its interpretation open.':'The Research Note already covers the interpretation and evidence limits.',
-  decision:notes.some(note=>note.target===id)?'Explain why the estimated association can change with the sample definition.':'The proposed aside would repeat the published comparison.',
-  noteId:notes.find(note=>note.target===id)?.id
+  existingCoverage:notes.some(note=>note.target===id)?'The reading states the sampling restriction but leaves its interpretation open for '+id:'The Research Note already covers the interpretation and evidence limits for '+id,
+  decision:notes.some(note=>note.target===id)?'Explain why the estimated association can change with the sample definition for '+id:'The proposed aside would repeat the published comparison for '+id,
+  addedValue:'Private source-bound fixture candidate for '+id+' tests the stated sampling question rather than a published note.', evidenceUrl:'https://example.org/private-source', noteId:notes.find(note=>note.target===id)?.id
  }])),silenceReason,continuity});
  const silenceReason='The five candidates repeat existing qualifications or lack evidence for a distinct intervention.';
  const priorDate=published.at(-1).date;
@@ -81,7 +81,7 @@ const ids=Array.from({length:5},(_,i)=>'private-future-'+i);try{
  eq((future.match(/data-reading-palette="slate"/g)||[]).length,5,'future compositions inherit their authored palette');
  ok(future.includes('class="ll-feature-host"')&&!future.includes('data-contact-sides')&&!future.includes('ll-feature-divider'),'future issue emits native features and leaves edge measurement to the browser');
  assert.throws(()=>validate({...input,journal:grown.replace('How does spatial exposure change the estimate?','What connects this week')}),/edition-specific synthesis heading required/);n++;
- const makeNote=(target,id='fixture-heron')=>({id,target,type:'method',title:'Sampling and exposure',text:'Private fixture for the source-review and placement tests.'});
+ const makeNote=(target,id='fixture-heron')=>({id,target,type:'method',title:'Sampling and exposure',text:'Private fixture for source-review and placement tests: a sampling restriction changes the comparison population; this tests an authored methodological distinction rather than an empty note.'});
  const generate=config=>compose(withCompanion(draft,{...companion,[date]:config}));
  for(const target of ids){
   const note=makeNote(target);
@@ -125,9 +125,9 @@ const ids=Array.from({length:5},(_,i)=>'private-future-'+i);try{
   ...Object.fromEntries(Object.entries(companion).filter(([d])=>!priorSilent.has(d))),[firstDate]:{enabled:false,appearances:[]},[secondDate]:{enabled:false,appearances:[]}
  });
  const first=makeReview(firstIds,[],silenceReason,undefined,firstDate),second=makeReview(secondIds,[],'The proposed price comparison would rest on unreported variation, while the other candidates repeat existing qualifications.',undefined,secondDate);
- assert.throws(()=>reviewGate.validate({journal:twoSilent,reviews:{...previousReviews,[firstDate]:first,[secondDate]:second}}),new RegExp('acknowledge the prior silent edition '+firstDate));n++;
- assert.throws(()=>reviewGate.validate({journal:twoSilent,reviews:{...previousReviews,[firstDate]:first,[secondDate]:{...second,continuity:{...continuity,previousDate:firstDate,reassessedAllReadings:false}}}}),/second look/);n++;
- reviewGate.validate({journal:twoSilent,reviews:{...previousReviews,[firstDate]:first,[secondDate]:{...second,continuity:{...continuity,previousDate:firstDate}}}});n++;
+ assert.throws(()=>reviewGate.validate({journal:twoSilent,reviews:{...previousReviews,[firstDate]:first,[secondDate]:second}}),/explicit exceptional approval/);n++;
+ assert.throws(()=>reviewGate.validate({journal:twoSilent,reviews:{...previousReviews,[firstDate]:first,[secondDate]:{...second,exceptionalApproval:{approvedBy:'Private external editor fixture',approvedAt:secondDate,reviewUrl:'https://example.org/private-approval'},continuity:{...continuity,previousDate:firstDate,reassessedAllReadings:false}}}}),/second look/);n++;
+ reviewGate.validate({journal:twoSilent,reviews:{...previousReviews,[firstDate]:first,[secondDate]:{...second,exceptionalApproval:{approvedBy:'Private external editor fixture',approvedAt:secondDate,reviewUrl:'https://example.org/private-approval'},continuity:{...continuity,previousDate:firstDate}}}});n++;
  arch.decisions.heronReviews=previousReviews;
 }finally{for(const id of ids){delete arch.decisions.readings[id];delete arrangements.authored[id]}}
 const registry=require('../weekly-economics-environment/reading-feature-registry.js');eq(registry.select({tags:['regression','history']}).special,[],'keywords never publish features');

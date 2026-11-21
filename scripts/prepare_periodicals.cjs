@@ -13,6 +13,7 @@ const fb=data(read('daily-watchlist-5/index.html'),'briefing-data').editions.sor
 for(const ed of fb)require('../daily-watchlist-5/editorial-order.cjs').validate(ed);
 for(const ed of fb)if(archive['fb:'+ed.date]&&!storyArchive.issues[ed.date])throw Error('Published Field Brief is missing its story artwork pin: '+ed.date);
 const llSource=read('weekly-economics-environment/index.html');
+require('../weekly-economics-environment/reading-structure-review.cjs').validate({journal:llSource});
 const registerHistory=require('../weekly-economics-environment/field-register-schema.cjs').validate({journal:llSource}).history;
 // Companion and evidence gates precede artwork preparation and every artifact write.
 require('../weekly-economics-environment/heron-editorial-review.cjs').validate({journal:llSource});

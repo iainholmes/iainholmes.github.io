@@ -30,18 +30,27 @@ function validate({journal,reviews=decisions.heronReviews||{},index}){
    }
    const notesByTarget=new Map(notes.map(note=>[note.target,note]));
    if(notesByTarget.size!==notes.length)fail('select notes for distinct readings');
+   for(const field of ['existingCoverage','decision']){
+    const values=Object.values(assessments).map(a=>String(a?.[field]||'').toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ').trim());
+    if(new Set(values).size!==values.length)fail('repeated stock '+field+' rationales cannot replace reading-specific review');
+   }
    for(const id of ids){
     const assessment=assessments[id],note=notesByTarget.get(id);
     if(![assessment?.method,assessment?.existingCoverage,assessment?.decision].every(hasText)){
      fail('record the methodological question or limitation, existing coverage, and editorial decision for '+id);
     }
     if(assessment.noteId!==note?.id)fail('the review noteId must match the authored selection for '+id);
+    if(!hasText(assessment.addedValue)||!/^https:\/\//.test(assessment.evidenceUrl||''))fail('record the distinct candidate contribution and inspected source URL for '+id);
+    if(note&&(!hasText(note.text)||note.text.trim().length<80))fail('selected notes must contain substantive authored analysis');
+    if(note){const normalize=s=>s.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim().toLowerCase();if(normalize(articles.find(([,target])=>target===id)[0]).includes(normalize(note.text)))fail('selected note copies adjacent reading text rather than adding intellectual value');}
    }
    if(notes.length){
     if(review.silenceReason!==undefined||review.continuity!==undefined)fail('remove silence justification from an edition with selected notes');
    }else{
     if(!hasText(review.silenceReason))fail('explain why no qualifying note was selected after reviewing all five readings');
     if(previousDate&&!companion[previousDate]?.appearances.length){
+     const approval=review.exceptionalApproval;
+     if(!hasText(approval?.approvedBy)||!/^\d{4}-\d{2}-\d{2}$/.test(approval?.approvedAt||'')||!/^https:\/\//.test(approval?.reviewUrl||''))fail('second consecutive silent edition requires explicit exceptional approval, not an automatic continuity explanation');
      const continuity=review.continuity;
      if(continuity?.previousDate!==previousDate||continuity.reassessedAllReadings!==true||!hasText(continuity.reason)||continuity.reason.trim()===review.silenceReason.trim()){
       fail('acknowledge the prior silent edition '+previousDate+' and explain why a second look at all five candidates still supports silence');

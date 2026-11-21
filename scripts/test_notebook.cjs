@@ -79,6 +79,7 @@ const next='<section class="edition" data-edition="'+nextDate+'">'+ids.map(id=>'
 const future=journal.replace('</main>',next+'</main>'),r=copy();
 rejected({journal:future},/missing documented review/);
 r.reviews[nextDate]={reviewedOn:nextDate,readings:ids,synthesis:nextDate+'-connections',revisited:[],added:[],note:'All five readings and synthesis reviewed; no distinct reusable addition or substantive revisit warranted.'};
+r.reviews[nextDate].candidates=ids.slice(0,2).map((reading,i)=>({concept:'private-reviewed-'+i,reading,decision:'covered',reason:'This private candidate is already explained in the existing identification entry; the fixture adds no duplicate concept.',sourceUrl:'https://example.org/private-source'}));
 eq(validate({journal:future,notebook,reviews:r}),{editions:dates.length+1,concepts:conceptCount,newestReviewed:nextDate},'valid no-addition review');
 // Private, far-future inputs exercise growth without relying on the live archive's next slot.
 {
@@ -91,6 +92,7 @@ eq(validate({journal:future,notebook,reviews:r}),{editions:dates.length+1,concep
  added=added.replace(/<ol class="appearance-register">[\s\S]*?<\/ol>/,'<ol class="appearance-register">'+group+'</ol>').replace(/<p class="revisited">[\s\S]*?<\/p>/,newLast);
  const grown=notebook.replace(first,revisited).replace(/<\/ol>\s*<\/nav>(?=\s*<div id="concepts">)/,'<li><a href="#'+id+'">A Future Concept With a Longer Title</a></li></ol></nav>').replace(/<\/div>\s*<\/main>/,added+'</div></main>');
  const reviewed=copy();reviewed.reviews[date]={reviewedOn:date,readings:readingIds,synthesis,revisited:['complementarity'],added:[id],note:'Private growth fixture: two supported readings share an edition group; a new distinct concept uses the same semantic presentation.'};
+ reviewed.reviews[date].candidates=readingIds.slice(0,2).map((reading,i)=>({concept:'private-new-'+i,reading,decision:i?'covered':'add',reason:'The private fixture distinguishes this new concept from existing coverage using specific application and qualification evidence.',sourceUrl:'https://example.org/private-source'}));
  eq(validate({journal:journal.replace('</main>',edition+'</main>'),notebook:grown,reviews:reviewed}),{editions:dates.length+1,concepts:conceptCount+1,newestReviewed:date},'new edition, additional appearances and a longer new concept remain valid');
 }
 // Actual preparation retries cannot duplicate entries or alter published artifacts.

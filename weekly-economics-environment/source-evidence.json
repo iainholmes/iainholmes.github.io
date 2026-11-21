@@ -811,6 +811,11 @@
           "locator": "PDF pp. 27–31 and robustness appendices",
           "support": "Results are sensitive to the patent proxy and identifying restrictions; alternative orderings, instruments, oil controls and firm-level returns provide robustness rather than random assignment.",
           "facts": {}
+        },
+        "recovery-diagnostic": {
+          "locator": "PDF p.23, Alternative definitions of gp, footnote 18",
+          "support": "Citation-weighted patents yield similar results; the authors avoid this baseline because citations use information unavailable in real time.",
+          "facts": {}
         }
       }
     },
@@ -920,6 +925,11 @@
               "denominator": "small island economies relying on imported fossil fuels for over half of energy"
             }
           }
+        },
+        "recovery-diagnostic": {
+          "locator": "PDF pp.6–7, 17–20 and 30–36, inventories, concentrated routes and disruption duration",
+          "support": "Downtime averages conceal long closures; substitute infrastructure and stocks mediate consequences. Joint-failure comparisons below are editorial proposed diagnostics, not reported estimates.",
+          "facts": {}
         }
       }
     },
@@ -7943,6 +7953,32 @@
             "method": "source-and-analysis",
             "reasoning": "Checked the limitations paragraph against the source's robustness, model boundary and stated qualifications for Greener Innovation Looks Like a Supply Shock Before It Looks Like Growth."
           }
+        },
+        {
+          "id": "heron-h-2026-11-20-information-time",
+          "sha256": "132b1d8aa3084b725727deac17e695558a2c3adf543c9c53fb3bb57eb5bf8848",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "green-macro-bdi-1482",
+              "passage": "recovery-diagnostic",
+              "sha256": "ae192d890f3fb405bcbbd50db1477319b7a4cd83e8527e6c8b88600725a6d696"
+            }
+          ],
+          "mapping": "Citation-weighted patents yield similar results; the authors avoid this baseline because citations use information unavailable in real time.",
+          "claims": [],
+          "qualifications": [
+            "The proposed diagnostic is not represented as performed or estimated by the source.",
+            "The downloaded PDF hash matches the already registered source version."
+          ],
+          "verification": {
+            "reviewer": "Editorial systems recovery",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Independently downloaded and matched the registered source artifact; read the specified sections and compared the new note with the existing reading, features and research note."
+          }
         }
       ]
     },
@@ -8576,6 +8612,32 @@
             "reviewedAt": "2026-11-20",
             "method": "source-and-analysis",
             "reasoning": "Checked the limitations paragraph against the source's robustness, model boundary and stated qualifications for Fuel Trade Is Only as Resilient as Its Narrowest Port."
+          }
+        },
+        {
+          "id": "heron-h-2026-11-20-joint-failures",
+          "sha256": "d2df599d829a2b3045f4bfc123572c17d1d383f1810f6f59693b27a56dcf341f",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-shipping-weather-2026",
+              "passage": "recovery-diagnostic",
+              "sha256": "c0607dd192d96f9fed902bcb7d41d4dd9f5aa34870663fcdfb9f0107f43902f6"
+            }
+          ],
+          "mapping": "Downtime averages conceal long closures; substitute infrastructure and stocks mediate consequences. Joint-failure comparisons below are editorial proposed diagnostics, not reported estimates.",
+          "claims": [],
+          "qualifications": [
+            "The proposed diagnostic is not represented as performed or estimated by the source.",
+            "The downloaded PDF hash matches the already registered source version."
+          ],
+          "verification": {
+            "reviewer": "Editorial systems recovery",
+            "reviewedAt": "2026-11-20",
+            "method": "source-and-analysis",
+            "reasoning": "Independently downloaded and matched the registered source artifact; read the specified sections and compared the new note with the existing reading, features and research note."
           }
         }
       ]

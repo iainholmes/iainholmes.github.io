@@ -205,8 +205,53 @@
         "counterfactual-reasoning",
         "financing-wedges"
       ],
-      "added": [],
-      "note": "Reviewed all five complete readings and the route-and-institution synthesis. The issue adds new applications to identification, incidence, counterfactual scenario reasoning and financing wedges; no distinct reusable concept was added because the cumulative Notebook already separates these objects."
+      "added": [
+        "information-sets-look-ahead",
+        "network-joint-failures"
+      ],
+      "note": "Corrective substantive review: add information-date discipline and joint-failure reliability, distinct from the existing value-of-information and spillover entries. Preserve all nineteen prior entries and their reference groups.",
+      "candidates": [
+        {
+          "concept": "information-sets-look-ahead",
+          "reading": "2026-11-20-green-innovation",
+          "decision": "add",
+          "reason": "A citation-weighted patent indicator can measure later recognized importance, but later citations cannot enter a real-time research-allocation forecast. The green-innovation paper explicitly reserves its citation-weighted measure for robustness. A vintage-respecting evaluation fixes the information cutoff, constructs each predictor using observations available then, and evaluates later outcomes without retroactively improving the signal. This temporal question differs from the value-of-information question of whether obtaining a signal is worth its cost.",
+          "sourceUrl": "https://www.bancaditalia.it/pubblicazioni/temi-discussione/2025/2025-1482/en_tema_1482.pdf"
+        },
+        {
+          "concept": "network-joint-failures",
+          "reading": "2026-11-20-shipping-weather",
+          "decision": "add",
+          "reason": "For fuel imports, an alternate terminal can insure a primary route if the same cyclone, flood or hinterland disruption does not disable both. An editorial stress test can preserve each terminal’s marginal outage frequency while changing their joint failure pattern, then compare deliveries with explicit inventories and spare handling capacity. This isolates dependence from average downtime; it is not a result estimated by the IEA report. Unlike generic spillovers, the object is continuity of a connected service under joint physical failures.",
+          "sourceUrl": "https://www.iea.org/files/57d8a347-3a4a-41d9-b608-a8ea7c933bb8/ExtremeWeatherRiskstoInternationalOilandNaturalGasShipping.pdf"
+        },
+        {
+          "concept": "holdout-bargaining",
+          "reading": "2026-11-20-eminent-domain",
+          "decision": "defer",
+          "reason": "Distinct from participation constraints, but the full historical paper could not be retrieved in this recovery; do not represent a newly source-reviewed application.",
+          "sourceUrl": "https://www.nber.org/papers/w36027"
+        },
+        {
+          "concept": "scenario-probabilities",
+          "reading": "2026-11-20-world-energy-outlook",
+          "decision": "covered",
+          "reason": "Counterfactual reasoning already separates conditional paths from forecasts; no new entry justified by renaming that distinction.",
+          "sourceUrl": "https://www.iea.org/reports/world-energy-outlook-2026"
+        },
+        {
+          "concept": "financial-network-contagion",
+          "reading": "2026-11-20-ai-credit",
+          "decision": "defer",
+          "reason": "Potentially distinct from financing wedges, but precise aggregation and contract treatment require independent full-text verification before authoring.",
+          "sourceUrl": "https://www.nber.org/papers/w36032"
+        }
+      ],
+      "amendment": {
+        "date": "2026-11-20",
+        "base": "bc7627e",
+        "reason": "Authorized cumulative-notebook recovery; supersedes the original zero-addition decision after source-specific candidate assessment."
+      }
     }
   }
 }

@@ -7846,6 +7846,11 @@
           "id": "mechanism-map",
           "name": "The Mechanism Map",
           "anchor": "2026-11-20-green-innovation--mechanism-map"
+        },
+        {
+          "id": "heron",
+          "name": "The Heron",
+          "anchor": "heron-h-2026-11-20-information-time"
         }
       ],
       "additionalFeatureJustification": null
@@ -8159,6 +8164,11 @@
           "id": "incidence-ledger",
           "name": "The Incidence Ledger",
           "anchor": "2026-11-20-shipping-weather--incidence-ledger"
+        },
+        {
+          "id": "heron",
+          "name": "The Heron",
+          "anchor": "heron-h-2026-11-20-joint-failures"
         }
       ],
       "additionalFeatureJustification": null
@@ -8315,7 +8325,7 @@
       "economic-figures": 20,
       "decision-margin": 14,
       "estimation-desk": 12,
-      "heron": 11,
+      "heron": 13,
       "incidence-ledger": 16,
       "long-view": 15,
       "mechanism-map": 14,
