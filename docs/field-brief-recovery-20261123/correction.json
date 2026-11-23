@@ -1,0 +1,176 @@
+{
+  "correctedOn": "2026-11-23",
+  "baseCommit": "cbb41682564c981efed3032bb2c226cdb392e3af",
+  "authorization": "User explicitly requested recovery of November 21 as 054, November 22 as 055 and renumbering of the already-published November 23 edition to 056.",
+  "editorialDatesAreNotReleaseTimestamps": true,
+  "originalMondaySelection": {
+    "historyDates": [
+      "2026-11-20",
+      "2026-11-19",
+      "2026-11-18",
+      "2026-11-17",
+      "2026-11-16",
+      "2026-11-15",
+      "2026-11-14"
+    ],
+    "assessments": [
+      {
+        "number": "01",
+        "title": "COP31 closes without an overarching climate agreement",
+        "rawPenalty": 1.8571428571428572,
+        "penalty": 1.8571428571428572,
+        "override": false,
+        "development": null,
+        "matchedDates": [
+          "2026-11-20",
+          "2026-11-19"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "White House directs federal contractors to coordinate responses to Congress",
+        "rawPenalty": 10.142857142857144,
+        "penalty": 10.142857142857144,
+        "override": false,
+        "development": null,
+        "matchedDates": [
+          "2026-11-20",
+          "2026-11-19",
+          "2026-11-18",
+          "2026-11-17",
+          "2026-11-16",
+          "2026-11-15",
+          "2026-11-14"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "White House names Kirsten Davies national cyber director",
+        "rawPenalty": 6.142857142857142,
+        "penalty": 0,
+        "override": true,
+        "development": {
+          "evidenceUrl": "https://www.whitehouse.gov/releases/2026/11/president-trump-taps-pentagon-cyber-chief-kirsten-davies-as-national-cyber-director/",
+          "previousStatus": "The November 18 edition reported a widening series of technology outages and the absence of evidence that the incidents shared a cause.",
+          "newStatus": "The White House has named Pentagon chief information officer Kirsten Davies to lead the Office of the National Cyber Director and national cyber-strategy coordination.",
+          "reason": "A named official and a new governance assignment change institutional responsibility; the development does not reframe the earlier outages as linked or resolve their causes."
+        },
+        "matchedDates": [
+          "2026-11-20",
+          "2026-11-19",
+          "2026-11-18",
+          "2026-11-17",
+          "2026-11-16",
+          "2026-11-15",
+          "2026-11-14"
+        ]
+      },
+      {
+        "number": "04",
+        "title": "United States loses measles elimination status",
+        "rawPenalty": 4.857142857142858,
+        "penalty": 4.857142857142858,
+        "override": false,
+        "development": null,
+        "matchedDates": [
+          "2026-11-20",
+          "2026-11-19",
+          "2026-11-18",
+          "2026-11-17",
+          "2026-11-16",
+          "2026-11-15",
+          "2026-11-14"
+        ]
+      },
+      {
+        "number": "05",
+        "title": "Western North Carolina receives $33.2 million for a life-sciences cluster",
+        "rawPenalty": 4.142857142857143,
+        "penalty": 4.142857142857143,
+        "override": false,
+        "development": null,
+        "matchedDates": [
+          "2026-11-20",
+          "2026-11-19",
+          "2026-11-18",
+          "2026-11-17",
+          "2026-11-16",
+          "2026-11-15",
+          "2026-11-14"
+        ]
+      }
+    ],
+    "diversity": {
+      "counts": {
+        "environment": 1,
+        "policy": 2,
+        "technology": 1,
+        "regional": 1
+      },
+      "warnings": [],
+      "exception": null,
+      "needsEditorialDecision": false
+    },
+    "exceptions": []
+  },
+  "originalMondayCover": {
+    "key": "fb",
+    "date": "2026-11-23",
+    "no": "054",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "COP31 closes without an overarching decision after negotiators split over fossil-fuel language. A new executive order reaches congressional requests to federal contractors, the White House appoints a national cyber director, the United States loses measles elimination status, and Western North Carolina receives a major life-sciences recovery investment. Five developments with different institutional consequences These stories do not support a single thesis. COP31 ended without an overarching decision; the contractor order asserts executive control that may be contested; the cyber appointment changes coordination responsibility; the measles finding is a formal epidemiological classification; and the North Carolina award is an intended investment whose results remain prospective. Their common discipline is evidentiary rather than thematic: distinguish a failed consensus from the narrower decisions that survived, an order from its eventual legal reach, an appointment from operational performance, a disease classification from uniform nationwide spread, and grant approval from realized regional development.",
+    "version": 6,
+    "subject": "risk",
+    "composition": "spread-facing-measures-exposure-field-staffed-bench",
+    "signature": "issue:spread-facing-measures-exposure-field-staffed-bench",
+    "phrase": "Climate diplomacy / productive capacity",
+    "seed": 3017296215,
+    "geometry": "<g transform=\"translate(60 175) scale(2.4)\"><circle cx=\"50\" cy=\"50\" r=\"43\" fill=\"none\" stroke=\"$ink\" stroke-width=\"10\"/><path d=\"M16 20L81 85M8 45L56 93M42 8L93 59\" stroke=\"$support\" stroke-width=\"6\"/><circle cx=\"51\" cy=\"49\" r=\"14\" fill=\"$accent\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"$ink\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"$accent\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"$support\"/></g><path d=\"M315 100V500\" stroke=\"$support\" stroke-width=\"5\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "01"
+        ],
+        "score": 23
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 53,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 054: Climate diplomacy / productive capacity\"><title>Field Brief · 054 · Climate diplomacy / productive capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 175) scale(2.4)\"><circle cx=\"50\" cy=\"50\" r=\"43\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><path d=\"M16 20L81 85M8 45L56 93M42 8L93 59\" stroke=\"#c5ad88\" stroke-width=\"6\"/><circle cx=\"51\" cy=\"49\" r=\"14\" fill=\"#8a2a36\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><path d=\"M315 100V500\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 054 / 2026-11-23</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Climate diplomacy / productive capacity</text></g></svg>"
+  },
+  "protectedMondayStoriesSHA256": "e1711439eeb51b8f5104bb490e5b685a2a0958652f6fac47d0ed2c9274b8746f",
+  "numbering": [
+    {
+      "date": "2026-11-20",
+      "before": "053",
+      "after": "053"
+    },
+    {
+      "date": "2026-11-21",
+      "before": null,
+      "after": "054"
+    },
+    {
+      "date": "2026-11-22",
+      "before": null,
+      "after": "055"
+    },
+    {
+      "date": "2026-11-23",
+      "before": "054",
+      "after": "056"
+    }
+  ],
+  "scope": "Insert two missing objects before Monday; rebuild only affected seven-edition audit references and hub metadata; replace only Monday cover numbering labels; preserve every existing dated story identity, all old story plates, and all cover geometry.",
+  "mondayReviewNote": "The review is recomputed against the repaired prior seven editions. Original publication-time review is retained above. No Monday prose, sources, tags, material-development record or story content is revised."
+}

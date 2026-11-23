@@ -3146,6 +3146,130 @@
         "seed": 2112592244,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Shared laboratory, training and site infrastructure form a regional life-sciences cluster\"><title>Western North Carolina receives $33.2 million for a life-sciences cluster</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-23-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-23-05)\"><path d=\"M85 390L205 285L325 390V535H85Z\" fill=\"#1b4a6b\"/><path d=\"M155 535V440H255V535\" fill=\"#f4ead7\"/><path d=\"M390 120H705V330H390Z\" fill=\"#1d5f47\"/><path d=\"M435 175H660M435 245H660\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M515 330V520H700\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><circle cx=\"515\" cy=\"420\" r=\"55\" fill=\"#c98a12\"/><path d=\"M515 382V458M477 420H553\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M325 430H460\" stroke=\"#c4452c\" stroke-width=\"27\"/></g></svg>"
       }
+    },
+    "2026-11-21": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-21",
+        "number": "01",
+        "category": "Economy · financial markets",
+        "topic": "finance",
+        "title": "S&P 500 enters a correction as the technology selloff broadens",
+        "composition": "market-repricing",
+        "signature": "plate:market-repricing",
+        "seed": 3059910712,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An equity-price path descends across a broad market board\"><title>S&amp;P 500 enters a correction as the technology selloff broadens</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-21-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-21-01)\"><path d=\"M85 105H715V535H85Z\" fill=\"#2c241d\"/><path d=\"M130 205H670M130 320H670M130 435H670\" stroke=\"#7c5a3e\" stroke-width=\"12\"/><path d=\"M150 165L250 215L335 185L435 305L535 350L640 475\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M560 468L650 490L660 400\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"22\"/><g fill=\"#f4ead7\"><rect x=\"130\" y=\"545\" width=\"125\" height=\"20\"/><rect x=\"335\" y=\"545\" width=\"125\" height=\"20\"/><rect x=\"540\" y=\"545\" width=\"125\" height=\"20\"/></g></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-21",
+        "number": "02",
+        "category": "Health policy · clinical evidence",
+        "topic": "research",
+        "title": "FDA declines to approve deramiocel after finding unreliable trial data",
+        "composition": "trial-evidence-rejection",
+        "signature": "plate:trial-evidence-rejection",
+        "seed": 339235651,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A clinical trial record meets a rejection mark at the approval boundary\"><title>FDA declines to approve deramiocel after finding unreliable trial data</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-21-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-21-02)\"><path d=\"M100 90H405V535H100Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"20\"/><path d=\"M145 165H350M145 235H350M145 305H290\" stroke=\"#1b4a6b\" stroke-width=\"22\"/><path d=\"M160 430L235 355L310 430\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"20\" stroke-dasharray=\"22 15\"/><circle cx=\"570\" cy=\"330\" r=\"120\" fill=\"#7a1f33\"/><path d=\"M510 270L630 390M630 270L510 390\" stroke=\"#f4ead7\" stroke-width=\"27\"/><path d=\"M450 500H710\" stroke=\"#c98a12\" stroke-width=\"19\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-21",
+        "number": "03",
+        "category": "International economy · public finance",
+        "topic": "finance",
+        "title": "European Commission releases €7.9 billion in reform-linked support for Ukraine",
+        "composition": "ukraine-budget-release",
+        "signature": "plate:ukraine-budget-release",
+        "seed": 3113412475,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Conditional budget documents accompany a released public-finance transfer\"><title>European Commission releases €7.9 billion in reform-linked support for Ukraine</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-21-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-21-03)\"><path d=\"M80 135H280V470H80Z\" fill=\"#1b4a6b\"/><path d=\"M115 200H245M115 270H245M115 340H220\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M320 300H490M450 255L495 300L450 345\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"25\"/><path d=\"M525 190L620 115L715 190V505H525Z\" fill=\"#1d5f47\"/><path d=\"M560 235H680M560 315H680M560 395H680\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M120 520H415V435H475\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M352 485L375 508L420 457\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"16\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-21",
+        "number": "04",
+        "category": "Technology · space research",
+        "topic": "research",
+        "title": "NASA selects 302 small-business projects for up to $171 million in seed funding",
+        "composition": "lunar-seed-research",
+        "signature": "plate:lunar-seed-research",
+        "seed": 965136531,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Staged research funding reaches a lunar battery and an instrumented robotic arm\"><title>NASA selects 302 small-business projects for up to $171 million in seed funding</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-21-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-21-04)\"><circle cx=\"590\" cy=\"220\" r=\"145\" fill=\"#c98a12\"/><circle cx=\"640\" cy=\"155\" r=\"28\" fill=\"#7c5a3e\"/><path d=\"M430 470L505 365L610 395L715 335\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"35\"/><g fill=\"#2c241d\"><circle cx=\"505\" cy=\"365\" r=\"28\"/><circle cx=\"610\" cy=\"395\" r=\"28\"/></g><path d=\"M70 250H255V485H70Z\" fill=\"#1d5f47\"/><path d=\"M120 220H205V250\" stroke=\"#2c241d\" stroke-width=\"20\"/><path d=\"M105 330H220M162 278V390\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M80 125H180M205 125H305M330 125H430\" stroke=\"#c4452c\" stroke-width=\"21\"/><path d=\"M255 435H360V525H710\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"19\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-21",
+        "number": "05",
+        "category": "North Carolina · drought and water supply",
+        "topic": "climate",
+        "title": "North Carolina urges conservation as 39 counties face extreme drought",
+        "composition": "reservoir-conservation",
+        "signature": "plate:reservoir-conservation",
+        "seed": 3479180317,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Unequal reservoir storage feeds a household conservation valve\"><title>North Carolina urges conservation as 39 counties face extreme drought</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-21-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-21-05)\"><path d=\"M85 115V490Q85 535 180 535Q275 535 275 490V115M355 115V490Q355 535 450 535Q545 535 545 490V115\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"21\"/><path d=\"M100 365H260V490Q180 525 100 490ZM370 245H530V490Q450 525 370 490Z\" fill=\"#1b4a6b\"/><path d=\"M120 180H240M120 260H240M390 180H510\" stroke=\"#7c5a3e\" stroke-width=\"12\" stroke-dasharray=\"18 12\"/><path d=\"M545 415H650V300H735\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"27\"/><circle cx=\"650\" cy=\"415\" r=\"39\" fill=\"#7a1f33\"/><path d=\"M620 415H680M650 385V445\" stroke=\"#f4ead7\" stroke-width=\"13\"/><path d=\"M710 335Q685 380 710 392Q735 380 710 335Z\" fill=\"#1b4a6b\"/></g></svg>"
+      }
+    },
+    "2026-11-22": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-22",
+        "number": "01",
+        "category": "Economy · consumer credit",
+        "topic": "finance",
+        "title": "Trump renews support for a 10% credit-card interest cap",
+        "composition": "credit-rate-proposal",
+        "signature": "plate:credit-rate-proposal",
+        "seed": 2045987911,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A proposed credit-rate ceiling remains separated from a credit card\"><title>Trump renews support for a 10% credit-card interest cap</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-22-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-22-01)\"><path d=\"M80 220H405V455H80Z\" fill=\"#1b4a6b\"/><path d=\"M80 275H405\" stroke=\"#2c241d\" stroke-width=\"45\"/><path d=\"M125 375H220M125 415H300\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M470 115H710V520H470Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M515 190H665M515 250H665\" stroke=\"#7c5a3e\" stroke-width=\"18\"/><path d=\"M510 355H675\" stroke=\"#7a1f33\" stroke-width=\"25\" stroke-dasharray=\"25 15\"/><path d=\"M550 450V390M625 450V410\" stroke=\"#c98a12\" stroke-width=\"23\"/><path d=\"M410 160H450\" stroke=\"#c4452c\" stroke-width=\"17\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-22",
+        "number": "02",
+        "category": "Technology · mathematical research",
+        "topic": "research",
+        "title": "Anthropic mathematician releases an AI-assisted Riemann proof claim",
+        "composition": "formal-proof-review",
+        "signature": "plate:formal-proof-review",
+        "seed": 56330421,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A formal proof network passes toward a separate verification lens\"><title>Anthropic mathematician releases an AI-assisted Riemann proof claim</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-22-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-22-02)\"><g stroke=\"#1b4a6b\" stroke-width=\"16\"><path d=\"M90 140L280 105L355 280L160 355L90 140M280 105L160 355M90 140L355 280M160 355L265 520L355 280\" fill=\"none\"/></g><g fill=\"#7a1f33\"><circle cx=\"90\" cy=\"140\" r=\"24\"/><circle cx=\"280\" cy=\"105\" r=\"24\"/><circle cx=\"355\" cy=\"280\" r=\"24\"/><circle cx=\"160\" cy=\"355\" r=\"24\"/><circle cx=\"265\" cy=\"520\" r=\"24\"/></g><circle cx=\"575\" cy=\"280\" r=\"120\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"25\"/><path d=\"M660 370L735 485\" stroke=\"#2c241d\" stroke-width=\"36\"/><path d=\"M500 280H650M575 205V355\" stroke=\"#c98a12\" stroke-width=\"18\"/><path d=\"M385 280H435\" stroke=\"#c4452c\" stroke-width=\"16\" stroke-dasharray=\"15 10\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-22",
+        "number": "03",
+        "category": "International policy · justice systems",
+        "topic": "government",
+        "title": "Haiti announces a Salvadoran partnership to build three prisons",
+        "composition": "justice-capacity-agreement",
+        "signature": "plate:justice-capacity-agreement",
+        "seed": 3410110984,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A prison construction plan is separated from operating justice institutions\"><title>Haiti announces a Salvadoran partnership to build three prisons</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-22-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-22-03)\"><path d=\"M80 110H320V520H80Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M120 180H280M120 245H280\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><path d=\"M120 330H280V450H120Z\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"13\"/><path d=\"M160 330V450M240 330V450\" stroke=\"#7c5a3e\" stroke-width=\"12\"/><path d=\"M390 270H720V520H390Z\" fill=\"#1d5f47\"/><path d=\"M420 270V190H690V270\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"20\"/><path d=\"M445 330V455M510 330V455M575 330V455M640 330V455\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M335 400H375\" stroke=\"#c4452c\" stroke-width=\"20\" stroke-dasharray=\"12 10\"/><circle cx=\"550\" cy=\"110\" r=\"45\" fill=\"#c98a12\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-22",
+        "number": "04",
+        "category": "International economy · trade cooperation",
+        "topic": "trade",
+        "title": "APEC sets a voluntary agenda for digital trade and supply-chain resilience",
+        "composition": "paperless-trade-framework",
+        "signature": "plate:paperless-trade-framework",
+        "seed": 390169660,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Digital trade documents connect distinct customs systems across an open corridor\"><title>APEC sets a voluntary agenda for digital trade and supply-chain resilience</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-22-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-22-04)\"><path d=\"M65 120H240V340H65ZM560 285H735V505H560Z\" fill=\"#1b4a6b\"/><path d=\"M105 175H200M105 235H200M600 340H695M600 400H695\" stroke=\"#f4ead7\" stroke-width=\"17\"/><path d=\"M240 230H400V395H560\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"27\" stroke-dasharray=\"32 16\"/><path d=\"M300 90H470V270H300Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"16\"/><path d=\"M335 145H435M335 200H415\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M75 540H725\" stroke=\"#7c5a3e\" stroke-width=\"17\"/><path d=\"M310 490L385 415L460 490\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"24\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-22",
+        "number": "05",
+        "category": "North Carolina · fisheries and coastal habitat",
+        "topic": "climate",
+        "title": "NC commission advances a bonito bag limit and coastal-habitat review",
+        "composition": "bonito-habitat-review",
+        "signature": "plate:bonito-habitat-review",
+        "seed": 3605493646,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A fish swims above coastal habitat beside a rule still under review\"><title>NC commission advances a bonito bag limit and coastal-habitat review</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-22-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-22-05)\"><path d=\"M75 250Q210 100 350 250Q210 400 75 250ZM350 250L415 180V320Z\" fill=\"#1b4a6b\"/><circle cx=\"140\" cy=\"230\" r=\"13\" fill=\"#f4ead7\"/><path d=\"M200 180L245 225M200 230L245 275M200 280L230 310\" stroke=\"#2c241d\" stroke-width=\"10\"/><path d=\"M70 510Q155 455 240 510T410 510\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"25\"/><path d=\"M140 505Q105 445 150 405M240 505Q280 440 235 395M335 505V420\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"19\"/><path d=\"M495 110H715V525H495Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M535 185H675M535 250H675\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"605\" cy=\"390\" r=\"64\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"20\"/><path d=\"M605 350V390L640 415\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"15\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

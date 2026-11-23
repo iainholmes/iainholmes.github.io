@@ -2442,7 +2442,7 @@
   "fb:2026-11-23": {
     "key": "fb",
     "date": "2026-11-23",
-    "no": "054",
+    "no": "056",
     "identity": "Field Brief",
     "theme": "institutions",
     "framing": "COP31 closes without an overarching decision after negotiators split over fossil-fuel language. A new executive order reaches congressional requests to federal contractors, the White House appoints a national cyber director, the United States loses measles elimination status, and Western North Carolina receives a major life-sciences recovery investment. Five developments with different institutional consequences These stories do not support a single thesis. COP31 ended without an overarching decision; the contractor order asserts executive control that may be contested; the cyber appointment changes coordination responsibility; the measles finding is a formal epidemiological classification; and the North Carolina award is an intended investment whose results remain prospective. Their common discipline is evidentiary rather than thematic: distinguish a failed consensus from the narrower decisions that survived, an order from its eventual legal reach, an appointment from operational performance, a disease classification from uniform nationwide spread, and grant approval from realized regional development.",
@@ -2469,9 +2469,77 @@
     ],
     "originality": {
       "policy": 2,
+      "compared": 55,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 056: Climate diplomacy / productive capacity\"><title>Field Brief · 056 · Climate diplomacy / productive capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 175) scale(2.4)\"><circle cx=\"50\" cy=\"50\" r=\"43\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><path d=\"M16 20L81 85M8 45L56 93M42 8L93 59\" stroke=\"#c5ad88\" stroke-width=\"6\"/><circle cx=\"51\" cy=\"49\" r=\"14\" fill=\"#8a2a36\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><path d=\"M315 100V500\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 056 / 2026-11-23</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Climate diplomacy / productive capacity</text></g></svg>"
+  },
+  "fb:2026-11-21": {
+    "key": "fb",
+    "date": "2026-11-21",
+    "no": "054",
+    "identity": "Field Brief",
+    "theme": "change",
+    "framing": "Recovered November 23, 2026, from developments available by this edition’s date. A sharp equity selloff, a drug-review rejection, European budget support, space-research awards and North Carolina’s deepening drought raise different questions about evidence and resources. Different claims on scarce resources These developments have distinct evidentiary foundations: observed market prices, a regulatory judgment about unreliable trial data, a completed financing release, prospective research awards and dated water-supply measurements. They should not be read as one common economic trend. Their practical tests also differ. Financing conditions must translate into investment decisions; medical claims require reliable trials; budget support requires accountable use; research awards require demonstrations; and drought response requires local conservation and replenished storage.",
+    "version": 6,
+    "subject": "evidence",
+    "composition": "study-stepped-review-observation-window-shared-load-sampling-window",
+    "signature": "issue:study-stepped-review-observation-window-shared-load-sampling-window",
+    "phrase": "Market repricing / stages of delivery",
+    "seed": 2567030290,
+    "geometry": "<g transform=\"translate(60 315) scale(1.75)\"><path d=\"M6 12H94V88H6Z\" fill=\"none\" stroke=\"$ink\" stroke-width=\"10\"/><path d=\"M17 50Q50 17 83 50Q50 83 17 50Z\" fill=\"$support\"/><circle cx=\"50\" cy=\"50\" r=\"16\" fill=\"$accent\"/></g><g transform=\"translate(245 220) scale(1.6)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"$ink\"/><path d=\"M43 35H57V60H43Z\" fill=\"$accent\"/><path d=\"M65 89H94\" stroke=\"$support\" stroke-width=\"9\"/></g><g transform=\"translate(405 90) scale(1.4)\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><path d=\"M12 50H50V12\" fill=\"none\" stroke=\"$accent\" stroke-width=\"8\"/><circle cx=\"66\" cy=\"66\" r=\"9\" fill=\"$support\"/></g><path d=\"M60 510H242V410H415V245H550\" fill=\"none\" stroke=\"$support\" stroke-width=\"9\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "02"
+        ],
+        "score": 15
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
       "compared": 53,
       "recentWindow": 3
     },
-    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 054: Climate diplomacy / productive capacity\"><title>Field Brief · 054 · Climate diplomacy / productive capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 175) scale(2.4)\"><circle cx=\"50\" cy=\"50\" r=\"43\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><path d=\"M16 20L81 85M8 45L56 93M42 8L93 59\" stroke=\"#c5ad88\" stroke-width=\"6\"/><circle cx=\"51\" cy=\"49\" r=\"14\" fill=\"#8a2a36\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><path d=\"M315 100V500\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 054 / 2026-11-23</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Climate diplomacy / productive capacity</text></g></svg>"
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 054: Market repricing / stages of delivery\"><title>Field Brief · 054 · Market repricing / stages of delivery</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 315) scale(1.75)\"><path d=\"M6 12H94V88H6Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><path d=\"M17 50Q50 17 83 50Q50 83 17 50Z\" fill=\"#c5ad88\"/><circle cx=\"50\" cy=\"50\" r=\"16\" fill=\"#8a2a36\"/></g><g transform=\"translate(245 220) scale(1.6)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"#221a14\"/><path d=\"M43 35H57V60H43Z\" fill=\"#8a2a36\"/><path d=\"M65 89H94\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><g transform=\"translate(405 90) scale(1.4)\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M12 50H50V12\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"8\"/><circle cx=\"66\" cy=\"66\" r=\"9\" fill=\"#c5ad88\"/></g><path d=\"M60 510H242V410H415V245H550\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 054 / 2026-11-21</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Market repricing / stages of delivery</text></g></svg>"
+  },
+  "fb:2026-11-22": {
+    "key": "fb",
+    "date": "2026-11-22",
+    "no": "055",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "Recovered November 23, 2026, using reporting and documents available before Sunday morning. A renewed credit-card proposal, an AI-assisted proof claim, a prison agreement, APEC’s cooperation agenda and North Carolina fisheries decisions each face a different implementation test. Authority, verification and delivery A political promise, a proposed mathematical proof, a construction agreement, a voluntary international declaration and a rule awaiting further review occupy different stages. None should be reported as a completed outcome merely because an institution announced it. The relevant next evidence is specific: legislative action and credit availability, independent proof checks, funded and accountable prison operations, implemented trade procedures, and effective fisheries rules with ecological monitoring. These stories do not establish one common policy direction.",
+    "version": 6,
+    "subject": "capacity",
+    "composition": "spread-unequal-dialogue-control-loop-disclosure-ledger",
+    "signature": "issue:spread-unequal-dialogue-control-loop-disclosure-ledger",
+    "phrase": "Credit policy / disclosure",
+    "seed": 226788905,
+    "geometry": "<g transform=\"translate(65 115) scale(3.15)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"$accent\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"$support\" stroke-width=\"6\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M8 8H92V92H8Z\" fill=\"$ink\"/><path d=\"M22 25H78M22 45H78M22 65H48\" stroke=\"$paper\" stroke-width=\"7\"/><path d=\"M60 64H96V96H60Z\" fill=\"$accent\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 14
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 54,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 055: Credit policy / disclosure\"><title>Field Brief · 055 · Credit policy / disclosure</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"#8a2a36\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M8 8H92V92H8Z\" fill=\"#221a14\"/><path d=\"M22 25H78M22 45H78M22 65H48\" stroke=\"#f1e6d0\" stroke-width=\"7\"/><path d=\"M60 64H96V96H60Z\" fill=\"#8a2a36\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 055 / 2026-11-22</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Credit policy / disclosure</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
