@@ -2438,5 +2438,40 @@
     "framing": "Editor's synthesisWhen a route becomes an economic institutionInfrastructure is often described in physical units—miles of pipe, port days, renewable shares, gigawatts of compute. This week’s evidence shows that the decisive margins sit around those units: who has authority to assemble a corridor, which scenario justifies redundancy, how adjustment costs arrive before innovation diffuses, and how contracts allocate risk before a machine draws power.The common object is a network whose value depends on continuity. Eminent domain can break a chain of parcel vetoes; ports and straits can become single points of climate failure; innovation changes complementary capital; and leveraged compute contracts can accelerate demand for electricity and land. Private decisions therefore spill across places, counterparties and time.That does not make every large project socially valuable or every bottleneck a case for intervention. Each claim needs its own counterfactual: negotiated routing without federal authority, a port system with inventories and substitutes, a macro path without a green-composition shock, an energy scenario under different policies, or a compute buildout that internalizes both financial and environmental costs.The question to carry forward: which rule keeps a valuable flow moving while making the builder account for the burdens left along the route?",
     "geometry": "<path d=\"M55 450Q145 400 205 315T330 245T545 135\" fill=\"none\" stroke=\"$ink\" stroke-width=\"34\"/><path d=\"M55 450Q145 400 205 315T330 245T545 135\" fill=\"none\" stroke=\"$paper\" stroke-width=\"10\" stroke-dasharray=\"18 13\"/><path d=\"M255 105V440M345 105V440\" stroke=\"$accent\" stroke-width=\"6\"/><path d=\"M235 125H365M235 420H365\" stroke=\"$accent\" stroke-width=\"15\"/><circle cx=\"300\" cy=\"265\" r=\"30\" fill=\"$support\" stroke=\"$ink\" stroke-width=\"7\"/><path d=\"M95 135Q165 95 230 135M370 470Q455 425 520 455\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/>",
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Loblolly &amp; Logit, issue 009: Rights, routes &amp; redundancy\"><title>Loblolly &amp; Logit · 009 · Rights, routes &amp; redundancy</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f3f0e6\"/><g><g fill=\"none\" stroke=\"#1f4a3b\" opacity=\".16\"><path d=\"M-20 460Q150 290 300 440T620 410M-20 480Q150 310 300 460T620 430M-20 500Q150 330 300 480T620 450M-20 520Q150 350 300 500T620 470\"/></g><path d=\"M55 450Q145 400 205 315T330 245T545 135\" fill=\"none\" stroke=\"#1f4a3b\" stroke-width=\"34\"/><path d=\"M55 450Q145 400 205 315T330 245T545 135\" fill=\"none\" stroke=\"#f3f0e6\" stroke-width=\"10\" stroke-dasharray=\"18 13\"/><path d=\"M255 105V440M345 105V440\" stroke=\"#b4532e\" stroke-width=\"6\"/><path d=\"M235 125H365M235 420H365\" stroke=\"#b4532e\" stroke-width=\"15\"/><circle cx=\"300\" cy=\"265\" r=\"30\" fill=\"#e3b456\" stroke=\"#1f4a3b\" stroke-width=\"7\"/><path d=\"M95 135Q165 95 230 135M370 470Q455 425 520 455\" fill=\"none\" stroke=\"#1f4a3b\" stroke-width=\"9\"/></g><path d=\"M42 570H558\" stroke=\"#1f4a3b\" stroke-width=\"2\"/><g fill=\"#1f4a3b\"><text x=\"42\" y=\"634\" font-family=\"Ectros,Georgia,serif\" font-size=\"43\">Loblolly &amp; Logit</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 009 / 2026-11-20</text><text x=\"42\" y=\"740\" font-family=\"Ectros,Georgia,serif\" font-size=\"26\">Rights, routes &amp; redundancy</text></g></svg>"
+  },
+  "fb:2026-11-23": {
+    "key": "fb",
+    "date": "2026-11-23",
+    "no": "054",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "COP31 closes without an overarching decision after negotiators split over fossil-fuel language. A new executive order reaches congressional requests to federal contractors, the White House appoints a national cyber director, the United States loses measles elimination status, and Western North Carolina receives a major life-sciences recovery investment. Five developments with different institutional consequences These stories do not support a single thesis. COP31 ended without an overarching decision; the contractor order asserts executive control that may be contested; the cyber appointment changes coordination responsibility; the measles finding is a formal epidemiological classification; and the North Carolina award is an intended investment whose results remain prospective. Their common discipline is evidentiary rather than thematic: distinguish a failed consensus from the narrower decisions that survived, an order from its eventual legal reach, an appointment from operational performance, a disease classification from uniform nationwide spread, and grant approval from realized regional development.",
+    "version": 6,
+    "subject": "risk",
+    "composition": "spread-facing-measures-exposure-field-staffed-bench",
+    "signature": "issue:spread-facing-measures-exposure-field-staffed-bench",
+    "phrase": "Climate diplomacy / productive capacity",
+    "seed": 3017296215,
+    "geometry": "<g transform=\"translate(60 175) scale(2.4)\"><circle cx=\"50\" cy=\"50\" r=\"43\" fill=\"none\" stroke=\"$ink\" stroke-width=\"10\"/><path d=\"M16 20L81 85M8 45L56 93M42 8L93 59\" stroke=\"$support\" stroke-width=\"6\"/><circle cx=\"51\" cy=\"49\" r=\"14\" fill=\"$accent\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"$ink\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"$accent\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"$support\"/></g><path d=\"M315 100V500\" stroke=\"$support\" stroke-width=\"5\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "risk",
+        "storyNumbers": [
+          "01"
+        ],
+        "score": 23
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 53,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 054: Climate diplomacy / productive capacity\"><title>Field Brief · 054 · Climate diplomacy / productive capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 175) scale(2.4)\"><circle cx=\"50\" cy=\"50\" r=\"43\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><path d=\"M16 20L81 85M8 45L56 93M42 8L93 59\" stroke=\"#c5ad88\" stroke-width=\"6\"/><circle cx=\"51\" cy=\"49\" r=\"14\" fill=\"#8a2a36\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M5 57H95V68H5ZM16 68V96M84 68V96\" fill=\"#221a14\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"22\" r=\"16\" fill=\"#8a2a36\"/><path d=\"M31 54V44Q50 29 69 44V54Z\" fill=\"#c5ad88\"/></g><path d=\"M315 100V500\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 054 / 2026-11-23</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Climate diplomacy / productive capacity</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

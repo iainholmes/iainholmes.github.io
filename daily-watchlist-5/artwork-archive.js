@@ -3084,6 +3084,68 @@
         "seed": 1968477355,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Institutional cooperation connects a shared hub to distinct tasks\"><title>North Carolina extends its child-care task force as the subsidy floor reaches providers</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-20-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-20-05)\"><circle cx=\"400\" cy=\"315\" r=\"118\" fill=\"#7a1f33\"/><path d=\"M400 185V82M530 315H710M400 445V552M270 315H88\" stroke=\"#2c241d\" stroke-width=\"28\"/><rect x=\"340\" y=\"55\" width=\"120\" height=\"92\" fill=\"#1b4a6b\"/><circle cx=\"680\" cy=\"315\" r=\"61\" fill=\"#c98a12\"/><path d=\"M330 550L400 468L470 550Z\" fill=\"#1d5f47\"/><rect x=\"56\" y=\"253\" width=\"113\" height=\"124\" fill=\"#7c5a3e\"/></g></svg>"
       }
+    },
+    "2026-11-23": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-23",
+        "number": "01",
+        "category": "Environment · climate diplomacy",
+        "topic": "climate",
+        "title": "COP31 closes without an overarching climate agreement",
+        "composition": "climate-consensus-break",
+        "signature": "plate:climate-consensus-break",
+        "seed": 1844930334,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Negotiating blocs face a broken climate agreement table\"><title>COP31 closes without an overarching climate agreement</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-23-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-23-01)\"><path d=\"M70 165H310V505H70Z\" fill=\"#1d5f47\"/><path d=\"M490 165H730V505H490Z\" fill=\"#1b4a6b\"/><path d=\"M118 235H265M118 310H265M535 235H682M535 310H682\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M310 335H390M410 335H490\" stroke=\"#2c241d\" stroke-width=\"34\"/><path d=\"M385 290L415 335L385 380\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"21\"/><circle cx=\"400\" cy=\"120\" r=\"62\" fill=\"#c98a12\"/><path d=\"M400 82V158M362 120H438\" stroke=\"#7a1f33\" stroke-width=\"16\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-23",
+        "number": "02",
+        "category": "U.S. policy · congressional oversight",
+        "topic": "government",
+        "title": "White House directs federal contractors to coordinate responses to Congress",
+        "composition": "contractor-privilege-gate",
+        "signature": "plate:contractor-privilege-gate",
+        "seed": 199019418,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A congressional request reaches contractors behind an executive privilege gate\"><title>White House directs federal contractors to coordinate responses to Congress</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-23-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-23-02)\"><path d=\"M70 125H335V500H70Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M112 205H292M112 275H292M112 345H250\" stroke=\"#1b4a6b\" stroke-width=\"19\"/><path d=\"M335 315H485\" stroke=\"#c98a12\" stroke-width=\"30\"/><path d=\"M455 105V545M555 105V545M455 220H555\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"27\"/><path d=\"M585 175H725V285H585ZM585 375H725V485H585Z\" fill=\"#1d5f47\"/><path d=\"M620 230H690M620 430H690\" stroke=\"#f4ead7\" stroke-width=\"18\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-23",
+        "number": "03",
+        "category": "Technology · cybersecurity governance",
+        "topic": "infrastructure",
+        "title": "White House names Kirsten Davies national cyber director",
+        "composition": "cyber-coordination-hub",
+        "signature": "plate:cyber-coordination-hub",
+        "seed": 2290324120,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A national cyber office coordinates separate infrastructure networks\"><title>White House names Kirsten Davies national cyber director</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-23-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-23-03)\"><circle cx=\"400\" cy=\"315\" r=\"105\" fill=\"#7a1f33\"/><path d=\"M400 210V95M505 315H705M400 420V545M295 315H95\" stroke=\"#2c241d\" stroke-width=\"28\"/><path d=\"M348 315L382 349L455 265\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"25\"/><rect x=\"330\" y=\"55\" width=\"140\" height=\"90\" fill=\"#1b4a6b\"/><path d=\"M575 250H720V380H575Z\" fill=\"#1d5f47\"/><path d=\"M330 500H470V570H330Z\" fill=\"#c98a12\"/><path d=\"M65 250H215V380H65Z\" fill=\"#7c5a3e\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-23",
+        "number": "04",
+        "category": "Public health · vaccination",
+        "topic": "research",
+        "title": "United States loses measles elimination status",
+        "composition": "measles-transmission-chain",
+        "signature": "plate:measles-transmission-chain",
+        "seed": 3858512440,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A persistent transmission chain crosses the twelve-month threshold beside a vaccination shield\"><title>United States loses measles elimination status</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-23-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-23-04)\"><path d=\"M75 285H520\" stroke=\"#7a1f33\" stroke-width=\"31\"/><g fill=\"#c98a12\" stroke=\"#2c241d\" stroke-width=\"10\"><circle cx=\"105\" cy=\"285\" r=\"45\"/><circle cx=\"225\" cy=\"285\" r=\"45\"/><circle cx=\"345\" cy=\"285\" r=\"45\"/><circle cx=\"465\" cy=\"285\" r=\"45\"/></g><path d=\"M520 155V465\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M570 165L690 210V330Q690 445 630 500Q570 445 570 330Z\" fill=\"#1b4a6b\"/><path d=\"M630 245V410M590 327H670\" stroke=\"#f4ead7\" stroke-width=\"26\"/><path d=\"M75 515H500\" stroke=\"#7c5a3e\" stroke-width=\"18\" stroke-dasharray=\"30 18\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-23",
+        "number": "05",
+        "category": "North Carolina · regional development",
+        "topic": "research",
+        "title": "Western North Carolina receives $33.2 million for a life-sciences cluster",
+        "composition": "life-sciences-cluster",
+        "signature": "plate:life-sciences-cluster",
+        "seed": 2112592244,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Shared laboratory, training and site infrastructure form a regional life-sciences cluster\"><title>Western North Carolina receives $33.2 million for a life-sciences cluster</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-23-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-23-05)\"><path d=\"M85 390L205 285L325 390V535H85Z\" fill=\"#1b4a6b\"/><path d=\"M155 535V440H255V535\" fill=\"#f4ead7\"/><path d=\"M390 120H705V330H390Z\" fill=\"#1d5f47\"/><path d=\"M435 175H660M435 245H660\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M515 330V520H700\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><circle cx=\"515\" cy=\"420\" r=\"55\" fill=\"#c98a12\"/><path d=\"M515 382V458M477 420H553\" stroke=\"#7a1f33\" stroke-width=\"16\"/><path d=\"M325 430H460\" stroke=\"#c4452c\" stroke-width=\"27\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
