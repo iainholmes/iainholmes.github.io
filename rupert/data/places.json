@@ -871,6 +871,58 @@
         "checked": "2026-11-19",
         "source": "https://www.ncparks.gov/state-parks/cliffs-neuse-state-park"
       }
+    },
+    {
+      "id": "falls-lake-rolling-view-track",
+      "name": "Falls Lake State Recreation Area — Rolling View TRACK Trail",
+      "short_name": "Rolling View",
+      "kind": "trail",
+      "region": "Durham County",
+      "access": {
+        "name": "Rolling View TRACK / Neuse Bend trailhead, signed day-use picnic parking",
+        "lat": 36.0169972,
+        "lng": -78.7306694,
+        "coords_verified": true,
+        "coords_checked": "2026-11-24",
+        "coords_source": "Published Kids in Parks Rolling View TRACK map lists 36°1′1.19″N, 78°43′50.41″W and shows trailhead at picnic parking. NC State Parks plan-your-visit endorses TRACK trail; official access map and home confirm Rolling View, 4201 Baptist Road."
+      },
+      "dog_policy": "Attended leash no longer than six feet. No pets on swim beaches or inside buildings.",
+      "routes": [
+        {
+          "route_id": "rolling-view-neuse-bend-loop@1",
+          "distance_mi": 0.75,
+          "shape": "loop",
+          "difficulty": "easy",
+          "surface": "Mixed-pine natural path along the lake; roots and wet leaves possible. Official trail table lists 0.75 mile; visitor guide calls the same loop 0.6 mile."
+        }
+      ],
+      "links": [
+        {
+          "label": "Official status and access hours",
+          "url": "https://www.ncparks.gov/state-parks/falls-lake-state-recreation-area"
+        },
+        {
+          "label": "Official trails",
+          "url": "https://www.ncparks.gov/state-parks/falls-lake-state-recreation-area/trails"
+        },
+        {
+          "label": "Official Rolling View map",
+          "url": "https://www.ncparks.gov/maps/falls-lake-state-recreation-area-rolling-view-access-map/open"
+        },
+        {
+          "label": "TRACK map and trailhead",
+          "url": "https://www.kidsinparks.com/sites/default/files/maps/RollingViewMap_print.pdf"
+        }
+      ],
+      "tags": [
+        "woodland",
+        "picnic"
+      ],
+      "closure": {
+        "status": "open",
+        "checked": "2026-11-24",
+        "source": "https://www.ncparks.gov/state-parks/falls-lake-state-recreation-area"
+      }
     }
   ]
 }

@@ -273,6 +273,24 @@
       "official_url": "https://www.ncparks.gov/state-parks/cliffs-neuse-state-park",
       "discrepancy": false,
       "note": "Final route narrowed after reading the actual park map and official trail table: Old Wagon Path alone, red diamonds, 0.4 mile one way and 0.8 return, from the signed overlook lot at the end of Park Entrance Road. No added Longleaf connector mileage is claimed. The official home, trail page and visitor notices were re-fetched unchanged: trails open; campground parking repaving affects campground traffic; beach and rentals closed for 2026. Public park navigation GPS 35.2354,-77.8932 comes from the March 2026 official map; the home latitude is inconsistent and not used. Follow signs to the overlook lot, no campground parking. Gate hours November 7 a.m.–6 p.m., free day-use trails, attended leash up to six feet, no pets on beach or indoors. Watch for vehicles at road crossing and stay well back from cliff edge."
+    },
+    {
+      "place_id": "falls-lake-rolling-view-track",
+      "status": "open",
+      "checked": "2026-11-24",
+      "checked_at": "2026-11-24T12:02:18.220863+00:00",
+      "official_url": "https://www.ncparks.gov/state-parks/falls-lake-state-recreation-area",
+      "discrepancy": false,
+      "note": "Official current home explicitly says Holly Point closed for construction and all other areas operating normally. Rolling View day-use schedule is year-round, 8 a.m.–6 p.m. in November, including holidays other than Christmas. No November vehicle entrance fee. Pets attended six-foot leash, prohibited from beaches and buildings. Official map reviewed for day-use parking; Kids in Parks TRACK map locates start at northeast corner of picnic parking, published coordinates 36°1′1.19″N,78°43′50.41″W converted to 36.0169972,-78.7306694. NC State Parks trail table gives blue-circle TRACK loop 0.75 mile; visitor guide gives 0.6 mile, so distance is approximate and named loop is fixed. No MST extension, marina or water contact. Read construction notice and April 27 historical wastewater incident at separate Holly Point; no current Rolling View trail closure posted. Do not interpret dated incident as a current water-safety clearance."
+    },
+    {
+      "place_id": "falls-lake-rolling-view-track",
+      "status": "open",
+      "checked": "2026-11-24",
+      "checked_at": "2026-11-24T12:05:39+00:00",
+      "official_url": "https://www.ncparks.gov/state-parks/falls-lake-state-recreation-area",
+      "discrepancy": false,
+      "note": "Re-fetched current official home, trails and news pages unchanged. Rolling View day use is open year-round; current notice says Holly Point construction is separate and other areas operating normally. November gate8 a.m.–6 p.m., no November vehicle entrance fee under seasonal schedule. Six-foot attended leash, no pets swim beaches or indoors. Official trail table names blue-circle Rolling View K.I.P. TRACK loop0.75 mile; visitor guide calls Neuse Bend0.6 mile; itinerary clearly says approximate0.6–0.75 mile and stays on named loop. Official access map and partner TRACK map reviewed for signed picnic parking and trailhead. Partner map coordinates36°1′1.19″N,78°43′50.41″W converted to36.0169972,-78.7306694 are verified public trailhead used for NWS. Enter4201 Baptist Road, follow signed day use; not the external MST lot, private marina or Holly Point. Historical April23 wastewater event was at Holly Point; current recommendation makes no water-safety clearance and includes no reservoir contact. Visitor center access is not needed."
     }
   ],
   "official_hosts": [

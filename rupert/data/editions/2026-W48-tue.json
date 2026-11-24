@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "id": "2026-W48-tue",
+  "slot": "tuesday",
+  "status": "published",
+  "published_at": "2026-11-24T07:07:08-05:00",
+  "weekend": {
+    "start": "2026-11-28",
+    "end": "2026-11-29"
+  },
+  "flagship": {
+    "place_id": "falls-lake-rolling-view-track",
+    "title": "A little room by Falls Lake",
+    "standfirst": "An easy pine-wood loop at Rolling View, close enough for a modest outing after the holiday.",
+    "why_this_week": "Give the weekend a little breathing room without making it a long expedition. At Rolling View, the TRACK loop—also called Neuse Bend—passes through mixed pine woods along Falls Lake. Follow the short marked loop, let Rupert stop for a few leashed sniffs, and leave time for a packed snack in the picnic area. The official sources put the same loop at roughly six-tenths to three-quarters of a mile. This plan stays inside the day-use area; it does not extend onto the Mountains-to-Sea Trail, the marina or closed Holly Point. The dated forecast is sunny in the low 60s both days. Keep the outing in daylight; the Sunday-night shower chance is after this short walk’s window.",
+    "headline_condition": "Sunny outlook; choose daylight",
+    "condition_level": "normal",
+    "snapshot": {
+      "as_of": "2026-11-24",
+      "route": {
+        "route_id": "rolling-view-neuse-bend-loop@1",
+        "distance_mi": 0.75,
+        "shape": "loop",
+        "difficulty": "easy",
+        "surface": "Mixed-pine natural path along the lake; roots and wet leaves possible. Official trail table lists 0.75 mile; visitor guide calls the same loop 0.6 mile."
+      },
+      "access": {
+        "name": "Rolling View TRACK / Neuse Bend trailhead, signed day-use picnic parking",
+        "parking": "Enter Rolling View at 4201 Baptist Road and follow signs to the day-use picnic parking for TRACK / Neuse Bend. The partner trail map shows the start beside the picnic parking area, beside the lake. This is inside Rolling View, not the separate MST lot before the gate, private marina or Holly Point. November hours 8 a.m.–6 p.m."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          40,
+          60
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet. No pets on swim beaches or inside buildings.",
+        "water": "Carry drinking water and a bowl. Keep Rupert out of the reservoir; no swimming or paddling.",
+        "shade": "Mixed pine forest with open lake-edge sections.",
+        "watch_for": [
+          "Wet leaves and roots",
+          "Short daylight",
+          "Marked trail junctions; stay on TRACK loop"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "photo": {
+      "id": "atlas-plate-d848d6684522",
+      "alt": "Engraved print of Rupert resting on pine needles, mustard collar beneath a sparse pine branch."
+    },
+    "sources": [
+      {
+        "kind": "park",
+        "label": "Official access, hours and dog rules",
+        "url": "https://www.ncparks.gov/state-parks/falls-lake-state-recreation-area",
+        "retrieved": "2026-11-24"
+      },
+      {
+        "kind": "park",
+        "label": "Official trail information",
+        "url": "https://www.ncparks.gov/state-parks/falls-lake-state-recreation-area/trails",
+        "retrieved": "2026-11-24"
+      },
+      {
+        "kind": "park",
+        "label": "Official park map",
+        "url": "https://www.ncparks.gov/maps/falls-lake-state-recreation-area-rolling-view-access-map/open",
+        "retrieved": "2026-11-24"
+      },
+      {
+        "kind": "park",
+        "label": "Official park news and access notices",
+        "url": "https://www.ncparks.gov/state-parks/falls-lake-state-recreation-area/news",
+        "retrieved": "2026-11-24"
+      },
+      {
+        "kind": "forecast",
+        "label": "National Weather Service — dated weekend forecast",
+        "url": "https://api.weather.gov/gridpoints/RAH/70,67/forecast",
+        "retrieved": "2026-11-24"
+      },
+      {
+        "kind": "park",
+        "label": "Official visitor guide and TRACK route",
+        "url": "https://www.ncparks.gov/state-parks/falls-lake-state-recreation-area/plan-your-visit",
+        "retrieved": "2026-11-24"
+      }
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk",
+      "woodland",
+      "picnic"
+    ],
+    "experience_id": "rolling-view-track-neuse-bend",
+    "experience_basis": {
+      "activity_id": "leashed-pine-woods-walk",
+      "feature_id": "rolling-view-lake-edge",
+      "format_id": "short-track-loop-with-picnic"
+    },
+    "panels": [
+      {
+        "label": "The short loop, not the MST",
+        "text": "Look for the TRACK / Neuse Bend start beside day-use picnic parking. The official trail table lists a 0.75-mile easy loop; the visitor guide says 0.6 mile."
+      },
+      {
+        "label": "An open access, a separate closure",
+        "text": "Rolling View day use is open year-round. Holly Point construction is elsewhere. Keep Rupert out of the reservoir and off swim beaches."
+      }
+    ],
+    "qualities": {
+      "activity": "hike",
+      "expected_heat": "unknown"
+    },
+    "artwork": {
+      "image_id": "atlas-plate-d848d6684522",
+      "brief": "Restrained environmental print after direct review of Plates012–017 plus006: navy play bow, meadow stance, olive rear seat, slate sniffing walk, close cream portrait and burgundy ball trot. Recent run mixes modes with last two minimal. Resting curled dog from above, eyes up over forepaws, pine bark and needle bed in ochre/cream under forest-green negative space. Deliberate curved body, overhead viewpoint and textured near-field setting differ from long side-on waterside rest011, standing or moving profiles and front portraits. Match006 face and lean American Labrador anatomy with mustard collar and slim tapered tail. No destination claim or automatic mode rotation.",
+      "characters": [
+        "rupert"
+      ]
+    }
+  },
+  "local_trail": {
+    "place_id": "falls-lake-rolling-view-track",
+    "title": "A brief pine-wood pause",
+    "line": "Use the beginning of the marked loop and return if Rupert has had enough.",
+    "snapshot": {
+      "as_of": "2026-11-24",
+      "access": {
+        "name": "Rolling View TRACK / Neuse Bend trailhead, signed day-use picnic parking",
+        "parking": "Enter Rolling View at 4201 Baptist Road and follow signs to the day-use picnic parking for TRACK / Neuse Bend. The partner trail map shows the start beside the picnic parking area, beside the lake. This is inside Rolling View, not the separate MST lot before the gate, private marina or Holly Point. November hours 8 a.m.–6 p.m."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          40,
+          60
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.5
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet. No pets on swim beaches or inside buildings.",
+        "water": "Carry drinking water and a bowl. Keep Rupert out of the reservoir; no swimming or paddling.",
+        "shade": "Mixed pine forest with open lake-edge sections.",
+        "watch_for": [
+          "Wet leaves and roots",
+          "Short daylight",
+          "Marked trail junctions; stay on TRACK loop"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "away_mission": {
+    "place_id": "falls-lake-rolling-view-track",
+    "title": "The complete TRACK circuit",
+    "line": "Complete the short signed loop if footing and weather suit.",
+    "snapshot": {
+      "as_of": "2026-11-24",
+      "route": {
+        "route_id": "rolling-view-neuse-bend-loop@1",
+        "distance_mi": 0.75,
+        "shape": "loop",
+        "difficulty": "easy",
+        "surface": "Mixed-pine natural path along the lake; roots and wet leaves possible. Official trail table lists 0.75 mile; visitor guide calls the same loop 0.6 mile."
+      },
+      "access": {
+        "name": "Rolling View TRACK / Neuse Bend trailhead, signed day-use picnic parking",
+        "parking": "Enter Rolling View at 4201 Baptist Road and follow signs to the day-use picnic parking for TRACK / Neuse Bend. The partner trail map shows the start beside the picnic parking area, beside the lake. This is inside Rolling View, not the separate MST lot before the gate, private marina or Holly Point. November hours 8 a.m.–6 p.m."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          40,
+          60
+        ]
+      },
+      "duration_h": [
+        0.5,
+        1
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet. No pets on swim beaches or inside buildings.",
+        "water": "Carry drinking water and a bowl. Keep Rupert out of the reservoir; no swimming or paddling.",
+        "shade": "Mixed pine forest with open lake-edge sections.",
+        "watch_for": [
+          "Wet leaves and roots",
+          "Short daylight",
+          "Marked trail junctions; stay on TRACK loop"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "wildcard": {
+    "place_id": "falls-lake-rolling-view-track",
+    "title": "A packed snack by the lot",
+    "line": "Use the designated picnic area only in safe weather; it is not a storm shelter.",
+    "snapshot": {
+      "as_of": "2026-11-24",
+      "access": {
+        "name": "Rolling View TRACK / Neuse Bend trailhead, signed day-use picnic parking",
+        "parking": "Enter Rolling View at 4201 Baptist Road and follow signs to the day-use picnic parking for TRACK / Neuse Bend. The partner trail map shows the start beside the picnic parking area, beside the lake. This is inside Rolling View, not the separate MST lot before the gate, private marina or Holly Point. November hours 8 a.m.–6 p.m."
+      },
+      "drive": {
+        "from": "chapel-hill-public",
+        "minutes": [
+          40,
+          60
+        ]
+      },
+      "duration_h": [
+        0.25,
+        0.5
+      ],
+      "dog": {
+        "leash": "Attended leash no longer than six feet. No pets on swim beaches or inside buildings.",
+        "water": "Carry drinking water and a bowl. Keep Rupert out of the reservoir; no swimming or paddling.",
+        "shade": "Mixed pine forest with open lake-edge sections.",
+        "watch_for": [
+          "Wet leaves and roots",
+          "Short daylight",
+          "Marked trail junctions; stay on TRACK loop"
+        ]
+      },
+      "crowd": {
+        "typical_level": null,
+        "low_crowd_window": null,
+        "peak_period": null,
+        "weekend_vs_weekday": null,
+        "foot_traffic": null,
+        "dog_density": null,
+        "attendance": null,
+        "perceived_crowding": null
+      }
+    },
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "experiences": [
+      "short-walk"
+    ]
+  },
+  "mission": {
+    "text": "Let Rupert choose a few sniffing pauses without leaving the marked trail or disturbing wildlife.",
+    "tone": "explore"
+  },
+  "memory_prompt": {
+    "kind": "observation",
+    "text": "Which pine-wood scent or lake-edge view made Rupert slow down?"
+  },
+  "conditions": {
+    "kind": "forecast",
+    "as_of": "2026-11-24T06:20:01-05:00",
+    "checked_at": "2026-11-24T12:05:57.251Z",
+    "source": {
+      "label": "National Weather Service",
+      "url": "https://api.weather.gov/gridpoints/RAH/70,67/forecast",
+      "issued_at": "2026-11-24T11:20:01.000Z",
+      "retrieved_at": "2026-11-24T12:05:57.251Z"
+    },
+    "days": [
+      {
+        "day": "Saturday",
+        "forecast": "Sunny, with a high near 62."
+      },
+      {
+        "day": "Sunday",
+        "forecast": "Sunny, with a high near 64."
+      }
+    ],
+    "summary": "Saturday: Sunny, with a high near 62. Sunday: Sunny, with a high near 64. Saturday night: Partly cloudy, with a low around 36. Sunday night: A chance of rain showers after 7pm. Partly cloudy, with a low around 41. Chance of precipitation is 30%.",
+    "alerts": [],
+    "alerts_checked_at": "2026-11-24T12:05:57.251Z",
+    "pivot": {
+      "if": "Thunder, heavy rain, unsafe footing, high water, strong wind or official closure",
+      "note": "Postpone and recheck the official status and forecast. No exposed outdoor storm alternative."
+    },
+    "trail_note": "Wet leaves can hide roots even during sunny weather. Stay on the marked TRACK loop, turn back for unsafe footing and keep Rupert out of the reservoir and off swim beaches."
+  },
+  "practical": {
+    "best_window": "Late morning or early afternoon Saturday or Sunday, after checking current park status and NWS. Allow 30–60 minutes plus any picnic pause and return before dusk. The dated shower chance is Sunday night after 7 p.m.; do not plan an evening extension.",
+    "fees": "No vehicle entrance fee in November under the published seasonal schedule; reservations and private-marina services are separate.",
+    "bring": [
+      "Water and bowl",
+      "Six-foot leash and waste bags",
+      "Traction shoes",
+      "Official map offline"
+    ],
+    "closures_checked": "2026-11-24",
+    "closures_note": "Re-fetched current official home, trails and news pages unchanged. Rolling View day use is open year-round; current notice says Holly Point construction is separate and other areas operating normally. November gate8 a.m.–6 p.m., no November vehicle entrance fee under seasonal schedule. Six-foot attended leash, no pets swim beaches or indoors. Official trail table names blue-circle Rolling View K.I.P. TRACK loop0.75 mile; visitor guide calls Neuse Bend0.6 mile; itinerary clearly says approximate0.6–0.75 mile and stays on named loop. Official access map and partner TRACK map reviewed for signed picnic parking and trailhead. Partner map coordinates36°1′1.19″N,78°43′50.41″W converted to36.0169972,-78.7306694 are verified public trailhead used for NWS. Enter4201 Baptist Road, follow signed day use; not the external MST lot, private marina or Holly Point. Historical April23 wastewater event was at Holly Point; current recommendation makes no water-safety clearance and includes no reservoir contact. Visitor center access is not needed."
+  }
+}

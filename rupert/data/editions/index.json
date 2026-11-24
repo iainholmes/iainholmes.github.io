@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_by": "rupert/_tools/rupert.mjs",
-  "revision": "5b3a0b2455335318",
+  "revision": "ea662801e10a8682",
   "editions": [
     {
       "id": "2026-W40-tue",
@@ -854,6 +854,57 @@
       ],
       "photo_id": "atlas-plate-1c2beec3c62d",
       "path": "data/editions/2026-W47-thu.json"
+    },
+    {
+      "id": "2026-W48-tue",
+      "slot": "tuesday",
+      "status": "published",
+      "published_at": "2026-11-24T07:07:08-05:00",
+      "weekend": {
+        "start": "2026-11-28",
+        "end": "2026-11-29"
+      },
+      "title": "A little room by Falls Lake",
+      "place_id": "falls-lake-rolling-view-track",
+      "experience_key": "rolling-view-track-neuse-bend",
+      "options": [
+        {
+          "role": "flagship",
+          "title": "A little room by Falls Lake",
+          "place_id": "falls-lake-rolling-view-track",
+          "seasons": [
+            "spring",
+            "autumn",
+            "winter"
+          ],
+          "experiences": [
+            "short-walk",
+            "woodland",
+            "picnic"
+          ],
+          "crowd": {
+            "typical_level": null,
+            "low_crowd_window": null,
+            "peak_period": null,
+            "weekend_vs_weekday": null,
+            "foot_traffic": null,
+            "dog_density": null,
+            "attendance": null,
+            "perceived_crowding": null
+          }
+        }
+      ],
+      "place_ids": [
+        "falls-lake-rolling-view-track"
+      ],
+      "place_roles": [
+        {
+          "place_id": "falls-lake-rolling-view-track",
+          "role": "flagship"
+        }
+      ],
+      "photo_id": "atlas-plate-d848d6684522",
+      "path": "data/editions/2026-W48-tue.json"
     }
   ]
 }

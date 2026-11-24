@@ -461,6 +461,32 @@
         "composition_key": "rightward-trot-ball-burgundy-leaves-20261119"
       },
       "plate_no": 17
+    },
+    {
+      "id": "atlas-plate-d848d6684522",
+      "file": "atlas-plate-d848d6684522",
+      "kind": "plate",
+      "provenance": "editorial",
+      "width": 1122,
+      "height": 1402,
+      "widths": [
+        800,
+        1122
+      ],
+      "alt": "Engraved print of Rupert resting on pine needles, mustard collar beneath a sparse pine branch.",
+      "focal": [
+        0.5,
+        0.5
+      ],
+      "caption": "TRA Plate No. 018",
+      "source_note": "Original native ChatGPT editorial illustration generated and visually reviewed 24 November 2026; independent of destination.",
+      "generation": {
+        "owner": "2026-W48-tue/flagship",
+        "created_at": "2026-11-24",
+        "style_version": "atlas-engraved-3",
+        "composition_key": "curled-overhead-pine-bed-forest-20261124"
+      },
+      "plate_no": 18
     }
   ]
 }

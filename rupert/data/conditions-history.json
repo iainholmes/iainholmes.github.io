@@ -647,6 +647,49 @@
       ],
       "headline_condition": "Check the dated weekend forecast",
       "condition_level": "normal"
+    },
+    {
+      "edition_id": "2026-W48-tue",
+      "replaced_at": "2026-11-24T12:05:57.251Z",
+      "conditions": {
+        "kind": "forecast",
+        "as_of": "2026-11-24T06:20:01-05:00",
+        "checked_at": "2026-11-24T12:03:30.293Z",
+        "source": {
+          "label": "National Weather Service",
+          "url": "https://api.weather.gov/gridpoints/RAH/70,67/forecast",
+          "issued_at": "2026-11-24T11:20:01.000Z",
+          "retrieved_at": "2026-11-24T12:03:30.293Z"
+        },
+        "days": [
+          {
+            "day": "Saturday",
+            "forecast": "Sunny, with a high near 62."
+          },
+          {
+            "day": "Sunday",
+            "forecast": "Sunny, with a high near 64."
+          }
+        ],
+        "summary": "Saturday: Sunny, with a high near 62. Sunday: Sunny, with a high near 64. Saturday night: Partly cloudy, with a low around 36. Sunday night: A chance of rain showers after 7pm. Partly cloudy, with a low around 41. Chance of precipitation is 30%.",
+        "alerts": [],
+        "alerts_checked_at": "2026-11-24T12:03:30.293Z",
+        "pivot": {
+          "if": "Thunder, heavy rain, unsafe footing, high water, strong wind or official closure",
+          "note": "Postpone and recheck the official status and forecast. No exposed outdoor storm alternative."
+        },
+        "trail_note": "Stay on marked paths and keep Rupert out of the water."
+      },
+      "forecast_sources": [
+        {
+          "kind": "forecast",
+          "label": "National Weather Service — dated weekend forecast",
+          "url": "https://api.weather.gov/gridpoints/RAH/70,67/forecast",
+          "retrieved": "2026-11-24"
+        }
+      ],
+      "headline_condition": "Check the dated weekend forecast",
+      "condition_level": "normal"
     }
   ]
 }
