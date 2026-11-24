@@ -2541,5 +2541,51 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 055: Credit policy / disclosure\"><title>Field Brief · 055 · Credit policy / disclosure</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M15 70V22H78V70H50\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><circle cx=\"50\" cy=\"70\" r=\"19\" fill=\"#8a2a36\"/><path d=\"M50 45V12M34 28L50 12L66 28\" fill=\"none\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M8 8H92V92H8Z\" fill=\"#221a14\"/><path d=\"M22 25H78M22 45H78M22 65H48\" stroke=\"#f1e6d0\" stroke-width=\"7\"/><path d=\"M60 64H96V96H60Z\" fill=\"#8a2a36\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 055 / 2026-11-22</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Credit policy / disclosure</text></g></svg>"
+  },
+  "fb:2026-11-24": {
+    "key": "fb",
+    "date": "2026-11-24",
+    "no": "057",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "The Justice Department moves a defined pool of assets from restraint toward forfeiture after the Binance theft. U.S. business activity remains expansive but cools, a court permits an emergency lead-azide detonation, the White House orders faster pursuit of federal capital cases, and a North Carolina recount helps set the next House majority. Five developments with separate institutional tests These developments do not form one story. The cryptocurrency case concerns asset recovery after a cyber theft; the PMI is preliminary evidence about growth and prices; the Iowa ruling permits an emergency hazardous-waste operation; the capital-punishment memorandum changes executive enforcement priorities; and the North Carolina recount helps determine congressional control. Each carries a distinct verification test: a forfeiture judgment and returned assets, subsequent official economic data, measured environmental exposure after the detonation, case-level implementation within judicial safeguards, and certified election results followed by the actual conduct of divided government.",
+    "version": 6,
+    "subject": "enforcement",
+    "composition": "spread-long-section-review-docket-idle-stock",
+    "signature": "issue:spread-long-section-review-docket-idle-stock",
+    "phrase": "Cyber recovery / idle capital",
+    "seed": 2919798991,
+    "geometry": "<g transform=\"translate(70 110) scale(1.75)\"><path d=\"M13 3H70L92 25V97H13Z\" fill=\"$ink\"/><path d=\"M28 35H76M28 54H76M28 73H55\" stroke=\"$paper\" stroke-width=\"7\"/><path d=\"M62 79L73 90L94 64\" fill=\"none\" stroke=\"$accent\" stroke-width=\"9\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M8 30H92V90H8Z\" fill=\"$ink\"/><path d=\"M20 42H80M20 56H80M20 70H80\" stroke=\"$paper\" stroke-width=\"5\"/><path d=\"M40 5H60V25H40Z\" fill=\"$accent\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "03",
+          "04"
+        ],
+        "score": 4
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 56,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 057: Cyber recovery / idle capital\"><title>Field Brief · 057 · Cyber recovery / idle capital</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><path d=\"M13 3H70L92 25V97H13Z\" fill=\"#221a14\"/><path d=\"M28 35H76M28 54H76M28 73H55\" stroke=\"#f1e6d0\" stroke-width=\"7\"/><path d=\"M62 79L73 90L94 64\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"9\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M8 30H92V90H8Z\" fill=\"#221a14\"/><path d=\"M20 42H80M20 56H80M20 70H80\" stroke=\"#f1e6d0\" stroke-width=\"5\"/><path d=\"M40 5H60V25H40Z\" fill=\"#8a2a36\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 057 / 2026-11-24</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Cyber recovery / idle capital</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

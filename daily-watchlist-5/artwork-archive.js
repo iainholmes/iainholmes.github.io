@@ -3270,6 +3270,68 @@
         "seed": 3605493646,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A fish swims above coastal habitat beside a rule still under review\"><title>NC commission advances a bonito bag limit and coastal-habitat review</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-22-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-22-05)\"><path d=\"M75 250Q210 100 350 250Q210 400 75 250ZM350 250L415 180V320Z\" fill=\"#1b4a6b\"/><circle cx=\"140\" cy=\"230\" r=\"13\" fill=\"#f4ead7\"/><path d=\"M200 180L245 225M200 230L245 275M200 280L230 310\" stroke=\"#2c241d\" stroke-width=\"10\"/><path d=\"M70 510Q155 455 240 510T410 510\" fill=\"none\" stroke=\"#7c5a3e\" stroke-width=\"25\"/><path d=\"M140 505Q105 445 150 405M240 505Q280 440 235 395M335 505V420\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"19\"/><path d=\"M495 110H715V525H495Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M535 185H675M535 250H675\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><circle cx=\"605\" cy=\"390\" r=\"64\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"20\"/><path d=\"M605 350V390L640 415\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"15\"/></g></svg>"
       }
+    },
+    "2026-11-24": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-24",
+        "number": "01",
+        "category": "Technology · cryptocurrency security",
+        "topic": "finance",
+        "title": "Justice Department seeks forfeiture of $1.1 billion from the Binance theft",
+        "composition": "crypto-forfeiture-ledger",
+        "signature": "plate:crypto-forfeiture-ledger",
+        "seed": 208666179,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Traced cryptocurrency transfers converge on a civil-forfeiture ledger\"><title>Justice Department seeks forfeiture of $1.1 billion from the Binance theft</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-24-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-24-01)\"><g fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"24\"><path d=\"M90 155L285 270L90 470\"/><path d=\"M285 270L470 165M285 270L470 390\"/></g><g fill=\"#c98a12\" stroke=\"#2c241d\" stroke-width=\"9\"><circle cx=\"90\" cy=\"155\" r=\"48\"/><circle cx=\"90\" cy=\"470\" r=\"48\"/><circle cx=\"285\" cy=\"270\" r=\"58\"/><circle cx=\"470\" cy=\"165\" r=\"48\"/></g><path d=\"M515 105H720V525H515Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M555 180H680M555 245H680M555 310H650\" stroke=\"#7c5a3e\" stroke-width=\"18\"/><circle cx=\"618\" cy=\"420\" r=\"62\" fill=\"#7a1f33\"/><path d=\"M582 420L607 445L655 388\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M470 390H515\" stroke=\"#c4452c\" stroke-width=\"27\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-24",
+        "number": "02",
+        "category": "Economy · business activity",
+        "topic": "labor",
+        "title": "U.S. business growth cools while price pressure remains elevated",
+        "composition": "business-activity-gauges",
+        "signature": "plate:business-activity-gauges",
+        "seed": 2782689064,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Business output and price gauges move at different rates\"><title>U.S. business growth cools while price pressure remains elevated</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-24-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-24-02)\"><path d=\"M85 135H355V515H85Z\" fill=\"#1b4a6b\"/><path d=\"M445 135H715V515H445Z\" fill=\"#7a1f33\"/><path d=\"M135 430A85 85 0 0 1 305 430M495 430A85 85 0 0 1 665 430\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"25\"/><path d=\"M220 430L270 355M580 430L545 335\" stroke=\"#c98a12\" stroke-width=\"20\"/><circle cx=\"220\" cy=\"430\" r=\"20\" fill=\"#2c241d\"/><circle cx=\"580\" cy=\"430\" r=\"20\" fill=\"#2c241d\"/><path d=\"M130 205H310M490 205H670\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M175 260H265M535 260H625\" stroke=\"#2c241d\" stroke-width=\"16\"/><path d=\"M355 320H445\" stroke=\"#7c5a3e\" stroke-width=\"18\" stroke-dasharray=\"18 13\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-24",
+        "number": "03",
+        "category": "Environment · hazardous waste",
+        "topic": "climate",
+        "title": "Appeals court allows the Army's planned Iowa lead-azide detonation",
+        "composition": "lead-azide-exclusion",
+        "signature": "plate:lead-azide-exclusion",
+        "seed": 2722757236,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Lead-azide drums sit inside an exclusion ring with monitoring stations\"><title>Appeals court allows the Army&#39;s planned Iowa lead-azide detonation</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-24-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-24-03)\"><circle cx=\"350\" cy=\"320\" r=\"220\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"26\" stroke-dasharray=\"34 18\"/><g fill=\"#7c5a3e\" stroke=\"#2c241d\" stroke-width=\"12\"><path d=\"M235 220H315V420H235Z\"/><path d=\"M325 220H405V420H325Z\"/><path d=\"M415 220H495V420H415Z\"/></g><path d=\"M240 265H310M240 345H310M330 265H400M330 345H400M420 265H490M420 345H490\" stroke=\"#f4ead7\" stroke-width=\"12\"/><path d=\"M350 145L318 205H382Z\" fill=\"#c98a12\"/><path d=\"M590 150V500M550 185H630M550 465H630\" stroke=\"#1b4a6b\" stroke-width=\"23\"/><circle cx=\"590\" cy=\"325\" r=\"40\" fill=\"#1d5f47\"/><path d=\"M590 285V365M550 325H630\" stroke=\"#f4ead7\" stroke-width=\"13\"/><path d=\"M675 115V520\" stroke=\"#2c241d\" stroke-width=\"15\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-24",
+        "number": "04",
+        "category": "U.S. policy · criminal justice",
+        "topic": "government",
+        "title": "White House orders faster pursuit and enforcement of federal death sentences",
+        "composition": "capital-case-clock",
+        "signature": "plate:capital-case-clock",
+        "seed": 2875420235,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A federal capital-case docket moves toward a clocked judicial review\"><title>White House orders faster pursuit and enforcement of federal death sentences</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-24-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-24-04)\"><path d=\"M80 105H360V525H80Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M125 180H315M125 250H315M125 320H275\" stroke=\"#1b4a6b\" stroke-width=\"19\"/><path d=\"M125 410H300\" stroke=\"#7a1f33\" stroke-width=\"28\"/><path d=\"M360 300H455\" stroke=\"#c98a12\" stroke-width=\"27\"/><circle cx=\"575\" cy=\"300\" r=\"145\" fill=\"#2c241d\"/><circle cx=\"575\" cy=\"300\" r=\"108\" fill=\"#f4ead7\"/><path d=\"M575 215V300L640 345\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/><path d=\"M490 500H705\" stroke=\"#7c5a3e\" stroke-width=\"25\"/><path d=\"M545 500V420H605V500\" fill=\"#1d5f47\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-24",
+        "number": "05",
+        "category": "North Carolina · elections",
+        "topic": "government",
+        "title": "North Carolina recount gives Democrats their largest House majority since 1992",
+        "composition": "north-carolina-recount",
+        "signature": "plate:north-carolina-recount",
+        "seed": 704369137,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"North Carolina ballots pass through a recount and resolve into a House majority\"><title>North Carolina recount gives Democrats their largest House majority since 1992</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-24-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-24-05)\"><path d=\"M70 120H290V520H70Z\" fill=\"#1b4a6b\"/><path d=\"M105 190H255M105 260H255M105 330H215\" stroke=\"#f4ead7\" stroke-width=\"19\"/><path d=\"M325 180H510V460H325Z\" fill=\"#2c241d\"/><path d=\"M355 230H480M355 295H480M355 360H450\" stroke=\"#c98a12\" stroke-width=\"17\"/><path d=\"M180 520V565H415V460\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/><path d=\"M565 170H720V520H565Z\" fill=\"#7a1f33\"/><path d=\"M595 230H690M595 295H690M595 360H690M595 425H690\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M510 320H565\" stroke=\"#1d5f47\" stroke-width=\"29\"/><circle cx=\"417\" cy=\"130\" r=\"50\" fill=\"#c98a12\"/><path d=\"M395 130L412 147L444 110\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"14\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
