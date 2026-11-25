@@ -3332,6 +3332,68 @@
         "seed": 704369137,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"North Carolina ballots pass through a recount and resolve into a House majority\"><title>North Carolina recount gives Democrats their largest House majority since 1992</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-24-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-24-05)\"><path d=\"M70 120H290V520H70Z\" fill=\"#1b4a6b\"/><path d=\"M105 190H255M105 260H255M105 330H215\" stroke=\"#f4ead7\" stroke-width=\"19\"/><path d=\"M325 180H510V460H325Z\" fill=\"#2c241d\"/><path d=\"M355 230H480M355 295H480M355 360H450\" stroke=\"#c98a12\" stroke-width=\"17\"/><path d=\"M180 520V565H415V460\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"24\"/><path d=\"M565 170H720V520H565Z\" fill=\"#7a1f33\"/><path d=\"M595 230H690M595 295H690M595 360H690M595 425H690\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M510 320H565\" stroke=\"#1d5f47\" stroke-width=\"29\"/><circle cx=\"417\" cy=\"130\" r=\"50\" fill=\"#c98a12\"/><path d=\"M395 130L412 147L444 110\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"14\"/></g></svg>"
       }
+    },
+    "2026-11-25": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-25",
+        "number": "01",
+        "category": "Technology · cybersecurity consolidation",
+        "topic": "infrastructure",
+        "title": "CrowdStrike agrees to acquire Zscaler for $43.9 billion",
+        "composition": "cyber-platform-merger",
+        "signature": "plate:cyber-platform-merger",
+        "seed": 3619265693,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Endpoint and zero-trust security platforms join through a shared inspection core\"><title>CrowdStrike agrees to acquire Zscaler for $43.9 billion</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-25-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-25-01)\"><path d=\"M70 130H285V510H70Z\" fill=\"#2c241d\"/><path d=\"M105 190H250M105 265H250M105 340H250M105 415H220\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M515 130H730V510H515Z\" fill=\"#1b4a6b\"/><path d=\"M550 190H695M550 265H695M550 340H695M550 415H665\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M285 245H350M450 245H515M285 395H350M450 395H515\" stroke=\"#c98a12\" stroke-width=\"26\"/><path d=\"M350 200L400 165L450 200V365Q400 425 350 365Z\" fill=\"#7a1f33\"/><path d=\"M378 285L397 304L431 255\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"19\"/><circle cx=\"400\" cy=\"475\" r=\"55\" fill=\"#1d5f47\"/><path d=\"M400 420V365\" stroke=\"#c4452c\" stroke-width=\"21\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-25",
+        "number": "02",
+        "category": "Technology · biotechnology and health",
+        "topic": "research",
+        "title": "FDA approves the first new early-stage breast-cancer hormone therapy in two decades",
+        "composition": "breast-cancer-endocrine",
+        "signature": "plate:breast-cancer-endocrine",
+        "seed": 2494909360,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An oral endocrine therapy enters an early-stage breast-cancer recurrence pathway\"><title>FDA approves the first new early-stage breast-cancer hormone therapy in two decades</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-25-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-25-02)\"><circle cx=\"165\" cy=\"310\" r=\"105\" fill=\"#7a1f33\"/><circle cx=\"165\" cy=\"310\" r=\"47\" fill=\"#f4ead7\"/><path d=\"M165 205V125M95 240L55 190M235 240L275 190M95 380L55 430M235 380L275 430\" stroke=\"#c98a12\" stroke-width=\"20\"/><path d=\"M270 310H380\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M380 135H555V485H380Z\" fill=\"#2c241d\"/><path d=\"M420 205H515M420 275H515M420 345H515\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M555 310H650\" stroke=\"#1d5f47\" stroke-width=\"30\"/><circle cx=\"690\" cy=\"310\" r=\"62\" fill=\"#1b4a6b\"/><path d=\"M650 310H730M690 270V350\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M405 535H530\" stroke=\"#7c5a3e\" stroke-width=\"20\"/><path d=\"M430 515V555M505 515V555\" stroke=\"#7c5a3e\" stroke-width=\"15\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-25",
+        "number": "03",
+        "category": "U.S. policy · digital consumer protection",
+        "topic": "government",
+        "title": "FTC settlement would return $100 million to SHEIN customers",
+        "composition": "ecommerce-redress-order",
+        "signature": "plate:ecommerce-redress-order",
+        "seed": 3876858230,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"An online order and review record pass through a court-approved consumer-redress return\"><title>FTC settlement would return $100 million to SHEIN customers</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-25-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-25-03)\"><path d=\"M70 105H310V365H70Z\" fill=\"#1b4a6b\"/><path d=\"M105 155H275M105 220H275M105 285H235\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M335 150H540V490H335Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M375 215H500M375 280H500M375 345H465\" stroke=\"#7c5a3e\" stroke-width=\"18\"/><path d=\"M310 250H335\" stroke=\"#c4452c\" stroke-width=\"25\"/><path d=\"M540 320H690V500H540Z\" fill=\"#7a1f33\"/><path d=\"M575 370H655M575 430H655\" stroke=\"#f4ead7\" stroke-width=\"19\"/><path d=\"M690 410H735V555H180V395\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"28\"/><path d=\"M145 425L180 390L215 425\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"19\"/><circle cx=\"630\" cy=\"155\" r=\"70\" fill=\"#1d5f47\"/><path d=\"M590 155H670M630 115V195\" stroke=\"#f4ead7\" stroke-width=\"18\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-25",
+        "number": "04",
+        "category": "Environment · nuclear fuel and legacy materials",
+        "topic": "energy",
+        "title": "Savannah River advances a domestic fuel supply for next-generation reactors",
+        "composition": "haleu-fuel-recovery",
+        "signature": "plate:haleu-fuel-recovery",
+        "seed": 57205327,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Used research-reactor fuel moves through recovery toward safeguarded advanced-reactor fuel\"><title>Savannah River advances a domestic fuel supply for next-generation reactors</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-25-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-25-04)\"><path d=\"M70 135H255V500H70Z\" fill=\"#1b4a6b\"/><path d=\"M105 190H220M105 265H220M105 340H220M105 415H220\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M255 315H350\" stroke=\"#c98a12\" stroke-width=\"30\"/><path d=\"M350 115H545V515H350Z\" fill=\"#2c241d\"/><path d=\"M390 185H505M390 260H505M390 335H505M390 410H505\" stroke=\"#f4ead7\" stroke-width=\"20\"/><circle cx=\"447\" cy=\"315\" r=\"65\" fill=\"#1d5f47\"/><path d=\"M545 315H625\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M625 175Q690 145 735 185V480Q690 515 625 480Z\" fill=\"#7c5a3e\"/><ellipse cx=\"680\" cy=\"185\" rx=\"55\" ry=\"22\" fill=\"#c98a12\"/><path d=\"M680 245V420M640 330H720\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M385 75H510\" stroke=\"#7a1f33\" stroke-width=\"19\" stroke-dasharray=\"22 14\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-25",
+        "number": "05",
+        "category": "North Carolina · infrastructure and labor",
+        "topic": "labor",
+        "title": "North Carolina backs a 262-job infrastructure-engineering hub in Charlotte",
+        "composition": "nc-engineering-hub",
+        "signature": "plate:nc-engineering-hub",
+        "seed": 1201469721,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A Charlotte engineering hub connects skilled jobs to aviation and transportation infrastructure\"><title>North Carolina backs a 262-job infrastructure-engineering hub in Charlotte</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-25-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-25-05)\"><path d=\"M75 160H325V520H75Z\" fill=\"#1b4a6b\"/><path d=\"M115 225H285M115 300H285M115 375H245\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M325 340H430V205H525M430 340V480H525\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"27\"/><circle cx=\"430\" cy=\"340\" r=\"50\" fill=\"#c98a12\"/><path d=\"M555 105H720V280H555Z\" fill=\"#1d5f47\"/><path d=\"M590 150H685M590 215H685\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M555 405H720V535H555Z\" fill=\"#7a1f33\"/><path d=\"M590 470H685\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M525 205H555M525 480H555\" stroke=\"#c4452c\" stroke-width=\"25\"/><circle cx=\"200\" cy=\"105\" r=\"42\" fill=\"#7c5a3e\"/><path d=\"M175 105H225M200 80V130\" stroke=\"#f4ead7\" stroke-width=\"13\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

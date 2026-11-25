@@ -2587,5 +2587,50 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 057: Cyber recovery / idle capital\"><title>Field Brief · 057 · Cyber recovery / idle capital</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><path d=\"M13 3H70L92 25V97H13Z\" fill=\"#221a14\"/><path d=\"M28 35H76M28 54H76M28 73H55\" stroke=\"#f1e6d0\" stroke-width=\"7\"/><path d=\"M62 79L73 90L94 64\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"9\"/></g><g transform=\"translate(265 270) scale(2.75)\"><path d=\"M8 30H92V90H8Z\" fill=\"#221a14\"/><path d=\"M20 42H80M20 56H80M20 70H80\" stroke=\"#f1e6d0\" stroke-width=\"5\"/><path d=\"M40 5H60V25H40Z\" fill=\"#8a2a36\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 057 / 2026-11-24</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Cyber recovery / idle capital</text></g></svg>"
+  },
+  "fb:2026-11-25": {
+    "key": "fb",
+    "date": "2026-11-25",
+    "no": "058",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "CrowdStrike proposes a $43.9 billion cybersecurity combination. FDA approves a new early-stage breast-cancer hormone therapy, the FTC files a $100 million SHEIN settlement, Savannah River advances domestic advanced-reactor fuel, and North Carolina backs a high-wage engineering hub in Charlotte. Five developments with distinct tests of delivery The five stories do not share a single policy direction. Each instead has a different next test: regulatory and shareholder review for the cybersecurity merger; mature survival, safety and access evidence for the cancer therapy; court approval and actual consumer redress in the SHEIN case; delivered fuel under safeguards and cost control at Savannah River; and verified jobs and wages in Charlotte. Across those separate records, announced scale is not the same as completed public value. The useful evidence will arrive through approvals, implementation data and independently verifiable outcomes rather than through the initial headline alone.",
+    "version": 6,
+    "subject": "enforcement",
+    "composition": "study-broad-and-narrow-threshold-gate-hiring-cohorts-sampling-window",
+    "signature": "issue:study-broad-and-narrow-threshold-gate-hiring-cohorts-sampling-window",
+    "phrase": "Cybersecurity / unequal capacity",
+    "seed": 2592796684,
+    "geometry": "<g transform=\"translate(75 100) scale(2.45)\"><path d=\"M12 90V10H88V90M50 10V55\" fill=\"none\" stroke=\"$ink\" stroke-width=\"8\"/><path d=\"M5 70H40M60 70H95\" stroke=\"$accent\" stroke-width=\"8\"/></g><g transform=\"translate(360 130) scale(1.7)\"><path d=\"M3 94V8H24V94M40 94V38H61V94M77 94V68H98V94\" fill=\"$accent\"/><path d=\"M2 98H99\" stroke=\"$ink\" stroke-width=\"6\"/></g><g transform=\"translate(350 355) scale(1.45)\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><path d=\"M12 50H50V12\" fill=\"none\" stroke=\"$accent\" stroke-width=\"8\"/><circle cx=\"66\" cy=\"66\" r=\"9\" fill=\"$support\"/></g><path d=\"M75 495H525M330 130V455\" stroke=\"$support\" stroke-width=\"6\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "enforcement",
+        "storyNumbers": [],
+        "score": 14
+      },
+      {
+        "concept": "labor",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "05"
+        ],
+        "score": 1
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 57,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 058: Cybersecurity / unequal capacity\"><title>Field Brief · 058 · Cybersecurity / unequal capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(75 100) scale(2.45)\"><path d=\"M12 90V10H88V90M50 10V55\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"8\"/><path d=\"M5 70H40M60 70H95\" stroke=\"#8a2a36\" stroke-width=\"8\"/></g><g transform=\"translate(360 130) scale(1.7)\"><path d=\"M3 94V8H24V94M40 94V38H61V94M77 94V68H98V94\" fill=\"#8a2a36\"/><path d=\"M2 98H99\" stroke=\"#221a14\" stroke-width=\"6\"/></g><g transform=\"translate(350 355) scale(1.45)\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M12 50H50V12\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"8\"/><circle cx=\"66\" cy=\"66\" r=\"9\" fill=\"#c5ad88\"/></g><path d=\"M75 495H525M330 130V455\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 058 / 2026-11-25</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Cybersecurity / unequal capacity</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
