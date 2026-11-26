@@ -2632,5 +2632,47 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 058: Cybersecurity / unequal capacity\"><title>Field Brief · 058 · Cybersecurity / unequal capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(75 100) scale(2.45)\"><path d=\"M12 90V10H88V90M50 10V55\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"8\"/><path d=\"M5 70H40M60 70H95\" stroke=\"#8a2a36\" stroke-width=\"8\"/></g><g transform=\"translate(360 130) scale(1.7)\"><path d=\"M3 94V8H24V94M40 94V38H61V94M77 94V68H98V94\" fill=\"#8a2a36\"/><path d=\"M2 98H99\" stroke=\"#221a14\" stroke-width=\"6\"/></g><g transform=\"translate(350 355) scale(1.45)\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M12 50H50V12\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"8\"/><circle cx=\"66\" cy=\"66\" r=\"9\" fill=\"#c5ad88\"/></g><path d=\"M75 495H525M330 130V455\" stroke=\"#c5ad88\" stroke-width=\"6\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 058 / 2026-11-25</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Cybersecurity / unequal capacity</text></g></svg>"
+  },
+  "fb:2026-11-26": {
+    "key": "fb",
+    "date": "2026-11-26",
+    "no": "059",
+    "identity": "Field Brief",
+    "theme": "institutions",
+    "framing": "USTR proposes new tariffs after Section 301 findings against 14 economies. U.S. growth is revised sharply higher while inflation remains elevated, a jury convicts Huawei and three subsidiaries, the Justice Department clarifies drone-detection law, and North Carolina creates a six-month Medicaid work-rule grace period. Five developments, five implementation tests The developments have different objects and institutions. The tariff proposals face public comment, negotiation and possible legal challenge; the economic data will be tested against later revisions and the Federal Reserve's December decision; Huawei's verdict moves toward sentencing and potential appeal; drone guidance will be tested in agency procurement and litigation; and North Carolina's Medicaid transition will be measured by coverage continuity after the grace period. The common editorial discipline is narrower than a unifying thesis: distinguish a proposal from an imposed tariff, a revised estimate from a forecast, a verdict from a final sentence, legal guidance from unlimited authority, and a temporary grace period from repeal of the underlying rule.",
+    "version": 6,
+    "subject": "evidence",
+    "composition": "spread-unequal-dialogue-measured-range-shared-load",
+    "signature": "issue:spread-unequal-dialogue-measured-range-shared-load",
+    "phrase": "Trade measures / shared capacity",
+    "seed": 3271269435,
+    "geometry": "<g transform=\"translate(65 115) scale(3.15)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"$ink\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"$accent\"/><path d=\"M50 6V30M50 70V94\" stroke=\"$support\" stroke-width=\"7\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"$ink\"/><path d=\"M43 35H57V60H43Z\" fill=\"$accent\"/><path d=\"M65 89H94\" stroke=\"$support\" stroke-width=\"9\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "02"
+        ],
+        "score": 15
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [
+          "03"
+        ],
+        "score": 1
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 58,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 059: Trade measures / shared capacity\"><title>Field Brief · 059 · Trade measures / shared capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"#8a2a36\"/><path d=\"M50 6V30M50 70V94\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"#221a14\"/><path d=\"M43 35H57V60H43Z\" fill=\"#8a2a36\"/><path d=\"M65 89H94\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 059 / 2026-11-26</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Trade measures / shared capacity</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

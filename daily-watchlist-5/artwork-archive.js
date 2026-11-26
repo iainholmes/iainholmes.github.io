@@ -3394,6 +3394,68 @@
         "seed": 1201469721,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A Charlotte engineering hub connects skilled jobs to aviation and transportation infrastructure\"><title>North Carolina backs a 262-job infrastructure-engineering hub in Charlotte</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-25-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-25-05)\"><path d=\"M75 160H325V520H75Z\" fill=\"#1b4a6b\"/><path d=\"M115 225H285M115 300H285M115 375H245\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M325 340H430V205H525M430 340V480H525\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"27\"/><circle cx=\"430\" cy=\"340\" r=\"50\" fill=\"#c98a12\"/><path d=\"M555 105H720V280H555Z\" fill=\"#1d5f47\"/><path d=\"M590 150H685M590 215H685\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M555 405H720V535H555Z\" fill=\"#7a1f33\"/><path d=\"M590 470H685\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M525 205H555M525 480H555\" stroke=\"#c4452c\" stroke-width=\"25\"/><circle cx=\"200\" cy=\"105\" r=\"42\" fill=\"#7c5a3e\"/><path d=\"M175 105H225M200 80V130\" stroke=\"#f4ead7\" stroke-width=\"13\"/></g></svg>"
       }
+    },
+    "2026-11-26": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-26",
+        "number": "01",
+        "category": "U.S. policy · trade and manufacturing",
+        "topic": "government",
+        "title": "USTR proposes new tariffs after Section 301 findings against 14 economies",
+        "composition": "section-301-manufacturing-gates",
+        "signature": "plate:section-301-manufacturing-gates",
+        "seed": 2825581378,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Fourteen manufacturing lanes pass through proposed Section 301 tariff gates\"><title>USTR proposes new tariffs after Section 301 findings against 14 economies</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-26-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-26-01)\"><path d=\"M65 145H260V500H65Z\" fill=\"#1b4a6b\"/><path d=\"M100 205H225M100 275H225M100 345H225M100 415H225\" stroke=\"#f4ead7\" stroke-width=\"19\"/><path d=\"M260 320H365\" stroke=\"#c98a12\" stroke-width=\"30\"/><path d=\"M365 105V535M430 105V535\" stroke=\"#2c241d\" stroke-width=\"24\"/><path d=\"M365 175H430M365 280H430M365 385H430\" stroke=\"#7a1f33\" stroke-width=\"22\"/><path d=\"M430 320H530\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M530 155L610 110L690 155V505H530Z\" fill=\"#1d5f47\"/><path d=\"M565 225H655M565 300H655M565 375H655M565 450H625\" stroke=\"#f4ead7\" stroke-width=\"18\"/><circle cx=\"397\" cy=\"75\" r=\"35\" fill=\"#c98a12\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-26",
+        "number": "02",
+        "category": "Economy · growth and prices",
+        "topic": "economy",
+        "title": "U.S. growth is revised sharply higher while inflation remains elevated",
+        "composition": "growth-price-split",
+        "signature": "plate:growth-price-split",
+        "seed": 4162534701,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Growth bars rise beside a persistent inflation gauge\"><title>U.S. growth is revised sharply higher while inflation remains elevated</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-26-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-26-02)\"><path d=\"M70 500H360\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M105 500V360H155V500M190 500V295H240V500M275 500V190H325V500\" fill=\"#1b4a6b\"/><path d=\"M100 330L215 250L300 145\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"24\"/><path d=\"M285 145L300 145L300 165\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"16\"/><circle cx=\"575\" cy=\"315\" r=\"150\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"22\"/><path d=\"M475 375A115 115 0 0 1 675 375\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"30\"/><path d=\"M575 315L650 235\" stroke=\"#c4452c\" stroke-width=\"24\"/><circle cx=\"575\" cy=\"315\" r=\"24\" fill=\"#c98a12\"/><path d=\"M485 465H665\" stroke=\"#7c5a3e\" stroke-width=\"19\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-26",
+        "number": "03",
+        "category": "Technology · telecom and economic security",
+        "topic": "infrastructure",
+        "title": "Huawei and three subsidiaries are convicted in a U.S. sanctions and trade-secret case",
+        "composition": "telecom-verdict-network",
+        "signature": "plate:telecom-verdict-network",
+        "seed": 1259839253,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A telecommunications network terminates at a federal verdict and penalty docket\"><title>Huawei and three subsidiaries are convicted in a U.S. sanctions and trade-secret case</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-26-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-26-03)\"><path d=\"M60 130H310V500H60Z\" fill=\"#2c241d\"/><circle cx=\"125\" cy=\"215\" r=\"38\" fill=\"#1b4a6b\"/><circle cx=\"245\" cy=\"215\" r=\"38\" fill=\"#1d5f47\"/><circle cx=\"185\" cy=\"350\" r=\"38\" fill=\"#7a1f33\"/><path d=\"M125 215H245M125 215L185 350M245 215L185 350\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M310 315H410\" stroke=\"#c98a12\" stroke-width=\"30\"/><path d=\"M410 110H655V480H410Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"20\"/><path d=\"M455 185H610M455 255H610M455 325H570\" stroke=\"#7c5a3e\" stroke-width=\"18\"/><path d=\"M510 405H625\" stroke=\"#c4452c\" stroke-width=\"32\"/><path d=\"M620 95L735 210\" stroke=\"#1b4a6b\" stroke-width=\"28\"/><path d=\"M660 65L760 165\" stroke=\"#1b4a6b\" stroke-width=\"55\"/><circle cx=\"410\" cy=\"315\" r=\"24\" fill=\"#c98a12\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-26",
+        "number": "04",
+        "category": "Technology · drones, privacy and public safety",
+        "topic": "research",
+        "title": "Justice Department clarifies when police may use drone-detection systems",
+        "composition": "drone-detection-boundary",
+        "signature": "plate:drone-detection-boundary",
+        "seed": 3422200690,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A drone crosses radar and radiofrequency detection fields beside a statutory boundary\"><title>Justice Department clarifies when police may use drone-detection systems</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-26-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-26-04)\"><path d=\"M70 500A260 260 0 0 1 590 500\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"22\"/><path d=\"M135 500A195 195 0 0 1 525 500\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"18\"/><path d=\"M210 500A120 120 0 0 1 450 500\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"16\"/><circle cx=\"330\" cy=\"500\" r=\"24\" fill=\"#7a1f33\"/><path d=\"M250 205H410M330 150V260\" stroke=\"#2c241d\" stroke-width=\"24\"/><path d=\"M285 180L250 135M375 180L410 135M285 230L250 275M375 230L410 275\" stroke=\"#2c241d\" stroke-width=\"18\"/><circle cx=\"250\" cy=\"135\" r=\"23\" fill=\"#c4452c\"/><circle cx=\"410\" cy=\"135\" r=\"23\" fill=\"#c4452c\"/><circle cx=\"250\" cy=\"275\" r=\"23\" fill=\"#c4452c\"/><circle cx=\"410\" cy=\"275\" r=\"23\" fill=\"#c4452c\"/><path d=\"M635 90V550\" stroke=\"#2c241d\" stroke-width=\"23\"/><path d=\"M670 145H755M670 225H755M670 305H730\" stroke=\"#7c5a3e\" stroke-width=\"17\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-26",
+        "number": "05",
+        "category": "North Carolina · Medicaid and health access",
+        "topic": "government",
+        "title": "North Carolina adopts a six-month Medicaid work-rule grace period",
+        "composition": "nc-medicaid-grace-window",
+        "signature": "plate:nc-medicaid-grace-window",
+        "seed": 3868505277,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A North Carolina Medicaid card moves through a six-month coverage window\"><title>North Carolina adopts a six-month Medicaid work-rule grace period</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-26-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-26-05)\"><path d=\"M60 150H360V480H60Z\" fill=\"#1b4a6b\"/><path d=\"M100 215H320M100 290H270M100 365H230\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M260 325H330M295 290V360\" stroke=\"#c98a12\" stroke-width=\"20\"/><path d=\"M360 315H455\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M455 115H705V515H455Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"21\"/><circle cx=\"580\" cy=\"285\" r=\"95\" fill=\"#1d5f47\"/><path d=\"M580 225V285L635 330\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M500 445H660\" stroke=\"#7a1f33\" stroke-width=\"25\" stroke-dasharray=\"24 15\"/><path d=\"M515 85H645\" stroke=\"#7c5a3e\" stroke-width=\"18\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
