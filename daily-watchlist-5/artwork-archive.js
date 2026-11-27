@@ -3456,6 +3456,68 @@
         "seed": 3868505277,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A North Carolina Medicaid card moves through a six-month coverage window\"><title>North Carolina adopts a six-month Medicaid work-rule grace period</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-26-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-26-05)\"><path d=\"M60 150H360V480H60Z\" fill=\"#1b4a6b\"/><path d=\"M100 215H320M100 290H270M100 365H230\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M260 325H330M295 290V360\" stroke=\"#c98a12\" stroke-width=\"20\"/><path d=\"M360 315H455\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M455 115H705V515H455Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"21\"/><circle cx=\"580\" cy=\"285\" r=\"95\" fill=\"#1d5f47\"/><path d=\"M580 225V285L635 330\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M500 445H660\" stroke=\"#7a1f33\" stroke-width=\"25\" stroke-dasharray=\"24 15\"/><path d=\"M515 85H645\" stroke=\"#7c5a3e\" stroke-width=\"18\"/></g></svg>"
       }
+    },
+    "2026-11-27": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-27",
+        "number": "01",
+        "category": "Technology · space computing and infrastructure",
+        "topic": "infrastructure",
+        "title": "FCC authorizes SpaceX to deploy up to one million orbital compute modules",
+        "composition": "orbital-compute-shells",
+        "signature": "plate:orbital-compute-shells",
+        "seed": 1684793205,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Orbital compute modules circle a separated ground data link\"><title>FCC authorizes SpaceX to deploy up to one million orbital compute modules</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-27-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-27-01)\"><circle cx=\"330\" cy=\"305\" r=\"188\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"19\"/><circle cx=\"330\" cy=\"305\" r=\"118\" fill=\"none\" stroke=\"#1d5f47\" stroke-width=\"14\" stroke-dasharray=\"26 15\"/><circle cx=\"330\" cy=\"305\" r=\"48\" fill=\"#c98a12\"/><g fill=\"#2c241d\"><path d=\"M116 185H184V245H116Z\"/><path d=\"M455 116H523V176H455Z\"/><path d=\"M495 405H563V465H495Z\"/><path d=\"M165 442H233V502H165Z\"/></g><g stroke=\"#f4ead7\" stroke-width=\"9\"><path d=\"M130 215H170M469 146H509M509 435H549M179 472H219\"/></g><path d=\"M385 346L610 480\" stroke=\"#c4452c\" stroke-width=\"22\" stroke-dasharray=\"30 18\"/><path d=\"M590 515H740V560H590Z\" fill=\"#7a1f33\"/><path d=\"M625 515V455H705V515\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"18\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-27",
+        "number": "02",
+        "category": "Trade · critical minerals and supply chains",
+        "topic": "trade",
+        "title": "China extends its U.S.-bound critical-mineral export reprieve",
+        "composition": "critical-mineral-reprieve",
+        "signature": "plate:critical-mineral-reprieve",
+        "seed": 325909945,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Critical mineral shipments pass through a temporary export-control window\"><title>China extends its U.S.-bound critical-mineral export reprieve</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-27-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-27-02)\"><path d=\"M70 160H265V500H70Z\" fill=\"#7c5a3e\"/><g fill=\"#c98a12\"><circle cx=\"125\" cy=\"235\" r=\"27\"/><circle cx=\"205\" cy=\"300\" r=\"34\"/><circle cx=\"135\" cy=\"390\" r=\"38\"/></g><path d=\"M265 330H365\" stroke=\"#1b4a6b\" stroke-width=\"31\"/><path d=\"M365 105V535M445 105V535\" stroke=\"#2c241d\" stroke-width=\"25\"/><path d=\"M365 215H445M365 365H445\" stroke=\"#7a1f33\" stroke-width=\"23\"/><circle cx=\"405\" cy=\"150\" r=\"34\" fill=\"#1d5f47\"/><path d=\"M445 330H550\" stroke=\"#c4452c\" stroke-width=\"31\"/><path d=\"M550 145H730V505H550Z\" fill=\"#1b4a6b\"/><path d=\"M585 210H695M585 285H695M585 360H695M585 435H655\" stroke=\"#f4ead7\" stroke-width=\"19\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-27",
+        "number": "03",
+        "category": "Climate · electrification and grids",
+        "topic": "energy",
+        "title": "A COP31 coalition sets a 35% global electrification target for 2035",
+        "composition": "electrification-35-grid",
+        "signature": "plate:electrification-35-grid",
+        "seed": 2557247505,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Transport, buildings and industry connect to a 35-by-35 power grid\"><title>A COP31 coalition sets a 35% global electrification target for 2035</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-27-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-27-03)\"><path d=\"M80 120H330V505H80Z\" fill=\"#1b4a6b\"/><path d=\"M125 175H285M125 255H285M125 335H285M125 415H285\" stroke=\"#f4ead7\" stroke-width=\"22\"/><path d=\"M330 310H430\" stroke=\"#c98a12\" stroke-width=\"31\"/><circle cx=\"430\" cy=\"310\" r=\"66\" fill=\"#1d5f47\"/><path d=\"M430 244V115M430 376V510M364 310H305M496 310H565\" stroke=\"#2c241d\" stroke-width=\"23\"/><path d=\"M565 105H735V235H565Z\" fill=\"#7a1f33\"/><path d=\"M565 270H735V400H565Z\" fill=\"#7c5a3e\"/><path d=\"M565 435H735V555H565Z\" fill=\"#2c241d\"/><path d=\"M600 170H700M600 335H700M600 495H700\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M390 310L420 340L475 265\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"18\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-27",
+        "number": "04",
+        "category": "U.S. policy · agriculture and land ownership",
+        "topic": "government",
+        "title": "USDA reopens comment on a wider foreign-farmland disclosure rule",
+        "composition": "farmland-disclosure-record",
+        "signature": "plate:farmland-disclosure-record",
+        "seed": 3743658608,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Agricultural parcels resolve into a reopened federal disclosure record\"><title>USDA reopens comment on a wider foreign-farmland disclosure rule</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-27-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-27-04)\"><path d=\"M60 135H355V520H60Z\" fill=\"#1d5f47\"/><path d=\"M60 265H355M155 135V520M255 135V520\" stroke=\"#f4ead7\" stroke-width=\"13\"/><path d=\"M90 190Q155 145 220 190T340 190M85 335Q150 290 215 335T340 335M85 445Q150 400 215 445T340 445\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"13\"/><path d=\"M355 325H440\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M440 95H720V535H440Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"20\"/><path d=\"M485 175H675M485 250H675M485 325H635\" stroke=\"#1b4a6b\" stroke-width=\"19\"/><path d=\"M500 435H665\" stroke=\"#7a1f33\" stroke-width=\"26\" stroke-dasharray=\"25 14\"/><circle cx=\"690\" cy=\"105\" r=\"44\" fill=\"#7c5a3e\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-27",
+        "number": "05",
+        "category": "North Carolina · development and energy",
+        "topic": "energy",
+        "title": "Enfield ties a proposed data center to a town-scale clean-energy bargain",
+        "composition": "enfield-thermal-loop",
+        "signature": "plate:enfield-thermal-loop",
+        "seed": 2436887871,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A North Carolina data center exchanges waste heat with a town thermal loop\"><title>Enfield ties a proposed data center to a town-scale clean-energy bargain</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-27-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-27-05)\"><path d=\"M65 130H295V500H65Z\" fill=\"#2c241d\"/><path d=\"M100 190H260M100 275H260M100 360H260M100 445H260\" stroke=\"#f4ead7\" stroke-width=\"22\"/><path d=\"M295 315H390\" stroke=\"#c4452c\" stroke-width=\"31\"/><path d=\"M390 175Q500 90 610 175V440Q500 530 390 440Z\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"30\"/><path d=\"M390 265Q500 180 610 265M390 355Q500 270 610 355\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"19\"/><path d=\"M610 315H695\" stroke=\"#1d5f47\" stroke-width=\"31\"/><path d=\"M645 220L720 155L775 220V500H645Z\" fill=\"#7a1f33\"/><path d=\"M690 500V385H735V500\" fill=\"#f4ead7\"/><path d=\"M420 100H580\" stroke=\"#7c5a3e\" stroke-width=\"19\"/></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});

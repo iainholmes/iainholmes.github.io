@@ -2674,5 +2674,54 @@
       "recentWindow": 3
     },
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 059: Trade measures / shared capacity\"><title>Field Brief · 059 · Trade measures / shared capacity</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(65 115) scale(3.15)\"><path d=\"M10 20H90M10 80H90M25 50H75M25 37V63M75 37V63\" stroke=\"#221a14\" stroke-width=\"6\"/><circle cx=\"50\" cy=\"50\" r=\"14\" fill=\"#8a2a36\"/><path d=\"M50 6V30M50 70V94\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><g transform=\"translate(412 365) scale(1.2)\"><path d=\"M2 20H98V35H2ZM12 35H30V95H12ZM70 35H88V72H70Z\" fill=\"#221a14\"/><path d=\"M43 35H57V60H43Z\" fill=\"#8a2a36\"/><path d=\"M65 89H94\" stroke=\"#c5ad88\" stroke-width=\"9\"/></g><path d=\"M65 490H380M420 105V315\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 059 / 2026-11-26</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Trade measures / shared capacity</text></g></svg>"
+  },
+  "fb:2026-11-27": {
+    "key": "fb",
+    "date": "2026-11-27",
+    "no": "060",
+    "identity": "Field Brief",
+    "theme": "change",
+    "framing": "The FCC authorizes a million-module orbital-computing system. China extends a critical-minerals reprieve, a COP31 coalition sets a 2035 electrification target, USDA reopens its foreign-farmland disclosure rule, and Enfield negotiates a data-center energy bargain. Permission, deadlines and delivery These developments do not form one coherent policy story. The orbital-computing license tests whether authorization can precede proof of feasibility at unprecedented scale; China's extension and USDA's reopened comment period change near-term deadlines; the electrification pledge depends on voluntary delivery; and Enfield is still negotiating enforceable local terms. The useful distinction is between permission and performance. A large license, a temporary export reprieve, a coalition target, a rulemaking window and a proposed community agreement each open a path. None guarantees that capital, infrastructure, enforcement or public benefits will follow.",
+    "version": 6,
+    "subject": "infrastructure",
+    "composition": "spread-facing-measures-service-rack-observation-window",
+    "signature": "issue:spread-facing-measures-service-rack-observation-window",
+    "phrase": "Orbital computing / observation",
+    "seed": 2822449482,
+    "geometry": "<g transform=\"translate(60 175) scale(2.4)\"><path d=\"M12 3H88V97H12Z\" fill=\"$ink\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"$paper\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"$accent\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M6 12H94V88H6Z\" fill=\"none\" stroke=\"$ink\" stroke-width=\"10\"/><path d=\"M17 50Q50 17 83 50Q50 83 17 50Z\" fill=\"$support\"/><circle cx=\"50\" cy=\"50\" r=\"16\" fill=\"$accent\"/></g><path d=\"M315 100V500\" stroke=\"$support\" stroke-width=\"5\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "01",
+          "05"
+        ],
+        "score": 26
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "04",
+          "05"
+        ],
+        "score": 4
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "enforcement",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 59,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 060: Orbital computing / observation\"><title>Field Brief · 060 · Orbital computing / observation</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(60 175) scale(2.4)\"><path d=\"M12 3H88V97H12Z\" fill=\"#221a14\"/><path d=\"M25 24H75M25 49H75M25 74H75\" stroke=\"#f1e6d0\" stroke-width=\"10\"/><path d=\"M90 27H99V81H90Z\" fill=\"#8a2a36\"/></g><g transform=\"translate(345 175) scale(1.95)\"><path d=\"M6 12H94V88H6Z\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"10\"/><path d=\"M17 50Q50 17 83 50Q50 83 17 50Z\" fill=\"#c5ad88\"/><circle cx=\"50\" cy=\"50\" r=\"16\" fill=\"#8a2a36\"/></g><path d=\"M315 100V500\" stroke=\"#c5ad88\" stroke-width=\"5\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 060 / 2026-11-27</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">Orbital computing / observation</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});
