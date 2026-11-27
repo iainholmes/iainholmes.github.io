@@ -43,5 +43,10 @@ module.exports=({row,field,inset,flo,gap,join})=>({...module.exports.authored,
  '2026-11-20-world-energy-outlook':({E,O,Q,N,T,L})=>row('weo-scenario-opening',E,O,'1.35fr','1fr')+field('weo-scenario-incidence',T()+L(),'folio')+row('weo-decision-boundary',Q,N,'1.3fr','1fr'),
  '2026-11-20-shipping-weather':({E,O,Q,N,G,L})=>flo('shipping-network-mechanism',G(),E+O,'right','55%')+row('shipping-incidence-and-limits',L(),Q,'1.4fr','1fr')+inset('shipping-network-notebook',N,'86%','left'),
  '2026-11-20-ai-credit':({E,O,Q,N,M,D})=>E+row('compute-model-design',M(),O,'1.25fr','1fr')+row('compute-planner-boundary',D(),Q,'1.35fr','1fr')+inset('compute-notebook',N,'82%'),
+ '2026-11-27-low-emission-zones':({E,O,Q,N,G,D,M})=>flo('lez-boundary',G(),E+O,'left','52%')+row('lez-welfare-ratio',M(),D(),'1fr','1.25fr')+row('lez-evidence',Q,N,'1.35fr','1fr'),
+ '2026-11-27-climate-price-signals':({E,O,Q,N,G,L})=>row('risk-opening',E,O,'1.2fr','1fr')+field('risk-chain',G()+L(),'open')+row('risk-close',N,Q,'1fr','1.35fr'),
+ '2026-11-27-opec-welfare':({E,O,Q,N,A,X})=>E+row('opec-figure-design',A,O,'1.3fr','1fr')+inset('opec-diagnostic',X(),'84%','left')+row('opec-close',Q,N,'1.35fr','1fr'),
+ '2026-11-27-efficiency-crisis':({E,O,Q,N,T,L,D})=>row('efficiency-opening',O,E,'1fr','1.3fr')+flo('efficiency-path',T(),L(),'right','55%')+row('efficiency-policy',D(),Q,'1.25fr','1fr')+inset('efficiency-notebook',N,'78%'),
+ '2026-11-27-el-nino-food':({E,O,Q,N,G,A})=>E+field('elnino-flow',G()+O,'folio')+row('elnino-evidence',A,Q,'1.35fr','1fr')+inset('elnino-notebook',N,'78%','left'),
 });
 module.exports.authored={};

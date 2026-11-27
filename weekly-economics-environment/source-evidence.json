@@ -1002,6 +1002,188 @@
           }
         }
       }
+    },
+    "nber-36037": {
+      "url": "https://www.nber.org/system/files/working_papers/w36037/w36037.pdf",
+      "title": "Designing Low Emission Zones: Theory and Evidence",
+      "version": "NBER Working Paper 36037, November 2026",
+      "publicationStatus": "working paper",
+      "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-27",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-27",
+        "scope": "Complete PDF"
+      },
+      "passages": {
+        "design": {
+          "locator": "Sections 2, 4.2.1",
+          "support": "Madrid event evidence and structural demand identification",
+          "facts": {
+            "comparison": "Madrid by vehicle type and time",
+            "priceInstrument": "steel price × vehicle weight"
+          }
+        },
+        "results": {
+          "locator": "Sections 4.3–5",
+          "support": "Welfare decomposition and counterfactual zone sizes",
+          "facts": {
+            "savingsPerEuro": "€0.16",
+            "continuingDirtyShare": "60.7%"
+          }
+        },
+        "limits": {
+          "locator": "Section 4 opening and conclusion",
+          "support": "New-car margin and omitted responses",
+          "facts": {
+            "status": "preliminary working paper"
+          }
+        }
+      }
+    },
+    "nber-36051": {
+      "url": "https://www.nber.org/system/files/working_papers/w36051/w36051.pdf",
+      "title": "Climate Risk, Real Estate, and Property Insurance",
+      "version": "NBER Working Paper 36051, November 2026",
+      "publicationStatus": "working paper review",
+      "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-27",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-27",
+        "scope": "Complete PDF"
+      },
+      "passages": {
+        "framework": {
+          "locator": "Sections 1–2",
+          "support": "Frictionless benchmark linking risk, insurance and housing",
+          "facts": {
+            "contractHorizon": "annual insurance versus long-lived housing"
+          }
+        },
+        "synthesis": {
+          "locator": "Sections 3–6",
+          "support": "Review of information, demand, pricing, supply and capitalization frictions",
+          "facts": {
+            "claimType": "literature synthesis"
+          }
+        },
+        "limits": {
+          "locator": "Conclusion",
+          "support": "Heterogeneous evidence and research gaps",
+          "facts": {
+            "status": "review, not new causal estimate"
+          }
+        }
+      }
+    },
+    "nber-36058": {
+      "url": "https://www.nber.org/system/files/working_papers/w36058/w36058.pdf",
+      "title": "Beyond the First Best: Welfare and OPEC Market Power",
+      "version": "NBER Working Paper 36058, November 2026",
+      "publicationStatus": "working paper",
+      "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-27",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-27",
+        "scope": "Complete PDF"
+      },
+      "passages": {
+        "design": {
+          "locator": "Sections 3–5",
+          "support": "Rystad field data and dynamic Hotelling planner problems",
+          "facts": {
+            "dataThrough": 2021
+          }
+        },
+        "results": {
+          "locator": "Table 3 and Section 6",
+          "support": "Total, marginal and inframarginal losses",
+          "facts": {
+            "total": 2.214,
+            "marginal": 2.131,
+            "inframarginal": 0.717,
+            "unit": "trillion 2021 USD"
+          }
+        },
+        "limits": {
+          "locator": "Sections 6.3 and 8",
+          "support": "Parameter robustness, imperfect validation, carbon exclusion",
+          "facts": {
+            "carbonExternality": "excluded"
+          }
+        }
+      }
+    },
+    "iea-ee-2026": {
+      "url": "https://www.iea.org/reports/energy-efficiency-2026/executive-summary",
+      "title": "Energy Efficiency 2026: Executive summary",
+      "version": "Online executive summary, 23 November 2026",
+      "publicationStatus": "institutional report summary",
+      "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-27",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-27",
+        "scope": "Complete online executive summary only; not full report PDF"
+      },
+      "passages": {
+        "results": {
+          "locator": "Executive summary, first three sections",
+          "support": "Demand, intensity and policy-count statements",
+          "facts": {
+            "intensity": "nearly 3%",
+            "gasDemand": "-1.6%",
+            "electricityDemand": "+3.6%",
+            "targetedSupport": "just over one-third"
+          }
+        },
+        "limits": {
+          "locator": "Executive summary",
+          "support": "Forced cuts and aggregate nature of indicators",
+          "facts": {
+            "causalDecomposition": false
+          }
+        }
+      }
+    },
+    "worldbank-global-monthly-2026-11": {
+      "url": "https://openknowledge.worldbank.org/server/api/core/bitstreams/3ee57097-4228-4ef8-a464-34211e4dfd0b/content",
+      "title": "Global Monthly, November–December 2026",
+      "version": "World Bank Global Monthly, data through 23 November 2026",
+      "publicationStatus": "institutional analytical report",
+      "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3",
+      "access": {
+        "httpStatus": 200,
+        "downloadedAt": "2026-11-27",
+        "fullTextReviewed": true,
+        "reviewedAt": "2026-11-27",
+        "scope": "Complete PDF"
+      },
+      "passages": {
+        "results": {
+          "locator": "Special Focus: El Niño and commodity markets",
+          "support": "Exposure, inflation comparison and forecasts",
+          "facts": {
+            "highExposureInflation": "5.5%",
+            "lowExposureInflation": "3.4%",
+            "food2026": "+10%",
+            "food2027": "+7%"
+          }
+        },
+        "limits": {
+          "locator": "Special Focus notes and forecast discussion",
+          "support": "Descriptive history and multi-shock forecast",
+          "facts": {
+            "causalEstimate": false
+          }
+        }
+      }
     }
   },
   "readings": {
@@ -8974,7 +9156,1831 @@
           }
         }
       ]
+    },
+    "2026-11-27-low-emission-zones": {
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "2ed5a6e5b77cd98604755da0c308f08d543479fcbe2d73f610769736c1fe20e8",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "cefc63be168a4c38d03ea1a7543fbccceab61adae78520e36a26fe4781f0b163",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "cefc63be168a4c38d03ea1a7543fbccceab61adae78520e36a26fe4781f0b163",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "63bd8b7b508a8e6465740d05b84c1a5320bdedca12c7edcdc88ec823f72a3338",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "0cc0bd4ea421efc73220f06e68c72691960ddfb439873aab5a1576973658d804",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "c64beeb69c6faf553979669e5eaa63daca2fe753dd9570bc016def6df1cfd384",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "fd1cdad469a3f68007efbc863ddb0a7a593b615e7fc7150f722aac14f7948756",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "cd059474c301940518e877c8be5361fb0b90cf5b328611135db8cfe07f3f0311",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "07eb0568bde13840c1ad0e4755af4ea36ec015c6758e4403f21fe1b8b7972b3b",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "0adb55951e2ba70b2f95569d3fdce1b2cc50be79029972252562b3bbf44fecde",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "heron-h-2026-11-27-inframarginal",
+          "sha256": "4c27bbc756015d7be0ea6b1b770bb22cdfd202d509b15bca80fb4ae8d0728033",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "design",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            },
+            {
+              "document": "nber-36037",
+              "passage": "limits",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "estimation-desk",
+          "sha256": "b907377d41fe1118f6baae18843aa32d67c4762d5823a54c5d4639fad32db5f6",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "calculated",
+          "evidence": [
+            {
+              "document": "nber-36037",
+              "passage": "results",
+              "sha256": "5fe24d3f81fb8728aca6bc766853d02ef86485e136103bff5644f16f54336ea1"
+            }
+          ],
+          "mapping": "Reconstructed directly from the paper’s reported sixteen-cents-per-euro calibrated welfare ratio.",
+          "claims": [],
+          "qualifications": [
+            "The ratio inherits the structural model, emissions valuation and new-car-market scope."
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Checked the reported ratio, numerator, denominator and policy-intensity scope against the full paper’s welfare decomposition."
+          },
+          "mathematics": {
+            "derivation": "Directly display the paper’s reported calibrated ratio of monetized emissions savings to private surplus cost at the current policy intensity.",
+            "omissions": [
+              "The underlying driver-level integration, demand elasticities and emissions-damage construction remain in the reviewed source.",
+              "The display does not generalize the Madrid calibration to another city or policy intensity."
+            ],
+            "notation": [
+              {
+                "symbol": "Emissions savings",
+                "meaning": "monetized lifetime externality reduction from induced substitution",
+                "sourceMeaning": "reported numerator in the paper’s welfare ratio"
+              },
+              {
+                "symbol": "Private surplus cost",
+                "meaning": "money-metric access-value loss borne by buyers",
+                "sourceMeaning": "reported denominator in the paper’s welfare ratio"
+              }
+            ]
+          }
+        }
+      ],
+      "edition": "2026-11-27",
+      "historical": false,
+      "title": "A Clean-Air Boundary Can Destroy More Surplus Than It Saves"
+    },
+    "2026-11-27-climate-price-signals": {
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "743e791307f50db21a4717605955b57ac91f990709d0bc1befd574ca7448e16f",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36051",
+              "passage": "framework",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "synthesis",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "limits",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "f597176a4429df1e22e1441a7549f9f2fb7775b45c9fdc28ceafad1c1146c53a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36051",
+              "passage": "framework",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "synthesis",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "limits",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "f597176a4429df1e22e1441a7549f9f2fb7775b45c9fdc28ceafad1c1146c53a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36051",
+              "passage": "framework",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "synthesis",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "limits",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "3b85d635c715b04313e8254b581c0f0438a520a3b56a9ebf4f1556b499af78b4",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36051",
+              "passage": "framework",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "synthesis",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "limits",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "1085f4af1832381d70f9d9a91bb78b910c1ec346deeee0512e6efb8c31468da7",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36051",
+              "passage": "framework",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "synthesis",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "limits",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "a9f97e11d76c7ee2624b12fdb9190215817d7bf93b25b8c119f9ab51c5b700a6",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36051",
+              "passage": "framework",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "synthesis",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "limits",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "64ae1d4b811fbcb11de56ef7bfc050ae495742b92dc2512806de72982b71a03b",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36051",
+              "passage": "framework",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "synthesis",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "limits",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "7e449bc9af7a62914d3439cdbcce9fe1baecc9d59b70f94a18fff801722b5b27",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36051",
+              "passage": "framework",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "synthesis",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "limits",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "a23ba4fc275158aff6753c759ba7d78617b77ce55850172a18980fa9987bb666",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36051",
+              "passage": "framework",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "synthesis",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "limits",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "1fece220e4db2c3a8d0852052d33814b407559eae5f5290dac36ab4330e05215",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36051",
+              "passage": "framework",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "synthesis",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            },
+            {
+              "document": "nber-36051",
+              "passage": "limits",
+              "sha256": "85feb5b73fa3226e0ef14776bf96abe8dbc41b5635a809f9a2ec17f300581669"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        }
+      ],
+      "edition": "2026-11-27",
+      "historical": false,
+      "title": "Climate Risk Does Not Travel Cleanly Into a House Price"
+    },
+    "2026-11-27-opec-welfare": {
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "ddb912f05f5b9826eb76e9092b3ef7a61d4bdd91ffd8714d34302e58d88e39fa",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36058",
+              "passage": "design",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "results",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "limits",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "7b92c431a69b03d2fbe750f43e2687fa0414a3e8d301427a77f8736ba08d1ca5",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36058",
+              "passage": "design",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "results",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "limits",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "7b92c431a69b03d2fbe750f43e2687fa0414a3e8d301427a77f8736ba08d1ca5",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36058",
+              "passage": "design",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "results",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "limits",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "0de7de4f91ceca11afd7b9731a1435ac69692f959005fd4735d776692f331fe3",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36058",
+              "passage": "design",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "results",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "limits",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "f7d4cfe260518d325169a511619c79bbee2c6a14eb36400b9f80f2828c5bf112",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36058",
+              "passage": "design",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "results",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "limits",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "9d0b12c85286e1953cde47edb927406c7689e0af22cbbf50e894c1ded49a75d0",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36058",
+              "passage": "design",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "results",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "limits",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "7812da12aa90fb6fae94274ebe07a047e3a6a01dc713be2ceb1af8b1e3c604ee",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "calculated",
+          "evidence": [
+            {
+              "document": "nber-36058",
+              "passage": "design",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "results",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "limits",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "assumption-test",
+          "sha256": "3471dbb9ce54680a37bc9420864e2257f2da413e805fb82017b99f11f17add82",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "nber-36058",
+              "passage": "design",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "results",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "limits",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "5af1d7c102a54c897c6b72f7bb2ceefd26a2987998f43e47ccae1fa4ff2563fb",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36058",
+              "passage": "design",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "results",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "limits",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "e4261dadb5581ee83e7f11a0715b05d7567d98031ae5564768d853817292cf4f",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "nber-36058",
+              "passage": "design",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "results",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            },
+            {
+              "document": "nber-36058",
+              "passage": "limits",
+              "sha256": "233cb8d36c259023defd75b582d7693725f2636c28c1c6d0d390392f628abbe9"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        }
+      ],
+      "edition": "2026-11-27",
+      "historical": false,
+      "title": "Other Distortions Change the Welfare Bill for OPEC Power"
+    },
+    "2026-11-27-efficiency-crisis": {
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "6225f1a640ab76cd70b1df6d89e48c7aee0fe5defb2f288a76717031c9210612",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "d7fdc0cceabfe5b1afb9654f240d5fd84c3cef0523b2bd43566759dc272467d5",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "d7fdc0cceabfe5b1afb9654f240d5fd84c3cef0523b2bd43566759dc272467d5",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "c18f3b9fbc7dc3d5488a361f70ef6b961b84380025e43ee0387dd8039684a899",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "ec2e3bf5bd8859b41a181f270574d1bed050e16bb6ce7fe361e8429839258097",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "3f77c70faba1d92b76ce05b1bb3f0f12a9ef4b55c6d8ed2cdc99ee443f823825",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "long-view",
+          "sha256": "c2edd61d5903b1553c539dbd1c9feb9e773ead3bf5bfd6cfe866261cbac35c03",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "incidence-ledger",
+          "sha256": "0e9a0bfd4ba22ce8fd5eadfe39bf6490c83786e6776dfe2aaa3f645b72cf262b",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "0b7c7e9be73e806ae2023f24b0a998cfb2b96cd03fe2d197000b1d415a66644c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "710163e6217018a304069a32046a063be4d0f774242af4e94a61d6f3098b3215",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "heron-h-2026-11-27-intensity",
+          "sha256": "bc3f4f2314e3bc25ce24c7461f730aa04a92dff6010bbb2c9f4aea1338db33a3",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "decision-margin",
+          "sha256": "a0614f5f0d76c8fabd383c35179d81e07715dafda8d241293b52c6620bb1479c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "iea-ee-2026",
+              "passage": "results",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            },
+            {
+              "document": "iea-ee-2026",
+              "passage": "limits",
+              "sha256": "075f18d6d08e5cb3beabfc33aa49a07704909d2a9a875f5335e9b11078d71701"
+            }
+          ],
+          "mapping": "Editorial comparison bounded by the inspected IEA policy inventory.",
+          "claims": [],
+          "qualifications": [
+            "Policy counts do not identify an optimal mix or causal effect."
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Compared the emergency-support and durable-efficiency policy categories in the reviewed executive summary and kept the welfare rule editorial."
+          }
+        }
+      ],
+      "edition": "2026-11-27",
+      "historical": false,
+      "title": "Falling Energy Use Is Not the Same Thing as Better Efficiency"
+    },
+    "2026-11-27-el-nino-food": {
+      "components": [
+        {
+          "id": "entry-head",
+          "sha256": "2e15dbaeb4f4e0a3f903748c6a99b25a03a32c6bb11d0e606b6fd53cd1d7786c",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "results",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            },
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "limits",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "reading-deck",
+          "sha256": "f963bbdaef6fc8b048824a02351856a034f5cd2757777b646c8852fd0b2593d1",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "results",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            },
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "limits",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "finding",
+          "sha256": "f963bbdaef6fc8b048824a02351856a034f5cd2757777b646c8852fd0b2593d1",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "results",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            },
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "limits",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-01",
+          "sha256": "6ed4b1876dec0278d55b1f04da2d448f55273ae7aa2674c17d40488849122e8a",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "results",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            },
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "limits",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-02",
+          "sha256": "61460550745f80d2ec1313af6fc4e295f23c9df2195fd62ae9d08d4fed8c1faa",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "results",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            },
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "limits",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "ll-argument",
+          "sha256": "8de8ff3a82598ffc0db46d265e4e7ac8994de045366aba0fdfac911cdd670046",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "results",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            },
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "limits",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "mechanism-map",
+          "sha256": "693e12b3ad695f37d988bc90227ce9dd58bc32b3fdaaeca72f4f6113824f6b13",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "paraphrased",
+          "evidence": [
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "results",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            },
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "limits",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "economic-figures",
+          "sha256": "1bbb85edfe21c45271665196b074a78320e27ee429fac429a3973a613d00a809",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "calculated",
+          "evidence": [
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "results",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            },
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "limits",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "analysis-03",
+          "sha256": "d124a5ac0b51df6a112c1a163bfd96ad697e6f4dc8a7f6c21f5949715061af8b",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "results",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            },
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "limits",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        },
+        {
+          "id": "research-note",
+          "sha256": "731ee54d3736d49c0ea42d4179d741938475af3d46b54715bed8794b116d3abd",
+          "status": "verified",
+          "scope": "whole-component",
+          "basis": "editorial-interpretation",
+          "evidence": [
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "results",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            },
+            {
+              "document": "worldbank-global-monthly-2026-11",
+              "passage": "limits",
+              "sha256": "7f310594bc75667aa39c789db286e04366c674699203905e99862eb66a1f4fa3"
+            }
+          ],
+          "mapping": "Claims, quantities and qualifications traced to the cited passages; editorial implications are labeled as interpretation.",
+          "claims": [],
+          "qualifications": [
+            "Caveats and counterfactual boundaries retained"
+          ],
+          "verification": {
+            "reviewer": "Loblolly & Logit editorial review",
+            "reviewedAt": "2026-11-27",
+            "method": "source-and-analysis",
+            "reasoning": "Read the exact source version, located supporting passages, checked reported quantities and separated causal, modeled, descriptive, forecast and interpretive claims."
+          }
+        }
+      ],
+      "edition": "2026-11-27",
+      "historical": false,
+      "title": "El Niño Exposure Is Concentrated Before Prices Move"
     }
   },
-  "reviewed": "2026-11-20"
+  "reviewed": "2026-11-27"
 }
