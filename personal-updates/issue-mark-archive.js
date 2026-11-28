@@ -2758,5 +2758,52 @@
       8
     ],
     "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"The Workbook, set 018: Within &amp; between\"><title>The Workbook · 018 · Within &amp; between</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f7f7f3\"/><g><path d=\"M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540M60 360H540M60 420H540M60 480H540M60 60V500M120 60V500M180 60V500M240 60V500M300 60V500M360 60V500M420 60V500M480 60V500M540 60V500\" fill=\"none\" stroke=\"#1c2f4a\" opacity=\".12\"/><g fill=\"none\" stroke=\"#1c2f4a\" stroke-width=\"5\"><path d=\"M75 145H215V430H75ZM230 145H370V430H230ZM385 145H525V430H385Z\"/><path d=\"M145 115V465M300 115V465M455 115V465\" stroke-dasharray=\"8 9\"/></g><g fill=\"#b5ced1\"><circle cx=\"115\" cy=\"335\" r=\"20\"/><circle cx=\"175\" cy=\"245\" r=\"20\"/><circle cx=\"270\" cy=\"295\" r=\"20\"/><circle cx=\"330\" cy=\"205\" r=\"20\"/><circle cx=\"425\" cy=\"255\" r=\"20\"/><circle cx=\"485\" cy=\"165\" r=\"20\"/></g><path d=\"M115 335L175 245M270 295L330 205M425 255L485 165\" stroke=\"#0e5360\" stroke-width=\"14\"/><path d=\"M100 485H500\" stroke=\"#1c2f4a\" stroke-width=\"8\"/><path d=\"M455 455L500 485L455 515\" fill=\"none\" stroke=\"#0e5360\" stroke-width=\"11\"/></g><path d=\"M42 570H558\" stroke=\"#1c2f4a\" stroke-width=\"2\"/><g fill=\"#1c2f4a\"><text x=\"42\" y=\"634\" font-family=\"STIX Two Text,Georgia,serif\" font-size=\"48\">The Workbook</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">SET 018 / 2026-11-27</text><text x=\"42\" y=\"740\" font-family=\"STIX Two Text,Georgia,serif\" font-size=\"26\">Within &amp; between</text></g></svg>"
+  },
+  "fb:2026-11-28": {
+    "key": "fb",
+    "date": "2026-11-28",
+    "no": "061",
+    "identity": "Field Brief",
+    "theme": "change",
+    "framing": "Meta extends a consumer AI agent into UK transactions. Black Friday spending shifts further online, an East Coast storm tests essential systems, the House queues a major permitting package, and Triangle bus ridership accelerates. Five separate tests of market and public capacity These developments do not form one policy narrative. Meta is testing how much transactional work consumers will delegate; Black Friday is testing household demand and channel choice; the storm tested physical networks; Congress is testing whether review can move faster without losing legitimacy; and Triangle transit is testing the ridership response to frequency. The common analytical caution is narrower than a theme: an early indicator is not an outcome. Product safeguards must survive real transactions, preliminary spending requires final data, restoration is not resilience, a committee meeting is not enactment, and ridership growth is not yet a complete fiscal case.",
+    "version": 6,
+    "subject": "infrastructure",
+    "composition": "spread-long-section-fabrication-disc-sampling-window",
+    "signature": "issue:spread-long-section-fabrication-disc-sampling-window",
+    "phrase": "AI agents / sampling",
+    "seed": 1723408824,
+    "geometry": "<g transform=\"translate(70 110) scale(1.75)\"><circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"$accent\"/><path d=\"M24 16V84M50 6V94M76 16V84M14 27H86M6 52H94M16 77H84\" stroke=\"$paper\" stroke-width=\"5\"/></g><g transform=\"translate(265 270) scale(2.75)\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"$ink\" stroke-width=\"9\"/><path d=\"M12 50H50V12\" fill=\"none\" stroke=\"$accent\" stroke-width=\"8\"/><circle cx=\"66\" cy=\"66\" r=\"9\" fill=\"$support\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"$support\" stroke-width=\"7\"/>",
+    "supportedConcepts": [
+      {
+        "concept": "infrastructure",
+        "storyNumbers": [
+          "03"
+        ],
+        "score": 15
+      },
+      {
+        "concept": "evidence",
+        "storyNumbers": [
+          "05"
+        ],
+        "score": 3
+      },
+      {
+        "concept": "capacity",
+        "storyNumbers": [],
+        "score": 2
+      },
+      {
+        "concept": "risk",
+        "storyNumbers": [],
+        "score": 2
+      }
+    ],
+    "originality": {
+      "policy": 2,
+      "compared": 60,
+      "recentWindow": 3
+    },
+    "frozen": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"Field Brief, issue 061: AI agents / sampling\"><title>Field Brief · 061 · AI agents / sampling</title><desc>Conceptual issue illustration derived from the current edition’s framing; not a measured result.</desc><rect width=\"600\" height=\"800\" fill=\"#f1e6d0\"/><g><g transform=\"translate(70 110) scale(1.75)\"><circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"#8a2a36\"/><path d=\"M24 16V84M50 6V94M76 16V84M14 27H86M6 52H94M16 77H84\" stroke=\"#f1e6d0\" stroke-width=\"5\"/></g><g transform=\"translate(265 270) scale(2.75)\"><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"#221a14\" stroke-width=\"9\"/><path d=\"M12 50H50V12\" fill=\"none\" stroke=\"#8a2a36\" stroke-width=\"8\"/><circle cx=\"66\" cy=\"66\" r=\"9\" fill=\"#c5ad88\"/></g><path d=\"M70 310H225M70 330H225\" stroke=\"#c5ad88\" stroke-width=\"7\"/></g><path d=\"M42 570H558\" stroke=\"#221a14\" stroke-width=\"2\"/><g fill=\"#221a14\"><text x=\"42\" y=\"634\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"48\">Field Brief</text><text x=\"42\" y=\"683\" font-family=\"IBM Plex Sans Condensed, sans-serif\" font-size=\"19\" letter-spacing=\"2\">ISSUE 061 / 2026-11-28</text><text x=\"42\" y=\"740\" font-family=\"Instrument Serif,Georgia,serif\" font-size=\"26\">AI agents / sampling</text></g></svg>"
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.PeriodicalsMarkArchive=archive;})(typeof window==='object'?window:{});

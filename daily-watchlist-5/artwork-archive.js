@@ -3518,6 +3518,68 @@
         "seed": 2436887871,
         "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A North Carolina data center exchanges waste heat with a town thermal loop\"><title>Enfield ties a proposed data center to a town-scale clean-energy bargain</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-27-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-27-05)\"><path d=\"M65 130H295V500H65Z\" fill=\"#2c241d\"/><path d=\"M100 190H260M100 275H260M100 360H260M100 445H260\" stroke=\"#f4ead7\" stroke-width=\"22\"/><path d=\"M295 315H390\" stroke=\"#c4452c\" stroke-width=\"31\"/><path d=\"M390 175Q500 90 610 175V440Q500 530 390 440Z\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"30\"/><path d=\"M390 265Q500 180 610 265M390 355Q500 270 610 355\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"19\"/><path d=\"M610 315H695\" stroke=\"#1d5f47\" stroke-width=\"31\"/><path d=\"M645 220L720 155L775 220V500H645Z\" fill=\"#7a1f33\"/><path d=\"M690 500V385H735V500\" fill=\"#f4ead7\"/><path d=\"M420 100H580\" stroke=\"#7c5a3e\" stroke-width=\"19\"/></g></svg>"
       }
+    },
+    "2026-11-28": {
+      "01": {
+        "version": 2,
+        "date": "2026-11-28",
+        "number": "01",
+        "category": "Technology · consumer AI agents",
+        "topic": "infrastructure",
+        "title": "Meta's Muse expansion puts consumer AI agents into retail and travel transactions",
+        "composition": "consumer-agent-checkout",
+        "signature": "plate:consumer-agent-checkout",
+        "seed": 1727606309,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A consumer AI agent crosses connected services only after a purchase approval\"><title>Meta&#39;s Muse expansion puts consumer AI agents into retail and travel transactions</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-28-01\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-28-01)\"><path d=\"M55 110H295V520H55Z\" fill=\"#2c241d\"/><path d=\"M90 175H260M90 250H260M90 325H225\" stroke=\"#f4ead7\" stroke-width=\"20\"/><circle cx=\"175\" cy=\"430\" r=\"48\" fill=\"#1b4a6b\"/><path d=\"M295 315H385\" stroke=\"#c98a12\" stroke-width=\"30\"/><circle cx=\"435\" cy=\"315\" r=\"72\" fill=\"#7a1f33\"/><path d=\"M400 315L425 340L475 280\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M507 315H570\" stroke=\"#c4452c\" stroke-width=\"30\"/><path d=\"M570 115H745V255H570Z\" fill=\"#1d5f47\"/><path d=\"M570 290H745V430H570Z\" fill=\"#1b4a6b\"/><path d=\"M570 465H745V555H570Z\" fill=\"#7c5a3e\"/><path d=\"M605 180H710M605 355H710M605 510H710\" stroke=\"#f4ead7\" stroke-width=\"19\"/></g></svg>"
+      },
+      "02": {
+        "version": 2,
+        "date": "2026-11-28",
+        "number": "02",
+        "category": "Economy · retail and household demand",
+        "topic": "finance",
+        "title": "Black Friday online spending rises sharply while store traffic softens",
+        "composition": "online-store-split",
+        "signature": "plate:online-store-split",
+        "seed": 1442786366,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Online purchases rise while a separate store-visit counter softens\"><title>Black Friday online spending rises sharply while store traffic softens</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-28-02\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-28-02)\"><path d=\"M60 520V105H345V520Z\" fill=\"#1b4a6b\"/><path d=\"M105 455V385H160V455M190 455V300H245V455M275 455V185H330V455\" fill=\"#f4ead7\"/><path d=\"M100 340L210 250L315 135\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"23\"/><path d=\"M385 135H735V520H385Z\" fill=\"#2c241d\"/><path d=\"M435 205H685M435 285H685M435 365H625\" stroke=\"#f4ead7\" stroke-width=\"20\"/><path d=\"M465 455H660\" stroke=\"#7a1f33\" stroke-width=\"28\" stroke-dasharray=\"26 16\"/><path d=\"M500 440L465 455L500 470\" fill=\"none\" stroke=\"#c4452c\" stroke-width=\"15\"/><path d=\"M345 315H385\" stroke=\"#7c5a3e\" stroke-width=\"18\"/></g></svg>"
+      },
+      "03": {
+        "version": 2,
+        "date": "2026-11-28",
+        "number": "03",
+        "category": "Environment · extreme weather and resilience",
+        "topic": "climate",
+        "title": "Thanksgiving nor'easter exposes East Coast power and transport vulnerability",
+        "composition": "coastal-storm-outage",
+        "signature": "plate:coastal-storm-outage",
+        "seed": 4015114189,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A coastal storm crosses power, transport and flooded shoreline systems\"><title>Thanksgiving nor&#39;easter exposes East Coast power and transport vulnerability</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-28-03\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-28-03)\"><path d=\"M55 510Q170 420 285 510T515 510T745 510V575H55Z\" fill=\"#1b4a6b\"/><path d=\"M75 455Q175 385 275 455T475 455\" fill=\"none\" stroke=\"#f4ead7\" stroke-width=\"18\"/><path d=\"M105 140Q370 65 465 205Q525 295 405 345Q330 375 350 450\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"45\"/><path d=\"M175 205Q335 155 390 240Q420 290 350 315\" fill=\"none\" stroke=\"#c98a12\" stroke-width=\"18\"/><path d=\"M535 115V470M500 185H570M475 260H595\" stroke=\"#2c241d\" stroke-width=\"21\"/><path d=\"M535 260L465 405M535 260L620 405\" stroke=\"#2c241d\" stroke-width=\"17\"/><path d=\"M610 165L720 230L610 295Z\" fill=\"#1d5f47\"/><path d=\"M645 215L695 230L645 245\" fill=\"#f4ead7\"/></g></svg>"
+      },
+      "04": {
+        "version": 2,
+        "date": "2026-11-28",
+        "number": "04",
+        "category": "U.S. policy · permitting and transmission",
+        "topic": "government",
+        "title": "House schedules its next step on the Senate's permitting and transmission bill",
+        "composition": "permitting-transmission-gate",
+        "signature": "plate:permitting-transmission-gate",
+        "seed": 2255974213,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"A transmission corridor passes through a federal permitting and review gate\"><title>House schedules its next step on the Senate&#39;s permitting and transmission bill</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-28-04\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-28-04)\"><path d=\"M55 515H745\" stroke=\"#7c5a3e\" stroke-width=\"21\"/><path d=\"M100 475V145M70 235H130M82 195H118\" stroke=\"#2c241d\" stroke-width=\"18\"/><path d=\"M100 330H285V210H365\" fill=\"none\" stroke=\"#1b4a6b\" stroke-width=\"27\"/><path d=\"M365 105V535M455 105V535M365 215H455M365 375H455\" fill=\"none\" stroke=\"#7a1f33\" stroke-width=\"25\"/><path d=\"M455 330H550\" stroke=\"#c98a12\" stroke-width=\"30\"/><path d=\"M550 125H735V505H550Z\" fill=\"#f4ead7\" stroke=\"#2c241d\" stroke-width=\"19\"/><path d=\"M590 195H695M590 270H695M590 345H660\" stroke=\"#1b4a6b\" stroke-width=\"18\"/><path d=\"M595 435H685\" stroke=\"#c4452c\" stroke-width=\"26\" stroke-dasharray=\"24 14\"/></g></svg>"
+      },
+      "05": {
+        "version": 2,
+        "date": "2026-11-28",
+        "number": "05",
+        "category": "North Carolina · transit and regional access",
+        "topic": "infrastructure",
+        "title": "National data show rapid Triangle bus-ridership growth",
+        "composition": "triangle-transit-frequency",
+        "signature": "plate:triangle-transit-frequency",
+        "seed": 4197442090,
+        "frozen": "<svg viewBox=\"0 0 800 640\" role=\"img\" aria-label=\"Frequent North Carolina bus routes connect Triangle employment centers\"><title>National data show rapid Triangle bus-ridership growth</title><desc>Conceptual linocut illustration, not a measured diagram.</desc><defs><filter id=\"fb-art-2026-11-28-05\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\".018 .11\" numOctaves=\"2\" seed=\"7\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2.2\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect width=\"800\" height=\"640\" fill=\"#dfc7a3\"/><g filter=\"url(#fb-art-2026-11-28-05)\"><path d=\"M75 130H265V520H75Z\" fill=\"#1b4a6b\"/><path d=\"M110 195H230M110 270H230M110 345H230M110 420H205\" stroke=\"#f4ead7\" stroke-width=\"19\"/><path d=\"M265 315H385V165H515M385 315V475H515\" fill=\"none\" stroke=\"#2c241d\" stroke-width=\"28\"/><circle cx=\"385\" cy=\"315\" r=\"52\" fill=\"#c98a12\"/><path d=\"M515 105H735V255H515Z\" fill=\"#1d5f47\"/><path d=\"M515 385H735V535H515Z\" fill=\"#7a1f33\"/><path d=\"M555 180H695M555 460H695\" stroke=\"#f4ead7\" stroke-width=\"21\"/><path d=\"M515 165H555M515 475H555\" stroke=\"#c4452c\" stroke-width=\"27\"/><g fill=\"#7c5a3e\"><circle cx=\"315\" cy=\"315\" r=\"17\"/><circle cx=\"455\" cy=\"315\" r=\"17\"/></g></g></svg>"
+      }
     }
   }
 };if(typeof module==='object'&&module.exports)module.exports=archive;else root.FieldBriefArtworkArchive=archive;})(typeof window==='object'?window:{});
