@@ -1,7 +1,7 @@
 {
   "version": 7,
   "title": "Loblolly & Logit · Editorial Decision Inventory",
-  "reviewed": "2026-11-20",
+  "reviewed": "2026-11-27",
   "policy": "Aim for at least two substantive, nonredundant features; document exceptions; diversity is a tie-breaker after evidence and reader value.",
   "entries": [
     {
@@ -8316,20 +8316,887 @@
         }
       ],
       "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-27-low-emission-zones",
+      "title": "A Clean-Air Boundary Can Destroy More Surplus Than It Saves",
+      "subjects": [
+        "Environmental regulation",
+        "Urban transport"
+      ],
+      "features": [
+        {
+          "type": "mechanism-map",
+          "title": "Why a small zone can fail",
+          "status": "Working-paper model and Madrid demand estimates",
+          "nodes": [
+            "Restrict dirty cars inside a boundary",
+            "Some buyers switch to cleaner cars",
+            "Continuing dirty-car buyers lose access value",
+            "Compare emissions saved with private surplus lost"
+          ],
+          "edges": [
+            [
+              0,
+              1,
+              "choice response"
+            ],
+            [
+              1,
+              2,
+              "inframarginal burden"
+            ],
+            [
+              2,
+              3,
+              "welfare test"
+            ]
+          ],
+          "note": "At the estimated policy intensity, the paper reports 16 cents of emissions savings per euro of private cost; model assumptions and omitted margins govern the comparison.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w36037/w36037.pdf"
+          ],
+          "rationale": "Why a small zone can fail",
+          "assessment": {
+            "analyticalRelevance": "Clarifies a source-specific analytical margin rather than repeating the headline.",
+            "evidentiarySupport": "Working-paper model and Madrid demand estimates",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "At the estimated policy intensity, the paper reports 16 cents of emissions savings per euro of private cost; model assumptions and omitted margins govern the comparison.",
+            "presentationSuitability": "mechanism-map",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "decision-margin",
+          "title": "The boundary-size test",
+          "status": "Model implication · not a universal policy rule",
+          "question": "When can a low-emission zone beat no zone?",
+          "options": [
+            [
+              "Scale up",
+              "A large boundary can make enough switching worthwhile when damages are high and clean substitutes are effective."
+            ],
+            [
+              "Do not ration",
+              "If private access losses remain larger than external benefits at every intensity, a tax or another instrument may dominate."
+            ]
+          ],
+          "rule": "Evaluate the full welfare curve over feasible zone sizes; do not infer optimality from a local adoption effect.",
+          "note": "The quasi-convex “large or none” result belongs to the paper’s model and Madrid calibration, not to every city.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w36037/w36037.pdf"
+          ],
+          "rationale": "The boundary-size test",
+          "assessment": {
+            "analyticalRelevance": "Clarifies a source-specific analytical margin rather than repeating the headline.",
+            "evidentiarySupport": "Model implication · not a universal policy rule",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The quasi-convex “large or none” result belongs to the paper’s model and Madrid calibration, not to every city.",
+            "presentationSuitability": "decision-margin",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "estimation-desk",
+          "title": "Emissions savings per euro of private cost",
+          "status": "Reconstructed from reported calibrated quantities · not a causal estimand",
+          "math": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mfrac><msub><mi>B</mi><mtext>emissions</mtext></msub><msub><mi>C</mi><mtext>private</mtext></msub></mfrac><mo>=</mo><mn>0.16</mn></mrow></math>",
+          "terms": [
+            [
+              "Numerator",
+              "Monetized lifetime externality reduction from induced vehicle substitution at the current policy intensity."
+            ],
+            [
+              "Denominator",
+              "Money-metric access-value loss borne by buyers, including continuing restricted-car buyers."
+            ]
+          ],
+          "interpretation": "At the estimated current intensity, one euro of private cost purchases about sixteen cents of monetized emissions savings.",
+          "assumption": "The ratio inherits the structural demand model, emissions valuation and the paper’s bounded new-car margin; it is not a city-invariant parameter.",
+          "rationale": "Emissions savings per euro of private cost",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w36037/w36037.pdf"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Makes the paper’s welfare comparison legible without replacing it with adoption counts.",
+            "evidentiarySupport": "Reported calibrated ratio reconstructed in semantic mathematics",
+            "distinctiveness": "Quantifies the welfare margin separately from the mechanism and design choice.",
+            "readerValue": "Shows why cleaner switching is insufficient for positive welfare.",
+            "presentationSuitability": "estimation-desk",
+            "informationBurden": "One reported ratio with explicit numerator, denominator and scope."
+          }
+        }
+      ],
+      "edition": "2026-11-27",
+      "composition": "decision-led",
+      "argument": "A quantity restriction reaches inframarginal drivers as well as switchers, so the welfare case depends on scale, substitution and damages—not only cleaner new-car shares",
+      "rejected": [
+        [
+          "economic-figures",
+          "No additional chart selected where a textual analytical feature carries the evidence more faithfully."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "mechanism-map",
+          "reason": "Why a small zone can fail"
+        },
+        {
+          "rank": 2,
+          "feature": "decision-margin",
+          "reason": "The boundary-size test"
+        },
+        {
+          "rank": 3,
+          "feature": "estimation-desk",
+          "reason": "Emissions savings per euro of private cost"
+        }
+      ],
+      "layout": {
+        "id": "lez-boundary-and-surplus",
+        "palette": "clay",
+        "colorBasis": "A quantity restriction reaches inframarginal drivers as well as switchers, so the welfare case depends on scale, substitution and damages—not only cleaner new-car shares",
+        "rationale": "A source-specific native-flow arrangement keeps evidence, interpretation and limits distinct.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Graphical opportunity assessed; reported quantities are labeled by evidentiary status.",
+      "modelAssessment": "Causal, descriptive, review, forecast and calibrated-model claims are kept distinct.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-27",
+      "evidenceReview": {
+        "basis": "Exact cited version reviewed across question, design, estimates, robustness, limitations and interpretation.",
+        "access": "Lawful full text or explicitly bounded institutional online report inspected; provenance recorded in source-evidence.json."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-27",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant source-specific features selected after source-and-analysis review.",
+        "retained": [],
+        "added": [
+          "mechanism-map",
+          "estimation-desk",
+          "decision-margin"
+        ],
+        "replaced": []
+      },
+      "additionalFeatureJustification": "Three distinct functions are necessary: the mechanism separates switchers from continuing users, the ratio reports the calibrated welfare margin, and the decision feature tests zone scale; none substitutes for another.",
+      "selected": [
+        {
+          "id": "mechanism-map",
+          "name": "The Mechanism Map",
+          "anchor": "2026-11-27-low-emission-zones--mechanism-map"
+        },
+        {
+          "id": "estimation-desk",
+          "name": "The Estimation Desk",
+          "anchor": "2026-11-27-low-emission-zones--estimation-desk"
+        },
+        {
+          "id": "decision-margin",
+          "name": "The Decision Margin",
+          "anchor": "2026-11-27-low-emission-zones--decision-margin"
+        },
+        {
+          "id": "heron",
+          "name": "The Heron",
+          "anchor": "heron-h-2026-11-27-inframarginal"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-27-climate-price-signals",
+      "title": "Climate Risk Does Not Travel Cleanly Into a House Price",
+      "subjects": [
+        "Climate risk",
+        "Housing and insurance"
+      ],
+      "features": [
+        {
+          "type": "mechanism-map",
+          "title": "The broken price-signal chain",
+          "status": "Review synthesis · component studies use different designs",
+          "nodes": [
+            "Physical climate risk",
+            "Household beliefs and information",
+            "Insurance price and availability",
+            "Housing value, location and adaptation"
+          ],
+          "edges": [
+            [
+              0,
+              1,
+              "risk perception"
+            ],
+            [
+              1,
+              2,
+              "underwriting and regulation"
+            ],
+            [
+              2,
+              3,
+              "capitalization and response"
+            ]
+          ],
+          "note": "The review documents frictions at each link; it does not estimate one causal coefficient for the entire chain.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w36051/w36051.pdf"
+          ],
+          "rationale": "The broken price-signal chain",
+          "assessment": {
+            "analyticalRelevance": "Clarifies a source-specific analytical margin rather than repeating the headline.",
+            "evidentiarySupport": "Review synthesis · component studies use different designs",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The review documents frictions at each link; it does not estimate one causal coefficient for the entire chain.",
+            "presentationSuitability": "mechanism-map",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "incidence-ledger",
+          "title": "Who bears an incomplete signal?",
+          "status": "Review-based incidence channels · magnitudes vary by study",
+          "rows": [
+            [
+              "Current owners",
+              "Higher premiums, nonrenewal or lower sale values can capitalize risk after purchase."
+            ],
+            [
+              "Prospective buyers",
+              "Credit, information and search constraints can impede sorting even when prices move."
+            ],
+            [
+              "Taxpayers and residual markets",
+              "Public insurance, disaster aid and market-of-last-resort institutions can shift tail losses beyond the property."
+            ]
+          ],
+          "note": "Incidence depends on contract timing, regulation, mobility, wealth and which peril is insured.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w36051/w36051.pdf"
+          ],
+          "rationale": "Who bears an incomplete signal?",
+          "assessment": {
+            "analyticalRelevance": "Clarifies a source-specific analytical margin rather than repeating the headline.",
+            "evidentiarySupport": "Review-based incidence channels · magnitudes vary by study",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "Incidence depends on contract timing, regulation, mobility, wealth and which peril is insured.",
+            "presentationSuitability": "incidence-ledger",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        }
+      ],
+      "edition": "2026-11-27",
+      "composition": "map-led",
+      "argument": "Housing values and annual insurance premiums transmit climate risk through different horizons, information sets and access constraints",
+      "rejected": [
+        [
+          "economic-figures",
+          "No additional chart selected where a textual analytical feature carries the evidence more faithfully."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "mechanism-map",
+          "reason": "The broken price-signal chain"
+        },
+        {
+          "rank": 2,
+          "feature": "incidence-ledger",
+          "reason": "Who bears an incomplete signal?"
+        }
+      ],
+      "layout": {
+        "id": "risk-chain-and-incidence",
+        "palette": "tidal",
+        "colorBasis": "Housing values and annual insurance premiums transmit climate risk through different horizons, information sets and access constraints",
+        "rationale": "A source-specific native-flow arrangement keeps evidence, interpretation and limits distinct.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Graphical opportunity assessed; reported quantities are labeled by evidentiary status.",
+      "modelAssessment": "Causal, descriptive, review, forecast and calibrated-model claims are kept distinct.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-27",
+      "evidenceReview": {
+        "basis": "Exact cited version reviewed across question, design, estimates, robustness, limitations and interpretation.",
+        "access": "Lawful full text or explicitly bounded institutional online report inspected; provenance recorded in source-evidence.json."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-27",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant source-specific features selected after source-and-analysis review.",
+        "retained": [],
+        "added": [
+          "mechanism-map",
+          "incidence-ledger"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "mechanism-map",
+          "name": "The Mechanism Map",
+          "anchor": "2026-11-27-climate-price-signals--mechanism-map"
+        },
+        {
+          "id": "incidence-ledger",
+          "name": "The Incidence Ledger",
+          "anchor": "2026-11-27-climate-price-signals--incidence-ledger"
+        }
+      ],
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-27-opec-welfare",
+      "title": "Other Distortions Change the Welfare Bill for OPEC Power",
+      "subjects": [
+        "Industrial organization",
+        "Resource economics"
+      ],
+      "features": [
+        {
+          "type": "economic-figures",
+          "title": "Three welfare benchmarks",
+          "status": "Dynamic calibrated counterfactuals · 2021 dollars",
+          "chart": {
+            "kind": "bars",
+            "unit": "$ trillion, discounted 1970–2099",
+            "rows": [
+              [
+                "Naive total loss",
+                2.214
+              ],
+              [
+                "Marginal loss",
+                2.131
+              ],
+              [
+                "Inframarginal loss",
+                0.717
+              ]
+            ]
+          },
+          "note": "Reported model quantities. The gap reflects alternative counterfactuals, not sampling uncertainty.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w36058/w36058.pdf"
+          ],
+          "rationale": "Three welfare benchmarks",
+          "assessment": {
+            "analyticalRelevance": "Clarifies a source-specific analytical margin rather than repeating the headline.",
+            "evidentiarySupport": "Dynamic calibrated counterfactuals · 2021 dollars",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "Reported model quantities. The gap reflects alternative counterfactuals, not sampling uncertainty.",
+            "presentationSuitability": "economic-figures",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "assumption-test",
+          "title": "Which counterfactual removes which distortion?",
+          "status": "Conceptual diagnostic for the paper’s planner comparisons",
+          "premise": "The welfare attributed to OPEC depends on whether non-OPEC production constraints remain in the counterfactual.",
+          "threat": "Calling every gap from the unconstrained planner “OPEC market power” assigns productive inefficiency from other constraints to the cartel.",
+          "check": "Compare total, marginal and inframarginal planner problems and inspect robustness to demand elasticity, reserves, discounting and extraction limits.",
+          "consequence": "The estimated object changes: about $2.2 trillion under the naive total benchmark versus about $0.7 trillion when other distortions are removed.",
+          "note": "The paper explicitly leaves carbon externalities for separate analysis.",
+          "provenance": [
+            "https://www.nber.org/system/files/working_papers/w36058/w36058.pdf"
+          ],
+          "rationale": "Which counterfactual removes which distortion?",
+          "assessment": {
+            "analyticalRelevance": "Clarifies a source-specific analytical margin rather than repeating the headline.",
+            "evidentiarySupport": "Conceptual diagnostic for the paper’s planner comparisons",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The paper explicitly leaves carbon externalities for separate analysis.",
+            "presentationSuitability": "assumption-test",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        }
+      ],
+      "edition": "2026-11-27",
+      "composition": "model-led",
+      "argument": "The incremental welfare effect of market power depends on the distortions already constraining the competitive fringe",
+      "rejected": [
+        [
+          "economic-figures",
+          "No additional chart selected where a textual analytical feature carries the evidence more faithfully."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "economic-figures",
+          "reason": "Three welfare benchmarks"
+        },
+        {
+          "rank": 2,
+          "feature": "assumption-test",
+          "reason": "Which counterfactual removes which distortion?"
+        }
+      ],
+      "layout": {
+        "id": "opec-counterfactual-wedges",
+        "palette": "copper",
+        "colorBasis": "The incremental welfare effect of market power depends on the distortions already constraining the competitive fringe",
+        "rationale": "A source-specific native-flow arrangement keeps evidence, interpretation and limits distinct.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Graphical opportunity assessed; reported quantities are labeled by evidentiary status.",
+      "modelAssessment": "Causal, descriptive, review, forecast and calibrated-model claims are kept distinct.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-27",
+      "evidenceReview": {
+        "basis": "Exact cited version reviewed across question, design, estimates, robustness, limitations and interpretation.",
+        "access": "Lawful full text or explicitly bounded institutional online report inspected; provenance recorded in source-evidence.json."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-27",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant source-specific features selected after source-and-analysis review.",
+        "retained": [],
+        "added": [
+          "economic-figures",
+          "assumption-test"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "economic-figures",
+          "name": "Economic Figures",
+          "anchor": "2026-11-27-opec-welfare--economic-figures"
+        },
+        {
+          "id": "assumption-test",
+          "name": "The Assumption Test",
+          "anchor": "2026-11-27-opec-welfare--assumption-test"
+        }
+      ],
+      "additionalFeatureJustification": null
+    },
+    {
+      "id": "2026-11-27-efficiency-crisis",
+      "title": "Falling Energy Use Is Not the Same Thing as Better Efficiency",
+      "subjects": [
+        "Energy economics",
+        "Policy incidence"
+      ],
+      "features": [
+        {
+          "type": "long-view",
+          "title": "From emergency cuts to durable efficiency",
+          "status": "IEA 2026 executive-summary evidence",
+          "stages": [
+            [
+              "Crisis response",
+              "More than 120 countries introduced emergency measures.",
+              "Observed policy response"
+            ],
+            [
+              "Consumption cut",
+              "Global gas demand is estimated to fall 1.6%.",
+              "Partly forced adjustment"
+            ],
+            [
+              "Intensity change",
+              "Primary energy intensity is expected to improve nearly 3%.",
+              "Descriptive aggregate"
+            ],
+            [
+              "Durable capital",
+              "Electrification and efficiency investment determine persistence.",
+              "Long-run mechanism"
+            ]
+          ],
+          "note": "The IEA says some 2026 improvement reflects forced cuts, so it should not be read as pure technical efficiency.",
+          "provenance": [
+            "https://www.iea.org/reports/energy-efficiency-2026/executive-summary"
+          ],
+          "rationale": "From emergency cuts to durable efficiency",
+          "assessment": {
+            "analyticalRelevance": "Clarifies a source-specific analytical margin rather than repeating the headline.",
+            "evidentiarySupport": "IEA 2026 executive-summary evidence",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The IEA says some 2026 improvement reflects forced cuts, so it should not be read as pure technical efficiency.",
+            "presentationSuitability": "long-view",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "incidence-ledger",
+          "title": "Who was protected from the shock?",
+          "status": "IEA policy inventory · not a household causal estimate",
+          "rows": [
+            [
+              "Vulnerable households",
+              "Only just over one-third of consumer-support measures were targeted to vulnerable households or businesses."
+            ],
+            [
+              "Untargeted consumers",
+              "Broad price support can reduce immediate bills while weakening conservation incentives and raising fiscal cost."
+            ],
+            [
+              "Future users",
+              "Durable standards, electrification and retrofits can lower exposure after emergency support ends."
+            ]
+          ],
+          "note": "Counts of policies do not measure their size, take-up or distributional effect.",
+          "provenance": [
+            "https://www.iea.org/reports/energy-efficiency-2026/executive-summary"
+          ],
+          "rationale": "Who was protected from the shock?",
+          "assessment": {
+            "analyticalRelevance": "Clarifies a source-specific analytical margin rather than repeating the headline.",
+            "evidentiarySupport": "IEA policy inventory · not a household causal estimate",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "Counts of policies do not measure their size, take-up or distributional effect.",
+            "presentationSuitability": "incidence-ledger",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "decision-margin",
+          "title": "Relief now or resilience later?",
+          "status": "Editorial policy comparison grounded in the IEA inventory",
+          "question": "Which intervention protects welfare without erasing the scarcity signal?",
+          "options": [
+            [
+              "Target emergency relief",
+              "Use eligibility and bill support to protect liquidity-constrained households while retaining incentives at the margin."
+            ],
+            [
+              "Accelerate durable investment",
+              "Use standards, finance and electrification to lower future exposure rather than repeatedly suppressing prices."
+            ]
+          ],
+          "rule": "Compare distributional protection, fiscal cost, incentive effects and persistence on the same horizon.",
+          "note": "The IEA inventories policy types; it does not estimate one optimal mix for every country.",
+          "rationale": "Relief now or resilience later?",
+          "provenance": [
+            "https://www.iea.org/reports/energy-efficiency-2026/executive-summary"
+          ],
+          "assessment": {
+            "analyticalRelevance": "Turns the source policy inventory into an explicit economic choice.",
+            "evidentiarySupport": "Institutional report and editorial comparison",
+            "distinctiveness": "Separates emergency incidence from capital-stock persistence.",
+            "readerValue": "Clarifies why targeted relief and durable efficiency are different policy margins.",
+            "presentationSuitability": "decision-margin",
+            "informationBurden": "A bounded two-option comparison with explicit limits."
+          }
+        }
+      ],
+      "edition": "2026-11-27",
+      "composition": "comparison",
+      "argument": "Crisis-driven conservation can improve an intensity statistic while reducing welfare, so the mechanism behind the numerator and denominator matters",
+      "rejected": [
+        [
+          "economic-figures",
+          "No additional chart selected where a textual analytical feature carries the evidence more faithfully."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "long-view",
+          "reason": "From emergency cuts to durable efficiency"
+        },
+        {
+          "rank": 2,
+          "feature": "incidence-ledger",
+          "reason": "Who was protected from the shock?"
+        },
+        {
+          "rank": 3,
+          "feature": "decision-margin",
+          "reason": "Relief now or resilience later?"
+        }
+      ],
+      "layout": {
+        "id": "efficiency-decomposition",
+        "palette": "pollen",
+        "colorBasis": "Crisis-driven conservation can improve an intensity statistic while reducing welfare, so the mechanism behind the numerator and denominator matters",
+        "rationale": "A source-specific native-flow arrangement keeps evidence, interpretation and limits distinct.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Graphical opportunity assessed; reported quantities are labeled by evidentiary status.",
+      "modelAssessment": "Causal, descriptive, review, forecast and calibrated-model claims are kept distinct.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-27",
+      "evidenceReview": {
+        "basis": "Exact cited version reviewed across question, design, estimates, robustness, limitations and interpretation.",
+        "access": "Lawful full text or explicitly bounded institutional online report inspected; provenance recorded in source-evidence.json."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-27",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant source-specific features selected after source-and-analysis review.",
+        "retained": [],
+        "added": [
+          "long-view",
+          "incidence-ledger",
+          "decision-margin"
+        ],
+        "replaced": []
+      },
+      "additionalFeatureJustification": "Three distinct functions are necessary: the chronology separates emergency cuts from durable capital, the ledger identifies incidence, and the decision feature compares relief with persistence.",
+      "selected": [
+        {
+          "id": "long-view",
+          "name": "The Long View",
+          "anchor": "2026-11-27-efficiency-crisis--long-view"
+        },
+        {
+          "id": "incidence-ledger",
+          "name": "The Incidence Ledger",
+          "anchor": "2026-11-27-efficiency-crisis--incidence-ledger"
+        },
+        {
+          "id": "decision-margin",
+          "name": "The Decision Margin",
+          "anchor": "2026-11-27-efficiency-crisis--decision-margin"
+        },
+        {
+          "id": "heron",
+          "name": "The Heron",
+          "anchor": "heron-h-2026-11-27-intensity"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-27-el-nino-food",
+      "title": "El Niño Exposure Is Concentrated Before Prices Move",
+      "subjects": [
+        "Climate and commodities",
+        "Food inflation"
+      ],
+      "features": [
+        {
+          "type": "mechanism-map",
+          "title": "From ocean anomaly to household prices",
+          "status": "World Bank descriptive history and conditional forecast",
+          "nodes": [
+            "Very strong El Niño",
+            "Yield and harvest risks in exposed producers",
+            "World commodity-price response",
+            "Domestic food inflation and real-income loss"
+          ],
+          "edges": [
+            [
+              0,
+              1,
+              "weather exposure"
+            ],
+            [
+              1,
+              2,
+              "trade concentration"
+            ],
+            [
+              2,
+              3,
+              "pass-through and food shares"
+            ]
+          ],
+          "note": "Historical associations and the 2026–27 forecast do not identify a single causal pass-through for every country.",
+          "provenance": [
+            "https://openknowledge.worldbank.org/server/api/core/bitstreams/3ee57097-4228-4ef8-a464-34211e4dfd0b/content"
+          ],
+          "rationale": "From ocean anomaly to household prices",
+          "assessment": {
+            "analyticalRelevance": "Clarifies a source-specific analytical margin rather than repeating the headline.",
+            "evidentiarySupport": "World Bank descriptive history and conditional forecast",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "Historical associations and the 2026–27 forecast do not identify a single causal pass-through for every country.",
+            "presentationSuitability": "mechanism-map",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        },
+        {
+          "type": "economic-figures",
+          "title": "Exposure in the food-price record",
+          "status": "World Bank reported descriptive quantities and forecasts",
+          "chart": {
+            "kind": "bars",
+            "unit": "Percent",
+            "rows": [
+              [
+                "High-exposure median food inflation",
+                5.5
+              ],
+              [
+                "Low-exposure median food inflation",
+                3.4
+              ],
+              [
+                "2026 food-index forecast",
+                10
+              ],
+              [
+                "2027 food-index forecast",
+                7
+              ]
+            ]
+          },
+          "note": "The inflation comparison is historical during El Niño episodes; the index values are forecasts under multiple shocks, not an El Niño treatment effect.",
+          "provenance": [
+            "https://openknowledge.worldbank.org/server/api/core/bitstreams/3ee57097-4228-4ef8-a464-34211e4dfd0b/content"
+          ],
+          "rationale": "Exposure in the food-price record",
+          "assessment": {
+            "analyticalRelevance": "Clarifies a source-specific analytical margin rather than repeating the headline.",
+            "evidentiarySupport": "World Bank reported descriptive quantities and forecasts",
+            "distinctiveness": "Performs a separate analytical function from the companion feature.",
+            "readerValue": "The inflation comparison is historical during El Niño episodes; the index values are forecasts under multiple shocks, not an El Niño treatment effect.",
+            "presentationSuitability": "economic-figures",
+            "informationBurden": "A bounded feature using only reviewed quantities and qualified interpretation."
+          }
+        }
+      ],
+      "edition": "2026-11-27",
+      "composition": "horizon-led",
+      "argument": "A global climate shock reaches consumers through geographically concentrated crops, trade shares and domestic food baskets",
+      "rejected": [
+        [
+          "economic-figures",
+          "No additional chart selected where a textual analytical feature carries the evidence more faithfully."
+        ]
+      ],
+      "rankedSelection": [
+        {
+          "rank": 1,
+          "feature": "mechanism-map",
+          "reason": "From ocean anomaly to household prices"
+        },
+        {
+          "rank": 2,
+          "feature": "economic-figures",
+          "reason": "Exposure in the food-price record"
+        }
+      ],
+      "layout": {
+        "id": "el-nino-exposure-flow",
+        "palette": "sage",
+        "colorBasis": "A global climate shock reaches consumers through geographically concentrated crops, trade shares and domestic food baskets",
+        "rationale": "A source-specific native-flow arrangement keeps evidence, interpretation and limits distinct.",
+        "docking": {
+          "note": [
+            "notebook"
+          ],
+          "heron": [
+            "opening",
+            "notebook"
+          ]
+        },
+        "variants": {}
+      },
+      "figureAssessment": "Graphical opportunity assessed; reported quantities are labeled by evidentiary status.",
+      "modelAssessment": "Causal, descriptive, review, forecast and calibrated-model claims are kept distinct.",
+      "minimumTargetReview": {
+        "substantiveFeatures": 2,
+        "heronExcluded": true,
+        "exception": false
+      },
+      "reviewed": "2026-11-27",
+      "evidenceReview": {
+        "basis": "Exact cited version reviewed across question, design, estimates, robustness, limitations and interpretation.",
+        "access": "Lawful full text or explicitly bounded institutional online report inspected; provenance recorded in source-evidence.json."
+      },
+      "changeRecord": {
+        "previous": [],
+        "reviewed": "2026-11-27",
+        "reason": "First publication of this reading.",
+        "selectionReview": "Two nonredundant source-specific features selected after source-and-analysis review.",
+        "retained": [],
+        "added": [
+          "mechanism-map",
+          "economic-figures"
+        ],
+        "replaced": []
+      },
+      "selected": [
+        {
+          "id": "mechanism-map",
+          "name": "The Mechanism Map",
+          "anchor": "2026-11-27-el-nino-food--mechanism-map"
+        },
+        {
+          "id": "economic-figures",
+          "name": "Economic Figures",
+          "anchor": "2026-11-27-el-nino-food--economic-figures"
+        }
+      ],
+      "additionalFeatureJustification": null
     }
   ],
   "totals": {
-    "editions": 9,
-    "readings": 45,
+    "editions": 10,
+    "readings": 50,
     "features": {
-      "economic-figures": 20,
-      "decision-margin": 14,
-      "estimation-desk": 12,
-      "heron": 13,
-      "incidence-ledger": 16,
-      "long-view": 15,
-      "mechanism-map": 14,
-      "assumption-test": 16
+      "economic-figures": 22,
+      "decision-margin": 16,
+      "estimation-desk": 13,
+      "heron": 15,
+      "incidence-ledger": 18,
+      "long-view": 16,
+      "mechanism-map": 17,
+      "assumption-test": 17
     }
   }
 }
