@@ -9546,7 +9546,7 @@
         },
         {
           "id": "estimation-desk",
-          "sha256": "b907377d41fe1118f6baae18843aa32d67c4762d5823a54c5d4639fad32db5f6",
+          "sha256": "170bb12d5e2ed5e97856fdb47bd15a7c947bcea670d3413ecd9816e0d54ba7f8",
           "status": "verified",
           "scope": "whole-component",
           "basis": "calculated",
@@ -9569,19 +9569,19 @@
             "reasoning": "Checked the reported ratio, numerator, denominator and policy-intensity scope against the full paper’s welfare decomposition."
           },
           "mathematics": {
-            "derivation": "Directly display the paper’s reported calibrated ratio of monetized emissions savings to private surplus cost at the current policy intensity.",
+            "derivation": "Display the paper's calibrated ratio of monetized emissions benefits (B_emissions) to private surplus cost (C_private). Compact subscripts preserve the same 0.16 ratio on narrow screens; the numerator and denominator are explicitly defined in the adjacent terms.",
             "omissions": [
               "The underlying driver-level integration, demand elasticities and emissions-damage construction remain in the reviewed source.",
               "The display does not generalize the Madrid calibration to another city or policy intensity."
             ],
             "notation": [
               {
-                "symbol": "Emissions savings",
+                "symbol": "B_emissions",
                 "meaning": "monetized lifetime externality reduction from induced substitution",
                 "sourceMeaning": "reported numerator in the paper’s welfare ratio"
               },
               {
-                "symbol": "Private surplus cost",
+                "symbol": "C_private",
                 "meaning": "money-metric access-value loss borne by buyers",
                 "sourceMeaning": "reported denominator in the paper’s welfare ratio"
               }
