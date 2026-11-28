@@ -10,7 +10,27 @@ assert.throws(()=>review.validate({journal:silent,reviews}),/exceptional approva
 const parse=(h,id)=>JSON.parse(h.match(new RegExp('id="'+id+'">([\\s\\S]*?)<\/script>'))[1]);
 const c=parse(journal,'companion-data');assert.deepEqual(c['2026-11-20'].appearances.map(n=>n.target),['2026-11-20-green-innovation','2026-11-20-shipping-weather']);
 for(const date of Object.keys(c).filter(d=>d<'2026-11-20'))assert.deepEqual(c[date],parse(before,'companion-data')[date]);
-for(const id of ['field-register','field-studies'])assert.deepEqual(parse(journal,id),parse(before,id),'frozen '+id);
+const oldRegister=parse(before,'field-register'),newRegister=parse(journal,'field-register');
+assert.equal(newRegister.version,oldRegister.version,'Field Register schema version preserved');
+assert.deepEqual(newRegister.entries.slice(0,oldRegister.entries.length),oldRegister.entries,'historical Field Register entries immutable');
+assert(newRegister.entries.length>=oldRegister.entries.length,'Field Register must not shrink');
+assert.equal(new Set(newRegister.entries.map(e=>e.no)).size,newRegister.entries.length,'Field Register numbers are unique');
+for(const [i,e] of newRegister.entries.entries())assert.equal(e.no,i+1,'Field Register sequence remains contiguous');
+const previousEditions=new Set([...before.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"/g)].map(m=>m[1]));
+const currentEditions=new Set([...journal.matchAll(/<section class="edition"[^>]*data-edition="([^"]+)"/g)].map(m=>m[1]));
+const addedRegister=newRegister.entries.slice(oldRegister.entries.length);
+for(const entry of addedRegister)assert(!previousEditions.has(entry.issue)&&currentEditions.has(entry.issue),'new register entry belongs to a new published edition');
+for(const date of [...currentEditions].filter(d=>!previousEditions.has(d))){
+ const n=addedRegister.filter(e=>e.issue===date).length;
+ assert(n>=3&&n<=5,'new edition must append 3–5 sourced Field Register entries');
+}
+const oldStudies=parse(before,'field-studies'),newStudies=parse(journal,'field-studies');
+for(const [date,study] of Object.entries(oldStudies))assert.deepEqual(newStudies[date],study,'historical Field Study immutable '+date);
+for(const date of Object.keys(newStudies))assert(currentEditions.has(date),'Field Study belongs to a published edition');
+for(const date of [...currentEditions].filter(d=>!previousEditions.has(d)))assert(newStudies[date],'new edition must append a Field Study');
+const modifiedRegister=structuredClone(newRegister);
+modifiedRegister.entries[0]={...modifiedRegister.entries[0],name:'Unauthorized historical mutation'};
+assert.throws(()=>assert.deepEqual(modifiedRegister.entries.slice(0,oldRegister.entries.length),oldRegister.entries),/historical|different/i,'historical register mutation must fail');
 const text=s=>s.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
 const articles=s=>[...s.matchAll(/<article class="entry"[^>]*id="([^"]+)"[\s\S]*?<\/article>/g)];for(const a of articles(before))assert.deepEqual([...articles(journal).find(b=>b[1]===a[1])[0].matchAll(/<p(?: [^>]*)?>[\s\S]*?<\/p>/g)].map(m=>text(m[0])).sort(),[...a[0].matchAll(/<p(?: [^>]*)?>[\s\S]*?<\/p>/g)].map(m=>text(m[0])).sort(),'published paragraphs unchanged '+a[1]);
 const notebook=read('notebook/index.html');for(const a of old('notebook/index.html').matchAll(/<article class="concept"[\s\S]*?<\/article>/g))assert(notebook.includes(a[0].split('<section class="seen"')[0]),'all nineteen canonical explanations and qualifications preserved while references may accumulate');

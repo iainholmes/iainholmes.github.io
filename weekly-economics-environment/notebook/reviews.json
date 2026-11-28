@@ -252,6 +252,59 @@
         "base": "bc7627e",
         "reason": "Authorized cumulative-notebook recovery; supersedes the original zero-addition decision after source-specific candidate assessment."
       }
+    },
+    "2026-11-27": {
+      "reviewedOn": "2026-11-27",
+      "readings": [
+        "2026-11-27-low-emission-zones",
+        "2026-11-27-climate-price-signals",
+        "2026-11-27-opec-welfare",
+        "2026-11-27-efficiency-crisis",
+        "2026-11-27-el-nino-food"
+      ],
+      "synthesis": "2026-11-27-connections",
+      "revisited": [],
+      "added": [
+        "interacting-distortions"
+      ],
+      "note": "Reviewed all five readings and synthesis. Added one distinct reusable concept: interacting distortions alter the estimand for the welfare effect of removing any single wedge.",
+      "candidates": [
+        {
+          "concept": "interacting-distortions",
+          "reading": "2026-11-27-opec-welfare",
+          "decision": "add",
+          "reason": "The OPEC paper explicitly compares total, marginal and inframarginal planner problems. The distinction generalizes: the welfare effect assigned to one wedge depends on which other wedges remain. This is distinct from generic counterfactual reasoning because it focuses on complementarity and sequencing among multiple distortions.",
+          "sourceUrl": "https://www.nber.org/system/files/working_papers/w36058/w36058.pdf"
+        },
+        {
+          "concept": "inframarginal-rationing-cost",
+          "reading": "2026-11-27-low-emission-zones",
+          "decision": "covered",
+          "reason": "The application is valuable but the existing incidence and participation-constraint entries already organize costs borne by people whose choices do not switch; no separate entry added.",
+          "sourceUrl": "https://www.nber.org/system/files/working_papers/w36037/w36037.pdf"
+        },
+        {
+          "concept": "linked-market-signals",
+          "reading": "2026-11-27-climate-price-signals",
+          "decision": "defer",
+          "reason": "Potentially distinct, but the review synthesizes heterogeneous component designs; revisit when a future causal paper identifies a particular link.",
+          "sourceUrl": "https://www.nber.org/system/files/working_papers/w36051/w36051.pdf"
+        },
+        {
+          "concept": "intensity-decomposition",
+          "reading": "2026-11-27-efficiency-crisis",
+          "decision": "covered",
+          "reason": "Existing counterfactual and incidence entries already require separating mechanism from aggregate ratio changes.",
+          "sourceUrl": "https://www.iea.org/reports/energy-efficiency-2026/executive-summary"
+        },
+        {
+          "concept": "climate-trade-concentration",
+          "reading": "2026-11-27-el-nino-food",
+          "decision": "covered",
+          "reason": "Network reliability and incidence already cover concentration and pass-through; the current evidence is descriptive and forecast-based.",
+          "sourceUrl": "https://openknowledge.worldbank.org/server/api/core/bitstreams/3ee57097-4228-4ef8-a464-34211e4dfd0b/content"
+        }
+      ]
     }
   }
 }
