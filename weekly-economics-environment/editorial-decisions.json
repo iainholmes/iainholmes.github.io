@@ -7263,7 +7263,7 @@
           "type": "estimation-desk",
           "title": "Emissions savings per euro of private cost",
           "status": "Reconstructed from reported calibrated quantities · not a causal estimand",
-          "math": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mfrac><mtext>Emissions savings</mtext><mtext>Private surplus cost</mtext></mfrac><mo>=</mo><mn>0.16</mn></mrow></math>",
+          "math": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mfrac><msub><mi>B</mi><mtext>emissions</mtext></msub><msub><mi>C</mi><mtext>private</mtext></msub></mfrac><mo>=</mo><mn>0.16</mn></mrow></math>",
           "terms": [
             [
               "Numerator",
