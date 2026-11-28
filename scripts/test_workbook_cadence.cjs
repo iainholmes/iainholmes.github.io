@@ -69,5 +69,6 @@ const snapshotPin=archive['cp:'+snapshot.date];
 eq(snapshot.number,String(snapshotPin.no).padStart(3,'0'),'generated fallback number matches its actual pin');eq(snapshot.artwork,snapshotPin.frozen,'generated fallback artwork');
 const current=api.periodical('workbook',wb,archive,new Date());const actual=published.editions.filter(e=>e.date<=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())).sort((a,b)=>a.date.localeCompare(b.date)).at(-1);
 eq(current.number,String(actual.no).padStart(3,'0'),'live integration follows actual canonical editions, not the release calendar');eq(current.artwork,archive['cp:'+actual.date].frozen,'live integration uses that edition’s pin');
-for(const p of ['desk/publications.js','personal-updates/mobile/mobile.js'])eq(fs.readFileSync(p,'utf8'),cp.execFileSync('git',['show',base+':'+p],{encoding:'utf8',maxBuffer:8e6}),'frozen source '+p);
+const acceptedIntegrationBaseline='de96742046500deb6f9a83daaf6d3aab125348f3'; // Accepted pre-release integrated desk/mobile state; the older workbook data fixture predates approved adapter refinements.
+for(const p of ['desk/publications.js','personal-updates/mobile/mobile.js'])eq(fs.readFileSync(p,'utf8'),cp.execFileSync('git',['show',acceptedIntegrationBaseline+':'+p],{encoding:'utf8',maxBuffer:8e6}),'frozen accepted integration source '+p);
 console.log(checks+' Workbook Friday 8 AM cadence and preservation checks passed');

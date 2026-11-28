@@ -3439,6 +3439,144 @@ confetti or gamified copy. Verify desktop and ~390px mobile before one coherent 
           "refs": "Meredith (1993), Psychometrika; Millsap (2011), Statistical Approaches to Measurement Invariance."
         }
       ]
+    },
+    {
+      "no": 18,
+      "date": "2026-11-27",
+      "minutes": 30,
+      "questions": [
+        {
+          "id": "q1",
+          "field": "Econometrics",
+          "kind": "multi",
+          "stem": "<p>A researcher estimates a linear panel model in which a time-varying regressor may be correlated with an unobserved unit effect. She fits a correlated-random-effects (Mundlak) specification by adding each unit's time mean of that regressor. Which statements are defensible?</p>",
+          "options": [
+            "Under the maintained linear conditional-mean specification, adding the unit mean permits correlation between the regressor history and the unit effect through that mean.",
+            "The coefficient on the time-varying regressor can be interpreted as the within-unit slope when the model includes the corresponding unit mean.",
+            "A conventional random-effects estimator without unit means remains consistent whenever the regressor varies substantially over time, even if it is correlated with the unit effect.",
+            "Unlike a unit fixed-effects regression, the correlated-random-effects specification can estimate coefficients on time-invariant regressors, subject to its maintained assumptions."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Correlated random effects", "Mundlak adjustment", "Within-between decomposition"],
+          "assistance": "<p>Decompose the regressor into its unit mean and its deviation from that mean. Ask which component varies within a unit and which component can proxy systematic association with the unobserved unit effect.</p><p>Then compare what is absorbed by unit dummies with what remains identifiable in a random-effects formulation that explicitly models the between-unit component.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> The Mundlak device parameterizes the conditional mean of the unit effect as a function of unit-level regressor means. With both the current regressor and its unit mean included, the current-regressor coefficient is identified by within-unit deviations and matches the fixed-effects slope in the standard balanced linear case. Ordinary random effects instead requires the unit effect to be uncorrelated with the regressors, so time variation alone does not rescue (C). Because time-invariant regressors are not collinear with unit dummies in the correlated-random-effects formulation, their coefficients can be estimated, although that between-unit interpretation depends on the model's conditional-mean assumptions.</p>",
+          "refs": "Mundlak (1978), Econometrica; Wooldridge (2010), Econometric Analysis of Cross Section and Panel Data."
+        },
+        {
+          "id": "q2",
+          "field": "Microeconomics",
+          "kind": "single",
+          "stem": "<p>A monopolist offers a quantity-payment menu to two privately informed buyer types. The high type has the larger marginal willingness to pay at every quantity, preferences satisfy single crossing, production cost is increasing, and the standard two-type screening solution is interior except for the low type's participation constraint. Which allocation pattern is characteristic of the optimum?</p>",
+          "options": [
+            "Both types receive their full-information efficient quantities because transfers alone eliminate information rents.",
+            "The high type receives the efficient quantity, while the low type's quantity is distorted downward to reduce the high type's information rent.",
+            "The high type's quantity is distorted downward, while the low type receives the efficient quantity.",
+            "Both types receive the same quantity because incentive compatibility requires pooling under single crossing."
+          ],
+          "correct": [1],
+          "concepts": ["Nonlinear screening", "Single crossing", "Information rents"],
+          "assistance": "<p>Start with the full-information allocation, then ask which type is tempted to imitate the other contract. Reducing one contract's quantity changes the rent required to keep the higher-valuation type selecting its own contract.</p><p>In the canonical solution, compare the 'no distortion at the top' result with the distortion used to relax the binding incentive constraint.</p>",
+          "explanation": "<p><b>(B) is correct.</b> With single crossing, the low type's participation constraint and the high type's incentive-compatibility constraint bind in the canonical separating solution. The high type earns an information rent and receives the full-information efficient quantity: distorting that top quantity would create a first-order efficiency loss without reducing the relevant rent at the margin. The low type's quantity is reduced below its full-information level because doing so makes the low contract less attractive to the high type and lowers the rent the seller must leave. Thus the optimum generally separates rather than pools and exhibits distortion only at the bottom under the stated assumptions.</p>",
+          "refs": "Mussa & Rosen (1978), Journal of Economic Theory; Laffont & Martimort (2002), The Theory of Incentives."
+        },
+        {
+          "id": "q3",
+          "field": "Macroeconomics",
+          "kind": "multi",
+          "stem": "<p>Manufacturing labor productivity rises persistently, while productivity in an in-person care sector changes little. Workers can move between sectors, so long-run wage growth is similar in both. Which implications are consistent with Baumol's cost-disease mechanism?</p>",
+          "options": [
+            "The unit labor cost and relative price of care tend to rise because care wages increase without comparable productivity growth.",
+            "If demand for care is sufficiently price-inelastic, care's nominal expenditure share can rise even without faster growth in the quantity of care services.",
+            "A rising care expenditure share by itself proves that care markets are inefficient and that measured welfare is falling.",
+            "Aggregate productivity growth can slow as employment or spending shifts toward the sector with slower productivity growth, even when each sector follows its own productivity path."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Baumol cost disease", "Relative prices", "Sectoral reallocation"],
+          "assistance": "<p>Track wages, output per worker, and unit labor costs separately. If mobile labor links wage growth across sectors, the sector without matching productivity gains must finance those wages through a higher price or a lower margin.</p><p>For expenditure shares, combine the relative-price change with the demand elasticity. Keep a positive description of changing costs distinct from a welfare or market-failure conclusion.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Common wage growth paired with stagnant care productivity raises care's unit labor cost and therefore its relative price when costs pass through. With price-inelastic demand, spending on care can rise as a share of nominal expenditure even if its real quantity grows slowly. Reallocation toward the low-productivity-growth sector can also reduce the aggregate productivity-growth rate through composition. None of these accounting and equilibrium effects establishes inefficiency or declining welfare on its own, so (C) is false; the services may be valuable and the higher share may reflect income growth or preferences.</p>",
+          "refs": "Baumol & Bowen (1966), Performing Arts: The Economic Dilemma; Nordhaus (2008), B.E. Journal of Macroeconomics."
+        },
+        {
+          "id": "q4",
+          "field": "Environmental economics",
+          "kind": "single",
+          "stem": "<p>Two neighborhoods experience annual pollution exposures of 10 and 2 units. The first has 100 residents and the second has 900. If every resident within a neighborhood is assigned its neighborhood exposure, what is the population-weighted mean exposure across residents?</p>",
+          "options": [
+            "2.8 units",
+            "6 units",
+            "8 units",
+            "12 units"
+          ],
+          "correct": [0],
+          "concepts": ["Population-weighted exposure", "Environmental justice metrics", "Aggregation weights"],
+          "assistance": "<p>The estimand is the mean exposure of a person drawn uniformly from the combined population, not the mean of two geographic units. Give each neighborhood a weight equal to its share of all residents.</p><p>Check that the much larger neighborhood receives nine times the weight of the smaller one and that the result lies closer to its exposure level.</p>",
+          "explanation": "<p><b>(A) is correct.</b> The combined population is 1,000, so the resident-weighted mean is [100(10) + 900(2)]/1,000 = 2.8 units. The unweighted neighborhood mean, (10 + 2)/2 = 6, answers a different question: the exposure of a neighborhood drawn uniformly from the two neighborhoods. Environmental-distribution analyses must match weights to the estimand; population weights describe average personal exposure, while area, facility, or jurisdiction weights can produce different summaries.</p>",
+          "refs": "Banzhaf, Ma & Timmins (2019), Journal of Economic Perspectives; Mohai, Pellow & Roberts (2009), Annual Review of Environment and Resources."
+        },
+        {
+          "id": "q5",
+          "field": "Causal inference",
+          "kind": "multi",
+          "stem": "<p>An observational study compares one-year mortality for patients who 'ever initiated' a drug during follow-up with patients who never initiated it. Patients classified as treated must survive from eligibility until initiation. Which design statements are defensible?</p>",
+          "options": [
+            "Classifying future initiators as treated from baseline can create immortal-time bias because deaths before initiation cannot occur among those who ultimately initiate.",
+            "A target-trial emulation should align eligibility, assignment to a treatment strategy, and the start of follow-up at a common time zero.",
+            "Including a baseline indicator for eventual treatment removes the bias because it controls for the observed treatment group.",
+            "For sustained or grace-period strategies, cloning, censoring at strategy deviation, and appropriate inverse-probability weighting can estimate a per-protocol contrast under additional assumptions."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Immortal-time bias", "Target-trial emulation", "Dynamic treatment strategies"],
+          "assistance": "<p>Draw the time line from eligibility to possible initiation. Ask whether a patient's exposure label uses information that becomes available only after baseline and what must happen to that patient before the label can be earned.</p><p>Then define treatment as a strategy assignable at time zero. More elaborate strategies require methods that handle post-baseline adherence without conditioning naively on future survival.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> An eventual-treatment label uses future information: to enter the treated group, a patient must remain alive until initiation, creating a guaranteed-survival interval that is wrongly credited to treatment if follow-up begins at eligibility. Aligning eligibility, strategy assignment, and follow-up avoids that temporal mismatch. A baseline indicator for a future event encodes rather than repairs the problem, so (C) is false. When the estimand concerns sustained strategies, cloning eligible patients into compatible strategies, censoring at deviation, and weighting for informative censoring can emulate a per-protocol comparison if consistency, exchangeability, positivity, and correct weighting models are credible.</p>",
+          "refs": "Hernán, Sauer, Hernández-Díaz, Platt & Shrier (2016), Journal of Clinical Epidemiology; Hernán & Robins (2016), American Journal of Epidemiology."
+        },
+        {
+          "id": "q6",
+          "field": "Statistics & inference",
+          "kind": "tf",
+          "stem": "<p>A researcher plots separate pointwise 95% confidence intervals for an unknown regression function at 100 covariate values. True or false: even if each interval has 95% coverage at its own covariate value, the probability that all 100 intervals simultaneously cover the entire evaluated function can be substantially below 95%.</p>",
+          "options": ["True", "False"],
+          "correct": [0],
+          "concepts": ["Pointwise confidence intervals", "Simultaneous confidence bands", "Multiplicity"],
+          "assistance": "<p>Pointwise coverage fixes one covariate value before repeated sampling. Simultaneous coverage asks whether a collection of inequalities all hold in the same sample.</p><p>Relate the distinction to multiple testing: dependence across estimates matters, but marginal 95% guarantees do not automatically become a 95% joint guarantee.</p>",
+          "explanation": "<p><b>True.</b> Pointwise coverage states that, for any prespecified covariate value, its interval covers the corresponding function value with probability 0.95. The event that every one of 100 intervals covers is an intersection of coverage events and generally has smaller probability; under independence it would be 0.95<sup>100</sup>, though estimates along a curve are usually dependent. A simultaneous confidence band calibrates a supremum or other joint critical value to control coverage of the whole evaluated function. Pointwise intervals therefore should not be read as a 95% band.</p>",
+          "refs": "Working & Hotelling (1929), Journal of the American Statistical Association; Wasserman (2006), All of Nonparametric Statistics."
+        },
+        {
+          "id": "q7",
+          "field": "Resource economics",
+          "kind": "multi",
+          "stem": "<p>Several firms hold surface leases over a single connected oil reservoir. Each firm's drilling lowers pressure and raises extraction costs for the others. Regulators consider unitization, under which the reservoir is operated as one field and output is shared by an agreed formula. Which statements are defensible?</p>",
+          "options": [
+            "Independent leaseholders can have incentives to drill too early or too densely in order to capture mobile oil before neighbors do.",
+            "Unitization can internalize pressure and recovery effects by making field-level value, rather than well-level capture, the operating objective.",
+            "Once joint operation is technologically efficient, the output-sharing formula is distributionally irrelevant and cannot affect agreement or participation.",
+            "Information, bargaining, holdout, and monitoring problems can prevent voluntary unitization even when coordinated operation raises total reservoir value."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Common-pool reservoirs", "Unitization", "Rule of capture"],
+          "assistance": "<p>Separate the physical production externality from ownership of the extracted output. Under the rule of capture, a leaseholder may privately benefit from moving extraction forward even when extra wells reduce total reservoir value.</p><p>Joint operation addresses the production margin, but agreement also requires dividing gains among heterogeneous rights holders with different information and outside options.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Because reservoir fluids migrate and pressure is shared, each independent operator ignores some depletion and pressure costs imposed on neighboring leases. The resulting race can produce premature extraction, excessive wells, and lower ultimate recovery. Unitization assigns operating decisions to the field and can maximize joint reservoir value. But distributing the joint output or revenue is central to participation and rent division, so (C) is false. Heterogeneous geological beliefs, private information, strategic holdout, and enforcement costs can block a value-increasing agreement and motivate regulatory rules.</p>",
+          "refs": "Libecap & Wiggins (1984), Journal of Law and Economics; Libecap (1989), Contracting for Property Rights."
+        },
+        {
+          "id": "q8",
+          "field": "Empirical research design",
+          "kind": "multi",
+          "stem": "<p>A policy evaluation surveys a fresh representative sample of adults in each region every year rather than reinterviewing the same people. Which statements about this repeated-cross-section design are defensible?</p>",
+          "options": [
+            "It can estimate changes in region-level population means when each wave represents the target population comparably.",
+            "Without linking the same people across waves, it cannot directly estimate the distribution of within-person changes.",
+            "Because each wave is representative, changes in the population's composition are irrelevant to interpretation and never require adjustment or decomposition.",
+            "Synthetic-cohort analyses can follow cells defined by stable characteristics, but treating cell changes as individual dynamics requires additional assumptions."
+          ],
+          "correct": [0, 1, 3],
+          "concepts": ["Repeated cross-sections", "Within-person change", "Synthetic cohorts"],
+          "assistance": "<p>Identify the unit observed repeatedly: the region or population is followed over time, but individual respondents are not. This permits some aggregate time comparisons while leaving individual transition paths unobserved.</p><p>Consider whether changing age, migration, or other composition could alter a population mean, and what must be assumed before a stable demographic cell can stand in for a longitudinal person.</p>",
+          "explanation": "<p><b>(A), (B), and (D) are correct.</b> Comparable probability samples identify each year's population distribution and therefore changes in region-level means. They do not reveal which individuals gained or lost, so individual changes, transitions, and fixed effects are not directly identified. Representativeness does not freeze the population: migration, aging, and other compositional shifts can be substantively part of the estimand or a source requiring standardization, making (C) false. Synthetic cohorts track stable cells across waves, but their interpretation as life-cycle or individual dynamics relies on cell stability, adequate sample size, and restrictions on selective composition.</p>",
+          "refs": "Deaton (1985), Journal of Econometrics; Verbeek (2008), The Econometrics of Panel Data."
+        }
+      ]
     }
   ]
 }

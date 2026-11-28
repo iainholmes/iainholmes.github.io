@@ -1,0 +1,46 @@
+# A dedicated full-history release check for Workbook and shared published-art changes.
+# Prevents unrelated legacy fixture brittleness from silently blocking Friday publication.
+name: Workbook release guard
+on:
+  pull_request:
+    paths:
+      - 'daily-econ-challenge/**'
+      - 'personal-updates/issue-marks.js'
+      - 'personal-updates/issue-mark-archive.js'
+      - 'personal-updates/index.html'
+      - 'scripts/test_art_originality.cjs'
+      - 'scripts/fixtures/art-originality.cjs'
+      - '.github/workflows/workbook-release-guard.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'daily-econ-challenge/**'
+      - 'personal-updates/issue-marks.js'
+      - 'personal-updates/issue-mark-archive.js'
+      - 'personal-updates/index.html'
+      - 'scripts/test_art_originality.cjs'
+      - 'scripts/fixtures/art-originality.cjs'
+      - '.github/workflows/workbook-release-guard.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-history-release-contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify Workbook content and publication integrity
+        run: |
+          node scripts/test_workbook_learning.cjs
+          node scripts/test_workbook_marks.cjs
+          node scripts/test_workbook_cadence.cjs
+          node scripts/test_publishing.cjs
+          node scripts/test_hub_metadata.cjs
+          node scripts/test_periodicals.cjs
+      - name: Verify full-history artwork and prospective append-only invariants
+        run: node scripts/test_art_originality.cjs

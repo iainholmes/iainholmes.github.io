@@ -53,7 +53,8 @@
     {id:'precision-weights',subject:'precision',phrase:'Precision & information',words:/variance|standard error|weighted least|power|precision|delta method/i},
     {id:'constraint-frame',subject:'constraints',phrase:'Constraints & allocation',words:/revenue.constrain|boundary|binding target|quota|nonnegative/i},
     {id:'scarcity-wedge',subject:'allocation',phrase:'Prices & allocation',words:/demand|supply|consumer surplus|tariff|scarcity|price|marginal/i},
-    {id:'stock-transition',subject:'change',phrase:'Stocks & adjustment',words:/Solow|capital|stock|growth|steady.state|irreversible|waiting/i}
+    {id:'stock-transition',subject:'change',phrase:'Stocks & adjustment',words:/Solow|capital|stock|growth|steady.state|irreversible|waiting/i},
+    {id:'panel-decomposition',subject:'panels',phrase:'Within & between',words:/Mundlak|correlated random effects|within.unit|between.unit|within.person|repeated cross.section|panel data/i}
   ];
   function workbookSignature(m){
     // Old section/plan variants share one effective composition.
@@ -103,6 +104,7 @@
       case 'constraint-frame':s='<path d="M95 125H505V465H95Z" fill="none" stroke="'+ink+'" stroke-width="18"/><path d="M95 295H245M355 295H505" stroke="'+b+'" stroke-width="32"/><path d="M250 210H350V380H250Z" fill="'+a+'"/><path d="M300 135V210M300 380V455" stroke="'+ink+'" stroke-width="10"/><circle cx="300" cy="295" r="24" fill="'+ink+'"/>';break;
       case 'scarcity-wedge':s='<path d="M90 450L490 150V450Z" fill="'+b+'"/><path d="M90 150L490 450M90 450L490 150" stroke="'+a+'" stroke-width="10"/><path d="M90 485H520M90 110V485" fill="none" stroke="'+ink+'" stroke-width="4"/><circle cx="290" cy="300" r="25" fill="'+ink+'"/>';break;
       case 'stock-transition':s='<path d="M95 410H185V290H275V220H365V160H465" fill="none" stroke="'+ink+'" stroke-width="15"/><path d="M95 450C240 450 290 355 495 355" fill="none" stroke="'+a+'" stroke-width="12"/><path d="M465 130L505 160L465 190" fill="none" stroke="'+b+'" stroke-width="12"/>';break;
+      case 'panel-decomposition':s='<g fill="none" stroke="'+ink+'" stroke-width="5"><path d="M75 145H215V430H75ZM230 145H370V430H230ZM385 145H525V430H385Z"/><path d="M145 115V465M300 115V465M455 115V465" stroke-dasharray="8 9"/></g><g fill="'+b+'"><circle cx="115" cy="335" r="20"/><circle cx="175" cy="245" r="20"/><circle cx="270" cy="295" r="20"/><circle cx="330" cy="205" r="20"/><circle cx="425" cy="255" r="20"/><circle cx="485" cy="165" r="20"/></g><path d="M115 335L175 245M270 295L330 205M425 255L485 165" stroke="'+a+'" stroke-width="14"/><path d="M100 485H500" stroke="'+ink+'" stroke-width="8"/><path d="M455 455L500 485L455 515" fill="none" stroke="'+a+'" stroke-width="11"/>';break;
       default:throw Error('Unknown Workbook composition: '+m.composition);
     }
     return s;

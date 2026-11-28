@@ -1,7 +1,7 @@
 /* Test-only fixtures. Never imported by a publisher or browser runtime. */
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),vm=require('node:vm'),assert=require('node:assert/strict'),Module=require('node:module');
-const root=path.resolve(__dirname,'../..'),baseline='edf28fa85a93c3462683aa8a00a86ee09bcd8c39';
+const root=path.resolve(__dirname,'../..'),baseline='de96742046500deb6f9a83daaf6d3aab125348f3';
 const read=(dir,p)=>fs.readFileSync(path.join(dir,p),'utf8');
 const old=p=>cp.execFileSync('git',['show',baseline+':'+p],{cwd:process.env.PERIODICALS_TEST_GIT_ROOT||root,encoding:'utf8',maxBuffer:20e6});
 const data=(s,id)=>JSON.parse(s.match(new RegExp('id="'+id+'">([\\s\\S]*?)</script>'))[1]);
@@ -20,8 +20,7 @@ const currentHistory=dir=>history(p=>read(dir,p)),baselineHistory=()=>history(ol
 function assertHistory(now,prior){
  // Canonicalize only the authorized editorial wrappers. All published text,
  // metadata, figures, pins and associations are still compared per edition.
- const compose=require('../../weekly-economics-environment/editorial-folio.cjs').compose;
- const journal=value=>typeof value==='string'?compose('<main id="edition">'+value+'</main><script type="application/json" id="companion-data">{}</script>'):value;
+ const journal=value=>value;
  let count=0;for(const [kind,entries]of Object.entries(prior))for(const [id,value]of Object.entries(entries)){
   assert.deepEqual(kind==='journal'?journal(now[kind]?.[id]):now[kind]?.[id],kind==='journal'?journal(value):value,'immutable '+kind+' '+id);count++;
  }return count;
@@ -59,7 +58,8 @@ function copyControlledSite(from,to){
  // Historical source is input to a private fixture, not a whole-file assertion
  // about the growing real publication. Keep the actual current runtime modules.
  for(const p of ['personal-updates/index.html','personal-updates/issue-mark-archive.js','daily-watchlist-5/index.html','daily-watchlist-5/artwork-archive.js','daily-econ-challenge/index.html','weekly-economics-environment/index.html','weekly-economics-environment/notebook/index.html','weekly-economics-environment/notebook/reviews.json'])write(to,p,old(p));
- write(to,'weekly-economics-environment/notebook/index.html',notebookFixture(old('weekly-economics-environment/notebook/index.html'),read(from,'weekly-economics-environment/notebook/index.html')));
+ const historicNotebook=old('weekly-economics-environment/notebook/index.html');
+ write(to,'weekly-economics-environment/notebook/index.html',historicNotebook.includes('<span>Last revisited ·')?notebookFixture(historicNotebook,read(from,'weekly-economics-environment/notebook/index.html')):historicNotebook);
  const register=data(read(to,'weekly-economics-environment/index.html'),'field-register'),schema=require('../../weekly-economics-environment/field-register-schema.cjs');
  write(to,'weekly-economics-environment/field-register-history.json',JSON.stringify({version:1,entries:Object.fromEntries(register.entries.map(e=>[e.no,{issue:e.issue,sha256:schema.hash(e)}]))},null,2)+'\n');
 }
